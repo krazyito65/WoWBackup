@@ -1,5 +1,5 @@
 ## Interface: 70000
-## X-Curse-Packaged-Version: r1257-release
+## X-Curse-Packaged-Version: r1259-release
 ## X-Curse-Project-Name: LittleWigs
 ## X-Curse-Project-ID: little-wigs
 ## X-Curse-Repository-ID: wow/little-wigs/mainline

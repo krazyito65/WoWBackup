@@ -1,0 +1,92 @@
+------------------------------------------------------------------------
+r85 | funkydude | 2016-08-01 17:23:59 +0000 (Mon, 01 Aug 2016) | 1 line
+Changed paths:
+   A /tags/r85-release (from /trunk:84)
+
+Tagging as r85-release
+------------------------------------------------------------------------
+r84 | funkydude | 2016-07-31 09:25:57 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Ulduar/Hodir.lua
+
+Ulduar/Hodir: Fix invalid bar icon
+------------------------------------------------------------------------
+r82 | funkydude | 2016-07-29 16:04:06 +0000 (Fri, 29 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Gunship.lua
+   M /trunk/Citadel/Lanathel.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Rotface.lua
+   M /trunk/Citadel/Saurfang.lua
+   M /trunk/Citadel/Sindragosa.lua
+   M /trunk/Citadel/Valithria.lua
+   M /trunk/Coliseum/Anubarak.lua
+   M /trunk/Coliseum/Beasts.lua
+   M /trunk/Coliseum/Champions.lua
+   M /trunk/Coliseum/Jaraxxus.lua
+   M /trunk/Coliseum/ValkyrTwins.lua
+   M /trunk/Naxxramas/Anubrekhan.lua
+   M /trunk/Naxxramas/Faerlina.lua
+   M /trunk/Naxxramas/Gluth.lua
+   M /trunk/Naxxramas/Gothik.lua
+   M /trunk/Naxxramas/Grobbulus.lua
+   M /trunk/Naxxramas/Heigan.lua
+   M /trunk/Naxxramas/Horsemen.lua
+   M /trunk/Naxxramas/Kelthuzad.lua
+   M /trunk/Naxxramas/Loatheb.lua
+   M /trunk/Naxxramas/Maexxna.lua
+   M /trunk/Naxxramas/Noth.lua
+   M /trunk/Naxxramas/Patchwerk.lua
+   M /trunk/Naxxramas/Razuvious.lua
+   M /trunk/Naxxramas/Sapphiron.lua
+   M /trunk/Naxxramas/Thaddius.lua
+   M /trunk/Northrend/Archavon.lua
+   M /trunk/Northrend/Emalon.lua
+   M /trunk/Northrend/Halion.lua
+   M /trunk/Northrend/Koralon.lua
+   M /trunk/Northrend/Malygos.lua
+   M /trunk/Northrend/Onyxia.lua
+   M /trunk/Northrend/Sartharion.lua
+   M /trunk/Northrend/Toravon.lua
+   M /trunk/Ulduar/Algalon.lua
+   M /trunk/Ulduar/Auriaya.lua
+   M /trunk/Ulduar/Freya.lua
+   M /trunk/Ulduar/Hodir.lua
+   M /trunk/Ulduar/Ignis.lua
+   M /trunk/Ulduar/IronCouncil.lua
+   M /trunk/Ulduar/Kologarn.lua
+   M /trunk/Ulduar/Leviathan.lua
+   M /trunk/Ulduar/Mimiron.lua
+   M /trunk/Ulduar/Razorscale.lua
+   M /trunk/Ulduar/Thorim.lua
+   M /trunk/Ulduar/Vezax.lua
+   M /trunk/Ulduar/XT-002.lua
+   M /trunk/Ulduar/YoggSaron.lua
+
+Purge bosskill option
+------------------------------------------------------------------------
+r80 | funkydude | 2016-07-27 17:58:33 +0000 (Wed, 27 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Ulduar/Kologarn.lua
+   M /trunk/Ulduar/Thorim.lua
+
+Ulduar/Kologarn: Fix invalid bar icon
+------------------------------------------------------------------------
+r79 | funkydude | 2016-07-27 16:43:44 +0000 (Wed, 27 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Ulduar/Thorim.lua
+
+Ulduar/Thorim: Fix invalid icon on hard mode bar.
+------------------------------------------------------------------------
+r77 | funkydude | 2016-07-20 16:22:50 +0000 (Wed, 20 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/BigWigs_WrathOfTheLichKing.toc
+   M /trunk/Citadel/Saurfang.lua
+
+bump version
+------------------------------------------------------------------------

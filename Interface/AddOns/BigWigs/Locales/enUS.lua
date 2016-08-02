@@ -13,8 +13,8 @@ L.warmup_desc = "Time until combat with the boss starts."
 L.already_registered = "|cffff0000WARNING:|r |cff00ff00%s|r (|cffffff00%s|r) already exists as a module in Big Wigs, but something is trying to register it again. This usually means you have two copies of this module in your addons folder due to some addon updater failure. It is recommended that you delete any Big Wigs folders you have and then reinstall it from scratch."
 
 -- Loader / Options.lua
-L.officialRelease = "You are running an official release of Big Wigs %s (revision %d)"
-L.alphaRelease = "You are running an ALPHA RELEASE of Big Wigs %s (revision %d)"
+L.officialRelease = "You are running an official release of Big Wigs %s (%s)"
+L.alphaRelease = "You are running an ALPHA RELEASE of Big Wigs %s (%s)"
 L.sourceCheckout = "You are running a source checkout of Big Wigs %s directly from the repository."
 L.getNewRelease = "Your Big Wigs is old (/bwv) but you can easily update it using the Curse Client. Alternatively, you can update manually from curse.com or wowinterface.com."
 L.warnTwoReleases = "Your Big Wigs is 2 releases out of date! Your version may have bugs, missing features, or completely incorrect timers. It is strongly recommended you update."
@@ -77,6 +77,9 @@ L.slashDescLocalBar = "|cFFFED000/localbar:|r Creates a custom bar only you can 
 L.slashDescRange = "|cFFFED000/range:|r Opens the range indicator."
 L.slashDescVersion = "|cFFFED000/bwv:|r Performs a Big Wigs version check."
 L.slashDescConfig = "|cFFFED000/bw:|r Opens the Big Wigs configuration."
+
+L.gitHubTitle = "Big Wigs is on GitHub"
+L.gitHubDesc = "Big Wigs is open source software hosted on GitHub. We are always looking for new people to help us out and everyone is welcome to inspect our code, make contributions and submit bug reports. Big Wigs is as great as it is today largely in part to the great WoW community helping us out.\n\nIf you've committed changes to Big Wigs whilst it was on SVN and would like your GitHub account linked on the Git commit log, contact us."
 
 L.BAR = "Bars"
 L.MESSAGE = "Messages"

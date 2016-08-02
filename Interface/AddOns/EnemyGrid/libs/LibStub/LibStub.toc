@@ -9,7 +9,7 @@
 ## X-Curse-Project-Name: LibStub
 ## X-Curse-Project-ID: libstub
 ## X-Curse-Repository-ID: wow/libstub/mainline
-## X-Curse-Packaged-Version: r6
+## X-Curse-Packaged-Version: r9
 ## X-Curse-Project-Name: Enemy Grid
 ## X-Curse-Project-ID: enemy-grid
 ## X-Curse-Repository-ID: wow/enemy-grid/mainline

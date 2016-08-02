@@ -24,7 +24,7 @@ plugin.defaultDB = {
 local L = LibStub("AceLocale-3.0"):GetLocale("Big Wigs: Plugins")
 plugin.displayName = L.bossBlock
 local SetMapToCurrentZone = BigWigsLoader.SetMapToCurrentZone
-local GetPlayerMapAreaID = BigWigsLoader.GetPlayerMapAreaID
+local GetCurrentMapAreaID = BigWigsLoader.GetCurrentMapAreaID
 local GetCurrentMapDungeonLevel = BigWigsLoader.GetCurrentMapDungeonLevel
 
 -------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ function plugin:OnPluginEnable()
 
 	self:RegisterEvent("CINEMATIC_START")
 	self:RegisterEvent("PLAY_MOVIE")
-	self:SiegeOfOrgrimmarCinematics() -- XXX need to do something about this
+	self:SiegeOfOrgrimmarCinematics() -- Sexy hack until cinematics have an id system (never)
 end
 
 -------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ do
 	function plugin:CINEMATIC_START()
 		if self.db.profile.blockMovies then
 			SetMapToCurrentZone()
-			local areaId = GetPlayerMapAreaID("player") or 0
+			local areaId = GetCurrentMapAreaID() or 0
 			local areaLevel = GetCurrentMapDungeonLevel() or 0
 			local id = ("%d:%d"):format(areaId, areaLevel)
 

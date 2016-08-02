@@ -11,7 +11,7 @@ local db
 local Options = {
 	type = "group",
 	name = function(info)
-		if GetAddOnMetadata("RSA", "Version") == GetAddOnMetadata("RSA", "X-Curse-Packaged-Version") then
+		if ("v" .. GetAddOnMetadata("RSA", "Version")) == GetAddOnMetadata("RSA", "X-Curse-Packaged-Version") then
 			return "Raeli's Spell Announcer - |cff00FF00v" .. GetAddOnMetadata("RSA", "Version") .. " - Release" .. "|r"
 		else
 			return "Raeli's Spell Announcer - |cff00FF00v" .. GetAddOnMetadata("RSA", "Version") .. " " .. (GetAddOnMetadata("RSA", "X-Curse-Packaged-Version") or "") .. "|r"
@@ -26,17 +26,6 @@ local Options = {
 			order = 0,
 			desc = L.Global_Options_Desc,
 			args = {
-				About_Header = {
-					type = "description",
-					name = "|cff00CCFF" .. L["About"] .. "|r",
-					fontSize = "medium",
-					order = 1,
-				},
-				About_Description = {
-					type = "description",
-					name = L.About_Desc,
-					order = 2,
-				},
 				Modules_Header = {
 					type = "header",
 					name = L["Module Settings"],
@@ -80,22 +69,10 @@ local Options = {
 					name = L.Announcement_Options_Desc,
 					order = 11,
 				},
-				SayWhileGrouped = {
-					type = "toggle",
-					name = L["Smart Say"],
-					order = 40,
-					desc = L.Smart_Say_Desc,
-					get = function(info)
-						return RSA.db.profile.General.GlobalAnnouncements.SmartSay
-					end,
-					set = function (info, value)
-						RSA.db.profile.General.GlobalAnnouncements.SmartSay = value
-					end,
-				},
 				CustomChannelWhileGrouped = {
 					type = "toggle",
 					name = L["Smart Custom Channel"],
-					order = 40,
+					order = 39,
 					desc = L.Smart_Custom_Channel_Desc,
 					get = function(info)
 						return RSA.db.profile.General.GlobalAnnouncements.SmartCustomChannel
@@ -104,11 +81,24 @@ local Options = {
 						RSA.db.profile.General.GlobalAnnouncements.SmartCustomChannel = value
 					end,
 				},
+				SayWhileGrouped = {
+					type = "toggle",
+					name = L["Smart Say"],
+					order = 40,
+					width = "double",
+					desc = L.Smart_Say_Desc,
+					get = function(info)
+						return RSA.db.profile.General.GlobalAnnouncements.SmartSay
+					end,
+					set = function (info, value)
+						RSA.db.profile.General.GlobalAnnouncements.SmartSay = value
+					end,
+				},
 				OnlyInCombat = {
 					type = "toggle",
 					name = "|cff00CCFF" .. L["Enable Only In Combat"] .. "|r",
 					width = "full",
-					order = 49,
+					order = 42,
 					desc = L.Enable_Only_In_Combat_Desc,
 					get = function(info)
 						return RSA.db.profile.General.GlobalAnnouncements.OnlyInCombat
@@ -117,11 +107,35 @@ local Options = {
 						RSA.db.profile.General.GlobalAnnouncements.OnlyInCombat = value
 					end,
 				},
+				PVP_SPACER = {
+					type = "description",
+					name = "  ",
+					width = "full",
+					order = 44,
+				},
+				InPvP = {
+					type = "toggle",
+					name = L["Enable in PvP"],
+					width = "full",
+					order = 45,
+					desc = L.Enable_In_PvP_Desc,
+					get = function(info)
+						return RSA.db.profile.General.GlobalAnnouncements.InPvP
+					end,
+					set = function(info, value)
+						RSA.db.profile.General.GlobalAnnouncements.InPvP = value
+					end,
+				},
 				InArenas = {
 					type = "toggle",
 					name = L["Enable in Arenas"],
-					width = "full",
-					order = 50,
+					--width = "full",
+					order = 47,
+					disabled = function()
+						if RSA.db.profile.General.GlobalAnnouncements.InPvP == true then
+							return true
+						end
+					end,
 					desc = L.Enable_In_Arenas_Desc,
 					get = function(info)
 						return RSA.db.profile.General.GlobalAnnouncements.Arena
@@ -133,8 +147,13 @@ local Options = {
 				InBattlegrounds = {
 					type = "toggle",
 					name = L["Enable in Battlegrounds"],
-					width = "full",
-					order = 50,
+					--width = "full",
+					order = 47,
+					disabled =  function()
+						if RSA.db.profile.General.GlobalAnnouncements.InPvP == true then
+							return true
+						end
+					end,
 					desc = L.Enable_In_Battlegrounds_Desc,
 					get = function(info)
 						return RSA.db.profile.General.GlobalAnnouncements.Battlegrounds
@@ -143,10 +162,16 @@ local Options = {
 						RSA.db.profile.General.GlobalAnnouncements.Battlegrounds = value
 					end,
 				},
+				DUNGEON_SPACER = {
+					type = "description",
+					name = "  ",
+					width = "full",
+					order = 49,
+				},
 				InDungeon = {
 					type = "toggle",
 					name = L["Enable in Dungeons"],
-					width = "full",
+					--width = "full",
 					order = 50,
 					desc = L.Enable_In_Dungeons_Desc,
 					get = function(info)
@@ -159,7 +184,7 @@ local Options = {
 				InRaids = {
 					type = "toggle",
 					name = L["Enable in Raid Instances"],
-					width = "full",
+					width = "double",
 					order = 50,
 					desc = L.Enable_In_Raid_Instances_Desc,
 					get = function(info)
@@ -169,36 +194,10 @@ local Options = {
 						RSA.db.profile.General.GlobalAnnouncements.InRaid = value
 					end,
 				},
-				InWorld = {
-					type = "toggle",
-					name = L["Enable in the World"],
-					width = "full",
-					order = 55,
-					desc = L.Enable_In_The_World_Desc,
-					get = function(info)
-						return RSA.db.profile.General.GlobalAnnouncements.InWorld
-					end,
-					set = function(info, value)
-						RSA.db.profile.General.GlobalAnnouncements.InWorld = value
-					end,
-				},
-				InPvP = {
-					type = "toggle",
-					name = L["Enable in PvP"],
-					width = "full",
-					order = 55,
-					desc = L.Enable_In_PvP_Desc,
-					get = function(info)
-						return RSA.db.profile.General.GlobalAnnouncements.InPvP
-					end,
-					set = function(info, value)
-						RSA.db.profile.General.GlobalAnnouncements.InPvP = value
-					end,
-				},
 				InScenario = {
 					type = "toggle",
 					name = L["Enable in Scenarios"],
-					width = "full",
+					--width = "full",
 					order = 55,
 					desc = L.Enable_In_Scenarios_Desc,
 					get = function(info)
@@ -211,7 +210,7 @@ local Options = {
 				InLFG = {
 					type = "toggle",
 					name = L["Enable in LFG"],
-					width = "full",
+					--width = "full",
 					order = 55,
 					desc = L.Enable_In_LFG_Desc,
 					get = function(info)
@@ -219,6 +218,25 @@ local Options = {
 					end,
 					set = function(info, value)
 						RSA.db.profile.General.GlobalAnnouncements.InLFG = value
+					end,
+				},
+				WORLD_SPACER = {
+					type = "description",
+					name = "  ",
+					width = "full",
+					order = 60,
+				},
+				InWorld = {
+					type = "toggle",
+					name = L["Enable in the World"],
+					width = "full",
+					order = 61,
+					desc = L.Enable_In_The_World_Desc,
+					get = function(info)
+						return RSA.db.profile.General.GlobalAnnouncements.InWorld
+					end,
+					set = function(info, value)
+						RSA.db.profile.General.GlobalAnnouncements.InWorld = value
 					end,
 				},
 			},
@@ -8093,7 +8111,7 @@ local Druid = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc,
 					order = 24,
 				},
 				Start = {
@@ -14238,7 +14256,7 @@ local Monk = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc,
 					order = 24,
 				},
 				Start = {
@@ -17917,7 +17935,7 @@ local Paladin = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc,
 					order = 24,
 				},
 				Start = {
@@ -21450,7 +21468,7 @@ local Priest = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc,
 					order = 24,
 				},
 				Start = {
@@ -24945,7 +24963,7 @@ local Shaman = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc,
 					order = 24,
 				},
 				Start = {
@@ -28455,7 +28473,7 @@ local Warrior = {
 				},
 				Description = {
 					type = "description",
-					name = L.Message_Settings_Desc .. L.MST,
+					name = L.Message_Settings_Desc .. L.MST .. L.MSA,
 					order = 24,
 				},
 				Start = {

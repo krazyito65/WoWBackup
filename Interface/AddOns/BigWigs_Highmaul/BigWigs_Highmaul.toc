@@ -1,8 +1,4 @@
 ## Interface: 70000
-## X-Curse-Packaged-Version: v6
-## X-Curse-Project-Name: BigWigs Bossmods
-## X-Curse-Project-ID: big-wigs
-## X-Curse-Repository-ID: wow/big-wigs/mainline
 
 ## Title: Big Wigs [|cffeda55fHighmaul|r]
 ## Title-deDE: Big Wigs [|cffeda55fHochfels|r]

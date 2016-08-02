@@ -1,5 +1,5 @@
 ## Interface: 70000
-## X-Curse-Packaged-Version: r83-release
+## X-Curse-Packaged-Version: r85-release
 ## X-Curse-Project-Name: BigWigs_WrathOfTheLichKing
 ## X-Curse-Project-ID: bigwigs_wrathofthelichking
 ## X-Curse-Repository-ID: wow/bigwigs_wrathofthelichking/mainline

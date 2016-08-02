@@ -22,7 +22,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "13799" -- The ZIP packager will replace this with the Git hash. -- XXX @project-abbreviated-hash@
+	local myGitHash = "5390475" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[===[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -384,7 +384,7 @@ function mod:ADDON_LOADED(addon)
 	bwFrame:RegisterEvent("LFG_PROPOSAL_SHOW")
 
 	-- Role Updating
-	bwFrame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
+	bwFrame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 	RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
 
 	bwFrame:RegisterEvent("CHAT_MSG_ADDON")
@@ -549,10 +549,10 @@ do
 	end
 
 	CTimerAfter(11, function()
-		--local _, _, _, _, _, _, year = GetAchievementInfo(8482) -- Mythic Garrosh
-		--if year == 13 and (L == "enUS" or L == "enGB") then
-		--	sysprint("We're looking for a new end-game raider to join our developer team! See [goo.gl/aajTfo] for more info.")
-		--end
+		local _, _, _, _, month, _, year = GetAchievementInfo(10043) -- Mythic Archimonde
+		if year == 15 and month < 10 then
+			sysprint("We're looking for a new end-game raider to join our developer team! See [goo.gl/aajTfo] for more info.")
+		end
 		for _, msg in next, delayedMessages do
 			sysprint(msg)
 		end
@@ -566,8 +566,8 @@ end
 
 do
 	-- This is a crapfest mainly because DBM's actual handling of versions is a crapfest, I'll try explain how this works...
-	local DBMdotRevision = "15061" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
-	local DBMdotDisplayVersion = "7.0.0" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
+	local DBMdotRevision = "15086" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
+	local DBMdotDisplayVersion = "7.0.1" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
 	local DBMdotReleaseRevision = DBMdotRevision -- This is manually changed by them every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 
 	local timer, prevUpgradedUser = nil, nil
@@ -668,21 +668,32 @@ end)
 bwFrame:RegisterEvent("ADDON_LOADED")
 bwFrame:RegisterEvent("UPDATE_FLOATING_CHAT_WINDOWS")
 
--- Role Updating
-function mod:PLAYER_SPECIALIZATION_CHANGED()
-	if IsInGroup() then
-		if IsPartyLFG() then return end
+do
+	-- Role Updating
+	local prev = 0
+	function mod:ACTIVE_TALENT_GROUP_CHANGED(player)
+		if IsInGroup() then
+			if IsPartyLFG() then return end
 
-		local tree = GetSpecialization()
-		if not tree then return end -- No spec selected
+			local tree = GetSpecialization()
+			if not tree then return end -- No spec selected
 
-		local role = GetSpecializationRole(tree)
-		if UnitGroupRolesAssigned("player") ~= role then
-			if InCombatLockdown() or UnitAffectingCombat("player") then
-				bwFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
-				return
+			local role = GetSpecializationRole(tree)
+			if role and UnitGroupRolesAssigned("player") ~= role then
+				if InCombatLockdown() or UnitAffectingCombat("player") then
+					bwFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
+					return
+				end
+				-- ACTIVE_TALENT_GROUP_CHANGED fires twice when changing spec, leaving the talent tree, and entering the new tree. We throttle this to prevent a double role chat message.
+				-- It should only fire once when joining a group (triggered from GROUP_ROSTER_UPDATE)
+				-- This will fail when logging in/reloading in a group because GetSpecializationRole is nil since WoW v7 when GROUP_ROSTER_UPDATE fires
+				-- However, your role seems to be saved internally and preserved, so is this really an issue?
+				local t = GetTime()
+				if (t-prev) > 2 then
+					prev = t
+					UnitSetRole("player", role)
+				end
 			end
-			UnitSetRole("player", role)
 		end
 	end
 end
@@ -836,7 +847,7 @@ do
 	local queueLoad = {}
 	local warnedThisZone = {}
 	function mod:PLAYER_REGEN_ENABLED()
-		self:PLAYER_SPECIALIZATION_CHANGED() -- Force role check
+		self:ACTIVE_TALENT_GROUP_CHANGED() -- Force role check
 		bwFrame:UnregisterEvent("PLAYER_REGEN_ENABLED")
 
 		local shouldPrint = false
@@ -952,7 +963,7 @@ do
 			SendAddonMessage("BigWigs", versionQueryString, groupType == 3 and "INSTANCE_CHAT" or "RAID")
 			SendAddonMessage("D4", "H\t", groupType == 3 and "INSTANCE_CHAT" or "RAID") -- Also request DBM versions
 			self:ZONE_CHANGED_NEW_AREA()
-			self:PLAYER_SPECIALIZATION_CHANGED() -- Force role check
+			self:ACTIVE_TALENT_GROUP_CHANGED() -- Force role check
 		elseif grouped and not groupType then
 			grouped = nil
 			wipe(usersVersion)

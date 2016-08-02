@@ -43,18 +43,38 @@ local function MonitorAndAnnounce(self, _, timestamp, event, hideCaster, sourceG
 
 	if false --[[detect player/pet]] then return end
 	
-	local tracker = spell_data.tracker or 0	-- Tracks spells like Ardent Defender to prevent the End message playing if the Heal message plays.
-	if tracker == 1 and running[spell_data.profile] == false then return end	
-	if tracker == 2 then
-		if running[spell_data.profile] == true then return end -- To prevent AoE taunt like spells from multiple announcing.
-		running[spell_data.profile] = true
+	local spell_tracker = spell_data.profile
+	local tracker = spell_data.tracker or 0	-- Tracks spells like AoE Taunts to prevent multiple messages playing.
+	if tracker == 1 and running[spell_tracker] == false then return end -- To prevent AoE taunt like spells from multiple announcing.
+	if tracker == 2 then -- [31850].tracker = 2
+		if running[spell_tracker] == true then return end
+		running[spell_tracker] = true -- running[ArdentDefender] = true
 	end	
-	if tracker == 1 and running[spell_data.profile] == true then
-		running[spell_data.profile] = false
+	if tracker == 1 and running[spell_tracker] == true then
+		running[spell_tracker] = false	
 	end
 
-	local spellinfo = cache_SpellInfo[spellID] if not spellinfo then spellinfo = GetSpellInfo(spellID) cache_SpellInfo[spellID] = spellinfo end
-	local spelllink = cache_SpellLink[spellID] if not spelllink then spelllink = GetSpellLink(spellID) cache_SpellLink[spellID] = spelllink end
+	local spellinfo = cache_SpellInfo[spellID]	
+	if not spellinfo then 
+		if not spell_data.linkID then
+			spellinfo = GetSpellInfo(spellID)
+			cache_SpellInfo[spellID] = spellinfo
+		else
+			spellinfo = GetSpellInfo(spell_data.linkID)
+			cache_SpellInfo[spellID] = spellinfo 
+		end	
+	end
+	
+	local spelllink = cache_SpellLink[spellID]
+	if not spelllink then
+		if not spell_data.linkID then
+			spelllink = GetSpellLink(spellID)
+			cache_SpellLink[spellID] = spelllink
+		else
+			spelllink = GetSpellLink(spell_data.linkID)
+			cache_SpellLink[spellID] = spelllink 
+		end
+	end
 
 	wipe(replacements)
 

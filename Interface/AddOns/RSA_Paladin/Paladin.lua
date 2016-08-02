@@ -74,26 +74,28 @@ function RSA_Paladin:OnEnable()
 		section = 'End',
 		replacements = { TARGET = 1 }
 	}
-	local Config_Cleanse = {-- CLEANSE
+	local Config_Cleanse = {-- CLEANSE & CLEANSE TOXINS
 		profile = 'Cleanse',
 		replacements = { TARGET = 1, extraSpellName = "[AURA]", extraSpellLink = "[AURALINK]" }
 	}
 	MonitorConfig_Paladin = {
 		player_profile = RSA.db.profile.Paladin,
 		SPELL_DISPEL = {
-			[4987] = Config_Cleanse,
-			[213644] = Config_Cleanse,
+			[4987] = Config_Cleanse, -- CLEANSE
+			[213644] = Config_Cleanse, -- CLEANSE TOXINS
 		},
 		SPELL_HEAL = {
 			[184250] = { -- DIVINE INTERVENTION
 				profile = 'DivineIntervention',
 				section = 'Heal',
+				linkID = 213313,
 				replacements = { AMOUNT = 1 },
-				tracker = 1 
 			},	
 			[66235] = { -- ARDENT DEFENDER
 				profile = 'ArdentDefender',
 				section = 'Heal',
+				tracker = 1,
+				linkID = 31850,
 				replacements = { AMOUNT = 1}
 			},
 			[633] = { -- LAY ON HANDS

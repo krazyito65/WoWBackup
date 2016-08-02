@@ -1,0 +1,15 @@
+tag 7.0.3.4
+df6067c0af4b68fb218c28e5df1ae503fce30f90
+James D. Callahan III <jcallahan@curse.com>
+2016-08-02 04:37:07 -0500
+
+
+
+--------------------
+
+James D. Callahan III:
+	- Fix profession dumping for Ressy - file load order change invalidated an upvalue in the main chunk of the scanner.
+	- Add IsRecipeInfoLearnedByDescendant and IsRecipeInfoUnlearnedByAncestor helpers to ignore irrelevant recipe ranks, since the information is now available via C_TradeSkillUI.
+	- Remove Recipe:SetAsKnownOrLinked in favor of moving its logic inline to the only place it was ever called.
+	- Remove search for profession spellID via localized profession name and subsequent generation of the same localized profession name by said spellID, because what the hell?!?
+	- Syntax cleanup.

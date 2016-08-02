@@ -1496,7 +1496,7 @@ local SimplePanel_frame_backdrop_border_color = {0, 0, 0, 1}
 
 function DF:CreateScaleBar (frame, config)
 	local scaleBar = DF:CreateSlider (frame, 120, 14, 0.6, 1.6, 0.1, config.scale, true, "ScaleBar", nil, "Scale:", DF:GetTemplate ("slider", "OPTIONS_SLIDER_TEMPLATE"), DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
-	scaleBar:SetPoint ("right", frame.Close, "left", -2, 0)
+	scaleBar:SetPoint ("right", frame.Close, "left", -26, 0)
 	scaleBar:SetFrameLevel (DF.FRAMELEVEL_OVERLAY)
 	scaleBar.OnValueChanged = function (_, _, value)
 		config.scale = value
@@ -2523,7 +2523,7 @@ local draw_overlay = function (self, this_overlay, overlayData, color)
 
 	local pixel = self.Graphic:GetWidth() / self.TimeScale
 	local index = 1
-	local r, g, b = unpack (color)
+	local r, g, b = unpack (color or line_default_color)
 	
 	for i = 1, #overlayData, 2 do
 		local aura_start = overlayData [i]

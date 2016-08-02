@@ -88,6 +88,7 @@ local default_config = {
 		bar_direction = 1,
 		bar_color_by_class = true,
 		
+		cast_enabled = true,
 		cast_statusbar_texture = "DGround",
 		cast_statusbar_bgtexture = "Details Serenity",
 		cast_statusbar_color = {1, .7, 0, 1},
@@ -637,6 +638,7 @@ local namePlateOnEvent = function (self, event, ...)
 					for i = 1, BUFF_MAX_DISPLAY do
 						local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitAura (self.NamePlateId, i, "HELPFUL")
 						if (name and not buff_banned [spellId] and spellId ~= 228466) then
+						--buff 218502 from botanist tel'arn
 							AddAura (self, auraIndex, auraWidth, auraHeight, name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId, true)
 							auraIndex = auraIndex + 1
 						end
@@ -1068,9 +1070,9 @@ local specDefaultSpellRange = {
 	[266] = 686, --> warlock demo - Shadow Bolt
 	[267] = 116858, --> warlock destro - Chaos Bolt
 	
-	[71] = 100, --> warrior arms - Charge
+	[71] = 100, --> warrior arms - Charge --132337 on beta
 	[72] = 100, --> warrior fury - Charge
-	[73] = 335, --> warrior protect - Taunt
+	[73] = 355, --> warrior protect - Taunt
 }
 
 local tauntList = {
@@ -1777,11 +1779,15 @@ function EnemyGrid.OnInit()
 			
 			unitFrame.iconIndicator:Hide()
 			
-			unitFrame.castBar:SetScript ("OnEvent", CastingBarFrame_OnEvent)
-			unitFrame.castBar:SetScript ("OnUpdate", CastingBarFrame_OnUpdate)
-			unitFrame.castBar:SetScript ("OnShow", CastingBarFrame_OnShow)
-			unitFrame.castBar.unit = nil
-			CastingBarFrame_SetUnit (unitFrame.castBar, plateID, false, false)
+			if (EnemyGrid.db.profile.cast_enabled) then
+				unitFrame.castBar:SetScript ("OnEvent", CastingBarFrame_OnEvent)
+				unitFrame.castBar:SetScript ("OnUpdate", CastingBarFrame_OnUpdate)
+				unitFrame.castBar:SetScript ("OnShow", CastingBarFrame_OnShow)
+				unitFrame.castBar.unit = nil
+				CastingBarFrame_SetUnit (unitFrame.castBar, plateID, false, false)
+			else
+				unitFrame.castBar.unit = nil
+			end
 			
 			if (UnitIsUnit (plateID, "target")) then
 				EnemyGrid.SetAsTarget (unitFrame)
@@ -1798,9 +1804,11 @@ function EnemyGrid.OnInit()
 			end
 			unitFrame:UnregisterEvent ("UNIT_AURA")
 			clearDebuffsOnPlate (unitFrame)
+			
 			local castFrame = unitFrame.castBar
 			castFrame:SetScript ("OnEvent", nil)
 			castFrame:SetScript ("OnUpdate", nil)
+			castFrame:SetScript ("OnShow", nil)
 			castFrame:Hide()
 			
 		elseif (event == "ENCOUNTER_START") then
@@ -1936,10 +1944,9 @@ function EnemyGrid.OnInit()
 	EnemyGrid:RegisterEvent ("ENCOUNTER_END")
 	
 	EnemyGrid.UpdateGrid()
+	
 	EnemyGrid.UpdateTitleTab()
 	EnemyGrid.UpdateFrameMovable()
-	
-	C_Timer.After (1, EnemyGrid.RAID_TARGET_UPDATE)
 	
 	if (InCombatLockdown()) then
 		EnemyGrid:PLAYER_REGEN_DISABLED()
@@ -1947,9 +1954,7 @@ function EnemyGrid.OnInit()
 		EnemyGrid:PLAYER_REGEN_ENABLED()
 	end
 	EnemyGrid:ZONE_CHANGED_NEW_AREA()
-	
-	C_Timer.After (1, EnemyGrid.UpdateKeyBinds)
-	
+
 	EnemyGrid.CanShow()
 	EnemyGrid.RefreshAmountOfUnitsShown()
 	
@@ -1957,6 +1962,20 @@ function EnemyGrid.OnInit()
 	EnemyGrid.db.RegisterCallback (EnemyGrid, "OnProfileChanged", "RefreshConfig")
 	EnemyGrid.db.RegisterCallback (EnemyGrid, "OnProfileCopied", "RefreshConfig")
 	EnemyGrid.db.RegisterCallback (EnemyGrid, "OnProfileReset", "RefreshConfig")
+	
+	--> make sure everything is loading correctly
+	C_Timer.After (1, EnemyGrid.UpdateGrid)	
+	C_Timer.After (1, EnemyGrid.RAID_TARGET_UPDATE)
+	C_Timer.After (1, EnemyGrid.UpdateKeyBinds)
+	
+	local reload = CreateFrame ("frame")
+	reload:RegisterEvent ("PLAYER_ENTERING_WORLD")
+	reload:RegisterEvent ("PLAYER_LOGIN")
+	reload:SetScript ("OnEvent", function (...)
+		EnemyGrid.UpdateGrid()
+		EnemyGrid.RAID_TARGET_UPDATE()
+		EnemyGrid.UpdateKeyBinds()
+	end)	
 end
 
 local anchor_functions = {
@@ -3483,6 +3502,17 @@ function EnemyGrid.OpenOptionsPanel()
 		--cast bar appearance
 		{type = "label", get = function() return L["S_CASTBAR_APPEARANCE"] end, text_template = text_template},
 		
+		{
+			type = "toggle",
+			get = function() return EnemyGrid.db.profile.cast_enabled end,
+			set = function (self, fixedparam, value) 
+				EnemyGrid.db.profile.cast_enabled = value
+				EnemyGrid.UpdateGrid()
+				EnemyGrid.ReEvent()
+			end,
+			name = L["S_ENABLED"],
+			desc = L["S_ENABLED"],
+		},
 		{
 			type = "select",
 			get = function() return EnemyGrid.db.profile.cast_statusbar_texture end,

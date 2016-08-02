@@ -1,17 +1,17 @@
 ﻿## Interface: 70000
 ## Title: RSA [|c10FF75B3Core|r]
-## Notes: |cff00FF00Version: 3.12|r. Easy Spell Announcements! Amongst other things. This is required to run RSA.
+## Notes: |cff00FF00Version: 3.13|r. Easy Spell Announcements! Amongst other things. This is required to run RSA.
 ## Author: Raeli, Jenneth, Xadurk, Rowaa[SR13]
-## Version: 3.12
+## Version: 3.13
 ## SavedVariables: RSADB
 ## OptionalDeps: Ace3, LibDualSpec-1.0, LibSink-2.0
-## X-Curse-Packaged-Version: v3.12
+## X-Curse-Packaged-Version: v3.13
 ## X-Curse-Project-Name: RSA - Raeli's Spell Announcer
 ## X-Curse-Project-ID: rsa
 ## X-Curse-Repository-ID: wow/rsa/mainline
 
 ## Title-zhTW: RSA [|c10FF75B3核心|r]
-## Notes-zhTW: |cff00FF00版本: 3.12|r. 簡易法術通報！假如使用附加模組，將需要執行RSA。
+## Notes-zhTW: |cff00FF00版本: 3.13|r. 簡易法術通報！假如使用附加模組，將需要執行RSA。
 
 
 #@no-lib-strip@

@@ -3443,7 +3443,7 @@ RSA.DefaultOptions = {
 				}, -- End
 				SpellReflect = {
 					Messages = {
-						Start = "Reflected [TARGET]'s [LINK]!",
+						Start = "Reflected [TARGET]'s [LINK], dealing [AMOUNT]!",
 					},
 					CustomChannel = {
 						Enabled = false,
@@ -3738,7 +3738,7 @@ function RSA.AnnouncementCheck() -- Checks against user settings to see if we ar
 	local LFParty = IsInGroup(LE_PARTY_CATEGORY_INSTANCE) -- party group found through group finder
 	local LFRaid = IsInRaid(LE_PARTY_CATEGORY_INSTANCE) -- raid grounp found through group finder
 	if RSA.db.profile.General.GlobalAnnouncements.OnlyInCombat and not InCombatLockdown() then return false end -- If we're not in combat and only announce in combat, stop right here.
-	if RSA.db.profile.General.GlobalAnnouncements.InPvP and UnitIsPVP("player") == 1 then return true end
+	if RSA.db.profile.General.GlobalAnnouncements.InPvP and (UnitIsPVP("player") == 1 or InstanceType == "arena") then return true end -- UnitIsPVP("player") doesn't set true in Arena unless it was already true.
 	if RSA.db.profile.General.GlobalAnnouncements.Arena and InstanceType == "arena" then return true end
 	if RSA.db.profile.General.GlobalAnnouncements.Battlegrounds and LFRaid and (InstanceType == "pvp" or InstanceType == "none") then return true end
 	if RSA.db.profile.General.GlobalAnnouncements.InDungeon and InstanceType == "party" and not LFParty then return true end
