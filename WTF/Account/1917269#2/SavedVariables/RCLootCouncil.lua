@@ -1,5 +1,10 @@
 
 RCLootCouncilDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+		["Krázyito - Mal'Ganis"] = "Default",
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
 	["global"] = {
 		["log"] = {
 			"07/30/16", -- [1]
@@ -449,6 +454,55 @@ RCLootCouncilDB = {
 			"18:03:22 - GetPlayersGuildRank()", -- [445]
 			"18:03:22 - Found Guild Rank: The Old Guard", -- [446]
 			"18:03:22 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Krázyito) (distri:) (GUILD)", -- [447]
+			"08/02/16", -- [448]
+			"18:18:44 - Logged In", -- [449]
+			"18:18:44 - ML initialized!", -- [450]
+			"18:18:52 - Krazyito-Mal'Ganis (2.0.0) (nil)", -- [451]
+			"18:18:59 - Event: (PLAYER_ENTERING_WORLD)", -- [452]
+			"18:18:59 - GetML()", -- [453]
+			"18:18:59 - LootMethod =  (personalloot)", -- [454]
+			"18:19:01 - GetPlayersGuildRank()", -- [455]
+			"18:19:01 - Found Guild Rank: Officer ALT", -- [456]
+			"18:19:01 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Krazyito) (distri:) (GUILD)", -- [457]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SLavapunchies-Mal'Ganis^N2^SSHAMAN^N3^STrial^N4^S2.0.0^t^^) (from:) (Lavapunchies) (distri:) (WHISPER)", -- [458]
+			"18:19:02 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SReaperone-Mal'Ganis^N4^SDEATHKNIGHT^N5^SALT^N6^S1.7.8^t^^) (from:) (Reaperone) (distri:) (GUILD)", -- [459]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SReaperone-Mal'Ganis^N2^SDEATHKNIGHT^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [460]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SLoadingbar-Mal'Ganis^N2^SROGUE^N3^SALT^N4^S2.0.0^t^^) (from:) (Loadingbar) (distri:) (WHISPER)", -- [461]
+			"18:19:02 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [462]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SBigfatkookie-Mal'Ganis^N2^SSHAMAN^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [463]
+			"18:19:02 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [464]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SCenarìus-Mal'Ganis^N2^SDRUID^N3^SOfficer~`ALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [465]
+			"18:19:02 - Comm received: (^1^SverTestReply^T^N1^SJinthesecond-Mal'Ganis^N2^SWARRIOR^N3^SFriend~`/~`Family^N4^S2.0.0^t^^) (from:) (Jinthesecond) (distri:) (WHISPER)", -- [466]
+			"18:24:13 - Comm received: (verTest 1.7.8) (from:) (Orcfrenzy) (distri:) (GUILD)", -- [467]
+			"18:26:30 - Comm received: (verTest 1.7.8) (from:) (Loseifer) (distri:) (GUILD)", -- [468]
+			"18:27:16 - Comm received: (verTest 1.7.6) (from:) (Miiaamii) (distri:) (GUILD)", -- [469]
+			"18:28:16 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Berrygentle) (distri:) (GUILD)", -- [470]
+			"18:28:16 - Comm received: (^1^Sxrealm^T^N1^SBerrygentle^N2^SverTestReply^N3^SOrcfrenzy-Mal'Ganis^N4^SDEATHKNIGHT^N5^STrial^N6^S1.7.8^t^^) (from:) (Orcfrenzy) (distri:) (GUILD)", -- [471]
+			"18:28:16 - Comm received: (^1^Sxrealm^T^N1^SBerrygentle^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [472]
+			"18:28:16 - Comm received: (^1^Sxrealm^T^N1^SBerrygentle^N2^SverTestReply^N3^SLoseifer-Mal'Ganis^N4^SROGUE^N5^STrial^N6^S1.7.8^t^^) (from:) (Loseifer) (distri:) (GUILD)", -- [473]
+			"18:28:16 - Comm received: (^1^Sxrealm^T^N1^SBerrygentle^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [474]
+			"18:29:06 - Comm received: (verTest 1.7.8) (from:) (Kyliejennerx) (distri:) (GUILD)", -- [475]
+			"18:29:55 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Berrymelon) (distri:) (GUILD)", -- [476]
+			"18:29:55 - Comm received: (^1^Sxrealm^T^N1^SBerrymelon^N2^SverTestReply^N3^SKyliejennerx-Mal'Ganis^N4^SWARLOCK^N5^STrial^N6^S1.7.8^t^^) (from:) (Kyliejennerx) (distri:) (GUILD)", -- [477]
+			"18:29:56 - Comm received: (^1^Sxrealm^T^N1^SBerrymelon^N2^SverTestReply^N3^SLoseifer-Mal'Ganis^N4^SROGUE^N5^STrial^N6^S1.7.8^t^^) (from:) (Loseifer) (distri:) (GUILD)", -- [478]
+			"18:29:56 - Comm received: (^1^Sxrealm^T^N1^SBerrymelon^N2^SverTestReply^N3^SOrcfrenzy-Mal'Ganis^N4^SDEATHKNIGHT^N5^STrial^N6^S1.7.8^t^^) (from:) (Orcfrenzy) (distri:) (GUILD)", -- [479]
+			"18:29:56 - Comm received: (^1^Sxrealm^T^N1^SBerrymelon^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [480]
+			"18:29:56 - Comm received: (^1^Sxrealm^T^N1^SBerrymelon^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [481]
+			"18:30:30 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Hofhearted) (distri:) (GUILD)", -- [482]
+			"18:30:30 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [483]
+			"18:30:30 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SKyliejennerx-Mal'Ganis^N4^SWARLOCK^N5^STrial^N6^S1.7.8^t^^) (from:) (Kyliejennerx) (distri:) (GUILD)", -- [484]
+			"18:30:30 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SLoseifer-Mal'Ganis^N4^SROGUE^N5^STrial^N6^S1.7.8^t^^) (from:) (Loseifer) (distri:) (GUILD)", -- [485]
+			"18:30:31 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [486]
+			"18:37:09 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Hofhearted) (distri:) (GUILD)", -- [487]
+			"18:37:09 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SKyliejennerx-Mal'Ganis^N4^SWARLOCK^N5^STrial^N6^S1.7.8^t^^) (from:) (Kyliejennerx) (distri:) (GUILD)", -- [488]
+			"18:37:09 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SOrcfrenzy-Mal'Ganis^N4^SDEATHKNIGHT^N5^STrial^N6^S1.7.8^t^^) (from:) (Orcfrenzy) (distri:) (GUILD)", -- [489]
+			"18:37:09 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [490]
+			"18:37:09 - Comm received: (^1^Sxrealm^T^N1^SHofhearted^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [491]
+			"18:37:37 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Clearnote) (distri:) (GUILD)", -- [492]
+			"18:37:38 - Comm received: (^1^Sxrealm^T^N1^SClearnote^N2^SverTestReply^N3^SOrcfrenzy-Mal'Ganis^N4^SDEATHKNIGHT^N5^STrial^N6^S1.7.8^t^^) (from:) (Orcfrenzy) (distri:) (GUILD)", -- [493]
+			"18:37:38 - Comm received: (^1^Sxrealm^T^N1^SClearnote^N2^SverTestReply^N3^SKyliejennerx-Mal'Ganis^N4^SWARLOCK^N5^STrial^N6^S1.7.8^t^^) (from:) (Kyliejennerx) (distri:) (GUILD)", -- [494]
+			"18:37:38 - Comm received: (^1^Sxrealm^T^N1^SClearnote^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [495]
+			"18:37:38 - Comm received: (^1^Sxrealm^T^N1^SClearnote^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [496]
 		},
 		["version"] = "2.0.0",
 		["localizedSubTypes"] = {
@@ -461,24 +515,19 @@ RCLootCouncilDB = {
 			["Warglaives"] = "Warglaives",
 			["Shields"] = "Shields",
 			["Polearms"] = "Polearms",
+			["created"] = true,
 			["Bows"] = "Bows",
-			["Daggers"] = "Daggers",
 			["Two-Handed Swords"] = "Two-Handed Swords",
 			["One-Handed Axes"] = "One-Handed Axes",
 			["Leather"] = "Leather",
-			["Cloth"] = "Cloth",
+			["Mail"] = "Mail",
 			["Guns"] = "Guns",
 			["Fist Weapons"] = "Fist Weapons",
-			["Mail"] = "Mail",
+			["Cloth"] = "Cloth",
 			["Wands"] = "Wands",
-			["created"] = true,
+			["Daggers"] = "Daggers",
 			["Two-Handed Axes"] = "Two-Handed Axes",
 		},
-	},
-	["profileKeys"] = {
-		["Krázyito - Mal'Ganis"] = "Default",
-		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -487,8 +536,8 @@ RCLootCouncilDB = {
 }
 RCLootCouncilLootDB = {
 	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
 		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 	},
 }

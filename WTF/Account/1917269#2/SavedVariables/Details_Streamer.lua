@@ -5,16 +5,16 @@ Details_StreamerDB = {
 		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krázýító - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krâzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Krazyitö - Sargeras"] = "Krazyito - Mal'Ganis",
+		["Krazyíto - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krãzyito - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krazyitó - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Kråzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazyito - Illidan"] = "Krazyito - Mal'Ganis",
 		["Krázyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krázyito - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krazýito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krazymonk - Sargeras"] = "Krazyito - Mal'Ganis",
-		["Krazyito - Illidan"] = "Krazyito - Mal'Ganis",
-		["Krazyíto - Gnomeregan"] = "Krazyito - Mal'Ganis",
+		["Kråzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazyitö - Sargeras"] = "Krazyito - Mal'Ganis",
 	},
 	["profiles"] = {
 		["Krazyito - Mal'Ganis"] = {
@@ -31,10 +31,7 @@ Details_StreamerDB = {
 				1, -- [3]
 				0.5, -- [4]
 			},
-			["main_frame_size"] = {
-				250, -- [1]
-				230, -- [2]
-			},
+			["arrow_anchor_y"] = 0,
 			["minimap"] = {
 				["minimapPos"] = 240.783009177893,
 				["radius"] = 160,
@@ -42,7 +39,7 @@ Details_StreamerDB = {
 			},
 			["arrow_anchor_x"] = 0,
 			["row_texture"] = "Details Serenity",
-			["main_frame_strata"] = "LOW",
+			["point"] = "LEFT",
 			["main_frame_locked"] = false,
 			["enabled"] = false,
 			["arrow_size"] = 10,
@@ -59,13 +56,8 @@ Details_StreamerDB = {
 				0, -- [3]
 				0.2, -- [4]
 			},
-			["author"] = "Details! Team",
+			["main_frame_strata"] = "LOW",
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["y"] = -57.9828643798828,
-			["font_size"] = 10,
-			["x"] = 8.75213241577149,
-			["font_face"] = "Friz Quadrata TT",
-			["arrow_anchor_y"] = 0,
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -77,9 +69,17 @@ Details_StreamerDB = {
 				["x"] = 0,
 				["attribute_type"] = 1,
 			},
-			["point"] = "LEFT",
-			["row_height"] = 20,
+			["font_size"] = 10,
+			["x"] = 8.75213241577149,
+			["font_face"] = "Friz Quadrata TT",
+			["y"] = -57.9828643798828,
+			["author"] = "Details! Team",
 			["scale"] = 1,
+			["row_height"] = 20,
+			["main_frame_size"] = {
+				250, -- [1]
+				230, -- [2]
+			},
 		},
 	},
 }
