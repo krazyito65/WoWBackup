@@ -20,13 +20,6 @@ X: -165
 Y: -116
 W: 32
 H: 32
-Frame: RCLootFrame
-FrameLevel: 1
-Anchor: CENTER
-X: 318
-Y: 94
-W: 437
-H: 315
 Frame: VuhDoNewOptionsTabbedFrame
 FrameLevel: 9
 Anchor: CENTER

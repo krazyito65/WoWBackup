@@ -25,7 +25,7 @@ END
 VER 3 0100000000000094 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast [indoors] Roll; [combat] Roll; [dead] Roll; [nocombat, harm] rOLL;
-/run C_MountJournal.SummonByID(0)
+/click GoGoButton
 /dismount [mounted]
 END
 VER 3 0100000000000098 " " "INV_MISC_QUESTIONMARK"
@@ -38,7 +38,7 @@ VER 3 0100000000000083 " AOE TAUNT" "SPELL_NATURE_SHAMANRAGE"
 /targetlasttarget
 END
 VER 3 0100000000000095 "VuhDoDCShieldData" "Ability_Repair"
-P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1O_[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1OT[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000096 "VuhDoDCShieldNames" "Ability_Repair"
 N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Krå[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]

@@ -1,12 +1,12 @@
 
 AUCTIONATOR_SAVEDVARS = {
-	["_5000000"] = 10000,
+	["_10000"] = 200,
 	["_50000"] = 500,
-	["STARTING_DISCOUNT"] = 5,
+	["_500"] = 5,
 	["_1000000"] = 2500,
 	["_200000"] = 1000,
-	["_500"] = 5,
-	["_10000"] = 200,
+	["STARTING_DISCOUNT"] = 5,
+	["_5000000"] = 10000,
 	["_2000"] = 100,
 }
 AUCTIONATOR_PRICING_HISTORY = {
@@ -15,13 +15,13 @@ AUCTIONATOR_PRICING_HISTORY = {
 		["3960574"] = "199500:1",
 	},
 	["Medallion of the Legion"] = {
-		["4092393"] = "29830000:1",
-		["3879266"] = "29950000:1",
 		["3717601"] = "49970000:1",
+		["3879266"] = "29950000:1",
+		["4020333"] = "34990000:1",
 		["is"] = "128315:0:0:0",
 		["3929688"] = "30980000:1",
 		["4195997"] = "47990000:1",
-		["4020333"] = "34990000:1",
+		["4092393"] = "29830000:1",
 	},
 	["Elixir of the Rapid Mind"] = {
 		["is"] = "128312:0:0:0",
@@ -44,10 +44,10 @@ AUCTIONATOR_PRICING_HISTORY = {
 	["Champion's Honor"] = {
 		["3809996"] = "89970000:1",
 		["3880886"] = "104980000:1",
-		["4057518"] = "89490000:1",
+		["4095236"] = "94970000:1",
 		["3958703"] = "128670000:1",
 		["is"] = "128430:0:0:0",
-		["4095236"] = "94970000:1",
+		["4057518"] = "89490000:1",
 		["4041559"] = "100990000:1",
 		["3960573"] = "113990000:1",
 	},
@@ -330,12 +330,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 2,
 			["H1714"] = 18000000,
 		},
-		["Powerful Hexweave Cloak of the Merciless"] = {
-			["mr"] = 33332885,
-			["cc"] = 2,
-			["id"] = "114817:0:13:176:3:525:537",
-			["sc"] = 2,
-			["H1714"] = 33332885,
+		["Small Sea Scorpion"] = {
+			["mr"] = 13600,
+			["cc"] = 6,
+			["id"] = "111658",
+			["sc"] = 5,
+			["H1714"] = 13600,
 		},
 		["Hexweave Cowl of the Feverflare"] = {
 			["mr"] = 15000000,
@@ -351,11 +351,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H1717"] = 480000,
 			["cc"] = 8,
 		},
-		["Enchant Shield - Mastery"] = {
-			["mr"] = 1318731,
+		["Enchant Bracer - Mastery"] = {
+			["mr"] = 248675,
 			["sc"] = 6,
-			["id"] = "52762",
-			["H1717"] = 1318731,
+			["id"] = "74700",
+			["H1717"] = 248675,
 			["cc"] = 4,
 		},
 		["Powerful Hexweave Cloak of the Feverflare"] = {
@@ -379,26 +379,25 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 2,
 			["H1714"] = 83597,
 		},
-		["Small Sea Scorpion"] = {
-			["mr"] = 13600,
-			["cc"] = 6,
-			["id"] = "111658",
-			["sc"] = 5,
-			["H1714"] = 13600,
+		["Powerful Hexweave Cloak of the Merciless"] = {
+			["mr"] = 33332885,
+			["cc"] = 2,
+			["id"] = "114817:0:13:176:3:525:537",
+			["sc"] = 2,
+			["H1714"] = 33332885,
 		},
-		["Buttered Sturgeon"] = {
-			["mr"] = 361000,
-			["sc"] = 1,
-			["id"] = "122348",
-			["cc"] = 4,
-			["L1712"] = 361000,
-			["H1712"] = 361999,
-		},
-		["Enchant Bracer - Mastery"] = {
-			["mr"] = 248675,
+		["Enchant Gloves - Mastery"] = {
+			["mr"] = 299574,
 			["sc"] = 6,
-			["id"] = "74700",
-			["H1717"] = 248675,
+			["id"] = "52687",
+			["H1717"] = 299574,
+			["cc"] = 4,
+		},
+		["Enchant Shield - Mastery"] = {
+			["mr"] = 1318731,
+			["sc"] = 6,
+			["id"] = "52762",
+			["H1717"] = 1318731,
 			["cc"] = 4,
 		},
 		["Draenic Rejuvenation Potion"] = {
@@ -415,40 +414,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H1717"] = 9297495,
 			["cc"] = 4,
 		},
-		["Hexweave Cowl of the Harmonious"] = {
-			["mr"] = 30051010,
-			["cc"] = 2,
-			["id"] = "114810:0:13:209:3:525:537",
-			["sc"] = 2,
-			["H1714"] = 30051010,
-		},
-		["Hexweave Robe of the Savage"] = {
-			["mr"] = 20009999,
-			["cc"] = 2,
-			["id"] = "114813:0:13:3:525:538:74",
-			["sc"] = 2,
-			["H1714"] = 20009999,
-		},
-		["Hexweave Slippers of the Aurora"] = {
-			["mr"] = 15000000,
-			["cc"] = 2,
-			["id"] = "114815:0:13:151:3:525:538",
-			["sc"] = 2,
-			["H1714"] = 15000000,
-		},
 		["Hexweave Bag"] = {
 			["mr"] = 13480000,
 			["cc"] = 3,
 			["id"] = "114821",
 			["sc"] = 1,
 			["H1714"] = 13480000,
-		},
-		["Leggings of Beast Mastery"] = {
-			["mr"] = 2490000,
-			["sc"] = 4,
-			["id"] = "31328",
-			["H1717"] = 2490000,
-			["cc"] = 2,
 		},
 		["Nimble Hexweave Cloak of the Fireflash"] = {
 			["mr"] = 9990000,
@@ -457,19 +428,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 2,
 			["H1714"] = 9990000,
 		},
-		["Enormous Sea Scorpion"] = {
-			["mr"] = 250000,
-			["cc"] = 6,
-			["id"] = "111672",
-			["sc"] = 5,
-			["H1714"] = 250000,
+		["Hexweave Slippers of the Aurora"] = {
+			["mr"] = 15000000,
+			["cc"] = 2,
+			["id"] = "114815:0:13:151:3:525:538",
+			["sc"] = 2,
+			["H1714"] = 15000000,
 		},
-		["Enchant Neck - Breath of Mastery"] = {
-			["mr"] = 823491,
-			["sc"] = 6,
-			["id"] = "110626",
-			["H1717"] = 823491,
-			["cc"] = 4,
+		["Hexweave Cowl of the Harmonious"] = {
+			["mr"] = 30051010,
+			["cc"] = 2,
+			["id"] = "114810:0:13:209:3:525:537",
+			["sc"] = 2,
+			["H1714"] = 30051010,
+		},
+		["Leggings of Beast Mastery"] = {
+			["mr"] = 2490000,
+			["sc"] = 4,
+			["id"] = "31328",
+			["H1717"] = 2490000,
+			["cc"] = 2,
 		},
 		["Focus Augment Rune"] = {
 			["mr"] = 139999,
@@ -478,12 +456,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 0,
 			["H1710"] = 139999,
 		},
-		["Enchant Gloves - Superior Mastery"] = {
-			["mr"] = 1329984,
+		["Enormous Sea Scorpion"] = {
+			["mr"] = 250000,
+			["cc"] = 6,
+			["id"] = "111672",
+			["sc"] = 5,
+			["H1714"] = 250000,
+		},
+		["Savage Hexweave Essence"] = {
+			["mr"] = 265090000,
+			["cc"] = 6,
+			["id"] = "127733",
+			["sc"] = 13,
+			["H1714"] = 265090000,
+		},
+		["Hexweave Robe of the Savage"] = {
+			["mr"] = 20009999,
+			["cc"] = 2,
+			["id"] = "114813:0:13:3:525:538:74",
+			["sc"] = 2,
+			["H1714"] = 20009999,
+		},
+		["Talador Orchid"] = {
+			["mr"] = 3500,
+			["H1712"] = 3500,
+			["id"] = "109129",
+			["cc"] = 6,
 			["sc"] = 6,
-			["id"] = "74722",
-			["H1717"] = 1329984,
-			["cc"] = 4,
 		},
 		["Nimble Hexweave Cloak of the Peerless"] = {
 			["mr"] = 19500000,
@@ -549,19 +548,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["H1714"] = 2709900,
 		},
-		["Talador Orchid"] = {
-			["mr"] = 3500,
-			["H1712"] = 3500,
-			["id"] = "109129",
-			["cc"] = 6,
+		["Enchant Gloves - Superior Mastery"] = {
+			["mr"] = 1329984,
 			["sc"] = 6,
+			["id"] = "74722",
+			["H1717"] = 1329984,
+			["cc"] = 4,
 		},
-		["Savage Hexweave Essence"] = {
-			["mr"] = 265090000,
-			["cc"] = 6,
-			["id"] = "127733",
-			["sc"] = 13,
-			["H1714"] = 265090000,
+		["Enchant Neck - Breath of Mastery"] = {
+			["mr"] = 823491,
+			["sc"] = 6,
+			["id"] = "110626",
+			["H1717"] = 823491,
+			["cc"] = 4,
 		},
 		["Powerful Hexweave Cloak of the Savage"] = {
 			["mr"] = 9990000,
@@ -585,12 +584,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H1717"] = 9489999,
 			["cc"] = 4,
 		},
-		["Enchant Gloves - Mastery"] = {
-			["mr"] = 299574,
-			["sc"] = 6,
-			["id"] = "52687",
-			["H1717"] = 299574,
+		["Buttered Sturgeon"] = {
+			["mr"] = 361000,
+			["sc"] = 1,
+			["id"] = "122348",
 			["cc"] = 4,
+			["L1712"] = 361000,
+			["H1712"] = 361999,
 		},
 		["Hexweave Essence"] = {
 			["mr"] = 33100000,
@@ -1869,12 +1869,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 0,
 			["H1881"] = 800000000,
 		},
-		["Obsidian Hatchling"] = {
-			["mr"] = 999000,
-			["H1880"] = 32500000,
-			["id"] = "236:1",
+		["Imperial Moth"] = {
+			["mr"] = 1787500,
+			["H1880"] = 1787500,
+			["id"] = "1039:1",
 			["cc"] = 11,
-			["L1880"] = 999000,
 			["sc"] = 0,
 		},
 		["Seaborne Spore"] = {
@@ -1908,19 +1907,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 174990000,
 			["sc"] = 0,
 		},
-		["Imperial Moth"] = {
-			["mr"] = 1787500,
-			["H1880"] = 1787500,
-			["id"] = "1039:1",
+		["Obsidian Hatchling"] = {
+			["mr"] = 999000,
+			["H1880"] = 32500000,
+			["id"] = "236:1",
 			["cc"] = 11,
+			["L1880"] = 999000,
 			["sc"] = 0,
 		},
-		["Imperial Silkworm"] = {
-			["mr"] = 395010,
-			["H1880"] = 17500000,
-			["id"] = "1040:1",
+		["Snowy Panda"] = {
+			["mr"] = 61801019,
+			["H1880"] = 61801019,
+			["id"] = "1197:25",
 			["cc"] = 11,
-			["L1880"] = 395010,
+			["L1880"] = 30000000,
 			["sc"] = 0,
 		},
 		["Ore Eater"] = {
@@ -1983,10 +1983,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Yellow Moth"] = {
-			["mr"] = 309999,
-			["H1880"] = 309999,
-			["id"] = "140:1",
+		["Razormaw Hatchling"] = {
+			["mr"] = 507000,
+			["H1880"] = 507000,
+			["id"] = "238:1",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -1997,10 +1997,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Mechanopeep"] = {
-			["mr"] = 99980000,
-			["H1880"] = 99980000,
-			["id"] = "215:25",
+		["Darkmoon Rabbit"] = {
+			["mr"] = 301930000,
+			["H1880"] = 301930000,
+			["id"] = "848:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2020,10 +2020,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 40000000,
 			["sc"] = 0,
 		},
-		["Darkmoon Rabbit"] = {
-			["mr"] = 301930000,
-			["H1880"] = 301930000,
-			["id"] = "848:25",
+		["Mechanopeep"] = {
+			["mr"] = 99980000,
+			["H1880"] = 99980000,
+			["id"] = "215:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2095,39 +2095,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Zandalari Footslasher"] = {
-			["mr"] = 9073391,
-			["H1880"] = 9073391,
-			["id"] = "1212:25",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
-		["Dragon Kite"] = {
-			["mr"] = 800000000,
-			["H1880"] = 800000000,
-			["id"] = "169:25",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
 		["Tiny Goldfish"] = {
 			["mr"] = 6990750,
 			["H1880"] = 6990750,
 			["id"] = "652:1",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
-		["Filthling"] = {
-			["mr"] = 15317231,
-			["H1880"] = 50990100,
-			["id"] = "1245:1",
-			["cc"] = 11,
-			["L1880"] = 15317231,
-			["sc"] = 0,
-		},
-		["Wretched Servant"] = {
-			["mr"] = 12172305,
-			["H1880"] = 12172305,
-			["id"] = "1634:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2139,12 +2110,41 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 22500000,
 			["sc"] = 0,
 		},
+		["Zandalari Footslasher"] = {
+			["mr"] = 9073391,
+			["H1880"] = 9073391,
+			["id"] = "1212:25",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Filthling"] = {
+			["mr"] = 15317231,
+			["H1880"] = 50990100,
+			["id"] = "1245:1",
+			["cc"] = 11,
+			["L1880"] = 15317231,
+			["sc"] = 0,
+		},
 		["Crusher"] = {
 			["mr"] = 9990000,
 			["H1880"] = 32500000,
 			["id"] = "1688:1",
 			["cc"] = 11,
 			["L1880"] = 9990000,
+			["sc"] = 0,
+		},
+		["Dragon Kite"] = {
+			["mr"] = 800000000,
+			["H1880"] = 800000000,
+			["id"] = "169:25",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Wretched Servant"] = {
+			["mr"] = 12172305,
+			["H1880"] = 12172305,
+			["id"] = "1634:25",
+			["cc"] = 11,
 			["sc"] = 0,
 		},
 		["Gahz'rooki"] = {
@@ -2198,12 +2198,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Harmonious Porcupette"] = {
-			["mr"] = 5560000,
-			["H1880"] = 17500000,
-			["id"] = "1346:1",
+		["Red Moth"] = {
+			["mr"] = 32500000,
+			["H1880"] = 32500000,
+			["id"] = "139:25",
 			["cc"] = 11,
-			["L1880"] = 5560000,
 			["sc"] = 0,
 		},
 		["Hyjal Bear Cub"] = {
@@ -2220,17 +2219,17 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Elwynn Lamb"] = {
-			["mr"] = 79000000,
-			["H1880"] = 79000000,
-			["id"] = "209:25",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
 		["Empowered Manafiend"] = {
 			["mr"] = 34200420,
 			["H1880"] = 34200420,
 			["id"] = "1766:25",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Elwynn Lamb"] = {
+			["mr"] = 79000000,
+			["H1880"] = 79000000,
+			["id"] = "209:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2325,12 +2324,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Zomstrok"] = {
-			["mr"] = 9990000,
-			["H1880"] = 60990000,
-			["id"] = "1428:1",
+		["Darkmoon Monkey"] = {
+			["mr"] = 60993900,
+			["H1880"] = 60993900,
+			["id"] = "330:25",
 			["cc"] = 11,
-			["L1880"] = 9990000,
 			["sc"] = 0,
 		},
 		["Empyreal Manafiend"] = {
@@ -2379,11 +2377,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 64996499,
 			["sc"] = 0,
 		},
-		["Pterrordax Hatchling"] = {
-			["mr"] = 37110000,
-			["H1880"] = 37110000,
-			["id"] = "309:1",
+		["Ammen Vale Lashling"] = {
+			["mr"] = 50000000,
+			["H1880"] = 89000000,
+			["id"] = "212:1",
 			["cc"] = 11,
+			["L1880"] = 50000000,
 			["sc"] = 0,
 		},
 		["Frostwolf Ghostpup"] = {
@@ -2422,12 +2421,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Ammen Vale Lashling"] = {
-			["mr"] = 50000000,
-			["H1880"] = 89000000,
-			["id"] = "212:1",
+		["Pterrordax Hatchling"] = {
+			["mr"] = 37110000,
+			["H1880"] = 37110000,
+			["id"] = "309:1",
 			["cc"] = 11,
-			["L1880"] = 50000000,
 			["sc"] = 0,
 		},
 		["De-Weaponized Mechanical Companion"] = {
@@ -2476,10 +2474,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 13450000,
 			["sc"] = 0,
 		},
-		["Tickbird Hatchling"] = {
-			["mr"] = 499000,
-			["H1880"] = 499000,
-			["id"] = "194:1",
+		["Sky Fry"] = {
+			["mr"] = 130000000,
+			["H1880"] = 130000000,
+			["id"] = "1575:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2498,12 +2496,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 538839999,
 			["sc"] = 0,
 		},
-		["Crawling Claw"] = {
-			["mr"] = 603666005,
-			["H1880"] = 603666005,
-			["id"] = "264:12",
+		["Mana Wyrmling"] = {
+			["mr"] = 2200000,
+			["H1880"] = 14850000,
+			["id"] = "136:1",
 			["cc"] = 11,
-			["L1880"] = 588585858,
+			["L1880"] = 2200000,
 			["sc"] = 0,
 		},
 		["Azure Whelpling"] = {
@@ -2522,19 +2520,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 2959812,
 			["sc"] = 0,
 		},
-		["Sky Fry"] = {
-			["mr"] = 130000000,
-			["H1880"] = 130000000,
-			["id"] = "1575:25",
+		["Firewing"] = {
+			["mr"] = 14900000,
+			["H1880"] = 14900000,
+			["id"] = "1545:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Mana Wyrmling"] = {
-			["mr"] = 2200000,
-			["H1880"] = 14850000,
-			["id"] = "136:1",
+		["Albino Snake"] = {
+			["mr"] = 699000,
+			["H1880"] = 22500000,
+			["id"] = "74:1",
 			["cc"] = 11,
-			["L1880"] = 2200000,
+			["L1880"] = 699000,
 			["sc"] = 0,
 		},
 		["Young Talbuk"] = {
@@ -2566,17 +2564,18 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["White Kitten"] = {
-			["mr"] = 37500000,
-			["H1880"] = 37500000,
-			["id"] = "46:25",
+		["Bone Wasp"] = {
+			["mr"] = 21989999,
+			["H1880"] = 80000000,
+			["id"] = "1458:1",
 			["cc"] = 11,
+			["L1880"] = 21989999,
 			["sc"] = 0,
 		},
-		["Firewing"] = {
-			["mr"] = 14900000,
-			["H1880"] = 14900000,
-			["id"] = "1545:25",
+		["Lil' Smoky"] = {
+			["mr"] = 17500000,
+			["H1880"] = 17500000,
+			["id"] = "86:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2584,28 +2583,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["mr"] = 190000000,
 			["H1880"] = 190000000,
 			["id"] = "1348:25",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
-		["Tiny White Carp"] = {
-			["mr"] = 109000000,
-			["H1880"] = 300000000,
-			["id"] = "1209:1",
-			["cc"] = 11,
-			["L1880"] = 109000000,
-			["sc"] = 0,
-		},
-		["Jade Owl"] = {
-			["mr"] = 11700000,
-			["H1880"] = 11700000,
-			["id"] = "845:1",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
-		["Fragment of Anger"] = {
-			["mr"] = 32500000,
-			["H1880"] = 32500000,
-			["id"] = "1625:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2617,12 +2594,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 80000000,
 			["sc"] = 0,
 		},
-		["Cockatiel"] = {
-			["mr"] = 924000,
-			["H1880"] = 14850000,
-			["id"] = "47:1",
+		["Jade Owl"] = {
+			["mr"] = 11700000,
+			["H1880"] = 11700000,
+			["id"] = "845:1",
 			["cc"] = 11,
-			["L1880"] = 924000,
 			["sc"] = 0,
 		},
 		["Crimson Snake"] = {
@@ -2632,11 +2608,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
+		["Pengu"] = {
+			["mr"] = 6000000,
+			["H1880"] = 6000000,
+			["id"] = "198:25",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
 		["Ashleaf Spriteling"] = {
 			["mr"] = 60000000,
 			["H1880"] = 60000000,
 			["id"] = "1323:1",
 			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Fragment of Anger"] = {
+			["mr"] = 32500000,
+			["H1880"] = 32500000,
+			["id"] = "1625:25",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Cockatiel"] = {
+			["mr"] = 924000,
+			["H1880"] = 14850000,
+			["id"] = "47:1",
+			["cc"] = 11,
+			["L1880"] = 924000,
 			["sc"] = 0,
 		},
 		["Skunky Alemental"] = {
@@ -2654,13 +2652,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Nightshade Sproutling"] = {
-			["mr"] = 12230000,
-			["H1880"] = 12230000,
-			["id"] = "1432:1",
-			["cc"] = 11,
-			["sc"] = 0,
-		},
 		["Tiny Snowman"] = {
 			["mr"] = 7000000,
 			["H1880"] = 7000000,
@@ -2672,6 +2663,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["mr"] = 16650000,
 			["H1880"] = 16650000,
 			["id"] = "237:1",
+			["cc"] = 11,
+			["sc"] = 0,
+		},
+		["Nightshade Sproutling"] = {
+			["mr"] = 12230000,
+			["H1880"] = 12230000,
+			["id"] = "1432:1",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2689,10 +2687,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Living Sandling"] = {
-			["mr"] = 34989999,
-			["H1880"] = 34989999,
-			["id"] = "1177:2",
+		["Silver Dragonhawk Hatchling"] = {
+			["mr"] = 14732920,
+			["H1880"] = 14732920,
+			["id"] = "144:25",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2712,10 +2710,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 7900000,
 			["sc"] = 0,
 		},
-		["Silver Dragonhawk Hatchling"] = {
-			["mr"] = 14732920,
-			["H1880"] = 14732920,
-			["id"] = "144:25",
+		["Living Sandling"] = {
+			["mr"] = 34989999,
+			["H1880"] = 34989999,
+			["id"] = "1177:2",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2735,11 +2733,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 2500000,
 			["sc"] = 0,
 		},
-		["Pengu"] = {
-			["mr"] = 6000000,
-			["H1880"] = 6000000,
-			["id"] = "198:25",
+		["Tiny White Carp"] = {
+			["mr"] = 109000000,
+			["H1880"] = 300000000,
+			["id"] = "1209:1",
 			["cc"] = 11,
+			["L1880"] = 109000000,
 			["sc"] = 0,
 		},
 		["Lifelike Toad"] = {
@@ -2764,10 +2763,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Lil' Smoky"] = {
-			["mr"] = 17500000,
-			["H1880"] = 17500000,
-			["id"] = "86:25",
+		["Tickbird Hatchling"] = {
+			["mr"] = 499000,
+			["H1880"] = 499000,
+			["id"] = "194:1",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -2778,12 +2777,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Albino Snake"] = {
-			["mr"] = 699000,
-			["H1880"] = 22500000,
-			["id"] = "74:1",
+		["Crawling Claw"] = {
+			["mr"] = 603666005,
+			["H1880"] = 603666005,
+			["id"] = "264:12",
 			["cc"] = 11,
-			["L1880"] = 699000,
+			["L1880"] = 588585858,
 			["sc"] = 0,
 		},
 		["Peddlefeet"] = {
@@ -2801,12 +2800,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Bone Wasp"] = {
-			["mr"] = 21989999,
-			["H1880"] = 80000000,
-			["id"] = "1458:1",
+		["White Kitten"] = {
+			["mr"] = 37500000,
+			["H1880"] = 37500000,
+			["id"] = "46:25",
 			["cc"] = 11,
-			["L1880"] = 21989999,
 			["sc"] = 0,
 		},
 		["Bush Chicken"] = {
@@ -2847,11 +2845,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 9990000,
 			["sc"] = 0,
 		},
-		["Darkmoon Monkey"] = {
-			["mr"] = 60993900,
-			["H1880"] = 60993900,
-			["id"] = "330:25",
+		["Zomstrok"] = {
+			["mr"] = 9990000,
+			["H1880"] = 60990000,
+			["id"] = "1428:1",
 			["cc"] = 11,
+			["L1880"] = 9990000,
 			["sc"] = 0,
 		},
 		["Fungal Abomination"] = {
@@ -2913,11 +2912,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 11,
 			["sc"] = 0,
 		},
-		["Red Moth"] = {
-			["mr"] = 32500000,
-			["H1880"] = 32500000,
-			["id"] = "139:25",
+		["Harmonious Porcupette"] = {
+			["mr"] = 5560000,
+			["H1880"] = 17500000,
+			["id"] = "1346:1",
 			["cc"] = 11,
+			["L1880"] = 5560000,
 			["sc"] = 0,
 		},
 		["Darkmoon Cub"] = {
@@ -3000,10 +3000,10 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 1660000,
 			["sc"] = 0,
 		},
-		["Razormaw Hatchling"] = {
-			["mr"] = 507000,
-			["H1880"] = 507000,
-			["id"] = "238:1",
+		["Yellow Moth"] = {
+			["mr"] = 309999,
+			["H1880"] = 309999,
+			["id"] = "140:1",
 			["cc"] = 11,
 			["sc"] = 0,
 		},
@@ -3015,12 +3015,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["L1880"] = 15000000,
 			["sc"] = 0,
 		},
-		["Snowy Panda"] = {
-			["mr"] = 61801019,
-			["H1880"] = 61801019,
-			["id"] = "1197:25",
+		["Imperial Silkworm"] = {
+			["mr"] = 395010,
+			["H1880"] = 17500000,
+			["id"] = "1040:1",
 			["cc"] = 11,
-			["L1880"] = 30000000,
+			["L1880"] = 395010,
 			["sc"] = 0,
 		},
 		["Sunfire Kaliri"] = {
@@ -3479,13 +3479,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24593:0:0:-9",
 			["sc"] = 1,
 		},
-		["Magiskull Cuffs"] = {
-			["mr"] = 483995,
-			["cc"] = 4,
-			["H2084"] = 483995,
-			["id"] = "13107:0:0:0",
-			["sc"] = 1,
-		},
 		["Wyrmskull Gauntlets of the Whale"] = {
 			["mr"] = 17645997,
 			["cc"] = 4,
@@ -3493,13 +3486,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36318:0:0:-8",
 			["sc"] = 4,
 		},
-		["Jungle Assassin's Footpads"] = {
-			["mr"] = 176064665,
-			["sc"] = 3,
-			["H1961"] = 257499999,
-			["id"] = "124252:566:0:0",
-			["cc"] = 2,
-			["L1961"] = 176064665,
+		["Magiskull Cuffs"] = {
+			["mr"] = 483995,
+			["cc"] = 4,
+			["H2084"] = 483995,
+			["id"] = "13107:0:0:0",
+			["sc"] = 1,
+		},
+		["Laughing Skull Orb of Spirit"] = {
+			["mr"] = 1527730,
+			["cc"] = 4,
+			["H2084"] = 1527730,
+			["id"] = "25088:0:0:-15",
+			["sc"] = 0,
 		},
 		["Skullance Shield"] = {
 			["mr"] = 1460595,
@@ -3529,13 +3528,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "118061:0:0:0",
 			["sc"] = 11,
 		},
-		["Laughing Skull Shoulderpads of the Seer"] = {
-			["mr"] = 5299936,
-			["cc"] = 4,
-			["H2084"] = 5299936,
-			["id"] = "24611:0:0:-37",
-			["sc"] = 1,
-		},
 		["Iron Skull Sword of Intellect"] = {
 			["mr"] = 1955136,
 			["cc"] = 2,
@@ -3557,13 +3549,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36319:0:0:-15",
 			["sc"] = 4,
 		},
-		["Enchant Gloves - Minor Haste"] = {
-			["mr"] = 36532418,
-			["cc"] = 4,
-			["id"] = "38851:0:0:0",
-			["H2053"] = 36532418,
-			["sc"] = 6,
-		},
 		["Traveler's Gloves"] = {
 			["mr"] = 6159654,
 			["cc"] = 2,
@@ -3571,26 +3556,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "8298:0:0:0",
 			["sc"] = 3,
 		},
+		["Enchant Gloves - Minor Haste"] = {
+			["mr"] = 36532418,
+			["cc"] = 4,
+			["id"] = "38851:0:0:0",
+			["H2053"] = 36532418,
+			["sc"] = 6,
+		},
+		["Skullsplitter Coin"] = {
+			["mr"] = 99999996,
+			["cc"] = 12,
+			["H2084"] = 99999996,
+			["id"] = "19705:0:0:0",
+			["sc"] = 0,
+		},
 		["Orca Fists of the Bandit"] = {
 			["mr"] = 4911944,
 			["cc"] = 2,
 			["H1961"] = 4911944,
 			["id"] = "36214:0:0:-40",
 			["sc"] = 4,
-		},
-		["Glutton's Kerchief"] = {
-			["mr"] = 300000000,
-			["cc"] = 2,
-			["H1961"] = 300000000,
-			["id"] = "113882:567:0:0",
-			["sc"] = 1,
-		},
-		["Laughing Skull Waistguard of Stamina"] = {
-			["mr"] = 3760924,
-			["cc"] = 4,
-			["H2084"] = 3760924,
-			["id"] = "24605:0:0:-16",
-			["sc"] = 1,
 		},
 		["Wyrmskull Breastplate of the Eagle"] = {
 			["mr"] = 1400963,
@@ -3606,6 +3591,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-27",
 			["sc"] = 2,
 		},
+		["Glutton's Kerchief"] = {
+			["mr"] = 300000000,
+			["cc"] = 2,
+			["H1961"] = 300000000,
+			["id"] = "113882:567:0:0",
+			["sc"] = 1,
+		},
+		["Ghost Mushroom"] = {
+			["mr"] = 99500,
+			["cc"] = 6,
+			["H1961"] = 99500,
+			["id"] = "8845:0:0:0",
+			["sc"] = 6,
+		},
 		["Wyrmskull Epaulets of the Eagle"] = {
 			["mr"] = 6135609,
 			["cc"] = 4,
@@ -3613,12 +3612,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36321:0:0:-6",
 			["sc"] = 4,
 		},
-		["Red-Speckled Mushroom"] = {
-			["mr"] = 30000,
-			["cc"] = 4,
-			["H1961"] = 30000,
-			["id"] = "4605:0:0:0",
-			["sc"] = 1,
+		["Recipe: Haste Potion"] = {
+			["mr"] = 19329999,
+			["cc"] = 7,
+			["id"] = "22913:0:0:0",
+			["H2053"] = 19329999,
+			["sc"] = 7,
 		},
 		["Laughing Skull Gloves of Intellect"] = {
 			["mr"] = 1468892,
@@ -3655,12 +3654,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36214:0:0:-18",
 			["sc"] = 4,
 		},
-		["Ghost Mushroom"] = {
-			["mr"] = 99500,
-			["cc"] = 6,
-			["H1961"] = 99500,
-			["id"] = "8845:0:0:0",
-			["sc"] = 6,
+		["Champion's Honor"] = {
+			["mr"] = 94980000,
+			["cc"] = 9,
+			["id"] = "128430:0:0:0",
+			["H2007"] = 94980000,
+			["sc"] = 1,
 		},
 		["Bracers of Shattered Limbs"] = {
 			["mr"] = 350000000,
@@ -3669,11 +3668,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "119333:567:0:0",
 			["sc"] = 3,
 		},
-		["Elementalist Skullcap of Stamina"] = {
-			["mr"] = 1085000,
+		["Laughing Skull Tunic of the Seer"] = {
+			["mr"] = 543105,
 			["cc"] = 4,
-			["H2084"] = 1085000,
-			["id"] = "24689:0:0:-16",
+			["H2084"] = 543105,
+			["id"] = "24607:0:0:-37",
 			["sc"] = 1,
 		},
 		["Wyrmskull Gauntlets of the Seer"] = {
@@ -3690,12 +3689,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "119335:567:0:0",
 			["sc"] = 3,
 		},
-		["Meadowstomper Waistband of the Savage"] = {
-			["mr"] = 1119000,
-			["cc"] = 2,
-			["H1961"] = 1119000,
-			["id"] = "106736:0:0:0",
-			["sc"] = 3,
+		["Boneshredder Skullcap of the Falcon"] = {
+			["mr"] = 1056915,
+			["cc"] = 4,
+			["H2084"] = 1056915,
+			["id"] = "24777:0:0:-11",
+			["sc"] = 2,
 		},
 		["Wyrmskull Breastplate of Intellect"] = {
 			["mr"] = 1400968,
@@ -3718,12 +3717,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["mr"] = 12500,
 			["sc"] = 5,
 		},
-		["Demon-Skull Orb of Spirit"] = {
-			["mr"] = 12500000,
-			["cc"] = 4,
-			["H2084"] = 12500000,
-			["id"] = "36461:0:0:-15",
-			["sc"] = 0,
+		["Meadowstomper Bindings of the Harmonious"] = {
+			["mr"] = 375676,
+			["cc"] = 2,
+			["H1961"] = 375676,
+			["id"] = "106729:0:0:0",
+			["sc"] = 3,
 		},
 		["Dried Needle Mushrooms"] = {
 			["mr"] = 10349,
@@ -3746,26 +3745,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36217:0:0:-6",
 			["sc"] = 4,
 		},
-		["Wyrmskull Breastplate of the Boar"] = {
-			["mr"] = 1400965,
-			["cc"] = 4,
-			["H2084"] = 1400965,
-			["id"] = "36317:0:0:-12",
-			["sc"] = 4,
+		["Iron-Flecked Sandals"] = {
+			["mr"] = 19999999,
+			["cc"] = 2,
+			["H1961"] = 19999999,
+			["id"] = "119340:0:0:0",
+			["sc"] = 3,
 		},
-		["Glyph of Moonwarding"] = {
-			["mr"] = 323440,
-			["cc"] = 5,
-			["H1961"] = 323440,
-			["id"] = "110817:0:0:0",
-			["sc"] = 11,
-		},
-		["Laughing Skull Tunic of the Seer"] = {
-			["mr"] = 543105,
+		["Elementalist Skullcap of Stamina"] = {
+			["mr"] = 1085000,
 			["cc"] = 4,
-			["H2084"] = 543105,
-			["id"] = "24607:0:0:-37",
+			["H2084"] = 1085000,
+			["id"] = "24689:0:0:-16",
 			["sc"] = 1,
+		},
+		["Supple Boots of the Peerless"] = {
+			["mr"] = 150000000,
+			["cc"] = 2,
+			["H1961"] = 150000000,
+			["id"] = "116182:0:5:0",
+			["sc"] = 3,
 		},
 		["Laughing Skull Pants of the Sorcerer"] = {
 			["mr"] = 520551,
@@ -3774,12 +3773,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24610:0:0:-36",
 			["sc"] = 1,
 		},
-		["Boneshredder Skullcap of the Bandit"] = {
-			["mr"] = 499998,
+		["Wyrmskull Epaulets of the Seer"] = {
+			["mr"] = 1867211,
 			["cc"] = 4,
-			["H2084"] = 499998,
-			["id"] = "24777:0:0:-40",
-			["sc"] = 2,
+			["H2084"] = 1867211,
+			["id"] = "36321:0:0:-37",
+			["sc"] = 4,
 		},
 		["Triumphant Skullcap of the Monkey"] = {
 			["mr"] = 2234774,
@@ -3788,12 +3787,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "15684:0:0:-78",
 			["sc"] = 3,
 		},
-		["Boneshredder Skullcap of the Falcon"] = {
-			["mr"] = 1056915,
-			["cc"] = 4,
-			["H2084"] = 1056915,
-			["id"] = "24777:0:0:-11",
-			["sc"] = 2,
+		["Meadowstomper Waistband of the Savage"] = {
+			["mr"] = 1119000,
+			["cc"] = 2,
+			["H1961"] = 1119000,
+			["id"] = "106736:0:0:0",
+			["sc"] = 3,
 		},
 		["Belt of Ghostly Graces"] = {
 			["mr"] = 1857498,
@@ -3809,12 +3808,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24611:0:0:-38",
 			["sc"] = 1,
 		},
-		["Meadowstomper Bindings of the Harmonious"] = {
-			["mr"] = 375676,
-			["cc"] = 2,
-			["H1961"] = 375676,
-			["id"] = "106729:0:0:0",
-			["sc"] = 3,
+		["Boneshredder Skullcap of the Bandit"] = {
+			["mr"] = 499998,
+			["cc"] = 4,
+			["H2084"] = 499998,
+			["id"] = "24777:0:0:-40",
+			["sc"] = 2,
 		},
 		["Fireheart Skullcap of the Sorcerer"] = {
 			["mr"] = 2608208,
@@ -3865,12 +3864,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "15278:0:0:-12",
 			["sc"] = 10,
 		},
-		["Iron-Flecked Sandals"] = {
-			["mr"] = 19999999,
-			["cc"] = 2,
-			["H1961"] = 19999999,
-			["id"] = "119340:0:0:0",
-			["sc"] = 3,
+		["Demon-Skull Orb of Spirit"] = {
+			["mr"] = 12500000,
+			["cc"] = 4,
+			["H2084"] = 12500000,
+			["id"] = "36461:0:0:-15",
+			["sc"] = 0,
 		},
 		["Infrablue-Blocker Lenses"] = {
 			["mr"] = 69979766,
@@ -3907,11 +3906,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-33",
 			["sc"] = 2,
 		},
-		["Traveler's Boots"] = {
-			["mr"] = 1951895,
+		["Meadowstomper Boots of the Aurora"] = {
+			["mr"] = 3674816,
 			["cc"] = 2,
-			["H1961"] = 1951895,
-			["id"] = "8294:0:0:0",
+			["H1961"] = 3674816,
+			["id"] = "106730:0:0:0",
 			["sc"] = 3,
 		},
 		["Wyrmskull Breastplate of the Bear"] = {
@@ -3921,12 +3920,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36317:0:0:-7",
 			["sc"] = 4,
 		},
-		["Immaculate Mastery Taladite"] = {
-			["mr"] = 25020000,
-			["sc"] = 9,
-			["H2005"] = 25020000,
-			["id"] = "127762:0:0:0",
-			["cc"] = 8,
+		["Wyrmskull Breastplate of the Boar"] = {
+			["mr"] = 1400965,
+			["cc"] = 4,
+			["H2084"] = 1400965,
+			["id"] = "36317:0:0:-12",
+			["sc"] = 4,
 		},
 		["Wyrmskull Helm of Shadow Protection"] = {
 			["mr"] = 969994,
@@ -3935,26 +3934,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36319:0:0:-35",
 			["sc"] = 4,
 		},
-		["Stone of the Wilds"] = {
-			["mr"] = 129000000,
-			["sc"] = 1,
-			["H1961"] = 129000000,
-			["id"] = "128023:0:0:0",
-			["cc"] = 2,
-		},
-		["Supple Boots of the Peerless"] = {
-			["mr"] = 150000000,
-			["cc"] = 2,
-			["H1961"] = 150000000,
-			["id"] = "116182:0:5:0",
-			["sc"] = 3,
-		},
-		["Wyrmskull Epaulets of the Seer"] = {
-			["mr"] = 1867211,
+		["Wyrmskull Gauntlets of Intellect"] = {
+			["mr"] = 450000,
 			["cc"] = 4,
-			["H2084"] = 1867211,
-			["id"] = "36321:0:0:-37",
+			["H2084"] = 450000,
+			["id"] = "36318:0:0:-26",
 			["sc"] = 4,
+		},
+		["Burning Skull Pendant"] = {
+			["mr"] = 2990000,
+			["cc"] = 4,
+			["H2084"] = 2990000,
+			["id"] = "37646:0:0:0",
+			["sc"] = 0,
+		},
+		["Ghost Mushroom Cap"] = {
+			["mr"] = 7500,
+			["cc"] = 6,
+			["H1961"] = 7500,
+			["id"] = "108337:0:0:0",
+			["sc"] = 6,
 		},
 		["Traveler's Helm"] = {
 			["mr"] = 8980000,
@@ -3985,12 +3984,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24608:0:0:-36",
 			["sc"] = 1,
 		},
-		["Fireheart Skullcap of the Invoker"] = {
-			["mr"] = 1999999,
-			["cc"] = 4,
-			["H2084"] = 1999999,
-			["id"] = "24593:0:0:-39",
-			["sc"] = 1,
+		["Glyph of Nature's Cure"] = {
+			["mr"] = 251881,
+			["cc"] = 5,
+			["H1961"] = 251881,
+			["id"] = "110814:0:0:0",
+			["sc"] = 11,
 		},
 		["Sabatons of the Graceful Spirit"] = {
 			["mr"] = 6000000,
@@ -4006,12 +4005,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24605:0:0:-15",
 			["sc"] = 1,
 		},
-		["Supple Waistguard of the Savage"] = {
-			["mr"] = 200009998,
-			["cc"] = 2,
-			["H1961"] = 200009998,
-			["id"] = "116183:0:6:0",
-			["sc"] = 3,
+		["Wyrmskull Helm of the Falcon"] = {
+			["mr"] = 969996,
+			["cc"] = 4,
+			["H2084"] = 969996,
+			["id"] = "36319:0:0:-11",
+			["sc"] = 4,
 		},
 		["Glyph of Grace"] = {
 			["mr"] = 491657,
@@ -4020,19 +4019,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "43332:0:0:0",
 			["sc"] = 11,
 		},
-		["Meadowstomper Boots of the Aurora"] = {
-			["mr"] = 3674816,
+		["Traveler's Boots"] = {
+			["mr"] = 1951895,
 			["cc"] = 2,
-			["H1961"] = 3674816,
-			["id"] = "106730:0:0:0",
+			["H1961"] = 1951895,
+			["id"] = "8294:0:0:0",
 			["sc"] = 3,
 		},
-		["Wyrmskull Gauntlets of Intellect"] = {
-			["mr"] = 450000,
-			["cc"] = 4,
-			["H2084"] = 450000,
-			["id"] = "36318:0:0:-26",
-			["sc"] = 4,
+		["Stone of the Wilds"] = {
+			["mr"] = 129000000,
+			["sc"] = 1,
+			["H1961"] = 129000000,
+			["id"] = "128023:0:0:0",
+			["cc"] = 2,
 		},
 		["Orca Armor of the Owl"] = {
 			["mr"] = 3117121,
@@ -4048,12 +4047,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2056"] = 7894,
 			["sc"] = 6,
 		},
-		["Skullcage of Eternal Terror"] = {
-			["mr"] = 627000,
+		["Fireheart Skullcap of the Invoker"] = {
+			["mr"] = 1999999,
 			["cc"] = 4,
-			["H2084"] = 627000,
-			["id"] = "37793:0:0:0",
-			["sc"] = 4,
+			["H2084"] = 1999999,
+			["id"] = "24593:0:0:-39",
+			["sc"] = 1,
 		},
 		["Frozen Arms of a Hero"] = {
 			["mr"] = 3997500,
@@ -4069,12 +4068,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "14658:0:0:0",
 			["sc"] = 2,
 		},
-		["Sleeper Sushi"] = {
-			["H1960"] = 157500,
+		["Heroic Skullcap of the Gorilla"] = {
+			["mr"] = 364445,
 			["cc"] = 4,
-			["id"] = "122343:0:0:0",
-			["mr"] = 157500,
-			["sc"] = 1,
+			["H2084"] = 364445,
+			["id"] = "14935:0:0:-10",
+			["sc"] = 4,
 		},
 		["Glyph of the Sprouting Mushroom"] = {
 			["mr"] = 412479,
@@ -4133,12 +4132,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["L1961"] = 2924996,
 		},
-		["Glyph of Nature's Cure"] = {
-			["mr"] = 251881,
-			["cc"] = 5,
-			["H1961"] = 251881,
-			["id"] = "110814:0:0:0",
-			["sc"] = 11,
+		["Skullcage of Eternal Terror"] = {
+			["mr"] = 627000,
+			["cc"] = 4,
+			["H2084"] = 627000,
+			["id"] = "37793:0:0:0",
+			["sc"] = 4,
 		},
 		["Medallion of the Legion"] = {
 			["H2077"] = 48000000,
@@ -4154,20 +4153,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-24",
 			["sc"] = 2,
 		},
-		["Skullcrusher Mace of Power"] = {
-			["mr"] = 78135,
-			["cc"] = 2,
-			["H2084"] = 78135,
-			["id"] = "1608:0:0:-20",
-			["sc"] = 4,
-		},
-		["Pattern: Boots of Natural Grace"] = {
-			["mr"] = 273446,
-			["cc"] = 7,
-			["H1961"] = 273446,
-			["id"] = "30305:0:0:0",
-			["sc"] = 2,
-		},
 		["Glowing Taladite Pendant of the Peerless"] = {
 			["mr"] = 200000000,
 			["cc"] = 2,
@@ -4181,6 +4166,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H1961"] = 29969889,
 			["id"] = "127720:0:0:0",
 			["cc"] = 2,
+		},
+		["Skullcrusher Mace of Power"] = {
+			["mr"] = 78135,
+			["cc"] = 2,
+			["H2084"] = 78135,
+			["id"] = "1608:0:0:-20",
+			["sc"] = 4,
+		},
+		["Pattern: Boots of Natural Grace"] = {
+			["mr"] = 273446,
+			["cc"] = 7,
+			["H1961"] = 273446,
+			["id"] = "30305:0:0:0",
+			["sc"] = 2,
 		},
 		["Laughing Skull Pants of Intellect"] = {
 			["mr"] = 598996,
@@ -4352,19 +4351,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36696:0:0:-15",
 			["sc"] = 5,
 		},
-		["Wyrmskull Helm of the Falcon"] = {
-			["mr"] = 969996,
-			["cc"] = 4,
-			["H2084"] = 969996,
-			["id"] = "36319:0:0:-11",
-			["sc"] = 4,
+		["Supple Waistguard of the Savage"] = {
+			["mr"] = 200009998,
+			["cc"] = 2,
+			["H1961"] = 200009998,
+			["id"] = "116183:0:6:0",
+			["sc"] = 3,
 		},
-		["Heroic Skullcap of the Gorilla"] = {
-			["mr"] = 364445,
+		["Sleeper Sushi"] = {
+			["H1960"] = 157500,
 			["cc"] = 4,
-			["H2084"] = 364445,
-			["id"] = "14935:0:0:-10",
-			["sc"] = 4,
+			["id"] = "122343:0:0:0",
+			["mr"] = 157500,
+			["sc"] = 1,
 		},
 		["Voodoo Skull"] = {
 			["mr"] = 2713575,
@@ -4401,13 +4400,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "115800:0:6:0",
 			["sc"] = 1,
 		},
-		["Skull of War"] = {
-			["mr"] = 486000000,
-			["cc"] = 4,
-			["H2084"] = 486000000,
-			["id"] = "112318:0:6:0",
-			["sc"] = 0,
-			["L2084"] = 59740000,
+		["Buttered Sturgeon"] = {
+			["mr"] = 74000,
+			["cc"] = 0,
+			["id"] = "122348:0:0:0",
+			["sc"] = 5,
+			["H2080"] = 74000,
 		},
 		["Boneshredder Skullcap of the Invoker"] = {
 			["mr"] = 499999,
@@ -4416,12 +4414,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-39",
 			["sc"] = 2,
 		},
-		["Burning Skull Pendant"] = {
-			["mr"] = 2990000,
+		["Red-Speckled Mushroom"] = {
+			["mr"] = 30000,
 			["cc"] = 4,
-			["H2084"] = 2990000,
-			["id"] = "37646:0:0:0",
-			["sc"] = 0,
+			["H1961"] = 30000,
+			["id"] = "4605:0:0:0",
+			["sc"] = 1,
 		},
 		["Wyrmskull Girdle of Power"] = {
 			["mr"] = 1248217,
@@ -4437,12 +4435,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "115801:0:6:0",
 			["sc"] = 1,
 		},
-		["Buttered Sturgeon"] = {
-			["mr"] = 74000,
-			["cc"] = 0,
-			["id"] = "122348:0:0:0",
-			["sc"] = 5,
-			["H2080"] = 74000,
+		["Glyph of Moonwarding"] = {
+			["mr"] = 323440,
+			["cc"] = 5,
+			["H1961"] = 323440,
+			["id"] = "110817:0:0:0",
+			["sc"] = 11,
 		},
 		["Enchant Gloves - Superior Haste"] = {
 			["mr"] = 181159,
@@ -4451,26 +4449,27 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2053"] = 181159,
 			["sc"] = 6,
 		},
+		["Skull of War"] = {
+			["mr"] = 486000000,
+			["cc"] = 4,
+			["H2084"] = 486000000,
+			["id"] = "112318:0:6:0",
+			["sc"] = 0,
+			["L2084"] = 59740000,
+		},
+		["Immaculate Mastery Taladite"] = {
+			["mr"] = 25020000,
+			["sc"] = 9,
+			["H2005"] = 25020000,
+			["id"] = "127762:0:0:0",
+			["cc"] = 8,
+		},
 		["Greater Haste Taladite"] = {
 			["mr"] = 1789900,
 			["sc"] = 9,
 			["id"] = "115811:0:0:0",
 			["H2053"] = 1789900,
 			["cc"] = 8,
-		},
-		["Ghost Mushroom Cap"] = {
-			["mr"] = 7500,
-			["cc"] = 6,
-			["H1961"] = 7500,
-			["id"] = "108337:0:0:0",
-			["sc"] = 6,
-		},
-		["Recipe: Haste Potion"] = {
-			["mr"] = 19329999,
-			["cc"] = 7,
-			["id"] = "22913:0:0:0",
-			["H2053"] = 19329999,
-			["sc"] = 7,
 		},
 		["Wyrmskull Legplates of the Soldier"] = {
 			["mr"] = 1387611,
@@ -4493,6 +4492,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "31180:0:0:0",
 			["sc"] = 4,
 		},
+		["Laughing Skull Waistguard of Stamina"] = {
+			["mr"] = 3760924,
+			["cc"] = 4,
+			["H2084"] = 3760924,
+			["id"] = "24605:0:0:-16",
+			["sc"] = 1,
+		},
 		["Solstice Robe"] = {
 			["mr"] = 54988948,
 			["cc"] = 2,
@@ -4506,13 +4512,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2084"] = 1283995,
 			["id"] = "36316:0:0:-33",
 			["sc"] = 4,
-		},
-		["Champion's Honor"] = {
-			["mr"] = 94980000,
-			["cc"] = 9,
-			["id"] = "128430:0:0:0",
-			["H2007"] = 94980000,
-			["sc"] = 1,
 		},
 		["Immaculate Haste Taladite"] = {
 			["mr"] = 19859999,
@@ -4528,12 +4527,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "106733:0:0:0",
 			["sc"] = 3,
 		},
-		["Skullsplitter Coin"] = {
-			["mr"] = 99999996,
-			["cc"] = 12,
-			["H2084"] = 99999996,
-			["id"] = "19705:0:0:0",
-			["sc"] = 0,
+		["Laughing Skull Shoulderpads of the Seer"] = {
+			["mr"] = 5299936,
+			["cc"] = 4,
+			["H2084"] = 5299936,
+			["id"] = "24611:0:0:-37",
+			["sc"] = 1,
 		},
 		["Throat-Ripper Gauntlets"] = {
 			["mr"] = 14999999,
@@ -4571,12 +4570,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "40919:0:0:0",
 			["sc"] = 11,
 		},
-		["Laughing Skull Orb of Spirit"] = {
-			["mr"] = 1527730,
-			["cc"] = 4,
-			["H2084"] = 1527730,
-			["id"] = "25088:0:0:-15",
-			["sc"] = 0,
+		["Jungle Assassin's Footpads"] = {
+			["mr"] = 176064665,
+			["sc"] = 3,
+			["H1961"] = 257499999,
+			["id"] = "124252:566:0:0",
+			["cc"] = 2,
+			["L1961"] = 176064665,
 		},
 		["Wyrmskull Legplates of the Champion"] = {
 			["mr"] = 1387610,
@@ -4710,7 +4710,6 @@ AUCTIONATOR_TOONS = {
 	},
 	["Kråzyito"] = {
 		["firstSeen"] = 1373146671,
-		["guid"] = "Player-3684-071EE869",
 		["firstVersion"] = "3.1.4",
 	},
 	["Krazýito"] = {

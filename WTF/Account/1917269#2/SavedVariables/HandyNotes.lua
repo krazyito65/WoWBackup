@@ -5,15 +5,15 @@ HandyNotesDB = {
 		["Meatrisolyn - Proudmoore"] = "Meatrisolyn - Proudmoore",
 		["Krazyito - Area 52"] = "Krazyito - Area 52",
 		["Krâzyito - Mal'Ganis"] = "Krâzyito - Mal'Ganis",
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
 		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
-		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyito - Illidan"] = "Krazyito - Illidan",
 		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
 		["Krazyito - Stormrage"] = "Krazyito - Stormrage",
 		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
 		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
-		["Krazyito - Illidan"] = "Krazyito - Illidan",
-		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 	},
 	["profiles"] = {
 		["Krazyíto - Mal'Ganis"] = {
@@ -24,11 +24,11 @@ HandyNotesDB = {
 		},
 		["Krâzyito - Mal'Ganis"] = {
 		},
-		["Krazyito - Mal'Ganis"] = {
+		["Krazybank - Mal'Ganis"] = {
 		},
 		["Krazyitó - Mal'Ganis"] = {
 		},
-		["Kråzyito - Mal'Ganis"] = {
+		["Krazyito - Illidan"] = {
 		},
 		["Krázyito - Mal'Ganis"] = {
 		},
@@ -38,9 +38,9 @@ HandyNotesDB = {
 		},
 		["Krazymonk - Sargeras"] = {
 		},
-		["Krazyito - Illidan"] = {
+		["Kråzyito - Mal'Ganis"] = {
 		},
-		["Krazybank - Mal'Ganis"] = {
+		["Krazyito - Mal'Ganis"] = {
 		},
 	},
 }
@@ -50,15 +50,15 @@ HandyNotes_HandyNotesDB = {
 		["Meatrisolyn - Proudmoore"] = "Meatrisolyn - Proudmoore",
 		["Krazyito - Area 52"] = "Krazyito - Area 52",
 		["Krâzyito - Mal'Ganis"] = "Krâzyito - Mal'Ganis",
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
 		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
-		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyito - Illidan"] = "Krazyito - Illidan",
 		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
 		["Krazyito - Stormrage"] = "Krazyito - Stormrage",
 		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
 		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
-		["Krazyito - Illidan"] = "Krazyito - Illidan",
-		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 	},
 	["profiles"] = {
 		["Krazyíto - Mal'Ganis"] = {
@@ -69,11 +69,11 @@ HandyNotes_HandyNotesDB = {
 		},
 		["Krâzyito - Mal'Ganis"] = {
 		},
-		["Krazyito - Mal'Ganis"] = {
+		["Krazybank - Mal'Ganis"] = {
 		},
 		["Krazyitó - Mal'Ganis"] = {
 		},
-		["Kråzyito - Mal'Ganis"] = {
+		["Krazyito - Illidan"] = {
 		},
 		["Krázyito - Mal'Ganis"] = {
 		},
@@ -83,9 +83,9 @@ HandyNotes_HandyNotesDB = {
 		},
 		["Krazymonk - Sargeras"] = {
 		},
-		["Krazyito - Illidan"] = {
+		["Kråzyito - Mal'Ganis"] = {
 		},
-		["Krazybank - Mal'Ganis"] = {
+		["Krazyito - Mal'Ganis"] = {
 		},
 	},
 }

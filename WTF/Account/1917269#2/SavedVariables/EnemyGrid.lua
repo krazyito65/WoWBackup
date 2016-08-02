@@ -1,8 +1,9 @@
 
 EnemyGridDB = {
 	["profileKeys"] = {
-		["Krazyito - Mal'Ganis"] = "Default",
+		["Krázyito - Mal'Ganis"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -30,16 +31,16 @@ EnemyGridDB = {
 						0.309803921568627, -- [3]
 						1, -- [4]
 					},
-					["nocombat"] = {
-						0.341176470588235, -- [1]
-						0.00392156862745098, -- [2]
-						0.0117647058823529, -- [3]
-						1, -- [4]
-					},
 					["noaggro"] = {
 						nil, -- [1]
 						nil, -- [2]
 						nil, -- [3]
+						1, -- [4]
+					},
+					["nocombat"] = {
+						0.341176470588235, -- [1]
+						0.00392156862745098, -- [2]
+						0.0117647058823529, -- [3]
 						1, -- [4]
 					},
 				},
@@ -66,7 +67,7 @@ EnemyGridDB = {
 				0.309803921568627, -- [3]
 				1, -- [4]
 			},
-			["name_text_size"] = 17,
+			["aura_height"] = 22,
 			["name_text_font"] = "PT Sans Narrow",
 			["bar_width"] = 180,
 			["aura_width"] = 26,
@@ -97,7 +98,7 @@ EnemyGridDB = {
 				nil, -- [3]
 				0.310000002384186, -- [4]
 			},
-			["cast_statusbar_texture"] = "PlaterTexture",
+			["show_title_text"] = false,
 			["percent_text_size"] = 16,
 			["name_text_stringsize"] = 102,
 			["dps"] = {
@@ -116,14 +117,14 @@ EnemyGridDB = {
 					},
 				},
 			},
-			["aura_height"] = 22,
+			["name_text_size"] = 17,
 			["bar_color"] = {
 				0.980392156862745, -- [1]
 				0, -- [2]
 				1, -- [3]
 			},
 			["first_run"] = true,
-			["show_title_text"] = false,
+			["cast_statusbar_texture"] = "PlaterTexture",
 			["vertical_gap_size"] = 0,
 			["frame_range_alpha"] = 0.33254075050354,
 			["cast_statusbar_color"] = {

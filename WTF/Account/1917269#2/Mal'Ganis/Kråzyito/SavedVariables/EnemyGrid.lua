@@ -48,16 +48,16 @@ EnemyGridDBChr = {
 			}, -- [3]
 		},
 	},
-	["spellRangeCheck"] = {
-		[269] = "Provoke",
-		[270] = "Provoke",
-		[268] = "Provoke",
-	},
-	["debuffsBanned"] = {
-	},
 	["specEnabled"] = {
 		[269] = true,
 		[270] = true,
 		[268] = true,
+	},
+	["debuffsBanned"] = {
+	},
+	["spellRangeCheck"] = {
+		[269] = "Provoke",
+		[270] = "Provoke",
+		[268] = "Provoke",
 	},
 }

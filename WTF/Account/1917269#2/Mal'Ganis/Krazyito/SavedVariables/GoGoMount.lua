@@ -220,19 +220,18 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Ulduar"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
 		["Shrine of Seven Stars"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 811,
+		},
+		[490] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		[928] = {
 			["Preferred"] = {
@@ -246,11 +245,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[989] = {
+		["Warspear Hold"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 1011,
 		},
 		[478] = {
 			["Preferred"] = {
@@ -271,11 +271,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 491,
 		},
-		[490] = {
+		["Ulduar"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[984] = {
 			["Preferred"] = {
@@ -327,12 +328,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Mana-Tombs"] = {
+		["Howling Fjord"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
+			["ZoneID"] = 491,
 		},
 		[810] = {
 			["Preferred"] = {
@@ -352,7 +353,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[896] = {
+		[768] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -389,7 +390,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[510] = {
+		[964] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -407,12 +408,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["The Slave Pens"] = {
+		[321] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[604] = {
 			["Preferred"] = {
@@ -420,7 +420,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[862] = {
+		[382] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -480,12 +480,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Bladespire Citadel"] = {
+		[733] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 941,
 		},
 		["Blighted Hollow"] = {
 			["Preferred"] = {
@@ -506,12 +505,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["The Storm Peaks"] = {
+		[606] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 495,
 		},
 		[987] = {
 			["Preferred"] = {
@@ -533,7 +531,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[976] = {
+		[820] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -545,7 +543,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[820] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -558,11 +556,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		[606] = {
+		["The Storm Peaks"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 495,
 		},
 		["Vale of Eternal Blossoms"] = {
 			["Preferred"] = {
@@ -571,11 +570,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 811,
 		},
-		[733] = {
+		["Bladespire Citadel"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 941,
 		},
 		[995] = {
 			["Preferred"] = {
@@ -583,7 +583,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[382] = {
+		[862] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -595,13 +595,14 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[321] = {
+		["The Slave Pens"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
-		[964] = {
+		[510] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -613,18 +614,18 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[768] = {
+		[896] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Howling Fjord"] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 491,
+			["ZoneID"] = 962,
 		},
 		["Sabermaw Den"] = {
 			["Preferred"] = {
@@ -646,16 +647,15 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Warspear Hold"] = {
+		[989] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1011,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -820,7 +820,7 @@ GoGo_Prefs = {
 		61447, -- [5]
 		75973, -- [6]
 	},
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 }
 GoGo_DebugLog = {
 }

@@ -104,4 +104,5 @@ BBCCHISTORY = {
 	"[03:29:09][CHANNEL][Klysm]: anal  |cff71d5ff|Hspell:2825:0|h[Bloodlust]|h|r", -- [48]
 	"[03:29:50][CHANNEL][Malkus]: anal  |cff71d5ff|Hspell:5308:0|h[Execute]|h|r", -- [49]
 	"[05:33:30][CHANNEL][Makaveli]: you mean the ones that rape and kill? i agree. they keep things interesting", -- [50]
+	"[06:06:19][CHANNEL][Gøät]: noodle dragon. sounds like an analogy for a penis.", -- [51]
 }

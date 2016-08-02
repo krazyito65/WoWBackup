@@ -60,18 +60,18 @@ EnemyGridDBChr = {
 			}, -- [2]
 		},
 	},
-	["spellRangeCheck"] = {
-		[103] = "Growl",
-		[104] = "Growl",
-		[102] = "Moonfire",
-		[105] = "Moonfire",
-	},
-	["debuffsBanned"] = {
-	},
 	["specEnabled"] = {
 		[103] = true,
 		[104] = true,
 		[102] = true,
 		[105] = false,
+	},
+	["debuffsBanned"] = {
+	},
+	["spellRangeCheck"] = {
+		[103] = "Growl",
+		[104] = "Growl",
+		[102] = "Moonfire",
+		[105] = "Moonfire",
 	},
 }

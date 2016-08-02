@@ -1,9 +1,5 @@
 
 RCLootCouncilDB = {
-	["profileKeys"] = {
-		["Krazyito - Mal'Ganis"] = "Default",
-		["Kråzyito - Mal'Ganis"] = "Default",
-	},
 	["global"] = {
 		["log"] = {
 			"07/30/16", -- [1]
@@ -406,6 +402,53 @@ RCLootCouncilDB = {
 			"23:40:47 - Event: (PARTY_LOOT_METHOD_CHANGED)", -- [398]
 			"23:40:47 - GetML()", -- [399]
 			"23:40:47 - LootMethod =  (personalloot)", -- [400]
+			"08/02/16", -- [401]
+			"18:01:02 - Logged In", -- [402]
+			"18:01:02 - ML initialized!", -- [403]
+			"18:01:18 - Krazyito-Mal'Ganis (2.0.0) (nil)", -- [404]
+			"18:01:25 - Event: (PLAYER_ENTERING_WORLD)", -- [405]
+			"18:01:25 - GetML()", -- [406]
+			"18:01:25 - LootMethod =  (personalloot)", -- [407]
+			"18:01:28 - GetPlayersGuildRank()", -- [408]
+			"18:01:28 - Found Guild Rank: Officer ALT", -- [409]
+			"18:01:28 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Krazyito) (distri:) (GUILD)", -- [410]
+			"18:01:28 - Comm received: (^1^SverTestReply^T^N1^SJinarvo-Mal'Ganis^N2^SWARRIOR^N3^SRaider^N4^S2.0.0^t^^) (from:) (Jinarvo) (distri:) (WHISPER)", -- [411]
+			"18:01:29 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [412]
+			"18:01:29 - Comm received: (^1^SverTestReply^T^N1^SBigfatkookie-Mal'Ganis^N2^SSHAMAN^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [413]
+			"18:01:29 - Comm received: (^1^SverTestReply^T^N1^SLavapunchies-Mal'Ganis^N2^SSHAMAN^N3^STrial^N4^S2.0.0^t^^) (from:) (Lavapunchies) (distri:) (WHISPER)", -- [414]
+			"18:01:29 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SReaperone-Mal'Ganis^N4^SDEATHKNIGHT^N5^SALT^N6^S1.7.8^t^^) (from:) (Reaperone) (distri:) (GUILD)", -- [415]
+			"18:01:29 - Comm received: (^1^SverTestReply^T^N1^SReaperone-Mal'Ganis^N2^SDEATHKNIGHT^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [416]
+			"18:01:29 - Comm received: (^1^SverTestReply^T^N1^SLoadingbar-Mal'Ganis^N2^SROGUE^N3^SALT^N4^S2.0.0^t^^) (from:) (Loadingbar) (distri:) (WHISPER)", -- [417]
+			"18:01:29 - Comm received: (^1^Sxrealm^T^N1^SKrazyito^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [418]
+			"18:01:29 - Comm received: (^1^SverTestReply^T^N1^SCenarìus-Mal'Ganis^N2^SDRUID^N3^SOfficer~`ALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [419]
+			"08/02/16", -- [420]
+			"18:01:53 - Logged In", -- [421]
+			"18:01:53 - ML initialized!", -- [422]
+			"18:02:01 - Kråzyito-Mal'Ganis (2.0.0) (nil)", -- [423]
+			"18:02:06 - Event: (PLAYER_ENTERING_WORLD)", -- [424]
+			"18:02:06 - GetML()", -- [425]
+			"18:02:06 - LootMethod =  (personalloot)", -- [426]
+			"18:02:09 - GetPlayersGuildRank()", -- [427]
+			"18:02:09 - Found Guild Rank: ALT", -- [428]
+			"18:02:09 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Kråzyito) (distri:) (GUILD)", -- [429]
+			"18:02:09 - Comm received: (^1^SverTestReply^T^N1^SLavapunchies-Mal'Ganis^N2^SSHAMAN^N3^STrial^N4^S2.0.0^t^^) (from:) (Lavapunchies) (distri:) (WHISPER)", -- [430]
+			"18:02:09 - Comm received: (^1^Sxrealm^T^N1^SKråzyito^N2^SverTestReply^N3^SReaperone-Mal'Ganis^N4^SDEATHKNIGHT^N5^SALT^N6^S1.7.8^t^^) (from:) (Reaperone) (distri:) (GUILD)", -- [431]
+			"18:02:09 - Comm received: (^1^SverTestReply^T^N1^SReaperone-Mal'Ganis^N2^SDEATHKNIGHT^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [432]
+			"18:02:09 - Comm received: (^1^Sxrealm^T^N1^SKråzyito^N2^SverTestReply^N3^SBigfatkookie-Mal'Ganis^N4^SSHAMAN^N5^SALT^N6^S1.7.8^t^^) (from:) (Bigfatkookie) (distri:) (GUILD)", -- [433]
+			"18:02:09 - Comm received: (^1^SverTestReply^T^N1^SBigfatkookie-Mal'Ganis^N2^SSHAMAN^N3^SALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [434]
+			"18:02:09 - Comm received: (^1^Sxrealm^T^N1^SKråzyito^N2^SverTestReply^N3^SCenarìus-Mal'Ganis^N4^SDRUID^N5^SOfficer~`ALT^N6^S1.7.8^t^^) (from:) (Cenarìus) (distri:) (GUILD)", -- [435]
+			"18:02:09 - Comm received: (^1^SverTestReply^T^N1^SCenarìus-Mal'Ganis^N2^SDRUID^N3^SOfficer~`ALT^N4^S1.7.8^t^^) (from:) (nil) (distri:) (WHISPER)", -- [436]
+			"18:02:09 - Comm received: (^1^SverTestReply^T^N1^SJinarvo-Mal'Ganis^N2^SWARRIOR^N3^SRaider^N4^S2.0.0^t^^) (from:) (Jinarvo) (distri:) (WHISPER)", -- [437]
+			"08/02/16", -- [438]
+			"18:03:03 - Logged In", -- [439]
+			"18:03:03 - ML initialized!", -- [440]
+			"18:03:10 - Krázyito-Mal'Ganis (2.0.0) (nil)", -- [441]
+			"18:03:21 - Event: (PLAYER_ENTERING_WORLD)", -- [442]
+			"18:03:21 - GetML()", -- [443]
+			"18:03:21 - LootMethod =  (personalloot)", -- [444]
+			"18:03:22 - GetPlayersGuildRank()", -- [445]
+			"18:03:22 - Found Guild Rank: The Old Guard", -- [446]
+			"18:03:22 - Comm received: (^1^SverTest^T^N1^S2.0.0^t^^) (from:) (Krázyito) (distri:) (GUILD)", -- [447]
 		},
 		["version"] = "2.0.0",
 		["localizedSubTypes"] = {
@@ -418,19 +461,24 @@ RCLootCouncilDB = {
 			["Warglaives"] = "Warglaives",
 			["Shields"] = "Shields",
 			["Polearms"] = "Polearms",
-			["created"] = true,
 			["Bows"] = "Bows",
+			["Daggers"] = "Daggers",
 			["Two-Handed Swords"] = "Two-Handed Swords",
 			["One-Handed Axes"] = "One-Handed Axes",
 			["Leather"] = "Leather",
-			["Mail"] = "Mail",
+			["Cloth"] = "Cloth",
 			["Guns"] = "Guns",
 			["Fist Weapons"] = "Fist Weapons",
-			["Cloth"] = "Cloth",
+			["Mail"] = "Mail",
 			["Wands"] = "Wands",
-			["Daggers"] = "Daggers",
+			["created"] = true,
 			["Two-Handed Axes"] = "Two-Handed Axes",
 		},
+	},
+	["profileKeys"] = {
+		["Krázyito - Mal'Ganis"] = "Default",
+		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -439,7 +487,8 @@ RCLootCouncilDB = {
 }
 RCLootCouncilLootDB = {
 	["profileKeys"] = {
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
 		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 	},
 }

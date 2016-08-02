@@ -16,12 +16,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[930] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[989] = {
 			["Preferred"] = {
 			},
@@ -34,12 +28,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[976] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Trading Post"] = {
 			["Preferred"] = {
 			},
@@ -47,13 +35,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 976,
 		},
-		[945] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[806] = {
+		[930] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -65,7 +53,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[995] = {
+		[945] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -89,7 +77,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[964] = {
+		[995] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -113,14 +101,25 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Ashenvale"] = {
+		[941] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 43,
+		},
+		[964] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		[321] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[806] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -133,11 +132,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 606,
 		},
-		[994] = {
+		["Azshara"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 181,
 		},
 		["Durotar"] = {
 			["Preferred"] = {
@@ -146,30 +146,30 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 4,
 		},
-		[809] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[949] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Azshara"] = {
+		[809] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 181,
 		},
-		[29] = {
+		[994] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+		},
+		["Ashenvale"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 43,
 		},
 		[1105] = {
 			["Preferred"] = {
@@ -177,7 +177,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[941] = {
+		[29] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -192,7 +192,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -361,7 +361,7 @@ GoGo_Prefs = {
 		93326, -- [6]
 		75973, -- [7]
 	},
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 }
 GoGo_DebugLog = {
 }
