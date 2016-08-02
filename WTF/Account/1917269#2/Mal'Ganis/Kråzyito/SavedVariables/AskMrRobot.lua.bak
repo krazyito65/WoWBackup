@@ -1,0 +1,70 @@
+
+AmrDb = {
+	["Talents"] = {
+	},
+	["LastCharacterImportDate"] = "",
+	["SendSettings"] = {
+		["SendTo"] = "",
+		["SendGems"] = true,
+		["SendEnchants"] = true,
+		["SendEnchantMaterials"] = true,
+		["SendToType"] = "a friend",
+	},
+	["CharacterName"] = "Kråzyito",
+	["Race"] = "BloodElf",
+	["ActiveSpec"] = 1,
+	["Level"] = 100,
+	["Equipped"] = {
+		{
+			"|cff0070dd|Hitem:109975:0:0:0:0:0:0:0:100:0:2:1:524|h[Hood of Burning Focus]|h|r", -- [1]
+			"|cff0070dd|Hitem:109966:0:5342:0:0:0:0:0:100:0:2:3:499:523:524|h[Reinforced Bloodsteel Gorget]|h|r", -- [2]
+			"|cff0070dd|Hitem:109935:0:0:0:0:0:0:0:100:0:2:1:524|h[Bloodfeather Spaulders]|h|r", -- [3]
+			nil, -- [4]
+			"|cff0070dd|Hitem:114682:0:0:0:0:0:0:0:100:0:11:0|h[Beastrider Vest]|h|r", -- [5]
+			"|cff0070dd|Hitem:109830:0:0:0:0:0:0:0:100:0:2:1:524|h[Bloodfeather Girdle]|h|r", -- [6]
+			"|cff0070dd|Hitem:109811:0:0:0:0:0:0:0:100:0:2:1:524|h[Crystalbinder Legwraps]|h|r", -- [7]
+			"|cff0070dd|Hitem:109789:0:5342:0:0:0:0:0:100:0:2:2:523:524|h[Crystalbinder Sandals]|h|r", -- [8]
+			"|cff0070dd|Hitem:109871:0:0:0:0:0:0:0:100:0:2:1:524|h[Leafmender Wraps]|h|r", -- [9]
+			"|cff0070dd|Hitem:109849:0:0:0:0:0:0:0:100:0:2:2:499:524|h[Bloodfeather Grips]|h|r", -- [10]
+			"|cff0070dd|Hitem:109779:0:0:0:0:0:0:0:100:0:1:1:522|h[Ancient Draenic Loop]|h|r", -- [11]
+			"|cffa335ee|Hitem:118293:5299:0:0:0:0:0:0:100:0:11:0|h[Solium Band of Endurance]|h|r", -- [12]
+			"|cff0070dd|Hitem:118246:0:0:0:0:0:0:0:100:0:0:0|h[Call of the Wolfmother]|h|r", -- [13]
+			"|cff0070dd|Hitem:118199:0:0:0:0:0:0:0:100:0:0:0|h[Poison Cask]|h|r", -- [14]
+			"|cff0070dd|Hitem:109904:0:0:0:0:0:0:0:100:0:1:1:522|h[Cloak of Cascading Blades]|h|r", -- [15]
+			"|cffe6cc80|Hitem:105673:4444:4650:4650:0:0:0:1447867648:100:0:0:0|h[Hellscream's Pig Sticker]|h|r", -- [16]
+		}, -- [1]
+	},
+	["Specs"] = {
+	},
+	["Options"] = {
+	},
+	["Region"] = "US",
+	["Currencies"] = {
+	},
+	["Glyphs"] = {
+	},
+	["LogData"] = {
+		["_wipes"] = {
+		},
+		["_autoLog"] = {
+			[1228] = "disabled",
+			[1205] = "disabled",
+		},
+		["_lastDiff"] = 1,
+		["_lastZone"] = "FW Horde Garrison Level 3",
+	},
+	["BagItems"] = {
+	},
+	["BankItems"] = {
+	},
+	["LastCharacterImport"] = "",
+	["Reps"] = {
+	},
+	["Faction"] = "Horde",
+	["IconInfo"] = {
+	},
+	["Professions"] = {
+	},
+	["RealmName"] = "Mal'Ganis",
+	["Class"] = "MONK",
+}

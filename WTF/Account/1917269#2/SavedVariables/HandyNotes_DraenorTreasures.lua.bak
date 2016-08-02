@@ -1,0 +1,27 @@
+
+DraenorTreasuresDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["GorgrondRares"] = false,
+			["SMVRares"] = false,
+			["GorgrondLumber"] = false,
+			["SoAArchaeology"] = false,
+			["TaladorRares"] = false,
+			["SMVHundred"] = false,
+			["SoARares"] = false,
+			["GorgrondHundred"] = false,
+			["GorgrondBoulder"] = false,
+			["NagrandSWP"] = false,
+			["TaladorHundred"] = false,
+			["NagrandHundred"] = false,
+			["SoAHundred"] = false,
+			["FFRHundred"] = false,
+			["FFRRares"] = false,
+			["NagrandRares"] = false,
+			["FFRBF"] = true,
+		},
+	},
+}

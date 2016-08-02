@@ -1,0 +1,219 @@
+
+Cryolysis3DB = {
+	["profileKeys"] = {
+		["Theawàkening - Bonechewer"] = "char",
+	},
+	["char"] = {
+		["Theawàkening - Bonechewer"] = {
+			["scale"] = {
+				["button"] = {
+					["EvocationButton"] = 1,
+					["MountButton"] = 1,
+					["CustomButton2"] = 1,
+					["CustomButton3"] = 1,
+					["GemButton"] = 1,
+					["CustomButton1"] = 1,
+					["WaterButton"] = 1,
+					["PortalButton"] = 1,
+					["BuffButton"] = 1,
+					["FoodButton"] = 1,
+				},
+				["frame"] = {
+					["Sphere"] = 1,
+				},
+			},
+			["chosenMount"] = {
+				["normal"] = "Yellow Qiraji Battle Tank",
+			},
+			["RestockQuantity"] = {
+				["Arcane Powder"] = 20,
+				["Rune of Portals"] = 10,
+				["Rune of Teleportation"] = 10,
+			},
+			["positions"] = {
+				["button"] = {
+					["EvocationButton"] = {
+						["y"] = 173.202748617541,
+						["x"] = 637.6762322752187,
+					},
+					["MountButton"] = {
+						["y"] = 128.9286099985397,
+						["x"] = 576.7380734232451,
+					},
+					["CustomButton2"] = {
+						["y"] = 173.202748617541,
+						["x"] = 591.1236488020251,
+					},
+					["CustomButton3"] = {
+						["y"] = 180.7656778254016,
+						["x"] = 614.399940538622,
+					},
+					["GemButton"] = {
+						["y"] = 109.1286055887985,
+						["x"] = 637.6762322752187,
+					},
+					["CustomButton1"] = {
+						["y"] = 153.4027523050505,
+						["x"] = 576.7380734232451,
+					},
+					["WaterButton"] = {
+						["y"] = 128.9286099985397,
+						["x"] = 652.0618076539987,
+					},
+					["PortalButton"] = {
+						["y"] = 109.1286055887985,
+						["x"] = 591.1236488020251,
+					},
+					["BuffButton"] = {
+						["y"] = 101.5656925754391,
+						["x"] = 614.399940538622,
+					},
+					["FoodButton"] = {
+						["y"] = 153.4027523050505,
+						["x"] = 652.0618076539987,
+					},
+				},
+				["frame"] = {
+					["Sphere"] = {
+						["y"] = 141.1656852004204,
+						["x"] = 614.399940538622,
+					},
+				},
+			},
+			["buttonTypes"] = {
+				["PortalButtonIronforge"] = "spell",
+				["BuffButtonMagic"] = "spell",
+				["PortalButtonDalaran"] = "spell",
+				["PortalButtonTheExodar"] = "spell",
+				["BuffButtonIntellect"] = "spell",
+				["EvocationButton"] = "spell",
+				["MountButton"] = "macrotext",
+				["PortalButtonTheramore"] = "spell",
+				["PortalButtonShattrathCity"] = "spell",
+				["BuffButtonWards"] = "spell",
+				["PortalButtonStormwind"] = "spell",
+				["GemButton"] = "macrotext",
+				["BuffButtonCurse"] = "spell",
+				["BuffButtonSlowFall"] = "spell",
+				["BuffButtonArmor"] = "spell",
+				["PortalButtonDarnassus"] = "spell",
+				["WaterButton"] = "macrotext",
+				["BuffButtonShields"] = "spell",
+				["FoodButton"] = "macrotext",
+			},
+			["menuButtonGrowth"] = {
+				["BuffButton"] = 2,
+				["PortalButton"] = 2,
+			},
+			["buttons"] = {
+				"MountButton", -- [1]
+				"CustomButton1", -- [2]
+				"CustomButton2", -- [3]
+				"CustomButton3", -- [4]
+				"EvocationButton", -- [5]
+				"FoodButton", -- [6]
+				"WaterButton", -- [7]
+				"GemButton", -- [8]
+				"BuffButton", -- [9]
+				"PortalButton", -- [10]
+			},
+			["buttonFunctions"] = {
+				["PortalButtonIronforge"] = {
+					["left"] = 3562,
+					["right"] = 11416,
+				},
+				["BuffButtonMagic"] = {
+					["left"] = 604,
+					["right"] = 1008,
+				},
+				["PortalButtonDalaran"] = {
+					["left"] = 53140,
+				},
+				["PortalButtonTheExodar"] = {
+					["left"] = 32271,
+					["right"] = 32266,
+				},
+				["BuffButtonIntellect"] = {
+					["left"] = 1459,
+					["right"] = 23028,
+				},
+				["EvocationButton"] = {
+					["left"] = 12051,
+				},
+				["MountButton"] = {
+					["right"] = "/cast [button:1] Yellow Qiraji Battle Tank; Hearthstone",
+					["left"] = "/cast [button:1] Yellow Qiraji Battle Tank; Hearthstone",
+					["middle"] = "/cast Hearthstone",
+				},
+				["PortalButtonTheramore"] = {
+					["left"] = 49359,
+					["right"] = 49360,
+				},
+				["PortalButtonShattrathCity"] = {
+					["left"] = 33690,
+					["right"] = 33691,
+				},
+				["BuffButtonWards"] = {
+					["left"] = 543,
+					["right"] = 6143,
+				},
+				["PortalButtonStormwind"] = {
+					["left"] = 3561,
+					["right"] = 10059,
+				},
+				["GemButton"] = {
+					["left"] = "/use Mana Emerald",
+					["right"] = "/cast Conjure Mana Gem",
+				},
+				["BuffButtonCurse"] = {
+					["left"] = 475,
+				},
+				["BuffButtonSlowFall"] = {
+					["left"] = 130,
+				},
+				["BuffButtonArmor"] = {
+					["right"] = 6117,
+					["left"] = 7302,
+					["middle"] = 30482,
+				},
+				["PortalButtonDarnassus"] = {
+					["left"] = 3565,
+					["right"] = 11419,
+				},
+				["WaterButton"] = {
+					["right"] = "/cast Conjure Water",
+					["left"] = "/use Conjured Glacier Water",
+					["middle"] = "/cast Ritual of Refreshment",
+				},
+				["BuffButtonShields"] = {
+					["left"] = 1463,
+				},
+				["FoodButton"] = {
+					["right"] = "/cast Conjure Food",
+					["left"] = "/use Conjured Croissant",
+					["middle"] = "/cast Ritual of Refreshment",
+				},
+			},
+			["menuButtons"] = {
+				["BuffButton"] = {
+					"BuffButtonArmor", -- [1]
+					"BuffButtonIntellect", -- [2]
+					"BuffButtonMagic", -- [3]
+					"BuffButtonShields", -- [4]
+					"BuffButtonWards", -- [5]
+					"BuffButtonCurse", -- [6]
+					"BuffButtonSlowFall", -- [7]
+				},
+				["PortalButton"] = {
+					"PortalButtonIronforge", -- [1]
+					"PortalButtonStormwind", -- [2]
+					"PortalButtonDarnassus", -- [3]
+					"PortalButtonTheExodar", -- [4]
+					"PortalButtonTheramore", -- [5]
+					"PortalButtonShattrathCity", -- [6]
+					"PortalButtonDalaran", -- [7]
+				},
+			},
+		},
+	},
+}

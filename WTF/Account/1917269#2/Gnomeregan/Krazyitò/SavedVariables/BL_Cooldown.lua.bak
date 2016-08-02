@@ -1,0 +1,50 @@
+
+BLCDrosterReload = {
+	["0x04800000074550DB"] = {
+		["talents"] = {
+			[145108] = {
+				["idx"] = 4,
+				["name_localized"] = "Ysera's Gift",
+				["tier"] = 2,
+				["spell_id"] = 145108,
+				["icon"] = "Interface\\Icons\\INV_Misc_Head_Dragon_Green",
+				["column"] = 1,
+			},
+			[102793] = {
+				["idx"] = 14,
+				["name_localized"] = "Ursol's Vortex",
+				["tier"] = 5,
+				["spell_id"] = 102793,
+				["icon"] = "Interface\\Icons\\spell_druid_ursolsvortex",
+				["column"] = 2,
+			},
+			[131768] = {
+				["idx"] = 1,
+				["name_localized"] = "Feline Swiftness",
+				["tier"] = 1,
+				["spell_id"] = 131768,
+				["icon"] = "Interface\\Icons\\spell_druid_tirelesspursuit",
+				["column"] = 1,
+			},
+			[132469] = {
+				["idx"] = 9,
+				["name_localized"] = "Typhoon",
+				["tier"] = 3,
+				["spell_id"] = 132469,
+				["icon"] = "Interface\\Icons\\Ability_Druid_Typhoon",
+				["column"] = 3,
+			},
+			[106731] = {
+				["idx"] = 11,
+				["name_localized"] = "Incarnation",
+				["tier"] = 4,
+				["spell_id"] = 106731,
+				["icon"] = "Interface\\Icons\\spell_druid_incarnation",
+				["column"] = 2,
+			},
+		},
+		["class"] = "DRUID",
+		["name"] = "Krazyitò",
+		["spec"] = 105,
+	},
+}

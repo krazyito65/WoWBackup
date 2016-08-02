@@ -1,0 +1,9 @@
+
+DeathGraphsDBDeaths = {
+}
+DeathGraphsDBEndurance = {
+}
+DeathGraphsDBCurrent = {
+}
+DeathGraphsDBGraph = {
+}

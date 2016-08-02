@@ -1,0 +1,60 @@
+
+EPGPLootMaster = {
+	["profileKeys"] = {
+		["Kråzyito - Gnomeregan"] = "Kråzyito - Gnomeregan",
+		["Krazyitó - Lightbringer"] = "Krazyitó - Lightbringer",
+		["Krazÿito - Gnomeregan"] = "Krazÿito - Gnomeregan",
+		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
+		["Krazyito - Hellscream"] = "Krazyito - Hellscream",
+		["Krazyito - Firetree"] = "Krazyito - Firetree",
+		["Krazyîto - Gnomeregan"] = "Krazyîto - Gnomeregan",
+		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
+		["Kazyîto - Gnomeregan"] = "Kazyîto - Gnomeregan",
+		["Krázyito - Skywall"] = "Krázyito - Skywall",
+		["Krázýító - Gnomeregan"] = "Krázýító - Gnomeregan",
+		["Krazýito - Gnomeregan"] = "Krazýito - Gnomeregan",
+		["Krazyitð - Blackrock"] = "Krazyitð - Blackrock",
+		["Krãzyito - Gnomeregan"] = "Krãzyito - Gnomeregan",
+		["Krazyitø - Gnomeregan"] = "Krazyitø - Gnomeregan",
+		["Krazypvp - Gnomeregan"] = "Krazypvp - Gnomeregan",
+		["Krazyito - Antonidas"] = "Krazyito - Antonidas",
+		["Fãlor - Gnomeregan"] = "Fãlor - Gnomeregan",
+		["Krazyito - Black Dragonflight"] = "Krazyito - Black Dragonflight",
+		["Irt - Antonidas"] = "Irt - Antonidas",
+		["Kázyito - Skywall"] = "Kázyito - Skywall",
+		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
+	},
+	["profiles"] = {
+		["Kazyîto - Gnomeregan"] = {
+		},
+		["Krazÿito - Gnomeregan"] = {
+		},
+		["Krazýito - Gnomeregan"] = {
+		},
+		["Krãzyito - Gnomeregan"] = {
+		},
+		["Krazyitó - Gnomeregan"] = {
+		},
+		["Krázýító - Gnomeregan"] = {
+		},
+		["Krazyito - Gnomeregan"] = {
+			["mainUIScale"] = 1.066666666666667,
+			["allowCandidateNotes"] = false,
+			["monitorSendAssistantOnly"] = false,
+			["voting"] = false,
+			["bidding"] = false,
+			["filterEPGPLootmasterMessages"] = false,
+			["monitorSend"] = false,
+		},
+		["Krazypvp - Gnomeregan"] = {
+		},
+		["Krazyitø - Gnomeregan"] = {
+		},
+		["Krazyito - Black Dragonflight"] = {
+		},
+		["Fãlor - Gnomeregan"] = {
+		},
+		["Krazyíto - Gnomeregan"] = {
+		},
+	},
+}

@@ -1,0 +1,22 @@
+## Title: kLib
+## Version: 0.8.393
+## Author: Kulldam
+## Notes: A selection of helper modules for k-series addons.
+## Interface: 62000
+## SavedVariables: kLibDB
+## LoadOnDemand: 0
+## X-Curse-Packaged-Version: r20150628221934
+## X-Curse-Project-Name: kLib-1.0
+## X-Curse-Project-ID: klib-1-0
+## X-Curse-Repository-ID: wow/klib-1-0/mainline
+
+LibStub.lua
+kLibColor-1.0\kLibColor-1.0.xml
+kLibComm-1.0\kLibComm-1.0.xml
+kLibItem-1.0\kLibItem-1.0.xml
+kLibOptions-1.0\kLibOptions-1.0.xml
+kLibTimer-1.0\kLibTimer-1.0.xml
+kLibUtility-1.0\kLibUtility-1.0.xml
+kLibView-1.0\kLibView-1.0.xml
+
+kLib-1.0.lua

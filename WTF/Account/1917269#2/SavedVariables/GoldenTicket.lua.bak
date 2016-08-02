@@ -1,0 +1,5 @@
+
+GoldenTicketDB = {
+	["minimapIcon"] = {
+	},
+}

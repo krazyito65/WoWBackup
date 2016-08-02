@@ -1,0 +1,10 @@
+
+TradeSkillMaster_AuctionDBDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

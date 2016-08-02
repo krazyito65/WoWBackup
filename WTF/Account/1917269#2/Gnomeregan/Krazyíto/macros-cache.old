@@ -1,0 +1,69 @@
+VER 3 0100000000000005 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Flash Heal
+END
+VER 3 0100000000000003 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Chakra: Sanctuary; [mod:shift] Chakra: Chastise; Chakra: Serenity
+END
+VER 3 0100000000000008 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [mod:ctrl] Power infusion; [nochanneling] Mind Flay
+END
+VER 3 0100000000000006 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl, @mouseover, spec:2] Pain Suppression; [mod:ctrl, @mouseover, spec:1] Guardian Spirit; [@mouseover] Heal
+END
+VER 3 0100000000000004 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl, @mouseover] Power Infusion; [@mouseover] Penance
+END
+VER 3 0100000000000009 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] 13; [@mouseover] Void Shift
+END
+VER 3 010000000000000A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover, talent:6/1] Cascade; [talent:6/2] Divine Star; [talent6:3] Halo
+END
+VER 3 010000000000001A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [flyable] Pureblood Fire Hawk; Grand Expedition Yak
+/dismount [mounted]
+END
+VER 3 0100000000000019 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Circle of Healing
+END
+VER 3 0100000000000016 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover,help,nodead][] Holy Word: Chastise
+END
+VER 3 0100000000000017 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl, @mouseover] Power Infusion; [@mouseover] binding heal
+END
+VER 3 010000000000001D " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Power word: Shield
+END
+VER 3 010000000000001E " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] clarity of will
+END
+VER 3 010000000000001C "  " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Dispersion
+/cast Dispersion
+END
+VER 3 010000000000000B "lev" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Levitate
+/cast [@mouseover] Levitate
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+R[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1IH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

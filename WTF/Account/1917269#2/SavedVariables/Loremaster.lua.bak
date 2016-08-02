@@ -1,0 +1,15 @@
+
+LoremasterVars = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "profile",
+	},
+	["profiles"] = {
+		["profile"] = {
+			["hideach"] = true,
+			["scale"] = 1,
+			["y"] = 348.265563964844,
+			["x"] = 1500.51306152344,
+			["version"] = "005",
+		},
+	},
+}

@@ -1,0 +1,64 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+	 <Script file="LFG_SilenceOptions.lua"/>
+  <!-- Options panel -->
+  <Frame name="LFG_Silence_InterfaceOptions" hidden="false">
+    <Layers>
+      <Layer level="ARTWORK">
+        <FontString name="$parentTitle" text="LFG_SilencePublic" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+          <Anchors>
+            <Anchor point="TOPLEFT">
+              <Offset>
+                <AbsDimension x="16" y="-16" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentAuthor" text="Jerbal-Cho'gall" inherits="SystemFont_Tiny" justifyH="LEFT" justifyV="TOP">
+          <Anchors>
+            <Anchor point="TOPRIGHT" RelativePoint="BOTTOMRIGHT">
+              <Offset>
+                <AbsDimension x="-10" y="15" />
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+      <CheckButton name="$parentPlaySound" inherits="InterfaceOptionsBaseCheckButtonTemplate">
+        <Anchors>
+          <Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT">
+            <Offset>
+              <AbsDimension x="5" y="-30" />
+            </Offset>
+          </Anchor>
+        </Anchors>
+        <Layers>
+          <Layer level="ARTWORK">
+            <FontString name="LFG_Silence_InterfaceOptionsPlaySound_Text" text="LFG_SilencePublic" inherits="GameFontHighlight">
+              <Anchors>
+                <Anchor point="LEFT" relativePoint="RIGHT">
+                  <Offset>
+                    <AbsDimension x="0" y="1" />
+                  </Offset>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </CheckButton>
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        self.name = LFG_SilencePublic.TOC["Title"];
+	self.default = LFG_SilencePublic.DefaultSettings;
+	self.refresh = LFG_SilencePublic.OptionsRefresh;
+	self.okay = LFG_SilencePublic.OptionsOkay;
+	LFG_Silence_InterfaceOptionsTitle:SetText(LFG_SilencePublic.TOC["Title"])
+	LFG_Silence_InterfaceOptionsPlaySound_Text:SetText(LFG_SilencePublic.L["Mute"])
+      </OnLoad>
+    </Scripts>
+  </Frame>
+
+</Ui>

@@ -1,0 +1,140 @@
+
+DataStore_TalentsDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["Talents2"] = 8736931912,
+				["Talents1"] = 8736768072,
+				["Glyphs"] = {
+					8758713965, -- [1]
+					8515424275, -- [2]
+					8633927445, -- [3]
+					8407397651, -- [4]
+					8744033837, -- [5]
+					8643363371, -- [6]
+					5, -- [7]
+					3, -- [8]
+					1048581, -- [9]
+					1048579, -- [10]
+					2097157, -- [11]
+					2097155, -- [12]
+				},
+				["Class"] = "MONK",
+				["lastUpdate"] = 1403962656,
+				["GlyphList"] = {
+					11, -- [1]
+					16250, -- [2]
+					16266, -- [3]
+					16506, -- [4]
+					16042, -- [5]
+					16490, -- [6]
+					16410, -- [7]
+					15978, -- [8]
+					16314, -- [9]
+					16522, -- [10]
+					16650, -- [11]
+					16218, -- [12]
+					16202, -- [13]
+					16026, -- [14]
+					16234, -- [15]
+					15994, -- [16]
+					16594, -- [17]
+					16562, -- [18]
+					16338, -- [19]
+					16418, -- [20]
+					15954, -- [21]
+					16578, -- [22]
+					16546, -- [23]
+					16610, -- [24]
+					16178, -- [25]
+					13, -- [26]
+					16476, -- [27]
+					16716, -- [28]
+					16684, -- [29]
+					16884, -- [30]
+					16724, -- [31]
+					16660, -- [32]
+					16276, -- [33]
+					16628, -- [34]
+					16532, -- [35]
+					16452, -- [36]
+					16292, -- [37]
+				},
+				["ActiveTalents"] = 1,
+			},
+		},
+		["Reference"] = {
+			["GlyphNames"] = {
+				[1013] = "Renewing Mist",
+				[1015] = "Breath of Fire",
+				[1017] = "Flying Serpent Kick",
+				[1019] = "Mana Tea",
+				[1021] = "Leer of the Ox",
+				[1026] = "Life Cocoon",
+				[1030] = "Fortifying Brew",
+				[1034] = "Targeted Expulsion",
+				[1038] = "Touch of Karma",
+				[1042] = "Zen Flight",
+				[1031] = "Detox",
+				[998] = "Guard",
+				[1039] = "Honor",
+				[1002] = "Enduring Healing Sphere",
+				[1055] = "Blackout Kick",
+				[1012] = "Spinning Crane Kick",
+				[1014] = "Touch of Death",
+				[1016] = "Clash",
+				[1018] = "Spinning Fire Blossom",
+				[1028] = "Rising Tiger Kick",
+				[1032] = "Nimble Brew",
+				[1036] = "Sparring",
+				[1040] = "Paralysis",
+				[1044] = "Water Roll",
+				[1025] = "Fortuitous Spheres",
+				[1029] = "Spirit Roll",
+				[997] = "Rapid Rolling",
+				[1037] = "Afterlife",
+				[1041] = "Fighting Pose",
+				[1045] = "Crackling Tiger Lightning",
+				[1033] = "Jab",
+				[1035] = "Fists of Fury",
+				[1001] = "Surging Mist",
+				[1011] = "Transcendence",
+				[999] = "Zen Meditation",
+			},
+		},
+	},
+}
+DataStore_TalentsRefDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["MONK"] = {
+			["Locale"] = "enUS",
+			["Version"] = 18414,
+			["Talents"] = {
+				"19302|Celerity|ability_monk_quipunch|1|1", -- [1]
+				"19818|Tiger's Lust|ability_monk_tigerslust|1|2", -- [2]
+				"19304|Momentum|ability_monk_standingkick|1|3", -- [3]
+				"20185|Chi Wave|ability_monk_chiwave|2|1", -- [4]
+				"19820|Zen Sphere|ability_monk_forcesphere|2|2", -- [5]
+				"19823|Chi Burst|Spell_Arcane_ArcaneTorrent|2|3", -- [6]
+				"19992|Power Strikes|ability_monk_powerstrikes|3|1", -- [7]
+				"19771|Ascension|ability_monk_ascension|3|2", -- [8]
+				"19772|Chi Brew|ability_monk_chibrew|3|3", -- [9]
+				"19993|Ring of Peace|spell_monk_ringofpeace|4|1", -- [10]
+				"19994|Charging Ox Wave|ability_monk_chargingoxwave|4|2", -- [11]
+				"19995|Leg Sweep|ability_monk_legsweep|4|3", -- [12]
+				"20174|Healing Elixirs|ability_monk_jasmineforcetea|5|1", -- [13]
+				"20175|Dampen Harm|ability_monk_dampenharm|5|2", -- [14]
+				"20173|Diffuse Magic|spell_monk_diffusemagic|5|3", -- [15]
+				"19819|Rushing Jade Wind|ability_monk_rushingjadewind|6|1", -- [16]
+				"20184|Invoke Xuen, the White Tiger|ability_monk_summontigerstatue|6|2", -- [17]
+				"19313|Chi Torpedo|ability_monk_quitornado|6|3", -- [18]
+			},
+		},
+	},
+}

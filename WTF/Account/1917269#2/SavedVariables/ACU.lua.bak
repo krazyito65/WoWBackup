@@ -1,0 +1,11 @@
+
+AddonCpuUsageDB = {
+	["profileKeys"] = {
+		["Krazyito - Burning Blade"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["auto_open"] = true,
+		},
+	},
+}

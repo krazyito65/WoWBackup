@@ -1,0 +1,33 @@
+
+--------------------------------------------------------------------------------
+-- Module declaration
+--
+
+local mod, CL = BigWigs:NewBoss("Amanitar", 522, 583)
+if not mod then return end
+mod:RegisterEnableMob(30258)
+
+--------------------------------------------------------------------------------
+-- Initialization
+--
+
+function mod:GetOptions()
+	return {
+		57055, -- Mini
+	}
+end
+
+function mod:OnBossEnable()
+	self:Log("SPELL_CAST_START", "Mini", 57055)
+
+	self:Death("Win", 30258)
+end
+
+--------------------------------------------------------------------------------
+-- Event Handlers
+--
+
+function mod:Mini(args)
+	self:Message(args.spellId, "Attention", "Info", CL.casting:format(args.spellName))
+end
+

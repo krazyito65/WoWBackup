@@ -1,0 +1,100 @@
+
+SkadaPerCharDB = {
+	["total"] = {
+		["dispells"] = 0,
+		["absorbs"] = 0,
+		["ccbreaks"] = 0,
+		["time"] = 0,
+		["interrupts"] = 0,
+		["damage"] = 498,
+		["players"] = {
+			{
+				["power"] = {
+				},
+				["overhealing"] = 0,
+				["class"] = "DRUID",
+				["damaged"] = {
+				},
+				["auras"] = {
+					["Berserking"] = {
+						["name"] = "Berserking",
+						["active"] = 0,
+						["id"] = 26297,
+						["auratype"] = "BUFF",
+						["uptime"] = 10,
+					},
+				},
+				["absorbs"] = {
+				},
+				["ccbreaks"] = 0,
+				["time"] = 56,
+				["interrupts"] = 0,
+				["healingspells"] = {
+				},
+				["healing"] = 0,
+				["healed"] = {
+				},
+				["damage"] = 498,
+				["damagespells"] = {
+					["Wrath"] = {
+						["DODGE"] = 0,
+						["REFLECT"] = 0,
+						["crushing"] = 0,
+						["IMMUNE"] = 0,
+						["glancing"] = 0,
+						["totalhits"] = 28,
+						["MISS"] = 2,
+						["damage"] = 498,
+						["DEFLECT"] = 0,
+						["id"] = 5176,
+						["max"] = 28,
+						["min"] = 18,
+						["PARRY"] = 0,
+						["critical"] = 3,
+						["hit"] = 23,
+						["EVADE"] = 0,
+						["RESIST"] = 0,
+						["BLOCK"] = 0,
+						["ABSORB"] = 0,
+					},
+				},
+				["deaths"] = {
+				},
+				["damagetaken"] = 0,
+				["deathlog"] = {
+				},
+				["totalabsorbs"] = 0,
+				["ffdamagedonetargets"] = {
+				},
+				["damagetakenspells"] = {
+				},
+				["ffdamagedonespells"] = {
+				},
+				["ffdamagedone"] = 0,
+				["name"] = "Krazyito",
+				["dispells"] = 0,
+				["swing_damage_breakdown"] = {
+				},
+				["maxhp"] = 54,
+				["id"] = "0x050000000506B019",
+				["total_events"] = 0,
+			}, -- [1]
+		},
+		["deaths"] = 0,
+		["mobs"] = {
+		},
+		["mobtaken"] = 0,
+		["healing"] = 0,
+		["power"] = {
+		},
+		["overhealing"] = 0,
+		["name"] = "Total",
+		["starttime"] = 1313310020,
+		["damagetaken"] = 0,
+		["ffdamagedone"] = 0,
+		["last_action"] = 1313310020,
+		["mobdone"] = 0,
+	},
+	["sets"] = {
+	},
+}

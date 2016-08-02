@@ -1,0 +1,2 @@
+
+TipTac_Config = nil

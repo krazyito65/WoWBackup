@@ -1,0 +1,10 @@
+
+BazookaDB = {
+	["profileKeys"] = {
+		["Ashbrownie - Caelestrasz"] = "Default",
+	},
+	["namespaces"] = {
+		["LibDualSpec-1.0"] = {
+		},
+	},
+}

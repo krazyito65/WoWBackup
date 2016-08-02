@@ -1,0 +1,47 @@
+
+BugGrabberDB = {
+	["lastSanitation"] = 3,
+	["session"] = 1,
+	["errors"] = {
+		{
+			["message"] = "[string \"CG_MinimapButton:OnLoad\"]:1: attempt to index global 'this' (a nil value)",
+			["time"] = "2015/01/30 11:55:39",
+			["locals"] = "",
+			["stack"] = "[string \"*:OnLoad\"]:1: in function <[string \"*:OnLoad\"]:1>",
+			["session"] = 1,
+			["counter"] = 1,
+		}, -- [1]
+		{
+			["message"] = "...ns\\SharedMediaLib\\libs\\AceEvent-2.0\\AceEvent-2.0.lua:21: AceEvent-2.0 requires AceOO-2.0",
+			["time"] = "2015/01/30 11:55:40",
+			["locals"] = "MAJOR_VERSION = \"AceEvent-2.0\"\nMINOR_VERSION = \"$Revision: 82169 $\"\n",
+			["stack"] = "[C]: in function `error'\n...ns\\SharedMediaLib\\libs\\AceEvent-2.0\\AceEvent-2.0.lua:21: in main chunk",
+			["session"] = 1,
+			["counter"] = 1,
+		}, -- [2]
+		{
+			["message"] = "...s\\SharedMediaLib\\SharedMedia-1.0\\SharedMedia-1.0.lua:18: SharedMedia-1.0 requires AceEvent-2.0.",
+			["time"] = "2015/01/30 11:55:40",
+			["locals"] = "vmajor = \"SharedMedia-1.0\"\nvminor = \"$Revision: 69682 $\"\n",
+			["stack"] = "[C]: in function `error'\n...s\\SharedMediaLib\\SharedMedia-1.0\\SharedMedia-1.0.lua:18: in main chunk",
+			["session"] = 1,
+			["counter"] = 1,
+		}, -- [3]
+		{
+			["message"] = "[string \"return function()...\"]:4: attempt to compare two nil values",
+			["time"] = "2015/01/30 11:55:54",
+			["locals"] = "customTextFunc = <function> defined return function()\n    local cCharges, mCharges, tLC, cDur = GetSpellCharges(\"rising Sun Kick\")\n    local retString = cCharges\n    if cCharges < mCharges then\n        retString = retString .. \"\\n\\n\" .. (\"%.01f\"):format(cDur - (GetTime() - tLC))\n    end\n    return retString\nend\n\n\n:1\nregion = <unnamed> {\n 0 = <userdata>\n DisableTrigger = <function> defined @Interface\\AddOns\\WeakAuras\\WeakAuras.lua:3900\n values = <table> {\n }\n UpdateCustomText = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:225\n Color = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:186\n duration = 0\n Expand = <function> defined @Interface\\AddOns\\WeakAuras\\WeakAuras.lua:3809\n expirationTime = 1.#INF\n SetDurationInfo = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:431\n stacks = <unnamed> {\n }\n SetIcon = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:252\n GetColor = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:197\n EnableTrigger = <function> defined @Interface\\AddOns\\WeakAuras\\WeakAuras.lua:3890\n trigger_count = 0\n icon = <unnamed> {\n }\n color_g = 1\n toHide = true\n triggers = <table> {\n }\n Collapse = <function> defined @Interface\\AddOns\\WeakAuras\\WeakAuras.lua:3800\n color_b = 1\n frameId = \"rsk_cd\"\n Backdrop = <unnamed> {\n }\n color_r = 1\n toShow = false\n PreShow = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:434\n SetName = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:268\n Scale = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:370\n color_a = 1\n SetStacks = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:243\n cooldown = WeakAurasCooldownrsk_cd {\n }\n TestTriggers = <function> defined @Interface\\AddOns\\WeakAuras\\WeakAuras.lua:3880\n}\nvalues = <table> {\n icon = \"|TInterface\\Icons\\INV_Misc_QuestionMark:12:12:0:0:64:64:4:60:4:60|t\"\n}\nUpdateText = <function> defined @Interface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:205\n",
+			["stack"] = "[string \"return function()...\"]:4: in function <[string \"return function()...\"]:1>\nInterface\\AddOns\\WeakAuras\\RegionTypes\\icon.lua:226: in function `UpdateCustomText'\nInterface\\AddOns\\WeakAuras\\WeakAuras-2.0.9.9.lua:5119: in function <Interface\\AddOns\\WeakAuras\\WeakAuras.lua:5115>",
+			["session"] = 1,
+			["counter"] = 490,
+		}, -- [4]
+		{
+			["message"] = "[string \"CG_MinimapButton:OnHide\"]:1: attempt to index global 'this' (a nil value)",
+			["time"] = "2015/01/30 12:04:26",
+			["locals"] = "(*temporary) = UIParent {\n 0 = <userdata>\n firstTimeLoaded = 1\n}\n(*temporary) = <function> defined =[C]:-1\n",
+			["stack"] = "[string \"*:OnHide\"]:1: in function <[string \"*:OnHide\"]:1>\n[C]: in function `Hide'\nInterface\\AddOns\\ElvUI\\modules\\misc\\afk-Away.lua:25: in function `SetAFK'\nInterface\\AddOns\\ElvUI\\modules\\misc\\afk-Away.lua:92: in function `?'\n...edia-3.0\\CallbackHandler-1.0\\CallbackHandler-1.0-6.lua:147: in function <...edia-3.0\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:147>\n[string \"safecall Dispatcher[2]\"]:4: in function <[string \"safecall Dispatcher[2]\"]:4>\n[C]: ?\n[string \"safecall Dispatcher[2]\"]:13: in function `?'\n...edia-3.0\\CallbackHandler-1.0\\CallbackHandler-1.0-6.lua:92: in function `Fire'\n...face\\AddOns\\ElvUI\\libs\\AceEvent-3.0\\AceEvent-3.0-3.lua:120: in function <...face\\AddOns\\ElvUI\\libs\\AceEvent-3.0\\AceEvent-3.0.lua:119>",
+			["session"] = 1,
+			["counter"] = 2,
+		}, -- [5]
+	},
+}

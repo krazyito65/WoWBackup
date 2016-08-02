@@ -1,0 +1,9 @@
+## Interface: 50470
+## Title: WIM_|cffF58CBALightbound|rUI
+## Notes: WIM Skin for the LightboundUI
+## Notes-deDE: Fenster-modifikationen für das LightboundUI
+## Version: v1.0.2
+## Author: Lightbound Blackhand-EU
+## Dependencies: WIM
+WIM_LightboundUI.xml
+WIM_LightboundUI.lua

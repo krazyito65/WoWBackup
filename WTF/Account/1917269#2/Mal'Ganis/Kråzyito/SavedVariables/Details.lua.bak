@@ -1,0 +1,2929 @@
+
+_detalhes_database = {
+	["announce_interrupts"] = {
+		["enabled"] = false,
+		["whisper"] = "",
+		["channel"] = "SAY",
+		["custom"] = "",
+		["next"] = "",
+	},
+	["announce_prepots"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
+		["reverse"] = false,
+	},
+	["active_profile"] = "Krazyito-Mal'Ganis",
+	["last_realversion"] = 61,
+	["ignore_nicktag"] = false,
+	["combat_counter"] = 7,
+	["plugin_database"] = {
+		["DETAILS_PLUGIN_DAMAGE_RANK"] = {
+			["lasttry"] = {
+			},
+			["annouce"] = true,
+			["dpshistory"] = {
+			},
+			["dps"] = 0,
+			["author"] = "Details! Team",
+			["level"] = 1,
+			["enabled"] = true,
+		},
+		["DETAILS_PLUGIN_DEATH_GRAPHICS"] = {
+			["enabled"] = true,
+			["captures"] = {
+				false, -- [1]
+				false, -- [2]
+				true, -- [3]
+				true, -- [4]
+			},
+			["author"] = "Details! Team",
+			["first_run"] = false,
+			["showing_type"] = 1,
+			["last_encounter_hash"] = false,
+			["deaths_threshold"] = 10,
+			["endurance_threshold"] = 5,
+			["last_segment"] = false,
+			["last_combat_id"] = 3,
+			["show_icon"] = 1,
+			["last_boss"] = false,
+			["last_player"] = false,
+		},
+		["DETAILS_PLUGIN_ENCOUNTER_DETAILS"] = {
+			["enabled"] = true,
+			["opened"] = 0,
+			["max_emote_segments"] = 3,
+			["show_icon"] = 5,
+			["hide_on_combat"] = false,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_CHART_VIEWER"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["tabs"] = {
+				{
+					["name"] = "Your Damage",
+					["segment_type"] = 2,
+					["version"] = "v2.0",
+					["data"] = "Player Damage Done",
+					["texture"] = "line",
+				}, -- [1]
+				["last_selected"] = 1,
+			},
+			["options"] = {
+				["show_method"] = 4,
+				["window_scale"] = 1,
+			},
+		},
+		["DETAILS_PLUGIN_TINY_THREAT"] = {
+			["updatespeed"] = 1,
+			["useclasscolors"] = false,
+			["animate"] = false,
+			["useplayercolor"] = false,
+			["showamount"] = false,
+			["author"] = "Details! Team",
+			["playercolor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+			},
+			["enabled"] = true,
+		},
+		["DETAILS_PLUGIN_YANP"] = {
+			["enabled"] = true,
+			["rightclick_closed"] = false,
+			["auto_open"] = true,
+			["auto_close"] = true,
+			["hide_on_combat"] = true,
+			["author"] = "Details! Team",
+			["deaths_table"] = {
+			},
+			["shown_time"] = 30,
+		},
+		["DETAILS_PLUGIN_DPS_TUNING"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["SpellBarsShowType"] = 1,
+		},
+		["DETAILS_PLUGIN_VANGUARD"] = {
+			["enabled"] = true,
+			["tank_block_texture"] = "Details Serenity",
+			["tank_block_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.8, -- [4]
+			},
+			["show_inc_bars"] = true,
+			["author"] = "Details! Team",
+			["first_run"] = false,
+			["tank_block_size"] = 150,
+		},
+		["DETAILS_PLUGIN_RAID_POWER_BARS"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_TIME_LINE"] = {
+			["enabled"] = true,
+			["max_segments"] = 10,
+			["combat_data"] = {
+			},
+			["author"] = "Details! Team",
+			["backdrop_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.4, -- [4]
+			},
+			["cooldowns_timeline"] = {
+			},
+			["debuff_timeline"] = {
+			},
+			["window_scale"] = 1,
+			["hide_on_combat"] = false,
+		},
+		["DETAILS_PLUGIN_TIME_ATTACK"] = {
+			["enabled"] = true,
+			["realm_last_shown"] = 40,
+			["saved_as_anonymous"] = true,
+			["recently_as_anonymous"] = true,
+			["dps"] = 0,
+			["disable_sharing"] = false,
+			["history"] = {
+			},
+			["time"] = 40,
+			["history_lastindex"] = 0,
+			["realm_lastamt"] = 0,
+			["realm_history"] = {
+			},
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_RAIDCHECK"] = {
+			["enabled"] = true,
+			["pre_pot_tanks"] = false,
+			["mythic_1_4"] = true,
+			["author"] = "Details! Team",
+			["use_report_panel"] = true,
+			["pre_pot_healers"] = false,
+		},
+	},
+	["character_data"] = {
+		["logons"] = 1,
+	},
+	["savedbuffs"] = {
+	},
+	["tabela_instancias"] = {
+	},
+	["combat_id"] = 3,
+	["savedStyles"] = {
+	},
+	["last_version"] = "v3.10.8",
+	["tabela_historico"] = {
+		["tabelas"] = {
+			{
+				{
+					["combatId"] = 3,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["friendlyfire"] = {
+								["Kråzyito"] = {
+									["spells"] = {
+										[124255] = 6138,
+									},
+									["total"] = 6138,
+								},
+							},
+							["fight_component"] = true,
+							["damage_from"] = {
+								["Disturbed Podling"] = true,
+								["Kråzyito"] = true,
+							},
+							["targets"] = {
+								["Disturbed Podling"] = 71737,
+							},
+							["colocacao"] = 1,
+							["pets"] = {
+							},
+							["timeMachine"] = 5,
+							["friendlyfire_total"] = 6138,
+							["serial"] = "Player-3684-071EE869",
+							["total_without_pet"] = 71737.006269,
+							["on_hold"] = true,
+							["dps_started"] = true,
+							["total"] = 71737.006269,
+							["classe"] = "MONK",
+							["spec"] = 268,
+							["nome"] = "Kråzyito",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 5804,
+										["targets"] = {
+											["Disturbed Podling"] = 17408,
+										},
+										["m_dmg"] = 1520,
+										["n_dmg"] = 15888,
+										["n_min"] = 4958,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 17408,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									}, -- [1]
+									[100784] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 17823,
+										["g_amt"] = 0,
+										["n_max"] = 9379,
+										["targets"] = {
+											["Disturbed Podling"] = 27202,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 9379,
+										["n_min"] = 9379,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 27202,
+										["c_max"] = 17823,
+										["id"] = 100784,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 17823,
+									},
+									[108557] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 8159,
+										["g_amt"] = 0,
+										["n_max"] = 0,
+										["targets"] = {
+											["Disturbed Podling"] = 8780,
+										},
+										["m_dmg"] = 621,
+										["n_dmg"] = 0,
+										["n_min"] = 0,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 8780,
+										["c_max"] = 4143,
+										["id"] = 108557,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 0,
+										["r_amt"] = 0,
+										["c_min"] = 4016,
+									},
+									[121253] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 18347,
+										["targets"] = {
+											["Disturbed Podling"] = 18347,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 18347,
+										["n_min"] = 18347,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 18347,
+										["c_max"] = 0,
+										["id"] = 121253,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+								},
+							},
+							["grupo"] = true,
+							["last_dps"] = 9373.71047549282,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 18511.006269,
+							["start_time"] = 1425913107,
+							["delay"] = 1425913118,
+							["last_event"] = 1425913118,
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 3,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+					},
+				}, -- [2]
+				{
+					["combatId"] = 3,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+					},
+				}, -- [3]
+				{
+					["combatId"] = 3,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[124275] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 124275,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[121253] = {
+										["uptime"] = 2,
+										["activedamt"] = 0,
+										["id"] = 121253,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["buff_uptime"] = 56,
+							["classe"] = "MONK",
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[155347] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 155347,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[128939] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 128939,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[134563] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 134563,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[115307] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 115307,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[120273] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 120273,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[125359] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 125359,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[116781] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 116781,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[158300] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 158300,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[129914] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 129914,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 10,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 268,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Kråzyito",
+							["pets"] = {
+							},
+							["serial"] = "Player-3684-071EE869",
+							["last_event"] = 1425913110,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 3,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Kråzyito"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Disturbed Podling",
+				["combat_counter"] = 7,
+				["playing_solo"] = true,
+				["totals"] = {
+					71736.974376, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+					["Kråzyito"] = {
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913111.782, -- [4]
+							329561, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [1]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913112.782, -- [4]
+							329089, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [2]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913113.782, -- [4]
+							332048, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [3]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913114.782, -- [4]
+							331576, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [4]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913115.782, -- [4]
+							334710, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [5]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913116.782, -- [4]
+							334238, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [6]
+						{
+							true, -- [1]
+							124255, -- [2]
+							472, -- [3]
+							1425913117.782, -- [4]
+							337205, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [7]
+						{
+							true, -- [1]
+							124255, -- [2]
+							471, -- [3]
+							1425913118.782, -- [4]
+							336734, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [8]
+						{
+							true, -- [1]
+							124255, -- [2]
+							471, -- [3]
+							1425913119.782, -- [4]
+							337689, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [9]
+						{
+						}, -- [10]
+						{
+						}, -- [11]
+						{
+						}, -- [12]
+						{
+						}, -- [13]
+						{
+						}, -- [14]
+						{
+						}, -- [15]
+						{
+						}, -- [16]
+						["n"] = 10,
+					},
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Kråzyito"] = 71737.006269,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 69911.421,
+				["combat_id"] = 3,
+				["instance_type"] = "party",
+				["frags"] = {
+					["Disturbed Podling"] = 1,
+				},
+				["data_fim"] = "10:58:31",
+				["data_inicio"] = "10:58:23",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					77875, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 69903.768,
+				["contra"] = "Disturbed Podling",
+				["TimeData"] = {
+				},
+			}, -- [1]
+			{
+				{
+					["combatId"] = 2,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+								["Disturbed Podling"] = true,
+								["Kråzyito"] = true,
+							},
+							["targets"] = {
+								["Disturbed Podling"] = 108899,
+							},
+							["pets"] = {
+							},
+							["friendlyfire"] = {
+								["Kråzyito"] = {
+									["spells"] = {
+										[124255] = 9694,
+									},
+									["total"] = 9694,
+								},
+							},
+							["classe"] = "MONK",
+							["fight_component"] = true,
+							["total_without_pet"] = 108899.002245,
+							["colocacao"] = 1,
+							["friendlyfire_total"] = 9694,
+							["dps_started"] = false,
+							["end_time"] = 1425913102,
+							["serial"] = "Player-3684-071EE869",
+							["on_hold"] = false,
+							["nome"] = "Kråzyito",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 21316,
+										["g_amt"] = 0,
+										["n_max"] = 5797,
+										["targets"] = {
+											["Disturbed Podling"] = 37245,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 15929,
+										["n_min"] = 5016,
+										["g_dmg"] = 0,
+										["counter"] = 5,
+										["total"] = 37245,
+										["c_max"] = 11133,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 10183,
+									}, -- [1]
+									[159238] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1533,
+										["targets"] = {
+											["Disturbed Podling"] = 6132,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 6132,
+										["n_min"] = 766,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 6132,
+										["c_max"] = 0,
+										["id"] = 159238,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 7,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[115129] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 962,
+										["targets"] = {
+											["Disturbed Podling"] = 962,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 962,
+										["n_min"] = 962,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 962,
+										["c_max"] = 0,
+										["id"] = 115129,
+										["r_dmg"] = 0,
+										["spellschool"] = 8,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[108557] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 2131,
+										["targets"] = {
+											["Disturbed Podling"] = 4087,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 4087,
+										["n_min"] = 1956,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 4087,
+										["c_max"] = 0,
+										["id"] = 108557,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[100784] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 9439,
+										["targets"] = {
+											["Disturbed Podling"] = 27545,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 27545,
+										["n_min"] = 8824,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 27545,
+										["c_max"] = 0,
+										["id"] = 100784,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[121253] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 16938,
+										["targets"] = {
+											["Disturbed Podling"] = 16938,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 16938,
+										["n_min"] = 16938,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 16938,
+										["c_max"] = 0,
+										["id"] = 121253,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[100787] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 10778,
+										["g_amt"] = 0,
+										["n_max"] = 5212,
+										["targets"] = {
+											["Disturbed Podling"] = 15990,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 5212,
+										["n_min"] = 5212,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 15990,
+										["c_max"] = 10778,
+										["id"] = 100787,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 10778,
+									},
+								},
+							},
+							["grupo"] = true,
+							["total"] = 108899.002245,
+							["spec"] = 268,
+							["last_dps"] = 9361.21398134486,
+							["custom"] = 0,
+							["last_event"] = 1425913087,
+							["damage_taken"] = 27833.002245,
+							["start_time"] = 1425913084,
+							["delay"] = 1425913087,
+							["tipo"] = 1,
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 2,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.005446,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Kråzyito"] = true,
+							},
+							["targets"] = {
+								["Kråzyito"] = 14563,
+							},
+							["classe"] = "MONK",
+							["pets"] = {
+							},
+							["totalover_without_pet"] = 0.005446,
+							["targets_overheal"] = {
+								["Kråzyito"] = 11647,
+							},
+							["healing_taken"] = 2916.005446,
+							["totalover"] = 11647.005446,
+							["total_without_pet"] = 2916.005446,
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["fight_component"] = true,
+							["total"] = 2916.005446,
+							["spec"] = 268,
+							["end_time"] = 1425913080,
+							["nome"] = "Kråzyito",
+							["targets_absorbs"] = {
+							},
+							["grupo"] = true,
+							["serial"] = "Player-3684-071EE869",
+							["heal_enemy"] = {
+							},
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+									[115072] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Kråzyito"] = 11647,
+										},
+										["n_max"] = 2916,
+										["targets"] = {
+											["Kråzyito"] = 2916,
+										},
+										["n_min"] = 2916,
+										["counter"] = 1,
+										["overheal"] = 11647,
+										["total"] = 2916,
+										["c_max"] = 0,
+										["id"] = 115072,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 2916,
+										["m_healed"] = 0,
+										["n_amt"] = 1,
+										["absorbed"] = 0,
+									},
+								},
+							},
+							["custom"] = 0,
+							["last_event"] = 1425913070,
+							["on_hold"] = false,
+							["start_time"] = 1425913079,
+							["delay"] = 1425913070,
+							["tipo"] = 2,
+						}, -- [1]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 2,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+					},
+				}, -- [3]
+				{
+					["combatId"] = 2,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[159238] = {
+										["uptime"] = 6,
+										["activedamt"] = 0,
+										["id"] = 159238,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[121253] = {
+										["uptime"] = 8,
+										["activedamt"] = 0,
+										["id"] = 121253,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["buff_uptime"] = 67,
+							["classe"] = "MONK",
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[158300] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 158300,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[116781] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 116781,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[125359] = {
+										["uptime"] = 4,
+										["activedamt"] = 1,
+										["id"] = 125359,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[129914] = {
+										["uptime"] = 1,
+										["activedamt"] = 1,
+										["id"] = 129914,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[155347] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 155347,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[115307] = {
+										["uptime"] = 9,
+										["activedamt"] = 1,
+										["id"] = 115307,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[128939] = {
+										["uptime"] = 9,
+										["activedamt"] = 1,
+										["id"] = 128939,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[134563] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 134563,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 14,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 268,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Kråzyito",
+							["pets"] = {
+							},
+							["serial"] = "Player-3684-071EE869",
+							["last_event"] = 1425913080,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 2,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Kråzyito"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Disturbed Podling",
+				["combat_counter"] = 6,
+				["playing_solo"] = true,
+				["totals"] = {
+					108898.99486, -- [1]
+					2916, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+					["Kråzyito"] = {
+						{
+							true, -- [1]
+							124255, -- [2]
+							664, -- [3]
+							1425913082.182, -- [4]
+							326924, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [1]
+						{
+							true, -- [1]
+							124255, -- [2]
+							665, -- [3]
+							1425913083.232, -- [4]
+							329757, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [2]
+						{
+							true, -- [1]
+							124255, -- [2]
+							665, -- [3]
+							1425913084.182, -- [4]
+							329092, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [3]
+						{
+							true, -- [1]
+							124255, -- [2]
+							664, -- [3]
+							1425913085.166, -- [4]
+							331833, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [4]
+						{
+							true, -- [1]
+							124255, -- [2]
+							665, -- [3]
+							1425913086.166, -- [4]
+							331168, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [5]
+						{
+							true, -- [1]
+							124255, -- [2]
+							664, -- [3]
+							1425913087.182, -- [4]
+							333915, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [6]
+						{
+							true, -- [1]
+							124255, -- [2]
+							665, -- [3]
+							1425913088.182, -- [4]
+							333250, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [7]
+						{
+						}, -- [8]
+						{
+						}, -- [9]
+						{
+						}, -- [10]
+						{
+						}, -- [11]
+						{
+						}, -- [12]
+						{
+						}, -- [13]
+						{
+						}, -- [14]
+						{
+						}, -- [15]
+						{
+						}, -- [16]
+						["n"] = 8,
+					},
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Kråzyito"] = 2916.005446,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Kråzyito"] = 108899.002245,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 69881.785,
+				["combat_id"] = 2,
+				["instance_type"] = "party",
+				["frags"] = {
+					["Disturbed Podling"] = 1,
+				},
+				["data_fim"] = "10:58:01",
+				["data_inicio"] = "10:57:50",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					118593, -- [1]
+					2916, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 69870.152,
+				["contra"] = "Disturbed Podling",
+				["TimeData"] = {
+				},
+			}, -- [2]
+			{
+				{
+					["combatId"] = 1,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+								["Disturbed Podling"] = true,
+								["Kråzyito"] = true,
+							},
+							["targets"] = {
+								["Disturbed Podling"] = 47362,
+							},
+							["friendlyfire"] = {
+								["Kråzyito"] = {
+									["spells"] = {
+										[124255] = 6047,
+									},
+									["total"] = 6047,
+								},
+							},
+							["pets"] = {
+							},
+							["spec"] = 268,
+							["end_time"] = 1425913069,
+							["classe"] = "MONK",
+							["fight_component"] = true,
+							["total_without_pet"] = 47362.003167,
+							["colocacao"] = 1,
+							["dps_started"] = false,
+							["total"] = 47362.003167,
+							["friendlyfire_total"] = 6047,
+							["serial"] = "Player-3684-071EE869",
+							["nome"] = "Kråzyito",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 5302,
+										["targets"] = {
+											["Disturbed Podling"] = 10252,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 10252,
+										["n_min"] = 4950,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 10252,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									}, -- [1]
+									[159238] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1533,
+										["targets"] = {
+											["Disturbed Podling"] = 4830,
+										},
+										["m_dmg"] = 230,
+										["n_dmg"] = 4600,
+										["n_min"] = 766,
+										["g_dmg"] = 0,
+										["counter"] = 5,
+										["total"] = 4830,
+										["c_max"] = 0,
+										["id"] = 159238,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[108557] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 2029,
+										["targets"] = {
+											["Disturbed Podling"] = 2029,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 2029,
+										["n_min"] = 2029,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 2029,
+										["c_max"] = 0,
+										["id"] = 108557,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[121253] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 16030,
+										["targets"] = {
+											["Disturbed Podling"] = 20839,
+										},
+										["m_dmg"] = 4809,
+										["n_dmg"] = 16030,
+										["n_min"] = 16030,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 20839,
+										["c_max"] = 0,
+										["id"] = 121253,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[100784] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 9412,
+										["targets"] = {
+											["Disturbed Podling"] = 9412,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 9412,
+										["n_min"] = 9412,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 9412,
+										["c_max"] = 0,
+										["id"] = 100784,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+								},
+							},
+							["grupo"] = true,
+							["on_hold"] = false,
+							["last_dps"] = 8382.65542779625,
+							["custom"] = 0,
+							["last_event"] = 1425913058,
+							["damage_taken"] = 19117.003167,
+							["start_time"] = 1425913047,
+							["delay"] = 1425913058,
+							["tipo"] = 1,
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 1,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.003329,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Kråzyito"] = true,
+							},
+							["targets"] = {
+								["Kråzyito"] = 50724,
+							},
+							["serial"] = "Player-3684-071EE869",
+							["pets"] = {
+							},
+							["totalover_without_pet"] = 0.003329,
+							["targets_overheal"] = {
+								["Kråzyito"] = 79030,
+							},
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 79030.003329,
+							["total_without_pet"] = 2583.003329,
+							["spec"] = 268,
+							["iniciar_hps"] = false,
+							["fight_component"] = true,
+							["total"] = 2583.003329,
+							["classe"] = "MONK",
+							["healing_taken"] = 2583.003329,
+							["nome"] = "Kråzyito",
+							["targets_absorbs"] = {
+							},
+							["grupo"] = true,
+							["end_time"] = 1425913043,
+							["heal_enemy"] = {
+							},
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+									[122281] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Kråzyito"] = 48141,
+										},
+										["n_max"] = 2583,
+										["targets"] = {
+											["Kråzyito"] = 2583,
+										},
+										["n_min"] = 2583,
+										["counter"] = 1,
+										["overheal"] = 48141,
+										["total"] = 2583,
+										["c_max"] = 0,
+										["id"] = 122281,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 2583,
+										["m_healed"] = 0,
+										["n_amt"] = 1,
+										["absorbed"] = 0,
+									},
+									[115072] = {
+										["c_amt"] = 1,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Kråzyito"] = 30889,
+										},
+										["n_max"] = 0,
+										["targets"] = {
+											["Kråzyito"] = 0,
+										},
+										["n_min"] = 0,
+										["counter"] = 1,
+										["overheal"] = 30889,
+										["total"] = 0,
+										["c_max"] = 0,
+										["id"] = 115072,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 0,
+										["m_healed"] = 0,
+										["n_amt"] = 0,
+										["absorbed"] = 0,
+									},
+								},
+							},
+							["custom"] = 0,
+							["last_event"] = 1425913039,
+							["on_hold"] = false,
+							["start_time"] = 1425913038,
+							["delay"] = 0,
+							["tipo"] = 2,
+						}, -- [1]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 1,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+					},
+				}, -- [3]
+				{
+					["combatId"] = 1,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[124275] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 124275,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[121253] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 121253,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[159238] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 159238,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["cooldowns_defensive"] = 1.008891,
+							["buff_uptime"] = 31,
+							["last_cooldown"] = {
+								1425913039.316, -- [1]
+								119582, -- [2]
+							},
+							["classe"] = "MONK",
+							["cooldowns_defensive_targets"] = {
+								["Kråzyito"] = 1,
+							},
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[155347] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 155347,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[129914] = {
+										["uptime"] = 2,
+										["activedamt"] = 1,
+										["id"] = 129914,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[121125] = {
+										["uptime"] = 4,
+										["activedamt"] = 1,
+										["id"] = 121125,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[115307] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 115307,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[115069] = {
+										["actived_at"] = 1425913037,
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 115069,
+										["actived"] = true,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[116781] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 116781,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[162917] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 162917,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[158300] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 158300,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[134563] = {
+										["uptime"] = 1,
+										["activedamt"] = 1,
+										["id"] = 134563,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 15,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 268,
+							["grupo"] = true,
+							["cooldowns_defensive_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[119582] = {
+										["id"] = 119582,
+										["targets"] = {
+											["Kråzyito"] = 1,
+										},
+										["counter"] = 1,
+									},
+								},
+							},
+							["nome"] = "Kråzyito",
+							["last_event"] = 1425913043,
+							["debuff_uptime_targets"] = {
+							},
+							["pets"] = {
+							},
+							["serial"] = "Player-3684-071EE869",
+							["tipo"] = 4,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 1,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Kråzyito"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Disturbed Podling",
+				["combat_counter"] = 4,
+				["playing_solo"] = true,
+				["totals"] = {
+					47361.989439, -- [1]
+					2583, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 1,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+					["Kråzyito"] = {
+						{
+							true, -- [1]
+							124255, -- [2]
+							379, -- [3]
+							1425913044.715, -- [4]
+							332917, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [1]
+						{
+							true, -- [1]
+							124255, -- [2]
+							379, -- [3]
+							1425913045.715, -- [4]
+							332538, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [2]
+						{
+							true, -- [1]
+							124255, -- [2]
+							379, -- [3]
+							1425913046.732, -- [4]
+							335589, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [3]
+						{
+							true, -- [1]
+							124255, -- [2]
+							378, -- [3]
+							1425913047.732, -- [4]
+							335211, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [4]
+						{
+							true, -- [1]
+							124255, -- [2]
+							379, -- [3]
+							1425913048.732, -- [4]
+							337781, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [5]
+						{
+							true, -- [1]
+							124255, -- [2]
+							379, -- [3]
+							1425913049.732, -- [4]
+							337402, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [6]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913051.716, -- [4]
+							334205, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [7]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913052.716, -- [4]
+							337300, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [8]
+						{
+							true, -- [1]
+							124255, -- [2]
+							332, -- [3]
+							1425913053.733, -- [4]
+							336968, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [9]
+						{
+							true, -- [1]
+							124255, -- [2]
+							332, -- [3]
+							1425913054.715, -- [4]
+							337828, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [10]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913055.732, -- [4]
+							337497, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [11]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913056.732, -- [4]
+							337829, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [12]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913057.732, -- [4]
+							337498, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [13]
+						{
+							true, -- [1]
+							124255, -- [2]
+							331, -- [3]
+							1425913058.732, -- [4]
+							337829, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [14]
+						{
+							true, -- [1]
+							124255, -- [2]
+							332, -- [3]
+							1425913059.733, -- [4]
+							337497, -- [5]
+							"Kråzyito", -- [6]
+							nil, -- [7]
+							1, -- [8]
+							true, -- [9]
+							-1, -- [10]
+						}, -- [15]
+						{
+						}, -- [16]
+						["n"] = 16,
+					},
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Kråzyito"] = 2583.003329,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Kråzyito"] = 417124.007165,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 69844.352,
+				["combat_id"] = 1,
+				["instance_type"] = "party",
+				["resincked"] = true,
+				["frags"] = {
+					["Disturbed Podling"] = 1,
+				},
+				["data_fim"] = "10:57:24",
+				["data_inicio"] = "10:57:18",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					53409, -- [1]
+					2583, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 1,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 69838.702,
+				["contra"] = "Disturbed Podling",
+				["TimeData"] = {
+				},
+			}, -- [3]
+		},
+	},
+	["announce_deaths"] = {
+		["enabled"] = false,
+		["last_hits"] = 1,
+		["only_first"] = 5,
+		["where"] = 1,
+	},
+	["tabela_overall"] = {
+		{
+			["tipo"] = 2,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1297,
+					["damage_from"] = {
+						["Disturbed Podling"] = true,
+						["Kråzyito"] = true,
+					},
+					["targets"] = {
+						["Disturbed Podling"] = 227998,
+					},
+					["pets"] = {
+					},
+					["total"] = 227998.015775,
+					["classe"] = "MONK",
+					["friendlyfire"] = {
+						["Kråzyito"] = {
+							["spells"] = {
+								[124255] = 7726,
+							},
+							["total"] = 7726,
+						},
+					},
+					["total_without_pet"] = 227998.015775,
+					["fight_component"] = true,
+					["friendlyfire_total"] = 7726,
+					["dps_started"] = false,
+					["end_time"] = 1425913044,
+					["serial"] = "Player-3684-071EE869",
+					["on_hold"] = false,
+					["nome"] = "Kråzyito",
+					["spells"] = {
+						["tipo"] = 2,
+						["_ActorTable"] = {
+							{
+								["c_amt"] = 2,
+								["b_amt"] = 0,
+								["c_dmg"] = 21316,
+								["g_amt"] = 0,
+								["n_max"] = 16903,
+								["targets"] = {
+									["Disturbed Podling"] = 64905,
+								},
+								["m_dmg"] = 1520,
+								["n_dmg"] = 42069,
+								["n_min"] = 14924,
+								["g_dmg"] = 0,
+								["counter"] = 10,
+								["total"] = 64905,
+								["c_max"] = 11133,
+								["id"] = 1,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 1,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 8,
+								["r_amt"] = 0,
+								["c_min"] = 10183,
+							}, -- [1]
+							[159238] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 3066,
+								["targets"] = {
+									["Disturbed Podling"] = 10962,
+								},
+								["m_dmg"] = 230,
+								["n_dmg"] = 10732,
+								["n_min"] = 1532,
+								["g_dmg"] = 0,
+								["counter"] = 12,
+								["total"] = 10962,
+								["c_max"] = 0,
+								["id"] = 159238,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 1,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 12,
+								["r_amt"] = 0,
+								["c_min"] = 0,
+							},
+							[115129] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 962,
+								["targets"] = {
+									["Disturbed Podling"] = 962,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 962,
+								["n_min"] = 962,
+								["g_dmg"] = 0,
+								["counter"] = 1,
+								["total"] = 962,
+								["c_max"] = 0,
+								["id"] = 115129,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 1,
+								["r_amt"] = 0,
+								["c_min"] = 0,
+							},
+							[108557] = {
+								["c_amt"] = 2,
+								["b_amt"] = 0,
+								["c_dmg"] = 8159,
+								["g_amt"] = 0,
+								["n_max"] = 4160,
+								["targets"] = {
+									["Disturbed Podling"] = 14896,
+								},
+								["m_dmg"] = 621,
+								["n_dmg"] = 6116,
+								["n_min"] = 3985,
+								["g_dmg"] = 0,
+								["counter"] = 5,
+								["total"] = 14896,
+								["c_max"] = 4143,
+								["id"] = 108557,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 1,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 3,
+								["r_amt"] = 0,
+								["c_min"] = 4016,
+							},
+							[100784] = {
+								["c_amt"] = 1,
+								["b_amt"] = 0,
+								["c_dmg"] = 17823,
+								["g_amt"] = 0,
+								["n_max"] = 28230,
+								["targets"] = {
+									["Disturbed Podling"] = 64159,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 46336,
+								["n_min"] = 27615,
+								["g_dmg"] = 0,
+								["counter"] = 6,
+								["total"] = 64159,
+								["c_max"] = 17823,
+								["id"] = 100784,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 5,
+								["r_amt"] = 0,
+								["c_min"] = 17823,
+							},
+							[121253] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 51315,
+								["targets"] = {
+									["Disturbed Podling"] = 56124,
+								},
+								["m_dmg"] = 4809,
+								["n_dmg"] = 51315,
+								["n_min"] = 51315,
+								["g_dmg"] = 0,
+								["counter"] = 3,
+								["total"] = 56124,
+								["c_max"] = 0,
+								["id"] = 121253,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 1,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 3,
+								["r_amt"] = 0,
+								["c_min"] = 0,
+							},
+							[100787] = {
+								["c_amt"] = 1,
+								["b_amt"] = 0,
+								["c_dmg"] = 10778,
+								["g_amt"] = 0,
+								["n_max"] = 5212,
+								["targets"] = {
+									["Disturbed Podling"] = 15990,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 5212,
+								["n_min"] = 5212,
+								["g_dmg"] = 0,
+								["counter"] = 2,
+								["total"] = 15990,
+								["c_max"] = 10778,
+								["id"] = 100787,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 1,
+								["r_amt"] = 0,
+								["c_min"] = 10778,
+							},
+						},
+					},
+					["grupo"] = true,
+					["spec"] = 268,
+					["last_dps"] = 0,
+					["custom"] = 0,
+					["last_event"] = 0,
+					["damage_taken"] = 51308.015775,
+					["start_time"] = 1425913022,
+					["delay"] = 0,
+					["tipo"] = 1,
+				}, -- [1]
+			},
+		}, -- [1]
+		{
+			["tipo"] = 3,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1297,
+					["totalabsorb"] = 0.017651,
+					["last_hps"] = 0,
+					["targets_overheal"] = {
+						["Kråzyito"] = 90677,
+					},
+					["targets"] = {
+						["Kråzyito"] = 65287,
+					},
+					["spec"] = 268,
+					["pets"] = {
+					},
+					["iniciar_hps"] = false,
+					["healing_from"] = {
+						["Kråzyito"] = true,
+					},
+					["heal_enemy_amt"] = 0,
+					["totalover"] = 90677.017651,
+					["total_without_pet"] = 5499.017651,
+					["totalover_without_pet"] = 0.017651,
+					["healing_taken"] = 5499.017651,
+					["fight_component"] = true,
+					["total"] = 5499.017651,
+					["end_time"] = 1425913044,
+					["classe"] = "MONK",
+					["nome"] = "Kråzyito",
+					["targets_absorbs"] = {
+					},
+					["grupo"] = true,
+					["serial"] = "Player-3684-071EE869",
+					["heal_enemy"] = {
+					},
+					["spells"] = {
+						["tipo"] = 3,
+						["_ActorTable"] = {
+							[122281] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+									["Kråzyito"] = 48141,
+								},
+								["n_max"] = 2583,
+								["targets"] = {
+									["Kråzyito"] = 2583,
+								},
+								["n_min"] = 2583,
+								["counter"] = 1,
+								["overheal"] = 48141,
+								["total"] = 2583,
+								["c_max"] = 0,
+								["id"] = 122281,
+								["targets_absorbs"] = {
+								},
+								["m_crit"] = 0,
+								["c_curado"] = 0,
+								["m_amt"] = 0,
+								["c_min"] = 0,
+								["n_curado"] = 2583,
+								["m_healed"] = 0,
+								["n_amt"] = 1,
+								["absorbed"] = 0,
+							},
+							[115072] = {
+								["c_amt"] = 1,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+									["Kråzyito"] = 42536,
+								},
+								["n_max"] = 2916,
+								["targets"] = {
+									["Kråzyito"] = 2916,
+								},
+								["n_min"] = 2916,
+								["counter"] = 2,
+								["overheal"] = 42536,
+								["total"] = 2916,
+								["c_max"] = 0,
+								["id"] = 115072,
+								["targets_absorbs"] = {
+								},
+								["m_crit"] = 0,
+								["c_curado"] = 0,
+								["m_amt"] = 0,
+								["c_min"] = 0,
+								["n_curado"] = 2916,
+								["m_healed"] = 0,
+								["n_amt"] = 1,
+								["absorbed"] = 0,
+							},
+						},
+					},
+					["custom"] = 0,
+					["tipo"] = 2,
+					["on_hold"] = false,
+					["start_time"] = 1425913035,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [1]
+			},
+		}, -- [2]
+		{
+			["tipo"] = 7,
+			["_ActorTable"] = {
+			},
+		}, -- [3]
+		{
+			["tipo"] = 9,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1047,
+					["debuff_uptime_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[124275] = {
+								["uptime"] = 13,
+								["id"] = 124275,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[121253] = {
+								["uptime"] = 15,
+								["id"] = 121253,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[159238] = {
+								["uptime"] = 11,
+								["id"] = 159238,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+						},
+					},
+					["cooldowns_defensive"] = 1.017279,
+					["pets"] = {
+					},
+					["classe"] = "MONK",
+					["cooldowns_defensive_targets"] = {
+						["Kråzyito"] = 1,
+					},
+					["buff_uptime_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[155347] = {
+								["uptime"] = 25,
+								["id"] = 155347,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[129914] = {
+								["uptime"] = 8,
+								["id"] = 129914,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[121125] = {
+								["uptime"] = 4,
+								["id"] = 121125,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[162917] = {
+								["uptime"] = 3,
+								["id"] = 162917,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[120273] = {
+								["uptime"] = 3,
+								["id"] = 120273,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[115069] = {
+								["uptime"] = 0,
+								["activedamt"] = 0,
+								["id"] = 115069,
+								["actived_at"] = 1425913037,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[116781] = {
+								["uptime"] = 25,
+								["id"] = 116781,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[128939] = {
+								["uptime"] = 17,
+								["id"] = 128939,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[125359] = {
+								["uptime"] = 9,
+								["id"] = 125359,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[134563] = {
+								["uptime"] = 20,
+								["id"] = 134563,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[158300] = {
+								["uptime"] = 25,
+								["id"] = 158300,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[115307] = {
+								["uptime"] = 15,
+								["id"] = 115307,
+								["activedamt"] = 3,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+						},
+					},
+					["fight_component"] = true,
+					["debuff_uptime"] = 39,
+					["nome"] = "Kråzyito",
+					["spec"] = 268,
+					["grupo"] = true,
+					["debuff_uptime_targets"] = {
+					},
+					["buff_uptime_targets"] = {
+					},
+					["last_event"] = 0,
+					["buff_uptime"] = 154,
+					["cooldowns_defensive_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[119582] = {
+								["id"] = 119582,
+								["targets"] = {
+								},
+								["counter"] = 1,
+							},
+						},
+					},
+					["serial"] = "Player-3684-071EE869",
+					["tipo"] = 4,
+				}, -- [1]
+			},
+		}, -- [4]
+		{
+			["tipo"] = 2,
+			["_ActorTable"] = {
+			},
+		}, -- [5]
+		["raid_roster"] = {
+		},
+		["last_events_tables"] = {
+		},
+		["combat_counter"] = 3,
+		["totals"] = {
+			300508.028897, -- [1]
+			5499.008775, -- [2]
+			{
+				0, -- [1]
+				[0] = 0,
+				[6] = 0,
+				[3] = 0,
+			}, -- [3]
+			{
+				["buff_uptime"] = 0,
+				["ress"] = 0,
+				["debuff_uptime"] = 0,
+				["cooldowns_defensive"] = 1.008891,
+				["interrupt"] = 0,
+				["dispell"] = 0,
+				["cc_break"] = 0,
+				["dead"] = 0,
+			}, -- [4]
+			["frags_total"] = 0,
+			["voidzone_damage"] = 0,
+		},
+		["player_last_events"] = {
+		},
+		["frags_need_refresh"] = false,
+		["__call"] = {
+		},
+		["PhaseData"] = {
+			{
+				1, -- [1]
+				1, -- [2]
+			}, -- [1]
+			["heal_section"] = {
+			},
+			["heal"] = {
+			},
+			["damage_section"] = {
+			},
+			["damage"] = {
+			},
+		},
+		["end_time"] = 69911.421,
+		["data_inicio"] = "10:57:18",
+		["frags"] = {
+		},
+		["data_fim"] = "10:58:31",
+		["overall_enemy_name"] = "Disturbed Podling",
+		["CombatSkillCache"] = {
+		},
+		["segments_added"] = {
+			{
+				["elapsed"] = 5.64999999999418,
+				["name"] = "Disturbed Podling",
+			}, -- [1]
+			{
+				["elapsed"] = 11.6330000000016,
+				["name"] = "Disturbed Podling",
+			}, -- [2]
+			{
+				["elapsed"] = 7.6530000000057,
+				["name"] = "Disturbed Podling",
+			}, -- [3]
+		},
+		["start_time"] = 69886.485,
+		["TimeData"] = {
+			["Player Damage Done"] = {
+			},
+			["Raid Damage Done"] = {
+			},
+		},
+		["totals_grupo"] = {
+			227998.011681, -- [1]
+			5499.008775, -- [2]
+			{
+				0, -- [1]
+				[0] = 0,
+				[6] = 0,
+				[3] = 0,
+			}, -- [3]
+			{
+				["buff_uptime"] = 0,
+				["ress"] = 0,
+				["debuff_uptime"] = 0,
+				["cooldowns_defensive"] = 1.008891,
+				["interrupt"] = 0,
+				["dispell"] = 0,
+				["cc_break"] = 0,
+				["dead"] = 0,
+			}, -- [4]
+		},
+	},
+	["last_instance_time"] = 0,
+	["local_instances_config"] = {
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = true,
+			["isLocked"] = true,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+				[3] = 2,
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -458.147883912593,
+					["x"] = 667.409378949849,
+					["w"] = 245.000122070313,
+					["h"] = 215.555557250977,
+				},
+				["solo"] = {
+					["y"] = 2.00006627432166,
+					["x"] = 0.999915453425391,
+					["w"] = 299.999938964844,
+					["h"] = 300,
+				},
+			},
+		}, -- [1]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = true,
+			["isLocked"] = true,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+				1, -- [1]
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -458.147883912593,
+					["x"] = 920.715238776305,
+					["w"] = 256.435882568359,
+					["h"] = 215.555557250977,
+				},
+				["solo"] = {
+					["y"] = 2,
+					["x"] = 1,
+					["w"] = 300,
+					["h"] = 200,
+				},
+			},
+		}, -- [2]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = false,
+			["isLocked"] = false,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -130.375885009766,
+					["x"] = 841.051147460938,
+					["w"] = 315.623840332031,
+					["h"] = 244.871490478516,
+				},
+				["solo"] = {
+					["y"] = -77.3170776367188,
+					["x"] = 416.459838867188,
+					["w"] = 310.940338134766,
+					["h"] = 235.453048706055,
+				},
+			},
+		}, -- [3]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = false,
+			["isLocked"] = false,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = 0,
+					["x"] = 0,
+					["w"] = 319.999969482422,
+					["h"] = 129.999938964844,
+				},
+				["solo"] = {
+					["y"] = -99.7442016601563,
+					["x"] = 875.092895507813,
+					["w"] = 299.999969482422,
+					["h"] = 300.000030517578,
+				},
+			},
+		}, -- [4]
+	},
+	["nick_tag_cache"] = {
+		["nextreset"] = 1427208881,
+		["last_version"] = 7,
+	},
+	["announce_cooldowns"] = {
+		["enabled"] = false,
+		["ignored_cooldowns"] = {
+		},
+		["custom"] = "",
+		["channel"] = "RAID",
+	},
+	["announce_firsthit"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
+	},
+	["last_instance_id"] = 0,
+	["SoloTablesSaved"] = {
+		["LastSelected"] = "DETAILS_PLUGIN_DAMAGE_RANK",
+		["Mode"] = 1,
+	},
+}

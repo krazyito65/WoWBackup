@@ -1,0 +1,952 @@
+
+PawnCommon = {
+	["ShowUpgradesOnTooltips"] = true,
+	["ShowSpace"] = false,
+	["AlignNumbersRight"] = false,
+	["ShowItemID"] = false,
+	["ShowAsterisks"] = 1,
+	["ShowValuesForUpgradesOnly"] = true,
+	["Debug"] = false,
+	["ShowReforgingAdvisor"] = true,
+	["ColorTooltipBorder"] = true,
+	["ShownGettingStarted"] = true,
+	["ShowTooltipIcons"] = true,
+	["ShowSocketingAdvisor"] = true,
+	["Scales"] = {
+		["\"Wowhead\":ShamanEnhancement"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "6e95ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Shaman: enhancement",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "526fbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DeathKnightUnholyDps"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff4d6b",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = true,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "DK: unholy ",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf3950",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DeathKnightFrostDps"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff4d6b",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "DK: frost",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf3950",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":WarriorArms"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "c79c6e",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warrior: arms",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "957552",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":WarlockDestruction"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "bca5ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warlock: destruction",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "8d7bbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PaladinTank"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "f58cba",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Paladin: tank",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "b7698b",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":HunterBeastMastery"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "abd473",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Hunter: beast mastery",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "809f56",
+			["GemQualityLevel"] = 86,
+		},
+		["\"PawnPlaceholder\":MonkMistweaver"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "00ff96",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "PawnPlaceholder",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Monk: mistweaver",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "00bf70",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PaladinHoly"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "f58cba",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Paladin: holy",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "b7698b",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":RogueCombat"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "fff569",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Rogue: combat",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bfb74e",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PriestDiscipline"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "e0e0e0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Priest: discipline",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "a8a8a8",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DeathKnightBloodTank"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff4d6b",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = true,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "DK: blood",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf3950",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":MageFrost"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "69ccf0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Mage: frost",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "4e99b3",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":ShamanRestoration"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "6e95ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Shaman: restoration",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "526fbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":MageFire"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "69ccf0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Mage: fire",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "4e99b3",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":WarriorFury"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "c79c6e",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warrior: fury",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "957552",
+			["GemQualityLevel"] = 86,
+		},
+		["boomie"] = {
+			["PerCharacterOptions"] = {
+				["Krazyito-Gnomeregan"] = {
+					["Visible"] = true,
+					["BestItems"] = {
+						["INVTYPE_CLOAK"] = {
+							190.1983924720643, -- [1]
+							81136, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_HEAD"] = {
+							432.605175455793, -- [1]
+							85989, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FEET"] = {
+							327.8214075671437, -- [1]
+							86138, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONOFFHAND"] = {
+							224.1323269947069, -- [1]
+							79335, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_2HWEAPON"] = {
+							94.92236816310528, -- [1]
+							81108, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONMAINHAND"] = {
+							874.6877082924917, -- [1]
+							90461, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FINGER"] = {
+							247.4432464222701, -- [1]
+							89803, -- [2]
+							0, -- [3]
+							214.9974514801019, -- [4]
+							88166, -- [5]
+							0, -- [6]
+						},
+						["INVTYPE_HAND"] = {
+							300.2564203097432, -- [1]
+							84833, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WRIST"] = {
+							197.961576161537, -- [1]
+							81179, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WAIST"] = {
+							280.5981180160753, -- [1]
+							86746, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_NECK"] = {
+							252.1776122328955, -- [1]
+							89067, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_LEGS"] = {
+							349.0196039992159, -- [1]
+							81093, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_SHOULDER"] = {
+							328.9113899235445, -- [1]
+							86039, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_CHEST"] = {
+							349.4391295824348, -- [1]
+							81275, -- [2]
+							0, -- [3]
+						},
+					},
+				},
+			},
+			["GemQualityLevel"] = 86,
+			["Color"] = "ff7d0a",
+			["SmartMetaGemSocketing"] = true,
+			["NormalizationFactor"] = 1,
+			["Values"] = {
+				["IsWand"] = -1000000,
+				["CogwheelSocket"] = 18720,
+				["CritRating"] = 52,
+				["IsAxe"] = -1000000,
+				["YellowSocket"] = 3040,
+				["HasteRating"] = 50,
+				["MasteryRating"] = 45,
+				["IsCrossbow"] = -1000000,
+				["MetaSocketEffect"] = 7200,
+				["Spirit"] = 90,
+				["IsGun"] = -1000000,
+				["PrismaticSocket"] = 4000,
+				["RedSocket"] = 4000,
+				["Is2HAxe"] = -1000000,
+				["Stamina"] = 0.1,
+				["IsPlate"] = -1000000,
+				["IsBow"] = -1000000,
+				["IsMail"] = -1000000,
+				["IsSword"] = -1000000,
+				["IsOffHand"] = -1000000,
+				["Intellect"] = 100,
+				["HitRating"] = 90,
+				["BlueSocket"] = 3800,
+				["Is2HSword"] = -1000000,
+				["SpellPower"] = 83,
+				["IsShield"] = -1000000,
+				["MetaSocket"] = 5400,
+			},
+			["CogwheelQualityLevel"] = 86,
+			["MetaGemQualityLevel"] = 86,
+			["SmartGemSocketing"] = true,
+		},
+		["\"Wowhead\":WarlockDemonology"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "bca5ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warlock: demonology",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "8d7bbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"PawnPlaceholder\":MonkWindwalker"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "00ff96",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "PawnPlaceholder",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Monk: windwalker",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "00bf70",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DruidRestoration"] = {
+			["MetaGemQualityLevel"] = 91,
+			["Color"] = "ff7d0a",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+				["Krazyito-Gnomeregan"] = {
+					["Visible"] = true,
+					["BestItems"] = {
+						["INVTYPE_CLOAK"] = {
+							206.9881745861105, -- [1]
+							81136, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_HEAD"] = {
+							582.8894861320147, -- [1]
+							85989, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FEET"] = {
+							388.56740485917, -- [1]
+							86138, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONOFFHAND"] = {
+							240.1954418404644, -- [1]
+							79335, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_2HWEAPON"] = {
+							125.7361857665018, -- [1]
+							81108, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONMAINHAND"] = {
+							973.4706514728016, -- [1]
+							90461, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FINGER"] = {
+							267.2668243388519, -- [1]
+							89803, -- [2]
+							0, -- [3]
+							224.9305525693399, -- [4]
+							88166, -- [5]
+							0, -- [6]
+						},
+						["INVTYPE_HAND"] = {
+							377.2431735110728, -- [1]
+							84833, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WRIST"] = {
+							210.9013115459041, -- [1]
+							81179, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WAIST"] = {
+							396.6417974629112, -- [1]
+							86746, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_NECK"] = {
+							277.2861750161256, -- [1]
+							89067, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_LEGS"] = {
+							413.5452590840679, -- [1]
+							81093, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_SHOULDER"] = {
+							388.4061492152225, -- [1]
+							86039, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_CHEST"] = {
+							415.2115674048591, -- [1]
+							81275, -- [2]
+							0, -- [3]
+						},
+					},
+				},
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Druid: restoration",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf5d07",
+			["GemQualityLevel"] = 91,
+		},
+		["\"Wowhead\":RogueSubtlety"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "fff569",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Rogue: subtlety",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bfb74e",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":HunterMarksman"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "abd473",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Hunter: marksman",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "809f56",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DruidFeralDps"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff7d0a",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = true,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+				["Krazyito-Gnomeregan"] = {
+					["Visible"] = true,
+					["BestItems"] = {
+						["INVTYPE_CLOAK"] = {
+							162.3990024937656, -- [1]
+							81282, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_HEAD"] = {
+							304.6449784629335, -- [1]
+							81283, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FEET"] = {
+							219.2228519610066, -- [1]
+							81688, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONOFFHAND"] = {
+							46.11630015869417, -- [1]
+							79335, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_2HWEAPON"] = {
+							1017.857401949671, -- [1]
+							81108, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONMAINHAND"] = {
+							259.5946497392881, -- [1]
+							90461, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FINGER"] = {
+							174.4688279301745, -- [1]
+							88168, -- [2]
+							0, -- [3]
+							161.3606891861256, -- [4]
+							81186, -- [5]
+							0, -- [6]
+						},
+						["INVTYPE_HAND"] = {
+							224.4620267513035, -- [1]
+							81695, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WRIST"] = {
+							157.6869190659714, -- [1]
+							89645, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WAIST"] = {
+							196.6828383586488, -- [1]
+							84033, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_NECK"] = {
+							207.9229199727953, -- [1]
+							89065, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_LEGS"] = {
+							415.9444570392201, -- [1]
+							87013, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_SHOULDER"] = {
+							208.7694400362729, -- [1]
+							81071, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_CHEST"] = {
+							287.1682158240761, -- [1]
+							81573, -- [2]
+							0, -- [3]
+						},
+					},
+				},
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Druid: feral",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf5d07",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":ShamanElemental"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "6e95ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Shaman: elemental",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "526fbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PaladinRetribution"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "f58cba",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = true,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Paladin: retribution",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "b7698b",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":MageArcane"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "69ccf0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Mage: arcane",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "4e99b3",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":RogueAssassination"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "fff569",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Rogue: assassination",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bfb74e",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":WarriorTank"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "c79c6e",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = true,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warrior: tank",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "957552",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DruidFeralTank"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff7d0a",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = true,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+				["Krazyito-Gnomeregan"] = {
+					["Visible"] = true,
+					["BestItems"] = {
+						["INVTYPE_CLOAK"] = {
+							291.0586666666667, -- [1]
+							81282, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_HEAD"] = {
+							550.9173333333333, -- [1]
+							81283, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FEET"] = {
+							423.64, -- [1]
+							81688, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONOFFHAND"] = {
+							117.7866666666667, -- [1]
+							79335, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_2HWEAPON"] = {
+							445.888, -- [1]
+							81108, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WEAPONMAINHAND"] = {
+							68.2, -- [1]
+							90461, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_FINGER"] = {
+							260.7893333333333, -- [1]
+							88168, -- [2]
+							0, -- [3]
+							231.8133333333333, -- [4]
+							81186, -- [5]
+							0, -- [6]
+						},
+						["INVTYPE_HAND"] = {
+							407.3466666666666, -- [1]
+							81695, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WRIST"] = {
+							299.8, -- [1]
+							89645, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_WAIST"] = {
+							372.4853333333333, -- [1]
+							84033, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_NECK"] = {
+							310.6533333333333, -- [1]
+							89065, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_LEGS"] = {
+							743.5466666666666, -- [1]
+							87013, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_SHOULDER"] = {
+							384.048, -- [1]
+							81071, -- [2]
+							0, -- [3]
+						},
+						["INVTYPE_CHEST"] = {
+							554.9706666666666, -- [1]
+							81573, -- [2]
+							0, -- [3]
+						},
+					},
+				},
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Druid: guardian",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf5d07",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":DruidBalance"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "ff7d0a",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Druid: balance",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "bf5d07",
+			["GemQualityLevel"] = 86,
+		},
+		["\"PawnPlaceholder\":MonkBrewmaster"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "00ff96",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "PawnPlaceholder",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Monk: brewmaster",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "00bf70",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":HunterSurvival"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "abd473",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Hunter: survival",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "809f56",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":WarlockAffliction"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "bca5ff",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Warlock: affliction",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "8d7bbf",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PriestHoly"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "e0e0e0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Priest: holy",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "a8a8a8",
+			["GemQualityLevel"] = 86,
+		},
+		["\"Wowhead\":PriestShadow"] = {
+			["MetaGemQualityLevel"] = 86,
+			["Color"] = "e0e0e0",
+			["SmartMetaGemSocketing"] = true,
+			["DoNotShow1HUpgrades"] = false,
+			["NormalizationFactor"] = 1,
+			["DoNotShow2HUpgrades"] = false,
+			["Provider"] = "Wowhead",
+			["CogwheelQualityLevel"] = 86,
+			["PerCharacterOptions"] = {
+			},
+			["SmartGemSocketing"] = true,
+			["LocalizedName"] = "Priest: shadow",
+			["UpgradesFollowSpecialization"] = true,
+			["UnenchantedColor"] = "a8a8a8",
+			["GemQualityLevel"] = 86,
+		},
+	},
+	["LastVersion"] = 1.609,
+	["ButtonPosition"] = 2,
+	["ShowQuestUpgradeAdvisor"] = true,
+	["Digits"] = 1,
+	["ShowLootUpgradeAdvisor"] = true,
+}

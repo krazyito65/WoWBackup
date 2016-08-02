@@ -1,0 +1,75 @@
+-------------------------------------------------------
+-- BigWigs [AutoReply] --
+--------------------------------------------------------
+
+--------------------------------------------------------
+-- TODO --
+--------------------------------------------------------
++Please use Curse to request new features, file bugs, etc. 
+
+--------------------------------------------------------
+-- CHANGELOG --
+--------------------------------------------------------
+--- v1.2 ---
+-Update for 6.0 and new raids
+
+--- v1.13 ---
+-Fix a world boss reporting bug
+
+--- v1.12 ---
+-Fix a bug with GetDifficultyInfo()
+
+--- v1.11 ---
+-Another attempt to fix OQueue compatibility
+-Add flex support
+-Update TOC for 5.4
+
+--- v1.10 ---
+-Fix raid status reporting 0 total players in some situations
+
+--- v1.09 ---
+-Add chat console config to ignore list (/bwar ignore "<insert phrase here>")
+-When in LFR, raid and boss status will ALWAYS print. Options will control Normal/Heroic only.
+-Ignore list now saved through logout
+-Fix issue with raid status report
+
+--- v1.08 ---
+-Change the chat slash command (/bwar) to avoid conflict
+-Slight rewrite to how chat messages are created to be more efficient
+-Add optional report on raid status (/bwar reportStatus)
+-Fix a rare bug with chat message event filters.
+-Rewrite the way boss health is calculated to be more accurate with multiple boss units.
+-A lot of other optimizations and changes (credit to Dridzt)
+-Add ability to not reply to whispers containing certain phrase
+-Update TOC for 5.3
+
+--- v1.07 ---
+-Derp. Fix a stupid scoping issue I carelessly introduced.
+
+--- v1.06 ---
+-Fix for world bosses not working. Derp.
+-Code optimization (Credit to cremor).
+-Add option to NOT report boss health. (/bwar reportHealth)
+
+--- v1.05 ---
+-Added option to filter auto replies during combat
+	-Same option will filter DBM's auto replies during combat
+-More cleanup / optimizing
+
+--- v1.04 ---
+-Few bug fixes in event that BigWigs broadcasts don't fire
+-Cleanup
+
+--- v1.03 ---
+-Add support for 'BigWigs_OnBossWipe' and remove 'OnBossReboot'
+-Some output optimization
+
+--- v1.02 ---
+-Fixes for GetInstanceDifficulty() removal
+-Update TOC for Patch 5.2
+
+--- v1.01 ---
+Add back in the needed Ace library embeds
+
+--- v1 ---
+Initial public release

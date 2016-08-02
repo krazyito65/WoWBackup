@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r58 | thaoky | 2016-07-31 15:40:27 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore.lua
+
+Fixed GetRealmsConnectedWith()
+------------------------------------------------------------------------
+r57 | thaoky | 2016-07-31 14:43:48 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore.lua
+
+Fixed cross-realm support
+------------------------------------------------------------------------
+r56 | thaoky | 2016-07-18 16:06:22 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r55 | thaoky | 2015-08-17 16:17:46 +0000 (Mon, 17 Aug 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore.toc
+
+TOC Update
+------------------------------------------------------------------------

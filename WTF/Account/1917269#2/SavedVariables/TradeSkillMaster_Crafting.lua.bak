@@ -1,0 +1,658 @@
+
+TradeSkillMaster_CraftingDB = {
+	["global"] = {
+		["frameQueueOpen"] = true,
+	},
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["factionrealm"] = {
+		["Horde - Mal'Ganis"] = {
+			["mats"] = {
+				["item:52722:0:0:0:0:0:0"] = {
+					["name"] = "Maelstrom Crystal",
+				},
+				["item:6217:0:0:0:0:0:0"] = {
+					["name"] = "Copper Rod",
+				},
+				["item:52555:0:0:0:0:0:0"] = {
+					["name"] = "Hypnotic Dust",
+				},
+				["item:38682:0:0:0:0:0:0"] = {
+					["name"] = "Enchanting Vellum",
+				},
+				["item:74249:0:0:0:0:0:0"] = {
+					["name"] = "Spirit Dust",
+				},
+				["item:58094:0:0:0:0:0:0"] = {
+					["name"] = "Elixir of Impossible Accuracy",
+				},
+				["item:10938:0:0:0:0:0:0"] = {
+					["name"] = "Lesser Magic Essence",
+				},
+				["item:10940:0:0:0:0:0:0"] = {
+					["name"] = "Strange Dust",
+				},
+				["item:74250:0:0:0:0:0:0"] = {
+					["name"] = "Mysterious Essence",
+				},
+				["item:74247:0:0:0:0:0:0"] = {
+					["name"] = "Ethereal Shard",
+				},
+				["item:74248:0:0:0:0:0:0"] = {
+					["name"] = "Sha Crystal",
+				},
+				["item:52719:0:0:0:0:0:0"] = {
+					["name"] = "Greater Celestial Essence",
+				},
+			},
+			["craftingCostCache"] = {
+				["item:74250:0:0:0:0:0:0"] = 112198,
+				["item:74247:0:0:0:0:0:0"] = 871506,
+				["item:74249:0:0:0:0:0:0"] = 33461,
+			},
+			["crafts"] = {
+				[74238] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 3,
+						["item:52555:0:0:0:0:0:0"] = 10,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Mastery",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52771:0:0:0:0:0:0",
+				},
+				[104419] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 3,
+						["item:74247:0:0:0:0:0:0"] = 1,
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Gloves - Super Strength",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74721:0:0:0:0:0:0",
+				},
+				[104392] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 3,
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Chest - Super Resilience",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74706:0:0:0:0:0:0",
+				},
+				[104404] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Superior Critical Strike",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74713:0:0:0:0:0:0",
+				},
+				[104408] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 2,
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Greater Precision",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74716:0:0:0:0:0:0",
+				},
+				[74235] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 4,
+						["item:52555:0:0:0:0:0:0"] = 6,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Off-Hand - Superior Intellect",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52768:0:0:0:0:0:0",
+				},
+				[74239] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 6,
+						["item:52555:0:0:0:0:0:0"] = 4,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Greater Expertise",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52772:0:0:0:0:0:0",
+				},
+				[7428] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:10938:0:0:0:0:0:0"] = 1,
+						["item:10940:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Minor Dodge",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:38768:0:0:0:0:0:0",
+				},
+				[130758] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:74247:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Shield - Greater Parry",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:89737:0:0:0:0:0:0",
+				},
+				[104440] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74247:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Weapon - Colossus",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74727:0:0:0:0:0:0",
+				},
+				[104385] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 8,
+						["item:74250:0:0:0:0:0:0"] = 2,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Major Dodge",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74701:0:0:0:0:0:0",
+				},
+				[104393] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 4,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Chest - Mighty Spirit",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74707:0:0:0:0:0:0",
+				},
+				[104397] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 4,
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Chest - Superior Stamina",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74709:0:0:0:0:0:0",
+				},
+				[116497] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 5,
+					},
+					["name"] = "Mysterious Essence",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74250:0:0:0:0:0:0",
+				},
+				[104409] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74247:0:0:0:0:0:0"] = 2,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Blurred Speed",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74717:0:0:0:0:0:0",
+				},
+				[74236] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 2,
+						["item:58094:0:0:0:0:0:0"] = 1,
+						["item:52555:0:0:0:0:0:0"] = 2,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Precision",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52769:0:0:0:0:0:0",
+				},
+				[74240] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 4,
+						["item:52555:0:0:0:0:0:0"] = 9,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Greater Intellect",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52773:0:0:0:0:0:0",
+				},
+				[104425] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 12,
+						["item:74247:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Weapon - Windsong",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74723:0:0:0:0:0:0",
+				},
+				[118238] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 3,
+					["mats"] = {
+						["item:74247:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Mysterious Essence",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74250:0:0:0:0:0:0",
+				},
+				[104445] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Off-Hand - Major Intellect",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74729:0:0:0:0:0:0",
+				},
+				[7418] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:10940:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Minor Health",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:38679:0:0:0:0:0:0",
+				},
+				[104398] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 7,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Accuracy",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74710:0:0:0:0:0:0",
+				},
+				[116498] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 5,
+					},
+					["name"] = "Ethereal Shard",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74247:0:0:0:0:0:0",
+				},
+				[104414] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 4,
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Pandaren's Step",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74718:0:0:0:0:0:0",
+				},
+				[104338] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 4,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Mastery",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74700:0:0:0:0:0:0",
+				},
+				[104420] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Gloves - Superior Mastery",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74722:0:0:0:0:0:0",
+				},
+				[104417] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 2,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Gloves - Superior Expertise",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74720:0:0:0:0:0:0",
+				},
+				[104430] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Weapon - Elemental Force",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74725:0:0:0:0:0:0",
+				},
+				[7421] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:10938:0:0:0:0:0:0"] = 1,
+						["item:6217:0:0:0:0:0:0"] = 1,
+						["item:10940:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Runed Copper Rod",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:6218:0:0:0:0:0:0",
+				},
+				[104403] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 3,
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Superior Intellect",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74712:0:0:0:0:0:0",
+				},
+				[118239] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 2,
+					["mats"] = {
+						["item:74248:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Ethereal Shard",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74247:0:0:0:0:0:0",
+				},
+				[104698] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 2,
+					["mats"] = {
+						["item:52722:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Heavenly Shard",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52721:0:0:0:0:0:0",
+				},
+				[104401] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74247:0:0:0:0:0:0"] = 2,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Greater Protection",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74711:0:0:0:0:0:0",
+				},
+				[74237] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 3,
+						["item:52555:0:0:0:0:0:0"] = 9,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Bracer - Exceptional Spirit",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52770:0:0:0:0:0:0",
+				},
+				[104395] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 2,
+						["item:74250:0:0:0:0:0:0"] = 3,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Chest - Glorious Stats",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74708:0:0:0:0:0:0",
+				},
+				[118237] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 3,
+					["mats"] = {
+						["item:74250:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Spirit Dust",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74249:0:0:0:0:0:0",
+				},
+				[116499] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["hasCD"] = true,
+					["mats"] = {
+						["item:74247:0:0:0:0:0:0"] = 5,
+					},
+					["name"] = "Sha Crystal",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74248:0:0:0:0:0:0",
+				},
+				[104407] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 2,
+						["item:74250:0:0:0:0:0:0"] = 1,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Boots - Greater Haste",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74715:0:0:0:0:0:0",
+				},
+				[74234] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:52719:0:0:0:0:0:0"] = 3,
+						["item:52555:0:0:0:0:0:0"] = 8,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Cloak - Protection",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:52767:0:0:0:0:0:0",
+				},
+				[104416] = {
+					["players"] = {
+						["Kråzyito"] = true,
+					},
+					["numResult"] = 1,
+					["mats"] = {
+						["item:74249:0:0:0:0:0:0"] = 4,
+						["item:38682:0:0:0:0:0:0"] = 1,
+					},
+					["name"] = "Enchant Gloves - Greater Haste",
+					["profession"] = "Enchanting",
+					["queued"] = 0,
+					["itemID"] = "item:74719:0:0:0:0:0:0",
+				},
+			},
+			["tradeSkills"] = {
+				["Kråzyito"] = {
+					["Engineering"] = {
+						["isSecondary"] = false,
+						["level"] = 600,
+						["maxLevel"] = 600,
+						["link"] = "|cffffd000|Htrade:500000005C9CAAA:110403:202|h[Engineering]|h|r",
+					},
+					["First Aid"] = {
+						["isSecondary"] = true,
+						["level"] = 600,
+						["maxLevel"] = 600,
+						["link"] = "|cffffd000|Htrade:500000005C9CAAA:110406:129|h[First Aid]|h|r",
+					},
+					["Enchanting"] = {
+						["prompted"] = true,
+						["maxLevel"] = 610,
+						["link"] = "|cffffd000|Htrade:500000005C9CAAA:110400:333|h[Enchanting]|h|r",
+						["isSecondary"] = false,
+						["level"] = 610,
+						["accountKey"] = "Mal'Ganis1252312117",
+					},
+				},
+			},
+		},
+	},
+}

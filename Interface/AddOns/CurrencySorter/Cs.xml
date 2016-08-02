@@ -1,0 +1,67 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+					<Button name="SortUpArrowTemplate" parentKey="SortUpArrow" hidden="true" virtual="true">
+						<Size x="20" y="10"/>
+						<Anchors>
+							<Anchor point="TOPRIGHT" x="-20" y="-3"/>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentArrow" file="Interface\PaperDollInfoFrame\StatSortArrows" parentKey="Arrow" alpha="0.5" setAllPoints="true">	
+									<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnter>
+								self:Show();
+								self.Arrow:SetAlpha(0.8);
+								self:GetParent().SortDownArrow:Show();
+							</OnEnter>
+							<OnLeave>
+								self.Arrow:SetAlpha(0.5);
+								if ( not self:GetParent():IsMouseOver() ) then
+									self:Hide();
+									self:GetParent().SortDownArrow:Hide();
+								end
+							</OnLeave>
+                                                        <OnClick>
+								Cs_MoveUp(self)
+                                                                self:Hide()
+                                                        </OnClick>
+
+						</Scripts>
+					</Button>
+					<Button name="SortDownArrowTemplate" parentKey="SortDownArrow" hidden="true" virtual="true">
+						<Size x="20" y="10"/>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentKnappupp" relativePoint="BOTTOMLEFT" x="18" y="8"/>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentArrow" file="Interface\PaperDollInfoFrame\StatSortArrows" parentKey="Arrow" alpha="0.5" setAllPoints="true">
+									<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnEnter>
+								self:Show();
+								self.Arrow:SetAlpha(0.8);
+								self:GetParent().SortUpArrow:Show();
+							</OnEnter>
+							<OnLeave>
+								self.Arrow:SetAlpha(0.5);
+								if ( not self:GetParent():IsMouseOver() ) then
+									self:Hide();
+									self:GetParent().SortUpArrow:Hide();
+								end
+							</OnLeave>
+                                                        <OnClick>
+								Cs_MoveDown(self)
+                                                                ModTokenFrame_Update()
+                                                                self:Hide()
+                                                        </OnClick>
+						</Scripts>
+					</Button>
+</Ui>

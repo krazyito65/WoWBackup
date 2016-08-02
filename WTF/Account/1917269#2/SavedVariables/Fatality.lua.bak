@@ -1,0 +1,4 @@
+
+FatalityStatusDB = {
+	["enabled"] = true,
+}

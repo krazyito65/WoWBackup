@@ -1,0 +1,20 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: r52-release
+## X-Curse-Project-Name: BigWigs_BurningCrusade
+## X-Curse-Project-ID: bigwigs_burningcrusade
+## X-Curse-Repository-ID: wow/bigwigs_burningcrusade/mainline
+
+## Title: Big Wigs [|cffeda55fBurning Crusade|r]
+## Title-zhCN: Big Wigs [|cffeda55f燃烧的远征|r]
+## Notes: A collection of Big Wigs modules from the Burning Crusade era.
+## Notes-zhCN: Big Wigs 燃烧的远征模块。
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 775, 780, 779, 776, 799, 782, 466
+## X-BigWigs-LoadOn-WorldBoss: 473, 17711, 465, 18728
+
+modules.xml
+

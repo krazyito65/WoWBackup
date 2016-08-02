@@ -1,0 +1,301 @@
+CT_Core (6.0.2.0) 2014-10-15
+- Updated to 6.0.2.
+
+CT_Core (5.4.7.0) 2014-05-16
+- Updated to 5.4.7.
+- Library updates.
+
+CT_Core (5.4.2.1) 2013-12-30
+- Changed library to a standalone module.
+
+CT_Core (5.4.2) 2013-12-21
+- Library fix.
+
+CT_Core (5.4) 2013-12-12
+- Updated for the WoW 5.4 patch.
+
+CT_Core (5.3) 2013-05-24
+- Updated for the WoW 5.3 patch.
+- The CTMod minimap button should now be one frame level above the minimap so that is clickable when visible.
+
+CT_Core (5.2) 2012-03-09
+- Updated for the WoW 5.2 patch.
+
+CT_Core (5.0101) 2012-12-10
+- Updated for the WoW 5.1 patch.
+
+CT_Core (5.0004) 2012-09-16
+- Tooltip relocation: Fixed a problem that could cause the tooltip to be anchored incorrectly.
+
+CT_Core (5.0003) 2012-09-06
+- Tooltip relocation: The tooltip should no longer appear to jump between the default location and the mouse or anchor frame, when something other than CT_Core repositions the tooltip.
+
+CT_Core (5.0002) 2012-08-28
+- Release version for WoW 5.
+
+CT_Core (5.0001) 2012-08-19
+- Beta version for WoW 5.
+
+CT_Core (4.0302) 2012-02-13
+- Fixed a bug: When a window was closed, CT_Core was forcing all bags to close even if the "Close all bags" option for the window was disabled. This was affecting windows for which the game does not normally close all bags, such as the trade and auction house windows.
+
+CT_Core (4.0301) 2011-11-27
+- Updated for the WoW 4.3 patch.
+- Fixed some truncated text in the options window.
+- Added options for opening/closing bags when the void storage window opens.
+
+CT_Core (4.0201) 2011-07-14
+- Added options to allow you to move the game's Alternate Power Bar. This is the bar that normally appears at the bottom center of the screen for certain quests and boss fights.
+
+CT_Core (4.0200) 2011-06-28
+- Updated version numbers for the WoW 4.2 patch.
+- Added "Open only the backpack" and "Close all bags" options for when the auction house, bank, guild bank, merchant, and trading windows open.
+- Updated the casting bar routines to be compatible with Blizzard's new "Cast bar underneath" option for the player frame. The cast bar is only movable when not shown under the player frame.
+
+CT_Core (4.0100) 2011-04-26
+- Updated for the WoW 4.1 patch.
+- Updated CT_Library.lua to version 4.0100.
+- The various "open all bags" options have been updated to work with WoW 4.1 changes.
+- Added a separate option to open all bank bags when the bank opens. The default is to not open the bank bags. If you use an addon that shows the contents of all bank bags in a single window, you might need to leave this option disabled.
+
+CT_Core (4.005) 2011-01-04
+- If the Objectives options are enabled in CT_Core, the Objectives window will now be shown if you are not tracking anything when the game adds a "quest completed" frame to the Objectives window.
+
+CT_Core (4.004) 2010-10-31
+- A side effect of the CT_Core 4.003 bag changes was that if the backpack was already open before you opened a merchant's window, then the game's CloseAllBags() function left the backpack open when you closed the merchant's window. If the 'Close all bags...' option is enabled, CT_Core will now close the backpack if it is still open after CloseAllBags() has finished.
+
+CT_Core (4.003) 2010-10-27
+- Fixed a 'SetWidth()' error that was occuring if the CT_Core "Objectives" options were enabled, the "Can change width of window" option was enabled, and the size of the objectives window was not changed before logging out or reloading the UI.
+- Changed the various 'Open all bags ...' options to avoid problems with addons that display the contents of all bags in a single window.
+
+CT_Core (4.002)
+- WoW 4.0 patch version for the live realms.
+- Updated CT_Library.lua to version 4.002.
+
+CT_Core (4.001)
+- WoW 4.0 patch test version for the PTR realms.
+
+CT_Core (3.315)
+
+Chat
+- Added an option to hide the frame texture of the chat input box.
+- Added an option to hide the focus texture of the chat input box.
+- CT_Core chat options will now also be applied to any temporary chat windows that the game creates.
+
+Tooltip Relocation
+- The "On mouse" tooltip location that was changed in CT_Core 3.309, has been renamed to "On mouse (2)".
+- A new tooltip location named "On mouse (1)" has been added which is similar to the "On mouse" location that CT_Core was using prior to version 3.309 (including immediate tooltip hiding). This version includes a workaround for the update issue related to the health bar shown below a unit's tooltip. Anyone that had "On mouse" selected will automatically be using the new "On mouse (1)" location.
+
+CT_Core (3.314)
+- Fixed a nil value error that was occurring for some people when they received a whisper.
+- Added "Real ID whisper" to the sticky chat options.
+- Added an option to override the default resize limits of the chat frames.
+- Added an option to change the chat frame default opacity. The game uses the default opacity when creating new frames, when the mouse is over a chat frame, and when moving chat frames.
+
+CT_Core (3.313)
+- Added options to adjust the opacity of the chat frame tabs.
+- Added option to enable/disable the bottom right chat frame resize button.
+- Added options to enable/disable top left, top right, and bottom left chat frame resize buttons.
+- Added option to show a chat frame resize button only when the mouse is over the button.
+- Added options to enable/disable the sticky flag associated with various chat types such as whispers.
+
+CT_Core (3.312)
+- Fixed errors related to player notes.
+- Added an option to control chat frame clamping. You can use the game's default setting, allow moving to screen edges, or allow moving off screen. If you move a chat frame so that can't see or access it, use the 'Game default' setting to make it reappear on screen.
+
+CT_Core (3.311)
+- Updated for the WoW 3.3.5 patch.
+- Added an option to hide the friends button that is shown beside the main chat frame.
+- Removed the option to enable chat scrolling via the mousewheel. This option is now built into the game's default UI and can be toggled via the game's Interface options in the 'Social' category.
+- Added an option to enable the use of the Shift and Ctrl keys when chat scrolling. Shift + Mousewheel will scroll to the top/bottom of the chat frame, and Ctrl + Mousewheel will scroll one page up/down.
+- Added an option to control the position of the chat frame input box when the option to display it at the top of the chat frame is enabled.
+
+CT_Core (3.310)
+
+Chat:
+- Added an option to disable chat text fading.
+- Added an option to change the amount of time that chat text remains visible before it starts to fade.
+- Added an option to change the amount of time it takes for chat text to finish fading.
+
+Tooltip relocation:
+- Fixed an issue where the addon would not save the anchor point for the 'On Anchor' mode if you changed the anchor point by right clicking on the anchor frame.
+- Right clicking on the 'On Anchor' mode's anchor frame now properly updates the value displayed in the CT_Core options window.
+- Added options to hide the tooltip when the game begins to make the tooltip fade. It is not possible to change the amount of time before the tooltip starts to fade.
+
+CT_Core (3.309)
+
+Objectives
+- Fixed an issue that was causing the minimized objectives window to be placed in the wrong spot for previous users who had not resized or dragged the window since the 3.3.3 patch.
+
+Tooltip relocation
+- Fixed an issue when anchoring tooltips on the mouse that was causing the health bar under a unit's tooltip to sometimes display at full health when the unit was injured.
+- Added the ability to use top, right, bottom, or left anchor points for tooltips.
+- Added a dropdown menu to the options window that lets you change the anchor point for 'On Anchor' style tooltips. This does the same thing as right clicking on the anchor frame.
+- Added a dropdown menu to the options window that lets you change the anchor point for 'On Mouse' style tooltips.
+- Once the anchor frame has been hidden, 'On Anchor' style tooltips are now displayed in the same location as the anchor frame. This will allow you to position tooltips at the edge of the screen without having to drag the anchor frame off the screen. Prior to this change, the tooltip was displayed in the same place it was shown when the anchor frame was visible. You may want to adjust the position of your anchor frame to compensate for this change.
+
+CT_Core (3.308)
+
+Objectives window
+- Updated to work with the WoW 3.3.3 patch.
+- Removed CT_Core's right-click menu from the objectives window to prevent taint issues related to the "Show quest objectives" option on the World Map. Use /ctcore to change the options.
+- Added an option to control whether the addon remembers the collapsed/expanded state of the objectives window (default is disabled to prevent taint issues).
+- Added a resize control to the bottom left corner of the objectives window.
+
+CT_Core (3.307)
+- Enabling the option to show quest levels in the quest log no longer causes an "action blocked by an addon" message if you open the World Map while in combat and the "Show quest objectives" option is enabled.
+- Added an option to control whether or not you can change the width of the Objectives window. This option is disabled by default. Enabling this option may result in an "action blocked by an addon" message if you are in combat when you open the World Map, reduce the size of the World Map, or toggle the "Show quest objectives" option on the World Map.
+- Added an option to enable/disable player notes in the Friends window (default is enabled).
+- Added an option to enable/disable player notes in the Ignore window (default is enabled).
+- Added an option to enable/disable player notes in the Guild window (default is enabled).
+- The text in player notes will now wrap when displayed in the tooltip.
+
+CT_Core (3.306)
+- Fixed a problem with the 'Hide chat arrows' option that was causing it to sometimes not keep the arrows hidden.
+
+CT_Core (3.305)
+- Fixed a problem with the initial positioning of the objectives frame after a login or reload of the ui, if the top left corner of the frame was moved near the vertical or horizontal middle of the screen prior to the logout or reload.
+- Added options to open/close all bags when the trade window opens/closes.
+
+CT_Core (3.304)
+- Added options to open/close all bags when the auction house opens/closes.
+
+CT_Core (3.303)
+
+Objectives window
+- The options for the Objectives window are now disabled by default. This is to prevent any problems that might arise from having other addons loaded that also try to manipulate the Objectives window.
+- To enable the Objectives window options, type /ctcore, scroll down to the Objectives section, and select "Enable these options".
+- Display issues or other errors may arise if you have more than one addon that tries to manipulate the Objectives window. If that happens, you may need to disable Objectives window options in either CT_Core or some other addon.
+- Changed the method CT_Core uses to move the Objectives window in order to try and prevent other addons from immediately repositioning the window when CT_Core moves it.
+- Fixed a problem with the Objectives window temporarily reverting to the game's default position for it when entering or leaving a vehicle.
+- When locked, the Objectives window will not get displayed unless it is large enough to accomodate at least one objective.
+- CT_Core will now remember whether the Objectives window was collapsed or expanded, and it will restore the window to that state when you login or reload your UI.
+- Added a texture to the spot where you click to resize the Objectives window (when it is unlocked).
+
+CT_Core (3.302)
+- The 'open all bags when merchant opens' option now specifically opens the backpack, even though the game normally opens the backpack anyway at a merchant. This should force the backpack open for anyone who's backpack was not opening for some reason.
+
+CT_Core (3.301)
+- Added options for the game's Objectives window. You can now move and resize the window, display a border around it, keep it from being dragged off screen, and change the color and opacity of the window. You can right click the title of the Objectives window to access a menu of options.
+
+CT_Core (3.300)
+
+- Updated for the WoW 3.3 patch.
+- All options have been reorganized into separate sections which appear in alphabetical order.
+- Added the /ctcore command which can be used to directly open the CT_Core options window.
+- Some variables and functions which were global are now correctly declared as local.
+- Updated CT_Library.lua to version 3.005.
+
+Auction House
+- Added an option to add an item to the Auction House's Auctions tab when you Alt left-click an item. If you are not looking at the Auctions tab, then it will automatically switch to the Auctions tab before adding the item.
+
+Bank
+- Added options to open and close all bags when you use the bank.
+- Added options to open and close all bags when you use the guild bank.
+
+Duels
+- Added an option to block duels.
+- Added an option to show a message when a duel is blocked.
+
+General
+- Changing the option to hide the Main Bar gryphons will now also change the corresponding new option in CT_BottomBar (if that addon is loaded).
+- The option to block trades while at the bank has been moved into the new Bank section.
+
+Merchant
+- Added an option to buy a stack of items from a merchant when you Alt click an item. This function was already in CT_Core but there was no option to enable/disable it.
+- Added options to open and close all bags when you use a merchant.
+
+Trading
+- Added an option to open a Trade window with your target when you Alt left-click an item. Once the window opens, the item will automatically be added to the Trade window.
+- Added an option to add an item to the Trade window when you Alt left-click an item.
+
+CT_Libary.lua (3.005)
+
+Settings import
+- Fixed a problem with the settings import feature in the CTMod Control Panel where it was not properly importing frame positions.
+- Fixed a problem where there would be more than one "Settings Import" item listed in the CTMod Control Panel when more than one version of CT_Library.lua was encountered.
+- The settings import window now defaults to the first character on the first server that has importable options.
+- Added the ability to delete settings.
+
+Slash command
+- Added the /ctmod command as an alternative to the existing /ct command. Either one will open the CTMod Control Panel.
+- Added code to allow direct access to an addon's options window via a slash command (refer to individual addons for any slash commands that may have been added).
+
+General
+- The scrollbar in the options window resets to the top when you select a different addon.
+- The message at the top of the CTMod Control panel now mentions the slash commands that can be used to open it.
+- Some variables and functions which were global are now correctly declared as local.
+
+-----
+
+CT_Core (3.202)
+- Fixed an error experienced on the 3.2.2 test realm when reloading the ui.
+
+CT_Core (3.201)
+- Bug fix: The code that hooks the GetQuestLogTitle function now also returns the new questID value.
+
+CT_Core (3.200)
+- Updated for the WoW 3.2 patch.
+
+CT_Core (3.017)
+- Updated to avoid a possible issue with the casting bar due to WoW 3.1 changes.
+
+CT_Core (3.016)
+- Updated for the WoW 3.1 patch.
+- Updated CT_Library.lua to version 3.004.
+- The options to move the quest and achievement information have been removed. This capability (and more) is now built into the game's default UI (in Interface Options, Objectives, Advanced Objectives Tracking).
+- When the "display quest levels" option is enabled, it will now display an "R" beside the quest level for "Raid (10)" and "Raid (25)" type quests.
+
+CT_Library.lua (3.004)
+- Fixed a nil value error when the client's locale was not recognized.
+
+CT_Core (3.014)
+- The "Display chat timestamps" option no longer tries to display timestamps in the combat chat window. Blizzard's combat log timestamp option should be used instead.
+
+CT_Core (3.013)
+- Fixed a display bug when the quest tracker frame width was wider than the achievement tracker frame width.
+- Updated CT_Library.lua to version 3.003.
+
+CT_Core (3.012)
+- Fixed a problem which could result in the error "Blizzard_CombatLog.lua line 3434: attempt to perform arithmetic on local 'uiScale' (a nil value)" when you are entering the world for the first time since starting the game. The problem was occurring if you had an addon which caused the Blizzard_CombatLog addon to load before CT_Core was loaded.
+- Added an option to reset the position of the CTMod minimap icon.
+- Updated CT_Library.lua to version 3.002.
+
+CT_Library (3.002)
+- Fixed a bug that was causing some text to be aligned incorrectly in some of the addons.
+- Corrected a spelling mistake on the CTMod Control panel window.
+
+CT_Core (3.011)
+- Slightly widened the area on the main casting bar for the timer text to allow for longer timer values.
+
+CT_Core (3.010)
+- The quest tracker in CT_Core now handles achievement tracking information also.
+- You can use one anchor to combine the two trackers into one, or you can use two anchors to move each tracker separately.
+- When not using the trackers in CT_Core, the quest and achievement tracking data should be displayed in the standard UI positions.
+- Added options to let you move your casting bar. You must unlock the bar before you can drag it. It will remain visible while it is unlocked.
+- Right clicking the casting bar when it is unlocked will reset its position.
+- Added options to reset the CT_Core options for your current character or for all characters.
+- The option to block trades while at the bank should now work properly, and it will now also work when you are at the guild bank.
+
+CT_Core (3.005)
+- Updated the version number in CT_Library.lua
+
+CT_Core (3.004)
+- Added a server menu to the Settings Import window.
+
+CT_Core (3.003)
+- Added a button to reset the position of the quest tracker anchor.
+- Added a button to reset the position of the tooltip anchor.
+
+CT_Core (3.002)
+- Fixed an error which occured when the casting bar timers option was enabled.
+
+CT_Core (3.001)
+- Fixed a problem with timestamps only appearing in one chat frame.
+
+CT_Core (3.000)
+- Updated for the WoW 3.0 patch.
+- The casting bar timer now displays when the player is casting or channeling.
+- Alt + Right Click to buy a stack from a merchant should now work.
+- Friend, ignore, and player notes now use a wider edit box.
+- Chat timestamps no longer display in the combat log chat frame (uses Blizzard's timestamp instead).

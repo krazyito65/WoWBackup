@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r61 | phuzi0n | 2015-11-15 23:57:35 +0000 (Sun, 15 Nov 2015) | 1 line
+Changed paths:
+   A /tags/v6.0.6 (from /trunk:60)
+
+tag as v6.0.6
+------------------------------------------------------------------------
+r60 | phuzi0n | 2015-11-15 23:56:56 +0000 (Sun, 15 Nov 2015) | 1 line
+Changed paths:
+   M /trunk/RandomMountContinued.lua
+   M /trunk/RandomMountContinued.toc
+
+update for Draenor flying
+------------------------------------------------------------------------

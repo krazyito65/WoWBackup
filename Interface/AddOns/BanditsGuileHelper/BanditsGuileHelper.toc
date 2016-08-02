@@ -1,0 +1,14 @@
+## Interface: 60000
+## Title: BanditsGuileHelper
+## Notes: Rogue Bandit's Guile Helper
+## SavedVariables: BGDB
+## Author: Indz
+## Version: 0.9
+## X-Curse-Packaged-Version: r20141204181220
+## X-Curse-Project-Name: Bandits Guile Helper
+## X-Curse-Project-ID: bandits-guile-helper
+## X-Curse-Repository-ID: wow/bandits-guile-helper/mainline
+
+embeds.xml
+BG.xml
+Core.lua

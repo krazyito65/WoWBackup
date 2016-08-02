@@ -1,0 +1,169 @@
+--------------------------------------------------------
+-- BigWigs [Record Kills] --
+--------------------------------------------------------
+
+--------------------------------------------------------
+-- TODO --
+--------------------------------------------------------
++Please use Curse to request new features, file bugs, etc. 
+
+--------------------------------------------------------
+-- CHANGELOG --
+--------------------------------------------------------
+--- v2.03 ---
+-Fix typo in display for Brackenspore. Records should be intact.
+
+--- v2.02 ---
+-Fix an error converting SoO records for people w/o records
+-Update to work with BigWigs for WoD (journalId)
+
+--- v2.01 ---
+-Fix a bug with converting SoO records
+
+--- v2.0 ---
+-Update for 6.0 and new raid difficulties
+-Upgrade old flex/normal to current normal/heroic
+-General code clean up and small fixes
+
+--- v1.26 ---
+-Fix a bug preventing some records from tracking
+
+--- v1.25 ---
+-Fix typo in new raid's data (Orgimmar :\)
+-Fix an issue when certain encounters wouldn't be tracked
+-Fix an error that sometimes appears in Pre-MoP raids
+-Add Flexible support for T16+
+-Update database import for 5.4 and flex difficulty
+-Clean up constants table
+-Update TOC for 5.4
+
+--- v1.24 ---
+-Fix small typo in :RemoveBestTime()
+-Add automatic downgrade of all Heroic records to corresponding Normal difficulty.
+-Record downgrade can be forced through command (/bwrk downgrade).
+-Fix apparent Amber-Shaper Un'sok mistype (again?)
+-Add T16 boss data in preparation for 5.4
+-Fix a database error on first load of the addon
+-Clean up unused/test code
+-Reset commmand will now reset all settings as well as records
+-Immediately attempt to re-register for BW messages after failed encounter track
+
+--- v1.23 ---
+-Small change to console config
+-If a heroic record added with no normal record, the record will also become the corresponding normal record
+-Add option to show bosses you haven't killed by difficulty (/bwrk allBosses)
+-Change the chat command to toggle per tier display (/bwrk allTiers)
+
+--- v1.22 (Release) ---
+-Changed the chat slash command to /bwrk to avoid conflicts
+-Load some variables earlier, remove some globals
+-Remove some extraneous settings from database
+-A lot of other code changes and removals (credit to Dridzt)
+-Update TOC for 5.3
+
+--- v1.21 (Release) ---
+-Fix an error when displaying records in a pre-MoP raid instance
+-Reword the error message when no BigWigs engage message is broadcast
+
+--- v1.2 (Release) ---
+-Basically rewrote the entire back end to be more compatible with BigWigs statistics
+-Optimize, optimize, optimize
+-Add option to toggle tier wise display through chat (/rk showAll)
+	-Left Click: Change difficulty, Right Click: Change tier
+
+--- v1.19 (Alpha) ---
+-Finish up tier-wise display work
+-Some changes to the record data broker
+-Lots of bug fixes 
+
+--- v1.18 (Alpha) ---
+-Remove LibQTip support (too much memory for my liking)
+-Continue tier-wise display option work
+
+--- v1.17 (Alpha) ---
+-Clean up a lot of code
+-Edit some chat outputs coloring and wording
+
+--- v1.16 (Alpha) ---
+-Begin tier-wise display of records
+-Add LibQTip support
+
+--- v1.15 (Alpha) ---
+-More optimization/clean up
+-Again remove the color from some notifications
+
+--- v1.14 (Release) ---
+-Attempt to fix removal of Record Kill bar on wipe
+-More clean up and optimizing
+-Bring the color back to record breaking notifications
+
+--- v1.13 (Release) ---
+-Add order to raids in the display
+-More code clean up
+-Modularize raid difficulty retrieval
+-Small wording changes on display
+-Fix some bugs in the 'remove' chat function
+-Add support for 'onBossWipe' BigWigs broadcast
+
+--- v1.12 (Release) ---
+-Fixes for GetInstanceDifficulty() removal
+-Finish BW record importing
+-Add automatic import on first load of add on v1.12+
+-Update TOC for Patch 5.2
+-Migrate data to new difficulty indices (GG blizz)
+-Some minor code clean up
+-Add automatic migration/import on first load with v1.12+
+
+--- v1.11 (Release) ---
+-Fix a bug with Amber-Shaper Un'sok (stupid hyphen)
+-Add some initial support for importing BigWigs best kills (/rk import)
+-Clean up the kill database
+-Add an encounterID and zoneID reference for playing nice with BW in future
+-Fix typos in ToT boss information
+
+--- v1.1 (Alpha) ---
+-Few bug fixes
+-Update some ToT boss information
+-Add an alternate slash command
+-Clean up some debug code
+
+--- v1.09 (Alpha) --- 
+-Add simultaneous encounter tracking. Pull as many bosses as your heart desires.
+-Clean up some database code
+-Add rare error detection for multi encounter tracking
+
+--- v1.08 (Alpha) ---
+-Recode the way the encounter length is measured
+
+--- v1.07 (Alpha) ---
+-Remove world boss tracking as it's unreliable to begin with.
+-Add some small debug lines for testing kill reliability
+
+--- v1.06 (Release) ---
+-Fix the BigWigs dependency so BW isn't forced to load early
+-Remove an unintended Ace library embed
+
+--- v1.05 (Release) ---
+-Fix the fix for 3rd party boss modules
+
+--- v1.04 (Alpha) ---
+-Add Throne of Thunder boss order information
+-Fix a bug with 3rd party boss modules interfering with timing
+-Fix small bug with output of new records
+
+--- v1.03 (Alpha) ---
+-Broker will return to previously viewed difficulty after leaving a raid instance
+-Fix ability to remove a record from database (extra arguments were causing problems)
+-Hardcore BigWigs dependency (add-on won't load without it)
+
+--- v1.02 (Alpha)---
+-Fix a slight typo in reporting of new records
+-Add ability to display bosses in the order they are encountered
+-Add some more author information (and thanks to BW creators)
+
+--- v1.01 (Alpha) ---
+-Fix bug with visibility of LDB frame
+-Clean up the profile database
+
+--- v1 ---
+-Initial public release

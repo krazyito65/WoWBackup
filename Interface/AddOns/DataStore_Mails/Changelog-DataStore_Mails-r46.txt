@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r46 | thaoky | 2016-07-31 14:42:06 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Mails.lua
+
+Fixed cross-realm support
+------------------------------------------------------------------------
+r45 | thaoky | 2016-07-20 19:48:34 +0000 (Wed, 20 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Mails.lua
+
+Fixed invalid attachment count during scan.
+------------------------------------------------------------------------
+r44 | thaoky | 2016-07-18 16:09:51 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Mails.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r43 | thaoky | 2015-08-17 16:20:40 +0000 (Mon, 17 Aug 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore_Mails.toc
+
+TOC Update
+------------------------------------------------------------------------

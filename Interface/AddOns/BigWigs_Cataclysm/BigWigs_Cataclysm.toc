@@ -1,0 +1,21 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: r84-release
+## X-Curse-Project-Name: BigWigs_Cataclysm
+## X-Curse-Project-ID: bigwigs_cataclysm
+## X-Curse-Repository-ID: wow/bigwigs_cataclysm/mainline
+
+## Title: Big Wigs [|cffeda55fCataclysm|r]
+## Title-itIT: Big Wigs [|cffeda55fCataclysm|r]
+## Title-zhCN: Big Wigs [|cffeda55f大地的裂变|r]
+## Notes: A collection of Big Wigs modules from the Cataclysm era.
+## Notes-itIT: Una collezione di moduli Big Wigs dell'era di Cataclysm.
+## Notes-zhCN: Big Wigs 大地的裂变模块。
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 752, 758, 754, 824, 800, 773
+
+modules.xml
+

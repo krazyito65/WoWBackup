@@ -1,0 +1,17 @@
+
+Postal3DB = {
+	["global"] = {
+		["BlackBook"] = {
+			["alts"] = {
+				"Krazyito|Gnomeregan|Alliance|90|DRUID", -- [1]
+			},
+		},
+	},
+	["profileKeys"] = {
+		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
+	},
+	["profiles"] = {
+		["Krazyito - Gnomeregan"] = {
+		},
+	},
+}

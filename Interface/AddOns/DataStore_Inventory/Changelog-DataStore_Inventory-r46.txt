@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r46 | thaoky | 2016-07-31 14:42:31 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Inventory.lua
+
+Fixed GetThisGuild()
+------------------------------------------------------------------------
+r45 | thaoky | 2016-07-27 17:35:12 +0000 (Wed, 27 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Inventory.lua
+
+Scan Transmog Collection Counters
+------------------------------------------------------------------------
+r44 | thaoky | 2016-07-18 16:09:30 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Inventory.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r43 | thaoky | 2015-08-17 16:20:25 +0000 (Mon, 17 Aug 2015) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/DataStore_Inventory.lua
+   M /trunk/DataStore_Inventory.toc
+   M /trunk/embeds.xml
+
+TOC Update
+Added LFR loots
+------------------------------------------------------------------------

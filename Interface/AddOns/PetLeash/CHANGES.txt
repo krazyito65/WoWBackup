@@ -1,0 +1,1707 @@
+Changelog
+=========
+
+3.0.16.1 (2016-07-19)
+---------------------
+
+- Update TOC for 7.0 client. [Robin Schoonover]
+
+3.0.16 (2016-07-19)
+-------------------
+
+- Merge remote-tracking branch 'origin/legion' [Robin Schoonover]
+
+- Check if pets need fanfare. [Robin Schoonover]
+
+  (Fanfare means gifts.)
+
+
+- Update camoflage spell ids. [Robin Schoonover]
+
+3.0.15 (2016-05-31)
+-------------------
+
+- Fix luacode trigger example and call. [Robin Schoonover]
+
+- Update ci scripts to use gitlab-ci artifacts handling. [Robin
+  Schoonover]
+
+- Default to not dismissing while stealthed. [Robin Schoonover]
+
+  Despite appearances, when stealthed pets are not visible.
+
+
+- Handle another problematic Nagrad quest. [Robin Schoonover]
+
+3.0.14 (2016-02-26)
+-------------------
+
+- Update ruRU. [Robin Schoonover]
+
+3.0.13 (2016-02-23)
+-------------------
+
+- Update locales. [Robin Schoonover]
+
+3.0.12 (2016-02-17)
+-------------------
+
+- Default to enabled in PVE instances. [Robin Schoonover]
+
+3.0.11 (2016-02-14)
+-------------------
+
+- Add enable/dismiss option for pve instances. [Robin Schoonover]
+
+3.0.10 (2015-12-16)
+-------------------
+
+- Add findglobal test/update paths. [Robin Schoonover]
+
+- Add tooltip to pet selection widget. [Robin Schoonover]
+
+- In PetSelect, prevent the pet sort from being "unstable". [Robin
+  Schoonover]
+
+  This works by making sure no pet is actually identical.
+
+
+3.0.9 (2015-11-17)
+------------------
+
+- Add two more spell IDs as food/drink, as they seem to get translated
+  differently. [Robin Schoonover]
+
+- Don't try to dismiss a pet while flying. [Robin Schoonover]
+
+  Trying just fails silently, and if the pet can't fly, it'll be dismissed
+  by the game client anyway.
+
+
+- It's possible to summon a minipet while mounted. [Robin Schoonover]
+
+3.0.8 (2015-11-01)
+------------------
+
+- By default, make PetLeash chatty about when it's summoning. [Robin
+  Schoonover]
+
+  If PetLeash is being a problem, it should make it more obvious that it should be blamed.
+
+
+- Add "Refreshment" as an eating spell, and refactor aura detection.
+  [Robin Schoonover]
+
+- Update TOC Interface for 6.2 [Robin Schoonover]
+
+3.0.7 (2015-10-24)
+------------------
+
+- Fix desaturation call. [Robin Schoonover]
+
+- Never upvalue LibStub. [Robin Schoonover]
+
+- Upvalue a bunch of globals. [Robin Schoonover]
+
+- Remove build-zip.py script. [Robin Schoonover]
+
+  It's been superseded by wowui-builder.
+
+
+- Fix Set:Contains check to use correct variable name. [Robin
+  Schoonover]
+
+- Add upload stage to CI jobs. [Robin Schoonover]
+
+3.0.6 (2015-09-27)
+------------------
+
+- Add build CI script. [Robin Schoonover]
+
+- Ignore build-zip.py in pkgmeta. [Robin Schoonover]
+
+- Camouflage and Feign Death no longer break on dismiss. [Robin
+  Schoonover]
+
+3.0.5.1 (2015-02-25)
+--------------------
+
+- Update TOC Interface for 6.1 [Robin Schoonover]
+
+3.0.5 (2015-01-11)
+------------------
+
+- The Oshu'gun quest does something weird with pets. [Robin Schoonover]
+
+  Also make sure we do a better job of picking up quest list.
+
+
+3.0.4 (2014-12-18)
+------------------
+
+- Attempt to deal with spurious ZONE_CHANGED_NEW_AREA events. [Robin
+  Schoonover]
+
+  It's been reported that it fires during certain quests.
+
+
+3.0.3 (2014-12-18)
+------------------
+
+- In filters, fix :MakeOption call to properly pass parent. [Robin
+  Schoonover]
+
+  This fixes a lua error when configuring filters.
+
+
+- In options, give a more useful error if we get a strange widgetType.
+  [Robin Schoonover]
+
+3.0.2 (2014-10-26)
+------------------
+
+- Fix search box "Search" handling. [Robin Schoonover]
+
+  It works more sensibly, but requires a call
+  to the TextChanged hook.
+
+
+3.0.1 (2014-10-17)
+------------------
+
+- Add base camouflage spell (seems to have been renumbered). [Robin
+  Schoonover]
+
+- Fix for checking out specific revision when building. [Robin
+  Schoonover]
+
+3.0 (2014-10-14)
+----------------
+
+- Don't bother with upgrade code, pet IDs changed anyway. [Robin
+  Schoonover]
+
+- LibAboutPanel seems to be squashing X-Credits, so just condense into a
+  blanket statement. [Robin Schoonover]
+
+- Update TOC for WoD. [Robin Schoonover]
+
+- Change build-zip.py for use with git repository. [Robin Schoonover]
+
+- Always use fastrandom (remove compat for old random name). [Robin
+  Schoonover]
+
+- git conversion cleanup [Robin Schoonover]
+
+- Use fastrandom if available. [Robin Schoonover]
+
+  As of 5.4.2, random is now securerandom which is slower and stronger than we care about
+
+
+- Added tag 3.0-beta3 for changeset 71d081dc5ef7 [Robin Schoonover]
+
+3.0-beta3 (2013-10-27)
+----------------------
+
+- Add lua code trigger. [Robin Schoonover]
+
+- Fix camouflage. [Robin Schoonover]
+
+  It appears that it is no longer possible to dismiss a pet without breaking camouflage.
+
+
+- Fix special location trigger. [Robin Schoonover]
+
+- Add macro conditional triggers. [Robin Schoonover]
+
+- Fix group trigger events. [Robin Schoonover]
+
+  Reported By: feherandor
+
+
+- Added tag 3.0-beta2 for changeset 1476d566a1d4 [Robin Schoonover]
+
+3.0-beta2 (2013-09-26)
+----------------------
+
+- Merge [Robin Schoonover]
+
+- Added tag 3.0-beta1 for changeset ab8dc8aab5fa [Robin Schoonover]
+
+- Fix upgrade code to handle unset pets in locations. [Robin Schoonover]
+
+3.0-beta1 (2013-09-22)
+----------------------
+
+- Merge new config branch. [Robin Schoonover]
+
+- Update TOC For 5.4 client. [Robin Schoonover]
+
+- Maybe fix camo by adding some related spellids. [Robin Schoonover]
+
+- Fix default profile for old db. [Robin Schoonover]
+
+- Remove some usused strings. [Robin Schoonover]
+
+- Put strings in localization database. [Robin Schoonover]
+
+- Upgrade settings before setting profile callbacks (so we don't catch
+  old profile change) [Robin Schoonover]
+
+- At this point, version in db doesn't make much sense. [Robin
+  Schoonover]
+
+  It doesn't get touched, so it will always be default.
+
+
+- Add a chancel option to weight drop down. [Robin Schoonover]
+
+- When dealing with upgrade settings on addon load, determine which
+  profile was being used and use that. [Robin Schoonover]
+
+- Invalidated sets now have an impossibly low priority [Robin
+  Schoonover]
+
+  This is only needed when :Free() is called, which forces the next set to be calculated.
+
+
+- Remove some old strings. [Robin Schoonover]
+
+- Desummon -> Dismiss [Robin Schoonover]
+
+- Alter immediate behavior to only summon a new pet if current pet is
+  not in list. [Robin Schoonover]
+
+- Fix db upgrade to pass basic tests. [Robin Schoonover]
+
+- Reorganize PetLeash.lua [Robin Schoonover]
+
+- Rename a set's set of pets to pets instead of set to be a little less
+  confusing. [Robin Schoonover]
+
+- Add some upgrade code. [Robin Schoonover]
+
+- whitespace adjust [Robin Schoonover]
+
+- Only recheck pet summon for CRZ bug when pet state changes. [Robin
+  Schoonover]
+
+- Check for lookup table before setting in pet select. [Robin
+  Schoonover]
+
+- Add a clear button. [Robin Schoonover]
+
+- PetSelect fixes. [Robin Schoonover]
+
+- Reorder SetValues [Robin Schoonover]
+
+- Seperate new settings from old, implement first half of database
+  upgrade (which is a copy) [Robin Schoonover]
+
+- Hide pet selects that aren't being filled (at end of list) [Robin
+  Schoonover]
+
+- Set callback later. [Robin Schoonover]
+
+- Don't reflow pet select buttons unless the frame has been resized.
+  [Robin Schoonover]
+
+- Trigger fixes. [Robin Schoonover]
+
+- Reorder set save to occur before set refresh [Robin Schoonover]
+
+- Fix bad globals. [Robin Schoonover]
+
+- Reduce number of globals accessed on runtime [Robin Schoonover]
+
+- Fix some leaked globals. [Robin Schoonover]
+
+- Change filter/trigger add button ordering [Robin Schoonover]
+
+- Fix for CRZ bug [Robin Schoonover]
+
+- Filter fixes. [Robin Schoonover]
+
+- Fix type. [Robin Schoonover]
+
+- Implement filter/trigger logic. [Robin Schoonover]
+
+- Implement configuration side of and/or. [Robin Schoonover]
+
+- Allow nightly version to be specified. [Robin Schoonover]
+
+- Add immediate checkbox. [Robin Schoonover]
+
+- Add some pause/resume layouts when first setting up ui bits. [Robin
+  Schoonover]
+
+- Use a group instead of a dummy label to seperate common filter
+  options. [Robin Schoonover]
+
+- Implement enable/priority checkboxes. [Robin Schoonover]
+
+- Remove a (temporary) comment [Robin Schoonover]
+
+- Fix trigger handling so that it actually works again. [Robin
+  Schoonover]
+
+- Improve wording of EXPLAIN_SPECIAL_ITEMS [Robin Schoonover]
+
+- Delay options load, and properly load module options. [Robin
+  Schoonover]
+
+- Set defaults for filters. [Robin Schoonover]
+
+- Implement filter/trigger options. [Robin Schoonover]
+
+- Implement delete/rename parts, and rearrange some layout. [Robin
+  Schoonover]
+
+- Update Interface TOC version. [Robin Schoonover]
+
+- Rewrite filters and triggers framework. [Robin Schoonover]
+
+- Rename Conditions -> Triggers [Robin Schoonover]
+
+- Rearrange pet selection config so default gets its own page. [Robin
+  Schoonover]
+
+  Filter/Condition pages need to be reimplemented (and conditions are now called triggers).
+
+
+- In desummon verify, check for in combat condition. [Robin Schoonover]
+
+- Bump TOC interface [Robin Schoonover]
+
+- Merge in default branch. [Robin Schoonover]
+
+- Fix main screen config for missing method. [Robin Schoonover]
+
+- Fix a _NotifyAddOn call [Robin Schoonover]
+
+- Count empty sets as inactive [Robin Schoonover]
+
+- Rename SetStateChanged method to NotifySetStateChanged [Robin
+  Schoonover]
+
+- Add a method to notify that a set's state has changed [Robin
+  Schoonover]
+
+- Rename weight to priority, and work on set interface. [Robin
+  Schoonover]
+
+- move rename/delete to their own page and add a priority dropdown for
+  sets [Robin Schoonover]
+
+- Add delete and rename buttons for custom sets. [Robin Schoonover]
+
+- Move desummon verification to its a static method, instead of
+  recreating it each time. [Robin Schoonover]
+
+- pull in cooldown check [Robin Schoonover]
+
+- Scale the size of the pet type icon. [Robin Schoonover]
+
+- Color borders of pets. [Robin Schoonover]
+
+- Increase minimum extra bottom. [Robin Schoonover]
+
+- Fix "Search" in filter box. [Robin Schoonover]
+
+- Fix filter to properly compare case unsenstive [Robin Schoonover]
+
+- Pet selection widget tweaks [Robin Schoonover]
+
+- Fix filter table for default set. [Robin Schoonover]
+
+- Fix (default) weight settings for filters. [Robin Schoonover]
+
+- Improve profile handling. [Robin Schoonover]
+
+- Fix combat ready check. [Robin Schoonover]
+
+- Fix set manipulation options. [Robin Schoonover]
+
+- Update value of set immediately on RefreshConditions to handle sets
+  with no conditions. [Robin Schoonover]
+
+- Slightly simplify InBattlegroundOrArena/InInstanceOrRaid methods.
+  [Robin Schoonover]
+
+- Merge with default. [Robin Schoonover]
+
+- Fix broker tooltip colon [Robin Schoonover]
+
+- Hook pieces up so different sets can be used. [Robin Schoonover]
+
+- Fix pet summon. [Robin Schoonover]
+
+- Don't trim filter box. [Robin Schoonover]
+
+- Mark sets as dirty when we get pet list events. [Robin Schoonover]
+
+  We to include when a pet lives or dies.
+
+
+- Fix handling profile switches. [Robin Schoonover]
+
+- Formalize the set object. [Robin Schoonover]
+
+- Handle removed conditions properly. [Robin Schoonover]
+
+- Implement some conditions bits. [Robin Schoonover]
+
+  Still needs to be hooked up.
+
+
+- Global fixes/tweaks [Robin Schoonover]
+
+- Move Filters/Condition code around. [Robin Schoonover]
+
+- Dramaticly increase weighted effect, and fix some issues with setting
+  sets. [Robin Schoonover]
+
+- Hide dropdown if normal click is used [Robin Schoonover]
+
+- Tweak weight dropdown. [Robin Schoonover]
+
+- Properly hook up default value. [Robin Schoonover]
+
+- Trim filter string. [Robin Schoonover]
+
+  Some might actually explicitly use spaces, but it's also confusing if you
+  have a space you didn't expect.
+
+
+- Default to ignoring certain pets again (such as pets with cooldowns)
+  [Robin Schoonover]
+
+- Add a default check box. [Robin Schoonover]
+
+- Use our new weighted checkbox. [Robin Schoonover]
+
+- Import new Weighted Checkbox widget [Robin Schoonover]
+
+- Allow :PickPet to provide a weighted set table [Robin Schoonover]
+
+- Catch improbably small window for random number. [Robin Schoonover]
+
+- Rename set size property. [Robin Schoonover]
+
+- Properly use given set in :BuildSet [Robin Schoonover]
+
+- Really use saved weight value in pet list. [Robin Schoonover]
+
+- Rewrite pick pet to take into account weights (not that they can be
+  set to anything yet) [Robin Schoonover]
+
+- Be more forgiving of strange values. [Robin Schoonover]
+
+- Use config wrapper for conditions page. [Robin Schoonover]
+
+- Throw in some new weighting names. [Robin Schoonover]
+
+- Add an unfilled weight drop down. [Robin Schoonover]
+
+- Remove debug output. [Robin Schoonover]
+
+- Actually use filters. [Robin Schoonover]
+
+- Allow proper operation of scroll in filters while preventing tab title
+  from being set. [Robin Schoonover]
+
+- First stab at filter configuration. [Robin Schoonover]
+
+- Improve width handling of items. [Robin Schoonover]
+
+- Wrap filter with simple group, and make condition also generate the
+  same way. [Robin Schoonover]
+
+- Filters tab will be filled using AceConfig [Robin Schoonover]
+
+- Fix filter to use plain strings. [Robin Schoonover]
+
+- Implement enabled checkbox. [Robin Schoonover]
+
+- More fixes for single column (narrow) display. [Robin Schoonover]
+
+- Expand visible space when scrollbar is hidden. [Robin Schoonover]
+
+- Fix add new set. [Robin Schoonover]
+
+- Summon a random pet from the default set. [Robin Schoonover]
+
+- Make options actually manipulate pet sets. [Robin Schoonover]
+
+- Tweak positioning of names. [Robin Schoonover]
+
+- Fix column handling so that different numbers of columns can properly
+  be used. [Robin Schoonover]
+
+  Then change the width so that normally we wouldn't get more than two columns anyway.
+
+
+- Fix scrollbar on reset. [Robin Schoonover]
+
+- Fix scrolling from bottom up [Robin Schoonover]
+
+- Add tooltip to checkboxes [Robin Schoonover]
+
+- Mark purpose. [Robin Schoonover]
+
+- uh, filter out Search [Robin Schoonover]
+
+- Hide scrollbar if we aren't showing enough entries. [Robin Schoonover]
+
+- Reimplement scroll frame to only populate visible elements. [Robin
+  Schoonover]
+
+- Small clean up. [Robin Schoonover]
+
+- It doesn't do anything, but implement some UI bits. [Robin Schoonover]
+
+- Merge in default branch changes [Robin Schoonover]
+
+- Start out on correct pages. [Robin Schoonover]
+
+- Reorganize gui layout in a more heirarchical layout. [Robin
+  Schoonover]
+
+- Re-mockup. [Robin Schoonover]
+
+- Remove some unused methods. [Robin Schoonover]
+
+- Split options out to its own module. [Robin Schoonover]
+
+- Remove Locations module, as the functionality will be reproduced.
+  [Robin Schoonover]
+
+- Mock up some UI [Robin Schoonover]
+
+- Disable locations module (for now?) [Robin Schoonover]
+
+- Create new feature branch. [Robin Schoonover]
+
+- Added tag 2.2.11 for changeset eeef6471cf37 [Robin Schoonover]
+
+2.2.11 (2013-06-06)
+-------------------
+
+- Pull setup options fix from branch. [Robin Schoonover]
+
+- Added tag 2.2.10.1 for changeset bfc74efc3918 [Robin Schoonover]
+
+2.2.10.1 (2013-05-21)
+---------------------
+
+- Update TOC [Robin Schoonover]
+
+- Added tag 2.2.10 for changeset 28ef688277b0 [Robin Schoonover]
+
+2.2.10 (2013-03-07)
+-------------------
+
+- Fix disable all/enable all buttons. [Robin Schoonover]
+
+- Added tag 2.2.9 for changeset 36a2ba8324be [Robin Schoonover]
+
+2.2.9 (2013-03-06)
+------------------
+
+- Don't break player out of saurok form. [Robin Schoonover]
+
+- Update TOC for 5.2 client [Robin Schoonover]
+
+- Drycode cooldown check on summon pet. [Robin Schoonover]
+
+- Added tag 2.2.8 for changeset 78cd66d03ecb [Robin Schoonover]
+
+2.2.8 (2013-02-22)
+------------------
+
+- Fix combat ready check. [Robin Schoonover]
+
+- Added tag 2.2.7 for changeset 448e9e27ee03 [Robin Schoonover]
+
+2.2.7 (2013-02-20)
+------------------
+
+- Remove now unused locale string. [Robin Schoonover]
+
+- Ack, Pets can no longer be summoned or dismissed while in combat!
+  [Robin Schoonover]
+
+- Added tag 2.2.6 for changeset 6cbd27b96fff [Robin Schoonover]
+
+2.2.6 (2013-02-16)
+------------------
+
+- Remove call to removed method. [Robin Schoonover]
+
+- Added tag 2.2.5 for changeset 26eca0446186 [Robin Schoonover]
+
+2.2.5 (2013-02-08)
+------------------
+
+- Add Haunted Momento to special items. [Robin Schoonover]
+
+- Bugfix new SpecialItems [Robin Schoonover]
+
+- Rewrite SpecialItems module. [Robin Schoonover]
+
+  Operation is now more straight forward.
+
+
+- Refactor copy tree to its own class, and handle keywords. [Robin
+  Schoonover]
+
+- Add option to switch to tag when zipping. [Robin Schoonover]
+
+- Add a zip script [Robin Schoonover]
+
+- Added tag 2.2.4 for changeset f2ae4e99bda3 [Robin Schoonover]
+
+2.2.4 (2013-01-28)
+------------------
+
+- Fix Brewfest Keg Pony check to only trigger on the correct spell cast.
+  [Robin Schoonover]
+
+- Mark Brewfest Keg Pony as not ready only within the last 3 minutes of
+  summoning the pony. [Robin Schoonover]
+
+  Thanks To: Lord Dave
+
+
+- Fix call when updating value. [Robin Schoonover]
+
+- Simplify event dispatch sligtly, and pass "self" and event name to the
+  update functions. [Robin Schoonover]
+
+- Fix event handling, especially registration. [Robin Schoonover]
+
+- Don't bother using AceEvent to handle special items. [Robin
+  Schoonover]
+
+- Added tag 2.2.3 for changeset 337195204016 [Robin Schoonover]
+
+2.2.3 (2013-01-25)
+------------------
+
+- Force multiselect to sort properly. [Robin Schoonover]
+
+  This is achieved by putting the pet name in the key and extracting the "real" key.
+
+
+- Speed up config setting drastically by using a multiselect. [Robin
+  Schoonover]
+
+  Unfortunately, names are listed completely out of order.
+
+
+- Backed out changeset: 4df286bd372c [Robin Schoonover]
+
+- Change name safe handling. [Robin Schoonover]
+
+- Tweak wording. [Robin Schoonover]
+
+- Protect ourselves from a strange high lag condition where we never
+  find names. [Robin Schoonover]
+
+- move hidden option up [Robin Schoonover]
+
+- Remove config option that no longer exists [Robin Schoonover]
+
+- Don't needlessly "convert" petIDs [Robin Schoonover]
+
+- Move upgrade so that it only is attempted once. [Robin Schoonover]
+
+- Added tag 2.2.2 for changeset e2e512c6a6a4 [Robin Schoonover]
+
+2.2.2 (2012-12-31)
+------------------
+
+- Fix config setter [Robin Schoonover]
+
+- Remove patch 5.0 compatibility. [Robin Schoonover]
+
+- Sort debug info for easier readability. [Robin Schoonover]
+
+- Added tag 2.2.1 for changeset c0a4c069dcd6 [Robin Schoonover]
+
+2.2.1 (2012-11-29)
+------------------
+
+- Fix a typo. [Robin Schoonover]
+
+- Setup general config get/setter in config heirarchy. [Robin
+  Schoonover]
+
+- Explain special items functionality. [Robin Schoonover]
+
+- Sort special item list for easier update, and restore all previous
+  items we knew about until I get a chance to test them. [Robin
+  Schoonover]
+
+- Don't recreate the same name function over and over. [Robin
+  Schoonover]
+
+- Run every check on PEW. [Robin Schoonover]
+
+- Add ZONE_CHANGED_NEW_AREA to map dependent items. [Robin Schoonover]
+
+- Added tag 2.2.0.1 for changeset afdbbd30964b [Robin Schoonover]
+
+2.2.0.1 (2012-11-27)
+--------------------
+
+- Update TOC for 5.1 [Robin Schoonover]
+
+- Added tag 2.2 for changeset 74043b455b3f [Robin Schoonover]
+
+- Added tag 2.2-beta1 for changeset 74043b455b3f [Robin Schoonover]
+
+2.2 (2012-11-26)
+----------------
+
+- Make sure quest information has been cached before checking. [Robin
+  Schoonover]
+
+- It appears that CallbackHandler (and thus AceEvent) only allows one
+  listener per event. [Robin Schoonover]
+
+  We work around this by dispatching the event to our funcs each manually using
+  an additional event handler object.
+
+
+- Reintroduce the special items code. [Robin Schoonover]
+
+  Sadly patch 5.1 broke our ability to cheat our away around the special items issue.
+
+
+- rebuild pet IDs on "Special Location", even though it should happen at
+  the same time as custom [Robin Schoonover]
+
+- Restore tostring on locations config setup. [Robin Schoonover]
+
+- Fix handling of petID type in config [Robin Schoonover]
+
+- Fix handling of location in 5.1 [Robin Schoonover]
+
+- Upgrade petIDs to new "GUID" format. [Robin Schoonover]
+
+- Added tag 2.1.8 for changeset f2428d5e26f2 [Robin Schoonover]
+
+2.1.8 (2012-11-15)
+------------------
+
+- Fix is5_0 checks. [Robin Schoonover]
+
+- Added tag 2.1.7 for changeset 5ba9abc50dcf [Robin Schoonover]
+
+2.1.7 (2012-11-11)
+------------------
+
+- Add a new option that restricts summoning so that can occur only
+  immediately after zoning. [Robin Schoonover]
+
+- Remove an unused saved variable. [Robin Schoonover]
+
+- Fix a comment why not. [Robin Schoonover]
+
+- 5.1 Support: Fix additional GetSummonedPetID/SummonPetByGUID
+  references. [Robin Schoonover]
+
+- Merge [Robin Schoonover]
+
+- Fix leaked global. [Robin Schoonover]
+
+- 5.1 support: Chase PetID -> PetGUID for summoning functions. [Robin
+  Schoonover]
+
+- Fix for WoW 5.1 [Robin Schoonover]
+
+- Added tag 2.1.6 for changeset 070fd2e1a1a8 [Robin Schoonover]
+
+2.1.6 (2012-10-03)
+------------------
+
+- Upvalue additional functions. [Robin Schoonover]
+
+- Fix flying check. [Robin Schoonover]
+
+- Don't error, if we're not given a pet to summon from :PickPet() [Robin
+  Schoonover]
+
+- Fix callback, part 2. [Robin Schoonover]
+
+- Revert back to using spammier event. [Robin Schoonover]
+
+  We need to be able to catch certain conditions, such as when pets are rezzed.
+
+
+- IsMounted() doesn't always have the correct value. [Robin Schoonover]
+
+- Handle updating on pet renames. [Robin Schoonover]
+
+- Added tag 2.1.5 for changeset 7ff8e7121652 [Robin Schoonover]
+
+2.1.5 (2012-09-24)
+------------------
+
+- Changing default requires rebuilding .usable_pets as well. [Robin
+  Schoonover]
+
+- Delay dropdown initialization. [Robin Schoonover]
+
+- Added tag 2.1.4 for changeset f50783ada280 [Robin Schoonover]
+
+2.1.4 (2012-09-22)
+------------------
+
+- Clicking the broker uses enable state instead of pet active. [Robin
+  Schoonover]
+
+- Backout ignore wait timer. [Robin Schoonover]
+
+- If we can't summon immediately on PEW, allow skipping wait within a
+  short time frame as well. [Robin Schoonover]
+
+- Ignore wait timer when zoning. [Robin Schoonover]
+
+- Properly chase new method name for updating pets. [Robin Schoonover]
+
+- We don't do a real gcd check right before summon anymore, so be more
+  paranoid. [Robin Schoonover]
+
+  This is largely due to GetSpellCooldown falling under the same restrictions as
+  GetCompanionInfo/etc.
+
+
+- Chase some improvements in LibPetJournal-2.0 [Robin Schoonover]
+
+- Added tag 2.1.3 for changeset e2900a8dbb8f [Robin Schoonover]
+
+2.1.3 (2012-09-12)
+------------------
+
+- Collapse spaces in X-Credits [Robin Schoonover]
+
+- Update deDE [Robin Schoonover]
+
+- Added tag 2.1.2 for changeset 919ca1441a1a [Robin Schoonover]
+
+2.1.2 (2012-09-09)
+------------------
+
+- Add current summoned pet to LDB tooltip. [Robin Schoonover]
+
+- Added tag 2.1.1 for changeset b4286a05db9a [Robin Schoonover]
+
+2.1.1 (2012-09-05)
+------------------
+
+- Fix vehicle flag update. [Robin Schoonover]
+
+- Fix dismiss battleground text to include arena. [Robin Schoonover]
+
+- Add option to dismiss in battlegrounds/arena. [Robin Schoonover]
+
+- Add optiont to only select among favorites. [Robin Schoonover]
+
+- Sort the LDB plugin's pet display order properly [Robin Schoonover]
+
+- Added tag 2.1 for changeset 3d34a1e6bfcd [Robin Schoonover]
+
+2.1 (2012-09-02)
+----------------
+
+- Readd COMPANION_UPDATE event. [Robin Schoonover]
+
+  We need this to respond to a pet being dismissed.
+
+
+- Really fix LPJ reference. [Robin Schoonover]
+
+- Fix embed reference to LibPetJournal-2.0 [Robin Schoonover]
+
+- Fix weighted configuration. [Robin Schoonover]
+
+- Convert to LibPetJournal-2.0 [Robin Schoonover]
+
+- Added tag 2.0.1.1 for changeset 39f69c7e0675 [Robin Schoonover]
+
+- Added tag 2.0.1 for changeset 39f69c7e0675 [Robin Schoonover]
+
+2.0.1 (2012-08-30)
+------------------
+
+- Show the number of selected pets in debugstate. [Robin Schoonover]
+
+- Fix updating desummon setting when configuration changes. [Robin
+  Schoonover]
+
+  Reported By: kitten6
+
+
+- Move dismiss verification so that it runs only if we had a pet. [Robin
+  Schoonover]
+
+- Added tag 2.0.0.5 for changeset 68ee3334bb89 [Robin Schoonover]
+
+- Added tag 2.0.0.3 for changeset 68ee3334bb89 [Robin Schoonover]
+
+2.0.0.3 (2012-08-29)
+--------------------
+
+- Fix embedded reference for LibPetJournal. [Robin Schoonover]
+
+- Added tag 2.0.0.2 for changeset 23cc57ceac92 [Robin Schoonover]
+
+2.0.0.2 (2012-08-28)
+--------------------
+
+- Attempt to massage the packager. [Robin Schoonover]
+
+- Added tag 2.0.0.1 for changeset c49158e8058f [Robin Schoonover]
+
+2.0.0.1 (2012-08-28)
+--------------------
+
+- Use curse repo for LibPetJournal [Robin Schoonover]
+
+- Added tag 2.0 for changeset df3d2ea93eaf [Robin Schoonover]
+
+2.0 (2012-08-24)
+----------------
+
+- Fix error if there are no available pets to summon. [Robin Schoonover]
+
+- Sorry folks. [Robin Schoonover]
+
+- We can't dismiss immediately when Camouflage is used, so add a
+  possible delay. [Robin Schoonover]
+
+- "Update" locales (mostly clear old phrases out). [Robin Schoonover]
+
+- Load the embedded AceDBOptions [Robin Schoonover]
+
+- Chase LibPetJournal install name change. [Robin Schoonover]
+
+- Fix globals. [Robin Schoonover]
+
+- Unswallow tag. [Robin Schoonover]
+
+- Correct a comment. [Robin Schoonover]
+
+  Incorrect comments is worse than no comments.
+
+
+- Give more explicit control over petleash's default handling of non
+  specific set pets. [Robin Schoonover]
+
+- Increase minimum autoswitch to 60 seconds. [Robin Schoonover]
+
+- Fix global ref. [Robin Schoonover]
+
+- Fix updating usable_pets list after config change [Robin Schoonover]
+
+- Merge (swallow 1.x branch) [Robin Schoonover]
+
+- Added tag 1.6.6 for changeset 41ed521e97ac [Robin Schoonover]
+
+- Remove unused file. [Robin Schoonover]
+
+- Info may be available immediately. [Robin Schoonover]
+
+- Use new LibPetJournal library [Robin Schoonover]
+
+- When switching battle pet teams, allow PetLeash to resummon a pet when
+  a pet is summoned via the first slot. [Robin Schoonover]
+
+- Don't desummon when forced to summon.  Also don't desummon if we're
+  not enabled. [Robin Schoonover]
+
+- Update config table. [Robin Schoonover]
+
+- Don't use DismissCompanion [Robin Schoonover]
+
+  We'd like to use it, as it doesn't invoke the global cooldown, but unfortunately
+  it only works with "old" pets, that is, pets that it knows about.
+
+
+- Check to see if pet is already summoned when summoning, move cooldown
+  check before print. [Robin Schoonover]
+
+- Register event for loading pet list. [Robin Schoonover]
+
+- Fix a really dumb typo that prevent the PetsById structure from being
+  filled. [Robin Schoonover]
+
+- Delay completely setting up the options frame until the options frame
+  is shown. [Robin Schoonover]
+
+  AddOn plugins will load properly this way.
+
+
+- DismissCompanion("CRITTER") seems to be exhibiting a lot of weirdness
+  [Robin Schoonover]
+
+  Sometimes it works!  But very often it doesn't.
+
+  I wish C_PetJournal.SummonPetByID didn't invoke the GCD when you desummon a pet.
+
+
+- Correctly initialize have_pets readiness state. [Robin Schoonover]
+
+- Catch if the search filter is cleared. [Robin Schoonover]
+
+  Also don't reregister right away
+
+
+- Update/Fix Locations for C_PetJournal API [Robin Schoonover]
+
+- Pets are shared, so don't force per-char configuration. [Robin
+  Schoonover]
+
+  Also add a profiles option pane.
+
+
+- Disable filters while processing, and enable when done. [Robin
+  Schoonover]
+
+- Re-add readiness for gcd. [Robin Schoonover]
+
+  This check isn't very accurate (we check for min gcd, not actual), but it
+  doesn't need to be, since detection restarts the wait_timer.
+
+  Even if the wait_timer is set to be really short, we check the actual cooldown
+  of the pet when we try to summon upstream, which will accurately detect the gcd
+  if we happen to be on it.
+
+
+- Check for cooldown on pet we are trying to summon. [Robin Schoonover]
+
+  If everything is on global cooldown, we'll see this here too.
+
+
+- Remove currently unused Special Items code. [Robin Schoonover]
+
+  I remain hopeful we will continue to not need it.
+
+
+- Using C_PetJournal.SummonPetByID to desummon a pet invokes the global
+  cooldown so try to use DismissCompanion.  The future of
+  DismissCompanion is unknown, so we'll use C_PetJournal.SummonPetByID
+  if needed. [Robin Schoonover]
+
+- More message passing fixes in readiness module. [Robin Schoonover]
+
+- Detect initial state of addon in readiness. [Robin Schoonover]
+
+- Restore ability to detect desummoned companions. [Robin Schoonover]
+
+- fix namespace of messages, add enablestate message [Robin Schoonover]
+
+- Remove remaining legacy API code.  Add convenience interface for
+  getting owned pets. [Robin Schoonover]
+
+- Partially update for using the new C_PetJournal api. [Robin
+  Schoonover]
+
+- Locations fixes: handle resting properly [Robin Schoonover]
+
+- Mostly fix the Location module? [Robin Schoonover]
+
+- Fix Locations option screen. [Robin Schoonover]
+
+- Fix newlines *sigh* [Robin Schoonover]
+
+- More work on Location rewrite. [Robin Schoonover]
+
+- Minor locations changes, disable locations for now for testing. [Robin
+  Schoonover]
+
+- Add more debugging information to debugstate [Robin Schoonover]
+
+- Remove Special Items tab. [Robin Schoonover]
+
+  We'll readd if we need this functionality again.
+
+
+- Allow :ResummonPet() to force a pet to be resummoned immediately.
+  [Robin Schoonover]
+
+- Implement a temporary fix so that we can distinguish between a fake
+  pet and a real pet. [Robin Schoonover]
+
+- Fix :ResummonPet() to act more sanely. [Robin Schoonover]
+
+- Remove flying dead code. [Robin Schoonover]
+
+- Don't load QuestItems module (we might not need it!) [Robin
+  Schoonover]
+
+- Merge [Robin Schoonover]
+
+- I am tentatively extremely excited by the possible discovery of a way
+  to detect pets that are not really pets. [Robin Schoonover]
+
+  What I expect the behavior of C_PetJournal.GetSummonedPetID() to be:
+   - nil    no pet out
+   - 0      a pet that you don't "own"
+   - >0     a pet you own.
+
+  Currently it is returning zero for all pets, whether they are a pet attached
+  to your account or part of a silly hat that you put on.  Hopefully it takes on
+  the behavior I expect, or at least returns a non-nil value for non-owned pets.
+
+
+- Fix chatty summon pet display [Robin Schoonover]
+
+- Fix :LastCheck() usage and implementation [Robin Schoonover]
+
+- If one of our last minute checks turns out false while we are in our
+  idle wait period, reset the wait timer to zero. [Robin Schoonover]
+
+- Fix default state of vehicle check. [Robin Schoonover]
+
+- Implement vehicle check. [Robin Schoonover]
+
+- Implement battleground/arena check [Robin Schoonover]
+
+- Flip the way the addon enabled check works. [Robin Schoonover]
+
+- Add debugging state command. [Robin Schoonover]
+
+- Add check for alive/dead state.  Prevent action before AddOn is ready.
+  [Robin Schoonover]
+
+- Add a more chatty mode to assist in debugging [Robin Schoonover]
+
+- Function name change :SetCheck -> :EnableCheck [Robin Schoonover]
+
+- Fix "auto switch" [Robin Schoonover]
+
+- Minor changes (comment, vehicle todo) [Robin Schoonover]
+
+- Reimplement readiness checks. [Robin Schoonover]
+
+- Remove dismiss pet dismiss button hook. [Robin Schoonover]
+
+  It will be returned when the pet journal works properly.
+
+
+- Minor changes to initial addon object creation. [Robin Schoonover]
+
+1.6.6 (2012-08-17)
+------------------
+
+- "Fix" for WoW 5.0 [Robin Schoonover]
+
+  (but not really)
+
+
+- Added tag 1.6.5 for changeset c414c12d6db0 [Robin Schoonover]
+
+1.6.5 (2012-07-01)
+------------------
+
+- Check for existance of SpellBookCompanionSummonButton before
+  attempting to hook. [Robin Schoonover]
+
+- Added tag 1.6.4 for changeset 806c1a711c6e [Robin Schoonover]
+
+1.6.4 (2012-04-02)
+------------------
+
+- Display number of owned pets in broker tooltip. [Robin Schoonover]
+
+- Show icon in broker menu. [Robin Schoonover]
+
+- Added tag 1.6.3 for changeset 228ebc6ff6cc [Robin Schoonover]
+
+1.6.3 (2012-03-29)
+------------------
+
+- Update zhCN locale. [Robin Schoonover]
+
+- Added tag 1.6.2 for changeset 42598253382b [Robin Schoonover]
+
+1.6.2 (2012-03-27)
+------------------
+
+- (Finally) update TOC for latest WoW [Robin Schoonover]
+
+- update tags [convert-repo]
+
+- - Allow winterveil pets to be summoned by default: they no longer
+  require snowballs [Robin Schoonover]
+
+  Thanks To: Thortok2000
+
+
+1.6.1 (2011-11-08)
+------------------
+
+- update frFR [Robin Schoonover]
+
+- Fix desummon on zone change to not be sticky. [Robin Schoonover]
+
+- add brewfest key pony to special items [Robin Schoonover]
+
+- Cautiously resummon pet [Robin Schoonover]
+
+1.6.0 (2011-06-28)
+------------------
+
+- config ui tweaks/fixes [Robin Schoonover]
+
+- Implement general on-zone-change pet switching (different from the
+  location specific pet lists) [Robin Schoonover]
+
+- Bump TOC in anticipation.  Will defer release until confirmation of
+  proper behavior. [Robin Schoonover]
+
+- Disable pet summoning while on certain quests. [Robin Schoonover]
+
+- Update locales. [Robin Schoonover]
+
+- add cub to locales [Robin Schoonover]
+
+- Don't try to summon pet when we are at the barber shop. [Robin
+  Schoonover]
+
+  Thanks to: profplump
+
+
+1.5.11 (2011-04-28)
+-------------------
+
+- Add Winterspring Cub (for the new version of the quest chain for the
+  Alliance winterspring mount) [Robin Schoonover]
+
+  Thanks To: eidhel and Thortok2000
+
+
+- It looks like everything works, so let's bump that TOC number. [Robin
+  Schoonover]
+
+- update translation credits [Robin Schoonover]
+
+1.5.10 (2011-04-14)
+-------------------
+
+- Update deDE [Robin Schoonover]
+
+- Disable auto summon for guild herald and guild page by default. [Robin
+  Schoonover]
+
+  Suggested By: JSRGibbs
+
+
+- Treat Hunter Camo as an invisibility effect [Robin Schoonover]
+
+  Reported By: Pennet
+
+
+1.5.9.1 (2010-10-25)
+--------------------
+
+- update deDE [Robin Schoonover]
+
+- Bump TOC [Robin Schoonover]
+
+1.5.9 (2010-10-12)
+------------------
+
+- Add Additional item [Robin Schoonover]
+
+- 4.0 support [Robin Schoonover]
+
+1.5.8.1 (2009-12-08)
+--------------------
+
+- bump toc [Robin Schoonover]
+
+- Update frFR [Robin Schoonover]
+
+1.5.8 (2009-11-05)
+------------------
+
+- Add frFR [Robin Schoonover]
+
+- update koKR [Robin Schoonover]
+
+- Specifically using the dismiss button will disable [Robin Schoonover]
+
+- Fix invisibility detection from potions. [Robin Schoonover]
+
+1.5.7 (2009-11-01)
+------------------
+
+- Update koKR [Robin Schoonover]
+
+- Word on the street is that day of the dead pet is unlearnable. [Robin
+  Schoonover]
+
+1.5.6 (2009-08-06)
+------------------
+
+- Update deDE [Robin Schoonover]
+
+- Don't forget venomhide string. [Robin Schoonover]
+
+- Add the 20day venomhide raptor to the special items list. [Robin
+  Schoonover]
+
+1.5.5 (2009-08-05)
+------------------
+
+- Add basin orphans to special quest item list. [Robin Schoonover]
+
+1.5.4.1 (2009-08-04)
+--------------------
+
+- Update TOC for 3.2 [Robin Schoonover]
+
+1.5.4 (2009-08-02)
+------------------
+
+- Add Zeppit's Crystal to quest items. [Robin Schoonover]
+
+  Reported By: Thortok2000
+
+
+1.5.3 (2009-07-11)
+------------------
+
+- Add dismiss pet while flying option [Robin Schoonover]
+
+1.5.2 (2009-07-05)
+------------------
+
+- Fix additional uses of non-existent .find function. [Robin Schoonover]
+
+1.5.1 (2009-07-05)
+------------------
+
+- Don't use non-existent .find function. [Robin Schoonover]
+
+- Handle profile changes (although there's no UI) [Robin Schoonover]
+
+1.5 (2009-06-29)
+----------------
+
+- Reorganize location SVs a little bit. [Robin Schoonover]
+
+- Add knob to restrict to cities. [Robin Schoonover]
+
+- Fix invis flag reference. [Robin Schoonover]
+
+- Set OptDeps [Robin Schoonover]
+
+- Never summon a pet while stealthed/invis.  Instead flag only
+  determines whether or not we want to hide the pet when we hide
+  ourselves. [Robin Schoonover]
+
+- Default Disgusting Oozling to off. [Robin Schoonover]
+
+- Organize main section options into tabs. [Robin Schoonover]
+
+1.5-beta2 (2009-06-26)
+----------------------
+
+- Keep .override_pets field up to date by triggering it off of config
+  updates. [Robin Schoonover]
+
+- Prevent custom locations from appearing out of nowhere. [Robin
+  Schoonover]
+
+- Load locations options table on start up. [Robin Schoonover]
+
+- Give locations an explicit enable flag. [Robin Schoonover]
+
+- Describe "Special Locations", and minor cleanup. [Robin Schoonover]
+
+- Properly initialize location overrides on login. [Robin Schoonover]
+
+- Localize location strings. [Robin Schoonover]
+
+- Implement guts of location based switcher (custom and special) [Robin
+  Schoonover]
+
+- Finish up UI bits for Locations. [Robin Schoonover]
+
+- Fix copy and paste. [Robin Schoonover]
+
+- Fix setting Enable All/Disable All [Robin Schoonover]
+
+- Add vague infrastructure for Locations GUI [Robin Schoonover]
+
+1.5-beta1 (2009-06-23)
+----------------------
+
+- Add localization support for dropdown keys. [Robin Schoonover]
+
+- Add GUI for using weighted pet picking.  (Woot) [Robin Schoonover]
+
+- Add Enable All/Disable All buttons. [Robin Schoonover]
+
+- Color broker icon based on whether PetLeash summoning is disabled or
+  not. [Robin Schoonover]
+
+- Update koKR [Robin Schoonover]
+
+- Add the ability to disable in battlegrounds. [Robin Schoonover]
+
+- Add backend for weighted pets. [Robin Schoonover]
+
+- Fix that function. [Robin Schoonover]
+
+- Move pet picking logic to its own function. [Robin Schoonover]
+
+- By default, make snowball requiring pets disabled. [Robin Schoonover]
+
+1.4.3 (2009-05-25)
+------------------
+
+- Fix Feign Death check (UnitIsFeignDeath seems to be broken) [Robin
+  Schoonover]
+
+- Make auto switch more robust.  (no-I-am-not-ackis-drycoded) [Robin
+  Schoonover]
+
+1.4.2 (2009-05-20)
+------------------
+
+- Check to see if we are looting. [Robin Schoonover]
+
+- Update deDE [Robin Schoonover]
+
+- Make sure autoswitch timer doesn't get killed when config is changed.
+  [Robin Schoonover]
+
+1.4.1 (2009-05-10)
+------------------
+
+- Fix locale quest item issue. [Robin Schoonover]
+
+- Don't recreate timer if it already exists. [Robin Schoonover]
+
+- Verify summon success. [Robin Schoonover]
+
+- I don't think there's any condition that causes pets to not be loaded,
+  but do a late check, just in case. [Robin Schoonover]
+
+1.4 (2009-05-07)
+----------------
+
+- - Check for Warsong Flare Gun - Add support for spell names if we ever
+  have to. [Robin Schoonover]
+
+1.4-beta1 (2009-05-06)
+----------------------
+
+- Ask L for the names if GetItemInfo doesn't know [Robin Schoonover]
+
+- Use variable name for invisibility. (Fix localization problem.) [Robin
+  Schoonover]
+
+- Check for eating and drinking. [Robin Schoonover]
+
+- Make delay timer more consistent, and restart the timer if we
+  determine we shouldn't summon a pet in the mean time. [Robin
+  Schoonover]
+
+- Remove unused Flags.lua file. [Robin Schoonover]
+
+- Split out quest items into their own file. [Robin Schoonover]
+
+- Detect Disclosure Quest. [Robin Schoonover]
+
+- Add koKR credit to X-Credits [Robin Schoonover]
+
+1.3.1 (2009-05-03)
+------------------
+
+- Update deDE [Robin Schoonover]
+
+- Add Golem Control Unit to quest pet items. [Robin Schoonover]
+
+- Check for falling. [Robin Schoonover]
+
+- Handle all COMPANION_UPDATE events. [Robin Schoonover]
+
+- Bump TOC [Robin Schoonover]
+
+- Revert summon flag changes. [Robin Schoonover]
+
+- Clean up. [Robin Schoonover]
+
+- Rewrite conditions to be much more event driven. [Robin Schoonover]
+
+1.3 (2009-03-28)
+----------------
+
+- Don't attempt to summon a pet while feigned. [Robin Schoonover]
+
+- Fix .pkgmeta [ackis]
+
+- Update koKR [Robin Schoonover]
+
+1.3-beta1 (2009-02-22)
+----------------------
+
+- Enable checking on orphans until we find out whether they count or
+  not. [Robin Schoonover]
+
+- Add Invisibility to Stealth disable feature. [Robin Schoonover]
+
+- Add support for automatically resummoning a new pet every X amount of
+  time. [Robin Schoonover]
+
+- Add boilerplate comment to all localization files. [Robin Schoonover]
+
+- Get locales.xml in there too for koKR [Robin Schoonover]
+
+- Add koKR localization [Robin Schoonover]
+
+- Throw in handler for slash command option table. [Robin Schoonover]
+
+- Fix special item names. [Robin Schoonover]
+
+- Fix slash command. [Robin Schoonover]
+
+- Don't attempt to summon pet if we're flying. [Robin Schoonover]
+
+- Move layout of configuration window around. [Robin Schoonover]
+
+- Split LDB plugin into a separate file. [Robin Schoonover]
+
+- Allow individual "Quest Items" to be toggled. [Robin Schoonover]
+
+- Add Don Carlos' Famous Hat to "Quest Item" list. [Robin Schoonover]
+
+- Add (commented out) untested items. [Robin Schoonover]
+
+- Add "Felhound Whistle" to list of quest items. [Robin Schoonover]
+
+- Check for the Bloodsail Hat. [Robin Schoonover]
+
+- - Add (optional) check for quest items to disable if needed - Fix
+  HasFullControl check [Robin Schoonover]
+
+- Check for CC effects via HasFullControl [Robin Schoonover]
+
+1.2 (2009-02-14)
+----------------
+
+- Update deDE [Robin Schoonover]
+
+1.2-beta3 (2009-02-14)
+----------------------
+
+- - Try to load pets more robustly, since COMPANION_UPDATE only fires on
+  reload - Try to prevent strange nil bug involving AceGUI [Robin
+  Schoonover]
+
+- Add missing string to locale. [Robin Schoonover]
+
+- Fix LibAboutPanel embed. [Robin Schoonover]
+
+- Don't print an error for :TogglePet() if something is stopping the
+  summon. [Robin Schoonover]
+
+1.2-beta2 (2009-02-12)
+----------------------
+
+- Load pets properly if pets are loaded late due to not existing in the
+  cache yet. [Robin Schoonover]
+
+- Update enUS locale. [Robin Schoonover]
+
+1.2-beta1 (2009-02-11)
+----------------------
+
+- Add Stealth support. [Robin Schoonover]
+
+- Add keybinds for common actions. [Robin Schoonover]
+
+- Add method and slash command to toggle pet. [Robin Schoonover]
+
+1.1 (2009-02-06)
+----------------
+
+- Fix the pet names ranging used with the LDB plugin to work with UTF-8
+  [Robin Schoonover]
+
+- Re-enable autosummon when the LDB launcher is used to summon a pet.
+  [Robin Schoonover]
+
+- Add deDE localization (submitted by TomEpish) [Robin Schoonover]
+
+- Add About Panel [Robin Schoonover]
+
+- Update locales. [Robin Schoonover]
+
+- Fix name of enable flag. [Robin Schoonover]
+
+- Add Toggle to control autosummon in combat. [Robin Schoonover]
+
+1.0.3 (2009-01-28)
+------------------
+
+- Missing AceDB-3.0.  All the missing libraries should be in now. [Robin
+  Schoonover]
+
+- Add missing AceGUI-3.0 and AceConsole-3.0, as well. [Robin Schoonover]
+
+- Looks like AceConfig requires CallbackHandler, so add it. [Robin
+  Schoonover]
+
+- Fix another global. [Robin Schoonover]
+
+- Fix accidental global. [Robin Schoonover]
+
+1.0.2 (2009-01-28)
+------------------
+
+- Properly update the pet map when loading new pets, since the order of
+  pets may have changed. [Robin Schoonover]
+
+1.0.1 (2009-01-27)
+------------------
+
+- Don't try to summon minipet on taxi. [Robin Schoonover]
+
+1.0 (2009-01-26)
+----------------
+
+- Add support for localization. [Robin Schoonover]
+
+- Display state of auto-summon in LDB tooltip. [Robin Schoonover]
+
+- Give LDB plugin an informative tooltip, as well as allow plugin to
+  open config panel and random summon/desummon pet. [Robin Schoonover]
+
+- For the LDB plugin, automatically generate submenus of roughly equal
+  size, instead of one giant menu that could likely overflow the screen.
+  [Robin Schoonover]
+
+- Add LDB plugin for quickly summoning pets by hand.  Currently uses
+  UIDropDownMenu. [Robin Schoonover]
+
+- Update configuration screen on forced summon/desummon. [Robin
+  Schoonover]
+
+- Add configuration bits with gui. [Robin Schoonover]
+
+- - Add behind-the-scenes infrastructure for managing pets. - Add Libs
+  directory, just in case (gets populated by packager) [Robin
+  Schoonover]
+
+- Import base.  There's work to be done. [Robin Schoonover]
+
+- "petleash/mainline: Initial Import" [root]
+

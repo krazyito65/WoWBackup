@@ -1,0 +1,21 @@
+
+HMSVarTable = {
+	["ShowTimerIcon"] = "Interface\\icons\\Spell_Nature_Polymorph.blp",
+	["ShowTimer"] = 1,
+	["Messages"] = {
+	},
+	["TimerPos"] = {
+	},
+	["SheepTimerBarColor"] = {
+		["opac"] = 1,
+		["b"] = 0.9098039215686274,
+		["g"] = 0.9372549019607843,
+		["r"] = 0.9098039215686274,
+	},
+	["SheepType"] = "Polymorph(Rank 4)",
+	["SheepTimerBarSize"] = {
+		["y"] = 30,
+		["x"] = 400,
+	},
+	["ShowTimerText"] = 1,
+}

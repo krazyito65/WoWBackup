@@ -1,0 +1,7 @@
+
+ElvuiConfigAll = {
+	["Caelestrasz"] = {
+		["Hellbear"] = false,
+	},
+}
+ElvuiConfigSettings = nil

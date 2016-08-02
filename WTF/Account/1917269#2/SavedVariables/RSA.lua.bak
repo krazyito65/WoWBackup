@@ -1,0 +1,86 @@
+
+RSADB = {
+	["namespaces"] = {
+		["LibDualSpec-1.0"] = {
+		},
+	},
+	["global"] = {
+		["version"] = "2.835",
+	},
+	["profileKeys"] = {
+		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
+	},
+	["profiles"] = {
+		["Krazyíto - Gnomeregan"] = {
+			["General"] = {
+				["Race"] = "Worgen",
+				["GlobalAnnouncements"] = {
+					["InWorld"] = true,
+				},
+				["Spells"] = {
+					["PotionOfConcentration"] = {
+						["Smart"] = {
+							["RaidParty"] = true,
+						},
+					},
+					["MassRess"] = {
+						["Party"] = true,
+						["Messages"] = {
+							["Start"] = "[LINK] incoming!",
+						},
+						["Smart"] = {
+							["RaidParty"] = false,
+							["Say"] = true,
+						},
+						["Raid"] = true,
+					},
+					["MassSummon"] = {
+						["Party"] = true,
+						["Smart"] = {
+							["RaidParty"] = false,
+							["Say"] = true,
+						},
+						["Raid"] = true,
+					},
+				},
+				["Class"] = "PRIEST",
+			},
+			["Modules"] = {
+				["Priest"] = true,
+				["Reminders_Loaded"] = true,
+				["Reminders"] = true,
+			},
+			["Priest"] = {
+				["Spells"] = {
+					["Resurrection"] = {
+						["Smart"] = {
+							["RaidParty"] = false,
+						},
+						["Whisper"] = false,
+					},
+					["Lightwell"] = {
+						["Messages"] = {
+							["Start"] = "[LINK] activated, USE IT OR ILL KICK YOUR FUCKING FACE IN.",
+						},
+					},
+					["Levitate"] = {
+						["Whisper"] = true,
+					},
+					["LightwellRenew"] = {
+						["Messages"] = {
+							["Start"] = "[AMOUNT] Lightwell charges remain!",
+							["End"] = "",
+						},
+						["Smart"] = {
+							["RaidParty"] = true,
+						},
+						["Local"] = false,
+					},
+					["BodyAndSoul"] = {
+						["Whisper"] = false,
+					},
+				},
+			},
+		},
+	},
+}

@@ -1,0 +1,29 @@
+
+TradeSkillMaster_AuctioningDB = {
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+	["global"] = {
+		["optionsTreeStatus"] = {
+			["groups"] = {
+				["1"] = true,
+			},
+			["scrollvalue"] = 0,
+			["selected"] = 1,
+			["treesizable"] = true,
+			["treewidth"] = 175,
+			["fullwidth"] = 782.9999389648438,
+		},
+	},
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["factionrealm"] = {
+		["Horde - Mal'Ganis"] = {
+			["player"] = {
+				["Kråzyito"] = true,
+			},
+		},
+	},
+}

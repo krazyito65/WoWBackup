@@ -1,0 +1,2 @@
+
+PortalsDB = nil

@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r36 | thaoky | 2016-07-18 16:08:19 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Characters.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r35 | thaoky | 2015-08-17 16:19:06 +0000 (Mon, 17 Aug 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore_Characters.toc
+
+TOC Update
+------------------------------------------------------------------------

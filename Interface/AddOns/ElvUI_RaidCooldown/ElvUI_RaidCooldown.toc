@@ -1,0 +1,9 @@
+## Interface: 50400
+## Title: |cff1784d1ElvUI |rRaidCooldown
+## Author: Methylene
+## RequiredDeps: ElvUI
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+libs\load_libs.xml
+load_raidcooldown.xml

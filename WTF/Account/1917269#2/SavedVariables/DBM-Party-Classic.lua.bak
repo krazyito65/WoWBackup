@@ -1,0 +1,13 @@
+
+DBMPartyClassic_AllSavedVars = {
+	["Krazyito-Mal'Ganis"] = {
+		["talent1"] = "Restoration",
+		["368"] = {
+			{
+				["Enabled"] = true,
+				["SpeedKillTimer"] = false,
+				["HealthFrame"] = false,
+			}, -- [1]
+		},
+	},
+}

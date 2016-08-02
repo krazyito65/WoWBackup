@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+r301 | mackatack | 2015-07-09 10:25:10 +0000 (Thu, 09 Jul 2015) | 1 line
+Changed paths:
+   A /tags/6.69 (from /trunk:299)
+
+Fixed Spanish localization error
+------------------------------------------------------------------------
+r299 | mackatack | 2015-07-08 07:42:10 +0000 (Wed, 08 Jul 2015) | 1 line
+Changed paths:
+   M /trunk/ml/epgp_lootmaster_ml.toc
+
+toc
+------------------------------------------------------------------------
+r297 | mackatack | 2015-07-06 09:41:03 +0000 (Mon, 06 Jul 2015) | 1 line
+Changed paths:
+   M /trunk/epgp_lootmaster.toc
+
+toc update
+------------------------------------------------------------------------
+r295 | mackatack | 2015-06-16 11:09:03 +0000 (Tue, 16 Jun 2015) | 1 line
+Changed paths:
+   M /trunk/lootmaster_core.lua
+   M /trunk/ml/lootmaster_ml.lua
+
+GetNumLootSlots() has not been implemented, just hack it.
+------------------------------------------------------------------------
+r292 | mackatack | 2015-06-15 10:46:23 +0000 (Mon, 15 Jun 2015) | 1 line
+Changed paths:
+   M /trunk/ml/lootmaster_ml.lua
+
+GetNumLootItems changed to GetNumLootSlots. This should fix problems with ItemID not found while distributing slots.
+------------------------------------------------------------------------

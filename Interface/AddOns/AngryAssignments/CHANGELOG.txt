@@ -1,0 +1,133 @@
+## v1.7.1
+
+* Fixed bug with backdrops
+
+## v1.7
+
+* Updates for 7.0 (Legion) API changes
+
+## v1.6.1
+
+* Updated ToC for 6.2
+
+## v1.6.0
+
+* Update ToC for 6.1
+* Added some text substitutions for chat output (courtesy of Timmeh)
+* Added text substitutions {spell #}, {boss #}, and {journal #} (courtesy of Timmeh)
+* Added text substitutions for class icons, ex: {shaman}
+
+## v1.5.3
+
+* Minor bug fix
+
+## v1.5.2
+
+* A few minor fixes
+
+## v1.5.1
+
+* Updated ToC for WoW 6.0
+
+## v1.5
+
+* Implemented ability to output current assignments to chat
+
+## v1.4
+
+* Implemented the option to display a background below assignments
+* Assignments can now also be used in party/instance groups instead of just raids
+* Added an option to change the color of the update notification glow
+
+## v1.3
+
+* Fixed an issue where non raid assistants were able to edit pages
+
+## v1.2.1
+
+* Improved support for names containing non-latin characters
+
+## v1.2
+
+* Implemented command "/aa send <name>" which sends the page with the specified name
+* Uses hashes instead of timestamps to determine if a page has been updated. Fixes an issue where users would have their changes rejected if their system clock was not set correctly
+
+## v1.1.3
+
+* Bug fix for permissions when joining/leaving guilds
+
+## v1.1.2
+
+* Small bug fix for players joining a raid
+* Minor bug fixes with event ordering
+
+## v1.1.1
+
+* Bug fix from last release
+
+## v1.1
+
+* Fixes for API changes in WoW 5.4.7
+
+## v1.0.2
+
+* Various minor bug fixes
+
+## v1.0.1
+
+* Currently displayed page is now cleared when the raid leader is changed
+* Minor bug fixes for new permission system
+
+## v1.0
+
+* Implemented support for raids with non guild members. Pages will be accepted from any raid leader/assistant, if "Allow All" setting is enabled, or the raid leader is an officer in your guild, or if the raid leader is in your "Allow Players" setting.
+* By default guild officers are no longer automatically given editing permissions, now they must also be promoted to a raid assistant.
+* Updated version check output display.
+* Implemented "Reset Position" function. Used to reset the assignment display position to the center of screen.
+* While not in a raid, any player can now edit pages. The changes are not sent out to anyone until you later join a raid and then send or save them.
+
+## v0.4.5
+
+* Fixed bug during version check, where the list of players without the addon wasn't working properly
+
+## v0.4.4
+
+* Better fix for 5.4.2 Guild API changes
+* Added OptionalDeps for when addon is being run without embedded libraries
+
+## v0.4.3
+
+* Fix for 5.4.2 Guild API changes
+
+## v0.4.2
+
+* Updated colors used for color sequences (ex: |cgreen)
+* Some internal changes
+
+## v0.4.1
+
+* Added shortcuts for color escape sequences, ex: |cgreen which will become |cff46a546. Supports green, blue, red, yellow, orange, pink, and purple.
+
+## v0.4
+
+* Added new {tank} {healer} {dps} icon substitutions to display role icons
+* Added {hero}/{heroism} icons
+
+## v0.3
+
+* "Defaults" button in addon configuration screen now works
+* Added '/aa' opens the addon configuration window
+* Added configuration option for normal font color
+
+## v0.2
+
+* Ability to highlight the group you are in. If you add "Group" to your highlight list, it will highlight G1/G2/etc if you are in that group
+* Highlights are case insensitive
+* Added config option to change highlight color
+* Added a visual notification when the displayed page is updated
+* Page backup system
+* Alphabetically sorting pages in edit window
+
+## v0.1
+
+* Initial release

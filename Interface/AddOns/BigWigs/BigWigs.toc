@@ -1,0 +1,32 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: v6
+## X-Curse-Project-Name: BigWigs Bossmods
+## X-Curse-Project-ID: big-wigs
+## X-Curse-Repository-ID: wow/big-wigs/mainline
+
+## Title: Big Wigs
+## Notes: Modular, lightweight, non-intrusive approach to boss encounter warnings.
+## Notes-deDE: Modulare und einfache Boss Encounter Warnungen.
+## Notes-ruRU: Простой и удобный помощник в битвах с боссами.
+## Notes-zhCN: 团队首领战信息提示插件，带有计时条。
+## Notes-zhTW: 團隊首領戰訊息提示插件，帶有計時條。
+## Notes-koKR: 각종 보스에 대하여 간략하고 시각적으로 경고합니다.
+## Notes-frFR: Approche modulaire, légère et non-intrusive des alertes des rencontres de boss.
+## Notes-esES: Avisos y barras para encuentros con jefes. Modular, ligero y no intrusivo.
+## Notes-esMX: Avisos y barras para encuentros con jefes. Modular, ligero y no intrusivo.
+## Notes-itIT: Un approccio modulare, leggero e non intrusivo per gli avvisi ai combattimenti con i boss.
+## Notes-ptBR: Modular, lightweight, non-intrusive approach to boss encounter warnings.
+## Author: Funkydude, Nebula169
+## Version: 6
+## X-Category: Raid
+
+## OptionalDeps: Ace3, LibCandyBar-3.0, LibSharedMedia-3.0, LibSink-2.0, LibDBIcon-1.0, LibDDI-1.0, LibChatAnims, LibDualSpec-1.0
+## X-Embeds: Ace3, LibCandyBar-3.0, LibSharedMedia-3.0, LibSink-2.0, LibDBIcon-1.0, LibDDI-1.0, LibChatAnims, LibDualSpec-1.0
+
+## SavedVariables: BigWigs3DB, BigWigs3IconDB, BigWigsStatisticsDB
+
+embeds.xml
+locales.xml
+Loader.lua
+modules.xml
+

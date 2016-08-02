@@ -1,0 +1,32 @@
+VER 3 0100000000000008 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Wild Mushroom; Nature's Swiftness
+END
+VER 3 0100000000000003 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [swimming] Aquatic Form; [indoors] Cat Form; [nocombat, harm] Travel Form; [combat] Travel Form; [flyable] Swift Flight Form; Tyrael's Charger
+/dismount [mounted]
+END
+VER 3 0100000000000004 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [mod: shift] Typhoon; [mod: ctrl] mighty bash;  Incarnation
+END
+VER 3 0100000000000006 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@player, mod: ctrl] innervate;[@mouseover] regrowth
+END
+VER 3 0100000000000007 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover, mod:ctrl]ironbark; [@mouseover]swiftmend
+END
+VER 3 0100000000000005 "CastSymbiosis001" "INV_MISC_QUESTIONMARK"
+#showtooltip Symbiosis
+/cast  Symbiosis
+/script Symbiosis.Click()
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

@@ -1,0 +1,24 @@
+
+DeathNoteDB = {
+	["profileKeys"] = {
+		["Krazymonk - Gnomeregan"] = "Krazymonk - Gnomeregan",
+	},
+	["profiles"] = {
+		["Krazymonk - Gnomeregan"] = {
+			["display_filters"] = {
+				["survival_buffs"] = false,
+			},
+			["display"] = {
+				["w"] = 699.9998779296875,
+				["y"] = 120.3418884277344,
+				["x"] = 541.6242065429688,
+				["health"] = 2,
+				["h"] = 499.9999389648438,
+			},
+			["announce"] = {
+				["announce_unknown"] = true,
+				["channel"] = "GROUP",
+			},
+		},
+	},
+}

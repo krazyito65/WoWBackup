@@ -1,0 +1,237 @@
+2016-07-19  Tercio  <Tercio>
+
+[b927302a80df] [tip]
+* Details_DeathGraphs.toc:
+
+- ToC Update.
+
+
+2016-05-31  Tercio  <Tercio>
+
+[06e8faf02500]
+* frames.lua:
+
+- updates
+
+
+2016-05-16  Tercio  <Tercio>
+
+[60f6b4b30018]
+* frames.lua:
+
+- localizing some globals.
+
+
+2016-04-24  Tercio  <Tercio>
+
+[4dcd3db50884]
+* Details_DeathGraphs.lua, frames.lua:
+
+- clean up on logon erasing overall records older than 1 week.
+
+
+2016-04-04  Tercio  <Tercio>
+
+[958b15a956f8]
+* Details_DeathGraphs.lua:
+
+- Plugin description update.
+- Small bug fixes.
+
+
+2016-03-14  Tercio  <Tercio>
+
+[c0a405cdfbd2]
+* Details_DeathGraphs.lua:
+
+- Now is also enabled by default on normal mode raids.
+
+
+2016-02-25  Tercioo  <Tercioo>
+
+[a096af96c6e2]
+* Details_DeathGraphs.lua:
+
+- won't be using date reset from details! anymore.
+
+
+2016-02-10  Tercioo  <Tercioo>
+
+[111a5d4014c5]
+* Libs/AceLocale-3.0/AceLocale-3.0.lua, Libs/AceLocale-3.0/AceLocale-3.0.xml, embeds.xml:
+
+- we doesn't need acelocale since the main addon already have it.
+
+
+2016-01-02  Tercioo  <Tercioo>
+
+[a94a840eaafb]
+* Details_DeathGraphs.lua:
+
+- version fix.
+
+
+2015-12-14  Tercioo  <Tercioo>
+
+[759966a7977b]
+* Details_DeathGraphs.lua:
+
+- removed auto open on itialization.
+
+
+[fc2c23f2620e]
+* Details_DeathGraphs.lua:
+
+- removed auto open on itialization.
+
+
+2015-12-13  Tercioo  <Tercioo>
+
+[29b134e8151b]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Major update for version v3.0.
+
+
+2015-12-12  Tercioo  <Tercioo>
+
+[26246bc34cb6]
+* Details_DeathGraphs.lua, Details_DeathGraphs.toc, frames.lua:
+
+v3.0 Beta
+
+
+2015-11-23  Tercio  <Tercio>
+
+[b28c7004907e]
+* Details_DeathGraphs.lua:
+
+- Few early changes for the big revamp in the future.
+
+
+2015-10-22  Tercio  <Tercio>
+
+[2ac80f44858b]
+* Details_DeathGraphs.lua:
+
+- small bug fixes.
+
+
+2015-10-08  Tercio  <Tercio>
+
+[963b807997c7]
+* Details_DeathGraphs.lua, icon.tga:
+
+- Fixed the star icon alignment.
+
+
+2015-09-27  Tercio  <Tercio>
+
+[4173e7a23cb8]
+* Details_DeathGraphs.lua:
+
+- Fix for the new tooltip on Details! title bar.
+
+
+2015-09-14  Tercio  <Tercio>
+
+[58138a7206f0]
+* Details_DeathGraphs.lua:
+
+- Fixes for newer versions of Details FrameWork.
+
+
+[aa71c1c95709]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Fixes for newer versions of Details FrameWork.
+
+
+2015-08-06  Tercio  <Tercio>
+
+[2242ea017895]
+* Details_DeathGraphs.lua, frames.lua:
+
+- few bug fixes.
+- font color changes.
+
+
+2015-06-23  Tercio  <Tercio>
+
+[d0cbdacb23af]
+* Details_DeathGraphs.toc, icon.tga, icon_shadow.tga:
+
+- ToC Update.
+
+
+2015-05-05  Tercio  <Tercio>
+
+[5abf30536b90]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Do not report gray players on endurance.
+
+
+2015-03-30  Tercio  <Tercio>
+
+[044be9dc9881]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Now shows the try number on endurance tooltips.
+- Added a small spell icon on the death graphic.
+
+
+2015-03-27  Tercio  <Tercio>
+
+[f1faed6c1830]
+* Details_DeathGraphs.lua:
+
+a
+
+
+[f797110daa62]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Small fixes.
+
+
+2015-03-12  Tercio  <Tercio>
+
+[deab388792bb]
+* Details_DeathGraphs.lua:
+
+a
+
+
+[cea09ac310fd]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Major Updates
+
+
+2015-03-11  Tercio  <Tercio>
+
+[5d8c15c321fe]
+* Details_DeathGraphs.lua:
+
+a
+
+
+2015-03-10  Tercio  <Tercio>
+
+[5e50dfa82477]
+* Details_DeathGraphs.lua, frames.lua:
+
+- Done a calibration on endurance calculation.
+
+
+2015-02-24  Tercio  <Tercio>
+
+[6040975577e7]
+* Details_DeathGraphs.lua, Details_DeathGraphs.toc, frames.lua:
+
+- ToC Update.
+- Fixed error after erasing a endurance fo a specific boss.
+- Fixed a problem where the icon isn't showing after a boss encounter.
+
+

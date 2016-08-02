@@ -1,0 +1,27 @@
+## Interface: 60100
+## Title: Hermes [|cffeda55fCore|r]
+## Author: Virtual (Virtual#1157 @ US-Alleria)
+## Notes: The core Hermes engine used for monitoring raid cooldowns.
+## DefaultState: enabled
+## SavedVariables: HermesDB2
+## OptionalDeps: Ace3, LibSharedMedia-3.0
+## X-Curse-Packaged-Version: v2.6.8
+## X-Curse-Project-Name: Hermes
+## X-Curse-Project-ID: hermes
+## X-Curse-Repository-ID: wow/hermes/mainline
+
+includes.xml
+
+Localization\enUS.lua
+Localization\deDE.lua
+Localization\frFR.lua
+Localization\esES.lua
+Localization\koKR.lua
+Localization\zhTW.lua
+Localization\zhCN.lua
+Localization\ruRU.lua
+
+Hermes.lua
+Reincarnation.lua
+Talents.lua
+SpellMonitorDefaults.lua

@@ -1,0 +1,29 @@
+
+DataStore_CraftsDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["Professions"] = {
+					["Engineering"] = {
+						["MaxRank"] = 600,
+						["Rank"] = 600,
+					},
+					["First Aid"] = {
+						["MaxRank"] = 600,
+						["Rank"] = 600,
+					},
+					["Enchanting"] = {
+						["MaxRank"] = 610,
+						["Rank"] = 610,
+					},
+				},
+				["Prof2"] = "Enchanting",
+				["lastUpdate"] = 1403962657,
+				["Prof1"] = "Engineering",
+			},
+		},
+	},
+}

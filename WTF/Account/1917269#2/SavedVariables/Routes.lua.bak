@@ -1,0 +1,17 @@
+
+RoutesDB = {
+	["profileKeys"] = {
+		["Krãzyito - Gnomeregan"] = "Krãzyito - Gnomeregan",
+	},
+	["global"] = {
+		["defaults"] = {
+			["use_auto_showhide"] = true,
+			["prof_options"] = {
+				["ExtractGas"] = "Never",
+				["Treasure"] = "Never",
+				["Archaeology"] = "Never",
+				["Fishing"] = "Never",
+			},
+		},
+	},
+}

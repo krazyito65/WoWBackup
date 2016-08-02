@@ -1,0 +1,20 @@
+
+DataStoreDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["guildName"] = "Semi Respectable",
+				["faction"] = "Horde",
+			},
+		},
+		["Guilds"] = {
+			["Default.Mal'Ganis.Semi Respectable"] = {
+				["faction"] = "Horde",
+			},
+		},
+		["Version"] = 1,
+	},
+}

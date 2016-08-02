@@ -1,0 +1,58 @@
+
+BLCDrosterReload = {
+	["0x048000000740B374"] = {
+		["talents"] = {
+			[11426] = {
+				["idx"] = 6,
+				["name_localized"] = "Ice Barrier",
+				["tier"] = 2,
+				["spell_id"] = 11426,
+				["icon"] = "Interface\\Icons\\Spell_Ice_Lament",
+				["column"] = 3,
+			},
+			[108843] = {
+				["idx"] = 2,
+				["name_localized"] = "Blazing Speed",
+				["tier"] = 1,
+				["spell_id"] = 108843,
+				["icon"] = "Interface\\Icons\\Spell_Fire_BurningSpeed",
+				["column"] = 2,
+			},
+			[114003] = {
+				["idx"] = 16,
+				["name_localized"] = "Invocation",
+				["tier"] = 6,
+				["spell_id"] = 114003,
+				["icon"] = "Interface\\Icons\\Spell_Arcane_Arcane03",
+				["column"] = 1,
+			},
+			[44457] = {
+				["idx"] = 14,
+				["name_localized"] = "Living Bomb",
+				["tier"] = 5,
+				["spell_id"] = 44457,
+				["icon"] = "Interface\\Icons\\Ability_Mage_LivingBomb",
+				["column"] = 2,
+			},
+			[113724] = {
+				["idx"] = 7,
+				["name_localized"] = "Ring of Frost",
+				["tier"] = 3,
+				["spell_id"] = 113724,
+				["icon"] = "INTERFACE\\ICONS\\spell_frost_ring of frost",
+				["column"] = 1,
+			},
+			[86949] = {
+				["idx"] = 11,
+				["name_localized"] = "Cauterize",
+				["tier"] = 4,
+				["spell_id"] = 86949,
+				["icon"] = "Interface\\Icons\\spell_fire_rune",
+				["column"] = 2,
+			},
+		},
+		["class"] = "MAGE",
+		["name"] = "Fãlor",
+		["spec"] = 64,
+	},
+}

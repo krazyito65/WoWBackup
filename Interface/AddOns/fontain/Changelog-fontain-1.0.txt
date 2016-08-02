@@ -1,0 +1,19 @@
+tag 1.0
+b871ce7d2bcbf939e69651683f4d08e69855c607
+Steffen Buehl <sb@sbuehl.com>
+2014-11-11 20:23:29 +0100
+
+fix versioning and tag as release
+
+
+--------------------
+
+Steffen Buehl:
+	- add version to toc
+	- fix "Attempt to access forbidden object from code tainted by an AddOn" for 6.0.2
+Chris Heald:
+	- Re-enable the damage text and unit name settings, since I've discovered it takes a relog, not a reload to enable them
+	- Update the TOC
+	- Fixes for borked libraries
+	- Add Calibri
+	- Initial commit.

@@ -1,0 +1,15 @@
+﻿## Interface: 60000
+## Title: OregorgerTracker
+## Author: Aelobin (The Maelstrom EU)
+## Version: v1.3
+## SavedVariables: OregorgerTrackerDB
+## Notes: Displays roll paths for Oregorger
+## X-Curse-Packaged-Version: v1.3
+## X-Curse-Project-Name: OregorgerTracker
+## X-Curse-Project-ID: oregorgertracker
+## X-Curse-Repository-ID: wow/oregorgertracker/mainline
+
+Libs\Embeds.xml
+
+paths.lua
+OregorgerTracker.lua

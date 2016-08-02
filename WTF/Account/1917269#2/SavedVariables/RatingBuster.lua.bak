@@ -1,0 +1,40 @@
+
+RatingBusterDB = {
+	["namespaces"] = {
+		["LibDualSpec-1.0"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
+	},
+	["profiles"] = {
+		["Krazyito - Gnomeregan"] = {
+			["sumHaste"] = true,
+			["sumSpellPower"] = true,
+			["profileVersion"] = 1,
+			["sumHit"] = true,
+			["showSpellCritFromInt"] = true,
+			["sumDodge"] = true,
+			["ratingPhysical"] = true,
+			["showCritFromAgi"] = true,
+			["showMP5FromInt"] = true,
+			["showDodgeFromAgi"] = true,
+			["showHealingFromAgi"] = true,
+			["sumMP"] = true,
+			["sumSpellCrit"] = true,
+			["sumHealing"] = true,
+			["sumMP5"] = true,
+			["sumFAP"] = true,
+			["sumSpellHaste"] = true,
+			["showMP5FromSpi"] = true,
+			["sumArmor"] = true,
+			["showSpellHitFromSpi"] = true,
+			["showHealingFromInt"] = true,
+			["sumCrit"] = true,
+			["showSpellDmgFromInt"] = true,
+			["sumExpertise"] = true,
+			["sumIgnoreLeather"] = false,
+			["ratingSpell"] = true,
+		},
+	},
+}

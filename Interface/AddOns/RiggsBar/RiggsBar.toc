@@ -1,0 +1,9 @@
+## Interface: 50200
+## Title: RiggsBar
+## Notes: Emulation of Riggnaros' Shield Bar
+## Author: Seasecon
+## Version: 1.31
+## SavedVariables: RiggsBarSV
+
+embeds.xml
+RiggsBar.xml

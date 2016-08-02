@@ -1,0 +1,4 @@
+
+GnosisDB = nil
+GnosisConfigs = {
+}

@@ -1,0 +1,34 @@
+------------------------------------------------------------------------
+r9 | magokimbra | 2011-06-30 14:58:58 +0000 (Thu, 30 Jun 2011) | 1 line
+Changed paths:
+   M /trunk/SkadaSelfHealing.lua
+   M /trunk/SkadaSelfHealing.toc
+
+Add Hunter Chimera Shot & Spirit Bond
+------------------------------------------------------------------------
+r8 | magokimbra | 2011-06-29 10:47:22 +0000 (Wed, 29 Jun 2011) | 1 line
+Changed paths:
+   M /trunk/SkadaSelfHealing.lua
+   M /trunk/SkadaSelfHealing.toc
+
+Add Warrior, Rogue, Paladin, Priest
+------------------------------------------------------------------------
+r7 | magokimbra | 2011-06-28 22:38:20 +0000 (Tue, 28 Jun 2011) | 1 line
+Changed paths:
+   M /trunk/SkadaSelfHealing.toc
+
+Update to 4.2!
+------------------------------------------------------------------------
+r6 | magokimbra | 2011-06-05 13:46:21 +0000 (Sun, 05 Jun 2011) | 1 line
+Changed paths:
+   M /trunk/SkadaSelfHealing.lua
+   M /trunk/SkadaSelfHealing.toc
+
+Add Druid Leader of the Pack (Cat/Bear): ID 17007
+------------------------------------------------------------------------
+r5 | magokimbra | 2011-04-27 07:50:05 +0000 (Wed, 27 Apr 2011) | 1 line
+Changed paths:
+   M /trunk/SkadaSelfHealing.lua
+
+Add Priest self Healing. Thx Skyyd.
+------------------------------------------------------------------------

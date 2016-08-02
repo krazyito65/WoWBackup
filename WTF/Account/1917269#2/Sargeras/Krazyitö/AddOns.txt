@@ -1,0 +1,7 @@
+TradeSkillMaster_AppHelper: disabled
+JSHB: disabled
+ZygorGuidesViewer: disabled
+LittleWigs: disabled
+BugSack: enabled
+TradeSkillMaster_Mailing: disabled
+!BugGrabber: enabled

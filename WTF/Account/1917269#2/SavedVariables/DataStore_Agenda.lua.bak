@@ -1,0 +1,18 @@
+
+DataStore_AgendaDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["lastUpdate"] = 1403962656,
+				["Contacts"] = {
+					["Davidicus"] = {
+						["note"] = "",
+					},
+				},
+			},
+		},
+	},
+}

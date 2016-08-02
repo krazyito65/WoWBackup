@@ -1,0 +1,4 @@
+
+MountainOOptions = {
+	["tcg"] = true,
+}

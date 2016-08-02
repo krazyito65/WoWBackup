@@ -1,0 +1,18 @@
+## Interface: 50300
+## Title: Big Wigs |cffff0000+|r|cffffffffShek'zeer Add Marker|r
+## Title-itIT: Big Wigs |cffff0000+|r|cffffffffShek'zeer Add Marker|r
+## Notes: Assigns icons to interruptable adds in phase 2.
+## Notes-itIT: Mette i simboli sugli add interrompibili durante la fase 2.
+## Author: Caleb
+## Version: 1.21
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 897
+## Dependencies: BigWigs
+## LoadOnDemand: 1
+## X-Curse-Packaged-Version: 1.21
+## X-Curse-Project-Name: BigWigs_ShekzeerAddMarker 
+## X-Curse-Project-ID: bigwigs_shekzeeraddmarker
+## X-Curse-Repository-ID: wow/bigwigs_shekzeeraddmarker/mainline
+
+icons.lua
+

@@ -1,0 +1,38 @@
+------------------------------------------------------------------------
+r4 | mackatack | 2011-09-06 10:48:29 +0000 (Tue, 06 Sep 2011) | 1 line
+Changed paths:
+   A /tags/0.6 (from /trunk:3)
+
+see previous commit
+------------------------------------------------------------------------
+r3 | mackatack | 2011-09-06 10:46:43 +0000 (Tue, 06 Sep 2011) | 1 line
+Changed paths:
+   M /trunk/EQDkp_EPGPImport.lua
+   M /trunk/EQDkp_EPGPImport.toc
+
+supporting of aliases and updated toc
+------------------------------------------------------------------------
+r2 | mackatack | 2008-12-15 16:12:16 +0000 (Mon, 15 Dec 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+   A /trunk/EQDkp_EPGPImport.lua
+   A /trunk/EQDkp_EPGPImport.toc
+   A /trunk/Libs
+   A /trunk/Libs/AceAddon-3.0
+   A /trunk/Libs/AceAddon-3.0/AceAddon-3.0.lua
+   A /trunk/Libs/AceAddon-3.0/AceAddon-3.0.xml
+   A /trunk/Libs/AceConsole-3.0
+   A /trunk/Libs/AceConsole-3.0/AceConsole-3.0.lua
+   A /trunk/Libs/AceConsole-3.0/AceConsole-3.0.xml
+   A /trunk/Libs/AceEvent-3.0
+   A /trunk/Libs/AceEvent-3.0/AceEvent-3.0.lua
+   A /trunk/Libs/AceEvent-3.0/AceEvent-3.0.xml
+   A /trunk/Libs/CallbackHandler-1.0
+   A /trunk/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua
+   A /trunk/Libs/CallbackHandler-1.0/CallbackHandler-1.0.xml
+   A /trunk/Libs/LibStub
+   A /trunk/Libs/LibStub/LibStub.lua
+   A /trunk/embeds.xml
+
+Initial SVN import
+------------------------------------------------------------------------

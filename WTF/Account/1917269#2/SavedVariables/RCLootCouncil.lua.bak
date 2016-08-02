@@ -1,0 +1,14 @@
+
+RCLootCouncilDB = {
+	["global"] = {
+		["version"] = "1.7.4",
+	},
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["advancedOptions"] = true,
+		},
+	},
+}

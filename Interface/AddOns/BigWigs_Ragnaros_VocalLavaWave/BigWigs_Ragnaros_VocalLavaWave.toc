@@ -1,0 +1,19 @@
+## Title: Big Wigs |cffff0000+|r|cffffffff Ragnaros Vocal Lava Wave|r
+## X-Curse-Packaged-Version: 1.1.1
+## X-Curse-Project-Name: BigWigs_Ragnaros_VocalLavaWave
+## X-Curse-Project-ID: bigwigs_ragnaros_vocallavawave
+## X-Curse-Repository-ID: wow/bigwigs_ragnaros_vocallavawave/mainline
+
+## Notes: Vocal warning for Lava Wave for the Ragnaros encounter
+
+## Author: Caleb
+
+## Interface: 50001
+## Version: 1.1.1
+
+## X-BigWigs-LoadOn-ZoneId: 800
+## X-Category: Raid
+## Dependencies: BigWigs
+## LoadOnDemand: 1
+
+BigWigs_Ragnaros_VocalLavaWave.lua

@@ -1,0 +1,12 @@
+tag v5.11.11
+5eab08d689e314b479f0c8be3b8ef36fdc62f915
+Ciprian Mihai Coman <ciprianmihai.coman@gmail.com>
+2015-07-03 22:38:13 +0300
+
+tag as v5.11.11
+
+
+--------------------
+
+Ciprian Mihai Coman:
+	- fix bonus roll coin number

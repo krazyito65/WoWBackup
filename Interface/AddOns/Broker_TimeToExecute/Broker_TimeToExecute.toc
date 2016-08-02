@@ -1,0 +1,25 @@
+## Interface: 60100
+## Version: 1.1.1
+## X-Date: 2015-02-25T08:57:25Z
+## X-Website: http://www.wowace.com/addons/broker_timetoexecute/
+## X-License: MIT License
+## X-Category: Boss Encounters, Combat, Damage Dealer, Data-Broker
+## X-Credits: Mathematics: Tifordin, author of the original TimeToExecute addon.
+## X-Curse-Packaged-Version: 1.1.1
+## X-Curse-Project-Name: Broker: TimeToExecute
+## X-Curse-Project-ID: broker_timetoexecute
+## X-Curse-Repository-ID: wow/broker_timetoexecute/mainline
+
+## Title: Broker: TimeToExecute
+## Notes: Uses linear regression and a log of hitpoint values to estimate how long a boss has left to die and reach execute range.
+## Author: Timmeh
+## OptionalDeps: LibStub, Ace3, LibPubSub-1.0
+## SavedVariables: Broker_TimeToExecuteDB
+
+embeds.xml
+locale.xml
+
+core.lua
+modules\options.lua
+modules\databroker.lua
+modules\estimate.lua

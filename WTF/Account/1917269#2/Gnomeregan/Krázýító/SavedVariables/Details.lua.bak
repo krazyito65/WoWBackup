@@ -1,0 +1,5877 @@
+
+_detalhes_database = {
+	["announce_interrupts"] = {
+		["enabled"] = false,
+		["whisper"] = "",
+		["channel"] = "SAY",
+		["custom"] = "",
+		["next"] = "",
+	},
+	["announce_prepots"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
+		["reverse"] = false,
+	},
+	["active_profile"] = "Krazyito-Mal'Ganis",
+	["last_realversion"] = 61,
+	["ignore_nicktag"] = false,
+	["combat_counter"] = 39,
+	["plugin_database"] = {
+		["DETAILS_PLUGIN_DAMAGE_RANK"] = {
+			["lasttry"] = {
+			},
+			["annouce"] = true,
+			["dpshistory"] = {
+			},
+			["dps"] = 0,
+			["author"] = "Details! Team",
+			["level"] = 1,
+			["enabled"] = true,
+		},
+		["DETAILS_PLUGIN_DEATH_GRAPHICS"] = {
+			["enabled"] = true,
+			["captures"] = {
+				false, -- [1]
+				false, -- [2]
+				true, -- [3]
+				true, -- [4]
+			},
+			["author"] = "Details! Team",
+			["first_run"] = false,
+			["showing_type"] = 1,
+			["last_encounter_hash"] = false,
+			["deaths_threshold"] = 10,
+			["endurance_threshold"] = 5,
+			["last_segment"] = false,
+			["last_combat_id"] = 10,
+			["show_icon"] = 1,
+			["last_boss"] = false,
+			["last_player"] = false,
+		},
+		["DETAILS_PLUGIN_ENCOUNTER_DETAILS"] = {
+			["enabled"] = true,
+			["opened"] = 0,
+			["max_emote_segments"] = 3,
+			["show_icon"] = 5,
+			["hide_on_combat"] = false,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_CHART_VIEWER"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["tabs"] = {
+				{
+					["name"] = "Your Damage",
+					["segment_type"] = 2,
+					["version"] = "v2.0",
+					["data"] = "Player Damage Done",
+					["texture"] = "line",
+				}, -- [1]
+				["last_selected"] = 1,
+			},
+			["options"] = {
+				["show_method"] = 4,
+				["window_scale"] = 1,
+			},
+		},
+		["DETAILS_PLUGIN_TINY_THREAT"] = {
+			["updatespeed"] = 1,
+			["useclasscolors"] = false,
+			["animate"] = false,
+			["useplayercolor"] = false,
+			["showamount"] = false,
+			["author"] = "Details! Team",
+			["playercolor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+			},
+			["enabled"] = true,
+		},
+		["DETAILS_PLUGIN_YANP"] = {
+			["enabled"] = true,
+			["rightclick_closed"] = false,
+			["auto_open"] = true,
+			["auto_close"] = true,
+			["hide_on_combat"] = true,
+			["author"] = "Details! Team",
+			["deaths_table"] = {
+			},
+			["shown_time"] = 30,
+		},
+		["DETAILS_PLUGIN_DPS_TUNING"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["SpellBarsShowType"] = 1,
+		},
+		["DETAILS_PLUGIN_VANGUARD"] = {
+			["enabled"] = true,
+			["tank_block_texture"] = "Details Serenity",
+			["tank_block_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.8, -- [4]
+			},
+			["show_inc_bars"] = true,
+			["author"] = "Details! Team",
+			["first_run"] = false,
+			["tank_block_size"] = 150,
+		},
+		["DETAILS_PLUGIN_RAID_POWER_BARS"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_TIME_LINE"] = {
+			["enabled"] = true,
+			["max_segments"] = 10,
+			["combat_data"] = {
+			},
+			["author"] = "Details! Team",
+			["backdrop_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.4, -- [4]
+			},
+			["cooldowns_timeline"] = {
+			},
+			["debuff_timeline"] = {
+			},
+			["window_scale"] = 1,
+			["hide_on_combat"] = false,
+		},
+		["DETAILS_PLUGIN_TIME_ATTACK"] = {
+			["enabled"] = true,
+			["realm_last_shown"] = 40,
+			["saved_as_anonymous"] = true,
+			["recently_as_anonymous"] = true,
+			["dps"] = 0,
+			["disable_sharing"] = false,
+			["history"] = {
+			},
+			["time"] = 40,
+			["history_lastindex"] = 0,
+			["realm_lastamt"] = 0,
+			["realm_history"] = {
+			},
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_RAIDCHECK"] = {
+			["enabled"] = true,
+			["pre_pot_tanks"] = false,
+			["mythic_1_4"] = true,
+			["author"] = "Details! Team",
+			["use_report_panel"] = true,
+			["pre_pot_healers"] = false,
+		},
+	},
+	["character_data"] = {
+		["logons"] = 1,
+	},
+	["savedbuffs"] = {
+	},
+	["tabela_instancias"] = {
+	},
+	["combat_id"] = 10,
+	["savedStyles"] = {
+	},
+	["last_version"] = "v3.10.8",
+	["tabela_historico"] = {
+		["tabelas"] = {
+			{
+				{
+					["combatId"] = 10,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["friendlyfire"] = {
+								["Haazinul <Krázýító>"] = {
+									["spells"] = {
+										[108446] = 2050,
+									},
+									["total"] = 2050,
+								},
+							},
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+								["Bleeding Hollow Savage"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 28335,
+								["Bleeding Hollow Savage"] = 200824,
+							},
+							["colocacao"] = 1,
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["friendlyfire_total"] = 2050,
+							["serial"] = "Player-153-07468FD5",
+							["total_without_pet"] = 206077.005435,
+							["on_hold"] = false,
+							["dps_started"] = false,
+							["total"] = 229159.005435,
+							["classe"] = "WARLOCK",
+							["spec"] = 266,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+									[124915] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 35063,
+										["g_amt"] = 0,
+										["n_max"] = 16984,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 119980,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 84917,
+										["n_min"] = 16983,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 119980,
+										["c_max"] = 35063,
+										["id"] = 124915,
+										["r_dmg"] = 0,
+										["spellschool"] = 127,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 35063,
+									},
+									[129476] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 2054,
+										["g_amt"] = 0,
+										["n_max"] = 892,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 20973,
+										},
+										["m_dmg"] = 629,
+										["n_dmg"] = 18290,
+										["n_min"] = 463,
+										["g_dmg"] = 0,
+										["counter"] = 30,
+										["total"] = 20973,
+										["c_max"] = 1099,
+										["id"] = 129476,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 3,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 28,
+										["r_amt"] = 0,
+										["c_min"] = 955,
+									},
+									[146739] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 3124,
+										["g_amt"] = 0,
+										["n_max"] = 722,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 6467,
+										},
+										["m_dmg"] = 549,
+										["n_dmg"] = 2794,
+										["n_min"] = 628,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 6467,
+										["c_max"] = 1829,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["spellschool"] = 32,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 1295,
+									},
+									[148008] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 812,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 812,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 812,
+										["n_min"] = 812,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 812,
+										["c_max"] = 0,
+										["id"] = 148008,
+										["r_dmg"] = 0,
+										["spellschool"] = 12,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[103964] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 23579,
+										["g_amt"] = 0,
+										["n_max"] = 5711,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 17133,
+											["Bleeding Hollow Savage"] = 40712,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 34266,
+										["n_min"] = 5711,
+										["g_dmg"] = 0,
+										["counter"] = 8,
+										["total"] = 57845,
+										["c_max"] = 11790,
+										["id"] = 103964,
+										["r_dmg"] = 0,
+										["spellschool"] = 127,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 6,
+										["r_amt"] = 0,
+										["c_min"] = 11789,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["grupo"] = true,
+							["end_time"] = 1426006215,
+							["last_dps"] = 3543.07500904481,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 10264.005435,
+							["start_time"] = 1426006199,
+							["delay"] = 0,
+							["last_event"] = 1426006214,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["damage_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 8712,
+								["Bleeding Hollow Savage"] = 11880,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["total_without_pet"] = 20592.007812,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 20592.007812,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 6944,
+										["g_amt"] = 0,
+										["n_max"] = 1320,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 6996,
+											["Bleeding Hollow Savage"] = 5624,
+										},
+										["m_dmg"] = 396,
+										["n_dmg"] = 5280,
+										["n_min"] = 1320,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 12620,
+										["c_max"] = 2640,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 2152,
+									}, -- [1]
+									[30153] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1076,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 1076,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1076,
+										["n_min"] = 1076,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 1076,
+										["c_max"] = 0,
+										["id"] = 30153,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[30213] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 4132,
+										["g_amt"] = 0,
+										["n_max"] = 1716,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 1716,
+											["Bleeding Hollow Savage"] = 5180,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 2764,
+										["n_min"] = 349,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 6896,
+										["c_max"] = 3432,
+										["id"] = 30213,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 700,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006215,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 2050.007812,
+							["start_time"] = 1426006199,
+							["delay"] = 0,
+							["last_event"] = 1426006213,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 2490,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Creature-0-153-1265-73-55659-00007F20BD",
+							["total_without_pet"] = 2490.005391,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 2490.005391,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["spells"] = {
+								["_ActorTable"] = {
+									[104318] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 1412,
+										["g_amt"] = 0,
+										["n_max"] = 362,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 2490,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1078,
+										["n_min"] = 354,
+										["g_dmg"] = 0,
+										["counter"] = 5,
+										["total"] = 2490,
+										["c_max"] = 706,
+										["id"] = 104318,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 706,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006215,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 105.005391,
+							["start_time"] = 1426006210,
+							["delay"] = 0,
+							["last_event"] = 1426006214,
+						}, -- [3]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 10,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.005985,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["targets"] = {
+								["Haazinul <Krázýító>"] = 1914,
+								["Krázýító"] = 1916,
+							},
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["iniciar_hps"] = false,
+							["spells"] = {
+								["_ActorTable"] = {
+									[108447] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 354,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 1914,
+											["Krázýító"] = 1916,
+										},
+										["n_min"] = 21,
+										["counter"] = 24,
+										["overheal"] = 0,
+										["total"] = 3830,
+										["c_max"] = 0,
+										["id"] = 108447,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 3830,
+										["m_healed"] = 0,
+										["n_amt"] = 24,
+										["absorbed"] = 0,
+									},
+								},
+								["tipo"] = 3,
+							},
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 0.005985,
+							["total_without_pet"] = 3830.005985,
+							["totalover_without_pet"] = 0.005985,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["end_time"] = 1426006215,
+							["healing_taken"] = 1916.005985,
+							["serial"] = "Player-153-07468FD5",
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["total"] = 3830.005985,
+							["heal_enemy"] = {
+							},
+							["targets_absorbs"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006200,
+							["delay"] = 0,
+							["last_event"] = 1426006215,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["totalabsorb"] = 0.00827,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 3,
+							},
+							["targets"] = {
+							},
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["last_event"] = 0,
+							["healing_taken"] = 1914.00827,
+							["totalover"] = 0.00827,
+							["total_without_pet"] = 0.00827,
+							["total"] = 0.00827,
+							["totalover_without_pet"] = 0.00827,
+							["fight_component"] = true,
+							["end_time"] = 1426006215,
+							["classe"] = "PET",
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["heal_enemy_amt"] = 0,
+							["heal_enemy"] = {
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006215,
+							["delay"] = 0,
+							["targets_absorbs"] = {
+							},
+						}, -- [2]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 10,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 24.002664,
+							["targets"] = {
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total"] = 0.002664,
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.002664,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006203,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["resource"] = 36.007714,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["fight_component"] = true,
+							["total"] = 0.007714,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.007714,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["last_event"] = 1426006212,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["resource"] = 30.00332,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["total"] = 0.00332,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.00332,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2096",
+							["last_event"] = 1426006214,
+						}, -- [3]
+					},
+				}, -- [3]
+				{
+					["combatId"] = 10,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[146739] = {
+										["actived_at"] = 1426006204,
+										["uptime"] = 5,
+										["activedamt"] = -1,
+										["id"] = 146739,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146198] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 146198,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[603] = {
+										["uptime"] = 6,
+										["activedamt"] = 0,
+										["id"] = 603,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["buff_uptime"] = 124,
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[98204] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 98204,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[104025] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 104025,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[105691] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 105691,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[109773] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 109773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[167410] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 167410,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[103958] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 103958,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[140074] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 140074,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[114925] = {
+										["uptime"] = 8,
+										["activedamt"] = 2,
+										["id"] = 114925,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[113861] = {
+										["uptime"] = 12,
+										["activedamt"] = 1,
+										["id"] = 113861,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[171975] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 171975,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 11,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 266,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Krázýító",
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006264,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 10,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Bleeding Hollow Savage",
+				["combat_counter"] = 35,
+				["playing_solo"] = true,
+				["totals"] = {
+					229158.992731, -- [1]
+					3830, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Krázýító"] = 6658.02721,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Krázýító"] = 308288.017453,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 63672.579,
+				["combat_id"] = 10,
+				["instance_type"] = "none",
+				["resincked"] = true,
+				["frags"] = {
+					["Bleeding Hollow Berserker"] = 1,
+					["Bleeding Hollow Savage"] = 9,
+				},
+				["data_fim"] = "12:51:04",
+				["data_inicio"] = "12:49:59",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					208127, -- [1]
+					3830, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 63607.901,
+				["contra"] = "Bleeding Hollow Savage",
+				["TimeData"] = {
+				},
+			}, -- [1]
+			{
+				{
+					["combatId"] = 10,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["friendlyfire"] = {
+								["Haazinul <Krázýító>"] = {
+									["spells"] = {
+										[108446] = 2050,
+									},
+									["total"] = 2050,
+								},
+							},
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+								["Bleeding Hollow Savage"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 28335,
+								["Bleeding Hollow Savage"] = 200824,
+							},
+							["colocacao"] = 1,
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["friendlyfire_total"] = 2050,
+							["serial"] = "Player-153-07468FD5",
+							["total_without_pet"] = 206077.005435,
+							["on_hold"] = false,
+							["dps_started"] = false,
+							["total"] = 229159.005435,
+							["classe"] = "WARLOCK",
+							["spec"] = 266,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+									[124915] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 35063,
+										["g_amt"] = 0,
+										["n_max"] = 16984,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 119980,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 84917,
+										["n_min"] = 16983,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 119980,
+										["c_max"] = 35063,
+										["id"] = 124915,
+										["r_dmg"] = 0,
+										["spellschool"] = 127,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 35063,
+									},
+									[129476] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 2054,
+										["g_amt"] = 0,
+										["n_max"] = 892,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 20973,
+										},
+										["m_dmg"] = 629,
+										["n_dmg"] = 18290,
+										["n_min"] = 463,
+										["g_dmg"] = 0,
+										["counter"] = 30,
+										["total"] = 20973,
+										["c_max"] = 1099,
+										["id"] = 129476,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 3,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 28,
+										["r_amt"] = 0,
+										["c_min"] = 955,
+									},
+									[146739] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 3124,
+										["g_amt"] = 0,
+										["n_max"] = 722,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 6467,
+										},
+										["m_dmg"] = 549,
+										["n_dmg"] = 2794,
+										["n_min"] = 628,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 6467,
+										["c_max"] = 1829,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["spellschool"] = 32,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 1295,
+									},
+									[148008] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 812,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 812,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 812,
+										["n_min"] = 812,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 812,
+										["c_max"] = 0,
+										["id"] = 148008,
+										["r_dmg"] = 0,
+										["spellschool"] = 12,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[103964] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 23579,
+										["g_amt"] = 0,
+										["n_max"] = 5711,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 17133,
+											["Bleeding Hollow Savage"] = 40712,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 34266,
+										["n_min"] = 5711,
+										["g_dmg"] = 0,
+										["counter"] = 8,
+										["total"] = 57845,
+										["c_max"] = 11790,
+										["id"] = 103964,
+										["r_dmg"] = 0,
+										["spellschool"] = 127,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 6,
+										["r_amt"] = 0,
+										["c_min"] = 11789,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["grupo"] = true,
+							["end_time"] = 1426006215,
+							["last_dps"] = 3543.07500904481,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 10264.005435,
+							["start_time"] = 1426006199,
+							["delay"] = 0,
+							["last_event"] = 1426006214,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["damage_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 8712,
+								["Bleeding Hollow Savage"] = 11880,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["total_without_pet"] = 20592.007812,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 20592.007812,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 6944,
+										["g_amt"] = 0,
+										["n_max"] = 1320,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 6996,
+											["Bleeding Hollow Savage"] = 5624,
+										},
+										["m_dmg"] = 396,
+										["n_dmg"] = 5280,
+										["n_min"] = 1320,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 12620,
+										["c_max"] = 2640,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 2152,
+									}, -- [1]
+									[30153] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1076,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 1076,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1076,
+										["n_min"] = 1076,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 1076,
+										["c_max"] = 0,
+										["id"] = 30153,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[30213] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 4132,
+										["g_amt"] = 0,
+										["n_max"] = 1716,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 1716,
+											["Bleeding Hollow Savage"] = 5180,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 2764,
+										["n_min"] = 349,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 6896,
+										["c_max"] = 3432,
+										["id"] = 30213,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 700,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006215,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 2050.007812,
+							["start_time"] = 1426006199,
+							["delay"] = 0,
+							["last_event"] = 1426006213,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 2490,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Creature-0-153-1265-73-55659-00007F20BD",
+							["total_without_pet"] = 2490.005391,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 2490.005391,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["spells"] = {
+								["_ActorTable"] = {
+									[104318] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 1412,
+										["g_amt"] = 0,
+										["n_max"] = 362,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 2490,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1078,
+										["n_min"] = 354,
+										["g_dmg"] = 0,
+										["counter"] = 5,
+										["total"] = 2490,
+										["c_max"] = 706,
+										["id"] = 104318,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 706,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006215,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 105.005391,
+							["start_time"] = 1426006210,
+							["delay"] = 0,
+							["last_event"] = 1426006214,
+						}, -- [3]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 10,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.005985,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["targets"] = {
+								["Haazinul <Krázýító>"] = 1914,
+								["Krázýító"] = 1916,
+							},
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["iniciar_hps"] = false,
+							["spells"] = {
+								["_ActorTable"] = {
+									[108447] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 354,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 1914,
+											["Krázýító"] = 1916,
+										},
+										["n_min"] = 21,
+										["counter"] = 24,
+										["overheal"] = 0,
+										["total"] = 3830,
+										["c_max"] = 0,
+										["id"] = 108447,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 3830,
+										["m_healed"] = 0,
+										["n_amt"] = 24,
+										["absorbed"] = 0,
+									},
+								},
+								["tipo"] = 3,
+							},
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 0.005985,
+							["total_without_pet"] = 3830.005985,
+							["totalover_without_pet"] = 0.005985,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["end_time"] = 1426006215,
+							["healing_taken"] = 1916.005985,
+							["serial"] = "Player-153-07468FD5",
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["total"] = 3830.005985,
+							["heal_enemy"] = {
+							},
+							["targets_absorbs"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006200,
+							["delay"] = 0,
+							["last_event"] = 1426006215,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["totalabsorb"] = 0.00827,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 3,
+							},
+							["targets"] = {
+							},
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["last_event"] = 0,
+							["healing_taken"] = 1914.00827,
+							["totalover"] = 0.00827,
+							["total_without_pet"] = 0.00827,
+							["total"] = 0.00827,
+							["totalover_without_pet"] = 0.00827,
+							["fight_component"] = true,
+							["end_time"] = 1426006215,
+							["classe"] = "PET",
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["heal_enemy_amt"] = 0,
+							["heal_enemy"] = {
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006215,
+							["delay"] = 0,
+							["targets_absorbs"] = {
+							},
+						}, -- [2]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 10,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 24.002664,
+							["targets"] = {
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total"] = 0.002664,
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.002664,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006203,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["resource"] = 36.007714,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["fight_component"] = true,
+							["total"] = 0.007714,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.007714,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["last_event"] = 1426006212,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["resource"] = 30.00332,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["total"] = 0.00332,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.00332,
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2096",
+							["last_event"] = 1426006214,
+						}, -- [3]
+					},
+				}, -- [3]
+				{
+					["combatId"] = 10,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[146739] = {
+										["actived_at"] = 1426006204,
+										["uptime"] = 5,
+										["activedamt"] = -1,
+										["id"] = 146739,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146198] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 146198,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[603] = {
+										["uptime"] = 6,
+										["activedamt"] = 0,
+										["id"] = 603,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["buff_uptime"] = 124,
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[98204] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 98204,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[104025] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 104025,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[105691] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 105691,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[109773] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 109773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[167410] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 167410,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[103958] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 103958,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[140074] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 140074,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[114925] = {
+										["uptime"] = 8,
+										["activedamt"] = 2,
+										["id"] = 114925,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[113861] = {
+										["uptime"] = 12,
+										["activedamt"] = 1,
+										["id"] = 113861,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[171975] = {
+										["uptime"] = 16,
+										["activedamt"] = 1,
+										["id"] = 171975,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 11,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 266,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Krázýító",
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006264,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 10,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Bleeding Hollow Savage",
+				["combat_counter"] = 35,
+				["playing_solo"] = true,
+				["totals"] = {
+					229158.992731, -- [1]
+					3830, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Krázýító"] = 6658.02721,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Krázýító"] = 308288.017453,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 63672.579,
+				["combat_id"] = 10,
+				["instance_type"] = "none",
+				["resincked"] = true,
+				["frags"] = {
+					["Bleeding Hollow Berserker"] = 1,
+					["Bleeding Hollow Savage"] = 9,
+				},
+				["data_fim"] = "12:51:04",
+				["data_inicio"] = "12:49:59",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					208127, -- [1]
+					3830, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 63607.901,
+				["contra"] = "Bleeding Hollow Savage",
+				["TimeData"] = {
+				},
+			}, -- [2]
+			{
+				{
+					["combatId"] = 9,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+								["Bleeding Hollow Hatchet"] = true,
+								["Bleeding Hollow Savage"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 26819,
+								["Bleeding Hollow Hatchet"] = 15917,
+								["Bleeding Hollow Savage"] = 48674,
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["classe"] = "WARLOCK",
+							["friendlyfire"] = {
+								["Haazinul <Krázýító>"] = {
+									["spells"] = {
+										[108446] = 2401,
+									},
+									["total"] = 2401,
+								},
+							},
+							["total_without_pet"] = 71351.001721,
+							["colocacao"] = 1,
+							["friendlyfire_total"] = 2401,
+							["dps_started"] = false,
+							["end_time"] = 1426006199,
+							["serial"] = "Player-153-07468FD5",
+							["on_hold"] = false,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									[86040] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3541,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 7081,
+											["Bleeding Hollow Hatchet"] = 7082,
+											["Bleeding Hollow Savage"] = 10622,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 24785,
+										["n_min"] = 3540,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 24785,
+										["c_max"] = 0,
+										["id"] = 86040,
+										["r_dmg"] = 0,
+										["spellschool"] = 36,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 7,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[146739] = {
+										["c_amt"] = 6,
+										["b_amt"] = 0,
+										["c_dmg"] = 8553,
+										["g_amt"] = 0,
+										["n_max"] = 722,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 3421,
+											["Bleeding Hollow Hatchet"] = 4089,
+											["Bleeding Hollow Savage"] = 12461,
+										},
+										["m_dmg"] = 622,
+										["n_dmg"] = 10796,
+										["n_min"] = 627,
+										["g_dmg"] = 0,
+										["counter"] = 22,
+										["total"] = 19971,
+										["c_max"] = 1491,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["spellschool"] = 32,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 3,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 16,
+										["r_amt"] = 0,
+										["c_min"] = 1296,
+									},
+									[47960] = {
+										["c_amt"] = 5,
+										["b_amt"] = 0,
+										["c_dmg"] = 8372,
+										["g_amt"] = 0,
+										["n_max"] = 1159,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 8840,
+											["Bleeding Hollow Hatchet"] = 4746,
+											["Bleeding Hollow Savage"] = 4230,
+										},
+										["m_dmg"] = 174,
+										["n_dmg"] = 9270,
+										["n_min"] = 579,
+										["g_dmg"] = 0,
+										["counter"] = 16,
+										["total"] = 17816,
+										["c_max"] = 2392,
+										["id"] = 47960,
+										["r_dmg"] = 0,
+										["spellschool"] = 36,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 11,
+										["r_amt"] = 0,
+										["c_min"] = 1196,
+									},
+									[148008] = {
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 5028,
+										["g_amt"] = 0,
+										["n_max"] = 812,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 8779,
+										},
+										["m_dmg"] = 503,
+										["n_dmg"] = 3248,
+										["n_min"] = 812,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 8779,
+										["c_max"] = 1676,
+										["id"] = 148008,
+										["r_dmg"] = 0,
+										["spellschool"] = 12,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 1676,
+									},
+								},
+							},
+							["grupo"] = true,
+							["total"] = 91410.001721,
+							["spec"] = 266,
+							["last_dps"] = 6648.00012516364,
+							["custom"] = 0,
+							["last_event"] = 1426006198,
+							["damage_taken"] = 12027.001721,
+							["start_time"] = 1426006182,
+							["delay"] = 0,
+							["tipo"] = 1,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["damage_from"] = {
+								["Krázýító"] = true,
+								["Bleeding Hollow Savage"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 7477,
+								["Bleeding Hollow Savage"] = 11998,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["total_without_pet"] = 19475.001455,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 19475.001455,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 6455,
+										["g_amt"] = 0,
+										["n_max"] = 1076,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 5379,
+											["Bleeding Hollow Savage"] = 7101,
+										},
+										["m_dmg"] = 646,
+										["n_dmg"] = 5379,
+										["n_min"] = 1075,
+										["g_dmg"] = 0,
+										["counter"] = 8,
+										["total"] = 12480,
+										["c_max"] = 2152,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 2151,
+									}, -- [1]
+									[30213] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1399,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 2098,
+											["Bleeding Hollow Savage"] = 4897,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 6995,
+										["n_min"] = 699,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 6995,
+										["c_max"] = 0,
+										["id"] = 30213,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 7,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+								},
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006196,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 3322.001455,
+							["start_time"] = 1426006182,
+							["delay"] = 0,
+							["last_event"] = 1426006195,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["damage_from"] = {
+							},
+							["targets"] = {
+								["Bleeding Hollow Savage"] = 584,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2060",
+							["total_without_pet"] = 584.006376,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 584.006376,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									[104318] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 293,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 584,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 584,
+										["n_min"] = 291,
+										["g_dmg"] = 0,
+										["counter"] = 2,
+										["total"] = 584,
+										["c_max"] = 0,
+										["id"] = 104318,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+								},
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006196,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 0.006376,
+							["start_time"] = 1426006194,
+							["delay"] = 1426006185,
+							["last_event"] = 1426006185,
+						}, -- [3]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 9,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.003596,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Haazinul <Krázýító>"] = 1114,
+								["Krázýító"] = 1025,
+							},
+							["classe"] = "WARLOCK",
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["totalover_without_pet"] = 0.003596,
+							["targets_overheal"] = {
+								["Krázýító"] = 88,
+							},
+							["healing_taken"] = 1025.003596,
+							["totalover"] = 88.003596,
+							["total_without_pet"] = 2139.003596,
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["fight_component"] = true,
+							["total"] = 2139.003596,
+							["spec"] = 266,
+							["end_time"] = 1426006196,
+							["nome"] = "Krázýító",
+							["targets_absorbs"] = {
+							},
+							["grupo"] = true,
+							["serial"] = "Player-153-07468FD5",
+							["heal_enemy"] = {
+							},
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+									[108447] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Krázýító"] = 88,
+										},
+										["n_max"] = 288,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 1114,
+											["Krázýító"] = 1025,
+										},
+										["n_min"] = 35,
+										["counter"] = 26,
+										["overheal"] = 88,
+										["total"] = 2139,
+										["c_max"] = 0,
+										["id"] = 108447,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 2139,
+										["m_healed"] = 0,
+										["n_amt"] = 26,
+										["absorbed"] = 0,
+									},
+								},
+							},
+							["custom"] = 0,
+							["last_event"] = 1426006196,
+							["on_hold"] = false,
+							["start_time"] = 1426006183,
+							["delay"] = 0,
+							["tipo"] = 2,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["totalabsorb"] = 0.002137,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["targets"] = {
+							},
+							["last_event"] = 0,
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 0.002137,
+							["total_without_pet"] = 0.002137,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["totalover_without_pet"] = 0.002137,
+							["fight_component"] = true,
+							["end_time"] = 1426006196,
+							["healing_taken"] = 1114.002137,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["targets_absorbs"] = {
+							},
+							["classe"] = "PET",
+							["total"] = 0.002137,
+							["heal_enemy"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006196,
+							["delay"] = 0,
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+								},
+							},
+						}, -- [2]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 9,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 120.007938,
+							["targets"] = {
+							},
+							["pets"] = {
+								"Wild Imp <Krázýító>", -- [1]
+								"Haazinul <Krázýító>", -- [2]
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total"] = 0.007938,
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.007938,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006198,
+						}, -- [1]
+						{
+							["flag_original"] = 8465,
+							["resource"] = 20.008016,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["total"] = 0.008016,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.008016,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2060",
+							["last_event"] = 1426006186,
+						}, -- [2]
+						{
+							["flag_original"] = 4369,
+							["resource"] = 60.004432,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["fight_component"] = true,
+							["total"] = 0.004432,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.004432,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["last_event"] = 1426006195,
+						}, -- [3]
+					},
+				}, -- [3]
+				{
+					["combatId"] = 9,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[47960] = {
+										["uptime"] = 6,
+										["activedamt"] = 0,
+										["id"] = 47960,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146739] = {
+										["actived_at"] = 1426006195,
+										["uptime"] = 12,
+										["activedamt"] = -1,
+										["id"] = 146739,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146198] = {
+										["uptime"] = 3,
+										["activedamt"] = 0,
+										["id"] = 146198,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["buff_uptime"] = 75,
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[140074] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 140074,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[167410] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 167410,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[171975] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 171975,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[114925] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 114925,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[109773] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 109773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[105691] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 105691,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 21,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 266,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Krázýító",
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006196,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 9,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Bleeding Hollow Savage",
+				["combat_counter"] = 34,
+				["playing_solo"] = true,
+				["totals"] = {
+					91409.987765, -- [1]
+					2139, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Krázýító"] = 2139.003596,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Krázýító"] = 90783.001721,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 63605.062,
+				["combat_id"] = 9,
+				["instance_type"] = "none",
+				["frags"] = {
+					["Bleeding Hollow Berserker"] = 1,
+					["Bleeding Hollow Hatchet"] = 1,
+					["Bleeding Hollow Savage"] = 3,
+				},
+				["data_fim"] = "12:49:57",
+				["data_inicio"] = "12:49:43",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					73752, -- [1]
+					2139, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 63591.312,
+				["contra"] = "Bleeding Hollow Savage",
+				["TimeData"] = {
+				},
+			}, -- [3]
+			{
+				{
+					["combatId"] = 8,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+								["Bleeding Hollow Savage"] = true,
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Savage"] = 44538,
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["on_hold"] = false,
+							["friendlyfire"] = {
+								["Haazinul <Krázýító>"] = {
+									["spells"] = {
+										[108446] = 869,
+									},
+									["total"] = 869,
+								},
+								["Krázýító"] = {
+									["spells"] = {
+										[1949] = 1175,
+									},
+									["total"] = 1175,
+								},
+							},
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total_without_pet"] = 29187.003977,
+							["end_time"] = 1426006182,
+							["colocacao"] = 1,
+							["dps_started"] = false,
+							["total"] = 44538.003977,
+							["friendlyfire_total"] = 2044,
+							["serial"] = "Player-153-07468FD5",
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									[5857] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 976,
+										["g_amt"] = 0,
+										["n_max"] = 473,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 2377,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1401,
+										["n_min"] = 464,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 2377,
+										["c_max"] = 976,
+										["id"] = 5857,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 976,
+									},
+									[148008] = {
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 7116,
+										["g_amt"] = 0,
+										["n_max"] = 1156,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 12352,
+										},
+										["m_dmg"] = 692,
+										["n_dmg"] = 4544,
+										["n_min"] = 1116,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 12352,
+										["c_max"] = 2427,
+										["id"] = 148008,
+										["r_dmg"] = 0,
+										["spellschool"] = 12,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 2263,
+									},
+									[129476] = {
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 4291,
+										["g_amt"] = 0,
+										["n_max"] = 727,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 6645,
+										},
+										["m_dmg"] = 208,
+										["n_dmg"] = 2146,
+										["n_min"] = 704,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 6645,
+										["c_max"] = 1454,
+										["id"] = 129476,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 1,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["r_amt"] = 0,
+										["c_min"] = 1407,
+									},
+									[146739] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 3595,
+										["g_amt"] = 0,
+										["n_max"] = 908,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 7813,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 4218,
+										["n_min"] = 722,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 7813,
+										["c_max"] = 1813,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["spellschool"] = 32,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 1782,
+									},
+								},
+							},
+							["grupo"] = true,
+							["spec"] = 266,
+							["last_dps"] = 4001.46155041202,
+							["custom"] = 0,
+							["last_event"] = 1426006182,
+							["damage_taken"] = 4122.003977,
+							["start_time"] = 1426006152,
+							["delay"] = 0,
+							["tipo"] = 1,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["on_hold"] = false,
+							["damage_from"] = {
+								["Krázýító"] = true,
+								["Bleeding Hollow Savage"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Savage"] = 14976,
+							},
+							["pets"] = {
+							},
+							["end_time"] = 1426006163,
+							["friendlyfire_total"] = 0,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["total_without_pet"] = 14976.004814,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 14976.004814,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1557,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 5966,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 5966,
+										["n_min"] = 1426,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 5966,
+										["c_max"] = 0,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									}, -- [1]
+									[30153] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1426,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 1426,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1426,
+										["n_min"] = 1426,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 1426,
+										["c_max"] = 0,
+										["id"] = 30153,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[30213] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 3707,
+										["g_amt"] = 0,
+										["n_max"] = 2024,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 7584,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 3877,
+										["n_min"] = 1853,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 7584,
+										["c_max"] = 3707,
+										["id"] = 30213,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["r_amt"] = 0,
+										["c_min"] = 3707,
+									},
+								},
+							},
+							["friendlyfire"] = {
+							},
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 2842.004814,
+							["start_time"] = 1426006152,
+							["delay"] = 0,
+							["last_event"] = 1426006162,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["damage_from"] = {
+							},
+							["targets"] = {
+								["Bleeding Hollow Savage"] = 375,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2060",
+							["total_without_pet"] = 375.00371,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 375.00371,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									[104318] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 375,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 375,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 375,
+										["n_min"] = 375,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 375,
+										["c_max"] = 0,
+										["id"] = 104318,
+										["r_dmg"] = 0,
+										["spellschool"] = 4,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+								},
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006163,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 0.00371,
+							["start_time"] = 1426006155,
+							["delay"] = 0,
+							["last_event"] = 1426006155,
+						}, -- [3]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 8,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.006108,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Haazinul <Krázýító>"] = 248,
+								["Krázýító"] = 197,
+							},
+							["targets_absorbs"] = {
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["totalover_without_pet"] = 0.006108,
+							["targets_overheal"] = {
+								["Krázýító"] = 51,
+							},
+							["healing_taken"] = 197.006108,
+							["totalover"] = 51.006108,
+							["total_without_pet"] = 445.006108,
+							["end_time"] = 1426006163,
+							["iniciar_hps"] = false,
+							["fight_component"] = true,
+							["total"] = 445.006108,
+							["classe"] = "WARLOCK",
+							["heal_enemy_amt"] = 0,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+									[108447] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+											["Krázýító"] = 51,
+										},
+										["n_max"] = 99,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 248,
+											["Krázýító"] = 197,
+										},
+										["n_min"] = 26,
+										["counter"] = 10,
+										["overheal"] = 51,
+										["total"] = 445,
+										["c_max"] = 0,
+										["id"] = 108447,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 445,
+										["m_healed"] = 0,
+										["n_amt"] = 10,
+										["absorbed"] = 0,
+									},
+								},
+							},
+							["grupo"] = true,
+							["serial"] = "Player-153-07468FD5",
+							["heal_enemy"] = {
+							},
+							["spec"] = 266,
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006153,
+							["delay"] = 0,
+							["last_event"] = 1426006158,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["totalabsorb"] = 0.005563,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["pets"] = {
+							},
+							["totalover_without_pet"] = 0.005563,
+							["targets_overheal"] = {
+							},
+							["healing_taken"] = 248.005563,
+							["totalover"] = 0.005563,
+							["total_without_pet"] = 0.005563,
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["fight_component"] = true,
+							["end_time"] = 1426006163,
+							["classe"] = "PET",
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+								},
+							},
+							["total"] = 0.005563,
+							["targets_absorbs"] = {
+							},
+							["heal_enemy"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006163,
+							["delay"] = 0,
+							["last_event"] = 0,
+						}, -- [2]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 8,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 54.007495,
+							["targets"] = {
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+								"Wild Imp <Krázýító>", -- [2]
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total"] = 0.007495,
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.007495,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006182,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["resource"] = 36.005559,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["fight_component"] = true,
+							["total"] = 0.005559,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.005559,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["last_event"] = 1426006161,
+						}, -- [2]
+						{
+							["flag_original"] = 8465,
+							["resource"] = 10.004829,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["total"] = 0.004829,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Wild Imp <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.004829,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Creature-0-153-1265-73-55659-00007F2060",
+							["last_event"] = 1426006161,
+						}, -- [3]
+					},
+				}, -- [3]
+				{
+					["combatId"] = 8,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[146739] = {
+										["actived_at"] = 1426006157,
+										["uptime"] = 4,
+										["activedamt"] = -1,
+										["id"] = 146739,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146198] = {
+										["uptime"] = 4,
+										["activedamt"] = 0,
+										["id"] = 146198,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["buff_uptime"] = 102,
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[104025] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 104025,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[105691] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 105691,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[109773] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 109773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[138786] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 138786,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[138788] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 138788,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[167410] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 167410,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[103958] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 103958,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[1949] = {
+										["uptime"] = 2,
+										["activedamt"] = 1,
+										["id"] = 1949,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[114925] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 114925,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[171975] = {
+										["uptime"] = 11,
+										["activedamt"] = 1,
+										["id"] = 171975,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 8,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 266,
+							["grupo"] = true,
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Krázýító",
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006163,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 8,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Bleeding Hollow Savage",
+				["combat_counter"] = 31,
+				["playing_solo"] = true,
+				["totals"] = {
+					44537.997672, -- [1]
+					445, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Krázýító"] = 680.016326,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Krázýító"] = 82494.007928,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 63571.898,
+				["combat_id"] = 8,
+				["instance_type"] = "none",
+				["resincked"] = true,
+				["frags"] = {
+					["Bleeding Hollow Savage"] = 3,
+				},
+				["data_fim"] = "12:49:23",
+				["data_inicio"] = "12:49:13",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					31231, -- [1]
+					445, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 0,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 63560.948,
+				["contra"] = "Bleeding Hollow Savage",
+				["TimeData"] = {
+				},
+			}, -- [4]
+			{
+				{
+					["combatId"] = 7,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+								["Bleeding Hollow Hatchet"] = true,
+								["Bleeding Hollow Savage"] = true,
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 28093,
+								["Bleeding Hollow Hatchet"] = 14877,
+								["Bleeding Hollow Savage"] = 47001,
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["friendlyfire"] = {
+								["Haazinul <Krázýító>"] = {
+									["spells"] = {
+										[108446] = 15432,
+									},
+									["total"] = 15432,
+								},
+								["Krázýító"] = {
+									["spells"] = {
+										[111400] = 68037,
+									},
+									["total"] = 68037,
+								},
+							},
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total_without_pet"] = 53497.006313,
+							["colocacao"] = 1,
+							["friendlyfire_total"] = 83469,
+							["dps_started"] = false,
+							["end_time"] = 1426006031,
+							["serial"] = "Player-153-07468FD5",
+							["on_hold"] = false,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									[148008] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 3598,
+										["g_amt"] = 0,
+										["n_max"] = 912,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 5491,
+											["Bleeding Hollow Hatchet"] = 1881,
+											["Bleeding Hollow Savage"] = 2935,
+										},
+										["m_dmg"] = 510,
+										["n_dmg"] = 6199,
+										["n_min"] = 851,
+										["g_dmg"] = 0,
+										["counter"] = 9,
+										["total"] = 10307,
+										["c_max"] = 1881,
+										["id"] = 148008,
+										["r_dmg"] = 0,
+										["spellschool"] = 12,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 2,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 7,
+										["r_amt"] = 0,
+										["c_min"] = 1717,
+									},
+									[124915] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 11629,
+										["targets"] = {
+											["Bleeding Hollow Savage"] = 11629,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 11629,
+										["n_min"] = 11629,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 11629,
+										["c_max"] = 0,
+										["id"] = 124915,
+										["r_dmg"] = 0,
+										["spellschool"] = 127,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[146739] = {
+										["c_amt"] = 11,
+										["b_amt"] = 0,
+										["c_dmg"] = 18790,
+										["g_amt"] = 0,
+										["n_max"] = 957,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 14286,
+											["Bleeding Hollow Hatchet"] = 7344,
+											["Bleeding Hollow Savage"] = 9931,
+										},
+										["m_dmg"] = 1667,
+										["n_dmg"] = 11104,
+										["n_min"] = 627,
+										["g_dmg"] = 0,
+										["counter"] = 25,
+										["total"] = 31561,
+										["c_max"] = 1975,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["spellschool"] = 32,
+										["a_dmg"] = 0,
+										["m_crit"] = 2,
+										["a_amt"] = 0,
+										["m_amt"] = 5,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 14,
+										["r_amt"] = 0,
+										["c_min"] = 1422,
+									},
+								},
+							},
+							["grupo"] = true,
+							["total"] = 89971.006313,
+							["spec"] = 266,
+							["last_dps"] = 4350.83932071258,
+							["custom"] = 0,
+							["last_event"] = 1426006030,
+							["damage_taken"] = 63623.006313,
+							["start_time"] = 1426006010,
+							["delay"] = 0,
+							["tipo"] = 1,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["damage_from"] = {
+								["Bleeding Hollow Berserker"] = true,
+								["Bleeding Hollow Savage"] = true,
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Bleeding Hollow Berserker"] = 8316,
+								["Bleeding Hollow Hatchet"] = 5652,
+								["Bleeding Hollow Savage"] = 22506,
+							},
+							["on_hold"] = false,
+							["pets"] = {
+							},
+							["friendlyfire_total"] = 0,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["total_without_pet"] = 36474.001157,
+							["classe"] = "PET",
+							["dps_started"] = false,
+							["total"] = 36474.001157,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["spells"] = {
+								["tipo"] = 2,
+								["_ActorTable"] = {
+									{
+										["c_amt"] = 3,
+										["b_amt"] = 0,
+										["c_dmg"] = 8646,
+										["g_amt"] = 0,
+										["n_max"] = 1509,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 5633,
+											["Bleeding Hollow Hatchet"] = 4998,
+											["Bleeding Hollow Savage"] = 11822,
+										},
+										["m_dmg"] = 1527,
+										["n_dmg"] = 12280,
+										["n_min"] = 1076,
+										["g_dmg"] = 0,
+										["counter"] = 12,
+										["total"] = 22453,
+										["c_max"] = 3018,
+										["id"] = 1,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 1,
+										["a_amt"] = 0,
+										["m_amt"] = 3,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 9,
+										["r_amt"] = 0,
+										["c_min"] = 2777,
+									}, -- [1]
+									[30153] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1075,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 1075,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 1075,
+										["n_min"] = 1075,
+										["g_dmg"] = 0,
+										["counter"] = 1,
+										["total"] = 1075,
+										["c_max"] = 0,
+										["id"] = 30153,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 1,
+										["r_amt"] = 0,
+										["c_min"] = 0,
+									},
+									[30213] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 7414,
+										["g_amt"] = 0,
+										["n_max"] = 1962,
+										["targets"] = {
+											["Bleeding Hollow Berserker"] = 1608,
+											["Bleeding Hollow Hatchet"] = 654,
+											["Bleeding Hollow Savage"] = 10684,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 5532,
+										["n_min"] = 654,
+										["g_dmg"] = 0,
+										["counter"] = 7,
+										["total"] = 12946,
+										["c_max"] = 3707,
+										["id"] = 30213,
+										["r_dmg"] = 0,
+										["spellschool"] = 1,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 5,
+										["r_amt"] = 0,
+										["c_min"] = 3707,
+									},
+								},
+							},
+							["friendlyfire"] = {
+							},
+							["end_time"] = 1426006031,
+							["last_dps"] = 0,
+							["custom"] = 0,
+							["tipo"] = 1,
+							["damage_taken"] = 18921.001157,
+							["start_time"] = 1426006010,
+							["delay"] = 0,
+							["last_event"] = 1426006030,
+						}, -- [2]
+					},
+				}, -- [1]
+				{
+					["combatId"] = 7,
+					["tipo"] = 3,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["totalabsorb"] = 0.004198,
+							["last_hps"] = 0,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["targets"] = {
+								["Haazinul <Krázýító>"] = 6813,
+								["Krázýító"] = 33671,
+							},
+							["classe"] = "WARLOCK",
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["totalover_without_pet"] = 0.004198,
+							["targets_overheal"] = {
+							},
+							["healing_taken"] = 33671.004198,
+							["totalover"] = 0.004198,
+							["total_without_pet"] = 40484.004198,
+							["iniciar_hps"] = false,
+							["heal_enemy_amt"] = 0,
+							["fight_component"] = true,
+							["total"] = 40484.004198,
+							["spec"] = 266,
+							["end_time"] = 1426006031,
+							["nome"] = "Krázýító",
+							["targets_absorbs"] = {
+							},
+							["grupo"] = true,
+							["serial"] = "Player-153-07468FD5",
+							["heal_enemy"] = {
+							},
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+									[6262] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 2993,
+										["targets"] = {
+											["Krázýító"] = 20949,
+										},
+										["n_min"] = 2992,
+										["counter"] = 7,
+										["overheal"] = 0,
+										["total"] = 20949,
+										["c_max"] = 0,
+										["id"] = 6262,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 20949,
+										["m_healed"] = 0,
+										["n_amt"] = 7,
+										["absorbed"] = 0,
+									},
+									[108359] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 1690,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 5915,
+											["Krázýító"] = 11827,
+										},
+										["n_min"] = 845,
+										["counter"] = 14,
+										["overheal"] = 0,
+										["total"] = 17742,
+										["c_max"] = 0,
+										["id"] = 108359,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 17742,
+										["m_healed"] = 0,
+										["n_amt"] = 14,
+										["absorbed"] = 0,
+									},
+									[108447] = {
+										["c_amt"] = 0,
+										["totalabsorb"] = 0,
+										["targets_overheal"] = {
+										},
+										["n_max"] = 125,
+										["targets"] = {
+											["Haazinul <Krázýító>"] = 898,
+											["Krázýító"] = 895,
+										},
+										["n_min"] = 19,
+										["counter"] = 28,
+										["overheal"] = 0,
+										["total"] = 1793,
+										["c_max"] = 0,
+										["id"] = 108447,
+										["targets_absorbs"] = {
+										},
+										["m_crit"] = 0,
+										["c_curado"] = 0,
+										["m_amt"] = 0,
+										["c_min"] = 0,
+										["n_curado"] = 1793,
+										["m_healed"] = 0,
+										["n_amt"] = 28,
+										["absorbed"] = 0,
+									},
+								},
+							},
+							["custom"] = 0,
+							["last_event"] = 1426006028,
+							["on_hold"] = false,
+							["start_time"] = 1426006010,
+							["delay"] = 0,
+							["tipo"] = 2,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["totalabsorb"] = 0.002867,
+							["last_hps"] = 0,
+							["targets_overheal"] = {
+							},
+							["targets"] = {
+							},
+							["last_event"] = 0,
+							["pets"] = {
+							},
+							["iniciar_hps"] = false,
+							["healing_from"] = {
+								["Krázýító"] = true,
+							},
+							["heal_enemy_amt"] = 0,
+							["totalover"] = 0.002867,
+							["total_without_pet"] = 0.002867,
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["totalover_without_pet"] = 0.002867,
+							["fight_component"] = true,
+							["end_time"] = 1426006031,
+							["healing_taken"] = 6813.002867,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["targets_absorbs"] = {
+							},
+							["classe"] = "PET",
+							["total"] = 0.002867,
+							["heal_enemy"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 2,
+							["on_hold"] = false,
+							["start_time"] = 1426006031,
+							["delay"] = 0,
+							["spells"] = {
+								["tipo"] = 3,
+								["_ActorTable"] = {
+								},
+							},
+						}, -- [2]
+					},
+				}, -- [2]
+				{
+					["combatId"] = 7,
+					["tipo"] = 7,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["resource"] = 130.006642,
+							["targets"] = {
+							},
+							["pets"] = {
+								"Haazinul <Krázýító>", -- [1]
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["fight_component"] = true,
+							["total"] = 0.006642,
+							["nome"] = "Krázýító",
+							["spec"] = 266,
+							["grupo"] = true,
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.006642,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006117,
+						}, -- [1]
+						{
+							["flag_original"] = 4369,
+							["resource"] = 60.002319,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "PET",
+							["fight_component"] = true,
+							["total"] = 0.002319,
+							["ownerName"] = "Krázýító",
+							["nome"] = "Haazinul <Krázýító>",
+							["resource_type"] = 15,
+							["tipo"] = 3,
+							["received"] = 0.002319,
+							["spells"] = {
+								["tipo"] = 7,
+								["_ActorTable"] = {
+								},
+							},
+							["serial"] = "Pet-0-153-1265-73-17252-0501BA5302",
+							["last_event"] = 1426006030,
+						}, -- [2]
+					},
+				}, -- [3]
+				{
+					["combatId"] = 7,
+					["tipo"] = 9,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[603] = {
+										["uptime"] = 10,
+										["activedamt"] = 0,
+										["id"] = 603,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146739] = {
+										["uptime"] = 18,
+										["activedamt"] = 0,
+										["id"] = 146739,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146198] = {
+										["uptime"] = 4,
+										["activedamt"] = 0,
+										["id"] = 146198,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[124915] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 124915,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["cooldowns_defensive"] = 1.0059,
+							["buff_uptime"] = 193,
+							["last_cooldown"] = {
+								1426006027.024, -- [1]
+								104773, -- [2]
+							},
+							["classe"] = "WARLOCK",
+							["cooldowns_defensive_targets"] = {
+								["Krázýító"] = 1,
+							},
+							["buff_uptime_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[104773] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 104773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[108359] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 108359,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[105691] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 105691,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 8,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[109773] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 109773,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[138786] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 138786,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[138788] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 138788,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[167410] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 167410,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[140074] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 140074,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[103958] = {
+										["uptime"] = 4,
+										["activedamt"] = 1,
+										["id"] = 103958,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[6262] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 6262,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[111400] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 111400,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[114925] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 114925,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+									[171975] = {
+										["uptime"] = 21,
+										["activedamt"] = 1,
+										["id"] = 171975,
+										["actived"] = false,
+										["targets"] = {
+										},
+										["counter"] = 0,
+									},
+								},
+							},
+							["fight_component"] = true,
+							["debuff_uptime"] = 37,
+							["buff_uptime_targets"] = {
+							},
+							["spec"] = 266,
+							["grupo"] = true,
+							["cooldowns_defensive_spells"] = {
+								["tipo"] = 9,
+								["_ActorTable"] = {
+									[104773] = {
+										["id"] = 104773,
+										["targets"] = {
+											["Krázýító"] = 1,
+										},
+										["counter"] = 1,
+									},
+								},
+							},
+							["debuff_uptime_targets"] = {
+							},
+							["tipo"] = 4,
+							["nome"] = "Krázýító",
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["last_event"] = 1426006031,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["combatId"] = 7,
+					["tipo"] = 2,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Bleeding Hollow Savage",
+				["combat_counter"] = 25,
+				["playing_solo"] = true,
+				["totals"] = {
+					89970.987108, -- [1]
+					40484, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 1,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+					["frags_total"] = 0,
+					["voidzone_damage"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+							["Krázýító"] = 43348.033207,
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+					["damage"] = {
+						{
+							["Krázýító"] = 147165.035263,
+						}, -- [1]
+					},
+				},
+				["end_time"] = 63439.515,
+				["combat_id"] = 7,
+				["instance_type"] = "none",
+				["resincked"] = true,
+				["frags"] = {
+					["Bleeding Hollow Berserker"] = 1,
+					["Bleeding Hollow Hatchet"] = 1,
+					["Bleeding Hollow Savage"] = 3,
+				},
+				["data_fim"] = "12:47:11",
+				["data_inicio"] = "12:46:50",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					136966, -- [1]
+					40484, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["debuff_uptime"] = 0,
+						["cooldowns_defensive"] = 1,
+						["interrupt"] = 0,
+						["dispell"] = 0,
+						["cc_break"] = 0,
+						["dead"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 63418.836,
+				["contra"] = "Bleeding Hollow Berserker",
+				["TimeData"] = {
+				},
+			}, -- [5]
+		},
+	},
+	["announce_deaths"] = {
+		["enabled"] = false,
+		["last_hits"] = 1,
+		["only_first"] = 5,
+		["where"] = 1,
+	},
+	["tabela_overall"] = {
+		{
+			["tipo"] = 2,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1297,
+					["damage_from"] = {
+						["Iron Grunt"] = true,
+						["Ironmarch Grunt"] = true,
+						["Krázýító"] = true,
+						["Bleeding Hollow Hatchet"] = true,
+						["Shadowmoon Ritualist"] = true,
+						["Bleeding Hollow Savage"] = true,
+						["Bleeding Hollow Berserker"] = true,
+						["Tormented Soul"] = true,
+						["Warsong Commander"] = true,
+					},
+					["targets"] = {
+						["Bleeding Hollow Hatchet"] = 30794,
+						["Iron Grunt"] = 3378471,
+						["Shadowmoon Ritualist"] = 345226,
+						["Bleeding Hollow Savage"] = 540512,
+						["Bleeding Hollow Berserker"] = 111582,
+						["Tormented Soul"] = 118681,
+						["Ironmarch Grunt"] = 322267,
+						["Warsong Commander"] = 50031,
+					},
+					["pets"] = {
+						"Haazinul <Krázýító> <Krázýító>", -- [1]
+						"Wild Imp <Krázýító> <Krázýító>", -- [2]
+					},
+					["classe"] = "WARLOCK",
+					["friendlyfire_total"] = 271407,
+					["total_without_pet"] = 3864173.058267,
+					["serial"] = "Player-153-07468FD5",
+					["dps_started"] = false,
+					["total"] = 4897564.058267,
+					["end_time"] = 1426004173,
+					["friendlyfire"] = {
+						["Haazinul <Krázýító>"] = {
+							["spells"] = {
+								[108446] = 46085,
+							},
+							["total"] = 46085,
+						},
+						["Krázýító"] = {
+							["spells"] = {
+								[111400] = 218869,
+								[1949] = 6453,
+							},
+							["total"] = 225322,
+						},
+					},
+					["nome"] = "Krázýító",
+					["spells"] = {
+						["tipo"] = 2,
+						["_ActorTable"] = {
+							[146739] = {
+								["c_amt"] = 103,
+								["b_amt"] = 0,
+								["c_dmg"] = 145654,
+								["g_amt"] = 0,
+								["n_max"] = 7781,
+								["targets"] = {
+									["Iron Grunt"] = 210827,
+									["Shadowmoon Ritualist"] = 23856,
+									["Bleeding Hollow Savage"] = 41790,
+									["Bleeding Hollow Berserker"] = 17707,
+									["Bleeding Hollow Hatchet"] = 11433,
+									["Ironmarch Grunt"] = 15271,
+									["Tormented Soul"] = 5736,
+								},
+								["m_dmg"] = 12595,
+								["n_dmg"] = 168371,
+								["n_min"] = 6351,
+								["g_dmg"] = 0,
+								["counter"] = 354,
+								["total"] = 326620,
+								["c_max"] = 16350,
+								["id"] = 146739,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 15,
+								["a_amt"] = 0,
+								["m_amt"] = 44,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 251,
+								["r_amt"] = 0,
+								["c_min"] = 13310,
+							},
+							[103964] = {
+								["c_amt"] = 29,
+								["b_amt"] = 0,
+								["c_dmg"] = 214398,
+								["g_amt"] = 0,
+								["n_max"] = 16775,
+								["targets"] = {
+									["Iron Grunt"] = 326727,
+									["Shadowmoon Ritualist"] = 25529,
+									["Bleeding Hollow Savage"] = 81424,
+									["Bleeding Hollow Berserker"] = 34266,
+									["Tormented Soul"] = 73437,
+									["Warsong Commander"] = 20566,
+								},
+								["m_dmg"] = 10821,
+								["n_dmg"] = 336730,
+								["n_min"] = 14386,
+								["g_dmg"] = 0,
+								["counter"] = 120,
+								["total"] = 561949,
+								["c_max"] = 34286,
+								["id"] = 103964,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 2,
+								["a_amt"] = 0,
+								["m_amt"] = 9,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 91,
+								["r_amt"] = 0,
+								["c_min"] = 29698,
+							},
+							[86040] = {
+								["c_amt"] = 10,
+								["b_amt"] = 0,
+								["c_dmg"] = 94875,
+								["g_amt"] = 0,
+								["n_max"] = 23880,
+								["targets"] = {
+									["Iron Grunt"] = 97293,
+									["Bleeding Hollow Hatchet"] = 7082,
+									["Bleeding Hollow Savage"] = 10622,
+									["Bleeding Hollow Berserker"] = 7081,
+									["Tormented Soul"] = 12215,
+									["Ironmarch Grunt"] = 101314,
+									["Warsong Commander"] = 3541,
+								},
+								["m_dmg"] = 4319,
+								["n_dmg"] = 139954,
+								["n_min"] = 23345,
+								["g_dmg"] = 0,
+								["counter"] = 46,
+								["total"] = 239148,
+								["c_max"] = 25560,
+								["id"] = 86040,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 1,
+								["a_amt"] = 0,
+								["m_amt"] = 3,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 36,
+								["r_amt"] = 0,
+								["c_min"] = 25559,
+							},
+							[104027] = {
+								["c_amt"] = 8,
+								["b_amt"] = 0,
+								["c_dmg"] = 80515,
+								["g_amt"] = 0,
+								["n_max"] = 0,
+								["targets"] = {
+									["Iron Grunt"] = 58049,
+									["Warsong Commander"] = 22466,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 0,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 8,
+								["total"] = 80515,
+								["c_max"] = 11462,
+								["id"] = 104027,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 0,
+								["r_amt"] = 0,
+								["c_min"] = 9396,
+							},
+							[5857] = {
+								["c_amt"] = 18,
+								["b_amt"] = 0,
+								["c_dmg"] = 12839,
+								["g_amt"] = 0,
+								["n_max"] = 894,
+								["targets"] = {
+									["Iron Grunt"] = 31006,
+									["Shadowmoon Ritualist"] = 5243,
+									["Bleeding Hollow Savage"] = 2377,
+								},
+								["m_dmg"] = 725,
+								["n_dmg"] = 25062,
+								["n_min"] = 802,
+								["g_dmg"] = 0,
+								["counter"] = 88,
+								["total"] = 38626,
+								["c_max"] = 1674,
+								["id"] = 5857,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 2,
+								["a_amt"] = 0,
+								["m_amt"] = 5,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 70,
+								["r_amt"] = 0,
+								["c_min"] = 1673,
+							},
+							[6353] = {
+								["c_amt"] = 8,
+								["b_amt"] = 0,
+								["c_dmg"] = 51454,
+								["g_amt"] = 0,
+								["n_max"] = 0,
+								["targets"] = {
+									["Iron Grunt"] = 51454,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 0,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 8,
+								["total"] = 51454,
+								["c_max"] = 6861,
+								["id"] = 6353,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 0,
+								["r_amt"] = 0,
+								["c_min"] = 5717,
+							},
+							[686] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 3889,
+								["targets"] = {
+									["Iron Grunt"] = 7777,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 7777,
+								["n_min"] = 3888,
+								["g_dmg"] = 0,
+								["counter"] = 2,
+								["total"] = 7777,
+								["c_max"] = 0,
+								["id"] = 686,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 2,
+								["r_amt"] = 0,
+								["c_min"] = 0,
+							},
+							[124915] = {
+								["c_amt"] = 26,
+								["b_amt"] = 0,
+								["c_dmg"] = 570285,
+								["g_amt"] = 0,
+								["n_max"] = 67853,
+								["targets"] = {
+									["Tormented Soul"] = 10112,
+									["Iron Grunt"] = 881534,
+									["Shadowmoon Ritualist"] = 145652,
+									["Bleeding Hollow Savage"] = 251589,
+								},
+								["m_dmg"] = 16713,
+								["n_dmg"] = 701889,
+								["n_min"] = 63229,
+								["g_dmg"] = 0,
+								["counter"] = 90,
+								["total"] = 1288887,
+								["c_max"] = 116071,
+								["id"] = 124915,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 2,
+								["a_amt"] = 0,
+								["m_amt"] = 3,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 64,
+								["r_amt"] = 0,
+								["c_min"] = 106532,
+							},
+							[47960] = {
+								["c_amt"] = 9,
+								["b_amt"] = 0,
+								["c_dmg"] = 14346,
+								["g_amt"] = 0,
+								["n_max"] = 3867,
+								["targets"] = {
+									["Iron Grunt"] = 24928,
+									["Bleeding Hollow Hatchet"] = 4746,
+									["Bleeding Hollow Savage"] = 4230,
+									["Bleeding Hollow Berserker"] = 8840,
+									["Tormented Soul"] = 1532,
+									["Ironmarch Grunt"] = 5329,
+									["Warsong Commander"] = 579,
+								},
+								["m_dmg"] = 896,
+								["n_dmg"] = 34942,
+								["n_min"] = 3183,
+								["g_dmg"] = 0,
+								["counter"] = 63,
+								["total"] = 50184,
+								["c_max"] = 6576,
+								["id"] = 47960,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 5,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 54,
+								["r_amt"] = 0,
+								["c_min"] = 5380,
+							},
+							[148008] = {
+								["c_amt"] = 97,
+								["b_amt"] = 0,
+								["c_dmg"] = 175443,
+								["g_amt"] = 0,
+								["n_max"] = 9351,
+								["targets"] = {
+									["Bleeding Hollow Hatchet"] = 1881,
+									["Iron Grunt"] = 330278,
+									["Shadowmoon Ritualist"] = 26300,
+									["Bleeding Hollow Savage"] = 25690,
+									["Bleeding Hollow Berserker"] = 5491,
+									["Ironmarch Grunt"] = 30760,
+									["Tormented Soul"] = 3742,
+									["Warsong Commander"] = 1921,
+								},
+								["m_dmg"] = 12812,
+								["n_dmg"] = 237808,
+								["n_min"] = 8480,
+								["g_dmg"] = 0,
+								["counter"] = 377,
+								["total"] = 426063,
+								["c_max"] = 15823,
+								["id"] = 148008,
+								["r_dmg"] = 0,
+								["EVADE"] = 2,
+								["a_dmg"] = 0,
+								["m_crit"] = 11,
+								["a_amt"] = 0,
+								["m_amt"] = 36,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 278,
+								["r_amt"] = 0,
+								["c_min"] = 14077,
+							},
+							[129476] = {
+								["c_amt"] = 202,
+								["b_amt"] = 0,
+								["c_dmg"] = 212946,
+								["g_amt"] = 0,
+								["n_max"] = 3833,
+								["targets"] = {
+									["Iron Grunt"] = 405017,
+									["Shadowmoon Ritualist"] = 61787,
+									["Bleeding Hollow Savage"] = 48591,
+									["Ironmarch Grunt"] = 14318,
+									["Tormented Soul"] = 4040,
+								},
+								["m_dmg"] = 16318,
+								["n_dmg"] = 304489,
+								["n_min"] = 2555,
+								["g_dmg"] = 0,
+								["counter"] = 776,
+								["total"] = 533753,
+								["c_max"] = 6353,
+								["id"] = 129476,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 25,
+								["a_amt"] = 0,
+								["m_amt"] = 82,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 574,
+								["r_amt"] = 0,
+								["c_min"] = 5228,
+							},
+							[603] = {
+								["c_amt"] = 7,
+								["b_amt"] = 0,
+								["c_dmg"] = 91787,
+								["g_amt"] = 0,
+								["n_max"] = 13824,
+								["targets"] = {
+									["Iron Grunt"] = 239175,
+									["Shadowmoon Ritualist"] = 14941,
+									["Tormented Soul"] = 5081,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 167410,
+								["n_min"] = 10162,
+								["g_dmg"] = 0,
+								["counter"] = 34,
+								["total"] = 259197,
+								["c_max"] = 17167,
+								["id"] = 603,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 27,
+								["r_amt"] = 0,
+								["c_min"] = 10489,
+							},
+						},
+					},
+					["grupo"] = true,
+					["on_hold"] = false,
+					["last_dps"] = 0,
+					["custom"] = 0,
+					["tipo"] = 1,
+					["damage_taken"] = 314601.058267,
+					["start_time"] = 1426003437,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [1]
+				{
+					["flag_original"] = 4369,
+					["classe"] = "PET",
+					["damage_from"] = {
+						["Iron Grunt"] = true,
+						["Bleeding Hollow Savage"] = true,
+						["Bleeding Hollow Berserker"] = true,
+						["Ironmarch Grunt"] = true,
+						["Krázýító"] = true,
+					},
+					["targets"] = {
+						["Iron Grunt"] = 616940,
+						["Shadowmoon Ritualist"] = 37370,
+						["Bleeding Hollow Savage"] = 73240,
+						["Bleeding Hollow Berserker"] = 33217,
+						["Ironmarch Grunt"] = 153912,
+						["Bleeding Hollow Hatchet"] = 5652,
+					},
+					["on_hold"] = false,
+					["pets"] = {
+					},
+					["friendlyfire_total"] = 0,
+					["end_time"] = 1426006264,
+					["total_without_pet"] = 920331.047456,
+					["friendlyfire"] = {
+					},
+					["dps_started"] = false,
+					["total"] = 920331.047456,
+					["serial"] = "Pet-0-153-0-40-17252-0201BA5302",
+					["ownerName"] = "Krázýító",
+					["nome"] = "Haazinul <Krázýító> <Krázýító>",
+					["spells"] = {
+						["tipo"] = 2,
+						["_ActorTable"] = {
+							{
+								["c_amt"] = 50,
+								["b_amt"] = 0,
+								["c_dmg"] = 129556,
+								["g_amt"] = 0,
+								["n_max"] = 15255,
+								["targets"] = {
+									["Iron Grunt"] = 215241,
+									["Shadowmoon Ritualist"] = 2152,
+									["Bleeding Hollow Savage"] = 36137,
+									["Bleeding Hollow Berserker"] = 25004,
+									["Ironmarch Grunt"] = 21907,
+									["Bleeding Hollow Hatchet"] = 4998,
+								},
+								["m_dmg"] = 11789,
+								["n_dmg"] = 164094,
+								["n_min"] = 12723,
+								["g_dmg"] = 0,
+								["counter"] = 175,
+								["total"] = 305439,
+								["c_max"] = 26961,
+								["id"] = 1,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 5,
+								["a_amt"] = 0,
+								["m_amt"] = 25,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 125,
+								["r_amt"] = 0,
+								["c_min"] = 23745,
+							}, -- [1]
+							[30213] = {
+								["c_amt"] = 59,
+								["b_amt"] = 0,
+								["c_dmg"] = 79817,
+								["g_amt"] = 0,
+								["n_max"] = 16851,
+								["targets"] = {
+									["Iron Grunt"] = 138143,
+									["Shadowmoon Ritualist"] = 3683,
+									["Bleeding Hollow Savage"] = 33525,
+									["Bleeding Hollow Berserker"] = 7138,
+									["Ironmarch Grunt"] = 16735,
+									["Bleeding Hollow Hatchet"] = 654,
+								},
+								["m_dmg"] = 5029,
+								["n_dmg"] = 115032,
+								["n_min"] = 5979,
+								["g_dmg"] = 0,
+								["counter"] = 228,
+								["total"] = 199878,
+								["c_max"] = 24014,
+								["id"] = 30213,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 7,
+								["a_amt"] = 0,
+								["m_amt"] = 22,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 169,
+								["r_amt"] = 0,
+								["c_min"] = 13134,
+							},
+							[89753] = {
+								["c_amt"] = 51,
+								["b_amt"] = 0,
+								["c_dmg"] = 126238,
+								["g_amt"] = 0,
+								["n_max"] = 5643,
+								["targets"] = {
+									["Iron Grunt"] = 234639,
+									["Shadowmoon Ritualist"] = 30459,
+									["Ironmarch Grunt"] = 111726,
+								},
+								["m_dmg"] = 7839,
+								["n_dmg"] = 242747,
+								["n_min"] = 4352,
+								["g_dmg"] = 0,
+								["counter"] = 251,
+								["total"] = 376824,
+								["c_max"] = 11285,
+								["id"] = 89753,
+								["r_dmg"] = 0,
+								["EVADE"] = 2,
+								["a_dmg"] = 0,
+								["m_crit"] = 7,
+								["a_amt"] = 0,
+								["m_amt"] = 15,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 198,
+								["r_amt"] = 0,
+								["c_min"] = 8994,
+							},
+							[30153] = {
+								["c_amt"] = 7,
+								["b_amt"] = 0,
+								["c_dmg"] = 17299,
+								["g_amt"] = 0,
+								["n_max"] = 10748,
+								["targets"] = {
+									["Iron Grunt"] = 28917,
+									["Shadowmoon Ritualist"] = 1076,
+									["Bleeding Hollow Savage"] = 3578,
+									["Bleeding Hollow Berserker"] = 1075,
+									["Ironmarch Grunt"] = 3544,
+								},
+								["m_dmg"] = 365,
+								["n_dmg"] = 20526,
+								["n_min"] = 10033,
+								["g_dmg"] = 0,
+								["counter"] = 24,
+								["total"] = 38190,
+								["c_max"] = 5319,
+								["id"] = 30153,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 0,
+								["a_amt"] = 0,
+								["m_amt"] = 1,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 17,
+								["r_amt"] = 0,
+								["c_min"] = 4620,
+							},
+						},
+					},
+					["last_dps"] = 0,
+					["custom"] = 0,
+					["tipo"] = 1,
+					["damage_taken"] = 94067.047456,
+					["start_time"] = 1426006245,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [2]
+				{
+					["flag_original"] = 8465,
+					["classe"] = "PET",
+					["damage_from"] = {
+						["Bleeding Hollow Berserker"] = true,
+					},
+					["targets"] = {
+						["Iron Grunt"] = 97466,
+						["Shadowmoon Ritualist"] = 4548,
+						["Bleeding Hollow Savage"] = 959,
+						["Bleeding Hollow Berserker"] = 4980,
+						["Tormented Soul"] = 2786,
+						["Ironmarch Grunt"] = 1363,
+						["Warsong Commander"] = 958,
+					},
+					["friendlyfire"] = {
+					},
+					["pets"] = {
+					},
+					["friendlyfire_total"] = 0,
+					["serial"] = "Creature-0-153-0-40-55659-00007F1CA5",
+					["total_without_pet"] = 113060.034493,
+					["on_hold"] = false,
+					["dps_started"] = false,
+					["end_time"] = 1426006264,
+					["total"] = 113060.034493,
+					["ownerName"] = "Krázýító",
+					["nome"] = "Wild Imp <Krázýító> <Krázýító>",
+					["spells"] = {
+						["tipo"] = 2,
+						["_ActorTable"] = {
+							[104318] = {
+								["c_amt"] = 82,
+								["b_amt"] = 0,
+								["c_dmg"] = 52370,
+								["g_amt"] = 0,
+								["n_max"] = 2148,
+								["targets"] = {
+									["Iron Grunt"] = 97466,
+									["Shadowmoon Ritualist"] = 4548,
+									["Bleeding Hollow Savage"] = 959,
+									["Bleeding Hollow Berserker"] = 4980,
+									["Tormented Soul"] = 2786,
+									["Ironmarch Grunt"] = 1363,
+									["Warsong Commander"] = 958,
+								},
+								["m_dmg"] = 4261,
+								["n_dmg"] = 56429,
+								["n_min"] = 1939,
+								["g_dmg"] = 0,
+								["counter"] = 265,
+								["total"] = 113060,
+								["c_max"] = 3703,
+								["id"] = 104318,
+								["r_dmg"] = 0,
+								["a_dmg"] = 0,
+								["m_crit"] = 12,
+								["a_amt"] = 0,
+								["m_amt"] = 33,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 183,
+								["r_amt"] = 0,
+								["c_min"] = 3146,
+							},
+						},
+					},
+					["last_dps"] = 0,
+					["custom"] = 0,
+					["tipo"] = 1,
+					["damage_taken"] = 210.034493,
+					["start_time"] = 1426006256,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [3]
+			},
+		}, -- [1]
+		{
+			["tipo"] = 3,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1297,
+					["totalabsorb"] = 0.0617,
+					["last_hps"] = 0,
+					["targets_overheal"] = {
+						["Haazinul <Krázýító>"] = 9093,
+						["Krázýító"] = 3576,
+					},
+					["targets"] = {
+						["Haazinul <Krázýító>"] = 30596,
+						["Krázýító"] = 61006,
+					},
+					["spec"] = 266,
+					["pets"] = {
+						"Haazinul <Krázýító> <Krázýító>", -- [1]
+						"Wild Imp <Krázýító> <Krázýító>", -- [2]
+					},
+					["iniciar_hps"] = false,
+					["healing_from"] = {
+						["Archon"] = true,
+						["Miserain Starsorrow"] = true,
+						["Krázýító"] = true,
+					},
+					["heal_enemy_amt"] = 0,
+					["totalover"] = 12669.0617,
+					["total_without_pet"] = 89645.0617,
+					["totalover_without_pet"] = 0.0617,
+					["healing_taken"] = 78835.0617,
+					["fight_component"] = true,
+					["total"] = 89645.0617,
+					["end_time"] = 1426005155,
+					["classe"] = "WARLOCK",
+					["nome"] = "Krázýító",
+					["targets_absorbs"] = {
+					},
+					["grupo"] = true,
+					["serial"] = "Player-153-07468FD5",
+					["heal_enemy"] = {
+					},
+					["spells"] = {
+						["tipo"] = 3,
+						["_ActorTable"] = {
+							[6262] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+								},
+								["n_max"] = 2993,
+								["targets"] = {
+									["Krázýító"] = 20949,
+								},
+								["n_min"] = 2992,
+								["counter"] = 7,
+								["overheal"] = 0,
+								["total"] = 20949,
+								["c_max"] = 0,
+								["id"] = 6262,
+								["targets_absorbs"] = {
+								},
+								["m_crit"] = 0,
+								["c_curado"] = 0,
+								["m_amt"] = 0,
+								["c_min"] = 0,
+								["n_curado"] = 20949,
+								["m_healed"] = 0,
+								["n_amt"] = 7,
+								["absorbed"] = 0,
+							},
+							[108359] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+								},
+								["n_max"] = 1690,
+								["targets"] = {
+									["Haazinul <Krázýító>"] = 5915,
+									["Krázýító"] = 11827,
+								},
+								["n_min"] = 845,
+								["counter"] = 14,
+								["overheal"] = 0,
+								["total"] = 17742,
+								["c_max"] = 0,
+								["id"] = 108359,
+								["targets_absorbs"] = {
+								},
+								["m_crit"] = 0,
+								["c_curado"] = 0,
+								["m_amt"] = 0,
+								["c_min"] = 0,
+								["n_curado"] = 17742,
+								["m_healed"] = 0,
+								["n_amt"] = 14,
+								["absorbed"] = 0,
+							},
+							[108447] = {
+								["c_amt"] = 0,
+								["totalabsorb"] = 0,
+								["targets_overheal"] = {
+									["Haazinul <Krázýító>"] = 9093,
+									["Krázýító"] = 3576,
+								},
+								["n_max"] = 2613,
+								["targets"] = {
+									["Haazinul <Krázýító>"] = 22724,
+									["Krázýító"] = 28230,
+								},
+								["n_min"] = 354,
+								["counter"] = 498,
+								["overheal"] = 12669,
+								["total"] = 50954,
+								["c_max"] = 0,
+								["id"] = 108447,
+								["targets_absorbs"] = {
+								},
+								["m_crit"] = 0,
+								["c_curado"] = 0,
+								["m_amt"] = 0,
+								["c_min"] = 0,
+								["n_curado"] = 50954,
+								["m_healed"] = 0,
+								["n_amt"] = 498,
+								["absorbed"] = 0,
+							},
+						},
+					},
+					["custom"] = 0,
+					["tipo"] = 2,
+					["on_hold"] = false,
+					["start_time"] = 1426004783,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [1]
+				{
+					["flag_original"] = 4369,
+					["totalabsorb"] = 0.060356,
+					["last_hps"] = 0,
+					["healing_from"] = {
+						["Archon"] = true,
+						["Miserain Starsorrow"] = true,
+						["Krázýító"] = true,
+					},
+					["targets"] = {
+					},
+					["targets_absorbs"] = {
+					},
+					["pets"] = {
+					},
+					["totalover_without_pet"] = 0.060356,
+					["targets_overheal"] = {
+					},
+					["classe"] = "PET",
+					["totalover"] = 0.060356,
+					["total_without_pet"] = 0.060356,
+					["spells"] = {
+						["tipo"] = 3,
+						["_ActorTable"] = {
+						},
+					},
+					["iniciar_hps"] = false,
+					["fight_component"] = true,
+					["total"] = 0.060356,
+					["heal_enemy_amt"] = 0,
+					["ownerName"] = "Krázýító",
+					["nome"] = "Haazinul <Krázýító> <Krázýító>",
+					["end_time"] = 1426006264,
+					["healing_taken"] = 42009.060356,
+					["heal_enemy"] = {
+					},
+					["serial"] = "Pet-0-153-0-40-17252-0201BA5302",
+					["custom"] = 0,
+					["tipo"] = 2,
+					["on_hold"] = false,
+					["start_time"] = 1426006261,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [2]
+				{
+					["flag_original"] = 8465,
+					["totalabsorb"] = 0.012113,
+					["last_hps"] = 0,
+					["healing_from"] = {
+					},
+					["targets"] = {
+					},
+					["pets"] = {
+					},
+					["totalover_without_pet"] = 0.012113,
+					["classe"] = "PET",
+					["totalover"] = 0.012113,
+					["total_without_pet"] = 0.012113,
+					["targets_overheal"] = {
+					},
+					["targets_absorbs"] = {
+					},
+					["iniciar_hps"] = false,
+					["total"] = 0.012113,
+					["healing_taken"] = 0.012113,
+					["ownerName"] = "Krázýító",
+					["nome"] = "Wild Imp <Krázýító> <Krázýító>",
+					["spells"] = {
+						["tipo"] = 3,
+						["_ActorTable"] = {
+						},
+					},
+					["end_time"] = 1426005925,
+					["heal_enemy_amt"] = 0,
+					["heal_enemy"] = {
+					},
+					["serial"] = "Creature-0-153-1265-73-55659-00007F1CF2",
+					["custom"] = 0,
+					["tipo"] = 2,
+					["on_hold"] = false,
+					["start_time"] = 1426005922,
+					["delay"] = 0,
+					["last_event"] = 0,
+				}, -- [3]
+			},
+		}, -- [2]
+		{
+			["tipo"] = 7,
+			["_ActorTable"] = {
+				{
+					["received"] = 38015.070457,
+					["resource"] = 2206.070457,
+					["targets"] = {
+						["Krázýító"] = 38015,
+					},
+					["pets"] = {
+						"Haazinul <Krázýító> <Krázýító>", -- [1]
+						"Wild Imp <Krázýító> <Krázýító>", -- [2]
+					},
+					["powertype"] = 0,
+					["classe"] = "WARLOCK",
+					["fight_component"] = true,
+					["total"] = 38015.070457,
+					["nome"] = "Krázýító",
+					["spells"] = {
+						["tipo"] = 7,
+						["_ActorTable"] = {
+							[1454] = {
+								["id"] = 1454,
+								["total"] = 38015,
+								["targets"] = {
+									["Krázýító"] = 38015,
+								},
+								["counter"] = 3,
+							},
+						},
+					},
+					["grupo"] = true,
+					["last_event"] = 0,
+					["resource_type"] = 15,
+					["flag_original"] = 1297,
+					["serial"] = "Player-153-07468FD5",
+					["tipo"] = 3,
+				}, -- [1]
+				{
+					["flag_original"] = 4369,
+					["resource"] = 924.060403,
+					["targets"] = {
+					},
+					["pets"] = {
+					},
+					["powertype"] = 0,
+					["classe"] = "PET",
+					["fight_component"] = true,
+					["resource_type"] = 15,
+					["ownerName"] = "Krázýító",
+					["nome"] = "Haazinul <Krázýító> <Krázýító>",
+					["spells"] = {
+						["tipo"] = 7,
+						["_ActorTable"] = {
+						},
+					},
+					["received"] = 0.060403,
+					["tipo"] = 3,
+					["total"] = 0.060403,
+					["serial"] = "Pet-0-153-0-40-17252-0201BA5302",
+					["last_event"] = 0,
+				}, -- [2]
+				{
+					["flag_original"] = 8465,
+					["resource"] = 1385.028298,
+					["targets"] = {
+					},
+					["pets"] = {
+					},
+					["powertype"] = 0,
+					["classe"] = "PET",
+					["resource_type"] = 15,
+					["ownerName"] = "Krázýító",
+					["nome"] = "Wild Imp <Krázýító> <Krázýító>",
+					["spells"] = {
+						["tipo"] = 7,
+						["_ActorTable"] = {
+						},
+					},
+					["received"] = 0.028298,
+					["tipo"] = 3,
+					["total"] = 0.028298,
+					["serial"] = "Creature-0-153-0-40-55659-00007F1CA5",
+					["last_event"] = 0,
+				}, -- [3]
+			},
+		}, -- [3]
+		{
+			["tipo"] = 9,
+			["_ActorTable"] = {
+				{
+					["flag_original"] = 1047,
+					["debuff_uptime_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[124915] = {
+								["uptime"] = 35,
+								["id"] = 124915,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[47960] = {
+								["uptime"] = 27,
+								["id"] = 47960,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[146739] = {
+								["uptime"] = 199,
+								["actived_at"] = 7130029938,
+								["id"] = 146739,
+								["activedamt"] = -5,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[603] = {
+								["uptime"] = 268,
+								["id"] = 603,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[1454] = {
+								["uptime"] = 30,
+								["id"] = 1454,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[146198] = {
+								["uptime"] = 90,
+								["id"] = 146198,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+						},
+					},
+					["cooldowns_defensive"] = 2.014241,
+					["buff_uptime"] = 5640,
+					["classe"] = "WARLOCK",
+					["cooldowns_defensive_targets"] = {
+						["Krázýító"] = 2,
+					},
+					["buff_uptime_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[108503] = {
+								["uptime"] = 2,
+								["id"] = 108503,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[167410] = {
+								["uptime"] = 804,
+								["id"] = 167410,
+								["activedamt"] = 9,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[171975] = {
+								["uptime"] = 834,
+								["id"] = 171975,
+								["activedamt"] = 11,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[103958] = {
+								["uptime"] = 426,
+								["id"] = 103958,
+								["activedamt"] = 14,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[111400] = {
+								["uptime"] = 43,
+								["id"] = 111400,
+								["activedamt"] = 4,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[6262] = {
+								["uptime"] = 6,
+								["id"] = 6262,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[98204] = {
+								["uptime"] = 0,
+								["id"] = 98204,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[97493] = {
+								["uptime"] = 0,
+								["id"] = 97493,
+								["activedamt"] = 0,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[109773] = {
+								["uptime"] = 836,
+								["id"] = 109773,
+								["activedamt"] = 13,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[113861] = {
+								["uptime"] = 24,
+								["id"] = 113861,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[108359] = {
+								["uptime"] = 10,
+								["id"] = 108359,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[114925] = {
+								["uptime"] = 514,
+								["id"] = 114925,
+								["activedamt"] = 40,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[140074] = {
+								["uptime"] = 606,
+								["id"] = 140074,
+								["activedamt"] = 12,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[105691] = {
+								["uptime"] = 834,
+								["id"] = 105691,
+								["activedamt"] = 11,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[128943] = {
+								["uptime"] = 2,
+								["id"] = 128943,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[1949] = {
+								["uptime"] = 13,
+								["id"] = 1949,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[138788] = {
+								["uptime"] = 155,
+								["id"] = 138788,
+								["activedamt"] = 16,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[104025] = {
+								["uptime"] = 137,
+								["id"] = 104025,
+								["activedamt"] = 9,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[145085] = {
+								["uptime"] = 10,
+								["id"] = 145085,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[104773] = {
+								["uptime"] = 5,
+								["id"] = 104773,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[146046] = {
+								["uptime"] = 131,
+								["id"] = 146046,
+								["activedamt"] = 9,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[138786] = {
+								["uptime"] = 155,
+								["id"] = 138786,
+								["activedamt"] = 16,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[166928] = {
+								["uptime"] = 2,
+								["id"] = 166928,
+								["activedamt"] = 2,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[137590] = {
+								["uptime"] = 91,
+								["id"] = 137590,
+								["activedamt"] = 10,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+						},
+					},
+					["fight_component"] = true,
+					["debuff_uptime"] = 649,
+					["buff_uptime_targets"] = {
+					},
+					["grupo"] = true,
+					["debuff_uptime_targets"] = {
+					},
+					["cooldowns_defensive_spells"] = {
+						["tipo"] = 9,
+						["_ActorTable"] = {
+							[108416] = {
+								["id"] = 108416,
+								["targets"] = {
+								},
+								["counter"] = 1,
+							},
+							[104773] = {
+								["id"] = 104773,
+								["targets"] = {
+								},
+								["counter"] = 1,
+							},
+						},
+					},
+					["last_event"] = 0,
+					["tipo"] = 4,
+					["nome"] = "Krázýító",
+					["serial"] = "Player-153-07468FD5",
+					["pets"] = {
+					},
+				}, -- [1]
+			},
+		}, -- [4]
+		{
+			["tipo"] = 2,
+			["_ActorTable"] = {
+			},
+		}, -- [5]
+		["raid_roster"] = {
+		},
+		["last_events_tables"] = {
+		},
+		["combat_counter"] = 3,
+		["totals"] = {
+			10150757.783608, -- [1]
+			89644.95237, -- [2]
+			{
+				0, -- [1]
+				[0] = 38015.14421,
+				[6] = 0,
+				[3] = 0,
+			}, -- [3]
+			{
+				["buff_uptime"] = 0,
+				["ress"] = 0,
+				["debuff_uptime"] = 0,
+				["cooldowns_defensive"] = 2.009925,
+				["interrupt"] = 0,
+				["dispell"] = 0,
+				["cc_break"] = 0,
+				["dead"] = 0,
+			}, -- [4]
+			["frags_total"] = 0,
+			["voidzone_damage"] = 0,
+		},
+		["player_last_events"] = {
+		},
+		["frags_need_refresh"] = false,
+		["__call"] = {
+		},
+		["PhaseData"] = {
+			{
+				1, -- [1]
+				1, -- [2]
+			}, -- [1]
+			["heal_section"] = {
+			},
+			["heal"] = {
+			},
+			["damage_section"] = {
+			},
+			["damage"] = {
+			},
+		},
+		["end_time"] = 63672.579,
+		["data_inicio"] = "12:16:12",
+		["frags"] = {
+		},
+		["data_fim"] = "12:51:04",
+		["overall_enemy_name"] = "-- x -- x --",
+		["CombatSkillCache"] = {
+		},
+		["segments_added"] = {
+			{
+				["elapsed"] = 1.00099999999657,
+				["name"] = "Unknown",
+			}, -- [1]
+			{
+				["elapsed"] = 961.188999999999,
+				["name"] = "Unknown",
+			}, -- [2]
+			{
+				["elapsed"] = 12.2980000000025,
+				["name"] = "Ironmarch Grunt",
+			}, -- [3]
+			{
+				["elapsed"] = 16.1670000000013,
+				["name"] = "Ironmarch Grunt",
+			}, -- [4]
+			{
+				["elapsed"] = 20.6460000000006,
+				["name"] = "Shadowmoon Ritualist",
+			}, -- [5]
+			{
+				["elapsed"] = 24.3009999999995,
+				["name"] = "Shadowmoon Ritualist",
+			}, -- [6]
+			{
+				["elapsed"] = 654.987000000001,
+				["name"] = "Warsong Commander",
+			}, -- [7]
+			{
+				["elapsed"] = 28.4669999999969,
+				["name"] = "Shadowmoon Ritualist",
+			}, -- [8]
+			{
+				["elapsed"] = 20.6789999999965,
+				["name"] = "Bleeding Hollow Savage",
+			}, -- [9]
+			{
+				["elapsed"] = 10.9499999999971,
+				["name"] = "Bleeding Hollow Savage",
+			}, -- [10]
+			{
+				["elapsed"] = 13.75,
+				["name"] = "Bleeding Hollow Savage",
+			}, -- [11]
+			{
+				["elapsed"] = 16.3440000000046,
+				["name"] = "Bleeding Hollow Savage",
+			}, -- [12]
+			{
+				["elapsed"] = 64.6779999999999,
+				["name"] = "Bleeding Hollow Savage",
+			}, -- [13]
+		},
+		["start_time"] = 61827.122,
+		["TimeData"] = {
+			["Player Damage Done"] = {
+			},
+			["Raid Damage Done"] = {
+			},
+		},
+		["totals_grupo"] = {
+			4897564.051095, -- [1]
+			89645.053517, -- [2]
+			{
+				0, -- [1]
+				[0] = 38015.065347,
+				[6] = 0,
+				[3] = 0,
+			}, -- [3]
+			{
+				["buff_uptime"] = 0,
+				["ress"] = 0,
+				["debuff_uptime"] = 0,
+				["cooldowns_defensive"] = 2.009925,
+				["interrupt"] = 0,
+				["dispell"] = 0,
+				["cc_break"] = 0,
+				["dead"] = 0,
+			}, -- [4]
+		},
+	},
+	["last_instance_time"] = 0,
+	["local_instances_config"] = {
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = true,
+			["isLocked"] = true,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+				[3] = 2,
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -458.147883912593,
+					["x"] = 667.409378949849,
+					["w"] = 245.000122070313,
+					["h"] = 215.555557250977,
+				},
+				["solo"] = {
+					["y"] = 2.00006627432166,
+					["x"] = 0.999915453425391,
+					["w"] = 299.999938964844,
+					["h"] = 300,
+				},
+			},
+		}, -- [1]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = true,
+			["isLocked"] = true,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+				1, -- [1]
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -458.147883912593,
+					["x"] = 920.715238776305,
+					["w"] = 256.435882568359,
+					["h"] = 215.555557250977,
+				},
+				["solo"] = {
+					["y"] = 2,
+					["x"] = 1,
+					["w"] = 300,
+					["h"] = 200,
+				},
+			},
+		}, -- [2]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = false,
+			["isLocked"] = false,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = -130.375885009766,
+					["x"] = 841.051147460938,
+					["w"] = 315.623840332031,
+					["h"] = 244.871490478516,
+				},
+				["solo"] = {
+					["y"] = -77.3170776367188,
+					["x"] = 416.459838867188,
+					["w"] = 310.940338134766,
+					["h"] = 235.453048706055,
+				},
+			},
+		}, -- [3]
+		{
+			["segment"] = 0,
+			["sub_attribute"] = 1,
+			["horizontalSnap"] = false,
+			["verticalSnap"] = false,
+			["is_open"] = false,
+			["isLocked"] = false,
+			["sub_atributo_last"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+				1, -- [5]
+			},
+			["snap"] = {
+			},
+			["mode"] = 2,
+			["attribute"] = 1,
+			["pos"] = {
+				["normal"] = {
+					["y"] = 0,
+					["x"] = 0,
+					["w"] = 319.999969482422,
+					["h"] = 129.999938964844,
+				},
+				["solo"] = {
+					["y"] = -99.7442016601563,
+					["x"] = 875.092895507813,
+					["w"] = 299.999969482422,
+					["h"] = 300.000030517578,
+				},
+			},
+		}, -- [4]
+	},
+	["nick_tag_cache"] = {
+		["nextreset"] = 1427299826,
+		["last_version"] = 7,
+	},
+	["announce_cooldowns"] = {
+		["enabled"] = false,
+		["ignored_cooldowns"] = {
+		},
+		["custom"] = "",
+		["channel"] = "RAID",
+	},
+	["announce_firsthit"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
+	},
+	["last_instance_id"] = 0,
+	["SoloTablesSaved"] = {
+		["LastSelected"] = "DETAILS_PLUGIN_DAMAGE_RANK",
+		["Mode"] = 1,
+	},
+}

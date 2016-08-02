@@ -1,0 +1,22 @@
+﻿## Interface: 50400
+## X-Min-Interface: 50400
+## Title:|cffffe00a<|r|cffff7d0aVEM|r|cffffe00a>|r |cff69ccf0Proving Grounds-MoP|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aVEM|r|cffffe00a>|r |cff69ccf0白虎寺試練場|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aVEM|r|cffffe00a>|r |cff69ccf0白虎寺试练场|r
+## Author: MysticalOS
+## LoadOnDemand: 1
+## RequiredDeps: VEM-Core
+## SavedVariablesPerCharacter: VEMProvingGroundsMoP_SavedVars, VEMProvingGroundsMoP_SavedStats
+## X-VEM-Mod: 1
+## X-VEM-Mod-Type: SCENARIO
+## X-VEM-Mod-Category: MOP
+## X-VEM-Mod-Has-Single-Format: 1
+## X-VEM-Mod-Name: Proving Grounds (MoP)
+## X-VEM-Mod-Name-zhTW: 白虎寺試練場
+## X-VEM-Mod-Name-zhCN: 白虎寺试练场
+## X-VEM-Mod-Sort: 40
+## X-VEM-Mod-MapID: 1148
+localization.en.lua
+localization.tw.lua
+localization.cn.lua
+PGWhiteTiger.lua

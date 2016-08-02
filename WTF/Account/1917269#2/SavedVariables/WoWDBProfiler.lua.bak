@@ -1,0 +1,1463 @@
+
+WoWDBProfilerData = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["version"] = 18,
+	["build_num"] = 18291,
+	["global"] = {
+		["npcs"] = {
+			[21064] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 148,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[35399] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 157,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[10598] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_5"] = {
+							["speed"] = 51,
+							["max_health"] = 337,
+							["attack"] = 56,
+						},
+					},
+				},
+			},
+			[43916] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 151,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[48242] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 159,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[15429] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_2"] = {
+							["speed"] = 19,
+							["max_health"] = 222,
+							["attack"] = 23,
+						},
+					},
+				},
+			},
+			[61081] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Common"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 146,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[7560] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 151,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[54128] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 160,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[7561] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 147,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[66104] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[51600] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_10"] = {
+							["speed"] = 84,
+							["max_health"] = 620,
+							["attack"] = 149,
+						},
+					},
+				},
+			},
+			[32939] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 158,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[54541] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[60649] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 158,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+			[34364] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 144,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[61165] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 153,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[15706] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[35396] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 142,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[66105] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[7380] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 13,
+							["max_health"] = 142,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[7381] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 145,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[73011] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 148,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[7384] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 142,
+							["attack"] = 13,
+						},
+					},
+				},
+			},
+			[7385] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 142,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[67233] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 160,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[7387] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 9,
+							["max_health"] = 156,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[68662] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 162,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[33198] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 148,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[7390] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 13,
+							["max_health"] = 148,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[40703] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_11"] = {
+							["speed"] = 100,
+							["max_health"] = 736,
+							["attack"] = 142,
+						},
+					},
+				},
+			},
+			[62829] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 153,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[34770] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 153,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[61071] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Poor"] = {
+						["level_2"] = {
+							["speed"] = 18,
+							["max_health"] = 189,
+							["attack"] = 16,
+						},
+					},
+				},
+			},
+			[63365] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 155,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+			[61718] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_12"] = {
+							["speed"] = 117,
+							["max_health"] = 919,
+							["attack"] = 125,
+						},
+					},
+				},
+			},
+			[46637] = {
+				["is_pvp"] = true,
+				["genders"] = {
+					["MALE"] = true,
+				},
+				["faction"] = "Orgrimmar",
+				["auctioneer"] = true,
+				["class"] = "WARRIOR",
+				["encounter_data"] = {
+					["NONE:0:false"] = {
+						["stats"] = {
+							["level_90"] = {
+								["locations"] = {
+									["Orgrimmar:321"] = {
+										["0:666:364"] = true,
+									},
+								},
+								["max_health"] = 1181823,
+							},
+						},
+					},
+				},
+				["reaction"] = "90:Horde:FRIENDLY",
+			},
+			[65314] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 9,
+							["max_health"] = 153,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[54027] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_10"] = {
+							["speed"] = 104,
+							["max_health"] = 711,
+							["attack"] = 109,
+						},
+					},
+				},
+			},
+			[54539] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[23909] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 155,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+			[16547] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 148,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[68601] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 158,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[35395] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 142,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[25062] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 164,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[10259] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 160,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[35398] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 144,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[7395] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 13,
+							["max_health"] = 151,
+							["attack"] = 8,
+						},
+					},
+				},
+			},
+			[7567] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 150,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[51632] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[21010] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 156,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[65313] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_4"] = {
+							["speed"] = 34,
+							["max_health"] = 304,
+							["attack"] = 50,
+						},
+					},
+				},
+			},
+			[64632] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 13,
+							["max_health"] = 152,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[61080] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Poor"] = {
+						["level_1"] = {
+							["speed"] = 9,
+							["max_health"] = 145,
+							["attack"] = 8,
+						},
+					},
+				},
+			},
+			[62954] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Poor"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 140,
+							["attack"] = 8,
+						},
+					},
+				},
+			},
+			[23274] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 152,
+							["attack"] = 13,
+						},
+					},
+				},
+			},
+			[36911] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_6"] = {
+							["speed"] = 69,
+							["max_health"] = 412,
+							["attack"] = 69,
+						},
+					},
+				},
+			},
+			[68467] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 155,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[42177] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 156,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[71023] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 149,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+			[7394] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[32791] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 13,
+							["max_health"] = 148,
+							["attack"] = 8,
+						},
+					},
+				},
+			},
+			[40295] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[37865] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 145,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+			[7553] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 151,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[36871] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_2"] = {
+							["speed"] = 17,
+							["max_health"] = 222,
+							["attack"] = 26,
+						},
+					},
+				},
+			},
+			[68666] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 158,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[42594] = {
+				["encounter_data"] = {
+					["NONE:0:false"] = {
+						["spells"] = {
+							[79403] = 2,
+						},
+						["stats"] = {
+						},
+					},
+				},
+			},
+			[62664] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_2"] = {
+							["speed"] = 20,
+							["max_health"] = 207,
+							["attack"] = 20,
+						},
+					},
+				},
+			},
+			[74405] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_6"] = {
+							["speed"] = 61,
+							["max_health"] = 424,
+							["attack"] = 77,
+						},
+					},
+				},
+			},
+			[54383] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 152,
+							["attack"] = 13,
+						},
+					},
+				},
+			},
+			[47944] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 161,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[62019] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Common"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 139,
+							["attack"] = 9,
+						},
+					},
+				},
+			},
+			[7382] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 145,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[24480] = {
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 12,
+							["max_health"] = 161,
+							["attack"] = 10,
+						},
+					},
+				},
+			},
+			[35387] = {
+				["battle_pet_data"] = {
+					["Uncommon"] = {
+						["level_1"] = {
+							["speed"] = 11,
+							["max_health"] = 144,
+							["attack"] = 11,
+						},
+					},
+				},
+			},
+			[70154] = {
+				["wild_pet"] = true,
+				["battle_pet_data"] = {
+					["Rare"] = {
+						["level_1"] = {
+							["speed"] = 10,
+							["max_health"] = 159,
+							["attack"] = 12,
+						},
+					},
+				},
+			},
+		},
+		["objects"] = {
+			[207639] = {
+				["NONE:0:false"] = {
+					["locations"] = {
+						["Orgrimmar:321"] = {
+							["0:676:394"] = true,
+						},
+					},
+				},
+			},
+		},
+		["quests"] = {
+			[32901] = {
+				["can_share"] = true,
+			},
+		},
+		["items"] = {
+			[105423] = {
+				["upgrades"] = {
+					[493] = {
+						["mastery"] = 762,
+						["stamina"] = 2236,
+						["spirit"] = 1056,
+						["intellect"] = 1410,
+					},
+				},
+				["upgrade_id"] = 493,
+			},
+			[104427] = {
+				["upgrades"] = {
+					[493] = {
+						["reforge_id"] = "116",
+						["stamina"] = 2114,
+						["mastery"] = 720,
+						["spirit"] = 597,
+						["critical_strike"] = 398,
+						["intellect"] = 1329,
+					},
+				},
+				["upgrade_id"] = 493,
+			},
+			[96560] = {
+				["upgrades"] = {
+					[465] = {
+						["intellect"] = 820,
+						["haste"] = 417,
+						["spirit"] = 665,
+						["stamina"] = 1471,
+					},
+				},
+				["upgrade_id"] = 465,
+			},
+			[75274] = {
+				["upgrades"] = {
+					[452] = {
+						["mastery"] = 523,
+						["haste"] = 348,
+						["reforge_id"] = "167",
+					},
+				},
+				["upgrade_id"] = 452,
+			},
+			[95816] = {
+				["upgrades"] = {
+					[465] = {
+						["intellect"] = 560,
+						["stamina"] = 1081,
+						["mastery"] = 114,
+						["haste"] = 171,
+						["spirit"] = 468,
+						["reforge_id"] = "154",
+					},
+				},
+				["upgrade_id"] = 465,
+			},
+			[105522] = {
+				["durability"] = 55,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 1606,
+						["reforge_id"] = "167",
+						["stamina"] = 2409,
+						["haste"] = 365,
+						["spirit"] = 1164,
+						["mastery"] = 549,
+					},
+				},
+			},
+			[94509] = {
+				["upgrades"] = {
+					[465] = {
+						["intellect"] = 1467,
+					},
+				},
+				["upgrade_id"] = 465,
+			},
+			[99427] = {
+				["durability"] = 165,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["reforge_id"] = "152",
+						["stamina"] = 3795,
+						["mastery"] = 1442,
+						["haste"] = 985,
+						["critical_strike"] = 656,
+						["intellect"] = 2290,
+					},
+				},
+			},
+			[99431] = {
+				["durability"] = 100,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 1865,
+						["reforge_id"] = "117",
+						["stamina"] = 3037,
+						["haste"] = 547,
+						["spirit"] = 821,
+						["mastery"] = 1104,
+					},
+				},
+			},
+			[105798] = {
+				["durability"] = 100,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1474,
+						["stamina"] = 2452,
+						["critical_strike"] = 1073,
+						["spirit"] = 902,
+					},
+				},
+			},
+			[105424] = {
+				["durability"] = 80,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["reforge_id"] = "116",
+						["spirit"] = 767,
+						["stamina"] = 2981,
+						["haste"] = 1293,
+						["critical_strike"] = 510,
+						["intellect"] = 1907,
+					},
+				},
+			},
+			[104609] = {
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1228,
+						["haste"] = 908,
+						["stamina"] = 1963,
+						["hit"] = 704,
+					},
+				},
+				["upgrade_id"] = 491,
+			},
+			[105499] = {
+				["durability"] = 120,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 2802,
+						["reforge_id"] = "117",
+						["spell_power"] = 16509,
+						["mastery"] = 1396,
+						["haste"] = 870,
+						["spirit"] = 1305,
+						["stamina"] = 4324,
+					},
+				},
+			},
+			[96561] = {
+				["upgrades"] = {
+					[465] = {
+						["intellect"] = 1657,
+					},
+				},
+				["upgrade_id"] = 465,
+			},
+			[102247] = {
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 2005,
+						["stamina"] = 3127,
+						["haste"] = 1069,
+						["spirit"] = 1069,
+						["mastery"] = 1069,
+					},
+				},
+				["upgrade_id"] = 505,
+			},
+			[95018] = {
+				["upgrades"] = {
+					[467] = {
+						["intellect"] = 1036,
+						["reforge_id"] = "116",
+						["stamina"] = 1675,
+						["haste"] = 673,
+						["critical_strike"] = 285,
+						["spirit"] = 428,
+					},
+				},
+				["upgrade_id"] = 467,
+			},
+			[99432] = {
+				["durability"] = 55,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["reforge_id"] = "154",
+						["stamina"] = 2617,
+						["mastery"] = 416,
+						["haste"] = 625,
+						["critical_strike"] = 1101,
+						["intellect"] = 1584,
+					},
+				},
+			},
+			[99436] = {
+				["durability"] = 100,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 2486,
+						["reforge_id"] = "119",
+						["stamina"] = 4089,
+						["haste"] = 1474,
+						["spirit"] = 1098,
+						["mastery"] = 731,
+					},
+				},
+			},
+			[104480] = {
+				["durability"] = 100,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["mastery"] = 1445,
+						["stamina"] = 3522,
+						["spirit"] = 1445,
+						["intellect"] = 2108,
+					},
+				},
+			},
+			[104610] = {
+				["upgrades"] = {
+					[493] = {
+						["mastery"] = 900,
+						["haste"] = 890,
+						["stamina"] = 2114,
+						["intellect"] = 1329,
+					},
+					[491] = {
+						["intellect"] = 1228,
+						["stamina"] = 1963,
+						["mastery"] = 834,
+						["haste"] = 493,
+						["critical_strike"] = 328,
+						["reforge_id"] = "152",
+					},
+				},
+				["upgrade_id"] = 491,
+			},
+			[104429] = {
+				["durability"] = 55,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["reforge_id"] = "119",
+						["stamina"] = 1963,
+						["mastery"] = 265,
+						["spirit"] = 398,
+						["critical_strike"] = 994,
+						["intellect"] = 1308,
+					},
+				},
+			},
+			[104479] = {
+				["durability"] = 120,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 2450,
+						["mastery"] = 1018,
+						["spell_power"] = 14491,
+						["stamina"] = 3795,
+						["haste"] = 678,
+						["critical_strike"] = 1580,
+						["reforge_id"] = "167",
+					},
+				},
+			},
+			[105677] = {
+				["durability"] = 120,
+			},
+			[71086] = {
+				["durability"] = 145,
+			},
+			[102246] = {
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 1855,
+						["stamina"] = 2902,
+						["haste"] = 991,
+						["critical_strike"] = 991,
+						["mastery"] = 991,
+					},
+				},
+				["upgrade_id"] = 493,
+			},
+			[104618] = {
+				["durability"] = 120,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 2450,
+						["stamina"] = 3795,
+						["spell_power"] = 14491,
+						["critical_strike"] = 1792,
+						["haste"] = 1384,
+					},
+				},
+			},
+			[95641] = {
+				["upgrades"] = {
+					[465] = {
+						["intellect"] = 1218,
+					},
+				},
+				["upgrade_id"] = 465,
+			},
+			[104402] = {
+				["durability"] = 110,
+			},
+			[104546] = {
+				["durability"] = 100,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 2108,
+						["stamina"] = 3522,
+						["mastery"] = 882,
+						["haste"] = 587,
+						["critical_strike"] = 1406,
+						["reforge_id"] = "167",
+					},
+				},
+			},
+			[103906] = {
+				["durability"] = 55,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 1505,
+						["reforge_id"] = "117",
+						["stamina"] = 2498,
+						["haste"] = 390,
+						["spirit"] = 585,
+						["mastery"] = 1063,
+					},
+				},
+			},
+			[104477] = {
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1308,
+						["haste"] = 850,
+						["spirit"] = 885,
+						["stamina"] = 1963,
+					},
+				},
+				["upgrade_id"] = 491,
+			},
+			[99433] = {
+				["durability"] = 100,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 2108,
+						["haste"] = 1603,
+						["critical_strike"] = 1179,
+						["stamina"] = 3522,
+					},
+				},
+			},
+			[105539] = {
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1384,
+						["hit"] = 632,
+						["stamina"] = 2076,
+						["haste"] = 701,
+						["critical_strike"] = 420,
+						["reforge_id"] = "137",
+					},
+				},
+				["upgrade_id"] = 491,
+			},
+			[99169] = {
+				["durability"] = 100,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["reforge_id"] = "154",
+						["stamina"] = 2319,
+						["mastery"] = 438,
+						["haste"] = 657,
+						["critical_strike"] = 703,
+						["intellect"] = 1386,
+					},
+				},
+			},
+			[79330] = {
+				["upgrades"] = {
+					[445] = {
+						["intellect"] = 1157,
+					},
+				},
+				["upgrade_id"] = 445,
+			},
+			[104597] = {
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 1409,
+						["reforge_id"] = "117",
+						["stamina"] = 2114,
+						["haste"] = 408,
+						["spirit"] = 613,
+						["mastery"] = 802,
+					},
+				},
+				["upgrade_id"] = 493,
+			},
+			[103758] = {
+				["durability"] = 55,
+				["upgrade_id"] = 492,
+				["upgrades"] = {
+					[492] = {
+						["reforge_id"] = "116",
+						["spirit"] = 503,
+						["stamina"] = 1805,
+						["haste"] = 743,
+						["critical_strike"] = 335,
+						["intellect"] = 1203,
+					},
+				},
+			},
+			[105576] = {
+				["durability"] = 80,
+				["upgrade_id"] = 504,
+				["upgrades"] = {
+					[504] = {
+						["mastery"] = 1175,
+						["haste"] = 1427,
+						["stamina"] = 3095,
+						["intellect"] = 1983,
+					},
+				},
+			},
+			[99176] = {
+				["durability"] = 120,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1920,
+						["stamina"] = 3121,
+						["critical_strike"] = 1388,
+						["mastery"] = 1170,
+					},
+				},
+			},
+			[105595] = {
+				["durability"] = 55,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 1981,
+						["reforge_id"] = "117",
+						["stamina"] = 3212,
+						["haste"] = 422,
+						["spirit"] = 633,
+						["mastery"] = 1526,
+					},
+				},
+			},
+			[105500] = {
+				["durability"] = 55,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["reforge_id"] = "117",
+						["spirit"] = 816,
+						["stamina"] = 2981,
+						["haste"] = 544,
+						["critical_strike"] = 1051,
+						["intellect"] = 1827,
+					},
+				},
+			},
+			[99171] = {
+				["durability"] = 120,
+				["upgrade_id"] = 493,
+				["upgrades"] = {
+					[493] = {
+						["intellect"] = 2081,
+						["reforge_id"] = "117",
+						["stamina"] = 3362,
+						["haste"] = 609,
+						["spirit"] = 914,
+						["mastery"] = 1231,
+					},
+				},
+			},
+			[104471] = {
+				["durability"] = 80,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1664,
+						["stamina"] = 2617,
+						["critical_strike"] = 1182,
+						["spirit"] = 1029,
+					},
+				},
+			},
+			[103987] = {
+				["upgrades"] = {
+					[491] = {
+						["intellect"] = 1657,
+					},
+				},
+				["upgrade_id"] = 491,
+			},
+			[99430] = {
+				["durability"] = 165,
+				["upgrade_id"] = 505,
+				["upgrades"] = {
+					[505] = {
+						["intellect"] = 2486,
+						["reforge_id"] = "167",
+						["stamina"] = 4089,
+						["haste"] = 589,
+						["spirit"] = 1829,
+						["mastery"] = 885,
+					},
+				},
+			},
+			[104600] = {
+				["durability"] = 120,
+				["upgrade_id"] = 491,
+				["upgrades"] = {
+					[491] = {
+						["reforge_id"] = "119",
+						["stamina"] = 3522,
+						["mastery"] = 648,
+						["spirit"] = 973,
+						["critical_strike"] = 1256,
+						["intellect"] = 2188,
+					},
+				},
+			},
+			[104524] = {
+				["upgrades"] = {
+					[493] = {
+						["reforge_id"] = "116",
+						["spirit"] = 551,
+						["stamina"] = 2114,
+						["haste"] = 854,
+						["critical_strike"] = 366,
+						["intellect"] = 1329,
+					},
+				},
+				["upgrade_id"] = 493,
+			},
+		},
+	},
+}

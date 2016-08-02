@@ -1,0 +1,8 @@
+2016-07-21  elchefe  <elchefe>
+
+[882a28df7e1d] [v4.61]
+* Bars.lua, Callback.lua:
+
+fix for bars with fadeout settings of 0s
+
+

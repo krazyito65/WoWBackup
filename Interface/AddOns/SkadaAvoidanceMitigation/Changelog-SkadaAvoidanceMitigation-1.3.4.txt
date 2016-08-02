@@ -1,0 +1,12 @@
+tag 1.3.4
+53c771ef85da6918c6490d84f8f8862868b35af1
+oscarucb <oscarucb@gmail.com>
+2016-07-31 01:10:35 -0400
+
+Tagging 1.3.4
+
+
+--------------------
+
+oscarucb:
+	- toc bump

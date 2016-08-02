@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r69682 | next96 | 2008-04-14 00:08:50 -0400 (Mon, 14 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/SharedMediaLib/SharedMedia-1.0/SharedMedia-1.0.lua
+
+SharedMediaLib: 
+- sorry revert koKR ;(
+------------------------------------------------------------------------
+r69671 | next96 | 2008-04-13 23:20:00 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/SharedMediaLib/SharedMedia-1.0/SharedMedia-1.0.lua
+
+SharedMediaLib: 
+- koKR return delete
+------------------------------------------------------------------------
+r69487 | durcyn | 2008-04-13 03:47:46 -0400 (Sun, 13 Apr 2008) | 1 line
+Changed paths:
+   M /trunk/SharedMediaLib/SharedMediaLib.toc
+
+SharedMediaLib: revert scorpio0920's craptastic toc bumping spree.  This lib is deprecated and should not be bumped.  If you have a problem with this, go to hell.
+------------------------------------------------------------------------
+r69480 | scorpio0920 | 2008-04-13 03:44:09 -0400 (Sun, 13 Apr 2008) | 2 lines
+Changed paths:
+   M /trunk/SharedMediaLib/SharedMediaLib.toc
+
+SharedMediaLib:
+- toc to 2.4
+------------------------------------------------------------------------

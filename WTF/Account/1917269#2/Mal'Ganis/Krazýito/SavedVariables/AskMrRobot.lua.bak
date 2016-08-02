@@ -1,0 +1,63 @@
+
+AmrDb = {
+	["Talents"] = {
+	},
+	["LastCharacterImportDate"] = "",
+	["SendSettings"] = {
+		["SendTo"] = "",
+		["SendGems"] = true,
+		["SendEnchants"] = true,
+		["SendEnchantMaterials"] = true,
+		["SendToType"] = "a friend",
+	},
+	["CharacterName"] = "Krazýito",
+	["Race"] = "Troll",
+	["ActiveSpec"] = 1,
+	["Level"] = 20,
+	["Equipped"] = {
+		{
+			"|cffe6cc80|Hitem:61958:0:0:0:0:0:0:0:20:0:0:0|h[Tattered Dreadmist Mask]|h|r", -- [1]
+			[6] = "|cffffffff|Hitem:53391:0:0:0:0:0:0:0:20:0:11:0|h[Thwarter's Belt]|h|r",
+			[7] = "|cffe6cc80|Hitem:62029:0:0:0:0:0:0:0:20:0:0:0|h[Tattered Dreadmist Leggings]|h|r",
+			[15] = "|cffe6cc80|Hitem:62040:0:0:0:0:0:0:0:20:0:0:0|h[Ancient Bloodmoon Cloak]|h|r",
+			[3] = "|cffe6cc80|Hitem:42985:0:0:0:0:0:0:0:20:0:0:0|h[Tattered Dreadmist Mantle]|h|r",
+			[13] = "|cffe6cc80|Hitem:93897:0:0:0:0:0:0:0:20:0:0:0|h[Piercing Eye of the Beast]|h|r",
+			[14] = "|cffe6cc80|Hitem:93897:0:0:0:0:0:0:0:20:0:0:0|h[Piercing Eye of the Beast]|h|r",
+			[5] = "|cffe6cc80|Hitem:48691:0:0:0:0:0:0:0:20:0:0:0|h[Tattered Dreadmist Robe]|h|r",
+			[16] = "|cffe6cc80|Hitem:42947:0:0:0:0:0:0:0:20:0:0:0|h[Dignified Headmaster's Charge]|h|r",
+		}, -- [1]
+	},
+	["Specs"] = {
+	},
+	["Options"] = {
+	},
+	["Region"] = "US",
+	["Currencies"] = {
+	},
+	["Glyphs"] = {
+	},
+	["LogData"] = {
+		["_wipes"] = {
+		},
+		["_autoLog"] = {
+			[1228] = "disabled",
+			[1205] = "disabled",
+		},
+		["_lastDiff"] = 0,
+		["_lastZone"] = "Kalimdor",
+	},
+	["BagItems"] = {
+	},
+	["BankItems"] = {
+	},
+	["LastCharacterImport"] = "",
+	["Reps"] = {
+	},
+	["Faction"] = "Horde",
+	["IconInfo"] = {
+	},
+	["Professions"] = {
+	},
+	["RealmName"] = "Mal'Ganis",
+	["Class"] = "PRIEST",
+}

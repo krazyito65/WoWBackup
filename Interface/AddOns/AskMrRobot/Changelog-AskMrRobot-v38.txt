@@ -1,0 +1,8 @@
+2016-07-19  yellowfive  <yellowfive>
+
+[0515882856f1] [v38]
+* AskMrRobot-Serializer/AskMrRobot-Serializer.lua, AskMrRobot.toc, Constants.lua, Core.lua, Export.lua, Gear.lua, Import.lua, Shopping.lua, localization/enUS.lua, localization/frFR.lua, localization/itIT.lua, ui/AmrUiButton.lua, ui/AmrUiDropDown.lua, ui/AmrUiFrame.lua, ui/AmrUiIcon.lua, ui/AmrUiPanel.lua, ui/AmrUiScrollFrame.lua, ui/AmrUiTabGroup.lua, ui/AmrUiTextButton.lua, ui/AmrUiTextarea.lua, ui/Ui.lua:
+
+updated for 7.0
+
+

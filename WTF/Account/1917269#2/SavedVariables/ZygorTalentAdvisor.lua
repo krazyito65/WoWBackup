@@ -1,0 +1,471 @@
+
+ZygorTalentAdvisorSettings = {
+	["char"] = {
+		["Goeiiz - Caelestrasz"] = {
+			["debuglog"] = {
+				"22:44:55> > UNIT_PET player (type nil, talents not ready, points 0)", -- [1]
+				"22:44:55> < ", -- [2]
+				"22:45:05> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [3]
+				"22:45:05> < No pet build", -- [4]
+				"22:45:05> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [5]
+				"22:45:05> < No pet build", -- [6]
+				"22:45:05> > UNIT_PET player (type nil, talents not ready, points 0)", -- [7]
+				"22:45:05> < ", -- [8]
+				"22:45:05> > UNIT_PET player (type nil, talents not ready, points 0)", -- [9]
+				"22:45:05> < ", -- [10]
+				"22:45:06> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [11]
+				"22:45:06> < ", -- [12]
+				"22:45:13> > UNIT_PET player (type nil, talents not ready, points 0)", -- [13]
+				"22:45:13> < ", -- [14]
+				"22:45:13> > UNIT_PET player (type nil, talents not ready, points 0)", -- [15]
+				"22:45:13> < ", -- [16]
+				"22:45:13> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [17]
+				"22:45:13> < No pet build", -- [18]
+				"22:45:13> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [19]
+				"22:45:13> < No pet build", -- [20]
+				"22:45:14> > UNIT_PET player (type nil, talents not ready, points 0)", -- [21]
+				"22:45:14> < ", -- [22]
+				"22:45:14> > UNIT_PET player (type nil, talents not ready, points 0)", -- [23]
+				"22:45:14> < ", -- [24]
+				"22:45:14> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [25]
+				"22:45:14> < ", -- [26]
+				"22:45:19> > UNIT_PET player (type nil, talents not ready, points 0)", -- [27]
+				"22:45:19> < ", -- [28]
+				"22:45:20> > UNIT_PET player (type nil, talents not ready, points 0)", -- [29]
+				"22:45:20> < ", -- [30]
+				"22:45:27> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [31]
+				"22:45:27> < No pet build", -- [32]
+				"22:45:27> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [33]
+				"22:45:27> < No pet build", -- [34]
+				"22:45:28> > UNIT_PET player (type nil, talents not ready, points 0)", -- [35]
+				"22:45:28> < ", -- [36]
+				"22:45:28> > UNIT_PET player (type nil, talents not ready, points 0)", -- [37]
+				"22:45:28> < ", -- [38]
+				"22:45:28> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [39]
+				"22:45:28> < ", -- [40]
+				"22:46:34> > UNIT_PET player (type nil, talents not ready, points 0)", -- [41]
+				"22:46:34> < ", -- [42]
+				"22:46:34> > UNIT_PET player (type nil, talents not ready, points 0)", -- [43]
+				"22:46:34> < ", -- [44]
+				"22:47:53> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [45]
+				"22:47:53> < No pet build", -- [46]
+				"22:47:53> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [47]
+				"22:47:53> < No pet build", -- [48]
+				"22:47:54> > UNIT_PET player (type nil, talents not ready, points 0)", -- [49]
+				"22:47:54> < ", -- [50]
+				"22:47:54> > UNIT_PET player (type nil, talents not ready, points 0)", -- [51]
+				"22:47:54> < ", -- [52]
+				"22:47:54> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [53]
+				"22:47:54> < ", -- [54]
+				"22:48:46> > UNIT_PET player (type nil, talents not ready, points 0)", -- [55]
+				"22:48:46> < ", -- [56]
+				"22:48:46> > UNIT_PET player (type nil, talents not ready, points 0)", -- [57]
+				"22:48:46> < ", -- [58]
+				"22:49:10> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [59]
+				"22:49:10> < No pet build", -- [60]
+				"22:49:10> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [61]
+				"22:49:10> < No pet build", -- [62]
+				"22:49:10> > UNIT_PET player (type nil, talents not ready, points 0)", -- [63]
+				"22:49:10> < ", -- [64]
+				"22:49:10> > UNIT_PET player (type nil, talents not ready, points 0)", -- [65]
+				"22:49:10> < ", -- [66]
+				"22:49:10> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [67]
+				"22:49:10> < ", -- [68]
+				"22:50:05> > UNIT_PET player (type nil, talents not ready, points 0)", -- [69]
+				"22:50:05> < ", -- [70]
+				"22:50:05> > UNIT_PET player (type nil, talents not ready, points 0)", -- [71]
+				"22:50:05> < ", -- [72]
+				"22:50:59> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [73]
+				"22:50:59> < No pet build", -- [74]
+				"22:50:59> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [75]
+				"22:50:59> < No pet build", -- [76]
+				"22:50:59> > UNIT_PET player (type nil, talents not ready, points 0)", -- [77]
+				"22:50:59> < ", -- [78]
+				"22:50:59> > UNIT_PET player (type nil, talents not ready, points 0)", -- [79]
+				"22:50:59> < ", -- [80]
+				"22:50:59> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [81]
+				"22:50:59> < ", -- [82]
+				"22:52:34> > UNIT_PET player (type nil, talents not ready, points 0)", -- [83]
+				"22:52:34> < ", -- [84]
+				"22:52:34> > UNIT_PET player (type nil, talents not ready, points 0)", -- [85]
+				"22:52:34> < ", -- [86]
+				"22:53:28> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [87]
+				"22:53:28> < No pet build", -- [88]
+				"22:53:28> > PET_TALENT_UPDATE (points: 0, talents not ready)", -- [89]
+				"22:53:28> < No pet build", -- [90]
+				"22:53:28> > UNIT_PET player (type nil, talents not ready, points 0)", -- [91]
+				"22:53:28> < ", -- [92]
+				"22:53:28> > UNIT_PET player (type nil, talents not ready, points 0)", -- [93]
+				"22:53:28> < ", -- [94]
+				"22:53:28> > UNIT_PET player (type Ferocity, talents ready, points 13)", -- [95]
+				"22:53:28> < ", -- [96]
+				"22:53:43> > UNIT_PET player (type nil, talents not ready, points 0)", -- [97]
+				"22:53:43> < ", -- [98]
+				"22:53:43> > UNIT_PET player (type nil, talents not ready, points 0)", -- [99]
+				"22:53:43> < ", -- [100]
+			},
+		},
+		["Zuuken - Caelestrasz"] = {
+			["debuglog"] = {
+				"05:33:55> Viewer started. ---------------------------", -- [1]
+				"05:33:56> PLAYER_ALIVE", -- [2]
+				"05:41:16> playtalented", -- [3]
+				"05:41:16> playtalented", -- [4]
+				"05:41:18> playtalented", -- [5]
+				"23:17:34> Viewer started. ---------------------------", -- [6]
+				"23:17:35> PLAYER_ALIVE", -- [7]
+			},
+		},
+		["Ridz - Mug'thol"] = {
+			["debuglog"] = {
+				"19:39:36> Viewer started. ---------------------------", -- [1]
+				"19:39:39> PLAYER_ALIVE", -- [2]
+				"19:46:29> Viewer started. ---------------------------", -- [3]
+			},
+		},
+		["Enclave - Caelestrasz"] = {
+			["debuglog"] = {
+				"16:39:11> Viewer started. ---------------------------", -- [1]
+				"16:39:14> PLAYER_ALIVE", -- [2]
+				"16:41:02> PLAYER_ALIVE", -- [3]
+				"16:58:00> PLAYER_ALIVE", -- [4]
+				"17:13:01> Viewer started. ---------------------------", -- [5]
+				"17:13:50> Viewer started. ---------------------------", -- [6]
+				"17:19:06> PLAYER_ALIVE", -- [7]
+				"17:21:51> PLAYER_ALIVE", -- [8]
+				"17:35:50> PLAYER_ALIVE", -- [9]
+				"17:38:53> PLAYER_ALIVE", -- [10]
+				"17:53:47> PLAYER_ALIVE", -- [11]
+			},
+		},
+		["Coinedup - Blackrock"] = {
+			["debuglog"] = {
+				"06:04:49> Viewer started. ---------------------------", -- [1]
+				"06:04:50> PLAYER_ALIVE", -- [2]
+			},
+		},
+		["Xéno - Caelestrasz"] = {
+			["debuglog"] = {
+				"22:55:20> Viewer started. ---------------------------", -- [1]
+				"22:55:23> PLAYER_ALIVE", -- [2]
+				"22:57:05> PLAYER_ALIVE", -- [3]
+				"23:14:30> PLAYER_ALIVE", -- [4]
+			},
+		},
+		["Carcigenic - Frostmourne"] = {
+			["debuglog"] = {
+				"05:50:57> > UpdateSuggestions(player)", -- [1]
+				"05:50:57> |  playersuggestion: ?: ", -- [2]
+				"05:50:57> |  playersuggestion_preview: ?: ", -- [3]
+				"05:50:57> < ", -- [4]
+				"05:50:57> > UpdateSuggestions(player)", -- [5]
+				"05:50:57> |  playersuggestion: ?: ", -- [6]
+				"05:50:57> |  playersuggestion_preview: ?: ", -- [7]
+				"05:50:57> < ", -- [8]
+				"05:50:58> > UpdateSuggestions(player)", -- [9]
+				"05:50:58> |  playersuggestion: ?: ", -- [10]
+				"05:50:58> |  playersuggestion_preview: ?: ", -- [11]
+				"05:50:58> < ", -- [12]
+				"05:50:58> > UpdateSuggestions(player)", -- [13]
+				"05:50:58> |  playersuggestion: ?: ", -- [14]
+				"05:50:58> |  playersuggestion_preview: ?: ", -- [15]
+				"05:50:58> < ", -- [16]
+				"05:50:58> > UpdateSuggestions(player)", -- [17]
+				"05:50:58> |  playersuggestion: ?: ", -- [18]
+				"05:50:58> |  playersuggestion_preview: ?: ", -- [19]
+				"05:50:58> < ", -- [20]
+				"05:50:58> > UpdateSuggestions(player)", -- [21]
+				"05:50:58> |  playersuggestion: ?: ", -- [22]
+				"05:50:58> |  playersuggestion_preview: ?: ", -- [23]
+				"05:50:58> < ", -- [24]
+				"05:50:59> > UpdateSuggestions(player)", -- [25]
+				"05:50:59> |  playersuggestion: ?: ", -- [26]
+				"05:50:59> |  playersuggestion_preview: ?: ", -- [27]
+				"05:50:59> < ", -- [28]
+				"05:50:59> > UpdateSuggestions(player)", -- [29]
+				"05:50:59> |  playersuggestion: ?: ", -- [30]
+				"05:50:59> |  playersuggestion_preview: ?: ", -- [31]
+				"05:50:59> < ", -- [32]
+				"05:50:59> > UpdateSuggestions(player)", -- [33]
+				"05:50:59> |  playersuggestion: ?: ", -- [34]
+				"05:50:59> |  playersuggestion_preview: ?: ", -- [35]
+				"05:50:59> < ", -- [36]
+				"05:50:59> > UpdateSuggestions(player)", -- [37]
+				"05:50:59> |  playersuggestion: ?: ", -- [38]
+				"05:50:59> |  playersuggestion_preview: ?: ", -- [39]
+				"05:50:59> < ", -- [40]
+				"05:50:59> > UpdateSuggestions(player)", -- [41]
+				"05:50:59> |  playersuggestion: ?: ", -- [42]
+				"05:50:59> |  playersuggestion_preview: ?: ", -- [43]
+				"05:50:59> < ", -- [44]
+				"05:51:00> > UpdateSuggestions(player)", -- [45]
+				"05:51:00> |  playersuggestion: ?: ", -- [46]
+				"05:51:00> |  playersuggestion_preview: ?: ", -- [47]
+				"05:51:00> < ", -- [48]
+				"05:51:00> > UpdateSuggestions(player)", -- [49]
+				"05:51:00> |  playersuggestion: ?: ", -- [50]
+				"05:51:00> |  playersuggestion_preview: ?: ", -- [51]
+				"05:51:00> < ", -- [52]
+				"05:51:00> > UpdateSuggestions(player)", -- [53]
+				"05:51:00> |  playersuggestion: ?: ", -- [54]
+				"05:51:00> |  playersuggestion_preview: ?: ", -- [55]
+				"05:51:00> < ", -- [56]
+				"05:51:00> > UpdateSuggestions(player)", -- [57]
+				"05:51:00> |  playersuggestion: ?: ", -- [58]
+				"05:51:00> |  playersuggestion_preview: ?: ", -- [59]
+				"05:51:00> < ", -- [60]
+				"05:51:00> > UpdateSuggestions(player)", -- [61]
+				"05:51:00> |  playersuggestion: ?: ", -- [62]
+				"05:51:00> |  playersuggestion_preview: ?: ", -- [63]
+				"05:51:00> < ", -- [64]
+				"05:51:01> > UpdateSuggestions(player)", -- [65]
+				"05:51:01> |  playersuggestion: ?: ", -- [66]
+				"05:51:01> |  playersuggestion_preview: ?: ", -- [67]
+				"05:51:01> < ", -- [68]
+				"05:51:01> > UpdateSuggestions(player)", -- [69]
+				"05:51:01> |  playersuggestion: ?: ", -- [70]
+				"05:51:01> |  playersuggestion_preview: ?: ", -- [71]
+				"05:51:01> < ", -- [72]
+				"05:51:01> > UpdateSuggestions(player)", -- [73]
+				"05:51:01> |  playersuggestion: ?: ", -- [74]
+				"05:51:01> |  playersuggestion_preview: ?: ", -- [75]
+				"05:51:01> < ", -- [76]
+				"05:51:01> > UpdateSuggestions(player)", -- [77]
+				"05:51:01> |  playersuggestion: ?: ", -- [78]
+				"05:51:01> |  playersuggestion_preview: ?: ", -- [79]
+				"05:51:01> < ", -- [80]
+				"05:51:02> > UpdateSuggestions(player)", -- [81]
+				"05:51:02> |  playersuggestion: ?: ", -- [82]
+				"05:51:02> |  playersuggestion_preview: ?: ", -- [83]
+				"05:51:02> < ", -- [84]
+				"05:51:02> > UpdateSuggestions(player)", -- [85]
+				"05:51:02> |  playersuggestion: ?: ", -- [86]
+				"05:51:02> |  playersuggestion_preview: ?: ", -- [87]
+				"05:51:02> < ", -- [88]
+				"05:51:02> > UpdateSuggestions(player)", -- [89]
+				"05:51:02> |  playersuggestion: ?: ", -- [90]
+				"05:51:02> |  playersuggestion_preview: ?: ", -- [91]
+				"05:51:02> < ", -- [92]
+				"05:51:02> > UpdateSuggestions(player)", -- [93]
+				"05:51:02> |  playersuggestion: ?: ", -- [94]
+				"05:51:02> |  playersuggestion_preview: ?: ", -- [95]
+				"05:51:02> < ", -- [96]
+				"05:51:02> > UpdateSuggestions(player)", -- [97]
+				"05:51:02> |  playersuggestion: ?: ", -- [98]
+				"05:51:02> |  playersuggestion_preview: ?: ", -- [99]
+				"05:51:02> < ", -- [100]
+			},
+		},
+		["Réco - Mug'thol"] = {
+			["debuglog"] = {
+				"06:24:38> Viewer started. ---------------------------", -- [1]
+				"06:24:39> PLAYER_ALIVE", -- [2]
+				"13:04:29> Viewer started. ---------------------------", -- [3]
+				"13:04:30> PLAYER_ALIVE", -- [4]
+			},
+		},
+		["Coinedup - Dath'Remar"] = {
+			["debuglog"] = {
+				"05:53:36> Viewer started. ---------------------------", -- [1]
+				"05:53:37> PLAYER_ALIVE", -- [2]
+			},
+		},
+		["Gollyflobble - Proudmoore"] = {
+			["debuglog"] = {
+				"12:06:14> Viewer started. ---------------------------", -- [1]
+				"12:06:15> PLAYER_ALIVE", -- [2]
+				"12:06:57> Viewer started. ---------------------------", -- [3]
+				"12:10:13> Viewer started. ---------------------------", -- [4]
+				"12:11:33> Viewer started. ---------------------------", -- [5]
+				"12:12:09> PLAYER_ALIVE", -- [6]
+				"12:15:04> Viewer started. ---------------------------", -- [7]
+				"12:42:40> Viewer started. ---------------------------", -- [8]
+				"13:08:47> PLAYER_ALIVE", -- [9]
+				"13:23:42> PLAYER_ALIVE", -- [10]
+				"13:28:11> PLAYER_ALIVE", -- [11]
+				"13:31:40> PLAYER_ALIVE", -- [12]
+				"06:44:50> Viewer started. ---------------------------", -- [13]
+				"06:44:51> PLAYER_ALIVE", -- [14]
+				"10:07:54> Viewer started. ---------------------------", -- [15]
+				"10:07:55> PLAYER_ALIVE", -- [16]
+			},
+		},
+		["Kicksmash - Aman'Thul"] = {
+			["debuglog"] = {
+				"05:45:52> Viewer started. ---------------------------", -- [1]
+				"05:45:53> PLAYER_ALIVE", -- [2]
+				"15:36:49> Viewer started. ---------------------------", -- [3]
+				"15:36:50> PLAYER_ALIVE", -- [4]
+				"15:46:34> playtalented", -- [5]
+				"15:46:34> playtalented", -- [6]
+				"15:46:37> playtalented", -- [7]
+				"15:46:37> playtalented", -- [8]
+				"15:47:27> PLAYER_ALIVE", -- [9]
+				"16:04:34> PLAYER_ALIVE", -- [10]
+				"16:10:22> CHARACTER_POINTS_CHANGED 1", -- [11]
+				"16:10:22> On New Talents nil", -- [12]
+				"16:10:22> > UpdateSuggestions(player)", -- [13]
+				"16:10:22> |  playersuggestion: ?: ", -- [14]
+				"16:10:22> |  playersuggestion_preview: ?: ", -- [15]
+				"16:10:22> < ", -- [16]
+				"16:10:22> ZygorTalentAdvisorPopout_Update", -- [17]
+				"16:10:22> ZygorTalentAdvisorPopout hidden, not updating", -- [18]
+				"16:10:28> playtalented", -- [19]
+				"16:10:28> playtalented", -- [20]
+				"16:10:52> playtalented", -- [21]
+				"16:10:52> > UpdateSuggestions(player)", -- [22]
+				"16:10:52> |  playersuggestion: ?: ", -- [23]
+				"16:10:52> |  playersuggestion_preview: ?: ", -- [24]
+				"16:10:52> < ", -- [25]
+				"16:10:54> > UpdateSuggestions(player)", -- [26]
+				"16:10:54> |  playersuggestion: ?: ", -- [27]
+				"16:10:54> |  playersuggestion_preview: ?: ", -- [28]
+				"16:10:54> < ", -- [29]
+			},
+		},
+		["Nibiiru - Caelestrasz"] = {
+			["debuglog"] = {
+				"13:44:11> ToggleTalentFrame hook", -- [1]
+				"13:48:39> ZygorTalentAdvisorPopout_Update", -- [2]
+				"13:48:39> ZygorTalentAdvisorPopout hidden, not updating", -- [3]
+				"13:55:01> Displaying talent suggestions.", -- [4]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [5]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [6]
+				"13:55:01> Displaying talent suggestions.", -- [7]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [8]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [9]
+				"13:55:01> Displaying talent suggestions.", -- [10]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [11]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [12]
+				"13:55:01> Displaying talent suggestions.", -- [13]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [14]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [15]
+				"13:55:01> Displaying talent suggestions.", -- [16]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [17]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [18]
+				"13:55:01> Displaying talent suggestions.", -- [19]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [20]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [21]
+				"13:55:01> ToggleTalentFrame hook", -- [22]
+				"13:55:01> Displaying talent suggestions.", -- [23]
+				"13:55:01> ZygorTalentAdvisorPopout_Update", -- [24]
+				"13:55:01> ZygorTalentAdvisorPopout hidden, not updating", -- [25]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [26]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [27]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [28]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [29]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [30]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [31]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [32]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [33]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [34]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [35]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [36]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [37]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [38]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [39]
+				"14:23:14> ZygorTalentAdvisorPopout_Update", -- [40]
+				"14:23:14> ZygorTalentAdvisorPopout hidden, not updating", -- [41]
+				"14:23:14> PLAYER_ALIVE", -- [42]
+				"14:30:24> CHARACTER_POINTS_CHANGED 1", -- [43]
+				"14:30:24> On New Talents nil", -- [44]
+				"14:30:24> ZygorTalentAdvisorPopout_Update", -- [45]
+				"14:30:24> ZygorTalentAdvisorPopout hidden, not updating", -- [46]
+				"14:30:29> Displaying talent suggestions.", -- [47]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [48]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [49]
+				"14:30:29> Displaying talent suggestions.", -- [50]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [51]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [52]
+				"14:30:29> Displaying talent suggestions.", -- [53]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [54]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [55]
+				"14:30:29> Displaying talent suggestions.", -- [56]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [57]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [58]
+				"14:30:29> Displaying talent suggestions.", -- [59]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [60]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [61]
+				"14:30:29> Displaying talent suggestions.", -- [62]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [63]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [64]
+				"14:30:29> ToggleTalentFrame hook", -- [65]
+				"14:30:29> Displaying talent suggestions.", -- [66]
+				"14:30:29> ZygorTalentAdvisorPopout_Update", -- [67]
+				"14:30:29> ZygorTalentAdvisorPopout hidden, not updating", -- [68]
+				"14:30:34> Displaying talent suggestions.", -- [69]
+				"14:30:34> ZygorTalentAdvisorPopout_Update", -- [70]
+				"14:30:34> ZygorTalentAdvisorPopout hidden, not updating", -- [71]
+				"14:30:34> Displaying talent suggestions.", -- [72]
+				"14:30:34> ZygorTalentAdvisorPopout_Update", -- [73]
+				"14:30:34> ZygorTalentAdvisorPopout hidden, not updating", -- [74]
+				"14:30:36> Displaying talent suggestions.", -- [75]
+				"14:30:36> ZygorTalentAdvisorPopout_Update", -- [76]
+				"14:30:36> ZygorTalentAdvisorPopout hidden, not updating", -- [77]
+				"14:30:36> Displaying talent suggestions.", -- [78]
+				"14:30:36> ZygorTalentAdvisorPopout_Update", -- [79]
+				"14:30:36> ZygorTalentAdvisorPopout hidden, not updating", -- [80]
+				"14:30:37> CHARACTER_POINTS_CHANGED -1", -- [81]
+				"14:30:37> ZygorTalentAdvisorPopout_Update", -- [82]
+				"14:30:37> ZygorTalentAdvisorPopout hidden, not updating", -- [83]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [84]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [85]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [86]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [87]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [88]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [89]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [90]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [91]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [92]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [93]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [94]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [95]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [96]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [97]
+				"14:32:43> ZygorTalentAdvisorPopout_Update", -- [98]
+				"14:32:43> ZygorTalentAdvisorPopout hidden, not updating", -- [99]
+				"14:32:43> PLAYER_ALIVE", -- [100]
+			},
+		},
+	},
+	["profileKeys"] = {
+		["Goeiiz - Caelestrasz"] = "Goeiiz - Caelestrasz",
+		["Zuuken - Caelestrasz"] = "Zuuken - Caelestrasz",
+		["Ridz - Mug'thol"] = "Ridz - Mug'thol",
+		["Enclave - Caelestrasz"] = "Enclave - Caelestrasz",
+		["Coinedup - Blackrock"] = "Coinedup - Blackrock",
+		["Xéno - Caelestrasz"] = "Xéno - Caelestrasz",
+		["Carcigenic - Frostmourne"] = "Carcigenic - Frostmourne",
+		["Réco - Mug'thol"] = "Réco - Mug'thol",
+		["Coinedup - Dath'Remar"] = "Coinedup - Dath'Remar",
+		["Gollyflobble - Proudmoore"] = "Gollyflobble - Proudmoore",
+		["Kicksmash - Aman'Thul"] = "Kicksmash - Aman'Thul",
+		["Nibiiru - Caelestrasz"] = "Nibiiru - Caelestrasz",
+	},
+	["profiles"] = {
+		["Goeiiz - Caelestrasz"] = {
+		},
+		["Zuuken - Caelestrasz"] = {
+		},
+		["Ridz - Mug'thol"] = {
+		},
+		["Enclave - Caelestrasz"] = {
+		},
+		["Coinedup - Blackrock"] = {
+		},
+		["Xéno - Caelestrasz"] = {
+		},
+		["Carcigenic - Frostmourne"] = {
+		},
+		["Réco - Mug'thol"] = {
+		},
+		["Coinedup - Dath'Remar"] = {
+		},
+		["Gollyflobble - Proudmoore"] = {
+		},
+		["Kicksmash - Aman'Thul"] = {
+		},
+		["Nibiiru - Caelestrasz"] = {
+		},
+	},
+}

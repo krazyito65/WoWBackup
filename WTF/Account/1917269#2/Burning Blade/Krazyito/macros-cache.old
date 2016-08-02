@@ -1,0 +1,82 @@
+VER 3 0100000000000058 " " "SPELL_HOLY_SENSEUNDEAD"
+--------------------------------------
+Semi-Respectable Mumble
+semi-respectable.mumble.com
+9691
+END
+VER 3 0100000000000059 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift, talent:1/3]  wild charge; [mod:ctrl] Berserking; Typhoon
+END
+VER 3 0100000000000049 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Etheralus, the Eternal Reward
+/use [nomod] Stampeding Roar
+END
+VER 3 010000000000005C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] flap; Ursol's Vortex
+END
+VER 3 010000000000005D " " "INV_MISC_QUESTIONMARK"
+/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
+END
+VER 3 010000000000005E " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Soothe; wrath
+END
+VER 3 010000000000004C " COOLIOS" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] 14
+/cast [mod:ctrl] Berserking(Racial)
+/use [nomod] Celestial Alignment
+/cast [nomod] Moonfire 
+END
+VER 3 0100000000000054 " CW/HT" "INV_Misc_QuestionMark"
+#showtooltip
+/use [@mouseover] cenarion ward
+END
+VER 3 010000000000004B "dispel" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover, spec:1] Nature's Cure
+/use [@mouseover, spec:2] remove corruption
+END
+VER 3 010000000000005A "Fishing" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/equip [mod:shift] Sharpened Tuskarr Spear; [mod:ctrl] Savage Fishing Pole
+/use [mod:shift] Sharpened Tuskarr Spear; [mod:alt] Heat-Treated Spinning Lure
+/use [nomod] fishing
+END
+VER 3 010000000000004A "ht" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/console autounshift 0
+/use [mod:ctrl,@player,talent:2/3]cenarion ward;[mod:ctrl,talent:2/2]renewal;[@player,talent:6/2]Healing Touch;[talent:6/3]Nature's Vigil;[talent:6/1]Heart of the wild
+/console autounshift 1
+END
+VER 3 0100000000000024 "regrow" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [nomod, @mouseover] Regrowth
+END
+VER 3 0100000000000028 "resto moonfare" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [spec:1,mod:alt, @player] Genesis; [spec:1,@mouseover,mod:ctrl]lifebloom;[spec:1,@mouseover,help]Rejuvenation;[spec:1,harm]moonfire;[spec:1]Rejuvenation
+/use [spec:2, mod:ctrl]Displacer Beast; [spec:2,@mouseover,harm][spec:2]moonfire
+END
+VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover,mod:ctrl]ironbark; [mod:shift] wild charge;[@mouseover,help]swiftmend;[harm]Wrath; swiftmend
+END
+VER 3 0100000000000013 "resto shrrom/ns" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift]Wild Mushroom;Nature's Swiftness
+END
+VER 3 0100000000000015 "starsurge" "INV_MISC_QUESTIONMARK"
+#showtooltip Starsurge
+/focus [mod:alt,@mouseover,harm][mod:alt]
+/use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
+END
+VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
+R1WM1DT1EM1WT1WM2HR2RM2HR2RM2PM3RM3MR3MR3DR3MR4SH4OH4SR4DH4PH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]5DR[x][x][x][x][x][x][x][x][x][x][x][x]0__[x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
+NGnoOhbSaeTyrBosColZyzSurHarMccDemBisDujFlaAsáDeaChiLicBlaNvi[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x]Wat[x]Wat[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

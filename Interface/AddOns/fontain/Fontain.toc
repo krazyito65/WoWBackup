@@ -1,0 +1,19 @@
+## Interface: 60000
+## Title: Fontain
+## Notes: A fountain of fonts for your funktastic UI.
+## Author: Antiarc
+## OptionalDeps: Ace3, LibSharedMedia-3.0
+## X-Embeds: Ace3, LibSharedMedia-3.0
+## SavedVariables: FontainDB
+## Version: 1.0
+## X-Curse-Packaged-Version: 1.0
+## X-Curse-Project-Name: Fontain
+## X-Curse-Project-ID: fontain
+## X-Curse-Repository-ID: wow/fontain/mainline
+
+embeds.xml
+
+Localization\enUS.lua
+Fonts\catalog.lua
+Fontain.lua
+Config.lua

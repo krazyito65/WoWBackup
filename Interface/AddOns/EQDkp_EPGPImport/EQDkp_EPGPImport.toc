@@ -1,0 +1,14 @@
+## Interface: 40200
+## Title: EQDkp_EPGPImport
+## Author: Bushmaster
+## Version: v0.5
+## Notes: Imports EQDkp_Plus EPGP Data into your guild officer notes for use with EPGP
+## RequiredDeps: EPGP
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Curse-Packaged-Version: 0.6
+## X-Curse-Project-Name: EQDkpPlus EPGP Importer
+## X-Curse-Project-ID: eqdkp_epgpimport
+## X-Curse-Repository-ID: wow/eqdkp_epgpimport/mainline
+embeds.xml
+EQDkp_EPGPImport.lua

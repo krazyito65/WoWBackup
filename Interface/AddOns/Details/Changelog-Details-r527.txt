@@ -1,0 +1,232 @@
+2016-07-22  Tercio  <Tercio>
+
+[b2a98d7b0c78] [tip]
+* images/options_window.blp:
+
+- missing options background file.
+
+
+[e1af3fbdb3e8]
+* boot.lua, images/spec_icons_normal.blp, images/spec_icons_normal_alpha.blp:
+
+- Trying a workaround for the wow client's texture cache bug which causes FPS drops.
+
+
+2016-07-21  Tercio  <Tercio>
+
+[8bbc9f45cfcc]
+* boot.lua, core/parser.lua:
+
+- Fixed warlock's Soul Effigy.
+
+
+2016-07-20  Tercio  <Tercio>
+
+[1414ab85d06a]
+* boot.lua, plugins/Details_CalcLeech/Details_CalcLeech.lua:
+
+- Fixed an issue with Calc Leech plugin.
+
+
+2016-07-19  Tercio  <Tercio>
+
+[5deef00dbfec]
+* Libs/DF/fw.lua, Libs/DF/normal_bar.lua, boot.lua, images/BantoBar.blp, images/BantoBar.tga, images/atributos_captures.blp, images/atributos_captures.tga, images/atributos_icones.blp, images/atributos_icones.tga, images/atributos_icones_damage.blp, images/atributos_icones_damage.tga, images/atributos_icones_energyze.blp, images/atributos_icones_energyze.tga, images/atributos_icones_heal.blp, images/atributos_icones_heal.tga, images/atributos_icones_misc.blp, images/atributos_icones_misc.tga, images/autoshot.blp, images/autoshot.tga, images/background.blp, images/background.tga, images/bar4.blp, images/bar4.tga, images/bar4_glass.blp, images/bar4_glass.tga, images/bar4_reverse.blp, images/bar4_reverse.tga, images/bar4_vidro.blp, images/bar4_vidro.tga, images/bar_background.blp, images/bar_background.tga, images/bar_background2.blp, images/bar_background2.tga, images/bar_detalhes2.blp, images/bar_detalhes2.tga, images/bar_detalhes2_end.blp, images/bar_detalhes2_end.tga, images/bar_flat.blp, images/bar_flat.tga, images/bar_serenity.blp, images/bar_serenity.tga, images/bar_skyline.blp, images/bar_skyline.tga, images/border_1.blp, images/border_1.tga, images/border_2.blp, images/border_2.tga, images/border_3.blp, images/border_3.tga, images/border_welcome.blp, images/border_welcome.tga, images/button_disable_overlay.blp, images/button_disable_overlay.tga, images/classes.blp, images/classes.tga, images/classes_plus.blp, images/classes_plus.tga, images/classes_small.blp, images/classes_small.tga, images/classes_small_alpha.blp, images/classes_small_alpha.tga, images/classes_small_alpha_bw.blp, images/classes_small_alpha_bw.tga, images/classes_small_bw.blp, images/classes_small_bw.tga, images/clock.blp, images/clock.tga, images/cooltip_selected.blp, images/cooltip_selected.tga, images/copy.blp, images/copy.tga, images/custom_bg.blp, images/custom_bg.tga, images/custom_icones.blp, images/custom_icones.tga, images/default_button.blp, images/default_button.tga, images/espadas.blp, images/espadas.tga, images/highlight_leftright.blp, images/highlight_leftright.tga, images/highlight_updown.blp, images/highlight_updown.tga, images/icone_bg.blp, images/icone_bg.tga, images/icone_bg_fundo.blp, images/icone_bg_fundo.tga, images/icones_barra.blp, images/icones_barra.tga, images/icons.blp, images/icons.tga, images/icons2.blp, images/icons2.tga, images/info_window_background.blp, images/info_window_background.tga, images/info_window_damagetaken.blp, images/info_window_damagetaken.tga, images/key_alt.blp, images/key_alt.tga, images/key_ctrl.blp, images/key_ctrl.tga, images/key_shift.blp, images/key_shift.tga, images/knob.blp, images/knob.tga, images/logotipo.blp, images/logotipo.tga, images/melee.blp, images/melee.tga, images/minimap.blp, images/minimap.tga, images/modo_icones.blp, images/modo_icones.tga, images/options_window.tga, images/overlay_detalhes.blp, images/overlay_detalhes.tga, images/report_button.blp, images/report_button.tga, images/report_frame_icons.blp, images/report_frame_icons.tga, images/reset_button2.blp, images/reset_button2.tga, images/skins/classic_skin.blp, images/skins/classic_skin.tga, images/skins/classic_skin_v1.blp, images/skins/classic_skin_v1.tga, images/skins/default_skin.blp, images/skins/default_skin.tga, images/skins/elvui.blp, images/skins/elvui.tga, images/skins/elvui_opaque.blp, images/skins/elvui_opaque.tga, images/skins/flat_skin.blp, images/skins/flat_skin.tga, images/skins/imperial_skin.blp, images/skins/overwatch.blp, images/skins/overwatch.tga, images/skins/simplygray_skin.blp, images/skins/simplygray_skin.tga, images/small_icons.blp, images/small_icons.tga, images/spec_icons_normal.blp, images/spec_icons_normal.tga, images/spec_icons_normal_alpha.blp, images/spec_icons_normal_alpha.tga, images/toolbar_icons.blp, images/toolbar_icons.tga, images/toolbar_icons_shadow.blp, images/toolbar_icons_shadow.tga, images/verticalline.blp, images/verticalline.tga:
+
+- framework update.
+- using image format BLP instead of TGA.
+
+
+[6160f2beb623]
+* Details.toc, Libs/DF/button.lua, Libs/DF/cooltip.lua, Libs/DF/dropdown.lua, Libs/DF/dropdown.xml, Libs/DF/fw.lua, Libs/DF/label.lua, Libs/DF/load.xml, Libs/DF/math.lua, Libs/DF/normal_bar.lua, Libs/DF/panel.lua, Libs/DF/picture.lua, Libs/DF/slider.lua, Libs/DF/split_bar.lua, Libs/DF/textentry.lua, Libs/LibGroupInSpecT-1.1/LibGroupInSpecT-1.1.lua, Libs/NickTag-1.0/NickTag-1.0.lua, Libs/libs.xml, boot.lua, classes/classe_damage.lua, classes/classe_damage_habilidade.lua, classes/classe_heal.lua, classes/classe_heal_habilidade.lua, classes/classe_instancia.lua, classes/classe_instancia_include.lua, core/gears.lua, core/parser.lua, core/plugins.lua, core/util.lua, core/windows.lua, functions/link.lua, functions/profiles.lua, functions/skins.lua, functions/slash.lua, functions/spellcache.lua, functions/spells.lua, gumps/janela_info.lua, gumps/janela_principal.lua, images/options_window.tga, plugins/Details_3DModelsPaths/Details_3DModelsPaths.toc, plugins/Details_CalcLeech/Details_CalcLeech.toc, plugins/Details_DataStorage/Details_DataStorage.toc, plugins/Details_DmgRank/Details_DmgRank.lua, plugins/Details_DmgRank/Details_DmgRank.toc, plugins/Details_DpsTuning/Details_DpsTuning.toc, plugins/Details_DungeonInfo-Warlords/Details_DungeonInfo-Warlords.toc, plugins/Details_EncounterDetails/Details_EncounterDetails.toc, plugins/Details_EncounterDetails/frames.lua, plugins/Details_RaidCheck/Details_RaidCheck.toc, plugins/Details_RaidInfo-HellfireCitadel/Details_RaidInfo-HellfireCitadel.toc, plugins/Details_Streamer/Details_Streamer.toc, plugins/Details_TimeAttack/Details_TimeAttack.toc, plugins/Details_TinyThreat/Details_TinyThreat.toc, plugins/Details_Vanguard/Details_Vanguard.toc:
+
+- Release for 7.0.3 patch.
+- Major Framework update.
+- Nick-Tag library upodate.
+
+
+2016-07-12  Tercio  <Tercio>
+
+[2a10f69e8227]
+* Libs/DF/button.xml, Libs/DF/dropdown.xml, Libs/DF/fw.lua:
+
+- small framework fix.
+
+
+2016-07-04  Tercio  <Tercio>
+
+[6c3c4a702b27]
+* boot.lua:
+
+- weakup packpager.
+
+
+[eb520e091b23]
+* startup.lua:
+
+- we are no beta anymore.
+
+
+2016-06-14  Tercio  <Tercio>
+
+[8964f5beb436]
+* boot.lua:
+
+-wakeup packpager.
+
+
+[a9ca76b37b86]
+* functions/link.lua:
+
+- fixed an issue where sometimes the aura panel gives an error at opening it.
+
+
+2016-05-27  Tercio  <Tercio>
+
+[445896cabf0f]
+* boot.lua, classes/classe_others.lua, images/classes.tga, images/classes_small.tga, images/classes_small_alpha.tga, images/classes_small_alpha_bw.tga, images/classes_small_bw.tga, images/spec_icons_normal.tga, images/spec_icons_normal_alpha.tga, plugins/Details_CalcLeech/Details_CalcLeech.lua:
+
+- Fixed a problem with the Calc Leech plugin.
+- Fixed a problem when reporting buff uptime.
+
+
+2016-05-09  Tercio  <Tercio>
+
+[fe438eca071e]
+* boot.lua:
+
+- Tagging to update localizations.
+
+
+[2511c04664e5]
+* boot.lua:
+
+- Tagging to update localizations.
+
+
+2016-04-24  Tercio  <Tercio>
+
+[2eafa7a81534]
+* boot.lua:
+
+- userversion fix.
+- new version of details for logion beta on http://goo.gl/k2lIFQ.
+
+
+2016-04-17  Tercio  <Tercio>
+
+[7787c51aacfe]
+* boot.lua, functions/skins.lua, images/skins/overwatch.tga:
+
+- small update.
+
+
+2016-04-08  Tercio  <Tercio>
+
+[6661e94ae1d7]
+* boot.lua, classes/classe_heal.lua, classes/classe_others.lua:
+
+- Ticket 76: fixed an issue with buffs already present on the actor at the beginning of the combat wasn't being counted.
+
+
+2016-04-04  Tercio  <Tercio>
+
+[9e09a588796a]
+* boot.lua, gumps/janela_principal.lua, plugins/Details_CalcLeech/Details_CalcLeech.lua:
+
+- delete window warning for how to fully delete a window.
+- tagging v4.4d as release.
+
+
+2016-03-30  Tercio  <Tercio>
+
+[612267dd9f5f]
+* Libs/LibGroupInSpecT-1.1/LibGroupInSpecT-1.1.lua, Libs/LibGroupInSpecT-1.1/lib.xml, Libs/libs.xml, boot.lua, classes/classe_damage.lua, core/gears.lua:
+
+- added LibGroupInSpecT-1.1 to the project.
+- fixed an issue with Damage Taken by Spells.
+
+
+2016-03-28  Tercio  <Tercio>
+
+[1d54ed07922a]
+* boot.lua, plugins/Details_CalcLeech/Details_CalcLeech.lua:
+
+- fix for the leech plugin.
+
+
+[c5acc70807c1]
+* .pkgmeta, boot.lua, plugins/Details_CalcLeech/Details_CalcLeech.lua, plugins/Details_CalcLeech/Details_CalcLeech.toc:
+
+- Added Leech Trinket plugin. It creates a custom display called CalcLeech.
+
+
+2016-03-14  Tercio  <Tercio>
+
+[281f0950d586]
+* boot.lua:
+
+- Fixed a rare issue with raid target counters where sometimes got invalid at the logon.
+
+
+[ee57b24b6d60]
+* boot.lua, classes/classe_damage.lua, core/parser.lua:
+
+- Fixed a rare issue with raid target counters where sometimes got invalid at the logon.
+
+
+2016-03-04  Tercioo  <Tercioo>
+
+[e3c92ae1438c]
+* boot.lua, plugins/Details_Streamer/Details_Streamer.lua, plugins/Details_TimeAttack/Details_TimeAttack.lua:
+
+- added Dos/Hps display at the Streamer plugin.
+- disabled the timeattack tutorial.
+
+
+2016-03-02  Tercioo  <Tercioo>
+
+[a250f07c1a2b]
+* boot.lua, plugins/Details_Streamer/Details_Streamer.lua:
+
+- Details! Streamer (plugin): fixed an issue where sometimes the option panel won't open.
+
+
+2016-02-29  Tercioo  <Tercioo>
+
+[72b04e570c28]
+* core/parser.lua:
+
+- stop the block spam on the chat.
+
+
+2016-02-28  Tercioo  <Tercioo>
+
+[719b2f11c04d]
+* boot.lua, classes/classe_damage.lua, core/parser.lua, gumps/janela_info.lua:
+
+- Added block amount on the Avoidance tab at the Player Detail Window.
+
+
+[07cbd449b368]
+* boot.lua, plugins/Details_Streamer/Details_Streamer.lua:
+
+- Streamer (plugin) now saves the window size inside the profile, this should fix some problems.
+- Streamer (plugin) added an option for frame strata, default is now Low (from High).
+
+
+[6226e3b1ba25]
+* boot.lua, classes/classe_damage.lua:
+
+- fixed the issue with the damage taken by spell.
+
+
+2016-02-25  Tercioo  <Tercioo>
+
+[7d5eaeba4eda]
+* boot.lua, plugins/Details_Streamer/Details_Streamer.lua, plugins/Details_Streamer/Details_Streamer.toc:
+
+- Added profile option for Details!: Streamer plugin (reopen your game after update the addon).
+- Fixed an issue with Streamer plugin where it auto deactive after a reload or logon.
+
+

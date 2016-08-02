@@ -1,0 +1,27 @@
+## Interface: 40300
+## Notes: ZGV localized
+## Note-frFR: 
+## Notes-esES: 
+## Title: |cffffff88Z|cffffee66y|cffffdd44g|cffffcc22o|cffffbb00r|r Guides DEV "localized"
+## qqqTitle: |cffffff88Z|cffffee66y|cffffdd44g|cffffcc22o|cffffbb00r|r Guides Viewer |TInterface\AddOns\ZygorGuidesViewer\Skins\gnome:48:48:0:0|t
+## Author: Sinus Pi
+## DefaultState: enabled
+## LoadOnDemand: 0
+## SavedVariables: ZygorGuidesViewerSettings
+## - SavedVariablesPerCharacter: ZygorGuidesViewerSettingsChar
+## OptionalDeps: Cartographer, Cartographer3, TomTom
+## X-Category: 
+## X-Credits: 
+## X-eMail: zygor@zygorguides.com
+## X-Website: http://zygorguides.com/
+## X-License: GPL
+## Version: 3.3
+
+Libs\Libs.xml
+
+Localization\load.xml
+Localization\names.xml
+
+files.xml
+
+Guides\Autoload.xml

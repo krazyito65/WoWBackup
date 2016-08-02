@@ -1,0 +1,25 @@
+CT_Library (6.0.2.2) 2014-10-17
+- Fixed the import issues.
+
+CT_Library (6.0.2.0) 2014-10-15
+- Updated to 6.0.2.
+
+CT_Library (5.4.7.0) 2014-05-16
+- Updated to 5.4.7.
+- Rescaling the UI Scale or the game itself in windowed mode now won't cause the bars to move randomly.
+
+CT_Library (5.4.2.2) 2013-12-21
+- Added more upvalues.
+
+CT_Library (5.4.2) 2013-12-21
+- Library fix.
+
+CT_Library (5.4) 2013-12-12
+- Updated for the WoW 5.4 patch.
+- Minor changes.
+
+CT_Library (5.3) 2013-05-24
+- Updated for the WoW 5.3 patch.
+
+CT_Library (5.2) 2013-03-09
+- Updated for the WoW 5.2 patch.

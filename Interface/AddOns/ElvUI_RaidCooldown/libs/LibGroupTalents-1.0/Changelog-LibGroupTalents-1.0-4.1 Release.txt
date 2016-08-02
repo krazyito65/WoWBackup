@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r69 | zeksie | 2011-07-14 09:17:57 +0000 (Thu, 14 Jul 2011) | 1 line
+Changed paths:
+   A /tags/4.1 Release (from /trunk:68)
+
+Tagging as 4.1 Release
+------------------------------------------------------------------------
+r68 | Zeksie | 2011-03-28 19:11:12 +0000 (Mon, 28 Mar 2011) | 1 line
+Changed paths:
+   M /trunk/LibGroupTalents-1.0.lua
+
+Added RegisterAddonMessagePrefix calls.
+------------------------------------------------------------------------

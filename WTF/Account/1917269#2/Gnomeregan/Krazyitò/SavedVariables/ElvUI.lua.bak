@@ -1,0 +1,8 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		"/who apoth", -- [1]
+		"/w Narph INVITE MEH", -- [2]
+		"/w Taeyang inv", -- [3]
+	},
+}

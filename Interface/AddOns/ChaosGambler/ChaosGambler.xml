@@ -1,0 +1,169 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="ChaosGambler.lua" />
+	<Frame name="ChaosGambler_Frame" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="110" y="140" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="UIParent" />
+		</Anchors>
+		<Scripts>
+		<OnLoad>
+			ChaosGambler_OnLoad(self);
+		</OnLoad>
+		<OnEvent>
+			ChaosGambler_OnEvent(self, event, ...);
+		</OnEvent>
+		<OnDragStart>
+			self:StartMoving();
+			self.isMoving = true;
+		</OnDragStart>
+		<OnDragStop>
+			self:StopMovingOrSizing();
+			self.isMoving = false;
+		</OnDragStop>
+		</Scripts>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+		</Backdrop>
+		<Frames>
+			<Button name="ChaosGambler_Close" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="ChaosGambler_Frame" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="7" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+			<EditBox name="ChaosGambler_EditBox" letters="8">
+				<Size>
+					<AbsDimension x="90" y="38" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="-1" y="-22" />
+					</Anchor>
+				</Anchors>				
+				<Layers>					
+					<Layer level="BACKGROUND">
+						<Texture name="Texture2" file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1" top="0" bottom="1" />
+						</Texture>
+						<Texture name="Texture1" file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="32" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1" />
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						ChaosGambler_EditBox_OnLoad();
+					</OnLoad>
+					<OnEscapePressed>
+						self:ClearFocus();
+					</OnEscapePressed>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+			<Button name="ChaosGambler_AcceptOnes_Button" inherits="OptionsButtonTemplate" text="Open Entry">
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="70" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					ChaosGambler_OnClickACCEPTONES();
+				</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="ChaosGambler_CHAT_Button" inherits="OptionsButtonTemplate" text="(Party)">
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					ChaosGambler_OnClickCHAT();
+				</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="ChaosGambler_ROLL_Button" inherits="OptionsButtonTemplate" movable="true" text="ROLL!">
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="30" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					ChaosGambler_OnClickROLL();
+				</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="ChaosGambler_LASTCALL_Button" inherits="OptionsButtonTemplate" movable="true" text="Last Call">
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="50" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					ChaosGambler_OnClickLASTCALL();
+				</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="ChaosGambler_STATS_Button" inherits="OptionsButtonTemplate" movable="true" text="Stats">
+				<Anchors>
+					<Anchor point="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					ChaosGambler_OnClickSTATS();
+				</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

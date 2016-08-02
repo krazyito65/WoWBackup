@@ -1,0 +1,9 @@
+ //         DANKE FÜR DAS VERWENDEN VON "WIM_LightboundUI"         \\
+||------------------------------------------------------------------||
+||         ENTPACKE DEN "WIM_LightboundUI" ORDNER EINFACH IN        ||
+||            "DEINPFAD\WORLD OF WARCRAFT\INTERFACE\ADDONS"         ||
+||------------------------------------------------------------------||
+||       DIESE WIM_MOD WURDE NUR FÜR DAS LightboundUI ERSTELLT!     ||
+||         BEI PROBLEMEN ODER FEHLERN KONTAKTIERE MICH BITTE!       ||
+||------------------------------------------------------------------||
+ \\            LIEBSTE GRÜßE: Lightbound BLACKHAND-EU              //

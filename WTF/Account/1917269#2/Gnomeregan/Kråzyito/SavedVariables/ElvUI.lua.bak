@@ -1,0 +1,10 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		"/w Jailbate like", -- [1]
+		"/w Jailbate i have hunter gear", -- [2]
+		"/w Jailbate does that convert to leather?", -- [3]
+		"/w Jailbate lol", -- [4]
+		"/w Jailbate brb", -- [5]
+	},
+}

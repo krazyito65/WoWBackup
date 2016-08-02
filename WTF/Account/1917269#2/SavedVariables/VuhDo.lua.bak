@@ -1,0 +1,2408 @@
+
+VUHDO_PROFILES = {
+}
+VUHDO_MANUAL_ROLES = {
+}
+VUHDO_SPELL_LAYOUTS = {
+}
+VUHDO_USER_CLASS_COLORS = {
+	[24] = {
+		["TG"] = 0.9,
+		["R"] = 0.41,
+		["TB"] = 1,
+		["G"] = 0.8,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.94,
+		["TR"] = 0.51,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[25] = {
+		["TG"] = 0.61,
+		["R"] = 0.58,
+		["TB"] = 0.89,
+		["G"] = 0.51,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.79,
+		["TR"] = 0.6800000000000001,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[26] = {
+		["TG"] = 0.45,
+		["R"] = 0.14,
+		["TB"] = 1,
+		["G"] = 0.35,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 1,
+		["TR"] = 0.24,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[27] = {
+		["TG"] = 0.6,
+		["R"] = 1,
+		["TB"] = 0.04,
+		["G"] = 0.49,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.04,
+		["TR"] = 1,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[28] = {
+		["TG"] = 1,
+		["R"] = 0.9,
+		["TB"] = 1,
+		["G"] = 0.9,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.9,
+		["TR"] = 1,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[29] = {
+		["TG"] = 0.22,
+		["R"] = 0.77,
+		["TB"] = 0.33,
+		["G"] = 0.12,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.23,
+		["TR"] = 0.87,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[21] = {
+		["TG"] = 1,
+		["R"] = 1,
+		["TB"] = 0.51,
+		["G"] = 0.96,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.41,
+		["TR"] = 1,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[20] = {
+		["TG"] = 0.71,
+		["R"] = 0.78,
+		["TB"] = 0.53,
+		["G"] = 0.61,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.43,
+		["TR"] = 0.88,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[40] = {
+		["TG"] = 0.9,
+		["R"] = 0.4,
+		["TB"] = 0.5,
+		["G"] = 0.6,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.4,
+		["TR"] = 0.5,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[22] = {
+		["TG"] = 0.9300000000000001,
+		["R"] = 0.67,
+		["TB"] = 0.55,
+		["G"] = 0.83,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.45,
+		["TR"] = 0.77,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	[23] = {
+		["TG"] = 0.65,
+		["R"] = 0.96,
+		["TB"] = 0.83,
+		["G"] = 0.55,
+		["useBackground"] = true,
+		["TO"] = 1,
+		["B"] = 0.73,
+		["TR"] = 1,
+		["useOpacity"] = true,
+		["O"] = 1,
+		["useText"] = true,
+	},
+	["petClassColor"] = false,
+}
+VUHDO_DEBUFF_BLACKLIST = {
+	["Sated"] = true,
+	["Dungeon Cooldown"] = true,
+	["Chill of the Throne"] = true,
+}
+VUHDO_BOUQUETS = {
+	["VERSION"] = 5,
+	["SELECTED"] = "Tank Cooldowns",
+	["STORED"] = {
+		["Border: Multi + Aggro"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = false,
+				["name"] = "AGGRO",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.7,
+					["R"] = 0.9,
+					["TB"] = 0.7,
+					["G"] = 0.9,
+					["TR"] = 0.7,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.9,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "PLAYER_TARGET",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.4,
+					["R"] = 0.635,
+					["TB"] = 0.4,
+					["G"] = 0.47,
+					["TR"] = 0.4,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.113,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_TARGET",
+			}, -- [3]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.1,
+					["R"] = 0,
+					["TB"] = 0.1,
+					["G"] = 0,
+					["TR"] = 0.1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "ALWAYS",
+			}, -- [4]
+		},
+		["Manabars: Mana only"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.25,
+					["B"] = 0,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "NO_RANGE",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 1,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "STATUS_MANA",
+			}, -- [2]
+		},
+		["Role Icon"] = {
+			{
+				["custom"] = {
+					3, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "ROLE_ICON",
+			}, -- [1]
+		},
+		["Aggro Indicator"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "AGGRO",
+			}, -- [1]
+		},
+		["PW:S & Weakened Soul"] = {
+			{
+				["name"] = "Weakened Soul",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 0.623,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.305,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 9,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 0.074,
+					["TB"] = 1,
+					["G"] = 0.749,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 8,
+				["mine"] = true,
+				["name"] = "Power Word: Shield",
+			}, -- [2]
+		},
+		["Threat: Status Bar"] = {
+			{
+				["name"] = "THREAT_ABOVE",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					85, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 0,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "STATUS_THREAT",
+			}, -- [2]
+		},
+		["Mouseover: Multi"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 0.75,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.75,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_TARGET",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 0.25,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.6,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_GROUP",
+			}, -- [2]
+		},
+		["Cluster: Mouse Hover"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.5,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0.5,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.8,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_CLUSTER",
+			}, -- [1]
+		},
+		["Tank Cooldowns extd"] = {
+			{
+				["name"] = "Bone Shield",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["name"] = "Icebound Fortitude",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [2]
+			{
+				["name"] = "Vampiric Blood",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [3]
+			{
+				["name"] = "Anti-Magic Shell",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [4]
+			{
+				["name"] = "Anti-Magic Zone",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [5]
+			{
+				["name"] = "Divine Shield",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [6]
+			{
+				["name"] = "Divine Protection",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [7]
+			{
+				["name"] = "Ardent Defender",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [8]
+			{
+				["name"] = "Hand of Protection",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [9]
+			{
+				["name"] = "Hand of Sacrifice",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [10]
+			{
+				["name"] = "Divine Guardian",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [11]
+			{
+				["name"] = "Divine Sacrifice",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [12]
+			{
+				["name"] = "Guardian of Ancient Kings",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [13]
+			{
+				["name"] = "Shield Wall",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [14]
+			{
+				["name"] = "Shield Block",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [15]
+			{
+				["name"] = "Last Stand",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [16]
+			{
+				["name"] = "Intervene",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [17]
+			{
+				["name"] = "Enraged Regeneration",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [18]
+			{
+				["name"] = "Barkskin",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [19]
+			{
+				["name"] = "Survival Instincts",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [20]
+			{
+				["name"] = "Frenzied Regeneration",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [21]
+		},
+		["Health (generic, class col)"] = {
+			{
+				["name"] = "DISCONNECTED",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.576,
+					["B"] = 0.298,
+					["TB"] = 0.576,
+					["G"] = 0.298,
+					["TR"] = 0.576,
+					["isManuallySet"] = true,
+					["TO"] = 0.58,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.21,
+					["R"] = 0.298,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["name"] = "NO_RANGE",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0,
+					["B"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.5,
+					["useOpacity"] = true,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["R"] = 0,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [2]
+			{
+				["name"] = "RESURRECTION",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 0.4,
+					["useText"] = true,
+					["TR"] = 0.4,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [3]
+			{
+				["name"] = "DEAD",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.5,
+					["B"] = 0.3,
+					["TB"] = 0.5,
+					["G"] = 0.3,
+					["TR"] = 0.5,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.5,
+					["R"] = 0.3,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [4]
+			{
+				["name"] = "OVERHEAL_HIGHLIGHT",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [5]
+			{
+				["name"] = "DEBUFF_BAR_COLOR",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [6]
+			{
+				["name"] = "ALWAYS",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.82,
+					["R"] = 1,
+					["TB"] = 0,
+					["useText"] = true,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = false,
+					["useBackground"] = false,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [7]
+			{
+				["name"] = "STATUS_HEALTH",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["B"] = 0.7,
+					["TB"] = 1,
+					["G"] = 0.7,
+					["useBackground"] = true,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["TR"] = 1,
+					["useOpacity"] = true,
+					["O"] = 1,
+					["R"] = 0.7,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+			}, -- [8]
+		},
+		["Threat: Marks"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.5,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "THREAT_LEVEL_HIGH",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.5,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0.5,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "THREAT_LEVEL_MEDIUM",
+			}, -- [2]
+		},
+		["Mouseover: Single"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 0.75,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_TARGET",
+			}, -- [1]
+		},
+		["Background: Solid"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.576,
+					["R"] = 0.298,
+					["TB"] = 0.576,
+					["G"] = 0.298,
+					["TR"] = 0.576,
+					["isManuallySet"] = true,
+					["TO"] = 0.58,
+					["B"] = 0.298,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.21,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "DISCONNECTED",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.25,
+					["B"] = 0,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "NO_RANGE",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 0.4,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "DEBUFF_BAR_COLOR",
+			}, -- [3]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.1,
+					["R"] = 0,
+					["TB"] = 0.1,
+					["G"] = 0,
+					["TR"] = 0.1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "ALWAYS",
+			}, -- [4]
+		},
+		["Health (generic, solid)"] = {
+			{
+				["name"] = "DISCONNECTED",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.576,
+					["B"] = 0.298,
+					["TB"] = 0.576,
+					["G"] = 0.298,
+					["TR"] = 0.576,
+					["isManuallySet"] = true,
+					["TO"] = 0.58,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.21,
+					["R"] = 0.298,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["name"] = "NO_RANGE",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0,
+					["B"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.5,
+					["useOpacity"] = true,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["R"] = 0,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [2]
+			{
+				["name"] = "RESURRECTION",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 0.4,
+					["useText"] = true,
+					["TR"] = 0.4,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [3]
+			{
+				["name"] = "DEAD",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.5,
+					["B"] = 0.3,
+					["TB"] = 0.5,
+					["G"] = 0.3,
+					["TR"] = 0.5,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.5,
+					["R"] = 0.3,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [4]
+			{
+				["name"] = "OVERHEAL_HIGHLIGHT",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [5]
+			{
+				["name"] = "DEBUFF_BAR_COLOR",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [6]
+			{
+				["name"] = "ALWAYS",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.82,
+					["R"] = 1,
+					["TB"] = 0,
+					["useText"] = true,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = false,
+					["useBackground"] = false,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [7]
+			{
+				["name"] = "STATUS_HEALTH",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["B"] = 0.7,
+					["TB"] = 1,
+					["G"] = 0.7,
+					["useBackground"] = true,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["TR"] = 1,
+					["useOpacity"] = true,
+					["O"] = 1,
+					["R"] = 0.7,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [8]
+		},
+		["Health Bar: (generic, gradient)"] = {
+			{
+				["name"] = "DISCONNECTED",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.576,
+					["B"] = 0.298,
+					["TB"] = 0.576,
+					["G"] = 0.298,
+					["TR"] = 0.576,
+					["isManuallySet"] = true,
+					["TO"] = 0.58,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.21,
+					["R"] = 0.298,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["name"] = "NO_RANGE",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0,
+					["B"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.5,
+					["useOpacity"] = true,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["R"] = 0,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [2]
+			{
+				["name"] = "RESURRECTION",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 0.4,
+					["useText"] = true,
+					["TR"] = 0.4,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [3]
+			{
+				["name"] = "DEAD",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.5,
+					["B"] = 0.3,
+					["TB"] = 0.5,
+					["G"] = 0.3,
+					["TR"] = 0.5,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = true,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.5,
+					["R"] = 0.3,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [4]
+			{
+				["name"] = "OVERHEAL_HIGHLIGHT",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [5]
+			{
+				["name"] = "DEBUFF_BAR_COLOR",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [6]
+			{
+				["name"] = "ALWAYS",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 0.82,
+					["R"] = 1,
+					["TB"] = 0,
+					["useText"] = true,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useOpacity"] = false,
+					["useBackground"] = false,
+					["B"] = 1,
+					["O"] = 1,
+					["G"] = 1,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [7]
+			{
+				["name"] = "STATUS_HEALTH",
+				["others"] = true,
+				["color"] = {
+					["B"] = 0,
+					["G"] = 1,
+					["useText"] = false,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["useBackground"] = true,
+					["useOpacity"] = true,
+					["O"] = 1,
+					["R"] = 0,
+				},
+				["mine"] = true,
+				["icon"] = 2,
+				["custom"] = {
+					1, -- [1]
+					["grad_low"] = {
+						["B"] = 0,
+						["G"] = 0,
+						["TO"] = 1,
+						["useText"] = false,
+						["useOpacity"] = true,
+						["useBackground"] = true,
+						["O"] = 1,
+						["R"] = 1,
+					},
+					["grad_med"] = {
+						["B"] = 0,
+						["G"] = 1,
+						["TO"] = 1,
+						["useText"] = false,
+						["useOpacity"] = true,
+						["useBackground"] = true,
+						["O"] = 1,
+						["R"] = 1,
+					},
+					["bright"] = 1,
+					["radio"] = 3,
+				},
+			}, -- [8]
+		},
+		["Player Holy Power"] = {
+			{
+				["custom"] = {
+					3, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 0.6,
+					["TB"] = 0.6,
+					["G"] = 1,
+					["TR"] = 0.6,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.6,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 12,
+				["mine"] = true,
+				["name"] = "OWN_HOLY_POWER_EQUALS",
+			}, -- [1]
+			{
+				["custom"] = {
+					2, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 0.4,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.4,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 11,
+				["mine"] = true,
+				["name"] = "OWN_HOLY_POWER_EQUALS",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.4,
+					["R"] = 1,
+					["TB"] = 0.4,
+					["G"] = 0.4,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.4,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 10,
+				["mine"] = true,
+				["name"] = "OWN_HOLY_POWER_EQUALS",
+			}, -- [3]
+		},
+		["Alternative Powers"] = {
+			{
+				["custom"] = {
+					80, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "ALTERNATE_POWERS_ABOVE",
+			}, -- [1]
+			{
+				["custom"] = {
+					50, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "ALTERNATE_POWERS_ABOVE",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 0,
+					["TB"] = 0,
+					["G"] = 1,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "STATUS_ALTERNATE_POWERS",
+			}, -- [3]
+		},
+		["Manabars: All Powers"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 2,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.25,
+					["B"] = 0,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "NO_RANGE",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 1,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "STATUS_MANA",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "STATUS_OTHER_POWERS",
+			}, -- [3]
+		},
+		["Tank Cooldowns"] = {
+			{
+				["name"] = "Last Stand",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [1]
+			{
+				["name"] = "Shield Wall",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [2]
+			{
+				["name"] = "Survival Instincts",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [3]
+			{
+				["name"] = "Frenzied Regeneration",
+				["others"] = true,
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["mine"] = true,
+				["icon"] = 1,
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+			}, -- [4]
+		},
+		["Border: Simple"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.1,
+					["R"] = 0,
+					["TB"] = 0.1,
+					["G"] = 0,
+					["TR"] = 0.1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "ALWAYS",
+			}, -- [1]
+		},
+		["Background: Class Color"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.576,
+					["R"] = 0.298,
+					["TB"] = 0.576,
+					["G"] = 0.298,
+					["TR"] = 0.576,
+					["isManuallySet"] = true,
+					["TO"] = 0.58,
+					["B"] = 0.298,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.21,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "DISCONNECTED",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 0,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 0,
+					["isManuallySet"] = true,
+					["TO"] = 0.25,
+					["B"] = 0,
+					["useBackground"] = false,
+					["useText"] = false,
+					["O"] = 0.25,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "NO_RANGE",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 1,
+					["R"] = 1,
+					["TB"] = 1,
+					["G"] = 1,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 1,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "DEBUFF_BAR_COLOR",
+			}, -- [3]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 0.4,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.1,
+					["R"] = 0,
+					["TB"] = 0.1,
+					["G"] = 0,
+					["TR"] = 0.1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "CLASS_COLOR",
+			}, -- [4]
+		},
+		["Swiftmendable"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0,
+					["R"] = 1,
+					["TB"] = 0,
+					["G"] = 0,
+					["TR"] = 1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 6,
+				["mine"] = true,
+				["name"] = "SWIFTMEND",
+			}, -- [1]
+		},
+		["Border: Multi"] = {
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.7,
+					["R"] = 0.9,
+					["TB"] = 0.7,
+					["G"] = 0.9,
+					["TR"] = 0.7,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.9,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "PLAYER_TARGET",
+			}, -- [1]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.4,
+					["R"] = 0.635,
+					["TB"] = 0.4,
+					["G"] = 0.47,
+					["TR"] = 0.4,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0.113,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 1,
+					["useOpacity"] = true,
+				},
+				["icon"] = 2,
+				["mine"] = true,
+				["name"] = "MOUSE_TARGET",
+			}, -- [2]
+			{
+				["custom"] = {
+					1, -- [1]
+					["bright"] = 1,
+					["radio"] = 1,
+				},
+				["color"] = {
+					["TG"] = 0.1,
+					["R"] = 0,
+					["TB"] = 0.1,
+					["G"] = 0,
+					["TR"] = 0.1,
+					["isManuallySet"] = true,
+					["TO"] = 1,
+					["B"] = 0,
+					["useBackground"] = true,
+					["useText"] = true,
+					["O"] = 0.7,
+					["useOpacity"] = true,
+				},
+				["icon"] = 1,
+				["mine"] = true,
+				["name"] = "ALWAYS",
+			}, -- [3]
+		},
+	},
+}
+VUHDO_COMBAT_LOG_TRACE = {
+}

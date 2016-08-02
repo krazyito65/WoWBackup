@@ -1,0 +1,13 @@
+## Interface: 50001
+## Title: Skada |r[|caaedc99fAbilityTracker|r]
+## Notes: Skada module to log ability use
+## Author: Syrant
+## Version: 1.1
+## Dependencies: Skada
+## X-Part-Of: Skada
+
+locale\enUS.lua
+
+SpecialAbilities.lua
+AbilityTracker.lua
+

@@ -1,0 +1,3 @@
+Infus:
+	- Add a valuesAll function that combines the values() functions
+	Ticket-Nr: 621

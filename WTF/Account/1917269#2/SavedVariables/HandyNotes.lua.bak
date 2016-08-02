@@ -1,0 +1,19 @@
+
+HandyNotesDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+	},
+	["profiles"] = {
+		["Krazyito - Mal'Ganis"] = {
+		},
+	},
+}
+HandyNotes_HandyNotesDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+	},
+	["profiles"] = {
+		["Krazyito - Mal'Ganis"] = {
+		},
+	},
+}

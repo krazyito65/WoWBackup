@@ -1,0 +1,54 @@
+
+TradeSkillMaster_ItemTrackerDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["factionrealm"] = {
+		["Horde - Mal'Ganis"] = {
+			["characters"] = {
+				["Kråzyito"] = {
+					["mailInbox"] = {
+					},
+					["account"] = "Mal'Ganis1252312117",
+					["guild"] = "Semi Respectable",
+					["lastUpdate"] = {
+						["guild"] = 1396311876,
+						["mail"] = 0,
+						["bags"] = 1396311876,
+						["auctions"] = 0,
+						["bank"] = 0,
+					},
+					["mail"] = {
+					},
+					["bags"] = {
+						["item:104347:0:0:0:0:0:0"] = 1,
+						["item:103977:0:0:0:0:0:0"] = 1,
+						["item:40772:0:0:0:0:0:0"] = 1,
+						["item:74249:0:0:0:0:0:0"] = 7,
+						["item:76097:0:0:0:0:0:0"] = 40,
+						["item:87244:0:0:0:0:0:0"] = 14,
+						["item:5512:0:0:0:0:0:0"] = 1,
+						["item:79249:0:0:0:0:0:0"] = 11,
+						["item:102279:0:0:0:0:0:0"] = 1,
+						["item:90146:0:0:0:0:0:0"] = 24,
+						["item:102271:0:0:0:0:0:0"] = 1,
+						["item:102318:0:0:0:0:0:0"] = 1,
+						["item:108920:0:0:0:0:0:0"] = 20,
+						["item:102277:0:0:0:0:0:0"] = 1,
+						["item:93858:0:0:0:0:0:0"] = 2,
+					},
+					["auctions"] = {
+					},
+					["bank"] = {
+					},
+				},
+			},
+			["guilds"] = {
+				["Semi Respectable"] = {
+					["items"] = {
+					},
+				},
+			},
+		},
+	},
+}

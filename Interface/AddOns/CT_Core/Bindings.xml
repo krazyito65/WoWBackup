@@ -1,0 +1,7 @@
+<Bindings>
+	<Binding name="CT_CORE_HAIL" runOnUp="true" header="CT_CORE">
+		if ( keystate == "up" ) then
+			CT_Core:hail();
+		end
+	</Binding>
+</Bindings>

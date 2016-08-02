@@ -1,0 +1,45 @@
+VER 3 0100000000000025 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Soothing Mist; [@mouseover, stance:1] Enveloping Mist; [stance:2] Rising Sun Kick
+END
+VER 3 010000000000002C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Renewing Mist; [@mouseover, talent:2/1] Chi wave; [@mouseover, talent:2/2] Zen Sphere; [talent:2/3] Chi Burst
+END
+VER 3 0100000000000087 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Transcendence; Spear Hand Strike
+END
+VER 3 0100000000000088 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Transcendence: Transfer; Fortifying Brew
+END
+VER 3 0100000000000092 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Arcane Torrent; [mod:shift, talent:3/3, spec:1] Chi Brew; [spec:1] purifying brew; [spec:2, talent:3/3] Chi Brew; [spec:2, notalent:3/3] Arcane torrent
+END
+VER 3 0100000000000093 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Surging Mist; [stance:1] Uplift; [stance:2] Expel Harm
+END
+VER 3 0100000000000094 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [indoors] Roll; [combat] Roll; [dead] Roll; [nocombat, harm] rOLL;
+/click GoGoButton
+/dismount [mounted]
+END
+VER 3 0100000000000098 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] 14; provoke
+END
+VER 3 0100000000000083 " AOE TAUNT" "SPELL_NATURE_SHAMANRAGE"
+/tar Black Ox Statue
+/use Provoke
+/targetlasttarget
+END
+VER 3 0100000000000095 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1OT[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000096 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Krå[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

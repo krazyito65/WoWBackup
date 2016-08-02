@@ -1,0 +1,147 @@
+- Support site http://jshbclassmods.proboards.com
+- JSHB4 was created by _JS_ and currently maintained by Kaelyth_Dath since Warlords of Draenor.
+- Follow me on Twitter @kaelythWoW and Twtich /kaelythwow
+
+5.1.9
+- Druid: Fixed an issue that was trying to set the maximum value of the resource bar before that game had a value to use.
+
+5.1.8
+- Druid: Fixed an issue when changing back to a caster form and the resource bar stopped animating.
+
+5.1.7
+- Druid: Added an option for Moonkin to track Mana (default) or Eclipse.
+
+5.1.6
+- Hunter: Urgent fix for a typo that made it into 5.1.5 where the ResourceBar module was not being called correctly.
+- Death Knight: Fixed the cost of Frost Strike as a tick mark when in Frost Presence.
+
+5.1.5
+- Druid: Fixed an issue with the stacks bar not displaying after a spec change.
+
+5.1.4
+- Added resource percentage option for Mistweaver Monks.
+- Refined high, normal and low resource text colours based on high and low warning options.
+- Added an option for your primary resource to be the default resource bar colour.
+- TESTING - Hunter bars have the option to be vertical, requires adjustment of height + width settings for each bar.
+
+5.1.3
+- Fixed the logic that was supposed to not apply the Mounted Alpha Override when using the Nagrand Garrison outpost mounts. 
+- Added an option to display resource as a percentage.
+- Shaman: Added Totem Indicator Module.
+- Shaman: Added Shield Indicator.
+
+5.1.2
+- Death Knight: Added a "Presence Indicator" module.
+- Warrior: Added a "Stance Indicator" module.
+- Added options to display abbreviated numbers on the HealthBar and TargetBar modules.
+
+5.1.1
+- Minor update, changing to "release" after a weeks testing.
+- Updated translations.
+- Target Bar: Added the option to show target's health percentage.
+
+5.1
+- Added "Target Bar" module, currently displays target's health with the option for class colour and low health threshhold for various uses like Kill Shot, Execute and Shadow Word: Death etc.
+- Warlock: Resource Bar now switches between Mana and Demonic Fury for Demonology Warlocks when using Metamorphosis.
+- Health Bar has an option to display your pets health percentage.
+- Hunter: Removed Aspect of the Fox module.
+
+5.0
+- Merged all class support into JSHB
+#####################################
+4.36.1
+- Added logic not to apply the "Mounted" alpha override to the "Telaari Talbuk", "Frostwolf War Wolf" or "Rune of Binding Earth"
+- Fixed typo with paths to fonts 
+
+4.36
+- Added Health Bar Module.
+- Fixed ticks marks not affected by TotH not showing during TotH.
+
+4.35.3
+- More bug fixes from removing the custom sharedmedia code.
+
+4.35.2
+- Added a missing exception catch when calling CreateFontString with a bad value from SavedVariables.
+
+4.35.1
+- Added Binding Shot Announce Module.
+- Removed custom Sharedmedia code that was causing a few media issues, sounds, fonts etc.
+
+4.35
+- Updated for Patch 6.1
+- Fixed sound issues with Alerts and the Tranq Shot module.
+
+4.34.12
+- Fixed a typo that would generate an error if the 5th tick mark was enabled.
+
+4.34.11
+- Fixed the spellCost function that was producing an error when using Bestial Wrath, this also fixed tick mark placement for spells effected by Thrill of the Hunt and Bombardment.
+
+4.34.10
+- Fixed an oversight with Focusing Shot prediction where Focusing Shot has a different Spell ID when it replaces Cobra Shot or Steady Shot
+
+4.34.9
+- Fixed an issue where a portion of code was not exiting correctly which caused the script to run too long and manifested as micro pauses in the game
+- Removed the automatic trigger for reconfiguring the Timer Bars which was causing the bar to "flash" in some cases 
+
+4.34.8
+- Fixed an issue where Focusing Shot base focus value was not being changed when first selected as a talent 
+
+4.34.7
+- Added Focusing Shot focus prediction
+- Fixed a legacy error when adding new tick marks
+- Fixed the target low health colour for Marksmanship Hunters with the Enhanced Kill Shot perk
+
+4.34.6
+- Fixed an error introduced when Crowd Control options were added in 4.34.5
+
+4.34.5
+- Fixed Bestial Wrath error calculating focus costs
+- Added logic to change the target low health colour to 35% for Marksmanship Hunters
+- Added logic to change the duration of Freezing Trap to 90 seconds for Survival Hunters
+
+4.34.4
+- Fixed Misdirection Click to Cast - for real this time ;) 
+
+4.34.3
+- Fixed an error that was blocking incoming whispers from anyone
+- Fixed the announce modules from diplaying outgoing whispers (message author argument changed to "playername - realmname") 
+
+4.34.2
+- Fixed options not saving
+
+4.34.1
+- Fixed a bug where Misdirection Click to Cast was not loading after enabling it then reloading
+- Fixed a Dire Beast default timer being flagged as Survival only
+- Fixed A Murder of Crows duration (was previously hard coded due to a workaround by _JS_)
+
+4.34
+- Added JSMD functionality, configuration can be found in the Misdirection Options.
+- Fixed "Only if Known" option for spells on the Timer bars
+- Fixed a logic error that would only announce Aspect of the Fox once  
+- Fixed Tranquilizing Shot announcement order
+
+4.33
+- Updated Locale files with new phrases (requires translators)
+- Fixed a bug with Indicator frames being removed on Reconfigure
+- Fixed tick marks with hard coded spell costs due to GetSpellInfo() no longer returning spell costs
+- Focus Bar tick marks have the option to use spell icons (Contribution by Metriss)
+
+4.32.2
+- Fixed a bug where the Sniper Training module would not load correctly when a player logged into the game as Marksmanship
+
+4.32.1
+- Update for Patch 6.0.2
+- Removed hunter's mark module
+- Added sniper training module
+- Added aspect of the fox announce module
+- Changed aspect indicator module as Hunter's no longer have an aspect bar
+- Changed misdirection announce module to reflect changes to Misdirection
+- Changed crowd control module to reflect changes to Freezing Trap
+- Changed energybar module;
+	- Stacks: Lock n Load proc spell ID change for Survival
+	- Stacks: Removed Ready, Set, Aim... Fire! proc for Marksmanship
+	- Focus prediction: Removed Steady Focus bonus now that it works differently (todo: add in new prediction logic for Steady Focus)
+- Changed mainspell focus cost to hard coded values due to GetSpellInfo() no longer returing spell cost.
+
+PATCH 6.0 CLEAN UP!

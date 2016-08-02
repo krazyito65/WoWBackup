@@ -1,0 +1,368 @@
+General
+    0 => No specialization 
+
+Death Knight
+    250 => Blood
+    251 => Frost
+    252 => Unholy 
+
+Druid
+    102 => Balance
+    103 => Feral
+    104 => Guardian
+    105 => Restoration 
+
+Hunter
+    253 => Beastmaster
+    254 => Marksman
+    255 => Survival 
+
+Mage
+    62 => Arcane
+    63 => Fire
+    64 => Frost 
+
+Monk
+    268 => Brewmaster
+    269 => Windwalker
+    270 => Mistweaver 
+
+Paladin
+    65 => Holy
+    66 => Protection
+    70 => Retribution 
+
+Priest
+    256 => Discipline
+    257 => Holy
+    258 => Shadow 
+
+Rogue
+    259 => Assassination
+    260 => Combat
+    261 => Subtlety 
+
+Shaman
+    262 => Elemental
+    263 => Enhancement
+    264 => Restoration 
+
+Warlock
+    265 => Affliction
+    266 => Demonology
+    267 => Destruction 
+
+Warrior
+    71 => Arms
+    72 => Fury
+    73 => Protection 
+	
+15757	Second Wind
+15758	Impending Victory
+15759	Storm Bolt
+15760	Shockwave
+15765	Mass Spell Reflection
+15766	Safeguard
+15768	Taste for Blood
+15769	Sudden Death
+15770	Slam
+15774	Warbringer
+15775	Juggernaut
+16012	Blazing Speed
+16013	Ice Floes
+16019	Ring of Frost
+16020	Ice Ward
+16021	Frostjaw
+16023	Alter Time
+16024	Flameglow
+16025	Ice Barrier
+16027	Greater Invisibility
+16028	Cauterize
+16029	Cold Snap
+16031	Mirror Image
+16032	Rune of Power
+16033	Incanter's Flow
+16035	Double Time
+16036	Enraged Regeneration
+16037	Dragon Roar
+17565	Speed of Light
+17567	Long Arm of the Law
+17569	Pursuit of Justice
+17573	Fist of Justice
+17575	Repentance
+17577	Blinding Light
+17581	Selfless Healer
+17583	Eternal Flame
+17589	Hand of Purity
+17591	Unbreakable Spirit
+17593	Clemency
+17597	Holy Avenger
+17599	Sanctified Wrath
+17601	Divine Purpose
+17605	Holy Prism
+17607	Light's Hammer
+17609	Execution Sentence
+18569	Feline Swiftness
+18570	Displacer Beast
+18571	Wild Charge
+18572	Ysera's Gift
+18574	Cenarion Ward
+18575	Faerie Swarm
+18576	Mass Entanglement
+18577	Typhoon
+18579	Incarnation: Chosen of Elune
+18580	Force of Nature
+18581	Incapacitating Roar
+18582	Ursol's Vortex
+18583	Mighty Bash
+18584	Heart of the Wild
+18585	Dream of Cenarius
+18586	Nature's Vigil
+19138	Avatar
+19139	Bloodbath
+19140	Bladestorm
+19165	Plaguebearer
+19166	Plague Leech
+19217	Unholy Blight
+19218	Lichborne
+19219	Anti-Magic Zone
+19220	Purgatory
+19221	Death's Advance
+19222	Chilblains
+19223	Asphyxiate
+19224	Blood Tap
+19225	Runic Empowerment
+19226	Death Pact
+19227	Death Siphon
+19228	Conversion
+19229	Runic Corruption
+19230	Gorefiend's Grasp
+19231	Remorseless Winter
+19232	Desecrated Ground
+19233	Nightstalker
+19234	Subterfuge
+19235	Shadow Focus
+19236	Deadly Throw
+19237	Nerve Strike
+19238	Combat Readiness
+19239	Cheat Death
+19240	Leeching Poison
+19241	Elusiveness
+19242	Cloak and Dagger
+19243	Shadowstep
+19244	Burst of Speed
+19245	Prey on the Weak
+19246	Internal Bleeding
+19247	Dirty Tricks
+19248	Shuriken Toss
+19249	Marked for Death
+19250	Anticipation
+19259	Frozen Power
+19260	Earthgrab Totem
+19261	Windwalk Totem
+19262	Nature's Guardian
+19263	Stone Bulwark Totem
+19264	Astral Shift
+19265	Unleashed Fury
+19266	Primal Elementalist
+19267	Elemental Blast
+19268	Rushing Streams
+19269	Ancestral Guidance
+19270	Conductivity
+19271	Elemental Mastery
+19272	Ancestral Swiftness
+19273	Echo of the Elements
+19274	Totemic Persistence
+19275	Call of the Elements
+19276	Totemic Projection
+19279	Dark Regeneration
+19280	Soul Leech
+19281	Harvest Life
+19283	Renewal
+19284	Howl of Terror
+19285	Mortal Coil
+19286	Shadowfury
+19287	Soul Link
+19288	Sacrificial Pact
+19289	Dark Bargain
+19290	Blood Horror
+19291	Burning Rush
+19292	Unbound Will
+19293	Grimoire of Supremacy
+19294	Grimoire of Service
+19295	Grimoire of Sacrifice
+19296	Archimonde's Darkness
+19297	Kil'jaeden's Cunning
+19298	Mannoroth's Fury
+19299	Nether Tempest
+19300	Unstable Magic
+19301	Supernova
+19302	Celerity
+19304	Momentum
+19313	Chi Torpedo
+19347	Binding Shot
+19348	Wyvern Sting
+19349	Barrage
+19350	Exhilaration
+19351	Spirit Bond
+19352	Steady Focus
+19353	Dire Beast
+19354	Posthaste
+19356	Iron Hawk
+19357	Glaive Toss
+19358	Powershot
+19359	Intimidation
+19360	A Murder of Crows
+19361	Blink Strikes
+19362	Stampede
+19363	Narrow Escape
+19364	Crouching Tiger, Hidden Chimaera
+19365	Thrill of the Hunt
+19676	Vigilance
+19677	Soul of the Forest
+19752	Desperate Prayer
+19753	Spectral Guise
+19754	Angelic Bulwark
+19755	Dominate Mind
+19756	Body and Soul
+19757	Angelic Feather
+19758	Phantasm
+19759	Surge of Light
+19760	Divine Star
+19761	Power Word: Solace
+19762	Void Tendrils
+19763	Halo
+19764	Twist of Fate
+19765	Power Infusion
+19766	Divine Insight
+19767	Cascade
+19768	Psychic Scream
+19769	Mindbender
+19771	Ascension
+19772	Chi Brew
+19818	Tiger's Lust
+19819	Rushing Jade Wind
+19820	Zen Sphere
+19823	Chi Burst
+19992	Power Strikes
+19993	Ring of Peace
+19994	Charging Ox Wave
+19995	Leg Sweep
+20173	Diffuse Magic
+20174	Healing Elixirs
+20175	Dampen Harm
+20184	Invoke Xuen, the White Tiger
+20185	Chi Wave
+21098	Sacred Shield
+21144	Prismatic Crystal
+21145	Arcane Orb
+21180	Soulburn: Haunt
+21181	Cataclysm
+21182	Demonic Servitude
+21183	Clarity of Will
+21184	Words of Mending
+21185	Saving Grace
+21186	Venom Rush
+21187	Shadow Reflection
+21188	Death from Above
+21189	Hurricane Strike
+21190	Chi Explosion
+21191	Serenity
+21192	Euphoria
+21193	Stellar Flare
+21194	Balance of Power
+21195	Exotic Munitions
+21196	Focusing Shot
+21197	Lone Wolf
+21198	Elemental Fusion
+21199	Storm Elemental Totem
+21200	Liquid Magma
+21201	Empowered Seals
+21202	Seraphim
+21203	Holy Shield
+21204	Anger Management
+21205	Ravager
+21206	Gladiator's Resolve
+21207	Necrotic Plague
+21208	Defile
+21209	Breath of Sindragosa
+21630	Overpowered
+21631	Kindling
+21632	Thermal Void
+21633	Meteor
+21634	Comet Storm
+21635	Adaptation
+21636	Clarity of Purpose
+21637	Clarity of Power
+21638	Auspicious Spirits
+21644	Void Entropy
+21646	Lunar Inspiration
+21647	Guardian of Elune
+21648	Moment of Clarity
+21649	Bloodtalons
+21650	Pulverize
+21651	Germination
+21653	Claws of Shirvallah
+21654	Bristling Fur
+21655	Rampant Growth
+21662	Focusing Shot
+21667	Siegebreaker
+21668	Beacon of Faith
+21671	Beacon of Insight
+21672	Final Verdict
+21673	Saved by the Light
+21674	Cloudburst Totem
+21675	High Tide
+21676	Breath of the Serpent
+21677	Soul Dance
+21678	Pool of Mists
+21679	Chi Explosion
+21680	Chi Explosion
+21689	Evanesce
+21690	Living Bomb
+21691	Frost Bomb
+21692	Blast Wave
+21693	Ice Nova
+21694	Demonbolt
+21695	Charred Remains
+21702	Soul of the Forest
+21703	Soul of the Forest
+21704	Soul of the Forest
+21705	Incarnation: King of the Jungle
+21706	Incarnation: Son of Ursoc
+21707	Incarnation: Tree of Life
+21708	Force of Nature
+21709	Force of Nature
+21710	Force of Nature
+21711	Dream of Cenarius
+21712	Dream of Cenarius
+21713	Dream of Cenarius
+21714	Heart of the Wild
+21715	Heart of the Wild
+21716	Heart of the Wild
+21717	Grimoire of Synergy
+21718	Cascade
+21719	Divine Star
+21720	Halo
+21749	Focusing Shot
+21750	Surge of Light
+21751	Surge of Darkness
+21752	Power Word: Solace
+21753	Insanity
+21754	Spirit Shell
+21755	Shadowy Insight
+21756	Focusing Shot
+21760	Siegebreaker
+21772	Unleashed Fury
+21773	Unleashed Fury
+21776	Faerie Swarm
+21777	Faerie Swarm
+21778	Faerie Swarm
+21789	Furious Strikes
+21790	Heavy Repercussions
+21791	Unquenchable Thirst
+21792	Unyielding Strikes
+21795	Sanctified Wrath
+21809	Searing Flames
+21810	Sacred Shield
+21811	Sacred Shield

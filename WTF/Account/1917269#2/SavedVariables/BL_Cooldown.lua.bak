@@ -1,0 +1,10 @@
+
+BLCDDB = {
+	["profileKeys"] = {
+		["Krazymonk - Gnomeregan"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

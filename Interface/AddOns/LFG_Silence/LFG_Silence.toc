@@ -1,0 +1,44 @@
+## Author: Jerbal of Cho'gall
+## Interface: 60000
+## SavedVariablesPerCharacter: LFG_Silence_SV
+## Title: Group Finder Silence
+## Title-ptBR: Group Finder Silence
+## Title-frFR: Group Finder Silence
+## Title-deDE: Group Finder Silence
+## Title-itIT: Group Finder Silence
+## Title-koKR: Group Finder Silence
+## Title-esMX: Group Finder Silence
+## Title-ruRU: Group Finder Silence
+## Title-zhCN: Group Finder Silence
+## Title-esES: Group Finder Silence
+## Title-zhTW: Group Finder Silence
+## X-Curse-Packaged-Version: v1.1.0
+## X-Curse-Project-Name: Group Finder Silence
+## X-Curse-Project-ID: lfg_silence
+## X-Curse-Repository-ID: wow/lfg_silence/mainline
+
+## Notes: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-ptBR: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-frFR: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-deDE: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-itIT: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-koKR: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-esMX: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-ruRU: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-zhCN: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-esES: Change the constant annoying ding to a single ding.  You know what I mean.
+## Notes-zhTW: Change the constant annoying ding to a single ding.  You know what I mean.
+
+## Version: 1.60000.10
+## X-Category: Miscellaneous
+## X-CompatibleLocales: enUS, ptBR, frFR, deDE, itIT, koKR, esMX, ruRU, zhCN, esES, zhTW
+## X-Date: 20150107162431
+## X-Localizations: enUS
+## X-Website: http://wow.curseforge.com/addons/lfg_silence/
+
+
+
+Localization.lua
+LFG_SilenceOptions.xml
+LFG_Silence.lua
+

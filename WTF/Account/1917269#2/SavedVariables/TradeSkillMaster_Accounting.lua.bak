@@ -1,0 +1,48 @@
+
+TradeSkillMaster_AccountingDB = {
+	["global"] = {
+		["itemStrings"] = {
+			["Green Tea Leaf"] = "item:72234:0:0:0:0:0:0",
+			["Tinker's Kit"] = "item:90146:0:0:0:0:0:0",
+			["Heavy Leather"] = "item:4234:0:0:0:0:0:0",
+			["Iron Bar"] = "item:3575:0:0:0:0:0:0",
+			["Red Blossom Leek"] = "item:74844:0:0:0:0:0:0",
+			["Gyrochronatom"] = "item:4389:0:0:0:0:0:0",
+			["High-Explosive Gunpowder"] = "item:77468:0:0:0:0:0:0",
+			["River's Heart"] = "item:76138:0:0:0:0:0:0",
+			["Strange Dust"] = "item:10940:0:0:0:0:0:0",
+			["Timeless Mail Boots"] = "item:102271:0:0:0:0:0:0",
+			["Spirit Dust"] = "item:74249:0:0:0:0:0:0",
+			["Healthstone"] = "item:5512:0:0:0:0:0:0",
+			["Windwool Cloth"] = "item:72988:0:0:0:0:0:0",
+			["Timeless Leather Gloves"] = "item:102279:0:0:0:0:0:0",
+			["Tome of the Clear Mind"] = "item:79249:0:0:0:0:0:0",
+			["Great Banquet of the Oven"] = "item:87244:0:0:0:0:0:0",
+			["Master Healing Potion"] = "item:76097:0:0:0:0:0:0",
+			["Brawler's Bladed Claws"] = "item:93858:0:0:0:0:0:0",
+			["Timeless Leather Chestpiece"] = "item:102277:0:0:0:0:0:0",
+			["Technique: Glyph of Headhunting"] = "item:104232:0:0:0:0:0:0",
+			["Time-Worn Journal"] = "item:103977:0:0:0:0:0:0",
+			["Lemon Flower Pudding"] = "item:108920:0:0:0:0:0:0",
+			["Gnomish Army Knife"] = "item:40772:0:0:0:0:0:0",
+			["Timeless Curio"] = "item:104347:0:0:0:0:0:0",
+			["Timeless Cloak"] = "item:102318:0:0:0:0:0:0",
+		},
+	},
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["factionrealm"] = {
+		["Horde - Mal'Ganis"] = {
+			["csvExpired"] = "itemString,itemName,stackSize,quantity,player,time",
+			["csvBuys"] = "itemString,itemName,stackSize,quantity,price,seller,player,time,source",
+			["csvIncome"] = "type,amount,source,player,time",
+			["csvExpense"] = "type,amount,destination,player,time",
+			["goldLog"] = {
+				["Kråzyito"] = "startMinute,endMinute,copper\n23271859,23271859,0\n23271860,23271864,10000000",
+			},
+			["csvSales"] = "itemString,itemName,stackSize,quantity,price,buyer,player,time,source",
+			["csvCancelled"] = "itemString,itemName,stackSize,quantity,player,time",
+		},
+	},
+}

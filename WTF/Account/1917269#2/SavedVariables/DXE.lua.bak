@@ -1,0 +1,37 @@
+
+DXEDB = {
+	["namespaces"] = {
+		["Alerts"] = {
+		},
+		["RaidIcons"] = {
+		},
+		["LibDualSpec-1.0"] = {
+		},
+		["Distributor"] = {
+		},
+		["RDB"] = {
+		},
+		["Arrows"] = {
+		},
+	},
+	["global"] = {
+		["L_NPC"] = {
+			[36678] = "Professor Putricide",
+		},
+	},
+	["profileKeys"] = {
+		["Zuuken - Caelestrasz"] = "Zuuken - Caelestrasz",
+	},
+	["profiles"] = {
+		["Zuuken - Caelestrasz"] = {
+			["Positions"] = {
+				["DXEPane"] = {
+					["yOfs"] = 0,
+					["xOfs"] = -355.6147656530014,
+					["point"] = "TOPRIGHT",
+					["relativePoint"] = "TOPRIGHT",
+				},
+			},
+		},
+	},
+}

@@ -1,0 +1,27 @@
+## Interface: 60100
+## X-Min-Interface: 60000
+## Title: EPGP LootMaster - |cFFFF8080Frame Position|r
+## Author: Vylee-Arthas-US
+## Version: 1.0.0 
+## Notes: Remembers Loot Frame's Positions for EPGP LootMaster
+## X-Category: Guild
+## Dependencies: epgp_lootmaster
+## OptionalDeps: epgp_lootmaster_ml
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: EPGPLootMasterSelectFrameX, EPGPLootMasterSelectFrameY, EPGPLootMasterFrameX, EPGPLootMasterFrameY
+## X-Curse-Packaged-Version: 1.0.0
+## X-Curse-Project-Name: EPGP LootMaster - Frame Position
+## X-Curse-Project-ID: epgp-lootmaster-fp
+## X-Curse-Repository-ID: wow/epgp-lootmaster-fp/mainline
+## X-Curse-Packaged-Version: r20150224214315
+## X-Curse-Project-Name: EPGP LootMaster - Frame Position
+## X-Curse-Project-ID: epgp-lootmaster-fp
+## X-Curse-Repository-ID: wow/epgp-lootmaster-fp/mainline
+
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+
+epgp-lootmaster-fp.lua
+modules.xml

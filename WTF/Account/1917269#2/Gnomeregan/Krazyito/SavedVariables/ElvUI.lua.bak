@@ -1,0 +1,10 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		" yea i already got that set up lol", -- [1]
+		"/g LOL", -- [2]
+		"/g Too much crown?", -- [3]
+		"/w Taeyang inv", -- [4]
+		"/raid BACK", -- [5]
+	},
+}

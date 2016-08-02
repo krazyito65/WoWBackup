@@ -1,0 +1,9 @@
+
+BADBOY_POPUP = nil
+BADBOY_NOREPORT = nil
+BADBOY_BLACKLIST = {
+	["Player-3684-07DF3568"] = true,
+	["Player-3684-07DEE82F"] = true,
+	["Player-3684-071A98B9"] = true,
+	["dayFromCal"] = 4,
+}

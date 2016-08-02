@@ -1,0 +1,73 @@
+VER 3 0100000000000016 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [indoors] Roll; [combat] Roll; [dead] Roll; [nocombat, harm] rOLL; [flyable] Ashen Pandaren PHoenix; Grand Expedition Yak
+/dismount [mounted]
+END
+VER 3 0100000000000025 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Soothing Mist; [@mouseover] Enveloping Mist
+END
+VER 3 0100000000000023 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Restorative Amber
+/use Restorative Amber
+END
+VER 3 010000000000002C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Renewing Mist; [@mouseover] Chi wave
+END
+VER 3 0100000000000022 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Chi Burst
+END
+VER 3 0100000000000087 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Transcendence; Spear Hand Strike
+END
+VER 3 0100000000000086 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Healing Sphere; Jab
+END
+VER 3 0100000000000088 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Transcendence: Transfer; Fortifying Brew
+END
+VER 3 010000000000008A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Nimble Brew; [@mouseover] Ring of Peace
+END
+VER 3 010000000000008B " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] 14; Spinning Crane Kick
+END
+VER 3 010000000000008C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Healing Sphere; Spinning Crane Kick
+END
+VER 3 010000000000008E " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Summon Black Ox Statue; Nimble Brew
+END
+VER 3 0100000000000092 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] chi brew; Invoke Xuen, the White Tiger
+END
+VER 3 0100000000000093 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl,@mouseover] Surging Mist; Uplift
+END
+VER 3 010000000000008F "  " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Nimble Brew; leg sweep
+END
+VER 3 0100000000000083 " AOE TAUNT" "SPELL_NATURE_SHAMANRAGE"
+/tar Black Ox Statue
+/use Provoke
+/targetlasttarget
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1O_[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

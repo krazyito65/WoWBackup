@@ -1,0 +1,234 @@
+------------------------------------------------------------------------
+r1257 | funkydude | 2016-07-29 19:39:55 +0000 (Fri, 29 Jul 2016) | 1 line
+Changed paths:
+   A /tags/r1257-release (from /trunk:1256)
+
+Tagging as r1257-release
+------------------------------------------------------------------------
+r1256 | funkydude | 2016-07-29 16:34:55 +0000 (Fri, 29 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/MoP/BlackTempleSolo/Kanrethad.lua
+   M /trunk/MoP/MogushanPalace/Gekkan.lua
+   M /trunk/TBC/AuchenaiCrypts/Maladaar.lua
+   M /trunk/TBC/AuchenaiCrypts/Shirrak.lua
+   M /trunk/TBC/HellfireRamparts/Gargolmar.lua
+   M /trunk/TBC/HellfireRamparts/Omor.lua
+   M /trunk/TBC/HellfireRamparts/Vazruden.lua
+   M /trunk/TBC/SethekkHalls/Ikiss.lua
+   M /trunk/TBC/SethekkHalls/Syth.lua
+   M /trunk/TBC/ShadowLabyrinth/Blackheart.lua
+   M /trunk/TBC/ShadowLabyrinth/Hellmaw.lua
+   M /trunk/TBC/ShadowLabyrinth/Murmur.lua
+   M /trunk/TBC/ShadowLabyrinth/Vorpil.lua
+   M /trunk/TBC/TheBloodFurnace/Broggok.lua
+   M /trunk/TBC/TheBloodFurnace/Kelidan.lua
+   M /trunk/TBC/TheBloodFurnace/TheMaker.lua
+   M /trunk/TBC/TheBotanica/Freywinn.lua
+   M /trunk/TBC/TheBotanica/Laj.lua
+   M /trunk/TBC/TheBotanica/Sarannis.lua
+   M /trunk/TBC/TheBotanica/Thorngrin.lua
+   M /trunk/TBC/TheBotanica/WarpSplinter.lua
+   M /trunk/TBC/TheMechanar/Capacitus.lua
+   M /trunk/TBC/TheMechanar/Pathaleon.lua
+   M /trunk/TBC/TheMechanar/Trash.lua
+   M /trunk/TBC/TheSlavePens/Ahune.lua
+   M /trunk/TBC/TheSteamvault/Kalithresh.lua
+   M /trunk/TBC/TheSteamvault/Steamrigger.lua
+   M /trunk/TBC/TheSteamvault/Thespia.lua
+   M /trunk/TBC/TheUnderbog/Ghazan.lua
+   M /trunk/TBC/TheUnderbog/Hungarfen.lua
+   M /trunk/TBC/TheUnderbog/Muselek.lua
+   M /trunk/TBC/TheUnderbog/TheBlackStalker.lua
+   M /trunk/WotLK/AzjolNerub/Anubarak.lua
+   M /trunk/WotLK/AzjolNerub/Hadronox.lua
+   M /trunk/WotLK/AzjolNerub/Krikthir.lua
+   M /trunk/WotLK/DrakTharonKeep/KingDred.lua
+   M /trunk/WotLK/DrakTharonKeep/Novos.lua
+   M /trunk/WotLK/DrakTharonKeep/TheProphetTharonja.lua
+   M /trunk/WotLK/DrakTharonKeep/Trollgore.lua
+   M /trunk/WotLK/HallsOfReflection/Falric.lua
+   M /trunk/WotLK/HallsOfReflection/Marwyn.lua
+   M /trunk/WotLK/HallsOfStone/Krystallus.lua
+   M /trunk/WotLK/HallsOfStone/MaidenOfGrief.lua
+   M /trunk/WotLK/HallsOfStone/SjonnirTheIronshaper.lua
+   M /trunk/WotLK/HallsOfStone/TribunalOfAges.lua
+   M /trunk/WotLK/TheCullingOfStratholme/Epoch.lua
+   M /trunk/WotLK/TheCullingOfStratholme/InfiniteCorruptor.lua
+   M /trunk/WotLK/TheCullingOfStratholme/MalGanis.lua
+   M /trunk/WotLK/TheCullingOfStratholme/Meathook.lua
+   M /trunk/WotLK/TheCullingOfStratholme/Salramm.lua
+   M /trunk/WotLK/TheForgeOfSouls/Bronjahm.lua
+   M /trunk/WotLK/TheForgeOfSouls/DevourerOfSouls.lua
+   M /trunk/WotLK/TheOculus/Drakos.lua
+   M /trunk/WotLK/TheOculus/Eregos.lua
+   M /trunk/WotLK/TheOculus/Urom.lua
+   M /trunk/WotLK/TheOculus/VarosCloudstrider.lua
+   M /trunk/WotLK/TheVioletHold/Cyanigosa.lua
+   M /trunk/WotLK/TheVioletHold/Erekem.lua
+   M /trunk/WotLK/TheVioletHold/Ichoron.lua
+   M /trunk/WotLK/TheVioletHold/Lavanthor.lua
+   M /trunk/WotLK/TheVioletHold/Moragg.lua
+   M /trunk/WotLK/TheVioletHold/Trash.lua
+   M /trunk/WotLK/TheVioletHold/Xevozz.lua
+   M /trunk/WotLK/TheVioletHold/Zuramat.lua
+   M /trunk/WotLK/TrialOfTheChampion/Eadric.lua
+   M /trunk/WotLK/TrialOfTheChampion/GrandChampions.lua
+   M /trunk/WotLK/TrialOfTheChampion/Paletress.lua
+   M /trunk/WotLK/TrialOfTheChampion/TheBlackKnight.lua
+   M /trunk/WotLK/UtgardeKeep/Ingvar.lua
+   M /trunk/WotLK/UtgardeKeep/Keleseth.lua
+   M /trunk/WotLK/UtgardeKeep/SkarvaldAndDalronn.lua
+
+Purge bosskill option
+------------------------------------------------------------------------
+r1254 | funkydude | 2016-07-20 17:27:52 +0000 (Wed, 20 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/LittleWigs.toc
+
+bump version
+------------------------------------------------------------------------
+r1253 | stanzilla | 2016-07-17 13:13:25 +0000 (Sun, 17 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/LittleWigs.toc
+
+add areaIDs to TOC
+------------------------------------------------------------------------
+r1252 | stanzilla | 2016-07-15 17:17:11 +0000 (Fri, 15 Jul 2016) | 1 line
+Changed paths:
+   D /trunk/Legion/NeltharionsLair/DargrulTheUnderking.lua
+   D /trunk/Legion/VaultOfTheWardens/InquisitorTormentorum.lua
+
+svn sucks
+------------------------------------------------------------------------
+r1251 | stanzilla | 2016-07-15 17:16:06 +0000 (Fri, 15 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Legion/AssaultOnVioletHold/Anubesset.lua
+   M /trunk/Legion/AssaultOnVioletHold/Betrug.lua
+   M /trunk/Legion/AssaultOnVioletHold/Festerface.lua
+   M /trunk/Legion/AssaultOnVioletHold/Kaahrj.lua
+   M /trunk/Legion/AssaultOnVioletHold/MillificentManastorm.lua
+   M /trunk/Legion/AssaultOnVioletHold/Saelorn.lua
+   M /trunk/Legion/AssaultOnVioletHold/Shivermaw.lua
+   M /trunk/Legion/AssaultOnVioletHold/Thalena.lua
+   M /trunk/Legion/BlackRookHold/AmalgamOfSouls.lua
+   M /trunk/Legion/BlackRookHold/IllysannaRavencrest.lua
+   M /trunk/Legion/BlackRookHold/KurtalosRavencrest.lua
+   M /trunk/Legion/BlackRookHold/Smashspite.lua
+   M /trunk/Legion/CourtOfStars/AdvisorMelandrus.lua
+   M /trunk/Legion/CourtOfStars/PatrolCaptainGerdo.lua
+   M /trunk/Legion/CourtOfStars/TalixaeFlamewreath.lua
+   M /trunk/Legion/DarkheartThicket/ArchdruidGlaidalis.lua
+   M /trunk/Legion/DarkheartThicket/Dresaron.lua
+   M /trunk/Legion/DarkheartThicket/Oakheart.lua
+   M /trunk/Legion/DarkheartThicket/ShadeOfXavius.lua
+   M /trunk/Legion/EyeOfAzshara/KingDeepbeard.lua
+   M /trunk/Legion/EyeOfAzshara/LadyHatecoil.lua
+   M /trunk/Legion/EyeOfAzshara/Serpentrix.lua
+   M /trunk/Legion/EyeOfAzshara/WarlordParjesh.lua
+   M /trunk/Legion/EyeOfAzshara/WrathOfAzshara.lua
+   M /trunk/Legion/HallsOfValor/Fenryr.lua
+   M /trunk/Legion/HallsOfValor/God-KingSkovald.lua
+   M /trunk/Legion/HallsOfValor/Hymdall.lua
+   M /trunk/Legion/HallsOfValor/Hyrja.lua
+   M /trunk/Legion/HallsOfValor/Odyn.lua
+   M /trunk/Legion/MawOfSouls/Harbaron.lua
+   M /trunk/Legion/MawOfSouls/Helya.lua
+   M /trunk/Legion/MawOfSouls/Ymiron.lua
+   A /trunk/Legion/NeltharionsLair/Dargrul.lua
+   M /trunk/Legion/NeltharionsLair/Naraxas.lua
+   M /trunk/Legion/NeltharionsLair/Rokmora.lua
+   M /trunk/Legion/NeltharionsLair/UlaroggCragshaper.lua
+   M /trunk/Legion/NeltharionsLair/modules.xml
+   M /trunk/Legion/TheArcway/AdvisorVandros.lua
+   M /trunk/Legion/TheArcway/Corstilax.lua
+   M /trunk/Legion/TheArcway/GeneralXakal.lua
+   M /trunk/Legion/TheArcway/Ivanyr.lua
+   M /trunk/Legion/TheArcway/Naltira.lua
+   M /trunk/Legion/VaultOfTheWardens/Ashgolm.lua
+   M /trunk/Legion/VaultOfTheWardens/CordanaFelsong.lua
+   M /trunk/Legion/VaultOfTheWardens/Glazer.lua
+   M /trunk/Legion/VaultOfTheWardens/TirathonSaltheril.lua
+   A /trunk/Legion/VaultOfTheWardens/Tormentorum.lua
+   M /trunk/Legion/VaultOfTheWardens/modules.xml
+
+fill in proper area, encounter and mob ids
+------------------------------------------------------------------------
+r1250 | stanzilla | 2016-07-15 14:35:14 +0000 (Fri, 15 Jul 2016) | 1 line
+Changed paths:
+   A /trunk/Legion
+   A /trunk/Legion/AssaultOnVioletHold
+   A /trunk/Legion/AssaultOnVioletHold/Anubesset.lua
+   A /trunk/Legion/AssaultOnVioletHold/Betrug.lua
+   A /trunk/Legion/AssaultOnVioletHold/Festerface.lua
+   A /trunk/Legion/AssaultOnVioletHold/Kaahrj.lua
+   A /trunk/Legion/AssaultOnVioletHold/MillificentManastorm.lua
+   A /trunk/Legion/AssaultOnVioletHold/Saelorn.lua
+   A /trunk/Legion/AssaultOnVioletHold/Shivermaw.lua
+   A /trunk/Legion/AssaultOnVioletHold/Thalena.lua
+   A /trunk/Legion/AssaultOnVioletHold/modules.xml
+   A /trunk/Legion/BlackRookHold
+   A /trunk/Legion/BlackRookHold/AmalgamOfSouls.lua
+   A /trunk/Legion/BlackRookHold/IllysannaRavencrest.lua
+   A /trunk/Legion/BlackRookHold/KurtalosRavencrest.lua
+   A /trunk/Legion/BlackRookHold/Smashspite.lua
+   A /trunk/Legion/BlackRookHold/modules.xml
+   A /trunk/Legion/CourtOfStars
+   A /trunk/Legion/CourtOfStars/AdvisorMelandrus.lua
+   A /trunk/Legion/CourtOfStars/PatrolCaptainGerdo.lua
+   A /trunk/Legion/CourtOfStars/TalixaeFlamewreath.lua
+   A /trunk/Legion/CourtOfStars/modules.xml
+   A /trunk/Legion/DarkheartThicket
+   A /trunk/Legion/DarkheartThicket/ArchdruidGlaidalis.lua
+   A /trunk/Legion/DarkheartThicket/Dresaron.lua
+   A /trunk/Legion/DarkheartThicket/Oakheart.lua
+   A /trunk/Legion/DarkheartThicket/ShadeOfXavius.lua
+   A /trunk/Legion/DarkheartThicket/modules.xml
+   A /trunk/Legion/EyeOfAzshara
+   A /trunk/Legion/EyeOfAzshara/KingDeepbeard.lua
+   A /trunk/Legion/EyeOfAzshara/LadyHatecoil.lua
+   A /trunk/Legion/EyeOfAzshara/Serpentrix.lua
+   A /trunk/Legion/EyeOfAzshara/WarlordParjesh.lua
+   A /trunk/Legion/EyeOfAzshara/WrathOfAzshara.lua
+   A /trunk/Legion/EyeOfAzshara/modules.xml
+   A /trunk/Legion/HallsOfValor
+   A /trunk/Legion/HallsOfValor/Fenryr.lua
+   A /trunk/Legion/HallsOfValor/God-KingSkovald.lua
+   A /trunk/Legion/HallsOfValor/Hymdall.lua
+   A /trunk/Legion/HallsOfValor/Hyrja.lua
+   A /trunk/Legion/HallsOfValor/Odyn.lua
+   A /trunk/Legion/HallsOfValor/modules.xml
+   A /trunk/Legion/MawOfSouls
+   A /trunk/Legion/MawOfSouls/Harbaron.lua
+   A /trunk/Legion/MawOfSouls/Helya.lua
+   A /trunk/Legion/MawOfSouls/Ymiron.lua
+   A /trunk/Legion/MawOfSouls/modules.xml
+   A /trunk/Legion/NeltharionsLair
+   A /trunk/Legion/NeltharionsLair/DargrulTheUnderking.lua
+   A /trunk/Legion/NeltharionsLair/Naraxas.lua
+   A /trunk/Legion/NeltharionsLair/Rokmora.lua
+   A /trunk/Legion/NeltharionsLair/UlaroggCragshaper.lua
+   A /trunk/Legion/NeltharionsLair/modules.xml
+   A /trunk/Legion/TheArcway
+   A /trunk/Legion/TheArcway/AdvisorVandros.lua
+   A /trunk/Legion/TheArcway/Corstilax.lua
+   A /trunk/Legion/TheArcway/GeneralXakal.lua
+   A /trunk/Legion/TheArcway/Ivanyr.lua
+   A /trunk/Legion/TheArcway/Naltira.lua
+   A /trunk/Legion/TheArcway/modules.xml
+   A /trunk/Legion/VaultOfTheWardens
+   A /trunk/Legion/VaultOfTheWardens/Ashgolm.lua
+   A /trunk/Legion/VaultOfTheWardens/CordanaFelsong.lua
+   A /trunk/Legion/VaultOfTheWardens/Glazer.lua
+   A /trunk/Legion/VaultOfTheWardens/InquisitorTormentorum.lua
+   A /trunk/Legion/VaultOfTheWardens/TirathonSaltheril.lua
+   A /trunk/Legion/VaultOfTheWardens/modules.xml
+   M /trunk/modules.xml
+
+add Legion stub
+------------------------------------------------------------------------
+r1249 | funkydude | 2016-02-01 15:33:26 +0000 (Mon, 01 Feb 2016) | 1 line
+Changed paths:
+   M /trunk/MoP/MogushanPalace/XinTheWeaponmaster.lua
+
+MoP/MogushanPalace/XinTheWeaponmaster: Fix health messages.
+------------------------------------------------------------------------

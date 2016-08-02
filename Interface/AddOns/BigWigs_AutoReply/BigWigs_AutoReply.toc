@@ -1,0 +1,11 @@
+## Interface: 60200
+## Title: Big Wigs [|cffeda55fAuto Reply|r]
+## Author: Kiezo
+## Notes: Auto reply module for BigWigs
+## Version: 1.2
+## Dependencies: BigWigs
+## SavedVariables: BigWigs_AutoReplyFilterWhispers, BigWigs_AutoReplyIgnoreList
+
+embeds.xml
+
+AutoReply.lua

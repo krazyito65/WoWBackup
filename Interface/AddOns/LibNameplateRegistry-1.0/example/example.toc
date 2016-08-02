@@ -1,0 +1,23 @@
+## Interface: 70000
+## X-Max-Interface: 70000
+## X-Min-Interface: 70000
+## X-Curse-Packaged-Version: 0.17
+## X-Curse-Project-Name: LibNameplateRegistry-1.0
+## X-Curse-Project-ID: libnameplateregistry-1-0
+## X-Curse-Repository-ID: wow/libnameplateregistry-1-0/mainline
+
+## Title: example
+
+## Notes: an example mod for LibNameplateRegistry-1.0
+
+## Author: John Wellesz
+## Version: 1
+
+## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibNameplateRegistry-1.0
+## LoadOnDemand: 1
+
+
+embeds.xml
+
+Core.lua
+

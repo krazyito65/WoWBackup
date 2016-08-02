@@ -1,0 +1,8 @@
+== 30 == 
+* Updated for patch 7.0.3.
+
+== 29 Beta == 
+* German localization teszt, done: 58, untranslated: 48
+
+== 28 == 
+* Ticket 17 fixed: lua error on login 

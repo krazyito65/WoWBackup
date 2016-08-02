@@ -1,0 +1,40 @@
+2016-07-19  Tercio  <Tercio>
+
+[e5d9149bf8db] [tip]
+* Details_RaidInfo-ThroneOfThunder.toc:
+
+- ToC Update.
+
+
+2015-12-28  Tercioo  <Tercioo>
+
+[bdbf49ea78ee]
+* ThroneOfThunder.lua:
+
+- Raden name Fix.
+
+
+2015-11-23  Tercio  <Tercio>
+
+[924da8a86f95]
+* Libs/AceLocale-3.0/AceLocale-3.0.lua, Libs/AceLocale-3.0/AceLocale-3.0.xml:
+
+- We don't need acelocale, since the lib is already added on Details!.
+
+
+2015-10-22  Tercio  <Tercio>
+
+[5989e79dc5ca]
+* Libs/LibStub/LibStub.lua, Libs/LibStub/LibStub.toc, Libs/LibStub/tests/test.lua, Libs/LibStub/tests/test2.lua, Libs/LibStub/tests/test3.lua, Libs/LibStub/tests/test4.lua:
+
+- removing LibStub, we doesn't need it.
+
+
+2015-06-23  Tercio  <Tercio>
+
+[0de01324b4f2]
+* .pkgmeta, Details_RaidInfo-BlackrockFoundry/Details_RaidInfo-BlackrockFoundry.lua, Details_RaidInfo-BlackrockFoundry/Details_RaidInfo-BlackrockFoundry.toc, Details_RaidInfo-BlackrockFoundry/boss_faces.tga, Details_RaidInfo-BlackrockFoundry/icon256x128.tga, Details_RaidInfo-Highmaul/Details_RaidInfo-Highmaul.lua, Details_RaidInfo-Highmaul/Details_RaidInfo-Highmaul.toc, Details_RaidInfo-Highmaul/boss_faces.tga, Details_RaidInfo-Highmaul/icon256x128.tga, Details_RaidInfo-SiegeOfOrgrimmar/Details_RaidInfo-SiegeOfOrgrimmar.toc, Details_RaidInfo-SiegeOfOrgrimmar/Libs/AceLocale-3.0/AceLocale-3.0.lua, Details_RaidInfo-SiegeOfOrgrimmar/Libs/AceLocale-3.0/AceLocale-3.0.xml, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/LibStub.lua, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/LibStub.toc, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/tests/test.lua, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/tests/test2.lua, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/tests/test3.lua, Details_RaidInfo-SiegeOfOrgrimmar/Libs/LibStub/tests/test4.lua, Details_RaidInfo-SiegeOfOrgrimmar/SiegeOfOrgrimmar.lua, Details_RaidInfo-SiegeOfOrgrimmar/embeds.xml, Details_RaidInfo-SiegeOfOrgrimmar/enUS.lua, Details_RaidInfo-SiegeOfOrgrimmar/images/boss_faces.tga, Details_RaidInfo-SiegeOfOrgrimmar/images/icon256x128.tga, Details_RaidInfo-SiegeOfOrgrimmar/images/wallpaper.tga, Details_RaidInfo-SiegeOfOrgrimmar/ptBR.lua, Details_RaidInfo-ThroneOfThunder.toc, Libs/AceLocale-3.0/AceLocale-3.0.lua, Libs/AceLocale-3.0/AceLocale-3.0.xml, Libs/LibStub/LibStub.lua, Libs/LibStub/LibStub.toc, Libs/LibStub/tests/test.lua, Libs/LibStub/tests/test2.lua, Libs/LibStub/tests/test3.lua, Libs/LibStub/tests/test4.lua, ThroneOfThunder.lua, embeds.xml, enUS.lua, images/icon256x128.tga, images/raid_tot.tga, images/tot.tga, ptBR.lua:
+
+first commit
+
+

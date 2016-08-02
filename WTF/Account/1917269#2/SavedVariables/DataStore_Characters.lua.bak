@@ -1,0 +1,33 @@
+
+DataStore_CharactersDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["XPMax"] = 93465000,
+				["played"] = 249041,
+				["guildRankName"] = "Friend & Family",
+				["isResting"] = 1,
+				["lastUpdate"] = 1403962676,
+				["class"] = "Monk",
+				["race"] = "Blood Elf",
+				["level"] = 90,
+				["XP"] = 0,
+				["RestXP"] = 0,
+				["money"] = 16870108,
+				["gender"] = 3,
+				["subZone"] = "Valley of Honor",
+				["zone"] = "Orgrimmar",
+				["guildRankIndex"] = 8,
+				["name"] = "Kråzyito",
+				["faction"] = "Horde",
+				["englishRace"] = "BloodElf",
+				["guildName"] = "Semi Respectable",
+				["lastLogoutTimestamp"] = 1403962676,
+				["englishClass"] = "MONK",
+			},
+		},
+	},
+}

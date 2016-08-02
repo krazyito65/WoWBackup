@@ -1,0 +1,58 @@
+
+BLCDrosterReload = {
+	["0x048000000638D739"] = {
+		["talents"] = {
+			[119381] = {
+				["idx"] = 12,
+				["name_localized"] = "Leg Sweep",
+				["tier"] = 4,
+				["spell_id"] = 119381,
+				["icon"] = "Interface\\Icons\\ability_monk_legsweep",
+				["column"] = 3,
+			},
+			[123904] = {
+				["idx"] = 17,
+				["name_localized"] = "Invoke Xuen, the White Tiger",
+				["tier"] = 6,
+				["spell_id"] = 123904,
+				["icon"] = "Interface\\Icons\\ability_monk_summontigerstatue",
+				["column"] = 2,
+			},
+			[115396] = {
+				["idx"] = 8,
+				["name_localized"] = "Ascension",
+				["tier"] = 3,
+				["spell_id"] = 115396,
+				["icon"] = "Interface\\Icons\\ability_monk_ascension",
+				["column"] = 2,
+			},
+			[122278] = {
+				["idx"] = 14,
+				["name_localized"] = "Dampen Harm",
+				["tier"] = 5,
+				["spell_id"] = 122278,
+				["icon"] = "Interface\\Icons\\ability_monk_dampenharm",
+				["column"] = 2,
+			},
+			[116841] = {
+				["idx"] = 2,
+				["name_localized"] = "Tiger's Lust",
+				["tier"] = 1,
+				["spell_id"] = 116841,
+				["icon"] = "Interface\\Icons\\ability_monk_tigerslust",
+				["column"] = 2,
+			},
+			[115098] = {
+				["idx"] = 4,
+				["name_localized"] = "Chi Wave",
+				["tier"] = 2,
+				["spell_id"] = 115098,
+				["icon"] = "Interface\\Icons\\ability_monk_chiwave",
+				["column"] = 1,
+			},
+		},
+		["class"] = "MONK",
+		["name"] = "Krazymonk",
+		["spec"] = 268,
+	},
+}

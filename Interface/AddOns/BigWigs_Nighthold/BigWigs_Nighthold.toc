@@ -1,0 +1,37 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: v6
+## X-Curse-Project-Name: BigWigs Bossmods
+## X-Curse-Project-ID: big-wigs
+## X-Curse-Repository-ID: wow/big-wigs/mainline
+
+## Title: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-deDE: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-esES: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-esMX: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-frFR: Big Wigs [|cffeda55fPalais Sacrenuit|r]
+## Title-ruRU: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-zhCN: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-zhTW: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-itIT: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-ptBR: Big Wigs [|cffeda55fThe Nighthold|r]
+## Title-koKR: Big Wigs [|cffeda55fThe Nighthold|r]
+## Notes: Big Wigs The Nighthold Modules
+## Notes-deDE: Big Wigs The Nighthold Modules
+## Notes-esES: Big Wigs The Nighthold Modules
+## Notes-esMX: Big Wigs The Nighthold Modules
+## Notes-frFR: Modules Big Wigs concernant le Palais Sacrenuit.
+## Notes-ruRU: Big Wigs The Nighthold Modules
+## Notes-zhCN: Big Wigs The Nighthold Modules
+## Notes-zhTW: Big Wigs The Nighthold Modules
+## Notes-itIT: Big Wigs The Nighthold Modules
+## Notes-ptBR: Big Wigs The Nighthold Modules
+## Notes-koKR: Big Wigs The Nighthold Modules
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 1088
+
+modules.xml
+locales.xml

@@ -1,0 +1,3 @@
+
+PawnOptions = nil
+PawnWowheadScaleProviderOptions = nil

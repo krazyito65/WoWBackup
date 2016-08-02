@@ -1,0 +1,60 @@
+
+ChaosGambler = {
+	["bans"] = {
+	},
+	["stats"] = {
+		["Nekrose"] = 34094,
+		["Onornu"] = 3578,
+		["Taeyang"] = -29266,
+		["Sloofslady"] = 6461,
+		["Zoopa"] = -45186,
+		["Narph"] = -7517,
+		["Jgbacp"] = 1470,
+		["Vottii"] = -37,
+		["Sophakyng"] = -3824,
+		["Ishvalan"] = -1811,
+		["Caenem"] = 1181,
+		["Ceasarsalad"] = 8515,
+		["Kinematic"] = -6137,
+		["Odano"] = 20652,
+		["Slobo"] = -23947,
+		["Xilas"] = 389,
+		["Zxorcon"] = -17192,
+		["Gagaltan"] = -33789,
+		["Sevensnumtwo"] = -17447,
+		["Raanch"] = 703,
+		["Geoda"] = -14032,
+		["Xald"] = -1378,
+		["Xyphan"] = 7045,
+		["Diosito"] = 3108,
+		["Andrej"] = 16775,
+		["Enky"] = 19600,
+		["Krazyito"] = -4281,
+		["Krazyíto"] = 37,
+		["Stabyaface"] = 271,
+		["Cerinez"] = -1156,
+		["Lucast"] = 23936,
+		["Janspórt"] = 796,
+		["Snowshott"] = -386,
+		["Rhed"] = 13274,
+		["Foldz"] = 595,
+		["Selsha"] = 304,
+		["Tiigh"] = 7222,
+		["Clearcutter"] = 11506,
+		["Krazymonk"] = 32279,
+		["Critshappen"] = -6405,
+	},
+	["active"] = 1,
+	["chat"] = true,
+	["strings"] = {
+		"Irtluzbek-Mal'Ganis", -- [1]
+		"Krazyito-Mal'Ganis", -- [2]
+	},
+	["hightie"] = {
+	},
+	["lastroll"] = "10000",
+	["lowtie"] = {
+	},
+	["joinstats"] = {
+	},
+}

@@ -1,0 +1,228 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="TabCharacters.lua"></Script>
+
+ 	<Button name="AltoViewIconTemplate" inherits="AltoButtonTemplate" virtual="true">
+		<Size x="30" y="30" />
+		<Frames>
+			<Frame parentKey="Shine" name="$parentShine" inherits="AutoCastShineTemplate">
+				<Size x="28" y="28" />
+				<Anchors>
+					<Anchor point="CENTER" x="0" y="0" />
+				</Anchors>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnEnter>
+				if self.text then
+					AltoTooltip:ClearLines();
+					AltoTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					AltoTooltip:AddLine(self.text,1,1,1);
+					AltoTooltip:Show();
+				end
+			</OnEnter>
+			<OnLeave>
+				AltoTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Altoholic.Tabs.Characters:MenuItem_OnClick(self, button)
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="AltoTabCharactersIconTemplate" inherits="AltoButtonTemplate" virtual="true">
+		<Scripts>
+			<OnEnter>
+				Altoholic.Tabs.Characters:Icon_OnEnter(self)
+			</OnEnter>
+		</Scripts>
+		<KeyValues>
+			<KeyValue key="iconWidth" value="30" type="number" />
+			<KeyValue key="iconHeight" value="30" type="number" />
+		</KeyValues>
+	</Button>
+	
+	<Frame name="AltoholicTabCharacters" parent="AltoholicFrame" hidden="true">
+		<Size x="758" y="447" />
+		<Anchors>
+			<Anchor point="TOPLEFT" x="0" y="0" />
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString parentKey="Text1" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="100" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="35" y="-105" />
+					</Anchors>
+				</FontString>
+				<FontString parentKey="Status" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="320" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="-250" y="13" />
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<!-- Menu Icons -->
+			<Frame parentKey="MenuIcons" name="AltoholicTabCharacters_MenuIcons">
+				<Size x="340" y="37" />
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="AltoholicFrameSearchLabel" relativePoint="RIGHT" x="60" y="-15" />
+				</Anchors>
+				<Frames>
+					<Button parentKey="CharactersIcon" inherits="AltoTabCharactersIconTemplate" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" />
+						</Anchors>
+					</Button>
+					<Button parentKey="BagsIcon" inherits="AltoTabCharactersIconTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.CharactersIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+					</Button>
+					<Button parentKey="QuestsIcon" inherits="AltoTabCharactersIconTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.BagsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\LFGFrame\LFGIcon-Quest" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="TalentsIcon" inherits="AltoTabCharactersIconTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.QuestsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\Spell_Nature_NatureGuardian" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="AuctionIcon" inherits="AltoTabCharactersIconTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.TalentsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Coin_01" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="MailIcon" inherits="AltoTabCharactersIconTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.AuctionIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Note_01" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="SpellbookIcon" inherits="AltoTabCharactersIconTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.MailIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Book_09" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="ProfessionsIcon" inherits="AltoTabCharactersIconTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.SpellbookIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\Achievement_GuildPerk_WorkingOvertime" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="GarrisonIcon" inherits="AltoTabCharactersIconTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.ProfessionsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\inv_garrison_resource" />
+						</KeyValues>
+					</Button>
+				</Frames>
+			</Frame>
+	
+			<Frame parentKey="ContextualMenu" inherits="AltoContextualMenuTemplate" />
+	
+			<!-- Left Menu -->
+			<!--
+			Future menu with character icons on the left
+			
+			<Button name="$parent_Test1" inherits="AltoMenuNamedIconTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-165" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Test2" inherits="AltoMenuNamedIconTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Test1" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Test3" inherits="AltoMenuNamedIconTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Test2" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Test4" inherits="AltoMenuNamedIconTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Test3" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Test5" inherits="AltoMenuNamedIconTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Test4" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="$parent_Test6" inherits="AltoMenuNamedIconTemplate" id="6">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent_Test5" relativePoint="BOTTOMLEFT">
+						<Offset x="0" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+			-->
+		
+			<Frame parentKey="SelectRealm" inherits="AltoRealmPickerTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Text1" relativePoint="BOTTOMLEFT" x="-25" y="-2" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="menuWidth" value="120" type="number" />
+				</KeyValues>
+			</Frame>
+			
+			<Button parentKey="Characters" inherits="AltoViewIconTemplate" id="1">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT" x="30" y="240" />
+				</Anchors>
+			</Button>
+			
+			<Frame parentKey="SortButtons" inherits="AltoSortButtonsContainerTemplate">
+				<KeyValues>
+					<KeyValue key="numButtons" value="4" type="number" />
+					<KeyValue key="option" value="UI.Tabs.Characters.SortAscending" />
+				</KeyValues>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				Altoholic.Tabs.Characters:OnLoad()
+			</OnLoad>
+			<OnShow>
+				Altoholic.Tabs.Characters:OnShow()
+			</OnShow>
+			<OnHide>
+				DropDownList1:Hide()
+			</OnHide>
+		</Scripts>
+	</Frame>
+	
+</Ui>

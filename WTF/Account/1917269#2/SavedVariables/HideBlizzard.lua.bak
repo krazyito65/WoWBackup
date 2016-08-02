@@ -1,0 +1,11 @@
+
+HideBlizzardDB = {
+	["profileKeys"] = {
+		["Theawàkening - Bonechewer"] = "Theawàkening - Bonechewer",
+	},
+	["profiles"] = {
+		["Theawàkening - Bonechewer"] = {
+			["welcome"] = true,
+		},
+	},
+}

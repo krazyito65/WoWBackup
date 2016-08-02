@@ -1,0 +1,163 @@
+
+AmrBagItems = {
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:550866432:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [1]
+	"|cff9d9d9d|Hitem:90550:0:0:0:0:0:0:1838954368:90:0:0|h[Primitive Electron Collider]|h|r", -- [2]
+	"|cffffffff|Hitem:34498:0:0:0:0:0:0:1838954368:90:0:0|h[Paper Zeppelin Kit]|h|r", -- [3]
+	"|cffffffff|Hitem:81413:0:0:0:0:0:0:86703872:90:0:0|h[Skewered Peanut Chicken]|h|r", -- [4]
+	"|cffa335ee|Hitem:94947:4433:4591:4591:0:0:0:1445699328:90:0:467|h[Helix-Breaker Gloves]|h|r", -- [5]
+	"|cffa335ee|Hitem:95962:0:4637:4644:0:0:0:1708331392:90:116:465|h[Abandoned Zandalari Shadowgirdle]|h|r", -- [6]
+	"|cffa335ee|Hitem:94948:4414:0:0:0:0:0:1391923968:90:148:467|h[Bracers of Fragile Bone]|h|r", -- [7]
+	"|cff9d9d9d|Hitem:81194:0:0:0:0:0:0:547273600:90:0:0|h[Sharp Fangs]|h|r", -- [8]
+	"|cff9d9d9d|Hitem:81200:0:0:0:0:0:0:445360896:90:0:0|h[Vial of Swirling Mist]|h|r", -- [9]
+	"|cffa335ee|Hitem:74248:0:0:0:0:0:0:1412550656:90:0:0|h[Sha Crystal]|h|r", -- [10]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:985070336:90:0:0|h[Windwool Cloth]|h|r", -- [11]
+	"|cff9d9d9d|Hitem:100739:0:0:0:0:0:0:1239893504:90:0:0|h[Super-Heated Oil]|h|r", -- [12]
+	"|cffffffff|Hitem:35723:0:0:0:0:0:0:302485888:90:0:0|h[Shards of Ahune]|h|r", -- [13]
+	"|cffffffff|Hitem:91877:0:0:0:0:0:0:2029896320:90:0:0|h[Domination Point Commission]|h|r", -- [14]
+	"|cffffffff|Hitem:97983:0:0:0:0:0:0:277242880:90:0:0|h[Modified Chomping Apparatus]|h|r", -- [15]
+	"|cffffffff|Hitem:93195:0:0:0:0:0:0:1172231936:90:0:0|h[Brawler's Pass]|h|r", -- [16]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [17]
+	"|cffffffff|Hitem:95567:0:0:0:0:0:0:308349824:90:0:0|h[Kirin Tor Beacon]|h|r", -- [18]
+	"|cffffffff|Hitem:6948:0:0:0:0:0:0:0:90:0:0|h[Hearthstone]|h|r", -- [19]
+	"|cffffffff|Hitem:87903:0:0:0:0:0:0:1677542272:90:0:0|h[Dread Amber Shards]|h|r", -- [20]
+	"|cffffffff|Hitem:38682:0:0:0:0:0:0:0:90:0:0|h[Enchanting Vellum]|h|r", -- [21]
+	"|cffffffff|Hitem:38682:0:0:0:0:0:0:0:90:0:0|h[Enchanting Vellum]|h|r", -- [22]
+	"|cffffffff|Hitem:77589:0:0:0:0:0:0:43446528:90:0:0|h[G91 Landshark]|h|r", -- [23]
+	"|cffffffff|Hitem:6218:0:0:0:0:0:0:432435584:90:0:0|h[Runed Copper Rod]|h|r", -- [24]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:1402799232:90:0:0|h[Spirit Dust]|h|r", -- [25]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:1197360768:90:0:0|h[Spirit Dust]|h|r", -- [26]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:499639936:90:0:0|h[Spirit Dust]|h|r", -- [27]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:1007725312:90:0:0|h[Spirit Dust]|h|r", -- [28]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:2073505280:90:0:0|h[Spirit Dust]|h|r", -- [29]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:1218736768:90:0:0|h[Spirit Dust]|h|r", -- [30]
+	"|cffffffff|Hitem:72234:0:0:0:0:0:0:1184226048:90:0:0|h[Green Tea Leaf]|h|r", -- [31]
+	"|cffffffff|Hitem:79011:0:0:0:0:0:0:427530240:90:0:0|h[Fool's Cap]|h|r", -- [32]
+	"|cffffffff|Hitem:74837:0:0:0:0:0:0:210980608:90:0:0|h[Raw Turtle Meat]|h|r", -- [33]
+	"|cffffffff|Hitem:74841:0:0:0:0:0:0:955511168:90:0:0|h[Juicycrunch Carrot]|h|r", -- [34]
+	"|cffffffff|Hitem:74840:0:0:0:0:0:0:120649472:90:0:0|h[Green Cabbage]|h|r", -- [35]
+	"|cffffffff|Hitem:74866:0:0:0:0:0:0:2008941056:90:0:0|h[Golden Carp]|h|r", -- [36]
+	"|cffffffff|Hitem:72092:0:0:0:0:0:0:773160576:90:0:0|h[Ghost Iron Ore]|h|r", -- [37]
+	"|cffffffff|Hitem:72093:0:0:0:0:0:0:773160576:90:0:0|h[Kyparite]|h|r", -- [38]
+	"|cffffffff|Hitem:38426:0:0:0:0:0:0:0:90:0:0|h[Eternium Thread]|h|r", -- [39]
+	"|cffffffff|Hitem:53643:0:0:0:0:0:0:2060284416:90:0:0|h[Bolt of Embersilk Cloth]|h|r", -- [40]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:1603880448:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [41]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:264577664:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [42]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:484904448:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [43]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:184235648:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [44]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:511106816:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [45]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:1522296832:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [46]
+	"|cffffffff|Hitem:82441:0:0:0:0:0:0:1079107840:90:0:0|h[Bolt of Windwool Cloth]|h|r", -- [47]
+	"|cffffffff|Hitem:89112:0:0:0:0:0:0:883190016:90:0:0|h[Mote of Harmony]|h|r", -- [48]
+	"|cffffffff|Hitem:38577:0:0:0:0:0:0:1239893504:90:0:0|h[Party G.R.E.N.A.D.E.]|h|r", -- [49]
+	"|cffffffff|Hitem:85580:0:0:0:0:0:0:712391808:90:0:0|h[Empty Polyformic Acid Vial]|h|r", -- [50]
+	"|cffffffff|Hitem:88370:0:0:0:0:0:0:1372557824:90:0:0|h[Puntable Marmot]|h|r", -- [51]
+	"|cffffffff|Hitem:89230:0:0:0:0:0:0:0:90:0:0|h[Restorative Amber]|h|r", -- [52]
+	"|cffffffff|Hitem:72986:0:0:0:0:0:0:1522296832:90:0:0|h[Heavy Windwool Bandage]|h|r", -- [53]
+	"|cffffffff|Hitem:76086:0:0:0:0:0:0:883502592:90:0:0|h[Flask of Falling Leaves]|h|r", -- [54]
+	"|cffffffff|Hitem:92942:0:0:0:0:0:0:0:90:0:0|h[Potion of Brawler's Cunning]|h|r", -- [55]
+	"|cffffffff|Hitem:76092:0:0:0:0:0:0:1912475264:90:0:0|h[Potion of Focus]|h|r", -- [56]
+	"|cffffffff|Hitem:81412:0:0:0:0:0:0:1195710080:90:0:0|h[Blanched Needle Mushrooms]|h|r", -- [57]
+	"|cff1eff00|Hitem:90902:0:0:0:0:0:0:919905664:90:0:0|h[Imperial Silkworm]|h|r", -- [58]
+	"|cff1eff00|Hitem:63359:0:0:0:0:0:0:0:90:0:0|h[Banner of Cooperation]|h|r", -- [59]
+	"|cff1eff00|Hitem:63352:0:0:0:0:0:0:0:90:0:0|h[Shroud of Cooperation]|h|r", -- [60]
+	"|cff1eff00|Hitem:63352:0:0:0:0:0:0:0:90:0:0|h[Shroud of Cooperation]|h|r", -- [61]
+	"|cff0070dd|Hitem:94221:0:0:0:0:0:0:56488832:90:0:0|h[Shan'ze Ritual Stone]|h|r", -- [62]
+	"|cff0070dd|Hitem:76668:0:0:0:0:0:0:1957051904:90:0:0|h[Reckless Vermilion Onyx]|h|r", -- [63]
+	"|cff0070dd|Hitem:76651:0:0:0:0:0:0:1755850496:90:0:0|h[Energized Wild Jade]|h|r", -- [64]
+	"|cff0070dd|Hitem:74252:0:0:0:0:0:0:1970051456:90:0:0|h[Small Ethereal Shard]|h|r", -- [65]
+	"|cff0070dd|Hitem:74247:0:0:0:0:0:0:1107804672:90:0:0|h[Ethereal Shard]|h|r", -- [66]
+	"|cff0070dd|Hitem:82447:0:0:0:0:0:0:977914880:90:0:0|h[Imperial Silk]|h|r", -- [67]
+	"|cff0070dd|Hitem:98619:0:0:0:0:0:0:497012736:90:0:0|h[Celestial Cloth]|h|r", -- [68]
+	"|cff0070dd|Hitem:76061:0:0:0:0:0:0:25020160:90:0:0|h[Spirit of Harmony]|h|r", -- [69]
+	"|cff0070dd|Hitem:64398:0:0:0:0:0:0:0:90:0:0|h[Standard of Unity]|h|r", -- [70]
+	"|cffa335ee|Hitem:94222:0:0:0:0:0:0:1324455424:90:0:0|h[Key to the Palace of Lei Shen]|h|r", -- [71]
+	"|cffa335ee|Hitem:64399:0:0:0:0:0:0:0:90:0:0|h[Battle Standard of Coordination]|h|r", -- [72]
+	"|cffa335ee|Hitem:94965:0:0:0:0:0:0:1159456128:90:0:465|h[Orb of Arcing Lightning]|h|r", -- [73]
+	"|cffa335ee|Hitem:95641:0:0:0:0:0:0:1501207808:90:0:467|h[Horridon's Last Gasp]|h|r", -- [74]
+	"|cffa335ee|Hitem:95300:0:0:0:0:0:0:0:90:0:465|h[Gloves of the Exorcist]|h|r", -- [75]
+	"|cffa335ee|Hitem:94804:0:0:0:0:0:-340:699270771:90:0:465|h[Frostborn Wristwraps]|h|r", -- [76]
+	"|cffa335ee|Hitem:96463:0:0:0:0:0:0:1512671232:90:0:465|h[Robe of Midnight Down]|h|r", -- [77]
+	"|cffa335ee|Hitem:95304:0:0:0:0:0:0:0:90:0:465|h[Shoulderguards of the Exorcist]|h|r", -- [78]
+	"|cffff8000|Hitem:94594:0:0:0:0:0:0:1116810880:90:0:0|h[Titan Runestone]|h|r", -- [79]
+	"|cffff8000|Hitem:89882:0:0:0:0:0:0:264044800:90:0:0|h[Crystallized Horror]|h|r", -- [80]
+}
+AmrBankItems = {
+}
+AmrEquipedItems = {
+	["1"] = "|cffa335ee|Hitem:94782:0:5031:4589:0:0:0:957529088:90:0:467|h[Stonegaze Hood]|h|r",
+	["3"] = "|cffa335ee|Hitem:94801:4806:4644:0:0:0:0:395529600:90:119:467|h[Gleaming-Eye Shoulderpads]|h|r",
+	["2"] = "|cffa335ee|Hitem:94980:0:4611:0:0:0:0:805184256:90:0:467|h[Passionfire Choker]|h|r",
+	["5"] = "|cffa335ee|Hitem:95298:4419:4644:4591:4589:0:0:0:90:148:467|h[Robes of the Exorcist]|h|r",
+	["14"] = "|cffa335ee|Hitem:94524:0:0:0:0:0:0:807335424:90:0:467|h[Unerring Vision of Lei Shen]|h|r",
+	["7"] = "|cffa335ee|Hitem:96111:4896:4637:4637:0:0:0:18025984:90:162:467|h[Leggings of Pulsing Blood]|h|r",
+	["6"] = "|cffa335ee|Hitem:104716:0:0:0:0:0:0:374836608:90:0:491|h[Sash of the Last Guardian]|h|r",
+	["9"] = "|cffa335ee|Hitem:104695:0:0:0:0:0:0:5007232:90:0:491|h[Lifebane Bracers]|h|r",
+	["15"] = "|cffa335ee|Hitem:94929:4892:4644:0:0:0:0:1951775616:90:154:467|h[Deadly Glare Cape]|h|r",
+	["16"] = "|cffa335ee|Hitem:94805:4442:4637:4644:0:0:0:1671849344:90:152:467|h[Giorgio's Caduceus of Pure Moods]|h|r",
+	["8"] = "|cffa335ee|Hitem:94762:4429:4644:0:0:0:0:831856256:90:0:467|h[Mar'li's Bloodstained Sandals]|h|r",
+	["13"] = "|cffa335ee|Hitem:94509:0:0:0:0:0:0:0:90:0:467|h[Soothing Talisman of the Shado-Pan Assault]|h|r",
+	["12"] = "|cffa335ee|Hitem:95742:4360:4637:0:0:0:0:1885833600:90:0:467|h[Durumu's Captive Eyeball]|h|r",
+	["11"] = "|cffa335ee|Hitem:95139:4360:0:0:0:0:0:0:90:152:465|h[Ring of the Shado-Pan Assault]|h|r",
+	["10"] = "|cffa335ee|Hitem:104671:0:0:0:0:0:0:2077644288:90:0:491|h[Bolt-Burster Grips]|h|r",
+}
+AmrGold = 15564388
+AmrRealmName = "Gnomeregan"
+AmrCharacterName = "Krazyíto"
+AmrIconInfo = {
+}
+AmrCurrencies = {
+	[395] = 955,
+	[396] = 540,
+	[391] = 9,
+	[392] = 891,
+	[402] = 1,
+}
+AmrProfessions = {
+	["Tailoring"] = 600,
+	["Cooking"] = 1,
+	["First Aid"] = 75,
+	["Enchanting"] = 600,
+}
+AmrSpecializations = {
+	["1"] = 258,
+	["2"] = 256,
+}
+AmrRace = "Human"
+AmrLevel = 90
+AmrFaction = "Alliance"
+AmrActiveSpec = 2
+AmrOptions = {
+}
+AmrGlyphs = {
+	{
+		120581, -- [1]
+		147778, -- [2]
+		126174, -- [3]
+		14771, -- [4]
+		126094, -- [5]
+		55684, -- [6]
+	}, -- [1]
+	{
+		58009, -- [1]
+		89489, -- [2]
+		126152, -- [3]
+		119866, -- [4]
+		126174, -- [5]
+		63248, -- [6]
+	}, -- [2]
+}
+AmrTalents = {
+	"123323", -- [1]
+	"222111", -- [2]
+}
+AmrBankItemsAndCounts = {
+}
+AmrImportString = "region=USA;realm=Gnomeregan;name=Krazyíto;faction=Alliance;spec=256;talents=222111;glyphs=89489,58009,119866,63248,126152,126174;race=Human;professions=Enchanting:600,Tailoring:600;item=4:95298:0:467:r,y,b:4611,4647,4591:76660,76697,76640:4419:154;item=0:94782:0:467:m,b:5031,4591:95345,76640:0:119;item=5:104716:0:491:r,b,p:4611,4591,4647:76660,76640,76697:0:119;item=9:104671:0:491:r,b:4611,4591:76660,76640:4433:119;item=14:94929:0:467:r:4611:76660:4892:154;item=1:94980:0:467:y:4647:76697:0:119;item=6:96111:0:467:b,b:4591,4591:76640,76640:4895:0;item=2:94801:0:467:r:4611:76660:4806:119;item=8:104695:0:491:0:0:0:4414:116;item=10:95139:0:465:0:0:0:4360:152;item=11:95742:0:467:r:4611:76660:4360:119;item=7:94762:0:467:r:4611:76660:4429:119;item=15:94805:0:467:b,p:4591,4647:76640,76697:4442:152;item=12:94509:0:467:0:0:0:0:0;item=13:94524:0:467:0:0:0:0:0;"
+AmrImportDate = "01/24/14 23:09:18"
+AmrSendSettings = {
+	["SendTo"] = "NEKROSE",
+	["SendGems"] = true,
+	["SendToType"] = "a friend",
+}
+AmrLogData = {
+}

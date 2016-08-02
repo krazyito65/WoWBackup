@@ -1,0 +1,24 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="libs\LibStub\LibStub.lua"/>
+	<Include file="libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+	<Include file="libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
+	<Include file="libs\Ace3\AceAddon-3.0\AceAddon-3.0.xml"/>	
+	<Include file="libs\Ace3\AceComm-3.0\AceComm-3.0.xml"/>
+	<Include file="libs\Ace3\AceConsole-3.0\AceConsole-3.0.xml"/>
+	<Include file="libs\Ace3\AceConfig-3.0\AceConfig-3.0.xml"/>
+	<Include file="libs\Ace3\AceDB-3.0\AceDB-3.0.xml"/>
+	<Include file="libs\Ace3\AceDBOptions-3.0\AceDBOptions-3.0.xml"/>
+	<Include file="libs\Ace3\AceEvent-3.0\AceEvent-3.0.xml"/>
+	<Include file="libs\Ace3\AceHook-3.0\AceHook-3.0.xml"/>
+	<Include file="libs\Ace3\AceSerializer-3.0\AceSerializer-3.0.xml"/>
+	<Include file="libs\Ace3\AceTimer-3.0\AceTimer-3.0.xml"/>
+	<Include file="libs\kLib\kLib-1.0.xml"/>
+	<Include file="libs\kLib\kLibColor-1.0\kLibColor-1.0.xml"/>
+	<Include file="libs\kLib\kLibComm-1.0\kLibComm-1.0.xml"/>
+	<Include file="libs\kLib\kLibItem-1.0\kLibItem-1.0.xml"/>
+	<Include file="libs\kLib\kLibOptions-1.0\kLibOptions-1.0.xml"/>
+	<Include file="libs\kLib\kLibTimer-1.0\kLibTimer-1.0.xml"/>
+	<Include file="libs\kLib\kLibUtility-1.0\kLibUtility-1.0.xml"/>
+	<Include file="libs\kLib\kLibView-1.0\kLibView-1.0.xml"/>
+</Ui>

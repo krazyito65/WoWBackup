@@ -1,0 +1,12 @@
+tag v2.0.4
+07e1b92bc45cdc31fef71505c5b9a4c484991582
+Brizag <vvv444@gmail.com>
+2016-07-26 23:30:47 +0300
+
+Another v7.0.3 fix
+
+
+--------------------
+
+Brizag:
+	- Yet another fix to support patch 7.0.3 API changes

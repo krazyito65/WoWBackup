@@ -1,0 +1,29 @@
+
+DcrDB = {
+	["classes"] = {
+		["Mage"] = {
+			["CureOrder"] = {
+				-14, -- [1]
+				-13, -- [2]
+				nil, -- [3]
+				1, -- [4]
+				[32] = 2,
+				[16] = -16,
+				[8] = -15,
+			},
+		},
+	},
+	["profiles"] = {
+		["Default"] = {
+			["DebuffsFrame_y"] = -153.6000110458573,
+			["MainBarY"] = -34.56003714155031,
+			["MainBarX"] = 605.622780022926,
+			["MiniMapIcon"] = {
+				["minimapPos"] = 276,
+				["radius"] = 80,
+			},
+			["DebuffsFrame_x"] = 921.6000079749399,
+			["Hidden"] = true,
+		},
+	},
+}

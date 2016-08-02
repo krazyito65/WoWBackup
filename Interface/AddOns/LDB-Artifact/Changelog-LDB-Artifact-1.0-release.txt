@@ -1,0 +1,16 @@
+tag 1.0-release
+1698e1740ec4de33300473c7d1b948aab7b858ca
+Znuff <znuffy@gmail.com>
+2016-07-08 02:10:43 +0300
+
+Tagging as release
+
+
+--------------------
+
+Znuff:
+	- Added total earned Artifact Power.
+	- Local functions.
+	- Fixed tooltip bug when there is no artifact equipped.
+	- Wording change
+	- Initial commit.

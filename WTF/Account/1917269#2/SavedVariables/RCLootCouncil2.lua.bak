@@ -1,0 +1,268 @@
+
+RCLootCouncilDB = {
+	["global"] = {
+		["localizedSubTypes"] = {
+			["Two-Handed Maces"] = "Two-Handed Maces",
+			["One-Handed Swords"] = "One-Handed Swords",
+			["Staves"] = "Staves",
+			["Crossbows"] = "Crossbows",
+			["Plate"] = "Plate",
+			["One-Handed Maces"] = "One-Handed Maces",
+			["created"] = true,
+			["Shields"] = "Shields",
+			["Polearms"] = "Polearms",
+			["Bows"] = "Bows",
+			["Two-Handed Swords"] = "Two-Handed Swords",
+			["Daggers"] = "Daggers",
+			["Leather"] = "Leather",
+			["Cloth"] = "Cloth",
+			["Guns"] = "Guns",
+			["Fist Weapons"] = "Fist Weapons",
+			["Mail"] = "Mail",
+			["Wands"] = "Wands",
+			["One-Handed Axes"] = "One-Handed Axes",
+			["Two-Handed Axes"] = "Two-Handed Axes",
+		},
+		["log"] = {
+			"08/20/15", -- [1]
+			"12:53:51 - ", -- [2]
+			"12:53:51 - Logged In", -- [3]
+			"12:53:51 - ML initialized!", -- [4]
+			"12:54:07 - Event: (PLAYER_ENTERING_WORLD)", -- [5]
+			"12:54:07 - GetML()", -- [6]
+			"12:54:09 - GetPlayersGuildRank()", -- [7]
+			"12:54:09 - Found Guild Rank: Raider", -- [8]
+			"12:54:09 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Krazyito) (distri:) (GUILD)", -- [9]
+			"12:54:09 - Comm received: (^1^SverTestReply^T^N1^SAmarestrasza-Mal'Ganis^N2^SPRIEST^N3^SA.M~`Trial^N4^S1.7.6^t^^) (from:) (Amarestrasza) (distri:) (WHISPER)", -- [10]
+			"12:54:09 - Comm received: (^1^SverTestReply^T^N1^SNumberless-Mal'Ganis^N2^SMAGE^N3^SA.M~`Trial^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Numberless) (distri:) (WHISPER)", -- [11]
+			"12:54:09 - Comm received: (^1^SverTestReply^T^N1^SOrganicboomy-Mal'Ganis^N2^SDRUID^N3^SA.M~`Raider^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Organicboomy) (distri:) (WHISPER)", -- [12]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [13]
+			"12:54:10 - Found One-Handed Axes localized as: One-Handed Axes", -- [14]
+			"12:54:10 - Found One-Handed Swords localized as: One-Handed Swords", -- [15]
+			"12:54:10 - Found Staves localized as: Staves", -- [16]
+			"12:54:10 - Found Crossbows localized as: Crossbows", -- [17]
+			"12:54:10 - Found Plate localized as: Plate", -- [18]
+			"12:54:10 - Found One-Handed Maces localized as: One-Handed Maces", -- [19]
+			"12:54:10 - Found Shields localized as: Shields", -- [20]
+			"12:54:10 - Found Polearms localized as: Polearms", -- [21]
+			"12:54:10 - Found Bows localized as: Bows", -- [22]
+			"12:54:10 - Found Two-Handed Swords localized as: Two-Handed Swords", -- [23]
+			"12:54:10 - Found Two-Handed Maces localized as: Two-Handed Maces", -- [24]
+			"12:54:10 - Found Leather localized as: Leather", -- [25]
+			"12:54:10 - Found Mail localized as: Mail", -- [26]
+			"12:54:10 - Found Guns localized as: Guns", -- [27]
+			"12:54:10 - Found Fist Weapons localized as: Fist Weapons", -- [28]
+			"12:54:10 - Found Cloth localized as: Cloth", -- [29]
+			"12:54:10 - Found Wands localized as: Wands", -- [30]
+			"12:54:10 - Found Daggers localized as: Daggers", -- [31]
+			"12:54:10 - Found Two-Handed Axes localized as: Two-Handed Axes", -- [32]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [33]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [34]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [35]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [36]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [37]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [38]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [39]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [40]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [41]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [42]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [43]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [44]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [45]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [46]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [47]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [48]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [49]
+			"12:54:10 - Timer LocalizeSubTypes passed", -- [50]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^STenguu-Mal'Ganis^N2^SDEATHKNIGHT^N3^SA.M~`Raider^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Tenguu) (distri:) (WHISPER)", -- [51]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SGangles-Mal'Ganis^N2^SWARRIOR^N3^SAlt^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Gangles) (distri:) (WHISPER)", -- [52]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SShibbsys-Mal'Ganis^N2^SPALADIN^N3^SA.M~`Raider^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Shibbsys) (distri:) (WHISPER)", -- [53]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SBigfatk-Mal'Ganis^N2^SDRUID^N3^SRaider^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Bigfatk) (distri:) (WHISPER)", -- [54]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SRegressing-Mal'Ganis^N2^SMAGE^N3^SA.M~`Raider^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Regressing) (distri:) (WHISPER)", -- [55]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SFelpower-Mal'Ganis^N2^SDEATHKNIGHT^N3^SOfficer~`Alt^N4^S1.7.6^t^^) (from:) (Felpower) (distri:) (WHISPER)", -- [56]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SZapstabags-Mal'Ganis^N2^SDEATHKNIGHT^N3^SOfficer~`Alt^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Zapstabags) (distri:) (WHISPER)", -- [57]
+			"12:54:11 - Comm received: (^1^SverTestReply^T^N1^SBrewandpuff-Mal'Ganis^N2^SMONK^N3^SOfficer~`Alt^N4^S2.0.0^N5^SAlpha.7^t^^) (from:) (Brewandpuff) (distri:) (WHISPER)", -- [58]
+			"12:54:39 - - debug or d - Toggle debugging", -- [59]
+			"12:54:39 - - log - display the debug log", -- [60]
+			"12:54:39 - - clearLog - clear the debug log", -- [61]
+			"12:54:46 - GetML()", -- [62]
+			"12:54:46 - ML:NewML (Krazyito-Mal'Ganis)", -- [63]
+			"12:54:46 - UpdateMLdb", -- [64]
+			"12:54:46 - UpdateGroup (true)", -- [65]
+			"12:54:46 - ML:AddCandidate (Krazyito-Mal'Ganis) (DRUID) (NONE) (Raider)", -- [66]
+			"12:54:46 - ML:AddItem (105568) (false) (false) (nil)", -- [67]
+			"12:54:46 - IsItemBoe (nil)", -- [68]
+			"12:54:46 - Started timer: (AddItem) (for) (105568)", -- [69]
+			"12:54:46 - ML:AddItem (105465) (false) (false) (nil)", -- [70]
+			"12:54:46 - IsItemBoe (nil)", -- [71]
+			"12:54:46 - Started timer: (AddItem) (for) (105465)", -- [72]
+			"12:54:46 - ML:AddItem (105513) (false) (false) (nil)", -- [73]
+			"12:54:46 - IsItemBoe (nil)", -- [74]
+			"12:54:46 - Started timer: (AddItem) (for) (105513)", -- [75]
+			"12:54:46 - Comm received: (^1^SplayerInfoRequest^T^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [76]
+			"12:54:46 - Comm received: (^1^SMLdb^T^N1^T^SallowNotes^B^SselfVote^B^Sobserve^b^Sresponses^T^t^ShideVotes^b^SmultiVote^B^Sbuttons^T^t^SawardReasons^T^t^SnumButtons^N3^SanonymousVoting^b^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [77]
+			"12:54:46 - Comm received: (^1^Scouncil^T^N1^T^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [78]
+			"12:54:46 - IsCouncil (Krazyito-Mal'Ganis) (true)", -- [79]
+			"12:54:46 - Comm received: (^1^Scandidates^T^N1^T^SKrazyito-Mal'Ganis^T^Srole^SNONE^Sclass^SDRUID^Srank^SRaider^t^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [80]
+			"12:54:46 - ML:AddCandidate (Krazyito-Mal'Ganis) (DRUID) (NONE) (Raider)", -- [81]
+			"12:54:46 - Comm received: (^1^SplayerInfo^T^N1^SKrazyito-Mal'Ganis^N2^SDRUID^N3^SNONE^N4^SRaider^N6^N0^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [82]
+			"12:54:47 - Timer: AddItem passed.", -- [83]
+			"12:54:47 - ML:AddItem (105465) (false) (false) (2)", -- [84]
+			"12:54:47 - IsItemBoe (|cffa335ee|Hitem:105465:0:0:0:0:0:0:0:100:102:0:0:0|h[Untainted Guardian's Chain]|h|r)", -- [85]
+			"12:54:47 - Timer: AddItem passed.", -- [86]
+			"12:54:47 - ML:AddItem (105513) (false) (false) (3)", -- [87]
+			"12:54:47 - IsItemBoe (|cffa335ee|Hitem:105513:0:0:0:0:0:0:0:100:102:0:0:0|h[Juggernaut's Ignition Keys]|h|r)", -- [88]
+			"12:54:47 - Timer: AddItem passed.", -- [89]
+			"12:54:47 - ML:AddItem (105568) (false) (false) (1)", -- [90]
+			"12:54:47 - IsItemBoe (|cffa335ee|Hitem:105568:0:0:0:0:0:0:0:100:102:0:0:0|h[Vial of Living Corruption]|h|r)", -- [91]
+			"12:54:53 - ML:StartSession()", -- [92]
+			"12:54:53 - SwitchSession (1)", -- [93]
+			"12:54:53 - SwitchSession (1)", -- [94]
+			"12:54:53 - Comm received: (^1^SlootTable^T^N1^T^N1^T^SequipLoc^SINVTYPE_TRINKET^SlootSlot^b^Slink^S|cffa335ee|Hitem:105568:0:0:0:0:0:0:0:100:102:0:0:0|h[Vial~`of~`Living~`Corruption]|h|r^SsubType^SMiscellaneous^Sawarded^b^Sname^SVial~`of~`Living~`Corruption^Stexture^SInterface\\ICONS\\Inv_Jewelry_OrgrimmarRaid_Trinket_10.blp^Silvl^N572^Sboe^b^Sbagged^b^Squality^N4^t^N2^T^SequipLoc^SINVTYPE_NECK^SlootSlot^b^Slink^S|cffa335ee|Hitem:105465:0:0:0:0:0:0:0:100:102:0:0:0|h[Untainted~`Guardian's~`Chain]|h|r^SsubType^SMiscellaneous^Sawarded^b^Sname^SUntainted~`Guardian's~`Chain^Stexture^SInterface\\ICONS\\INV_MISC_Necklace_mop6.blp^Silvl^N572^Sboe^b^Sbagged^b^Squality^N4^t^N3^T^SequipLoc^SINVTYPE_NECK^SlootSlot^b^Slink^S|cffa335ee|Hitem:105513:0:0:0:0:0:0:0:100:102:0:0:0|h[Juggernaut's~`Ignition~`Keys]|h|r^SsubType^SMiscellaneous^Sawarded^b^Sname^SJuggernaut's~`Ignition~`Keys^Stexture^SInterface\\ICONS\\INV_Misc_Key_06.blp^Silvl^N572^Sboe^b^Sbagged^b^Squality^N4^t^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [95]
+			"12:54:53 - Comm received: (^1^SlootAck^T^N1^SKrazyito-Mal'Ganis^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [96]
+			"12:54:56 - Timer: GroupUpdate passed.", -- [97]
+			"12:54:56 - Comm received: (^1^Scandidates^T^N1^T^SKrazyito-Mal'Ganis^T^Srole^SNONE^Senchant_lvl^N0^Sclass^SDRUID^Srank^SRaider^t^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [98]
+			"12:55:03 - Timer: LootSend passed.", -- [99]
+			"12:55:03 - Comm received: (^1^Soffline_timer^T^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [100]
+			"12:55:05 - LootFrame:OnRoll (1) (2) (Response:) (Offspec/Greed)", -- [101]
+			"12:55:05 - CreateResponse (1) (|cffa335ee|Hitem:105568:0:0:0:0:0:0:0:100:102:0:0:0|h[Vial of Living Corruption]|h|r) (572) (2) (INVTYPE_TRINKET) (nil)", -- [102]
+			"12:55:05 - GetPlayersGear (105568) (INVTYPE_TRINKET)", -- [103]
+			"12:55:05 - Comm received: (^1^Sresponse^T^N1^N1^N2^SKrazyito-Mal'Ganis^N3^T^Silvl^N717^Sresponse^N2^Sdiff^N-148^Sgear1^S|cffa335ee|Hitem:124227:0:0:0:0:0:0:0:100:102:0:6:1:567|h[Iron~`Reaver~`Piston]|h|r^Sgear2^S|cffa335ee|Hitem:124228:0:0:0:0:0:0:0:100:102:0:5:1:566|h[Desecrated~`Shadowmoon~`Insignia]|h|r^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [104]
+			"12:55:06 - LootFrame:OnRoll (1) (PASS) (Response:) (Pass)", -- [105]
+			"12:55:06 - CreateResponse (2) (|cffa335ee|Hitem:105465:0:0:0:0:0:0:0:100:102:0:0:0|h[Untainted Guardian's Chain]|h|r) (572) (PASS) (INVTYPE_NECK) (nil)", -- [106]
+			"12:55:06 - GetPlayersGear (105465) (INVTYPE_NECK)", -- [107]
+			"12:55:06 - Comm received: (^1^Sresponse^T^N1^N2^N2^SKrazyito-Mal'Ganis^N3^T^Silvl^N717^Sdiff^N-153^Sgear1^S|cffa335ee|Hitem:124391:5319:0:0:0:0:0:0:100:102:0:6:1:567|h[Choker~`of~`Forbidden~`Indulgence]|h|r^Sresponse^SPASS^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [108]
+			"12:55:07 - LootFrame:OnRoll (1) (1) (Response:) (Mainspec/Need)", -- [109]
+			"12:55:07 - CreateResponse (3) (|cffa335ee|Hitem:105513:0:0:0:0:0:0:0:100:102:0:0:0|h[Juggernaut's Ignition Keys]|h|r) (572) (1) (INVTYPE_NECK) (nil)", -- [110]
+			"12:55:07 - GetPlayersGear (105513) (INVTYPE_NECK)", -- [111]
+			"12:55:07 - Comm received: (^1^Sresponse^T^N1^N3^N2^SKrazyito-Mal'Ganis^N3^T^Silvl^N717^Sdiff^N-153^Sgear1^S|cffa335ee|Hitem:124391:5319:0:0:0:0:0:0:100:102:0:6:1:567|h[Choker~`of~`Forbidden~`Indulgence]|h|r^Sresponse^N1^t^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [112]
+			"12:55:09 - SwitchSession (2)", -- [113]
+			"12:55:09 - SwitchSession (3)", -- [114]
+			"12:55:09 - SwitchSession (2)", -- [115]
+			"12:55:10 - SwitchSession (1)", -- [116]
+			"12:55:10 - SwitchSession (3)", -- [117]
+			"12:55:11 - SwitchSession (1)", -- [118]
+			"12:55:15 - Created VotingFrame filters", -- [119]
+			"12:55:15 - Didn't contain 1", -- [120]
+			"12:55:15 - Didn't contain 2", -- [121]
+			"12:55:15 - Didn't contain STATUS", -- [122]
+			"12:55:15 - Didn't contain PASS", -- [123]
+			"12:55:15 - Didn't contain AUTOPASS", -- [124]
+			"12:55:15 - Didn't contain 3", -- [125]
+			"12:55:16 - Vote button pressed", -- [126]
+			"12:55:17 - Comm received: (^1^Svote^T^N1^N1^N2^SKrazyito-Mal'Ganis^N3^N1^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [127]
+			"12:55:19 - ML aborted session", -- [128]
+			"12:55:19 - ML:EndSession()", -- [129]
+			"12:55:19 - Hide VotingFrame", -- [130]
+			"12:55:19 - Comm received: (^1^Ssession_end^T^t^^) (from:) (Krazyito) (distri:) (WHISPER)", -- [131]
+			"12:57:41 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Pyrrhuseos) (distri:) (GUILD)", -- [132]
+			"12:58:12 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Gangles) (distri:) (GUILD)", -- [133]
+			"13:00:22 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Stealthpuff) (distri:) (GUILD)", -- [134]
+			"13:01:35 - Error in deserializing ML comm:  (Supplied data is not AceSerializer data (rev 1))", -- [135]
+			"13:01:35 - Comm received: (verTest 1.7.2) (from:) (Loseifer) (distri:) (GUILD)", -- [136]
+			"13:01:38 - Error in deserializing ML comm:  (Supplied data is not AceSerializer data (rev 1))", -- [137]
+			"13:01:38 - Comm received: (verTest 1.7.6) (from:) (Amarestrasza) (distri:) (GUILD)", -- [138]
+			"13:02:03 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Pyrrhuseos) (distri:) (GUILD)", -- [139]
+			"13:05:02 - Error in deserializing ML comm:  (Supplied data is not AceSerializer data (rev 1))", -- [140]
+			"13:05:02 - Comm received: (verTest 1.7.2) (from:) (Reaperone) (distri:) (GUILD)", -- [141]
+			"13:05:30 - Error in deserializing ML comm:  (Supplied data is not AceSerializer data (rev 1))", -- [142]
+			"13:05:30 - Comm received: (verTest 1.7.6) (from:) (Skarrgona) (distri:) (GUILD)", -- [143]
+			"13:06:10 - event (GROUP_ROSTER_UPDATE)", -- [144]
+			"13:06:10 - event (GROUP_ROSTER_UPDATE)", -- [145]
+			"13:06:10 - Event: (PARTY_LOOT_METHOD_CHANGED)", -- [146]
+			"13:06:10 - GetML()", -- [147]
+			"13:06:10 - ML Disabled", -- [148]
+			"13:06:15 - event (GROUP_ROSTER_UPDATE)", -- [149]
+			"13:06:58 - Comm received: (verTest 1.7.2) (from:) (Loseifer) (distri:) (GUILD)", -- [150]
+			"13:11:47 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Tahkissis) (distri:) (GUILD)", -- [151]
+			"13:13:54 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Alastabas) (distri:) (GUILD)", -- [152]
+			"13:15:19 - Comm received: (verTest 1.7.6) (from:) (Letudiee) (distri:) (GUILD)", -- [153]
+			"13:16:51 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Rayzz) (distri:) (GUILD)", -- [154]
+			"13:23:22 - Event: (PLAYER_ENTERING_WORLD)", -- [155]
+			"13:23:22 - GetML()", -- [156]
+			"13:23:23 - event (GROUP_ROSTER_UPDATE)", -- [157]
+			"13:23:30 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Redsexxyk) (distri:) (GUILD)", -- [158]
+			"13:24:04 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Ziltann) (distri:) (GUILD)", -- [159]
+			"13:24:11 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Regressing) (distri:) (GUILD)", -- [160]
+			"13:25:37 - event (GROUP_ROSTER_UPDATE)", -- [161]
+			"13:25:52 - Comm received: (verTest 1.7.6) (from:) (Durdydan) (distri:) (GUILD)", -- [162]
+			"13:26:28 - event (GROUP_ROSTER_UPDATE)", -- [163]
+			"13:26:48 - event (GROUP_ROSTER_UPDATE)", -- [164]
+			"13:28:05 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Tenguu) (distri:) (GUILD)", -- [165]
+			"13:30:33 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Martiablak) (distri:) (GUILD)", -- [166]
+			"13:31:51 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Zapowah) (distri:) (GUILD)", -- [167]
+			"13:33:43 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Yourdady) (distri:) (GUILD)", -- [168]
+			"13:35:36 - Comm received: (verTest 1.7.6) (from:) (Disallow) (distri:) (GUILD)", -- [169]
+			"13:36:21 - Comm received: (verTest 1.7.6) (from:) (Relativism) (distri:) (GUILD)", -- [170]
+			"13:37:01 - Comm received: (verTest 1.7.6) (from:) (Paleo) (distri:) (GUILD)", -- [171]
+			"13:37:30 - event (GROUP_ROSTER_UPDATE)", -- [172]
+			"13:37:34 - event (GROUP_ROSTER_UPDATE)", -- [173]
+			"13:37:53 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Martialblack) (distri:) (GUILD)", -- [174]
+			"13:38:20 - Comm received: (verTest 1.7.6) (from:) (Skarrgona) (distri:) (GUILD)", -- [175]
+			"13:38:32 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Shibbsys) (distri:) (GUILD)", -- [176]
+			"13:39:21 - event (GROUP_ROSTER_UPDATE)", -- [177]
+			"13:40:25 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Zapowah) (distri:) (GUILD)", -- [178]
+			"13:40:32 - event (GROUP_ROSTER_UPDATE)", -- [179]
+			"13:40:32 - event (GROUP_ROSTER_UPDATE)", -- [180]
+			"13:40:32 - event (GROUP_ROSTER_UPDATE)", -- [181]
+			"13:40:32 - event (GROUP_ROSTER_UPDATE)", -- [182]
+			"13:40:32 - event (GROUP_ROSTER_UPDATE)", -- [183]
+			"13:40:34 - event (GROUP_ROSTER_UPDATE)", -- [184]
+			"13:40:34 - event (GROUP_ROSTER_UPDATE)", -- [185]
+			"13:40:34 - Event: (PARTY_LOOT_METHOD_CHANGED)", -- [186]
+			"13:40:34 - GetML()", -- [187]
+			"13:40:38 - event (GROUP_ROSTER_UPDATE)", -- [188]
+			"13:42:06 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Yourdady) (distri:) (GUILD)", -- [189]
+			"13:43:25 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Zapowah) (distri:) (GUILD)", -- [190]
+			"13:45:03 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Shibbssloot) (distri:) (GUILD)", -- [191]
+			"13:45:59 - Comm received: (^1^SverTest^T^N1^S2.0.0^N2^SAlpha.7^t^^) (from:) (Shibbshots) (distri:) (GUILD)", -- [192]
+			"14:04:55 - Comm received: (verTest 1.7.6) (from:) (Avoide) (distri:) (GUILD)", -- [193]
+			"14:05:39 - event (GROUP_ROSTER_UPDATE)", -- [194]
+			"14:10:47 - Event: (PLAYER_ENTERING_WORLD)", -- [195]
+			"14:10:47 - GetML()", -- [196]
+			"14:10:49 - event (GROUP_ROSTER_UPDATE)", -- [197]
+			"14:12:42 - Comm received: (verTest 1.7.6) (from:) (Immoralist) (distri:) (GUILD)", -- [198]
+			"14:13:45 - Comm received: (verTest 1.7.6) (from:) (Grammatical) (distri:) (GUILD)", -- [199]
+		},
+		["version"] = "2.0.0",
+		["tVersion"] = "Alpha.7",
+		["logMaxEntries"] = 1000,
+	},
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["UI"] = {
+				["votingframe"] = {
+					["y"] = 86.0444577347516,
+					["x"] = -92.4444180692344,
+					["scale"] = 0.800000011920929,
+				},
+				["sessionframe"] = {
+					["y"] = 28.4444568764448,
+					["x"] = -286.177875733731,
+					["point"] = "RIGHT",
+					["scale"] = 0.800000011920929,
+				},
+			},
+			["modules"] = {
+				["RCVotingFrame"] = {
+					["filters"] = {
+						true, -- [1]
+						true, -- [2]
+						true, -- [3]
+						["STATUS"] = true,
+						["PASS"] = true,
+						["AUTOPASS"] = true,
+					},
+				},
+			},
+		},
+	},
+}
+RCLootCouncilLootDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+	},
+}

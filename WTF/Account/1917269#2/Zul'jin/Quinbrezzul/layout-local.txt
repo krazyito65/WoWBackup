@@ -1,0 +1,15 @@
+Version: 1
+Frame: VuhDoNewOptionsTabbedFrame
+FrameLevel: 1
+Anchor: RIGHT
+X: -162
+Y: -107
+W: 648
+H: 420
+Frame: Vd1
+FrameLevel: 2
+Anchor: CENTER
+X: -423
+Y: -61
+W: 88
+H: 69

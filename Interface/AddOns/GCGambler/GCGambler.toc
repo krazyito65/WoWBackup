@@ -1,0 +1,9 @@
+## Interface: 50400
+## Title: GCGambler
+## Notes: Because we're high rollers, baby!
+## Author: Myrx and Triumvirate
+## SavedVariables: GCGambler
+## Version: 0.1
+## Dependencies:
+
+GCGambler.xml

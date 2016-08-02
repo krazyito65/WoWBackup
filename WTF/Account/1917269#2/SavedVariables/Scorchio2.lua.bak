@@ -1,0 +1,10 @@
+
+Scorchio2DB = {
+	["profileKeys"] = {
+		["Ashbrownie - Caelestrasz"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

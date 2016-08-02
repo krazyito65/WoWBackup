@@ -1,0 +1,10 @@
+
+FortressDB = {
+	["profileKeys"] = {
+		["Ashbrownie - Caelestrasz"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

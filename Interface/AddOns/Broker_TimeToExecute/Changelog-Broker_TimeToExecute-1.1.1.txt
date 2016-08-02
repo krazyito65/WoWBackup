@@ -1,0 +1,12 @@
+tag 1.1.1
+d860f2d060ec03d833193c076945044c42eee9de
+Timmeh <http://www.wowace.com/profiles/Timmeh/>
+2015-02-25 10:00:35 +0100
+
+Tagging as 1.1.1.
+
+
+--------------------
+
+Timmeh:
+	- Update TOC for 6.1.

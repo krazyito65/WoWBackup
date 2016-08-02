@@ -1,0 +1,6 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		"/gladius hide", -- [1]
+	},
+}

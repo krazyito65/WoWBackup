@@ -1,0 +1,15 @@
+## Interface: 40200
+## Title: Skada Self Healing
+## Author: Kimbra - Ravenholdt (EU)
+## Version: 1.7
+## Notes: Self Healing display for Skada
+## eMail: magokimbra@hotmail.com
+## X-Part-Of: Skada
+## RequiredDeps: Skada
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## X-Curse-Packaged-Version: r9
+## X-Curse-Project-Name: SkadaSelfHealing
+## X-Curse-Project-ID: skadaselfhealing
+## X-Curse-Repository-ID: wow/skadaselfhealing/mainline
+SkadaSelfHealing.lua

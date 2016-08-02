@@ -1,0 +1,7 @@
+## Interface: 70000
+## Title: Legion Wardrobe Data
+## Author: ykiigor
+## LoadOnDemand: 1
+## RequiredDeps: LegionWardrobe
+Data.lua
+LegionWardrobeData.lua

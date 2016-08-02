@@ -1,0 +1,14 @@
+<Bindings>
+    <Binding name="RANDOMMOUNT_REG" description="RANDOMLY_SUMMON_A_MOUNT" header="RANDOMMOUNT">
+        RMount.FindMount("")
+    </Binding>
+    <Binding name="RANDOMMOUNT_RIDING" description="BINDING_NAME_RANDOM_RIDING_MOUNT">
+        RMount.FindMount("riding")
+    </Binding>
+    <Binding name="RANDOMMOUNT_FLYING" description="BINDING_NAME_RANDOM_FLYING_MOUNT">
+        RMount.FindMount("flying")
+    </Binding>
+    <Binding name="RANDOMMOUNT_SWIMMING" description="BINDING_NAME_RANDOM_SWIMMING_MOUNT">
+        RMount.FindMount("swimming")
+    </Binding>
+</Bindings>

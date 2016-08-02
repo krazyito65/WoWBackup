@@ -1,0 +1,82 @@
+== Version 50400.1.2
+* Bugfix: The last version interacted with the Damage Taken module incorrectly.
+
+== Version 50400.1.1
+* Updated for compatibility with the latest version of Skada's Damage Taken module.
+* Renamed the module in your addons listings from "Skada[Healing Requried]" to "Skada for Tanks".
+
+== Version 50400.1.0
+* Making the "Out of Date" message go away.
+
+== Version 3.1.12
+* Added Ring of Peace.
+* More work was needed than I thought to add the proc from Indomitable Primal Diamond.
+
+== Version 3.1.11
+If you install your addons without included libraries, you will have to install Bittens Utils starting with this release.  (If you don't know what that means, nothing should change for you.)
+* Added Ironbark.
+* Added the proc from Indomitable Primal Diamond.
+
+== Version 3.1.10
+* Fix Lua error when using the addon for the first time w/ existing data in Skada.
+
+== Version 3.1.9
+* Making the "Out of Date" message go away.
+
+== Version 3.1.8
+* No change - full release of the last two beta changes.
+
+== Version 3.1.7-beta
+* Added Shuffle. 
+* More possible fixes for a Lua error (or two?).
+* Bugfix - Savage Defense was not monitored properly.
+
+== Version 3.1.6-beta
+* Possible fix for a Lua error.
+
+== Version 3.1.5
+* Added Shamanistic Rage and Smoke Bomb.
+* 5.2 no longer reports its status as "Out of Date".
+
+== Version 3.1.4
+* Added or updated 41 buff ids, including the Symbiosis abilities.  See the addon description for the full list.
+* Removed buff ids for Cataclysm items & enchants.
+
+== Version 3.1.3
+* Bugfix: Updated detection of Vampiric Blood and glyphed Frenzied Regeneration with their changes in 5.1.0.
+
+== Version 3.1.2
+* Fixed a Lua error when in certain zones.
+
+== Version 3.1.1
+* Added several monk cooldowns, contributed by turbopipp.
+
+== Version 3.1.0
+* Updated lots of mitigation cooldowns for 5.0.4.
+
+== Version 3.0.1
+* Added all 4 versions of Dream to the list of tanking cooldowns.
+
+== Version 3.0.0
+* Integrates with SkadaDamageTaken, if you have it, to record and display which tanking buffs are up when taking damage.
+* Shows Damage Taken in the tooltip for Healing Required.
+* Shows spell icons in the Spell Details view.
+
+== Version 2.0.1
+* Renamed "Healing Required Source" to "Source Details".
+* Renamed "Healing Required Spell" to "Spell Details".
+* Bugfix: Now respects the "Merge Pets" option.
+* Bugfix: Bars would sometimes "stick" when browsing between fights.  Now they don't.
+
+== Version 2.0.0
+* Now attributes the percentage of healing gained from Vampiric Blood, Vampiric Brood, Frenzied Regeneration and Mass Regeneration to its tank.
+* Now includes absorbs.
+* You can now mouse over or click on a healer's name to see totals for each spell.
+* No longer depends on Skada: Healing.
+
+== Version 1.1.0
+* Added "Healing Taken" when mousing over or clicking on a "Healing Required" bar.
+* Changed the name in the AddOns window of the character selection screen to "Skada [Healing Required]", to be consistent with other Skada plugins.
+
+== Version 1.0.0 beta
+* Initial Release

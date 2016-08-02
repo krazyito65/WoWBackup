@@ -1,0 +1,134 @@
+
+AmrBagItems = {
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [1]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [2]
+	"|cffffffff|Hitem:95567:0:0:0:0:0:0:1527116800:90:0:0|h[Kirin Tor Beacon]|h|r", -- [3]
+	"|cffffffff|Hitem:6948:0:0:0:0:0:0:0:90:0:0|h[Hearthstone]|h|r", -- [4]
+	"|cffffffff|Hitem:94288:0:0:0:0:0:0:236595328:90:0:0|h[Giant Dinosaur Bone]|h|r", -- [5]
+	"|cffffffff|Hitem:23247:0:0:0:0:0:0:1426826752:90:0:0|h[Burning Blossom]|h|r", -- [6]
+	"|cffffffff|Hitem:38682:0:0:0:0:0:0:0:90:0:0|h[Enchanting Vellum]|h|r", -- [7]
+	"|cffffffff|Hitem:38682:0:0:0:0:0:0:0:90:0:0|h[Enchanting Vellum]|h|r", -- [8]
+	"|cffffffff|Hitem:3466:0:0:0:0:0:0:0:90:0:0|h[Strong Flux]|h|r", -- [9]
+	"|cffffffff|Hitem:77589:0:0:0:0:0:0:1499597312:90:0:0|h[G91 Landshark]|h|r", -- [10]
+	"|cffffffff|Hitem:87216:0:0:0:0:0:0:1798776896:90:0:0|h[Thermal Anvil]|h|r", -- [11]
+	"|cffffffff|Hitem:87216:0:0:0:0:0:0:307657504:90:0:0|h[Thermal Anvil]|h|r", -- [12]
+	"|cffffffff|Hitem:6218:0:0:0:0:0:0:1241059968:90:0:0|h[Runed Copper Rod]|h|r", -- [13]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:281661820:90:0:0|h[Spirit Dust]|h|r", -- [14]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:303944363:90:0:0|h[Spirit Dust]|h|r", -- [15]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:861421568:90:0:0|h[Spirit Dust]|h|r", -- [16]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:255595134:90:0:0|h[Spirit Dust]|h|r", -- [17]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:440945408:90:0:0|h[Spirit Dust]|h|r", -- [18]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:861421568:90:0:0|h[Spirit Dust]|h|r", -- [19]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:275760811:90:0:0|h[Spirit Dust]|h|r", -- [20]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:861421568:90:0:0|h[Spirit Dust]|h|r", -- [21]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:261503360:90:0:0|h[Spirit Dust]|h|r", -- [22]
+	"|cffffffff|Hitem:75014:0:0:0:0:0:0:1884988672:90:0:0|h[Raw Crocolisk Belly]|h|r", -- [23]
+	"|cffffffff|Hitem:74842:0:0:0:0:0:0:806051584:90:0:0|h[Mogu Pumpkin]|h|r", -- [24]
+	"|cffffffff|Hitem:72096:0:0:0:0:0:0:458749312:90:0:0|h[Ghost Iron Bar]|h|r", -- [25]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:296381952:90:0:0|h[Windwool Cloth]|h|r", -- [26]
+	"|cffffffff|Hitem:89112:0:0:0:0:0:0:1268486272:90:0:0|h[Mote of Harmony]|h|r", -- [27]
+	"|cffffffff|Hitem:80592:0:0:0:0:0:0:0:90:0:0|h[Mogu Pumpkin Seeds]|h|r", -- [28]
+	"|cffffffff|Hitem:88370:0:0:0:0:0:0:1878861568:90:0:0|h[Puntable Marmot]|h|r", -- [29]
+	"|cffffffff|Hitem:82960:0:0:0:0:0:0:701238144:90:0:0|h[Ghostly Skeleton Key]|h|r", -- [30]
+	"|cffffffff|Hitem:76087:0:0:0:0:0:0:654867904:90:0:0|h[Flask of the Earth]|h|r", -- [31]
+	"|cffffffff|Hitem:76092:0:0:0:0:0:0:1819562112:90:0:0|h[Potion of Focus]|h|r", -- [32]
+	"|cffffffff|Hitem:76092:0:0:0:0:0:0:909045760:90:0:0|h[Potion of Focus]|h|r", -- [33]
+	"|cffffffff|Hitem:74650:0:0:0:0:0:0:829164416:90:0:0|h[Mogu Fish Stew]|h|r", -- [34]
+	"|cffffffff|Hitem:74650:0:0:0:0:0:0:143340032:90:0:0|h[Mogu Fish Stew]|h|r", -- [35]
+	"|cffffffff|Hitem:74650:0:0:0:0:0:0:1419659904:90:0:0|h[Mogu Fish Stew]|h|r", -- [36]
+	"|cffffffff|Hitem:74650:0:0:0:0:0:0:1777360768:90:0:0|h[Mogu Fish Stew]|h|r", -- [37]
+	"|cffffffff|Hitem:74650:0:0:0:0:0:0:900345152:90:0:0|h[Mogu Fish Stew]|h|r", -- [38]
+	"|cffffffff|Hitem:87234:0:0:0:0:0:0:1630993024:90:0:0|h[Banquet of the Pot]|h|r", -- [39]
+	"|cffffffff|Hitem:87234:0:0:0:0:0:0:1186198656:90:0:0|h[Banquet of the Pot]|h|r", -- [40]
+	"|cffffffff|Hitem:5956:0:0:0:0:0:0:0:90:0:0|h[Blacksmith Hammer]|h|r", -- [41]
+	"|cff1eff00|Hitem:72095:0:0:0:0:0:0:17590016:90:0:0|h[Trillium Bar]|h|r", -- [42]
+	"|cff1eff00|Hitem:63352:0:0:0:0:0:0:0:90:0:0|h[Shroud of Cooperation]|h|r", -- [43]
+	"|cff0070dd|Hitem:86586:0:0:0:0:0:0:2141519488:90:0:0|h[Panflute of Pandaria]|h|r", -- [44]
+	"|cff0070dd|Hitem:94221:0:0:0:0:0:0:269533440:90:0:0|h[Shan'ze Ritual Stone]|h|r", -- [45]
+	"|cff0070dd|Hitem:94111:0:0:0:0:0:0:172726400:90:0:0|h[Lightning Steel Ingot]|h|r", -- [46]
+	"|cff0070dd|Hitem:74252:0:0:0:0:0:0:1349051136:90:0:0|h[Small Ethereal Shard]|h|r", -- [47]
+	"|cff0070dd|Hitem:74247:0:0:0:0:0:0:683426688:90:0:0|h[Ethereal Shard]|h|r", -- [48]
+	"|cff0070dd|Hitem:76061:0:0:0:0:0:0:688761600:90:0:0|h[Spirit of Harmony]|h|r", -- [49]
+	"|cff0070dd|Hitem:63206:0:0:0:0:0:0:0:90:0:0|h[Wrap of Unity]|h|r", -- [50]
+	"|cff0070dd|Hitem:98091:0:0:0:0:0:0:248267008:90:0:0|h[Last Season's Shirt]|h|r", -- [51]
+	"|cff0070dd|Hitem:98085:0:0:0:0:0:0:1748821504:90:0:0|h[Brucehide Jersey]|h|r", -- [52]
+	"|cffa335ee|Hitem:94222:0:0:0:0:0:0:1306706944:90:0:0|h[Key to the Palace of Lei Shen]|h|r", -- [53]
+	"|cffa335ee|Hitem:74248:0:0:0:0:0:0:650226048:90:0:0|h[Sha Crystal]|h|r", -- [54]
+	"|cffa335ee|Hitem:65360:0:0:0:0:0:0:0:90:0:0|h[Cloak of Coordination]|h|r", -- [55]
+	"|cffa335ee|Hitem:95645:4424:0:0:0:0:0:894530688:90:139:465|h[Wastewalker's Sandblasted Drape]|h|r", -- [56]
+	"|cffa335ee|Hitem:95802:0:0:0:0:0:0:585308544:90:0:465|h[Rune of Re-Origination]|h|r", -- [57]
+	"|cffa335ee|Hitem:94386:0:0:0:0:0:0:0:90:0:476|h[Tyrannical Gladiator's Medallion of Cruelty]|h|r", -- [58]
+	"|cffa335ee|Hitem:86044:0:0:0:0:0:0:16399488:90:0:445|h[Jade Magistrate Figurine]|h|r", -- [59]
+	"|cffa335ee|Hitem:94511:0:0:0:0:0:0:0:90:137:465|h[Vicious Talisman of the Shado-Pan Assault]|h|r", -- [60]
+	"|cffa335ee|Hitem:94522:0:0:0:0:0:0:869104512:90:0:465|h[Talisman of Bloodlust]|h|r", -- [61]
+	"|cffa335ee|Hitem:94509:0:0:0:0:0:0:0:90:0:467|h[Soothing Talisman of the Shado-Pan Assault]|h|r", -- [62]
+	"|cffa335ee|Hitem:95137:4359:0:0:0:0:0:0:90:168:465|h[Seal of the Shado-Pan Assault]|h|r", -- [63]
+	"|cffa335ee|Hitem:96368:4359:0:0:0:0:0:2120199296:90:168:465|h[Sign of the Bloodied God]|h|r", -- [64]
+	"|cffa335ee|Hitem:95276:4431:4647:4647:0:0:0:0:90:152:465|h[Fire-Charm Gauntlets]|h|r", -- [65]
+	"|cffa335ee|Hitem:95796:4416:4647:4647:0:0:-336:1347552602:90:146:465|h[Bracers of the Midnight Comet]|h|r", -- [66]
+	"|cffa335ee|Hitem:95787:4428:4582:0:0:0:0:1815487744:90:168:465|h[Spurs of the Storm Cavalry]|h|r", -- [67]
+	"|cffa335ee|Hitem:95278:4822:4647:4537:0:0:0:0:90:139:465|h[Fire-Charm Legguards]|h|r", -- [68]
+	"|cffa335ee|Hitem:96101:4822:4610:4537:0:0:0:394637056:90:139:465|h[Crimson Bloom Legguards]|h|r", -- [69]
+	"|cffa335ee|Hitem:95088:0:4647:4647:0:0:0:0:90:139:465|h[Darkfang Belt]|h|r", -- [70]
+	"|cffa335ee|Hitem:94987:0:4647:4647:0:0:0:234415744:90:168:465|h[Fusion Slasher Chestguard]|h|r", -- [71]
+	"|cffa335ee|Hitem:95265:4419:4610:4647:4603:0:0:0:90:166:465|h[Fire-Charm Tunic]|h|r", -- [72]
+	"|cffa335ee|Hitem:95279:4804:4647:4647:0:0:0:0:90:139:465|h[Fire-Charm Shoulderguards]|h|r", -- [73]
+	"|cffa335ee|Hitem:95274:4806:4644:4611:0:0:0:0:90:166:465|h[Fire-Charm Mantle]|h|r", -- [74]
+	"|cffa335ee|Hitem:95699:0:4647:0:0:0:0:1338418688:90:139:465|h[Quadra-Head Brooch]|h|r", -- [75]
+	"|cffa335ee|Hitem:95907:0:5032:4647:0:0:0:0:90:168:465|h[Fire-Charm Crown]|h|r", -- [76]
+	"|cffa335ee|Hitem:96092:4442:4649:4649:0:0:0:2102051328:90:116:465|h[Giorgio's Caduceus of Pure Moods]|h|r", -- [77]
+	"|cffa335ee|Hitem:96391:4444:4537:4647:0:0:0:547014784:90:139:465|h[Jalak's Maelstrom Staff]|h|r", -- [78]
+	"|cffa335ee|Hitem:85994:4441:0:0:0:0:0:1992997760:90:165:445|h[Gara'kal, Fist of the Spiritbinder]|h|r", -- [79]
+	"|cffa335ee|Hitem:86328:4442:4998:4589:0:0:0:-760685696:90:0:447|h[Loshan, Terror Incarnate]|h|r", -- [80]
+	"|cffa335ee|Hitem:96142:0:0:0:0:0:0:295613056:90:0:465|h[Hand of the Dark Animus]|h|r", -- [81]
+	"|cffff8000|Hitem:94594:0:0:0:0:0:0:257582208:90:0:0|h[Titan Runestone]|h|r", -- [82]
+}
+AmrBankItems = {
+}
+AmrEquipedItems = {
+	["1"] = "|cffa335ee|Hitem:96457:0:5031:4649:0:0:0:1409330816:90:117:465|h[Hood of Smoldering Flesh]|h|r",
+	["8"] = "|cffa335ee|Hitem:96116:4426:4647:0:0:0:0:574098176:90:117:467|h[Sandals of the Starving Eye]|h|r",
+	["3"] = "|cffa335ee|Hitem:96778:4806:4647:0:0:0:0:1116236672:90:116:467|h[Spaulders of Dinomancy]|h|r",
+	["2"] = "|cffa335ee|Hitem:94980:0:4647:0:0:0:0:1508131328:90:117:465|h[Passionfire Choker]|h|r",
+	["5"] = "|cffa335ee|Hitem:95273:4419:4619:4649:4591:0:0:0:90:0:467|h[Fire-Charm Vest]|h|r",
+	["14"] = "|cffa335ee|Hitem:96189:0:0:0:0:0:0:1437300480:90:0:467|h[Lightning-Imbued Chalice]|h|r",
+	["7"] = "|cffa335ee|Hitem:96646:4825:4649:4591:0:0:0:0:90:116:467|h[Fire-Charm Legwraps]|h|r",
+	["6"] = "|cffa335ee|Hitem:95210:0:4647:4647:0:0:0:1869463680:90:0:465|h[Abandoned Zandalari Moonstrap]|h|r",
+	["9"] = "|cffa335ee|Hitem:96758:4414:4647:0:0:0:0:419201792:90:117:467|h[Infinitely Conducting Bracers]|h|r",
+	["15"] = "|cffa335ee|Hitem:94929:4423:4611:0:0:0:0:156891264:90:0:465|h[Deadly Glare Cape]|h|r",
+	["16"] = "|cffa335ee|Hitem:96384:4442:4647:4647:0:0:0:288268160:90:117:467|h[Soulblade of the Breaking Storm]|h|r",
+	["17"] = "|cffa335ee|Hitem:95473:4434:4619:0:0:0:0:179427584:90:0:467|h[Lei Shen's Orb of Command]|h|r",
+	["13"] = "|cffa335ee|Hitem:96757:0:0:0:0:0:0:764703104:90:0:467|h[Horridon's Last Gasp]|h|r",
+	["12"] = "|cffa335ee|Hitem:94931:4360:4647:0:0:0:0:2059127424:90:117:465|h[Durumu's Captive Eyeball]|h|r",
+	["11"] = "|cffa335ee|Hitem:95139:4360:0:0:0:0:0:0:90:116:465|h[Ring of the Shado-Pan Assault]|h|r",
+	["10"] = "|cffa335ee|Hitem:96644:4430:4611:4647:0:0:0:0:90:116:467|h[Fire-Charm Handwraps]|h|r",
+}
+AmrGold = 249134569
+AmrRealmName = "Gnomeregan"
+AmrCharacterName = "Krazymonk"
+AmrIconInfo = {
+}
+AmrCurrencies = {
+	[395] = 2404,
+	[396] = 140,
+	[390] = 1740,
+	[392] = 251,
+	[615] = 1,
+	[614] = 7,
+}
+AmrProfessions = {
+	["Cooking"] = 615,
+	["Blacksmithing"] = 600,
+	["Fishing"] = 10,
+	["First Aid"] = 1,
+	["Enchanting"] = 600,
+}
+AmrSpecializations = {
+	["1"] = 268,
+	["2"] = 270,
+}
+AmrRace = "Pandaren"
+AmrLevel = 90
+AmrFaction = "Alliance"
+AmrActiveSpec = 2
+AmrHideMapIcon = false

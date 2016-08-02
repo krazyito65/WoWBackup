@@ -1,0 +1,77 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="AutoCastShine.lua"></Script>
+	
+	<Texture name="AltoShineSparkle" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true" virtual="true">
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0" />
+		</Anchors>
+		<TexCoords left="0.3984375" right="0.4453125" top="0.40234375" bottom="0.44921875"/>
+	</Texture>
+
+	<Frame name="AltoAutoCastShineTemplate" virtual="true">
+		<Size x="28" y="28" />
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0" />
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentArray="Sparkles" parentKey="Sparkle1" inherits="AltoShineSparkle">
+					<Size x="13" y="13" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle2" inherits="AltoShineSparkle">
+					<Size x="10" y="10" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle3" inherits="AltoShineSparkle">
+					<Size x="7" y="7" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle4" inherits="AltoShineSparkle">
+					<Size x="4" y="4" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle5" inherits="AltoShineSparkle">
+					<Size x="13" y="13" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle6" inherits="AltoShineSparkle">
+					<Size x="10" y="10" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle7" inherits="AltoShineSparkle">
+					<Size x="7" y="7" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle8" inherits="AltoShineSparkle">
+					<Size x="4" y="4" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle9" inherits="AltoShineSparkle">
+					<Size x="13" y="13" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle10" inherits="AltoShineSparkle">
+					<Size x="10" y="10" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle11" inherits="AltoShineSparkle">
+					<Size x="7" y="7" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle12" inherits="AltoShineSparkle">
+					<Size x="4" y="4" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle13" inherits="AltoShineSparkle">
+					<Size x="13" y="13" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle14" inherits="AltoShineSparkle">
+					<Size x="10" y="10" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle15" inherits="AltoShineSparkle">
+					<Size x="7" y="7" />
+				</Texture>
+				<Texture parentArray="Sparkles" parentKey="Sparkle16" inherits="AltoShineSparkle">
+					<Size x="4" y="4" />
+				</Texture>
+			</Layer>
+		</Layers>				
+		<Scripts>
+			<OnLoad>
+				Altoholic:SetClassExtensions(self, "AltoAutoCastShine")
+			</OnLoad>
+			<OnUpdate>
+				self:Shine_OnUpdate(elapsed)
+			</OnUpdate>
+		</Scripts>
+	</Frame>	
+</Ui>

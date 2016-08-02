@@ -1,0 +1,16 @@
+## Interface: 60200
+## Title: WeakAuras Stop Motion Textures
+## Author: Infus
+## Version: 1.0.0
+## Notes: Textures for Stop Motion
+## X-Category: Interface Enhancements
+## DefaultState: Enabled
+## Dependencies: WeakAuras, WeakAurasOptions
+## X-Curse-Packaged-Version: 0.6
+## X-Curse-Project-Name: WeakAuras Stop Motion
+## X-Curse-Project-ID: weakauras-stop-motion
+## X-Curse-Repository-ID: wow/weakauras-stop-motion/mainline
+
+StopMotionTextures.lua
+RegionTypes\stopmotion.lua
+RegionOptions\stopmotion.lua

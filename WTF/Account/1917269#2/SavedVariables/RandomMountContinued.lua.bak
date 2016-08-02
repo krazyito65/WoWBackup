@@ -1,0 +1,8 @@
+
+rMountGVars = {
+	["version"] = 1,
+	["weights"] = {
+	},
+	["useGVars"] = true,
+	["defaultWeight"] = 100,
+}

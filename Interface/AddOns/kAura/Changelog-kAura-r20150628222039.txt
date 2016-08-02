@@ -1,0 +1,35 @@
+gabestah:
+	- Updated to latest kLib
+	- Updated to latest kLib
+	- Modified initialization to exlude options registration
+	- Altered kLib inclusion
+	- Modified numerous file structures
+	- Trying standard Ace3-enabled addon method for future-proofing
+	- Removed LibRangeCheck-2.0 (redundant)
+	- Added additional sounds from lib
+	- Added runaway.ogg to default sounds
+	- Removed wut.mp3 (to save file size)
+	- Added LibSharedMedia and assortment of old kAuction sounds
+	- Fixed LibStub .pkgmeta reference
+	- Updated for patch 6.2
+	- Added LibStub to .pkgmeta
+	- Fixed .pkgmeta for Rangecheck
+	- Added LibRangeCheck-2.0
+	- Resolving uppercase parameter input for .Log functions
+	- Added event handling for encounter reset scanning in WeakAura.
+	- Fixed issue with Actor.GetUnitId when not in raid group
+	- Fix path typo in .toc
+	- Adding CallbackHandler lib
+	- Added SetValue/GetValue functions
+	- Fix another typo
+	- Fix WeakAuras.lua typo
+	- Added WeakAuras.lua and Geometry.lua
+	- Fixed type in Talent.lua
+	- Added numerous namespace files.
+	- REstructure
+	- Update Actor.lua
+	- Fixed .toc
+	- Finished Log.lua initial import and added Actor.lua
+	- Added Log.lua
+	- Add kAura.toc
+	- Added .toc

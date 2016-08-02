@@ -1,0 +1,58 @@
+
+tdps = {
+	["barHeight"] = 15,
+	["onlyBossSegments"] = false,
+	["spacing"] = 2,
+	["speed"] = 2,
+	["autoReset"] = true,
+	["backdrop"] = {
+		0, -- [1]
+		0, -- [2]
+		0, -- [3]
+		0.8, -- [4]
+	},
+	["tooltipSpells"] = 3,
+	["swapColor"] = true,
+	["showRank"] = true,
+	["width"] = 190,
+	["border"] = {
+		0, -- [1]
+		0, -- [2]
+		0, -- [3]
+		0.8, -- [4]
+	},
+	["tooltipTargets"] = 3,
+	["version"] = "0.936",
+	["anchor"] = "TOPLEFT",
+	["barbackdrop"] = {
+		1, -- [1]
+		1, -- [2]
+		1, -- [3]
+		0.05, -- [4]
+	},
+	["showMinimapButton"] = false,
+	["layout"] = 10,
+	["bar"] = {
+		0.9, -- [1]
+		0.9, -- [2]
+		0.9, -- [3]
+		1, -- [4]
+	},
+}
+tdpsPosition = {
+	["y"] = 524.0341583319149,
+	["x"] = -28.44460978959223,
+}
+tdpsFont = {
+	["outline"] = "",
+	["shadow"] = 1,
+	["name"] = "Fonts\\FRIZQT__.TTF",
+	["size"] = 12,
+}
+tdpsNumberOfFights = 2
+tdpsF = 1
+tdpsV = "d"
+tdpsTextOffset = 0
+tdpsColorAlpha = 0.8
+tdpsVisibleBars = 10
+tdpsReportLength = 5

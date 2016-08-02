@@ -1,0 +1,31 @@
+
+ElvCharacterDB = {
+	["ChatEditHistory"] = {
+		"/who lolstar", -- [1]
+		"/cw Lolstarfall IMV PLS", -- [2]
+	},
+	["ChatLog"] = {
+		["1422946410.463"] = {
+			"IMV PLS", -- [1]
+			"Lolstarfall", -- [2]
+			"", -- [3]
+			"", -- [4]
+			"Lolstarfall", -- [5]
+			"", -- [6]
+			0, -- [7]
+			0, -- [8]
+			"", -- [9]
+			0, -- [10]
+			6143, -- [11]
+			"Player-1136-06770409", -- [12]
+			0, -- [13]
+			false, -- [14]
+			false, -- [15]
+			false, -- [16]
+			nil, -- [17]
+			nil, -- [18]
+			nil, -- [19]
+			"CHAT_MSG_WHISPER_INFORM", -- [20]
+		},
+	},
+}

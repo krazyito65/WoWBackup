@@ -1,0 +1,182 @@
+
+BigWigs3DB = {
+	["namespaces"] = {
+		["BigWigs_Bosses_XT-002 Deconstructor"] = {
+		},
+		["BigWigs_Bosses_Sha of Fear"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Breath of Fear"] = 515,
+					["Ominous Cackle"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_Protectors of the Endless"] = {
+		},
+		["BigWigs_Bosses_Elegon"] = {
+		},
+		["BigWigs_Bosses_Blood Prince Council"] = {
+		},
+		["BigWigs_Bosses_Algalon the Observer"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Big Bang"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_The Spirit Kings"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Annihilate"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_Freya"] = {
+		},
+		["BigWigs_Plugins_Raid Icons"] = {
+		},
+		["BigWigs_Bosses_Razorscale"] = {
+		},
+		["BigWigs_Bosses_Gara'jal the Spiritbinder"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Banishment"] = 515,
+					["Crossed Over"] = 515,
+					["Summon Spirit Totem"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_Kologarn"] = {
+		},
+		["BigWigs_Plugins_Tip of the Raid"] = {
+		},
+		["BigWigs_Bosses_Hodir"] = {
+		},
+		["BigWigs_Bosses_Mimiron"] = {
+		},
+		["BigWigs_Bosses_Wise Mari"] = {
+		},
+		["BigWigs_Bosses_Amber-Shaper Un'sok"] = {
+			["profiles"] = {
+				["Default"] = {
+					["explosion_casting_by_other"] = 643,
+					["explosion_by_other"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_Will of the Emperor"] = {
+		},
+		["BigWigs_Bosses_The Iron Council"] = {
+		},
+		["BigWigs_Bosses_General Vezax"] = {
+		},
+		["BigWigs_Bosses_Flame Leviathan"] = {
+		},
+		["BigWigs_Bosses_Imperial Vizier Zor'lok"] = {
+		},
+		["BigWigs_Bosses_The Stone Guard"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Amethyst Pool"] = 515,
+					["ej:5772"] = 515,
+					["Jasper Chains"] = 707,
+					["petrifications"] = 515,
+					["overload"] = 515,
+				},
+			},
+		},
+		["BigWigs_Bosses_Garalon"] = {
+		},
+		["BigWigs_Bosses_Feng the Accursed"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Arcane Velocity"] = 515,
+					["Arcane Resonance"] = 743,
+				},
+			},
+		},
+		["BigWigs_Bosses_Grand Empress Shek'zeer"] = {
+		},
+		["BigWigs_Bosses_Tsulong"] = {
+		},
+		["BigWigs_Plugins_Colors"] = {
+		},
+		["BigWigs_Plugins_Sounds"] = {
+		},
+		["BigWigs_Bosses_Lei Shi"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Protect"] = 515,
+					["special"] = 515,
+				},
+			},
+		},
+		["BigWigs_Plugins_Bars"] = {
+			["profiles"] = {
+				["Default"] = {
+					["BigWigsEmphasizeAnchor_y"] = 267.7221389954066,
+					["BigWigsAnchor_y"] = 186.8222166670694,
+					["BigWigsEmphasizeAnchor_width"] = 300.0001220703125,
+					["BigWigsEmphasizeAnchor_x"] = 314.5554237203014,
+					["BigWigsAnchor_x"] = -0,
+					["font"] = "Friz Quadrata TT",
+				},
+			},
+		},
+		["BigWigs_Bosses_Wind Lord Mel'jarak"] = {
+		},
+		["BigWigs_Plugins_Super Emphasize"] = {
+		},
+		["BigWigs_Bosses_Auriaya"] = {
+		},
+		["BigWigs_Bosses_Blade Lord Ta'yak"] = {
+		},
+		["BigWigs_Bosses_Ignis the Furnace Master"] = {
+		},
+		["BigWigs_Bosses_Thorim"] = {
+		},
+		["BigWigs_Plugins_Proximity"] = {
+			["profiles"] = {
+				["Default"] = {
+					["fontSize"] = 20,
+					["posy"] = 207.6888505151692,
+					["height"] = 120.0000076293945,
+					["posx"] = 501.9334756956778,
+					["sound"] = false,
+					["font"] = "Friz Quadrata TT",
+				},
+			},
+		},
+		["BigWigs_Plugins_Messages"] = {
+			["profiles"] = {
+				["Default"] = {
+					["fontSize"] = 20,
+					["BWMessageAnchor_x"] = 277.7331881487498,
+					["font"] = "Friz Quadrata TT",
+					["BWEmphasizeMessageAnchor_y"] = 591.0998841047876,
+					["BWMessageAnchor_y"] = 541.0445877538405,
+					["BWEmphasizeMessageAnchor_x"] = 909.9111331440508,
+				},
+			},
+		},
+		["BigWigs_Plugins_PizzaBar"] = {
+		},
+		["BigWigs_Bosses_Yogg-Saron"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Krazymonk - Gnomeregan"] = "Default",
+		["Krazyito - Gnomeregan"] = "Default",
+		["Krãzyito - Gnomeregan"] = "Default",
+		["Krazýito - Gnomeregan"] = "Default",
+		["Krazyíto - Gnomeregan"] = "Default",
+		["Krazyitò - Gnomeregan"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}
+BigWigs3IconDB = {
+	["minimapPos"] = 270.0000014569314,
+}

@@ -1,0 +1,10 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		"/who grundle", -- [1]
+		"/w Purefection can i get a ginv?", -- [2]
+		"/w Daegg can i get a ginv?", -- [3]
+		"/w Möntu can I get a ginv?", -- [4]
+		"/g thanks", -- [5]
+	},
+}

@@ -1,0 +1,265 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="TabGrids.lua"></Script>
+	
+	<Button name="AltoTabGridsClassIconTemplate" inherits="AltoClassIconTemplate" virtual="true">
+		<KeyValues>
+			<KeyValue key="optionFormat" value="Tabs.Grids.%s.%s.Column%d" />
+		</KeyValues>
+		<Scripts>
+			<OnEnter>
+				self:Icon_OnEnter()
+			</OnEnter>
+		</Scripts>
+	</Button>
+	
+	<Frame name="AltoholicTabGrids" parent="AltoholicFrame" hidden="true">
+		<Size x="758" y="447" />
+		<Anchors>
+			<Anchor point="TOPLEFT" />
+		</Anchors>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString parentKey="Label1" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="100" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="35" y="-105" />
+					</Anchors>
+				</FontString>
+				<FontString parentKey="TextView" inherits="GameFontNormalSmall" justifyH="LEFT" text="GUILD_ROSTER_VIEW" hidden="true">
+					<Size x="60" y="18" />
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="AltoholicFrameSearchLabel" relativePoint="RIGHT" x="60" y="-5" />
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</FontString>
+				<FontString parentKey="Status" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="320" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="-250" y="13" />
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame parentKey="SelectView" inherits="AltoDropDownMenuTemplate" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.TextView" relativePoint="BOTTOMLEFT" x="-25" y="-2"/>
+				</Anchors>
+			</Frame>
+			<Frame parentKey="SelectRealm" inherits="AltoRealmPickerTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Label1" relativePoint="BOTTOMLEFT" x="-25" y="-2" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="menuWidth" value="120" type="number" />
+				</KeyValues>
+			</Frame>
+				
+			<!-- Menu Icons -->
+			<Frame parentKey="ClassIcons" inherits="AltoClassIconsContainerTemplate">
+				<KeyValues>
+					<KeyValue key="numIcons" value="11" type="number" />
+					<KeyValue key="iconTemplate" value="AltoTabGridsClassIconTemplate" />
+					<KeyValue key="tabName" value="Grids" />
+				</KeyValues>
+			</Frame>
+		
+			<Frame parentKey="ContextualMenu" inherits="AltoContextualMenuTemplate" />
+			
+			<Button parentKey="Equipment" inherits="AltoTabGridsMenuIconTemplate" id="1">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabGrids" relativePoint="BOTTOMLEFT" x="30" y="240" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\INV_Chest_Plate04" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="Factions" inherits="AltoTabGridsMenuIconTemplate" id="2">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Equipment" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\INV_BannerPVP_02" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="Tokens" inherits="AltoTabGridsMenuIconTemplate" id="3">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Factions" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\Spell_Holy_SummonChampion" />
+					<KeyValue key="text" value="CURRENCY" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="Dailies" inherits="AltoTabGridsMenuIconTemplate" id="4">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Tokens" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\LFGFrame\LFGIcon-Quest" />
+				</KeyValues>
+			</Button>
+
+			<Button parentKey="Pets" inherits="AltoTabGridsMenuIconTemplate" id="5">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabGrids" relativePoint="BOTTOMLEFT" x="30" y="200" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\INV_Box_Birdcage_01" />
+					<KeyValue key="text" value="COMPANIONS" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="Dungeons" inherits="AltoTabGridsMenuIconTemplate" id="6">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Pets" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\inv_helmet_189" />
+					<KeyValue key="text" value="LOOKING_FOR_DUNGEON" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="TradeSkills" inherits="AltoTabGridsMenuIconTemplate" id="7">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Dungeons" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\Ability_Repair" />
+					<KeyValue key="text" value="TRADESKILLS" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="Archeology" inherits="AltoTabGridsMenuIconTemplate" id="8">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.TradeSkills" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\trade_archaeology" />
+				</KeyValues>
+			</Button>
+
+			<Button parentKey="GarrisonArchitect" inherits="AltoTabGridsMenuIconTemplate" id="9">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabGrids" relativePoint="BOTTOMLEFT" x="30" y="160" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\inv_garrison_blueprints3" />
+					<KeyValue key="text" value="GARRISON_ARCHITECT" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="GarrisonFollowers" inherits="AltoTabGridsMenuIconTemplate" id="10">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.GarrisonArchitect" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\achievement_garrisonfollower_epic" />
+					<KeyValue key="text" value="GARRISON_FOLLOWERS_TITLE" type="global" />
+				</KeyValues>
+			</Button>
+			<Button parentKey="FollowerAbilities" inherits="AltoTabGridsMenuIconTemplate" id="11">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.GarrisonFollowers" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\spell_shadow_shadowwordpain" />
+				</KeyValues>
+			</Button>
+			
+			<!-- Tooltip for Garrison Levels, to avoid messing with Blizzard's own -->
+			<Frame parentKey="BuildingLevelTooltip" inherits="TooltipBorderedFrameTemplate" hidden="true" frameStrata="TOOLTIP" clampedToScreen="true">
+				<Size x="230" y="300" />
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString parentKey="Name" inherits="GameFontHighlightMedium" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" x="15" y="-15" />
+							</Anchors>
+						</FontString>
+						<FontString parentKey="FollowerText" inherits="GameFontHighlight" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="BOTTOMLEFT" x="0" y="-5" />
+							</Anchors>
+						</FontString>
+						<FontString parentKey="Rank1" inherits="GameFontNormal" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.FollowerText" relativePoint="BOTTOMLEFT" x="0" y="-10" />
+							</Anchors>
+						</FontString>
+						<FontString parentKey="Rank1Tooltip" inherits="GameFontHighlight" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank1" relativePoint="BOTTOMLEFT" x="10" y="-5" />
+							</Anchors>
+						</FontString>
+						
+						<FontString parentKey="Rank2" inherits="GameFontNormal" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank1Tooltip" relativePoint="BOTTOMLEFT" x="-10" y="-10" />
+							</Anchors>
+						</FontString>
+						<FontString parentKey="Rank2Tooltip" inherits="GameFontHighlight" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank2" relativePoint="BOTTOMLEFT" x="10" y="-5" />
+							</Anchors>
+						</FontString>
+						
+						<FontString parentKey="Rank3" inherits="GameFontNormal" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank2Tooltip" relativePoint="BOTTOMLEFT" x="-10" y="-10" />
+							</Anchors>
+						</FontString>
+						<FontString parentKey="Rank3Tooltip" inherits="GameFontHighlight" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank3" relativePoint="BOTTOMLEFT" x="10" y="-5" />
+							</Anchors>
+						</FontString>
+						
+						<FontString parentKey="UnlockText" inherits="GameFontHighlight" justifyH="LEFT">
+							<Size x="190" y="0" />
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeKey="$parent.Rank3Tooltip" relativePoint="BOTTOMLEFT" x="-10" y="-10" />
+							</Anchors>
+							<Color r="1.0" g="0.1" b="0.1" a="1"/>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				Altoholic:SetClassExtensions(self, "AltoTabGrids")
+				
+				local L = LibStub("AceLocale-3.0"):GetLocale("Altoholic")
+				
+				self.Label1:SetText(L["Realm"])
+				self.Equipment.text = L["Equipment"]
+				self.Factions.text = L["Reputations"]
+				self.Archeology.text = GetSpellInfo(78670)
+				self.Dailies.text = "Daily Quests"
+				self.FollowerAbilities.text = format("%s/%s", GARRISON_RECRUIT_ABILITIES, GARRISON_RECRUIT_TRAITS)
+				
+				self.SelectRealm:RegisterClassEvent("RealmChanged", function()
+						self.Status:SetText("")
+						self:Update()
+					end)
+				
+				self.ClassIcons.OnCharacterChanged = function()
+						self:Update()
+					end
+					
+				self.Equipment:StartAutoCastShine()
+				self.currentGridID = 1
+			</OnLoad>
+			<OnShow>
+				self:UpdateMenuIcons()
+				self:Update()
+			</OnShow>
+		</Scripts>
+	</Frame>
+</Ui>

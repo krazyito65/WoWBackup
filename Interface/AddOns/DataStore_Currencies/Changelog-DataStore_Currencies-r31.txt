@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r31 | thaoky | 2016-07-18 16:08:59 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Currencies.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r30 | thaoky | 2015-08-17 16:19:42 +0000 (Mon, 17 Aug 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore_Currencies.toc
+
+TOC Update
+------------------------------------------------------------------------

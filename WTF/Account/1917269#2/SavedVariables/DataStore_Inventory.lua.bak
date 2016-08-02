@@ -1,0 +1,42 @@
+
+DataStore_InventoryDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["Inventory"] = {
+					"|cffffffff|Hitem:101866:0:0:0:0:0:-388:993462550:90:146:491|h[]|h|r", -- [1]
+					101084, -- [2]
+					101095, -- [3]
+					nil, -- [4]
+					"|cffffffff|Hitem:101954:0:0:0:0:0:-414:2075004177:90:146:491|h[]|h|r", -- [5]
+					"|cffffffff|Hitem:101869:0:0:0:0:0:-353:1868302016:90:146:491|h[]|h|r", -- [6]
+					101094, -- [7]
+					"|cffffffff|Hitem:101863:0:0:0:0:0:-353:1167394496:90:139:491|h[]|h|r", -- [8]
+					"|cffffffff|Hitem:101862:0:0:0:0:0:-348:2062026000:90:153:491|h[]|h|r", -- [9]
+					95906, -- [10]
+					101085, -- [11]
+					101086, -- [12]
+					103690, -- [13]
+					101087, -- [14]
+					"|cffa335ee|Hitem:101828:0:0:0:0:0:-346:1586169104:90:0:491|h[Warmsun Cloak of the Adroit]|h|r", -- [15]
+					101088, -- [16]
+				},
+				["averageItemLvl"] = 492.933349609375,
+				["overallAIL"] = 492.933349609375,
+				["lastUpdate"] = 1403962656,
+			},
+		},
+		["Guilds"] = {
+			["Default.Mal'Ganis.Semi Respectable"] = {
+				["Members"] = {
+					["Kråzyito"] = {
+						["averageItemLvl"] = 492,
+					},
+				},
+			},
+		},
+	},
+}

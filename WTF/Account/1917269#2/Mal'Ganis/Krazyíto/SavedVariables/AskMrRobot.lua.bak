@@ -1,0 +1,66 @@
+
+AmrDb = {
+	["Talents"] = {
+	},
+	["LastCharacterImportDate"] = "",
+	["SendSettings"] = {
+		["SendTo"] = "",
+		["SendGems"] = true,
+		["SendEnchants"] = true,
+		["SendEnchantMaterials"] = true,
+		["SendToType"] = "a friend",
+	},
+	["CharacterName"] = "Krazyíto",
+	["Race"] = "BloodElf",
+	["ActiveSpec"] = 1,
+	["Level"] = 1,
+	["Equipped"] = {
+		{
+			"|cffe6cc80|Hitem:122245:0:0:0:0:0:0:0:1:0:0:1:582|h[Polished Helm of Valor]|h|r", -- [1]
+			"|cffe6cc80|Hitem:122662:0:0:0:0:0:0:0:1:0:0:1:582|h[Eternal Talisman of Evasion]|h|r", -- [2]
+			"|cffe6cc80|Hitem:122355:0:0:0:0:0:0:0:1:0:0:1:582|h[Polished Spaulders of Valor]|h|r", -- [3]
+			nil, -- [4]
+			"|cffe6cc80|Hitem:122387:0:0:0:0:0:0:0:1:0:0:1:582|h[Burnished Breastplate of Might]|h|r", -- [5]
+			nil, -- [6]
+			"|cffe6cc80|Hitem:122251:0:0:0:0:0:0:0:1:0:0:1:582|h[Polished Legplates of Valor]|h|r", -- [7]
+			"|cffffffff|Hitem:24146:0:0:0:0:0:0:0:1:0:0:0|h[Initiate's Boots]|h|r", -- [8]
+			[14] = "|cffe6cc80|Hitem:122361:0:0:0:0:0:0:0:1:0:0:1:582|h[Swift Hand of Justice]|h|r",
+			[16] = "|cffe6cc80|Hitem:122389:0:0:0:0:0:0:0:1:0:0:1:582|h[Bloodsoaked Skullforge Reaver]|h|r",
+			[17] = "|cffe6cc80|Hitem:122391:0:0:0:0:0:0:0:1:0:0:1:582|h[Flamescarred Draconian Deflector]|h|r",
+			[13] = "|cffe6cc80|Hitem:122361:0:0:0:0:0:0:0:1:0:0:1:582|h[Swift Hand of Justice]|h|r",
+		}, -- [1]
+	},
+	["Specs"] = {
+	},
+	["Options"] = {
+	},
+	["Region"] = "US",
+	["Currencies"] = {
+	},
+	["Glyphs"] = {
+	},
+	["LogData"] = {
+		["_wipes"] = {
+		},
+		["_autoLog"] = {
+			[1228] = "disabled",
+			[1205] = "disabled",
+		},
+		["_lastDiff"] = 0,
+		["_lastZone"] = "Outland",
+	},
+	["BagItems"] = {
+	},
+	["BankItems"] = {
+	},
+	["LastCharacterImport"] = "",
+	["Reps"] = {
+	},
+	["Faction"] = "Horde",
+	["IconInfo"] = {
+	},
+	["Professions"] = {
+	},
+	["RealmName"] = "Mal'Ganis",
+	["Class"] = "PALADIN",
+}

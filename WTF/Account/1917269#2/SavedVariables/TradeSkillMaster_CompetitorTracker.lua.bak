@@ -1,0 +1,16 @@
+
+TradeSkillMaster_CompetitorTrackerDB = {
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["factionrealm"] = {
+		["Horde - Mal'Ganis"] = {
+			["loginTime"] = 1396312996,
+			["logoutTime"] = 1396313022,
+		},
+	},
+}

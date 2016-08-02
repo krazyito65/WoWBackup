@@ -1,0 +1,73 @@
+VER 3 0100000000000049 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Etheralus, the Eternal Reward
+/use [nomod] Stampeding Roar
+END
+VER 3 010000000000005C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [talent:4/2] Mass Entanglement; [talent:4/1] Mighty Bash; [talent:4/3] Typhoon
+END
+VER 3 0100000000000062 " " "INV_MISC_QUESTIONMARK"
+/use [@mouseover,harm][] sunfire
+END
+VER 3 0100000000000063 " " "INV_MISC_QUESTIONMARK"
+/use [@mouseover,harm][] stellar flare
+END
+VER 3 010000000000005D " " "INV_MISC_QUESTIONMARK"
+/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
+END
+VER 3 0100000000000060 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [talent:1/1] Force of Nature; [talent:1/2] Warrior of Elune
+END
+VER 3 0100000000000061 " " "INV_MISC_QUESTIONMARK"
+/use [talent:2,2, mod:ctrl] displacer beast;  [@mouseover,harm][]moonfire
+END
+VER 3 0100000000000064 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [talent:6/2] Astral Communion; [talent:6/3] Blessing of the Ancients
+END
+VER 3 0100000000000065 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Moonkin Form
+/use dash
+END
+VER 3 0100000000000058 "  " "INV_MISC_QUESTIONMARK"
+#showtooltip Starfall
+/cancelaura [mod:ctrl] Starfall
+/use [nomod] starfall
+END
+VER 3 010000000000004C " COOLIOS" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [mod:ctrl] Berserking(Racial)
+/use [mod:ctrl] 14
+/use [nomod] Celestial Alignment
+END
+VER 3 0100000000000024 "regrow" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [nomod, @mouseover] Regrowth
+END
+VER 3 0100000000000028 "resto moonfare" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [spec:1,mod:alt, @player] Genesis; [spec:1,@mouseover,mod:ctrl]lifebloom;[spec:1,@mouseover,help]Rejuvenation;[spec:1,harm]moonfire;[spec:1]Rejuvenation
+/use [spec:2, mod:ctrl]Displacer Beast; [spec:2,@mouseover,harm][spec:2]moonfire
+END
+VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover,mod:ctrl]ironbark; [mod:shift] wild charge;[@mouseover,help]swiftmend;[harm]Wrath; swiftmend
+END
+VER 3 0100000000000013 "resto shrrom/ns" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift]Wild Mushroom;Nature's Swiftness
+END
+VER 3 0100000000000015 "starsurge" "INV_MISC_QUESTIONMARK"
+#showtooltip Starsurge
+/focus [mod:alt,@mouseover,harm][mod:alt]
+/use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
+END
+VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

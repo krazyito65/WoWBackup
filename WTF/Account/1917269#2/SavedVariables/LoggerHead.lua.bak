@@ -1,0 +1,22 @@
+
+LoggerHeadDB = {
+	["profileKeys"] = {
+		["Krazyito - Gnomeregan"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["sink"] = {
+				["sink20OutputSink"] = "MikSBT",
+				["sink20ScrollArea"] = "Notification",
+			},
+			["log"] = {
+				["raid"] = {
+					["Dragon Soul"] = {
+						[4] = true,
+					},
+				},
+			},
+			["version"] = 3,
+		},
+	},
+}

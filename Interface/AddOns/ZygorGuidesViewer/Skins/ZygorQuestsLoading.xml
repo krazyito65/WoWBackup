@@ -1,0 +1,65 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="ZygorQuestsLoading.lua"/>
+	<Frame name="ZygorQuestsLoadingIcon" virtual="true">
+		<Size x="32" y="32"/>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="__\Skins\loading" name="$parentSpinner" setAllPoints="true" subLevel="1" parentKey="Spinner" />
+				<Texture file="Interface\GossipFrame\AvailableQuestIcon" name="$parentQuest" setAllPoints="true" subLevel="2" />
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				if(self.tooltip ~= nil) then
+					GameTooltip:SetOwner(self, "ANCHOR_TOP");
+					GameTooltip:SetText(self.tooltip, nil, nil, nil, nil, 1);
+					GameTooltip:AddLine(self.tooltip2, 0.74,0.6,0, nil, 1);
+					GameTooltip:Show()
+				end
+			</OnEnter>
+			<OnLeave function="GameTooltip_Hide"/>
+			<OnLoad function="ZygorQuestsLoadingIcon_OnLoad"/>
+ 			<OnEvent function="ZygorQuestsLoadingIcon_OnEvent"/>
+			<OnShow>
+				self.Loop:Play()
+			</OnShow>
+			<OnHide>
+				self.Loop:Stop()
+			</OnHide>
+		</Scripts>
+		<Animations>
+			<!--
+			<AnimationGroup parentKey="Appear">
+				<Alpha order="1" change="1" duration="1" />
+				<Scripts>
+					<OnPlay>
+						self:Show()
+						self:GetParent():SetAlpha(0)
+					</OnPlay>
+					<OnFinished>
+						self:GetParent():SetAlpha(1)
+						self:GetParent().Loop:Play()
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+			-->
+			<AnimationGroup parentKey="Loop" looping="REPEAT" >
+				<Rotation target="$parentSpinner" order="1" duration="2" degrees="-360" />
+			</AnimationGroup>
+			<!--
+			<AnimationGroup parentKey="Disappear">
+				<Alpha order="1" change="-1" duration="1" />
+				<Scripts>
+					<OnPlay>
+						self:GetParent():SetAlpha(1)
+					</OnPlay>
+					<OnFinished>
+						self:GetParent():SetAlpha(0)
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+			-->
+		</Animations>
+	</Frame>
+</Ui>

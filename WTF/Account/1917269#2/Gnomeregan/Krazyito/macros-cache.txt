@@ -1,0 +1,73 @@
+VER 3 0100000000000014 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] typhoon; [mod: ctrl] Mighty Bash; Incarnation
+END
+VER 3 0100000000000023 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover, mod:ctrl]ironbark; [@mouseover]swiftmend
+END
+VER 3 0100000000000024 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@player, ,mod: ctrl] innervate;[@mouseover] regrowth
+END
+VER 3 0100000000000016 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Faerie Fire; Renewal
+END
+VER 3 0100000000000015 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Swipe; [mod: ctrl] Nature's Vigil; Thrash
+END
+VER 3 010000000000001F " " "INV_MISC_QUESTIONMARK"
+#showtooltip Mangle
+/use mangle
+END
+VER 3 0100000000000020 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Restorative Amber
+/use Restorative Amber
+END
+VER 3 0100000000000013 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Wild Mushroom; Nature's Swiftness
+END
+VER 3 0100000000000026 " " "Ability_GlaiveToss"
+/recount pause
+END
+VER 3 0100000000000027 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Force of Nature
+END
+VER 3 0100000000000028 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover, mod:ctrl] Rejuvenation; Genesis
+END
+VER 3 010000000000001C "amy" "Ability_Mount_GoatMountBlack"
+/tar Amethyst Guardian
+/cast growl
+END
+VER 3 010000000000001A "cobal" "Ability_Mount_GoatMountWhite"
+/tar Cobalt Guardian
+/cast growl
+END
+VER 3 0100000000000019 "jade" "Ability_Mount_GoatMount"
+/tar Jasper Guardian
+/cast growl
+END
+VER 3 010000000000001B "jasper" "Ability_Mount_GoatMountBrown"
+/tar Jasper Guardian
+/cast growl
+END
+VER 3 0100000000000017 "mill" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast milling
+/use Green Tea Leaf
+/use Fool's Cap
+/use snow lily
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

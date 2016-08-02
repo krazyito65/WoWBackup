@@ -1,0 +1,10 @@
+
+Broker_TimeToExecuteDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

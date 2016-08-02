@@ -1,0 +1,39 @@
+VER 3 0100000000000009 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@focus] tricks of the trade
+END
+VER 3 0100000000000005 " " "INV_Misc_QuestionMark"
+#showtooltip
+/use [mod:ctrl] Ambush
+/use [stance:0] Sinister Strike
+/use [stance:1] Ambush
+END
+VER 3 0100000000000008 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Ambush
+/use [stance:0] Mutilate
+/use [stance:1] Ambush
+END
+VER 3 010000000000000A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Shiv; Kidney shot
+END
+VER 3 010000000000000B " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] sprint; [talent:4/1] sprint; [talent:4/2] Shadowstep; [talent:4/3] Burst of Speed
+END
+VER 3 010000000000000C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Crimson Tempest; fan of knives
+END
+VER 3 010000000000000D " " "Spell_Shadow_RitualOfSacrifice"
+#showtooltip
+/use [stance:0] Sinister Strike
+/use [stance:1] Ambush
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1RM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

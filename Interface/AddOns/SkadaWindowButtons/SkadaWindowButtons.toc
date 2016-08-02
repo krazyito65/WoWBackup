@@ -1,0 +1,13 @@
+## Interface: 40000
+## Title: Skada |r[|caaedc99fWindow Buttons|r]
+## Notes: Adds a report button, segment button and report gui to Skada Bar Displays
+## Author: kandarz
+## Version: 1.0
+## Dependencies: Skada
+## X-Revision: 10
+## X-Curse-Packaged-Version: r11-beta
+## X-Curse-Project-Name: Skada Window Buttons
+## X-Curse-Project-ID: skada-window-buttons
+## X-Curse-Repository-ID: wow/skada-window-buttons/mainline
+
+SkadaWindowButtons.lua

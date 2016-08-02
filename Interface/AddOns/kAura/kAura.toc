@@ -1,0 +1,26 @@
+## Title: kAura
+## Version: 43
+## Author: Kulldam
+## Notes: Helper functions for advanced WeakAura creation.
+## Interface: 62000
+## SavedVariables: kAuraDB
+## X-Curse-Packaged-Version: r20150628222039
+## X-Curse-Project-Name: kAura
+## X-Curse-Project-ID: kaura
+## X-Curse-Repository-ID: wow/kaura/mainline
+
+embeds.xml
+
+core.lua
+actor.lua
+event.lua
+geometry.lua
+log.lua
+party.lua
+spell.lua
+stat.lua
+talent.lua
+text.lua
+zone.lua
+plugin\grid.lua
+plugin\weak_auras.lua

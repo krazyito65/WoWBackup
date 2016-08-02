@@ -1,0 +1,23 @@
+
+Cs_order = {
+	{
+		["start"] = 5,
+		["name"] = "Warlords of Draenor",
+		["stop"] = 9,
+	}, -- [1]
+	{
+		["start"] = 1,
+		["name"] = "Player vs. Player",
+		["stop"] = 3,
+	}, -- [2]
+	{
+		["start"] = 4,
+		["name"] = "Unused",
+		["stop"] = 4,
+	}, -- [3]
+	["Firsttime"] = 1,
+	["collapsed"] = {
+		["Unused"] = 1,
+	},
+	["Nummax"] = 9,
+}

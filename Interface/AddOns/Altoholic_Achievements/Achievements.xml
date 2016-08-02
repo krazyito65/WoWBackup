@@ -1,0 +1,26 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Achievements.lua"></Script>
+	
+	<Frame name="AltoholicFrameAchievements" parent="AltoholicTabAchievements" hidden="true">
+		<Size x="615" y="306" />
+		<Anchors>
+			<Anchor point="TOPRIGHT" x="39" y="-105" />
+		</Anchors>
+		<Frames>
+			<ScrollFrame parentKey="ScrollFrame" inherits="AltoBaseScrollFrameTemplate">
+				<Scripts>
+					<OnVerticalScroll>
+						self:OnVerticalScroll(offset, 41, Altoholic.Achievements.Update)
+					</OnVerticalScroll>
+				</Scripts>
+				<KeyValues>
+					<KeyValue key="numRows" value="8" type="number" />
+					<KeyValue key="rowHeight" value="41" type="number" />
+					<KeyValue key="rowTemplate" value="AltoIconListEntryTemplate" />
+					<KeyValue key="xOffset" value="3" type="number" />
+					<KeyValue key="yOffset" value="3" type="number" />
+				</KeyValues>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+</Ui>

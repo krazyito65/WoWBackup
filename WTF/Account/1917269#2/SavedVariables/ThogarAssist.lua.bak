@@ -1,0 +1,17 @@
+
+ThogarAssistDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["lock"] = true,
+			["posy"] = 308.711029936312,
+			["posx"] = 791.888893072828,
+			["font_size"] = 13,
+			["font"] = "ElvUI Font",
+			["laneraidicon4"] = "rt7",
+			["laneraidicon1"] = "rt8",
+		},
+	},
+}

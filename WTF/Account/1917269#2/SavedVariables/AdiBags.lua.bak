@@ -1,0 +1,28 @@
+
+AdiBagsDB = {
+	["namespaces"] = {
+		["AdiBags_TooltipInfo"] = {
+		},
+		["mod"] = {
+		},
+		["ItemSets"] = {
+		},
+		["Equipment"] = {
+		},
+		["ItemCategory"] = {
+		},
+		["DataSource"] = {
+		},
+		["TidyBags"] = {
+		},
+		["NewItem"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Ashbrownie - Caelestrasz"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

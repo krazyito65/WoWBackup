@@ -1,0 +1,12 @@
+## Interface: 60200
+## Title: Redprints
+## Notes: Paints your known blueprints red.
+## Author: Ethan Centaurai
+## Version: v1.1.3
+## SavedVariables: RedprintsColour
+## X-Curse-Packaged-Version: v1.1.3
+## X-Curse-Project-Name: Redprints
+## X-Curse-Project-ID: redprints
+## X-Curse-Repository-ID: wow/redprints/mainline
+
+Redprints.lua

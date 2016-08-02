@@ -1,0 +1,58 @@
+
+BLCDrosterReload = {
+	["0x0480000007412E32"] = {
+		["talents"] = {
+			[114163] = {
+				["idx"] = 8,
+				["name_localized"] = "Eternal Flame",
+				["tier"] = 3,
+				["spell_id"] = 114163,
+				["icon"] = "Interface\\Icons\\INV_Torch_Thrown",
+				["column"] = 2,
+			},
+			[85499] = {
+				["idx"] = 1,
+				["name_localized"] = "Speed of Light",
+				["tier"] = 1,
+				["spell_id"] = 85499,
+				["icon"] = "Interface\\Icons\\ability_paladin_speedoflight",
+				["column"] = 1,
+			},
+			[105593] = {
+				["idx"] = 4,
+				["name_localized"] = "Fist of Justice",
+				["tier"] = 2,
+				["spell_id"] = 105593,
+				["icon"] = "Interface\\Icons\\Spell_Holy_FistOfJustice",
+				["column"] = 1,
+			},
+			[86172] = {
+				["idx"] = 15,
+				["name_localized"] = "Divine Purpose",
+				["tier"] = 5,
+				["spell_id"] = 86172,
+				["icon"] = "Interface\\Icons\\Spell_Holy_DivinePurpose",
+				["column"] = 3,
+			},
+			[105622] = {
+				["idx"] = 12,
+				["name_localized"] = "Clemency",
+				["tier"] = 4,
+				["spell_id"] = 105622,
+				["icon"] = "Interface\\Icons\\ability_paladin_clemency",
+				["column"] = 3,
+			},
+			[114158] = {
+				["idx"] = 17,
+				["name_localized"] = "Light's Hammer",
+				["tier"] = 6,
+				["spell_id"] = 114158,
+				["icon"] = "Interface\\Icons\\spell_paladin_lightshammer",
+				["column"] = 2,
+			},
+		},
+		["class"] = "PALADIN",
+		["name"] = "Krãzyito",
+		["spec"] = 65,
+	},
+}

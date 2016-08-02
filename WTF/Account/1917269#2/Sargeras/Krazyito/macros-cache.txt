@@ -1,0 +1,78 @@
+VER 3 0100000000000027 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Force of Nature
+END
+VER 3 0100000000000023 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover, mod:ctrl]ironbark; [@mouseover]swiftmend
+END
+VER 3 0100000000000024 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@player, mod:ctrl] Innervate; [@mouseover] Regrowth
+END
+VER 3 0100000000000016 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Faerie Fire; Renewal
+END
+VER 3 0100000000000015 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Swipe; [mod: ctrl] Nature's Vigil; Thrash
+END
+VER 3 010000000000001F " " "INV_MISC_QUESTIONMARK"
+#showtooltip Mangle
+/use mangle
+END
+VER 3 0100000000000020 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Restorative Amber
+/use Restorative Amber
+END
+VER 3 0100000000000013 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift] Wild Mushroom; Nature's Swiftness
+END
+VER 3 010000000000002C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] wild Growth
+END
+VER 3 010000000000002A " " "ACHIEVEMENT_DUNGEON_SIEGEOFNIUZAOTEMPLE"
+11/14H 25 man looking to sell Heroic Immereseus through Iron Juggernaut. Pst me for more information.
+END
+VER 3 0100000000000028 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [@mouseover, mod:ctrl] Rejuvenation; Genesis
+END
+VER 3 010000000000002B " " "SPELL_HOLY_SENSEUNDEAD"
+30k per boss, you get all the loot that my main raiders dont need, and they dont need 80% of the loot. if you get zero loot per boss, i give you half your gold back
+END
+VER 3 0100000000000014 " D75" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use Disorenting Roar
+/use Ursol's Vortex
+/use Mighty Bash
+/run local G=GetSpellInfo SetMacroSpell("D75", G("Disorenting Roar") or G("Ursol's Vortex") or G("Mighty Bash"))
+END
+VER 3 0100000000000026 " vate" "Ability_GlaiveToss"
+/use [@player] innervate
+END
+VER 3 0100000000000029 "CastSymbiosis001" "INV_MISC_QUESTIONMARK"
+#showtooltip Symbiosis
+/cast  Symbiosis
+/script Symbiosis.Click()
+END
+VER 3 0100000000000049 "cloak" "INV_MISC_QUESTIONMARK"
+/use 15
+END
+VER 3 0100000000000017 "mill" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast milling
+/use Green Tea Leaf
+/use Fool's Cap
+/use snow lily
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DT[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

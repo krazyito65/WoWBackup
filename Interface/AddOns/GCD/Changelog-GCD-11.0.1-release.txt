@@ -1,0 +1,12 @@
+tag 11.0.1-release
+37ddaa51ff4d71a8e5cc86ca5e8929fb39ecb7d5
+bakahar <bakahar@gmail.com>
+2012-09-28 12:20:16 -0400
+
+Minor bugfix.
+
+
+--------------------
+
+bakahar:
+	- Minor bugfix.

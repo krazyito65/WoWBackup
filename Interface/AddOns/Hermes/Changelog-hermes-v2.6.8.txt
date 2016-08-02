@@ -1,0 +1,12 @@
+tag v2.6.8
+df8ffe9f4bd098d7d6aced3c853ff0801d665f78
+Virtual <bryan@virtualbind.com>
+2015-03-17 20:00:59 -0500
+
+Tagging for Talent Index fix.
+
+
+--------------------
+
+Virtual:
+	- This should hopefully fix the talent index issue! Finally. Sorry for the issues.

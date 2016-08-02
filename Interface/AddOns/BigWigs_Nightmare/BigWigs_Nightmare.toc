@@ -1,0 +1,38 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: v6
+## X-Curse-Project-Name: BigWigs Bossmods
+## X-Curse-Project-ID: big-wigs
+## X-Curse-Repository-ID: wow/big-wigs/mainline
+
+## Title: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-deDE: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-esES: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-esMX: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-frFR: Big Wigs [|cffeda55fLe Cauchemar d'émeraude|r]
+## Title-ruRU: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-zhCN: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-zhTW: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-itIT: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-ptBR: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Title-koKR: Big Wigs [|cffeda55fEmerald Nightmare|r]
+## Notes: Big Wigs Emerald Nightmare Modules
+## Notes-deDE: Big Wigs Emerald Nightmare Modules
+## Notes-esES: Big Wigs Emerald Nightmare Modules
+## Notes-esMX: Big Wigs Emerald Nightmare Modules
+## Notes-frFR: Modules Big Wigs concernant le Cauchemar d'émeraude.
+## Notes-ruRU: Big Wigs Emerald Nightmare Modules
+## Notes-zhCN: Big Wigs Emerald Nightmare Modules
+## Notes-zhTW: Big Wigs Emerald Nightmare Modules
+## Notes-itIT: Big Wigs Emerald Nightmare Modules
+## Notes-ptBR: Big Wigs Emerald Nightmare Modules
+## Notes-koKR: Big Wigs Emerald Nightmare Modules
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 1094
+
+modules.xml
+locales.xml
+

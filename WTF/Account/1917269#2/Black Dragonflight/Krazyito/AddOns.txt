@@ -1,0 +1,15 @@
+Chatter: disabled
+GearScore: enabled
+GrizzlySharedMedia: disabled
+DoTimer: disabled
+DoTimer_Options: disabled
+epgp: disabled
+epgp_lootmaster: disabled
+epgp_lootmaster_ml: disabled
+ReforgeLite: disabled
+TotemTimers: disabled
+Enchantrix-Barker: enabled
+Enchantrix: enabled
+BeanCounter: disabled
+Informant: enabled
+SlideBar: disabled

@@ -1,0 +1,165 @@
+
+ActionBarSaverDB = {
+	["restoreRank"] = true,
+	["macro"] = false,
+	["sets"] = {
+		["DEATHKNIGHT"] = {
+		},
+		["WARRIOR"] = {
+		},
+		["PALADIN"] = {
+		},
+		["MAGE"] = {
+		},
+		["PRIEST"] = {
+			["shadow"] = {
+				"spell|15407||Mind Flay||", -- [1]
+				"spell|8092||Mind Blast||", -- [2]
+				"spell|32379||Shadow Word: Death||", -- [3]
+				"spell|589||Shadow Word: Pain||", -- [4]
+				"spell|47585||Dispersion||", -- [5]
+				"spell|48045||Mind Sear||", -- [6]
+				nil, -- [7]
+				"spell|2944||Devouring Plague||", -- [8]
+				nil, -- [9]
+				nil, -- [10]
+				"spell|15237||Holy Nova||", -- [11]
+				"spell|586||Fade||", -- [12]
+				nil, -- [13]
+				"spell|2061||Flash Heal||", -- [14]
+				nil, -- [15]
+				"spell|17||Power Word: Shield||", -- [16]
+				"spell|2050||Heal||", -- [17]
+				"spell|14914||Holy Fire||", -- [18]
+				"spell|34433||Shadowfiend||", -- [19]
+				"spell|64901||Hymn of Hope||", -- [20]
+				"spell|6346||Fear Ward||", -- [21]
+				"spell|2096||Mind Vision||", -- [22]
+				"spell|605||Mind Control||", -- [23]
+				"spell|9484||Shackle Undead||", -- [24]
+				"item|6948||Hearthstone", -- [25]
+				nil, -- [26]
+				nil, -- [27]
+				"item|41161||Drakuru \"Lock Opener\"", -- [28]
+				"item|38699||Ensorcelled Choker", -- [29]
+				"item|41390||Stefan's Horn", -- [30]
+				"item|39206||Scepter of Empowerment", -- [31]
+				nil, -- [32]
+				nil, -- [33]
+				nil, -- [34]
+				"spell|8613||Skinning||", -- [35]
+				"spell|2550||Cooking||", -- [36]
+				"companion|32235|||MOUNT|", -- [37]
+				"spell|68992||Darkflight|Racial|", -- [38]
+				nil, -- [39]
+				nil, -- [40]
+				nil, -- [41]
+				nil, -- [42]
+				nil, -- [43]
+				nil, -- [44]
+				"spell|1706||Levitate||", -- [45]
+				"spell|3274||First Aid||", -- [46]
+				"spell|2656||Smelting||", -- [47]
+				"spell|818||Basic Campfire||", -- [48]
+				"spell|8122||Psychic Scream||", -- [49]
+				nil, -- [50]
+				nil, -- [51]
+				"spell|2006||Resurrection||", -- [52]
+				nil, -- [53]
+				nil, -- [54]
+				"spell|27683||Shadow Protection||", -- [55]
+				nil, -- [56]
+				"item|33444||Pungent Seal Whey", -- [57]
+				nil, -- [58]
+				"spell|21562||Power Word: Fortitude||", -- [59]
+				"spell|588||Inner Fire||", -- [60]
+				nil, -- [61]
+				"spell|87840||Running Wild|Racial|", -- [62]
+				"spell|68996||Two Forms|Racial|", -- [63]
+				"spell|5019||Shoot||", -- [64]
+				[70] = "spell|83968||Mass Resurrection||",
+				[69] = "spell|83967||Have Group, Will Travel||",
+			},
+			["holy"] = {
+				"spell|88625||Holy Word: Chastise||", -- [1]
+				"spell|19236||Desperate Prayer||", -- [2]
+				"spell|724||Lightwell||", -- [3]
+				"spell|585||Smite||", -- [4]
+				"spell|14751||Chakra||", -- [5]
+				"spell|15237||Holy Nova||", -- [6]
+				"spell|8129||Mana Burn||", -- [7]
+				"spell|2050||Heal||", -- [8]
+				"spell|14914||Holy Fire||", -- [9]
+				"spell|139||Renew||", -- [10]
+				"spell|2060||Greater Heal||", -- [11]
+				"spell|17||Power Word: Shield||", -- [12]
+				"spell|585||Smite||", -- [13]
+				"spell|47788||Guardian Spirit||", -- [14]
+				"spell|33076||Prayer of Mending||", -- [15]
+				"spell|34433||Shadowfiend||", -- [16]
+				"spell|589||Shadow Word: Pain||", -- [17]
+				"spell|8092||Mind Blast||", -- [18]
+				"spell|64901||Hymn of Hope||", -- [19]
+				"spell|605||Mind Control||", -- [20]
+				"spell|2061||Flash Heal||", -- [21]
+				"spell|34861||Circle of Healing||", -- [22]
+				"spell|596||Prayer of Healing||", -- [23]
+				"spell|32546||Binding Heal||", -- [24]
+				"item|6948||Hearthstone", -- [25]
+				nil, -- [26]
+				nil, -- [27]
+				"item|38699||Ensorcelled Choker", -- [28]
+				nil, -- [29]
+				nil, -- [30]
+				nil, -- [31]
+				nil, -- [32]
+				nil, -- [33]
+				nil, -- [34]
+				"spell|8613||Skinning||", -- [35]
+				"spell|2550||Cooking||", -- [36]
+				"companion|32235|||MOUNT|", -- [37]
+				"spell|68992||Darkflight|Racial|", -- [38]
+				nil, -- [39]
+				nil, -- [40]
+				nil, -- [41]
+				nil, -- [42]
+				nil, -- [43]
+				nil, -- [44]
+				"spell|9484||Shackle Undead||", -- [45]
+				"spell|3274||First Aid||", -- [46]
+				"spell|2656||Smelting||", -- [47]
+				"spell|818||Basic Campfire||", -- [48]
+				"spell|8122||Psychic Scream||", -- [49]
+				"spell|586||Fade||", -- [50]
+				nil, -- [51]
+				nil, -- [52]
+				nil, -- [53]
+				nil, -- [54]
+				nil, -- [55]
+				nil, -- [56]
+				"item|27860||Purified Draenic Water", -- [57]
+				nil, -- [58]
+				"spell|21562||Power Word: Fortitude||", -- [59]
+				"spell|588||Inner Fire||", -- [60]
+				nil, -- [61]
+				"spell|68996||Two Forms|Racial|", -- [62]
+				"spell|87840||Running Wild|Racial|", -- [63]
+				"spell|5019||Shoot||", -- [64]
+				[72] = "spell|2006||Resurrection||",
+			},
+		},
+		["WARLOCK"] = {
+		},
+		["ROGUE"] = {
+		},
+		["DRUID"] = {
+		},
+		["SHAMAN"] = {
+		},
+		["HUNTER"] = {
+		},
+	},
+	["spellSubs"] = {
+	},
+	["checkCount"] = false,
+}

@@ -1,0 +1,64 @@
+------------------------------------------------------------------------
+r52 | funkydude | 2016-07-29 19:39:24 +0000 (Fri, 29 Jul 2016) | 1 line
+Changed paths:
+   A /tags/r52-release (from /trunk:51)
+
+Tagging as r52-release
+------------------------------------------------------------------------
+r51 | funkydude | 2016-07-29 16:02:34 +0000 (Fri, 29 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/BlackTemple/Council.lua
+   M /trunk/BlackTemple/Gurtogg.lua
+   M /trunk/BlackTemple/Illidan.lua
+   M /trunk/BlackTemple/Najentus.lua
+   M /trunk/BlackTemple/Shahraz.lua
+   M /trunk/BlackTemple/Souls.lua
+   M /trunk/BlackTemple/Supremus.lua
+   M /trunk/BlackTemple/Teron.lua
+   M /trunk/Hyjal/Anetheron.lua
+   M /trunk/Hyjal/Archimonde.lua
+   M /trunk/Hyjal/Azgalor.lua
+   M /trunk/Hyjal/Kazrogal.lua
+   M /trunk/Hyjal/Winterchill.lua
+   M /trunk/Karazhan/Attumen.lua
+   M /trunk/Karazhan/Curator.lua
+   M /trunk/Karazhan/Hyakiss.lua
+   M /trunk/Karazhan/Maiden.lua
+   M /trunk/Karazhan/Malchezaar.lua
+   M /trunk/Karazhan/Moroes.lua
+   M /trunk/Karazhan/Netherspite.lua
+   M /trunk/Karazhan/Nightbane.lua
+   M /trunk/Karazhan/ShadeOfAran.lua
+   M /trunk/Karazhan/Terestian.lua
+   M /trunk/Karazhan/TheBigBadWolf.lua
+   M /trunk/Karazhan/WizardofOz.lua
+   M /trunk/Outland/Doomwalker.lua
+   M /trunk/Outland/Gruul.lua
+   M /trunk/Outland/Kazzak.lua
+   M /trunk/Outland/Magtheridon.lua
+   M /trunk/Outland/Maulgar.lua
+   M /trunk/Serpentshrine/Hydross.lua
+   M /trunk/Serpentshrine/Karathress.lua
+   M /trunk/Serpentshrine/Leotheras.lua
+   M /trunk/Serpentshrine/Lurker.lua
+   M /trunk/Serpentshrine/Morogrim.lua
+   M /trunk/Serpentshrine/Vashj.lua
+   M /trunk/Sunwell/Brutallus.lua
+   M /trunk/Sunwell/Felmyst.lua
+   M /trunk/Sunwell/Kalecgos.lua
+   M /trunk/Sunwell/KilJaeden.lua
+   M /trunk/Sunwell/Muru.lua
+   M /trunk/Sunwell/Twins.lua
+   M /trunk/TheEye/Alar.lua
+   M /trunk/TheEye/Kaelthas.lua
+   M /trunk/TheEye/Reaver.lua
+   M /trunk/TheEye/Solarian.lua
+
+Purge bosskill option
+------------------------------------------------------------------------
+r49 | funkydude | 2016-07-20 16:23:54 +0000 (Wed, 20 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/BigWigs_BurningCrusade.toc
+
+bump version
+------------------------------------------------------------------------

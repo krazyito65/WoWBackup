@@ -1,0 +1,129 @@
+
+ZygorGuidesViewerSettings = {
+	["char"] = {
+		["Zuuken - Caelestrasz"] = {
+			["completedQuests"] = {
+				["Prison Break"] = true,
+				[11587] = true,
+				[11574] = true,
+				["Too Close For Comfort"] = true,
+			},
+			["step"] = 15,
+			["debuglog"] = {
+				"05:36:37> goal clicked 4", -- [1]
+				"05:36:37> Animating completion.", -- [2]
+				"05:36:38> Skipping complete/impossible step: 7", -- [3]
+				"05:36:38> SkipStep 1 skip", -- [4]
+				"05:36:38> LastSkip 1", -- [5]
+				"05:36:38> FocusStep 8 (quiet)", -- [6]
+				"05:36:38> FocusStep 8", -- [7]
+				"05:36:38> Setting waypoint", -- [8]
+				"05:36:44> goal clicked 2", -- [9]
+				"05:36:45> goal clicked 1", -- [10]
+				"05:36:46> goal clicked 3", -- [11]
+				"05:36:46> Animating completion.", -- [12]
+				"05:36:47> Skipping complete/impossible step: 8", -- [13]
+				"05:36:47> SkipStep 1 skip", -- [14]
+				"05:36:47> LastSkip 1", -- [15]
+				"05:36:47> FocusStep 9 (quiet)", -- [16]
+				"05:36:47> FocusStep 9", -- [17]
+				"05:36:47> Setting waypoint", -- [18]
+				"05:36:49> goal clicked 3", -- [19]
+				"05:36:49> Animating completion.", -- [20]
+				"05:36:49> Skipping complete/impossible step: 9", -- [21]
+				"05:36:49> SkipStep 1 skip", -- [22]
+				"05:36:49> LastSkip 1", -- [23]
+				"05:36:49> FocusStep 10 (quiet)", -- [24]
+				"05:36:49> FocusStep 10", -- [25]
+				"05:36:49> Setting waypoint", -- [26]
+				"05:37:37> goal clicked 2", -- [27]
+				"05:37:37> Animating completion.", -- [28]
+				"05:37:39> goal clicked 3", -- [29]
+				"05:37:39> goal clicked 3", -- [30]
+				"05:37:40> goal clicked 4", -- [31]
+				"05:37:40> Animating completion.", -- [32]
+				"05:37:41> Skipping complete/impossible step: 10", -- [33]
+				"05:37:41> SkipStep 1 skip", -- [34]
+				"05:37:41> LastSkip 1", -- [35]
+				"05:37:41> FocusStep 11 (quiet)", -- [36]
+				"05:37:41> FocusStep 11", -- [37]
+				"05:37:41> Setting waypoint", -- [38]
+				"05:37:44> goal clicked 3", -- [39]
+				"05:37:44> Animating completion.", -- [40]
+				"05:37:45> Skipping complete/impossible step: 11", -- [41]
+				"05:37:45> SkipStep 1 skip", -- [42]
+				"05:37:45> LastSkip 1", -- [43]
+				"05:37:45> FocusStep 12 (quiet)", -- [44]
+				"05:37:45> FocusStep 12", -- [45]
+				"05:37:45> Setting waypoint", -- [46]
+				"05:37:46> goal clicked 3", -- [47]
+				"05:37:46> Animating completion.", -- [48]
+				"05:37:46> Skipping complete/impossible step: 12", -- [49]
+				"05:37:46> SkipStep 1 skip", -- [50]
+				"05:37:46> LastSkip 1", -- [51]
+				"05:37:46> FocusStep 13 (quiet)", -- [52]
+				"05:37:46> FocusStep 13", -- [53]
+				"05:37:46> Setting waypoint", -- [54]
+				"05:37:54> goal clicked 3", -- [55]
+				"05:37:54> Animating completion.", -- [56]
+				"05:37:55> goal clicked 4", -- [57]
+				"05:37:55> Animating completion.", -- [58]
+				"05:37:56> Skipping complete/impossible step: 13", -- [59]
+				"05:37:56> SkipStep 1 skip", -- [60]
+				"05:37:56> LastSkip 1", -- [61]
+				"05:37:56> FocusStep 14 (quiet)", -- [62]
+				"05:37:56> FocusStep 14", -- [63]
+				"05:37:56> Setting waypoint", -- [64]
+				"05:37:58> goal clicked 3", -- [65]
+				"05:37:58> Animating completion.", -- [66]
+				"05:37:59> goal clicked 4", -- [67]
+				"05:37:59> Animating completion.", -- [68]
+				"05:38:00> goal clicked 6", -- [69]
+				"05:38:00> Animating completion.", -- [70]
+				"05:38:01> Skipping complete/impossible step: 14", -- [71]
+				"05:38:01> SkipStep 1 skip", -- [72]
+				"05:38:01> LastSkip 1", -- [73]
+				"05:38:01> FocusStep 15 (quiet)", -- [74]
+				"05:38:01> FocusStep 15", -- [75]
+				"05:38:01> Setting waypoint", -- [76]
+				"05:40:13> GetQuestId: id of quest 'Too Close For Comfort' = 11574", -- [77]
+				"05:40:13> Completed Quest: Too Close For Comfort, id: 11574", -- [78]
+				"05:40:13> CacheQuestLog cached 5 quests", -- [79]
+				"05:40:13> Lost Quest: Too Close For Comfort, id: 11574, complete: 1", -- [80]
+				"05:40:17> New Quest: Prison Break id 11587", -- [81]
+				"05:40:17> \"Prison Break\" ##11587 [71] (index=3, incomplete):\n  \"Arcane Prisoners Rescued: 0/1\" (monster; \"Arcane Prisoners Rescued\" 0/1)\n", -- [82]
+				"05:40:17> CacheQuestLog cached 6 quests", -- [83]
+				"05:40:23> New Quest: Monitoring the Rift: Cleftcliff Anomaly id 11576", -- [84]
+				"05:40:23> \"Monitoring the Rift: Cleftcliff Anomaly\" ##11576 [71] (index=3, incomplete):\n  \"Cleftcliff Anomaly Reading Taken: 0/1\" (monster; \"Cleftcliff Anomaly Reading Taken\" 0/1)\n", -- [85]
+				"05:40:23> CacheQuestLog cached 7 quests", -- [86]
+				"05:41:20> lock mode: nil", -- [87]
+				"05:44:40> lock mode: nil", -- [88]
+				"05:44:53> lock mode: nil", -- [89]
+				"05:45:15> lock mode: nil", -- [90]
+				"05:45:42> lock mode: nil", -- [91]
+				"05:45:52> lock mode: nil", -- [92]
+				"05:46:04> CacheQuestLog cached 7 quests", -- [93]
+				"05:46:26> GetQuestId: id of quest 'Prison Break' = 11587", -- [94]
+				"05:46:26> Completed Quest: Prison Break, id: 11587", -- [95]
+				"05:46:27> CacheQuestLog cached 6 quests", -- [96]
+				"05:46:27> Lost Quest: Prison Break, id: 11587, complete: 1", -- [97]
+				"05:46:33> New Quest: Abduction id 11590", -- [98]
+				"05:46:33> \"Abduction\" ##11590 [71] (index=2, incomplete):\n  \"Captured Beryl Sorcerer: 0/1\" (monster; \"Captured Beryl Sorcerer\" 0/1)\n", -- [99]
+				"05:46:33> CacheQuestLog cached 7 quests", -- [100]
+			},
+			["starting"] = false,
+		},
+	},
+	["profileKeys"] = {
+		["Zuuken - Caelestrasz"] = "Zuuken - Caelestrasz",
+	},
+	["profiles"] = {
+		["Zuuken - Caelestrasz"] = {
+			["guidename"] = "Zygor's Horde Guides: Northrend (70-72)",
+			["fullheight"] = 373.1515210245284,
+			["visible"] = false,
+			["showsteplevels"] = true,
+			["showstepnumbers"] = true,
+		},
+	},
+}

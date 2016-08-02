@@ -1,0 +1,7 @@
+## Interface: 70000
+## Title: Currency Sorter
+## Notes: Up your WoD
+## Author: Andols
+## SavedVariablesPerCharacter: Cs_order
+Cs.xml
+Cs.lua

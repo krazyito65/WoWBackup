@@ -1,0 +1,79 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<!-- Classic -->
+
+<Include file="Classic\Deadmines\modules.xml"/>
+
+<!-- The Burning Crusade -->
+
+<Include file="TBC\MagistersTerrace\modules.xml"/>
+<Include file="TBC\ManaTombs\modules.xml"/>
+<Include file="TBC\TheArcatraz\modules.xml"/>
+<Include file="TBC\TheBlackMorass\modules.xml"/>
+<Include file="TBC\TheShatteredHalls\modules.xml"/>
+<Include file="TBC\TheSlavePens\modules.xml"/>
+
+<!-- Wrath of the Lich King -->
+
+<Include file="WotLK\Ahnkahet\modules.xml"/>
+<Include file="WotLK\Gundrak\modules.xml"/>
+<Include file="WotLK\HallsOfLightning\modules.xml"/>
+<Include file="WotLK\PitOfSaron\modules.xml"/>
+<Include file="WotLK\TheNexus\modules.xml"/>
+<Include file="WotLK\UtgardePinnacle\modules.xml"/>
+
+<!-- Cataclysm -->
+
+<Include file="Cataclysm\EndTime\modules.xml"/>
+<Include file="Cataclysm\GrimBatol\modules.xml"/>
+<Include file="Cataclysm\LostCity\modules.xml"/>
+<Include file="Cataclysm\Stonecore\modules.xml"/>
+<Include file="Cataclysm\ThroneTides\modules.xml"/>
+<Include file="Cataclysm\VortexPinnacle\modules.xml"/>
+
+
+<!-- Mists of Pandaria -->
+
+<Include file="MoP\ShadoPanMonastery\modules.xml"/>
+<Include file="MoP\ShadoPanMonastery\locales.xml"/>
+
+<Include file="MoP\ScarletHalls\modules.xml"/>
+<Include file="MoP\ScarletHalls\locales.xml"/>
+
+<Include file="MoP\ScarletMonastery\modules.xml"/>
+<Include file="MoP\ScarletMonastery\locales.xml"/>
+
+<Include file="MoP\MogushanPalace\modules.xml"/>
+<Include file="MoP\MogushanPalace\locales.xml"/>
+
+<Include file="MoP\TempleOfTheJadeSerpent\modules.xml"/>
+<Include file="MoP\TempleOfTheJadeSerpent\locales.xml"/>
+
+<Include file="MoP\BlackTempleSolo\modules.xml"/>
+<Include file="MoP\BlackTempleSolo\locales.xml"/>
+
+<!-- Warlords of Draenor -->
+
+<Include file="WoD\Auchindoun\modules.xml"/>
+<Include file="WoD\Auchindoun\locales.xml"/>
+
+<Include file="WoD\BloodmaulSlagMines\modules.xml"/>
+
+<Include file="WoD\GrimrailDepot\modules.xml"/>
+
+<Include file="WoD\IronDocks\modules.xml"/>
+
+<Include file="WoD\ShadowmoonBurialGrounds\modules.xml"/>
+
+<Include file="WoD\Skyreach\modules.xml"/>
+
+<Include file="WoD\TheEverbloom\modules.xml"/>
+
+<Include file="WoD\UpperBlackrockSpire\modules.xml"/>
+<Include file="WoD\UpperBlackrockSpire\locales.xml"/>
+
+<!-- Legion -->
+ 
+</Ui>
+

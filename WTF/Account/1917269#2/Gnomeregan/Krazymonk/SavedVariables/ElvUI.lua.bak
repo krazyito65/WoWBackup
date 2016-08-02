@@ -1,0 +1,7 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+	},
+	["ChatHistory"] = {
+	},
+}

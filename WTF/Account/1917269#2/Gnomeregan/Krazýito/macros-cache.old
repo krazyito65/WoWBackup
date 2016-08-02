@@ -1,0 +1,35 @@
+VER 3 0100000000000008 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl, @mouseover] Earth shield; [@mouseover] Chain heal
+END
+VER 3 0100000000000005 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [indoors] Ghost Wolf; [nocombat, harm] Ghost Wolf; [combat] Ghost Wolf; [flyable] Tyrael's Charger; Tyrael's Charger
+/dismount [mounted]
+END
+VER 3 0100000000000009 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Healing Surge
+END
+VER 3 010000000000000A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Water Shield; [@mouseover] Greater Healing Wave
+END
+VER 3 0100000000000013 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Chain Lightning; Lightning Bolt
+END
+VER 3 010000000000001C " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Magma Totem; Searing Totem
+END
+VER 3 010000000000001D " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover] Riptide
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P1IH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1SH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+NEwa[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

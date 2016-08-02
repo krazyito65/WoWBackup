@@ -1,0 +1,9 @@
+## Interface: 50400
+## Title: ChaosGambler
+## Author: Chaos
+## Version: 0.1
+## Notes: A Remake of a Classic
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: ChaosGambler
+ChaosGambler.xml

@@ -1,0 +1,20 @@
+tag v5.12.0
+b8a623497c9b365d0e40841c9c2cfc143e606ef2
+Brizag <vvv444@gmail.com>
+2016-07-26 22:01:41 +0300
+
+Patch 7.0.3 support and some minor bug fixes.
+
+
+--------------------
+
+Brizag:
+	- [Bug fix] When granting EP, ignore additional alts in the raid, so that no one is granted twice
+	- More informative tooltips in the main list UI. Show server for alts from other server. Show main name for alts.
+	- When specifying main in officer note, support 'short' names (without server part)
+	- Sorted enUS localization strings for easier comparison
+	- Add Brazilian Portuguese and Italian localizations.
+	- Automatically package localizations from CurseForge repository.
+	- Fix outdated comment, we store full names internally, including the server portion.
+	- Bump TOC for WoW 7.0.3
+	- In WoW patch 7.0.3 item links can have empty fields instead of zeros. This fixes the "attempt to concatenate local 'uniqueid' (a nil value)" error.

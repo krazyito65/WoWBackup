@@ -1,0 +1,10 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		" ??", -- [1]
+		" LOL", -- [2]
+		" but you're not getting as much energy", -- [3]
+		" nice'", -- [4]
+		" brb", -- [5]
+	},
+}

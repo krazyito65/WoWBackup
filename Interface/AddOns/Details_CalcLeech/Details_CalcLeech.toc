@@ -1,0 +1,10 @@
+## Interface: 70000
+## Title: Details Calc Leech
+## Notes: Plugin for Details
+## RequiredDeps: Details
+## X-Curse-Packaged-Version: r527
+## X-Curse-Project-Name: Details!
+## X-Curse-Project-ID: details
+## X-Curse-Repository-ID: wow/details/mainline
+
+Details_CalcLeech.lua

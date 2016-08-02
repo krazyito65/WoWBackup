@@ -1,0 +1,27 @@
+VER 3 0100000000000021 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Heroic Throw; Pummel
+END
+VER 3 0100000000000022 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] intervene; charge
+END
+VER 3 010000000000001F " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Taunt; Heroic Leap
+END
+VER 3 0100000000000020 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] execute; Devastate
+END
+VER 3 010000000000001A " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cast [flyable] Pureblood Fire Hawk; Grand Expedition Yak
+/dismount [mounted]
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1WM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

@@ -1,0 +1,9 @@
+
+ElvCharacterData = {
+	["ChatEditHistory"] = {
+		"/M", -- [1]
+		"/m", -- [2]
+		"/magemanabar", -- [3]
+		"/powa", -- [4]
+	},
+}

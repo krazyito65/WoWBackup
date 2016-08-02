@@ -1,0 +1,8 @@
+
+Diablo3dynOrbs = {
+	["coordy"] = 0,
+	["scale"] = 1,
+	["art"] = 1,
+	["coordx"] = 0,
+	["bar"] = 1,
+}

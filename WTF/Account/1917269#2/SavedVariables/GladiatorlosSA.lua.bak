@@ -1,0 +1,12 @@
+
+GladiatorlosSADB = {
+	["profileKeys"] = {
+		["Krazyito - Gnomeregan"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["summonDemon"] = false,
+			["shackleUndead"] = false,
+		},
+	},
+}

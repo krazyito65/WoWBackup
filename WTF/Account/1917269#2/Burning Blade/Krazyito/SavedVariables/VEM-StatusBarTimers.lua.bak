@@ -1,0 +1,28 @@
+
+DBT_PersistentOptions = {
+	["VEM"] = {
+		["EndColorG"] = 0,
+		["HugeTimerY"] = -160.47868347168,
+		["HugeBarXOffset"] = 0,
+		["Scale"] = 0.899999976158142,
+		["StartColorR"] = 1,
+		["HugeWidth"] = 200,
+		["BarYOffset"] = 0,
+		["Texture"] = "Interface\\AddOns\\ElvUI\\media\\textures\\normTex2.tga",
+		["HugeScale"] = 1.04999995231628,
+		["TimerPoint"] = "LEFT",
+		["StartColorG"] = 0.701960784313726,
+		["TimerY"] = -162.038009643555,
+		["TimerX"] = 321.914642333984,
+		["EndColorR"] = 1,
+		["Width"] = 183,
+		["HugeTimerPoint"] = "CENTER",
+		["Font"] = "Interface\\AddOns\\ElvUI\\media\\fonts\\PT_Sans_Narrow.ttf",
+		["StartColorB"] = 0,
+		["FontSize"] = 10,
+		["HugeTimerX"] = -417.91455078125,
+		["HugeBarYOffset"] = 0,
+		["BarXOffset"] = 0,
+		["EndColorB"] = 0,
+	},
+}

@@ -1,0 +1,10 @@
+
+RAchF_DB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+	},
+	["profiles"] = {
+		["Krazyito - Mal'Ganis"] = {
+		},
+	},
+}

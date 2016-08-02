@@ -1,0 +1,47 @@
+
+--------------------------------------------------------------------------------
+-- Module declaration
+--
+
+local mod, CL = BigWigs:NewBoss("Drahga Shadowburner", 757, 133)
+if not mod then return end
+mod:RegisterEnableMob(40319)
+
+--------------------------------------------------------------------------------
+-- Initialization
+--
+
+function mod:GetOptions()
+	return {
+		75218, -- Invocation of Flame
+		90950, -- Devouring Flames
+	}
+end
+
+function mod:OnBossEnable()
+	-- normal
+	self:RegisterEvent("CHAT_MSG_RAID_BOSS_EMOTE", "InvocationOfFlame")
+	-- heroic
+	self:Log("SPELL_CAST_START", "DevouringFlames", 90950)
+
+	self:Death("Win", 40319)
+end
+
+function mod:VerifyEnable()
+	if not UnitInVehicle("player") then return true end
+end
+
+--------------------------------------------------------------------------------
+-- Event Handlers
+--
+
+function mod:InvocationOfFlame(_, msg)
+	if msg:find(self:SpellName(75218)) then
+		self:Message(75218, "Attention", "Alarm", CL.add_spawned)
+	end
+end
+
+function mod:DevouringFlames(args)
+	self:Message(args.spellId, "Important", "Long")
+end
+

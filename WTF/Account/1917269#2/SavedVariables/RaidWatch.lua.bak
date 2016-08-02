@@ -1,0 +1,265 @@
+
+RaidWatch2DB = {
+	["namespaces"] = {
+		["VersionDisplay"] = {
+		},
+		["Commander Ulthok"] = {
+		},
+		["Isiset"] = {
+		},
+		["Temple Guardian Anhuur"] = {
+		},
+		["Erunak Stonespeaker"] = {
+		},
+		["MessageFrame"] = {
+		},
+		["Lady Naz'jar"] = {
+		},
+		["RaidSpecs"] = {
+			["profiles"] = {
+				["Default"] = {
+					["SpecTable"] = {
+						["0x03000000041C5600"] = {
+							["role"] = "healer",
+							["spec"] = "Discipline",
+							["icon"] = "Interface\\Icons\\Spell_Holy_PowerWordShield",
+							["tree"] = 1,
+						},
+						["0x010000000413FF38"] = {
+							["role"] = "healer",
+							["spec"] = "Holy",
+							["icon"] = "Interface\\Icons\\Spell_Holy_HolyBolt",
+							["tree"] = 1,
+						},
+						["0x0300000004FC9B98"] = {
+							["role"] = "caster",
+							["spec"] = "Elemental",
+							["icon"] = "Interface\\Icons\\Spell_Nature_Lightning",
+							["tree"] = 1,
+						},
+						["0x0300000005C71417"] = {
+							["role"] = "tank",
+							["spec"] = "Protection",
+							["icon"] = "Interface\\Icons\\Ability_Warrior_DefensiveStance",
+							["tree"] = 3,
+						},
+						["0x0380000004722149"] = {
+							["role"] = "caster",
+							["spec"] = "Fire",
+							["icon"] = "Interface\\Icons\\Spell_Fire_FireBolt02",
+							["tree"] = 2,
+						},
+						["0x03000000057C03A5"] = {
+							["role"] = "caster",
+							["spec"] = "Destruction",
+							["icon"] = "Interface\\Icons\\Spell_Shadow_RainOfFire",
+							["tree"] = 3,
+						},
+						["0x03000000055B540F"] = {
+							["role"] = "melee",
+							["spec"] = "Fury",
+							["icon"] = "Interface\\Icons\\Ability_Warrior_InnerRage",
+							["tree"] = 2,
+						},
+						["0x0300000005769383"] = {
+							["role"] = "caster",
+							["spec"] = "Shadow",
+							["icon"] = "Interface\\Icons\\Spell_Shadow_ShadowWordPain",
+							["tree"] = 3,
+						},
+						["0x0300000005DAC8EB"] = {
+							["role"] = "melee",
+							["spec"] = "Assassination",
+							["icon"] = "Interface\\Icons\\Ability_Rogue_Eviscerate",
+							["tree"] = 1,
+						},
+						["0x03000000027A03CE"] = {
+							["role"] = "melee",
+							["spec"] = "Retribution",
+							["icon"] = "Interface\\Icons\\Spell_Holy_AuraOfLight",
+							["tree"] = 3,
+						},
+						["0x030000000278F8CB"] = {
+							["role"] = "healer",
+							["spec"] = "Restoration",
+							["icon"] = "Interface\\Icons\\Spell_Nature_HealingTouch",
+							["tree"] = 3,
+						},
+						["0x030000000583853D"] = {
+							["role"] = "tank",
+							["spec"] = "Protection",
+							["icon"] = "Interface\\Icons\\Ability_Paladin_ShieldoftheTemplar",
+							["tree"] = 2,
+						},
+					},
+				},
+			},
+		},
+		["Controller"] = {
+			["profiles"] = {
+				["Default"] = {
+					["y"] = 507.6238819455704,
+					["x"] = 713.2986643766972,
+				},
+			},
+		},
+		["Filter"] = {
+		},
+		["Erudax"] = {
+		},
+		["Grand Vizier Ertan"] = {
+		},
+		["Lockmaw"] = {
+		},
+		["Ozumat"] = {
+		},
+		["Direction"] = {
+		},
+		["Ascendant Lord Obsidius"] = {
+		},
+		["Asim al Akir"] = {
+		},
+		["RangeCheck"] = {
+		},
+		["Comm"] = {
+		},
+		["WarningFrame"] = {
+		},
+		["Karsh Steelbender"] = {
+		},
+		["Bars2"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Anchors"] = {
+						["Default"] = {
+							["Name"] = "Default",
+						},
+						["Short"] = {
+							["Name"] = "Short",
+						},
+					},
+					["FirstLoad"] = false,
+				},
+			},
+		},
+		["Altarius"] = {
+		},
+		["High Priestess Azil"] = {
+		},
+		["Beauty"] = {
+		},
+		["Slabhide"] = {
+		},
+		["Ozruk"] = {
+		},
+		["Corborus"] = {
+		},
+		["Siamat, Lord of South Wind"] = {
+		},
+		["Player Alternate Power Bar"] = {
+		},
+		["High Prophet Barim"] = {
+		},
+		["Flash"] = {
+		},
+		["General Husam"] = {
+		},
+		["Drahga Shodowburner"] = {
+		},
+		["Earthrager Ptah"] = {
+		},
+		["Forgemaster Throngus"] = {
+		},
+		["General Umbriss"] = {
+		},
+		["Anraphet"] = {
+		},
+		["Rajh"] = {
+		},
+		["MultiPurposeBars"] = {
+			["profiles"] = {
+				["Default"] = {
+					["Anchors"] = {
+						["Default"] = {
+							["Name"] = "Default",
+						},
+						["Health Frames"] = {
+							["Name"] = "Health Frames",
+						},
+					},
+				},
+			},
+		},
+		["Setesh"] = {
+		},
+		["Ammunae"] = {
+		},
+		["Rom'ogg Bonecrusher"] = {
+		},
+		["Corla, Herald of Twilight"] = {
+		},
+		["DKPInfo"] = {
+		},
+	},
+	["global"] = {
+		["rev"] = 0,
+	},
+	["profileKeys"] = {
+		["Hellbear - Caelestrasz"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["minimap"] = {
+				["minimapPos"] = 245.5725165237065,
+			},
+			["ver"] = 1.63,
+		},
+	},
+}
+RaidWatch2StatsDB = {
+	["profileKeys"] = {
+		["Hellbear - Caelestrasz"] = "Default",
+	},
+	["global"] = {
+		["Chars"] = {
+			["Hellbear"] = {
+				["Stats"] = {
+					["Slabhide"] = {
+						[5] = {
+							["heroic"] = {
+								["kills"] = 1,
+								["best"] = 129.9419999999991,
+							},
+						},
+					},
+					["High Priestess Azil"] = {
+						[5] = {
+							["heroic"] = {
+								["kills"] = 1,
+								["best"] = 178.1509999999998,
+							},
+						},
+					},
+					["Ozruk"] = {
+						[5] = {
+							["heroic"] = {
+								["kills"] = 1,
+								["wipes"] = 1,
+								["best"] = 160.085000000001,
+							},
+						},
+					},
+					["Corborus"] = {
+						[5] = {
+							["heroic"] = {
+								["kills"] = 1,
+								["wipes"] = 1,
+								["best"] = 173.0789999999997,
+							},
+						},
+					},
+				},
+			},
+		},
+	},
+}

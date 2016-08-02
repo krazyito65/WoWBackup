@@ -1,0 +1,86 @@
+
+KLEDB = {
+	["namespaces"] = {
+		["Alerts"] = {
+			["profiles"] = {
+				["Hellbear - Caelestrasz"] = {
+					["BarSpacing"] = 1.045751633986928,
+					["IconXOffset"] = 1.045751633986928,
+				},
+			},
+		},
+		["RaidIcons"] = {
+		},
+		["LibDualSpec-1.0"] = {
+		},
+		["Distributor"] = {
+		},
+		["RDB"] = {
+		},
+		["Arrows"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Hellbear - Caelestrasz"] = "Hellbear - Caelestrasz",
+	},
+	["profiles"] = {
+		["Hellbear - Caelestrasz"] = {
+			["Positions"] = {
+				["KLEPane"] = {
+					["point"] = "TOPRIGHT",
+					["relativePoint"] = "TOPRIGHT",
+					["yOfs"] = -2.140332803765347,
+					["xOfs"] = -180.7178386951551,
+				},
+				["KLEAlertsWarningStackAnchor"] = {
+					["point"] = "TOPRIGHT",
+					["relativePoint"] = "TOPRIGHT",
+					["yOfs"] = -252.0424950099541,
+					["xOfs"] = -9.264363525775254,
+				},
+				["KLEAlertsCenterStackAnchor"] = {
+					["point"] = "RIGHT",
+					["relativePoint"] = "RIGHT",
+					["yOfs"] = 240.1309041182864,
+					["xOfs"] = -6.127222012539347,
+				},
+				["KLEArrowsAnchor1"] = {
+					["yOfs"] = 91.96102337674168,
+					["xOfs"] = 359.7384308452164,
+				},
+				["KLEArrowsAnchorGrouping"] = {
+					["yOfs"] = -252.745196326429,
+					["xOfs"] = 367.0594588066386,
+				},
+				["KLEArrowsAnchor2"] = {
+					["yOfs"] = 1.862930635301725,
+					["xOfs"] = 359.738991073482,
+				},
+				["KLEArrowsAnchor3"] = {
+					["yOfs"] = -75.68626095572125,
+					["xOfs"] = 360.7847621741425,
+				},
+				["KLEDistributorStackAnchor"] = {
+					["point"] = "TOPRIGHT",
+					["relativePoint"] = "TOPRIGHT",
+					["yOfs"] = -205.9640703018086,
+					["xOfs"] = -223.1360295367223,
+				},
+				["KLEArrowsAnchor4"] = {
+					["yOfs"] = -159.50955735607,
+					["xOfs"] = 362.8764094182633,
+				},
+			},
+			["Globals"] = {
+				["BackgroundTexture"] = "Elvui Blank",
+				["BarTexture"] = "Elvui Norm",
+				["Border"] = "None",
+				["Font"] = "Elvui Font",
+				["TimerFont"] = "Elvui Font",
+			},
+			["Pane"] = {
+				["BarSpacing"] = 1.045751633986928,
+			},
+		},
+	},
+}

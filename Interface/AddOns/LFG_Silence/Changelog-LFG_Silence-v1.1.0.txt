@@ -1,0 +1,63 @@
+------------------------------------------------------------------------
+r11 | jerbal | 2015-01-07 16:28:36 +0000 (Wed, 07 Jan 2015) | 1 line
+Changed paths:
+   A /tags/v1.1.0 (from /trunk:10)
+
+Tagging as v1.1.0
+------------------------------------------------------------------------
+r10 | jerbal | 2015-01-07 16:24:31 +0000 (Wed, 07 Jan 2015) | 2 lines
+Changed paths:
+   M /trunk/LFG_Silence.lua
+   M /trunk/LFG_Silence.toc
+   A /trunk/LFG_SilenceOptions.lua
+   A /trunk/LFG_SilenceOptions.xml
+   A /trunk/Localization.lua
+
+Added options panel and allow for muting the ding entirely (Default one ding)
+The ring pulse animation has been restored
+------------------------------------------------------------------------
+r8 | jerbal | 2014-12-30 01:59:11 +0000 (Tue, 30 Dec 2014) | 1 line
+Changed paths:
+   D /trunk/LFG_Silence
+   A /trunk/LFG_Silence.lua (from /trunk/LFG_Silence/LFG_Silence.lua:7)
+   A /trunk/LFG_Silence.toc (from /trunk/LFG_Silence/LFG_Silence.toc:7)
+
+Failed at packaging...  Same code, now with success!
+------------------------------------------------------------------------
+r6 | jerbal | 2014-12-28 03:18:35 +0000 (Sun, 28 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/LFG_Silence/LFG_Silence.lua
+   M /trunk/LFG_Silence/LFG_Silence.toc
+
+Hooked the "best" function to stop the dings globally.  This may be considered final.
+------------------------------------------------------------------------
+r4 | jerbal | 2014-12-28 01:48:48 +0000 (Sun, 28 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/LFG_Silence/LFG_Silence.lua
+   M /trunk/LFG_Silence/LFG_Silence.toc
+
+Should be "final" silence solution...
+------------------------------------------------------------------------
+r3 | jerbal | 2014-12-28 01:15:24 +0000 (Sun, 28 Dec 2014) | 1 line
+Changed paths:
+   D /trunk/LFG Silence
+   A /trunk/LFG_Silence (from /trunk/LFG Silence:2)
+
+....  Bad Name
+------------------------------------------------------------------------
+r2 | jerbal | 2014-12-28 01:13:01 +0000 (Sun, 28 Dec 2014) | 1 line
+Changed paths:
+   A /trunk/LFG Silence
+   A /trunk/LFG Silence/LFG_Silence.lua
+   A /trunk/LFG Silence/LFG_Silence.toc
+
+Initial upload
+------------------------------------------------------------------------
+r1 | svn | 2014-12-28 01:00:05 +0000 (Sun, 28 Dec 2014) | 1 line
+Changed paths:
+   A /branches
+   A /tags
+   A /trunk
+
+lfg_silence/mainline: Initial Import
+------------------------------------------------------------------------

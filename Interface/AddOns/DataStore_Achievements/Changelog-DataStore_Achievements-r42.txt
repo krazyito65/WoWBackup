@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r42 | thaoky | 2016-07-18 16:06:37 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/DataStore_Achievements.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r41 | thaoky | 2015-09-12 17:04:10 +0000 (Sat, 12 Sep 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore_Achievements.lua
+
+Fixed Lua error at logon
+------------------------------------------------------------------------

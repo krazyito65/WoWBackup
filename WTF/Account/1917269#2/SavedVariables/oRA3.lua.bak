@@ -1,0 +1,24 @@
+
+oRA3DB = {
+	["namespaces"] = {
+		["Tanks"] = {
+		},
+		["Loot"] = {
+		},
+		["Invite"] = {
+		},
+		["Cooldowns"] = {
+		},
+		["ReadyCheck"] = {
+		},
+		["Promote"] = {
+		},
+	},
+	["profileKeys"] = {
+		["Ashbrownie - Caelestrasz"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+		},
+	},
+}

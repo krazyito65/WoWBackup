@@ -1,0 +1,15 @@
+tag 0.17
+d5017c4aca1533d13af78bc8ba7ad0923e3d7987
+John Wellesz <archarodim@teaser.fr>
+2016-07-27 18:44:36 +0200
+
+Tagging as 0.17
+
+
+--------------------
+
+John Wellesz:
+	- Fix stupidity in last commit
+	- If a plate is registered with "Unknown" as unit name the library will retry to get the real value when necessary
+	This happens if a nameplate is created for a player that just entered the world...
+	- Fix undue 'frame reference not found in active plates: nil' debug message

@@ -1,0 +1,21 @@
+## Interface: 70000
+## X-Curse-Packaged-Version: r44-release
+## X-Curse-Project-Name: BigWigs_Ra-denAssist
+## X-Curse-Project-ID: bigwigs_ra-denassist
+## X-Curse-Repository-ID: wow/bigwigs_ra-denassist/mainline
+
+## Title: Big Wigs |cffff0000+|r|cffffffffRa-den Assist|r
+## Title-zhCN: Big Wigs |cffff0000+|r|cffffffff莱登助手|r
+## Notes: Assistance for the Ra-den encounter. (Unstable Vita order, ball kill order)
+## Notes-zhCN: 在莱登战斗中提供帮助。（不稳定的生命顺序，球击杀顺序）
+## Author: Caleb
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+## X-Category: Raid
+## X-BigWigs-LoadOn-ZoneId: 930
+
+Core.lua
+locales.xml
+

@@ -1,0 +1,2 @@
+
+FuBar_GuildFuDB = nil

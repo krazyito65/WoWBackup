@@ -1,0 +1,245 @@
+
+VExRT = {
+	["Timers"] = {
+	},
+	["Arrow"] = {
+	},
+	["Encounter"] = {
+		["names"] = {
+		},
+		["list"] = {
+			["Krazyito"] = {
+			},
+		},
+	},
+	["Marks"] = {
+		["list"] = {
+		},
+	},
+	["Coins"] = {
+		["list"] = {
+		},
+	},
+	["ExCD2"] = {
+		["default_userDuration"] = {
+		},
+		["gnGUIDs"] = {
+			["Krazyito"] = 102,
+		},
+		["NoRaid"] = true,
+		["CDECol"] = {
+		},
+		["default_userCD"] = {
+		},
+		["Save"] = {
+		},
+		["colSet"] = {
+			{
+				["enabled"] = true,
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [1]
+			{
+				["enabled"] = true,
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [2]
+			{
+				["enabled"] = true,
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [3]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [4]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [5]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [6]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [7]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [8]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [9]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [10]
+			{
+				["frameGeneral"] = true,
+				["iconGray"] = true,
+				["textGeneral"] = true,
+				["methodsGeneral"] = true,
+				["iconGeneral"] = true,
+				["fontOutline"] = true,
+				["textureGeneral"] = true,
+				["fontGeneral"] = true,
+				["textureAnimation"] = true,
+				["fontShadow"] = false,
+			}, -- [11]
+		},
+		["Priority"] = {
+		},
+		["CDE"] = {
+		},
+		["userDB"] = {
+		},
+	},
+	["Bossmods"] = {
+		["ThogarTop"] = 1101.67529296875,
+		["ThogarLeft"] = 977.760803222656,
+		["MargokTop"] = 1074.32482910156,
+		["MargokLeft"] = 1160.13671875,
+		["Kromog"] = {
+			["sync"] = true,
+			["time"] = 1425154094,
+			["name"] = "Krazyito-Mal'Ganis",
+		},
+	},
+	["RaidCheck"] = {
+		["ReadyCheckFrameTimerFade"] = 4,
+		["ReadyCheckTop"] = 782.017272949219,
+		["PotionCheck"] = true,
+		["ReadyCheckLeft"] = 228.529891967773,
+	},
+	["Addon"] = {
+		["PreVersion"] = 0,
+		["IconMiniMapHide"] = true,
+		["Version"] = 3201,
+		["Timer"] = 0.1,
+	},
+	["BossWatcher"] = {
+		["fightsNum"] = 2,
+		["autoSegments"] = {
+		},
+	},
+	["LootLink"] = {
+	},
+	["BattleRes"] = {
+		["Top"] = 1014.35900878906,
+		["Left"] = 1098.11975097656,
+	},
+	["Note"] = {
+		["Height"] = 100,
+		["Text1"] = "",
+		["Black"] = {
+		},
+		["Width"] = 200,
+	},
+	["Logging"] = {
+	},
+	["MarksBar"] = {
+		["Show"] = {
+			true, -- [1]
+			true, -- [2]
+			true, -- [3]
+			true, -- [4]
+		},
+		["pulltimer"] = 10,
+	},
+	["InviteTool"] = {
+		["Words"] = "инв inv byd штм 123",
+		["RaidDiff"] = 16,
+		["PromoteRank"] = 3,
+		["LootThreshold"] = 2,
+		["MasterLooters"] = "",
+		["LootMethod"] = "group",
+		["PromoteNames"] = "",
+		["Rank"] = 1,
+	},
+	["InspectViewer"] = {
+		["enabled"] = true,
+	},
+}

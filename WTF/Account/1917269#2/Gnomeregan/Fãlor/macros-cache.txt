@@ -1,0 +1,22 @@
+VER 3 0100000000000004 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Freeze; Frost Nova
+END
+VER 3 0100000000000005 " " "INV_MISC_QUESTIONMARK"
+#showtooltip Frostbolt
+/use [mod:shift,@pet][exists] Frostbolt
+END
+VER 3 0100000000000003 "AB" "INV_MISC_QUESTIONMARK"
+#showtooltip Arcane Blast
+/script UIErrorsFrame:Hide()
+/cast Presence of Mind
+/script UIErrorsFrame:Clear()
+/script UIErrorsFrame:Show()
+/cast Arcane Blast
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P1RM1LR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1MR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+NShiKrá[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Fãl[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

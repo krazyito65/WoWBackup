@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r36 | thaoky | 2016-07-18 16:10:19 +0000 (Mon, 18 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.lua
+   M /trunk/DataStore_Quests.toc
+
+7.0 Compatibility Release
+------------------------------------------------------------------------
+r35 | thaoky | 2015-08-17 16:21:18 +0000 (Mon, 17 Aug 2015) | 1 line
+Changed paths:
+   M /trunk/DataStore_Quests.toc
+
+TOC Update
+------------------------------------------------------------------------

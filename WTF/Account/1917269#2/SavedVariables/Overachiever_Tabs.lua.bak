@@ -1,0 +1,20 @@
+
+Overachiever_Tabs_Settings = {
+	["WatchLists_Realms"] = {
+	},
+	["SearchType"] = 1,
+	["WatchSort"] = 0,
+	["SearchSort"] = 0,
+	["SuggestionsSort"] = 0,
+	["WatchLists_General"] = {
+		[2957] = true,
+	},
+	["Version"] = "0.66",
+	["WatchedList"] = 0,
+	["AchFilters"] = {
+		["AchievementFrameAchievements"] = 1,
+		["Overachiever_WatchFrame"] = 1,
+	},
+	["WatchLists"] = {
+	},
+}

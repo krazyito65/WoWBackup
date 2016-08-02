@@ -1,0 +1,9 @@
+
+AtlasLootFuDB = {
+	["profiles"] = {
+		["Default"] = {
+			["detachedTooltip"] = {
+			},
+		},
+	},
+}

@@ -1,0 +1,31 @@
+
+RiggsBarSV = {
+	["profileKeys"] = {
+		["Krazyíto - Gnomeregan"] = "Default",
+	},
+	["global"] = {
+		["EnableSettings"] = {
+			["AMS"] = false,
+			["SBar"] = false,
+			["BS"] = false,
+			["Guard"] = false,
+		},
+		["FrameSettings"] = {
+			["Background"] = {
+				["Color"] = {
+					["a"] = 0.9000000059604645,
+					["r"] = 0.5647058823529412,
+					["g"] = 0.5647058823529412,
+					["b"] = 0.5647058823529412,
+				},
+				["Texture"] = "Tukui",
+			},
+			["Height"] = 19,
+			["Width"] = 427,
+		},
+		["FontSettings"] = {
+			["Face"] = "ElvUI Font",
+			["Size"] = 15,
+		},
+	},
+}

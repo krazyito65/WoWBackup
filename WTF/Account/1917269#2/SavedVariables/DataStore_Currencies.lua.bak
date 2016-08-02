@@ -1,0 +1,51 @@
+
+DataStore_CurrenciesDB = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+	},
+	["global"] = {
+		["Reference"] = {
+			["Currencies"] = {
+				"Dungeon and Raid|", -- [1]
+				"Justice Points|Interface\\Icons\\pvecurrency-justice", -- [2]
+				"Valor Points|Interface\\Icons\\pvecurrency-valor", -- [3]
+				"Mists of Pandaria|", -- [4]
+				"Lesser Charm of Good Fortune|Interface\\Icons\\inv_misc_coin_18", -- [5]
+				"Timeless Coin|Interface\\Icons\\timelesscoin", -- [6]
+				"Warforged Seal|Interface\\Icons\\inv_arcane_orb", -- [7]
+				"Player vs. Player|", -- [8]
+				"Conquest Points|Interface\\Icons\\PVPCurrency-Conquest-Horde", -- [9]
+				"Honor Points|Interface\\Icons\\PVPCurrency-Honor-Horde", -- [10]
+			},
+			["CurrencyTextRev"] = {
+				["Honor Points"] = 10,
+				["Dungeon and Raid"] = 1,
+				["Conquest Points"] = 9,
+				["Valor Points"] = 3,
+				["Justice Points"] = 2,
+				["Warforged Seal"] = 7,
+				["Mists of Pandaria"] = 4,
+				["Timeless Coin"] = 6,
+				["Player vs. Player"] = 8,
+				["Lesser Charm of Good Fortune"] = 5,
+			},
+		},
+		["Characters"] = {
+			["Default.Mal'Ganis.Kråzyito"] = {
+				["Currencies"] = {
+					3, -- [1]
+					39300, -- [2]
+					55686, -- [3]
+					9, -- [4]
+					5514, -- [5]
+					828940, -- [6]
+					142, -- [7]
+					17, -- [8]
+					18, -- [9]
+					1940, -- [10]
+				},
+				["lastUpdate"] = 1403962656,
+			},
+		},
+	},
+}

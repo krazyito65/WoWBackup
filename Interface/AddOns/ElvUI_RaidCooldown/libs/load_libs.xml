@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file="LibTalentQuery-1.0\lib.xml"/>		
+	<Include file="LibGroupTalents-1.0\lib.xml"/>	
+	<Include file="LibCandyBar-3.0\lib.xml"/>
+</Ui>

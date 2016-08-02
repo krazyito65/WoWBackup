@@ -1,0 +1,31 @@
+## Interface: 70000
+## Title: |cff00ff00TradeSkillMaster_CompetitorTracker|r
+## Notes: TradeSkillMaster module for Competitor`s online / offline status tracking
+## Author: Kaboca/HU
+## Version: V.7.0.3.30
+## SavedVariables: TradeSkillMaster_CompetitorTrackerDB
+## DefaultState: Disabled
+## Dependency: TradeSkillMaster
+## OptionalDeps: AceTimer-3.0, AceBucket-3.0
+## X-Embeds: AceTimer-3.0, AceBucket-3.0
+## X-Credits: sapu94 (TradeSkillMaster); Verna (FriendTracker); j311yf1sh (TradeSkillMaster_CraftingSniper): Kring (FriendsShare Resurrection)
+## X-Category: auction-economy
+## X-Curse-Packaged-Version: V.7.0.3.30
+## X-Curse-Project-Name: TradeSkillMaster_CompetitorTracker
+## X-Curse-Project-ID: competitortracker
+## X-Curse-Repository-ID: wow/competitortracker/mainline
+
+#@no-lib-strip@
+Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceBucket-3.0\AceBucket-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+#@end-no-lib-strip@
+
+Locale\enUS.lua
+Locale\deDE.lua
+
+Tracker.lua
+Modules\Options.lua
+Modules\Config.lua
+Modules\Data.lua
+Modules\Monitor.lua

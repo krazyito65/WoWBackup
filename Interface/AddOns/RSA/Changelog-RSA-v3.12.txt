@@ -1,0 +1,109 @@
+------------------------------------------------------------------------
+r293 | raeli87 | 2016-07-31 16:49:21 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   A /tags/v3.12 (from /trunk:292)
+
+Tagging as v3.12
+------------------------------------------------------------------------
+r292 | raeli87 | 2016-07-31 16:47:00 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/RSA.toc
+
+v3.12
+------------------------------------------------------------------------
+r291 | raeli87 | 2016-07-31 16:37:06 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/RSA.toc
+
+3rd time is the charm?
+------------------------------------------------------------------------
+r290 | raeli87 | 2016-07-31 16:23:56 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/RSA.toc
+
+Try again.
+------------------------------------------------------------------------
+r289 | raeli87 | 2016-07-31 16:19:41 +0000 (Sun, 31 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/RSA.toc
+
+Correcting .toc error
+------------------------------------------------------------------------
+r288 | raeli87 | 2016-07-31 16:15:41 +0000 (Sun, 31 Jul 2016) | 11 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/AnnouncementsMonitor.lua
+   M /trunk/Core.lua
+   M /trunk/Druid/Druid.lua
+   M /trunk/Locale-enUS.lua
+   M /trunk/Monk/Monk.lua
+   M /trunk/Options/Options.lua
+   M /trunk/Paladin/Paladin.lua
+   M /trunk/Priest/Priest.lua
+   M /trunk/RSA.toc
+   M /trunk/Shaman/Shaman.lua
+   M /trunk/embeds.xml
+
+- Removed unnecessary code from Paladin module.
+- Added Divine Intervention
+- Added Final Stand, with an option to suppress Divine Shield's announcement while you have the Final Stand talent.
+- Added Symbol of Hope
+- Reworked how spells such as Ardent Defender prevent themselves from announcing the End announcement when the Heal announcement occurs.
+- Removed custom code for Guardian of Ancient Kings as it now sends all necessary events to track it without work arounds.
+- Added Absolution, Paladin Mass-Ress
+- Moved Mass Resurrection to Priest specific settings.
+- Added Revitalize Druid Mass-Ress
+- Added Ancestral Vision Shaman Mass-Ress
+- Added Reawaken Monk Mass-Ress
+------------------------------------------------------------------------
+r285 | raeli87 | 2016-07-19 18:51:53 +0000 (Tue, 19 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+   M /trunk/DeathKnight/DeathKnight.lua
+   M /trunk/DeathKnight/RSA_DeathKnight.toc
+   M /trunk/Druid/Druid.lua
+   M /trunk/Druid/RSA_Druid.toc
+   M /trunk/Hunter/RSA_Hunter.toc
+   M /trunk/Mage/RSA_Mage.toc
+   M /trunk/Monk/Monk.lua
+   M /trunk/Monk/RSA_Monk.toc
+   M /trunk/Options/Options.lua
+   M /trunk/Options/RSA_Options.toc
+   M /trunk/Paladin/RSA_Paladin.toc
+   M /trunk/Priest/RSA_Priest.toc
+   M /trunk/RSA.toc
+   M /trunk/Reminders/RSA_Reminders.toc
+   M /trunk/Rogue/RSA_Rogue.toc
+   M /trunk/Rogue/Rogue.lua
+   M /trunk/Shaman/RSA_Shaman.toc
+   M /trunk/Shaman/Shaman.lua
+   M /trunk/Warlock/RSA_Warlock.toc
+   M /trunk/Warrior/RSA_Warrior.toc
+   M /trunk/Warrior/Warrior.lua
+
+Removed spell options that have been removed in 7.0
+------------------------------------------------------------------------
+r284 | raeli87 | 2016-07-19 15:45:51 +0000 (Tue, 19 Jul 2016) | 1 line
+Changed paths:
+   M /trunk/AnnouncementsMonitor.lua
+   M /trunk/Core.lua
+   M /trunk/Hunter/Hunter.lua
+   M /trunk/Hunter/RSA_Hunter.toc
+   M /trunk/Mage/Mage.lua
+   M /trunk/Mage/RSA_Mage.toc
+   M /trunk/Paladin/Paladin.lua
+   M /trunk/Paladin/RSA_Paladin.toc
+   M /trunk/Priest/Priest.lua
+   M /trunk/Priest/RSA_Priest.toc
+   M /trunk/Warlock/RSA_Warlock.toc
+   M /trunk/Warlock/Warlock.lua
+
+partial update for Legion
+------------------------------------------------------------------------
+r283 | jenneth | 2015-11-29 10:40:45 +0000 (Sun, 29 Nov 2015) | 1 line
+Changed paths:
+   M /trunk/Core.lua
+   M /trunk/Options/Options.lua
+
+(General) Added legendary rings for the raid leader (ticket 306).
+------------------------------------------------------------------------

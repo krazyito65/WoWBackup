@@ -1,0 +1,11 @@
+
+RKDatabase = {
+	["profileKeys"] = {
+		["Kråzyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["firstLoad"] = false,
+		},
+	},
+}

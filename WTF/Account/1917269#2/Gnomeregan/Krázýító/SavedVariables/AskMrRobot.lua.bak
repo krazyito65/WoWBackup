@@ -1,0 +1,147 @@
+
+AmrBagItems = {
+	"|cffa335ee|Hitem:101815:0:0:0:0:0:-476:1383074070:90:0:491|h[Cloudscorcher Robe of the Flameblaze]|h|r", -- [1]
+	"|cffffffff|Hitem:86009:0:0:0:0:0:0:1204867456:90:0:0|h[Resonating Crystal]|h|r", -- [2]
+	"|cffffffff|Hitem:73410:0:0:0:0:0:0:495887488:90:0:0|h[Partially Soaked Pages]|h|r", -- [3]
+	"|cffffffff|Hitem:63388:0:0:0:0:0:0:0:90:0:0|h[Dust of Disappearance]|h|r", -- [4]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [5]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [6]
+	"|cffffffff|Hitem:83078:0:0:0:0:0:0:260567040:90:0:0|h[Legacy of the Masters (Part 1)]|h|r", -- [7]
+	"|cffffffff|Hitem:92471:0:0:0:0:0:0:1652452992:90:0:0|h[Jubeka's Journal]|h|r", -- [8]
+	"|cffffffff|Hitem:6948:0:0:0:0:0:0:0:90:0:0|h[Hearthstone]|h|r", -- [9]
+	"|cffffffff|Hitem:94288:0:0:0:0:0:0:698253056:90:0:0|h[Giant Dinosaur Bone]|h|r", -- [10]
+	"|cffffffff|Hitem:77589:0:0:0:0:0:0:1404482560:90:0:0|h[G91 Landshark]|h|r", -- [11]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:1578438912:90:0:0|h[Spirit Dust]|h|r", -- [12]
+	"|cffffffff|Hitem:74249:0:0:0:0:0:0:339691264:90:0:0|h[Spirit Dust]|h|r", -- [13]
+	"|cffffffff|Hitem:75014:0:0:0:0:0:0:1006147200:90:0:0|h[Raw Crocolisk Belly]|h|r", -- [14]
+	"|cffffffff|Hitem:74841:0:0:0:0:0:0:1566352768:90:0:0|h[Juicycrunch Carrot]|h|r", -- [15]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:985070336:90:0:0|h[Windwool Cloth]|h|r", -- [16]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:1383353344:90:0:0|h[Windwool Cloth]|h|r", -- [17]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:249863296:90:0:0|h[Windwool Cloth]|h|r", -- [18]
+	"|cffffffff|Hitem:72988:0:0:0:0:0:0:1855791104:90:0:0|h[Windwool Cloth]|h|r", -- [19]
+	"|cffffffff|Hitem:89112:0:0:0:0:0:0:1859006080:90:0:0|h[Mote of Harmony]|h|r", -- [20]
+	"|cffffffff|Hitem:40390:0:0:0:0:0:0:69650688:90:0:0|h[Vic's Emergency Air Tank]|h|r", -- [21]
+	"|cffffffff|Hitem:5512:0:0:0:0:0:0:2115216640:90:0:0|h[Healthstone]|h|r", -- [22]
+	"|cffffffff|Hitem:41427:0:0:0:0:0:0:1516693248:90:0:0|h[Dalaran Firework]|h|r", -- [23]
+	"|cffffffff|Hitem:88584:0:0:0:0:0:0:1120433024:90:0:0|h[Totem of Harmony]|h|r", -- [24]
+	"|cffffffff|Hitem:88370:0:0:0:0:0:0:250413568:90:0:0|h[Puntable Marmot]|h|r", -- [25]
+	"|cffffffff|Hitem:88579:0:0:0:0:0:0:574283648:90:0:0|h[Jin Warmkeg's Brew]|h|r", -- [26]
+	"|cffffffff|Hitem:74719:0:0:0:0:0:0:1181661696:90:0:0|h[Enchant Gloves - Greater Haste]|h|r", -- [27]
+	"|cffffffff|Hitem:92942:0:0:0:0:0:0:0:90:0:0|h[Potion of Brawler's Cunning]|h|r", -- [28]
+	"|cffffffff|Hitem:92942:0:0:0:0:0:0:0:90:0:0|h[Potion of Brawler's Cunning]|h|r", -- [29]
+	"|cffffffff|Hitem:81413:0:0:0:0:0:0:1805009024:90:0:0|h[Skewered Peanut Chicken]|h|r", -- [30]
+	"|cffffffff|Hitem:81414:0:0:0:0:0:0:1623283328:90:0:0|h[Pearl Milk Tea]|h|r", -- [31]
+	"|cff1eff00|Hitem:10593:0:0:0:0:0:0:1121718528:90:0:0|h[Imperfect Draenethyst Fragment]|h|r", -- [32]
+	"|cff1eff00|Hitem:102464:0:0:0:0:0:0:1556597377:90:0:0|h[Black Ash]|h|r", -- [33]
+	"|cff1eff00|Hitem:88567:0:0:0:0:0:0:1736913664:90:0:0|h[Ghost Iron Lockbox]|h|r", -- [34]
+	"|cff1eff00|Hitem:74250:0:0:0:0:0:0:1643105024:90:0:0|h[Mysterious Essence]|h|r", -- [35]
+	"|cff1eff00|Hitem:82260:0:0:0:0:0:-5:712049566:90:0:0|h[Vine Gloves of the Monkey]|h|r", -- [36]
+	"|cff0070dd|Hitem:86581:0:0:0:0:0:0:1354214656:90:0:0|h[Farwater Conch]|h|r", -- [37]
+	"|cff0070dd|Hitem:76602:0:0:0:0:0:0:951355392:90:0:0|h[Perfect Reckless Tiger Opal]|h|r", -- [38]
+	"|cff0070dd|Hitem:76131:0:0:0:0:0:0:1230911488:90:0:0|h[Primordial Ruby]|h|r", -- [39]
+	"|cff0070dd|Hitem:74247:0:0:0:0:0:0:1130646272:90:0:0|h[Ethereal Shard]|h|r", -- [40]
+	"|cff0070dd|Hitem:76061:0:0:0:0:0:0:1687873664:90:0:0|h[Spirit of Harmony]|h|r", -- [41]
+	"|cff0070dd|Hitem:86569:0:0:0:0:0:0:1583032449:90:0:0|h[Crystal of Insanity]|h|r", -- [42]
+	"|cff0070dd|Hitem:77530:0:4902:4903:4900:0:0:1447983104:90:0:0|h[Ghost Iron Dragonling]|h|r", -- [43]
+	"|cff0070dd|Hitem:81127:4429:4584:0:0:0:0:2134369024:90:115:452|h[Flameheart Sandals]|h|r", -- [44]
+	"|cffa335ee|Hitem:101850:0:0:0:0:0:-359:662701328:90:0:491|h[Kiln-Stoker Ring of the Flameblaze]|h|r", -- [45]
+	"|cffa335ee|Hitem:82438:4430:4526:0:0:0:0:1198879872:90:168:445|h[Spelltwister's Gloves]|h|r", -- [46]
+	"|cffa335ee|Hitem:101818:0:0:0:0:0:-361:998114576:90:0:491|h[Cloudscorcher Wristwraps of the Feverflare]|h|r", -- [47]
+	"|cffa335ee|Hitem:90572:0:0:0:0:0:0:1396079360:90:0:451|h[Kilt of Pandaren Promises]|h|r", -- [48]
+	"|cffa335ee|Hitem:86311:4419:4618:4526:0:0:0:1248611584:90:145:445|h[Robe of Eternal Rule]|h|r", -- [49]
+	"|cffa335ee|Hitem:102267:0:0:0:0:0:0:874087169:90:0:0|h[Timeless Plate Leggings]|h|r", -- [50]
+	"|cffa335ee|Hitem:102263:0:0:0:0:0:0:457365633:90:0:0|h[Timeless Plate Chestpiece]|h|r", -- [51]
+	"|cffa335ee|Hitem:102264:0:0:0:0:0:0:1514474882:90:0:0|h[Timeless Plate Boots]|h|r", -- [52]
+	"|cffa335ee|Hitem:102276:0:0:0:0:0:0:797828866:90:0:0|h[Timeless Mail Belt]|h|r", -- [53]
+	"|cffa335ee|Hitem:102283:0:0:0:0:0:0:619818754:90:0:0|h[Timeless Leather Belt]|h|r", -- [54]
+	"|cffa335ee|Hitem:102286:0:0:0:0:0:0:1674167169:90:0:0|h[Timeless Cloth Gloves]|h|r", -- [55]
+	"|cffa335ee|Hitem:103982:0:0:0:0:0:0:840480385:90:0:0|h[Burden of Eternity]|h|r", -- [56]
+	"|cffe6cc80|Hitem:62040:0:0:0:0:0:0:0:90:0:0|h[Ancient Bloodmoon Cloak]|h|r", -- [57]
+	"|cffe6cc80|Hitem:62029:0:0:0:0:0:0:0:90:0:0|h[Tattered Dreadmist Leggings]|h|r", -- [58]
+	"|cffe6cc80|Hitem:48691:0:0:0:0:0:0:0:90:0:0|h[Tattered Dreadmist Robe]|h|r", -- [59]
+	"|cffe6cc80|Hitem:42985:0:0:0:0:0:0:0:90:0:0|h[Tattered Dreadmist Mantle]|h|r", -- [60]
+	"|cffe6cc80|Hitem:61958:0:0:0:0:0:0:0:90:0:0|h[Tattered Dreadmist Mask]|h|r", -- [61]
+	"|cffe6cc80|Hitem:42947:0:0:0:0:0:0:0:90:0:0|h[Dignified Headmaster's Charge]|h|r", -- [62]
+}
+AmrBankItems = {
+}
+AmrEquipedItems = {
+	["1"] = "|cffa335ee|Hitem:101812:0:0:0:0:0:-381:1917585686:90:0:491|h[Cloudscorcher Cowl of the Impatient]|h|r",
+	["5"] = "|cffa335ee|Hitem:101815:0:0:0:0:0:-464:109775126:90:0:491|h[Cloudscorcher Robe of the Savant]|h|r",
+	["3"] = "|cff0070dd|Hitem:81257:4909:4584:0:0:0:0:284598784:90:117:452|h[Regal Silk Shoulderpads]|h|r",
+	["2"] = "|cff0070dd|Hitem:81131:0:0:0:0:0:0:183087488:90:144:452|h[Mindbreaker Pendant]|h|r",
+	["19"] = "|cffffffff|Hitem:45574:0:0:0:0:0:0:0:90:0:0|h[Stormwind Tabard]|h|r",
+	["14"] = "|cff0070dd|Hitem:81263:0:0:0:0:0:0:177366528:90:138:452|h[Flashfrozen Resin Globule]|h|r",
+	["7"] = "|cffa335ee|Hitem:101814:0:0:0:0:0:-478:334104854:90:0:491|h[Cloudscorcher Leggings of the Feverflare]|h|r",
+	["6"] = "|cffa335ee|Hitem:89965:0:4584:4584:0:0:0:509482112:90:168:445|h[Ruby-Linked Girdle]|h|r",
+	["9"] = "|cffa335ee|Hitem:101818:0:0:0:0:0:-348:1217201424:90:0:491|h[Cloudscorcher Wristwraps of the Impatient]|h|r",
+	["15"] = "|cff0070dd|Hitem:85182:4423:0:0:0:0:0:901015808:90:145:0|h[Cloak of Cleansing Flame]|h|r",
+	["16"] = "|cff0070dd|Hitem:81140:4441:0:0:0:0:0:1712687232:90:138:452|h[Wort Stirring Rod]|h|r",
+	["8"] = "|cffa335ee|Hitem:101816:0:0:0:0:0:-361:73926336:90:0:491|h[Cloudscorcher Sandals of the Feverflare]|h|r",
+	["13"] = "|cffa335ee|Hitem:103687:0:0:0:0:0:0:852566144:90:0:491|h[Yu'lon's Bite]|h|r",
+	["12"] = "|cff0070dd|Hitem:83727:0:0:0:0:0:0:166779904:90:144:0|h[Band of Terror]|h|r",
+	["11"] = "|cff0070dd|Hitem:89523:0:0:0:0:0:0:0:90:167:451|h[Etched Golden Loop]|h|r",
+	["10"] = "|cffa335ee|Hitem:101813:0:0:0:0:0:-360:1222444736:90:0:491|h[Cloudscorcher Handwraps of the Fireflash]|h|r",
+}
+AmrGold = 12530911
+AmrRealmName = "Gnomeregan"
+AmrCharacterName = "Krázýító"
+AmrIconInfo = {
+}
+AmrCurrencies = {
+	[395] = 893,
+	[396] = 835,
+	[402] = 1,
+	[392] = 394,
+}
+AmrProfessions = {
+	["Jewelcrafting"] = 1,
+	["Mining"] = 4,
+	["First Aid"] = 6,
+	["Cooking"] = 1,
+}
+AmrSpecializations = {
+	["1"] = 265,
+	["2"] = 267,
+}
+AmrRace = "Gnome"
+AmrLevel = 90
+AmrFaction = "Alliance"
+AmrActiveSpec = 1
+AmrOptions = {
+}
+AmrGlyphs = {
+	{
+		58081, -- [1]
+		56218, -- [2]
+		56232, -- [3]
+		56224, -- [4]
+		58094, -- [5]
+		56231, -- [6]
+	}, -- [1]
+	{
+		58081, -- [1]
+		56224, -- [2]
+		56232, -- [3]
+		56235, -- [4]
+		58094, -- [5]
+		56218, -- [6]
+	}, -- [2]
+}
+AmrTalents = {
+	"121211", -- [1]
+	"232332", -- [2]
+}
+AmrBankItemsAndCounts = {
+}
+AmrImportString = "region=USA;realm=Gnomeregan;name=Krázýító;faction=Alliance;spec=265;talents=121211;glyphs=56218,56232,56224,56231,58081,58094;race=Gnome;professions=Jewelcrafting:1,Mining:4;item=6:101814:-478:491:r:4632:76681:5003:165;item=14:85182:0:0:0:0:0:4423:144;item=2:81257:0:452:r:4584:76633:4909:117;item=8:101818:-348:491:0:0:0:4411:151;item=7:101816:-138,-361:491:0:0:0:4429:165;item=4:101815:-464:491:b:4593:76642:4419:165;item=15:81140:0:452:0:0:0:4441:167;item=0:101812:-381:491:m,y:4658,4649:76885,76699:0:151;item=5:89965:0:445:y,p:4584,4584:76633,76633:0:168;item=9:101813:-130,-360:491:0:0:0:4433:144;item=13:81263:0:452:0:0:0:0:0;item=10:89523:0:451:0:0:0:0:167;item=1:81131:0:452:0:0:0:0:144;item=11:83727:0:0:0:0:0:0:145;item=12:103687:0:491:0:0:0:0:0;"
+AmrImportDate = "12/13/13 17:12:20"
+AmrSendSettings = {
+	["SendTo"] = "",
+	["SendGems"] = true,
+	["SendEnchants"] = true,
+	["SendEnchantMaterials"] = true,
+	["SendToType"] = "a friend",
+}
+AmrLogData = {
+}

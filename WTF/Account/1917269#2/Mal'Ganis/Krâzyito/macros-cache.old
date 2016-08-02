@@ -1,0 +1,55 @@
+VER 3 0100000000000005 " " "Ability_Druid_Starfall"
+#showtooltip Starfall
+/cancelaura [mod:ctrl] Starfall
+/use [nomod] starfall
+END
+VER 3 0100000000000008 " " "spell_druid_incarnation"
+/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
+END
+VER 3 010000000000000C " " "ability_vehicle_sonicshockwave"
+#showtooltip
+/stopcast
+/use [@boss2] Solar beam
+END
+VER 3 0100000000000012 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/console autounshift 0
+/use [mod:ctrl,@player,talent:2/3]cenarion ward;[mod:ctrl,talent:2/2]renewal;[@player,talent:6/2]Healing Touch;[talent:6/3]Nature's Vigil;[talent:6/1]Heart of the wild
+/console autounshift 1
+END
+VER 3 0100000000000011 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:shift, talent:1/3]  wild charge; [mod:ctrl] Berserking; [talent: 3/3] Typhoon; [@mouseover, exists, talent:3/1][talent:3/1] Faerie Swarm(Talent);
+END
+VER 3 010000000000000D " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] Soothe; wrath
+END
+VER 3 010000000000000E " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [spec:1,mod:alt, @player] Genesis; [spec:1,@mouseover,mod:ctrl]lifebloom;[spec:1,@mouseover,help]Rejuvenation;[spec:1,harm]moonfire;[spec:1]Rejuvenation
+/use [spec:2, mod:ctrl]Displacer Beast; [spec:2,@mouseover,harm][spec:2]moonfire
+END
+VER 3 010000000000000F " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] flap; [talent:5/2] Ursol's Vortex; [talent:5/3] Mighty Bash
+END
+VER 3 0100000000000010 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [mod:ctrl] 14
+/cast [mod:ctrl] Berserking(Racial)
+/use [nomod] Celestial Alignment
+/cast [nomod] Nature's Vigil
+/cast [nomod] Moonfire
+END
+VER 3 0100000000000013 " " "INV_MISC_QUESTIONMARK"
+#showtooltip Starsurge
+/focus [mod:alt,@mouseover,harm][mod:alt]
+/use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
+END
+VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
+P1DT1MR1SR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END
+VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
+NBigShiBer[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Krâ[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+END

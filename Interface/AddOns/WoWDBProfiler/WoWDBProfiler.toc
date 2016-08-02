@@ -1,0 +1,17 @@
+## Interface: 60200
+## Title: WoWDB Profiler
+## Notes: WoW datamining tool.
+## Author: James D. Callahan III (Torhal)
+## X-Email: jcallahan@curse.com
+## SavedVariables: WoWDBProfilerData
+## OptionalDeps: Ace3, HereBeDragons-1.0, LibDeformat-3.0, LibDialog-1.0, LibQTip-1.0
+## X-Curse-Packaged-Version: r472
+## X-Curse-Project-Name: WoWDB Profiler
+## X-Curse-Project-ID: wowdb-profiler
+## X-Curse-Repository-ID: wow/wowdb-profiler/mainline
+
+libs.xml
+
+Constants.lua
+Main.lua
+Comments.lua

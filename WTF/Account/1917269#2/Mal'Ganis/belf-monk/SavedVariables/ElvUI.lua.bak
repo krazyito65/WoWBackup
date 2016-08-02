@@ -1,0 +1,62 @@
+
+ElvCharacterDB = {
+	["ChatEditHistory"] = {
+		" INVITE ME", -- [1]
+	},
+	["ChatLog"] = {
+		["1373146706.98"] = {
+			"INVITE ME", -- [1]
+			"|Kf39|k00000000000000|k", -- [2]
+			"", -- [3]
+			"", -- [4]
+			"", -- [5]
+			"", -- [6]
+			0, -- [7]
+			0, -- [8]
+			"", -- [9]
+			0, -- [10]
+			8, -- [11]
+			false, -- [12]
+			39, -- [13]
+			false, -- [14]
+			false, -- [15]
+			[20] = "CHAT_MSG_BN_WHISPER_INFORM",
+		},
+		["1373146747.696"] = {
+			"Dear Kråzyito. Would you like to join <Narcissism> (Lvl 25)? You would make great recruit, so please accept! :)", -- [1]
+			"Hulkjefus", -- [2]
+			"", -- [3]
+			"", -- [4]
+			"Hulkjefus", -- [5]
+			"", -- [6]
+			0, -- [7]
+			0, -- [8]
+			"", -- [9]
+			0, -- [10]
+			11, -- [11]
+			"0x0500000005C6CA8A", -- [12]
+			0, -- [13]
+			false, -- [14]
+			false, -- [15]
+			[20] = "CHAT_MSG_WHISPER",
+		},
+		["1373146714.418"] = {
+			"Greetings Kråzyito. We would like to recruit you for Sigil of Power! We are a social/leveling guild looking for new players to talk to and level with. We give away 1k gold to the person with hgihest weekly activity!! Everyweek!!", -- [1]
+			"Tungru", -- [2]
+			"", -- [3]
+			"", -- [4]
+			"Tungru", -- [5]
+			"", -- [6]
+			0, -- [7]
+			0, -- [8]
+			"", -- [9]
+			0, -- [10]
+			9, -- [11]
+			"0x05000000035ED846", -- [12]
+			0, -- [13]
+			false, -- [14]
+			false, -- [15]
+			[20] = "CHAT_MSG_WHISPER",
+		},
+	},
+}

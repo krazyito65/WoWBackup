@@ -1,0 +1,83 @@
+
+--[[
+
+Translations are maintained at http://wow.curseforge.com/projects/petleash/localization/
+
+Please update http://wow.curseforge.com/projects/petleash/localization/koKR/
+instead of modifying this file.
+
+--]]
+
+local L = LibStub("AceLocale-3.0"):NewLocale("PetLeash", "koKR")
+if not L then return end
+
+--
+
+-- L["Active Set:"] = ""
+-- L["Add Filter"] = ""
+-- L["Add Trigger Condition"] = ""
+L["Auto Summon:"] = "자동 소환:"
+-- L["Auto Switch Pet"] = ""
+-- L["Auto Switch when changing maps"] = ""
+-- L[" <<< Back "] = ""
+L["City"] = "도시"
+-- L["Clear"] = ""
+-- L["Copy Current Subzone"] = ""
+-- L["Copy Current Zone"] = ""
+L["Ctrl + Click:"] = "Ctrl-클릭:"
+-- L["Current Pet:"] = ""
+L["Disabled"] = "비활성화"
+-- L["Dismiss In Battlegrounds/Arena"] = ""
+-- L["Dismiss In PVE Instances"] = ""
+-- L["Dismiss Pet"] = ""
+L["Dismiss When Stealthed or Invisible"] = "은신 및 투명화때 소환 해제"
+-- L["Dismiss your currently summoned pet.  Disable summoning."] = ""
+-- L["Dismiss your current pet and summon another pet.  Enable summoning if needed."] = ""
+-- L["Edit"] = ""
+L["Enable Auto-Summon"] = "자동-소환 사용"
+L["Enabled"] = "활성화"
+L["Enable In Battlegrounds/Arena"] = "전장/투기장에서 사용"
+L["Enable In Combat"] = "전투중 사용"
+-- L["Enable In PVE Instances"] = ""
+-- L["Enable Timed Auto Switch"] = ""
+-- L["EXPLAIN_SPECIAL_ITEMS"] = ""
+-- L["EXPLAIN_WEIGHTED_CHECKBOX"] = ""
+-- L["Extra High Priority"] = ""
+-- L["Extra Low Priority"] = ""
+-- L["Filters"] = ""
+-- L["High Priority"] = ""
+L["How long must pass before a player is considered idle enough to summon a pet."] = "다음 유효 동작까지의 기다림 시간을 설정 합니다."
+L["Immediate"] = "즉시"
+L["Instance"] = "인던"
+L["Left-Click:"] = "좌-클릭:"
+-- L["Low Priority"] = ""
+-- L["Lua Code"] = ""
+-- L["Macro Conditional"] = ""
+-- L["MACRO_CONDITION_HELP"] = ""
+L["Never"] = "작동 안함"
+-- L["Normal"] = ""
+L["Only Enable in Cities"] = "도시에서만 사용"
+-- L["Only Summon After Zoning"] = ""
+-- L["Only use Timed Auto Switch in cities"] = ""
+L["Open Configuration"] = "구성 열기"
+L["Open Configuration Panel"] = "설정창 열기"
+-- L["Override Pet Battle Loadout"] = ""
+L["Pet Menu"] = "펫 메뉴"
+L["Pets"] = "펫들"
+-- L["Pet Selection"] = ""
+-- L["Pet Triggers"] = ""
+-- L["Priority"] = ""
+-- L["Profiles"] = ""
+-- L["Rename to"] = ""
+-- L["Resummon pet after a pet has been summoned via setting the battle pet loadout."] = ""
+L["Right-Click:"] = "우-클릭:"
+-- L["Seconds between switch"] = ""
+-- L["Select Pets"] = ""
+L["Special Items"] = "특별 아이템들"
+-- L["Special Location"] = ""
+L["Summon Another Pet"] = "다른 펫 소환"
+L["Toggle Non-Combat Pet"] = "펫 자동소환 토글"
+-- L["Verbose"] = ""
+L["Wait Time (Seconds)"] = "대기 시간 (초)"
+-- L["You have %d pets"] = ""
+-- L["You have no pets"] = ""

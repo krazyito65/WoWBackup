@@ -1,0 +1,11 @@
+## Interface: 50400
+## Title: |cff00ff00TradeSkillMaster_Tutorials|r
+## Notes: Tutorials for TradeSkillMaster(can be use created)
+## Author: Shiftywarloc aka j311yf1sh
+## Version: 0.1
+## RequiredDeps: TradeSkillMaster
+## SavedVariables: TradeSkillMaster_TutorialsDB
+
+embeds.xml
+
+TradeSkillMaster_Tutorials.lua

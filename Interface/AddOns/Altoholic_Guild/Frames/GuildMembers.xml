@@ -1,0 +1,245 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="GuildMembers.lua"></Script>
+	
+	<Button name="AltoGuildMembersTemplate" virtual="true">
+		<Size x="460" y="22" />
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString parentKey="Level" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="55" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="150" y="0" />
+					</Anchors>
+				</FontString>
+				<FontString parentKey="Version" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="80" y="18" />
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeKey="$parent.Level" relativePoint="BOTTOMRIGHT" x="70" y="0" />
+					</Anchors>
+				</FontString>
+				<FontString parentKey="Class" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size x="100" y="18" />
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeKey="$parent.Version" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button parentKey="Collapse" hidden="true">
+				<Size x="16" y="16" />
+				<Anchors>
+					<Anchor point="LEFT" x="5" y="0" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						Altoholic.Guild.Members:Collapse_OnClick(self, button)
+					</OnClick>
+				</Scripts>
+				<NormalTexture name="$parentIcon" file="Interface\Buttons\UI-MinusButton-UP" />
+				<HighlightTexture file="Interface\Buttons\UI-PlusButton-Hilight" alphaMode="ADD" />
+			</Button>
+
+			<Button parentKey="Name">
+				<Size x="170" y="18" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="25" y="0" />
+				</Anchors>
+				<ButtonText parentKey="Text" justifyH="LEFT">
+					<Size x="170" y="18" />
+					<Anchors>
+						<Anchor point="LEFT" x="0" y="0" />
+					</Anchors>
+				</ButtonText>
+				<Scripts>
+					<OnLoad>
+						local level = self:GetParent():GetFrameLevel()
+						self:SetFrameLevel(level + 1)
+					</OnLoad>
+					<OnEnter>
+						Altoholic.Guild.Members:Name_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						AltoTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalFont style="GameFontNormalSmallLeft"/>
+				<HighlightFont style="GameFontHighlightSmallLeft"/>
+			</Button>
+			<Button parentKey="AvgILevel">
+				<Size x="65" y="18" />
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Level" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<ButtonText parentKey="Text" justifyH="CENTER">
+					<Size x="60" y="18" />
+					<Anchors>
+						<Anchor point="LEFT" x="0" y="0" />
+					</Anchors>
+				</ButtonText>
+				<Scripts>
+					<OnLoad>
+						local level = self:GetParent():GetFrameLevel()
+						self:SetFrameLevel(level + 1)
+					</OnLoad>
+					<OnClick>
+						Altoholic.Guild.Members:Level_OnClick(self, button)
+					</OnClick>
+					<OnEnter>
+						Altoholic.Guild.Members:Level_OnEnter(self)
+					</OnEnter>
+					<OnLeave>
+						AltoTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalFont style="GameFontNormalSmallLeft"/>
+				<HighlightFont style="GameFontHighlightSmallLeft"/>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				local level = self:GetParent():GetFrameLevel()
+				self:SetFrameLevel(level + 1)
+			</OnLoad>
+		</Scripts>
+	</Button>
+
+	<Frame parent="AltoholicTabGuild" parentKey="Members" hidden="true">
+		<Size x="615" y="306" />
+		<Anchors>
+			<Anchor point="TOPRIGHT" x="39" y="-105" />
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString parentKey="Name" inherits="DialogButtonNormalText" justifyH="Center">
+					<Size x="150" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="0" y="20" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				Altoholic.Guild.Members:OnLoad()
+			</OnLoad>
+		</Scripts>
+		<Frames>
+			<ScrollFrame parentKey="ScrollFrame" inherits="AltoBaseScrollFrameTemplate">
+				<Scripts>
+					<OnVerticalScroll>
+						self:OnVerticalScroll(offset, 18, Altoholic.Guild.Members.Update)
+					</OnVerticalScroll>
+				</Scripts>
+				<KeyValues>
+					<KeyValue key="numRows" value="14" type="number" />
+					<KeyValue key="rowHeight" value="18" type="number" />
+					<KeyValue key="rowTemplate" value="AltoGuildMembersTemplate" />
+				</KeyValues>
+			</ScrollFrame>
+
+			<!-- Equipment Icons on the right of the frame -->
+			<Button parentKey="Item1" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="470" y="-10" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item2" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item1" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item3" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item2" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item4" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item3" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			
+			<Button parentKey="Item5" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item1" relativePoint="TOPRIGHT" x="10" y="0" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item6" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item5" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item7" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item6" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item8" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item7" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			
+			<Button parentKey="Item9" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item5" relativePoint="TOPRIGHT" x="10" y="0" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item10" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item9" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item11" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item10" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item12" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item11" relativePoint="BOTTOMLEFT" x="0" y="-2" />
+				</Anchors>
+			</Button>
+			
+			<Button parentKey="Item13" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.Item8" relativePoint="BOTTOMLEFT" x="15" y="-10" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item14" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item8" relativePoint="BOTTOMRIGHT" x="-15" y="-10" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item15" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.Item13" relativePoint="TOPLEFT" x="0" y="0" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item16" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item14" relativePoint="TOPRIGHT" x="0" y="0" />
+				</Anchors>
+			</Button>
+			
+			<Button parentKey="Item18" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item8" relativePoint="BOTTOMLEFT" x="0" y="-56" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item17" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeKey="$parent.Item18" relativePoint="TOPLEFT" x="0" y="0" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Item19" inherits="AltoItemButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.Item18" relativePoint="TOPRIGHT" x="0" y="0" />
+				</Anchors>
+			</Button>
+	
+		</Frames>
+	</Frame>
+
+</Ui>

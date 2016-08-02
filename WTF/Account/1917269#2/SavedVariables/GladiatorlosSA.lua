@@ -1,0 +1,35 @@
+
+GladiatorlosSADB = {
+	["profileKeys"] = {
+		["Krazymonk - Gnomeregan"] = "Default",
+		["Krazyito - Stormrage"] = "Default",
+		["Krázýító - Gnomeregan"] = "Default",
+		["Krazyitò - Gnomeregan"] = "Default",
+		["Krazyito - Gnomeregan"] = "Default",
+		["Krazyito - Firetree"] = "Default",
+		["Meatrisolyn - Proudmoore"] = "Default",
+		["Krazyitó - Gnomeregan"] = "Default",
+		["Krázyito - Gnomeregan"] = "Default",
+		["Krazyito - Burning Blade"] = "Default",
+		["Apridis - Eldre'Thalas"] = "Default",
+		["Krazyitó - Illidan"] = "Default",
+		["Warlifre - Blade's Edge"] = "Default",
+		["Krazydruidiv - Bonechewer"] = "Default",
+		["Krazýito - Gnomeregan"] = "Default",
+		["Krãzyito - Gnomeregan"] = "Default",
+		["Kråzyito - Gnomeregan"] = "Default",
+		["Krazyíto - Gnomeregan"] = "Default",
+		["Krazÿito - Gnomeregan"] = "Default",
+		["Fãlor - Gnomeregan"] = "Default",
+		["Krazyitø - Gnomeregan"] = "Default",
+		["Krazyito - Fizzcrank"] = "Default",
+		["Krazyito - Sargeras"] = "Default",
+		["Zivallesith - Moon Guard"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["shackleUndead"] = false,
+			["summonDemon"] = false,
+		},
+	},
+}

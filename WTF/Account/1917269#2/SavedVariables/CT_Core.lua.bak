@@ -1,0 +1,7 @@
+
+CT_CoreOptions = {
+	["CHAR-Krazyito-Mal'Ganis"] = {
+		["minimapX"] = 1913.43579101563,
+		["minimapY"] = 1136.68371582031,
+	},
+}

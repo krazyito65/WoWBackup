@@ -1,0 +1,46 @@
+
+CarouselDB = {
+	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["version"] = 21010,
+			["foundObjects"] = {
+				["LoggerHead"] = true,
+				["epgp"] = true,
+				["BigWigs"] = true,
+				["VuhDo"] = true,
+				["Details!"] = true,
+				["BG"] = true,
+				["BugSack"] = true,
+				["Altoholic"] = true,
+				["Broker_TimeToExecute_kill"] = true,
+				["Record Kills"] = true,
+				["AskMrRobot"] = true,
+				["Broker_TimeToExecute_execute"] = true,
+				["Death Note"] = true,
+				["WeakAuras"] = true,
+				["PhoenixStyle"] = true,
+			},
+			["frames"] = {
+				["1"] = {
+					["scale"] = 1.34,
+					["objectOrder"] = {
+						{
+							"Broker_TimeToExecute_execute", -- [1]
+							"Broker_TimeToExecute_kill", -- [2]
+							"AskMrRobot", -- [3]
+						}, -- [1]
+					},
+					["frameX"] = 700,
+				},
+			},
+			["objectDBs"] = {
+				["Broker_TimeToExecute_execute"] = {
+					["autoshow"] = true,
+				},
+			},
+		},
+	},
+}

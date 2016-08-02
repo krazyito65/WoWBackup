@@ -1,0 +1,144 @@
+
+AmrBagItems = {
+	"|cffffffff|Hitem:79254:0:0:0:0:0:0:711822464:90:0:0|h[Ink of Dreams]|h|r", -- [1]
+	"|cffffffff|Hitem:79254:0:0:0:0:0:0:1854886144:90:0:0|h[Ink of Dreams]|h|r", -- [2]
+	"|cffffffff|Hitem:79254:0:0:0:0:0:0:1257788160:90:0:0|h[Ink of Dreams]|h|r", -- [3]
+	"|cffa335ee|Hitem:102321:0:0:0:0:0:0:404170513:90:0:0|h[Timeless Cloth Bracers]|h|r", -- [4]
+	"|cffa335ee|Hitem:102271:0:0:0:0:0:0:99250560:90:0:0|h[Timeless Mail Boots]|h|r", -- [5]
+	"|cffa335ee|Hitem:102286:0:0:0:0:0:0:708007816:90:0:0|h[Timeless Cloth Gloves]|h|r", -- [6]
+	"|cffa335ee|Hitem:102265:0:0:0:0:0:0:1262853906:90:0:0|h[Timeless Plate Gloves]|h|r", -- [7]
+	"|cffa335ee|Hitem:86138:4429:4596:0:0:0:0:19776346:90:145:445|h[Phasewalker Striders]|h|r", -- [8]
+	"|cffa335ee|Hitem:101781:0:0:0:0:0:-351:351143184:90:0:491|h[Fire-Chanter Bindings of the Pious]|h|r", -- [9]
+	"|cff0070dd|Hitem:81275:4418:4596:0:0:0:0:502326688:90:145:452|h[Chestwrap of Arcing Flame]|h|r", -- [10]
+	"|cffa335ee|Hitem:103688:0:0:0:0:0:0:634834304:90:0:491|h[Contemplation of Chi-Ji]|h|r", -- [11]
+	"|cffa335ee|Hitem:86746:0:4596:4589:4589:0:0:1710314880:90:0:445|h[Stonebound Cinch]|h|r", -- [12]
+	"|cffffffff|Hitem:3371:0:0:0:0:0:0:0:90:0:0|h[Crystal Vial]|h|r", -- [13]
+	"|cffffffff|Hitem:3371:0:0:0:0:0:0:0:90:0:0|h[Crystal Vial]|h|r", -- [14]
+	"|cffffffff|Hitem:3371:0:0:0:0:0:0:0:90:0:0|h[Crystal Vial]|h|r", -- [15]
+	"|cffffffff|Hitem:87806:0:0:0:0:0:0:1471769024:90:0:0|h[Ancient Mogu Key]|h|r", -- [16]
+	"|cffffffff|Hitem:71259:0:0:0:0:0:0:861325440:90:0:0|h[Leyara's Locket]|h|r", -- [17]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [18]
+	"|cffffffff|Hitem:79249:0:0:0:0:0:0:0:90:0:0|h[Tome of the Clear Mind]|h|r", -- [19]
+	"|cffffffff|Hitem:6948:0:0:0:0:0:0:0:90:0:0|h[Hearthstone]|h|r", -- [20]
+	"|cffffffff|Hitem:87903:0:0:0:0:0:0:-2142992768:90:0:0|h[Dread Amber Shards]|h|r", -- [21]
+	"|cffffffff|Hitem:39354:0:0:0:0:0:0:0:90:0:0|h[Light Parchment]|h|r", -- [22]
+	"|cffffffff|Hitem:39505:0:0:0:0:0:0:0:90:0:0|h[Virtuoso Inking Set]|h|r", -- [23]
+	"|cffffffff|Hitem:77589:0:0:0:0:0:0:692711040:90:0:0|h[G91 Landshark]|h|r", -- [24]
+	"|cffffffff|Hitem:52555:0:0:0:0:0:0:1539569536:90:0:0|h[Hypnotic Dust]|h|r", -- [25]
+	"|cffffffff|Hitem:89112:0:0:0:0:0:0:791546496:90:0:0|h[Mote of Harmony]|h|r", -- [26]
+	"|cffffffff|Hitem:85580:0:0:0:0:0:0:1029567104:90:0:0|h[Empty Polyformic Acid Vial]|h|r", -- [27]
+	"|cffffffff|Hitem:88370:0:0:0:0:0:0:1821008384:90:0:0|h[Puntable Marmot]|h|r", -- [28]
+	"|cffffffff|Hitem:89230:0:0:0:0:0:0:0:90:0:0|h[Restorative Amber]|h|r", -- [29]
+	"|cffffffff|Hitem:89230:0:0:0:0:0:0:0:90:0:0|h[Restorative Amber]|h|r", -- [30]
+	"|cffffffff|Hitem:44315:0:0:0:0:0:0:108724664:90:0:0|h[Scroll of Recall III]|h|r", -- [31]
+	"|cffffffff|Hitem:76085:0:0:0:0:0:0:1602943872:90:0:0|h[Flask of the Warm Sun]|h|r", -- [32]
+	"|cffffffff|Hitem:76086:0:0:0:0:0:0:368874848:90:0:0|h[Flask of Falling Leaves]|h|r", -- [33]
+	"|cffffffff|Hitem:3823:0:0:0:0:0:0:95610184:90:0:0|h[Lesser Invisibility Potion]|h|r", -- [34]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:379227136:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [35]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:1533411328:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [36]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:1808131968:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [37]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:315512704:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [38]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:456543488:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [39]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:1684277248:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [40]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:622605056:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [41]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:1016807552:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [42]
+	"|cffffffff|Hitem:76094:0:0:0:0:0:0:675606400:90:0:0|h[Alchemist's Rejuvenation]|h|r", -- [43]
+	"|cffffffff|Hitem:34827:0:0:0:0:0:0:1212404672:90:0:0|h[Noble's Monocle]|h|r", -- [44]
+	"|cffffffff|Hitem:43499:0:0:0:0:0:0:0:90:0:0|h[Iron Boot Flask]|h|r", -- [45]
+	"|cff1eff00|Hitem:88567:0:0:0:0:0:0:1062031488:90:0:0|h[Ghost Iron Lockbox]|h|r", -- [46]
+	"|cff1eff00|Hitem:63359:0:0:0:0:0:0:0:90:0:0|h[Banner of Cooperation]|h|r", -- [47]
+	"|cff1eff00|Hitem:94604:0:0:0:0:0:0:400325120:90:0:0|h[Burning Seed]|h|r", -- [48]
+	"|cff1eff00|Hitem:63352:0:0:0:0:0:0:0:90:0:0|h[Shroud of Cooperation]|h|r", -- [49]
+	"|cff0070dd|Hitem:79731:0:0:0:0:0:0:1329873024:90:0:0|h[Scroll of Wisdom]|h|r", -- [50]
+	"|cff0070dd|Hitem:79731:0:0:0:0:0:0:334592224:90:0:0|h[Scroll of Wisdom]|h|r", -- [51]
+	"|cff0070dd|Hitem:76061:0:0:0:0:0:0:396349696:90:0:0|h[Spirit of Harmony]|h|r", -- [52]
+	"|cff0070dd|Hitem:64398:0:0:0:0:0:0:0:90:0:0|h[Standard of Unity]|h|r", -- [53]
+	"|cff0070dd|Hitem:54651:0:0:0:0:0:0:2121034496:90:0:0|h[Gnomeregan Pride]|h|r", -- [54]
+	"|cff0070dd|Hitem:75525:0:0:0:0:0:0:1202482432:90:0:0|h[Alchemist's Flask]|h|r", -- [55]
+	"|cff0070dd|Hitem:63206:0:0:0:0:0:0:0:90:0:0|h[Wrap of Unity]|h|r", -- [56]
+	"|cff0070dd|Hitem:81282:4422:0:0:0:0:0:341636328:90:0:451|h[Aerial Bombardment Cloak]|h|r", -- [57]
+	"|cff0070dd|Hitem:75274:0:0:0:0:0:0:745442816:90:167:451|h[Zen Alchemist Stone]|h|r", -- [58]
+	"|cff0070dd|Hitem:81267:0:0:0:0:0:0:1321904896:90:0:451|h[Searing Words]|h|r", -- [59]
+	"|cff0070dd|Hitem:81243:0:0:0:0:0:0:-2024772352:90:0:451|h[Iron Protector Talisman]|h|r", -- [60]
+	"|cff0070dd|Hitem:81186:0:0:0:0:0:0:1085006144:90:152:451|h[Seal of Hateful Meditation]|h|r", -- [61]
+	"|cff0070dd|Hitem:81695:4869:0:0:0:0:0:974176640:90:166:451|h[Hound Trainer's Gloves]|h|r", -- [62]
+	"|cff0070dd|Hitem:89645:4411:0:0:0:0:0:0:90:168:451|h[Cruel Mercy Bracers]|h|r", -- [63]
+	"|cff0070dd|Hitem:81688:4428:4603:0:0:0:0:1292152320:90:168:451|h[Dashing Strike Treads]|h|r", -- [64]
+	"|cff0070dd|Hitem:84033:0:4647:0:0:0:0:171864400:90:167:0|h[Ghost Fox Belt]|h|r", -- [65]
+	"|cff0070dd|Hitem:82823:0:4590:0:0:0:0:-1950834944:90:165:451|h[Icewrath Belt]|h|r", -- [66]
+	"|cff0070dd|Hitem:81573:4420:4603:0:0:0:0:1390913920:90:0:451|h[Korloff's Raiment]|h|r", -- [67]
+	"|cff0070dd|Hitem:83997:4912:0:0:0:0:0:722078976:90:152:0|h[Ghost Fox Spaulders]|h|r", -- [68]
+	"|cff0070dd|Hitem:81071:4912:4652:0:0:0:0:579949728:90:159:451|h[Doubtridden Shoulderguards]|h|r", -- [69]
+	"|cff0070dd|Hitem:81283:0:4667:4652:0:0:0:2008450560:90:152:451|h[Windblast Helm]|h|r", -- [70]
+	"|cff0070dd|Hitem:81108:4441:0:0:0:0:0:1176264064:90:166:451|h[Snowdrift's Bladed Staff]|h|r", -- [71]
+	"|cffa335ee|Hitem:64399:0:0:0:0:0:0:0:90:0:0|h[Battle Standard of Coordination]|h|r", -- [72]
+	"|cffa335ee|Hitem:79329:0:0:0:0:0:0:155876896:90:0:445|h[Relic of Niuzao]|h|r", -- [73]
+	"|cffa335ee|Hitem:44934:0:0:0:0:0:0:0:90:0:0|h[Loop of the Kirin Tor]|h|r", -- [74]
+	"|cffa335ee|Hitem:88168:0:0:0:0:0:0:1258513056:90:0:445|h[Seal of Ghoulish Glee]|h|r", -- [75]
+	"|cffa335ee|Hitem:87013:4822:4652:4590:0:0:0:1739898240:90:158:445|h[Stoneflesh Leggings]|h|r", -- [76]
+	"|cffa335ee|Hitem:89065:0:0:0:0:0:0:0:90:139:445|h[Choker of the Klaxxi'va]|h|r", -- [77]
+	"|cffa335ee|Hitem:86146:0:0:0:0:0:0:287303778:90:0:445|h[Crown of Opportunistic Strikes]|h|r", -- [78]
+	"|cffa335ee|Hitem:45613:0:0:0:0:0:0:547217338:90:0:0|h[Dreambinder]|h|r", -- [79]
+	"|cffa335ee|Hitem:86893:4442:0:0:0:0:0:814494464:90:141:445|h[Jin'ya, Orb of the Waterspeaker]|h|r", -- [80]
+	"|cffff8000|Hitem:87209:0:0:0:0:0:0:1561532032:90:0:0|h[Sigil of Wisdom]|h|r", -- [81]
+	"|cffff8000|Hitem:87208:0:0:0:0:0:0:1649712320:90:0:0|h[Sigil of Power]|h|r", -- [82]
+	"|cffff8000|Hitem:45038:0:0:0:0:0:0:-808353408:90:0:0|h[Fragment of Val'anyr]|h|r", -- [83]
+	"|cffff8000|Hitem:71086:0:0:0:0:0:0:1751356288:90:0:0|h[Dragonwrath, Tarecgosa's Rest]|h|r", -- [84]
+	"|cffe6cc80|Hitem:42948:0:0:0:0:0:0:0:90:0:0|h[Devout Aurastone Hammer]|h|r", -- [85]
+}
+AmrBankItems = {
+}
+AmrEquipedItems = {
+	["15"] = "|cffa335ee|Hitem:89819:4423:0:0:0:0:0:1453747072:90:141:445|h[Mindshard Drape]|h|r",
+	["19"] = "|cff0070dd|Hitem:63379:0:0:0:0:0:0:0:90:0:0|h[Baradin's Wardens Tabard]|h|r",
+	["1"] = "|cffa335ee|Hitem:95713:0:4660:4596:0:0:0:1607522816:90:147:465|h[Hood of Smoldering Flesh]|h|r",
+	["14"] = "|cffa335ee|Hitem:79330:0:0:0:0:0:0:1267832320:90:0:445|h[Relic of Chi-Ji]|h|r",
+	["3"] = "|cffa335ee|Hitem:86039:4915:4571:0:0:0:0:1829678848:90:0:445|h[Spaulders of the Divided Mind]|h|r",
+	["2"] = "|cffa335ee|Hitem:89067:0:0:0:0:0:0:0:90:154:445|h[Links of the Lucid]|h|r",
+	["5"] = "|cffa335ee|Hitem:101786:0:0:0:0:0:-480:309528854:90:0:491|h[Fire-Chanter Jerkin of the Wavecrest]|h|r",
+	["4"] = "|cffa335ee|Hitem:89195:0:0:0:0:0:0:0:90:0:0|h[Artisan Officer's Shirt]|h|r",
+	["7"] = "|cffa335ee|Hitem:94946:4826:4589:4589:0:0:0:1249435392:90:145:465|h[Leggings of the Malformed Sapling]|h|r",
+	["6"] = "|cffa335ee|Hitem:101788:0:0:0:0:0:-347:2077558464:90:0:491|h[Fire-Chanter Waistband of the Savant]|h|r",
+	["9"] = "|cffa335ee|Hitem:95134:4414:0:0:0:0:0:0:90:0:465|h[Hearthfire Armwraps]|h|r",
+	["8"] = "|cffa335ee|Hitem:101782:0:0:0:0:0:-351:1731004096:90:0:491|h[Fire-Chanter Boots of the Pious]|h|r",
+	["16"] = "|cffa335ee|Hitem:94922:4442:4637:0:0:0:0:1640115968:90:145:465|h[Ritual Dagger of the Mind's Eye]|h|r",
+	["17"] = "|cffa335ee|Hitem:79335:4434:0:0:0:0:0:409339040:90:167:445|h[Inscribed Red Fan]|h|r",
+	["13"] = "|cffa335ee|Hitem:95641:0:0:0:0:0:0:1070076544:90:0:465|h[Horridon's Last Gasp]|h|r",
+	["12"] = "|cffa335ee|Hitem:89803:0:0:0:0:0:0:1225619312:90:167:445|h[Feng's Ring of Dreams]|h|r",
+	["11"] = "|cffa335ee|Hitem:95139:0:0:0:0:0:0:0:90:0:465|h[Ring of the Shado-Pan Assault]|h|r",
+	["10"] = "|cffa335ee|Hitem:86912:4430:4589:0:0:0:0:688203776:90:141:445|h[Clutches of Dying Hope]|h|r",
+}
+AmrGold = 3505103
+AmrRealmName = "Gnomeregan"
+AmrCharacterName = "Krazyito"
+AmrIconInfo = {
+	["minimapPos"] = 229.5604213155634,
+}
+AmrCurrencies = {
+	[395] = 367,
+	[396] = 1530,
+	[81] = 1,
+	[384] = 27,
+	[416] = 50,
+	[391] = 171,
+	[392] = 2027,
+	[515] = 37,
+	[241] = 32,
+}
+AmrProfessions = {
+	["Inscription"] = 600,
+	["Archaeology"] = 19,
+	["Alchemy"] = 600,
+	["Cooking"] = 600,
+	["First Aid"] = 600,
+	["Fishing"] = 398,
+}
+AmrSpecializations = {
+	["1"] = 105,
+	["2"] = 104,
+}
+AmrRace = "NightElf"
+AmrLevel = 90
+AmrFaction = "Alliance"
+AmrActiveSpec = 1
+AmrHideMapIcon = false

@@ -1,0 +1,10 @@
+## Interface: 60200
+## Title:|cffff7d0aCrossGambling
+## Author: Fluttershy
+## Version: 0.4
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## Notes: A fun way to lose gold. Or win it.
+## URL: http://wow.curseforge.com/addons/cross-gambling/
+## SavedVariables: CrossGambling
+CrossGambling.xml

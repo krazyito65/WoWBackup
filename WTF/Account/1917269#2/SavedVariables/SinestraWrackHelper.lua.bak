@@ -1,0 +1,14 @@
+
+SinestraWrackHelperDB = {
+	["profileKeys"] = {
+		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
+	},
+	["profiles"] = {
+		["Krazyito - Gnomeregan"] = {
+			["Fonts"] = {
+				["Name"] = {
+				},
+			},
+		},
+	},
+}

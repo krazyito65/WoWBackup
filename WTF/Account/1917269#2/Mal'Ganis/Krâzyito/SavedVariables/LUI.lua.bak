@@ -1,0 +1,13 @@
+
+LUICONFIG = {
+	["IsConfigured"] = true,
+	["Versions"] = {
+		["recount"] = 3300,
+		["lui"] = 3300,
+		["forte"] = 0,
+		["omen"] = 3300,
+		["bartender"] = 0,
+		["theme"] = 3301,
+		["grid"] = 0,
+	},
+}

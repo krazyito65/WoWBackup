@@ -1,0 +1,272 @@
+<Ui>
+
+	<!-- template for HybridScrollFrame list of addons -->
+	<Button name="AddonUsageListTemplate" virtual="true">
+		<Size x="226" y="16"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString parentKey="name" font="GameFontHighlightSmall" justifyH="LEFT" text="Addon Name">
+					<Size x="102" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" x="2" y="0"/>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="mem" font="GameFontHighlightSmall" justifyH="RIGHT" text="01234.5k">
+					<Size x="56" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.name" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="memPercent" font="GameFontHighlightSmall" justifyH="RIGHT" text="100%">
+					<Size x="32" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.mem" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="cpu" font="GameFontHighlightSmall" justifyH="RIGHT" text="100%">
+					<Size x="34" y="16"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.memPercent" relativePoint="RIGHT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<HighlightTexture file="Interface\ChatFrame\ChatFrameBackground" setAllPoints="true" alpha=".25" alphaMode="ADD">
+			<Color r=".2" g=".5" b="1"/>
+		</HighlightTexture>
+		<Scripts>
+			<OnEnter>
+				AddonUsage.ListOnEnter(self)
+			</OnEnter>
+			<OnLeave>
+				AddonUsage.ListOnLeave(self)
+			</OnLeave>
+			<OnMouseDown>
+				AddonUsage:StartMoving()
+			</OnMouseDown>
+			<OnMouseUp>
+				AddonUsage:StopMovingOrSizing()
+			</OnMouseUp>
+		</Scripts>
+	</Button>
+
+	<!-- template for sort headers -->
+	<Button name="AddonUsageSortTemplate" virtual="true">
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="left" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size x="5" y="19"/>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.59375"/>
+				</Texture>
+				<Texture parentKey="right" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size x="4" y="19"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.59375"/>
+				</Texture>
+				<Texture file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size x="10" y="19"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeKey="$parent.left" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeKey="$parent.right" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.59375"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText parentKey="text">
+			<Anchors>
+				<Anchor point="LEFT" x="7" y="0"/>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GameFontHighlightSmall"/>
+		<HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD">
+			<Size x="5" y="24"/>
+			<Anchors>
+				<Anchor point="LEFT"/>
+				<Anchor point="RIGHT" x="4" y="0"/>
+			</Anchors>
+		</HighlightTexture>
+		<Scripts>
+			<OnClick>
+				AddonUsage.SortOnClick(self)
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<!-- template for red panel buttons across bottom -->
+	<Button name="AddonUsagePanelButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+		<Size x="86" y="20"/>
+		<NormalFont style="GameFontNormalSmall"/>
+		<PushedFont style="GameFontHighlightSmall"/>
+		<HighlightFont style="GameFontHighlightSmall"/>
+		<Scripts>
+			<OnClick>
+				AddonUsage.ButtonOnClick(self)
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<!-- template for checkbuttons across top -->
+	<CheckButton name="AddonUsageCheckButtonTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size x="22" y="22"/>
+		<Scripts>
+			<OnClick>
+				AddonUsage.CheckOnClick(self)
+			</OnClick>
+		</Scripts>
+	</CheckButton>
+
+
+	<!-- primary frame -->
+
+	<Frame name="AddonUsage" parent="UIParent" enableMouse="true" movable="true" clampedToScreen="true" frameStrata="HIGH" inherits="ButtonFrameTemplate" hidden="true">
+		<Size x="266" y="348"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture parentKey="portrait">
+					<Size x="60" y="60"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-5" y="7"/>
+					</Anchors>
+					<TexCoords left="0.025" right="0.975" top="0.025" bottom="0.975"/>
+				</Texture>
+				<FontString parentKey="title" text="Addon Usage" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP" x="16" y="-5"/>
+					</Anchors>
+				</FontString>
+				<!-- background to sort buttons -->
+				<Texture file="Interface\AuctionFrame\UI-AuctionPost-Background" horizTile="true">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="8" y="-64"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" x="-26" y="-84"/>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0.25" bottom="0.75" />
+					<Color r="0.75" g="0.75" b="0.75" />
+				</Texture>
+				<!-- Test button for determining whether a name fits -->
+				<FontString parentKey="testString" inherits="GameFontHighlightSmall" hidden="true"/>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<!-- scrollframe that contains the list of addons and their stats -->
+			<ScrollFrame name="$parentScrollFrame" inherits="HybridScrollFrameTemplate" parentKey="scrollFrame">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-86"/>
+					<Anchor point="BOTTOMRIGHT" x="-10" y="56"/>
+				</Anchors>
+				<Frames>
+					<Slider name="$parentScrollBar" inherits="HybridScrollBarTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="-16" y="10"/>
+							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" x="-16" y="9"/>
+						</Anchors>
+					</Slider>
+				</Frames>
+				<Scripts>
+					<OnMouseDown>
+						AddonUsage:StartMoving()
+					</OnMouseDown>
+					<OnMouseUp>
+						AddonUsage:StopMovingOrSizing()
+					</OnMouseUp>
+				</Scripts>
+			</ScrollFrame>
+			<!-- sort buttons heading each column -->
+			<Button parentKey="sortAddon" text="Addon" inherits="AddonUsageSortTemplate" id="1">
+				<Size x="108" y="19"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" x="8" y="-64"/>
+				</Anchors>
+			</Button>
+			<Button parentKey="sortMemory" text="Memory" inherits="AddonUsageSortTemplate" id="2">
+				<Size x="86" y="19"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.sortAddon" relativePoint="TOPRIGHT"/>
+				</Anchors>
+			</Button>
+			<Button parentKey="sortCPU" text="CPU" inherits="AddonUsageSortTemplate" id="4">
+				<Size x="36" y="19"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeKey="$parent.sortMemory" relativePoint="TOPRIGHT"/>
+				</Anchors>
+			</Button>
+			<!-- panel buttons at the bottom of the window -->
+			<Button parentKey="closeButton" text="Close" inherits="AddonUsagePanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" x="-4" y="4"/>
+				</Anchors>
+			</Button>
+			<Button parentKey="updateButton" text="Update" inherits="AddonUsagePanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="4"/>
+				</Anchors>
+			</Button>
+			<Button parentKey="resetButton" text="Reset" inherits="AddonUsagePanelButtonTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" x="4" y="4"/>
+				</Anchors>
+			</Button>
+			<!-- checkbuttons at the top of the window -->
+			<CheckButton parentKey="profilingCheckButton" inherits="AddonUsageCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" x="-40" y="-24"/>
+				</Anchors>
+			</CheckButton>
+			<CheckButton parentKey="autoCheckButton" inherits="AddonUsageCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOP" x="-40" y="-40"/>
+				</Anchors>
+			</CheckButton>
+			<Frame parentKey="summary" name="$parentSummary" useParentLevel="true" inherits="InsetFrameTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" x="4" y="48"/>
+					<Anchor point="BOTTOMRIGHT" x="-6" y="26"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString parentKey="count" inherits="GameFontHighlightSmall" text="123 addons">
+							<Anchors>
+								<Anchor point="LEFT" x="8" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString parentKey="mem" inherits="GameFontHighlightSmall" text="14.5 MB mem">
+							<Anchors>
+								<Anchor point="CENTER"/>
+							</Anchors>
+						</FontString>
+						<FontString parentKey="cpu" inherits="GameFontHighlightSmall" text="234 ms cpu">
+							<Anchors>
+								<Anchor point="RIGHT" x="-8" y="0"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnEvent>
+				self:BuildUI()
+			</OnEvent>
+			<OnShow>
+				self:BuildList()
+			</OnShow>
+			<OnMouseDown>
+				self:StartMoving()
+			</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing()
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+
+</Ui>

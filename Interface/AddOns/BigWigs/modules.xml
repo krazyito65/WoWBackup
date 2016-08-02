@@ -1,0 +1,30 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<!--@debug@
+<Include file="Core\locales.xml"/>
+<Include file="Core\modules.xml"/>
+
+<Include file="Plugins\locales.xml"/>
+<Include file="Plugins\modules.xml"/>
+
+<Include file="Options\modules.xml"/>
+
+<Include file="Draenor\modules.xml"/>
+<Include file="Draenor\locales.xml"/>
+
+<Include file="BlackrockFoundry\modules.xml"/>
+<Include file="BlackrockFoundry\locales.xml"/>
+
+<Include file="HellfireCitadel\modules.xml"/>
+<Include file="HellfireCitadel\locales.xml"/>
+
+<Include file="Highmaul\modules.xml"/>
+<Include file="Highmaul\locales.xml"/>
+
+<Include file="Nightmare\modules.xml"/>
+<Include file="Nightmare\locales.xml"/>
+
+<Include file="Nighthold\modules.xml"/>
+<Include file="Nighthold\locales.xml"/>
+@end-debug@-->
+</Ui>
