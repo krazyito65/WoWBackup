@@ -1,4 +1,0 @@
-subversion:
-	- ultrashining via svn r15090: zhTW update
-	- Omega via svn r15089: Fixed bug that caused major patch disable to continue for minor version updates. 7.0.1 7.0.2 etc shouldn?\226?\128?\153t re-trigger the 7.0.0 major patch warning/disable.
-	- tandanu via svn r15088: increment alpha version
