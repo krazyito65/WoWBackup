@@ -4,9 +4,9 @@ RKDatabase = {
 		["Krazyíto - Mal'Ganis"] = "Default",
 		["Krazyito - Burning Blade"] = "Default",
 		["Krazyito - Mal'Ganis"] = "Default",
-		["Krazyito - Area 52"] = "Default",
 		["Krázýító - Gnomeregan"] = "Default",
-		["Krâzyito - Mal'Ganis"] = "Default",
+		["Krazyito - Area 52"] = "Default",
+		["Krazydruidiv - Bonechewer"] = "Default",
 		["Krazybank - Mal'Ganis"] = "Default",
 		["Krazyitò - Gnomeregan"] = "Default",
 		["Krazyitó - Mal'Ganis"] = "Default",
@@ -16,12 +16,12 @@ RKDatabase = {
 		["Krazýito - Mal'Ganis"] = "Default",
 		["Meatrisolyn - Proudmoore"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krazydruidiv - Bonechewer"] = "Default",
+		["Krâzyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
 			["firstLoad"] = false,
-			["diffShown"] = 4,
+			["prevDiffShown"] = 4,
 			["recordTimes"] = {
 				["Highmaul"] = {
 					["Brackenspore"] = {
@@ -30,17 +30,17 @@ RKDatabase = {
 						[7] = 87,
 						[15] = 309,
 					},
+					["The Butcher"] = {
+						[14] = 163,
+						[16] = 242,
+						[15] = 216,
+						[7] = 54,
+					},
 					["Ko'ragh"] = {
 						[14] = 198,
 						[16] = 82,
 						[15] = 329,
 						[7] = 139,
-					},
-					["Tectus"] = {
-						[14] = 177,
-						[16] = 219,
-						[15] = 350,
-						[7] = 171,
 					},
 					["Kargath Bladefist"] = {
 						[14] = 135,
@@ -54,11 +54,11 @@ RKDatabase = {
 						[15] = 639,
 						[7] = 469,
 					},
-					["The Butcher"] = {
-						[14] = 163,
-						[16] = 242,
-						[15] = 216,
-						[7] = 54,
+					["Tectus"] = {
+						[14] = 177,
+						[16] = 219,
+						[15] = 350,
+						[7] = 171,
 					},
 					["Twin Ogron"] = {
 						[14] = 250,
@@ -118,7 +118,7 @@ RKDatabase = {
 					},
 					["Blackhand"] = {
 						[14] = 339,
-						[16] = 90,
+						[16] = 76,
 						[15] = 229,
 						[7] = 171,
 					},
@@ -132,48 +132,48 @@ RKDatabase = {
 				["Hellfire Citadel"] = {
 					["Hellfire Assault"] = {
 						[14] = 317,
-						[16] = 401,
+						[16] = 400,
 						[15] = 336,
 						[7] = 249,
 					},
 					["Shadow-Lord Iskar"] = {
 						[14] = 337,
-						[16] = 193,
+						[16] = 165,
 						[15] = 208,
 					},
 					["Kormrok"] = {
 						[14] = 195,
-						[16] = 65,
+						[16] = 31,
 						[15] = 102,
 						[7] = 47,
 					},
 					["Fel Lord Zakuun"] = {
 						[14] = 200,
-						[16] = 64,
+						[16] = 40,
 						[15] = 128,
 						[7] = 175,
 					},
 					["Iron Reaver"] = {
 						[14] = 123,
-						[16] = 41,
+						[16] = 26,
 						[15] = 74,
 						[7] = 66,
 					},
 					["Kilrogg Deadeye"] = {
 						[14] = 209,
-						[16] = 73,
+						[16] = 41,
 						[15] = 138,
 						[7] = 142,
 					},
 					["Mannoroth"] = {
 						[14] = 409,
-						[16] = 321,
+						[16] = 162,
 						[15] = 224,
 						[7] = 349,
 					},
 					["Socrethar the Eternal"] = {
 						[14] = 203,
-						[16] = 145,
+						[16] = 94,
 						[15] = 152,
 						[7] = 10172,
 					},
@@ -185,18 +185,18 @@ RKDatabase = {
 					},
 					["Xhul'horac"] = {
 						[14] = 272,
-						[16] = 95,
+						[16] = 65,
 						[15] = 149,
 						[7] = 236,
 					},
 					["Tyrant Velhari"] = {
 						[14] = 261,
-						[16] = 205,
+						[16] = 138,
 						[15] = 180,
 					},
 					["Hellfire High Council"] = {
 						[14] = 206,
-						[16] = 129,
+						[16] = 96,
 						[15] = 137,
 						[7] = 156,
 					},
@@ -210,7 +210,7 @@ RKDatabase = {
 			},
 			["prevTierShown"] = 15,
 			["tierShown"] = 15,
-			["prevDiffShown"] = 4,
+			["diffShown"] = 4,
 		},
 	},
 }

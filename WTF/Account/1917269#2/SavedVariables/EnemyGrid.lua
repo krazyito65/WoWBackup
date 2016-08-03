@@ -1,15 +1,14 @@
 
 EnemyGridDB = {
 	["profileKeys"] = {
-		["Krazyito - Mal'Ganis"] = "Default",
 		["Krázyito - Mal'Ganis"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
 			["cast_statusbar_height"] = 23,
 			["cast_statusbar_width"] = 115,
-			["frame_locked"] = true,
 			["npc_friendly_color"] = {
 				0.4, -- [1]
 				nil, -- [2]
@@ -17,7 +16,7 @@ EnemyGridDB = {
 				1, -- [4]
 			},
 			["horizontal_gap_size"] = 0,
-			["x"] = 302.17041015625,
+			["x"] = -7.12815284729004,
 			["max_targets"] = 10,
 			["percent_text_color"] = {
 				0.972549019607843, -- [1]
@@ -90,7 +89,7 @@ EnemyGridDB = {
 				["x"] = -2,
 				["side"] = 2,
 			},
-			["point"] = "CENTER",
+			["point"] = "TOPLEFT",
 			["grow_direction"] = 2,
 			["frame_backdropbordercolor"] = {
 				nil, -- [1]
@@ -131,7 +130,7 @@ EnemyGridDB = {
 				nil, -- [1]
 				0.701960784313726, -- [2]
 			},
-			["y"] = -227.906051635742,
+			["y"] = -14.4189453125,
 		},
 	},
 }

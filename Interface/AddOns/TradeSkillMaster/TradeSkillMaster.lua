@@ -360,12 +360,11 @@ function TSM:RegisterModule()
 
 	-- TheUndermineJournal
 	if select(4, GetAddOnInfo("TheUndermineJournal")) and TUJMarketInfo then
-		local function GetTUJPrice(itemLink, key)
-			local itemID = TSMAPI.Item:ToItemID(itemLink)
-			local data = itemID and TUJMarketInfo(itemID)
-			if not data then return end
-			return data[key]
-		end
+        local function GetTUJPrice(itemLink, key)
+            local data = TUJMarketInfo(itemLink)
+            if not data then return end
+            return data[key]
+        end
 		tinsert(TSM.priceSources, { key = "TUJRecent", label = L["TUJ 3-Day Price"], callback = GetTUJPrice, arg = "recent" })
 		tinsert(TSM.priceSources, { key = "TUJMarket", label = L["TUJ 14-Day Price"], callback = GetTUJPrice, arg = "market" })
 		tinsert(TSM.priceSources, { key = "TUJGlobalMean", label = L["TUJ Global Mean"], callback = GetTUJPrice, arg = "globalMean" })

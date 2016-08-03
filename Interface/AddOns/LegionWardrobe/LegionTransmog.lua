@@ -1,6 +1,6 @@
 local GlobalAddonName, LTS = ...
 
-local ADDON_VERSION = "2.4 (31.07.2016)"
+local ADDON_VERSION = "2.41 (3.08.2016)"
 
 --[[
 TODO
@@ -2208,38 +2208,32 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 
 			UIDropDownMenu_Initialize(WardrobeFilterDropDown, WardrobeFilterDropDown_Initialize, "MENU")
 		
-			for i=1,3 do
-				for j=1,6 do
-					local frame = WardrobeCollectionFrame.ModelsFrame["ModelR"..i.."C"..j]
-					frame:HookScript("OnMouseDown",function(self,button)
-						if IsModifiedClick("CHATLINK") or IsModifiedClick("DRESSUP") or WardrobeFrame_IsAtTransmogrifier() or WardrobeCollectionFrame.transmogType == LE_TRANSMOG_TYPE_ILLUSION then
-							return
-						end
-						if button == "RightButton" then
-							if not self.visualInfo or self.visualInfo.isCollected then
-								return
-							end
-							local visualID = self.visualInfo.visualID
-							if VLTW._Fav2[ visualID ] then
-								VLTW._Fav2[ visualID ] = nil
-							else
-								VLTW._Fav2[ visualID ] = true
-							end
-							WardrobeCollectionFrame_SortVisuals()
-							WardrobeCollectionFrame_Update()
-							return
-						end
-						if button ~= "LeftButton" then
-							return
-						end
-						local visualInfo = self.visualInfo
-						LoadData()
-						UpdateModel(models[1], visualInfo.visualID, visualInfo.isCollected)
-						Model_OnClick(models[1],"LeftButton")
-					end)
+			hooksecurefunc("WardrobeCollectionFrameModel_OnMouseDown", function (self,button)
+				if IsModifiedClick("CHATLINK") or IsModifiedClick("DRESSUP") or WardrobeFrame_IsAtTransmogrifier() or WardrobeCollectionFrame.transmogType == LE_TRANSMOG_TYPE_ILLUSION then
+					return
 				end
-			end
-
+				if button == "RightButton" then
+					if not self.visualInfo or self.visualInfo.isCollected then
+						return
+					end
+					local visualID = self.visualInfo.visualID
+					if VLTW._Fav2[ visualID ] then
+						VLTW._Fav2[ visualID ] = nil
+					else
+						VLTW._Fav2[ visualID ] = true
+					end
+					WardrobeCollectionFrame_SortVisuals()
+					WardrobeCollectionFrame_Update()
+					return
+				end
+				if button ~= "LeftButton" then
+					return
+				end
+				local visualInfo = self.visualInfo
+				LoadData()
+				UpdateModel(models[1], visualInfo.visualID, visualInfo.isCollected)
+				Model_OnClick(models[1],"LeftButton")			
+			end)
 			
 			hooksecurefunc("WardrobeCollectionFrame_Update", function ()
 				for i = 1, 18 do
@@ -2424,7 +2418,7 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 					lastCamera = (slotToCamera[newSlot] and slotToCamera[newSlot][2]) or (slotToCamera[newSlot] and slotToCamera[newSlot][1]) or 152
 					Model_ApplyUICamera(model, lastCamera)
 				end)
-													
+				
 				for i=1,3 do
 					for j=1,6 do
 						local frame = WardrobeCollectionFrame.ModelsFrame["ModelR"..i.."C"..j]
@@ -2438,6 +2432,7 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 						end)
 					end
 				end
+				
 				
 				local function ButtonOnEnter(self)
 					if not self.tooltip then return end

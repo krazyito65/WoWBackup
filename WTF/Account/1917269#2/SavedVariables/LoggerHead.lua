@@ -17,10 +17,10 @@ LoggerHeadDB = {
 		["Krazyito - Stormrage"] = "Default",
 		["Krâzyito - Mal'Ganis"] = "Default",
 		["Krazyitó - Gnomeregan"] = "Default",
-		["Apridis - Eldre'Thalas"] = "Default",
+		["Krazybank - Mal'Ganis"] = "Default",
 		["Krazyíto - Mal'Ganis"] = "Default",
 		["Krazyito - Burning Blade"] = "Default",
-		["Krazybank - Mal'Ganis"] = "Default",
+		["Apridis - Eldre'Thalas"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
 		["Warlifre - Blade's Edge"] = "Default",
 		["Krazýito - Gnomeregan"] = "Default",
@@ -224,13 +224,13 @@ LoggerHeadDB = {
 						false, -- [2]
 						[8] = false,
 					},
+					["Uldaman"] = {
+						false, -- [1]
+					},
 					["Upper Blackrock Spire"] = {
 						true, -- [1]
 						true, -- [2]
 						[8] = true,
-					},
-					["Uldaman"] = {
-						false, -- [1]
 					},
 					["Violet Hold"] = {
 						false, -- [1]
@@ -264,17 +264,17 @@ LoggerHeadDB = {
 						false, -- [1]
 						false, -- [2]
 					},
-					["Hellfire Citadel: Ramparts"] = {
-						false, -- [1]
+					["Tempest Keep: The Arcatraz"] = {
+						true, -- [1]
+						false, -- [2]
 					},
 					["Shado-Pan Monastery"] = {
 						false, -- [1]
 						false, -- [2]
 						[8] = false,
 					},
-					["Tempest Keep: The Arcatraz"] = {
-						true, -- [1]
-						false, -- [2]
+					["Hellfire Citadel: Ramparts"] = {
+						false, -- [1]
 					},
 					["Scarlet Halls"] = {
 						false, -- [1]
@@ -446,10 +446,10 @@ LoggerHeadDB = {
 						[6] = true,
 						[7] = true,
 						[3] = true,
-						[4] = true,
 						[14] = true,
-						[16] = false,
+						[4] = true,
 						[5] = true,
+						[16] = false,
 					},
 					["Dragon Soul"] = {
 						[3] = true,
@@ -549,15 +549,15 @@ LoggerHeadDB = {
 						true, -- [6]
 						false, -- [7]
 					},
-					["Onyxia's Lair"] = {
-						[4] = false,
-						[3] = false,
-					},
 					["Hellfire Citadel"] = {
 						[14] = true,
 						[16] = true,
 						[15] = true,
 						[17] = true,
+					},
+					["Onyxia's Lair"] = {
+						[4] = false,
+						[3] = false,
 					},
 					["Blackwing Lair"] = {
 						[8] = false,

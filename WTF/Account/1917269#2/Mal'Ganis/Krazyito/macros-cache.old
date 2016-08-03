@@ -8,6 +8,7 @@ VER 3 010000000000005C " " "INV_MISC_QUESTIONMARK"
 /use [talent:4/2] Mass Entanglement; [talent:4/1] Mighty Bash; [talent:4/3] Typhoon
 END
 VER 3 0100000000000062 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
 /use [@mouseover,harm][] sunfire
 END
 VER 3 0100000000000063 " " "INV_MISC_QUESTIONMARK"
@@ -21,6 +22,7 @@ VER 3 0100000000000060 " " "INV_MISC_QUESTIONMARK"
 /use [talent:1/1] Force of Nature; [talent:1/2] Warrior of Elune
 END
 VER 3 0100000000000061 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
 /use [talent:2,2, mod:ctrl] displacer beast;  [@mouseover,harm][]moonfire
 END
 VER 3 0100000000000064 " " "INV_MISC_QUESTIONMARK"
@@ -66,8 +68,8 @@ VER 3 0100000000000015 "starsurge" "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R4SR1DT1OM1DH1EM1EM2DM2DT2DT2RM2MR3IR3HR3LR3HR3HR[x]4OH4SH4MR7PM7HR7IH7WT7IR8WM8SR8RM8PT8WM[x][x][x][x][x][x][x][x][x][x]4DR[x][x][x][x]0__0__[x][x][x][x][x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NGenCenIrtBigOrcShiStrTauRanLosTosMarHunKylLogTuu[x]ZhaBerXitImmLocMiiRanCheRágBurHicPinJin[x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x]GooGoo[x][x][x][x][x][x][x]아킨나[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

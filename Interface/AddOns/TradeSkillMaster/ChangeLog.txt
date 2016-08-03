@@ -1,3 +1,6 @@
+v3.4.26
+*Fixed compatibility with TUJ addon
+
 v3.4.25
 *Added missing bonus ids
 

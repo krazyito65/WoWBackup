@@ -194,6 +194,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[510] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Stonemaul Arena"] = {
 			["Preferred"] = {
 			},
@@ -209,6 +215,12 @@ GoGo_Prefs = {
 			["ZoneID"] = 478,
 		},
 		[14] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[466] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -258,18 +270,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[466] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Utgarde Pinnacle"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 491,
+		},
+		["Warspear Hold"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 1011,
 		},
 		[490] = {
 			["Preferred"] = {
@@ -327,18 +340,18 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Mana-Tombs"] = {
+		[896] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["The Nexus"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 962,
-		},
-		[810] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
 		},
 		[945] = {
 			["Preferred"] = {
@@ -352,7 +365,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[896] = {
+		[810] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -363,13 +376,6 @@ GoGo_Prefs = {
 			},
 			["Excluded"] = {
 			},
-		},
-		["The Nexus"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
 		},
 		[858] = {
 			["Preferred"] = {
@@ -389,11 +395,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[510] = {
+		["The Slave Pens"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[161] = {
 			["Preferred"] = {
@@ -407,20 +414,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["The Slave Pens"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[604] = {
+		[964] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[862] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[382] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -468,11 +474,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[731] = {
+		["Bladespire Citadel"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 941,
 		},
 		[499] = {
 			["Preferred"] = {
@@ -480,12 +487,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Bladespire Citadel"] = {
+		[731] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 941,
 		},
 		["Blighted Hollow"] = {
 			["Preferred"] = {
@@ -500,12 +506,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[994] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["The Storm Peaks"] = {
 			["Preferred"] = {
 			},
@@ -513,7 +513,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 495,
 		},
-		[987] = {
+		[606] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -533,12 +539,6 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[976] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[820] = {
 			["Preferred"] = {
 			},
@@ -551,6 +551,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[987] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Rainfern Grotto"] = {
 			["Preferred"] = {
 			},
@@ -558,7 +564,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		[606] = {
+		[994] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -583,7 +589,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[382] = {
+		[604] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -601,19 +607,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[964] = {
+		[768] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[29] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[768] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -646,12 +646,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Warspear Hold"] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1011,
+			["ZoneID"] = 962,
 		},
 	},
 	["DisableMountNotice"] = false,

@@ -68,8 +68,8 @@ VER 3 0100000000000015 "starsurge" "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R4SR1DT1DT1IH1SR1EM2DM2DR2WM2RM2EM3IR3DR3LR3MR[x]4OH4HR4IR7PM7HR7RM7HR8SH8WM8PT[x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DR[x][x][x][x][x]0__[x][x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NGenCenRanMiiBurShiStrTauTosLosOrcMarBigKylXit[x]ZhaLogCheImmLocHicTuuBerRágPin[x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x]Cru[x][x][x][x]Fou[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
