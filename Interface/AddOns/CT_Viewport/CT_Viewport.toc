@@ -1,9 +1,0 @@
-## Interface: 60000
-## Version: 6.0.2.0
-## Title: CT_Viewport
-## Notes: Allows you to change the rendered world's size.
-## DefaultState: Enabled
-## SavedVariablesPerCharacter: CT_Viewport_Saved
-## Dependencies: CT_Library
-
-CT_Viewport.xml

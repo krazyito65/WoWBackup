@@ -1,7 +1,0 @@
-## Interface: 60000
-## Version: 6.0.2.2
-## Title: CT_Library
-## Notes: Library features for CTMod.
-## DefaultState: Enabled
-
-CT_Library.lua

@@ -1,2 +1,0 @@
-
-LeechTrinketCounter_DB = nil
