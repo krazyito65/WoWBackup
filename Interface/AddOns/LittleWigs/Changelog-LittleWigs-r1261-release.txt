@@ -1,9 +1,15 @@
 ------------------------------------------------------------------------
-r1259 | funkydude | 2016-08-01 17:23:44 +0000 (Mon, 01 Aug 2016) | 1 line
+r1261 | funkydude | 2016-08-02 20:58:57 +0000 (Tue, 02 Aug 2016) | 1 line
 Changed paths:
-   A /tags/r1259-release (from /trunk:1258)
+   A /tags/r1261-release (from /trunk:1260)
 
-Tagging as r1259-release
+Tagging as r1261-release
+------------------------------------------------------------------------
+r1260 | funkydude | 2016-08-02 20:25:01 +0000 (Tue, 02 Aug 2016) | 1 line
+Changed paths:
+   M /trunk/TBC/MagistersTerrace/KaelthasSunstrider.lua
+
+TBC/MagistersTerrace/KaelthasSunstrider: Don't conflict with Tempest Keep module.
 ------------------------------------------------------------------------
 r1258 | funkydude | 2016-07-31 09:26:45 +0000 (Sun, 31 Jul 2016) | 1 line
 Changed paths:

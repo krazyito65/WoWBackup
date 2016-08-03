@@ -1,9 +1,15 @@
 ------------------------------------------------------------------------
-r85 | funkydude | 2016-08-01 17:23:59 +0000 (Mon, 01 Aug 2016) | 1 line
+r87 | funkydude | 2016-08-02 21:14:28 +0000 (Tue, 02 Aug 2016) | 1 line
 Changed paths:
-   A /tags/r85-release (from /trunk:84)
+   A /tags/r87-release (from /trunk:86)
 
-Tagging as r85-release
+Tagging as r87-release
+------------------------------------------------------------------------
+r86 | funkydude | 2016-08-02 20:18:24 +0000 (Tue, 02 Aug 2016) | 1 line
+Changed paths:
+   M /trunk/Ulduar/YoggSaron.lua
+
+Ulduar/YoggSaron: Access the Common Locale properly.
 ------------------------------------------------------------------------
 r84 | funkydude | 2016-07-31 09:25:57 +0000 (Sun, 31 Jul 2016) | 1 line
 Changed paths:

@@ -1,0 +1,42 @@
+Infus:
+	- Add in Combat Condition Trigger
+	Trivial to add, and more flexibel than a load condition. The Conditions
+	already react to PLAYER_REGEN_(ENABLED|DISABLED)
+	
+	Ticket-Nr: 656
+	- Fix group auras after closing Options
+	Closing the options would not correctly update the group auras
+	if not in a group at all and only group auras where used.
+	
+	Noticed while fixing related bug.
+	- Remove recent_chages code from BuffTrigger.lua
+	This caused some auras to not show up on loading.
+	
+	In the bug reports case, the code was tracking buffs only
+	outside of combat.
+	
+	The sequence of events:
+	- Apply the buff
+	- Enter combat, unloading the aura
+	- Leave combat, loading the aura
+	
+	Loading a aura causes a ScanAll(), in the bug reports case
+	this would call AssertAura, but due to the data being identical
+	to the data gathered before combat, the aura_cache would indicate
+	no change. Yet, after a load we want to update everything.
+	
+	I think this has been always broken, as I don't recall changing this
+	logic.
+	
+	The fix is, ignoring whether the aura_cache already knew that buff.
+	Since the return value of AssertAura/DeassertAura is the only place
+	where recent_changes is used, purge it from everywhere.
+	
+	Ticket-Nr: 645
+	- Never disable icon/choose icon in the icon options
+	They are hidden if the icon is on automatic mode.
+	
+	Ticket-Nr: 649
+	- Don't call ReplacePlaceHolders if there can't be any text replacemnet
+	- Add a valuesAll function that combines the values() functions
+	Ticket-Nr: 621

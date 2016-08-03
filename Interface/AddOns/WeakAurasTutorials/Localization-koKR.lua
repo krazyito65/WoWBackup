@@ -32,7 +32,7 @@ L["Beginners Finished Text"] = [=[초보자 가이드였습니다. 하지만 아
 미래에는 당신을 |cFF8800FFWeakAuras|r의 끝없는 가능성 속으로 이끌어 줄 |cFFFFFF00더|r |cFFFF7F00강력한|r |cFFFF0000설명서|r가 나올겁니다.]=]
 L["Beginners Guide Desc"] = "초보자 가이드"
 L["Beginners Guide Desc Text"] = "WeakAuras 기본적인 옵션 설정에 대하여 안내합니다"
--- L["Constant Factor"] = ""
+L["Constant Factor"] = "상수"
 L["Create a Display: 1/5"] = "디스플레이 생성: 1/5"
 L["Create a Display: 2/5"] = "디스플레이 생성: 2/5"
 L["Create a Display: 3/5"] = "디스플레이 생성: 3/5"
@@ -102,7 +102,7 @@ L["Multi-target Auras 9/10 Text"] = "마지막으로, 유닛 옵션에서 \"다�
 L["New in 1.4:"] = "1.4의 새 기능:"
 L["New in 1.4 Desc:"] = "1.4의 새 기능"
 L["New in 1.4 Desc Text"] = "WeakAuras 1.4의 새로운 기능을 봅니다"
--- L["New in 1.4 Finished Text"] = ""
+L["New in 1.4 Finished Text"] = "1.4 종료 문자의 새로운 내용"
 L["New in 1.4 Text1"] = [=[|cFF8800FFWeakAuras|r 1.4 버전의 여러 강력한 새로운 특징들을 소개합니다.
 
 이 설명서는 중요한 새로운 능력 살펴보기를 제공하며, 어떻게 사용하는지도 안내합니다.]=]
@@ -136,7 +136,7 @@ L["Trigger Options: 4/4"] = "활성 조건 옵션: 4/4"
 L["Trigger Options 4/4 Text"] = [=[|cFFFFFFFF유닛 특징|r 활성 조건은 유닛의 이름, 직업, 적대성, 그리고 플레이어인지 비플레이어인지 테스트할 수 있습니다.
 
 |cFFFFFFFF글로벌 쿨다운|r과 |cFFFFFFFF일반공격 타이머|r 활성 조건은 시전 조건을 보완합니다.]=]
--- L["Type"] = ""
+L["Type"] = "유형"
 L["Unit"] = "유닛"
 L["Use Full Scan (High CPU)"] = "전체 탐색 사용 (높은 CPU)"
 L["WeakAuras Tutorials"] = "WeakAuras 설명서"
