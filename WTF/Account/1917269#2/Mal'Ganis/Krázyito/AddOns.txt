@@ -112,3 +112,4 @@ Gnosis: enabled
 TradeSkillMaster_Destroying: enabled
 TradeSkillMaster_Crafting: enabled
 ACP: enabled
+EnemyGrid: disabled

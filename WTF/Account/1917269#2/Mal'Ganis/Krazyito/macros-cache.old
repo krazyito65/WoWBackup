@@ -1,43 +1,17 @@
-VER 3 0100000000000049 " " "INV_MISC_QUESTIONMARK"
+VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
-/use [mod:ctrl] Etheralus, the Eternal Reward
-/use [nomod] Stampeding Roar
+/use [@mouseover, help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
 END
-VER 3 010000000000005C " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [talent:4/2] Mass Entanglement; [talent:4/1] Mighty Bash; [talent:4/3] Typhoon
+VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
+/use [@mouseover] Cenarion Ward
 END
-VER 3 0100000000000062 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [@mouseover,harm][] sunfire
-END
-VER 3 0100000000000063 " " "INV_MISC_QUESTIONMARK"
-/use [@mouseover,harm][] stellar flare
-END
-VER 3 010000000000005D " " "INV_MISC_QUESTIONMARK"
-/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
-END
-VER 3 0100000000000060 " " "INV_MISC_QUESTIONMARK"
+VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [talent:1/1] Force of Nature; [talent:1/2] Warrior of Elune
 END
-VER 3 0100000000000061 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [talent:2,2, mod:ctrl] displacer beast;  [@mouseover,harm][]moonfire
-END
-VER 3 0100000000000064 " " "INV_MISC_QUESTIONMARK"
+VER 3 0100000000000064 " Balance t90" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [talent:6/2] Astral Communion; [talent:6/3] Blessing of the Ancients
-END
-VER 3 0100000000000065 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cancelaura Moonkin Form
-/use dash
-END
-VER 3 0100000000000058 "  " "INV_MISC_QUESTIONMARK"
-#showtooltip Starfall
-/cancelaura [mod:ctrl] Starfall
-/use [nomod] starfall
 END
 VER 3 010000000000004C " COOLIOS" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -45,31 +19,41 @@ VER 3 010000000000004C " COOLIOS" "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl] 14
 /use [nomod] Celestial Alignment
 END
+VER 3 0100000000000065 " DASH" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/cancelaura Moonkin Form
+/use dash
+END
+VER 3 010000000000005C " Druid t60" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [talent:4/2] Mass Entanglement; [talent:4/1] Mighty Bash; [talent:4/3] Typhoon
+END
+VER 3 010000000000005D " Inc/ DPS ring" "INV_MISC_QUESTIONMARK"
+/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
+END
+VER 3 0100000000000063 " Stellar Flare" "INV_MISC_QUESTIONMARK"
+/use [@mouseover,harm][] stellar flare
+END
+VER 3 0100000000000062 " sunfire mouseov" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover,harm][] sunfire
+END
 VER 3 0100000000000024 "regrow" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [nomod, @mouseover] Regrowth
+/cast [mod:ctrl, @player] innervate;  [@mouseover] Regrowth
 END
 VER 3 0100000000000028 "resto moonfare" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/use [spec:1,mod:alt, @player] Genesis; [spec:1,@mouseover,mod:ctrl]lifebloom;[spec:1,@mouseover,help]Rejuvenation;[spec:1,harm]moonfire;[spec:1]Rejuvenation
-/use [spec:2, mod:ctrl]Displacer Beast; [spec:2,@mouseover,harm][spec:2]moonfire
+/use [spec:4,@mouseover,mod:ctrl]lifebloom;[spec:4,@mouseover,help]Rejuvenation;[spec:4,harm]moonfire;[spec:4]Rejuvenation
+/use [spec:1, mod:ctrl, talent:2/2]Displacer Beast; [spec:1,@mouseover,harm][spec:1]moonfire
 END
 VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/use [@mouseover,mod:ctrl]ironbark; [mod:shift] wild charge;[@mouseover,help]swiftmend;[harm]Wrath; swiftmend
-END
-VER 3 0100000000000013 "resto shrrom/ns" "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [mod:shift]Wild Mushroom;Nature's Swiftness
-END
-VER 3 0100000000000015 "starsurge" "INV_MISC_QUESTIONMARK"
-#showtooltip Starsurge
-/focus [mod:alt,@mouseover,harm][mod:alt]
-/use [mod:ctrl,@focus]Starsurge;[@mouseover,harm,nomod][nomod,harm]Starsurge
+/use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-R4SR1DT1OM1DH1EM1EM2DM2DT2DT2RM2MR3IR3HR3LR3HR3HR[x]4OH4SH4MR7PM7HR7IH7WT7IR8WM8SR8RM8PT8WM[x][x][x][x][x][x][x][x][x][x]4DR[x][x][x][x]0__0__[x][x][x][x][x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R1WT1MR1EM1PM1LR2RM2WM2LR2MR2DR3DT3LR3IH3HR3DH4IR4IR4HR4IR[x]5PM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x]0__[x][x]0__[x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NGenCenIrtBigOrcShiStrTauRanLosTosMarHunKylLogTuu[x]ZhaBerXitImmLocMiiRanCheRágBurHicPinJin[x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x]GooGoo[x][x][x][x][x][x][x]아킨나[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NRéâBonTokFieDrvRazComJaxAraSodMorXyrKalPelFenCorEboFelYou[x]Sou[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x]Unk[x][x]Unk[x][x][x]Unk[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

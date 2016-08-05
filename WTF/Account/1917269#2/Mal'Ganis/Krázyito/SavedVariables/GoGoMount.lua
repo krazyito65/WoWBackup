@@ -38,6 +38,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
+		[1105] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Storehouse"] = {
 			["Preferred"] = {
 			},

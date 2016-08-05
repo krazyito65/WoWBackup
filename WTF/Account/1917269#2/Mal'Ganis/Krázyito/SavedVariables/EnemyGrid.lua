@@ -38,16 +38,16 @@ EnemyGridDBChr = {
 			}, -- [2]
 		},
 	},
-	["spellRangeCheck"] = {
-		[263] = "Hex",
-		[264] = "Lightning Bolt",
-		[262] = "Lightning Bolt",
-	},
-	["debuffsBanned"] = {
-	},
 	["specEnabled"] = {
 		[263] = true,
 		[264] = true,
 		[262] = true,
+	},
+	["debuffsBanned"] = {
+	},
+	["spellRangeCheck"] = {
+		[263] = "Hex",
+		[264] = "Lightning Bolt",
+		[262] = "Lightning Bolt",
 	},
 }

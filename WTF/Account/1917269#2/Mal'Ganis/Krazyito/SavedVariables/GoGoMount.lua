@@ -194,12 +194,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[510] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Stonemaul Arena"] = {
 			["Preferred"] = {
 			},
@@ -220,7 +214,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[466] = {
+		[989] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -239,14 +233,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 811,
 		},
-		["Ulduar"] = {
+		[873] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
-		[928] = {
+		[466] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -258,25 +251,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[989] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[478] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Utgarde Pinnacle"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 491,
-		},
 		["Warspear Hold"] = {
 			["Preferred"] = {
 			},
@@ -284,11 +258,31 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
-		[490] = {
+		[478] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+		},
+		[928] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Mana-Tombs"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		["Ulduar"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
 		},
 		[984] = {
 			["Preferred"] = {
@@ -302,11 +296,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[873] = {
+		["Howling Fjord"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 491,
 		},
 		[1008] = {
 			["Preferred"] = {
@@ -314,7 +309,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[889] = {
+		[510] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -365,13 +360,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[810] = {
+		[889] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[969] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[964] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -395,12 +396,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["The Slave Pens"] = {
+		[321] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[161] = {
 			["Preferred"] = {
@@ -414,19 +414,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[964] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[862] = {
+		[810] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[382] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[862] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -474,12 +474,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Bladespire Citadel"] = {
+		[733] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 941,
 		},
 		[499] = {
 			["Preferred"] = {
@@ -506,6 +505,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[606] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["The Storm Peaks"] = {
 			["Preferred"] = {
 			},
@@ -513,13 +518,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 495,
 		},
-		[606] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[976] = {
+		[820] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -539,7 +538,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[820] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -577,11 +576,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 811,
 		},
-		[733] = {
+		["Bladespire Citadel"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 941,
 		},
 		[995] = {
 			["Preferred"] = {
@@ -601,11 +601,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[321] = {
+		["The Slave Pens"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[768] = {
 			["Preferred"] = {
@@ -619,12 +620,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Howling Fjord"] = {
+		[490] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 491,
 		},
 		["Sabermaw Den"] = {
 			["Preferred"] = {
@@ -646,16 +646,16 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Mana-Tombs"] = {
+		["Utgarde Pinnacle"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
+			["ZoneID"] = 491,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -820,7 +820,7 @@ GoGo_Prefs = {
 		61447, -- [5]
 		75973, -- [6]
 	},
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 }
 GoGo_DebugLog = {
 }

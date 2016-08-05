@@ -9,68 +9,14 @@ VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
 2 = {circle}
 1 = {star}
 END
-VER 3 0000000000000051 " " "SPELL_HOLY_SENSEUNDEAD"
-========================
-Semi-Respectable Mumble
-semi-respectable.mumble.com
-9691
-END
-VER 3 0000000000000033 " " "ACHIEVEMENT_GUILDPERK_FASTTRACK_RANK2"
-/1 <Semi Respectable> 9/10M 10/13H looking for exceptional players to add to our roster.  High Need for Healers: Paladin Raid times are T/W/Th 7-11 server.  Whisper me or apply at semirespectable.net.
-END
-VER 3 0000000000000055 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [mod:ctrl] wild charge; maul
-END
-VER 3 000000000000005D " " "ability_monk_uplift"
-#showtooltip
-/use [mod:ctrl,@mouseover] Surging Mist; [stance:1]Uplift; [stance:2] Expel Harm
-END
-VER 3 000000000000005E " " "spell_monk_envelopingmist"
-#showtooltip
-/use [mod:ctrl,@mouseover, stance:1] Soothing Mist; [@mouseover, stance:1] Enveloping Mist; [stance:2] Rising Sun kick
-END
 VER 3 0000000000000063 " " "Ability_Iyyokuk_Mantid_Red"
 /run SetRaidTarget("Target", 8)
-END
-VER 3 000000000000006A " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [@mouseover] soothe
-/targetlasttarget
-END
-VER 3 000000000000006B " " "INV_MISC_QUESTIONMARK"
-/script ShowHelm(not ShowingHelm())
-END
-VER 3 000000000000006C " " "Ability_Iyyokuk_Bomb_Yellow."
-/2 <Rebuff For Confidence> is selling Mythic HFC. Archimonde Mount and Blackhand mounts for sale!  Raid days are Tuesday at 8:30 server. Pst for more info.
-END
-VER 3 0000000000000074 " " "INV_MISC_QUESTIONMARK"
-/use [mod:shift] Healing Rain; Ancestral Swiftness
-END
-VER 3 000000000000007B " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [form:1,spec:2,combat] Skull bash;
-/click GoGoButton
-END
-VER 3 000000000000007F " " "ability_deathknight_desolation."
-Mumble:
-Rebuff.mumble.com
-9716
-powerword
-END
-VER 3 0000000000000081 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/cast !Moonkin Form
 END
 VER 3 0000000000000082 " " "INV_MISC_QUESTIONMARK"
 /use milling
 /use Gorgrond Flytrap
 /use Nagrand Arrowbloom
 /use Starflower
-END
-VER 3 0000000000000040 "  " "Ability_Iyyokuk_Mantid_Red"
-/script if IsControlKeyDown() then SetRaidTarget("target",7) end
-/script if not IsControlKeyDown() then SetRaidTarget("target",8) end
 END
 VER 3 0000000000000052 "  conformation" "SPELL_ARCANE_ARCANE01"
 /click StaticPopup1Button1
@@ -82,29 +28,6 @@ VER 3 0000000000000079 " extrabutton" "INV_MISC_QUESTIONMARK"
 END
 VER 3 000000000000007D " gogo button" "ACHIEVEMENT_GUILDPERK_MOUNTUP"
 /click GoGoButton
-END
-VER 3 000000000000003A " noodlefactory" "ability_deathknight_sanguinfortitude"
-Noodle Factory Mumble
-vx36.commandchannel.com
-8146
-springtime
-END
-VER 3 0000000000000080 " tr" "INV_MISC_QUESTIONMARK"
-/trade
-END
-VER 3 000000000000000E "apoth mumble" "Ability_Creature_Disease_05"
-++++++++++++++++++++
-Apoth Mumble
-mumble.apotheosisguild.net
-64738
-narphlovesfigureskating
-++++++++++++++++++++
-END
-VER 3 0000000000000054 "open raid" "Ability_Druid_HealingInstincts"
-Openraid Mumble.
-IP: ormumble.typefrag.com 
-Port: 64738
-Password: raidopen
 END
 VER 3 0000000000000035 "world marks" "ability_deathknight_hemorrhagicfever"
 /cwm [mod:shift] all

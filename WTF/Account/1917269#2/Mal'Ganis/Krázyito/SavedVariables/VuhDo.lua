@@ -4582,7 +4582,6 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
-			["ordering"] = 0,
 			["groups"] = {
 				6, -- [1]
 				5, -- [2]
@@ -4592,6 +4591,7 @@ VUHDO_PANEL_SETUP = {
 				1, -- [6]
 			},
 			["sort"] = 6,
+			["ordering"] = 0,
 			["isReverse"] = true,
 		},
 		["TOOLTIP"] = {
@@ -4751,11 +4751,11 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
-			["ordering"] = 1,
 			["groups"] = {
 				42, -- [1]
 			},
 			["sort"] = 7,
+			["ordering"] = 1,
 			["isReverse"] = false,
 		},
 		["TOOLTIP"] = {
@@ -6951,14 +6951,44 @@ VUHDO_PANEL_SETUP = {
 	},
 }
 VUHDO_SPELL_ASSIGNMENTS = {
+	["altctrl2"] = {
+		"alt-ctrl-", -- [1]
+		"2", -- [2]
+		"Purge", -- [3]
+	},
+	["shift3"] = {
+		"shift-", -- [1]
+		"3", -- [2]
+		"menu", -- [3]
+	},
+	["ctrl1"] = {
+		nil, -- [1]
+		"1", -- [2]
+		"water walking", -- [3]
+	},
+	["alt3"] = {
+		"alt-", -- [1]
+		"3", -- [2]
+		"menu", -- [3]
+	},
 	["1"] = {
 		"", -- [1]
 		"1", -- [2]
 		"Healing Wave", -- [3]
 	},
-	["altctrl2"] = {
+	["shift1"] = {
+		"shift-", -- [1]
+		"1", -- [2]
+		"target", -- [3]
+	},
+	["alt1"] = {
+		"alt-", -- [1]
+		"1", -- [2]
+		"Earth Shield", -- [3]
+	},
+	["altctrl1"] = {
 		"alt-ctrl-", -- [1]
-		"2", -- [2]
+		"1", -- [2]
 		"Purge", -- [3]
 	},
 	["3"] = {
@@ -6971,43 +7001,18 @@ VUHDO_SPELL_ASSIGNMENTS = {
 		"2", -- [2]
 		"healing surge", -- [3]
 	},
-	["shift1"] = {
-		"shift-", -- [1]
-		"1", -- [2]
-		"target", -- [3]
-	},
-	["shift3"] = {
-		"shift-", -- [1]
-		"3", -- [2]
-		"menu", -- [3]
-	},
-	["altctrl1"] = {
-		"alt-ctrl-", -- [1]
-		"1", -- [2]
-		"Purge", -- [3]
-	},
-	["alt3"] = {
-		"alt-", -- [1]
-		"3", -- [2]
-		"menu", -- [3]
-	},
 	["alt2"] = {
 		"alt-", -- [1]
 		"2", -- [2]
 		"Gift of the Naaru", -- [3]
 	},
-	["ctrl1"] = {
-		nil, -- [1]
-		"1", -- [2]
-		"water walking", -- [3]
-	},
-	["alt1"] = {
-		"alt-", -- [1]
-		"1", -- [2]
-		"Earth Shield", -- [3]
-	},
 }
 VUHDO_HOSTILE_SPELL_ASSIGNMENTS = {
+	["1"] = {
+		"", -- [1]
+		"1", -- [2]
+		"Lightning Bolt", -- [3]
+	},
 	["3"] = {
 		"", -- [1]
 		"3", -- [2]
@@ -7016,7 +7021,7 @@ VUHDO_HOSTILE_SPELL_ASSIGNMENTS = {
 	["2"] = {
 		"", -- [1]
 		"2", -- [2]
-		"Hex", -- [3]
+		"Lava Burst", -- [3]
 	},
 }
 VUHDO_MM_SETTINGS = {
@@ -7502,19 +7507,19 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
 			"", -- [1]
 			"-w2", -- [2]
-			"", -- [3]
+			"Flame Shock", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
 			"", -- [3]
 		},
 		["shift2"] = {
@@ -7567,9 +7572,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w3", -- [2]
 			"", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 	},
@@ -7599,19 +7604,19 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
 			"", -- [1]
 			"-w2", -- [2]
-			"unleash life", -- [3]
+			"", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
 			"", -- [3]
 		},
 		["shift2"] = {
@@ -7664,9 +7669,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w3", -- [2]
 			"", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 	},
@@ -7710,11 +7715,11 @@ VUHDO_RAID = {
 		["zone"] = "Frostwall",
 		["baseRange"] = true,
 		["class"] = "SHAMAN",
-		["role"] = 63,
+		["role"] = 62,
 		["sortMaxHp"] = 246900,
 		["map"] = "garrisonffhorde_tier3",
 		["threat"] = 0,
-		["powermax"] = 160000,
+		["powermax"] = 100,
 		["threatPerc"] = 0,
 		["isPet"] = false,
 		["name"] = "Krázyito",
@@ -7724,12 +7729,12 @@ VUHDO_RAID = {
 		["classId"] = 26,
 		["range"] = true,
 		["unit"] = "player",
-		["powertype"] = 0,
+		["powertype"] = 11,
 		["healthmax"] = 246900,
 		["dead"] = false,
 		["charmed"] = false,
 		["fullName"] = "Krázyito",
-		["power"] = 160000,
+		["power"] = 0,
 		["aggro"] = false,
 		["visible"] = true,
 		["targetUnit"] = "target",
@@ -7759,16 +7764,16 @@ VUHDO_INDICATOR_CONFIG = {
 			"", -- [9]
 			"", -- [10]
 		},
-		["SIDE_LEFT"] = "",
+		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
 		["INCOMING_BAR"] = "",
-		["CLUSTER_BORDER"] = "",
+		["DAMAGE_FLASH_BAR"] = "",
 		["THREAT_MARK"] = "",
-		["SIDE_RIGHT"] = "",
 		["MANA_BAR"] = "Manabars: All Powers",
 		["BAR_BORDER"] = "Border: Multi + Aggro",
+		["SIDE_RIGHT"] = "",
 		["HEALTH_BAR"] = "Health Bar: (generic, gradient)",
-		["DAMAGE_FLASH_BAR"] = "",
-		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
+		["CLUSTER_BORDER"] = "",
+		["SIDE_LEFT"] = "",
 	},
 	["CUSTOM"] = {
 		["THREAT_BAR"] = {

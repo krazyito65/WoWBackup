@@ -6,7 +6,7 @@ SimulationcraftDB = {
 		["Krâzyito - Mal'Ganis"] = "Default",
 		["Krazyitò - Gnomeregan"] = "Default",
 		["Krazyito - Illidan"] = "Default",
-		["Krazyitó - Gnomeregan"] = "Default",
+		["Krazyíto - Gnomeregan"] = "Default",
 		["Krazyíto - Mal'Ganis"] = "Default",
 		["Krazyito - Burning Blade"] = "Default",
 		["Krazybank - Mal'Ganis"] = "Default",
@@ -22,7 +22,7 @@ SimulationcraftDB = {
 		["Krazýito - Mal'Ganis"] = "Default",
 		["Krazymonk - Sargeras"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krazyíto - Gnomeregan"] = "Default",
+		["Krazyitó - Gnomeregan"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {

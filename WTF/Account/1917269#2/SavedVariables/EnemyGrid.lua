@@ -1,9 +1,9 @@
 
 EnemyGridDB = {
 	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
 		["Krázyito - Mal'Ganis"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
