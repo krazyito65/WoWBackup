@@ -2,7 +2,7 @@
 -- Prototype
 --
 
-local L = LibStub("AceLocale-3.0"):GetLocale("Big Wigs: Common")
+local L = LibStub("AceLocale-3.0"):GetLocale("BigWigs: Common")
 local UnitAffectingCombat, UnitIsPlayer, UnitGUID, UnitPosition, UnitDistanceSquared, UnitIsConnected = UnitAffectingCombat, UnitIsPlayer, UnitGUID, UnitPosition, UnitDistanceSquared, UnitIsConnected
 local EJ_GetSectionInfo, GetSpellInfo, GetSpellTexture, IsSpellKnown = EJ_GetSectionInfo, GetSpellInfo, GetSpellTexture, IsSpellKnown
 local UnitGroupRolesAssigned = UnitGroupRolesAssigned
@@ -1305,12 +1305,6 @@ end
 function boss:Berserk(seconds, noEngageMessage, customBoss, customBerserk, customFinalMessage)
 	local name = customBoss or self.displayName
 	local key = "berserk"
-
-	-- Engage warning with no enrage
-	-- if not seconds then
-	-- 	self:Message(key, "Attention", nil, ("% engaged"):format(name), false)
-	-- 	return
-	-- end
 
 	-- There are many Berserks, but we use 26662 because Brutallus uses this one.
 	-- Brutallus is da bomb.

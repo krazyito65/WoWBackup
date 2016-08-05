@@ -3,7 +3,7 @@
 ## Notes: Computes detailed infos about combats.
 ## SavedVariables: _detalhes_global
 ## SavedVariablesPerCharacter: _detalhes_database
-## X-Curse-Packaged-Version: r527
+## X-Curse-Packaged-Version: r532
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

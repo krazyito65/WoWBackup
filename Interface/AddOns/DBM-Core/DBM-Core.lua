@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15093 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15096 $"):sub(12, -3)),
 	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
 	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
 }
@@ -1140,16 +1140,19 @@ do
 			if GetAddOnEnableState(playerName, "VEM-Core") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_VEM) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_VEM) end)
 				return
 			end
 			if GetAddOnEnableState(playerName, "DBM-Profiles") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_3RDPROFILES) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_3RDPROFILES) end)
 				return
 			end
 			if GetAddOnEnableState(playerName, "DPMCore") >= 1 then
 				self:Disable(true)
 				C_TimerAfter(10, function() self:AddMsg(DBM_CORE_DPMCORE) end)
+				C_TimerAfter(20, function() self:AddMsg(DBM_CORE_DPMCORE) end)
 				return
 			end
 			self.Bars:LoadOptions("DBM")
@@ -5115,12 +5118,6 @@ do
 			end
 		end
 	end
-
-	local function endCombat(v, success, encounterID)
-		if not v.combatInfo then return end--Was terminated by UNIT_DIED or YELL (which means probably wrath zone and we already have end combat, so cancel this delayed wipe)
-		DBM:EndCombat(v, success == 0)
-		sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
-	end
 	
 	function DBM:ENCOUNTER_END(encounterID, name, difficulty, size, success)
 		self:Debug("ENCOUNTER_END event fired: "..encounterID.." "..name.." "..difficulty.." "..size.." "..success)
@@ -5134,22 +5131,14 @@ do
 			if v.multiEncounterPullDetection then
 				for _, eId in ipairs(v.multiEncounterPullDetection) do
 					if encounterID == eId then
-						if bossuIdFound or success == 1 then
-							self:EndCombat(v, success == 0)
-							sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
-						else--hack wotlk instance EE bug. wotlk instances always wipe, so delay 3sec do actual wipe.
-							self:Schedule(3, endCombat, v, success, encounterID)
-						end
+						self:EndCombat(v, success == 0)
+						sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 						return
 					end
 				end
 			elseif encounterID == v.combatInfo.eId then
-				if bossuIdFound or success == 1 then
-					self:EndCombat(v, success == 0)
-					sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
-				else--hack wotlk instance EE bug. wotlk instances always wipe, so delay 3sec do actual wipe.
-					self:Schedule(3, endCombat, v, success, encounterID)
-				end
+				self:EndCombat(v, success == 0)
+				sendSync("EE", encounterID.."\t"..success.."\t"..v.id.."\t"..(v.revision or 0))
 				return
 			end
 		end

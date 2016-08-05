@@ -1,11 +1,11 @@
 ## Interface: 70000
 ## Title: Ask Mr. Robot
 ## Author: Team Robot, Inc.
-## Version: 38
+## Version: 39
 ## Notes: Gear import/export, combat logging, and more.
 ## URL: www.askmrrobot.com
 ## SavedVariables: AskMrRobotDb3
-## X-Curse-Packaged-Version: v38
+## X-Curse-Packaged-Version: v39
 ## X-Curse-Project-Name: AskMrRobot
 ## X-Curse-Project-ID: askmrrobot
 ## X-Curse-Repository-ID: wow/askmrrobot/mainline
@@ -24,6 +24,7 @@ Libs\AceLocale-3.0\AceLocale-3.0.xml
 Libs\AceGUI-3.0\AceGUI-3.0.xml
 
 localization\enUS.lua
+localization\ruRU.lua
 ##localization\frFR.lua
 ##localization\itIT.lua
 

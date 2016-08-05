@@ -848,7 +848,7 @@ function module.options:Load()
 							else
 								local isAddonOn = false
 								for long_name,_ in pairs(parentModule.db.artifactNoResDB) do
-									if ExRT.F.delUnitNameServer(long_name) == name then
+									if ExRT.F.delUnitNameServer(long_name) == ExRT.F.delUnitNameServer(name) then
 										isAddonOn = true
 										break
 									end						

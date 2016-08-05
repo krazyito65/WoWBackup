@@ -1,5 +1,5 @@
 
-local dversion = 24
+local dversion = 30
 local major, minor = "DetailsFramework-1.0", dversion
 local DF, oldminor = LibStub:NewLibrary (major, minor)
 
@@ -110,6 +110,9 @@ local embed_functions = {
 	"SetFrameworkDebugState",
 	"FindHighestParent",
 	"OpenInterfaceProfile",
+	"CreateInCombatTexture",
+	"CreateAnimationHub",
+	"CreateAnimation",
 }
 
 DF.table = {}
@@ -562,6 +565,10 @@ end
 				slider.widget_type = "range"
 				slider:SetHook ("OnValueChange", widget_table.set)
 				
+				if (widget_table.thumbscale) then
+					slider:SetThumbSize (slider.thumb:GetWidth()*widget_table.thumbscale, nil)
+				end
+				
 				local label = DF:NewLabel (parent, nil, "$parentLabel" .. index, nil, widget_table.name .. (use_two_points and ": " or ""), "GameFontNormal", widget_table.text_template or text_template or 12)
 				slider:SetPoint ("left", label, "right", 2)
 				label:SetPoint (cur_x, cur_y)
@@ -683,6 +690,34 @@ end
 			
 		end
 	end)
+	
+	function DF:CreateInCombatTexture (frame)
+		if (DF.debug and not frame) then
+			error ("Details! Framework: CreateInCombatTexture invalid frame on parameter 1.")
+		end
+	
+		local in_combat_background = DF:CreateImage (frame)
+		in_combat_background:SetColorTexture (.6, 0, 0, .1)
+		in_combat_background:Hide()
+
+		local in_combat_label = Plater:CreateLabel (frame, "you are in combat", 24, "silver")
+		in_combat_label:SetPoint ("right", in_combat_background, "right", -10, 0)
+		in_combat_label:Hide()
+
+		frame:RegisterEvent ("PLAYER_REGEN_DISABLED")
+		frame:RegisterEvent ("PLAYER_REGEN_ENABLED")
+		frame:SetScript ("OnEvent", function (self, event)
+			if (event == "PLAYER_REGEN_DISABLED") then
+				in_combat_background:Show()
+				in_combat_label:Show()
+			elseif (event == "PLAYER_REGEN_ENABLED") then
+				in_combat_background:Hide()
+				in_combat_label:Hide()
+			end
+		end)
+		
+		return in_combat_background
+	end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --> tutorials
@@ -1051,6 +1086,7 @@ DF.GlobalWidgetControlNames = {
 	image = "DF_ImageMetaFunctions",
 	slider = "DF_SliderMetaFunctions",
 	split_bar = "DF_SplitBarMetaFunctions",
+	aura_tracker = "DF_AuraTracker",
 }
 
 function DF:AddMemberForWidget (widgetName, memberType, memberName, func)
@@ -1126,3 +1162,39 @@ function DF:Mixin (object, ...)
 
 	return object;
 end
+
+-----------------------------
+
+function DF:CreateAnimationHub (parent, onPlay, onFinished)
+	local newAnimation = parent:CreateAnimationGroup()
+	newAnimation:SetScript ("OnPlay", onPlay)
+	newAnimation:SetScript ("OnFinished", onFinished)
+	newAnimation.NextAnimation = 1
+	return newAnimation
+end
+
+function DF:CreateAnimation (animation, type, duration, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+	local anim = animation:CreateAnimation (type)
+
+	anim:SetOrder (animation.NextAnimation)
+	anim:SetDuration (duration)
+	
+	if (type == "Alpha") then
+		anim:SetFromAlpha (arg1)
+		anim:SetToAlpha (arg2)
+		
+	elseif (type == "Scale") then
+		anim:SetFromScale (arg1, arg2)
+		anim:SetToScale (arg3, arg4)
+		anim:SetOrigin (arg5 or "center", arg6 or 0, arg7 or 0) --point, x, y
+	
+	elseif (type == "Rotation") then
+		anim:SetDegrees (arg1) --degree
+		anim:SetOrigin (arg2 or "center", arg3 or 0, arg4 or 0) --point, x, y
+	end
+	
+	animation.NextAnimation = animation.NextAnimation + 1	
+	return anim
+end
+
+

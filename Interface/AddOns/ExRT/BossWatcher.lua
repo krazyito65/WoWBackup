@@ -211,24 +211,24 @@ module.db.reductionAuras = {
 	--Warrior
 	[871] = 0.6,		--Shield Wall
 	[23920] = {0.7,ReductionAurasFunctions.magic},	--Spell Reflect
-	[118038] = {0.7,nil,function(_,_,auraVar) return (100+auraVar)/100 end},	--Die by the Sword
+	[118038] = {0.7,nil,function(_,auraVar) return (100+auraVar)/100 end},	--Die by the Sword
 	[197690] = 0.8,		--Defensive Stance
 	[184364] = 0.7,		--Enraged Regeneration
 
 	--Paladin
-	[210320] = {0.8,nil,function(_,auraVar) return (100+auraVar)/100 end},	--Devotion Aura
+	[210320] = {0.8,nil,function(auraVar) return (100+auraVar)/100 end},	--Devotion Aura
 	[498] = 0.8,		--Divine Protection
-	[211422] = {0.8,nil,function(_,auraVar) return (100+auraVar)/100 end},	--Holy: Artifact: Judge
+	[211422] = {0.8,nil,function(auraVar) return (100+auraVar)/100 end},	--Holy: Artifact: Judge
 	[86659] = 0.5,		--Guardian of Ancient Kings
 	[31850] = 0.8,		--Ardent Defender
-	[132403] = {1,function(_,auraVar) return (100+auraVar)/100 end},	--Shield of the Righteous
+	[132403] = {1,function(auraVar) return (100+auraVar)/100 end},	--Shield of the Righteous
 	[205191] = 0.65,	--Eye for an eye
 	
 	--Hunter
-	[186265] = {0.7,nil,function(_,_,_,_,auraVar) return (100+auraVar)/100 end},	--Aspect of the Turtle
+	[186265] = {0.7,nil,function(_,_,_,auraVar) return (100+auraVar)/100 end},	--Aspect of the Turtle
 
 	--Rouge
-	[1966] = {1,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Feint
+	[1966] = {1,nil,function(_,auraVar) return (100+auraVar)/100 end},		--Feint
 	[45182] = 0.15,									--Cheating Death
 
 	--Priest
@@ -238,7 +238,7 @@ module.db.reductionAuras = {
 	[47585] = 0.4,		--Dispersion
 
 	--DK
-	[48792] = {0.8,nil,function(_,_,_,auraVar) return (100+auraVar)/100 end},		--Icebound Fortitude
+	[48792] = {0.8,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Icebound Fortitude
 	[195181] = 0.8,		--Bone Shield
 	[194679] = 0.75,	--Rune Tap
 
@@ -249,26 +249,26 @@ module.db.reductionAuras = {
 	[113862] = 0.4,		--Greater Invisibility
 
 	--Warlock
-	[104773] = {0.6,nil,function(_,_,_,auraVar) return (100+auraVar)/100 end},		--Unending Resolve
+	[104773] = {0.6,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Unending Resolve
 
 	--Monk
 	[122278] = {0.7,ReductionAurasFunctions.dampenHarmCheck},	--Dampen Harm		Note: for HP ~363k (700 gear); may work incorrect: hit for 56k will be reducted to 28k and doesn't counting, so only big hits will be recorded
-	[122783] = {0.4,ReductionAurasFunctions.magic,function(_,auraVar) return (100+auraVar)/100,ReductionAurasFunctions.magic end},		--Diffuse Magic
+	[122783] = {0.4,ReductionAurasFunctions.magic,function(auraVar) return (100+auraVar)/100,ReductionAurasFunctions.magic end},		--Diffuse Magic
 	--[115176] = 0.4,		--Zen Meditation	No aura
-	[120954] = {0.8,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Fortifying Brew
+	[120954] = {0.8,nil,function(_,auraVar) return (100+auraVar)/100 end},		--Fortifying Brew
 
 	--Druid
-	[22812] = {0.8,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Barkskin
-	[102342] = {0.8,nil,function(_,auraVar) return (100+auraVar)/100 end},		--Ironbark
+	[22812] = {0.8,nil,function(_,auraVar) return (100+auraVar)/100 end},		--Barkskin
+	[102342] = {0.8,nil,function(auraVar) return (100+auraVar)/100 end},		--Ironbark
 	[61336] = 0.5,		--Survival Instincts
 	[192083] = {0.7,ReductionAurasFunctions.magic},					--Mark of Ursol
 	[158792] = 0.92,	--Pulverize
 	--Druid affinity
 	
 	--DH
-	[212800] = {0.65,nil,function(_,_,_,auraVar) return (100+auraVar)/100 end},		--Blur
+	[212800] = {0.65,nil,function(_,_,auraVar) return (100+auraVar)/100 end},		--Blur
 	[218256] = {0.7,ReductionAurasFunctions.magic},			--Empower Wards
-	[203720] = {0.8,ReductionAurasFunctions.physical,function(_,_,auraVar) return (100+auraVar)/100,ReductionAurasFunctions.physical end},	--Demon Spikes	
+	[203720] = {0.8,ReductionAurasFunctions.physical,function(_,auraVar) return (100+auraVar)/100,ReductionAurasFunctions.physical end},	--Demon Spikes	
 
 	--Other
 	[65116] = {0.9,ReductionAurasFunctions.physical},	--Stoneform
@@ -515,32 +515,7 @@ function module.options:Load()
 	end)
 	
 	self.chatText = ELib:Text(self,L.BossWatcherOptionsHelp,12):Size(600,250):Point(15,-235):Top():Color():Shadow()
-	
-	self.checkHideMageT100 = ELib:Check(self,L.BossWatcherHidePrismatic,not VExRT.BossWatcher.showPrismatic):Point(15,-350):Tooltip(L.BossWatcherHidePrismaticTooltip):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.BossWatcher.showPrismatic = nil
-		else
-			VExRT.BossWatcher.showPrismatic = true
-		end
-		module.db.lastFightID = module.db.lastFightID + 1
-		module.db.data[module.db.nowNum].fightID = module.db.lastFightID
-		if BWInterfaceFrame then
-			BWInterfaceFrame.nowFightID = module.db.lastFightID
-		end
-	end)
-	self.checkDivisionByZeroMageT100 = ELib:Check(self,L.BossWatcherDisablePrismatic,VExRT.BossWatcher.divisionPrismatic):Point(15,-375):Tooltip(L.BossWatcherDisablePrismaticTooltip):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.BossWatcher.divisionPrismatic = true
-		else
-			VExRT.BossWatcher.divisionPrismatic = nil
-		end
-		module.db.lastFightID = module.db.lastFightID + 1
-		module.db.data[module.db.nowNum].fightID = module.db.lastFightID
-		if BWInterfaceFrame then
-			BWInterfaceFrame.nowFightID = module.db.lastFightID
-		end
-	end)
-	
+		
 	function module.options:AdditionalOnShow()
 		if ExRT.Options.Frame:IsShown() then
 			module.options:SetParent(ExRT.Options.Frame)
@@ -633,7 +608,7 @@ local function addDeath(destGUID,timestamp)
 			copyTable.b,
 			copyTable.ab,
 			copyTable.c,
-			copyTable.m,
+			false,
 			copyTable.h,
 			copyTable.hm,
 			copyTable.ia,
@@ -648,7 +623,6 @@ local function addDeath(destGUID,timestamp)
 		copyTable.b = nil
 		copyTable.ab = nil
 		copyTable.c = nil
-		copyTable.m = nil
 		copyTable.h = nil
 		copyTable.hm = nil
 		copyTable.ia = nil
@@ -667,7 +641,7 @@ local function addDeath(destGUID,timestamp)
 			copyTable.b,
 			copyTable.ab,
 			copyTable.c,
-			copyTable.m,
+			false,
 			copyTable.h,
 			copyTable.hm,
 			copyTable.ia,
@@ -682,7 +656,6 @@ local function addDeath(destGUID,timestamp)
 		copyTable.b = nil
 		copyTable.ab = nil
 		copyTable.c = nil
-		copyTable.m = nil
 		copyTable.h = nil
 		copyTable.hm = nil
 		copyTable.ia = nil
@@ -690,7 +663,7 @@ local function addDeath(destGUID,timestamp)
 	destData.c = 0
 end
 
-local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,_,_,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand,multistrike,missType)
+local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,spellID,_,_,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand,missType)
 	--Note, missType param added by myself for tracking function
 	
 	--------------> Add damage
@@ -716,9 +689,6 @@ local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFla
 			crit = 0,
 			critcount = 0,
 			critmax = 0,
-			ms = 0,
-			mscount = 0,
-			msmax = 0,
 			hitmax = 0,
 			parry = 0,
 			dodge = 0,
@@ -740,19 +710,13 @@ local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFla
 	if absorbed then
 		spellTable.absorbed = spellTable.absorbed + absorbed
 	end
-	if critical and not multistrike then
+	if critical then
 		spellTable.crit = spellTable.crit + amount
 		spellTable.critcount = spellTable.critcount + 1
 		if spellTable.critmax < amount then
 			spellTable.critmax = amount
 		end
-	elseif multistrike then
-		spellTable.ms = spellTable.ms + amount
-		spellTable.mscount = spellTable.mscount + 1
-		if spellTable.msmax < amount then
-			spellTable.msmax = amount
-		end
-	elseif not critical and not multistrike and spellTable.hitmax < amount then
+	elseif spellTable.hitmax < amount then
 		spellTable.hitmax = amount
 	end
 	
@@ -784,7 +748,6 @@ local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFla
 	deathLine.b = blocked
 	deathLine.ab = absorbed
 	deathLine.c = critical
-	deathLine.m = multistrike
 	deathLine.ia = nil
 	local player = raidGUIDs[ destGUID ]
 	if player then
@@ -891,7 +854,7 @@ local function addDamage(_,timestamp,sourceGUID,sourceName,sourceFlags,sourceFla
 		if not fightData.tracking then
 			fightData.tracking = {}
 		end
-		fightData.tracking[#fightData.tracking + 1] = {timestamp,sourceGUID,sourceFlags2,destGUID,destFlags2,spellID,amount,overkill,school,blocked,absorbed,critical,multistrike,missType}
+		fightData.tracking[#fightData.tracking + 1] = {timestamp,sourceGUID,sourceFlags2,destGUID,destFlags2,spellID,amount,overkill,school,blocked,absorbed,critical,missType}
 	end
 	
 	
@@ -937,15 +900,15 @@ local function AddMiss(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,
 	elseif missType == "BLOCK" then
 		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,amountMissed,nil,nil,nil,nil,isOffHand)
 	elseif missType == "PARRY" then
-		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,nil,missType)
+		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,missType)
 		local spellTable = fightData_damage[destGUID][sourceGUID][spellID]
 		spellTable.parry = spellTable.parry + 1
 	elseif missType == "DODGE" then
-		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,nil,missType)
+		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,missType)
 		local spellTable = fightData_damage[destGUID][sourceGUID][spellID]
 		spellTable.dodge = spellTable.dodge + 1
 	else
-		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,nil,missType)
+		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,spellID,nil,nil,0,0,school,nil,nil,nil,nil,nil,nil,isOffHand,missType)
 		local spellTable = fightData_damage[destGUID][sourceGUID][spellID]
 		spellTable.miss = spellTable.miss + 1	
 	end
@@ -962,9 +925,9 @@ do
 		["Slime"] = 16456,
 		-- UnkEnvDamage = 48360,
 	}
-	AddEnvironmentalDamage = function(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,destName,destFlags,_,environmentalType,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand,multistrike)
+	AddEnvironmentalDamage = function(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,destName,destFlags,_,environmentalType,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand)
 		local environmentalSpellID = environmentalType and EnvironmentalTypeToSpellID[environmentalType] or 48360
-		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,environmentalSpellID,nil,nil,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand,multistrike)
+		addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,environmentalSpellID,nil,nil,amount,overkill,school,resisted,blocked,absorbed,critical,glancing,crushing,isOffHand)
 	end
 end
 
@@ -975,7 +938,7 @@ absorbed = if spell absorbed by ability (ex. DK's egg, Koragh shadow phase)
 absorbs = if spell is absorb (ex. PW:S, HPally mastery, BloodDK mastery)
 ]]
 
-local function addHeal(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,destName,destFlags,_,spellID,_,school,amount,overhealing,absorbed,critical,multistrike)
+local function addHeal(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,destName,destFlags,_,spellID,_,school,amount,overhealing,absorbed,critical)
 	--------------> Add heal
 	local sourceTable = fightData_heal[sourceGUID]
 	if not sourceTable then
@@ -998,10 +961,6 @@ local function addHeal(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,
 			critcount = 0,
 			critmax = 0,
 			critover = 0,
-			ms = 0,
-			mscount = 0,
-			msmax = 0,
-			msover = 0,
 			hitmax = 0,
 			absorbs = 0,
 		}
@@ -1012,21 +971,14 @@ local function addHeal(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,
 	spellTable.over = spellTable.over + overhealing
 	spellTable.absorbed = spellTable.absorbed + absorbed
 	spellTable.count = spellTable.count + 1
-	if critical and not multistrike then
+	if critical then
 		spellTable.crit = spellTable.crit + amount + absorbed
 		spellTable.critcount = spellTable.critcount + 1
 		if spellTable.critmax < amount then
 			spellTable.critmax = amount
 		end
 		spellTable.critover = spellTable.critover + overhealing
-	elseif multistrike then
-		spellTable.ms = spellTable.ms + amount + absorbed
-		spellTable.mscount = spellTable.mscount + 1
-		if spellTable.msmax < amount then
-			spellTable.msmax = amount
-		end
-		spellTable.msover = spellTable.msover + overhealing		
-	elseif not critical and not multistrike and spellTable.hitmax < amount then
+	elseif spellTable.hitmax < amount then
 		spellTable.hitmax = amount
 	end
 	
@@ -1058,7 +1010,6 @@ local function addHeal(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,
 	deathLine.b = nil
 	deathLine.ab = absorbed
 	deathLine.c = critical
-	deathLine.m = multistrike
 	deathLine.ia = nil
 	local player = raidGUIDs[ destGUID ]
 	if player then
@@ -1194,10 +1145,6 @@ local function addAbsorbs(_,timestamp,attackerGUID,attackerName,attackerFlags,at
 			critcount = 0,
 			critmax = 0,
 			critover = 0,
-			ms = 0,
-			mscount = 0,
-			msmax = 0,
-			msover = 0,
 			hitmax = 0,
 			absorbs = 0,
 		}
@@ -1239,7 +1186,6 @@ local function addAbsorbs(_,timestamp,attackerGUID,attackerName,attackerFlags,at
 	deathLine.b = nil
 	deathLine.ab = nil
 	deathLine.c = nil
-	deathLine.m = nil
 	deathLine.ia = amount
 	local player = raidGUIDs[ destGUID ]
 	if player then
@@ -1313,7 +1259,7 @@ local function addAura(_,timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,
 		end
 		
 		if funcAura then
-			local _,_,_,_,_,_,_,_,_,_,_,_,_,_,_,val1,val2,val3,val4,val5 = UnitAura(destName or "?",spellName or "?")
+			local _,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,val1,val2,val3,val4,val5 = UnitAura(destName or "?",spellName or "?")
 			if val1 then
 				reduction, func = funcAura(val1 or 0,val2 or 0,val3 or 0,val4 or 0,val5 or 0)
 				if not reduction then
@@ -1573,6 +1519,7 @@ local function addReductionOnPull(unit,destGUID)
 	end
 	
 	if unitInspectData and unitInspectData.class == "DRUID" and specID ~= 104 then
+		--Guardian affinity
 		if (unitInspectData[3] == 2 and specID ~= 105) or (unitInspectData[3] == 3 and specID == 105) then
 			var_reductionCurrent[ destGUID ] = {
 				{
@@ -1589,7 +1536,7 @@ local function addReductionOnPull(unit,destGUID)
 	
 	--------------> Add active reductions from current auras
 	for i=1,40 do
-		local _,_,_,stacksCount,_,_,_,casterUnit,_,_,spellID,_,_,_,_,val1,val2,val3,val4,val5 = UnitAura(unit,i)
+		local _,_,_,stacksCount,_,_,_,casterUnit,_,_,spellID,_,_,_,_,_,val1,val2,val3,val4,val5 = UnitAura(unit,i)
 		
 		if not spellID then
 			return
@@ -1672,12 +1619,13 @@ end
 
 
 function AddSegmentToData(seg)
+	local nowData = module.db.nowData
 	local segmentData = module.db.data[module.db.nowNum].fight[seg]
 	for destGUID,destData in pairs(segmentData.damage) do
-		local _now = module.db.nowData.damage[destGUID]
+		local _now = nowData.damage[destGUID]
 		if not _now then
 			_now = {}
-			module.db.nowData.damage[destGUID] = _now
+			nowData.damage[destGUID] = _now
 		end
 		for sourceGUID,sourceData in pairs(destData) do
 			local _source = _now[sourceGUID]
@@ -1697,9 +1645,6 @@ function AddSegmentToData(seg)
 						crit = 0,
 						critcount = 0,
 						critmax = 0,
-						ms = 0,
-						mscount = 0,
-						msmax = 0,
 						hitmax = 0,
 						parry = 0,
 						dodge = 0,
@@ -1708,7 +1653,7 @@ function AddSegmentToData(seg)
 					_source[spellID] = _spell
 				end
 				for dataName,dataAmount in pairs(spellData) do
-					if dataName:find("max") then
+					if dataName == "critmax" or dataName == "hitmax" then
 						_spell[dataName] = max(_spell[dataName],dataAmount)
 					else
 						_spell[dataName] = _spell[dataName] + dataAmount
@@ -1718,17 +1663,17 @@ function AddSegmentToData(seg)
 		end		
 	end
 	for destGUID,seen in pairs(segmentData.damage_seen) do
-		if module.db.nowData.damage_seen[destGUID] then
-			module.db.nowData.damage_seen[destGUID] = min(module.db.nowData.damage_seen[destGUID],seen)
+		if nowData.damage_seen[destGUID] then
+			nowData.damage_seen[destGUID] = min(nowData.damage_seen[destGUID],seen)
 		else
-			module.db.nowData.damage_seen[destGUID] = seen
+			nowData.damage_seen[destGUID] = seen
 		end
 	end
 	for sourceGUID,sourceData in pairs(segmentData.heal) do
-		local _source = module.db.nowData.heal[sourceGUID]
+		local _source = nowData.heal[sourceGUID]
 		if not _source then
 			_source = {}
-			module.db.nowData.heal[sourceGUID] = _source
+			nowData.heal[sourceGUID] = _source
 		end
 		for destGUID,destData in pairs(sourceData) do
 			local _dest = _source[destGUID]
@@ -1748,17 +1693,13 @@ function AddSegmentToData(seg)
 						critcount = 0,
 						critmax = 0,
 						critover = 0,
-						ms = 0,
-						mscount = 0,
-						msmax = 0,
-						msover = 0,
 						hitmax = 0,
 						absorbs = 0,
 					}
 					_dest[spellID] = _spell
 				end
 				for dataName,dataAmount in pairs(spellData) do
-					if dataName:find("max") then
+					if dataName == "critmax" or dataName == "hitmax" then
 						_spell[dataName] = max(_spell[dataName],dataAmount)
 					else
 						_spell[dataName] = _spell[dataName] + dataAmount
@@ -1768,60 +1709,60 @@ function AddSegmentToData(seg)
 		end
 	end
 	for targetGUID,destData in pairs(segmentData.switch) do
-		if not module.db.nowData.switch[targetGUID] then
-			module.db.nowData.switch[targetGUID] = {
+		if not nowData.switch[targetGUID] then
+			nowData.switch[targetGUID] = {
 				[1]={},	--cast
 				[2]={},	--target
 			}
 		end
 		for _type=1,2 do
 			for unitN,t in pairs(destData[_type]) do
-				if not module.db.nowData.switch[targetGUID][_type][unitN] then
-					module.db.nowData.switch[targetGUID][_type][unitN] = {t[1],t[2]}
+				if not nowData.switch[targetGUID][_type][unitN] then
+					nowData.switch[targetGUID][_type][unitN] = {t[1],t[2]}
 				end
-				if t[1] < module.db.nowData.switch[targetGUID][_type][unitN][1] then
-					module.db.nowData.switch[targetGUID][_type][unitN][1] = t[1]
-					module.db.nowData.switch[targetGUID][_type][unitN][2] = t[2]
+				if t[1] < nowData.switch[targetGUID][_type][unitN][1] then
+					nowData.switch[targetGUID][_type][unitN][1] = t[1]
+					nowData.switch[targetGUID][_type][unitN][2] = t[2]
 				end
 			end
 		end
 	end
 	for sourceGUID,destData in pairs(segmentData.cast) do
-		if not module.db.nowData.cast[sourceGUID] then
-			module.db.nowData.cast[sourceGUID] = {}
+		if not nowData.cast[sourceGUID] then
+			nowData.cast[sourceGUID] = {}
 		end
 		for i=1,#destData do
-			module.db.nowData.cast[sourceGUID][ #module.db.nowData.cast[sourceGUID]+1 ] = destData[i]
+			nowData.cast[sourceGUID][ #nowData.cast[sourceGUID]+1 ] = destData[i]
 		end
 	end
 	for i=1,#segmentData.auras do
-		module.db.nowData.auras[ #module.db.nowData.auras + 1 ] = segmentData.auras[i]
+		nowData.auras[ #nowData.auras + 1 ] = segmentData.auras[i]
 	end
 	if segmentData.dies then
 		for i=1,#segmentData.dies do
-			module.db.nowData.dies[ #module.db.nowData.dies + 1 ] = segmentData.dies[i]
+			nowData.dies[ #nowData.dies + 1 ] = segmentData.dies[i]
 		end
 	end
 	if segmentData.dispels then
 		for i=1,#segmentData.dispels do
-			module.db.nowData.dispels[ #module.db.nowData.dispels + 1 ] = segmentData.dispels[i]
+			nowData.dispels[ #nowData.dispels + 1 ] = segmentData.dispels[i]
 		end
 	end
 	if segmentData.interrupts then
 		for i=1,#segmentData.interrupts do
-			module.db.nowData.interrupts[ #module.db.nowData.interrupts + 1 ] = segmentData.interrupts[i]
+			nowData.interrupts[ #nowData.interrupts + 1 ] = segmentData.interrupts[i]
 		end
 	end
 	if segmentData.chat then
 		for i=1,#segmentData.chat do
-			module.db.nowData.chat[ #module.db.nowData.chat + 1 ] = segmentData.chat[i]
+			nowData.chat[ #nowData.chat + 1 ] = segmentData.chat[i]
 		end
 	end
 	for sourceGUID,sourceData in pairs(segmentData.power) do
-		local _sourceGUID = module.db.nowData.power[sourceGUID]
+		local _sourceGUID = nowData.power[sourceGUID]
 		if not _sourceGUID then
 			_sourceGUID = {}
-			module.db.nowData.power[sourceGUID] = _sourceGUID
+			nowData.power[sourceGUID] = _sourceGUID
 		end
 		for powerType,powerData in pairs(sourceData) do
 			local _powerType = _sourceGUID[powerType]
@@ -1841,21 +1782,21 @@ function AddSegmentToData(seg)
 		end
 	end
 	for i=1,#segmentData.deathLog do
-		local added_index = #module.db.nowData.deathLog + 1
-		module.db.nowData.deathLog[added_index] = {}
+		local added_index = #nowData.deathLog + 1
+		nowData.deathLog[added_index] = {}
 		for j=1,#segmentData.deathLog[i] do
-			module.db.nowData.deathLog[added_index][j] = segmentData.deathLog[i][j]
+			nowData.deathLog[added_index][j] = segmentData.deathLog[i][j]
 		end
 	end
 	for sourceGUID,sourceHP in pairs(segmentData.maxHP) do
-		module.db.nowData.maxHP[sourceGUID] = sourceHP
+		nowData.maxHP[sourceGUID] = sourceHP
 	end
 	
 	for destGUID,destData in pairs(segmentData.reduction) do
-		local _now = module.db.nowData.reduction[destGUID]
+		local _now = nowData.reduction[destGUID]
 		if not _now then
 			_now = {}
-			module.db.nowData.reduction[destGUID] = _now
+			nowData.reduction[destGUID] = _now
 		end
 		for sourceGUID,sourceData in pairs(destData) do
 			local _source = _now[sourceGUID]
@@ -1883,10 +1824,10 @@ function AddSegmentToData(seg)
 		end
 	end
 	for sourceGUID,sourceData in pairs(segmentData.healFrom) do
-		local _source = module.db.nowData.healFrom[sourceGUID]
+		local _source = nowData.healFrom[sourceGUID]
 		if not _source then
 			_source = {}
-			module.db.nowData.healFrom[sourceGUID] = _source
+			nowData.healFrom[sourceGUID] = _source
 		end
 		for destGUID,destData in pairs(sourceData) do
 			local _dest = _source[destGUID]
@@ -1908,22 +1849,22 @@ function AddSegmentToData(seg)
 	end
 	if segmentData.summons then
 		for i=1,#segmentData.summons do
-			module.db.nowData.summons[ #module.db.nowData.summons + 1 ] = segmentData.summons[i]
+			nowData.summons[ #nowData.summons + 1 ] = segmentData.summons[i]
 		end
 	end
 	if segmentData.aurabroken then
 		for i=1,#segmentData.aurabroken do
-			module.db.nowData.aurabroken[ #module.db.nowData.aurabroken + 1 ] = segmentData.aurabroken[i]
+			nowData.aurabroken[ #nowData.aurabroken + 1 ] = segmentData.aurabroken[i]
 		end
 	end
 	if segmentData.resurrests then
 		for i=1,#segmentData.resurrests do
-			module.db.nowData.resurrests[ #module.db.nowData.resurrests + 1 ] = segmentData.resurrests[i]
+			nowData.resurrests[ #nowData.resurrests + 1 ] = segmentData.resurrests[i]
 		end
 	end
 	if segmentData.tracking then
 		for i=1,#segmentData.tracking do
-			module.db.nowData.tracking[ #module.db.nowData.tracking + 1 ] = segmentData.tracking[i]
+			nowData.tracking[ #nowData.tracking + 1 ] = segmentData.tracking[i]
 		end
 	end
 end
@@ -2334,8 +2275,8 @@ do
 end
 
 
-function module.main:SWING_DAMAGE(timestamp,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,amount,overkill,school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand, multistrike)
-	addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,6603,nil,nil,amount,overkill,school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand, multistrike)
+function module.main:SWING_DAMAGE(timestamp,sourceGUID,sourceName,sourceFlags,sourceFlags2,destGUID,destName,destFlags,destFlags2,amount,overkill,school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand)
+	addDamage(nil,timestamp,sourceGUID,sourceName,sourceFlags,nil,destGUID,destName,destFlags,nil,6603,nil,nil,amount,overkill,school, resisted, blocked, absorbed, critical, glancing, crushing, isOffHand)
 end
 
 function module.main:SPELL_INSTAKILL(timestamp,sourceGUID,sourceName,sourceFlags,_,destGUID,destName,destFlags,_,spellID,_,school)
@@ -3998,19 +3939,10 @@ function BWInterfaceFrameLoad()
 								damage[inDamagePos][4] = damage[inDamagePos][4] + spellAmount.blocked	--blocked
 								damage[inDamagePos][5] = damage[inDamagePos][5] + spellAmount.absorbed	--absorbed
 								damage[inDamagePos][6] = damage[inDamagePos][6] + spellAmount.crit	--crit
-								damage[inDamagePos][7] = damage[inDamagePos][7] + spellAmount.ms	--ms
 								total = total + spellAmount.amount - spellAmount.overkill
 								totalOver = totalOver + spellAmount.overkill + spellAmount.blocked + spellAmount.absorbed
 								
 								destPos[2] = destPos[2] + spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-								
-								if mobID == 76933 then	--Mage T100 fix
-									local multiplier = VExRT.BossWatcher.divisionPrismatic and 0 or 1
-									damage[inDamagePos][2] = damage[inDamagePos][2] - spellAmount.amount
-									damage[inDamagePos][3] = damage[inDamagePos][3] + (spellAmount.amount * multiplier)
-									total = total - spellAmount.amount
-									totalOver = totalOver + (spellAmount.amount * multiplier)
-								end
 							end
 						end
 					end
@@ -4067,7 +3999,6 @@ function BWInterfaceFrameLoad()
 				{L.BossWatcherDamageTooltipTotal,ExRT.F.shortNumber(damage[i][2]+damage[i][3]+damage[i][4]+damage[i][5])},
 				{" "," "},
 				{L.BossWatcherDamageTooltipFromCrit,format("%s (%.1f%%)",ExRT.F.shortNumber(damage[i][6]),max(damage[i][6]/max(1,damage[i][2]+damage[i][3])*100))},
-				{L.BossWatcherDamageTooltipFromMs,format("%s (%.1f%%)",ExRT.F.shortNumber(damage[i][7]),max(damage[i][7]/max(1,damage[i][2]+damage[i][3])*100))},
 			}
 			sort(damage[i][8],DamageTab_Temp_SortingBy2Param)
 			if #damage[i][8] > 0 then
@@ -4135,9 +4066,6 @@ function BWInterfaceFrameLoad()
 								end
 								for spellID,spellAmount in pairs(sourceData) do
 									local damgeCount = spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-									if mobID == 76933 then	--Mage T100 fix
-										damgeCount = 0
-									end
 									graph[ sourceGUID ][seg] = graph[ sourceGUID ][seg] + damgeCount
 									graph[ -1 ][seg] = graph[ -1 ][seg] + damgeCount
 								end
@@ -4200,9 +4128,6 @@ function BWInterfaceFrameLoad()
 								damage[inDamagePos][7] = damage[inDamagePos][7] + spellAmount.crit	--crit
 								damage[inDamagePos][8] = damage[inDamagePos][8] + spellAmount.critcount	--crit count
 								damage[inDamagePos][9] = max(damage[inDamagePos][9],spellAmount.critmax)--crit max
-								damage[inDamagePos][10] = damage[inDamagePos][10] + spellAmount.ms	--ms
-								damage[inDamagePos][11] = damage[inDamagePos][11] + spellAmount.mscount	--ms count
-								damage[inDamagePos][12] = max(damage[inDamagePos][12],spellAmount.msmax)--ms max
 								damage[inDamagePos][13] = max(damage[inDamagePos][13],spellAmount.hitmax)--hit max
 								damage[inDamagePos][14] = damage[inDamagePos][14] + spellAmount.parry	--parry
 								damage[inDamagePos][15] = damage[inDamagePos][15] + spellAmount.dodge	--dodge
@@ -4211,14 +4136,6 @@ function BWInterfaceFrameLoad()
 								totalOver = totalOver + spellAmount.overkill + spellAmount.blocked + spellAmount.absorbed
 								
 								destPos[2] = destPos[2] + spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-								
-								if mobID == 76933 then	--Mage T100 fix
-									local multiplier = VExRT.BossWatcher.divisionPrismatic and 0 or 1
-									damage[inDamagePos][2] = damage[inDamagePos][2] - spellAmount.amount
-									damage[inDamagePos][4] = damage[inDamagePos][4] + (spellAmount.amount * multiplier)
-									total = total - spellAmount.amount
-									totalOver = totalOver + (spellAmount.amount * multiplier)
-								end
 							end
 						end
 					end
@@ -4269,17 +4186,13 @@ function BWInterfaceFrameLoad()
 			local school = module.db.spellsSchool[ damage[i][1] ] or 0
 			local tooltipData = {
 				{spellName,spellIcon},
-				{L.BossWatcherDamageTooltipCount,damage[i][3]-damage[i][11]},
+				{L.BossWatcherDamageTooltipCount,damage[i][3]},
 				{L.BossWatcherDamageTooltipMaxHit,damage[i][13]},
-				{L.BossWatcherDamageTooltipMidHit,ExRT.F.Round((damage[i][2]-damage[i][7]-damage[i][10]+damage[i][4])/max(damage[i][3]-damage[i][8]-damage[i][11],1))},
+				{L.BossWatcherDamageTooltipMidHit,ExRT.F.Round((damage[i][2]-damage[i][7]+damage[i][4])/max(damage[i][3]-damage[i][8],1))},
 				{L.BossWatcherDamageTooltiCritCount,format("%d (%.1f%%)",damage[i][8],damage[i][8]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltiCritAmount,ExRT.F.shortNumber(damage[i][7])},
 				{L.BossWatcherDamageTooltiMaxCrit,damage[i][9]},
 				{L.BossWatcherDamageTooltiMidCrit,ExRT.F.Round(damage[i][7]/max(damage[i][8],1))},
-				{L.BossWatcherDamageTooltiMsCount,format("%d (%.1f%%)",damage[i][11],damage[i][11]/damage[i][3]*100)},
-				{L.BossWatcherDamageTooltiMsAmount,ExRT.F.shortNumber(damage[i][10])},
-				{L.BossWatcherDamageTooltiMaxMs,damage[i][12]},				
-				{L.BossWatcherDamageTooltiMidMs,ExRT.F.Round(damage[i][10]/max(damage[i][11],1))},
 				{L.BossWatcherDamageTooltipParry,format("%d (%.1f%%)",damage[i][14],damage[i][14]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltipDodge,format("%d (%.1f%%)",damage[i][15],damage[i][15]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltipMiss,format("%d (%.1f%%)",damage[i][16],damage[i][16]/damage[i][3]*100)},
@@ -4370,9 +4283,6 @@ function BWInterfaceFrameLoad()
 									end
 								
 									local damgeCount = spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-									if mobID == 76933 then	--Mage T100 fix
-										damgeCount = 0
-									end
 									graph[ spellID ][seg] = graph[ spellID ][seg] + damgeCount
 									graph[ -1 ][seg] = graph[ -1 ][seg] + damgeCount
 								end
@@ -4425,19 +4335,10 @@ function BWInterfaceFrameLoad()
 							damage[inDamagePos][4] = damage[inDamagePos][4] + spellAmount.blocked	--blocked
 							damage[inDamagePos][5] = damage[inDamagePos][5] + spellAmount.absorbed	--absorbed
 							damage[inDamagePos][6] = damage[inDamagePos][6] + spellAmount.crit	--crit
-							damage[inDamagePos][7] = damage[inDamagePos][7] + spellAmount.ms	--ms
 							total = total + spellAmount.amount - spellAmount.overkill
 							totalOver = totalOver + spellAmount.overkill + spellAmount.blocked + spellAmount.absorbed
 							
 							sourcePos[2] = sourcePos[2] + spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-							
-							if mobID == 76933 then	--Mage T100 fix
-								local multiplier = VExRT.BossWatcher.divisionPrismatic and 0 or 1
-								damage[inDamagePos][2] = damage[inDamagePos][2] - spellAmount.amount
-								damage[inDamagePos][3] = damage[inDamagePos][3] + (spellAmount.amount * multiplier)
-								total = total - spellAmount.amount
-								totalOver = totalOver + (spellAmount.amount * multiplier)
-							end
 						end
 					end
 				end
@@ -4492,7 +4393,6 @@ function BWInterfaceFrameLoad()
 				{L.BossWatcherDamageTooltipTotal,ExRT.F.shortNumber(damage[i][2]+damage[i][3]+damage[i][4]+damage[i][5])},
 				{" "," "},
 				{L.BossWatcherDamageTooltipFromCrit,format("%s (%.1f%%)",ExRT.F.shortNumber(damage[i][6]),max(100,damage[i][6]/max(1,damage[i][2]+damage[i][3])*100))},
-				{L.BossWatcherDamageTooltipFromMs,format("%s (%.1f%%)",ExRT.F.shortNumber(damage[i][7]),max(100,damage[i][7]/max(1,damage[i][2]+damage[i][3])*100))},
 			}
 			sort(damage[i][8],DamageTab_Temp_SortingBy2Param)
 			if #damage[i][8] > 0 then
@@ -4562,9 +4462,6 @@ function BWInterfaceFrameLoad()
 								end
 								for spellID,spellAmount in pairs(sourceData) do
 									local damgeCount = spellAmount.amount + (DamageTab_Variables.ShowAll and (spellAmount.blocked+spellAmount.absorbed) or -spellAmount.overkill)
-									if mobID == 76933 then	--Mage T100 fix
-										damgeCount = 0
-									end
 									graph[ destGUID ][seg] = graph[ destGUID ][seg] + damgeCount
 									graph[ -1 ][seg] = graph[ -1 ][seg] + damgeCount
 								end
@@ -4619,24 +4516,13 @@ function BWInterfaceFrameLoad()
 							damage[inDamagePos][7] = damage[inDamagePos][7] + spellAmount.crit	--crit
 							damage[inDamagePos][8] = damage[inDamagePos][8] + spellAmount.critcount	--crit count
 							damage[inDamagePos][9] = max(damage[inDamagePos][9],spellAmount.critmax)--crit max
-							damage[inDamagePos][10] = damage[inDamagePos][10] + spellAmount.ms	--ms
-							damage[inDamagePos][11] = damage[inDamagePos][11] + spellAmount.mscount	--ms count
-							damage[inDamagePos][12] = max(damage[inDamagePos][12],spellAmount.msmax)--ms max
 							damage[inDamagePos][13] = max(damage[inDamagePos][13],spellAmount.hitmax)--hit max
 							damage[inDamagePos][14] = damage[inDamagePos][14] + spellAmount.parry	--parry
 							damage[inDamagePos][15] = damage[inDamagePos][15] + spellAmount.dodge	--dodge
 							damage[inDamagePos][16] = damage[inDamagePos][16] + spellAmount.miss	--other miss
 							total = total + spellAmount.amount - spellAmount.overkill
 							totalOver = totalOver + spellAmount.overkill + spellAmount.blocked + spellAmount.absorbed
-							totalCount = totalCount + spellAmount.count - spellAmount.mscount
-							
-							if mobID == 76933 then	--Mage T100 fix
-								local multiplier = VExRT.BossWatcher.divisionPrismatic and 0 or 1
-								damage[inDamagePos][2] = damage[inDamagePos][2] - spellAmount.amount
-								damage[inDamagePos][4] = damage[inDamagePos][4] + (spellAmount.amount * multiplier)
-								total = total - spellAmount.amount
-								totalOver = totalOver + (spellAmount.amount * multiplier)
-							end
+							totalCount = totalCount + spellAmount.count
 						end
 					end
 				end
@@ -4684,17 +4570,13 @@ function BWInterfaceFrameLoad()
 				icon = {"Interface\\GLUES\\CHARACTERCREATE\\UI-CHARACTERCREATE-CLASSES",unpack(CLASS_ICON_TCOORDS[class])}
 			end
 			local tooltipData = {GetGUID(damage[i][1]),
-				{L.BossWatcherDamageTooltipCount,damage[i][3]-damage[i][11]},
+				{L.BossWatcherDamageTooltipCount,damage[i][3]},
 				{L.BossWatcherDamageTooltipMaxHit,damage[i][13]},
-				{L.BossWatcherDamageTooltipMidHit,ExRT.F.Round((damage[i][2]-damage[i][7]-damage[i][10]+damage[i][4])/max(damage[i][3]-damage[i][8]-damage[i][11],1))},
+				{L.BossWatcherDamageTooltipMidHit,ExRT.F.Round((damage[i][2]-damage[i][7]+damage[i][4])/max(damage[i][3]-damage[i][8],1))},
 				{L.BossWatcherDamageTooltiCritCount,format("%d (%.1f%%)",damage[i][8],damage[i][8]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltiCritAmount,ExRT.F.shortNumber(damage[i][7])},
 				{L.BossWatcherDamageTooltiMaxCrit,damage[i][9]},
 				{L.BossWatcherDamageTooltiMidCrit,ExRT.F.Round(damage[i][7]/max(damage[i][8],1))},
-				{L.BossWatcherDamageTooltiMsCount,format("%d (%.1f%%)",damage[i][11],damage[i][11]/damage[i][3]*100)},
-				{L.BossWatcherDamageTooltiMsAmount,ExRT.F.shortNumber(damage[i][10])},
-				{L.BossWatcherDamageTooltiMaxMs,damage[i][12]},				
-				{L.BossWatcherDamageTooltiMidMs,ExRT.F.Round(damage[i][10]/max(damage[i][11],1))},
 				{L.BossWatcherDamageTooltipParry,format("%d (%.1f%%)",damage[i][14],damage[i][14]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltipDodge,format("%d (%.1f%%)",damage[i][15],damage[i][15]/damage[i][3]*100)},
 				{L.BossWatcherDamageTooltipMiss,format("%d (%.1f%%)",damage[i][16],damage[i][16]/damage[i][3]*100)},
@@ -4713,7 +4595,7 @@ function BWInterfaceFrameLoad()
 				alpha = DamageTab_Variables.ShowAll and (damage[i][4]+damage[i][5]+damage[i][6]),
 				total = total,
 				max = _max,
-				dps = damage[i][3]-damage[i][11],
+				dps = damage[i][3],
 				class = class,
 				sourceGUID = damage[i][1],
 				doEnemy = doEnemy,
@@ -4760,10 +4642,7 @@ function BWInterfaceFrameLoad()
 									graph[ -1 ][seg] = 0
 								end
 							
-								local damgeCount = spellAmount.count - spellAmount.mscount
-								if mobID == 76933 then	--Mage T100 fix
-									damgeCount = 0
-								end
+								local damgeCount = spellAmount.count
 								graph[ destGUID ][seg] = graph[ destGUID ][seg] + damgeCount
 								graph[ -1 ][seg] = graph[ -1 ][seg] + damgeCount
 							end
@@ -4915,7 +4794,7 @@ function BWInterfaceFrameLoad()
 		local destTable = {}
 		for destGUID,destData in pairs(module.db.nowData.damage) do
 			local mobID = ExRT.F.GUIDtoID(destGUID)
-			if GetUnitInfoByUnitFlagFix(module.db.data[module.db.nowNum].reaction[destGUID],2) == reaction and (mobID ~= 76933 or VExRT.BossWatcher.showPrismatic) then
+			if GetUnitInfoByUnitFlagFix(module.db.data[module.db.nowNum].reaction[destGUID],2) == reaction then
 				destTable[#destTable + 1] = {destGUID,module.db.nowData.damage_seen[destGUID] or 0}
 				for sourceGUID,sourceData in pairs(destData) do
 					local owner = ExRT.F.Pets:getOwnerGUID(sourceGUID,GetPetsDB())
@@ -6649,7 +6528,7 @@ function BWInterfaceFrameLoad()
 		local mobsList = {}
 		for mobGUID,mobData in pairs(module.db.nowData.damage) do
 			local mobID = ExRT.F.GUIDtoID(mobGUID)
-			if ExRT.F.GetUnitInfoByUnitFlag(module.db.data[module.db.nowNum].reaction[mobGUID],2) == 512 and (mobID ~= 76933 or VExRT.BossWatcher.showPrismatic) then	--76933 = Mage T100 talent Prismatic Crystal fix
+			if ExRT.F.GetUnitInfoByUnitFlag(module.db.data[module.db.nowNum].reaction[mobGUID],2) == 512 then
 				mobsList[#mobsList+1] = {GetGUID(mobGUID),module.db.nowData.damage_seen[mobGUID],mobGUID}
 			end
 		end
@@ -7684,10 +7563,10 @@ function BWInterfaceFrameLoad()
 					local blocked = trackingData[10] and trackingData[10] > 0 and " ("..ExRT.L.BossWatcherDeathBlocked..": "..ExRT.F.shortNumber(trackingData[10])..") " or ""
 					local absorbed = trackingData[11] and trackingData[11] > 0 and " ("..ExRT.L.BossWatcherDeathAbsorbed..": "..ExRT.F.shortNumber(trackingData[11])..") " or ""
 					
-					amountString = (trackingData[12] and "*" or "")..ExRT.F.shortNumber(trackingData[7] - trackingData[8])..(trackingData[12] and "*" or "")..(trackingData[13] and " ("..ExRT.L.BossWatcherDeathMultistrike..")" or "").." "..overkill..blocked..absorbed
+					amountString = (trackingData[12] and "*" or "")..ExRT.F.shortNumber(trackingData[7] - trackingData[8])..(trackingData[12] and "*" or "").." "..overkill..blocked..absorbed
 					amountString = strtrim(amountString)
 				else
-					amountString = "~"..trackingData[14].."~"
+					amountString = "~"..trackingData[13].."~"
 				end
 				
 				L[#L+1] = {date("%M:%S.", time)..format("%03d",time%1*1000),(sourceRaidTarget and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_"..sourceRaidTarget..":0|t") or "").."|c".. ExRT.F.classColorByGUID(sourceGUID)..GetGUID(sourceGUID)..GUIDtoText(" [%s]",sourceGUID).."|r > "..(destRaidTarget and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_"..destRaidTarget..":0|t") or "").."|c".. ExRT.F.classColorByGUID(destGUID)..GetGUID(destGUID)..GUIDtoText(" [%s]",destGUID).."|r: "..amountString,time}
@@ -8438,10 +8317,6 @@ function BWInterfaceFrameLoad()
 			critcount = 0,
 			critmax = 0,
 			critover = 0,
-			ms = 0,
-			mscount = 0,
-			msmax = 0,
-			msover = 0,
 			hitmax = 0,
 			absorbs = 0,
 		}
@@ -8615,10 +8490,8 @@ function BWInterfaceFrameLoad()
 								heal[inDamagePos][5] = heal[inDamagePos][5] + spellAmount.absorbed 						--absorbed
 								if HealingTab_Variables.ShowOverheal then
 									heal[inDamagePos][6] = heal[inDamagePos][6] + spellAmount.crit
-									heal[inDamagePos][7] = heal[inDamagePos][7] + spellAmount.ms
 								else
 									heal[inDamagePos][6] = heal[inDamagePos][6] + spellAmount.crit - spellAmount.critover
-									heal[inDamagePos][7] = heal[inDamagePos][7] + spellAmount.ms - spellAmount.msover					
 								end
 								heal[inDamagePos][9] = heal[inDamagePos][9] + spellAmount.absorbs						--absorbs
 								total = total + spellAmount.amount - spellAmount.over + spellAmount.absorbed
@@ -8748,7 +8621,6 @@ function BWInterfaceFrameLoad()
 				{L.BossWatcherHealTooltipTotal,ExRT.F.shortNumber(heal[i][3])},
 				{" "," "},
 				{L.BossWatcherHealTooltipFromCrit,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][6]),heal[i][6]/max(1,heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0))*100)},
-				{L.BossWatcherHealTooltipFromMs,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][7]),heal[i][7]/max(1,heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0))*100)},
 				{ACTION_SPELL_MISSED_ABSORB,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][9]),heal[i][9]/max(heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0),1)*100)},
 			}
 			sort(heal[i][8],DamageTab_Temp_SortingBy2Param)
@@ -8923,12 +8795,8 @@ function BWInterfaceFrameLoad()
 								heal[inDamagePos][7] = heal[inDamagePos][7] + spellAmount.crit 							--crit
 								heal[inDamagePos][8] = heal[inDamagePos][8] + spellAmount.critcount						--crit-count
 								heal[inDamagePos][9] = max(heal[inDamagePos][9],spellAmount.critmax)						--crit-max
-								heal[inDamagePos][10] = heal[inDamagePos][10] + spellAmount.ms							--ms
-								heal[inDamagePos][11] = heal[inDamagePos][11] + spellAmount.mscount						--ms-count
-								heal[inDamagePos][12] = max(heal[inDamagePos][12],spellAmount.msmax) 						--ms-max
 								heal[inDamagePos][13] = max(heal[inDamagePos][13],spellAmount.hitmax)						--hit-max
 								heal[inDamagePos][14] = heal[inDamagePos][14] + spellAmount.critover						--crit overheal
-								heal[inDamagePos][15] = heal[inDamagePos][15] + spellAmount.msover						--ms overheal
 								heal[inDamagePos][16] = heal[inDamagePos][16] + spellAmount.absorbs						--absorbs
 								total = total + spellAmount.amount - spellAmount.over + spellAmount.absorbed
 								totalOver = totalOver + spellAmount.over
@@ -9028,17 +8896,13 @@ function BWInterfaceFrameLoad()
 			local school = module.db.spellsSchool[ heal[i][1] ] or 0
 			local tooltipData = {
 				{spellName,spellIcon},
-				{L.BossWatcherHealTooltipCount,heal[i][6]-heal[i][11]},
+				{L.BossWatcherHealTooltipCount,heal[i][6]},
 				{L.BossWatcherHealTooltipHitMax,floor(heal[i][13])},
-				{L.BossWatcherHealTooltipHitMid,ExRT.F.Round(max(heal[i][3]-heal[i][10]-heal[i][7]-(heal[i][4]-heal[i][14]-heal[i][15]),0)/max(heal[i][6]-heal[i][8]-heal[i][11],1))},
+				{L.BossWatcherHealTooltipHitMid,ExRT.F.Round(max(heal[i][3]-heal[i][7]-(heal[i][4]-heal[i][14]),0)/max(heal[i][6]-heal[i][8],1))},
 				{L.BossWatcherHealTooltipCritCount,format("%d (%.1f%%)",heal[i][8],heal[i][8]/heal[i][6]*100)},
 				{L.BossWatcherHealTooltipCritAmount,ExRT.F.shortNumber(heal[i][7]-heal[i][14])},
 				{L.BossWatcherHealTooltipCritMax,heal[i][9]},
 				{L.BossWatcherHealTooltipCritMid,ExRT.F.Round((heal[i][7]-heal[i][14])/max(heal[i][8],1))},
-				{L.BossWatcherHealTooltipMsCount,format("%d (%.1f%%)",heal[i][11],heal[i][11]/heal[i][6]*100)},
-				{L.BossWatcherHealTooltipMsAmount,ExRT.F.shortNumber(heal[i][10]-heal[i][15])},
-				{L.BossWatcherHealTooltipMsMax,heal[i][12]},
-				{L.BossWatcherHealTooltipMsMid,ExRT.F.Round((heal[i][10]-heal[i][15])/max(heal[i][11],1))},
 				{L.BossWatcherHealTooltipOver,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][4]),heal[i][4]/max(heal[i][2]+heal[i][4],1)*100)},
 				{L.BossWatcherHealTooltipAbsorbed,ExRT.F.shortNumber(heal[i][5])},
 				{L.BossWatcherHealTooltipTotal,ExRT.F.shortNumber(heal[i][3])},
@@ -9219,10 +9083,8 @@ function BWInterfaceFrameLoad()
 								heal[inDamagePos][5] = heal[inDamagePos][5] + spellAmount.absorbed 						--absorbed
 								if HealingTab_Variables.ShowOverheal then
 									heal[inDamagePos][6] = heal[inDamagePos][6] + spellAmount.crit
-									heal[inDamagePos][7] = heal[inDamagePos][7] + spellAmount.ms
 								else
 									heal[inDamagePos][6] = heal[inDamagePos][6] + spellAmount.crit - spellAmount.critover
-									heal[inDamagePos][7] = heal[inDamagePos][7] + spellAmount.ms - spellAmount.msover					
 								end
 								heal[inDamagePos][8] = heal[inDamagePos][8] + spellAmount.absorbs						--absorbs
 								total = total + spellAmount.amount - spellAmount.over + spellAmount.absorbed
@@ -9283,7 +9145,6 @@ function BWInterfaceFrameLoad()
 				{L.BossWatcherHealTooltipTotal,ExRT.F.shortNumber(heal[i][3])},
 				{" "," "},
 				{L.BossWatcherHealTooltipFromCrit,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][6]),heal[i][6]/max(1,heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0))*100)},
-				{L.BossWatcherHealTooltipFromMs,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][7]),heal[i][7]/max(1,heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0))*100)},
 				{ACTION_SPELL_MISSED_ABSORB,format("%s (%.1f%%)",ExRT.F.shortNumber(heal[i][8]),heal[i][8]/max(heal[i][2]+(HealingTab_Variables.ShowOverheal and heal[i][4] or 0),1)*100)},
 			}
 			sort(heal[i][9],DamageTab_Temp_SortingBy2Param)
@@ -11146,7 +11007,6 @@ function BWInterfaceFrameLoad()
 					local blocked = data[i][8] and data[i][8] > 0 and " ("..L.BossWatcherDeathBlocked..":"..data[i][8]..")" or ""
 					local absorbed = data[i][9] and data[i][9] > 0 and " ("..L.BossWatcherDeathAbsorbed..":"..data[i][9]..")" or ""
 					local isCrit = data[i][10] and "*" or ""
-					local isMs = data[i][11] and " ("..L.BossWatcherDeathMultistrike..")" or ""
 					local school = " ("..GetSchoolName(data[i][7])..")"
 					local amount = data[i][5] - (data[i][6] or 0)
 					local HP = ""
@@ -11159,18 +11019,17 @@ function BWInterfaceFrameLoad()
 						name = "|c"..ExRT.F.classColorByGUID(data[i][2])..name.."|r"
 					end
 					
-					local text = HP..name.." "..L.BossWatcherDeathDamage.." |T"..spellTexture..":0|t"..spellName.." "..L.BossWatcherDeathOn.." "..isCrit..amount..isCrit .. isMs .. blocked .. absorbed .. overkill .. school
+					local text = HP..name.." "..L.BossWatcherDeathDamage.." |T"..spellTexture..":0|t"..spellName.." "..L.BossWatcherDeathOn.." "..isCrit..amount..isCrit .. blocked .. absorbed .. overkill .. school
 					
 					DeathTab_SetLine(i,timeText,text,1,0,0,data[i][4])
 					
-					reportData[9][#reportData[9] + 1] = diffTime.."s."..HP.." -"..isCrit..amount..isCrit .. isMs..blocked .. absorbed .. overkill .." ["..GetGUID(data[i][2]).." - "..GetSpellLink(data[i][4]).."]"
+					reportData[9][#reportData[9] + 1] = diffTime.."s."..HP.." -"..isCrit..amount..isCrit ..blocked .. absorbed .. overkill .." ["..GetGUID(data[i][2]).." - "..GetSpellLink(data[i][4]).."]"
 				elseif data[i][1] == 2 then
 					local spellName,_,spellTexture = GetSpellInfo(data[i][4])
 					local name = GetGUID(data[i][2])..GUIDtoText(" [%s]",data[i][2])
 					local overheal = data[i][6] and data[i][6] > 0 and " ("..L.BossWatcherDeathOverHeal..":"..data[i][6]..")" or ""
 					local absorbed = data[i][9] and data[i][9] > 0 and " ("..L.BossWatcherDeathAbsorbed..":"..data[i][9]..")" or ""
 					local isCrit = data[i][10] and "*" or ""
-					local isMs = data[i][11] and " ("..L.BossWatcherDeathMultistrike..")" or ""
 					local school = " ("..GetSchoolName(data[i][7])..")"
 					local amount = data[i][5] - (data[i][6] or 0)
 					local HP = ""
@@ -11183,11 +11042,11 @@ function BWInterfaceFrameLoad()
 						name = "|c"..ExRT.F.classColorByGUID(data[i][2])..name.."|r"
 					end
 					
-					local text = HP .. name.." "..L.BossWatcherDeathHeal..(data[i][14] and (" ("..(ACTION_SPELL_MISSED_ABSORB and strlower(ACTION_SPELL_MISSED_ABSORB) or "absorbed")..")") or "").." |T"..spellTexture..":0|t"..spellName.." "..L.BossWatcherDeathOn.." "..isCrit..amount..isCrit .. isMs .. absorbed .. overheal .. school
+					local text = HP .. name.." "..L.BossWatcherDeathHeal..(data[i][14] and (" ("..(ACTION_SPELL_MISSED_ABSORB and strlower(ACTION_SPELL_MISSED_ABSORB) or "absorbed")..")") or "").." |T"..spellTexture..":0|t"..spellName.." "..L.BossWatcherDeathOn.." "..isCrit..amount..isCrit .. absorbed .. overheal .. school
 					
 					DeathTab_SetLine(i,timeText,text,0,1,0,data[i][4])
 					
-					reportData[9][#reportData[9] + 1] = diffTime.."s."..HP.." +"..isCrit..amount..isCrit .. isMs.. absorbed .. overheal .." ["..GetGUID(data[i][2]).." - "..GetSpellLink(data[i][4]).."]"
+					reportData[9][#reportData[9] + 1] = diffTime.."s."..HP.." +"..isCrit..amount..isCrit .. absorbed .. overheal .." ["..GetGUID(data[i][2]).." - "..GetSpellLink(data[i][4]).."]"
 				elseif data[i][1] == 4 then
 					local spellName,_,spellTexture = GetSpellInfo(data[i][4])
 					local name = GetGUID(data[i][2])..GUIDtoText(" [%s]",data[i][2])

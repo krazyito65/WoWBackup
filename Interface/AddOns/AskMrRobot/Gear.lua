@@ -608,8 +608,20 @@ local function onItemUnlocked(bagId, slotId)
 			if IsInventoryItemLocked(_pendingEquip.slot) then return end
 		end
 		
-		-- move on to the next item, this item is done
-		_pendingEquip.doneSlots[_pendingEquip.destSlot] = true
+		-- move on to the next item, this item is done or could not be swapped
+		
+		local item = _pendingEquip.itemsToEquip[_pendingEquip.destSlot]
+		local itemLink = GetInventoryItemLink("player", _pendingEquip.destSlot)
+		if itemLink then
+			local invItem = Amr.ParseItemLink(itemLink)
+			if invItem ~= nil then	
+				local diff = countItemDifferences(item, invItem)
+				if diff == 0 then
+					_pendingEquip.doneSlots[_pendingEquip.destSlot] = true
+				end
+			end
+		end
+		
 		_pendingEquip.itemsToEquip[_pendingEquip.destSlot] = nil
 		_pendingEquip.destSlot = nil
 		_pendingEquip.bag = nil

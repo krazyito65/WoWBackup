@@ -1,6 +1,11 @@
---	15:57 29.07.2016
+--	12:56 03.08.2016
 
 --[[
+3725
+* Raid cooldowns: updates due to last class balance changes (http://us.battle.net/forums/en/wow/topic/20747796942#post-3)
+* Minor fixes
+
+
 3720
 * Raid cooldowns: added support for aftifacts (both players [viewer & caster] must have ExRT for this functionality) & legendary items
 * Statistics bosses: added 5ppl mythic and 40ppl to diff list
@@ -25,7 +30,7 @@ http://i.imgur.com/xrz5JqB.png
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3720
+ExRT.V = 3725
 ExRT.T = "R"
 ExRT.is7 = false		--> Legion (7.x) Client
 

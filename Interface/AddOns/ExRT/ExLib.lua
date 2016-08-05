@@ -4876,6 +4876,14 @@ do
 end
 
 do
+	local function SetBorderColor(self,colorR,colorG,colorB,colorA,layerCounter)
+		layerCounter = layerCounter or ""
+		
+		self["border_top"..layerCounter]:SetColorTexture(colorR,colorG,colorB,colorA)
+		self["border_bottom"..layerCounter]:SetColorTexture(colorR,colorG,colorB,colorA)
+		self["border_left"..layerCounter]:SetColorTexture(colorR,colorG,colorB,colorA)
+		self["border_right"..layerCounter]:SetColorTexture(colorR,colorG,colorB,colorA)
+	end
 	function ELib:Border(parent,size,colorR,colorG,colorB,colorA,outside,layerCounter)
 		outside = outside or 0
 		layerCounter = layerCounter or ""
@@ -4922,6 +4930,8 @@ do
 		bottom:SetColorTexture(colorR,colorG,colorB,colorA)
 		left:SetColorTexture(colorR,colorG,colorB,colorA)
 		right:SetColorTexture(colorR,colorG,colorB,colorA)
+		
+		parent.SetBorderColor = SetBorderColor
 	
 		top:Show()
 		bottom:Show()

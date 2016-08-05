@@ -84,6 +84,7 @@ eventFrame:SetScript("OnUpdate", function(self, elapsed)
 				local line = _G[tooltip:GetName() .. "TextLeft" .. t.tooltipCache["textLineID"]];
 
 				line:SetText(t.calculateNeededText(relatedItems, itemID));
+				tooltip:Show();
 			end
 
 			eventFrame.DoTooltipUpdate = false;
@@ -185,6 +186,10 @@ TransmogTokens.updateTierFrame = function(selectedID)
 	end
 
 	local set = t.SET_DATA[selectedID];
+
+	-- Prevent iteration over a nil set.
+	if set == nil then return; end
+
 	frameIndex = 1;
 	for tokenID, obtainString in pairs(set) do
 		local iconName = frame:GetName() .. "Icon" .. frameIndex;
@@ -466,10 +471,6 @@ TransmogTokens.calculateNeeded = function(relatedItems)
 
 		if link ~= nil then
 			local appearanceID = t.getAppearanceID(link);
-
-			if appearanceID == nil then
-				DEFAULT_CHAT_FRAME:AddMessage(ORANGE .. "There was an error getting the apperance information for " .. itemName .. " from the wardrobe, data may not be correct!");
-			end
 
 			if appearanceID ~= nil and not t.hasApperance(appearanceID) then
 				local hasAlready = false;

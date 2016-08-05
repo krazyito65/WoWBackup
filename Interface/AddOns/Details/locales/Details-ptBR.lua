@@ -225,7 +225,7 @@ L["STRING_INSTANCE_CHAT"] = "Bate-papo da instância."
 L["STRING_INSTANCE_LIMIT"] = "o limite de janelas criadas foi atingido, você pode modificar este limite no painel de opções. Você também pode reabrir janelas fechadas anteriormente no menu da engrenagem."
 L["STRING_INTERFACE_OPENOPTIONS"] = "Abrir Painel de Opções"
 L["STRING_ISA_PET"] = "Este Ator é um Ajudante"
-L["STRING_KEYBIND_BOOKMARK"] = "Atalhos" -- Needs review
+L["STRING_KEYBIND_BOOKMARK"] = "Atalhos"
 L["STRING_KEYBIND_BOOKMARK_NUMBER"] = "Atalho #%s" -- Needs review
 L["STRING_KEYBIND_RESET_SEGMENTS"] = "Apagar Dados" -- Needs review
 L["STRING_KEYBIND_SCROLL_DOWN"] = "Rolar Para Baixo" -- Needs review
@@ -308,7 +308,7 @@ L["STRING_NEWS_REINSTALL"] = "Encontrou problemas após atualizar? tente o coman
 L["STRING_NEWS_TITLE"] = "Quais As Novidades Desta Versão"
 L["STRING_NO"] = "Não"
 L["STRING_NOCLOSED_INSTANCES"] = [=[Não há janelas fechadas,
-clique para abrir uma nova.]=] -- Needs review
+clique para abrir uma nova.]=]
 L["STRING_NO_DATA"] = "data já foi limpada"
 L["STRING_NOLAST_COOLDOWN"] = "nenhum cooldown usado"
 L["STRING_NOMORE_INSTANCES"] = [=[Limite de janelas alcançado.
@@ -338,30 +338,30 @@ L["STRING_OPTIONS_3D_UANCHOR"] = "Modelo 3D Superior" -- Needs review
 L["STRING_OPTIONS_3D_UENABLED_DESC"] = "Ativa ou desativa o uso de modelo 3d acima da barra." -- Needs review
 L["STRING_OPTIONS_3D_USELECT_DESC"] = "Escolha qual o modelo será usado no modelo superior." -- Needs review
 L["STRING_OPTIONS_ADVANCED"] = "Avançado"
-L["STRING_OPTIONS_ALPHAMOD_ANCHOR"] = "Esconder Automático:" -- Needs review
+L["STRING_OPTIONS_ALPHAMOD_ANCHOR"] = "Auto Ocultar:"
 L["STRING_OPTIONS_ALWAYS_USE"] = "Usar Em Todos os Personagens"
 L["STRING_OPTIONS_ALWAYS_USE_DESC"] = "O mesmo perfil é usado em todos os personagens. Você pode sobre escrever ele em qualquer personagem apenas escolhendo um perfil na caixa de cima."
 L["STRING_OPTIONS_ANCHOR"] = "Lado"
 L["STRING_OPTIONS_ANIMATEBARS"] = "Animar as Barras"
-L["STRING_OPTIONS_ANIMATEBARS_DESC"] = "Quando ativa as barras das janelas são animadas ao invés de 'pularem'." -- Needs review
+L["STRING_OPTIONS_ANIMATEBARS_DESC"] = "Ativar animações para todas as barras"
 L["STRING_OPTIONS_ANIMATESCROLL"] = "Animar Barra de Rolagem"
-L["STRING_OPTIONS_ANIMATESCROLL_DESC"] = "Quanto ativa, a barra de rolagem faz uma animação ao ser mostrada e escondida." -- Needs review
-L["STRING_OPTIONS_APPEARANCE"] = "Aparência" -- Needs review
+L["STRING_OPTIONS_ANIMATESCROLL_DESC"] = "Quanto ativa, a barra de rolagem faz uma animação ao ser mostrada e escondida."
+L["STRING_OPTIONS_APPEARANCE"] = "Aparência"
 L["STRING_OPTIONS_ATTRIBUTE_TEXT"] = "Configurações de Títulos"
 L["STRING_OPTIONS_ATTRIBUTE_TEXT_DESC"] = "Essas opções controlam as configurações dos títulos de uma janela."
-L["STRING_OPTIONS_AUTO_SWITCH"] = "Troca Automática" -- Needs review
+L["STRING_OPTIONS_AUTO_SWITCH"] = "Todas as Funções |cFFFFAA00(em combate)|r"
 L["STRING_OPTIONS_AUTO_SWITCH_COMBAT"] = "|cFFFFAA00(em combate)|r"
-L["STRING_OPTIONS_AUTO_SWITCH_DAMAGER_DESC"] = "Quando estiver com especialização de dano, esta janela mostra o atributo ou plugin escolhido." -- Needs review
-L["STRING_OPTIONS_AUTO_SWITCH_DESC"] = [=[Quando você entra em combate, esta janela mudara o atributo mostrado para outro atributo ou plugin.
+L["STRING_OPTIONS_AUTO_SWITCH_DAMAGER_DESC"] = "Quando estiver com especialização de dano, esta janela mostra o atributo ou plugin escolhido."
+L["STRING_OPTIONS_AUTO_SWITCH_DESC"] = [=[Quando entrar em combate, esta janela mostrará o atributo escolhido ou plugin.
 
-Saindo do combate o atributo antigo volta a ser mostrado.]=] -- Needs review
-L["STRING_OPTIONS_AUTO_SWITCH_HEALER_DESC"] = "Quando estiver com especialização de cura, esta janela mostra o atributo ou plugin escolhido." -- Needs review
-L["STRING_OPTIONS_AUTO_SWITCH_TANK_DESC"] = "Quando estiver com especialização de tanque, esta janela mostra o atributo ou plugin escolhido." -- Needs review
+|cFFFFFF00Importante|r: O atributo individual escolhido para cada função, reescreverá o atributo selecionado.]=]
+L["STRING_OPTIONS_AUTO_SWITCH_HEALER_DESC"] = "Quando estiver com especialização de cura, esta janela mostra o atributo ou plugin escolhido."
+L["STRING_OPTIONS_AUTO_SWITCH_TANK_DESC"] = "Quando estiver com especialização de tanque, esta janela mostra o atributo ou plugin escolhido."
 L["STRING_OPTIONS_AUTO_SWITCH_WIPE"] = "Depois de derrota em encontro"
 L["STRING_OPTIONS_AUTO_SWITCH_WIPE_DESC"] = "Depois de uma tentativa fracassada de derrotar um chefe inimigo num combate de raid, esta janela automaticamente mostrará isso."
 L["STRING_OPTIONS_AVATAR"] = "Escolha o Seu Avatar"
 L["STRING_OPTIONS_AVATAR_ANCHOR"] = "Identidade:"
-L["STRING_OPTIONS_AVATAR_DESC"] = "O avatar também é enviado aos membros da guilda, ele eh mostrado sobre o tooltip quando passa o mouse sobre uma barra." -- Needs review
+L["STRING_OPTIONS_AVATAR_DESC"] = "Avatares também são enviados aos membros da guild, é exibido no topo das dicas e na janela de detalhes do jogador."
 L["STRING_OPTIONS_BAR_BACKDROP_ANCHOR"] = "Borda:"
 L["STRING_OPTIONS_BAR_BACKDROP_COLOR_DESC"] = "Muda a cor da borda."
 L["STRING_OPTIONS_BAR_BACKDROP_ENABLED_DESC"] = "Habilita ou desabilita as bordas da linha."
@@ -397,7 +397,7 @@ Há três arquivos de ícones que vem junto ao instalar o addon:
 - |cFFFFFF00classes_small|r
 - |cFFFFFF00classes_small_alpha|r]=]
 L["STRING_OPTIONS_BAR_ICONFILE_DESC2"] = "Selecione o pacote de ícones que deseja usar." -- Needs review
-L["STRING_OPTIONS_BARLEFTTEXTCUSTOM"] = "Texto Customizado Ativado" -- Needs review
+L["STRING_OPTIONS_BARLEFTTEXTCUSTOM"] = "Texto Customizado Ativado"
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2"] = "não usou" -- Needs review
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: simboliza o número da colocação do jogador.
 
@@ -409,8 +409,8 @@ L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: simboliza 
 Exemplo:
 {func return 'ola azeroth'}
 
-|cFFFFFF00Sequencias de Escape|r: usado para mudar a cor do texto ou adicionar imagens, pesquise por 'UI escape sequences' para mais informações.]=] -- Needs review
-L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "Quando ativado, o texto da esquerda é formatado seguindo o modelo posto no campo de texto abaixo." -- Needs review
+|cFFFFFF00Sequencias de Escape|r: usado para mudar a cor do texto ou adicionar imagens, pesquise por 'UI escape sequences' para mais informações.]=]
+L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "Quando ativado, o texto da esquerda é formatado seguindo o modelo posto no campo de texto abaixo."
 L["STRING_OPTIONS_BARORIENTATION"] = "Orientação das Barras" -- Needs review
 L["STRING_OPTIONS_BARORIENTATION_DESC"] = "Direção em que as barras são preenchidas." -- Needs review
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM"] = "Texto personalizado habilitado"
@@ -425,14 +425,14 @@ L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: é o prim
 Example: 
 {func return 'hello azeroth'}
 
-|cFFFFFF00Chaves de Edição de Texto|r: use para mudar a cor ou adicionar texturas. Busque por 'UI escape sequences' para mais informações.]=] -- Needs review
+|cFFFFFF00Chaves de Edição de Texto|r: use para mudar a cor ou adicionar texturas. Busque por 'UI escape sequences' para mais informações.]=]
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM_DESC"] = "Quando habilitado, o texto a direita é formatado seguindo as regras na caixa."
 L["STRING_OPTIONS_BARS"] = "Configurações das Barras"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE"] = "Arquivo de Textura Customizado" -- Needs review
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE_DESC"] = [=[
 
 |cFFFFFF00Importante|r: a imagem precisa ter 256x32 pixels.]=] -- Needs review
-L["STRING_OPTIONS_BARS_DESC"] = "Estas opções controlam a aparência das barra da janela." -- Needs review
+L["STRING_OPTIONS_BARS_DESC"] = "Estas opções controlam a aparência das barra da janela."
 L["STRING_OPTIONS_BARSORT"] = "Ordem do Rank" -- Needs review
 L["STRING_OPTIONS_BARSORT_DESC"] = "Ordena as barras para aparecerem na ordem do menor para o maior ou maior para o menor." -- Needs review
 L["STRING_OPTIONS_BAR_SPACING"] = "Espaçamento"
@@ -469,12 +469,12 @@ L["STRING_OPTIONS_CENERGY_DESC"] = [=[Ativa a Captura de:
 - |cFFFFFFFFMana Restaurada|r
 - |cFFFFFFFFRaiva Gerada|r
 - |cFFFFFFFFEnergia Gerada|r
-- |cFFFFFFFFPoder Rúnico Gerado|r]=] -- Needs review
+- |cFFFFFFFFPoder Rúnico Gerado|r]=]
 L["STRING_OPTIONS_CHANGE_CLASSCOLORS"] = "Modificar Cores Das Classes" -- Needs review
 L["STRING_OPTIONS_CHANGE_CLASSCOLORS_DESC"] = "Escolha novas cores para as cores das classes." -- Needs review
 L["STRING_OPTIONS_CHANGELOG"] = "Notas da Versão"
-L["STRING_OPTIONS_CHART_ADD"] = "Adicionar Data" -- Needs review
-L["STRING_OPTIONS_CHART_ADD2"] = "Adicionar" -- Needs review
+L["STRING_OPTIONS_CHART_ADD"] = "Adicionar Dados"
+L["STRING_OPTIONS_CHART_ADD2"] = "Adicionar"
 L["STRING_OPTIONS_CHART_ADDAUTHOR"] = "Autor:" -- Needs review
 L["STRING_OPTIONS_CHART_ADDCODE"] = "Código:" -- Needs review
 L["STRING_OPTIONS_CHART_ADDICON"] = "Ícone:" -- Needs review
