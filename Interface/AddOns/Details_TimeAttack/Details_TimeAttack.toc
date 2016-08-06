@@ -4,7 +4,7 @@
 ## SavedVariablesPerCharacter: _detalhes_databaseTimeAttack
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
-## X-Curse-Packaged-Version: r532
+## X-Curse-Packaged-Version: r534
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

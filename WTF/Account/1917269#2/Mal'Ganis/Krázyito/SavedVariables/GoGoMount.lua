@@ -10,13 +10,6 @@ GoGo_Prefs = {
 	["AutoExcludeFlyingMounts"] = false,
 	["DruidFormNotRandomize"] = false,
 	["Zones"] = {
-		["Town Hall"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 976,
-		},
 		["Gorgrond"] = {
 			["Preferred"] = {
 			},
@@ -31,12 +24,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 994,
 		},
-		["Tanaan Jungle"] = {
+		[1026] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 945,
 		},
 		[1105] = {
 			["Preferred"] = {
@@ -57,19 +49,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Hellfire Citadel"] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1026,
-		},
-		["Warspear"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 1011,
 		},
 		["Brokenspear Tavern"] = {
 			["Preferred"] = {
@@ -78,18 +62,18 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
-		["Tower Of War"] = {
+		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 941,
 		},
-		[976] = {
+		["Tanaan Jungle"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 945,
 		},
 	},
 	["DisableMountNotice"] = false,

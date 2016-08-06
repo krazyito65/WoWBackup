@@ -1,6 +1,6 @@
 VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
-/use [@mouseover, help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
+/use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
 END
 VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
 /use [@mouseover] Cenarion Ward
@@ -52,8 +52,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-R1WT1MR1EM1PM1LR2RM2WM2LR2MR2DR3DT3LR3IH3HR3DH4IR4IR4HR4IR[x]5PM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x]0__[x][x]0__[x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NRéâBonTokFieDrvRazComJaxAraSodMorXyrKalPelFenCorEboFelYou[x]Sou[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x]Unk[x][x]Unk[x][x][x]Unk[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

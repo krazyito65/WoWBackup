@@ -101,7 +101,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[941] = {
+		[29] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -119,11 +119,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[806] = {
+		["Ashenvale"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 43,
 		},
 		["Mount Hyjal"] = {
 			["Preferred"] = {
@@ -132,12 +133,30 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 606,
 		},
+		[994] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Azshara"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 181,
+		},
+		[809] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[949] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		["Durotar"] = {
 			["Preferred"] = {
@@ -146,30 +165,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 4,
 		},
-		[949] = {
+		[806] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-		},
-		[809] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[994] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Ashenvale"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 43,
 		},
 		[1105] = {
 			["Preferred"] = {
@@ -177,7 +177,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[29] = {
+		[941] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -192,7 +192,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -361,7 +361,7 @@ GoGo_Prefs = {
 		93326, -- [6]
 		75973, -- [7]
 	},
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 }
 GoGo_DebugLog = {
 }

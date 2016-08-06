@@ -10,6 +10,8 @@ TradeSkillMaster_DestroyingDB = {
 			"Kråzyito - Mal'Ganis", -- [2]
 			"Krázýító - Gnomeregan", -- [3]
 			"Krázyito - Mal'Ganis", -- [4]
+			"Krâzyito - Mal'Ganis", -- [5]
+			"Krazyitó - Mal'Ganis", -- [6]
 		},
 		["factionrealm"] = {
 			"Horde - Mal'Ganis", -- [1]
@@ -26,10 +28,12 @@ TradeSkillMaster_DestroyingDB = {
 	["g@ @autoShow"] = true,
 	["g@ @autoStack"] = true,
 	["_currentProfile"] = {
-		["Krázýító - Gnomeregan"] = "Default",
+		["Krazyitó - Mal'Ganis"] = "Default",
 		["Krazyito - Mal'Ganis"] = "Default",
-		["Krázyito - Mal'Ganis"] = "Default",
+		["Krázýító - Gnomeregan"] = "Default",
+		["Krâzyito - Mal'Ganis"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krázyito - Mal'Ganis"] = "Default",
 	},
 	["_version"] = 1,
 	["g@ @history"] = {

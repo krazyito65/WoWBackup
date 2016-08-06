@@ -165,7 +165,7 @@ L["Guild Council Members"] = "Ratsmitglieder der Gilde"
 L["Healer"] = "Heiler"
 L["help"] = "Hilfe"
 L["Hide Votes"] = "Stimmen verstecken"
-L["hide_votes_desc"] = "Versteckt die Stimmanzahl, bis jemand abgestimmt hat."
+L["hide_votes_desc"] = "Nur Spieler, die bereits abgestimmt haben, werden die Stimmen sehen k\195\182nnen."
 L["history"] = "Verlauf"
 L["ignore_input_desc"] = "Gib eine Gegenstands-ID ein, die der Ignorierliste hinzugef\195\188gt wird, dies bewirkt, dass RCLootCouncil diesen Gegenstand nie einer Sitzung hinzuf\195\188gt."
 L["ignore_input_usage"] = "Diese Funktion akzeptiert nur Gegenstands-IDs (Nummer)"
@@ -196,7 +196,7 @@ Hinweis: Nicht-Pl\195\188ndermeister k\195\182nnen nur Daten speichern, die vom 
 "
 L["Looting options"] = "Pl\195\188nderoptionen"
 L["Loot won:"] = "Beute gewann:"
-L["Lower Quality Limit"] = "Obere Qualit\195\164tsgrenze"
+L["Lower Quality Limit"] = "Untere Qualit\195\164tsgrenze"
 L["lower_quality_limit_desc"] = "W\195\164hle die untere Qualit\195\164tsgrenze der Gegenst\195\164nde, die automatisch vergeben werden (Diese Qualit\195\164t inbegriffen!).\
 Hinweis: Dies \195\188berschreibt die normale Pl\195\188nderschwelle."
 L["Mainspec/Need"] = "Hauptspezialisierung/Bedarf"
@@ -220,15 +220,15 @@ L["No entries in the Loot History"] = "Keine Eintr\195\164ge im Beuteverlauf"
 L["No items to award later registered"] = "Keine Gegenst\195\164nde wurden zur sp\195\164teren Vergabe registriert."
 L["None"] = "Keine"
 L["No session running"] = "Es l\195\164uft keine Sitzung."
-L["Not announced"] = "nicht angek\195\188ndigt\
-" -- Needs review
+L["Not announced"] = "Nicht angek\195\188ndigt\
+"
 L["Not cached, please reopen."] = "Ist nicht zwischengespeichert, bitte erneut \195\182ffnen."
 L["Note"] = "Notiz"
 L["Notes"] = "Notizen"
 L["notes_desc"] = "Erlaubt es Kandidaten, eine Notiz an den Rat zusammen mit ihrem Wurf, zu schicken."
 L["Not Found"] = "Nicht gefunden"
 L["Not installed"] = "Nicht installiert"
-L["Now handles looting"] = "Greift jetzt ins Pl\195\188ndern ein" -- Needs review
+L["Now handles looting"] = "Greift jetzt ins Pl\195\188ndern ein"
 L["No winners registered"] = "Keine Gewinner wurden registriert"
 L["Number of buttons"] = "Buttonanzahl"
 L["number_of_buttons_desc"] = "Verschieben, um die Buttonanzahl zu \195\164ndern."
@@ -272,7 +272,7 @@ L["response_color_desc"] = "Stelle eine Farbe f\195\188r die Antworten ein."
 L["Responses from Chat"] = "Antworten per Chat"
 L["responses_from_chat_desc"] = "F\195\188r den Fall, dass jemand das Addon nicht installiert hat. (Button 1 wird verwendet, wenn kein Schl\195\188sselwort angegeben wurde.)\
 Beispiel: '/w PM_Name [Gegenstand] Gier' w\195\188rde unter Verwendung der Standardeinstellungen dazu f\195\188hren, dass du f\195\188r Gier auf einen Gegenstand w\195\188rfelst.\
-Unten kannst du Schl\195\188sselw\195\182rter f\195\188r die einzelnen Button festlegen, getrennt per Komma oder Leerzeichen. Nur Nummern und W\195\182rter werden angenommen. Spieler k\195\182nnen die Schl\195\188sselwortliste erhalten, indem sie rchelp an den Pl\195\188ndermeister fl\195\188stern, nachdem das Addon aktiviert ist (z.B. in einem Schlachtzug)." -- Needs review
+Unten kannst du Schl\195\188sselw\195\182rter f\195\188r die einzelnen Button festlegen, Nur A\226\128\147Z, a\226\128\147z oder 0\226\128\1470 werden als Schl\195\188sselwort akzeptiert, alle anderen Zeichen trennen Schl\195\188sselw\195\182rter. Spieler k\195\182nnen die Schl\195\188sselwortliste erhalten, indem sie rchelp an den Pl\195\188ndermeister fl\195\188stern, nachdem das Addon aktiviert ist (z.B. in einem Schlachtzug)."
 L["Role"] = "Rolle"
 L["Roll"] = "Wurf"
 L["Say"] = "Sagen"
@@ -284,7 +284,7 @@ L["Sent whisper help to 'player'"] = "Sende Hilfe zur Fl\195\188sterfunktion an 
 L["session_error"] = "Etwas ist schief gelaufen \226\128\147 Bitte starte die Sitzung erneut"
 L["Set the text for button i's response."] = "Stelle den Text f\195\188r Antwort des Buttons %d ein"
 L["Set the text on button 'number'"] = "Stelle die Beschriftung des Buttons %i ein."
--- L["Set the whisper keys for button i."] = ""
+L["Set the whisper keys for button i."] = "Lege die Fl\195\188sterschl\195\188ssel f\195\188r Button %d fest."
 L["Silent Auto Pass"] = "Leises automatisches Passen"
 L["silent_auto_pass_desc"] = "Aktivieren, um Nachrichten, aufgrund \"automatischen Passens\", zu verstecken."
 L["Something went wrong :'("] = "Irgendwas ist schief gelaufen :'("
@@ -333,7 +333,7 @@ L["Voting options"] = "Abstimmungsoptionen"
 L["Waiting for item info"] = "Warte auf Gegenstandsinformationen"
 L["Waiting for response"] = "Warte auf Antwort"
 L["whisper"] = "fl\195\188stern"
-L["whisper_guide"] = "[RCLootCouncil]: Nummer Antwort [Gegenstand1] [Gegenstand2]. Nummer: Der Gegenstand, auf den du w\195\188rfeln m\195\182chtest. Antwort: Eines der untenstehenden Schl\195\188sselw\195\182rter. Verlinke deine(n) Gegenstand/-\195\164nde, die der mit Nummer angegebene Gegenstand ersetzen w\195\188rde. Beispiel: '1 Bedarf [Gegenstand1]' w\195\188rde auf den Gegenstand Nummer 1 f\195\188r Bedarf w\195\188rfeln." -- Needs review
+L["whisper_guide"] = "[RCLootCouncil]: Nummer Antwort [Gegenstand1] [Gegenstand2]. Nummer: Der Gegenstand, auf den du w\195\188rfeln m\195\182chtest. Antwort: Eines der untenstehenden Schl\195\188sselw\195\182rter. Verlinke deine(n) Gegenstand/-\195\164nde, die der mit Nummer angegebene Gegenstand ersetzen w\195\188rde. Beispiel: '1 Bedarf [Gegenstand1]' w\195\188rde auf den Gegenstand Nummer 1 f\195\188r Bedarf w\195\188rfeln."
 L["whisper_guide2"] = "[RCLootCouncil]: Du wirst eine Best\195\164tigungsnachricht bekommen, wenn du erfolgreich hinzugef\195\188gt wurdest."
 L["whisper_help"] = "Schlachtzugsteilnehmer k\195\182nnen das Fl\195\188stersystem benutzen, f\195\188r den Fall, dass jemand das Addon nicht installiert hat.\
 Beim Fl\195\188stern von 'rchelp' an den Pl\195\188ndermeister, bekommen sie eine Anleitung zusammen mit der Liste der Schl\195\188sselw\195\182rter, welche im Reiter 'Buttons und Antworten' bearbeitet werden k\195\182nnen.\

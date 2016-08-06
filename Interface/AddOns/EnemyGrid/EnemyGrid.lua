@@ -61,6 +61,8 @@ local BuffsBannedList = {
 	61574,
 }
 
+local HEALTH_CUT_OFF = false
+
 local _
 local default_config = {
 	profile = {
@@ -955,13 +957,30 @@ local defaultSpecKeybindList = {
 	},
 }
 
+local re_GetCurrentSpec = function()
+	EnemyGrid.GetCurrentSpec()
+end
+
 function EnemyGrid.GetCurrentSpec()
 	local specIndex = GetSpecialization()
+	HEALTH_CUT_OFF = nil
 	if (specIndex) then
 		local specID = GetSpecializationInfo (specIndex)
 		if (specID and specID ~= 0) then
 			EnemyGrid.CurrentSpec = specID
+			if (specID == 258) then
+				local _, _, _, using_ROS = GetTalentInfo (4, 2, 1)
+				if (using_ROS) then
+					HEALTH_CUT_OFF = 35
+				else
+					HEALTH_CUT_OFF = 20
+				end
+			end
+		else
+			C_Timer.After (1, re_GetCurrentSpec)
 		end
+	else
+		C_Timer.After (1, re_GetCurrentSpec)
 	end
 end
 
@@ -1450,6 +1469,36 @@ function EnemyGrid.OnInit()
 		local raidMarker = overlayFrame:CreateTexture (nil, "overlay")
 		button.raidMarker = raidMarker
 		
+		--shadow word: death
+		--local SWD = overlayFrame:CreateTexture (nil, "overlay")
+		--SWD:SetTexture ([[Interface\AddOns\EnemyGrid\images\priest_shadowword_death]])
+		--SWD:SetPoint ("right", button, "right", -2, 0)
+		--SWD:SetSize (20, 20)
+		
+		local healthCutOff = healthBar:CreateTexture (nil, "overlay")
+		healthCutOff:SetTexture ([[Interface\AddOns\EnemyGrid\images\health_bypass_indicator]])
+		healthCutOff:SetPoint ("left", button, "left")
+		healthCutOff:SetSize (16, 25)
+		healthCutOff:SetBlendMode ("ADD")
+		healthCutOff:SetDrawLayer ("overlay", 7)
+		healthCutOff:Hide()
+		button.healthCutOff = healthCutOff
+		healthBar.healthCutOff = healthCutOff
+		
+		local animationOnPlay = function()
+			healthCutOff:Show()
+		end
+		local animationOnStop = function()
+			healthCutOff:SetAlpha (.5)
+		end
+		
+		local healthCutOffShowAnimation = DF:CreateAnimationHub (healthCutOff, animationOnPlay, animationOnStop)
+		DF:CreateAnimation (healthCutOffShowAnimation, "Scale", 1, .2, .3, .3, 1.2, 1.2)
+		DF:CreateAnimation (healthCutOffShowAnimation, "Scale", 2, .2, 1.2, 1.2, 1, 1)
+		DF:CreateAnimation (healthCutOffShowAnimation, "Alpha", 1, .2, .2, 1)
+		DF:CreateAnimation (healthCutOffShowAnimation, "Alpha", 2, .2, 1, .5)
+		healthCutOff.ShowAnimation = healthCutOffShowAnimation
+		
 		--icone de identificação
 		local iconIndicator = overlayFrame:CreateTexture (nil, "overlay")
 		button.iconIndicator = iconIndicator
@@ -1540,8 +1589,17 @@ function EnemyGrid.OnInit()
 			--vida do mob
 			local currentHealth = UnitHealth (self.NamePlateId)
 			self:SetValue (currentHealth)
-			self.healthPercent:SetText (floor (currentHealth / self.maxValue * 100) .. "%")
 			
+			local health = currentHealth / self.maxValue * 100
+			
+			self.healthPercent:SetText (floor (health) .. "%")
+			if (HEALTH_CUT_OFF) then
+				if (health <= HEALTH_CUT_OFF and not self.healthCutOff:IsShown()) then
+					self.healthCutOff:SetPoint ("left", self:GetParent(), "left", self:GetWidth() / 100 * HEALTH_CUT_OFF, 0)
+					self.healthCutOff.ShowAnimation:Play()
+				end
+			end
+
 			--se esta no range
 			if (self.nextRangeCheck < 0) then
 				if (not self.IgnoreRangeCheck) then
@@ -1704,6 +1762,8 @@ function EnemyGrid.OnInit()
 			unitFrame.healthBar.maxValue = UnitHealthMax (plateID)
 			unitFrame.healthBar:SetMinMaxValues (0, unitFrame.healthBar.maxValue)
 			unitFrame.healthBar.nextRangeCheck = CONST_RANGECHECK_INTERVAL
+			
+			unitFrame.healthCutOff:Hide()
 			
 			--o que esta sendo mostrado na namaplate
 			local reaction = UnitReaction ("player", plateID)
@@ -2162,7 +2222,7 @@ function EnemyGrid.UpdateKeyBinds()
 
 end
 
-function EnemyGrid.UpdateGrid()
+function EnemyGrid.UpdateGrid() --~update
 	
 	local horizontalLines = math.ceil (40 / EnemyGrid.db.profile.vertical_rows)
 	local firstFrame, lastFrame, jumpToNext = nil, nil, true
@@ -2257,6 +2317,9 @@ function EnemyGrid.UpdateGrid()
 			unitFrame.iconIndicator:SetSize (barHeight*0.8, barHeight*0.8)
 			unitFrame.iconIndicator:SetAlpha (EnemyGrid.db.profile.iconIndicator_alpha)
 			EnemyGrid.SetAnchor (unitFrame.iconIndicator, EnemyGrid.db.profile.iconIndicator_anchor)
+			
+		--atualiza o pin the target de health
+			unitFrame.healthCutOff:SetSize (barHeight*0.5, barHeight*0.90)
 			
 		--atualiza a castbar
 			local castFrame = unitFrame.castBar

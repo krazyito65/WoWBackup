@@ -1,5 +1,5 @@
 
-local dversion = 30
+local dversion = 32
 local major, minor = "DetailsFramework-1.0", dversion
 local DF, oldminor = LibStub:NewLibrary (major, minor)
 
@@ -1173,10 +1173,10 @@ function DF:CreateAnimationHub (parent, onPlay, onFinished)
 	return newAnimation
 end
 
-function DF:CreateAnimation (animation, type, duration, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+function DF:CreateAnimation (animation, type, order, duration, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 	local anim = animation:CreateAnimation (type)
 
-	anim:SetOrder (animation.NextAnimation)
+	anim:SetOrder (order or animation.NextAnimation)
 	anim:SetDuration (duration)
 	
 	if (type == "Alpha") then

@@ -48,13 +48,6 @@ X: 0
 Y: 0
 W: 648
 H: 420
-Frame: EnemyGrid_ScreenPanel39
-FrameLevel: 20
-Anchor: TOPLEFT
-X: -7
-Y: -14
-W: 80
-H: 18
 Frame: DetailsPlayerDetailsWindow
 FrameLevel: 1
 Anchor: RIGHT

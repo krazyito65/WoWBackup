@@ -4582,6 +4582,8 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
+			["sort"] = 6,
+			["ordering"] = 0,
 			["groups"] = {
 				6, -- [1]
 				5, -- [2]
@@ -4590,8 +4592,6 @@ VUHDO_PANEL_SETUP = {
 				2, -- [5]
 				1, -- [6]
 			},
-			["sort"] = 6,
-			["ordering"] = 0,
 			["isReverse"] = true,
 		},
 		["TOOLTIP"] = {
@@ -4751,11 +4751,11 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
+			["sort"] = 7,
+			["ordering"] = 1,
 			["groups"] = {
 				42, -- [1]
 			},
-			["sort"] = 7,
-			["ordering"] = 1,
 			["isReverse"] = false,
 		},
 		["TOOLTIP"] = {
@@ -6951,10 +6951,30 @@ VUHDO_PANEL_SETUP = {
 	},
 }
 VUHDO_SPELL_ASSIGNMENTS = {
+	["1"] = {
+		"", -- [1]
+		"1", -- [2]
+		"Healing Wave", -- [3]
+	},
 	["altctrl2"] = {
 		"alt-ctrl-", -- [1]
 		"2", -- [2]
 		"Purge", -- [3]
+	},
+	["3"] = {
+		"", -- [1]
+		"3", -- [2]
+		"riptide", -- [3]
+	},
+	["2"] = {
+		"", -- [1]
+		"2", -- [2]
+		"healing surge", -- [3]
+	},
+	["shift1"] = {
+		"shift-", -- [1]
+		"1", -- [2]
+		"target", -- [3]
 	},
 	["shift3"] = {
 		"shift-", -- [1]
@@ -6971,15 +6991,10 @@ VUHDO_SPELL_ASSIGNMENTS = {
 		"3", -- [2]
 		"menu", -- [3]
 	},
-	["1"] = {
-		"", -- [1]
-		"1", -- [2]
-		"Healing Wave", -- [3]
-	},
-	["shift1"] = {
-		"shift-", -- [1]
-		"1", -- [2]
-		"target", -- [3]
+	["alt2"] = {
+		"alt-", -- [1]
+		"2", -- [2]
+		"Gift of the Naaru", -- [3]
 	},
 	["alt1"] = {
 		"alt-", -- [1]
@@ -6990,21 +7005,6 @@ VUHDO_SPELL_ASSIGNMENTS = {
 		"alt-ctrl-", -- [1]
 		"1", -- [2]
 		"Purge", -- [3]
-	},
-	["3"] = {
-		"", -- [1]
-		"3", -- [2]
-		"riptide", -- [3]
-	},
-	["2"] = {
-		"", -- [1]
-		"2", -- [2]
-		"healing surge", -- [3]
-	},
-	["alt2"] = {
-		"alt-", -- [1]
-		"2", -- [2]
-		"Gift of the Naaru", -- [3]
 	},
 }
 VUHDO_HOSTILE_SPELL_ASSIGNMENTS = {
@@ -7507,9 +7507,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
@@ -7517,9 +7517,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w2", -- [2]
 			"Flame Shock", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
 			"", -- [3]
 		},
 		["shift2"] = {
@@ -7572,9 +7572,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w3", -- [2]
 			"", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
 			"", -- [3]
 		},
 	},
@@ -7604,9 +7604,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
@@ -7614,9 +7614,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w2", -- [2]
 			"", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
 			"", -- [3]
 		},
 		["shift2"] = {
@@ -7669,9 +7669,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w3", -- [2]
 			"", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
 			"", -- [3]
 		},
 	},
@@ -7716,7 +7716,7 @@ VUHDO_RAID = {
 		["baseRange"] = true,
 		["class"] = "SHAMAN",
 		["role"] = 62,
-		["sortMaxHp"] = 246900,
+		["sortMaxHp"] = 321000,
 		["map"] = "garrisonffhorde_tier3",
 		["threat"] = 0,
 		["powermax"] = 100,
@@ -7730,7 +7730,7 @@ VUHDO_RAID = {
 		["range"] = true,
 		["unit"] = "player",
 		["powertype"] = 11,
-		["healthmax"] = 246900,
+		["healthmax"] = 321000,
 		["dead"] = false,
 		["charmed"] = false,
 		["fullName"] = "Krázyito",
@@ -7738,7 +7738,7 @@ VUHDO_RAID = {
 		["aggro"] = false,
 		["visible"] = true,
 		["targetUnit"] = "target",
-		["health"] = 246900,
+		["health"] = 321000,
 		["className"] = "Shaman",
 		["afk"] = false,
 		["debuff"] = 0,
@@ -7764,16 +7764,16 @@ VUHDO_INDICATOR_CONFIG = {
 			"", -- [9]
 			"", -- [10]
 		},
-		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
+		["SIDE_LEFT"] = "",
 		["INCOMING_BAR"] = "",
-		["DAMAGE_FLASH_BAR"] = "",
+		["CLUSTER_BORDER"] = "",
 		["THREAT_MARK"] = "",
-		["MANA_BAR"] = "Manabars: All Powers",
 		["BAR_BORDER"] = "Border: Multi + Aggro",
 		["SIDE_RIGHT"] = "",
+		["MANA_BAR"] = "Manabars: All Powers",
 		["HEALTH_BAR"] = "Health Bar: (generic, gradient)",
-		["CLUSTER_BORDER"] = "",
-		["SIDE_LEFT"] = "",
+		["DAMAGE_FLASH_BAR"] = "",
+		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
 	},
 	["CUSTOM"] = {
 		["THREAT_BAR"] = {

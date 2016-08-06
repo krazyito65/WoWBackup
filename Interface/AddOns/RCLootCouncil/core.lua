@@ -540,7 +540,8 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 						return self:Debug("Sent 'DISABLED' response to", sender)
 					end
 
-					if not self.mldb then -- Really shouldn't happen, but I'm tired of people somehow not receiving it...
+					-- v2.0.1: It seems people somehow receives mldb with numButtons, so check for it aswell.
+					if not self.mldb or (self.mldb and not self.mldb.numButtons) then -- Really shouldn't happen, but I'm tired of people somehow not receiving it...
 						self:Debug("Received loot table without having mldb :(", sender)
 						self:SendCommand(self.masterLooter, "MLdb_request")
 						return self:ScheduleTimer("OnCommReceived", 1, prefix, serializedMsg, distri, sender)
@@ -693,6 +694,7 @@ function RCLootCouncil:DebugLog(msg, ...)
 end
 
 function RCLootCouncil:Test(num)
+	self:Debug("Test", num)
 	local testItems = {105473,105407,105513,105465,105482,104631,105450,105537,104554,105509,104412,105499,104476,104544,104495,105568,105594,105514,105479,104532,105639,104508,105621,}
 	local items = {};
 	-- pick "num" random items
@@ -833,14 +835,14 @@ local autopassTable = {
 	["Shields"] 				= {"DEATHKNIGHT", "DRUID", "MONK", "ROGUE", "HUNTER","PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
 	["Bows"] 					= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
 	["Crossbows"] 				= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Daggers"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "HUNTER", "SHAMAN", },
+	["Daggers"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "HUNTER", },
 	["Guns"]						= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK","SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
 	["Fist Weapons"] 			= {"DEATHKNIGHT", "PALADIN",  "PRIEST", "MAGE", "WARLOCK"},
 	["One-Handed Axes"]		= {"DRUID", "MONK", "ROGUE", "PRIEST", "MAGE", "WARLOCK"},
 	["One-Handed Maces"]		= {"MONK", "HUNTER", "MAGE", "WARLOCK"},
 	["One-Handed Swords"] 	= {"DRUID", "SHAMAN", "PRIEST",},
-	["Polearms"] 				= {"ROGUE", "HUNTER", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Staves"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN",  "ROGUE", "HUNTER", "DEMONHUNTER"},
+	["Polearms"] 				= {"ROGUE", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
+	["Staves"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN",  "ROGUE", "DEMONHUNTER"},
 	["Two-Handed Axes"]		= {"DRUID", "ROGUE", "MONK", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
 	["Two-Handed Maces"]		= {"MONK", "ROGUE", "HUNTER", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
 	["Two-Handed Swords"]	= {"DRUID", "MONK", "ROGUE", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
@@ -1137,8 +1139,8 @@ function RCLootCouncil:GetML()
 end
 
 function RCLootCouncil:IsCouncil(name)
-	local ret = tContains(self.council, name)
-	if self.isMasterLooter or self.nnp then ret = true end -- ML and nnp is always council
+	local ret = tContains(self.council, self:UnitName(name))
+	if self:UnitIsUnit(name, self.playerName) and self.isMasterLooter or self.nnp then ret = true end -- ML and nnp is always council
 	self:DebugLog(tostring(ret).." =", "IsCouncil", name)
 	return ret
 end

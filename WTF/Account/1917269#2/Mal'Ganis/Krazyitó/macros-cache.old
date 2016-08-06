@@ -4,9 +4,8 @@ VER 3 0100000000000009 " " "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000005 " " "INV_Misc_QuestionMark"
 #showtooltip
-/use [mod:ctrl] Ambush
-/use [stance:0] Sinister Strike
-/use [stance:1] Ambush
+/use [mod:ctrl] 14
+/use Dispatch
 END
 VER 3 0100000000000008 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -30,6 +29,10 @@ VER 3 010000000000000D " " "Spell_Shadow_RitualOfSacrifice"
 #showtooltip
 /use [stance:0] Sinister Strike
 /use [stance:1] Ambush
+END
+VER 3 010000000000000E " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/click GoGoButton
 END
 VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
 P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1RM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]

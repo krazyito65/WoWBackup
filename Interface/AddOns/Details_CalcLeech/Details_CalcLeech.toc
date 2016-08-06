@@ -2,7 +2,7 @@
 ## Title: Details Calc Leech
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
-## X-Curse-Packaged-Version: r532
+## X-Curse-Packaged-Version: r534
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

@@ -278,10 +278,14 @@ function RCLootCouncilML:OnCommReceived(prefix, serializedMsg, distri, sender)
 				-- Someone asks for mldb, council and candidates
 				addon:SendCommand(sender, "MLdb", addon.mldb)
 				addon:SendCommand(sender, "council", db.council)
-				--NOTE: For some reason this can silently fail, but adding a 1 sec timer on the rest of the calls seems to fix it
+
+			--[[NOTE: For some reason this can silently fail, but adding a 1 sec timer on the rest of the calls seems to fix it
+				v2.0.1: With huge candidates/lootTable we get AceComm lostdatawarning "First", presumeably due to the 4kb ChatThrottleLib limit.
+				Bumping loottable to 4 secs is tested to work with 27 candidates + 10 items.]]
+
 				addon:ScheduleTimer("SendCommand", 1, sender, "candidates", self.candidates)
 				if self.running then -- Resend lootTable
-					addon:ScheduleTimer("SendCommand", 1, sender, "lootTable", self.lootTable)
+					addon:ScheduleTimer("SendCommand", 4, sender, "lootTable", self.lootTable)
 				end
 				addon:Debug("Responded to reconnect from", sender)
 			end
@@ -363,12 +367,14 @@ function RCLootCouncilML:LootOpened()
 end
 
 function RCLootCouncilML:CanWeLootItem(item, quality)
+	local ret = false
 	if db.autoLoot and (IsEquippableItem(item) or db.autolootEverything) and quality >= GetLootThreshold() and not self:IsItemIgnored(item) then -- it's something we're allowed to loot
 		-- Let's check if it's BoE
 		-- Don't bother checking if we know we want to loot it
-		return db.autolootBoE or not addon:IsItemBoE(item)
+		ret = db.autolootBoE or not addon:IsItemBoE(item)
 	end
-	return false
+	addon:Debug("CanWeLootItem", item, ret)
+	return ret
 end
 
 function RCLootCouncilML:HookLootButton(i)

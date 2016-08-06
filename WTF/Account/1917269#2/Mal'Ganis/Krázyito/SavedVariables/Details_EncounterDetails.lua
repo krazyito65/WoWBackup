@@ -3,411 +3,161 @@ EncounterDetailsDB = {
 	["emotes"] = {
 		{
 			{
-				0.1, -- [1]
-				"Your magic is powerless here!", -- [2]
-				"Ko'ragh", -- [3]
+				0.198999999993248, -- [1]
+				"The shadows will envelop you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [1]
 			{
-				6.00299999999697, -- [1]
-				"Get out!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				6.12699999997858, -- [1]
+				"|cFFFF0000%s|r begins to cast |cFFFF0000|Hspell:182178|h[Fel Chakram]|h|r at you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				2, -- [4]
 			}, -- [2]
 			{
-				15.7459999999846, -- [1]
-				"Silence!", -- [2]
-				"Ko'ragh", -- [3]
+				21.4049999999988, -- [1]
+				"The winds will punish you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [3]
 			{
-				24.6429999999818, -- [1]
-				"YOU WILL PAY FOR THIS!!!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				27.5840000000026, -- [1]
+				"|cFFFF0000|Hspell:182582|h[Fel Incineration]|h|r is following you!", -- [2]
+				"Fel Beam Target", -- [3]
+				2, -- [4]
 			}, -- [4]
 			{
-				25.5669999999809, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Hilyx.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				64.4079999999958, -- [1]
+				"Witness true power!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				7, -- [4]
 			}, -- [5]
 			{
-				25.6689999999944, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Mitandra.", -- [2]
-				"Rune of Nullification", -- [3]
+				72.9130000000005, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				1, -- [4]
 			}, -- [6]
 			{
-				25.7710000000079, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Alimanth.", -- [2]
-				"Rune of Nullification", -- [3]
+				93.5689999999886, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				1, -- [4]
 			}, -- [7]
 			{
-				25.8219999999856, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Evtimbo.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				118.562999999995, -- [1]
+				"You had better learn to fly!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				7, -- [4]
 			}, -- [8]
 			{
-				26.0920000000042, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Hãilstørm.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				155.47199999998, -- [1]
+				"Terokk can not protect you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				7, -- [4]
 			}, -- [9]
 			{
-				55.8830000000016, -- [1]
-				"Silence!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				163.965999999986, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				1, -- [4]
 			}, -- [10]
 			{
-				71.7099999999919, -- [1]
-				"I will tear you in half!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				184.633999999991, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				1, -- [4]
 			}, -- [11]
 			{
-				74.570000000007, -- [1]
-				"AHHHHHH!", -- [2]
-				"Ko'ragh", -- [3]
+				213.630000000005, -- [1]
+				"The winds will punish you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [12]
 			{
-				76.2189999999828, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Kagestrasza.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				229.563999999984, -- [1]
+				"|cFFFF0000|Hspell:182582|h[Fel Incineration]|h|r is following you!", -- [2]
+				"Fel Beam Target", -- [3]
+				2, -- [4]
 			}, -- [13]
 			{
-				76.6630000000005, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Krázyito.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				257.899000000005, -- [1]
+				"Witness true power!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				7, -- [4]
 			}, -- [14]
 			{
-				78.4409999999916, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Barthamus.", -- [2]
-				"Rune of Nullification", -- [3]
+				266.282999999996, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				1, -- [4]
 			}, -- [15]
 			{
-				105.788, -- [1]
-				"Get out!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				272.062000000005, -- [1]
+				"|cFFFF0000|Hspell:182582|h[Fel Incineration]|h|r is following you!", -- [2]
+				"Fel Beam Target", -- [3]
+				2, -- [4]
 			}, -- [16]
 			{
-				114.710999999981, -- [1]
-				"I will crush you!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				288.271999999997, -- [1]
+				"|cFFFF0000%s|r is about to finish casting |cFFFF0000|Hspell:181912|h[Focused Blast]|h|r!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				1, -- [4]
 			}, -- [17]
 			{
-				119.562999999995, -- [1]
-				"Broken.", -- [2]
-				"Ko'ragh", -- [3]
+				312.032999999996, -- [1]
+				"The winds will punish you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [18]
 			{
-				127.237999999983, -- [1]
-				"AHHHHHH!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
+				333.173999999999, -- [1]
+				"|cFFFF0000%s|r begins to cast |cFFFF0000|Hspell:182178|h[Fel Chakram]|h|r at you!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				2, -- [4]
 			}, -- [19]
 			{
-				127.983999999997, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Alimanth.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
+				359.361000000004, -- [1]
+				"You had better learn to fly!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
+				7, -- [4]
 			}, -- [20]
 			{
-				155.625999999989, -- [1]
-				"Quiet!", -- [2]
-				"Ko'ragh", -- [3]
+				363.565000000002, -- [1]
+				"Do you think you have won? You know nothing!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [21]
-			{
-				171.805999999982, -- [1]
-				"Quiet!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
-			}, -- [22]
-			{
-				173.843999999983, -- [1]
-				"YOU WILL PAY FOR THIS!!!", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
-			}, -- [23]
-			{
-				174.64499999999, -- [1]
-				"|TInterface\\Icons\\INV_Fabric_Felcloth_Ebon.blp:20|t |cFFFF0404|Hspell:161242|h[Caustic Energy]|h|r begins to flow into Warborn.", -- [2]
-				"Rune of Nullification", -- [3]
-				1, -- [4]
-			}, -- [24]
-			{
-				178.562999999995, -- [1]
-				"Impossible...", -- [2]
-				"Ko'ragh", -- [3]
-				7, -- [4]
-			}, -- [25]
-			["boss"] = "Ko'ragh",
+			["boss"] = "Shadow-Lord Iskar",
 		}, -- [1]
 		{
-			{
-				1.37399999998161, -- [1]
-				"Fight 'em back den.", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				9.93799999999465, -- [1]
-				"Let's have some fun!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [2]
-			{
-				36.7189999999828, -- [1]
-				"Watch out!", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				36.7669999999926, -- [1]
-				"|TInterface\\Icons\\ability_warrior_shieldguard:20|t%s readies a |cFFFF0000|Hspell:158136|h[Shield Charge]|h|r!", -- [2]
-				"Pol", -- [3]
-				1, -- [4]
-			}, -- [4]
-			{
-				42.8189999999886, -- [1]
-				"|TInterface\\Icons\\ability_whirlwind:20|t%s readies a |cFFFF0000|Hspell:157943|h[Whirlwind]|h|r!", -- [2]
-				"Phemos", -- [3]
-				1, -- [4]
-			}, -- [5]
-			{
-				42.8539999999921, -- [1]
-				"'Dis gonna hurt.", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [6]
-			{
-				64.6749999999884, -- [1]
-				"Hear 'dis?", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [7]
-			{
-				76.820000000007, -- [1]
-				"Feel 'dis!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [8]
-			{
-				93.801999999996, -- [1]
-				"Heh heh... 'Dis gonna be gud.", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [9]
-			{
-				110.881999999983, -- [1]
-				"Let's have some fun!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [10]
-			{
-				121.793000000005, -- [1]
-				"Watch out!", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [11]
-			{
-				121.845000000001, -- [1]
-				"|TInterface\\Icons\\ability_warrior_shieldguard:20|t%s readies a |cFFFF0000|Hspell:158136|h[Shield Charge]|h|r!", -- [2]
-				"Pol", -- [3]
-				1, -- [4]
-			}, -- [12]
-			{
-				140.832999999984, -- [1]
-				"I got one, too!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [13]
-			{
-				144.948000000004, -- [1]
-				"|TInterface\\Icons\\ability_whirlwind:20|t%s readies a |cFFFF0000|Hspell:157943|h[Whirlwind]|h|r!", -- [2]
-				"Phemos", -- [3]
-				1, -- [4]
-			}, -- [14]
-			{
-				144.99099999998, -- [1]
-				"'Dis gonna hurt.", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [15]
-			{
-				149.790999999997, -- [1]
-				"Hear 'dis?", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [16]
-			{
-				177.734999999986, -- [1]
-				"Heh heh... 'Dis gonna be gud.", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [17]
-			{
-				177.780999999988, -- [1]
-				"Feel 'dis!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [18]
-			{
-				206.869999999995, -- [1]
-				"Watch out!", -- [2]
-				"Pol", -- [3]
-				7, -- [4]
-			}, -- [19]
-			{
-				206.913, -- [1]
-				"|TInterface\\Icons\\ability_warrior_shieldguard:20|t%s readies a |cFFFF0000|Hspell:158136|h[Shield Charge]|h|r!", -- [2]
-				"Pol", -- [3]
-				1, -- [4]
-			}, -- [20]
-			{
-				211.741999999998, -- [1]
-				"Let's have some fun!", -- [2]
-				"Phemos", -- [3]
-				7, -- [4]
-			}, -- [21]
-			["boss"] = "Twin Ogron",
+			["boss"] = "Shadow-Lord Iskar",
 		}, -- [2]
 		{
 			{
-				14.3030000000144, -- [1]
-				"Yes, Tectus. Bend to master's will!", -- [2]
-				"Night-Twisted Earthwarper", -- [3]
+				38.9139999999898, -- [1]
+				"You are too late! The corruption is nearly complete!", -- [2]
+				"Shadow-Lord Iskar", -- [3]
 				7, -- [4]
 			}, -- [1]
 			{
-				24.0169999999926, -- [1]
-				"Kral'ach.... The darkness speaks.... A VOICE!", -- [2]
-				"Night-Twisted Berserker", -- [3]
-				7, -- [4]
+				40.9700000000012, -- [1]
+				"|cFFFF0000%s|r begins to cast |cFFFF0000|Hspell:186045|h[Solar Chakram]|h|r at you!", -- [2]
+				"Delusional Zealot", -- [3]
+				2, -- [4]
 			}, -- [2]
-			{
-				26.7799999999988, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Tectus", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				44.8099999999977, -- [1]
-				"SHATTER.", -- [2]
-				"Tectus", -- [3]
-				7, -- [4]
-			}, -- [4]
-			{
-				48.0530000000144, -- [1]
-				"WHAT... IS... THIS....", -- [2]
-				"Tectus", -- [3]
-				7, -- [4]
-			}, -- [5]
-			{
-				81.2479999999923, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Shard of Tectus", -- [3]
-				7, -- [4]
-			}, -- [6]
-			{
-				90.5260000000126, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Shard of Tectus", -- [3]
-				7, -- [4]
-			}, -- [7]
-			{
-				94.2490000000107, -- [1]
-				"SHATTER.", -- [2]
-				"Shard of Tectus", -- [3]
-				7, -- [4]
-			}, -- [8]
-			{
-				112.545000000013, -- [1]
-				"BREAK.", -- [2]
-				"Shard of Tectus", -- [3]
-				7, -- [4]
-			}, -- [9]
-			{
-				113.143000000011, -- [1]
-				"Tectus directs his Crystalline Barrage towards you!", -- [2]
-				"Mote of Tectus", -- [3]
-				2, -- [4]
-			}, -- [10]
-			{
-				129.918999999994, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [11]
-			{
-				129.918999999994, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [12]
-			{
-				132.236000000004, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [13]
-			{
-				135.940999999992, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [14]
-			{
-				143.516999999993, -- [1]
-				"Tectus directs his Crystalline Barrage towards you!", -- [2]
-				"Mote of Tectus", -- [3]
-				2, -- [4]
-			}, -- [15]
-			{
-				149.304000000004, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [16]
-			{
-				151.541999999987, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [17]
-			{
-				152.51999999999, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [18]
-			{
-				152.51999999999, -- [1]
-				"RISE, MOUNTAINS!", -- [2]
-				"Mote of Tectus", -- [3]
-				7, -- [4]
-			}, -- [19]
-			{
-				163.16399999999, -- [1]
-				"EVEN THE MOUNTAIN... FALLS....", -- [2]
-				"Tectus", -- [3]
-				7, -- [4]
-			}, -- [20]
-			["boss"] = "Tectus, The Living Mountain",
+			["boss"] = "Shadow-Lord Iskar",
 		}, -- [3]
 	},
 	["encounter_spells"] = {
+		[183817] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Archimonde",
+		},
 		[159178] = {
 			["school"] = 1,
 			["type"] = "DEBUFF",
@@ -526,6 +276,22 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Arcane Aberration",
 		},
+		[186562] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Dreadstalker",
+		},
+		[183598] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Archimonde",
+		},
 		[158385] = {
 			["school"] = 1,
 			["token"] = {
@@ -563,6 +329,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tectus",
 		},
+		[181873] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
 		[181113] = {
 			["school"] = 1,
 			["token"] = {
@@ -576,6 +350,22 @@ EncounterDetailsDB = {
 				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Arcane Aberration",
+		},
+		[158420] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Pol",
+		},
+		[156157] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "The Butcher",
 		},
 		[159311] = {
 			["school"] = 4,
@@ -594,13 +384,24 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shard of Tectus",
 		},
-		[156060] = {
-			["school"] = 1,
+		[182325] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[163138] = {
+			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Unknown",
+			["source"] = "Mind Fungus",
 		},
 		[158419] = {
 			["school"] = 1,
@@ -609,6 +410,13 @@ EncounterDetailsDB = {
 				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Pol",
+		},
+		[8187] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Magma Totem",
 		},
 		[160013] = {
 			["school"] = 8,
@@ -634,21 +442,54 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorian Reaver",
 		},
-		[158420] = {
+		[186662] = {
+			["school"] = 4,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Felborne Overfiend",
+		},
+		[163990] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[158093] = {
 			["school"] = 1,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Pol",
 		},
-		[156157] = {
+		[1943] = {
 			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Shadow Reflection",
+		},
+		[181912] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[188950] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Desecration",
 		},
 		[161576] = {
 			["school"] = 64,
@@ -657,14 +498,24 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ko'ragh",
 		},
-		[163138] = {
-			["school"] = 8,
+		[181753] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Corrupted Talonpriest",
+		},
+		[157943] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Mind Fungus",
+			["source"] = "Phemos",
 		},
 		[158102] = {
 			["school"] = 1,
@@ -681,8 +532,31 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Pol",
 		},
-		[157943] = {
+		[182200] = {
 			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[181913] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[123996] = {
+			["school"] = 8,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Xuen",
+		},
+		[158200] = {
+			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
@@ -691,12 +565,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Phemos",
 		},
-		[123996] = {
-			["school"] = 8,
+		[181089] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Xuen",
+			["source"] = "Tectus",
 		},
 		[164191] = {
 			["school"] = 64,
@@ -708,6 +582,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
+		[186663] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Felborne Overfiend",
+		},
 		[159410] = {
 			["school"] = 8,
 			["token"] = {
@@ -716,13 +599,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Drunken Bileslinger",
 		},
-		[157657] = {
-			["school"] = 64,
+		[192082] = {
+			["school"] = 8,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Volatile Anomaly",
+			["source"] = "Wind Rush Totem",
 		},
 		[157944] = {
 			["school"] = 1,
@@ -738,6 +621,14 @@ EncounterDetailsDB = {
 				["SPELL_HEAL"] = true,
 			},
 			["source"] = "Treant",
+		},
+		[3600] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Earthbind Totem",
 		},
 		[117526] = {
 			["school"] = 64,
@@ -763,6 +654,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ko'ragh",
 		},
+		[183254] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Archimonde",
+		},
 		[159188] = {
 			["school"] = 1,
 			["type"] = "DEBUFF",
@@ -773,15 +672,20 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Grunt",
 		},
-		[158200] = {
-			["school"] = 8,
-			["type"] = "BUFF",
+		[156160] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Phemos",
+			["source"] = "The Butcher",
+		},
+		[156673] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
 		},
 		[158519] = {
 			["school"] = 8,
@@ -796,6 +700,18 @@ EncounterDetailsDB = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Brackenspore",
+		},
+		[183828] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Archimonde",
 		},
 		[162185] = {
 			["school"] = 4,
@@ -815,6 +731,29 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Drunken Bileslinger",
 		},
+		[31707] = {
+			["school"] = 16,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Water Elemental",
+		},
+		[181824] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Fel Raven",
+		},
+		[185008] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shackled Soul",
+		},
 		[156225] = {
 			["school"] = 64,
 			["type"] = "DEBUFF",
@@ -828,6 +767,13 @@ EncounterDetailsDB = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "The Butcher",
+		},
+		[164006] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
 		},
 		[162186] = {
 			["school"] = 64,
@@ -846,6 +792,22 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
+		},
+		[157964] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[159972] = {
+			["school"] = 8,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Fungal Flesh-Eater",
 		},
 		[162569] = {
 			["school"] = 1,
@@ -866,19 +828,45 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Phemos",
 		},
-		[161358] = {
+		[157278] = {
 			["school"] = 64,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Ko'ragh",
+			["source"] = "Imperator Mar'gok",
 		},
-		[181089] = {
+		[156197] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Tectus",
+			["source"] = "The Butcher",
+		},
+		[162968] = {
+			["school"] = 8,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Night-Twisted Earthwarper",
+		},
+		[164004] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[159219] = {
+			["school"] = 8,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Brackenspore",
 		},
 		[160753] = {
 			["school"] = 4,
@@ -890,12 +878,36 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Bomber",
 		},
+		[175673] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Underbelly Vagrant",
+		},
 		[158012] = {
 			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
+		},
+		[158619] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[162346] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Tectus",
 		},
 		[163208] = {
 			["school"] = 8,
@@ -913,6 +925,22 @@ EncounterDetailsDB = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Tectus",
+		},
+		[159250] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Kargath Bladefist",
+		},
+		[163142] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Brackenspore",
 		},
 		[159001] = {
 			["school"] = 1,
@@ -937,6 +965,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Spirit Link Totem",
 		},
+		[159217] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+		},
 		[163209] = {
 			["school"] = 1,
 			["token"] = {
@@ -954,12 +988,31 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Brackenspore",
 		},
-		[156197] = {
-			["school"] = 1,
+		[191068] = {
+			["school"] = 32,
+			["type"] = "BUFF",
 			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Desecration",
+		},
+		[181827] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Shadowfel Warden",
+		},
+		[57984] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Greater Fire Elemental",
 		},
 		[164644] = {
 			["school"] = 8,
@@ -969,12 +1022,29 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_HEAL"] = true,
 			},
 		},
-		[175673] = {
+		[159002] = {
 			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Underbelly Vagrant",
+			["source"] = "Kargath Bladefist",
+		},
+		[156803] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Ko'ragh",
+		},
+		[182178] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
 		},
 		[163242] = {
 			["school"] = 8,
@@ -985,6 +1055,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Brackenspore",
 		},
+		[159515] = {
+			["school"] = 64,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
 		[157951] = {
 			["school"] = 1,
 			["type"] = "BUFF",
@@ -992,6 +1070,40 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Pol",
+		},
+		[181956] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[159220] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Brackenspore",
+		},
+		[186961] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Archimonde",
+		},
+		[164005] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
 		},
 		[163466] = {
 			["school"] = 64,
@@ -1001,6 +1113,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Volatile Anomaly",
 		},
+		[190018] = {
+			["school"] = 32,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Void Star",
+		},
 		[162510] = {
 			["school"] = 8,
 			["token"] = {
@@ -1008,13 +1129,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tectus",
 		},
-		[157952] = {
-			["school"] = 1,
+		[120032] = {
+			["school"] = 32,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Pol",
 		},
 		[163594] = {
 			["school"] = 1,
@@ -1031,19 +1151,24 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Pol",
 		},
-		[57984] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Greater Fire Elemental",
-		},
-		[120032] = {
+		[183864] = {
 			["school"] = 32,
-			["type"] = "BUFF",
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
+			["source"] = "Hellfire Deathcaller",
+		},
+		[164076] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
 		},
 		[164232] = {
 			["school"] = 64,
@@ -1060,12 +1185,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Wild Imp",
 		},
-		[158417] = {
+		[156172] = {
 			["school"] = 1,
 			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Pol",
+			["source"] = "The Butcher",
 		},
 		[162288] = {
 			["school"] = 1,
@@ -1075,13 +1201,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tectus",
 		},
-		[159515] = {
-			["school"] = 64,
+		[108446] = {
+			["school"] = 32,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Vekkar",
 		},
 		[158017] = {
 			["school"] = 1,
@@ -1091,14 +1217,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Phemos",
 		},
-		[158553] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
+		[158025] = {
+			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Gorian Reaver",
+			["source"] = "Imperator Mar'gok",
 		},
 		[158336] = {
 			["school"] = 1,
@@ -1107,13 +1232,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Pol",
 		},
-		[108446] = {
-			["school"] = 32,
+		[173322] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Vekkar",
 		},
 		[159675] = {
 			["school"] = 16,
@@ -1122,13 +1246,13 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[3600] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
+		[188267] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Earthbind Totem",
+			["source"] = "Shadowed Netherwalker",
 		},
 		[119523] = {
 			["school"] = 8,
@@ -1155,21 +1279,22 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorian Warmage",
 		},
-		[163990] = {
-			["school"] = 64,
+		[185590] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Archimonde",
 		},
-		[158093] = {
-			["school"] = 1,
+		[187742] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Pol",
+			["source"] = "Hellfire Deathcaller",
 		},
 		[143834] = {
 			["school"] = 1,
@@ -1202,35 +1327,37 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[164006] = {
-			["school"] = 64,
+		[181957] = {
+			["school"] = 1,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
+			["source"] = "Shadow-Lord Iskar",
 		},
-		[158619] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
+		[160734] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[156293] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Ko'ragh",
 		},
-		[164076] = {
-			["school"] = 1,
+		[189897] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Archimonde",
+		},
+		[157289] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Imperator Mar'gok",
 		},
@@ -1275,13 +1402,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Unknown",
 		},
-		[156745] = {
-			["school"] = 32,
+		[138130] = {
+			["school"] = 1,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Shadow Reflection",
+			["source"] = "Fire Spirit",
 		},
 		[118297] = {
 			["school"] = 4,
@@ -1297,14 +1424,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Breaker Ritualist",
 		},
-		[156160] = {
+		[181831] = {
 			["school"] = 1,
-			["type"] = "DEBUFF",
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Shadowfel Warden",
 		},
 		[160953] = {
 			["school"] = 1,
@@ -1330,18 +1456,23 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[1943] = {
+		[157323] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Shadow Reflection",
+			["source"] = "Imperator Mar'gok",
 		},
-		[160180] = {
-			["school"] = 8,
+		[164176] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Imperator Mar'gok",
 		},
 		[158563] = {
 			["school"] = 1,
@@ -1357,21 +1488,20 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 		},
-		[164299] = {
-			["school"] = 64,
+		[181832] = {
+			["school"] = 8,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shadowfel Warden",
+		},
+		[156239] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Imperator Mar'gok",
-		},
-		[156803] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Ko'ragh",
 		},
 		[164301] = {
 			["school"] = 64,
@@ -1380,136 +1510,6 @@ EncounterDetailsDB = {
 				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Imperator Mar'gok",
-		},
-		[164004] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[159234] = {
-			["school"] = 16,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[173322] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[157289] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[157964] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[157353] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[159972] = {
-			["school"] = 8,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Fungal Flesh-Eater",
-		},
-		[159202] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[160254] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Spore Shooter",
-		},
-		[158013] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[172813] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Ko'ragh",
-		},
-		[162968] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Night-Twisted Earthwarper",
-		},
-		[156673] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-		},
-		[58879] = {
-			["school"] = 32,
-			["token"] = {
-				["SPELL_HEAL"] = true,
-			},
-			["source"] = "Spirit Wolf",
-		},
-		[157801] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Gorian Warmage",
-		},
-		[156143] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "The Butcher",
-		},
-		[30153] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Felguard",
 		},
 		[174057] = {
 			["school"] = 1,
@@ -1520,154 +1520,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[156239] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[164176] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[157323] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[164240] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[90361] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_PERIODIC_HEAL"] = true,
-			},
-			["source"] = "liberty",
-		},
-		[160734] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Ko'ragh",
-		},
-		[158025] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[166185] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_PERIODIC_DAMAGE"] = true,
-			},
-			["source"] = "Highmaul Conscript",
-		},
-		[31707] = {
+		[159234] = {
 			["school"] = 16,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Water Elemental",
-		},
-		[158057] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Phemos",
-		},
-		[158605] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[159219] = {
-			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Brackenspore",
-		},
-		[159217] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-		},
-		[163142] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Brackenspore",
-		},
-		[162346] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Tectus",
-		},
-		[159250] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Kargath Bladefist",
-		},
-		[158026] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Phemos",
-		},
-		[164178] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
 		},
 		[703] = {
 			["school"] = 1,
@@ -1676,12 +1534,47 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadow Reflection",
 		},
-		[85692] = {
-			["school"] = 32,
+		[179219] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Corrupted Talonpriest",
+		},
+		[156143] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Doomguard",
+			["source"] = "The Butcher",
+		},
+		[157353] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[183969] = {
+			["school"] = 32,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Desecration",
+		},
+		[159202] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
 		},
 		[159489] = {
 			["school"] = 8,
@@ -1692,38 +1585,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Mind Fungus",
 		},
-		[159220] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Brackenspore",
-		},
-		[164005] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[157769] = {
-			["school"] = 64,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Gorian Warmage",
-		},
-		[164303] = {
-			["school"] = 64,
+		[182216] = {
+			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[172813] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Ko'ragh",
 		},
 		[161612] = {
 			["school"] = 64,
@@ -1739,7 +1615,16 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Greater Void Aberration",
 		},
-		[163988] = {
+		[161218] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Ravenous Bloodmaw",
+		},
+		[156238] = {
 			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
@@ -1747,7 +1632,54 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[156238] = {
+		[164303] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[160254] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Spore Shooter",
+		},
+		[58879] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_HEAL"] = true,
+			},
+			["source"] = "Spirit Wolf",
+		},
+		[157769] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Gorian Warmage",
+		},
+		[157801] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Gorian Warmage",
+		},
+		[30153] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Felguard",
+		},
+		[164240] = {
 			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
@@ -1764,20 +1696,68 @@ EncounterDetailsDB = {
 			},
 			["source"] = "The Butcher",
 		},
-		[104993] = {
-			["school"] = 2,
+		[187254] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Unknown",
 		},
-		[81262] = {
-			["school"] = 8,
-			["type"] = "BUFF",
+		[179218] = {
+			["school"] = 1,
 			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Corrupted Talonpriest",
+		},
+		[55078] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Rune Weapon",
+		},
+		[166185] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Highmaul Conscript",
+		},
+		[158057] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Phemos",
+		},
+		[187250] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Shadowed Netherwalker",
+		},
+		[189895] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Wild Mushroom",
+			["source"] = "Void Star",
+		},
+		[164299] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
 		},
 		[172747] = {
 			["school"] = 16,
@@ -1799,12 +1779,162 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Bomber",
 		},
-		[157278] = {
-			["school"] = 64,
+		[90361] = {
+			["school"] = 8,
 			["token"] = {
+				["SPELL_PERIODIC_HEAL"] = true,
+			},
+			["source"] = "liberty",
+		},
+		[158026] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Phemos",
+		},
+		[164178] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Imperator Mar'gok",
+		},
+		[182879] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[85692] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Doomguard",
+		},
+		[157952] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Pol",
+		},
+		[190050] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shadowed Netherwalker",
+		},
+		[156745] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Shadow Reflection",
+		},
+		[156293] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "The Butcher",
+		},
+		[160180] = {
+			["school"] = 8,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+		},
+		[161358] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Ko'ragh",
+		},
+		[188614] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+		},
+		[163988] = {
+			["school"] = 64,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[158605] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[81262] = {
+			["school"] = 8,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Wild Mushroom",
+		},
+		[104993] = {
+			["school"] = 2,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[158013] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[158553] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Gorian Reaver",
+		},
+		[158417] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Pol",
+		},
+		[184867] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Archimonde",
 		},
 		[163989] = {
 			["school"] = 64,
@@ -1814,28 +1944,29 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[159002] = {
-			["school"] = 1,
+		[184931] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Kargath Bladefist",
+			["source"] = "Archimonde",
 		},
-		[156172] = {
-			["school"] = 1,
+		[157657] = {
+			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Volatile Anomaly",
 		},
-		[138130] = {
+		[183634] = {
 			["school"] = 1,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Fire Spirit",
+			["source"] = "Archimonde",
 		},
 		[156467] = {
 			["school"] = 1,
@@ -1889,12 +2020,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Pol",
 		},
-		[8187] = {
-			["school"] = 4,
+		[184964] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Magma Totem",
+			["source"] = "Shackled Soul",
 		},
 		[158986] = {
 			["school"] = 1,
@@ -1923,14 +2056,13 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 		},
-		[161218] = {
+		[156060] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Ravenous Bloodmaw",
+			["source"] = "Unknown",
 		},
 	},
 }

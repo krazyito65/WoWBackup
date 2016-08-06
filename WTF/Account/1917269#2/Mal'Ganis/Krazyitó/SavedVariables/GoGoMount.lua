@@ -10,12 +10,12 @@ GoGo_Prefs = {
 	["AutoExcludeFlyingMounts"] = false,
 	["DruidFormNotRandomize"] = false,
 	["Zones"] = {
-		["Bloodmaul Slag Mines"] = {
+		["Mogu'shan Palace"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 964,
+			["ZoneID"] = 885,
 		},
 		["Gorgrond"] = {
 			["Preferred"] = {
@@ -31,7 +31,41 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 941,
 		},
+		["Warspear Hold"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 1011,
+		},
 		[976] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Ashran"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 978,
+		},
+		["Bloodmaul Slag Mines"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 964,
+		},
+		["Blasted Lands"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 19,
+		},
+		[941] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -43,6 +77,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		["Frostfire Ridge"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 941,
+		},
 		["Tanaan Jungle"] = {
 			["Preferred"] = {
 			},
@@ -50,19 +91,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		["Ashran"] = {
+		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 978,
-		},
-		["Blasted Lands"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 19,
 		},
 		["Warspear"] = {
 			["Preferred"] = {
@@ -71,53 +104,20 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
-		["Mogu'shan Palace"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 885,
-		},
-		["Warspear Hold"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 1011,
-		},
-		["Frostfire Ridge"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 941,
-		},
-		[941] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[1011] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "6.2.12",
+	["version"] = "7.0.3",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 }
 GoGo_DebugLog = {
 }
