@@ -1,12 +1,3 @@
-VER 3 0000000000000063 " " "Ability_Iyyokuk_Mantid_Red"
-/run SetRaidTarget("Target", 8)
-END
-VER 3 0000000000000082 " " "INV_MISC_QUESTIONMARK"
-/use milling
-/use Gorgrond Flytrap
-/use Nagrand Arrowbloom
-/use Starflower
-END
 VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
  /run SetRaidTarget("Target", 3)
 8 = {skull}
@@ -17,6 +8,15 @@ VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
 3 = {diamond}
 2 = {circle}
 1 = {star}
+END
+VER 3 0000000000000063 " " "Ability_Iyyokuk_Mantid_Red"
+/run SetRaidTarget("Target", 8)
+END
+VER 3 0000000000000082 " " "INV_MISC_QUESTIONMARK"
+/use milling
+/use Gorgrond Flytrap
+/use Nagrand Arrowbloom
+/use Starflower
 END
 VER 3 0000000000000052 "  conformation" "SPELL_ARCANE_ARCANE01"
 /click StaticPopup1Button1

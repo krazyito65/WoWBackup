@@ -13,16 +13,16 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("TradeSkillMaster_Accounting", "zhCN")
 if not L then return end
 
-L["Accounting has not yet collected enough information for this tab. This is likely due to not having recorded enough data points or not seeing any significant fluctuations (over 1k gold) in your gold on hand."] = "账户还没有收集到足够的信息来显示到此页面，您的金币可能由于还没有记录足够的数据或有重大的波动（超过1000G）" -- Needs review
+L["Accounting has not yet collected enough information for this tab. This is likely due to not having recorded enough data points or not seeing any significant fluctuations (over 1k gold) in your gold on hand."] = "账户还没有为标签收集到足够的信息。您的金币可能由于还没有记录足够的数据或有重大的波动（超过1000G）。"
 L["Activity Type"] = "活动类别"
 L["All"] = "所有"
 L["Amount"] = "总额"
 L["Aucs"] = "曲线"
 L["Average Prices:"] = "平均价："
-L["Avg Buy"] = "平均购买" -- Needs review
+L["Avg Buy"] = "购买均价" -- Needs review
 L["Avg Buy Price"] = "平均买入价"
 L["Avg Resale Profit"] = "平均转卖利润"
-L["Avg Sale"] = "平均出售" -- Needs review
+L["Avg Sale"] = "出售均价" -- Needs review
 L["Avg Sell Price"] = "平均售价"
 L["Back to Previous Page"] = "返回上一页"
 L["Balance"] = "结算"

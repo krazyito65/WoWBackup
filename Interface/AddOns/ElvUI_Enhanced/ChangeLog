@@ -1,3 +1,6 @@
+3.1.1-beta6
+* Correctly disable nameplate module (caused lua errors for some people)
+
 3.1.1-beta5
 * Updated the equipment changer to the new spec system
 

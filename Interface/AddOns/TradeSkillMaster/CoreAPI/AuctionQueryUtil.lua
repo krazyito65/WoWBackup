@@ -202,17 +202,22 @@ function private.GenerateQueriesThread(self, itemList)
 		self:Sleep(0.1)
 	end
 
-	-- convert to new itemStrings
+	-- convert to new itemStrings and remove duplicates
 	local itemStrings = {}
+	local usedItems = {}
+	local missingItemInfo = 0
 	for i=1, #itemList do
 		local itemString = TSMAPI.Item:ToItemString(itemList[i])
-		if private.HasInfo(itemString) then
+		if not private.HasInfo(itemString) then
+			missingItemInfo = missingItemInfo + 1
+		elseif not usedItems[itemString] then
+			usedItems[itemString] = true
 			tinsert(itemStrings, itemString)
 		end
 	end
 
-	if #itemStrings < #itemList then
-		TSM:LOG_ERR("Only got item info for %d out of %d items", #itemStrings, #itemList)
+	if missingItemInfo > 0 then
+		TSM:LOG_ERR("Missing item info for %d items", missingItemInfo)
 	end
 
 	-- if the DB is not fully populated, or we don't have all the item info, just do individual scans

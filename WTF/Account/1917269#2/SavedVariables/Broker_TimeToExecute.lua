@@ -5,6 +5,7 @@ Broker_TimeToExecuteDB = {
 		["Krázýító - Gnomeregan"] = "Default",
 		["Krâzyito - Mal'Ganis"] = "Default",
 		["Krazyitò - Gnomeregan"] = "Default",
+		["Krazyìto - Mal'Ganis"] = "Default",
 		["Krazyíto - Gnomeregan"] = "Default",
 		["Krazyito - Illidan"] = "Default",
 		["Krazybank - Mal'Ganis"] = "Default",

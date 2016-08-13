@@ -38,12 +38,6 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
-		[976] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Ashran"] = {
 			["Preferred"] = {
 			},
@@ -51,12 +45,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 978,
 		},
-		["Bloodmaul Slag Mines"] = {
+		[1105] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 964,
 		},
 		["Blasted Lands"] = {
 			["Preferred"] = {
@@ -71,18 +64,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[321] = {
+		["Bloodmaul Slag Mines"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-		},
-		["Frostfire Ridge"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 941,
+			["ZoneID"] = 964,
 		},
 		["Tanaan Jungle"] = {
 			["Preferred"] = {
@@ -91,33 +78,38 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
+		[321] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Warspear"] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1011,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.3",
+	["version"] = "7.0.6",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 }
 GoGo_DebugLog = {
 }

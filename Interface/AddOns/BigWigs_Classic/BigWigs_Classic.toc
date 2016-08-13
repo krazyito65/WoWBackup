@@ -1,5 +1,5 @@
 ## Interface: 70000
-## X-Curse-Packaged-Version: r78-release
+## X-Curse-Packaged-Version: r81-release
 ## X-Curse-Project-Name: BigWigs_Classic
 ## X-Curse-Project-ID: bigwigs_classic
 ## X-Curse-Repository-ID: wow/bigwigs_classic/mainline

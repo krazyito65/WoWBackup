@@ -98,7 +98,7 @@ TradeSkillMaster_CompetitorTracker: disabled
 TradeSkillMaster_Shopping: disabled
 Broker_TimeToExecute: enabled
 epgp-lootmaster-fp: disabled
-Auctionator: disabled
+Auctionator: enabled
 GoGoMount: enabled
 WeakAurasOptions: enabled
 WeakAuras: enabled

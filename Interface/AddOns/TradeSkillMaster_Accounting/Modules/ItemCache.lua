@@ -19,7 +19,7 @@ local private = {}
 -- ============================================================================
 
 function ItemCache:OnEnable()
-	ItemCache:RegisterEvent("AUCTION_OWNED_LIST_UPDATE", private.ScanAuctionItems)
+	ItemCache:RegisterEvent("AUCTION_OWNED_LIST_UPDATE", function() TSMAPI.Delay:AfterTime("accountingAuctionUpdate", 1, private.ScanAuctionItems) end)
 	ItemCache:RegisterEvent("BAG_UPDATE", function() TSMAPI.Delay:AfterTime("accountingItemCacheBagUpdate", 0.1, private.OnBagChange) end)
 end
 
@@ -45,8 +45,9 @@ end
 -- scans the player's current auctions to build up the name -> itemString lookup table
 function private:ScanAuctionItems()
 	for i=1, GetNumAuctionItems("owner") do
-		local name = GetAuctionItemInfo("owner", i)
-		if name then
+		local link = GetAuctionItemLink("owner", i)
+		if link then
+			local name = TSMAPI.Item:GetName(link)
 			TSM.db.global.itemStrings[name] = TSMAPI.Item:ToItemString(GetAuctionItemLink("owner", i))
 		end
 	end

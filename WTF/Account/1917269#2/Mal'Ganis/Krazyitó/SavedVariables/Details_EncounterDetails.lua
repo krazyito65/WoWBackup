@@ -1,5 +1,7 @@
 
 EncounterDetailsDB = {
+	["encounter_spells"] = {
+	},
 	["emotes"] = {
 		{
 			["boss"] = "Xin the Weaponmaster",
@@ -10,7 +12,5 @@ EncounterDetailsDB = {
 		{
 			["boss"] = "Trial of the King",
 		}, -- [3]
-	},
-	["encounter_spells"] = {
 	},
 }

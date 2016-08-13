@@ -5,6 +5,7 @@ LoggerHeadDB = {
 		["Meatrisolyn - Proudmoore"] = "Default",
 		["Krázýító - Gnomeregan"] = "Default",
 		["Krazyitò - Gnomeregan"] = "Default",
+		["Krazyìto - Mal'Ganis"] = "Default",
 		["Krazyito - Gnomeregan"] = "Default",
 		["Krazyito - Firetree"] = "Default",
 		["Krázyito - Gnomeregan"] = "Default",
@@ -175,6 +176,9 @@ LoggerHeadDB = {
 					["Gnomeregan"] = {
 						false, -- [1]
 					},
+					["Lower Blackrock Spire"] = {
+						false, -- [1]
+					},
 					["Wailing Caverns"] = {
 						false, -- [1]
 					},
@@ -188,13 +192,13 @@ LoggerHeadDB = {
 						true, -- [2]
 						[8] = true,
 					},
-					["Iron Docks"] = {
-						[2] = true,
-						[8] = true,
-					},
 					["The Oculus"] = {
 						false, -- [1]
 						false, -- [2]
+					},
+					["Iron Docks"] = {
+						[2] = true,
+						[8] = true,
 					},
 					["Blackrock Caverns"] = {
 						false, -- [1]
@@ -205,9 +209,8 @@ LoggerHeadDB = {
 						true, -- [2]
 						[8] = true,
 					},
-					["Magister's Terrace"] = {
+					["Coilfang: The Underbog"] = {
 						false, -- [1]
-						false, -- [2]
 					},
 					["Auchindoun: Shadow Labyrinth"] = {
 						true, -- [1]
@@ -216,8 +219,9 @@ LoggerHeadDB = {
 					["Coilfang: The Steamvault"] = {
 						true, -- [1]
 					},
-					["Coilfang: The Underbog"] = {
+					["Magister's Terrace"] = {
 						false, -- [1]
+						false, -- [2]
 					},
 					["Gate of the Setting Sun"] = {
 						false, -- [1]
@@ -240,13 +244,13 @@ LoggerHeadDB = {
 						false, -- [1]
 						false, -- [2]
 					},
+					["The Escape From Durnholde"] = {
+						false, -- [1]
+					},
 					["Scholomance"] = {
 						true, -- [1]
 						false, -- [2]
 						[8] = true,
-					},
-					["The Escape From Durnholde"] = {
-						false, -- [1]
 					},
 					["Ragefire Chasm"] = {
 						false, -- [1]
@@ -264,17 +268,17 @@ LoggerHeadDB = {
 						false, -- [1]
 						false, -- [2]
 					},
-					["Tempest Keep: The Arcatraz"] = {
-						true, -- [1]
-						false, -- [2]
+					["Hellfire Citadel: Ramparts"] = {
+						false, -- [1]
 					},
 					["Shado-Pan Monastery"] = {
 						false, -- [1]
 						false, -- [2]
 						[8] = false,
 					},
-					["Hellfire Citadel: Ramparts"] = {
-						false, -- [1]
+					["Tempest Keep: The Arcatraz"] = {
+						true, -- [1]
+						false, -- [2]
 					},
 					["Scarlet Halls"] = {
 						false, -- [1]

@@ -12,30 +12,24 @@ TradeSkillMaster_DestroyingDB = {
 			"Krázyito - Mal'Ganis", -- [4]
 			"Krâzyito - Mal'Ganis", -- [5]
 			"Krazyitó - Mal'Ganis", -- [6]
-		},
-		["factionrealm"] = {
-			"Horde - Mal'Ganis", -- [1]
-			"Alliance - Gnomeregan", -- [2]
-		},
-		["profile"] = {
-			"Default", -- [1]
+			"Krazyìto - Mal'Ganis", -- [7]
 		},
 		["realm"] = {
 			"Mal'Ganis", -- [1]
 			"Gnomeregan", -- [2]
 		},
+		["profile"] = {
+			"Default", -- [1]
+		},
+		["factionrealm"] = {
+			"Horde - Mal'Ganis", -- [1]
+			"Alliance - Gnomeregan", -- [2]
+		},
 	},
 	["g@ @autoShow"] = true,
 	["g@ @autoStack"] = true,
-	["_currentProfile"] = {
-		["Krazyitó - Mal'Ganis"] = "Default",
-		["Krazyito - Mal'Ganis"] = "Default",
-		["Krázýító - Gnomeregan"] = "Default",
-		["Krâzyito - Mal'Ganis"] = "Default",
-		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krázyito - Mal'Ganis"] = "Default",
-	},
-	["_version"] = 1,
+	["g@ @logDays"] = 14,
+	["g@ @deAbovePrice"] = "0c",
 	["g@ @history"] = {
 		["Disenchant"] = {
 			{
@@ -1340,9 +1334,17 @@ TradeSkillMaster_DestroyingDB = {
 	["g@ @helpPlatesShown"] = {
 		["destroyingFrame"] = true,
 	},
-	["g@ @includeSoulbound"] = false,
 	["_hash"] = 14107345,
+	["g@ @includeSoulbound"] = false,
 	["g@ @deMaxQuality"] = 3,
-	["g@ @deAbovePrice"] = "0c",
-	["g@ @logDays"] = 14,
+	["_version"] = 1,
+	["_currentProfile"] = {
+		["Krazyitó - Mal'Ganis"] = "Default",
+		["Krazyito - Mal'Ganis"] = "Default",
+		["Krazyìto - Mal'Ganis"] = "Default",
+		["Krázýító - Gnomeregan"] = "Default",
+		["Krâzyito - Mal'Ganis"] = "Default",
+		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krázyito - Mal'Ganis"] = "Default",
+	},
 }

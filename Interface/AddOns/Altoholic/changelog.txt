@@ -10,10 +10,14 @@ There WILL be bugs if you use your old files without cleaning them first.
 Some fixes to work around API changes are too time consuming, so cleaning is required. A meagre price to pay once per expansion.
 
 
+7.0.006 (03/08/2016)
+
+- DataStore: Fixed guild identification when the character is on a different realm than the guild.
+- Grids: Updated Archeology races and items for Legion.
+
 7.0.005 (31/07/2016)
 
 - DataStore: Fixed a lua error when getting AutoCompleteRealms.
-
 
 7.0.004 (31/07/2016)
 

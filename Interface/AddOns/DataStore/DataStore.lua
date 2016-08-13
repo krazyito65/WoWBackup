@@ -172,17 +172,35 @@ local function OnPlayerGuildUpdate()
 		local realmName, _
 		currentGuildName, _, _, realmName = GetGuildInfo("player")		-- realmName will be nil if guild is on the same realm as the character
 		
-		if currentGuildName and not realmName then	-- ONLY save the guild key if the realm is nil (= current realm)
-			local guildKey = GetKey(currentGuildName)
-			if not Guilds[guildKey] then
-				Guilds[guildKey] = {}
+		if currentGuildName then
+			local guildKey
+			
+			if not realmName then
+				-- if realm is nil (= current realm), the guild key will be a classic key
+				guildKey = GetKey(currentGuildName)
+				
+			else
+				-- if realm is not nil, the guild key will use the long realm name
+				local longName = addon:GetLongRealmName(realmName)	
+			
+				if longName then
+					guildKey = GetKey(currentGuildName, longName)
+				end
 			end
 
-			Guilds[guildKey].faction = UnitFactionGroup("player")
-			
-			-- the first time a valid value is found, broadcast to guild, it must happen here for a standard login, but won't work here after a reloadui since this event is not triggered
-			GuildBroadcast(MSG_ANNOUNCELOGIN, GetAlts(currentGuildName))
-			addon:SendMessage("DATASTORE_ANNOUNCELOGIN", currentGuildName)
+			-- guild key may be nil if the character is on a different realm than his guild, and he never logged on to that server
+			-- .. so the long realm name is unknown ..
+			if guildKey then
+				if not Guilds[guildKey] then
+					Guilds[guildKey] = {}
+				end
+
+				Guilds[guildKey].faction = UnitFactionGroup("player")
+				
+				-- the first time a valid value is found, broadcast to guild, it must happen here for a standard login, but won't work here after a reloadui since this event is not triggered
+				GuildBroadcast(MSG_ANNOUNCELOGIN, GetAlts(currentGuildName))
+				addon:SendMessage("DATASTORE_ANNOUNCELOGIN", currentGuildName)
+			end
 		end
 	end
 	Characters[GetKey()].guildName = currentGuildName
@@ -476,7 +494,7 @@ function addon:GetThisGuildKey()
 	-- realm not nil : guild is on a connected realm
 	
 	-- guild "unknwon" if it's not possible to match its short name to its long name
-	local longName = addon:GetLongRealmName(realm)		
+	local longName = addon:GetLongRealmName(realm)
 	if not longName then return end
 	
 	return format("%s.%s.%s", THIS_ACCOUNT, longName, guild)

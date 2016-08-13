@@ -428,6 +428,7 @@ function private.SaveItemCache()
 	result = private.EncodeNumber(TSMAPI.Util:CalculateHash(result), 4)..result
 	-- store the result
 	TSMItemCacheDB = result
+	TSM.db.global.locale = GetLocale()
 end
 
 function private.DecodeNumber(str, length, offset)
@@ -452,6 +453,9 @@ function private.DecodeNumber(str, length, offset)
 end
 
 function private.LoadItemCache()
+	-- check if the locale changed, in which case we won't load the cache
+	if TSM.db.global.locale ~= "" and TSM.db.global.locale ~= GetLocale() then return end
+
 	local str = TSMItemCacheDB
 	if type(str) ~= "string" or #str < 4 then return end
 
@@ -789,7 +793,19 @@ function TSMAPI.Item:GetLink(itemString)
 end
 
 function TSMAPI.Item:GetQuality(itemString)
-	return private.GetItemInfoKey(itemString, "quality")
+	itemString = TSMAPI.Item:ToItemString(itemString)
+	if not itemString then return end
+	local baseItemString = TSMAPI.Item:ToBaseItemString(itemString)
+	local info = private.GetCachedItemInfo(baseItemString)
+	if strmatch(itemString, "^p:") then
+		-- we can get the quality directly from the itemString
+		local quality = select(4, strsplit(":", itemString))
+		return tonumber(quality) or 0
+	elseif itemString ~= baseItemString and info and info._getInfoResult then
+		-- we have the base item info, so should be able to call GetItemInfo() for this version of the item
+		return select(3, GetItemInfo(private.ToWoWItemString(itemString))) or info.quality
+	end
+	return info and info.quality
 end
 
 function TSMAPI.Item:GetItemLevel(itemString)

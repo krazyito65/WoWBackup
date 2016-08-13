@@ -1,9 +1,14 @@
-VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
-/use [@mouseover] Cenarion Ward
+VER 3 0100000000000068 " " "INV_MISC_QUESTIONMARK"
+#showtooltip Renewal
+/use Bear Form
+/use Renewal
 END
 VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
+END
+VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
+/use [mod:ctrl] Etheralus, the Eternal Reward; [nomod, @mouseover] Cenarion Ward
 END
 VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -38,6 +43,11 @@ VER 3 0100000000000062 " sunfire mouseov" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [@mouseover,harm][] sunfire
 END
+VER 3 0100000000000069 "dispel macro" "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [spec:1, @mouseover] Remove Corruption
+/use [spec:4, @mouseover] Nature's Cure
+END
 VER 3 0100000000000024 "regrow" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast [mod:ctrl, @player] innervate;  [@mouseover] Regrowth
@@ -52,8 +62,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-P1SR1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NIksQua[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

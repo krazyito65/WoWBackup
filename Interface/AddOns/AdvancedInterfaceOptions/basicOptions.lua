@@ -2,10 +2,53 @@ local addonName, addon = ...
 local E = addon:Eve()
 local _G = _G
 
+CameraPanelOptions.cameraDistanceMaxFactor.maxValue = 2.6
+
+-- Saved settings
+AdvancedInterfaceOptionsSaved = {
+	AccountVars = {}, -- account-wide cvars to be re-applied on login, [cvar] = value
+	CharVars = {}, -- (todo) character-specific cvar settings? [charName-realm] = { [cvar] = value }
+}
+
+local AlwaysCharacterSpecificCVars = {
+	-- list of cvars that should never be account-wide
+	-- [cvar] = true
+}
+
+local AddonLoaded, VariablesLoaded = false, false
+function E:VARIABLES_LOADED()
+	VariablesLoaded = true
+	if AddonLoaded then
+		self:ADDON_LOADED(addonName)
+	end
+end
+
+function E:ADDON_LOADED(addon)
+	if addon == addonName then
+		E:UnregisterEvent('ADDON_LOADED')
+		AddonLoaded = true
+		if VariablesLoaded then
+			if not AdvancedInterfaceOptionsSaved.AccountVars then
+				AdvancedInterfaceOptionsSaved['AccountVars'] = {}
+			end
+			for cvar, value in pairs(AdvancedInterfaceOptionsSaved.AccountVars) do
+				SetCVar(cvar, value)
+			end
+		end
+	end
+end
+
+function addon:SetCVar(cvar, value) -- save our cvar to the db
+	if not AlwaysCharacterSpecificCVars[cvar] then
+		AdvancedInterfaceOptionsSaved.AccountVars[cvar] = value
+	end
+	SetCVar(cvar, value)
+end
+
 -- GLOBALS: GameTooltip InterfaceOptionsFrame_OpenToCategory
 -- GLOBALS: GetSortBagsRightToLeft SetSortBagsRightToLeft GetInsertItemsLeftToRight SetInsertItemsLeftToRight
 -- GLOBALS: UIDropDownMenu_AddButton UIDropDownMenu_CreateInfo UIDropDownMenu_SetSelectedValue
--- GLOBALS: SLASH_AIO1 InterfaceOptionsFrame DEFAULT_CHAT_FRAME
+-- GLOBALS: SLASH_AIO1 InterfaceOptionsFrame DEFAULT_CHAT_FRAME AdvancedInterfaceOptionsSaved
 
 local AIO = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
 AIO:Hide()
@@ -19,7 +62,7 @@ AIO.name = addonName
 -------------
 local function checkboxGetCVar(self) return GetCVarBool(self.cvar) end
 local function checkboxSetChecked(self) self:SetChecked(self:GetValue()) end
-local function checkboxSetCVar(self, checked) SetCVar(self.cvar, checked) end
+local function checkboxSetCVar(self, checked) addon:SetCVar(self.cvar, checked) end
 local function checkboxOnClick(self)
 	local checked = self:GetChecked()
 	PlaySound(checked and "igMainMenuOptionCheckBoxOn" or "igMainMenuOptionCheckBoxOff")
@@ -49,7 +92,21 @@ end
 -----------
 local function sliderGetCVar(self) return GetCVar(self.cvar) end
 local function sliderRefresh(self) self:SetValue(self:GetCVarValue()) end
-local function sliderSetCVar(self, checked) SetCVar(self.cvar, checked) end
+local function sliderSetCVar(self, checked) addon:SetCVar(self.cvar, checked) end
+
+local function sliderDisable(self)
+	self.text:SetTextColor(GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b)
+	self.minText:SetTextColor(GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b)
+	self.maxText:SetTextColor(GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b)
+	self.valueText:SetTextColor(GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b)
+end
+
+local function sliderEnable(self)
+	self.text:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+	self.minText:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+	self.maxText:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+	self.valueText:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+end
 
 local function newSlider(parent, cvar, minRange, maxRange, stepSize, getValue, setValue)
 	local cvarTable = addon.hiddenOptions[cvar]
@@ -61,24 +118,31 @@ local function newSlider(parent, cvar, minRange, maxRange, stepSize, getValue, s
 	slider.GetCVarValue = getValue or sliderGetCVar
 	slider.SetCVarValue = setValue or sliderSetCVar
 	slider:SetScript('OnShow', sliderRefresh)
-	slider:SetValueStep(stepSize or 1)
+	stepSize = stepSize or 1
+	slider:SetValueStep(stepSize)
 	slider:SetObeyStepOnDrag(true)
 
 	slider:SetMinMaxValues(minRange, maxRange)
 	slider.minText = _G[slider:GetName() .. 'Low']
 	slider.maxText = _G[slider:GetName() .. 'High']
+	slider.text = _G[slider:GetName() .. 'Text']
 	slider.minText:SetText(minRange)
 	slider.maxText:SetText(maxRange)
-	_G[slider:GetName() .. 'Text']:SetText(label)
+	slider.text:SetText(label)
 
 	local valueText = slider:CreateFontString(nil, nil, 'GameFontHighlight')
 	valueText:SetPoint('TOP', slider, 'BOTTOM', 0, -5)
 	slider.valueText = valueText
 	slider:HookScript('OnValueChanged', function(self, value)
+		local factor = 1 / stepSize
+		value = floor(value * factor + 0.5) / factor
 		valueText:SetText(value)
 	end)
 
 	slider:HookScript('OnValueChanged', slider.SetCVarValue)
+
+	slider:HookScript('OnDisable', sliderDisable)
+	slider:HookScript('OnEnable', sliderEnable)
 
 	slider.tooltipText = label
 	slider.tooltipRequirement = description
@@ -101,9 +165,6 @@ subText:SetText('These options allow you to toggle various options that have bee
 local playerTitles = newCheckbox(AIO, 'UnitNamePlayerPVPTitle')
 local playerGuilds = newCheckbox(AIO, 'UnitNamePlayerGuild')
 local playerGuildTitles = newCheckbox(AIO, 'UnitNameGuildTitle')
-local stopAutoAttack = newCheckbox(AIO, 'stopAutoAttackOnTargetChange')
-local attackOnAssist = newCheckbox(AIO, 'assistAttack')
-local castOnKeyDown = newCheckbox(AIO, 'ActionButtonUseKeyDown')
 local fadeMap = newCheckbox(AIO, 'mapFade')
 local secureToggle = newCheckbox(AIO, 'secureAbilityToggle')
 local luaErrors = newCheckbox(AIO, 'scriptErrors')
@@ -143,7 +204,7 @@ questSortingDropdown.initialize = function(dropdown)
 		info.text = sortMode[i]
 		info.value = sortMode[i]
 		info.func = function(self)
-			SetCVar("trackQuestSorting", self.value)
+			addon:SetCVar("trackQuestSorting", self.value)
 			UIDropDownMenu_SetSelectedValue(dropdown, self.value)
 		end
 		UIDropDownMenu_AddButton(info)
@@ -181,21 +242,19 @@ actionCamModeDropdown.initialize = function(dropdown)
 end
 actionCamModeDropdown:HookScript("OnShow", actionCamModeDropdown.initialize)
 
+local cameraFactor = newSlider(AIO, 'cameraDistanceMaxFactor', 0.1, 2.6, 0.1)
+cameraFactor:SetPoint('TOPLEFT', actionCamModeDropdown, 'BOTTOMLEFT', 20, -20)
+
 playerTitles:SetPoint("TOPLEFT", subText, "BOTTOMLEFT", 0, -8)
 playerGuilds:SetPoint("TOPLEFT", playerTitles, "BOTTOMLEFT", 0, -4)
 playerGuildTitles:SetPoint("TOPLEFT", playerGuilds, "BOTTOMLEFT", 0, -4)
-stopAutoAttack:SetPoint("TOPLEFT", playerGuildTitles, "BOTTOMLEFT", 0, -4)
-attackOnAssist:SetPoint("TOPLEFT", stopAutoAttack, "BOTTOMLEFT", 0, -4)
-castOnKeyDown:SetPoint("TOPLEFT", attackOnAssist, "BOTTOMLEFT", 0, -4)
-fadeMap:SetPoint("TOPLEFT", castOnKeyDown, "BOTTOMLEFT", 0, -4)
+fadeMap:SetPoint("TOPLEFT", playerGuildTitles, "BOTTOMLEFT", 0, -4)
 secureToggle:SetPoint("TOPLEFT", fadeMap, "BOTTOMLEFT", 0, -4)
 luaErrors:SetPoint("TOPLEFT", secureToggle, "BOTTOMLEFT", 0, -4)
 targetDebuffFilter:SetPoint("TOPLEFT", luaErrors, "BOTTOMLEFT", 0, -4)
 reverseCleanupBags:SetPoint("TOPLEFT", targetDebuffFilter, "BOTTOMLEFT", 0, -4)
 lootLeftmostBag:SetPoint("TOPLEFT", reverseCleanupBags, "BOTTOMLEFT", 0, -4)
 enableWoWMouse:SetPoint("TOPLEFT", lootLeftmostBag, "BOTTOMLEFT", 0, -4)
-
--- TODO reducedLagTolerance maxSpellStartRecoveryOffset
 
 
 -- Chat settings
@@ -257,7 +316,7 @@ fctfloatmodeDropdown.initialize = function(dropdown)
 		info.text = floatMode[i]
 		info.value = tostring(i)
 		info.func = function(self)
-			SetCVar("floatingCombatTextFloatMode", self.value)
+			addon:SetCVar("floatingCombatTextFloatMode", self.value)
 			UIDropDownMenu_SetSelectedValue(dropdown, self.value)
 		end
 		UIDropDownMenu_AddButton(info)
@@ -280,7 +339,6 @@ local fctHealing = newCheckbox(AIO_FCT, 'floatingCombatTextCombatHealing')
 local fctPetMeleeDamage = newCheckbox(AIO_FCT, 'floatingCombatTextPetMeleeDamage')
 local fctSpellMechanics = newCheckbox(AIO_FCT, 'floatingCombatTextSpellMechanics')
 local fctSpellMechanicsOther = newCheckbox(AIO_FCT, 'floatingCombatTextSpellMechanicsOther')
-
 local enablefct = newCheckbox(AIO_FCT, 'enableFloatingCombatText')
 local fctAbsorbSelf = newCheckbox(AIO_FCT, 'floatingCombatTextCombatHealingAbsorbSelf')
 local fctAuras = newCheckbox(AIO_FCT, 'floatingCombatTextAuras')
@@ -323,7 +381,6 @@ fctRepChanges:SetPoint("TOPLEFT", fctDamageReduction, "BOTTOMLEFT", 0, -4)
 fctReactives:SetPoint("TOPLEFT", fctRepChanges, "BOTTOMLEFT", 0, -4)
 fctFriendlyHealer:SetPoint("TOPLEFT", fctReactives, "BOTTOMLEFT", 0, -4)
 fctCombatState:SetPoint("TOPLEFT", fctFriendlyHealer, "BOTTOMLEFT", 0, -4)
-
 fctAbsorbSelf:SetPoint("TOPLEFT", fctDodgeParryMiss, "TOPRIGHT", 260, 0)
 fctLowHPMana:SetPoint("TOPLEFT", fctAbsorbSelf, "BOTTOMLEFT", 0, -4)
 fctEnergyGains:SetPoint("TOPLEFT", fctLowHPMana, "BOTTOMLEFT", 0, -4)
@@ -364,10 +421,66 @@ nameplateAtBase:SetScript('OnClick', function(self)
 	self:SetValue(checked and 2 or 0)
 end)
 
+-- Combat settings
+local AIO_C = CreateFrame('Frame', nil, InterfaceOptionsFramePanelContainer)
+AIO_C:Hide()
+AIO_C:SetAllPoints()
+AIO_C.name = "Combat"
+AIO_C.parent = addonName
+
+local Title_C = AIO_C:CreateFontString(nil, 'ARTWORK', 'GameFontNormalLarge')
+Title_C:SetJustifyV('TOP')
+Title_C:SetJustifyH('LEFT')
+Title_C:SetPoint('TOPLEFT', 16, -16)
+Title_C:SetText(AIO_C.name)
+
+local SubText_C = AIO_C:CreateFontString(nil, 'ARTWORK', 'GameFontHighlightSmall')
+SubText_C:SetMaxLines(3)
+SubText_C:SetNonSpaceWrap(true)
+SubText_C:SetJustifyV('TOP')
+SubText_C:SetJustifyH('LEFT')
+SubText_C:SetPoint('TOPLEFT', Title_C, 'BOTTOMLEFT', 0, -8)
+SubText_C:SetPoint('RIGHT', -32, 0)
+SubText_C:SetText('These options allow you to modify Combat Options.')
+
+local stopAutoAttack = newCheckbox(AIO_C, 'stopAutoAttackOnTargetChange')
+stopAutoAttack:SetPoint("TOPLEFT", SubText_C, "BOTTOMLEFT", 0, -8)
+
+local attackOnAssist = newCheckbox(AIO_C, 'assistAttack')
+attackOnAssist:SetPoint("TOPLEFT", stopAutoAttack, "BOTTOMLEFT", 0, -4)
+
+local castOnKeyDown = newCheckbox(AIO_C, 'ActionButtonUseKeyDown')
+castOnKeyDown:SetPoint("TOPLEFT", attackOnAssist, "BOTTOMLEFT", 0, -4)
+
+local spellStartRecovery = newSlider(AIO_C, 'MaxSpellStartRecoveryOffset', 0, 400)
+spellStartRecovery:SetPoint('TOPLEFT', castOnKeyDown, 'BOTTOMLEFT', 0, -20)
+spellStartRecovery:Disable()
+
+local reducedLagTolerance = newCheckbox(AIO_C, 'reducedLagTolerance')
+reducedLagTolerance:SetPoint("TOPLEFT", spellStartRecovery, "BOTTOMLEFT", 0, -16)
+reducedLagTolerance:SetScript('OnClick', function(self)
+	local checked = self:GetChecked()
+	PlaySound(checked and "igMainMenuOptionCheckBoxOn" or "igMainMenuOptionCheckBoxOff")
+	if checked then
+		spellStartRecovery:Enable()
+	else
+		spellStartRecovery:Disable()
+	end
+end)
+reducedLagTolerance:SetScript('OnShow', function(self)
+	local checked = self:GetChecked()
+	if checked then
+		spellStartRecovery:Enable()
+	else
+		spellStartRecovery:Disable()
+	end
+end)
+
 
 -- Hook up options to addon panel
 InterfaceOptions_AddCategory(AIO, addonName)
 InterfaceOptions_AddCategory(AIO_Chat, addonName)
+InterfaceOptions_AddCategory(AIO_C, addonName)
 InterfaceOptions_AddCategory(AIO_FCT, addonName)
 InterfaceOptions_AddCategory(AIO_NP, addonName)
 

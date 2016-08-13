@@ -38,6 +38,7 @@ PetLeash3DB = {
 		["Krázýító - Gnomeregan"] = "Default",
 		["Krâzyito - Mal'Ganis"] = "Default",
 		["Krazyitò - Gnomeregan"] = "Default",
+		["Krazyìto - Mal'Ganis"] = "Default",
 		["Krazyito - Illidan"] = "Default",
 		["Krázyito - Gnomeregan"] = "Default",
 		["Krazyito - Burning Blade"] = "Default",

@@ -10,19 +10,18 @@ GoGo_Prefs = {
 	["AutoExcludeFlyingMounts"] = false,
 	["DruidFormNotRandomize"] = false,
 	["Zones"] = {
-		["Gorgrond"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 949,
-		},
 		["Highmaul"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 994,
+		},
+		[1008] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		[1026] = {
 			["Preferred"] = {
@@ -49,7 +48,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[976] = {
+		[945] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -62,33 +61,38 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
+		[949] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Tanaan Jungle"] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 945,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.3",
+	["version"] = "7.0.6",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 }
 GoGo_DebugLog = {
 }

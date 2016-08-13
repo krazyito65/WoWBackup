@@ -13,7 +13,7 @@
 ## X-Curse-Project-Name: ElvUI Still Enhanced (WOD)
 ## X-Curse-Project-ID: elvui-enhanced-mod-wod
 ## X-Curse-Repository-ID: wow/elvui-enhanced-mod-wod/mainline
-## X-Curse-Packaged-Version: 3.1.1-beta5
+## X-Curse-Packaged-Version: 3.1.1-beta6
 ## X-Curse-Project-Name: ElvUI Still Enhanced (WOD)
 ## X-Curse-Project-ID: elvui-enhanced-mod-wod
 ## X-Curse-Repository-ID: wow/elvui-enhanced-mod-wod/mainline

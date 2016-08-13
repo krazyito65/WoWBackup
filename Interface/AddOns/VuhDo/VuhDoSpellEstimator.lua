@@ -47,6 +47,7 @@ VUHDO_SPELLS = {
 	[VUHDO_SPELL_ID.ECHO_OF_LIGHT] = { ["isHot"] = true },
 	[VUHDO_SPELL_ID.SERENDIPITY] = { ["isHot"] = true, ["nodefault"] = true	},
 	[VUHDO_SPELL_ID.CLARITY_OF_WILL] = { ["isHot"] = true },
+	[VUHDO_SPELL_ID.ATONEMENT] = { ["isHot"] = true },
 
 	-- Shaman
 	[VUHDO_SPELL_ID.RIPTIDE] = { ["isHot"] = true	},
@@ -63,6 +64,7 @@ VUHDO_SPELLS = {
 	[VUHDO_SPELL_ID.CENARION_WARD] = { ["isHot"] = true },
 	[VUHDO_SPELL_ID.GENESIS] = { ["isHot"] = true },
 	[VUHDO_SPELL_ID.GERMINATION] = { ["isHot"] = true },
+	[VUHDO_SPELL_ID.SPRING_BLOSSOMS] = { ["isHot"] = true },
 
 	-- Hunter
 	[VUHDO_SPELL_ID.MEND_PET] = { ["isHot"] = true },

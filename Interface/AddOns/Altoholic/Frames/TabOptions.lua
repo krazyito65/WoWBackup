@@ -120,6 +120,12 @@ local support = {
 
 -- this content will be subject to frequent changes, do not bother translating it !!
 local whatsnew = {
+	{	name = "7.0.006 Changes",
+		bulletedList = {
+			"DataStore: Fixed guild identification when the character is on a different realm than the guild.",
+			"Grids: Updated Archeology races and items for Legion.",
+		},
+	},
 	{	name = "7.0.005 Changes",
 		bulletedList = {
 			"DataStore: Fixed a lua error when getting AutoCompleteRealms.",

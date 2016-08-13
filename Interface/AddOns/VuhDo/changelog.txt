@@ -1,3 +1,31 @@
+Version 3.73
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- AOE advisor not yet updated for Legion
+--   Need new spell formulas and coefficients
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Holy Priest spells derived from Chakra stance behave oddly as of 6.0.2
+--   Stance specific spells must all use the spell name Holy Word: Chastise
+-- Morphing spells (spells that change based on a spec or talent) such as 
+--   Disc Priest 'Purge the Wicked' should always be bound by their orginal 
+--   base spell name (eg. 'Shadow Word: Pain')
+
+
+Bugfixes:
+-- Fixed frame strata on import/export dialogs to always be 'on top'
+
+
+Improvements:
+-- Added Priest 'Atonement' as a default HoT icon option
+-- Added Druid 'Spring Blossoms' as a default HoT icon option
+
+
+--------------------------------------------------------------
 Version 3.72.
 
 

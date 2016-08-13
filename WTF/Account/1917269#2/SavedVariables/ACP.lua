@@ -2,6 +2,7 @@
 ACP_Data = {
 	["sorter"] = "Group By Name",
 	["NoRecurse"] = false,
+	["NoChildren"] = true,
 	["AddonSet"] = {
 		{
 			"ActionBarSaver", -- [1]
@@ -957,19 +958,19 @@ ACP_Data = {
 			"DBM-Core", -- [33]
 		},
 	},
-	["NoChildren"] = true,
 	["collapsed"] = {
 		["DoTimer"] = true,
 		["MikScrollingBattleText"] = true,
+		["RSA"] = true,
 		["Blizzard Addons"] = true,
 		["DBM"] = true,
 		["Altoholic"] = true,
-		["RSA"] = true,
+		["Skada"] = true,
 		["BalancePowerTracker"] = true,
 		["BL"] = true,
-		["AtlasLoot"] = true,
-		["CombatReplay"] = true,
 		["TidyPlates"] = true,
+		["CombatReplay"] = true,
+		["OmniCC"] = true,
 		["EQDkp"] = true,
 		["DocsUI"] = true,
 		["Libraries"] = true,
@@ -979,12 +980,12 @@ ACP_Data = {
 		["TradeSkillMaster"] = true,
 		["PhoenixStyleMod"] = true,
 		["GatherMate2"] = true,
-		["PetTracker"] = true,
 		["Ellipsis"] = true,
+		["PetTracker"] = true,
 		["LittleWigs"] = true,
-		["OmniCC"] = true,
+		["Broker"] = true,
 		["DiminishingReturns"] = true,
-		["Skada"] = true,
+		["AtlasLoot"] = true,
 		["LootCouncil"] = true,
 		["RaidAchievement"] = true,
 	},

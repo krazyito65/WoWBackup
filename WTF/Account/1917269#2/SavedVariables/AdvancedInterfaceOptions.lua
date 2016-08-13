@@ -1,2 +1,7 @@
 
-AdvancedInterfaceOptionsSaved = nil
+AdvancedInterfaceOptionsSaved = {
+	["CharVars"] = {
+	},
+	["AccountVars"] = {
+	},
+}

@@ -29,9 +29,9 @@ W: 32
 H: 32
 Frame: DetailsPlayerDetailsWindow
 FrameLevel: 1
-Anchor: CENTER
-X: 0
-Y: 0
+Anchor: RIGHT
+X: -90
+Y: -106
 W: 590
 H: 354
 Frame: VuhDoNewOptionsTabbedFrame

@@ -1,8 +1,13 @@
+v3.4.27
+*Fixed bug with getting the quality of battlepets.
+*Fixed error from disenchant searches.
+*Fixed item name issue when changing locales.
+
 v3.4.26
-*Fixed compatibility with TUJ addon
+*Fixed compatibility with TUJ addon.
 
 v3.4.25
-*Added missing bonus ids
+*Added missing bonus ids.
 
 v3.4.24
 *Fixed "Unknown Item" showing up in scan results for randomly-enchanted items by adding another workaround for Blizzard's issues.
