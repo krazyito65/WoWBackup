@@ -64,12 +64,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Bloodmaul Slag Mines"] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 964,
 		},
 		["Tanaan Jungle"] = {
 			["Preferred"] = {
@@ -90,26 +89,27 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[976] = {
+		["Bloodmaul Slag Mines"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 964,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.6",
+	["version"] = "7.0.7",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 }
 GoGo_DebugLog = {
 }

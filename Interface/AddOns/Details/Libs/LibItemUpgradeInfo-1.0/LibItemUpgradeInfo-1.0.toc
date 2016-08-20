@@ -9,7 +9,7 @@
 ## X-Curse-Project-Name: LibItemUpgradeInfo-1.0
 ## X-Curse-Project-ID: libitemupgradeinfo-1-0
 ## X-Curse-Repository-ID: wow/libitemupgradeinfo-1-0/mainline
-## X-Curse-Packaged-Version: r534
+## X-Curse-Packaged-Version: r540
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

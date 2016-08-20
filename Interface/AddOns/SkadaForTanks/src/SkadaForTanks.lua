@@ -1,7 +1,4 @@
 local s = Skada
-if s == nil then
-	return
-end
 
 local addonName, a = ...
 local L = a.Localize
@@ -191,6 +188,13 @@ local multipliers = {
 }
 local buffs = {}
 local interestingBuffs = {
+    
+    -- Demon Hunter
+    [207810] = true, -- Nether Bond
+    [227225] = true, -- Soul Barrier
+    [218256] = true, -- Empower Wards
+    [203720] = true, -- Demon Spikes
+    [187827] = true, -- Metamorphosis
 	
 	-- Death Knight
 	[48707] = true, -- Anti-Magic Shell

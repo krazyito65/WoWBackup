@@ -10,9 +10,8 @@ public.isLegion = isLegion
 -- Generate our version variables
 --
 
+local BIGWIGS_VERSION = 7
 local BIGWIGS_RELEASE_STRING = ""
--- Grab the release string from the TOC file.
-local BIGWIGS_VERSION = tonumber(GetAddOnMetadata("BigWigs", "Version")) or 0
 local versionQueryString, versionResponseString = "Q:%d-%s", "V:%d-%s"
 
 do
@@ -22,7 +21,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "bb74ee1" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "910ede1" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[===[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -114,7 +113,8 @@ do
 		[520]=lw, [521]=lw, [522]=lw, [523]=lw, [524]=lw, [525]=lw, [526]=lw, [528]=lw, [530]=lw, [533]=lw, [534]=lw, [536]=lw, [542]=lw, [601]=lw, [602]=lw, [603]=lw, -- WotLK
 		[747]=lw, [757]=lw, [767]=lw, [768]=lw, [769]=lw, [820]=lw, -- Cataclysm
 		[877]=lw, [871]=lw, [874]=lw, [885]=lw, [867]=lw, [919]=lw, -- MoP
-		[964]=lw, [969]=lw, [984]=lw, [987]=lw, [989]=lw, [993]=lw, [995]=lw, [1008]=lw -- WoD
+		[964]=lw, [969]=lw, [984]=lw, [987]=lw, [989]=lw, [993]=lw, [995]=lw, [1008]=lw, -- WoD
+		[1041]=lw, [1042]=lw, [1045]=lw, [1046]=lw, [1065]=lw, [1066]=lw, [1067]=lw, [1079]=lw, [1081]=lw, [1087]=lw -- Legion
 	}
 
 	public.fakeWorldZones = fakeWorldZones
@@ -551,7 +551,7 @@ do
 	CTimerAfter(11, function()
 		local _, _, _, _, month, _, year = GetAchievementInfo(10043) -- Mythic Archimonde
 		if year == 15 and month < 10 then
-			sysprint("We're looking for a new end-game raider to join our developer team! See [goo.gl/aajTfo] for more info.")
+			sysprint("We're looking for an end-game raider to join our GitHub developer team: goo.gl/aajTfo")
 		end
 		for _, msg in next, delayedMessages do
 			sysprint(msg)
@@ -566,8 +566,8 @@ end
 
 do
 	-- This is a crapfest mainly because DBM's actual handling of versions is a crapfest, I'll try explain how this works...
-	local DBMdotRevision = "15086" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
-	local DBMdotDisplayVersion = "7.0.1" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
+	local DBMdotRevision = "15117" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
+	local DBMdotDisplayVersion = "7.0.2" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
 	local DBMdotReleaseRevision = DBMdotRevision -- This is manually changed by them every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 
 	local timer, prevUpgradedUser = nil, nil
@@ -904,6 +904,11 @@ do
 		else
 			local _, _, _, _, _, _, _, instanceId = GetInstanceInfo()
 			id = instanceId
+			-- XXX temp LEGION
+			if IsTestBuild() and not self.tmp and (id == 1520 or id == 1530) then
+				self.tmp = true
+				sysprint("We're looking for a new end-game raider to join our developer team! See [goo.gl/aajTfo] for more info.")
+			end
 		end
 
 		-- Module loading

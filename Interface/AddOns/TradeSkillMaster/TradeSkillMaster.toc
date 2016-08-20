@@ -2,11 +2,11 @@
 ## Title: |cff00fe00TradeSkillMaster|r
 ## Notes: Core addon for the TradeSkillMaster suite. Does nothing without modules installed.
 ## Author: Sapu94, Bart39
-## Version: v3.4.27
+## Version: v3.4.30
 ## SavedVariables: TradeSkillMasterDB, TSMItemCacheDB
-## OptionalDeps: AccurateTime, Ace3, CostBasis, LibDataBroker-1.1, LibDBIcon-1.0, LibExtraTip, TipHelper, LibParse, LibCompress, LibGraph-2.0, Auc-Advanced, Auctionator, TheUndermineJournal, LibRealmInfo
-## X-Embeds: AccurateTime, Ace3, LibDataBroker-1.1, LibDBIcon-1.0, LibExtraTip, TipHelper, LibParse, LibCompress, LibGraph-2.0, LibRealmInfo
-## X-Curse-Packaged-Version: v3.4.27
+## OptionalDeps: AccurateTime, Ace3, CostBasis, LibDataBroker-1.1, LibDBIcon-1.0, LibParse, LibCompress, LibGraph-2.0, Auc-Advanced, Auctionator, TheUndermineJournal, LibRealmInfo
+## X-Embeds: AccurateTime, Ace3, LibDataBroker-1.1, LibDBIcon-1.0, LibParse, LibCompress, LibGraph-2.0, LibRealmInfo
+## X-Curse-Packaged-Version: v3.4.30
 ## X-Curse-Project-Name: TradeSkillMaster
 ## X-Curse-Project-ID: tradeskill-master
 ## X-Curse-Repository-ID: wow/tradeskill-master/mainline
@@ -32,7 +32,6 @@ Libs\LibRealmInfo\LibRealmInfo.lua
 #@end-no-lib-strip@
 
 ## Embeded libraries not on CurseForge
-Libs\LibExtraTip\Load.xml
 Libs\DropDownMenu\UIDropDownMenuTemplates.xml
 Libs\DropDownMenu\UIDropDownMenu.lua
 Libs\DropDownMenu\EasyMenu.lua
@@ -56,6 +55,7 @@ Debug\Logging.lua
 Debug\GUIHelper.lua
 
 Private\StaticData.lua
+Private\TooltipLib.lua
 Private\Tooltips.lua
 Private\Features.lua
 Private\FeaturesGUI.lua

@@ -253,73 +253,14 @@ do
             return
         end
 
-        if (private.isLegion) then
-            local recipes = _G.C_TradeSkillUI.GetAllRecipeIDs()
+        local recipes = _G.C_TradeSkillUI.GetAllRecipeIDs()
 
-            if recipes and (#recipes > 0) then
-                for i = 1, #recipes do
-                    if iter_func(_G.C_TradeSkillUI.GetRecipeInfo(recipes[i]).name, recipes[i]) then
-                        break
-                    end
-                end
-            end
-        else
-            -- Clear the search box focus so the scan will have correct results.
-            local search_box = _G.TradeSkillFrameSearchBox
-            search_box:SetText("")
-
-            _G.TradeSkillSearch_OnTextChanged(search_box)
-            search_box:ClearFocus()
-            search_box:GetScript("OnEditFocusLost")(search_box)
-
-            table.wipe(header_list)
-
-            -- Save the current state of the TradeSkillFrame so it can be restored after we muck with it.
-            local have_materials = _G.TradeSkillFrame.filterTbl.hasMaterials
-            local have_skillup = _G.TradeSkillFrame.filterTbl.hasSkillUp
-
-            if have_materials then
-                _G.TradeSkillFrame.filterTbl.hasMaterials = false
-                _G.TradeSkillOnlyShowMakeable(false)
-            end
-
-            if have_skillup then
-                _G.TradeSkillFrame.filterTbl.hasSkillUp = false
-                _G.TradeSkillOnlyShowSkillUps(false)
-            end
-            _G.SetTradeSkillInvSlotFilter(0, true, true)
-            _G.TradeSkillUpdateFilterBar()
-            _G.TradeSkillFrame_Update()
-
-            -- Expand all headers so we can see all the recipes there are
-            for tradeskill_index = 1, _G.GetNumTradeSkills() do
-                local name, tradeskill_type, _, is_expanded = _G.GetTradeSkillInfo(tradeskill_index)
-
-                if tradeskill_type == "header" or tradeskill_type == "subheader" then
-                    if not is_expanded then
-                        header_list[name] = true
-                        _G.ExpandTradeSkillSubClass(tradeskill_index)
-                    end
-                elseif iter_func(name, tradeskill_index) then
+        if recipes and (#recipes > 0) then
+            for i = 1, #recipes do
+                if iter_func(_G.C_TradeSkillUI.GetRecipeInfo(recipes[i]).name, recipes[i]) then
                     break
                 end
             end
-
-            -- Restore the state of the things we changed.
-            for tradeskill_index = 1, _G.GetNumTradeSkills() do
-                local name, tradeskill_type, _, is_expanded = _G.GetTradeSkillInfo(tradeskill_index)
-
-                if header_list[name] then
-                    _G.CollapseTradeSkillSubClass(tradeskill_index)
-                end
-            end
-            _G.TradeSkillFrame.filterTbl.hasMaterials = have_materials
-            _G.TradeSkillOnlyShowMakeable(have_materials)
-            _G.TradeSkillFrame.filterTbl.hasSkillUp = have_skillup
-            _G.TradeSkillOnlyShowSkillUps(have_skillup)
-
-            _G.TradeSkillUpdateFilterBar()
-            _G.TradeSkillFrame_Update()
         end
     end
 end -- do-block
@@ -975,13 +916,10 @@ local function RecordItemData(item_id, item_link, process_bonus_ids, durability)
         -- upgrade_value is optional in 6.2! can be detected using upgrade_type_id, but it's just as easy to check like this
         local upgrade_value = tonumber(item_results[15 + num_bonus_ids]) or 0
 
-        -- LEGION
-        if private.isLegion then
-            local unkItemField1 = tonumber(item_results[16 + num_bonus_ids]) or 0
-            local unkItemField2 = tonumber(item_results[17 + num_bonus_ids]) or 0
-            if unkItemField1 > 0 then Debug("unkItemField1 is non-zero, specifically %d.", unkItemField1) end
-            if unkItemField2 > 0 then Debug("unkItemField2 is non-zero, specifically %d.", unkItemField2) end
-        end
+        local unkItemField1 = tonumber(item_results[16 + num_bonus_ids]) or 0
+        local unkItemField2 = tonumber(item_results[17 + num_bonus_ids]) or 0
+        if unkItemField1 > 0 then Debug("unkItemField1 is non-zero, specifically %d.", unkItemField1) end
+        if unkItemField2 > 0 then Debug("unkItemField2 is non-zero, specifically %d.", unkItemField2) end
 
         -- If there is anything special (non-zero) for this item then we need to make note of everything
         if math.max(suffix_id, instance_difficulty_id, num_bonus_ids, upgrade_value) ~= 0 then
@@ -1142,8 +1080,7 @@ do
     local COORD_MAX = 5
 
     function WDP:UpdateTargetLocation()
-        -- LEGION supported here
-        if currently_drunk or not _G.UnitExists("target") or _G.UnitPlayerControlled("target") or not _G.UnitIsDead("target") then
+        if currently_drunk or not _G.UnitExists("target") or _G.UnitPlayerControlled("target") or (_G.UnitIsTapDenied("target") and not _G.UnitIsDead("target")) then
             return
         end
 
@@ -1485,6 +1422,9 @@ do
         [116980] = true,
         [120319] = true,
         [120320] = true,
+        [139593] = true,
+        [139594] = true,
+        [140590] = true,
     }
 
 
@@ -1598,11 +1538,7 @@ do
 
     local function RecordDiscovery(tradeskill_name, tradeskill_index)
         if tradeskill_name == private.discovered_recipe_name then
-            if (private.isLegion) then
-                DBEntry("spells", tonumber(_G.C_TradeSkillUI.GetRecipeLink(tradeskill_index):match("^|c%x%x%x%x%x%x%x%x|H%w+:(%d+)"))).discovery = ("%d:%d"):format(private.previous_spell_id, private.profession_level)
-            else
-                DBEntry("spells", tonumber(_G.GetTradeSkillRecipeLink(tradeskill_index):match("^|c%x%x%x%x%x%x%x%x|H%w+:(%d+)"))).discovery = ("%d:%d"):format(private.previous_spell_id, private.profession_level)
-            end
+            DBEntry("spells", tonumber(_G.C_TradeSkillUI.GetRecipeLink(tradeskill_index):match("^|c%x%x%x%x%x%x%x%x|H%w+:(%d+)"))).discovery = ("%d:%d"):format(private.previous_spell_id, private.profession_level)
 
             private.discovered_recipe_name = nil
             private.profession_level = nil
@@ -1631,12 +1567,7 @@ do
                 local recipe_name = message:match(RECIPE_MATCH)
 
                 if recipe_name and private.previous_spell_id then
-                    local profession_name, prof_level
-                    if private.isLegion then
-                        profession_name, prof_level= _G.C_TradeSkillUI.GetTradeSkillLine()
-                    else
-                        profession_name, prof_level= _G.GetTradeSkillLine()
-                    end
+                    local profession_name, prof_level = _G.C_TradeSkillUI.GetTradeSkillLine()
 
                     if profession_name == _G.UNKNOWN then
                         return
@@ -1686,8 +1617,10 @@ do
         [183901] = true, -- Stolen Strength (cast by Felblood NPCs in Tanaan Jungle)
         [183904] = true, -- Stolen Speed (cast by Felblood NPCs in Tanaan Jungle)
         [183907] = true, -- Stolen Fervor (cast by Felblood NPCs in Tanaan Jungle)
-        [213738] = true, -- Taste of Blood (applied by Fate and Fortune, Combat Rogue Artifacts)
+        [213738] = true, -- Taste of Blood (applied by Fate and Fortune, Combat Rogue artifacts)
+        [215377] = true, -- The Maw Must Feed (applied by Maw of the Damned, Blood Death Knight artifact)
         [224762] = true, -- Leyline Rift (summoned by players with Leyline Mastery in Suramar)
+        [225832] = true, -- Nightglow Wisp (cast by players using Wisp in a Bottle toy)
     }
 
     local function RecordNPCSpell(sub_event, source_guid, source_name, source_flags, dest_guid, dest_name, dest_flags, spell_id, spell_name)
@@ -2581,21 +2514,11 @@ do
 
 
     local function RegisterTools(tradeskill_name, tradeskill_index)
-        local link
-        if (private.isLegion) then
-            link = _G.C_TradeSkillUI.GetRecipeLink(tradeskill_index)
-        else
-            link = _G.GetTradeSkillRecipeLink(tradeskill_index)
-        end
+        local link = _G.C_TradeSkillUI.GetRecipeLink(tradeskill_index)
 
         if link then
             local spell_id = tonumber(link:match("^|c%x%x%x%x%x%x%x%x|H%w+:(%d+)"))
-            local required_tool
-            if (private.isLegion) then
-                required_tool = _G.C_TradeSkillUI.GetRecipeTools(tradeskill_index)
-            else
-                required_tool = _G.GetTradeSkillTools(tradeskill_index)
-            end
+            local required_tool = _G.C_TradeSkillUI.GetRecipeTools(tradeskill_index)
 
             if required_tool then
                 for tool_name, registry in pairs(TRADESKILL_TOOLS) do
@@ -2609,12 +2532,7 @@ do
 
 
     function WDP:TRADE_SKILL_SHOW(event_name)
-        local profession_name, prof_level
-        if private.isLegion then
-            profession_name, prof_level= _G.C_TradeSkillUI.GetTradeSkillLine()
-        else
-            profession_name, prof_level= _G.GetTradeSkillLine()
-        end
+        local profession_name, prof_level = _G.C_TradeSkillUI.GetTradeSkillLine()
 
         if profession_name == _G.UNKNOWN then
             return
@@ -2836,13 +2754,13 @@ function WDP:UNIT_SPELLCAST_SUCCEEDED(event_name, unit_id, spell_name, spell_ran
     end
 
     -- For spells cast by items that don't usually trigger loot toasts
-    if not block_chat_loot_data and (private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_MAP[spell_id] or (private.CLASS_BASED_DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id] and private.CLASS_BASED_DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID])) then
+    if not block_chat_loot_data and (private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_MAP[spell_id] or (private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id] and private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID])) then
         -- Set up timer
         ClearChatLootData()
         Debug("%s: Beginning chat-based loot timer for spellID %d", event_name, spell_id)
         chat_loot_timer_handle = C_Timer.NewTimer(1.5, ClearChatLootData)
-        if (private.CLASS_BASED_DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id] and private.CLASS_BASED_DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID]) then
-            chat_loot_data.identifier = private.CLASS_BASED_DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID]
+        if (private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id] and private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID]) then
+            chat_loot_data.identifier = private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_BY_CLASS_ID_MAP[spell_id][PLAYER_CLASS_ID]
         else
             chat_loot_data.identifier = private.DELAYED_CONTAINER_SPELL_ID_TO_ITEM_ID_MAP[spell_id]
         end

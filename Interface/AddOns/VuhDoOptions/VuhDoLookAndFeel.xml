@@ -1821,7 +1821,7 @@
 	</Scripts>
 </EditBox>
 
-<EditBox name="VuhDoEditBoxMultiLineTemplate" multiLine="true" autoFocus="false" historyLines="0" justifyH="LEFT" virtual="true">
+<EditBox name="VuhDoEditBoxMultiLineTemplate" autoFocus="true" multiLine="true" historyLines="0" justifyH="LEFT" virtual="true">
 	<Layers>
 		<Layer>
 			<FontString name="$parentHint" text="" inherits="VuDoDefaultFontTemplate">

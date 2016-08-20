@@ -1,36 +1,17 @@
---	12:56 03.08.2016
+--	16:51 09.08.2016
 
 --[[
-3725
-* Raid cooldowns: updates due to last class balance changes (http://us.battle.net/forums/en/wow/topic/20747796942#post-3)
-* Minor fixes
-
-
-3720
-* Raid cooldowns: added support for aftifacts (both players [viewer & caster] must have ExRT for this functionality) & legendary items
-* Statistics bosses: added 5ppl mythic and 40ppl to diff list
-* Raid Inspect: removed 20y restrictions for inspecting (still in testing)
-* Raid Inspect: added visual aftifact inspecting
-http://i.imgur.com/xrz5JqB.png
-* Note: added keybind to toggle on/off
-* Minor fixes
-
-3705
-* Fixed blinking textures for archimonde radar
-* Fixed health value for souls on gorefiend
-* Fixed health value for infernals on archimonde
-* Raid Cooldowns: "fast setup" lists updated for 7.0 spells
-* Bonus loot: fixed recording
-* Raid check: fixed food report
-* Inspeci Viewer: fixed a lot bugs
-
-3700
-7.0 Legion Update
+3740
+* New module: WeakAuras checks
+http://i.imgur.com/59cZVTY.png
+* Raid cooldowns: updates due to last class balance changes
+* Timers: new option: Disable countdown in chat
+* Minor & major fixes
 
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3725
+ExRT.V = 3740
 ExRT.T = "R"
 ExRT.is7 = false		--> Legion (7.x) Client
 
@@ -61,13 +42,6 @@ do
 	local expansion,majorPatch,minorPatch = (version or "1.0.0"):match("^(%d+)%.(%d+)%.(%d+)")
 	ExRT.clientVersion = (expansion or 0) * 10000 + (majorPatch or 0) * 100 + (minorPatch or 0)
 end
-if ExRT.clientVersion >= 70000 then
-	ExRT.is7 = true
-	--ExRT.alwaysRU = true	--Only for beta !!!
-	if UnitLevel'player' > 100 then
-		ExRT.isLegionContent = true
-	end
-end
 -------------> smart DB <-------------
 ExRT.SDB = {}
 
@@ -79,6 +53,9 @@ do
 	ExRT.SDB.charKey = charName .. "-" .. realmKey
 	ExRT.SDB.charName = charName
 	ExRT.SDB.charLevel = UnitLevel'player'
+	if ExRT.SDB.charLevel > 100 then
+		ExRT.isLegionContent = true
+	end
 end
 -------------> global DB <------------
 ExRT.GDB = {}

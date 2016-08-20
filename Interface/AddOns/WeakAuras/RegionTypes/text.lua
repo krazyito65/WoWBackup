@@ -4,7 +4,7 @@ local SharedMedia = LibStub("LibSharedMedia-3.0");
 
 local default = {
     displayText = "%p",
-    outline = true,
+    outline = "OUTLINE",
     color = {1, 1, 1, 1},
     justify = "LEFT",
     selfPoint = "BOTTOM",
@@ -44,9 +44,9 @@ local function modify(parent, region, data)
     end
 
     local fontPath = SharedMedia:Fetch("font", data.font);
-    text:SetFont(fontPath, data.fontSize, data.outline and "OUTLINE" or nil);
+    text:SetFont(fontPath, data.fontSize, data.outline);
     if not text:GetFont() then -- Font invalid, set the font but keep the setting
-        text:SetFont("Fonts\\FRIZQT__.TTF", data.fontSize, data.outline and "OUTLINE" or nil);
+        text:SetFont("Fonts\\FRIZQT__.TTF", data.fontSize, data.outline);
     end
     if text:GetFont() then
         text:SetText(data.displayText);

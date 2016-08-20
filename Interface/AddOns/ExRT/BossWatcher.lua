@@ -229,7 +229,7 @@ module.db.reductionAuras = {
 
 	--Rouge
 	[1966] = {1,nil,function(_,auraVar) return (100+auraVar)/100 end},		--Feint
-	[45182] = 0.15,									--Cheating Death
+	--[45182] = 0.15,									--Cheating Death
 
 	--Priest
 	[45242] = 0.7,		--Focused Will

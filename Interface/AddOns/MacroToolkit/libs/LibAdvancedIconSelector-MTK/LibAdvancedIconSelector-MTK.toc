@@ -1,10 +1,10 @@
 ## Title: Lib: AdvancedIconSelector-MTK
 ## Notes: Provides a searchable icon selection GUI to addons, no longer supported by the original author. Local copy for Macro Toolkit, maintained by Deepac
-## Version: 6.0.0.0 (1.0.9)
+## Version: 7.0.0.0
 ## Author: Darthyl of Bronzebeard-US, Deepac
-## Interface: 60000
+## Interface: 70000
 ## OptionalDeps: Ace3, LibDebug
-## X-Curse-Packaged-Version: v7.0.0.2
+## X-Curse-Packaged-Version: v7.0.1.0
 ## X-Curse-Project-Name: Macro Toolkit
 ## X-Curse-Project-ID: macro-toolkit
 ## X-Curse-Repository-ID: wow/macro-toolkit/mainline

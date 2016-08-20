@@ -1,3 +1,6 @@
+v3.3.8
+*Increased max disenchant search iLvl to 905 to support Legion.
+
 v3.3.7
 *Fixed bug with notifying modules of no auction results found from a search (like crafting's gathering feature).
 *Fixed a bug with even stacks filter from crafting's gathering search.

@@ -1,5 +1,6 @@
 local MT = MacroToolkit
 local mtpf
+local L = MT.L
 local GetSpellTabInfo, GetSpellBookItemTexture, GetSpellInfo, GetSpellTexture = GetSpellTabInfo, GetSpellBookItemTexture, GetSpellInfo, GetSpellTexture
 local GetFlyoutInfo, GetFlyoutSlotInfo, GetSpellBookItemInfo = GetFlyoutInfo, GetFlyoutSlotInfo, GetSpellBookItemInfo
 local string, tinsert, format = string, tinsert, format
@@ -44,28 +45,48 @@ function MT:CreateMTPopup()
 	mtpf:EnableMouse(true)
 	mtpf:SetScale(MT.db.profile.scale)
 	mtpf:SetSize(297, 411)
+	--mtpf:SetSize(446, 617)
 	mtpf:SetPoint("TOPLEFT", MacroToolkitFrame, "TOPRIGHT", 0, 0)
 	mtpf:Hide()
 
 	local mtpftl = mtpf:CreateTexture("BACKGROUND")
 	mtpftl:SetTexture("Interface\\MacroFrame\\MacroPopup-TopLeft")
 	mtpftl:SetSize(256, 368)
+	--mtpftl:SetSize(405, 368)
 	mtpftl:SetPoint("TOPLEFT")
 
 	local mtpftr = mtpf:CreateTexture("BACKGROUND")
 	mtpftr:SetTexture("Interface\\MacroFrame\\MacroPopup-TopRight")
 	mtpftr:SetSize(64, 368)
 	mtpftr:SetPoint("TOPLEFT", 256, 0)
+	--mtpftr:SetPoint("TOPLEFT", 405, 0)
 	
 	local mtpfbl = mtpf:CreateTexture("BACKGROUND")
 	mtpfbl:SetTexture("Interface\\MacroFrame\\MacroPopup-BotLeft")
 	mtpfbl:SetSize(256, 64)
+	--mtpfbl:SetSize(405, 64)
 	mtpfbl:SetPoint("TOPLEFT", 0, -368)
+	--mtpfbl:SetPoint("TOPLEFT", 0, -574)
 	
 	local mtpfbr = mtpf:CreateTexture("BACKGROUND")
 	mtpfbr:SetTexture("Interface\\MacroFrame\\MacroPopup-BotRight")
 	mtpfbr:SetSize(64, 64)
 	mtpfbr:SetPoint("TOPLEFT", 256, -368)
+	--mtpfbr:SetPoint("TOPLEFT", 405, -574)
+	
+	local mtpfml = mtpf:CreateTexture("BACKGROUND")
+	mtpfml:SetTexture("Interface\\MacroFrame\\MacroPopup-TopLeft")
+	mtpfml:SetTexCoord(0, 1, 0.3, 1)
+	mtpfml:SetSize(405, 207)
+	mtpfml:SetPoint("TOPLEFT", mtpftl, "BOTTOMLEFT")
+	mtpfml:Hide()
+	
+	local mtpfmr = mtpf:CreateTexture("BACKGROUND")
+	mtpfmr:SetTexture("Interface\\MacroFrame\\MacroPopup-TopRight")
+	mtpfmr:SetTexCoord(0, 1, 0.3, 1)
+	mtpfmr:SetSize(64, 207)
+	mtpfmr:SetPoint("TOPLEFT", mtpftr, "BOTTOMLEFT")
+	mtpfmr:Hide()
 	
 	local mtpftitle = mtpf:CreateFontString(nil, "BACKGROUND", "GameFontHighlightSmall")
 	mtpftitle:SetText(_G.MACRO_POPUP_TEXT)
@@ -127,7 +148,9 @@ function MT:CreateMTPopup()
 	}
 	local aisframe = MT.AIS:CreateIconSelectorFrame("MacroToolkitPopupIcons", mtpf, aisoptions)
 	aisframe:SetSize(296, 276)
+	--aisframe:SetSize(445, 482)
 	aisframe:SetPoint("TOPLEFT", 0, -85)
+	--aisframe:SetPoint("TOPLEFT", 6, -85)
 	aisframe.scrollFrame.ScrollBar:ClearAllPoints()
 	aisframe.scrollFrame.ScrollBar:SetPoint("TOPLEFT", aisframe.scrollFrame, "TOPRIGHT", -10, -36)
 	aisframe.scrollFrame.ScrollBar:SetPoint("BOTTOMLEFT", aisframe.scrollFrame, "BOTTOMRIGHT", -10, 36)
@@ -184,6 +207,7 @@ function MT:CreateMTPopup()
 	local mtpfcancel = CreateFrame("Button", "MacroToolkitPopupCancel", mtpf, "UIPanelButtonTemplate")
 	mtpfcancel:SetText(_G.CANCEL)
 	mtpfcancel:SetSize(78, 22)
+	--mtpfcancel:SetSize(105, 22)
 	mtpfcancel:SetPoint("BOTTOMRIGHT", -11, 13)
 	mtpfcancel:SetScript("OnClick",
 		function()
@@ -194,6 +218,7 @@ function MT:CreateMTPopup()
 	local mtpfok = CreateFrame("Button", "MacroToolkitPopupOk", mtpf, "UIPanelButtonTemplate")
 	mtpfok:SetText(_G.OKAY)
 	mtpfok:SetSize(78, 22)
+	--mtpfok:SetSize(125, 22)
 	mtpfok:SetPoint("RIGHT", mtpfcancel, "LEFT", -2, 0)
 	mtpfok:SetScript("OnClick", function() MT:PopupOkayButtonOnClick() end)
 
@@ -273,6 +298,58 @@ function MT:CreateMTPopup()
 			collectgarbage()
 		end)
 
+	local mtpfgl = CreateFrame("Button", "MacroToolkitPopupGoLarge", mtpf, "UIPanelButtonTemplate")
+	
+	MT.golarge =
+		function()
+			mtpf:SetSize(446, 617)
+			mtpftl:SetSize(405, 368)
+			mtpftr:SetPoint("TOPLEFT", 405, 0)
+			mtpfbl:SetSize(405, 64)
+			mtpfbl:SetPoint("TOPLEFT", 0, -574)
+			mtpfbr:SetPoint("TOPLEFT", 405, -574)
+			mtpfml:Show()
+			mtpfmr:Show()
+			aisframe:SetSize(445, 482)
+			aisframe:SetPoint("TOPLEFT", 5, -85)
+			mtpfcancel:SetSize(105, 22)
+			mtpfok:SetSize(125, 22)
+			mtpfgl:SetText(L["Go Small"])
+			MT.gonelarge = true
+			PlaySound("igCharacterInfoOpen")
+		end
+	
+	MT.gosmall =
+		function()
+			mtpf:SetSize(297, 411)
+			mtpftl:SetSize(256, 368)
+			mtpftr:SetPoint("TOPLEFT", 256, 0)
+			mtpfbl:SetSize(256, 64)
+			mtpfbl:SetPoint("TOPLEFT", 0, -368)
+			mtpfbr:SetPoint("TOPLEFT", 256, -368)
+			mtpfml:Hide()
+			mtpfmr:Hide()
+			aisframe:SetSize(296, 276)
+			aisframe:SetPoint("TOPLEFT", 0, -85)
+			mtpfcancel:SetSize(78, 22)
+			mtpfok:SetSize(78, 22)
+			mtpfgl:SetText(L["Go Large"])
+			MT.gonelarge = nil
+			PlaySound("igCharacterInfoClose")
+		end
+	
+	mtpfgl:SetText(L["Go Large"])
+	mtpfgl:SetSize(78, 22)
+	mtpfgl:SetPoint("TOPRIGHT", -13, -62)
+	mtpfgl:SetScript("OnClick",
+		function()
+			if MT.gonelarge then
+				MT.gosmall()
+			else
+				MT.golarge()
+			end
+		end)
+		
 	return mtpf
 end
 
@@ -418,7 +495,7 @@ function MT:PopupOkayButtonOnClick()
 		MacroToolkitPopup:Hide()
 	else
 		local index = 1
-		local iconTexture = MT:GetSpellorMacroIconInfo(MacroToolkitPopup.selectedIcon)
+		local iconTexture = MT:GetSpellorMacroIconInfo(MacroToolkitPopup.selectedIcon)		
 		local text = MacroToolkitPopupEdit:GetText()
 		text = string.gsub(text, "\"", "")
 		if MacroToolkitPopup.mode == "new" then

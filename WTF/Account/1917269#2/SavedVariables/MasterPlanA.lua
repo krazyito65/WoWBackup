@@ -6,8 +6,8 @@ MasterPlanAG = {
 	},
 	["Area 52"] = {
 		["Krazyito"] = {
-			["faction"] = "Horde",
 			["class"] = "DRUID",
+			["faction"] = "Horde",
 		},
 	},
 	["Burning Blade"] = {
@@ -20,22 +20,22 @@ MasterPlanAG = {
 		["Krazyitó"] = {
 		},
 		["Krãzyito"] = {
-			["faction"] = "Alliance",
 			["class"] = "PALADIN",
+			["faction"] = "Alliance",
 		},
 		["Krazyíto"] = {
-			["class"] = "PRIEST",
 			["faction"] = "Alliance",
+			["class"] = "PRIEST",
 		},
 		["Krázyito"] = {
+			["faction"] = "Alliance",
 			["class"] = "HUNTER",
-			["faction"] = "Alliance",
-		},
-		["Krázýító"] = {
-			["class"] = "WARLOCK",
-			["faction"] = "Alliance",
 		},
 		["Krazyitò"] = {
+		},
+		["Krázýító"] = {
+			["faction"] = "Alliance",
+			["class"] = "WARLOCK",
 		},
 	},
 	["Illidan"] = {
@@ -44,21 +44,21 @@ MasterPlanAG = {
 	},
 	["Mal'Ganis"] = {
 		["Krazyíto"] = {
-			["faction"] = "Horde",
 			["class"] = "PALADIN",
+			["faction"] = "Horde",
 		},
 		["Krazyìto"] = {
 			["class"] = "DEMONHUNTER",
 			["faction"] = "Horde",
 		},
 		["Krazyito"] = {
-			["lastCacheTime"] = 1470350462,
+			["curOil"] = 3565,
 			["summary"] = {
-				["lastOilTime"] = 1470791477,
+				["lastOilTime"] = 1471396749,
 				["tt2"] = true,
 				["tt3"] = 1470468005,
-				["tt1"] = 1468804195,
 				["ti1"] = 118531,
+				["tt1"] = true,
 				["ti3"] = 127855,
 				["inProgress"] = {
 					[644] = 1470546022,
@@ -67,9 +67,9 @@ MasterPlanAG = {
 			},
 			["faction"] = "Horde",
 			["cacheSize"] = 1000,
-			["class"] = "DRUID",
+			["lastCacheTime"] = 1471203925,
 			["curRes"] = 10000,
-			["curOil"] = 3565,
+			["class"] = "DRUID",
 		},
 		["Krazyitó"] = {
 			["class"] = "ROGUE",
@@ -80,18 +80,18 @@ MasterPlanAG = {
 		["Krâzyito"] = {
 			["summary"] = {
 				["lastOilTime"] = 1459208688,
-				["ti2"] = 122486,
+				["tt2"] = 1458693258,
+				["tt3"] = 1457318960,
+				["tt1"] = 1459211687,
+				["ti1"] = 118531,
+				["ti3"] = 127855,
 				["inProgress"] = {
 					[228] = 1459367813,
 					[146] = 1459368714,
 					[87] = 1459366916,
 					[366] = 1459401111,
 				},
-				["ti3"] = 127855,
-				["ti1"] = 118531,
-				["tt1"] = 1459211687,
-				["tt3"] = 1457318960,
-				["tt2"] = 1458693258,
+				["ti2"] = 122486,
 			},
 			["faction"] = "Horde",
 			["class"] = "DRUID",
@@ -102,16 +102,16 @@ MasterPlanAG = {
 			["summary"] = {
 				["inProgress"] = {
 					[272] = 1452625303,
+					[371] = 1452639705,
 					[337] = 1452661296,
 					[367] = 1452639708,
-					[371] = 1452639705,
 				},
 			},
 			["faction"] = "Horde",
-			["curOil"] = 195,
+			["class"] = "SHAMAN",
 			["lastCacheTime"] = 1470362011,
 			["curRes"] = 2453,
-			["class"] = "SHAMAN",
+			["curOil"] = 195,
 		},
 		["Kråzyito"] = {
 			["summary"] = {
@@ -123,18 +123,18 @@ MasterPlanAG = {
 				},
 			},
 			["curOil"] = 1500,
-			["lastCacheTime"] = 1456697333,
-			["class"] = "MONK",
-			["curRes"] = 1134,
 			["faction"] = "Horde",
+			["lastCacheTime"] = 1456697333,
+			["curRes"] = 1134,
+			["class"] = "MONK",
 		},
 		["Krazýito"] = {
-			["class"] = "PRIEST",
 			["faction"] = "Horde",
+			["class"] = "PRIEST",
 		},
 		["Krazybank"] = {
-			["faction"] = "Horde",
 			["class"] = "HUNTER",
+			["faction"] = "Horde",
 		},
 	},
 	["Proudmoore"] = {
@@ -144,5 +144,7 @@ MasterPlanAG = {
 	["Sargeras"] = {
 		["Krazymonk"] = {
 		},
+	},
+	["IgnoreRewards"] = {
 	},
 }

@@ -21,10 +21,10 @@ elseif locale == "frFR" then -- French
 -- L["T"] = ""
 
 elseif locale == "deDE" then -- German
-L["B"] = "Einbuchstabiges Kürzel für (englisch) \"Billion\"" -- Needs review
-L["K"] = "Einbuchstabiges Kürzel für \"Tausend\"" -- Needs review
-L["M"] = "Einbuchstabiges Kürzel für \"Million\"" -- Needs review
-L["T"] = "Einbuchstabiges Kürzel für (englisch) \"Trillion\"" -- Needs review
+L["B"] = "M" -- Needs review
+L["K"] = "K" -- Needs review
+L["M"] = "M" -- Needs review
+L["T"] = "T" -- Needs review
 
 elseif locale == "itIT" then -- Italian
 -- L["B"] = ""

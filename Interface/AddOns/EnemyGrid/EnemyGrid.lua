@@ -94,6 +94,7 @@ local default_config = {
 		cast_statusbar_texture = "DGround",
 		cast_statusbar_bgtexture = "Details Serenity",
 		cast_statusbar_color = {1, .7, 0, 1},
+		cast_statusbar_color_nointerrupt = {.7, .7, .7, 1},
 		cast_statusbar_bgcolor = {0, 0, 0, 1},
 		cast_statusbar_anchor = {side = 9, x = 0, y = 0},
 		cast_statusbar_width = 100,
@@ -128,6 +129,8 @@ local default_config = {
 		aura_height = 14,
 		aura_timer = true,
 		aura_custom = {},
+		aura_show_tooltip = false,
+		aura_always_show_debuffs = false,
 		aura_tracker = {
 			buff = {},
 			debuff = {},
@@ -564,20 +567,54 @@ local auraWatch = function (ticker)
 	ticker.cooldown.Timer:SetText (floor (ticker.expireTime-GetTime()))
 end
 
+local EnemyGrid_AuraOnEnter = function (self)
+	if (self.spellId) then
+		if (not EnemyGrid.db.profile.aura_show_tooltip) then
+			return
+		end
+		GameTooltip:SetOwner (self, "ANCHOR_LEFT")
+		GameTooltip:SetSpellByID (self.spellId)
+		GameTooltip:Show()
+	end
+end
+local EnemyGrid_AuraOnLeave = function (self)
+	GameTooltip:Hide()
+end
+
 local AddAura = function (self, i, auraWidth, auraHeight, name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId, isBuff)
 	if (not self.debuffAnchor.buffList [i]) then
 		self.debuffAnchor.buffList [i] = CreateFrame ("Frame", self:GetName() .. "Debuff" .. i, self.debuffAnchor, "NameplateBuffButtonTemplate")
 		self.debuffAnchor.buffList [i]:SetMouseClickEnabled (false)
 		self.debuffAnchor.buffList [i]:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1})
-		self.debuffAnchor.BuffFrameUpdateTime = 0
+		self.debuffAnchor.buffList [i]:SetScript ("OnEnter", EnemyGrid_AuraOnEnter)
+		self.debuffAnchor.buffList [i]:SetScript ("OnLeave", EnemyGrid_AuraOnLeave)
 		
+		self.debuffAnchor.BuffFrameUpdateTime = 0
 		local timer = self.debuffAnchor.buffList [i].Cooldown:CreateFontString (nil, "overlay", "NumberFontNormal")
 		self.debuffAnchor.buffList [i].Cooldown.Timer = timer
 		timer:SetPoint ("center")
 	end
 	
 	local debuff = self.debuffAnchor.buffList [i]
-	debuff:SetID (i)
+	
+	if (name == false) then
+		if (EnemyGrid.RegenIsDisabled) then
+			debuff.spellId = nil
+			debuff:SetSize (auraWidth, auraHeight)
+			--debuff.Icon:SetTexture (nil)
+			debuff:SetBackdropBorderColor (0, 0, 0, 0)
+			debuff:SetAlpha (.2)
+			debuff:Show()
+		else
+			debuff:Hide()
+		end
+		return
+	else
+		debuff:SetAlpha (1)
+	end
+	
+	--debuff:SetID (i)
+	debuff.spellId = spellId
 	debuff.name = name
 	debuff.layoutIndex = i
 	
@@ -682,15 +719,19 @@ local namePlateOnEvent = function (self, event, ...)
 			
 			local auraIndex = 1
 			
-			for i = 1, #buffs do
-				local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitAura (self.NamePlateId, buffs [i])
+			for i = 1, #debuffs do
+				local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitAura (self.NamePlateId, debuffs [i], nil, "HARMFUL|PLAYER")
 				if (name) then
-					AddAura (self, auraIndex, auraWidth, auraHeight, name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId, true)
+					AddAura (self, auraIndex, auraWidth, auraHeight, name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId)
+					auraIndex = auraIndex + 1
+				elseif (profile.aura_always_show_debuffs) then
+					AddAura (self, auraIndex, auraWidth, auraHeight, false)
 					auraIndex = auraIndex + 1
 				end
 			end
-			for i = 1, #debuffs do
-				local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitAura (self.NamePlateId, debuffs [i], nil, "HARMFUL|PLAYER")
+			
+			for i = 1, #buffs do
+				local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitAura (self.NamePlateId, buffs [i])
 				if (name) then
 					AddAura (self, auraIndex, auraWidth, auraHeight, name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId, true)
 					auraIndex = auraIndex + 1
@@ -1545,7 +1586,11 @@ function EnemyGrid.OnInit()
 			self.Icon:SetTexture (texture)
 			self.Icon:Show()
 			
-			self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color))
+			if (notInterruptible) then
+				self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color_nointerrupt))
+			else
+				self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color))
+			end
 		
 		elseif (event == "UNIT_SPELLCAST_CHANNEL_START") then
 			local unitCast = unit
@@ -1556,14 +1601,17 @@ function EnemyGrid.OnInit()
 			self.Icon:SetTexture (texture)
 			self.Icon:Show()
 			
-			self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color))
+			if (notInterruptible) then
+				self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color_nointerrupt))
+			else
+				self.Texture:SetVertexColor (unpack (EnemyGrid.db.profile.cast_statusbar_color))
+			end
 		end
 	end)
 	
 	local checkRange = function (self) --~range_check ~rangecheck
 		--UnitInRange(frame.displayedUnit) para friedndly pc
 	
-		--print (EnemyGrid.SpellForRangeCheck)
 		local isOnRange = IsSpellInRange (EnemyGrid.SpellForRangeCheck, self.NamePlateId)
 		if (isOnRange == 1) then
 			self:SetAlpha (1)
@@ -1938,6 +1986,7 @@ function EnemyGrid.OnInit()
 	
 	function EnemyGrid:PLAYER_REGEN_DISABLED()
 		EnemyGrid.CombatTime = GetTime()
+		EnemyGrid.RegenIsDisabled = true
 		
 		--verifica se o painel de opções esta aberto
 		if (EnemyGridOptionsPanelFrame and EnemyGridOptionsPanelFrame:IsShown()) then
@@ -1954,6 +2003,8 @@ function EnemyGrid.OnInit()
 			EnemyGrid.CheckZoneAfterCombat = nil
 			EnemyGrid:ZONE_CHANGED_NEW_AREA()
 		end
+		
+		EnemyGrid.RegenIsDisabled = nil
 		
 		--verifica se o painel foi fechado por causa de um combate
 		if (EnemyGridOptionsPanelFrame and EnemyGrid.ShouldReopenOptions) then
@@ -2103,41 +2154,58 @@ function EnemyGrid.UpdateKeyBinds()
 		EnemyGrid.ScheduleUpdateKeyBinds = true
 		return
 	end
-
+	--~keybind
 	local classLoc, class = UnitClass ("player")
 	local bindingList = EnemyGrid.CurrentKeybindSet
 	local bindString = "self:ClearBindings();"
-	local bindTypeFunc = [[local unitFrame = ...;]]
-	local bindMacroFunc = [[local unitFrame = ...;]]
+	local bindKeyBindTypeFunc = [[local unitFrame = ...;]]
+	local bindMacroTextFunc = [[local unitFrame = ...;]]
+	local isMouseBinding
 	
 	for i = 1, #bindingList do
 		local bind = bindingList [i]
 		local bindType
 		
+		--botão a ser precionado
 		if (bind.key:find ("type")) then
 			local keyNumber = tonumber (bind.key:match ("%d"))
 			bindType = keyNumber
+			isMouseBinding = true
 		else
 			bindType = "EG" .. i
 			bindString = bindString .. "self:SetBindingClick (0, '" .. bind.key .. "', self:GetName(), '" .. bindType .. "');"
 			bindType = "-EG" .. i
+			isMouseBinding = nil
 		end
 		
+		--tipo da keybind
 		local shift, alt, ctrl = bind.key:match ("SHIFT"), bind.key:match ("ALT"), bind.key:match ("CTRL")
-		local CommandKeys = shift and shift .. "-" or ""
+		local CommandKeys = alt and alt .. "-" or ""
 		CommandKeys = ctrl and CommandKeys .. ctrl .. "-" or CommandKeys
-		CommandKeys = alt and CommandKeys .. alt .. "-" or CommandKeys
+		CommandKeys = shift and CommandKeys .. shift .. "-" or CommandKeys
 		
-		local thisLine = [[unitFrame:SetAttribute ("@COMMANDtype@BINDTYPE", "macro");]]
-		thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-		thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-		bindTypeFunc = bindTypeFunc .. thisLine
+		local keyBindType
+		if (isMouseBinding) then
+			keyBindType = [[unitFrame:SetAttribute ("@COMMANDtype@BINDTYPE", "macro");]]
+		else
+			keyBindType = [[unitFrame:SetAttribute ("type@BINDTYPE", "macro");]]
+		end
 		
+		keyBindType = keyBindType:gsub ("@BINDTYPE", bindType)
+		keyBindType = keyBindType:gsub ("@COMMAND", CommandKeys)
+		bindKeyBindTypeFunc = bindKeyBindTypeFunc .. keyBindType
+		
+		--textos dos macros
 		if (bind.action == "_target") then
-			local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/target [@mouseover]");]]
-			thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-			thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-			bindMacroFunc = bindMacroFunc .. thisLine
+			local macroTextLine
+			if (isMouseBinding) then
+				macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/target [@mouseover]");]]
+			else
+				macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "/target [@mouseover]");]]
+			end
+			macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+			macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+			bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 			
 		elseif (bind.action == "_taunt") then
 			local spell = tauntList [class]
@@ -2147,11 +2215,16 @@ function EnemyGrid.UpdateKeyBinds()
 				end
 				spell = GetSpellInfo (spell)
 				if (spell) then
-					local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
-					thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-					thisLine = thisLine:gsub ("@SPELL", spell)
-					thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-					bindMacroFunc = bindMacroFunc .. thisLine
+					local macroTextLine
+					if (isMouseBinding) then
+						macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					else
+						macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					end
+					macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+					macroTextLine = macroTextLine:gsub ("@SPELL", spell)
+					macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+					bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 				end
 			end
 			
@@ -2163,11 +2236,16 @@ function EnemyGrid.UpdateKeyBinds()
 				end
 				spell = GetSpellInfo (spell)
 				if (spell) then
-					local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
-					thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-					thisLine = thisLine:gsub ("@SPELL", spell)
-					thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-					bindMacroFunc = bindMacroFunc .. thisLine
+					local macroTextLine
+					if (isMouseBinding) then
+						macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					else
+						macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					end
+					macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+					macroTextLine = macroTextLine:gsub ("@SPELL", spell)
+					macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+					bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 				end
 			end
 			
@@ -2179,40 +2257,55 @@ function EnemyGrid.UpdateKeyBinds()
 				end
 				spell = GetSpellInfo (spell)
 				if (spell) then
-					local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
-					thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-					thisLine = thisLine:gsub ("@SPELL", spell)
-					thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-					bindMacroFunc = bindMacroFunc .. thisLine
+					local macroTextLine
+					if (isMouseBinding) then
+						macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					else
+						macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+					end
+					macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+					macroTextLine = macroTextLine:gsub ("@SPELL", spell)
+					macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+					bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 				end
 			end
 			
 		elseif (bind.action == "_spell") then
-			local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
-			thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-			thisLine = thisLine:gsub ("@SPELL", bind.actiontext)
-			thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-			bindMacroFunc = bindMacroFunc .. thisLine
+			local macroTextLine
+			if (isMouseBinding) then
+				macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+			else
+				macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "/cast [@mouseover] @SPELL");]]
+			end
+			macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+			macroTextLine = macroTextLine:gsub ("@SPELL", bind.actiontext)
+			macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+			bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 			
 		elseif (bind.action == "_macro") then
-			local thisLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "@MACRO");]]
-			thisLine = thisLine:gsub ("@BINDTYPE", bindType)
-			thisLine = thisLine:gsub ("@MACRO", bind.actiontext)
-			thisLine = thisLine:gsub ("@COMMAND", CommandKeys)
-			bindMacroFunc = bindMacroFunc .. thisLine
+			local macroTextLine
+			if (isMouseBinding) then
+				macroTextLine = [[unitFrame:SetAttribute ("@COMMANDmacrotext@BINDTYPE", "@MACRO");]]
+			else
+				macroTextLine = [[unitFrame:SetAttribute ("macrotext@BINDTYPE", "@MACRO");]]
+			end
+			macroTextLine = macroTextLine:gsub ("@BINDTYPE", bindType)
+			macroTextLine = macroTextLine:gsub ("@MACRO", bind.actiontext)
+			macroTextLine = macroTextLine:gsub ("@COMMAND", CommandKeys)
+			bindMacroTextFunc = bindMacroTextFunc .. macroTextLine
 			
 		end
 	end
 	
 	--~key
-	
-	local bindTypeFuncLoaded = loadstring (bindTypeFunc)
-	local bindMacroFuncLoaded = loadstring (bindMacroFunc)
-	
+
+	local bindTypeFuncLoaded = loadstring (bindKeyBindTypeFunc)
+	local bindMacroFuncLoaded = loadstring (bindMacroTextFunc)
 	if (not bindMacroFuncLoaded or not bindTypeFuncLoaded) then
 		return
 	end
-	
+
+	--seta as macros em todos os 40 alvos
 	for i = 1, 40 do
 		local unitFrame = EnemyGrid.unitFrameContainer [i]
 		bindTypeFuncLoaded (unitFrame)
@@ -2558,6 +2651,18 @@ SLASH_ENEMYGRID1 = "/enemygrid"
 
 function SlashCmdList.ENEMYGRID (msg, editbox)
 	
+	if (msg == "resetpos") then
+		if (not InCombatLockdown()) then
+			EnemyGrid.ScreenPanel:ClearAllPoints()
+			EnemyGrid.ScreenPanel:SetPoint ("center", UIParent, "center")
+			LibWindow.SavePosition (EnemyGrid.ScreenPanel)
+			LibWindow.RestorePosition (EnemyGrid.ScreenPanel)
+			return
+		else
+			EnemyGrid:Msg ("You are in combat, cannot reset the position.")
+			return
+		end
+	end
 
 	EnemyGrid.OpenOptionsPanel()
 	
@@ -2580,6 +2685,17 @@ local mouseKeys = {
 	["MiddleButton"] = "type3",
 	["Button4"] = "type4",
 	["Button5"] = "type5",
+	["Button6"] = "type6",
+	["Button7"] = "type7",
+	["Button8"] = "type8",
+	["Button9"] = "type9",
+	["Button10"] = "type10",
+	["Button11"] = "type11",
+	["Button12"] = "type12",
+	["Button13"] = "type13",
+	["Button14"] = "type14",
+	["Button15"] = "type15",
+	["Button16"] = "type16",
 }
 local keysToMouse = {
 	["type1"] = "LeftButton",
@@ -2587,6 +2703,17 @@ local keysToMouse = {
 	["type3"] = "MiddleButton",
 	["type4"] = "Button4",
 	["type5"] = "Button5",
+	["type6"] = "Button6",
+	["type7"] = "Button7",
+	["type8"] = "Button8",
+	["type9"] = "Button9",
+	["type10"] = "Button10",
+	["type11"] = "Button11",
+	["type12"] = "Button12",
+	["type13"] = "Button13",
+	["type14"] = "Button14",
+	["type15"] = "Button15",
+	["type16"] = "Button16",
 }
 
 -- ~options
@@ -3309,7 +3436,6 @@ function EnemyGrid.OpenOptionsPanel()
 		for j = offset, tabEnd - 1 do
 			local spellType, spellID = GetSpellBookItemInfo (j, "player")
 			if (spellType == "SPELL") then
-				--print (spellType, spellID, select (1, GetSpellInfo (spellID)))
 				tinsert (spells, spellID)
 			end
 		end
@@ -3604,6 +3730,22 @@ function EnemyGrid.OpenOptionsPanel()
 			name = L["S_COLOR"],
 			desc = L["S_COLOR"],
 		},
+		
+		{
+			type = "color",
+			get = function()
+				local color = EnemyGrid.db.profile.cast_statusbar_color_nointerrupt
+				return {color[1], color[2], color[3], color[4]}
+			end,
+			set = function (self, r, g, b, a) 
+				local color = EnemyGrid.db.profile.cast_statusbar_color_nointerrupt
+				color[1], color[2], color[3], color[4] = r, g, b, a
+				EnemyGrid.UpdateGrid()
+			end,
+			name = L["S_CASTBAR_NONINTERRUPT_COLOR"],
+			desc = L["S_CASTBAR_NONINTERRUPT_COLOR"],
+		},
+
 		{
 			type = "color",
 			get = function()
@@ -3896,6 +4038,15 @@ function EnemyGrid.OpenOptionsPanel()
 		EnemyGrid.UpdateKeyBinds()
 	end
 	
+	local lock_textentry = {
+		["_target"] = true,
+		["_taunt"] = true,
+		["_interrupt"] = true,
+		["_dispel"] = true,
+		["_spell"] = false,
+		["_macro"] = false,
+	}
+	
 	local change_key_action = function (self, keybindIndex, value)
 		local keybind = keyBindListener.CurrentKeybindEditingSet [keybindIndex]
 		keybind.action = value
@@ -3972,7 +4123,13 @@ function EnemyGrid.OpenOptionsPanel()
 				--index
 				f.Index.text = index
 				--keybind
-				f.KeyBind.text = keysToMouse [data.key] or data.key
+				local keyBindText = keysToMouse [data.key] or data.key
+				
+				keyBindText = keyBindText:gsub ("type1", "LeftButton")
+				keyBindText = keyBindText:gsub ("type2", "RightButton")
+				keyBindText = keyBindText:gsub ("type3", "MiddleButton")
+				
+				f.KeyBind.text = keyBindText
 				f.KeyBind:SetClickFunction (set_keybind_key, index, nil, "left")
 				f.KeyBind:SetClickFunction (set_keybind_key, index, nil, "right")
 				--action
@@ -3982,6 +4139,13 @@ function EnemyGrid.OpenOptionsPanel()
 				f.ActionText.text = data.actiontext
 				f.ActionText:SetEnterFunction (set_action_text, index)
 				f.ActionText.CurIndex = index
+				
+				if (lock_textentry [data.action]) then
+					f.ActionText:Disable()
+				else
+					f.ActionText:Enable()
+				end
+				
 				--copy
 				f.Copy:SetClickFunction (copy_keybind, index)
 				--delete
@@ -4076,7 +4240,7 @@ function EnemyGrid.OpenOptionsPanel()
 	header.Index = DF:CreateLabel  (header, "Index", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
 	header.Key = DF:CreateLabel  (header, "Key", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
 	header.Action = DF:CreateLabel  (header, "Action", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
-	header.Macro = DF:CreateLabel  (header, "Spell / Macro", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
+	header.Macro = DF:CreateLabel  (header, "Spell Name / Macro", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
 	header.Copy = DF:CreateLabel  (header, "Copy", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
 	header.Delete = DF:CreateLabel  (header, "Delete", DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
 	
@@ -4219,6 +4383,27 @@ function EnemyGrid.OpenOptionsPanel()
 			name = L["S_SHOWTIMER"],
 			desc = L["S_SHOWTIMER_DESC"],
 		},
+		{
+			type = "toggle",
+			get = function() return EnemyGrid.db.profile.aura_show_tooltip end,
+			set = function (self, fixedparam, value) 
+				EnemyGrid.db.profile.aura_show_tooltip = value
+			end,
+			name = L["S_SHOWTOOLTIP"],
+			desc = L["S_SHOWTOOLTIP"],
+		},
+		
+		{
+			type = "toggle",
+			get = function() return EnemyGrid.db.profile.aura_always_show_debuffs end,
+			set = function (self, fixedparam, value) 
+				EnemyGrid.db.profile.aura_always_show_debuffs = value
+			end,
+			name = L["S_ALWAYSSHOWDEBUFFS"],
+			desc = L["S_ALWAYSSHOWDEBUFFS_DESC"],
+		},
+		
+		
 	}
 
 	DF:BuildMenu (auraFrame, options_table, mainStartX, mainStartY, mainHeightSize + 20, true, options_text_template, options_dropdown_template, options_switch_template, true, options_slider_template, options_button_template)		

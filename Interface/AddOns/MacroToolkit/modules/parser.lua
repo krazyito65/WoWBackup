@@ -133,19 +133,26 @@ local function validateCommandVerb(commandtext, parameters)
 	local p = false
 	commandtext = trim(commandtext)
 	local msg = format("%s: %s%s%s", L["Invalid command"], MT.slash, cc, commandtext)
-	for k, v in pairs(MT.commands) do
-		if k == commandtext then
-			if v[3] then cc = format("|c%s", MT.db.profile.emotecolour) end
-			if v[2] == 5 then 
-				msg = format("%s: %s%s%s", L["Command removed"], MT.slash, cc, commandtext)
-				p = true
-			elseif v[2] == 1 then
-				if not param then 
-					msg = format("%s: %s%s%s", L["Required parameter missing"], MT.slash, cc, commandtext)
+	--ticket 139
+	if string.sub(commandtext, 1, 1) == MT.slash then
+		msg = nil
+		--not going to colour the comments for the time being as the code cannot properly handle both slashes
+		--cc = format("|c%s", MT.db.profile.scriptcolour)
+	else
+		for k, v in pairs(MT.commands) do
+			if k == commandtext then
+				if v[3] then cc = format("|c%s", MT.db.profile.emotecolour) end
+				if v[2] == 5 then 
+					msg = format("%s: %s%s%s", L["Command removed"], MT.slash, cc, commandtext)
 					p = true
+				elseif v[2] == 1 then
+					if not param then 
+						msg = format("%s: %s%s%s", L["Required parameter missing"], MT.slash, cc, commandtext)
+						p = true
+					else msg = nil end
 				else msg = nil end
-			else msg = nil end
-			break
+				break
+			end
 		end
 	end
 	for _, s in ipairs(MT.scripts) do
@@ -199,6 +206,7 @@ local function isValid(args, opt)
 	for _, a in ipairs(args) do
 		valid = nil
 		for _, o in ipairs(MT.optargs[opt]) do
+			if type(a) == "string" then a = string.lower(a) end -- ticket 139
 			if o == trim(a) then
 				valid = true
 				break
@@ -288,7 +296,7 @@ local function validateCondition(condition, optionarguments)
 	local c, cc, cond = format("|c%s", MT.db.profile.defaultcolour), format("|c%s", MT.db.profile.conditioncolour), true
 	local msg = format("%s: %s%s", L["Invalid condition"], cc, condition)
 	local target, noa, valid, arg1, no
-	condition = trim(condition)
+
 	if string.len(condition) == 0 then return "", nil end
 	if string.sub(condition, 1, 2) == "no" then
 		condition = string.sub(condition,3)
@@ -351,7 +359,10 @@ local function validateCondition(condition, optionarguments)
 	if not msg then c = cc
 	else
 		msg = format("%s|r", msg)
-		if cond then msg = format("%s\n      %s: %s%s%s|r", msg, L["did you mean"], cc, no and "no" or "", findMatch(condition, MT.conditions)) end
+		if cond then
+			local cmatch = findMatch(condition, MT.conditions)
+			msg = format("%s\n      %s: %s%s%s|r", msg, L["did you mean"], cc, no and "no" or "", findMatch(condition, MT.conditions))
+		end
 	end
 	return c, msg
 end
@@ -408,6 +419,14 @@ function MT:ShortenMacro(macrotext)
 	local lines = {strsplit("\n", macrotext)}
 	for i, l in ipairs(lines) do
 	--if i == 3 then print(l) return end
+		local s, e = string.find(l, format("%s%s", MT.slash, MT.slash))
+		if s then
+			if s == 1 then
+				l = ""
+			else
+				l = string.sub(l, 1, s - 1)
+			end
+		end
 		if l ~= "" then
 			l = string.gsub(l, "%s+", " ")
 			l = string.gsub(l, "%s-([%]=,;])", "%1")
@@ -421,7 +440,7 @@ function MT:ShortenMacro(macrotext)
 			l = string.gsub(l, "mod%s-:%s+", "mod:")
 			l = string.gsub(l, "group%s-:%s+", "group:")
 			--ticket 124
-			local s, e = string.find(l, "%[.-%]")
+			s, e = string.find(l, "%[.-%]")
 			while s do
 				local s1 = string.sub(l, s, e)
 				s1 = string.gsub(s1, "%s+", "")
@@ -572,108 +591,136 @@ function MT:ShortenMacro(macrotext)
 	return mshort, nlen, firstc
 end
 
+function MT:FindComment(parameters)
+	local s, e = string.find(parameters, format("%s%s", MT.slash, MT.slash))
+	return s
+end
+
 function MT:ParseMacro(macrotext)
 	if macrotext == "\n" then return macrotext, {} end
 	if string.len(macrotext) == 0 then return nil, {} end
-	local command_verb, options
+	local command_verb, options, comment
 	local command_objects, conditions, condition_phrases = {}, {}, {}
 	local command_object, condition, condition_phrase, condition_string
 	local option_arguments, parsed_text, errors = {}, {}, {}
 	local parameters, option_word, option_argument, target, pp
 	local spos, schar, ss, se, pt, err, col, pos, mout, vv, epos, lpos
 	
-	schar = string.sub(macrotext, 1, 1)
-	if schar == "#" or schar == MT.slash then
-		local matchbrackets = matchedBrackets(macrotext)
-		if matchbrackets ~= "" then table.insert(errors, format("%s: %s", L["Unmatched"], matchbrackets)) end
-		spos = string.find(macrotext, " ")
-		if spos then command_verb = string.sub(macrotext, 2, spos - 1)
-		else
-			command_verb = string.sub(macrotext, 2)
-			col, err = validateCommandVerb(command_verb)
-			if err then table.insert(errors, err) end
-			table.insert(parsed_text, {t = command_verb, c = col, s = 2})
-			vv = true
-		end
-		if spos then options = string.sub(macrotext, spos + 1) end
-		if isScript(command_verb) then
-			if spos then
-				parameters = options
-				col, err = validateParameters(parameters, command_verb)
-				if err then table.insert(errors, err) end
-				table.insert(parsed_text, {t = parameters, c = col, s = spos + 1})
-				col, err = validateCommandVerb(command_verb, parameters)
+	-- ticket 139 - handle comments at the start of a line
+	if string.sub(macrotext, 1, 2) == format("%s%s", MT.slash, MT.slash) then
+		comment = string.sub(macrotext, 3)
+		col = format("|c%s", MT.db.profile.comcolour)
+		table.insert(parsed_text, {t = comment, c = col, s = 3})
+	else
+		schar = string.sub(macrotext, 1, 1)
+		if schar == "#" or schar == MT.slash then
+			local matchbrackets = matchedBrackets(macrotext)
+			if matchbrackets ~= "" then table.insert(errors, format("%s: %s", L["Unmatched"], matchbrackets)) end
+			spos = string.find(macrotext, " ")
+			if spos then command_verb = string.sub(macrotext, 2, spos - 1)
+			else
+				command_verb = string.sub(macrotext, 2)
+				col, err = validateCommandVerb(command_verb)
 				if err then table.insert(errors, err) end
 				table.insert(parsed_text, {t = command_verb, c = col, s = 2})
+				vv = true
 			end
-		elseif options then
-			if string.find(options, ";") then command_objects = {strsplit(";", options)}
-			else command_objects = {options} end
-			local seqpos
-			for _, command_object in ipairs(command_objects)do
-				wipe(conditions)
-				ss, se = string.find(command_object, "%[.*%]")
-				if ss then
-					condition_string = string.sub(command_object, ss, se)
-					for c in string.gmatch(condition_string, "%[(.-)%]") do
-						pos = string.find(macrotext, escape(c), lpos or 1)
-						lpos = pos + string.len(c)
-						table.insert(conditions, {c = c, p = pos})
-					end
-					parameters = string.sub(command_object, se + 1)
-				else parameters = command_object end
-				pp = pp or parameters
-				if string.len(parameters or "") > 0 then
-					if isCastSequence(command_verb) then
-						local rerr, reset, sequence, col, rwhole, rerr2 = parseSequence(parameters)
-						if rerr then table.insert(errors, rerr) end
-						if rerr2 then table.insert(errors, rerr2) end
-						if rwhole then
-							local rpos = string.find(macrotext, escape(rwhole))
-							table.insert(parsed_text, {t = rwhole, c = col, s = rpos})
-						end
-						local casts = {strsplit(",", sequence)}
-						if not seqpos then seqpos = string.find(macrotext, escape(sequence)) end
-						for _, cast in ipairs(casts) do
-							col, err = validateParameters(cast, command_verb)
-							if err then table.insert(errors, err) end
-							seqpos = string.find(macrotext, escape(cast), seqpos)
-							table.insert(parsed_text, {t = cast, c = col, s = seqpos})
-							seqpos = seqpos + string.len(cast)
-						end
-						parameters = sequence
-					else
-						col, err = validateParameters(parameters, command_verb)
-						if err then table.insert(errors, err) end
-						pos, epos = string.find(macrotext, escape(parameters), epos or 1)
-						table.insert(parsed_text, {t = parameters, c = col, s = pos})
-					end
-				end
-				if not vv then
+			if spos then options = string.sub(macrotext, spos + 1) end
+			if isScript(command_verb) then
+				if spos then
+					parameters = options
+					col, err = validateParameters(parameters, command_verb)
+					if err then table.insert(errors, err) end
+					table.insert(parsed_text, {t = parameters, c = col, s = spos + 1})
 					col, err = validateCommandVerb(command_verb, parameters)
 					if err then table.insert(errors, err) end
 					table.insert(parsed_text, {t = command_verb, c = col, s = 2})
-					vv = true
 				end
-				for _, c in ipairs(conditions) do
-					local cps = {strsplit(",", c.c)}
-					for _, condition_phrase in ipairs(cps) do
-						spos = string.find(condition_phrase, ":")
-						wipe(option_arguments)
-						if spos then
-							option_arguments = {strsplit("/", string.sub(condition_phrase, spos + 1))}
-							condition = string.sub(condition_phrase, 1, spos - 1)
-						else condition = condition_phrase end
-						col, err = validateCondition(condition, option_arguments)
+			elseif options then
+				if string.find(options, ";") then command_objects = {strsplit(";", options)}
+				else command_objects = {options} end
+				local seqpos
+				for _, command_object in ipairs(command_objects)do
+					wipe(conditions)
+					ss, se = string.find(command_object, "%[.*%]")
+					if ss then
+						condition_string = string.sub(command_object, ss, se)
+						for c in string.gmatch(condition_string, "%[(.-)%]") do
+							pos = string.find(macrotext, escape(c), lpos or 1)
+							lpos = pos + string.len(c)
+							table.insert(conditions, {c = c, p = pos})
+						end
+						parameters = string.sub(command_object, se + 1)
+					else parameters = command_object end
+					pp = pp or parameters
+					if string.len(parameters or "") > 0 then
+						if isCastSequence(command_verb) then
+							local rerr, reset, sequence, col, rwhole, rerr2 = parseSequence(parameters)
+							if rerr then table.insert(errors, rerr) end
+							if rerr2 then table.insert(errors, rerr2) end
+							if rwhole then
+								local rpos = string.find(macrotext, escape(rwhole))
+								table.insert(parsed_text, {t = rwhole, c = col, s = rpos})
+							end
+							local casts = {strsplit(",", sequence)}
+							if not seqpos then seqpos = string.find(macrotext, escape(sequence)) end
+							for _, cast in ipairs(casts) do
+								col, err = validateParameters(cast, command_verb)
+								if err then table.insert(errors, err) end
+								seqpos = string.find(macrotext, escape(cast), seqpos)
+								table.insert(parsed_text, {t = cast, c = col, s = seqpos})
+								seqpos = seqpos + string.len(cast)
+							end
+							parameters = sequence
+						else
+							local fc = MT:FindComment(parameters)
+							if fc then
+								comment = string.sub(parameters, fc + 2)
+								col = format("|c%s", MT.db.profile.comcolour)
+								local ppos = MT:FindComment(macrotext)
+								table.insert(parsed_text, {t = comment, c = col, s = ppos + 2})
+								parameters = string.sub(parameters, 1, fc - 1)
+							end
+							col, err = validateParameters(parameters, command_verb)
+							if err then table.insert(errors, err) end
+							pos, epos = string.find(macrotext, escape(parameters), epos or 1)
+							table.insert(parsed_text, {t = parameters, c = col, s = pos})
+						end
+					end
+					if not vv then
+						local fc = MT:FindComment(parameters)
+						if fc then
+							comment = string.sub(parameters, fc + 2)
+							col = format("|c%s", MT.db.profile.comcolour)
+							local ppos = MT:FindComment(macrotext)
+							table.insert(parsed_text, {t = comment, c = col, s = ppos + 2})
+							parameters = string.sub(parameters, 1, fc - 1)
+						end
+						col, err = validateCommandVerb(command_verb, parameters)
 						if err then table.insert(errors, err) end
-						pos = string.find(macrotext, escape(condition), c.p)
-						table.insert(parsed_text, {t = condition, c = col, s = pos})
+						table.insert(parsed_text, {t = command_verb, c = col, s = 2})
+						vv = true
+					end
+					for _, c in ipairs(conditions) do
+						local cps = {strsplit(",", c.c)}
+						for _, condition_phrase in ipairs(cps) do
+							spos = string.find(condition_phrase, ":")
+							wipe(option_arguments)
+							if spos then
+								option_arguments = {strsplit("/", string.sub(condition_phrase, spos + 1))}
+								condition = string.sub(condition_phrase, 1, spos - 1)
+							else condition = condition_phrase end
+							col, err = validateCondition(condition, option_arguments)
+							if err then table.insert(errors, err) end
+							pos = string.find(macrotext, escape(condition), c.p)
+							table.insert(parsed_text, {t = condition, c = col, s = pos})
+						end
 					end
 				end
 			end
-		end
-	else table.insert(errors, format("%s: |c%s%s|r", L["Not a macro command"], MT.db.profile.errorcolour, macrotext)) end
-	
+		else table.insert(errors, format("%s: |c%s%s|r", L["Not a macro command"], MT.db.profile.errorcolour, macrotext)) end
+	end
+
 	table.sort(parsed_text, function(a,b) return a.s < b.s end)
 	mout = macrotext
 

@@ -42,7 +42,8 @@ local VUHDO_CHARGE_COLORS = { "HOT_CHARGE_1", "HOT_CHARGE_2", "HOT_CHARGE_3", "H
 local VUHDO_HOT_CFGS = { "HOT1", "HOT2", "HOT3", "HOT4", "HOT5", "HOT6", "HOT7", "HOT8", "HOT9", "HOT10", };
 
 local VUHDO_CACHE_SPELL_ONLY_BY_ID = { 
-	[VUHDO_SPELL_ID.RIPTIDE] = true, 
+	[VUHDO_SPELL_ID.RIPTIDE] = true,
+	[VUHDO_SPELL_ID.CENARION_WARD] = true,
 };
 
 -- BURST CACHE -------------------------------------------------
@@ -252,7 +253,7 @@ local function VUHDO_customizeHotIcons(aButton, aHotName, aRest, aTimes, anIcon,
 		end
 
 		tTimer:SetText(tDuration);
-		tStarted = floor(10 * (GetTime() - aDuration + aRest + 0.5)) * 0.1;
+		tStarted = floor(10 * (GetTime() - aDuration + aRest) + 0.5) * 0.1;
 		if tClock:GetAlpha() == 0 or (tClock:GetAttribute("started") or tStarted) ~= tStarted then
 			tClock:SetAlpha(1);
 			tClock:SetCooldown(tStarted, aDuration);
@@ -539,11 +540,12 @@ local function VUHDO_updateHots(aUnit, anInfo)
 
 			if tDebuffOffset then -- Achtung kein elseif
 				tBuffName, _, tBuffIcon, tStacks, _, tDuration, tExpiry, tCaster, _, _, tSpellId = UnitDebuff(aUnit, tCnt - tDebuffOffset);
+
 				if not tBuffIcon then
 					break;
 				end
 			end
-
+			
 			tIsCastByPlayer = tCaster == "player" or tCaster == VUHDO_PLAYER_RAID_ID;
 
 			if sIsPlayerKnowsSwiftmend and not sIsSwiftmend then

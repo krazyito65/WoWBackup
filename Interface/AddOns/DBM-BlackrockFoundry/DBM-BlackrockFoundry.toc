@@ -4,6 +4,7 @@
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0검은바위 용광로|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Литейная клана Черной горы|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Schwarzfelsgießerei|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Fundición Roca Negra|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0黑石鑄造場|r
 ## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0黑石铸造厂|r
 ## Author: MysticalOS
@@ -18,7 +19,7 @@
 ## X-DBM-Mod-Sort: 101
 ## X-DBM-Mod-MapID: 1205
 ## X-DBM-Mod-MinCoreRevision: 12473
-## X-Curse-Packaged-Version: 7.0.1-10-g07cc225
+## X-Curse-Packaged-Version: 7.0.2-21-ge0bb68c
 ## X-Curse-Project-Name: Deadly Boss Mods
 ## X-Curse-Project-ID: deadly-boss-mods
 ## X-Curse-Repository-ID: wow/deadly-boss-mods/mainline
@@ -26,6 +27,7 @@ localization.en.lua
 localization.kr.lua
 localization.ru.lua
 localization.de.lua
+localization.es.lua
 localization.tw.lua
 localization.cn.lua
 localization.br.lua

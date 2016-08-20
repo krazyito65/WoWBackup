@@ -30,11 +30,11 @@ MT.defaults = {
 		stringcolour = "ffffffff", emotecolour = "ffeedd82", scriptcolour = "ff696969",
 		commandcolour = "ff00bfff", spellcolour = "ff9932cc", targetcolour = "ffffd700",
 		conditioncolour = "ff8b5a2b", defaultcolour = "ffffffff", errorcolour = "ffff0000",
-		itemcolour = "fff08080", mtcolour = "ffcd2ea9", seqcolour ="ff006600",
+		itemcolour = "fff08080", mtcolour = "ffcd2ea9", seqcolour ="ff006600", comcolour="ff00aa00",
 		usecolours = true, unknown = false, replacemt = true, doublewide = false, broker = false,
 		viscondtions = true, visoptionsbutton = true, viscustom = true,
 		visaddscript = true, visaddslot = true, viscrest = false,
-		visbackup = true, visclear = true, visshare = true,
+		visbackup = true, visclear = true, visshare = true, useiconlib = true,
 		visextend = true, viserrors = true, vismacrobox = true,
 		visshorten = true, visbind = true, visdrake = false,
 		--escape = true,
@@ -264,6 +264,18 @@ function MT:eventHandler(this, event, arg1, ...)
 		MT.AC:RegisterComm("MacroToolkit", function(...) MT:ReceiveMacro(...) end)
 		if countTables(MT.db.char.brokers) > 0 then
 			for b, d in pairs(MT.db.char.brokers) do MT:CreateBrokerObject(b, d.label) end
+		end
+		
+		if MacroToolkit.db.profile.useiconlib == true then
+			--Try loading the data addon
+			loaded, reason = LoadAddOn("MacroToolkitIcons")
+
+			if not loaded then
+				--load failed
+				MacroToolkit.usingiconlib = nil
+			else
+				MacroToolkit.usingiconlib = true
+			end
 		end
 	end
 end
@@ -803,7 +815,17 @@ function MT:MacroFrameUpdate()
 						MT:UpdateErrors(e)
 						MacroToolkitSelMacroButton:SetID(i)
 						MacroToolkitSelMacroButtonIcon:SetTexture(texture)
-						if MT.MTPF then MT.MTPF.selectedIconTexture = string.gsub(string.upper(texture), "INTERFACE\\ICONS\\", "") end
+						if MT.MTPF then
+							if type(texture) == "number" then
+								MT.MTPF.selectedIconTexture = texture
+							else
+								if texture then
+									MT.MTPF.selectedIconTexture = string.gsub(string.upper(texture), "INTERFACE\\ICONS\\", "")
+								else
+									MT.MTPF.selectedIconTexture = nil
+								end
+							end
+						end
 					else
 						MacroToolkitCText:SetText(body)
 						MacroToolkitCFauxText:SetText(m)
@@ -1112,7 +1134,6 @@ end
 --*****************************
 local function MTChatEdit_InsertLink(linktext)
 	if MacroToolkitText and MacroToolkitText:IsVisible() then
-		--if string.find(linktext, "|H") then return false end --why was this here???
 		local item
 		if string.find(linktext, "item:", 1, true) then item = GetItemInfo(linktext)
 		else linktext = select(3, string.find(linktext, "h%[(.*)%]|h")) end
@@ -1126,6 +1147,7 @@ local function MTChatEdit_InsertLink(linktext)
 		else MacroToolkitText:Insert(item or linktext) end
 		MacroToolkitText:GetScript("OnTextChanged")(MacroToolkitText)
 		MTF.textChanged = 1
+		cccount = 1
 		return true
 	end
 	return false
@@ -1167,5 +1189,6 @@ function MT:CombatMessage()
 	StaticPopup_Show("MACROTOOLKIT_ALERT")
 end
 
-hooksecurefunc("SpellButton_OnModifiedClick", MTSpellButton_OnModifiedClick)
-hooksecurefunc("ChatEdit_InsertLink", MTChatEdit_InsertLink)
+-- no longer required
+--hooksecurefunc("SpellButton_OnModifiedClick", MTSpellButton_OnModifiedClick)
+--hooksecurefunc("ChatEdit_InsertLink", MTChatEdit_InsertLink)

@@ -439,7 +439,7 @@ function Util:getTotalItems(src, includeSoulbound)
 		for tab = 1, GetNumGuildBankTabs() do
 			if select(5, GetGuildBankTabInfo(tab)) > 0 or IsGuildLeader(UnitName("player")) then
 				for slot = 1, MAX_GUILDBANK_SLOTS_PER_TAB or 98 do
-					local itemString = TSMAPI.Item:ToBaseItemString(GetGuildBankItemLink(tab, slot))
+					local itemString = TSMAPI.Item:ToBaseItemString(GetGuildBankItemLink(tab, slot), true)
 					if itemString == "i:82800" then
 						local speciesID = GameTooltip:SetGuildBankItem(tab, slot)
 						itemString = speciesID and ("p:" .. speciesID)

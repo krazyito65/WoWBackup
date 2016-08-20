@@ -1,3 +1,12 @@
+v3.4.30
+*Fixed issue where moving random enchant / staged items were treated as base items.
+
+v3.4.29
+*No changes.
+
+v3.4.28
+*Fixed bug affecting some items with bonusIds.
+
 v3.4.27
 *Fixed bug with getting the quality of battlepets.
 *Fixed error from disenchant searches.

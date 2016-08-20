@@ -49,7 +49,7 @@ function Options:Load(container)
 							label = L["Min Disenchant Level"],
 							settingInfo = { TSM.db.global, "minDeSearchLvl" },
 							min = 1,
-							max = 735,
+							max = 905,
 							step = 1,
 							isPercent = false,
 							callback = function(self, _, value)
@@ -65,7 +65,7 @@ function Options:Load(container)
 							label = L["Max Disenchant Level"],
 							settingInfo = { TSM.db.global, "maxDeSearchLvl" },
 							min = 1,
-							max = 735,
+							max = 905,
 							step = 1,
 							isPercent = false,
 							callback = function(self, _, value)

@@ -44,6 +44,8 @@ if not L then return end
 -- L["Auto awarded 'item'"] = ""
 -- L["Auto Award to"] = ""
 -- L["auto_award_to_desc"] = ""
+-- L["Auto Close"] = ""
+-- L["auto_close_desc"] = ""
 -- L["Auto Enable"] = ""
 -- L["auto_enable_desc"] = ""
 -- L["Auto Loot"] = ""

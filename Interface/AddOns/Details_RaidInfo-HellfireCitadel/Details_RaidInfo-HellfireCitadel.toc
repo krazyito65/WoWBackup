@@ -2,7 +2,7 @@
 ## Title: Details: Hellfire Citadel
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
-## X-Curse-Packaged-Version: r534
+## X-Curse-Packaged-Version: r540
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

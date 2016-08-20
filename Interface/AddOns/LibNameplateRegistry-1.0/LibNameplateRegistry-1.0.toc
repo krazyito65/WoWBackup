@@ -1,7 +1,7 @@
 ## Interface: 70000
 ## X-Max-Interface: 70000
 ## X-Min-Interface: 70000
-## X-Curse-Packaged-Version: 0.17
+## X-Curse-Packaged-Version: 0.18
 ## X-Curse-Project-Name: LibNameplateRegistry-1.0
 ## X-Curse-Project-ID: libnameplateregistry-1-0
 ## X-Curse-Repository-ID: wow/libnameplateregistry-1-0/mainline
@@ -10,7 +10,7 @@
 ## Notes: an embeddable library providing an abstraction layer for tracking and querying Blizzard's Nameplate frames with ease and efficiency.
 ## Author: John Wellesz
 ## DefaultState: enabled
-## Version: 0.17
+## Version: 0.18
 ## LoadOnDemand: 1
 ## X-Category: Library
 
@@ -19,9 +19,9 @@
 ## OptionalDeps: Libstub, CallbackHandler-1.0
 ## X-Embeds: Libstub, CallbackHandler-1.0
 
-## X-ReleaseDate: "2016-07-26T18:47:16Z"
+## X-ReleaseDate: "2016-08-02T22:15:55Z"
 ## X-eMail: archarodim@teaser.fr
 ## X-Website: http://www.wowace.com/addons/libnameplateregistry/
-embeds.xml
 
+embeds.xml
 LibNameplateRegistry-1.0\LibNameplateRegistry-1.0.xml

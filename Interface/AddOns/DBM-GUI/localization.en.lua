@@ -6,14 +6,14 @@ L.MainFrame = "Deadly Boss Mods"
 
 L.TranslationByPrefix		= "Translated by "
 L.TranslationBy 			= nil -- your name here, localizers!
-L.Website					= "Visit our discussion and support forums at |cFF73C2FBwww.deadlybossmods.com|r. Follow main dev on twitter @MysticalOS"
+L.Website					= "Visit discussion/support forums at |cFF73C2FBwww.deadlybossmods.com|r. Follow on twitter @deadlybossmods or @MysticalOS"
 L.WebsiteButton				= "Forums"
 
 L.OTabBosses	= "Bosses"
 L.OTabOptions	= GAMEOPTIONS_MENU
 
 L.TabCategory_Options	 	= "General Options"
-L.TabCategory_LEG	 		= "Legion"
+L.TabCategory_LEG	 		= EXPANSION_NAME6
 L.TabCategory_WOD	 		= EXPANSION_NAME5
 L.TabCategory_MOP	 		= EXPANSION_NAME4
 L.TabCategory_CATA	 		= EXPANSION_NAME3

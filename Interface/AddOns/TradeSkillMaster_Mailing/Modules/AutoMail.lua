@@ -88,7 +88,7 @@ function private:SendOffMailThread(self, target, codPerItem)
 	SetSendMailMoney(0)
 	if codPerItem then
 		local numItems = 0
-		for i = 1, ATTACHMENTS_MAX_SEND do
+		for i = 1, attachments do
 			local count = select(4, GetSendMailItem(i))
 			numItems = numItems + count
 		end

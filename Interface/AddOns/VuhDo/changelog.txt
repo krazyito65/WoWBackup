@@ -1,3 +1,60 @@
+Version 3.75
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- AOE advisor not yet updated for Legion
+--   Need new spell formulas and coefficients
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Holy Priest spells derived from Chakra stance behave oddly as of 6.0.2
+--   Stance specific spells must all use the spell name Holy Word: Chastise
+
+
+Bugfixes:
+-- Priest 'Purge the Wicked' can be directly assigned as a spell bind again
+-- Fixed HoT clock start time rounding error
+
+
+Improvements:
+-- Added Priest 'Clarity of Will' as a default HoT icon option
+-- Custom flag bouquet validator now listens for VUHDO_UPDATE_NUM_CLUSTER
+
+
+--------------------------------------------------------------
+Version 3.74
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- AOE advisor not yet updated for Legion
+--   Need new spell formulas and coefficients
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Holy Priest spells derived from Chakra stance behave oddly as of 6.0.2
+--   Stance specific spells must all use the spell name Holy Word: Chastise
+-- Morphing spells (spells that change based on a spec or talent) such as 
+--   Disc Priest 'Purge the Wicked' should always be bound by their orginal 
+--   base spell name (eg. 'Shadow Word: Pain')
+
+
+Bugfixes:
+-- Resolve tracking ambiguity by caching Druid 'Cenarion Ward' by spell ID
+-- Import and export frames now properly auto-focus when opened
+-- Druid 'Spring Blossoms' now properly auto populates in the HoT dropdown
+
+
+Improvements:
+-- Explicitly refresh HoTs and bouquets when we get a SPELL_AURA_APPLIED 
+--   event for an actively tracked HoT (requires 'Shield Status' option to 
+--   be selected under 'VuhDo Options > Panels > HoT Icons > Shields')
+
+
+--------------------------------------------------------------
 Version 3.73
 
 

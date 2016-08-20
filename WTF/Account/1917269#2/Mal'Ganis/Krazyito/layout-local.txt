@@ -7,7 +7,7 @@ Y: -32
 W: 128
 H: 64
 Frame: ColorPickerFrame
-FrameLevel: 28
+FrameLevel: 21
 Anchor: CENTER
 X: -230
 Y: -23

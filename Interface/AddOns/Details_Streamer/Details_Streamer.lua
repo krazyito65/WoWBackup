@@ -994,22 +994,23 @@ end
 
 local lastspell, lastcastid, lastchannelid, ischanneling
 local channelspells = {}
+local lastChannelSpell = ""
+
 listener:SetScript ("OnEvent", function (self, event, ...)
-	
-	--print (event, ...)
+
+	--print (self, event, ...)
 
 	if (event == "UNIT_SPELLCAST_SENT") then
 		local unitID, spell, rank, target, id = ...
-		
 		if (unitID == "player") then
 			CastsTable [id] = {Target = target, Id = id, CastStart = GetTime()}
+			lastChannelSpell = id
 			lastspell = spell
 			lastcastid = id
 		end
 	
 	elseif (event == "UNIT_SPELLCAST_START") then
 		local unitID, spell, rank, id, spellID = ...
-		
 		if (unitID == "player" and CastsTable [id]) then
 			CastsTable [id].SpellId = spellID
 			CastsTable [id].HasCastTime = true
@@ -1029,6 +1030,14 @@ listener:SetScript ("OnEvent", function (self, event, ...)
 		
 		if (unitID == "player") then
 			id = lastchannelid
+		
+			if (not CastsTable [id]) then
+				--print ("not", " - ", id, " - ", lastChannelSpell)
+				id = lastChannelSpell
+				if (not id or not CastsTable [id]) then
+					return
+				end
+			end
 			CastsTable [id].Interrupted = true
 			ischanneling = false
 			lastchannelid = nil
@@ -1044,6 +1053,11 @@ listener:SetScript ("OnEvent", function (self, event, ...)
 			if (ischanneling) then
 				--> channel updated
 				CastsTable [lastchannelid].Interrupted = true
+			end
+			
+			if (not CastsTable [id]) then
+				--print ("not", " - ", id, " - ", lastChannelSpell)
+				id = lastChannelSpell
 			end
 			
 			CastsTable [id].HasCastTime = true

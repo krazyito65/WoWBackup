@@ -4,7 +4,7 @@ if ExRT.locale ~= "zhTW" then
 	return
 end	
 
--- 01:14 26.05.2016
+-- 20:48 08.08.2016
 
 local L = ExRT.L	
 local PH = ExRT.L
@@ -646,7 +646,7 @@ L.BossWatcherHealTooltipAbsorbed = "吸收"
 L.BossWatcherHealTooltipTotal = "總計"			
 L.BossWatcherHealTooltipFromCrit = "致命一擊治療"			
 L.BossWatcherHealTooltipFromMs = "雙擊治療"			
-L.BossWatcherHealTooltipCount = "次數 (不算雙擊)"			
+L.BossWatcherHealTooltipCount = "次數"			
 L.BossWatcherHealTooltipHitMax = "最大擊中治療"			
 L.BossWatcherHealTooltipHitMid = "平均擊中治療"			
 L.BossWatcherHealTooltipCritCount = "致命一擊次數"			
@@ -788,7 +788,8 @@ L.InspectViewerMoreInfoRoleHealer = "治療"
 L.InspectViewerColorizeNoTopEnch = "高亮使用非最高附魔或寶石的裝備"			
 L.InspectViewerForce = "強制觀察"			
 L.InspectViewerHideInRaid = "隱藏不在團隊裡的玩家"			
-L.InspectViewerColorizeNoValorUpgrade = "高亮未完成勇氣點數升級的裝備"			
+L.InspectViewerColorizeNoValorUpgrade = "高亮未完成勇氣點數升級的裝備"	
+L.InspectViewerNoExRTAddon = "該玩家尚未安裝ExRT"		
 			
 L.CoinsSpoilsOfPandariaWinTrigger = "System resetting. Don't turn the power off, or the whole thing will probably explode."			
 L.CoinsEmpty = "目前沒有資料"			
@@ -846,7 +847,7 @@ L.BattleResHideCD = "隱藏冷卻特效"
 L.SkadaDamageToCurrentTarget = "對當前目標的傷害"			
 			
 L.LegendaryRingEnable = "當有人使用|cffff7f00傳說|r戒指顯示名字訊息"			
-L.LegendaryRingFrodo = "佛羅多·巴金斯"			
+L.LegendaryRingFrodo = "拜託了，幫我撐15秒"			
 L.LegendaryRingType = "顯示戒指類型 (坦 / 補 / 輸出)"			
 			
 L.AttendanceFirstPerRaid = "只於團隊首次首領開怪記錄出勤"			

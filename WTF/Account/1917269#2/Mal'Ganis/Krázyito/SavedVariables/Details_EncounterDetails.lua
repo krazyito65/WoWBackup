@@ -1,5 +1,394 @@
 
 EncounterDetailsDB = {
+	["emotes"] = {
+		{
+			{
+				0.184000000008382, -- [1]
+				"I have so much to show you...", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [1]
+			{
+				10.7989999999991, -- [1]
+				"These gaps in reality... I must tear them wider!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [2]
+			{
+				19.2949999999837, -- [1]
+				"LEGION! Destroy all who stand before you!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [3]
+			{
+				51.6699999999837, -- [1]
+				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
+				"Krázyito", -- [3]
+				2, -- [4]
+			}, -- [4]
+			{
+				79.6199999999953, -- [1]
+				"All will be swallowed! No life shall remain!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [5]
+			{
+				88.515000000014, -- [1]
+				"Servants of the Void! Swallow this world!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [6]
+			{
+				99.051999999967, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
+				"Werdmart", -- [3]
+				3, -- [4]
+			}, -- [7]
+			{
+				102.337, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Lamprey!", -- [2]
+				"Lamprey", -- [3]
+				3, -- [4]
+			}, -- [8]
+			{
+				109.119999999995, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Sogbo!", -- [2]
+				"Sogbo", -- [3]
+				3, -- [4]
+			}, -- [9]
+			{
+				112, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Wadakamari!", -- [2]
+				"Wadakamari", -- [3]
+				3, -- [4]
+			}, -- [10]
+			{
+				117.627999999968, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [11]
+			{
+				117.627999999968, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [12]
+			{
+				137.430999999982, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Mavrìk!", -- [2]
+				"Mavrìk", -- [3]
+				3, -- [4]
+			}, -- [13]
+			["boss"] = "Xhul'horac",
+		}, -- [1]
+		{
+			{
+				0.160999999963678, -- [1]
+				"I have so much to show you...", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [1]
+			{
+				11.9329999999609, -- [1]
+				"These gaps in reality... I must tear them wider!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [2]
+			{
+				19.2339999999967, -- [1]
+				"LEGION! Destroy all who stand before you!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [3]
+			{
+				21.234999999986, -- [1]
+				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
+				"Krázyito", -- [3]
+				2, -- [4]
+			}, -- [4]
+			{
+				80.4149999999791, -- [1]
+				"All will be swallowed! No life shall remain!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [5]
+			{
+				81.9799999999814, -- [1]
+				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
+				"Krázyito", -- [3]
+				2, -- [4]
+			}, -- [6]
+			{
+				88.4729999999981, -- [1]
+				"Servants of the Void! Swallow this world!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [7]
+			{
+				99.0079999999725, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
+				"Werdmart", -- [3]
+				3, -- [4]
+			}, -- [8]
+			{
+				107.492999999959, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Paathurnax!", -- [2]
+				"Paathurnax", -- [3]
+				3, -- [4]
+			}, -- [9]
+			{
+				108.983000000007, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Lamprey!", -- [2]
+				"Lamprey", -- [3]
+				3, -- [4]
+			}, -- [10]
+			{
+				119.33600000001, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Adrianks!", -- [2]
+				"Adrianks", -- [3]
+				3, -- [4]
+			}, -- [11]
+			{
+				121.328999999969, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [12]
+			{
+				121.328999999969, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [13]
+			{
+				127.23199999996, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Ickbar!", -- [2]
+				"Ickbar", -- [3]
+				3, -- [4]
+			}, -- [14]
+			{
+				127.967000000004, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Sunhorn!", -- [2]
+				"Sunhorn", -- [3]
+				3, -- [4]
+			}, -- [15]
+			{
+				134.245999999985, -- [1]
+				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
+				"Werdmart", -- [3]
+				3, -- [4]
+			}, -- [16]
+			{
+				167.017999999982, -- [1]
+				"Xhul'horac targets you with |cFFFF0000|Hspell:186333|h[Void Surge]|h|r!", -- [2]
+				"Krázyito", -- [3]
+				2, -- [4]
+			}, -- [17]
+			{
+				178.002999999968, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [18]
+			{
+				178.002999999968, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [19]
+			{
+				199.890000000014, -- [1]
+				"All life must decay.", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [20]
+			{
+				199.890000000014, -- [1]
+				"RIP APART!", -- [2]
+				"Xhul'horac", -- [3]
+				7, -- [4]
+			}, -- [21]
+			["boss"] = "Xhul'horac",
+		}, -- [2]
+		{
+			{
+				0.222999999998137, -- [1]
+				"We will reap your souls.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [1]
+			{
+				6.26000000000931, -- [1]
+				"Behold the power of the Legion.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [2]
+			{
+				15.9710000000196, -- [1]
+				"Corrupt souls are so easily harvested.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [3]
+			{
+				25.679999999993, -- [1]
+				"We will cleave your souls in twain.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [4]
+			{
+				33.9920000000275, -- [1]
+				"See how they struggle, not even their combined might will be enough to save you.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				4, -- [4]
+			}, -- [5]
+			{
+				35.4060000000172, -- [1]
+				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [6]
+			{
+				45.1870000000345, -- [1]
+				"I will have your skull for my helm when I next face your foul legion.", -- [2]
+				"Grommash Hellscream", -- [3]
+				4, -- [4]
+			}, -- [7]
+			{
+				56.079000000027, -- [1]
+				"Corrupt souls are so easily harvested.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [8]
+			{
+				65.8030000000144, -- [1]
+				"We will cleave your souls in twain.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [9]
+			{
+				75.3610000000335, -- [1]
+				"Heh Heh Heh, they are besting you demon.", -- [2]
+				"Grommash Hellscream", -- [3]
+				4, -- [4]
+			}, -- [10]
+			{
+				75.554999999993, -- [1]
+				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [11]
+			{
+				80.8699999999953, -- [1]
+				"No matter, we will crush you all.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				4, -- [4]
+			}, -- [12]
+			{
+				85.2640000000247, -- [1]
+				"|TInterface\\Icons\\ability_deathwing_grasping_tendrilsgreen.blp:20|tThe |cFFFF0000|Hspell:179582|h[Rumbling Fissures]|h|r harden into |cFFFF0000|Hspell:179620|h[Fel Crystals]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [13]
+			{
+				88.8919999999926, -- [1]
+				"|TInterface\\Icons\\ability_warlock_moltencoregreen.blp:20|tFel Lord Zakuun's axe begins emitting |cFFFF0000|Hspell:179622|h[Fel Explosions]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [14]
+			{
+				96.1900000000023, -- [1]
+				"We sow the seeds of your demise.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [15]
+			{
+				104.177000000025, -- [1]
+				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
+				"Fel Crystal", -- [3]
+				3, -- [4]
+			}, -- [16]
+			{
+				104.177000000025, -- [1]
+				"You cannot contain our power!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [17]
+			{
+				117.729999999981, -- [1]
+				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
+				"Fel Crystal", -- [3]
+				3, -- [4]
+			}, -- [18]
+			{
+				117.729999999981, -- [1]
+				"You cannot contain our power!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [19]
+			{
+				120.157999999996, -- [1]
+				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
+				"Fel Crystal", -- [3]
+				3, -- [4]
+			}, -- [20]
+			{
+				121.109999999986, -- [1]
+				"We are as one.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [21]
+			{
+				121.109999999986, -- [1]
+				"|TInterface\\Icons\\inv_axe_2h_pvphorde_a_01blackhigh.blp:20|tFel Lord Zakuun takes up his axe again, |cFFFF0000|Hspell:179670|h[Arming]|h|r himself.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [22]
+			{
+				121.716000000015, -- [1]
+				"|TInterface\\Icons\\inv_axe_2h_orgrimmarraid_d_01.blp:20|tFel Lord Zakuun frenzies and is now |cFFFF0000|Hspell:179671|h[Heavily Armed]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [23]
+			{
+				121.716000000015, -- [1]
+				"We are unstoppable!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [24]
+			{
+				137.064000000013, -- [1]
+				"Corrupt souls are so easily harvested.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [25]
+			{
+				140.111000000034, -- [1]
+				"Finish him heroes, that I may drive that cursed axe down his throat and cut out his fel heart.", -- [2]
+				"Grommash Hellscream", -- [3]
+				4, -- [4]
+			}, -- [26]
+			{
+				156.876999999979, -- [1]
+				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				1, -- [4]
+			}, -- [27]
+			{
+				169.043000000005, -- [1]
+				"Behold the power of the Legion.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [28]
+			{
+				175.597000000009, -- [1]
+				"We are... bested.", -- [2]
+				"Fel Lord Zakuun", -- [3]
+				7, -- [4]
+			}, -- [29]
+			["boss"] = "Fel Lord Zakuun",
+		}, -- [3]
+	},
 	["encounter_spells"] = {
 		[117526] = {
 			["school"] = 64,
@@ -654,8 +1043,8 @@ EncounterDetailsDB = {
 		[98021] = {
 			["school"] = 8,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
 				["SPELL_HEAL"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Spirit Link Totem",
 		},
@@ -1009,14 +1398,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Felborne Overfiend",
 		},
-		[179681] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[186063] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Xhul'horac",
 		},
 		[163988] = {
 			["school"] = 64,
@@ -1026,16 +1415,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[185806] = {
-			["school"] = 8,
+		[186135] = {
+			["school"] = 32,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Contracted Engineer",
+			["source"] = "Xhul'horac",
 		},
 		[182001] = {
 			["school"] = 4,
@@ -1077,12 +1463,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Crystal",
 		},
-		[179623] = {
-			["school"] = 4,
+		[186785] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
 			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Omnus",
 		},
 		[163989] = {
 			["school"] = 64,
@@ -1102,11 +1490,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Omnus",
 		},
-		[190224] = {
+		[186333] = {
 			["school"] = 32,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 			["source"] = "Xhul'horac",
 		},
@@ -1176,20 +1567,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shale Spider",
 		},
-		[186271] = {
-			["school"] = 4,
+		[163466] = {
+			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Volatile Anomaly",
 		},
-		[181091] = {
-			["school"] = 32,
+		[186532] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Kormrok",
+			["source"] = "Wild Pyromaniac",
 		},
 		[159200] = {
 			["school"] = 64,
@@ -1198,15 +1590,16 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[181296] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[186407] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Kormrok",
+			["source"] = "Xhul'horac",
 		},
 		[164438] = {
 			["school"] = 1,
@@ -1232,28 +1625,29 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[166476] = {
-			["school"] = 16,
+		[169929] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Gnarled Ancient",
+		},
+		[166477] = {
+			["school"] = 64,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Archmage Sol",
 		},
-		[181293] = {
+		[156803] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Kormrok",
-		},
-		[158336] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Pol",
+			["source"] = "Ko'ragh",
 		},
 		[160734] = {
 			["school"] = 1,
@@ -1264,22 +1658,25 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ko'ragh",
 		},
-		[185008] = {
-			["school"] = 32,
+		[179428] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Shackled Soul",
-		},
-		[181093] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Kormrok",
+			["source"] = "Fel Lord Zakuun",
 		},
 		[170124] = {
 			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Yalnu",
+		},
+		[169613] = {
+			["school"] = 8,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
@@ -1296,13 +1693,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[163990] = {
-			["school"] = 64,
+		[182362] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Iron Reaver",
 		},
 		[158563] = {
 			["school"] = 1,
@@ -1312,12 +1708,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorian Reaver",
 		},
-		[182362] = {
-			["school"] = 8,
+		[169851] = {
+			["school"] = 64,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Iron Reaver",
+			["source"] = "Addled Arcanomancer",
 		},
 		[81262] = {
 			["school"] = 8,
@@ -1327,12 +1724,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Wild Mushroom",
 		},
-		[181921] = {
-			["school"] = 32,
+		[185519] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
 		},
 		[182325] = {
 			["school"] = 32,
@@ -1344,21 +1742,22 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadow-Lord Iskar",
 		},
-		[157952] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Pol",
-		},
-		[185519] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
+		[159996] = {
+			["school"] = 8,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Brackenspore",
+		},
+		[185008] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shackled Soul",
 		},
 		[162588] = {
 			["school"] = 64,
@@ -1375,12 +1774,14 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 		},
-		[181498] = {
-			["school"] = 32,
+		[160013] = {
+			["school"] = 8,
 			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Fungal Flesh-Eater",
 		},
 		[187819] = {
 			["school"] = 1,
@@ -1391,12 +1792,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Dragging Hand",
 		},
-		[181113] = {
+		[156055] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Night-Twisted Earthwarper",
+			["source"] = "Unknown",
 		},
 		[184370] = {
 			["school"] = 1,
@@ -1413,15 +1815,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Life Warden Gola",
 		},
-		[180244] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[168491] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Kormrok",
+			["source"] = "Life Warden Gola",
 		},
 		[114893] = {
 			["school"] = 8,
@@ -1431,12 +1830,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Stone Bulwark Totem",
 		},
-		[212332] = {
-			["school"] = 1,
+		[166465] = {
+			["school"] = 16,
 			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Gurglegut",
+			["source"] = "Archmage Sol",
 		},
 		[188267] = {
 			["school"] = 32,
@@ -1453,12 +1854,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "The Butcher",
 		},
-		[159676] = {
-			["school"] = 16,
+		[164275] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Witherbark",
 		},
 		[181305] = {
 			["school"] = 32,
@@ -1469,21 +1872,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Kormrok",
 		},
-		[159202] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-		},
-		[179583] = {
+		[182108] = {
 			["school"] = 4,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Iron Reaver",
+		},
+		[157289] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
 		},
 		[703] = {
 			["school"] = 1,
@@ -1492,16 +1895,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadow Reflection",
 		},
-		[181968] = {
-			["school"] = 4,
+		[157951] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Gorebound Felcaster",
+			["source"] = "Pol",
 		},
 		[104993] = {
 			["school"] = 2,
@@ -1527,14 +1927,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Lord Zakuun",
 		},
-		[157289] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[182328] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Iron Reaver",
 		},
 		[157353] = {
 			["school"] = 64,
@@ -1560,14 +1959,13 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[190018] = {
+		[204683] = {
 			["school"] = 32,
-			["type"] = "BUFF",
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Void Star",
+			["source"] = "Dark Minion",
 		},
 		[179582] = {
 			["school"] = 1,
@@ -1576,21 +1974,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Lord Zakuun",
 		},
-		[172813] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Ko'ragh",
-		},
-		[204683] = {
+		[183598] = {
 			["school"] = 32,
-			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Dark Minion",
+			["source"] = "Archimonde",
 		},
 		[157801] = {
 			["school"] = 64,
@@ -1601,19 +1990,27 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorian Warmage",
 		},
-		[179668] = {
+		[181307] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Kormrok",
 		},
-		[159675] = {
-			["school"] = 16,
-			["type"] = "BUFF",
+		[156673] = {
+			["school"] = 64,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
+		},
+		[143834] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Pol",
 		},
 		[164125] = {
 			["school"] = 8,
@@ -1646,13 +2043,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Felguard",
 		},
-		[181999] = {
-			["school"] = 4,
+		[181873] = {
+			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Iron Reaver",
+			["source"] = "Shadow-Lord Iskar",
 		},
 		[177731] = {
 			["school"] = 16,
@@ -1662,13 +2059,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Enchanted Waters",
 		},
-		[156060] = {
+		[181753] = {
 			["school"] = 1,
-			["type"] = "BUFF",
+			["type"] = "DEBUFF",
 			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Unknown",
+			["source"] = "Corrupted Talonpriest",
 		},
 		[186546] = {
 			["school"] = 32,
@@ -1685,23 +2083,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[158419] = {
-			["school"] = 1,
+		[188888] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Pol",
-		},
-		[164191] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Felfire Flamebelcher",
 		},
 		[184243] = {
 			["school"] = 1,
@@ -1723,6 +2110,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tectus",
 		},
+		[190050] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Shadowed Netherwalker",
+		},
 		[183864] = {
 			["school"] = 32,
 			["type"] = "DEBUFF",
@@ -1734,13 +2130,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Hellfire Deathcaller",
 		},
-		[138130] = {
-			["school"] = 1,
+		[164191] = {
+			["school"] = 64,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Fire Spirit",
+			["source"] = "Imperator Mar'gok",
 		},
 		[186547] = {
 			["school"] = 1,
@@ -1751,15 +2149,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Omnus",
 		},
-		[166492] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
+		[156143] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Archmage Sol",
+			["source"] = "The Butcher",
 		},
 		[188208] = {
 			["school"] = 4,
@@ -1777,22 +2173,22 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadowed Netherwalker",
 		},
-		[156143] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "The Butcher",
-		},
-		[190050] = {
+		[186292] = {
 			["school"] = 32,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Shadowed Netherwalker",
+			["source"] = "Xhul'horac",
+		},
+		[186662] = {
+			["school"] = 4,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Felborne Overfiend",
 		},
 		[166491] = {
 			["school"] = 4,
@@ -1825,51 +2221,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Archimonde",
 		},
-		[186662] = {
-			["school"] = 4,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Felborne Overfiend",
-		},
 		[186887] = {
 			["school"] = 4,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Felfire Flamebelcher",
-		},
-		[168105] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Life Warden Gola",
-		},
-		[184393] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Siegemaster Mar'tak",
-		},
-		[177734] = {
-			["school"] = 16,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Enchanted Waters",
-		},
-		[179219] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Corrupted Talonpriest",
 		},
 		[186549] = {
 			["school"] = 32,
@@ -1878,13 +2235,54 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Omnus",
 		},
-		[166891] = {
+		[166572] = {
 			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Archmage Sol",
+		},
+		[168041] = {
+			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Archmage Sol",
+			["source"] = "Earthshaper Telu",
+		},
+		[177734] = {
+			["school"] = 16,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Enchanted Waters",
+		},
+		[167977] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+		},
+		[180417] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Gorebound Terror",
+		},
+		[156160] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "The Butcher",
 		},
 		[181089] = {
 			["school"] = 1,
@@ -1901,13 +2299,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Vicious Mandragora",
 		},
-		[183254] = {
+		[181363] = {
 			["school"] = 4,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Archimonde",
+			["source"] = "Iron Dragoon",
 		},
 		[184238] = {
 			["school"] = 1,
@@ -1920,22 +2317,17 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Hulking Berserker",
 		},
-		[186961] = {
-			["school"] = 32,
+		[168894] = {
+			["school"] = 4,
 			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Archimonde",
-		},
-		[1943] = {
-			["school"] = 1,
-			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Shadow Reflection",
+			["source"] = "Spore Image",
 		},
 		[168375] = {
 			["school"] = 1,
@@ -1951,13 +2343,20 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[186883] = {
-			["school"] = 4,
+		[1943] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Shadow Reflection",
+		},
+		[179218] = {
+			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Felfire Flamebelcher",
+			["source"] = "Corrupted Talonpriest",
 		},
 		[169879] = {
 			["school"] = 8,
@@ -1968,21 +2367,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Vicious Mandragora",
 		},
-		[159515] = {
-			["school"] = 64,
-			["type"] = "BUFF",
+		[182003] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
-		},
-		[156172] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "The Butcher",
+			["source"] = "Iron Reaver",
 		},
 		[181824] = {
 			["school"] = 4,
@@ -1993,6 +2384,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Raven",
 		},
+		[184379] = {
+			["school"] = 8,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Siegemaster Mar'tak",
+		},
 		[108446] = {
 			["school"] = 32,
 			["type"] = "BUFF",
@@ -2001,12 +2399,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Vekkar",
 		},
-		[31707] = {
-			["school"] = 16,
+		[180021] = {
+			["school"] = 8,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Water Elemental",
+			["source"] = "Felfire Crusher",
 		},
 		[161576] = {
 			["school"] = 64,
@@ -2015,13 +2414,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ko'ragh",
 		},
-		[119523] = {
+		[123996] = {
 			["school"] = 8,
-			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Healing Stream Totem",
+			["source"] = "Xuen",
 		},
 		[187254] = {
 			["school"] = 1,
@@ -2041,12 +2439,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "The Butcher",
 		},
-		[8187] = {
-			["school"] = 4,
+		[184369] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Magma Totem",
+			["source"] = "Siegemaster Mar'tak",
 		},
 		[181825] = {
 			["school"] = 4,
@@ -2063,13 +2462,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Life Warden Gola",
 		},
-		[183817] = {
-			["school"] = 32,
+		[182074] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Archimonde",
+			["source"] = "Iron Reaver",
 		},
 		[156467] = {
 			["school"] = 1,
@@ -2079,13 +2479,17 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[158619] = {
-			["school"] = 64,
+		[183828] = {
+			["school"] = 32,
 			["type"] = "DEBUFF",
 			["token"] = {
+				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Archimonde",
 		},
 		[169876] = {
 			["school"] = 1,
@@ -2105,19 +2509,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Arcane Aberration",
 		},
-		[157964] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[164004] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[156197] = {
-			["school"] = 1,
+		[159972] = {
+			["school"] = 8,
+			["type"] = "BUFF",
 			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Fungal Flesh-Eater",
 		},
 		[164005] = {
 			["school"] = 64,
@@ -2145,15 +2551,6 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_HEAL"] = true,
 			},
 		},
-		[159972] = {
-			["school"] = 8,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Fungal Flesh-Eater",
-		},
 		[174404] = {
 			["school"] = 16,
 			["token"] = {
@@ -2161,12 +2558,20 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Breaker Ritualist",
 		},
-		[164006] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
+		[158385] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Pol",
+		},
+		[186490] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Vanguard Akkelion",
 		},
 		[167966] = {
 			["school"] = 1,
@@ -2186,20 +2591,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadowfel Warden",
 		},
-		[186490] = {
-			["school"] = 4,
+		[164006] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Vanguard Akkelion",
 		},
-		[166185] = {
+		[162658] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Highmaul Conscript",
+			["source"] = "Shard of Tectus",
 		},
 		[181508] = {
 			["school"] = 32,
@@ -2211,20 +2617,22 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Lord Zakuun",
 		},
-		[161411] = {
-			["school"] = 16,
+		[182066] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Ko'ragh",
+			["source"] = "Iron Reaver",
 		},
-		[186559] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
+		[191068] = {
+			["school"] = 32,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
+			["source"] = "Desecration",
 		},
 		[158705] = {
 			["school"] = 64,
@@ -2242,19 +2650,24 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tectus",
 		},
-		[185284] = {
-			["school"] = 4,
+		[156157] = {
+			["school"] = 1,
 			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Iron Reaver",
+			["source"] = "The Butcher",
 		},
-		[57984] = {
-			["school"] = 4,
+		[163241] = {
+			["school"] = 8,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Greater Fire Elemental",
+			["source"] = "Brackenspore",
 		},
 		[181956] = {
 			["school"] = 1,
@@ -2272,25 +2685,21 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[156151] = {
+		[169251] = {
 			["school"] = 1,
-			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Yalnu",
+		},
+		[156598] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "The Butcher",
-		},
-		[163241] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Brackenspore",
 		},
 		[159217] = {
 			["school"] = 1,
@@ -2341,13 +2750,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[164077] = {
+		[179407] = {
 			["school"] = 1,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Fel Lord Zakuun",
 		},
 		[163242] = {
 			["school"] = 8,
@@ -2367,13 +2776,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "The Butcher",
 		},
-		[186560] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
+		[179406] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
+			["source"] = "Fel Lord Zakuun",
 		},
 		[59638] = {
 			["school"] = 16,
@@ -2390,11 +2800,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Drunken Bileslinger",
 		},
-		[186750] = {
-			["school"] = 4,
+		[164075] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
+			["source"] = "Imperator Mar'gok",
 		},
 		[182022] = {
 			["school"] = 8,
@@ -2403,20 +2815,23 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[142421] = {
+		[186560] = {
 			["school"] = 8,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_HEAL"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Treant",
 		},
-		[162288] = {
-			["school"] = 1,
+		[158200] = {
+			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Tectus",
+			["source"] = "Phemos",
 		},
 		[159219] = {
 			["school"] = 8,
@@ -2428,15 +2843,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Brackenspore",
 		},
-		[160753] = {
-			["school"] = 4,
-			["type"] = "BUFF",
+		[161328] = {
+			["school"] = 64,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Iron Bomber",
+			["source"] = "Ko'ragh",
 		},
 		[181831] = {
 			["school"] = 1,
@@ -2446,13 +2858,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shadowfel Warden",
 		},
-		[181832] = {
-			["school"] = 8,
+		[181321] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Shadowfel Warden",
+			["source"] = "Crushing Hand",
 		},
 		[157943] = {
 			["school"] = 1,
@@ -2464,13 +2876,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Phemos",
 		},
-		[164076] = {
+		[157944] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
+			["source"] = "Phemos",
 		},
 		[169823] = {
 			["school"] = 4,
@@ -2496,20 +2908,20 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Brackenspore",
 		},
-		[161328] = {
-			["school"] = 64,
+		[142421] = {
+			["school"] = 8,
+			["token"] = {
+				["SPELL_HEAL"] = true,
+			},
+			["source"] = "Treant",
+		},
+		[181832] = {
+			["school"] = 8,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Ko'ragh",
-		},
-		[181321] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Crushing Hand",
+			["source"] = "Shadowfel Warden",
 		},
 		[159412] = {
 			["school"] = 8,
@@ -2518,13 +2930,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Drunken Bileslinger",
 		},
-		[164075] = {
-			["school"] = 1,
+		[186559] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Imperator Mar'gok",
 		},
 		[185090] = {
 			["school"] = 1,
@@ -2533,6 +2945,22 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Siegemaster Mar'tak",
+		},
+		[182216] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Shadow-Lord Iskar",
+		},
+		[186879] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Kormrok",
 		},
 		[185282] = {
 			["school"] = 4,
@@ -2550,14 +2978,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Glowbulb",
 		},
-		[182216] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Shadow-Lord Iskar",
-		},
 		[182280] = {
 			["school"] = 1,
 			["type"] = "DEBUFF",
@@ -2565,14 +2985,6 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Iron Reaver",
-		},
-		[186879] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Kormrok",
 		},
 		[159413] = {
 			["school"] = 8,
@@ -2582,14 +2994,13 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 		},
-		[179406] = {
-			["school"] = 32,
+		[164076] = {
+			["school"] = 1,
 			["token"] = {
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Imperator Mar'gok",
 		},
 		[158519] = {
 			["school"] = 8,
@@ -2613,33 +3024,29 @@ EncounterDetailsDB = {
 				["SPELL_DAMAGE"] = true,
 			},
 		},
-		[158200] = {
-			["school"] = 8,
+		[162288] = {
+			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Phemos",
+			["source"] = "Tectus",
 		},
-		[157944] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Phemos",
-		},
-		[162186] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
+		[160753] = {
+			["school"] = 4,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Ko'ragh",
+			["source"] = "Iron Bomber",
+		},
+		[186750] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
 		},
 		[184964] = {
 			["school"] = 32,
@@ -2650,20 +3057,20 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shackled Soul",
 		},
-		[179407] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Fel Lord Zakuun",
-		},
-		[169251] = {
+		[164077] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Yalnu",
+			["source"] = "Imperator Mar'gok",
+		},
+		[166185] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Highmaul Conscript",
 		},
 		[185156] = {
 			["school"] = 4,
@@ -2675,49 +3082,46 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorebound Siegerider",
 		},
-		[156598] = {
+		[156151] = {
 			["school"] = 1,
-			["type"] = "BUFF",
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "The Butcher",
-		},
-		[156157] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "The Butcher",
 		},
-		[191068] = {
-			["school"] = 32,
-			["type"] = "BUFF",
+		[185284] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Desecration",
-		},
-		[182066] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Iron Reaver",
 		},
-		[162658] = {
-			["school"] = 1,
-			["type"] = "BUFF",
+		[162186] = {
+			["school"] = 64,
+			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Shard of Tectus",
+			["source"] = "Ko'ragh",
+		},
+		[57984] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Greater Fire Elemental",
+		},
+		[161411] = {
+			["school"] = 16,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Ko'ragh",
 		},
 		[186562] = {
 			["school"] = 32,
@@ -2748,16 +3152,16 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Gorebound Siegerider",
 		},
-		[158385] = {
+		[156197] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Pol",
+			["source"] = "The Butcher",
 		},
-		[164004] = {
-			["school"] = 64,
-			["type"] = "DEBUFF",
+		[157964] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
@@ -2769,72 +3173,67 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[183828] = {
-			["school"] = 32,
+		[158619] = {
+			["school"] = 64,
 			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+			},
+			["source"] = "Imperator Mar'gok",
+		},
+		[183817] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Archimonde",
 		},
-		[182074] = {
+		[8187] = {
 			["school"] = 4,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
-			},
-			["source"] = "Iron Reaver",
-		},
-		[184369] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Siegemaster Mar'tak",
-		},
-		[123996] = {
-			["school"] = 8,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Xuen",
+			["source"] = "Magma Totem",
 		},
-		[180021] = {
+		[119523] = {
 			["school"] = 8,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Felfire Crusher",
+			["source"] = "Healing Stream Totem",
 		},
-		[184379] = {
-			["school"] = 8,
+		[31707] = {
+			["school"] = 16,
 			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Siegemaster Mar'tak",
+			["source"] = "Water Elemental",
 		},
-		[182003] = {
-			["school"] = 8,
-			["type"] = "DEBUFF",
+		[156172] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "The Butcher",
+		},
+		[159515] = {
+			["school"] = 64,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Iron Reaver",
+			["source"] = "Imperator Mar'gok",
 		},
-		[179218] = {
-			["school"] = 1,
+		[186883] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Corrupted Talonpriest",
+			["source"] = "Felfire Flamebelcher",
 		},
 		[168040] = {
 			["school"] = 8,
@@ -2854,17 +3253,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Xhul'horac",
 		},
-		[168894] = {
-			["school"] = 4,
+		[186961] = {
+			["school"] = 32,
 			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Spore Image",
+			["source"] = "Archimonde",
 		},
 		[158012] = {
 			["school"] = 1,
@@ -2873,12 +3270,13 @@ EncounterDetailsDB = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[181363] = {
+		[183254] = {
 			["school"] = 4,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Iron Dragoon",
+			["source"] = "Archimonde",
 		},
 		[182668] = {
 			["school"] = 4,
@@ -2888,47 +3286,46 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[156160] = {
+		[166891] = {
 			["school"] = 1,
-			["type"] = "DEBUFF",
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Archmage Sol",
+		},
+		[179219] = {
+			["school"] = 4,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Corrupted Talonpriest",
+		},
+		[184393] = {
+			["school"] = 8,
+			["token"] = {
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "The Butcher",
+			["source"] = "Siegemaster Mar'tak",
 		},
-		[167977] = {
+		[168105] = {
 			["school"] = 8,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Life Warden Gola",
+		},
+		[166492] = {
+			["school"] = 4,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_PERIODIC_DAMAGE"] = true,
-			},
-		},
-		[168041] = {
-			["school"] = 8,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Earthshaper Telu",
-		},
-		[166572] = {
-			["school"] = 1,
-			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Archmage Sol",
-		},
-		[180417] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Gorebound Terror",
 		},
 		[158013] = {
 			["school"] = 1,
@@ -2945,13 +3342,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Reaver",
 		},
-		[186292] = {
-			["school"] = 32,
+		[138130] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Fire Spirit",
 		},
 		[179667] = {
 			["school"] = 1,
@@ -2983,58 +3380,60 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Bomber",
 		},
-		[188888] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Felfire Flamebelcher",
-		},
-		[181753] = {
-			["school"] = 1,
-			["type"] = "DEBUFF",
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Corrupted Talonpriest",
-		},
-		[181873] = {
+		[158419] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Shadow-Lord Iskar",
-		},
-		[143834] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
 			},
 			["source"] = "Pol",
 		},
-		[156673] = {
-			["school"] = 64,
+		[172813] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Ko'ragh",
+		},
+		[156060] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Unknown",
+		},
+		[159675] = {
+			["school"] = 16,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
 			},
 		},
-		[181307] = {
+		[179668] = {
 			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Kormrok",
+			["source"] = "Fel Lord Zakuun",
 		},
-		[183598] = {
-			["school"] = 32,
+		[179583] = {
+			["school"] = 4,
+			["token"] = {
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Fel Lord Zakuun",
+		},
+		[181999] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Archimonde",
+			["source"] = "Iron Reaver",
 		},
 		[160953] = {
 			["school"] = 1,
@@ -3045,80 +3444,78 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Iron Bomber",
 		},
-		[157951] = {
+		[181968] = {
+			["school"] = 4,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Gorebound Felcaster",
+		},
+		[181498] = {
+			["school"] = 32,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Fel Lord Zakuun",
+		},
+		[190018] = {
+			["school"] = 32,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Void Star",
+		},
+		[159676] = {
+			["school"] = 16,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[181113] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Night-Twisted Earthwarper",
+		},
+		[180244] = {
 			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Kormrok",
+		},
+		[159202] = {
+			["school"] = 1,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
+		[212332] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_DAMAGE"] = true,
+			},
+			["source"] = "Gurglegut",
+		},
+		[157952] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Pol",
-		},
-		[182108] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Iron Reaver",
-		},
-		[182328] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Iron Reaver",
-		},
-		[164275] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Witherbark",
-		},
-		[166465] = {
-			["school"] = 16,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Archmage Sol",
-		},
-		[168491] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Life Warden Gola",
-		},
-		[156055] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Unknown",
-		},
-		[160013] = {
-			["school"] = 8,
-			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Fungal Flesh-Eater",
-		},
-		[159996] = {
-			["school"] = 8,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Brackenspore",
 		},
 		[158016] = {
 			["school"] = 1,
@@ -3128,13 +3525,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Pol",
 		},
-		[169851] = {
-			["school"] = 64,
+		[181921] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Addled Arcanomancer",
+			["source"] = "Fel Lord Zakuun",
 		},
 		[180117] = {
 			["school"] = 1,
@@ -3144,46 +3540,43 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Kormrok",
 		},
-		[169613] = {
-			["school"] = 8,
+		[163990] = {
+			["school"] = 64,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Yalnu",
+			["source"] = "Imperator Mar'gok",
 		},
-		[179428] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
+		[181093] = {
+			["school"] = 8,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Kormrok",
 		},
-		[156803] = {
+		[158336] = {
 			["school"] = 1,
-			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Ko'ragh",
+			["source"] = "Pol",
 		},
-		[166477] = {
-			["school"] = 64,
+		[181293] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Kormrok",
+		},
+		[166476] = {
+			["school"] = 16,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 			},
 			["source"] = "Archmage Sol",
-		},
-		[169929] = {
-			["school"] = 1,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
-			},
-			["source"] = "Gnarled Ancient",
 		},
 		[158017] = {
 			["school"] = 1,
@@ -3193,32 +3586,30 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Phemos",
 		},
-		[186407] = {
-			["school"] = 4,
-			["type"] = "DEBUFF",
+		[181296] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Kormrok",
 		},
-		[186532] = {
-			["school"] = 4,
+		[181091] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Wild Pyromaniac",
+			["source"] = "Kormrok",
 		},
-		[163466] = {
-			["school"] = 64,
+		[186271] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Volatile Anomaly",
+			["source"] = "Xhul'horac",
 		},
 		[180246] = {
 			["school"] = 1,
@@ -3236,14 +3627,11 @@ EncounterDetailsDB = {
 			},
 			["source"] = "The Butcher",
 		},
-		[186333] = {
+		[190224] = {
 			["school"] = 32,
-			["type"] = "DEBUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Xhul'horac",
 		},
@@ -3254,420 +3642,32 @@ EncounterDetailsDB = {
 				["SPELL_DAMAGE"] = true,
 			},
 		},
-		[186785] = {
-			["school"] = 32,
-			["type"] = "DEBUFF",
+		[179623] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Omnus",
+			["source"] = "Fel Lord Zakuun",
 		},
-		[186135] = {
-			["school"] = 32,
+		[185806] = {
+			["school"] = 8,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Contracted Engineer",
 		},
-		[186063] = {
-			["school"] = 32,
-			["type"] = "DEBUFF",
+		[179681] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Fel Lord Zakuun",
 		},
-	},
-	["emotes"] = {
-		{
-			{
-				0.184000000008382, -- [1]
-				"I have so much to show you...", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				10.7989999999991, -- [1]
-				"These gaps in reality... I must tear them wider!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [2]
-			{
-				19.2949999999837, -- [1]
-				"LEGION! Destroy all who stand before you!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				51.6699999999837, -- [1]
-				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
-				"Krázyito", -- [3]
-				2, -- [4]
-			}, -- [4]
-			{
-				79.6199999999953, -- [1]
-				"All will be swallowed! No life shall remain!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [5]
-			{
-				88.515000000014, -- [1]
-				"Servants of the Void! Swallow this world!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [6]
-			{
-				99.051999999967, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
-				"Werdmart", -- [3]
-				3, -- [4]
-			}, -- [7]
-			{
-				102.337, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Lamprey!", -- [2]
-				"Lamprey", -- [3]
-				3, -- [4]
-			}, -- [8]
-			{
-				109.119999999995, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Sogbo!", -- [2]
-				"Sogbo", -- [3]
-				3, -- [4]
-			}, -- [9]
-			{
-				112, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Wadakamari!", -- [2]
-				"Wadakamari", -- [3]
-				3, -- [4]
-			}, -- [10]
-			{
-				117.627999999968, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [11]
-			{
-				117.627999999968, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [12]
-			{
-				137.430999999982, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Mavrìk!", -- [2]
-				"Mavrìk", -- [3]
-				3, -- [4]
-			}, -- [13]
-			["boss"] = "Xhul'horac",
-		}, -- [1]
-		{
-			{
-				0.160999999963678, -- [1]
-				"I have so much to show you...", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				11.9329999999609, -- [1]
-				"These gaps in reality... I must tear them wider!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [2]
-			{
-				19.2339999999967, -- [1]
-				"LEGION! Destroy all who stand before you!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				21.234999999986, -- [1]
-				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
-				"Krázyito", -- [3]
-				2, -- [4]
-			}, -- [4]
-			{
-				80.4149999999791, -- [1]
-				"All will be swallowed! No life shall remain!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [5]
-			{
-				81.9799999999814, -- [1]
-				"Xhul'horac targets you with |cFFFF0000|Hspell:186407|h[Fel Surge]|h|r!", -- [2]
-				"Krázyito", -- [3]
-				2, -- [4]
-			}, -- [6]
-			{
-				88.4729999999981, -- [1]
-				"Servants of the Void! Swallow this world!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [7]
-			{
-				99.0079999999725, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
-				"Werdmart", -- [3]
-				3, -- [4]
-			}, -- [8]
-			{
-				107.492999999959, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Paathurnax!", -- [2]
-				"Paathurnax", -- [3]
-				3, -- [4]
-			}, -- [9]
-			{
-				108.983000000007, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Lamprey!", -- [2]
-				"Lamprey", -- [3]
-				3, -- [4]
-			}, -- [10]
-			{
-				119.33600000001, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Adrianks!", -- [2]
-				"Adrianks", -- [3]
-				3, -- [4]
-			}, -- [11]
-			{
-				121.328999999969, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [12]
-			{
-				121.328999999969, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [13]
-			{
-				127.23199999996, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Ickbar!", -- [2]
-				"Ickbar", -- [3]
-				3, -- [4]
-			}, -- [14]
-			{
-				127.967000000004, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Sunhorn!", -- [2]
-				"Sunhorn", -- [3]
-				3, -- [4]
-			}, -- [15]
-			{
-				134.245999999985, -- [1]
-				"A |cFFFF0000|Hspell:186407|h[Shadowfel Annihilation]|h|r detonates on Werdmart!", -- [2]
-				"Werdmart", -- [3]
-				3, -- [4]
-			}, -- [16]
-			{
-				167.017999999982, -- [1]
-				"Xhul'horac targets you with |cFFFF0000|Hspell:186333|h[Void Surge]|h|r!", -- [2]
-				"Krázyito", -- [3]
-				2, -- [4]
-			}, -- [17]
-			{
-				178.002999999968, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [18]
-			{
-				178.002999999968, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [19]
-			{
-				199.890000000014, -- [1]
-				"All life must decay.", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [20]
-			{
-				199.890000000014, -- [1]
-				"RIP APART!", -- [2]
-				"Xhul'horac", -- [3]
-				7, -- [4]
-			}, -- [21]
-			["boss"] = "Xhul'horac",
-		}, -- [2]
-		{
-			{
-				0.222999999998137, -- [1]
-				"We will reap your souls.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [1]
-			{
-				6.26000000000931, -- [1]
-				"Behold the power of the Legion.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [2]
-			{
-				15.9710000000196, -- [1]
-				"Corrupt souls are so easily harvested.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [3]
-			{
-				25.679999999993, -- [1]
-				"We will cleave your souls in twain.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [4]
-			{
-				33.9920000000275, -- [1]
-				"See how they struggle, not even their combined might will be enough to save you.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				4, -- [4]
-			}, -- [5]
-			{
-				35.4060000000172, -- [1]
-				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [6]
-			{
-				45.1870000000345, -- [1]
-				"I will have your skull for my helm when I next face your foul legion.", -- [2]
-				"Grommash Hellscream", -- [3]
-				4, -- [4]
-			}, -- [7]
-			{
-				56.079000000027, -- [1]
-				"Corrupt souls are so easily harvested.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [8]
-			{
-				65.8030000000144, -- [1]
-				"We will cleave your souls in twain.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [9]
-			{
-				75.3610000000335, -- [1]
-				"Heh Heh Heh, they are besting you demon.", -- [2]
-				"Grommash Hellscream", -- [3]
-				4, -- [4]
-			}, -- [10]
-			{
-				75.554999999993, -- [1]
-				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [11]
-			{
-				80.8699999999953, -- [1]
-				"No matter, we will crush you all.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				4, -- [4]
-			}, -- [12]
-			{
-				85.2640000000247, -- [1]
-				"|TInterface\\Icons\\ability_deathwing_grasping_tendrilsgreen.blp:20|tThe |cFFFF0000|Hspell:179582|h[Rumbling Fissures]|h|r harden into |cFFFF0000|Hspell:179620|h[Fel Crystals]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [13]
-			{
-				88.8919999999926, -- [1]
-				"|TInterface\\Icons\\ability_warlock_moltencoregreen.blp:20|tFel Lord Zakuun's axe begins emitting |cFFFF0000|Hspell:179622|h[Fel Explosions]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [14]
-			{
-				96.1900000000023, -- [1]
-				"We sow the seeds of your demise.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [15]
-			{
-				104.177000000025, -- [1]
-				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
-				"Fel Crystal", -- [3]
-				3, -- [4]
-			}, -- [16]
-			{
-				104.177000000025, -- [1]
-				"You cannot contain our power!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [17]
-			{
-				117.729999999981, -- [1]
-				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
-				"Fel Crystal", -- [3]
-				3, -- [4]
-			}, -- [18]
-			{
-				117.729999999981, -- [1]
-				"You cannot contain our power!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [19]
-			{
-				120.157999999996, -- [1]
-				"|TInterface\\Icons\\spell_fel_elementaldevastation.blp:20|tA |cFFFF0000|Hspell:181498|h[Wake of Destruction]|h|r strikes a |cFFFF0000|Hspell:179620|h[Fel Crystal]|h|r!", -- [2]
-				"Fel Crystal", -- [3]
-				3, -- [4]
-			}, -- [20]
-			{
-				121.109999999986, -- [1]
-				"We are as one.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [21]
-			{
-				121.109999999986, -- [1]
-				"|TInterface\\Icons\\inv_axe_2h_pvphorde_a_01blackhigh.blp:20|tFel Lord Zakuun takes up his axe again, |cFFFF0000|Hspell:179670|h[Arming]|h|r himself.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [22]
-			{
-				121.716000000015, -- [1]
-				"|TInterface\\Icons\\inv_axe_2h_orgrimmarraid_d_01.blp:20|tFel Lord Zakuun frenzies and is now |cFFFF0000|Hspell:179671|h[Heavily Armed]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [23]
-			{
-				121.716000000015, -- [1]
-				"We are unstoppable!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [24]
-			{
-				137.064000000013, -- [1]
-				"Corrupt souls are so easily harvested.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [25]
-			{
-				140.111000000034, -- [1]
-				"Finish him heroes, that I may drive that cursed axe down his throat and cut out his fel heart.", -- [2]
-				"Grommash Hellscream", -- [3]
-				4, -- [4]
-			}, -- [26]
-			{
-				156.876999999979, -- [1]
-				"|TInterface\\Icons\\warrior_talent_icon_mastercleaver.blp:20|tFel Lord Zakuun's axe sends out |cFFFF0000|Hspell:181498|h[Wakes of Destruction]|h|r!", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				1, -- [4]
-			}, -- [27]
-			{
-				169.043000000005, -- [1]
-				"Behold the power of the Legion.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [28]
-			{
-				175.597000000009, -- [1]
-				"We are... bested.", -- [2]
-				"Fel Lord Zakuun", -- [3]
-				7, -- [4]
-			}, -- [29]
-			["boss"] = "Fel Lord Zakuun",
-		}, -- [3]
 	},
 }

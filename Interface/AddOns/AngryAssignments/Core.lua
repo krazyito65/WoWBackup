@@ -12,8 +12,8 @@ BINDING_NAME_AngryAssign_LOCK = "Toggle Lock"
 BINDING_NAME_AngryAssign_DISPLAY = "Toggle Display"
 BINDING_NAME_AngryAssign_OUTPUT = "Output Assignment to Chat"
 
-local AngryAssign_Version = 'v1.7.1'
-local AngryAssign_Timestamp = '20160721125800'
+local AngryAssign_Version = 'v1.8.1'
+local AngryAssign_Timestamp = '20160816223751'
 
 local protocolVersion = 1
 local comPrefix = "AnAss"..protocolVersion
@@ -41,6 +41,10 @@ local currentGroup = nil
 -- Pages Saved Variable Format 
 -- 	AngryAssign_Pages = {
 -- 		[Id] = { Id = "1231", Updated = time(), UpdateId = self:Hash(name, contents), Name = "Name", Contents = "...", Backup = "..." },
+--		...
+-- 	}
+-- 	AngryAssign_Categories = {
+-- 		[Id] = { Id = "1231", Name = "Name", Children = { 123, ... }  },
 --		...
 -- 	}
 --
@@ -83,6 +87,11 @@ local VERSION_ValidRaid = 4
 -----------------------
 -- Utility Functions --
 -----------------------
+
+local function selectedLastValue(input)
+	local a, b = strsplit("", input or "", 2)
+	return tonumber(b) or tonumber(a)
+end
 
 local _player_realm = nil
 local function EnsureUnitFullName(unit)
@@ -501,8 +510,8 @@ local function AngryAssign_AddPage(widget, event, value)
 	StaticPopup_Show(popup_name)
 end
 
-local function AngryAssign_RenamePage(widget, event, value)
-	local page = AngryAssign:Get()
+local function AngryAssign_RenamePage(pageId)
+	local page = AngryAssign:Get(pageId)
 	if not page then return end
 
 	local popup_name = "AngryAssign_RenamePage_"..page.Id
@@ -534,8 +543,8 @@ local function AngryAssign_RenamePage(widget, event, value)
 	StaticPopup_Show(popup_name)
 end
 
-local function AngryAssign_DeletePage(widget, event, value)
-	local page = AngryAssign:Get()
+local function AngryAssign_DeletePage(pageId)
+	local page = AngryAssign:Get(pageId)
 	if not page then return end
 
 	local popup_name = "AngryAssign_DeletePage_"..page.Id
@@ -554,6 +563,97 @@ local function AngryAssign_DeletePage(widget, event, value)
 	StaticPopupDialogs[popup_name].text = 'Are you sure you want to delete page "'.. page.Name ..'"?'
 
 	StaticPopup_Show(popup_name)
+end
+
+local function AngryAssign_AddCategory(widget, event, value)
+	local popup_name = "AngryAssign_AddCategory"
+	if StaticPopupDialogs[popup_name] == nil then
+		StaticPopupDialogs[popup_name] = {
+			button1 = OKAY,
+			button2 = CANCEL,
+			OnAccept = function(self)
+				local text = self.editBox:GetText()
+				if text ~= "" then AngryAssign:CreateCategory(text) end
+			end,
+			EditBoxOnEnterPressed = function(self)
+				local text = self:GetParent().editBox:GetText()
+				if text ~= "" then AngryAssign:CreateCategory(text) end
+				self:GetParent():Hide()
+			end,
+			text = "New category name:",
+			hasEditBox = true,
+			whileDead = true,
+			EditBoxOnEscapePressed = function(self) self:GetParent():Hide() end,
+			hideOnEscape = true,
+			preferredIndex = 3
+		}
+	end
+	StaticPopup_Show(popup_name)
+end
+
+local function AngryAssign_RenameCategory(catId)
+	local cat = AngryAssign:GetCat(catId)
+	if not cat then return end
+
+	local popup_name = "AngryAssign_RenameCategory_"..cat.Id
+	if StaticPopupDialogs[popup_name] == nil then
+		StaticPopupDialogs[popup_name] = {
+			button1 = OKAY,
+			button2 = CANCEL,
+			OnAccept = function(self)
+				local text = self.editBox:GetText()
+				AngryAssign:RenameCategory(cat.Id, text)
+			end,
+			EditBoxOnEnterPressed = function(self)
+				local text = self:GetParent().editBox:GetText()
+				AngryAssign:RenameCategory(cat.Id, text)
+				self:GetParent():Hide()
+			end,
+			OnShow = function(self)
+				self.editBox:SetText(cat.Name)
+			end,
+			whileDead = true,
+			hasEditBox = true,
+			EditBoxOnEscapePressed = function(self) self:GetParent():Hide() end,
+			hideOnEscape = true,
+			preferredIndex = 3
+		}
+	end
+	StaticPopupDialogs[popup_name].text = 'Rename category "'.. cat.Name ..'" to:'
+
+	StaticPopup_Show(popup_name)
+end
+
+local function AngryAssign_DeleteCategory(catId)
+	local cat = AngryAssign:GetCat(catId)
+	if not cat then return end
+
+	local popup_name = "AngryAssign_DeleteCategory_"..cat.Id
+	if StaticPopupDialogs[popup_name] == nil then
+		StaticPopupDialogs[popup_name] = {
+			button1 = OKAY,
+			button2 = CANCEL,
+			OnAccept = function(self)
+				AngryAssign:DeleteCategory(cat.Id)
+			end,
+			whileDead = true,
+			hideOnEscape = true,
+			preferredIndex = 3
+		}
+	end
+	StaticPopupDialogs[popup_name].text = 'Are you sure you want to delete category "'.. cat.Name ..'"?'
+
+	StaticPopup_Show(popup_name)
+end
+
+local function AngryAssign_AssignCategory(frame, pageId, catId)
+	local page = AngryAssign_Pages[pageId]
+	local cat = AngryAssign_Categories[catId]
+	if not page or not cat then return end
+	
+	HideDropDownMenu(1)
+
+	AngryAssign:AssignCategory(page.Id, cat.Id)
 end
 
 local function AngryAssign_RevertPage(widget, event, value)
@@ -622,6 +722,86 @@ local function AngryAssign_RestorePage(widget, event, value)
 	AngryAssign_TextChanged(widget, event, value)
 end
 
+local PagesDropDownList
+local function AngryAssign_PageMenu(pageId)
+	local page = AngryAssign_Pages[pageId]
+	if not page then return end
+
+	if not PagesDropDownList then
+		PagesDropDownList = {
+			{ notCheckable = true, isTitle = true },
+			{ text = "Rename", notCheckable = true, func = function(frame, pageId) AngryAssign_RenamePage(pageId) end },
+			{ text = "Delete", notCheckable = true, func = function(frame, pageId) AngryAssign_DeletePage(pageId) end },
+			{ text = "Category", notCheckable = true, hasArrow = true },
+		}
+	end
+
+	local permission = AngryAssign:PermissionCheck()
+
+	PagesDropDownList[1].text = page.Name
+	PagesDropDownList[2].arg1 = pageId
+	PagesDropDownList[2].disabled = not permission
+	PagesDropDownList[3].arg1 = pageId
+	PagesDropDownList[3].disabled = not permission
+
+	local categories = {}
+	for _, cat in pairs(AngryAssign_Categories) do
+		table.insert(categories, { text = cat.Name, value = cat.Id, checked = tContains(cat.Children, pageId), func = AngryAssign_AssignCategory, arg1 = pageId, arg2 = cat.Id })
+	end
+	table.sort(categories, function(a,b) return a.text < b.text end)
+	PagesDropDownList[4].menuList = categories
+
+	return PagesDropDownList
+end
+
+local CategoriesDropDownList
+local function AngryAssign_CategoryMenu(catId)
+	local cat = AngryAssign_Categories[catId]
+	if not cat then return end
+
+	if not CategoriesDropDownList then
+		CategoriesDropDownList = {
+			{ notCheckable = true, isTitle = true },
+			{ text = "Rename", notCheckable = true, func = function(frame, pageId) AngryAssign_RenameCategory(pageId) end },
+			{ text = "Delete", notCheckable = true, func = function(frame, pageId) AngryAssign_DeleteCategory(pageId) end },
+		}
+	end
+	CategoriesDropDownList[1].text = cat.Name
+	CategoriesDropDownList[2].arg1 = catId
+	CategoriesDropDownList[3].arg1 = catId
+
+	return CategoriesDropDownList
+end
+
+local AngryAssign_DropDown
+local function AngryAssign_TreeClick(widget, event, value, selected, button)
+	HideDropDownMenu(1)
+	local selectedId = selectedLastValue(value)
+	if selectedId < 0 then
+		if button == "RightButton" then
+			if not AngryAssign_DropDown then
+				AngryAssign_DropDown = CreateFrame("Frame", "AngryAssignMenuFrame", UIParent, "UIDropDownMenuTemplate")
+			end
+			EasyMenu(AngryAssign_CategoryMenu(-selectedId), AngryAssign_DropDown, "cursor", 0 , 0, "MENU")
+
+		else
+			local status = (widget.status or widget.localstatus).groups
+			status[value] = not status[value]
+			widget:RefreshTree()
+		end
+		return false
+	else
+		if button == "RightButton" then
+			if not AngryAssign_DropDown then
+				AngryAssign_DropDown = CreateFrame("Frame", "AngryAssignMenuFrame", UIParent, "UIDropDownMenuTemplate")
+			end
+			EasyMenu(AngryAssign_PageMenu(selectedId), AngryAssign_DropDown, "cursor", 0 , 0, "MENU")
+
+			return false
+		end
+	end
+end
+
 function AngryAssign:CreateWindow()
 	local window = AceGUI:Create("Frame")
 	window:SetTitle("Angry Assignments")
@@ -638,7 +818,7 @@ function AngryAssign:CreateWindow()
 	window.frame:SetFrameLevel(1)
 	tinsert(UISpecialFrames, "AngryAssign_Window")
 
-	local tree = AceGUI:Create("TreeGroup")
+	local tree = AceGUI:Create("AngryTreeGroup")
 	tree:SetTree( self:GetTree() )
 	tree:SelectByValue(1)
 	tree:SetStatusTable(AngryAssign_State.tree)
@@ -646,6 +826,7 @@ function AngryAssign:CreateWindow()
 	tree:SetFullHeight(true)
 	tree:SetLayout("Flow")
 	tree:SetCallback("OnGroupSelected", function(widget, event, value) AngryAssign:UpdateSelected(true) end)
+	tree:SetCallback("OnClick", AngryAssign_TreeClick)
 	window:AddChild(tree)
 	window.tree = tree
 
@@ -722,7 +903,7 @@ function AngryAssign:CreateWindow()
 	button_rename:SetHeight(19)
 	button_rename:ClearAllPoints()
 	button_rename:SetPoint("BOTTOMLEFT", button_add.frame, "BOTTOMRIGHT", 5, 0)
-	button_rename:SetCallback("OnClick", AngryAssign_RenamePage)
+	button_rename:SetCallback("OnClick", function() AngryAssign_RenamePage() end)
 	window:AddChild(button_rename)
 	window.button_rename = button_rename
 
@@ -732,9 +913,19 @@ function AngryAssign:CreateWindow()
 	button_delete:SetHeight(19)
 	button_delete:ClearAllPoints()
 	button_delete:SetPoint("BOTTOMLEFT", button_rename.frame, "BOTTOMRIGHT", 5, 0)
-	button_delete:SetCallback("OnClick", AngryAssign_DeletePage)
+	button_delete:SetCallback("OnClick", function() AngryAssign_DeletePage() end)
 	window:AddChild(button_delete)
 	window.button_delete = button_delete
+
+	local button_add_cat = AceGUI:Create("Button")
+	button_add_cat:SetText("Add Category")
+	button_add_cat:SetWidth(120)
+	button_add_cat:SetHeight(19)
+	button_add_cat:ClearAllPoints()
+	button_add_cat:SetPoint("BOTTOMLEFT", button_delete.frame, "BOTTOMRIGHT", 5, 0)
+	button_add_cat:SetCallback("OnClick", function() AngryAssign_AddCategory() end)
+	window:AddChild(button_add_cat)
+	window.button_add_cat = button_add_cat
 
 	local button_clear = AceGUI:Create("Button")
 	button_clear:SetText("Clear")
@@ -892,24 +1083,40 @@ end
 
 function AngryAssign:GetTree()
 
-	local sortTable = {}
-	for _, page in pairs(AngryAssign_Pages) do
-		tinsert(sortTable, { Id = page.Id, Name = page.Name })
+	local pagesInCategories = {}
+	local tree = {}
+
+	for _, cat in pairs(AngryAssign_Categories) do
+		local children = {}
+		for _, pageId in ipairs(cat.Children) do
+			local page = AngryAssign_Pages[pageId]
+			if page then
+				table.insert(pagesInCategories, page.Id)
+				if page.Id == AngryAssign_State.displayed then
+					table.insert(children, { value = page.Id, text = page.Name, icon = "Interface\\BUTTONS\\UI-GuildButton-MOTD-Up" })
+				else
+					table.insert(children, { value = page.Id, text = page.Name })
+				end
+			end
+		end
+		table.sort(children, function(a,b) return a.text < b.text end)
+
+		table.insert(tree, { value = -cat.Id, text = cat.Name, children = children })
 	end
 
-	table.sort( sortTable, function(a,b) return a.Name < b.Name end)
-
-
-	local ret = {}
-	for _, page in ipairs(sortTable) do
-		if page.Id == AngryAssign_State.displayed then
-			tinsert(ret, { value = page.Id, text = page.Name, icon = "Interface\\BUTTONS\\UI-GuildButton-MOTD-Up" })
-		else
-			tinsert(ret, { value = page.Id, text = page.Name })
+	for _, page in pairs(AngryAssign_Pages) do
+		if not tContains(pagesInCategories, page.Id) then
+			if page.Id == AngryAssign_State.displayed then
+				table.insert(tree, { value = page.Id, text = page.Name, icon = "Interface\\BUTTONS\\UI-GuildButton-MOTD-Up" })
+			else
+				table.insert(tree, { value = page.Id, text = page.Name })
+			end
 		end
 	end
 
-	return ret
+	table.sort(tree, function(a,b) return a.text < b.text end)
+
+	return tree
 end
 
 function AngryAssign:UpdateTree(id)
@@ -966,12 +1173,16 @@ end
 ----------------------------------
 
 function AngryAssign:SelectedId()
-	return AngryAssign_State.tree.selected
+	return selectedLastValue( AngryAssign_State.tree.selected )
 end
 
 function AngryAssign:Get(id)
 	if id == nil then id = self:SelectedId() end
 	return AngryAssign_Pages[id]
+end
+
+function AngryAssign:GetCat(id)
+	return AngryAssign_Categories[id]
 end
 
 function AngryAssign:Hash(name, contents)
@@ -984,7 +1195,7 @@ end
 
 function AngryAssign:CreatePage(name)
 	if not self:PermissionCheck() then return end
-	local id = math.random(2000000000)
+	local id = self:Hash("page", math.random(2000000000))
 
 	AngryAssign_Pages[id] = { Id = id, Updated = time(), UpdateId = self:Hash(name, ""), Name = name, Contents = "" }
 	self:UpdateTree(id)
@@ -1025,6 +1236,64 @@ function AngryAssign:TouchPage(id)
 	if not page then return end
 
 	page.Updated = time()
+end
+
+function AngryAssign:CreateCategory(name)
+	local id = self:Hash("cat", math.random(2000000000))
+
+	AngryAssign_Categories[id] = { Id = id, Name = name, Children = {} }
+	self:UpdateTree()
+end
+
+function AngryAssign:RenameCategory(id, name)
+	local cat = self:GetCat(id)
+	if not cat then return end
+
+	cat.Name = name
+
+	self:UpdateTree()
+end
+
+function AngryAssign:DeleteCategory(id)
+	local cat = self:GetCat(id)
+	if not cat then return end
+
+	local selectedId = self:SelectedId()
+	local wasChild = tContains(cat.Children, selectedId)
+
+	AngryAssign_Categories[id] = nil
+
+	self:UpdateTree()
+	if wasChild then
+		self.window.tree:SelectByValue(selectedId)
+	end
+end
+
+function AngryAssign:AssignCategory(pageId, catId)
+	local page = self:Get(pageId)
+	local cat = self:GetCat(catId)
+	if not page or not cat then return end
+
+	local parentId
+	if tContains(cat.Children, page.Id) then -- Already in that category, so unassign
+		tDeleteItem(cat.Children, page.Id)
+	else
+		for _, c in pairs(AngryAssign_Categories) do
+			tDeleteItem(c.Children, page.Id)
+		end
+		table.insert(cat.Children, page.Id)
+		parentId = cat.Id
+	end
+	
+	local selectedId = self:SelectedId()
+	self:UpdateTree()
+	if selectedId == page.Id then
+		if parentId then
+			self.window.tree:SelectByPath(-parentId, selectedId)
+		else
+			self.window.tree:SelectByValue(selectedId)
+		end
+	end
 end
 
 function AngryAssign:UpdateContents(id, value)
@@ -1405,6 +1674,7 @@ function AngryAssign:UpdateMedia()
 	
 	self.display_text:SetTextColor( HexToRGB(self:GetConfig('color')) )
 	self.display_text:SetFont(fontName, fontHeight, fontFlags)
+	self.display_text:SetSpacing( AngryAssign:GetConfig('lineSpacing') )
 	self:UpdateBackdrop()
 end
 
@@ -1498,6 +1768,18 @@ function AngryAssign:UpdateDisplayed()
 			:gsub(ci_pattern('|corange'), "|cffff9d00")
 			:gsub(ci_pattern('|cpink'), "|cfff64c97")
 			:gsub(ci_pattern('|cpurple'), "|cffdc44eb")
+			:gsub(ci_pattern('|cdeathknight'), "|cffc41f3b")
+			:gsub(ci_pattern('|cdruid'), "|cffff7d0a")
+			:gsub(ci_pattern('|chunter'), "|cffabd473")
+			:gsub(ci_pattern('|cmage'), "|cff69ccf0")
+			:gsub(ci_pattern('|cmonk'), "|cff00ff96")
+			:gsub(ci_pattern('|cpaladin'), "|cfff58cba")
+			:gsub(ci_pattern('|cpriest'), "|cffffffff")
+			:gsub(ci_pattern('|crogue'), "|cfffff569")
+			:gsub(ci_pattern('|cshaman'), "|cff0070de")
+			:gsub(ci_pattern('|cwarlock'), "|cff9482c9")
+			:gsub(ci_pattern('|cwarrior'), "|cffc79c6e")
+			:gsub(ci_pattern('|cdemonhunter'), "|cffa330c9")
 			:gsub("([^%s%p]+)", function(word)
 				local word_lower = word:lower()
 				for _, token in ipairs(highlights) do
@@ -1530,6 +1812,9 @@ function AngryAssign:UpdateDisplayed()
 			:gsub(ci_pattern('{hs}'), "|TInterface\\Icons\\INV_Stone_04:0|t")
 			:gsub(ci_pattern('{bloodlust}'), "{bl}")
 			:gsub(ci_pattern('{bl}'), "|TInterface\\Icons\\SPELL_Nature_Bloodlust:0|t")
+			:gsub(ci_pattern('{icon%s+(%d+)}'), function(id)
+				return format("|T%s:0|t", select(3, GetSpellInfo(tonumber(id))) )
+			end)
 			:gsub(ci_pattern('{icon%s+([%w_]+)}'), "|TInterface\\Icons\\%1:0|t")
 			:gsub(ci_pattern('{damage}'), "{dps}")
 			:gsub(ci_pattern('{tank}'), "|TInterface\\LFGFrame\\UI-LFG-ICON-PORTRAITROLES:0:0:0:0:64:64:0:19:22:41|t")
@@ -1548,6 +1833,7 @@ function AngryAssign:UpdateDisplayed()
 			:gsub(ci_pattern('{druid}'), "|TInterface\\GLUES\\CHARACTERCREATE\\UI-CHARACTERCREATE-CLASSES:0:0:0:0:64:64:48:64:0:16|t")
 			:gsub(ci_pattern('{monk}'), "|TInterface\\GLUES\\CHARACTERCREATE\\UI-CHARACTERCREATE-CLASSES:0:0:0:0:64:64:32:48:32:48|t")
 			:gsub(ci_pattern('{shaman}'), "|TInterface\\GLUES\\CHARACTERCREATE\\UI-CHARACTERCREATE-CLASSES:0:0:0:0:64:64:16:32:16:32|t")
+			:gsub(ci_pattern('{demonhunter}'), "|TInterface\\GLUES\\CHARACTERCREATE\\UI-CHARACTERCREATE-CLASSES:0:0:0:0:64:64:64:48:32:48|t")
 
 		self.display_text:Clear()
 		local lines = { strsplit("\n", text) }
@@ -1598,6 +1884,18 @@ function AngryAssign:OutputDisplayed(id)
 			:gsub(ci_pattern('|cpink'), "")
 			:gsub(ci_pattern('|cpurple'), "")
 			:gsub(ci_pattern('|cpurple'), "")
+			:gsub(ci_pattern('|cdeathknight'), "")
+			:gsub(ci_pattern('|cdruid'), "")
+			:gsub(ci_pattern('|chunter'), "")
+			:gsub(ci_pattern('|cmage'), "")
+			:gsub(ci_pattern('|cmonk'), "")
+			:gsub(ci_pattern('|cpaladin'), "")
+			:gsub(ci_pattern('|cpriest'), "")
+			:gsub(ci_pattern('|crogue'), "")
+			:gsub(ci_pattern('|cshaman'), "")
+			:gsub(ci_pattern('|cwarlock'), "")
+			:gsub(ci_pattern('|cwarrior'), "")
+			:gsub(ci_pattern('|cdemonhunter'), "")
 			:gsub(ci_pattern('|c%w?%w?%w?%w?%w?%w?%w?%w?'), "")
 			:gsub(ci_pattern('{spell%s+(%d+)}'), function(id)
 				return GetSpellLink(id)
@@ -1662,6 +1960,7 @@ local configDefaults = {
 	highlightColor = "ffd200",
 	color = "ffffff",
 	allowall = false,
+	lineSpacing = 0,
 	allowplayers = "",
 	backdropShow = false,
 	backdropColor = "00000080",
@@ -1703,6 +2002,9 @@ function AngryAssign:OnInitialize()
 		AngryAssign_Config.highlightColorR = nil
 		AngryAssign_Config.highlightColorG = nil
 		AngryAssign_Config.highlightColorB = nil
+	end
+	if AngryAssign_Categories == nil then
+		AngryAssign_Categories = { }
 	end
 
 	local ver = AngryAssign_Version
@@ -1998,7 +2300,24 @@ function AngryAssign:OnInitialize()
 							self:SetConfig('highlightColor', RGBToHex(r, g, b))
 							self:UpdateDisplayed()
 						end
-					}
+					},
+					linespacing = {
+						type = "range",
+						order = 6,
+						name = "Line Spacing",
+						desc = function()
+							return "Sets the line spacing used to display a page"
+						end,
+						min = 0,
+						max = 10,
+						step = 1,
+						get = function(info) return self:GetConfig('lineSpacing') end,
+						set = function(info, val)
+							self:SetConfig('lineSpacing', val)
+							self:UpdateMedia()
+							self:UpdateDisplayed()
+						end
+					},
 				}
 			},
 			permissions = { 

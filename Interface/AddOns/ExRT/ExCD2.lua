@@ -282,7 +282,7 @@ module.db.spell_isTalent = {
 	
 	[192063]=1,	[108281]=1,	[192077]=1,	[192058]=1,	[51485]=1,	[196932]=1,	[117014]=1,	[210714]=1,	[16166]=1,	[192249]=1,	[114050]=1,	[192222]=1,	
 	[201898]=1,	[201897]=1,	[215864]=1,	[196884]=1,	[192077]=1,	[192058]=1,	[51485]=1,	[196932]=1,	[197214]=1,	[114051]=1,	[188089]=1,	
-	[73685]=1,	[192063]=1,	[192077]=1,	[192058]=1,	[51485]=1,	[196932]=1,	[108281]=1,	[207299]=1,	[198838]=1,	[157153]=1,	[114052]=1,	[197995]=1,
+	[73685]=1,	[192063]=1,	[192077]=1,	[192058]=1,	[51485]=1,	[196932]=1,	[108281]=1,	[207399]=1,	[198838]=1,	[157153]=1,	[114052]=1,	[197995]=1,
 	
 	[205022]=1,	[205025]=1,	[212653]=1,	[55342]=1,	[116011]=1,	[157980]=1,	[205032]=1,	[108839]=1,	[113724]=1,	[153626]=1,	
 	[212653]=1,	[55342]=1,	[116011]=1,	[157981]=1,	[205029]=1,	[108839]=1,	[113724]=1,	[44457]=1,	[198929]=1,	[153561]=1,	
@@ -302,7 +302,7 @@ module.db.spell_isTalent = {
 	[102351]=1,	[108238]=1,	[102280]=1,	[102401]=1,	[5211]=1,	[102359]=1,	[132469]=1,	[33891]=1,	[197721]=1,	
 
 	[213241]=1,	[196555]=1,	[211881]=1,	[206491]=1,	[211048]=1,	[211053]=1,	
-	[213241]=1,	[211881]=1,	[212084]=1,	[207810]=1,	[227225]=1,	
+	[213241]=1,	[211881]=1,	[212084]=1,	[207810]=1,	[227225]=1,	[202138]=1,
 
 	--Other & items
 	[67826]=1,
@@ -651,9 +651,9 @@ module.db.spell_talentsList = {
 		[581] = {
 			207550,207548,209400,
 			207697,227174,207739,
-			213241,227322,227327,
+			213241,227322,211881,
 			218612,209795,217996,
-			207666,211881,209281,
+			207666,202138,209281,
 			212084,203753,218679,
 			209258,207810,227225,
 		},
@@ -1120,7 +1120,7 @@ module.db.spell_startCDbyAuraApplied_fix = {}
 for _,spellID in pairs(module.db.spell_startCDbyAuraApplied) do module.db.spell_startCDbyAuraApplied_fix[spellID] = true end
 
 module.db.spell_reduceCdByAuraFade = {	--Заклинания, кд которых уменьшается при спадении ауры до окончания времени действия. !Важно обязательное время действия для таких заклинаний
-	[47788]={{47788,200209},-120},
+	[47788]={{47788,200209},-150},
 }
 module.db.spell_battleRes = {		--Заклинания-воскрешения [WOD]
 	[20484]=true,
@@ -8368,7 +8368,7 @@ module.db.allClassSpells = {
 	{202137,3,	nil,			nil,			{202137,60,	8},	},	--Печать немоты
 	{204596,3,	nil,			nil,			{204596,30,	8},	},	--Печать огня
 	{207684,3,	nil,			nil,			{207684,60,	2},	},	--Печать страдания
-	{202138,3,	nil,			nil,			{202138,120,	2},	},	--Печать цепей
+	{202138,3,	nil,			nil,			{202138,60,	2},	},	--Печать цепей
 	{217832,3,	{217832,10,	0},	nil,			nil,			},	--Пленение
 	{183752,5,	{183752,15,	0},	nil,			nil,			},	--Поглощение магии
 	{188501,3,	{188501,30,	10},	nil,			nil,			},	--Призрачное зрение
@@ -9172,12 +9172,22 @@ local function ScanArtifactData()
 	ArtifactCache.itemID = itemID
 end
 
+local function BlizzUiFix_DealWithErrors()
+	if ArtifactFrame and ArtifactFrame:IsVisible() then
+		ArtifactFrame:Hide()
+	end
+	if ScriptErrorsFrame then
+		ScriptErrorsFrame:Hide()
+	end
+end
+
 local function UpdateArtifactData()
 	if not C_ArtifactUI.GetEquippedArtifactInfo() then
 		return
 	end
 	local isArtifactFrameShown = ArtifactFrame and ArtifactFrame:IsShown()
 	if not isArtifactFrameShown then
+		C_Timer.After(0.3,BlizzUiFix_DealWithErrors)
 		SocketInventoryItem(16)
 	end
 	ScanArtifactData()
@@ -9186,10 +9196,20 @@ local function UpdateArtifactData()
 	end
 end
 
+local artifactUIfixTimer
+local function artifactUI_CheckMajorFrames()
+	if (not WorldMapFrame or not WorldMapFrame:IsVisible()) and (not PlayerTalentFrame or not PlayerTalentFrame:IsVisible()) and (not OrderHallMissionFrame or not OrderHallMissionFrame:IsVisible()) then
+		artifactUIfixTimer:Cancel()
+		UpdateArtifactData()
+	end
+end
+
 local artifactUIfix = CreateFrame'Frame'
 artifactUIfix:RegisterEvent('LOADING_SCREEN_DISABLED')
 artifactUIfix:SetScript("OnEvent",function(self)
-	C_Timer.NewTimer(10,UpdateArtifactData)
+	C_Timer.NewTimer(9,function()
+		artifactUIfixTimer = C_Timer.NewTicker(1,artifactUI_CheckMajorFrames)
+	end)
 	self:UnregisterAllEvents()
 end)
 
@@ -9251,7 +9271,7 @@ local function Inspect_ParseArtifactString(db,string)
 		tr = o
 	end
 	
-	local itemID,rest = strsplit(":",tr,2)
+	local itemID,rest = strsplit(":",tr or "",2)
 	if itemID then
 		db.itemID = tonumber(itemID)
 	end

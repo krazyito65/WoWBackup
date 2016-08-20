@@ -1,3 +1,6 @@
+v3.0.12
+*Fixed bug with quick sending COD mail.
+
 v3.0.11
 *Fixed bug with opening mail.
 *Fixed error from opening inbox.

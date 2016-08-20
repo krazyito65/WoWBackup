@@ -317,7 +317,7 @@ function private.getTotalItemsThread(self, src)
 		for tab = 1, GetNumGuildBankTabs() do
 			if select(5, GetGuildBankTabInfo(tab)) > 0 or IsGuildLeader(UnitName("player")) then
 				for slot = 1, MAX_GUILDBANK_SLOTS_PER_TAB or 98 do
-					local itemString = TSMAPI.Item:ToBaseItemString(GetGuildBankItemLink(tab, slot))
+					local itemString = TSMAPI.Item:ToBaseItemString(GetGuildBankItemLink(tab, slot), true)
 					if itemString == "i:82800" then
 						local speciesID = GameTooltip:SetGuildBankItem(tab, slot)
 						itemString = speciesID and ("p:" .. speciesID)
@@ -366,7 +366,7 @@ function private.generateMovesThread(self)
 			for i, bag in ipairs(private.getContainerTableThread(self, "bags")) do
 				for slot = 1, private.getContainerNumSlotsSrc(bag) do
 					local itemLink = private.getContainerItemLinkSrc(bag, slot)
-					local itemString = TSMAPI.Item:ToBaseItemString(itemLink)
+					local itemString = TSMAPI.Item:ToBaseItemString(itemLink, true)
 					if itemString and itemString == item then
 						if (private.bankType == "GuildVault" and not TSMAPI.Item:IsSoulbound(bag, slot)) or private.includeSoulbound or not TSMAPI.Item:IsSoulbound(bag, slot) then
 							local have = private.getContainerItemQty(bag, slot)
@@ -409,7 +409,7 @@ function private.generateMovesThread(self)
 			for i, bag in ipairs(private.getContainerTableThread(self, private.bankType)) do
 				for slot = 1, private.getContainerNumSlotsSrc(bag) do
 					local itemLink = private.getContainerItemLinkSrc(bag, slot)
-					local itemString = TSMAPI.Item:ToBaseItemString(itemLink)
+					local itemString = TSMAPI.Item:ToBaseItemString(itemLink, true)
 					if private.bankType == "GuildVault" and itemString == "i:82800" then
 						local speciesID = GameTooltip:SetGuildBankItem(bag, slot)
 						itemString = speciesID and ("p:" .. speciesID)

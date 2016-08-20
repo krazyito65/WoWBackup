@@ -3,7 +3,7 @@
 ## Author: ykiigor
 ## Notes: Exorsus Raid Tools
 ## SavedVariables: VExRT
-## Version: 3725
+## Version: 3740
 core.lua
 Functions.lua
 embeds.xml
@@ -36,6 +36,7 @@ Pets.lua
 Arrow.lua
 AutoLogging.lua
 LootLink.lua
+WAChecker.lua
 Bindings.lua
 Bindings.xml
 Blank.lua

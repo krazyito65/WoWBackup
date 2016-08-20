@@ -1,18 +1,35 @@
 ## Interface: 70000
-## X-Curse-Packaged-Version: r81-release
-## X-Curse-Project-Name: BigWigs_Classic
-## X-Curse-Project-ID: bigwigs_classic
-## X-Curse-Repository-ID: wow/bigwigs_classic/mainline
 
-## Title: Big Wigs [|cffeda55fClassic|r]
-## Title-zhCN: Big Wigs [|cffeda55f经典旧世|r]
-## Notes: A collection of Big Wigs modules from the Classic era.
-## Notes-zhCN: Big Wigs 经典旧世模块。
+## Title: BigWigs [|cffeda55fClassic|r]
+## Title-zhCN: BigWigs [|cffeda55f经典旧世|r]
+## Title-zhTW: BigWigs [|cffeda55fClassic|r]
+## Title-deDE: BigWigs [|cffeda55fClassic|r]
+## Title-frFR: BigWigs [|cffeda55fClassic|r]
+## Title-itIT: BigWigs [|cffeda55fClassic|r]
+## Title-koKR: BigWigs [|cffeda55fClassic|r]
+## Title-ruRU: BigWigs [|cffeda55fClassic|r]
+## Title-ptBR: BigWigs [|cffeda55fClassic|r]
+## Title-esES: BigWigs [|cffeda55fClassic|r]
+## Title-esMX: BigWigs [|cffeda55fClassic|r]
+## Notes: A collection of BigWigs modules from the Classic era.
+## Notes-zhCN: BigWigs 经典旧世模块。
+## Notes-zhTW: A collection of BigWigs modules from the Classic era.
+## Notes-deDE: A collection of BigWigs modules from the Classic era.
+## Notes-frFR: A collection of BigWigs modules from the Classic era.
+## Notes-itIT: A collection of BigWigs modules from the Classic era.
+## Notes-koKR: A collection of BigWigs modules from the Classic era.
+## Notes-ruRU: A collection of BigWigs modules from the Classic era.
+## Notes-ptBR: A collection of BigWigs modules from the Classic era.
+## Notes-esES: A collection of BigWigs modules from the Classic era.
+## Notes-esMX: A collection of BigWigs modules from the Classic era.
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
 
 ## X-Category: Raid
+## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
+## X-Curse-Project-ID: bigwigs_classic
+## X-WoWI-ID: 22095
 ## X-BigWigs-LoadOn-ZoneId: 696, 755, 766, 717
 
 modules.xml

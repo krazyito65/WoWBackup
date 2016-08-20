@@ -41,9 +41,9 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15097 $"):sub(12, -3)),
-	DisplayVersion = "7.0.2 alpha", -- the string that is shown as version
-	ReleaseRevision = 15086 -- the revision of the latest stable version that is available
+	Revision = tonumber(("$Revision: 15139 $"):sub(12, -3)),
+	DisplayVersion = "7.0.3 alpha", -- the string that is shown as version
+	ReleaseRevision = 15117 -- the revision of the latest stable version that is available
 }
 DBM.HighestRelease = DBM.ReleaseRevision --Updated if newer version is detected, used by update nags to reflect critical fixes user is missing on boss pulls
 
@@ -275,7 +275,7 @@ DBM.DefaultOptions = {
 	CRT_Enabled = false,
 	ShowRespawn = true,
 	ShowQueuePop = true,
-	HelpMessageVersion = 2,
+	HelpMessageVersion = 3,
 	NewsMessageShown = 4,
 	MoviesSeen = {},
 	MovieFilter = "AfterFirst",
@@ -422,7 +422,8 @@ local statusWhisperDisabled = false
 local wowTOC = select(4, GetBuildInfo())
 local dbmToc = 0
 
-local fakeBWRevision = 13799
+local fakeBWVersion, fakeBWHash = 7, "14c850d"
+local versionQueryString, versionResponseString = "Q:%d-%s", "V:%d-%s"
 
 local enableIcons = true -- set to false when a raid leader or a promoted player has a newer version of DBM
 local guiRequested = false
@@ -467,7 +468,7 @@ local IsInRaid, IsInGroup, IsInInstance = IsInRaid, IsInGroup, IsInInstance
 local UnitAffectingCombat, InCombatLockdown, IsEncounterInProgress, UnitPlayerOrPetInRaid, UnitPlayerOrPetInParty = UnitAffectingCombat, InCombatLockdown, IsEncounterInProgress, UnitPlayerOrPetInRaid, UnitPlayerOrPetInParty
 local UnitGUID, UnitHealth, UnitHealthMax, UnitBuff = UnitGUID, UnitHealth, UnitHealthMax, UnitBuff
 local UnitExists, UnitIsDead, UnitIsFriend, UnitIsUnit, UnitIsAFK = UnitExists, UnitIsDead, UnitIsFriend, UnitIsUnit, UnitIsAFK
-local GetSpellInfo, EJ_GetSectionInfo, GetSpellTexture, GetActiveSpecGroup, GetSpellCooldown = GetSpellInfo, EJ_GetSectionInfo, GetSpellTexture, GetActiveSpecGroup, GetSpellCooldown
+local GetSpellInfo, EJ_GetSectionInfo, GetSpellTexture, GetSpellCooldown = GetSpellInfo, EJ_GetSectionInfo, GetSpellTexture, GetSpellCooldown
 local EJ_GetEncounterInfo, EJ_GetCreatureInfo, GetDungeonInfo = EJ_GetEncounterInfo, EJ_GetCreatureInfo, GetDungeonInfo
 local GetInstanceInfo = GetInstanceInfo
 local UnitPosition, GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone = UnitPosition, GetCurrentMapDungeonLevel, GetMapInfo, GetCurrentMapZone, SetMapToCurrentZone
@@ -2124,7 +2125,7 @@ do
 		elseif v1.revision and v2.revision then
 			return v1.revision > v2.revision
 		else
-			return (v1.bwarevision or v1.bwrevision or 0) > (v2.bwarevision or v2.bwrevision or 0)
+			return (v1.bwversion or 0) > (v2.bwversion or 0)
 		end
 	end
 
@@ -2141,17 +2142,17 @@ do
 			if playerColor then
 				name = ("|r|cff%.2x%.2x%.2x%s|r|cff%.2x%.2x%.2x"):format(playerColor.r * 255, playerColor.g * 255, playerColor.b * 255, name, 0.41 * 255, 0.8 * 255, 0.94 * 255)
 			end
-			if v.displayVersion and not (v.bwrevision or v.bwarevision) then--DBM, no BigWigs
+			if v.displayVersion and not v.bwversion then--DBM, no BigWigs
 				if self.Options.ShowAllVersions then
-					self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY:format(name, "DBM "..v.displayVersion, v.revision, v.VPVersion or ""), false)--Only display VP version if not running two mods
+					self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY:format(name, "DBM "..v.displayVersion, "r"..v.revision, v.VPVersion or ""), false)--Only display VP version if not running two mods
 				end
 				if notify and v.revision < self.ReleaseRevision then
 					SendChatMessage(chatPrefixShort..DBM_CORE_YOUR_VERSION_OUTDATED, "WHISPER", nil, v.name)
 				end
-			elseif self.Options.ShowAllVersions and (v.displayVersion and (v.bwrevision or v.bwarevision)) then--DBM & BigWigs
-				self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY_TWO:format(name, "DBM "..v.displayVersion, v.revision, v.bwarevision and DBM_BIG_WIGS_ALPHA or DBM_BIG_WIGS, v.bwarevision or v.bwrevision), false)
-			elseif self.Options.ShowAllVersions and (not v.displayVersion and (v.bwrevision or v.bwarevision)) then--BigWigs, No DBM
-				self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY:format(name, v.bwarevision and DBM_BIG_WIGS_ALPHA or DBM_BIG_WIGS, v.bwarevision or v.bwrevision, ""), false)
+			elseif self.Options.ShowAllVersions and v.displayVersion and v.bwversion then--DBM & BigWigs
+				self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY_TWO:format(name, "DBM "..v.displayVersion, "r"..v.revision, DBM_BIG_WIGS, versionResponseString:format(v.bwversion, v.bwhash)), false)
+			elseif self.Options.ShowAllVersions and not v.displayVersion and v.bwversion then--BigWigs, No DBM
+				self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY:format(name, DBM_BIG_WIGS, versionResponseString:format(v.bwversion, v.bwhash), ""), false)
 			else
 				if self.Options.ShowAllVersions then
 					self:AddMsg(DBM_CORE_VERSIONCHECK_ENTRY_NO_DBM:format(name), false)
@@ -2166,12 +2167,12 @@ do
 			if not sortMe[i].revision then
 				NoDBM = NoDBM + 1
 			end
-			if not (sortMe[i].bwarevision or sortMe[i].bwrevision) then
+			if not (sortMe[i].bwversion) then
 				NoBigwigs = NoBigwigs + 1
 			end
 			--Table sorting sorts dbm to top, bigwigs underneath. Highest version dbm always at top. so sortMe[1]
 			--This check compares all dbm version to highest RELEASE version in raid.
-			if sortMe[i].revision and (sortMe[i].revision < sortMe[1].version) or sortMe[i].bwrevision and (sortMe[i].bwrevision < fakeBWRevision) then
+			if sortMe[i].revision and (sortMe[i].revision < sortMe[1].version) or sortMe[i].bwversion and (sortMe[i].bwversion < fakeBWVersion) then
 				OldMod = OldMod + 1
 				local name = sortMe[i].name
 				local playerColor = RAID_CLASS_COLORS[DBM:GetRaidClass(name)]
@@ -2605,7 +2606,7 @@ do
 			if not inRaid then
 				inRaid = true
 				sendSync("H")
-				SendAddonMessage("BigWigs", "VQ:0", IsPartyLFG() and "INSTANCE_CHAT" or "RAID")--Basically "H" to bigwigs. Tell Bigwigs users we joined raid. Send revision of 0 so bigwigs ignores revision but still replies with their version information
+				SendAddonMessage("BigWigs", versionQueryString:format(0, fakeBWHash), IsPartyLFG() and "INSTANCE_CHAT" or "RAID")
 				self:Schedule(2, self.RoleCheck, false, self)
 				fireEvent("raidJoin", playerName)
 				if BigWigs and BigWigs.db.profile.raidicon and not self.Options.DontSetIcons then--Both DBM and bigwigs have raid icon marking turned on.
@@ -2662,7 +2663,7 @@ do
 				-- joined a new party
 				inRaid = true
 				sendSync("H")
-				SendAddonMessage("BigWigs", "VQ:0", IsPartyLFG() and "INSTANCE_CHAT" or "PARTY")
+				SendAddonMessage("BigWigs", versionQueryString:format(0, fakeBWHash), IsPartyLFG() and "INSTANCE_CHAT" or "RAID")
 				self:Schedule(2, self.RoleCheck, false, self)
 				fireEvent("partyJoin", playerName)
 			end
@@ -3535,17 +3536,6 @@ function DBM:UPDATE_BATTLEFIELD_STATUS()
 	end
 end
 
-function DBM:CINEMATIC_START()
-	if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or self.Options.MovieFilter == "Never" then return end
-	SetMapToCurrentZone()
-	local currentFloor = GetCurrentMapDungeonLevel() or 0
-	if self.Options.MovieFilter == "Block" or self.Options.MovieFilter == "AfterFirst" and self.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
-		CinematicFrame_CancelCinematic()
-	else
-		self.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
-	end
-end
-
 function DBM:SCENARIO_CRITERIA_UPDATE()
 	local _, currentStage, numStages = C_Scenario.GetInfo()
 	if #inCombat > 0 and currentStage > numStages and C_Scenario.IsInScenario() then
@@ -4109,7 +4099,7 @@ do
 
 	local function SendVersion()
 		if DBM.Options.FakeBWVersion then
-			SendAddonMessage("BigWigs", ("VR:%d"):format(fakeBWRevision), IsInGroup(2) and "INSTANCE_CHAT" or "RAID")--Pretending to be bigwigs, don't send dbm version information
+			SendAddonMessage("BigWigs", versionResponseString:format(fakeBWVersion, fakeBWHash), IsInGroup(2) and "INSTANCE_CHAT" or "RAID")
 			return
 		end
 		--(Note, faker isn't to screw with bigwigs nor is theirs to screw with dbm, but rathor raid leaders who don't let people run WTF they want to run)
@@ -4131,15 +4121,10 @@ do
 		DBM:Schedule(3, SendVersion)--Send version if 3 seconds have past since last "Hi" sync
 	end
 
-	syncHandlers["VR"] = function(sender, bwrevision)--Sent by bigwigs releases
-		if bwrevision and raid[sender] then
-			raid[sender].bwrevision = tonumber(bwrevision)
-		end
-	end
-
-	syncHandlers["VRA"] = function(sender, bwarevision)--Sent by bigwigs Alphas
-		if bwarevision and raid[sender] then
-			raid[sender].bwarevision = tonumber(bwarevision)
+	syncHandlers["BV"] = function(sender, version, hash)--Parsed from bigwigs V7+
+		if version and raid[sender] then
+			raid[sender].bwversion = version
+			raid[sender].bwhash = hash or ""
 		end
 	end
 
@@ -4186,12 +4171,13 @@ do
 						local revDifference = mmin((raid[newerVersionPerson[1]].revision - DBM.Revision), (raid[newerVersionPerson[2]].revision - DBM.Revision), (raid[newerVersionPerson[3]].revision - DBM.Revision))
 						--The following code requires at least THREE people to send that higher revision (I just upped it from 2). That should be more than adaquate.
 						--Disable if out of date and it's a major patch.
-						if not testBuild and dbmToc < wowTOC then
+						--[[if not testBuild and dbmToc < wowTOC then
 							updateNotificationDisplayed = 3
 							DBM:AddMsg(DBM_CORE_UPDATEREMINDER_MAJORPATCH)
-							DBM:Disable(true)
+							DBM:Disable(true)--]]
 						--Disable if revision grossly out of date even if not major patch.
-						elseif revDifference > 180 then
+						if revDifference > 180 then
+						--elseif revDifference > 180 then
 							if updateNotificationDisplayed < 3 then
 								updateNotificationDisplayed = 3
 								DBM:AddMsg(DBM_CORE_UPDATEREMINDER_DISABLE)
@@ -4699,14 +4685,17 @@ do
 		elseif prefix == "BigWigs" and msg and (channel == "PARTY" or channel == "RAID" or channel == "INSTANCE_CHAT") then
 			local bwPrefix, bwMsg = msg:match("^(%u-):(.+)")
 			if bwPrefix then
-				if bwPrefix == "VR" or bwPrefix == "VRA" then--Version information prefixes
+				if bwPrefix == "V" then--Version information prefixes
+					local verString, hash = bwMsg:match("^(%d+)%-(.+)$")
+					local version = tonumber(verString) or 0
+					if version == 0 then return end--Just a query
 					sender = Ambiguate(sender, "none")
-					handleSync(channel, sender, bwPrefix, bwMsg)
-					bwMsg = tonumber(bwMsg) or 0
-					if bwPrefix == "VR" then--Only upgrade to latest release version found
-						if bwMsg > fakeBWRevision then fakeBWRevision = bwMsg end--Newer revision found, upgrade!
+					handleSync(channel, sender, "BV", version, hash)--Prefix changed, so it's not handled by DBMs "V" handler
+					if version > fakeBWVersion then--Newer revision found, upgrade!
+						fakeBWVersion = verString
+						fakeBWHash = hash
 					end
-				elseif prefix == "VQ" then--Version request prefix
+				elseif prefix == "Q" then--Version request prefix
 					self:Unschedule(SendVersion)
 					self:Schedule(3, SendVersion)
 				end
@@ -5355,6 +5344,9 @@ do
 		if not mod.inCombat then
 			if event then
 				self:Debug("StartCombat called by : "..event..". LastInstanceMapID is "..LastInstanceMapID)
+				if event ~= "ENCOUNTER_START" then
+					self:Debug("This event is started by"..event..". Review ENCOUNTER_START event to ensure if this is still needed", 2)
+				end
 			else
 				self:Debug("StartCombat called by individual mod or unknown reason. LastInstanceMapID is "..LastInstanceMapID)
 			end
@@ -6152,7 +6144,7 @@ do
 		elseif v1.revision and v2.revision then
 			return v1.revision > v2.revision
 		else
-			return (v1.bwarevision or v1.bwrevision or 0) > (v2.bwarevision or v2.bwrevision or 0)
+			return (v1.bwversion or 0) > (v2.bwversion or 0)
 		end
 	end
 
@@ -6339,8 +6331,8 @@ do
 		if month == 4 and day == 1 then--April 1st
 			self:Schedule(180 + math.random(0, 600) , self.AprilFools, self)
 		end
-		if GetLocale() == "ptBR" or GetLocale() == "frFR" or GetLocale() == "esES" or GetLocale() == "esMX" or GetLocale() == "itIT" then
-			C_TimerAfter(10, function() if self.Options.HelpMessageVersion < 3 then self.Options.HelpMessageVersion = 3 self:AddMsg(DBM_CORE_NEED_LOCALS) end end)
+		if GetLocale() == "ptBR" or GetLocale() == "frFR" or GetLocale() == "itIT" then
+			C_TimerAfter(10, function() if self.Options.HelpMessageVersion < 4 then self.Options.HelpMessageVersion = 4 self:AddMsg(DBM_CORE_NEED_LOCALS) end end)
 		end
 		C_TimerAfter(20, function() if not self.Options.ForumsMessageShown then self.Options.ForumsMessageShown = self.ReleaseRevision self:AddMsg(DBM_FORUMS_MESSAGE) end end)
 		C_TimerAfter(30, function() if not self.Options.SettingsMessageShown then self.Options.SettingsMessageShown = true self:AddMsg(DBM_HOW_TO_USE_MOD) end end)
@@ -6780,16 +6772,40 @@ end
 -------------------
 --  Movie Filter --
 -------------------
-MovieFrame:HookScript("OnEvent", function(self, event, id)
-	if event == "PLAY_MOVIE" and id then
-		if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or DBM.Options.MovieFilter == "Never" then return end
-		if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
-			MovieFrame_OnMovieFinished(self)
+do
+	local neverFilter = {
+		[486] = true, -- Tomb of Sarg Intro
+		[487] = true, -- Alliance Broken Shore cut-scene
+		[488] = true, -- Horde Broken Shore cut-scene
+		[489] = true, -- Unknown, currently encrypted
+		[490] = true, -- Unknown, currently encrypted
+	}
+	MovieFrame:HookScript("OnEvent", function(self, event, id)
+		if event == "PLAY_MOVIE" and id and not neverFilter[id] then
+			DBM:Debug("PLAY_MOVIE fired for ID: "..id, 2)
+			if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or DBM.Options.MovieFilter == "Never" then return end
+			if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
+				MovieFrame_OnMovieFinished(self)
+				DBM:AddMsg(DBM_CORE_MOVIE_SKIPPED)
+			else
+				DBM.Options.MoviesSeen[id] = true
+			end
+		end
+	end)
+
+	function DBM:CINEMATIC_START()
+		DBM:Debug("CINEMATIC_START fired", 2)
+		if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or self.Options.MovieFilter == "Never" then return end
+		SetMapToCurrentZone()
+		local currentFloor = GetCurrentMapDungeonLevel() or 0
+		if self.Options.MovieFilter == "Block" or self.Options.MovieFilter == "AfterFirst" and self.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
+			CinematicFrame_CancelCinematic()
+			self:AddMsg(DBM_CORE_MOVIE_SKIPPED)
 		else
-			DBM.Options.MoviesSeen[id] = true
+			self.Options.MoviesSeen[LastInstanceMapID..currentFloor] = true
 		end
 	end
-end)
+end
 
 ----------------------------
 --  Boss Mod Constructor  --
@@ -7084,10 +7100,8 @@ function bossModPrototype:LatencyCheck()
 end
 
 function bossModPrototype:CheckBigWigs(name)
-	if raid[name] and raid[name].bwrevision then
-		return raid[name].bwrevision
-	elseif raid[name] and raid[name].bwarevision then
-		return raid[name].bwarevision
+	if raid[name] and raid[name].bwversion then
+		return raid[name].bwversion
 	else
 		return false
 	end
@@ -9700,7 +9714,7 @@ do
 		frame:SetFrameStrata("HIGH")
 	end
 
-	function DBM:ShowTestSpecialWarning(text, number)
+	function DBM:ShowTestSpecialWarning(text, number, noSound)
 		if moving then
 			return
 		end
@@ -9708,8 +9722,10 @@ do
 		frame:SetFrameStrata("TOOLTIP")
 		self:Unschedule(testWarningEnd)
 		self:Schedule(self.Options.SpecialWarningDuration * 1.3, testWarningEnd)
-		self:PlaySpecialWarningSound(number)
-		if self.Options.ShowFlashFrame then
+		if number and not noSound then
+			self:PlaySpecialWarningSound(number)
+		end
+		if self.Options.ShowFlashFrame and number then
 			if number == 1 then
 				local repeatCount = self.Options.SpecialWarningFlashRepeat1 and self.Options.SpecialWarningFlashRepeatAmount or 0
 				self.Flash:Show(self.Options.SpecialWarningFlashCol1[1],self.Options.SpecialWarningFlashCol1[2], self.Options.SpecialWarningFlashCol1[3], self.Options.SpecialWarningFlashDura1, self.Options.SpecialWarningFlashAlph1, repeatCount)

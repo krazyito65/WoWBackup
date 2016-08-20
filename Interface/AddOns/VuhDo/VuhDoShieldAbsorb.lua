@@ -24,6 +24,13 @@ local VUHDO_PUMP_SHIELDS = {
 }
 
 
+-- HoTs which we want to explicitl update on SPELL_AURA_APPLIED 
+-- This avoids any display delays on contingent auras (eg. Atonement)
+local VUHDO_IMMEDIATE_HOTS = {
+	[VUHDO_SPELL_ID.ATONEMENT] = true,
+}
+
+
 
 local VUHDO_ABSORB_DEBUFFS = {
 	[109379] = function(aUnit) return 200000, 5 * 60; end, -- Searing Plasma
@@ -289,6 +296,10 @@ function VUHDO_parseCombatLogShieldAbsorb(aMessage, aSrcGuid, aDstGuid, aShieldN
 		VUHDO_SHIELD_EXPIRY[tUnit] = nil;
 		VUHDO_DEBUFF_SHIELDS[tUnit] = nil;
 		VUHDO_SHIELD_LAST_SOURCE_GUID[tUnit] = nil;
+	elseif VUHDO_IMMEDIATE_HOTS[aShieldName] and VUHDO_ACTIVE_HOTS[aShieldName] and 
+		"SPELL_AURA_APPLIED" == aMessage then
+		VUHDO_updateAllHoTs();
+		VUHDO_updateAllCyclicBouquets(true);
 	end
 
 	VUHDO_updateBouquetsForEvent(tUnit, 36); -- VUHDO_UPDATE_SHIELD

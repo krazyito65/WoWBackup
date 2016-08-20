@@ -570,6 +570,7 @@ function Window:DisplaySets()
 	self.selectedset = nil
 
 	self.metadata.title = L["Skada: Fights"]
+	self.display:SetTitle(self, self.metadata.title)
 
 	self.metadata.click = click_on_set
 	self.metadata.maxvalue = 1
@@ -612,7 +613,9 @@ function Skada:tcopy(to, from)
 end
 
 function Skada:CreateWindow(name, db, display)
+    local isnew = false
 	if not db then
+        isnew = true
 		db = {}
 		self:tcopy(db, Skada.windowdefaults)
 		table.insert(self.db.profile.windows, db)
@@ -646,17 +649,19 @@ function Skada:CreateWindow(name, db, display)
 		-- Set the window's display and call it's Create function.
 		window:SetDisplay(window.db.display or "bar")
 
-		window.display:Create(window)
+		window.display:Create(window, isnew)
 
 		table.insert(windows, window)
 
-		if window.db.set or window.db.mode then
+        -- Set initial view, set list.
+        window:DisplaySets()
+        
+        if isnew and find_mode(L["Damage"]) then
+            -- Default mode for new windows - will not fail if mode is disabled.
+            self:RestoreView(window, "current", L["Damage"])
+        elseif window.db.set or window.db.mode then
 			-- Restore view.
-			window:DisplaySets()
 			self:RestoreView(window, window.db.set, window.db.mode)
-		else
-			-- Set initial view, set list.
-			window:DisplaySets()
 		end
 	else
 		-- This window's display is missing.
@@ -1116,8 +1121,7 @@ function Skada:Reset()
 	end
 	if self.total ~= nil then
 		wipe(self.total)
-		self.total = createSet(L["Total"])
-		self.char.total = self.total
+        Skada:SetupTotal()
 	end
 	self.last = nil
 
@@ -1147,7 +1151,6 @@ end
 function Skada:DeleteSet(set)
 	if not set then return end
 
-
 	for i, s in ipairs(self.char.sets) do
 		if s == set then
 			wipe(table.remove(self.char.sets, i))
@@ -1169,8 +1172,40 @@ function Skada:DeleteSet(set)
 			break
 		end
 	end
+    
+    self:SetupTotal()
+    
 	self:Wipe()
 	self:UpdateDisplay(true)
+end
+
+local skipmerge = {
+    ["spellid"] = true,
+    ["id"] = true,
+    ["last"] = true,
+    ["max"] = true,
+    ["min"] = true
+}
+local function mergeTable(t1, t2)
+    for k, v in pairs(t2) do
+        if type(v) == "table" and (type(t1[k] or false) == "table") then
+           mergeTable(t1[k], t2[k])
+        elseif type(v) == "number" and (type(t1[k] or "number") == "number") and not skipmerge[k] then
+            t1[k] = (t1[k] or 0) + v
+        else
+            t1[k] = v
+        end
+    end
+    return t1
+end
+
+-- Merges all sets into a fresh Total set.
+function Skada:SetupTotal()
+    local set = createSet(L["Total"])
+	for i=table.maxn(self.char.sets), 1, -1 do
+        set = mergeTable(set, self.char.sets[i])
+	end
+    Skada.total = set
 end
 
 function Skada:ReloadSettings()
@@ -1186,7 +1221,7 @@ function Skada:ReloadSettings()
 		self:CreateWindow(win.name, win)
 	end
 
-	self.total = self.char.total
+    Skada:SetupTotal()
 
 	Skada:ClearAllIndexes()
 
@@ -1472,8 +1507,7 @@ function Skada:StartCombat()
 
 	-- Also start the total set if it is nil.
 	if self.total == nil then
-		self.total = createSet(L["Total"])
-		self.char.total = self.total
+        self:SetupTotal()
 	end
 
 	-- Auto-switch set/mode if configured.
@@ -1672,6 +1706,8 @@ local RAID_FLAGS = bit.bor(COMBATLOG_OBJECT_AFFILIATION_MINE, COMBATLOG_OBJECT_A
 -- The flags are checked, and the flag value (say, that the SRC must be interesting, ie, one of the raid) is only checked once, regardless
 -- of how many modules are interested in the event. The check is also only done on the first flag that requires it.
 cleuFrame = CreateFrame("Frame") -- Dedicated event handler for a small performance improvement.
+Skada.cleuFrame = cleuFrame -- For tweaks
+
 cleuFrame:SetScript("OnEvent", function(frame, event, timestamp, eventtype, hideCaster, srcGUID, srcName, srcFlags, srcRaidFlags, dstGUID, dstName, dstFlags, dstRaidFlags, ...)
 	local src_is_interesting = nil
 	local dst_is_interesting = nil
@@ -1692,7 +1728,7 @@ cleuFrame:SetScript("OnEvent", function(frame, event, timestamp, eventtype, hide
 
 			-- Also create total set if needed.
 			if not Skada.total then
-				Skada.total = createSet(L["Total"])
+                Skada:SetupTotal()
 			end
 
 			-- Schedule an end to this tentative combat situation in 3 seconds.
@@ -2355,6 +2391,282 @@ function Skada:AddSubviewToTooltip(tooltip, win, mode, id, label)
 	end
 end
 
+-- Generic tooltip function for displays
+function Skada:ShowTooltip(win, id, label)
+	local t = GameTooltip
+	if Skada.db.profile.tooltips and (win.metadata.click1 or win.metadata.click2 or win.metadata.click3 or win.metadata.tooltip) then
+		Skada:SetTooltipPosition(t, win.bargroup)
+	    t:ClearLines()
+
+		local hasClick = win.metadata.click1 or win.metadata.click2 or win.metadata.click3
+
+	    -- Current mode's own tooltips.
+		if win.metadata.tooltip then
+			local numLines = t:NumLines()
+			win.metadata.tooltip(win, id, label, t)
+
+			-- Spacer
+			if t:NumLines() ~= numLines and hasClick then
+				t:AddLine(" ")
+			end
+		end
+
+		-- Generic informative tooltips.
+		if Skada.db.profile.informativetooltips then
+			if win.metadata.click1 then
+				Skada:AddSubviewToTooltip(t, win, win.metadata.click1, id, label)
+			end
+			if win.metadata.click2 then
+				Skada:AddSubviewToTooltip(t, win, win.metadata.click2, id, label)
+			end
+			if win.metadata.click3 then
+				Skada:AddSubviewToTooltip(t, win, win.metadata.click3, id, label)
+			end
+		end
+
+		-- Current mode's own post-tooltips.
+		if win.metadata.post_tooltip then
+			local numLines = t:NumLines()
+			win.metadata.post_tooltip(win, id, label, t)
+
+			-- Spacer
+			if t:NumLines() ~= numLines and hasClick then
+				t:AddLine(" ")
+			end
+		end
+
+		-- Click directions.
+		if win.metadata.click1 then
+			t:AddLine(L["Click for"].." "..win.metadata.click1:GetName()..".", 0.2, 1, 0.2)
+		end
+		if win.metadata.click2 then
+			t:AddLine(L["Shift-Click for"].." "..win.metadata.click2:GetName()..".", 0.2, 1, 0.2)
+		end
+		if win.metadata.click3 then
+			t:AddLine(L["Control-Click for"].." "..win.metadata.click3:GetName()..".", 0.2, 1, 0.2)
+		end
+
+	    t:Show()
+	end
+end
+
+-- Generic border
+function Skada:ApplyBorder(frame, texture, color, thickness, padtop, padbottom, padleft, padright)
+    local borderbackdrop = {}
+    if not frame.borderFrame then
+        frame.borderFrame = CreateFrame("Frame", nil, frame)
+        frame.borderFrame:SetFrameLevel(0)
+    end
+    frame.borderFrame:SetPoint("TOPLEFT", frame, -thickness - (padleft or 0), thickness + (padtop or 0))
+    frame.borderFrame:SetPoint("BOTTOMRIGHT", frame, thickness + (padright or 0), -thickness - (padbottom or 0))
+    if texture and thickness > 0 then
+        borderbackdrop.edgeFile = media:Fetch("border", texture)
+    else
+        borderbackdrop.edgeFile = nil
+    end
+    borderbackdrop.edgeSize = thickness
+    frame.borderFrame:SetBackdrop(borderbackdrop)
+    if color then
+        frame.borderFrame:SetBackdropBorderColor(color.r, color.g, color.b, color.a)
+    end
+end
+
+-- Generic frame settings
+function Skada:FrameSettings(db, include_dimensions)
+	local obj = {
+		type = "group",
+		name = L["Window"],
+		order=2,
+		args = {
+            
+            bgheader = {
+                type = "header",
+                name = L["Background"],
+                order=1
+            },
+            
+		    texture = {
+		         type = 'select',
+		         dialogControl = 'LSM30_Background',
+		         name = L["Background texture"],
+		         desc = L["The texture used as the background."],
+		         values = AceGUIWidgetLSMlists.background,
+		         get = function() return db.background.texture end,
+		         set = function(win,key)
+	         				db.background.texture = key
+		         			Skada:ApplySettings()
+						end,
+                width="double",
+				order=1.1
+		    },
+            
+            tile = {
+                type = 'toggle',
+                name = L["Tile"],
+                desc = L["Tile the background texture."],
+                get = function() return db.background.tile end,
+                set = function(win,key)
+                    db.background.tile = key
+                    Skada:ApplySettings()
+                end,
+                order=1.2
+            },
+
+            tilesize = {
+                type="range",
+                name=L["Tile size"],
+                desc=L["The size of the texture pattern."],
+                min=0,
+                max=math.floor(GetScreenWidth()),
+                step=1.0,
+                get=function() return db.background.tilesize end,
+                set=function(win, val)
+                    db.background.tilesize = val
+                    Skada:ApplySettings()
+                end,
+                order=1.3
+            },
+            
+            
+			color = {
+				type="color",
+				name=L["Background color"],
+				desc=L["The color of the background."],
+				hasAlpha=true,
+				get=function(i)
+						local c = db.background.color
+						return c.r, c.g, c.b, c.a
+					end,
+				set=function(i, r,g,b,a)
+						db.background.color = {["r"] = r, ["g"] = g, ["b"] = b, ["a"] = a}
+						Skada:ApplySettings()
+					end,
+				order=1.4
+			},                        
+
+            borderheader = {
+                type = "header",
+                name = L["Border"],
+                order=2
+            },
+            
+		    bordertexture = {
+		         type = 'select',
+		         dialogControl = 'LSM30_Border',
+		         name = L["Border texture"],
+		         desc = L["The texture used for the borders."],
+		         values = AceGUIWidgetLSMlists.border,
+		         get = function() return db.background.bordertexture end,
+		         set = function(win,key)
+	         				db.background.bordertexture = key
+		         			Skada:ApplySettings()
+						end,
+                width="double",
+				order=2.1
+		    },
+            
+		    bordercolor = {
+		         type = 'color',
+				 order=5,
+		         name = L["Border color"],
+		         desc = L["The color used for the border."],
+				hasAlpha=true,
+				get=function(i)
+						local c = db.background.bordercolor or {r=0,g=0,b=0,a=1}
+						return c.r, c.g, c.b, c.a
+					end,
+				set=function(i, r,g,b,a)
+						db.background.bordercolor = {["r"] = r, ["g"] = g, ["b"] = b, ["a"] = a}
+						Skada:ApplySettings()
+					end,
+				order=2.2
+		    },
+
+			thickness = {
+				type="range",
+				name=L["Border thickness"],
+				desc=L["The thickness of the borders."],
+				min=0,
+				max=50,
+				step=0.5,
+				get=function() return db.background.borderthickness end,
+				set=function(win, val)
+							db.background.borderthickness = val
+		         			Skada:ApplySettings()
+						end,
+				order=2.3
+			},
+
+            optionheader = {
+                type = "header",
+                name = L["General"],
+                order=4
+            },
+            
+			scale = {
+				type="range",
+				name=L["Scale"],
+				desc=L["Sets the scale of the window."],
+				min=0.1,
+				max=3,
+				step=0.01,
+				get=function() return db.scale end,
+				set=function(win, val)
+							db.scale = val
+		         			Skada:ApplySettings()
+						end,
+				order=4.1
+			},
+
+            strata = {
+                type="select",
+                name=L["Strata"],
+                desc=L["This determines what other frames will be in front of the frame."],
+                values = {["BACKGROUND"]="BACKGROUND", ["LOW"]="LOW", ["MEDIUM"]="MEDIUM", ["HIGH"]="HIGH", ["DIALOG"]="DIALOG", ["FULLSCREEN"]="FULLSCREEN", ["FULLSCREEN_DIALOG"]="FULLSCREEN_DIALOG"},
+                get=function() return db.strata end,
+                set=function(win, val)
+                    db.strata = val
+                    Skada:ApplySettings()
+                end,
+                order=4.2
+            },
+            
+
+		}
+	}
+    
+    if include_dimensions then
+        obj.args.width = {
+            type = 'range',
+            name = L["Width"],
+            min=100,
+            max=GetScreenWidth(),
+            step=1.0,
+            get = function() return db.width end,
+            set = function(win,key)
+                db.width = key
+                Skada:ApplySettings()
+            end,
+            order=4.3
+        }
+
+        obj.args.height = {
+            type = 'range',
+            name = L["Height"],
+            min=16,
+            max=400,
+            step=1.0,
+            get = function() return db.height end,
+            set = function(win,key)
+                db.height = key
+                Skada:ApplySettings()
+            end,
+            order=4.4
+        }
+    end
+    return obj
+end
+
 do
 
 	function Skada:OnInitialize()
@@ -2434,6 +2746,9 @@ do
 			self.db.profile.total = nil
 			self.db.profile.sets = nil
 		end
+        if self.char.total then
+            self.char.total = nil
+        end
 	end
 end
 

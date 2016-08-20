@@ -11,7 +11,6 @@
 local TSM = select(2, ...)
 local Tooltips = TSM:NewModule("Tooltips")
 local L = LibStub("AceLocale-3.0"):GetLocale("TradeSkillMaster") -- loads the localization table
-local LibExtraTip = LibStub("LibExtraTip-1")
 local moduleObjects = TSM.moduleObjects
 local private = {tooltipInfo={}, tooltipLines={lastUpdate=0, modifier=0}}
 
@@ -22,12 +21,11 @@ local private = {tooltipInfo={}, tooltipLines={lastUpdate=0, modifier=0}}
 -- ============================================================================
 
 function Tooltips:OnInitialize()
-	LibExtraTip:AddCallback({type = "battlepet", callback = private.LoadTooltip})
-	LibExtraTip:AddCallback({type = "item", callback = private.LoadTooltip})
-	LibExtraTip:RegisterTooltip(GameTooltip)
-	LibExtraTip:RegisterTooltip(ItemRefTooltip)
-	LibExtraTip:RegisterTooltip(BattlePetTooltip)
-	LibExtraTip:RegisterTooltip(FloatingBattlePetTooltip)
+	if not TSM.TooltipLib then
+		message("A recent TSM update requires a complete restart of the game. Please do so in order to ensure TSM remains functional.")
+		return
+	end
+	TSM.TooltipLib:Initialize(private.LoadTooltip)
 	local orig = OpenMailAttachment_OnEnter
 	OpenMailAttachment_OnEnter = function(self, index)
 		private.lastMailTooltipUpdate = private.lastMailTooltipUpdate or 0
@@ -107,17 +105,17 @@ function private.LoadTooltip(tipFrame, link, quantity)
 
 	-- add the tooltip lines
 	if #private.tooltipLines > 0 then
-		LibExtraTip:AddLine(tipFrame, " ", 1, 1, 0, TSM.db.profile.embeddedTooltip)
+		TSM.TooltipLib:AddLine(tipFrame, " ", 1, 1, 0)
 		local r, g, b = unpack(TSM.db.profile.design.inlineColors.tooltip or { 130, 130, 250 })
 
 		for i = 1, #private.tooltipLines do
 			if type(private.tooltipLines[i]) == "table" then
-				LibExtraTip:AddDoubleLine(tipFrame, private.tooltipLines[i].left, private.tooltipLines[i].right, r / 255, g / 255, b / 255, r / 255, g / 255, b / 255, TSM.db.profile.embeddedTooltip)
+				TSM.TooltipLib:AddDoubleLine(tipFrame, private.tooltipLines[i].left, private.tooltipLines[i].right, r / 255, g / 255, b / 255, r / 255, g / 255, b / 255)
 			else
-				LibExtraTip:AddLine(tipFrame, private.tooltipLines[i], r / 255, g / 255, b / 255, TSM.db.profile.embeddedTooltip)
+				TSM.TooltipLib:AddLine(tipFrame, private.tooltipLines[i], r / 255, g / 255, b / 255)
 			end
 		end
-		LibExtraTip:AddLine(tipFrame, " ", 1, 1, 0, TSM.db.profile.embeddedTooltip)
+		TSM.TooltipLib:AddLine(tipFrame, " ", 1, 1, 0)
 	end
 end
 

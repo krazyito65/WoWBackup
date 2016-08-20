@@ -1,3 +1,6 @@
+v3.0.13
+*Fixed issue where moving random enchant / staged items were treated as base items.
+
 v3.0.12
 *Fixed some slowness with evaluating prices.
 

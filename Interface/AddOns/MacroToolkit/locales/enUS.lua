@@ -32,6 +32,7 @@ L["Scripts"] = true
 L["Commands"] = true
 L["Targets"] = true
 L["Conditions"] = true
+L["Comments"] = true
 L["Author"] = true
 L["Clear UI errors"] = true
 L["Random non-combat pet"] = true
@@ -141,6 +142,10 @@ L["Cannot execute secure commands"] = true
 L["Macro Toolkit can only handle tooltip commands up to a maximum of 113 characters. Your tooltip will not work as expected unless you shorten it"] = true
 L["Are you sure you want to delete %s?"] = true
 L["Confirm macro deletion"] = true
+L["Use icon name lookup library for icon search"] = true
+L["This will enable macro icon names instead of numbers. Uses about 2MB of RAM."] = true
+L["Go Large"] = true
+L["Go Small"] = true
 
 --conditions
 L["Condition Builder"] = true

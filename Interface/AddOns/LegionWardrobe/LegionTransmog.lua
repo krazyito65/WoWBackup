@@ -1,9 +1,13 @@
 local GlobalAddonName, LTS = ...
 
-local ADDON_VERSION = "2.41 (3.08.2016)"
+local ADDON_VERSION = "2.5 (16.08.2016)"
 
 --[[
-TODO
+2.5
+Added search for sets page
+Added button for scale sets page
+Added option for disable TAB-press feature
+Fixed filter for instances/raids. Now it include all world drop in this zones too. To disable it, use source filter > World drop
 
 2.4
 Added "collected" info on tooltips for a lot non-equippable items by current char (there is still message "can't use this transmog" for some items because blizzard fault. You need send this items (if they are boe) to char that can equip it.)
@@ -189,7 +193,7 @@ local RaidDiffToDiffName = {
 local CharQuestsData
 local UpdateModel
 local eventsFrame
-local FilterInstance, FilterInstanceDifficulty
+local FilterInstance, FilterInstanceDifficulty, FilterInstanceZoneDrop
 local FilterRecolors
 local FindBonuses
 local LocMapNames, LocInstanceNames, LocBossNames = nil,{},{}
@@ -1417,7 +1421,7 @@ function UpdateModel(model,visualID,isCollected)
 end
 
 
-local function CheckFilterInstance(sourceData,type)
+local function CheckFilterInstance(sourceData,type,secondFilter)
 	if type == 1 then
 		if C_TransmogCollection.IsSourceTypeFilterChecked(1) then
 			return false
@@ -1445,12 +1449,13 @@ local function CheckFilterInstance(sourceData,type)
 		if C_TransmogCollection.IsSourceTypeFilterChecked(type) then
 			return false
 		end
+		local filter = secondFilter and FilterInstanceZoneDrop or FilterInstance
 		local zonesTable = (type == 2 and QuestToZone) or (type == 3 and NPCToZone)
 		for i=2,#sourceData do
 			local zoneID = zonesTable[ sourceData[i] ]
 			if zoneID then
-				for j=1,#FilterInstance do
-					if FilterInstance[j] == zoneID then
+				for j=1,#filter do
+					if filter[j] == zoneID then
 						return true
 					end
 				end
@@ -1460,9 +1465,10 @@ local function CheckFilterInstance(sourceData,type)
 		if C_TransmogCollection.IsSourceTypeFilterChecked(4) then
 			return false
 		end
+		local filter = secondFilter and FilterInstanceZoneDrop or FilterInstance
 		for i=2,#sourceData do
-			for j=1,#FilterInstance do
-				if FilterInstance[j] == sourceData[i] then
+			for j=1,#filter do
+				if filter[j] == sourceData[i] then
 					return true
 				end
 			end
@@ -1892,7 +1898,8 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 								local sourceType = sourceData[1]
 								
 								if
-								   ((type(FilterInstance)~='table' and sourceType == 1 and CheckFilterInstance(sourceData,1)) or (type(FilterInstance)=='table' and ((sourceType == 2 and CheckFilterInstance(sourceData,2)) or (sourceType == 3 and CheckFilterInstance(sourceData,3)) or (sourceType == 4 and CheckFilterInstance(sourceData,4)))))
+								   (type(FilterInstance)~='table' and ((sourceType == 1 and CheckFilterInstance(sourceData,1)) or (FilterInstanceZoneDrop and ((sourceType == 2 and CheckFilterInstance(sourceData,2,true)) or (sourceType == 3 and CheckFilterInstance(sourceData,3,true)) or sourceType == 4 and CheckFilterInstance(sourceData,4,true))))) or 
+								   (type(FilterInstance)=='table' and ((sourceType == 2 and CheckFilterInstance(sourceData,2)) or (sourceType == 3 and CheckFilterInstance(sourceData,3)) or (sourceType == 4 and CheckFilterInstance(sourceData,4))))
 								   and not visualsList[i].isHideVisual
 								then
 									tinsert(filteredVisualsList, visualsList[i])
@@ -1982,7 +1989,12 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 				else
 					FilterInstanceDifficulty = nil
 				end
-				print('FilterInstance',FilterInstance,diffID)
+				if type(FilterInstance)=='string' then
+					FilterInstanceZoneDrop = QuestZoneToDataID[zoneID]
+				else
+					FilterInstanceZoneDrop = nil
+				end
+				--print('FilterInstance',FilterInstance,diffID)
 				AddAllSlotsToCurrentFilter = true
 				if not FilterInstance then
 					print("<Legion Wardrobe>: Filter not added: No data for current zone")
@@ -2208,6 +2220,7 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 
 			UIDropDownMenu_Initialize(WardrobeFilterDropDown, WardrobeFilterDropDown_Initialize, "MENU")
 		
+			--[[
 			hooksecurefunc("WardrobeCollectionFrameModel_OnMouseDown", function (self,button)
 				if IsModifiedClick("CHATLINK") or IsModifiedClick("DRESSUP") or WardrobeFrame_IsAtTransmogrifier() or WardrobeCollectionFrame.transmogType == LE_TRANSMOG_TYPE_ILLUSION then
 					return
@@ -2234,7 +2247,49 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 				UpdateModel(models[1], visualInfo.visualID, visualInfo.isCollected)
 				Model_OnClick(models[1],"LeftButton")			
 			end)
+			]]
 			
+			C_Timer.NewTimer(2,function()
+				for i=1,3 do
+					for j=1,6 do
+						local frame = WardrobeCollectionFrame.ModelsFrame["ModelR"..i.."C"..j]
+						
+						local oldFunc = frame:GetScript("OnMouseDown")
+						
+						frame:SetScript("OnMouseDown",function(self,button,...)
+							if oldFunc then
+								oldFunc(self,button,...)
+							end
+							if IsModifiedClick("CHATLINK") or IsModifiedClick("DRESSUP") or WardrobeFrame_IsAtTransmogrifier() or WardrobeCollectionFrame.transmogType == LE_TRANSMOG_TYPE_ILLUSION then
+								return
+							end
+							if button == "RightButton" then
+								if not self.visualInfo or self.visualInfo.isCollected then
+									return
+								end
+								local visualID = self.visualInfo.visualID
+								if VLTW._Fav2[ visualID ] then
+									VLTW._Fav2[ visualID ] = nil
+								else
+									VLTW._Fav2[ visualID ] = true
+								end
+								WardrobeCollectionFrame_SortVisuals()
+								WardrobeCollectionFrame_Update()
+								return
+							end
+							if button ~= "LeftButton" then
+								return
+							end
+							local visualInfo = self.visualInfo
+							LoadData()
+							UpdateModel(models[1], visualInfo.visualID, visualInfo.isCollected)
+							Model_OnClick(models[1],"LeftButton")
+						end)
+					end
+				end
+			end)
+			
+						
 			hooksecurefunc("WardrobeCollectionFrame_Update", function ()
 				for i = 1, 18 do
 					local model = WardrobeCollectionFrame.ModelsFrame.Models[i];
@@ -2530,6 +2585,23 @@ eventsFrame:SetScript("OnEvent",function(self,event,arg1)
 							end
 						end
 						UIDropDownMenu_AddButton(info, level)
+						
+						info.hasArrow = false
+						info.isNotRadio = true
+						info.notCheckable = false
+						info.checked = function() return VLTW.DisableTAB end
+						
+						info.text = 'Disable "TAB"-press feature'
+						info.func = function(_, _, _, value)
+							if value then
+								VLTW.DisableTAB = nil
+							else
+								VLTW.DisableTAB = true
+							end
+						end
+						UIDropDownMenu_AddButton(info, level)
+						
+						
 					end
 				end
 				
@@ -2823,7 +2895,7 @@ do
 
 	eventsFrame:SetPropagateKeyboardInput(true)
 	eventsFrame:SetScript("OnKeyDown",function (self,button)
-		if button == "TAB" then
+		if button == "TAB" and not VLTW.DisableTAB then
 			if not GameTooltip:IsShown() or not TABFeatureAppID or not TABFeatureSlot then
 				return
 			end
@@ -2845,7 +2917,7 @@ do
 
 	local setsFrame = CreateFrame("Frame",nil,UIParent)
 	setsFrame:SetPoint("CENTER")
-	setsFrame:SetSize(585,570)
+	setsFrame:SetSize(585,600)
 	setsFrame:SetFrameStrata("DIALOG")
 	setsFrame:EnableMouse(true)
 	setsFrame:SetMovable(true)
@@ -2870,7 +2942,7 @@ do
 	
 	setsFrame.titleText = setsFrame:CreateFontString(nil, "OVERLAY","GameFontWhite", 2)
 	setsFrame.titleText:SetFont(setsFrame.titleText:GetFont(),12)
-	setsFrame.titleText:SetPoint("TOP",0,-6)
+	setsFrame.titleText:SetPoint("TOP",0,-10)
 	setsFrame.titleText:SetJustifyH("LEFT")
 	setsFrame.titleText:SetJustifyV("TOP")
 	setsFrame.titleText:SetText("Sets")
@@ -2906,6 +2978,21 @@ do
 		FindVisualAndOpen(visualID,self:GetParent().visualIsCollected)
 		mainFrame.sourcesFrame:SetFrameLevel(110)
 	end
+	
+	local function SourcesFrame_ItemName_OnClick(self)
+		local link = self.link2
+		if not link then
+			return
+		elseif IsModifiedClick("CHATLINK") then
+			if ChatEdit_GetActiveWindow() or ( BrowseName and BrowseName:IsVisible() ) or ( TradeSkillFrame and TradeSkillFrame.SearchBox:HasFocus() ) then
+				ChatEdit_InsertLink(link)
+			else
+				ChatFrame_OpenChat(link)
+			end
+		elseif IsModifiedClick("DRESSUP") then
+			DressUpItemLink(link)
+		end
+	end
 
 	sourcesFrame.lines = {}
 	local function SourceFrame_CreateLine(i)
@@ -2927,6 +3014,7 @@ do
 		line.itemNameFrame:SetAllPoints(line.itemName)
 		line.itemNameFrame:SetScript("OnEnter",SourcesFrame_ItemName_OnEnter)
 		line.itemNameFrame:SetScript("OnLeave",SourcesFrame_HideTooltip)
+		line.itemNameFrame:SetScript("OnClick",SourcesFrame_ItemName_OnClick)
 		
 		line.state = line:CreateFontString(nil,"ARTWORK","GameFontWhite")
 		line.state:SetPoint("LEFT",line.itemName,"RIGHT",5,0)
@@ -2942,6 +3030,11 @@ do
 		
 		return line
 	end
+	
+	local searchEditBox = CreateFrame("EditBox",nil,setsFrame,"BagSearchBoxTemplate")
+	searchEditBox:SetPoint("TOPRIGHT",-42,-20)
+	searchEditBox:SetSize(145,20)
+	searchEditBox:SetScript("OnUpdate", nil)
 
 
 	local function Model_OnClick(self,button)
@@ -2958,6 +3051,7 @@ do
 			local name,link = GetItemInfo(data[1])
 			line.itemName:SetText(link)
 			line.itemNameFrame.link = data[1]
+			line.itemNameFrame.link2 = link
 			line.visualID = data[2]
 			line.state:SetText(data[3] and "|cff00ff00Collected|r" or "|cffff0000Not collected|r") 
 			line.visualIsCollected = data[3]
@@ -3011,6 +3105,12 @@ do
 		GameTooltip:Hide()
 	end
 	
+	local function Model_OnEvent(self)
+		self:RefreshCamera()
+		self:Hide()
+		self:Show()
+	end
+	
 	local models = {}
 	for i=0,1 do
 		for j=0,2 do
@@ -3018,7 +3118,7 @@ do
 		
 			local model = CreateFrame("DressUpModel",nil,setsFrame)
 			models[i*3+j+1] = model
-			model:SetPoint("TOPLEFT",40+175*j,-30-250*i)
+			model:SetPoint("TOPLEFT",40+175*j,-55-250*i)
 			model:SetSize(150,200)
 			
 			model.Equipped = {}
@@ -3027,6 +3127,10 @@ do
 			model:SetScript("OnEnter",Model_OnEnter)
 			model:SetScript("OnLeave",Model_OnLeave)
 			model:SetScript("OnMouseUp",Model_OnClick)
+			--model:SetScript("OnEvent",Model_OnEvent)
+			
+			--model:RegisterEvent("UI_SCALE_CHANGED")
+			--model:RegisterEvent("DISPLAY_SIZE_CHANGED")
 			
 			borderFrame:SetPoint("TOPLEFT",model,-4,4)
 			borderFrame:SetPoint("BOTTOMRIGHT",model,4,-4)
@@ -3180,8 +3284,44 @@ do
 		end
 	end)
 	
+	local TextFilter = nil
+	local SetsFilteredData = nil
+	
 	function UpdateSetPage()
 		GameTooltip_Hide()
+		
+		local currData = SetsAllData[CURRENT_SETS_TYPE]
+		if TextFilter then
+			currData = SetsFilteredData
+			if not SetsFilteredData then
+				SetsFilteredData = {}
+				for i=1,#SetsAllData[CURRENT_SETS_TYPE] do
+					local setID = SetsAllData[CURRENT_SETS_TYPE][i]
+					local setData = Sets[CURRENT_SETS_TYPE][setID]
+					local addToFilter = false
+					if setData[1] and setData[1]:lower():find(TextFilter) then
+						addToFilter = true
+					elseif setData[2] then
+						for j=1,#setData[2] do
+							if setData[2][j]:lower():find(TextFilter) then
+								addToFilter = true
+								break
+							end
+						end
+					end
+					if addToFilter then
+						SetsFilteredData[#SetsFilteredData + 1] = setID
+					end
+				end
+				currData = SetsFilteredData
+			end
+		end
+		
+		currentMaxPages = ceil(#currData / #models)
+		
+		if currentPage > currentMaxPages then
+			currentPage = 1
+		end
 	
 		PageText:SetFormattedText(COLLECTION_PAGE_NUMBER, currentPage, currentMaxPages)
 		if currentPage == 1 then PrevPageButton:Disable() else PrevPageButton:Enable() end
@@ -3190,11 +3330,11 @@ do
 		local pos = (currentPage - 1) * #models + 1
 		local m_c = 0
 		
-		for i=pos,#SetsAllData[CURRENT_SETS_TYPE] do
+		for i=pos,#currData do
 			m_c = m_c + 1
 			local model = models[m_c]
 			
-			UpdateSetModel(model, SetsAllData[CURRENT_SETS_TYPE][i])
+			UpdateSetModel(model, currData[i])
 			
 			if m_c >= #models then
 				break
@@ -3205,6 +3345,20 @@ do
 			models[i].border:Hide()
 		end
 	end
+	
+	searchEditBox:SetScript("OnTextChanged",function(self)
+		SearchBoxTemplate_OnTextChanged(self)
+		
+		SetsFilteredData = nil
+		
+		local text = self:GetText()
+		if ( text == "" ) then
+			TextFilter = nil
+		else
+			TextFilter = text:lower()
+		end
+		UpdateSetPage()
+	end)
 	
 	setsFrame:SetScript("OnShow",function(self)
 		--self:SetScript("OnShow",nil)
@@ -3220,7 +3374,7 @@ do
 		currentMaxPages = ceil(total / #models)
 		UpdateSetPage()
 	end)
-
+	
 	local function ButtonOnEnter(self)
 		if not self.tooltip then return end
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -3230,8 +3384,94 @@ do
 	local function ButtonOnLeave(self)
 		GameTooltip_Hide()
 	end
+
 	
+	local ButtonScaleDropDown = CreateFrame("Button",GlobalAddonName.."SetsPageScaleButtonDropDown",UIParent,"UIDropDownMenuTemplate")
+
+	local isScaleDropDownInited = false
+	local function InitScaleButtonDropDown(self, level)
+		local info = UIDropDownMenu_CreateInfo()
+		if level == 1 then
+			info.hasArrow = false
+			info.isNotRadio = true
+			info.notCheckable = true
+			info.isTitle = true
+			info.text = 'Scale'
+			UIDropDownMenu_AddButton(info, level)
+		
+			info.isTitle = false
+			info.disabled = false
+			info.text = 'x0.5'
+			info.func = function()
+				setsFrame:SetScale(.5)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+			
+			info.text = 'x1'
+			info.func = function()
+				setsFrame:SetScale(1)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+
+			info.text = 'x1.25'
+			info.func = function()
+				setsFrame:SetScale(1.25)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+			
+			info.text = 'x1.5'
+			info.func = function()
+				setsFrame:SetScale(1.5)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+
+			info.text = 'x1.75'
+			info.func = function()
+				setsFrame:SetScale(1.75)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+			
+			info.text = 'x2'
+			info.func = function()
+				setsFrame:SetScale(2)
+				setsFrame:Hide()
+				setsFrame:Show()
+			end
+			UIDropDownMenu_AddButton(info, level)
+		end
+	end
+
+	local bigModelButton = CreateFrame("Button",nil,setsFrame)
+	bigModelButton:SetPoint("BOTTOMRIGHT", -40, 25)
+	bigModelButton:SetSize(31,31)
+	bigModelButton:SetScript("OnClick",function(self)
+		if not isScaleDropDownInited then
+			UIDropDownMenu_Initialize(ButtonScaleDropDown, InitScaleButtonDropDown , "MENU")
+			isScaleDropDownInited = true
+		end
+		PlaySound("igMainMenuOptionCheckBoxOn")
+		ToggleDropDownMenu(1, nil, ButtonScaleDropDown, self, 20, 5)
+	end)
+	bigModelButton:SetScript("OnEnter",ButtonOnEnter)
+	bigModelButton:SetScript("OnLeave",ButtonOnLeave)
+	bigModelButton.tooltip = "Scale"
 	
+	bigModelButton.Texture = bigModelButton:CreateTexture(nil,"ARTWORK")
+	bigModelButton.Texture:SetAllPoints()
+	bigModelButton.Texture:SetTexture([[Interface\AddOns\LegionWardrobe\Transmogrify]])
+	bigModelButton.Texture:SetTexCoord(450/512,482/512,88/512,120/512)
+	bigModelButton.Texture:SetDesaturated(true)	
+
 	local ButtonDropDown = CreateFrame("Button",GlobalAddonName.."SetsButtonDropDown",UIParent,"UIDropDownMenuTemplate")
 	
 	local isInited = false

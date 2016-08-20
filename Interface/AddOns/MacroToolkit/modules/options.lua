@@ -126,8 +126,34 @@ local checkPanel = {
 			get = function() return MT.db.profile.noskin end,
 			set = function(info, value) MT.db.profile.noskin = value end,
 		},
-		confirmdeletion = {
+		uselib = {
 			order = 7,
+			type = "toggle",
+			name = L["Use icon name lookup library for icon search"],
+			desc = L["This will enable macro icon names instead of numbers. Uses about 2MB of RAM."],
+			width = "full",
+			get = function() return MT.db.profile.useiconlib end,
+			set = function(info, value)
+				MT.db.profile.useiconlib = value
+				if value and not IsAddOnLoaded("MacroToolkitIcons") then
+					--Try loading the data addon
+					local loaded, reason = LoadAddOn("MacroToolkitIcons")
+
+					if not loaded then
+						--load failed
+						MacroToolkit.usingiconlib = nil
+					else
+						MacroToolkit.usingiconlib = true
+					end
+				else
+					MacroToolkit.usingiconlib = nil
+					MacroToolkit.TextureNames = nil
+					collectgarbage("collect")
+				end
+			end,
+		},
+		confirmdeletion = {
+			order = 8,
 			type = "toggle",
 			name = L["Confirm macro deletion"],
 			width = "full",
@@ -135,7 +161,7 @@ local checkPanel = {
 			set = function(info, value) MT.db.profile.confirmdelete = value end,
 		},
 		allcharmacros = {
-			order = 8,
+			order = 9,
 			type = "toggle",
 			name = L["Make all character specific macros available to all characters"],
 			width = "full",
@@ -150,12 +176,12 @@ local checkPanel = {
 				end,
 			},
 		allcharmacrosdesc1 = {
-			order = 9,
+			order = 10,
 			type = "description",
 			name = L["This may impact performance and loading time on low end machines"],
 		},
 		allcharmacrosdesc2 = {
-			order = 10,
+			order = 11,
 			type = "description",
 			name = L["You will need to log into each of your characters with Macro Toolkit enabled to update Macro Toolkit's copy of that character's macros"],
 		},
@@ -277,6 +303,14 @@ local coloursPanel = {
 			name = format("%s reset", string.sub(_G.SLASH_CASTSEQUENCE1, 2)),
 			get = function() return MT:HexToRGB(MT.db.profile.seqcolour) end,
 			set = function(info, r, g, b, a) MT.db.profile.seqcolour = MT:RGBToHex(r, g, b, a) end
+		},
+		comcolour = {
+			order = 13,
+			type ="color",
+			width = "full",
+			name = L["Comments"],
+			get = function() return MT:HexToRGB(MT.db.profile.comcolour) end,
+			set = function(info, r, g, b, a) MT.db.profile.comcolour = MT:RGBToHex(r, g, b, a) end
 		},
 	},
 }

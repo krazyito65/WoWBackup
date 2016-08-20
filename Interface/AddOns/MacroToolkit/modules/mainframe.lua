@@ -324,19 +324,25 @@ function MT:CreateMTFrame()
 	local mtmfscroll = CreateFrame("ScrollFrame", "MacroToolkitFauxScrollFrame", mttextbg, "UIPanelScrollFrameTemplate")
 	mtmfscroll:SetPoint("TOPLEFT", 10, -6)
 	mtmfscroll:SetPoint("BOTTOMRIGHT", -26, 4)
+	-- *** tickets 105, 136, 139
+	mtmfscroll:SetFrameLevel(MacroToolkitScrollFrame:GetFrameLevel() - 1) -- ensure the main text frame is in front to receive all events
+	local ebfontstring = MacroToolkitText:GetRegions()
+	ebfontstring:SetAlpha(0.4) -- make the main text fontstring alpha 0.4, rendering it transparent
+	-- ***
 	
 	local mtmfscrollchild = CreateFrame("EditBox", "MacroToolkitFauxText", mtmfscroll)
 	mtmfscrollchild:SetMultiLine(true)
 	mtmfscrollchild:SetAutoFocus(false)
 	mtmfscrollchild:SetCountInvisibleLetters(true)
+
 	mtmfscrollchild:SetSize(mtmfscroll:GetSize())
 	mtmfscrollchild:SetScript("OnUpdate", nil)
 	mtmfscrollchild:SetScript("OnTextChanged", nil)
 	font = LSM:Fetch(LSM.MediaType.FONT, MT.db.profile.fonts.edfont)
 	mtmfscrollchild:SetFont(font, MT.db.profile.fonts.edsize)
-	mtmscrollchild:SetScript("OnEditFocusGained", function() mtmscrollchild:SetFocus() end)
+	mtmfscrollchild:SetScript("OnEditFocusGained", function() mtmscrollchild:SetFocus() end)
 	mtmfscroll:SetScrollChild(mtmfscrollchild)
-
+	
 	mterrorbg = CreateFrame("Frame", "MacroToolkitErrorBg", mtframe)
 	mterrorbg:SetPoint("TOPLEFT", 328, -289)
 	mterrorbg:SetPoint("BOTTOMRIGHT", -8, 40)

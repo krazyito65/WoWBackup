@@ -54,12 +54,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Brokenspear Tavern"] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1011,
 		},
 		[949] = {
 			["Preferred"] = {
@@ -73,26 +72,27 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[976] = {
+		["Brokenspear Tavern"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 1011,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = true,
+	["autodismount"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.6",
+	["version"] = "7.0.7",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["autodismount"] = true,
+	["DisableWaterFlight"] = true,
 }
 GoGo_DebugLog = {
 }
