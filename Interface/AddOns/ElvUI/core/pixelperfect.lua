@@ -25,10 +25,11 @@ function E:UIScale(event)
 		self.global.uiScale = GetCVar('uiScale')
 	end
 
+	local minScale = self.global.general.minUiScale or 0.64
 	if self.global.general.autoScale then
-		scale = max(0.64, min(1.15, 768/self.screenheight));
+		scale = max(minScale, min(1.15, 768/self.screenheight));
 	else
-		scale = max(0.64, min(1.15, self.global.uiScale or 768/self.screenheight or UIParent:GetScale()));
+		scale = max(minScale, min(1.15, self.global.uiScale or 768/self.screenheight or UIParent:GetScale()));
 	end
 
 	if self.screenwidth < 1600 then
@@ -72,6 +73,11 @@ function E:UIScale(event)
 		SetCVar("uiScale", scale);
 		WorldMapFrame.hasTaint = true;
 	end
+	
+	--SetCVar for UI scale only accepts value as low as 0.64, so scale UIParent if needed
+	if (scale < 0.64) then
+		UIParent:SetScale(scale)
+	end
 
 	if (event == 'PLAYER_LOGIN' or event == 'UI_SCALE_CHANGED') then
 		if IsMacClient() then
@@ -95,7 +101,6 @@ function E:UIScale(event)
 			end
 
 			self.UIParent:SetSize(width, height);
-			self.UIParent.origHeight = self.UIParent:GetHeight()
 		else
 			--[[Eyefinity Test mode
 				Resize the E.UIParent to be smaller than it should be, all objects inside should relocate.
@@ -104,7 +109,6 @@ function E:UIScale(event)
 			--self.UIParent:SetSize(UIParent:GetWidth() - 250, UIParent:GetHeight() - 250);
 
 			self.UIParent:SetSize(UIParent:GetSize());
-			self.UIParent.origHeight = self.UIParent:GetHeight()
 		end
 
 		self.UIParent:ClearAllPoints();

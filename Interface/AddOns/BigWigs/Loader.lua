@@ -3,14 +3,11 @@ local L = LibStub("AceLocale-3.0"):GetLocale("BigWigs")
 local mod, public = {}, {}
 local bwFrame = CreateFrame("Frame")
 
-local isLegion = GetExpansionLevel() > 5 -- XXX LEGION
-public.isLegion = isLegion
-
 -----------------------------------------------------------------------
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 7
+local BIGWIGS_VERSION = 9
 local BIGWIGS_RELEASE_STRING = ""
 local versionQueryString, versionResponseString = "Q:%d-%s", "V:%d-%s"
 
@@ -21,7 +18,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "910ede1" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "e93ac1e" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[===[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -88,7 +85,7 @@ local fakeWorldZones = { -- Fake world zones used for world boss translations an
 	[466]=true, -- Outland
 	[862]=true, -- Pandaria
 	[962]=true, -- Draenor
-	--[000]=true, -- Legion -- XXX LEGION (main continent map area id)
+	[1007]=true, -- Broken Isles
 }
 
 do
@@ -98,7 +95,14 @@ do
 	local cata = "BigWigs_Cataclysm"
 	local mop = "BigWigs_MistsOfPandaria"
 	local wod = "BigWigs_WarlordsOfDraenor"
-	local lw = "LittleWigs"
+	local l = "BigWigs_Legion"
+	local lw_c = "LittleWigs_Classic"
+	local lw_bc = "LittleWigs_BurningCrusade"
+	local lw_wotlk = "LittleWigs_WrathOfTheLichKing"
+	local lw_cata = "LittleWigs_Cataclysm"
+	local lw_mop = "LittleWigs_MistsOfPandaria"
+	local lw_wod = "LittleWigs_WarlordsOfDraenor"
+	local lw_l = "LittleWigs_Legion"
 
 	local tbl = {
 		[696]=c, [755]=c, [766]=c, [717]=c,
@@ -107,16 +111,23 @@ do
 		[752]=cata, [758]=cata, [754]=cata, [824]=cata, [800]=cata, [773]=cata,
 		[896]=mop, [897]=mop, [886]=mop, [930]=mop, [953]=mop, [862]=mop,
 		[994]=wod, [988]=wod, [1026]=wod, [962]=wod,
+		[1094]=l, [1088]=l, [1007]=l,
 
-		[756]=lw, -- Classic
-		[710]=lw, [722]=lw, [723]=lw, [724]=lw, [725]=lw, [726]=lw, [727]=lw, [728]=lw, [729]=lw, [730]=lw, [731]=lw, [732]=lw, [733]=lw, [734]=lw, [797]=lw, [798]=lw, -- TBC
-		[520]=lw, [521]=lw, [522]=lw, [523]=lw, [524]=lw, [525]=lw, [526]=lw, [528]=lw, [530]=lw, [533]=lw, [534]=lw, [536]=lw, [542]=lw, [601]=lw, [602]=lw, [603]=lw, -- WotLK
-		[747]=lw, [757]=lw, [767]=lw, [768]=lw, [769]=lw, [820]=lw, -- Cataclysm
-		[877]=lw, [871]=lw, [874]=lw, [885]=lw, [867]=lw, [919]=lw, -- MoP
-		[964]=lw, [969]=lw, [984]=lw, [987]=lw, [989]=lw, [993]=lw, [995]=lw, [1008]=lw, -- WoD
-		[1041]=lw, [1042]=lw, [1045]=lw, [1046]=lw, [1065]=lw, [1066]=lw, [1067]=lw, [1079]=lw, [1081]=lw, [1087]=lw -- Legion
+		[756]=lw_c, -- Classic
+		[710]=lw_bc, [722]=lw_bc, [723]=lw_bc, [724]=lw_bc, [725]=lw_bc, [726]=lw_bc, [727]=lw_bc, [728]=lw_bc, [729]=lw_bc, [730]=lw_bc, [731]=lw_bc, [732]=lw_bc, [733]=lw_bc, [734]=lw_bc, [797]=lw_bc, [798]=lw_bc, -- TBC
+		[520]=lw_wotlk, [521]=lw_wotlk, [522]=lw_wotlk, [523]=lw_wotlk, [524]=lw_wotlk, [525]=lw_wotlk, [526]=lw_wotlk, [528]=lw_wotlk, [530]=lw_wotlk, [533]=lw_wotlk, [534]=lw_wotlk, [536]=lw_wotlk, [542]=lw_wotlk, [601]=lw_wotlk, [602]=lw_wotlk, [603]=lw_wotlk, -- WotLK
+		[747]=lw_cata, [757]=lw_cata, [767]=lw_cata, [768]=lw_cata, [769]=lw_cata, [820]=lw_cata, -- Cataclysm
+		[877]=lw_mop, [871]=lw_mop, [874]=lw_mop, [885]=lw_mop, [867]=lw_mop, [919]=lw_mop, -- MoP
+		[964]=lw_wod, [969]=lw_wod, [984]=lw_wod, [987]=lw_wod, [989]=lw_wod, [993]=lw_wod, [995]=lw_wod, [1008]=lw_wod, -- WoD
+		[1041]=lw_l, [1042]=lw_l, [1045]=lw_l, [1046]=lw_l, [1065]=lw_l, [1066]=lw_l, [1067]=lw_l, [1079]=lw_l, [1081]=lw_l, [1087]=lw_l -- Legion
 	}
 
+	public.zoneTblWorld = {
+		[-473] = 466, [-465] = 466, -- Outland
+		[-807] = 862, [-809] = 862, [-928] = 862, [-929] = 862, [-951] = 862, -- Pandaria
+		[-948] = 962, [-949] = 962, [-949] = 962, [-945] = 962, -- Draenor
+		[-1015] = 1007, [-1017] = 1007, -- Broken Isles
+	}
 	public.fakeWorldZones = fakeWorldZones
 	public.zoneTbl = {}
 	for k,v in next, tbl do
@@ -369,17 +380,13 @@ do
 			iterateWorldBosses(index, menu, strsplit(",", zones))
 		end
 	end
-
-	local num = tonumber(GetCVar("Sound_NumChannels")) or 0
-	if num < 64 then
-		SetCVar("Sound_NumChannels", 64) -- Blizzard keeps screwing with addon sound priority so we force this minimum
-	end
 end
 
 function mod:ADDON_LOADED(addon)
 	if addon ~= "BigWigs" then return end
 
 	bwFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	bwFrame:RegisterEvent("RAID_INSTANCE_WELCOME")
 	bwFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 	bwFrame:RegisterEvent("LFG_PROPOSAL_SHOW")
 
@@ -398,8 +405,6 @@ function mod:ADDON_LOADED(addon)
 	end
 
 	if BigWigs3DB then
-		BigWigs3DB.has61reset = nil -- XXX temp cleanup
-
 		-- Somewhat ugly, but saves loading AceDB with the loader instead of with the core
 		if BigWigs3DB.profileKeys and BigWigs3DB.profiles then
 			local name = UnitName("player")
@@ -409,6 +414,9 @@ function mod:ADDON_LOADED(addon)
 				if key then
 					self.isFakingDBM = key.fakeDBMVersion
 					self.isShowingZoneMessages = key.showZoneMessages
+				end
+				if BigWigs3DB.namespaces and BigWigs3DB.namespaces.BigWigs_Plugins_Sounds and BigWigs3DB.namespaces.BigWigs_Plugins_Sounds.profiles and BigWigs3DB.namespaces.BigWigs_Plugins_Sounds.profiles[BigWigs3DB.profileKeys[name.." - "..realm]] then
+					self.isSoundOn = BigWigs3DB.namespaces.BigWigs_Plugins_Sounds.profiles[BigWigs3DB.profileKeys[name.." - "..realm]].sound
 				end
 			end
 		end
@@ -423,6 +431,13 @@ function mod:ADDON_LOADED(addon)
 		end
 	end
 	self:UpdateDBMFaking(nil, "fakeDBMVersion", self.isFakingDBM)
+
+	if self.isSoundOn ~= false then -- Only if sounds are enabled
+		local num = tonumber(GetCVar("Sound_NumChannels")) or 0
+		if num < 64 then
+			SetCVar("Sound_NumChannels", 64) -- Blizzard keeps screwing with addon sound priority so we force this minimum
+		end
+	end
 
 	bwFrame:UnregisterEvent("ADDON_LOADED")
 	self.ADDON_LOADED = nil
@@ -458,6 +473,7 @@ do
 		BigWigs_Hyjal = "BigWigs_BurningCrusade",
 		BigWigs_Coliseum = "BigWigs_WrathOfTheLichKing",
 		BigWigs_Citadel = "BigWigs_WrathOfTheLichKing",
+		BigWigs_LK_Valkyr_Marker = "BigWigs_WrathOfTheLichKing",
 		BigWigs_BWL = "BigWigs_Classic",
 		BigWigs_BlackTemple = "BigWigs_BurningCrusade",
 		BigWigs_AQ20 = "BigWigs_Classic",
@@ -475,12 +491,10 @@ do
 		BigWigs_Pandaria = "BigWigs_MistsOfPandaria",
 		BigWigs_SiegeOfOrgrimmar = "BigWigs_MistsOfPandaria",
 		BigWigs_ThroneOfThunder = "BigWigs_MistsOfPandaria",
-		-- XXX LEGION
-		--BigWigs_Draenor = "BigWigs_WarlordsOfDraenor",
-		--BigWigs_Highmaul = "BigWigs_WarlordsOfDraenor",
-		--BigWigs_BlackrockFoundry = "BigWigs_WarlordsOfDraenor",
-		--BigWigs_HellfireCitadel = "BigWigs_WarlordsOfDraenor",
-		-- XXX LEGION
+		BigWigs_Draenor = "BigWigs_WarlordsOfDraenor",
+		BigWigs_Highmaul = "BigWigs_WarlordsOfDraenor",
+		BigWigs_BlackrockFoundry = "BigWigs_WarlordsOfDraenor",
+		BigWigs_HellfireCitadel = "BigWigs_WarlordsOfDraenor",
 		LittleWigs_ShadoPanMonastery = "LittleWigs",
 		LittleWigs_ScarletHalls = "LittleWigs",
 		LittleWigs_ScarletMonastery = "LittleWigs",
@@ -566,8 +580,8 @@ end
 
 do
 	-- This is a crapfest mainly because DBM's actual handling of versions is a crapfest, I'll try explain how this works...
-	local DBMdotRevision = "15117" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
-	local DBMdotDisplayVersion = "7.0.2" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
+	local DBMdotRevision = "15192" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
+	local DBMdotDisplayVersion = "7.0.5" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
 	local DBMdotReleaseRevision = DBMdotRevision -- This is manually changed by them every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 
 	local timer, prevUpgradedUser = nil, nil
@@ -703,30 +717,28 @@ do
 	local prev
 	function mod:LFG_PROPOSAL_SHOW()
 		if not prev then
-			local BD = {
-				bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-				tile = true,
-				tileSize = 32,
-				insets = {left = -1, right = -1, top = -1, bottom = -1},
-			}
-
 			local timerBar = CreateFrame("StatusBar", nil, LFGDungeonReadyPopup)
 			timerBar:SetPoint("TOP", LFGDungeonReadyPopup, "BOTTOM", 0, -5)
+			local tex = timerBar:CreateTexture()
+			tex:SetTexture(137012) -- Interface\\TargetingFrame\\UI-StatusBar
+			timerBar:SetStatusBarTexture(tex)
 			timerBar:SetSize(190, 9)
-			timerBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar", "BORDER")
-			timerBar:SetStatusBarColor(1,.1,0)
-			timerBar:SetBackdrop(BD)
+			timerBar:SetStatusBarColor(1, 0.1, 0)
 			timerBar:SetMinMaxValues(0, 40)
 			timerBar:Show()
 
+			local bg = timerBar:CreateTexture(nil, "BACKGROUND")
+			bg:SetAllPoints(timerBar)
+			bg:SetColorTexture(0, 0, 0, 0.7)
+
 			local spark = timerBar:CreateTexture(nil, "OVERLAY")
-			spark:SetTexture(130877) --"Interface\\CastingBar\\UI-CastingBar-Spark"
+			spark:SetTexture(130877) -- Interface\\CastingBar\\UI-CastingBar-Spark
 			spark:SetSize(32, 32)
 			spark:SetBlendMode("ADD")
-			spark:SetPoint("LEFT", timerBar:GetStatusBarTexture(), "RIGHT", -15, 0)
+			spark:SetPoint("LEFT", tex, "RIGHT", -15, 0)
 
-			local border = timerBar:CreateTexture(nil, "ARTWORK")
-			border:SetTexture(130874) --"Interface\\CastingBar\\UI-CastingBar-Border"
+			local border = timerBar:CreateTexture(nil, "OVERLAY")
+			border:SetTexture(130874) -- Interface\\CastingBar\\UI-CastingBar-Border
 			border:SetSize(256, 64)
 			border:SetPoint("TOP", timerBar, 0, 28)
 
@@ -737,7 +749,8 @@ do
 				prev = GetTime() + 40
 				-- Play in Master for those that have SFX off or very low.
 				-- We can't do PlaySound("ReadyCheck", "Master") as PlaySound is throttled, and Blizz already plays it.
-				PlaySoundFile("Sound\\Interface\\levelup2.ogg", "Master")
+				-- Only play via the "Master" channel if we have sounds turned on
+				PlaySoundFile("Sound\\Interface\\levelup2.ogg", BigWigs and BigWigs:GetPlugin("Sounds") and BigWigs:GetPlugin("Sounds").db.profile.sound and "Master" or self.isSoundOn ~= false and "Master")
 			end
 			self:LFG_PROPOSAL_SHOW()
 
@@ -904,11 +917,6 @@ do
 		else
 			local _, _, _, _, _, _, _, instanceId = GetInstanceInfo()
 			id = instanceId
-			-- XXX temp LEGION
-			if IsTestBuild() and not self.tmp and (id == 1520 or id == 1530) then
-				self.tmp = true
-				sysprint("We're looking for a new end-game raider to join our developer team! See [goo.gl/aajTfo] for more info.")
-			end
 		end
 
 		-- Module loading
@@ -948,15 +956,17 @@ do
 		-- Lacking zone modules
 		if (BigWigs and BigWigs.db.profile.showZoneMessages == false) or self.isShowingZoneMessages == false then return end
 		local zoneAddon = public.zoneTbl[id]
-		if zoneAddon and inside and not fakeWorldZones[id] and not warnedThisZone[id] and not IsAddOnEnabled(zoneAddon) then
-			warnedThisZone[id] = true
-			if zoneAddon ~= "BigWigs_WarlordsOfDraenor" then -- XXX temp Legion
+		if zoneAddon and zoneAddon ~= "BigWigs_Legion" then
+			if zoneAddon:find("LittleWigs_", nil, true) then zoneAddon = "LittleWigs" end -- Collapse into one addon
+			if inside and not fakeWorldZones[id] and not warnedThisZone[id] and not IsAddOnEnabled(zoneAddon) then
+				warnedThisZone[id] = true
 				local msg = L.missingAddOn:format(zoneAddon)
 				sysprint(msg)
 				RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1})
 			end
 		end
 	end
+	mod.RAID_INSTANCE_WELCOME = mod.ZONE_CHANGED_NEW_AREA -- Entirely for Onyxia's Lair loading
 end
 
 do
@@ -1006,6 +1016,7 @@ function mod:BigWigs_CoreEnabled()
 	-- Core is loaded, nil these to force checking BigWigs.db.profile.option
 	self.isFakingDBM = nil
 	self.isShowingZoneMessages = nil
+	self.isSoundOn = nil
 end
 
 function mod:BigWigs_CoreDisabled()

@@ -20,6 +20,8 @@ local error, hooksecurefunc, ipairs, pairs, PlaySound, select,
     setmetatable, strfind, string, table, tinsert, tostring, tremove,
     type, wipe
 
+local LibDBIcon = LibStub("LibDBIcon-1.0")
+
 --
 --
 --
@@ -46,7 +48,6 @@ for _, item in ipairs(L_WeightValues) do
         L_SetPriority[item[1]] = item[3]
     end
 end
-
 
 local options = {
     name = "PetLeash",
@@ -151,6 +152,23 @@ local options = {
                             name = L["Verbose"],
                             order = 100,
                             width = "double",
+                        },
+                        showMinimapButton = {
+                            type = "toggle",
+                            name = L["Show Minimap Button"],
+                            order = 101,
+                            width = "double",
+                            get = function()
+                                return not addon.db.profile.minimap.hide
+                            end,
+                            set = function(info, v)
+                                addon.db.profile.minimap.hide = not v
+                                if v then
+                                    LibDBIcon:Show("PetLeash")
+                                else
+                                    LibDBIcon:Hide("PetLeash")
+                                end
+                            end
                         }
                     },
                 },

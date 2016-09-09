@@ -10,9 +10,16 @@ AUCTIONATOR_SAVEDVARS = {
 	["_2000"] = 100,
 }
 AUCTIONATOR_PRICING_HISTORY = {
+	["Raw Beast Hide"] = {
+		["is"] = "110609:0:0:0",
+		["4249149"] = "17600:15",
+	},
 	["Enchant Cloak - Gift of Haste"] = {
-		["is"] = "110653:0:0:0",
 		["4227430"] = "5540000:1",
+		["is"] = "110653:0:0:0",
+		["4249175"] = "1697500:1",
+		["4249051"] = "1747500:1",
+		["4247527"] = "1747500:1",
 	},
 	["Champion's Honor"] = {
 		["3809996"] = "89970000:1",
@@ -24,17 +31,54 @@ AUCTIONATOR_PRICING_HISTORY = {
 		["4041559"] = "100990000:1",
 		["3960573"] = "113990000:1",
 	},
+	["Enchant Neck - Gift of Mastery"] = {
+		["is"] = "110647:0:0:0",
+		["4249176"] = "2990000:1",
+	},
 	["Enchant Cloak - Gift of Critical Strike"] = {
-		["is"] = "110652:0:0:0",
+		["4249176"] = "1590000:1",
 		["4227430"] = "4612500:1",
+		["4247527"] = "1592500:1",
+		["4249051"] = "1592500:1",
+		["is"] = "110652:0:0:0",
 	},
 	["Supple Vest of the Savage"] = {
 		["is"] = "116180:0:6:0",
 		["4028585"] = "166462498:1",
 	},
 	["Enchant Cloak - Gift of Mastery"] = {
-		["is"] = "110654:0:0:0",
+		["4249176"] = "3045000:1",
 		["4227430"] = "7860000:1",
+		["4247527"] = "1222500:1",
+		["4249175"] = "3045000:1",
+		["is"] = "110654:0:0:0",
+	},
+	["Enchant Ring - Gift of Mastery"] = {
+		["is"] = "110640:0:0:0",
+		["4249175"] = "1527500:1",
+	},
+	["Elixir of the Rapid Mind"] = {
+		["is"] = "128312:0:0:0",
+		["3900682"] = "17470000:1",
+		["3754000"] = "37990000:1",
+		["4092393"] = "28260000:1",
+	},
+	["Enchant Neck - Gift of Haste"] = {
+		["is"] = "110646:0:0:0",
+		["4249176"] = "1247500:1",
+	},
+	["Hexweave Embroidery"] = {
+		["is"] = "114836:0:0:0",
+		["4227420"] = "77000:1",
+	},
+	["Enchant Ring - Gift of Haste"] = {
+		["4249176"] = "2140000:1",
+		["4249178"] = "2137500:1",
+		["is"] = "110639:0:0:0",
+	},
+	["Bulging Barrel of Oil"] = {
+		["is"] = "128316:0:0:0",
+		["4195997"] = "1125000:1",
 	},
 	["Medallion of the Legion"] = {
 		["3717601"] = "49970000:1",
@@ -45,74 +89,60 @@ AUCTIONATOR_PRICING_HISTORY = {
 		["4195997"] = "47990000:1",
 		["4092393"] = "29830000:1",
 	},
-	["Elixir of the Rapid Mind"] = {
-		["is"] = "128312:0:0:0",
-		["3900682"] = "17470000:1",
-		["3754000"] = "37990000:1",
-		["4092393"] = "28260000:1",
-	},
-	["Hexweave Embroidery"] = {
-		["is"] = "114836:0:0:0",
-		["4227420"] = "77000:1",
-	},
-	["Bulging Barrel of Oil"] = {
-		["is"] = "128316:0:0:0",
-		["4195997"] = "1125000:1",
-	},
 }
 AUCTIONATOR_SHOPPING_LISTS = {
 	{
 		["items"] = {
-			"enchant cloak", -- [1]
-			"Agility potion", -- [2]
-			"Agility flask", -- [3]
-			"egg", -- [4]
-			"rylaak egg", -- [5]
-			"Temporal Crystal", -- [6]
-			"Army knife", -- [7]
-			"healing tonic", -- [8]
-			"healing potion", -- [9]
-			"Living action", -- [10]
-			"hemet", -- [11]
-			"Scope", -- [12]
-			"intellect potion", -- [13]
-			"intellect flask", -- [14]
-			"pickled eel", -- [15]
-			"Tome of the clear mind", -- [16]
-			"Thunderlord", -- [17]
-			"hexweave bag", -- [18]
-			"hexweave", -- [19]
-			"knight's badge", -- [20]
-			"knights badge", -- [21]
-			"Sandman", -- [22]
-			"Sands", -- [23]
-			"Flap", -- [24]
-			"Stone of the ele", -- [25]
-			"Skull of war", -- [26]
-			"Skull", -- [27]
-			"\"Buttered Sturgeon\"", -- [28]
-			"rapid mind", -- [29]
-			"elixer", -- [30]
-			"haste", -- [31]
-			"Armor/Miscellaneous/i700", -- [32]
-			"Armor/Leather/i700", -- [33]
-			"Armor/Leather/100/i700", -- [34]
-			"Armor/Leather/100", -- [35]
-			"orca", -- [36]
-			"Flapping owl", -- [37]
-			"grace", -- [38]
-			"Mushroom", -- [39]
-			"Travel", -- [40]
-			"Solstice", -- [41]
-			"nature's cure", -- [42]
-			"natur'es cure", -- [43]
-			"natures cure", -- [44]
-			"wild growth", -- [45]
-			"regrowth", -- [46]
-			"Stampeding roar", -- [47]
-			"Moonwarding", -- [48]
-			"Mastery TALA", -- [49]
-			"Mystic rune", -- [50]
+			"hellfire", -- [1]
+			"obliterum", -- [2]
+			"promises", -- [3]
+			"goblin glider", -- [4]
+			"\"Sallow Pigment\"", -- [5]
+			"Roseate Pigment", -- [6]
+			"{ legion herbs }", -- [7]
+			"Felwort", -- [8]
+			"\"Foxflower\"", -- [9]
+			"Aethril", -- [10]
+			"Aethrril", -- [11]
+			"dreamleaf", -- [12]
+			"dreamlead", -- [13]
+			"Foxflower", -- [14]
+			"Fjarnskaggl", -- [15]
+			"Starlight rose", -- [16]
+			"Yseralline Seed", -- [17]
+			"{ Tome of the Tranquil Mind }", -- [18]
+			"\"Yseralline Seed\"", -- [19]
+			"\"Sorcerous Earth\"", -- [20]
+			"enchant cloak", -- [21]
+			"Agility potion", -- [22]
+			"Agility flask", -- [23]
+			"egg", -- [24]
+			"rylaak egg", -- [25]
+			"Temporal Crystal", -- [26]
+			"Army knife", -- [27]
+			"healing tonic", -- [28]
+			"healing potion", -- [29]
+			"Living action", -- [30]
+			"hemet", -- [31]
+			"Scope", -- [32]
+			"intellect potion", -- [33]
+			"intellect flask", -- [34]
+			"pickled eel", -- [35]
+			"Tome of the clear mind", -- [36]
+			"Thunderlord", -- [37]
+			"hexweave bag", -- [38]
+			"hexweave", -- [39]
+			"knight's badge", -- [40]
+			"knights badge", -- [41]
+			"Sandman", -- [42]
+			"Sands", -- [43]
+			"Flap", -- [44]
+			"Stone of the ele", -- [45]
+			"Skull of war", -- [46]
+			"Skull", -- [47]
+			"\"Buttered Sturgeon\"", -- [48]
+			"rapid mind", -- [49]
+			"elixer", -- [50]
 		},
 		["isRecents"] = 1,
 		["name"] = "Recent Searches",
@@ -171,6 +201,21 @@ AUCTIONATOR_SHOPPING_LISTS = {
 	}, -- [5]
 	{
 		["items"] = {
+			"\"Foxflower\"", -- [1]
+			"\"Sallow Pigment\"", -- [2]
+			"Aethril", -- [3]
+			"dreamleaf", -- [4]
+			"Felwort", -- [5]
+			"Fjarnskaggl", -- [6]
+			"Roseate Pigment", -- [7]
+			"Starlight rose", -- [8]
+			"Yseralline Seed", -- [9]
+		},
+		["name"] = "legion herbs",
+		["isSorted"] = true,
+	}, -- [6]
+	{
+		["items"] = {
 			"\"Mogu Fish Stew\"", -- [1]
 			"\"Black Pepper\"", -- [2]
 			"\"Emperor Salmon\"", -- [3]
@@ -179,7 +224,7 @@ AUCTIONATOR_SHOPPING_LISTS = {
 		},
 		["name"] = "Mogu Fish Stew",
 		["isSorted"] = false,
-	}, -- [6]
+	}, -- [7]
 	{
 		["items"] = {
 			"\"Potion of Mogu Power\"", -- [1]
@@ -188,7 +233,7 @@ AUCTIONATOR_SHOPPING_LISTS = {
 		},
 		["name"] = "Potion of Mogu Power",
 		["isSorted"] = false,
-	}, -- [7]
+	}, -- [8]
 	{
 		["items"] = {
 			"\"Potion of the Jade Serpent\"", -- [1]
@@ -197,7 +242,17 @@ AUCTIONATOR_SHOPPING_LISTS = {
 		},
 		["name"] = "Potion of the Jade Serpent",
 		["isSorted"] = false,
-	}, -- [8]
+	}, -- [9]
+	{
+		["items"] = {
+			"\"Tome of the Tranquil Mind\"", -- [1]
+			"\"Light Parchment\"", -- [2]
+			"\"Sallow Pigment\"", -- [3]
+			"\"Roseate Pigment\"", -- [4]
+		},
+		["name"] = "Tome of the Tranquil Mind",
+		["isSorted"] = false,
+	}, -- [10]
 	{
 		["items"] = {
 			"\"Virmen's Bite\"", -- [1]
@@ -206,7 +261,7 @@ AUCTIONATOR_SHOPPING_LISTS = {
 		},
 		["name"] = "Virmen's Bite",
 		["isSorted"] = false,
-	}, -- [9]
+	}, -- [11]
 	{
 		["items"] = {
 			"Fireweed", -- [1]
@@ -218,7 +273,7 @@ AUCTIONATOR_SHOPPING_LISTS = {
 		},
 		["name"] = "Warlords Herbs",
 		["isSorted"] = true,
-	}, -- [10]
+	}, -- [12]
 }
 AUCTIONATOR_SHOPPING_LISTS_MIGRATED_V2 = true
 AUCTIONATOR_PRICE_DATABASE = {
@@ -3105,11 +3160,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2099"] = 45000000,
 		},
 		["Enchant Ring - Gift of Haste"] = {
-			["mr"] = 2186598,
-			["cc"] = 4,
+			["L2114"] = 2139999,
+			["mr"] = 2139999,
+			["cc"] = 8,
 			["id"] = "110639:0:0:0",
-			["H2053"] = 2186598,
-			["sc"] = 6,
+			["H2114"] = 2142300,
+			["sc"] = 10,
 		},
 		["Ameth'Aran Leggings of the Fireflash"] = {
 			["mr"] = 1129179,
@@ -3173,6 +3229,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "38422:0:0:0",
 			["cc"] = 4,
 			["H2099"] = 1194939,
+		},
+		["Eight of Hellfire"] = {
+			["mr"] = 559979999,
+			["cc"] = 12,
+			["H2121"] = 559979999,
+			["id"] = "128737:0:0:0",
+			["sc"] = 0,
 		},
 		["Swashbuckler's Leggings of Power"] = {
 			["mr"] = 823000,
@@ -3300,6 +3363,14 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 257100,
 		},
+		["Dreamleaf"] = {
+			["mr"] = 109500,
+			["cc"] = 7,
+			["id"] = "124102:0:0:0",
+			["H2119"] = 109900,
+			["sc"] = 9,
+			["L2119"] = 109500,
+		},
 		["Talhide Lined-Leggings of the Invoker"] = {
 			["mr"] = 374992,
 			["sc"] = 3,
@@ -3383,6 +3454,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "93623:0:0:0",
 			["cc"] = 4,
 			["H2099"] = 37500000,
+		},
+		["Three of Hellfire"] = {
+			["mr"] = 331090000,
+			["cc"] = 12,
+			["H2121"] = 331090000,
+			["id"] = "128742:0:0:0",
+			["sc"] = 0,
 		},
 		["Opulent Leggings of the Owl"] = {
 			["mr"] = 241472,
@@ -3664,6 +3742,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36176:0:0:-20",
 			["cc"] = 4,
 			["H2099"] = 249000,
+		},
+		["Starlight Rose"] = {
+			["mr"] = 998000,
+			["cc"] = 7,
+			["id"] = "124105:0:0:0",
+			["H2119"] = 998000,
+			["sc"] = 9,
 		},
 		["Living Action Potion"] = {
 			["mr"] = 50499,
@@ -4002,11 +4087,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2099"] = 2349618,
 		},
 		["Temporal Crystal"] = {
-			["mr"] = 949999,
+			["L2114"] = 49200,
+			["mr"] = 124999,
 			["cc"] = 7,
 			["id"] = "113588:0:0:0",
+			["H2114"] = 124999,
 			["sc"] = 12,
-			["H2099"] = 949999,
 		},
 		["Heroic Skullcap of the Boar"] = {
 			["mr"] = 344445,
@@ -4162,6 +4248,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "109137:0:0:0",
 			["mr"] = 12500,
 			["sc"] = 5,
+		},
+		["Hellfire War Spear of the Boar"] = {
+			["mr"] = 1807964,
+			["cc"] = 2,
+			["H2121"] = 1807964,
+			["id"] = "25238:0:0:-12",
+			["sc"] = 6,
 		},
 		["Orca Spaulders of the Eagle"] = {
 			["mr"] = 435876,
@@ -4549,6 +4642,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 223818,
 		},
+		["Felwort Seed"] = {
+			["mr"] = 499499999,
+			["cc"] = 7,
+			["id"] = "129289:0:0:0",
+			["H2119"] = 499499999,
+			["sc"] = 9,
+		},
 		["Scaled Leather Leggings of the Falcon"] = {
 			["mr"] = 6999999,
 			["sc"] = 2,
@@ -4619,6 +4719,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "55613:0:0:-40",
 			["cc"] = 4,
 			["H2099"] = 2881756,
+		},
+		["Ace of Hellfire"] = {
+			["mr"] = 1000000000,
+			["cc"] = 12,
+			["H2121"] = 1000000000,
+			["id"] = "128744:0:0:0",
+			["sc"] = 0,
 		},
 		["Phase-Twister Leggings"] = {
 			["mr"] = 378000,
@@ -4991,6 +5098,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36317:0:0:-19",
 			["sc"] = 4,
 		},
+		["Roseate Pigment"] = {
+			["mr"] = 104500,
+			["cc"] = 7,
+			["id"] = "129032:0:0:0",
+			["H2119"] = 104500,
+			["sc"] = 16,
+		},
 		["Wicked Chain Legguards of Strength"] = {
 			["mr"] = 4223999,
 			["sc"] = 3,
@@ -5046,6 +5160,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "81984:0:0:-134",
 			["cc"] = 4,
 			["H2099"] = 1000473,
+		},
+		["Darkmoon Deck: Promises"] = {
+			["mr"] = 1399999999,
+			["cc"] = 4,
+			["H2121"] = 1399999999,
+			["id"] = "128710:0:0:0",
+			["sc"] = 0,
 		},
 		["Enchant Cloak - Protection"] = {
 			["H2100"] = 1974998,
@@ -5285,6 +5406,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 376998,
 		},
+		["Seven of Promises"] = {
+			["mr"] = 139999999,
+			["cc"] = 12,
+			["H2121"] = 139999999,
+			["id"] = "128722:0:0:0",
+			["sc"] = 0,
+		},
 		["Hexweave Embroidery"] = {
 			["mr"] = 77500,
 			["cc"] = 7,
@@ -5432,6 +5560,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1204128,
 		},
+		["Hellfire War Spear of the Tiger"] = {
+			["mr"] = 476358,
+			["cc"] = 2,
+			["H2121"] = 476358,
+			["id"] = "25238:0:0:-14",
+			["sc"] = 6,
+		},
 		["Laughing Skull Gloves of the Whale"] = {
 			["mr"] = 1478892,
 			["cc"] = 4,
@@ -5495,6 +5630,14 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 45000000,
 		},
+		["Foxflower"] = {
+			["mr"] = 895998,
+			["cc"] = 7,
+			["id"] = "124103:0:0:0",
+			["H2119"] = 895999,
+			["sc"] = 9,
+			["L2119"] = 895998,
+		},
 		["High Chief's Legguards of the Bear"] = {
 			["mr"] = 1182465,
 			["sc"] = 4,
@@ -5536,6 +5679,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H1961"] = 250000000,
 			["id"] = "116177:0:5:0",
 			["sc"] = 3,
+		},
+		["Hellfire War Spear of the Beast"] = {
+			["mr"] = 1000000,
+			["cc"] = 2,
+			["H2121"] = 1000000,
+			["id"] = "25238:0:0:-41",
+			["sc"] = 6,
 		},
 		["Talhide Lined-Leggings of the Bandit"] = {
 			["mr"] = 125772,
@@ -5634,13 +5784,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "106443:0:0:0",
 			["cc"] = 4,
 			["H2099"] = 862000,
-		},
-		["Landro's Lil' XT"] = {
-			["mr"] = 650000000,
-			["cc"] = 11,
-			["id"] = "285:25",
-			["sc"] = 0,
-			["H1925"] = 650000000,
 		},
 		["Lightning-Infused Leggings"] = {
 			["mr"] = 95000000,
@@ -5767,6 +5910,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "55611:0:0:-5",
 			["cc"] = 4,
 			["H2099"] = 379395,
+		},
+		["Eight of Promises"] = {
+			["mr"] = 89910000,
+			["cc"] = 12,
+			["H2121"] = 89910000,
+			["id"] = "128721:0:0:0",
+			["sc"] = 0,
 		},
 		["Hexweave Bracers of the Quickblade"] = {
 			["mr"] = 12000000,
@@ -6281,6 +6431,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1488624,
 		},
+		["Hellfire War Spear of the Owl"] = {
+			["mr"] = 476358,
+			["cc"] = 2,
+			["H2121"] = 476358,
+			["id"] = "25238:0:0:-9",
+			["sc"] = 6,
+		},
 		["Bloodspore Leggings of Stamina"] = {
 			["mr"] = 332680,
 			["sc"] = 1,
@@ -6317,18 +6474,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2099"] = 1127593,
 		},
 		["Enchant Cloak - Gift of Haste"] = {
-			["mr"] = 5459995,
+			["L2114"] = 1699800,
+			["mr"] = 1699800,
 			["cc"] = 8,
 			["id"] = "110653:0:0:0",
-			["H2100"] = 5459995,
+			["H2114"] = 1748918,
 			["sc"] = 3,
 		},
 		["Enchant Neck - Gift of Haste"] = {
-			["mr"] = 3172099,
-			["cc"] = 4,
+			["L2114"] = 1248795,
+			["mr"] = 1248795,
+			["cc"] = 8,
 			["id"] = "110646:0:0:0",
-			["H2053"] = 3172099,
-			["sc"] = 6,
+			["H2114"] = 4461496,
+			["sc"] = 1,
 		},
 		["Brewer's Leggings of the Eagle"] = {
 			["mr"] = 684943,
@@ -6371,6 +6530,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "15747:0:0:0",
 			["cc"] = 9,
 			["H2099"] = 292112796,
+		},
+		["Two of Hellfire"] = {
+			["mr"] = 699990000,
+			["cc"] = 12,
+			["H2121"] = 699990000,
+			["id"] = "128743:0:0:0",
+			["sc"] = 0,
 		},
 		["Legguards of Sleeting Arrows"] = {
 			["mr"] = 6530000,
@@ -6927,6 +7093,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 50999899,
 		},
+		["Aethril"] = {
+			["mr"] = 167500,
+			["cc"] = 7,
+			["id"] = "124101:0:0:0",
+			["H2119"] = 167500,
+			["sc"] = 9,
+		},
 		["Wolvar Legguards of Power"] = {
 			["mr"] = 576896,
 			["sc"] = 3,
@@ -6940,6 +7113,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24883:0:0:-15",
 			["cc"] = 4,
 			["H2099"] = 3612835,
+		},
+		["Felwort"] = {
+			["mr"] = 30000000,
+			["cc"] = 7,
+			["id"] = "124106:0:0:0",
+			["H2119"] = 30000000,
+			["sc"] = 9,
 		},
 		["Supple Leggings of the Aurora"] = {
 			["mr"] = 3990000,
@@ -7046,6 +7226,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "116180:0:6:0",
 			["sc"] = 3,
 		},
+		["Three of Promises"] = {
+			["mr"] = 79990000,
+			["cc"] = 12,
+			["H2121"] = 79990000,
+			["id"] = "128726:0:0:0",
+			["sc"] = 0,
+		},
 		["Trapper Leggings of Arcane Protection"] = {
 			["mr"] = 3370800,
 			["sc"] = 3,
@@ -7087,6 +7274,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2084"] = 483995,
 			["id"] = "13107:0:0:0",
 			["sc"] = 1,
+		},
+		["Enchant Neck - Gift of Mastery"] = {
+			["mr"] = 2992098,
+			["sc"] = 1,
+			["H2114"] = 2992098,
+			["id"] = "110647:0:0:0",
+			["cc"] = 8,
 		},
 		["Rageclaw Leggings of Spirit"] = {
 			["mr"] = 1001741,
@@ -7159,10 +7353,11 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 4,
 		},
 		["Enchant Cloak - Gift of Critical Strike"] = {
-			["mr"] = 7581622,
+			["L2114"] = 1591896,
+			["mr"] = 1591896,
 			["cc"] = 8,
-			["id"] = "110655:0:0:0",
-			["H2100"] = 7581622,
+			["id"] = "110652:0:0:0",
+			["H2114"] = 9839397,
 			["sc"] = 3,
 		},
 		["Wolverine Leggings of Intellect"] = {
@@ -7178,6 +7373,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "15186:0:0:-18",
 			["cc"] = 4,
 			["H2099"] = 1069983,
+		},
+		["Goblin Glider Kit"] = {
+			["mr"] = 199994,
+			["cc"] = 0,
+			["id"] = "109076:0:0:0",
+			["H2119"] = 199994,
+			["sc"] = 8,
 		},
 		["Hiri'watha Legguards of the Monkey"] = {
 			["mr"] = 509609,
@@ -7243,11 +7445,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2099"] = 849997,
 		},
 		["Fractured Temporal Crystal"] = {
-			["mr"] = 110000,
+			["L2114"] = 11800,
+			["mr"] = 11800,
 			["cc"] = 7,
 			["id"] = "115504:0:0:0",
+			["H2114"] = 12000,
 			["sc"] = 12,
-			["H2099"] = 110000,
 		},
 		["Demon-Skull Orb of Spirit"] = {
 			["mr"] = 12500000,
@@ -7269,6 +7472,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36048:0:0:-15",
 			["cc"] = 4,
 			["H2099"] = 321926,
+		},
+		["Enchant Neck - Breath of Critical Strike"] = {
+			["mr"] = 199300,
+			["sc"] = 1,
+			["H2114"] = 199300,
+			["id"] = "110624:0:0:0",
+			["cc"] = 8,
 		},
 		["Adventurer's Legguards of the Monkey"] = {
 			["mr"] = 1175756,
@@ -7558,6 +7768,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 4999521,
 		},
+		["Enchant Ring - Gift of Mastery"] = {
+			["mr"] = 5005759,
+			["sc"] = 10,
+			["H2114"] = 5005759,
+			["id"] = "110641:0:0:0",
+			["cc"] = 8,
+		},
 		["Voidwrap Leggings of the Quickblade"] = {
 			["mr"] = 244376,
 			["sc"] = 1,
@@ -7572,12 +7789,54 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1064328,
 		},
+		["Nifflevar Legguards of the Monkey"] = {
+			["mr"] = 1623142,
+			["sc"] = 3,
+			["id"] = "36208:0:0:-5",
+			["cc"] = 4,
+			["H2099"] = 1623142,
+		},
+		["Solstice Staff of the Monkey"] = {
+			["mr"] = 99491,
+			["cc"] = 1,
+			["H1961"] = 99491,
+			["id"] = "15278:0:0:-78",
+			["sc"] = 10,
+		},
+		["Hellfire Cloak of the Bear"] = {
+			["mr"] = 11250000,
+			["cc"] = 4,
+			["H2121"] = 11250000,
+			["id"] = "25032:0:0:-7",
+			["sc"] = 1,
+		},
 		["Trickster's Leggings of the Bear"] = {
 			["mr"] = 1316323,
 			["sc"] = 2,
 			["id"] = "15366:0:0:-68",
 			["cc"] = 4,
 			["H2099"] = 1316323,
+		},
+		["Enchant Cloak - Breath of Versatility"] = {
+			["H2100"] = 738808,
+			["cc"] = 8,
+			["id"] = "110635:0:0:0",
+			["sc"] = 3,
+			["mr"] = 738808,
+		},
+		["Six of Promises"] = {
+			["mr"] = 290000000,
+			["cc"] = 12,
+			["H2121"] = 290000000,
+			["id"] = "128723:0:0:0",
+			["sc"] = 0,
+		},
+		["Enchant Cloak - Gift of Versatility"] = {
+			["H2100"] = 4867498,
+			["cc"] = 8,
+			["id"] = "110656:0:0:0",
+			["sc"] = 3,
+			["mr"] = 4867498,
 		},
 		["Greater Draenic Intellect Flask"] = {
 			["mr"] = 199999,
@@ -7601,6 +7860,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 45284017,
 		},
+		["Enchant Cloak - Greater Defense"] = {
+			["H2100"] = 44800,
+			["cc"] = 8,
+			["id"] = "38825:0:0:0",
+			["sc"] = 3,
+			["mr"] = 44800,
+		},
+		["Enchant Cloak - Lesser Power"] = {
+			["H2100"] = 139590,
+			["cc"] = 8,
+			["id"] = "52745:0:0:0",
+			["sc"] = 3,
+			["mr"] = 139590,
+		},
 		["Primal Leggings of the Whale"] = {
 			["mr"] = 1731827,
 			["sc"] = 2,
@@ -7615,6 +7888,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "118894:0:0:0",
 			["sc"] = 3,
 		},
+		["Enchant Cloak - Major Agility"] = {
+			["H2100"] = 3942398,
+			["cc"] = 8,
+			["id"] = "44457:0:0:0",
+			["sc"] = 3,
+			["mr"] = 3942398,
+		},
 		["Revenant Leggings of the Whale"] = {
 			["mr"] = 5500000,
 			["sc"] = 4,
@@ -7628,6 +7908,27 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "10236:0:0:-78",
 			["cc"] = 4,
 			["H2099"] = 557880,
+		},
+		["Enchant Cloak - Shadow Armor"] = {
+			["H2100"] = 1628360,
+			["cc"] = 8,
+			["id"] = "38993:0:0:0",
+			["sc"] = 3,
+			["mr"] = 1628360,
+		},
+		["Two of Promises"] = {
+			["mr"] = 150000000,
+			["cc"] = 12,
+			["H2121"] = 150000000,
+			["id"] = "128727:0:0:0",
+			["sc"] = 0,
+		},
+		["Crafted Malevolent Gladiator's Chain Leggings"] = {
+			["mr"] = 45000000,
+			["sc"] = 3,
+			["id"] = "98823:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 45000000,
 		},
 		["Opulent Leggings of the Eagle"] = {
 			["mr"] = 241471,
@@ -7650,6 +7951,48 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2809528,
 		},
+		["Nifflevar Legguards of Agility"] = {
+			["mr"] = 731128,
+			["sc"] = 3,
+			["id"] = "36208:0:0:-18",
+			["cc"] = 4,
+			["H2099"] = 731128,
+		},
+		["Enchant Cloak - Lesser Protection"] = {
+			["H2100"] = 749991,
+			["cc"] = 8,
+			["id"] = "38790:0:0:0",
+			["sc"] = 3,
+			["mr"] = 749991,
+		},
+		["Enchant Cloak - Critical Strike"] = {
+			["H2100"] = 1897495,
+			["cc"] = 8,
+			["id"] = "52764:0:0:0",
+			["sc"] = 3,
+			["mr"] = 1897495,
+		},
+		["Light Parchment"] = {
+			["mr"] = 4681,
+			["cc"] = 7,
+			["id"] = "39354:0:0:0",
+			["H2119"] = 4681,
+			["sc"] = 11,
+		},
+		["Ornate Legguards of Agility"] = {
+			["mr"] = 1080527,
+			["sc"] = 3,
+			["id"] = "10124:0:0:-18",
+			["cc"] = 4,
+			["H2099"] = 1080527,
+		},
+		["Ghostwalker Legguards of the Monkey"] = {
+			["mr"] = 6213753,
+			["sc"] = 2,
+			["id"] = "15151:0:0:-78",
+			["cc"] = 4,
+			["H2099"] = 6213753,
+		},
 		["Giant Egg"] = {
 			["mr"] = 1980,
 			["sc"] = 8,
@@ -7663,6 +8006,13 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "55613:0:0:-133",
 			["cc"] = 4,
 			["H2099"] = 2881756,
+		},
+		["Sorcerous Earth"] = {
+			["mr"] = 26000,
+			["cc"] = 7,
+			["id"] = "113263:0:0:0",
+			["sc"] = 10,
+			["H2114"] = 26000,
 		},
 		["Dreamsinger Legguards"] = {
 			["mr"] = 7788800,
@@ -7678,6 +8028,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36319:0:0:-15",
 			["sc"] = 4,
 		},
+		["Supple Boots of the Peerless"] = {
+			["mr"] = 150000000,
+			["cc"] = 2,
+			["H1961"] = 150000000,
+			["id"] = "116182:0:5:0",
+			["sc"] = 3,
+		},
+		["Contender's Dragonscale Leggings"] = {
+			["mr"] = 31064588,
+			["sc"] = 3,
+			["id"] = "85795:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 31064588,
+		},
 		["Sundered Legguards of Fire Protection"] = {
 			["mr"] = 1691996,
 			["sc"] = 3,
@@ -7685,12 +8049,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1691996,
 		},
-		["Nifflevar Legguards of the Monkey"] = {
-			["mr"] = 1623142,
-			["sc"] = 3,
-			["id"] = "36208:0:0:-5",
+		["Geist Legguards of Strength"] = {
+			["mr"] = 235599,
+			["sc"] = 2,
+			["id"] = "36176:0:0:-17",
 			["cc"] = 4,
-			["H2099"] = 1623142,
+			["H2099"] = 235599,
+		},
+		["Bloodscale Legguards of Nimbleness"] = {
+			["mr"] = 7790000,
+			["sc"] = 4,
+			["id"] = "24947:0:0:-27",
+			["cc"] = 4,
+			["H2099"] = 7790000,
 		},
 		["Sparkleshell Legguards of the Whale"] = {
 			["mr"] = 1089989,
@@ -7699,12 +8070,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1089989,
 		},
-		["Thick Scale Legguards of Strength"] = {
-			["mr"] = 3841000,
+		["Jazeraint Leggings of the Owl"] = {
+			["mr"] = 749994,
 			["sc"] = 3,
-			["id"] = "15551:0:0:-17",
+			["id"] = "9903:0:0:-9",
 			["cc"] = 4,
-			["H2099"] = 3841000,
+			["H2099"] = 749994,
 		},
 		["Lunarglow Leggings of the Harmonious"] = {
 			["mr"] = 1791289,
@@ -7728,26 +8099,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["mr"] = 116000,
 		},
-		["Enchant Cloak - Gift of Versatility"] = {
-			["H2100"] = 4867498,
-			["cc"] = 8,
-			["id"] = "110656:0:0:0",
+		["Pillager's Leggings of Strength"] = {
+			["mr"] = 11250000,
 			["sc"] = 3,
-			["mr"] = 4867498,
+			["id"] = "15561:0:0:-17",
+			["cc"] = 4,
+			["H2099"] = 11250000,
 		},
-		["Enchant Cloak - Breath of Versatility"] = {
-			["H2100"] = 738808,
+		["Enchant Cloak - Greater Agility"] = {
+			["H2100"] = 5828180,
 			["cc"] = 8,
-			["id"] = "110635:0:0:0",
+			["id"] = "38940:0:0:0",
 			["sc"] = 3,
-			["mr"] = 738808,
+			["mr"] = 5828180,
 		},
-		["Enchant Cloak - Greater Speed"] = {
-			["H2100"] = 16919995,
-			["cc"] = 8,
-			["id"] = "39003:0:0:0",
+		["Highland Padded Leggings"] = {
+			["mr"] = 3129995,
 			["sc"] = 3,
-			["mr"] = 16919995,
+			["id"] = "66971:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 3129995,
 		},
 		["Living Leggings"] = {
 			["mr"] = 44999996,
@@ -7763,12 +8134,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 761914,
 		},
-		["Enchant Cloak - Greater Defense"] = {
-			["H2100"] = 44800,
-			["cc"] = 8,
-			["id"] = "38825:0:0:0",
-			["sc"] = 3,
-			["mr"] = 44800,
+		["Everstill Leggings of the Eagle"] = {
+			["mr"] = 206146,
+			["sc"] = 1,
+			["id"] = "55754:0:0:-6",
+			["cc"] = 4,
+			["H2099"] = 206146,
 		},
 		["Huntsman's Leggings of Spirit"] = {
 			["mr"] = 552379,
@@ -7784,12 +8155,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 197000,
 		},
-		["Enchant Cloak - Lesser Power"] = {
-			["H2100"] = 139590,
+		["Enchant Cloak - Defense"] = {
+			["H2100"] = 129095,
 			["cc"] = 8,
-			["id"] = "52745:0:0:0",
+			["id"] = "38806:0:0:0",
 			["sc"] = 3,
-			["mr"] = 139590,
+			["mr"] = 129095,
 		},
 		["Green Dragonscale Leggings"] = {
 			["mr"] = 95000000,
@@ -7798,12 +8169,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 95000000,
 		},
-		["Enchant Cloak - Major Agility"] = {
-			["H2100"] = 3942398,
-			["cc"] = 8,
-			["id"] = "44457:0:0:0",
-			["sc"] = 3,
-			["mr"] = 3942398,
+		["Leggings of Lost Love"] = {
+			["mr"] = 449000,
+			["sc"] = 1,
+			["id"] = "45468:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 449000,
 		},
 		["Frostlink Legguards of the Peerless"] = {
 			["mr"] = 732000,
@@ -7812,26 +8183,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 732000,
 		},
-		["Enchant Cloak - Shadow Armor"] = {
-			["H2100"] = 1628360,
-			["cc"] = 8,
-			["id"] = "38993:0:0:0",
-			["sc"] = 3,
-			["mr"] = 1628360,
+		["Enchant Boots - Greater Haste"] = {
+			["mr"] = 100800,
+			["cc"] = 4,
+			["id"] = "74715:0:0:0",
+			["H2053"] = 100800,
+			["sc"] = 6,
 		},
-		["Enchant Cloak - Minor Protection"] = {
-			["H2100"] = 369995,
-			["cc"] = 8,
-			["id"] = "38775:0:0:0",
-			["sc"] = 3,
-			["mr"] = 369995,
+		["Webspinner Leggings of the Seer"] = {
+			["mr"] = 99996,
+			["sc"] = 2,
+			["id"] = "36168:0:0:-37",
+			["cc"] = 4,
+			["H2099"] = 99996,
 		},
-		["Enchant Cloak - Greater Agility"] = {
-			["H2100"] = 5828180,
-			["cc"] = 8,
-			["id"] = "38940:0:0:0",
-			["sc"] = 3,
-			["mr"] = 5828180,
+		["Primal Leggings of the Owl"] = {
+			["mr"] = 979999,
+			["sc"] = 2,
+			["id"] = "15009:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 979999,
 		},
 		["Grand Legguards of the Monkey"] = {
 			["mr"] = 1947166,
@@ -7840,19 +8211,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1947166,
 		},
-		["Crafted Malevolent Gladiator's Chain Leggings"] = {
-			["mr"] = 45000000,
-			["sc"] = 3,
-			["id"] = "98823:0:0:0",
+		["Skull of War"] = {
+			["mr"] = 370000000,
 			["cc"] = 4,
-			["H2099"] = 45000000,
+			["id"] = "112318:0:6:0",
+			["H2088"] = 370000000,
+			["L2088"] = 29990000,
+			["sc"] = 0,
 		},
-		["Enchant Cloak - Lesser Protection"] = {
-			["H2100"] = 749991,
-			["cc"] = 8,
-			["id"] = "38790:0:0:0",
-			["sc"] = 3,
-			["mr"] = 749991,
+		["Frostwoven Leggings"] = {
+			["mr"] = 1272859,
+			["sc"] = 1,
+			["id"] = "41519:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 1272859,
 		},
 		["Elementalist Leggings of the Prophet"] = {
 			["mr"] = 2579160,
@@ -7882,12 +8254,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["mr"] = 40715980,
 		},
-		["Enchant Cloak - Critical Strike"] = {
-			["H2100"] = 1897495,
-			["cc"] = 8,
-			["id"] = "52764:0:0:0",
+		["Hiri'watha Legguards of the Galeburst"] = {
+			["mr"] = 509610,
 			["sc"] = 3,
-			["mr"] = 1897495,
+			["id"] = "55609:0:0:-134",
+			["cc"] = 4,
+			["H2099"] = 509610,
 		},
 		["Jazeraint Leggings of the Falcon"] = {
 			["mr"] = 748997,
@@ -7896,12 +8268,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 748997,
 		},
-		["Enchant Cloak - Lesser Agility"] = {
-			["H2100"] = 17907558,
-			["cc"] = 8,
-			["id"] = "38835:0:0:0",
-			["sc"] = 3,
-			["mr"] = 17907558,
+		["Boneshredder Skullcap of the Tiger"] = {
+			["mr"] = 500000,
+			["cc"] = 4,
+			["H2084"] = 500000,
+			["id"] = "24777:0:0:-14",
+			["sc"] = 2,
 		},
 		["Bluefen Leggings of the Whale"] = {
 			["mr"] = 206207,
@@ -7910,19 +8282,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 206207,
 		},
-		["Enchant Cloak - Superior Agility"] = {
-			["H2100"] = 497998,
-			["cc"] = 8,
-			["id"] = "38959:0:0:0",
-			["sc"] = 3,
-			["mr"] = 497998,
-		},
-		["Ghostwalker Legguards of the Monkey"] = {
-			["mr"] = 6213753,
+		["Silent Leggings of the Ghostpaw"] = {
+			["mr"] = 10499996,
 			["sc"] = 2,
-			["id"] = "15151:0:0:-78",
+			["id"] = "90720:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 6213753,
+			["H2099"] = 10499996,
+		},
+		["Baradin Leggings of the Beast"] = {
+			["mr"] = 1658999,
+			["sc"] = 1,
+			["id"] = "55751:0:0:-41",
+			["cc"] = 4,
+			["H2099"] = 1658999,
 		},
 		["Fel Egg"] = {
 			["mr"] = 29600,
@@ -7931,33 +8303,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 7,
 			["H2099"] = 29600,
 		},
-		["Draenic Agility Potion"] = {
-			["mr"] = 51500,
+		["Brightwood Leggings of the Beast"] = {
+			["mr"] = 698495,
 			["sc"] = 1,
-			["id"] = "109217:0:0:0",
-			["cc"] = 0,
-			["H2099"] = 51500,
+			["id"] = "55753:0:0:-41",
+			["cc"] = 4,
+			["H2099"] = 698495,
 		},
-		["Primal Leggings of the Owl"] = {
-			["mr"] = 979999,
+		["Embersilk Leggings of the Owl"] = {
+			["mr"] = 1642095,
+			["sc"] = 1,
+			["id"] = "14233:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 1642095,
+		},
+		["Wanderer's Leggings of Spirit"] = {
+			["mr"] = 767941,
 			["sc"] = 2,
-			["id"] = "15009:0:0:-9",
+			["id"] = "10112:0:0:-15",
 			["cc"] = 4,
-			["H2099"] = 979999,
+			["H2099"] = 767941,
 		},
-		["Mercurial Legguards of the Eagle"] = {
-			["mr"] = 2878374,
-			["sc"] = 3,
-			["id"] = "10162:0:0:-69",
+		["Discarded Swampstalker Leggings of the Bandit"] = {
+			["mr"] = 5184938,
+			["sc"] = 2,
+			["id"] = "94047:0:0:-40",
 			["cc"] = 4,
-			["H2099"] = 2878374,
-		},
-		["Dark Frostscale Leggings"] = {
-			["mr"] = 1495000,
-			["sc"] = 3,
-			["id"] = "44436:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 1495000,
+			["H2099"] = 5184938,
 		},
 		["Greater Draenic Agility Flask"] = {
 			["mr"] = 298900,
@@ -7966,12 +8338,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 0,
 			["H2099"] = 298900,
 		},
-		["Hiri'watha Legguards of the Galeburst"] = {
-			["mr"] = 509610,
-			["sc"] = 3,
-			["id"] = "55609:0:0:-134",
+		["Golem Shard Leggings"] = {
+			["mr"] = 1499999,
+			["sc"] = 4,
+			["id"] = "13074:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 509610,
+			["H2099"] = 1499999,
 		},
 		["Spiked Chain Leggings of Power"] = {
 			["mr"] = 40125479,
@@ -7994,12 +8366,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24607:0:0:-37",
 			["sc"] = 1,
 		},
-		["Hexweave Robe of the Fireflash"] = {
-			["mr"] = 194999999,
+		["Dark Frostscale Leggings"] = {
+			["mr"] = 1495000,
+			["sc"] = 3,
+			["id"] = "44436:0:0:0",
 			["cc"] = 4,
-			["id"] = "114813:0:6:0",
-			["H2090"] = 194999999,
-			["sc"] = 1,
+			["H2099"] = 1495000,
 		},
 		["Field Plate Leggings of the Bear"] = {
 			["mr"] = 2745996,
@@ -8015,19 +8387,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1835963,
 		},
-		["Pillager's Leggings of Strength"] = {
-			["mr"] = 11250000,
-			["sc"] = 3,
-			["id"] = "15561:0:0:-17",
-			["cc"] = 4,
-			["H2099"] = 11250000,
-		},
-		["Baradin Leggings of the Beast"] = {
-			["mr"] = 1658999,
+		["Egg-Warming Blanket of the Invoker"] = {
+			["mr"] = 75973172,
 			["sc"] = 1,
-			["id"] = "55751:0:0:-41",
+			["id"] = "44668:0:0:-39",
 			["cc"] = 4,
-			["H2099"] = 1658999,
+			["H2099"] = 75973172,
 		},
 		["Rylak Egg"] = {
 			["mr"] = 22400,
@@ -8036,76 +8401,68 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 7,
 			["H2099"] = 22400,
 		},
-		["Enchant Cloak - Defense"] = {
-			["H2100"] = 129095,
-			["cc"] = 8,
-			["id"] = "38806:0:0:0",
+		["Talondeep Legguards of the Monkey"] = {
+			["mr"] = 350577,
 			["sc"] = 3,
-			["mr"] = 129095,
-		},
-		["Everstill Leggings of the Eagle"] = {
-			["mr"] = 206146,
-			["sc"] = 1,
-			["id"] = "55754:0:0:-6",
+			["id"] = "55612:0:0:-5",
 			["cc"] = 4,
-			["H2099"] = 206146,
+			["H2099"] = 350577,
 		},
-		["Leggings of Lost Love"] = {
-			["mr"] = 449000,
-			["sc"] = 1,
-			["id"] = "45468:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 449000,
-		},
-		["Enchant Boots - Greater Haste"] = {
-			["mr"] = 100800,
-			["cc"] = 4,
-			["id"] = "74715:0:0:0",
-			["H2053"] = 100800,
-			["sc"] = 6,
-		},
-		["Webspinner Leggings of the Seer"] = {
-			["mr"] = 99996,
+		["Contender's Leather Leggings"] = {
+			["mr"] = 20069992,
 			["sc"] = 2,
-			["id"] = "36168:0:0:-37",
+			["id"] = "85803:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 99996,
+			["H2099"] = 20069992,
 		},
-		["Silent Leggings of the Ghostpaw"] = {
-			["mr"] = 10499996,
-			["sc"] = 2,
-			["id"] = "90720:0:0:0",
+		["Silvershell Leggings"] = {
+			["mr"] = 727695578,
+			["sc"] = 4,
+			["id"] = "10633:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 10499996,
+			["H2099"] = 727695578,
 		},
-		["Enchant Boots - Haste"] = {
-			["mr"] = 283365,
-			["cc"] = 4,
-			["id"] = "52750:0:0:0",
-			["H2053"] = 283365,
-			["sc"] = 6,
+		["Skullcrusher Mace of Intellect"] = {
+			["mr"] = 37999,
+			["cc"] = 2,
+			["H2084"] = 37999,
+			["id"] = "1608:0:0:-19",
+			["sc"] = 4,
 		},
-		["Skull of War"] = {
-			["mr"] = 370000000,
-			["cc"] = 4,
-			["id"] = "112318:0:6:0",
-			["H2088"] = 370000000,
-			["L2088"] = 29990000,
-			["sc"] = 0,
-		},
-		["Mighty Leggings of the Eagle"] = {
-			["mr"] = 1399905,
-			["sc"] = 2,
-			["id"] = "10152:0:0:-69",
-			["cc"] = 4,
-			["H2099"] = 1399905,
-		},
-		["Bluefen Leggings of the Flameblaze"] = {
-			["mr"] = 230127,
+		["Crafted Malevolent Gladiator's Mooncloth Leggings"] = {
+			["mr"] = 1789989,
 			["sc"] = 1,
-			["id"] = "55756:0:0:-114",
+			["id"] = "98867:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 230127,
+			["H2099"] = 1789989,
+		},
+		["Supreme Leggings of Agility"] = {
+			["mr"] = 349994,
+			["sc"] = 2,
+			["id"] = "15440:0:0:-18",
+			["cc"] = 4,
+			["H2099"] = 349994,
+		},
+		["Superior Healing Potion"] = {
+			["mr"] = 920,
+			["sc"] = 1,
+			["H2095"] = 920,
+			["id"] = "3928:0:0:0",
+			["cc"] = 0,
+		},
+		["Wolvar Legguards of the Seer"] = {
+			["mr"] = 1512499,
+			["sc"] = 3,
+			["id"] = "36256:0:0:-37",
+			["cc"] = 4,
+			["H2099"] = 1512499,
+		},
+		["Marshcreeper Leggings of the Bear"] = {
+			["mr"] = 711110,
+			["sc"] = 3,
+			["id"] = "24859:0:0:-7",
+			["cc"] = 4,
+			["H2099"] = 711110,
 		},
 		["Netherstorm Legguards of the Soldier"] = {
 			["mr"] = 349833,
@@ -8114,12 +8471,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 349833,
 		},
-		["Nifflevar Legguards of Stamina"] = {
-			["mr"] = 731126,
-			["sc"] = 3,
-			["id"] = "36208:0:0:-16",
+		["Bluefen Leggings of the Flameblaze"] = {
+			["mr"] = 230127,
+			["sc"] = 1,
+			["id"] = "55756:0:0:-114",
 			["cc"] = 4,
-			["H2099"] = 731126,
+			["H2099"] = 230127,
 		},
 		["Merciless Legguards of the Falcon"] = {
 			["mr"] = 13999986,
@@ -8128,12 +8485,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 13999986,
 		},
-		["Gronnling Legguards of the Feverflare"] = {
-			["mr"] = 1681436,
+		["Nifflevar Legguards of Stamina"] = {
+			["mr"] = 731126,
 			["sc"] = 3,
-			["id"] = "106453:0:0:0",
+			["id"] = "36208:0:0:-16",
 			["cc"] = 4,
-			["H2099"] = 1681436,
+			["H2099"] = 731126,
+		},
+		["Vicious Ornate Pyrium Legguards"] = {
+			["mr"] = 25003839,
+			["sc"] = 4,
+			["id"] = "75133:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 25003839,
+		},
+		["Tethys Leggings of the Sorcerer"] = {
+			["mr"] = 1750441,
+			["sc"] = 1,
+			["id"] = "36016:0:0:-36",
+			["cc"] = 4,
+			["H2099"] = 1750441,
 		},
 		["Flarecore Leggings"] = {
 			["mr"] = 85837918,
@@ -8149,12 +8520,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 698496,
 		},
-		["Golem Shard Leggings"] = {
-			["mr"] = 1499999,
-			["sc"] = 4,
-			["id"] = "13074:0:0:0",
+		["Rageclaw Leggings of the Falcon"] = {
+			["mr"] = 901741,
+			["sc"] = 2,
+			["id"] = "15385:0:0:-11",
 			["cc"] = 4,
-			["H2099"] = 1499999,
+			["H2099"] = 901741,
 		},
 		["Leggings of the Scorched Man"] = {
 			["mr"] = 7825876,
@@ -8163,12 +8534,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 7825876,
 		},
-		["Skettis Legguards of Strength"] = {
-			["mr"] = 1495481,
-			["sc"] = 3,
-			["id"] = "24891:0:0:-17",
+		["Blackskull Shield"] = {
+			["mr"] = 8670256,
 			["cc"] = 4,
-			["H2099"] = 1495481,
+			["H2084"] = 8670256,
+			["id"] = "1169:0:0:0",
+			["sc"] = 6,
 		},
 		["Ironhide Legguards of the Eagle"] = {
 			["mr"] = 5480632,
@@ -8177,19 +8548,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 5480632,
 		},
-		["Marshcreeper Leggings of the Bear"] = {
-			["mr"] = 711110,
+		["Yak Legguards of the Bandit"] = {
+			["mr"] = 255378,
 			["sc"] = 3,
-			["id"] = "24859:0:0:-7",
+			["id"] = "82246:0:0:-40",
 			["cc"] = 4,
-			["H2099"] = 711110,
+			["H2099"] = 255378,
 		},
-		["Embersilk Leggings of the Owl"] = {
-			["mr"] = 1642095,
-			["sc"] = 1,
-			["id"] = "14233:0:0:-9",
+		["Windripper Leggings"] = {
+			["mr"] = 95000000,
+			["sc"] = 2,
+			["id"] = "44931:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 1642095,
+			["H2099"] = 95000000,
 		},
 		["Webspinner Leggings of the Bandit"] = {
 			["mr"] = 99994,
@@ -8205,12 +8576,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1319532,
 		},
-		["Wanderer's Leggings of Spirit"] = {
-			["mr"] = 767941,
+		["Boarhide Leggings"] = {
+			["mr"] = 11860955,
 			["sc"] = 2,
-			["id"] = "10112:0:0:-15",
+			["id"] = "38513:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 767941,
+			["H2099"] = 11860955,
 		},
 		["Master's Leggings of the Falcon"] = {
 			["mr"] = 1427491,
@@ -8233,26 +8604,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["mr"] = 878744,
 		},
-		["Brightwood Leggings of the Beast"] = {
-			["mr"] = 698495,
+		["Fireheart Skullcap of the Owl"] = {
+			["mr"] = 2711069,
+			["cc"] = 4,
+			["H2084"] = 2711069,
+			["id"] = "24593:0:0:-9",
 			["sc"] = 1,
-			["id"] = "55753:0:0:-41",
-			["cc"] = 4,
-			["H2099"] = 698495,
 		},
-		["Tethys Leggings of the Sorcerer"] = {
-			["mr"] = 1750441,
-			["sc"] = 1,
-			["id"] = "36016:0:0:-36",
-			["cc"] = 4,
-			["H2099"] = 1750441,
+		["Skullcrusher Mace of Power"] = {
+			["mr"] = 78135,
+			["cc"] = 2,
+			["H2084"] = 78135,
+			["id"] = "1608:0:0:-20",
+			["sc"] = 4,
 		},
-		["Rageclaw Leggings of the Falcon"] = {
-			["mr"] = 901741,
-			["sc"] = 2,
-			["id"] = "15385:0:0:-11",
-			["cc"] = 4,
-			["H2099"] = 901741,
+		["Hemet's Heartseeker"] = {
+			["mr"] = 1597499,
+			["cc"] = 0,
+			["id"] = "118008:0:0:0",
+			["H2092"] = 1597499,
+			["sc"] = 0,
 		},
 		["Highland Legguards of the Fireflash"] = {
 			["mr"] = 439999,
@@ -8261,12 +8632,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 439999,
 		},
-		["Blackskull Shield"] = {
-			["mr"] = 8670256,
+		["Crafted Dreadful Gladiator's Linked Leggings"] = {
+			["mr"] = 45000000,
+			["sc"] = 3,
+			["id"] = "93587:0:0:0",
 			["cc"] = 4,
-			["H2084"] = 8670256,
-			["id"] = "1169:0:0:0",
-			["sc"] = 6,
+			["H2099"] = 45000000,
 		},
 		["Netherstorm Legguards of the Invoker"] = {
 			["mr"] = 797161,
@@ -8275,19 +8646,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 797161,
 		},
-		["Latent Kor'kron Leggings"] = {
-			["mr"] = 183532703,
-			["sc"] = 0,
-			["id"] = "97830:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 183532703,
-		},
-		["Solstice Staff of the Monkey"] = {
-			["mr"] = 99491,
-			["cc"] = 1,
-			["H1961"] = 99491,
-			["id"] = "15278:0:0:-78",
+		["Sorcerous Fire"] = {
+			["mr"] = 1320,
 			["sc"] = 10,
+			["H2114"] = 1320,
+			["id"] = "113261:0:0:0",
+			["cc"] = 7,
+		},
+		["Plans: Titanic Leggings"] = {
+			["mr"] = 389979887,
+			["sc"] = 4,
+			["id"] = "22388:0:0:0",
+			["cc"] = 9,
+			["H2099"] = 389979887,
 		},
 		["Netherstorm Legguards of Power"] = {
 			["mr"] = 149987,
@@ -8310,82 +8681,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2775947,
 		},
-		["Talondeep Legguards of the Monkey"] = {
-			["mr"] = 350577,
+		["Spiderlord Legguards of the Owl"] = {
+			["mr"] = 783900,
 			["sc"] = 3,
-			["id"] = "55612:0:0:-5",
+			["id"] = "36280:0:0:-9",
 			["cc"] = 4,
-			["H2099"] = 350577,
-		},
-		["Silvershell Leggings"] = {
-			["mr"] = 727695578,
-			["sc"] = 4,
-			["id"] = "10633:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 727695578,
-		},
-		["Warmonger's Leggings of the Wolf"] = {
-			["mr"] = 1606560,
-			["sc"] = 3,
-			["id"] = "9964:0:0:-13",
-			["cc"] = 4,
-			["H2099"] = 1606560,
-		},
-		["Skullcrusher Mace of Intellect"] = {
-			["mr"] = 37999,
-			["cc"] = 2,
-			["H2084"] = 37999,
-			["id"] = "1608:0:0:-19",
-			["sc"] = 4,
-		},
-		["Hexweave Belt of the Feverflare"] = {
-			["mr"] = 12000000,
-			["cc"] = 4,
-			["id"] = "114816:0:1:0",
-			["H2090"] = 12000000,
-			["sc"] = 1,
-		},
-		["Crafted Malevolent Gladiator's Mooncloth Leggings"] = {
-			["mr"] = 1789989,
-			["sc"] = 1,
-			["id"] = "98867:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 1789989,
-		},
-		["Leggings of the Sacred Crest"] = {
-			["mr"] = 998998,
-			["sc"] = 1,
-			["id"] = "31306:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 998998,
-		},
-		["Superior Healing Potion"] = {
-			["mr"] = 920,
-			["sc"] = 1,
-			["H2095"] = 920,
-			["id"] = "3928:0:0:0",
-			["cc"] = 0,
-		},
-		["Supreme Leggings of Agility"] = {
-			["mr"] = 349994,
-			["sc"] = 2,
-			["id"] = "15440:0:0:-18",
-			["cc"] = 4,
-			["H2099"] = 349994,
-		},
-		["Rigid Leggings of the Owl"] = {
-			["mr"] = 7510000,
-			["sc"] = 2,
-			["id"] = "15117:0:0:-9",
-			["cc"] = 4,
-			["H2099"] = 7510000,
-		},
-		["Wolvar Legguards of the Seer"] = {
-			["mr"] = 1512499,
-			["sc"] = 3,
-			["id"] = "36256:0:0:-37",
-			["cc"] = 4,
-			["H2099"] = 1512499,
+			["H2099"] = 783900,
 		},
 		["Wicked Chain Legguards of the Bear"] = {
 			["mr"] = 4223998,
@@ -8394,26 +8695,96 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 4223998,
 		},
-		["Formidable Legguards of the Whale"] = {
-			["mr"] = 24999999,
+		["Darkcore Leggings"] = {
+			["mr"] = 350000,
 			["sc"] = 3,
-			["id"] = "15637:0:0:-81",
+			["id"] = "45504:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 24999999,
+			["H2099"] = 350000,
 		},
-		["Vicious Ornate Pyrium Legguards"] = {
-			["mr"] = 25003839,
-			["sc"] = 4,
-			["id"] = "75133:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 25003839,
-		},
-		["Turtle Scale Leggings"] = {
-			["mr"] = 72303407,
+		["Ornate Legguards of the Owl"] = {
+			["mr"] = 1080526,
 			["sc"] = 3,
-			["id"] = "8185:0:0:0",
+			["id"] = "10124:0:0:-9",
 			["cc"] = 4,
-			["H2099"] = 72303407,
+			["H2099"] = 1080526,
+		},
+		["Hexweave Belt of the Feverflare"] = {
+			["mr"] = 12000000,
+			["cc"] = 4,
+			["id"] = "114816:0:1:0",
+			["H2090"] = 12000000,
+			["sc"] = 1,
+		},
+		["Thornsnarl Legguards of the Windflurry"] = {
+			["mr"] = 1405828,
+			["sc"] = 3,
+			["id"] = "55611:0:0:-135",
+			["cc"] = 4,
+			["H2099"] = 1405828,
+		},
+		["Leggings of the Sacred Crest"] = {
+			["mr"] = 998998,
+			["sc"] = 1,
+			["id"] = "31306:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 998998,
+		},
+		["Spiderlord Legguards of the Bear"] = {
+			["mr"] = 783900,
+			["sc"] = 3,
+			["id"] = "36280:0:0:-7",
+			["cc"] = 4,
+			["H2099"] = 783900,
+		},
+		["Skullsplitter Coin"] = {
+			["mr"] = 99999996,
+			["cc"] = 12,
+			["H2084"] = 99999996,
+			["id"] = "19705:0:0:0",
+			["sc"] = 0,
+		},
+		["Rigid Leggings of the Owl"] = {
+			["mr"] = 7510000,
+			["sc"] = 2,
+			["id"] = "15117:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 7510000,
+		},
+		["Meadowstomper Boots of the Aurora"] = {
+			["mr"] = 3674816,
+			["cc"] = 2,
+			["H1961"] = 3674816,
+			["id"] = "106730:0:0:0",
+			["sc"] = 3,
+		},
+		["Nagascale Legguards of the Elder"] = {
+			["mr"] = 92310000,
+			["sc"] = 3,
+			["id"] = "31243:0:0:-44",
+			["cc"] = 4,
+			["H2099"] = 92310000,
+		},
+		["Heavy Clefthoof Leggings"] = {
+			["mr"] = 93999999,
+			["sc"] = 2,
+			["id"] = "25690:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 93999999,
+		},
+		["Nightshade Leggings of the Eagle"] = {
+			["mr"] = 2571421,
+			["sc"] = 2,
+			["id"] = "10227:0:0:-69",
+			["cc"] = 4,
+			["H2099"] = 2571421,
+		},
+		["Laughing Skull Boots of the Prophet"] = {
+			["mr"] = 1250000,
+			["cc"] = 4,
+			["H2084"] = 1250000,
+			["id"] = "24606:0:0:-38",
+			["sc"] = 1,
 		},
 		["Infrablue-Blocker Lenses"] = {
 			["mr"] = 69979766,
@@ -8429,19 +8800,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 95000000,
 		},
-		["Sundered Legguards of Spirit"] = {
-			["mr"] = 1759000,
-			["sc"] = 3,
-			["id"] = "24899:0:0:-15",
+		["Laughing Skull Orb of Spirit"] = {
+			["mr"] = 1527730,
 			["cc"] = 4,
-			["H2099"] = 1759000,
-		},
-		["Hemet's Heartseeker"] = {
-			["mr"] = 1597499,
-			["cc"] = 0,
-			["id"] = "118008:0:0:0",
-			["H2092"] = 1597499,
+			["H2084"] = 1527730,
+			["id"] = "25088:0:0:-15",
 			["sc"] = 0,
+		},
+		["Spiderlord Legguards of Strength"] = {
+			["mr"] = 220000,
+			["sc"] = 3,
+			["id"] = "36280:0:0:-17",
+			["cc"] = 4,
+			["H2099"] = 220000,
 		},
 		["Talondeep Legguards of the Bandit"] = {
 			["mr"] = 380996,
@@ -8450,12 +8821,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 380996,
 		},
-		["Mystral Leggings of the Eagle"] = {
-			["mr"] = 265000,
+		["Tethys Leggings of the Prophet"] = {
+			["mr"] = 1371088,
 			["sc"] = 1,
-			["id"] = "55755:0:0:-6",
+			["id"] = "36016:0:0:-38",
 			["cc"] = 4,
-			["H2099"] = 265000,
+			["H2099"] = 1371088,
 		},
 		["Wyrmskull Breastplate of the Bear"] = {
 			["mr"] = 1950892,
@@ -8478,26 +8849,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "25155:0:0:-13",
 			["sc"] = 7,
 		},
-		["Ornate Legguards of the Falcon"] = {
-			["mr"] = 3550854,
-			["sc"] = 3,
-			["id"] = "10124:0:0:-11",
-			["cc"] = 4,
-			["H2099"] = 3550854,
-		},
-		["Tethys Leggings of the Prophet"] = {
-			["mr"] = 1371088,
-			["sc"] = 1,
-			["id"] = "36016:0:0:-38",
-			["cc"] = 4,
-			["H2099"] = 1371088,
-		},
 		["Red-Speckled Mushroom"] = {
 			["mr"] = 30000,
 			["cc"] = 4,
 			["H1961"] = 30000,
 			["id"] = "4605:0:0:0",
 			["sc"] = 1,
+		},
+		["Mighty Leggings of the Whale"] = {
+			["mr"] = 1399902,
+			["sc"] = 2,
+			["id"] = "10152:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 1399902,
+		},
+		["Ornate Legguards of the Falcon"] = {
+			["mr"] = 3550854,
+			["sc"] = 3,
+			["id"] = "10124:0:0:-11",
+			["cc"] = 4,
+			["H2099"] = 3550854,
 		},
 		["Traveler's Helm"] = {
 			["mr"] = 8980000,
@@ -8506,13 +8877,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "8299:0:0:0",
 			["sc"] = 3,
 		},
-		["Ghostly Skull"] = {
-			["mr"] = 3734999,
-			["cc"] = 17,
-			["H2084"] = 60000000,
-			["id"] = "190:1",
+		["Four of Hellfire"] = {
+			["mr"] = 199999999,
+			["cc"] = 12,
+			["H2121"] = 199999999,
+			["id"] = "128741:0:0:0",
 			["sc"] = 0,
-			["L2084"] = 3734999,
 		},
 		["Slayer's Skullcap"] = {
 			["mr"] = 3999999,
@@ -8528,12 +8898,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 45000000,
 		},
-		["Belt of Ghostly Graces"] = {
-			["mr"] = 1857498,
-			["cc"] = 2,
-			["H1961"] = 1857498,
-			["id"] = "78886:0:0:0",
-			["sc"] = 4,
+		["Mystral Leggings of the Eagle"] = {
+			["mr"] = 265000,
+			["sc"] = 1,
+			["id"] = "55755:0:0:-6",
+			["cc"] = 4,
+			["H2099"] = 265000,
 		},
 		["Bloodscale Legguards of the Falcon"] = {
 			["mr"] = 7250000,
@@ -8542,19 +8912,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 7250000,
 		},
-		["Mighty Leggings of the Whale"] = {
-			["mr"] = 1399902,
-			["sc"] = 2,
-			["id"] = "10152:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 1399902,
-		},
-		["Skullcrusher Mace of Power"] = {
-			["mr"] = 78135,
-			["cc"] = 2,
-			["H2084"] = 78135,
-			["id"] = "1608:0:0:-20",
+		["Revenant Legguards of the Owl"] = {
+			["mr"] = 540283,
 			["sc"] = 4,
+			["id"] = "36392:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 540283,
+		},
+		["Vicious Pyrium Legguards"] = {
+			["mr"] = 19999945,
+			["sc"] = 4,
+			["id"] = "75136:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 19999945,
 		},
 		["Steppe Legguards of the Monkey"] = {
 			["mr"] = 2918457,
@@ -8563,26 +8933,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2918457,
 		},
-		["Windripper Leggings"] = {
-			["mr"] = 95000000,
+		["Adventurer's Legguards of the Gorilla"] = {
+			["mr"] = 1971230,
 			["sc"] = 2,
-			["id"] = "44931:0:0:0",
+			["id"] = "10262:0:0:-10",
 			["cc"] = 4,
-			["H2099"] = 95000000,
+			["H2099"] = 1971230,
 		},
-		["Crafted Malevolent Gladiator's Kodohide Legguards"] = {
-			["mr"] = 45000000,
-			["sc"] = 2,
-			["id"] = "98799:0:0:0",
+		["Tough Scorpid Leggings"] = {
+			["mr"] = 21979998,
+			["sc"] = 3,
+			["id"] = "8206:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 45000000,
+			["H2099"] = 21979998,
 		},
-		["Plans: Titanic Leggings"] = {
-			["mr"] = 389979887,
-			["sc"] = 4,
-			["id"] = "22388:0:0:0",
-			["cc"] = 9,
-			["H2099"] = 389979887,
+		["Fortified Leggings of the Boar"] = {
+			["mr"] = 465185,
+			["sc"] = 3,
+			["id"] = "9815:0:0:-12",
+			["cc"] = 4,
+			["H2099"] = 465185,
 		},
 		["Talador Orchid"] = {
 			["mr"] = 7894,
@@ -8591,12 +8961,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2056"] = 7894,
 			["sc"] = 6,
 		},
-		["Battleforge Legguards of the Whale"] = {
-			["mr"] = 2809527,
-			["sc"] = 3,
-			["id"] = "6596:0:0:-81",
+		["Unbridled Leggings"] = {
+			["mr"] = 588339,
+			["sc"] = 2,
+			["id"] = "18298:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 2809527,
+			["H2099"] = 588339,
 		},
 		["Frostpaw Legguards of Frost Protection"] = {
 			["mr"] = 740000,
@@ -8605,12 +8975,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 740000,
 		},
-		["Spiderlord Legguards of Strength"] = {
-			["mr"] = 220000,
+		["Protector Legguards"] = {
+			["mr"] = 13990000,
 			["sc"] = 3,
-			["id"] = "36280:0:0:-17",
+			["id"] = "14796:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 220000,
+			["H2099"] = 13990000,
 		},
 		["Ironspine Legguards of the Eagle"] = {
 			["mr"] = 4246986,
@@ -8654,12 +9024,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2095"] = 27000000,
 			["sc"] = 11,
 		},
-		["Battered Saurscale Leggings of the Bandit"] = {
-			["mr"] = 1168675,
-			["sc"] = 3,
-			["id"] = "94053:0:0:-40",
+		["Skullcage of Eternal Terror"] = {
+			["mr"] = 627000,
 			["cc"] = 4,
-			["H2099"] = 1168675,
+			["H2084"] = 627000,
+			["id"] = "37793:0:0:0",
+			["sc"] = 4,
 		},
 		["Enchant Gloves - Greater Haste"] = {
 			["mr"] = 1852489,
@@ -8696,12 +9066,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-24",
 			["sc"] = 2,
 		},
-		["Spiderlord Legguards of the Owl"] = {
-			["mr"] = 783900,
-			["sc"] = 3,
-			["id"] = "36280:0:0:-9",
+		["Revenant Legguards of the Bear"] = {
+			["mr"] = 278999,
+			["sc"] = 4,
+			["id"] = "36392:0:0:-7",
 			["cc"] = 4,
-			["H2099"] = 783900,
+			["H2099"] = 278999,
 		},
 		["Dark Iron Leggings"] = {
 			["mr"] = 132432874,
@@ -8710,75 +9080,75 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 132432874,
 		},
-		["Spiderlord Legguards of the Bear"] = {
-			["mr"] = 783900,
+		["Netherstorm Legguards of the Whale"] = {
+			["mr"] = 289183,
 			["sc"] = 3,
-			["id"] = "36280:0:0:-7",
+			["id"] = "24915:0:0:-8",
 			["cc"] = 4,
-			["H2099"] = 783900,
+			["H2099"] = 289183,
 		},
-		["Darkcore Leggings"] = {
-			["mr"] = 350000,
+		["Master's Leggings of Intellect"] = {
+			["mr"] = 1417483,
+			["sc"] = 1,
+			["id"] = "10252:0:0:-19",
+			["cc"] = 4,
+			["H2099"] = 1417483,
+		},
+		["Wyrmskull Epaulets of the Seer"] = {
+			["mr"] = 1867211,
+			["cc"] = 4,
+			["H2084"] = 1867211,
+			["id"] = "36321:0:0:-37",
+			["sc"] = 4,
+		},
+		["Northern Egg"] = {
+			["mr"] = 4300,
+			["sc"] = 8,
+			["id"] = "43501:0:0:0",
+			["cc"] = 7,
+			["H2099"] = 4300,
+		},
+		["Bulging Barrel of Oil"] = {
+			["H2077"] = 1127500,
+			["mr"] = 1127500,
+			["sc"] = 0,
+			["id"] = "128316:0:0:0",
+			["cc"] = 15,
+		},
+		["Nazferiti Legguards of the Galeburst"] = {
+			["mr"] = 701976,
 			["sc"] = 3,
-			["id"] = "45504:0:0:0",
+			["id"] = "55605:0:0:-134",
 			["cc"] = 4,
-			["H2099"] = 350000,
+			["H2099"] = 701976,
 		},
-		["Meadowstomper Boots of the Aurora"] = {
-			["mr"] = 3674816,
-			["cc"] = 2,
-			["H1961"] = 3674816,
-			["id"] = "106730:0:0:0",
-			["sc"] = 3,
-		},
-		["Ornate Legguards of the Owl"] = {
-			["mr"] = 1080526,
-			["sc"] = 3,
-			["id"] = "10124:0:0:-9",
+		["Hellfire Tome"] = {
+			["mr"] = 1000000,
 			["cc"] = 4,
-			["H2099"] = 1080526,
-		},
-		["Nightshade Leggings of the Eagle"] = {
-			["mr"] = 2571421,
-			["sc"] = 2,
-			["id"] = "10227:0:0:-69",
-			["cc"] = 4,
-			["H2099"] = 2571421,
-		},
-		["Thornsnarl Legguards of the Windflurry"] = {
-			["mr"] = 1405828,
-			["sc"] = 3,
-			["id"] = "55611:0:0:-135",
-			["cc"] = 4,
-			["H2099"] = 1405828,
-		},
-		["Glyph of the Flapping Owl"] = {
-			["mr"] = 331491,
-			["cc"] = 5,
-			["H1961"] = 331491,
-			["id"] = "118573:0:0:0",
-			["sc"] = 11,
-		},
-		["Skullsplitter Coin"] = {
-			["mr"] = 99999996,
-			["cc"] = 12,
-			["H2084"] = 99999996,
-			["id"] = "19705:0:0:0",
+			["H2121"] = 1000000,
+			["id"] = "43666:0:0:0",
 			["sc"] = 0,
 		},
-		["Galardell Leggings of the Invoker"] = {
-			["mr"] = 500000,
-			["sc"] = 1,
-			["id"] = "55757:0:0:-39",
+		["Glyphed Leggings"] = {
+			["mr"] = 954622,
+			["sc"] = 2,
+			["id"] = "4060:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 500000,
+			["H2099"] = 954622,
 		},
-		["Nagascale Legguards of the Elder"] = {
-			["mr"] = 92310000,
-			["sc"] = 3,
-			["id"] = "31243:0:0:-44",
+		["Mighty Leggings of the Gorilla"] = {
+			["mr"] = 1414912,
+			["sc"] = 2,
+			["id"] = "10152:0:0:-10",
 			["cc"] = 4,
-			["H2099"] = 92310000,
+			["H2099"] = 1414912,
+		},
+		["Der'izu Legguards of Fire Protection"] = {
+			["mr"] = 868836,
+			["sc"] = 3,
+			["id"] = "24883:0:0:-32",
+			["cc"] = 4,
+			["H2099"] = 868836,
 		},
 		["Mountain Legguards of the Bandit"] = {
 			["mr"] = 220000,
@@ -8794,12 +9164,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1841338,
 		},
-		["Laughing Skull Boots of the Prophet"] = {
-			["mr"] = 1250000,
+		["Defender Leggings of the Whale"] = {
+			["mr"] = 210997,
+			["sc"] = 3,
+			["id"] = "6578:0:0:-81",
 			["cc"] = 4,
-			["H2084"] = 1250000,
-			["id"] = "24606:0:0:-38",
-			["sc"] = 1,
+			["H2099"] = 210997,
 		},
 		["Protector's Trillium Legguards"] = {
 			["mr"] = 105005644,
@@ -8808,12 +9178,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 105005644,
 		},
-		["Skullcage of Eternal Terror"] = {
-			["mr"] = 627000,
+		["Vileprey Leggings of Strength"] = {
+			["mr"] = 1982635,
+			["sc"] = 2,
+			["id"] = "36112:0:0:-17",
 			["cc"] = 4,
-			["H2084"] = 627000,
-			["id"] = "37793:0:0:0",
-			["sc"] = 4,
+			["H2099"] = 1982635,
 		},
 		["Praetorian Leggings of the Monkey"] = {
 			["mr"] = 1069984,
@@ -8822,12 +9192,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1069984,
 		},
-		["Bloodspore Leggings of Intellect"] = {
-			["mr"] = 332681,
+		["Crystalsong Leggings of the Sorcerer"] = {
+			["mr"] = 315119,
 			["sc"] = 1,
-			["id"] = "35968:0:0:-23",
+			["id"] = "36048:0:0:-36",
 			["cc"] = 4,
-			["H2099"] = 332681,
+			["H2099"] = 315119,
 		},
 		["Forgotten Peacekeeper Leggings of the Mercenary"] = {
 			["mr"] = 1605486,
@@ -8843,12 +9213,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 6205765,
 		},
-		["Champion's Honor"] = {
-			["mr"] = 94980000,
-			["cc"] = 9,
-			["id"] = "128430:0:0:0",
-			["H2007"] = 94980000,
+		["Bloodspore Leggings of Intellect"] = {
+			["mr"] = 332681,
 			["sc"] = 1,
+			["id"] = "35968:0:0:-23",
+			["cc"] = 4,
+			["H2099"] = 332681,
 		},
 		["Red Moth Egg"] = {
 			["mr"] = 349000,
@@ -8878,12 +9248,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "13102:0:0:0",
 			["sc"] = 2,
 		},
-		["Cabalist Leggings of Power"] = {
-			["mr"] = 2195370,
-			["sc"] = 2,
-			["id"] = "7528:0:0:-20",
+		["Highperch Legguards of the Marksman"] = {
+			["mr"] = 243440,
+			["sc"] = 3,
+			["id"] = "55610:0:0:-91",
 			["cc"] = 4,
-			["H2099"] = 2195370,
+			["H2099"] = 243440,
 		},
 		["Graced Scepter of Spirit"] = {
 			["mr"] = 686219,
@@ -8892,19 +9262,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36696:0:0:-15",
 			["sc"] = 5,
 		},
-		["Adventurer's Legguards of the Gorilla"] = {
-			["mr"] = 1971230,
-			["sc"] = 2,
-			["id"] = "10262:0:0:-10",
-			["cc"] = 4,
-			["H2099"] = 1971230,
-		},
-		["Tough Scorpid Leggings"] = {
-			["mr"] = 21979998,
+		["Magnificent Leggings of Power"] = {
+			["mr"] = 2884297,
 			["sc"] = 3,
-			["id"] = "8206:0:0:0",
+			["id"] = "15676:0:0:-20",
 			["cc"] = 4,
-			["H2099"] = 21979998,
+			["H2099"] = 2884297,
+		},
+		["Talhide Lined-Leggings of the Soldier"] = {
+			["mr"] = 633954,
+			["sc"] = 3,
+			["id"] = "24907:0:0:-43",
+			["cc"] = 4,
+			["H2099"] = 633954,
 		},
 		["Elementalist Skullcap of the Owl"] = {
 			["mr"] = 282367,
@@ -8920,224 +9290,6 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 12,
 			["H2099"] = 84500,
 		},
-		["Chimeric Leggings"] = {
-			["mr"] = 20605125,
-			["sc"] = 2,
-			["id"] = "15072:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 20605125,
-		},
-		["Ironhide Legguards of Power"] = {
-			["mr"] = 4288273,
-			["sc"] = 3,
-			["id"] = "15646:0:0:-20",
-			["cc"] = 4,
-			["H2099"] = 4288273,
-		},
-		["Shifting Taladite Pendant of the Savage"] = {
-			["mr"] = 329900000,
-			["cc"] = 2,
-			["H1961"] = 329900000,
-			["id"] = "115800:0:6:0",
-			["sc"] = 1,
-		},
-		["Skettis Legguards of Stamina"] = {
-			["mr"] = 1495487,
-			["sc"] = 3,
-			["id"] = "24891:0:0:-16",
-			["cc"] = 4,
-			["H2099"] = 1495487,
-		},
-		["Nocturnal Leggings of the Eagle"] = {
-			["mr"] = 3745561,
-			["sc"] = 2,
-			["id"] = "15157:0:0:-69",
-			["cc"] = 4,
-			["H2099"] = 3745561,
-		},
-		["Revenant Legguards of the Bear"] = {
-			["mr"] = 278999,
-			["sc"] = 4,
-			["id"] = "36392:0:0:-7",
-			["cc"] = 4,
-			["H2099"] = 278999,
-		},
-		["Misthide Leggings of the Zephyr"] = {
-			["mr"] = 2020000,
-			["sc"] = 2,
-			["id"] = "90491:0:0:-136",
-			["cc"] = 4,
-			["H2099"] = 2020000,
-		},
-		["Elekk Hide Leggings"] = {
-			["mr"] = 1227396,
-			["sc"] = 2,
-			["id"] = "31237:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 1227396,
-		},
-		["Vizier Leggings of the Sorcerer"] = {
-			["mr"] = 124995,
-			["sc"] = 1,
-			["id"] = "36056:0:0:-36",
-			["cc"] = 4,
-			["H2099"] = 124995,
-		},
-		["Geist Legguards of the Seer"] = {
-			["mr"] = 317300,
-			["sc"] = 2,
-			["id"] = "36176:0:0:-37",
-			["cc"] = 4,
-			["H2099"] = 317300,
-		},
-		["Der'izu Legguards of the Tiger"] = {
-			["mr"] = 1200000,
-			["sc"] = 3,
-			["id"] = "24883:0:0:-14",
-			["cc"] = 4,
-			["H2099"] = 1200000,
-		},
-		["Marauder's Leggings of the Bear"] = {
-			["mr"] = 654997,
-			["sc"] = 3,
-			["id"] = "15573:0:0:-68",
-			["cc"] = 4,
-			["H2099"] = 654997,
-		},
-		["Gothic Plate Leggings of the Whale"] = {
-			["mr"] = 2874124,
-			["sc"] = 4,
-			["id"] = "10091:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 2874124,
-		},
-		["Wyrmskull Epaulets of the Seer"] = {
-			["mr"] = 1867211,
-			["cc"] = 4,
-			["H2084"] = 1867211,
-			["id"] = "36321:0:0:-37",
-			["sc"] = 4,
-		},
-		["Traveler's Cloak"] = {
-			["mr"] = 36961990,
-			["cc"] = 2,
-			["H1961"] = 36961990,
-			["id"] = "8297:0:0:0",
-			["sc"] = 2,
-		},
-		["Curse-Tainted Leggings"] = {
-			["mr"] = 841996,
-			["sc"] = 1,
-			["id"] = "56218:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 841996,
-		},
-		["Nazferiti Legguards of the Galeburst"] = {
-			["mr"] = 701976,
-			["sc"] = 3,
-			["id"] = "55605:0:0:-134",
-			["cc"] = 4,
-			["H2099"] = 701976,
-		},
-		["Southfury Legguards of the Bandit"] = {
-			["mr"] = 1175000,
-			["sc"] = 3,
-			["id"] = "55606:0:0:-40",
-			["cc"] = 4,
-			["H2099"] = 1175000,
-		},
-		["Mighty Leggings of the Gorilla"] = {
-			["mr"] = 1414912,
-			["sc"] = 2,
-			["id"] = "10152:0:0:-10",
-			["cc"] = 4,
-			["H2099"] = 1414912,
-		},
-		["Der'izu Legguards of Fire Protection"] = {
-			["mr"] = 868836,
-			["sc"] = 3,
-			["id"] = "24883:0:0:-32",
-			["cc"] = 4,
-			["H2099"] = 868836,
-		},
-		["Defender Leggings of the Whale"] = {
-			["mr"] = 210997,
-			["sc"] = 3,
-			["id"] = "6578:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 210997,
-		},
-		["Righteous Leggings of Intellect"] = {
-			["mr"] = 1206358,
-			["sc"] = 2,
-			["id"] = "10074:0:0:-19",
-			["cc"] = 4,
-			["H2099"] = 1206358,
-		},
-		["Super Healing Potion"] = {
-			["mr"] = 5800,
-			["sc"] = 1,
-			["H2095"] = 5800,
-			["id"] = "22829:0:0:0",
-			["cc"] = 0,
-		},
-		["Thornsnarl Legguards of the Marksman"] = {
-			["mr"] = 385994,
-			["sc"] = 3,
-			["id"] = "55611:0:0:-91",
-			["cc"] = 4,
-			["H2099"] = 385994,
-		},
-		["Vileprey Leggings of Strength"] = {
-			["mr"] = 1982635,
-			["sc"] = 2,
-			["id"] = "36112:0:0:-17",
-			["cc"] = 4,
-			["H2099"] = 1982635,
-		},
-		["Replica Sorcerer's Leggings"] = {
-			["mr"] = 150000000,
-			["sc"] = 1,
-			["id"] = "78199:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 150000000,
-		},
-		["Supple Vest of the Savage"] = {
-			["mr"] = 2924996,
-			["cc"] = 2,
-			["H1961"] = 330000000,
-			["id"] = "116180:0:1:0",
-			["sc"] = 3,
-			["L1961"] = 2924996,
-		},
-		["Highperch Legguards of the Marksman"] = {
-			["mr"] = 243440,
-			["sc"] = 3,
-			["id"] = "55610:0:0:-91",
-			["cc"] = 4,
-			["H2099"] = 243440,
-		},
-		["Laughing Skull Waistguard of Spirit"] = {
-			["mr"] = 3483086,
-			["cc"] = 4,
-			["H2084"] = 3483086,
-			["id"] = "24605:0:0:-15",
-			["sc"] = 1,
-		},
-		["Stormhide Legguards"] = {
-			["mr"] = 45000000,
-			["sc"] = 3,
-			["id"] = "43456:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 45000000,
-		},
-		["Sandstalker Bracers"] = {
-			["mr"] = 5759999,
-			["sc"] = 3,
-			["id"] = "20476:0:0:0",
-			["H2090"] = 5759999,
-			["cc"] = 4,
-		},
 		["Bluefen Leggings of the Eagle"] = {
 			["mr"] = 263395,
 			["sc"] = 1,
@@ -9152,12 +9304,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "106736:0:0:0",
 			["sc"] = 3,
 		},
+		["Shifting Taladite Pendant of the Savage"] = {
+			["mr"] = 329900000,
+			["cc"] = 2,
+			["H1961"] = 329900000,
+			["id"] = "115800:0:6:0",
+			["sc"] = 1,
+		},
 		["Fireheart Skullcap of the Sorcerer"] = {
 			["mr"] = 2608208,
 			["cc"] = 4,
 			["H2084"] = 2608208,
 			["id"] = "24593:0:0:-36",
 			["sc"] = 1,
+		},
+		["Nocturnal Leggings of the Eagle"] = {
+			["mr"] = 3745561,
+			["sc"] = 2,
+			["id"] = "15157:0:0:-69",
+			["cc"] = 4,
+			["H2099"] = 3745561,
 		},
 		["Warbringer's Legguards of the Monkey"] = {
 			["mr"] = 1069998,
@@ -9166,12 +9332,217 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1069998,
 		},
+		["Curse-Tainted Leggings"] = {
+			["mr"] = 841996,
+			["sc"] = 1,
+			["id"] = "56218:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 841996,
+		},
+		["Elekk Hide Leggings"] = {
+			["mr"] = 1227396,
+			["sc"] = 2,
+			["id"] = "31237:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 1227396,
+		},
+		["Grand Legguards of the Owl"] = {
+			["mr"] = 1139864,
+			["sc"] = 2,
+			["id"] = "15194:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 1139864,
+		},
+		["Geist Legguards of the Seer"] = {
+			["mr"] = 317300,
+			["sc"] = 2,
+			["id"] = "36176:0:0:-37",
+			["cc"] = 4,
+			["H2099"] = 317300,
+		},
+		["Vizier Leggings of the Sorcerer"] = {
+			["mr"] = 124995,
+			["sc"] = 1,
+			["id"] = "36056:0:0:-36",
+			["cc"] = 4,
+			["H2099"] = 124995,
+		},
+		["Marauder's Leggings of the Bear"] = {
+			["mr"] = 654997,
+			["sc"] = 3,
+			["id"] = "15573:0:0:-68",
+			["cc"] = 4,
+			["H2099"] = 654997,
+		},
+		["Laughing Skull Shoulderpads of the Seer"] = {
+			["mr"] = 5299936,
+			["cc"] = 4,
+			["H2084"] = 5299936,
+			["id"] = "24611:0:0:-37",
+			["sc"] = 1,
+		},
+		["Boneshredder Skullcap of the Falcon"] = {
+			["mr"] = 1056915,
+			["cc"] = 4,
+			["H2084"] = 1056915,
+			["id"] = "24777:0:0:-11",
+			["sc"] = 2,
+		},
+		["Traveler's Cloak"] = {
+			["mr"] = 36961990,
+			["cc"] = 2,
+			["H1961"] = 36961990,
+			["id"] = "8297:0:0:0",
+			["sc"] = 2,
+		},
+		["Stormforged Legguards"] = {
+			["mr"] = 700000,
+			["sc"] = 4,
+			["id"] = "55038:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 700000,
+		},
+		["Primal Leggings of the Falcon"] = {
+			["mr"] = 2379464,
+			["sc"] = 2,
+			["id"] = "15009:0:0:-11",
+			["cc"] = 4,
+			["H2099"] = 2379464,
+		},
+		["Raider's Legguards of the Gorilla"] = {
+			["mr"] = 1245516,
+			["sc"] = 3,
+			["id"] = "9789:0:0:-10",
+			["cc"] = 4,
+			["H2099"] = 1245516,
+		},
+		["Elegant Leggings of Nature Resistance"] = {
+			["mr"] = 5250000,
+			["sc"] = 1,
+			["id"] = "10217:0:0:-328",
+			["cc"] = 4,
+			["H2099"] = 5250000,
+		},
+		["Enchant Gloves - Haste"] = {
+			["mr"] = 147000,
+			["cc"] = 4,
+			["id"] = "52749:0:0:0",
+			["L2053"] = 147000,
+			["H2053"] = 688734,
+			["sc"] = 6,
+		},
+		["Grimscale Legguards of the Falcon"] = {
+			["mr"] = 1199999,
+			["sc"] = 4,
+			["id"] = "24923:0:0:-11",
+			["cc"] = 4,
+			["H2099"] = 1199999,
+		},
+		["Righteous Leggings of Intellect"] = {
+			["mr"] = 1206358,
+			["sc"] = 2,
+			["id"] = "10074:0:0:-19",
+			["cc"] = 4,
+			["H2099"] = 1206358,
+		},
+		["Supple Vest of the Savage"] = {
+			["mr"] = 2924996,
+			["cc"] = 2,
+			["H1961"] = 330000000,
+			["id"] = "116180:0:1:0",
+			["sc"] = 3,
+			["L1961"] = 2924996,
+		},
+		["Thornsnarl Legguards of the Marksman"] = {
+			["mr"] = 385994,
+			["sc"] = 3,
+			["id"] = "55611:0:0:-91",
+			["cc"] = 4,
+			["H2099"] = 385994,
+		},
+		["Crafted Dreadful Gladiator's Dragonhide Legguards"] = {
+			["mr"] = 44999999,
+			["sc"] = 2,
+			["id"] = "93460:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 44999999,
+		},
+		["Replica Sorcerer's Leggings"] = {
+			["mr"] = 150000000,
+			["sc"] = 1,
+			["id"] = "78199:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 150000000,
+		},
+		["Radiant Leggings"] = {
+			["mr"] = 13924542,
+			["sc"] = 3,
+			["id"] = "12420:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 13924542,
+		},
+		["Chain Gang Legguards"] = {
+			["mr"] = 12717664,
+			["sc"] = 2,
+			["id"] = "37890:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 12717664,
+		},
+		["Elegant Leggings of the Owl"] = {
+			["mr"] = 5250000,
+			["sc"] = 1,
+			["id"] = "10217:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 5250000,
+		},
+		["Laughing Skull Gloves of Intellect"] = {
+			["mr"] = 1468892,
+			["cc"] = 4,
+			["H2084"] = 1468892,
+			["id"] = "24608:0:0:-19",
+			["sc"] = 1,
+		},
+		["Sandstalker Bracers"] = {
+			["mr"] = 5759999,
+			["sc"] = 3,
+			["id"] = "20476:0:0:0",
+			["H2090"] = 5759999,
+			["cc"] = 4,
+		},
+		["Wrathfin Legguards of the Bear"] = {
+			["mr"] = 1099222,
+			["sc"] = 3,
+			["id"] = "24843:0:0:-7",
+			["cc"] = 4,
+			["H2099"] = 1099222,
+		},
 		["Stitched Leggings of the Sorcerer"] = {
 			["mr"] = 1321065,
 			["sc"] = 1,
 			["id"] = "81968:0:0:-36",
 			["cc"] = 4,
 			["H2099"] = 1321065,
+		},
+		["Frostsaber Leggings"] = {
+			["mr"] = 45000000,
+			["sc"] = 2,
+			["id"] = "15069:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 45000000,
+		},
+		["Ravendown Leggings of the Fireflash"] = {
+			["mr"] = 4308114,
+			["sc"] = 1,
+			["id"] = "106608:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 4308114,
+		},
+		["Wendigo Legguards of the Tiger"] = {
+			["mr"] = 665292,
+			["sc"] = 2,
+			["id"] = "36160:0:0:-14",
+			["cc"] = 4,
+			["H2099"] = 665292,
 		},
 		["Darrowmere Leggings of the Flameblaze"] = {
 			["mr"] = 2490000,
@@ -9208,19 +9579,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 34668993,
 		},
-		["Heraldic Leggings"] = {
-			["mr"] = 1630704,
-			["sc"] = 2,
-			["id"] = "8123:0:0:0",
+		["Leggings of Dubious Charms"] = {
+			["mr"] = 1140000,
+			["sc"] = 3,
+			["id"] = "50450:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 1630704,
+			["H2099"] = 1140000,
 		},
-		["Embersilk Leggings of the Falcon"] = {
-			["mr"] = 349999,
-			["sc"] = 1,
-			["id"] = "14233:0:0:-11",
-			["cc"] = 4,
-			["H2099"] = 349999,
+		["Haste Taladite"] = {
+			["mr"] = 139000,
+			["sc"] = 9,
+			["id"] = "115804:0:0:0",
+			["H2053"] = 139000,
+			["cc"] = 8,
 		},
 		["Engraved Leggings of the Eagle"] = {
 			["mr"] = 455823,
@@ -9229,12 +9600,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 455823,
 		},
-		["Boneshredder Skullcap of the Falcon"] = {
-			["mr"] = 1056915,
-			["cc"] = 4,
-			["H2084"] = 1056915,
-			["id"] = "24777:0:0:-11",
-			["sc"] = 2,
+		["Glyph of the Solstice"] = {
+			["mr"] = 889997,
+			["cc"] = 5,
+			["H1961"] = 889997,
+			["id"] = "118061:0:0:0",
+			["sc"] = 11,
 		},
 		["Sandman's Pouch"] = {
 			["mr"] = 430000000,
@@ -9244,12 +9615,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2090"] = 430000000,
 			["L2090"] = 32400000,
 		},
-		["Stormforged Legguards"] = {
-			["mr"] = 700000,
-			["sc"] = 4,
-			["id"] = "55038:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 700000,
+		["Pattern: Volcanic Leggings"] = {
+			["mr"] = 343535860,
+			["sc"] = 1,
+			["id"] = "15732:0:0:0",
+			["cc"] = 9,
+			["H2099"] = 343535860,
 		},
 		["Brittle Flamereaver Leggings of the Monkey"] = {
 			["mr"] = 2009354,
@@ -9265,12 +9636,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2007813,
 		},
-		["Primal Leggings of the Falcon"] = {
-			["mr"] = 2379464,
-			["sc"] = 2,
-			["id"] = "15009:0:0:-11",
+		["Jazeraint Leggings of the Monkey"] = {
+			["mr"] = 748999,
+			["sc"] = 3,
+			["id"] = "9903:0:0:-78",
 			["cc"] = 4,
-			["H2099"] = 2379464,
+			["H2099"] = 748999,
 		},
 		["Legguards of Brutalization"] = {
 			["mr"] = 11990000,
@@ -9300,12 +9671,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["mr"] = 11600,
 			["sc"] = 5,
 		},
-		["Revenant Legguards of Fire Protection"] = {
-			["mr"] = 203477,
-			["sc"] = 4,
-			["id"] = "36392:0:0:-32",
+		["Crafted Dreadful Gladiator's Ringmail Leggings"] = {
+			["mr"] = 39499999,
+			["sc"] = 3,
+			["id"] = "93582:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 203477,
+			["H2099"] = 39499999,
 		},
 		["Boneshredder Skullcap of Nimbleness"] = {
 			["mr"] = 1888816,
@@ -9321,19 +9692,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2100"] = 636039,
 			["sc"] = 3,
 		},
-		["Raider's Legguards of the Gorilla"] = {
-			["mr"] = 1245516,
-			["sc"] = 3,
-			["id"] = "9789:0:0:-10",
-			["cc"] = 4,
-			["H2099"] = 1245516,
-		},
-		["Elegant Leggings of Nature Resistance"] = {
-			["mr"] = 5250000,
+		["Sunscryer Leggings of the Aurora"] = {
+			["mr"] = 3978095,
 			["sc"] = 1,
-			["id"] = "10217:0:0:-328",
+			["id"] = "106641:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 5250000,
+			["H2099"] = 3978095,
+		},
+		["Skullcrusher Mace of Stamina"] = {
+			["mr"] = 111452,
+			["cc"] = 2,
+			["H2084"] = 111452,
+			["id"] = "1608:0:0:-84",
+			["sc"] = 4,
 		},
 		["Heroic Skullcap of the Tiger"] = {
 			["mr"] = 344444,
@@ -9342,13 +9713,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "14935:0:0:-14",
 			["sc"] = 4,
 		},
-		["Enchant Gloves - Haste"] = {
-			["mr"] = 147000,
+		["Myrmidon's Leggings"] = {
+			["mr"] = 391000,
+			["sc"] = 3,
+			["id"] = "8132:0:0:0",
 			["cc"] = 4,
-			["id"] = "52749:0:0:0",
-			["L2053"] = 147000,
-			["H2053"] = 688734,
-			["sc"] = 6,
+			["H2099"] = 391000,
 		},
 		["Skullance Shield"] = {
 			["mr"] = 1460595,
@@ -9357,12 +9727,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "13081:0:0:0",
 			["sc"] = 6,
 		},
-		["Adventurer's Legguards of the Owl"] = {
-			["mr"] = 999000,
-			["sc"] = 2,
-			["id"] = "10262:0:0:-9",
+		["Snake Legguards of the Undertow"] = {
+			["mr"] = 3466846,
+			["sc"] = 3,
+			["id"] = "82081:0:0:-131",
 			["cc"] = 4,
-			["H2099"] = 999000,
+			["H2099"] = 3466846,
 		},
 		["Wizardweave Leggings"] = {
 			["mr"] = 1627500,
@@ -9371,26 +9741,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1627500,
 		},
-		["Elegant Leggings of the Owl"] = {
-			["mr"] = 5250000,
-			["sc"] = 1,
-			["id"] = "10217:0:0:-9",
-			["cc"] = 4,
-			["H2099"] = 5250000,
+		["Recipe: Haste Potion"] = {
+			["mr"] = 19329999,
+			["cc"] = 7,
+			["id"] = "22913:0:0:0",
+			["H2053"] = 19329999,
+			["sc"] = 7,
 		},
-		["Crafted Dreadful Gladiator's Dragonhide Legguards"] = {
-			["mr"] = 44999999,
-			["sc"] = 2,
-			["id"] = "93460:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 44999999,
-		},
-		["Radiant Leggings"] = {
-			["mr"] = 13924542,
+		["Supple Waistguard of the Savage"] = {
+			["mr"] = 200009998,
+			["cc"] = 2,
+			["H1961"] = 200009998,
+			["id"] = "116183:0:6:0",
 			["sc"] = 3,
-			["id"] = "12420:0:0:0",
+		},
+		["Gaea's Leggings of the Falcon"] = {
+			["mr"] = 9989999,
+			["sc"] = 1,
+			["id"] = "14274:0:0:-11",
 			["cc"] = 4,
-			["H2099"] = 13924542,
+			["H2099"] = 9989999,
 		},
 		["Plans: Thorium Leggings"] = {
 			["mr"] = 9399,
@@ -9406,19 +9776,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 7,
 			["H2099"] = 219,
 		},
-		["Chain Gang Legguards"] = {
-			["mr"] = 12717664,
-			["sc"] = 2,
-			["id"] = "37890:0:0:0",
+		["Brackwater Legguards"] = {
+			["mr"] = 999000,
+			["sc"] = 3,
+			["id"] = "120954:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 12717664,
+			["H2099"] = 999000,
 		},
-		["Redeemed Soul Legguards"] = {
-			["mr"] = 95000000,
-			["sc"] = 2,
-			["id"] = "32396:0:0:0",
+		["Netherstorm Legguards of the Tiger"] = {
+			["mr"] = 875600,
+			["sc"] = 3,
+			["id"] = "24915:0:0:-14",
 			["cc"] = 4,
-			["H2099"] = 95000000,
+			["H2099"] = 875600,
 		},
 		["Mighty Leggings of the Monkey"] = {
 			["mr"] = 1399899,
@@ -9441,12 +9811,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36317:0:0:-27",
 			["sc"] = 4,
 		},
-		["Healing Tonic"] = {
-			["mr"] = 13800,
-			["cc"] = 0,
-			["id"] = "109223:0:0:0",
-			["H2095"] = 13800,
-			["sc"] = 1,
+		["Mercurial Legguards of the Bear"] = {
+			["mr"] = 2878375,
+			["sc"] = 3,
+			["id"] = "10162:0:0:-68",
+			["cc"] = 4,
+			["H2099"] = 2878375,
 		},
 		["Renegade Leggings of Power"] = {
 			["mr"] = 1128054,
@@ -9455,12 +9825,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1128054,
 		},
-		["Barbaric Leggings"] = {
-			["mr"] = 41676288,
-			["sc"] = 2,
-			["id"] = "5963:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 41676288,
+		["Traveler's Gloves"] = {
+			["mr"] = 6159654,
+			["cc"] = 2,
+			["H1961"] = 6159654,
+			["id"] = "8298:0:0:0",
+			["sc"] = 3,
 		},
 		["Boneshredder Skullcap of Spirit"] = {
 			["mr"] = 839670,
@@ -9469,33 +9839,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24777:0:0:-15",
 			["sc"] = 2,
 		},
-		["Waterfall Leggings of the Invoker"] = {
-			["mr"] = 245998,
+		["Sleeper Sushi"] = {
+			["H1960"] = 157500,
+			["cc"] = 4,
+			["id"] = "122343:0:0:0",
+			["mr"] = 157500,
 			["sc"] = 1,
-			["id"] = "82252:0:0:-39",
-			["cc"] = 4,
-			["H2099"] = 245998,
 		},
-		["Frostsaber Leggings"] = {
-			["mr"] = 45000000,
-			["sc"] = 2,
-			["id"] = "15069:0:0:0",
+		["Ornate Saronite Skullshield"] = {
+			["mr"] = 39759394,
 			["cc"] = 4,
-			["H2099"] = 45000000,
+			["H2084"] = 39759394,
+			["id"] = "42728:0:0:0",
+			["sc"] = 4,
 		},
-		["Wendigo Legguards of the Tiger"] = {
-			["mr"] = 665292,
-			["sc"] = 2,
-			["id"] = "36160:0:0:-14",
+		["Healing Tonic"] = {
+			["mr"] = 13800,
+			["cc"] = 0,
+			["id"] = "109223:0:0:0",
+			["H2095"] = 13800,
+			["sc"] = 1,
+		},
+		["Merciless Legguards of the Monkey"] = {
+			["mr"] = 13999985,
+			["sc"] = 3,
+			["id"] = "15655:0:0:-78",
 			["cc"] = 4,
-			["H2099"] = 665292,
-		},
-		["Graced Scepter of Intellect"] = {
-			["mr"] = 686219,
-			["cc"] = 1,
-			["H1961"] = 686219,
-			["id"] = "36696:0:0:-19",
-			["sc"] = 5,
+			["H2099"] = 13999985,
 		},
 		["Opulent Leggings of Intellect"] = {
 			["mr"] = 241475,
@@ -9504,33 +9874,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 241475,
 		},
-		["Leggings of Dubious Charms"] = {
-			["mr"] = 1140000,
-			["sc"] = 3,
-			["id"] = "50450:0:0:0",
+		["Field Plate Leggings of the Gorilla"] = {
+			["mr"] = 2745997,
+			["sc"] = 4,
+			["id"] = "9291:0:0:-10",
 			["cc"] = 4,
-			["H2099"] = 1140000,
+			["H2099"] = 2745997,
 		},
-		["Mercurial Legguards of the Bear"] = {
-			["mr"] = 2878375,
-			["sc"] = 3,
-			["id"] = "10162:0:0:-68",
+		["Five of Hellfire"] = {
+			["mr"] = 189999999,
+			["cc"] = 12,
+			["H2121"] = 189999999,
+			["id"] = "128740:0:0:0",
+			["sc"] = 0,
+		},
+		["Enchant Ring - Breath of Haste"] = {
+			["mr"] = 99000,
 			["cc"] = 4,
-			["H2099"] = 2878375,
+			["id"] = "110618:0:0:0",
+			["H2053"] = 99000,
+			["sc"] = 6,
 		},
-		["Pattern: Volcanic Leggings"] = {
-			["mr"] = 343535860,
+		["Hexweave Leggings of the Feverflare"] = {
+			["mr"] = 17759996,
 			["sc"] = 1,
-			["id"] = "15732:0:0:0",
-			["cc"] = 9,
-			["H2099"] = 343535860,
-		},
-		["Swashbuckler's Leggings of the Whale"] = {
-			["mr"] = 833000,
-			["sc"] = 2,
-			["id"] = "10188:0:0:-81",
+			["id"] = "114811:0:1:0",
 			["cc"] = 4,
-			["H2099"] = 833000,
+			["H2099"] = 17759996,
 		},
 		["Steppe Legguards of the Bandit"] = {
 			["mr"] = 2908456,
@@ -9539,12 +9909,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2908456,
 		},
-		["Snake Legguards of the Undertow"] = {
-			["mr"] = 3466846,
+		["Netherfury Leggings"] = {
+			["mr"] = 95000000,
 			["sc"] = 3,
-			["id"] = "82081:0:0:-131",
+			["id"] = "25692:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 3466846,
+			["H2099"] = 95000000,
 		},
 		["Wyrmskull Helm of the Monkey"] = {
 			["mr"] = 979997,
@@ -9553,33 +9923,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36319:0:0:-5",
 			["sc"] = 4,
 		},
-		["Glyph of the Solstice"] = {
-			["mr"] = 889997,
-			["cc"] = 5,
-			["H1961"] = 889997,
-			["id"] = "118061:0:0:0",
-			["sc"] = 11,
-		},
-		["Sunscryer Leggings of the Aurora"] = {
-			["mr"] = 3978095,
+		["Arachnidian Legguards of Spirit"] = {
+			["mr"] = 2032462,
 			["sc"] = 1,
-			["id"] = "106641:0:0:0",
+			["id"] = "14295:0:0:-15",
 			["cc"] = 4,
-			["H2099"] = 3978095,
+			["H2099"] = 2032462,
 		},
-		["Skullcrusher Mace of Stamina"] = {
-			["mr"] = 111452,
-			["cc"] = 2,
-			["H2084"] = 111452,
-			["id"] = "1608:0:0:-84",
+		["Nazferiti Legguards of the Marksman"] = {
+			["mr"] = 701975,
+			["sc"] = 3,
+			["id"] = "55605:0:0:-91",
+			["cc"] = 4,
+			["H2099"] = 701975,
+		},
+		["Wyrmskull Breastplate of the Eagle"] = {
+			["mr"] = 1400963,
+			["cc"] = 4,
+			["H2084"] = 1400963,
+			["id"] = "36317:0:0:-6",
 			["sc"] = 4,
 		},
-		["Diamond-Cut Refractor Scope"] = {
-			["mr"] = 250000,
-			["cc"] = 0,
-			["id"] = "44739:0:0:0",
-			["H2092"] = 250000,
-			["sc"] = 0,
+		["Embersilk Leggings of the Whale"] = {
+			["mr"] = 349998,
+			["sc"] = 1,
+			["id"] = "14233:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 349998,
 		},
 		["Stone of the Elements"] = {
 			["mr"] = 198970000,
@@ -9588,19 +9958,20 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2090"] = 198970000,
 			["sc"] = 0,
 		},
-		["Bladeborn Leggings"] = {
-			["mr"] = 95000000,
-			["sc"] = 2,
-			["id"] = "49899:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 95000000,
-		},
-		["Supple Waistguard of the Savage"] = {
-			["mr"] = 200009998,
-			["cc"] = 2,
-			["H1961"] = 200009998,
-			["id"] = "116183:0:6:0",
+		["Enchant Cloak - Gift of Mastery"] = {
+			["L2114"] = 3045000,
+			["mr"] = 3045000,
+			["cc"] = 8,
+			["id"] = "110654:0:0:0",
+			["H2114"] = 3047500,
 			["sc"] = 3,
+		},
+		["Monstrous Egg"] = {
+			["mr"] = 4000000,
+			["sc"] = 0,
+			["id"] = "71636:0:0:0",
+			["cc"] = 12,
+			["H2099"] = 4000000,
 		},
 		["Sundered Legguards of Intellect"] = {
 			["mr"] = 984800,
@@ -9609,26 +9980,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 984800,
 		},
-		["Gaea's Leggings of the Falcon"] = {
-			["mr"] = 9989999,
-			["sc"] = 1,
-			["id"] = "14274:0:0:-11",
+		["Wyrmskull Epaulets of Fire Protection"] = {
+			["mr"] = 1867210,
 			["cc"] = 4,
-			["H2099"] = 9989999,
-		},
-		["Brackwater Legguards"] = {
-			["mr"] = 999000,
-			["sc"] = 3,
-			["id"] = "120954:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 999000,
-		},
-		["Laughing Skull Waistguard of Arcane Protection"] = {
-			["mr"] = 3033472,
-			["cc"] = 4,
-			["H2084"] = 3033472,
-			["id"] = "24605:0:0:-31",
-			["sc"] = 1,
+			["H2084"] = 1867210,
+			["id"] = "36321:0:0:-32",
+			["sc"] = 4,
 		},
 		["Crusader's Leggings of the Whale"] = {
 			["mr"] = 1300577,
@@ -9637,19 +9994,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1300577,
 		},
+		["Laughing Skull Waistguard of Arcane Protection"] = {
+			["mr"] = 3033472,
+			["cc"] = 4,
+			["H2084"] = 3033472,
+			["id"] = "24605:0:0:-31",
+			["sc"] = 1,
+		},
+		["Ameth'Aran Leggings of the Beast"] = {
+			["mr"] = 3900000,
+			["sc"] = 1,
+			["id"] = "55749:0:0:-41",
+			["cc"] = 4,
+			["H2099"] = 3900000,
+		},
 		["Orca Helmet of Agility"] = {
 			["mr"] = 3081459,
 			["cc"] = 2,
 			["H1961"] = 3081459,
 			["id"] = "36215:0:0:-18",
 			["sc"] = 4,
-		},
-		["Frostsavage Leggings"] = {
-			["mr"] = 24035269,
-			["sc"] = 1,
-			["id"] = "43975:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 24035269,
 		},
 		["Amberpine Legguards of the Eagle"] = {
 			["mr"] = 1411471,
@@ -9658,12 +10022,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1411471,
 		},
-		["Traveler's Gloves"] = {
-			["mr"] = 6159654,
-			["cc"] = 2,
-			["H1961"] = 6159654,
-			["id"] = "8298:0:0:0",
+		["Frostsavage Leggings"] = {
+			["mr"] = 24035269,
+			["sc"] = 1,
+			["id"] = "43975:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 24035269,
+		},
+		["Unyielding Leggings of the Invoker"] = {
+			["mr"] = 833694,
 			["sc"] = 3,
+			["id"] = "24811:0:0:-39",
+			["cc"] = 4,
+			["H2099"] = 833694,
 		},
 		["Pattern: Runed Stygian Leggings"] = {
 			["mr"] = 20959999,
@@ -9686,12 +10057,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 538359,
 		},
-		["Netherstorm Legguards of the Tiger"] = {
-			["mr"] = 875600,
-			["sc"] = 3,
-			["id"] = "24915:0:0:-14",
+		["Supreme Leggings of the Monkey"] = {
+			["mr"] = 4992343,
+			["sc"] = 2,
+			["id"] = "15440:0:0:-78",
 			["cc"] = 4,
-			["H2099"] = 875600,
+			["H2099"] = 4992343,
 		},
 		["Trellised Leggings of the Feverflare"] = {
 			["mr"] = 176457,
@@ -9721,26 +10092,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1119993,
 		},
-		["Sleeper Sushi"] = {
-			["H1960"] = 157500,
-			["cc"] = 4,
-			["id"] = "122343:0:0:0",
-			["mr"] = 157500,
-			["sc"] = 1,
-		},
-		["Der'izu Legguards of the Bandit"] = {
-			["mr"] = 507000,
-			["sc"] = 3,
-			["id"] = "24883:0:0:-40",
-			["cc"] = 4,
-			["H2099"] = 507000,
-		},
-		["Laughing Skull Orb of the Whale"] = {
-			["mr"] = 2463503,
-			["cc"] = 4,
-			["H2084"] = 2463503,
-			["id"] = "25088:0:0:-8",
-			["sc"] = 0,
+		["Gibberskull Mace"] = {
+			["mr"] = 2522665,
+			["cc"] = 2,
+			["H2084"] = 2522665,
+			["id"] = "118787:0:0:0",
+			["sc"] = 4,
 		},
 		["Black Mageweave Leggings"] = {
 			["mr"] = 749000,
@@ -9749,145 +10106,27 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 749000,
 		},
+		["Laughing Skull Orb of the Whale"] = {
+			["mr"] = 2463503,
+			["cc"] = 4,
+			["H2084"] = 2463503,
+			["id"] = "25088:0:0:-8",
+			["sc"] = 0,
+		},
+		["Der'izu Legguards of the Bandit"] = {
+			["mr"] = 507000,
+			["sc"] = 3,
+			["id"] = "24883:0:0:-40",
+			["cc"] = 4,
+			["H2099"] = 507000,
+		},
 		["Raw Beast Hide"] = {
-			["mr"] = 38000,
+			["L2114"] = 17800,
+			["mr"] = 17800,
 			["sc"] = 6,
 			["id"] = "110609:0:0:0",
+			["H2114"] = 18000,
 			["cc"] = 7,
-			["H2099"] = 38000,
-		},
-		["Gibberskull Mace"] = {
-			["mr"] = 2522665,
-			["cc"] = 2,
-			["H2084"] = 2522665,
-			["id"] = "118787:0:0:0",
-			["sc"] = 4,
-		},
-		["Fireheart Skullcap of Stamina"] = {
-			["mr"] = 989999,
-			["cc"] = 4,
-			["H2084"] = 989999,
-			["id"] = "24593:0:0:-16",
-			["sc"] = 1,
-		},
-		["Field Plate Leggings of the Gorilla"] = {
-			["mr"] = 2745997,
-			["sc"] = 4,
-			["id"] = "9291:0:0:-10",
-			["cc"] = 4,
-			["H2099"] = 2745997,
-		},
-		["Enchant Ring - Breath of Haste"] = {
-			["mr"] = 99000,
-			["cc"] = 4,
-			["id"] = "110618:0:0:0",
-			["H2053"] = 99000,
-			["sc"] = 6,
-		},
-		["Ameth'Aran Leggings of the Beast"] = {
-			["mr"] = 3900000,
-			["sc"] = 1,
-			["id"] = "55749:0:0:-41",
-			["cc"] = 4,
-			["H2099"] = 3900000,
-		},
-		["Enchant Cloak - Gift of Mastery"] = {
-			["mr"] = 6400000,
-			["cc"] = 8,
-			["id"] = "110654:0:0:0",
-			["H2100"] = 6400000,
-			["sc"] = 3,
-		},
-		["Wyrmskull Epaulets of Fire Protection"] = {
-			["mr"] = 1867210,
-			["cc"] = 4,
-			["H2084"] = 1867210,
-			["id"] = "36321:0:0:-32",
-			["sc"] = 4,
-		},
-		["Elementalist Leggings of Intellect"] = {
-			["mr"] = 128979,
-			["sc"] = 1,
-			["id"] = "24690:0:0:-19",
-			["cc"] = 4,
-			["H2099"] = 128979,
-		},
-		["Magnificent Leggings of the Whale"] = {
-			["mr"] = 1275032,
-			["sc"] = 3,
-			["id"] = "15676:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 1275032,
-		},
-		["Wyrmskull Breastplate of the Eagle"] = {
-			["mr"] = 1400963,
-			["cc"] = 4,
-			["H2084"] = 1400963,
-			["id"] = "36317:0:0:-6",
-			["sc"] = 4,
-		},
-		["Monstrous Egg"] = {
-			["mr"] = 4000000,
-			["sc"] = 0,
-			["id"] = "71636:0:0:0",
-			["cc"] = 12,
-			["H2099"] = 4000000,
-		},
-		["Volatile Healing Potion"] = {
-			["mr"] = 160807,
-			["sc"] = 1,
-			["H2095"] = 160807,
-			["id"] = "28100:0:0:0",
-			["cc"] = 0,
-		},
-		["Gryphon Mail Legguards of the Falcon"] = {
-			["mr"] = 9979997,
-			["sc"] = 3,
-			["id"] = "15627:0:0:-11",
-			["cc"] = 4,
-			["H2099"] = 9979997,
-		},
-		["Pale Leggings"] = {
-			["mr"] = 186631659,
-			["sc"] = 1,
-			["id"] = "12255:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 186631659,
-		},
-		["Ameth'Aran Leggings of the Flameblaze"] = {
-			["mr"] = 3900000,
-			["sc"] = 1,
-			["id"] = "55749:0:0:-114",
-			["cc"] = 4,
-			["H2099"] = 3900000,
-		},
-		["Unyielding Leggings of the Invoker"] = {
-			["mr"] = 833694,
-			["sc"] = 3,
-			["id"] = "24811:0:0:-39",
-			["cc"] = 4,
-			["H2099"] = 833694,
-		},
-		["Supreme Leggings of the Monkey"] = {
-			["mr"] = 4992343,
-			["sc"] = 2,
-			["id"] = "15440:0:0:-78",
-			["cc"] = 4,
-			["H2099"] = 4992343,
-		},
-		["Iyun Leggings of the Aurora"] = {
-			["mr"] = 3100000,
-			["sc"] = 1,
-			["id"] = "106476:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 3100000,
-		},
-		["Champion's Leggings of the Whale"] = {
-			["mr"] = 3000000,
-			["sc"] = 3,
-			["id"] = "7539:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 3000000,
 		},
 		["Laughing Skull Gloves of Stamina"] = {
 			["mr"] = 1478893,
@@ -9903,26 +10142,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 303445,
 		},
-		["Pattern: Dusky Leather Leggings"] = {
-			["mr"] = 2005213,
+		["Ameth'Aran Leggings of the Flameblaze"] = {
+			["mr"] = 3900000,
 			["sc"] = 1,
-			["id"] = "7449:0:0:0",
-			["cc"] = 9,
-			["H2099"] = 2005213,
-		},
-		["Embersilk Leggings of the Whale"] = {
-			["mr"] = 349998,
-			["sc"] = 1,
-			["id"] = "14233:0:0:-81",
+			["id"] = "55749:0:0:-114",
 			["cc"] = 4,
-			["H2099"] = 349998,
+			["H2099"] = 3900000,
 		},
-		["Grand Legguards of the Whale"] = {
-			["mr"] = 1127500,
-			["sc"] = 2,
-			["id"] = "15194:0:0:-81",
-			["cc"] = 4,
-			["H2099"] = 1127500,
+		["Five of Promises"] = {
+			["mr"] = 179989999,
+			["cc"] = 12,
+			["H2121"] = 179989999,
+			["id"] = "128724:0:0:0",
+			["sc"] = 0,
 		},
 		["Defender Leggings of Strength"] = {
 			["mr"] = 10000000,
@@ -9931,26 +10163,40 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 10000000,
 		},
-		["Hexweave Leggings of the Feverflare"] = {
-			["mr"] = 17759996,
-			["sc"] = 1,
-			["id"] = "114811:0:1:0",
-			["cc"] = 4,
-			["H2099"] = 17759996,
-		},
-		["Ornate Saronite Skullshield"] = {
-			["mr"] = 39759394,
-			["cc"] = 4,
-			["H2084"] = 39759394,
-			["id"] = "42728:0:0:0",
-			["sc"] = 4,
-		},
-		["Draenic Living Action Potion"] = {
-			["mr"] = 5699,
+		["Ancient Healing Potion"] = {
+			["mr"] = 998989,
 			["cc"] = 0,
-			["id"] = "116276:0:0:0",
-			["H2092"] = 5699,
+			["id"] = "127834:0:0:0",
+			["H2116"] = 998989,
 			["sc"] = 1,
+		},
+		["Elementalist Leggings of Intellect"] = {
+			["mr"] = 128979,
+			["sc"] = 1,
+			["id"] = "24690:0:0:-19",
+			["cc"] = 4,
+			["H2099"] = 128979,
+		},
+		["Fireheart Skullcap of Stamina"] = {
+			["mr"] = 989999,
+			["cc"] = 4,
+			["H2084"] = 989999,
+			["id"] = "24593:0:0:-16",
+			["sc"] = 1,
+		},
+		["Magnificent Leggings of the Whale"] = {
+			["mr"] = 1275032,
+			["sc"] = 3,
+			["id"] = "15676:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 1275032,
+		},
+		["Bladeborn Leggings"] = {
+			["mr"] = 95000000,
+			["sc"] = 2,
+			["id"] = "49899:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 95000000,
 		},
 		["Hexweave Robe of the Peerless"] = {
 			["mr"] = 210009999,
@@ -9959,12 +10205,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2090"] = 210009999,
 			["sc"] = 1,
 		},
-		["Arachnidian Legguards of Spirit"] = {
-			["mr"] = 2032462,
+		["Volatile Healing Potion"] = {
+			["mr"] = 160807,
 			["sc"] = 1,
-			["id"] = "14295:0:0:-15",
-			["cc"] = 4,
-			["H2099"] = 2032462,
+			["H2095"] = 160807,
+			["id"] = "28100:0:0:0",
+			["cc"] = 0,
 		},
 		["Brambleweed Leggings"] = {
 			["mr"] = 8500000,
@@ -9973,12 +10219,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 8500000,
 		},
-		["Netherfury Leggings"] = {
-			["mr"] = 95000000,
-			["sc"] = 3,
-			["id"] = "25692:0:0:0",
+		["Pale Leggings"] = {
+			["mr"] = 186631659,
+			["sc"] = 1,
+			["id"] = "12255:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 95000000,
+			["H2099"] = 186631659,
 		},
 		["Skullcrusher Mace of the Monkey"] = {
 			["mr"] = 76280,
@@ -9986,6 +10232,133 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["H2084"] = 76280,
 			["id"] = "1608:0:0:-78",
 			["sc"] = 4,
+		},
+		["Swashbuckler's Leggings of the Whale"] = {
+			["mr"] = 833000,
+			["sc"] = 2,
+			["id"] = "10188:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 833000,
+		},
+		["Graced Scepter of Intellect"] = {
+			["mr"] = 686219,
+			["cc"] = 1,
+			["H1961"] = 686219,
+			["id"] = "36696:0:0:-19",
+			["sc"] = 5,
+		},
+		["Iyun Leggings of the Aurora"] = {
+			["mr"] = 3100000,
+			["sc"] = 1,
+			["id"] = "106476:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 3100000,
+		},
+		["Champion's Leggings of the Whale"] = {
+			["mr"] = 3000000,
+			["sc"] = 3,
+			["id"] = "7539:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 3000000,
+		},
+		["Southfury Legguards of the Windflurry"] = {
+			["mr"] = 1177498,
+			["sc"] = 3,
+			["id"] = "55606:0:0:-135",
+			["cc"] = 4,
+			["H2099"] = 1177498,
+		},
+		["Barbaric Leggings"] = {
+			["mr"] = 41676288,
+			["sc"] = 2,
+			["id"] = "5963:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 41676288,
+		},
+		["Pattern: Dusky Leather Leggings"] = {
+			["mr"] = 2005213,
+			["sc"] = 1,
+			["id"] = "7449:0:0:0",
+			["cc"] = 9,
+			["H2099"] = 2005213,
+		},
+		["Greater Healing Potion"] = {
+			["mr"] = 400,
+			["sc"] = 1,
+			["H2095"] = 400,
+			["id"] = "1710:0:0:0",
+			["cc"] = 0,
+		},
+		["Grand Legguards of the Whale"] = {
+			["mr"] = 1127500,
+			["sc"] = 2,
+			["id"] = "15194:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 1127500,
+		},
+		["Lofty Legguards of the Whale"] = {
+			["mr"] = 15810000,
+			["sc"] = 4,
+			["id"] = "14928:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 15810000,
+		},
+		["Redeemed Soul Legguards"] = {
+			["mr"] = 95000000,
+			["sc"] = 2,
+			["id"] = "32396:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 95000000,
+		},
+		["Nimble Hexweave Cloak of the Quickblade"] = {
+			["mr"] = 390000000,
+			["cc"] = 4,
+			["id"] = "114818:0:6:0",
+			["H2090"] = 390000000,
+			["sc"] = 1,
+		},
+		["Draenic Living Action Potion"] = {
+			["mr"] = 5699,
+			["cc"] = 0,
+			["id"] = "116276:0:0:0",
+			["H2092"] = 5699,
+			["sc"] = 1,
+		},
+		["Foxflower Flux"] = {
+			["mr"] = 65000,
+			["cc"] = 7,
+			["id"] = "124436:0:0:0",
+			["H2119"] = 65000,
+			["sc"] = 11,
+		},
+		["Yseralline Seed"] = {
+			["mr"] = 116500,
+			["sc"] = 9,
+			["id"] = "128304:0:0:0",
+			["H2119"] = 117500,
+			["cc"] = 7,
+			["L2119"] = 116500,
+		},
+		["Trickster's Leggings of the Whale"] = {
+			["mr"] = 3610644,
+			["sc"] = 2,
+			["id"] = "15366:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 3610644,
+		},
+		["Adventurer's Legguards of the Owl"] = {
+			["mr"] = 999000,
+			["sc"] = 2,
+			["id"] = "10262:0:0:-9",
+			["cc"] = 4,
+			["H2099"] = 999000,
+		},
+		["Revenant Legguards of Fire Protection"] = {
+			["mr"] = 203477,
+			["sc"] = 4,
+			["id"] = "36392:0:0:-32",
+			["cc"] = 4,
+			["H2099"] = 203477,
 		},
 		["Peerless Leggings of the Bear"] = {
 			["mr"] = 33692200,
@@ -10001,19 +10374,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "8845:0:0:0",
 			["sc"] = 6,
 		},
-		["Nazferiti Legguards of the Marksman"] = {
-			["mr"] = 701975,
-			["sc"] = 3,
-			["id"] = "55605:0:0:-91",
+		["Syreian's Leggings of the Foreseer"] = {
+			["mr"] = 310000000,
+			["sc"] = 2,
+			["id"] = "44676:0:0:-88",
 			["cc"] = 4,
-			["H2099"] = 701975,
+			["H2099"] = 310000000,
 		},
-		["Merciless Legguards of the Monkey"] = {
-			["mr"] = 13999985,
-			["sc"] = 3,
-			["id"] = "15655:0:0:-78",
+		["Waterfall Leggings of the Invoker"] = {
+			["mr"] = 245998,
+			["sc"] = 1,
+			["id"] = "82252:0:0:-39",
 			["cc"] = 4,
-			["H2099"] = 13999985,
+			["H2099"] = 245998,
 		},
 		["Windrunner Legguards"] = {
 			["mr"] = 687130,
@@ -10029,19 +10402,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "119335:567:0:0",
 			["sc"] = 3,
 		},
-		["Southfury Legguards of the Windflurry"] = {
-			["mr"] = 1177498,
-			["sc"] = 3,
-			["id"] = "55606:0:0:-135",
-			["cc"] = 4,
-			["H2099"] = 1177498,
-		},
-		["Greater Healing Potion"] = {
-			["mr"] = 400,
+		["Embersilk Leggings of the Falcon"] = {
+			["mr"] = 349999,
 			["sc"] = 1,
-			["H2095"] = 400,
-			["id"] = "1710:0:0:0",
-			["cc"] = 0,
+			["id"] = "14233:0:0:-11",
+			["cc"] = 4,
+			["H2099"] = 349999,
+		},
+		["Heraldic Leggings"] = {
+			["mr"] = 1630704,
+			["sc"] = 2,
+			["id"] = "8123:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 1630704,
 		},
 		["Draenic Intellect Flask"] = {
 			["mr"] = 96000,
@@ -10064,33 +10437,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 300000,
 		},
-		["Nimble Hexweave Cloak of the Quickblade"] = {
-			["mr"] = 390000000,
-			["cc"] = 4,
-			["id"] = "114818:0:6:0",
-			["H2090"] = 390000000,
-			["sc"] = 1,
-		},
-		["Recipe: Haste Potion"] = {
-			["mr"] = 19329999,
-			["cc"] = 7,
-			["id"] = "22913:0:0:0",
-			["H2053"] = 19329999,
-			["sc"] = 7,
-		},
-		["Myrmidon's Leggings"] = {
-			["mr"] = 391000,
+		["Highperch Legguards of the Monkey"] = {
+			["mr"] = 241005,
 			["sc"] = 3,
-			["id"] = "8132:0:0:0",
+			["id"] = "55610:0:0:-5",
 			["cc"] = 4,
-			["H2099"] = 391000,
+			["H2099"] = 241005,
 		},
-		["Lofty Legguards of the Whale"] = {
-			["mr"] = 15810000,
-			["sc"] = 4,
-			["id"] = "14928:0:0:-81",
+		["Darkbrand Leggings of the Windstorm"] = {
+			["mr"] = 1240000,
+			["sc"] = 2,
+			["id"] = "56513:0:0:-137",
 			["cc"] = 4,
-			["H2099"] = 15810000,
+			["H2099"] = 1240000,
+		},
+		["Stormhide Legguards"] = {
+			["mr"] = 45000000,
+			["sc"] = 3,
+			["id"] = "43456:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 45000000,
+		},
+		["Laughing Skull Waistguard of Spirit"] = {
+			["mr"] = 3483086,
+			["cc"] = 4,
+			["H2084"] = 3483086,
+			["id"] = "24605:0:0:-15",
+			["sc"] = 1,
 		},
 		["Mighty Leggings of the Bear"] = {
 			["mr"] = 1399903,
@@ -10099,54 +10472,54 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1399903,
 		},
-		["Jazeraint Leggings of the Monkey"] = {
-			["mr"] = 748999,
-			["sc"] = 3,
-			["id"] = "9903:0:0:-78",
-			["cc"] = 4,
-			["H2099"] = 748999,
-		},
-		["Haste Taladite"] = {
-			["mr"] = 139000,
-			["sc"] = 9,
-			["id"] = "115804:0:0:0",
-			["H2053"] = 139000,
-			["cc"] = 8,
-		},
-		["Syreian's Leggings of the Foreseer"] = {
-			["mr"] = 310000000,
-			["sc"] = 2,
-			["id"] = "44676:0:0:-88",
-			["cc"] = 4,
-			["H2099"] = 310000000,
-		},
-		["Crafted Dreadful Gladiator's Ringmail Leggings"] = {
-			["mr"] = 39499999,
-			["sc"] = 3,
-			["id"] = "93582:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 39499999,
-		},
-		["Ravendown Leggings of the Fireflash"] = {
-			["mr"] = 4308114,
+		["Brightwood Leggings of the Eagle"] = {
+			["mr"] = 1049189,
 			["sc"] = 1,
-			["id"] = "106608:0:0:0",
+			["id"] = "55753:0:0:-6",
 			["cc"] = 4,
-			["H2099"] = 4308114,
+			["H2099"] = 1049189,
 		},
-		["Trickster's Leggings of the Whale"] = {
-			["mr"] = 3610644,
+		["Southfury Legguards of the Bandit"] = {
+			["mr"] = 1175000,
+			["sc"] = 3,
+			["id"] = "55606:0:0:-40",
+			["cc"] = 4,
+			["H2099"] = 1175000,
+		},
+		["Super Healing Potion"] = {
+			["mr"] = 5800,
+			["sc"] = 1,
+			["H2095"] = 5800,
+			["id"] = "22829:0:0:0",
+			["cc"] = 0,
+		},
+		["Netherstalker Legguards of Intellect"] = {
+			["mr"] = 500000,
+			["sc"] = 3,
+			["id"] = "24827:0:0:-19",
+			["cc"] = 4,
+			["H2099"] = 500000,
+		},
+		["Healing Potion"] = {
+			["mr"] = 29000,
+			["sc"] = 1,
+			["H2095"] = 29000,
+			["id"] = "929:0:0:0",
+			["cc"] = 0,
+		},
+		["Der'izu Legguards of the Tiger"] = {
+			["mr"] = 1200000,
+			["sc"] = 3,
+			["id"] = "24883:0:0:-14",
+			["cc"] = 4,
+			["H2099"] = 1200000,
+		},
+		["Misthide Leggings of the Zephyr"] = {
+			["mr"] = 2020000,
 			["sc"] = 2,
-			["id"] = "15366:0:0:-81",
+			["id"] = "90491:0:0:-136",
 			["cc"] = 4,
-			["H2099"] = 3610644,
-		},
-		["Grimscale Legguards of the Falcon"] = {
-			["mr"] = 1199999,
-			["sc"] = 4,
-			["id"] = "24923:0:0:-11",
-			["cc"] = 4,
-			["H2099"] = 1199999,
+			["H2099"] = 2020000,
 		},
 		["Baradin Leggings of the Fireflash"] = {
 			["mr"] = 1658998,
@@ -10169,33 +10542,33 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 8986388,
 		},
-		["Wrathfin Legguards of the Bear"] = {
-			["mr"] = 1099222,
-			["sc"] = 3,
-			["id"] = "24843:0:0:-7",
-			["cc"] = 4,
-			["H2099"] = 1099222,
-		},
-		["Laughing Skull Gloves of Intellect"] = {
-			["mr"] = 1468892,
-			["cc"] = 4,
-			["H2084"] = 1468892,
-			["id"] = "24608:0:0:-19",
+		["Vital Leggings of the Eagle"] = {
+			["mr"] = 328124,
 			["sc"] = 1,
-		},
-		["Highperch Legguards of the Monkey"] = {
-			["mr"] = 241005,
-			["sc"] = 3,
-			["id"] = "55610:0:0:-5",
+			["id"] = "14207:0:0:-69",
 			["cc"] = 4,
-			["H2099"] = 241005,
+			["H2099"] = 328124,
 		},
-		["Darkbrand Leggings of the Windstorm"] = {
-			["mr"] = 1240000,
+		["Chimeric Leggings"] = {
+			["mr"] = 20605125,
 			["sc"] = 2,
-			["id"] = "56513:0:0:-137",
+			["id"] = "15072:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 1240000,
+			["H2099"] = 20605125,
+		},
+		["Plans: Radiant Leggings"] = {
+			["mr"] = 10073,
+			["sc"] = 4,
+			["id"] = "12713:0:0:0",
+			["cc"] = 9,
+			["H2099"] = 10073,
+		},
+		["Gothic Plate Leggings of the Whale"] = {
+			["mr"] = 2874124,
+			["sc"] = 4,
+			["id"] = "10091:0:0:-81",
+			["cc"] = 4,
+			["H2099"] = 2874124,
 		},
 		["Iceborne Leggings"] = {
 			["mr"] = 30597051,
@@ -10225,12 +10598,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1421471,
 		},
-		["Brightwood Leggings of the Eagle"] = {
-			["mr"] = 1049189,
-			["sc"] = 1,
-			["id"] = "55753:0:0:-6",
-			["cc"] = 4,
-			["H2099"] = 1049189,
+		["Hellfire War Spear of the Elder"] = {
+			["mr"] = 476359,
+			["cc"] = 2,
+			["H2121"] = 476359,
+			["id"] = "25238:0:0:-44",
+			["sc"] = 6,
 		},
 		["Demon-Skull Orb of the Invoker"] = {
 			["mr"] = 100000,
@@ -10246,19 +10619,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1182471,
 		},
-		["Netherstalker Legguards of Intellect"] = {
-			["mr"] = 500000,
-			["sc"] = 3,
-			["id"] = "24827:0:0:-19",
+		["Cabalist Leggings of Power"] = {
+			["mr"] = 2195370,
+			["sc"] = 2,
+			["id"] = "7528:0:0:-20",
 			["cc"] = 4,
-			["H2099"] = 500000,
+			["H2099"] = 2195370,
 		},
-		["Healing Potion"] = {
-			["mr"] = 29000,
+		["Champion's Honor"] = {
+			["mr"] = 94980000,
+			["cc"] = 9,
+			["id"] = "128430:0:0:0",
+			["H2007"] = 94980000,
 			["sc"] = 1,
-			["H2095"] = 29000,
-			["id"] = "929:0:0:0",
-			["cc"] = 0,
 		},
 		["Dark Star Leggings of the Feverflare"] = {
 			["mr"] = 307500,
@@ -10267,12 +10640,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 307500,
 		},
-		["Laughing Skull Shoulderpads of the Seer"] = {
-			["mr"] = 5299936,
+		["Blue Dragonscale Leggings"] = {
+			["mr"] = 95000000,
+			["sc"] = 3,
+			["id"] = "20295:0:0:0",
 			["cc"] = 4,
-			["H2084"] = 5299936,
-			["id"] = "24611:0:0:-37",
-			["sc"] = 1,
+			["H2099"] = 95000000,
 		},
 		["Mythical Healing Potion"] = {
 			["mr"] = 114837,
@@ -10281,19 +10654,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "57191:0:0:0",
 			["cc"] = 0,
 		},
-		["Vital Leggings of the Eagle"] = {
-			["mr"] = 328124,
-			["sc"] = 1,
-			["id"] = "14207:0:0:-69",
+		["Supreme Leggings of the Owl"] = {
+			["mr"] = 2309646,
+			["sc"] = 2,
+			["id"] = "15440:0:0:-9",
 			["cc"] = 4,
-			["H2099"] = 328124,
+			["H2099"] = 2309646,
 		},
-		["Northern Egg"] = {
-			["mr"] = 4300,
-			["sc"] = 8,
-			["id"] = "43501:0:0:0",
-			["cc"] = 7,
-			["H2099"] = 4300,
+		["Glyph of the Flapping Owl"] = {
+			["mr"] = 331491,
+			["cc"] = 5,
+			["H1961"] = 331491,
+			["id"] = "118573:0:0:0",
+			["sc"] = 11,
 		},
 		["Brittle Flamereaver Leggings of the Marksman"] = {
 			["mr"] = 1489999,
@@ -10309,26 +10682,27 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2725075,
 		},
-		["Grand Legguards of the Owl"] = {
-			["mr"] = 1139864,
-			["sc"] = 2,
-			["id"] = "15194:0:0:-9",
-			["cc"] = 4,
-			["H2099"] = 1139864,
-		},
-		["Talhide Lined-Leggings of the Soldier"] = {
-			["mr"] = 633954,
+		["Nazferiti Legguards of the Monkey"] = {
+			["mr"] = 701978,
 			["sc"] = 3,
-			["id"] = "24907:0:0:-43",
+			["id"] = "55605:0:0:-5",
 			["cc"] = 4,
-			["H2099"] = 633954,
+			["H2099"] = 701978,
 		},
-		["Plans: Radiant Leggings"] = {
-			["mr"] = 10073,
-			["sc"] = 4,
-			["id"] = "12713:0:0:0",
-			["cc"] = 9,
-			["H2099"] = 10073,
+		["Ace of Promises"] = {
+			["mr"] = 71980000,
+			["cc"] = 12,
+			["H2121"] = 71989999,
+			["id"] = "128728:0:0:0",
+			["sc"] = 0,
+			["L2121"] = 71980000,
+		},
+		["Six of Hellfire"] = {
+			["mr"] = 800009499,
+			["cc"] = 12,
+			["H2121"] = 800009499,
+			["id"] = "128739:0:0:0",
+			["sc"] = 0,
 		},
 		["Shoveltusk Legguards of the Seer"] = {
 			["mr"] = 977985,
@@ -10337,19 +10711,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 977985,
 		},
-		["Crystalsong Leggings of the Sorcerer"] = {
-			["mr"] = 315119,
-			["sc"] = 1,
-			["id"] = "36048:0:0:-36",
+		["Crafted Malevolent Gladiator's Kodohide Legguards"] = {
+			["mr"] = 45000000,
+			["sc"] = 2,
+			["id"] = "98799:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 315119,
+			["H2099"] = 45000000,
 		},
-		["Magnificent Leggings of Power"] = {
-			["mr"] = 2884297,
+		["Skettis Legguards of Stamina"] = {
+			["mr"] = 1495487,
 			["sc"] = 3,
-			["id"] = "15676:0:0:-20",
+			["id"] = "24891:0:0:-16",
 			["cc"] = 4,
-			["H2099"] = 2884297,
+			["H2099"] = 1495487,
 		},
 		["Cabalist Leggings of Agility"] = {
 			["mr"] = 1110000,
@@ -10372,40 +10746,41 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "36318:0:0:-26",
 			["sc"] = 4,
 		},
-		["Glyphed Leggings"] = {
-			["mr"] = 954622,
-			["sc"] = 2,
-			["id"] = "4060:0:0:0",
+		["Alpheus Legguards"] = {
+			["mr"] = 1850108,
+			["sc"] = 4,
+			["id"] = "55260:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 954622,
+			["H2099"] = 1850108,
 		},
-		["Blue Dragonscale Leggings"] = {
-			["mr"] = 95000000,
-			["sc"] = 3,
-			["id"] = "20295:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 95000000,
-		},
-		["Bulging Barrel of Oil"] = {
-			["H2077"] = 1127500,
-			["mr"] = 1127500,
+		["Ghostly Skull"] = {
+			["mr"] = 3734999,
+			["cc"] = 17,
+			["H2084"] = 60000000,
+			["id"] = "190:1",
 			["sc"] = 0,
-			["id"] = "128316:0:0:0",
-			["cc"] = 15,
+			["L2084"] = 3734999,
 		},
-		["Ritual Leggings of Spirit"] = {
-			["mr"] = 1000000,
+		["Galardell Leggings of the Invoker"] = {
+			["mr"] = 500000,
 			["sc"] = 1,
-			["id"] = "14125:0:0:-15",
+			["id"] = "55757:0:0:-39",
 			["cc"] = 4,
-			["H2099"] = 1000000,
+			["H2099"] = 500000,
 		},
-		["Supreme Leggings of the Owl"] = {
-			["mr"] = 2309646,
-			["sc"] = 2,
-			["id"] = "15440:0:0:-9",
+		["Battered Saurscale Leggings of the Bandit"] = {
+			["mr"] = 1168675,
+			["sc"] = 3,
+			["id"] = "94053:0:0:-40",
 			["cc"] = 4,
-			["H2099"] = 2309646,
+			["H2099"] = 1168675,
+		},
+		["Sundered Legguards of Spirit"] = {
+			["mr"] = 1759000,
+			["sc"] = 3,
+			["id"] = "24899:0:0:-15",
+			["cc"] = 4,
+			["H2099"] = 1759000,
 		},
 		["Swiftarrow Leggings"] = {
 			["mr"] = 45000000,
@@ -10414,12 +10789,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 45000000,
 		},
-		["Master's Leggings of Intellect"] = {
-			["mr"] = 1417483,
-			["sc"] = 1,
-			["id"] = "10252:0:0:-19",
+		["Formidable Legguards of the Whale"] = {
+			["mr"] = 24999999,
+			["sc"] = 3,
+			["id"] = "15637:0:0:-81",
 			["cc"] = 4,
-			["H2099"] = 1417483,
+			["H2099"] = 24999999,
 		},
 		["Thornsnarl Legguards of the Stormblast"] = {
 			["mr"] = 380599,
@@ -10428,12 +10803,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 380599,
 		},
-		["Netherstorm Legguards of the Whale"] = {
-			["mr"] = 289183,
+		["Turtle Scale Leggings"] = {
+			["mr"] = 72303407,
 			["sc"] = 3,
-			["id"] = "24915:0:0:-8",
+			["id"] = "8185:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 289183,
+			["H2099"] = 72303407,
 		},
 		["Emblazoned Leggings"] = {
 			["mr"] = 1320000,
@@ -10442,12 +10817,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1320000,
 		},
-		["Nazferiti Legguards of the Monkey"] = {
-			["mr"] = 701978,
+		["Battleforge Legguards of the Whale"] = {
+			["mr"] = 2809527,
 			["sc"] = 3,
-			["id"] = "55605:0:0:-5",
+			["id"] = "6596:0:0:-81",
 			["cc"] = 4,
-			["H2099"] = 701978,
+			["H2099"] = 2809527,
 		},
 		["Spiderlord Legguards of the Seer"] = {
 			["mr"] = 562900,
@@ -10456,26 +10831,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 562900,
 		},
-		["Unbridled Leggings"] = {
-			["mr"] = 588339,
-			["sc"] = 2,
-			["id"] = "18298:0:0:0",
+		["Master's Leggings of the Whale"] = {
+			["mr"] = 1427490,
+			["sc"] = 1,
+			["id"] = "10252:0:0:-81",
 			["cc"] = 4,
-			["H2099"] = 588339,
+			["H2099"] = 1427490,
 		},
-		["Alpheus Legguards"] = {
-			["mr"] = 1850108,
+		["Belt of Ghostly Graces"] = {
+			["mr"] = 1857498,
+			["cc"] = 2,
+			["H1961"] = 1857498,
+			["id"] = "78886:0:0:0",
 			["sc"] = 4,
-			["id"] = "55260:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 1850108,
 		},
-		["Protector Legguards"] = {
-			["mr"] = 13990000,
-			["sc"] = 3,
-			["id"] = "14796:0:0:0",
+		["Enchant Boots - Haste"] = {
+			["mr"] = 283365,
 			["cc"] = 4,
-			["H2099"] = 13990000,
+			["id"] = "52750:0:0:0",
+			["H2053"] = 283365,
+			["sc"] = 6,
 		},
 		["Herb Baked Egg"] = {
 			["mr"] = 6666,
@@ -10484,12 +10859,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 0,
 			["H2099"] = 6666,
 		},
-		["Laughing Skull Orb of Spirit"] = {
-			["mr"] = 1527730,
+		["Warmonger's Leggings of the Wolf"] = {
+			["mr"] = 1606560,
+			["sc"] = 3,
+			["id"] = "9964:0:0:-13",
 			["cc"] = 4,
-			["H2084"] = 1527730,
-			["id"] = "25088:0:0:-15",
-			["sc"] = 0,
+			["H2099"] = 1606560,
 		},
 		["Packrunner Legguards of the Fireflash"] = {
 			["mr"] = 382994,
@@ -10505,12 +10880,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["sc"] = 3,
 			["mr"] = 5429969,
 		},
-		["Fortified Leggings of the Boar"] = {
-			["mr"] = 465185,
-			["sc"] = 3,
-			["id"] = "9815:0:0:-12",
+		["Latent Kor'kron Leggings"] = {
+			["mr"] = 183532703,
+			["sc"] = 0,
+			["id"] = "97830:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 465185,
+			["H2099"] = 183532703,
 		},
 		["Pattern: Boots of Natural Grace"] = {
 			["mr"] = 273446,
@@ -10526,19 +10901,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24610:0:0:-19",
 			["sc"] = 1,
 		},
-		["Revenant Legguards of the Owl"] = {
-			["mr"] = 540283,
-			["sc"] = 4,
-			["id"] = "36392:0:0:-9",
+		["Outlander's Leggings of the Seer"] = {
+			["mr"] = 904070,
+			["sc"] = 1,
+			["id"] = "24586:0:0:-37",
 			["cc"] = 4,
-			["H2099"] = 540283,
+			["H2099"] = 904070,
 		},
-		["Vicious Pyrium Legguards"] = {
-			["mr"] = 19999945,
-			["sc"] = 4,
-			["id"] = "75136:0:0:0",
+		["Mercurial Legguards of the Wolf"] = {
+			["mr"] = 2888380,
+			["sc"] = 3,
+			["id"] = "10162:0:0:-13",
 			["cc"] = 4,
-			["H2099"] = 19999945,
+			["H2099"] = 2888380,
 		},
 		["Nazferiti Legguards of the Stormblast"] = {
 			["mr"] = 701984,
@@ -10582,19 +10957,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 1064327,
 		},
-		["Master's Leggings of the Whale"] = {
-			["mr"] = 1427490,
-			["sc"] = 1,
-			["id"] = "10252:0:0:-81",
+		["Skettis Legguards of Strength"] = {
+			["mr"] = 1495481,
+			["sc"] = 3,
+			["id"] = "24891:0:0:-17",
 			["cc"] = 4,
-			["H2099"] = 1427490,
+			["H2099"] = 1495481,
 		},
-		["Boarhide Leggings"] = {
-			["mr"] = 11860955,
+		["Mighty Leggings of the Eagle"] = {
+			["mr"] = 1399905,
 			["sc"] = 2,
-			["id"] = "38513:0:0:0",
+			["id"] = "10152:0:0:-69",
 			["cc"] = 4,
-			["H2099"] = 11860955,
+			["H2099"] = 1399905,
 		},
 		["Thornsnarl Legguards of the Zephyr"] = {
 			["mr"] = 379396,
@@ -10603,19 +10978,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 379396,
 		},
-		["Heavy Clefthoof Leggings"] = {
-			["mr"] = 93999999,
-			["sc"] = 2,
-			["id"] = "25690:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 93999999,
-		},
-		["Crafted Dreadful Gladiator's Linked Leggings"] = {
-			["mr"] = 45000000,
+		["Talhide Lined-Leggings of Arcane Protection"] = {
+			["mr"] = 633954,
 			["sc"] = 3,
-			["id"] = "93587:0:0:0",
+			["id"] = "24907:0:0:-31",
 			["cc"] = 4,
-			["H2099"] = 45000000,
+			["H2099"] = 633954,
+		},
+		["Gronnling Legguards of the Feverflare"] = {
+			["mr"] = 1681436,
+			["sc"] = 3,
+			["id"] = "106453:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 1681436,
 		},
 		["Defender Leggings of the Boar"] = {
 			["mr"] = 212164,
@@ -10631,19 +11006,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 194999,
 		},
-		["Fireheart Skullcap of the Owl"] = {
-			["mr"] = 2711069,
-			["cc"] = 4,
-			["H2084"] = 2711069,
-			["id"] = "24593:0:0:-9",
-			["sc"] = 1,
+		["Skullcrusher Mace of the Bear"] = {
+			["mr"] = 136000,
+			["cc"] = 2,
+			["H2084"] = 136000,
+			["id"] = "1608:0:0:-68",
+			["sc"] = 4,
 		},
-		["Outlander's Leggings of the Seer"] = {
-			["mr"] = 904070,
+		["Arachnidian Legguards of the Monkey"] = {
+			["mr"] = 1203911,
 			["sc"] = 1,
-			["id"] = "24586:0:0:-37",
+			["id"] = "14295:0:0:-78",
 			["cc"] = 4,
-			["H2099"] = 904070,
+			["H2099"] = 1203911,
 		},
 		["Laughing Skull Cap of the Invoker"] = {
 			["mr"] = 2007500,
@@ -10652,12 +11027,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "24609:0:0:-39",
 			["sc"] = 1,
 		},
-		["Contender's Leather Leggings"] = {
-			["mr"] = 20069992,
-			["sc"] = 2,
-			["id"] = "85803:0:0:0",
+		["Hexweave Robe of the Fireflash"] = {
+			["mr"] = 194999999,
 			["cc"] = 4,
-			["H2099"] = 20069992,
+			["id"] = "114813:0:6:0",
+			["H2090"] = 194999999,
+			["sc"] = 1,
 		},
 		["Triumphant Skullcap of the Falcon"] = {
 			["mr"] = 792375,
@@ -10666,19 +11041,19 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["id"] = "15684:0:0:-11",
 			["sc"] = 3,
 		},
-		["Skullcrusher Mace of the Bear"] = {
-			["mr"] = 136000,
-			["cc"] = 2,
-			["H2084"] = 136000,
-			["id"] = "1608:0:0:-68",
-			["sc"] = 4,
-		},
-		["Mercurial Legguards of the Wolf"] = {
-			["mr"] = 2888380,
-			["sc"] = 3,
-			["id"] = "10162:0:0:-13",
+		["Insignia Leggings"] = {
+			["mr"] = 5594726,
+			["sc"] = 2,
+			["id"] = "4054:0:0:0",
 			["cc"] = 4,
-			["H2099"] = 2888380,
+			["H2099"] = 5594726,
+		},
+		["Dervish Leggings of the Eagle"] = {
+			["mr"] = 499900,
+			["sc"] = 2,
+			["id"] = "6607:0:0:-69",
+			["cc"] = 4,
+			["H2099"] = 499900,
 		},
 		["Crafted Malevolent Gladiator's Mail Leggings"] = {
 			["mr"] = 45000000,
@@ -10701,26 +11076,26 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 45000000,
 		},
-		["Arachnidian Legguards of the Monkey"] = {
-			["mr"] = 1203911,
-			["sc"] = 1,
-			["id"] = "14295:0:0:-78",
-			["cc"] = 4,
-			["H2099"] = 1203911,
-		},
-		["Talhide Lined-Leggings of Arcane Protection"] = {
-			["mr"] = 633954,
-			["sc"] = 3,
-			["id"] = "24907:0:0:-31",
-			["cc"] = 4,
-			["H2099"] = 633954,
-		},
-		["Boneshredder Skullcap of the Tiger"] = {
-			["mr"] = 500000,
-			["cc"] = 4,
-			["H2084"] = 500000,
-			["id"] = "24777:0:0:-14",
+		["Webspinner Leggings of the Wolf"] = {
+			["mr"] = 99994,
 			["sc"] = 2,
+			["id"] = "36168:0:0:-13",
+			["cc"] = 4,
+			["H2099"] = 99994,
+		},
+		["Mercurial Legguards of the Eagle"] = {
+			["mr"] = 2878374,
+			["sc"] = 3,
+			["id"] = "10162:0:0:-69",
+			["cc"] = 4,
+			["H2099"] = 2878374,
+		},
+		["Seven of Hellfire"] = {
+			["mr"] = 154990000,
+			["cc"] = 12,
+			["H2121"] = 154990000,
+			["id"] = "128738:0:0:0",
+			["sc"] = 0,
 		},
 		["Leggings of Visceral Strikes"] = {
 			["mr"] = 43499981,
@@ -10729,12 +11104,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 43499981,
 		},
-		["Egg-Warming Blanket of the Invoker"] = {
-			["mr"] = 75973172,
-			["sc"] = 1,
-			["id"] = "44668:0:0:-39",
+		["Fortified Leggings of the Gorilla"] = {
+			["mr"] = 2616889,
+			["sc"] = 3,
+			["id"] = "9815:0:0:-10",
 			["cc"] = 4,
-			["H2099"] = 75973172,
+			["H2099"] = 2616889,
 		},
 		["Buttered Sturgeon"] = {
 			["mr"] = 74000,
@@ -10750,131 +11125,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 2573690,
 		},
-		["Frostwoven Leggings"] = {
-			["mr"] = 1272859,
+		["Draenic Agility Potion"] = {
+			["mr"] = 51500,
 			["sc"] = 1,
-			["id"] = "41519:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 1272859,
-		},
-		["Yak Legguards of the Bandit"] = {
-			["mr"] = 255378,
-			["sc"] = 3,
-			["id"] = "82246:0:0:-40",
-			["cc"] = 4,
-			["H2099"] = 255378,
-		},
-		["Discarded Swampstalker Leggings of the Bandit"] = {
-			["mr"] = 5184938,
-			["sc"] = 2,
-			["id"] = "94047:0:0:-40",
-			["cc"] = 4,
-			["H2099"] = 5184938,
-		},
-		["Insignia Leggings"] = {
-			["mr"] = 5594726,
-			["sc"] = 2,
-			["id"] = "4054:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 5594726,
-		},
-		["Taunka Legguards of Intellect"] = {
-			["mr"] = 2304345,
-			["sc"] = 2,
-			["id"] = "36120:0:0:-26",
-			["cc"] = 4,
-			["H2099"] = 2304345,
-		},
-		["Dervish Leggings of the Eagle"] = {
-			["mr"] = 499900,
-			["sc"] = 2,
-			["id"] = "6607:0:0:-69",
-			["cc"] = 4,
-			["H2099"] = 499900,
-		},
-		["Nagahide Leggings of Nature Protection"] = {
-			["mr"] = 20000000,
-			["sc"] = 1,
-			["id"] = "31246:0:0:-34",
-			["cc"] = 4,
-			["H2099"] = 20000000,
-		},
-		["Highland Padded Leggings"] = {
-			["mr"] = 3129995,
-			["sc"] = 3,
-			["id"] = "66971:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 3129995,
-		},
-		["Webspinner Leggings of the Wolf"] = {
-			["mr"] = 99994,
-			["sc"] = 2,
-			["id"] = "36168:0:0:-13",
-			["cc"] = 4,
-			["H2099"] = 99994,
-		},
-		["Bluefen Leggings of the Elder"] = {
-			["mr"] = 1178904,
-			["sc"] = 1,
-			["id"] = "55756:0:0:-42",
-			["cc"] = 4,
-			["H2099"] = 1178904,
-		},
-		["Jazeraint Leggings of the Owl"] = {
-			["mr"] = 749994,
-			["sc"] = 3,
-			["id"] = "9903:0:0:-9",
-			["cc"] = 4,
-			["H2099"] = 749994,
-		},
-		["Pattern: Deathscale Leggings"] = {
-			["mr"] = 654000,
-			["sc"] = 1,
-			["id"] = "72005:0:0:0",
-			["cc"] = 9,
-			["H2099"] = 654000,
-		},
-		["Geist Legguards of Strength"] = {
-			["mr"] = 235599,
-			["sc"] = 2,
-			["id"] = "36176:0:0:-17",
-			["cc"] = 4,
-			["H2099"] = 235599,
-		},
-		["Brilliant Hexweave Cloak of the Fireflash"] = {
-			["mr"] = 19288986,
-			["cc"] = 4,
-			["id"] = "114819:0:1:0",
-			["H2090"] = 19288986,
-			["sc"] = 1,
-		},
-		["Supple Boots of the Peerless"] = {
-			["mr"] = 150000000,
-			["cc"] = 2,
-			["H1961"] = 150000000,
-			["id"] = "116182:0:5:0",
-			["sc"] = 3,
-		},
-		["Fortified Leggings of the Gorilla"] = {
-			["mr"] = 2616889,
-			["sc"] = 3,
-			["id"] = "9815:0:0:-10",
-			["cc"] = 4,
-			["H2099"] = 2616889,
-		},
-		["Ango'rosh Legguards of the Elder"] = {
-			["mr"] = 499999,
-			["sc"] = 4,
-			["id"] = "24931:0:0:-44",
-			["cc"] = 4,
-			["H2099"] = 499999,
-		},
-		["Ornate Legguards of Agility"] = {
-			["mr"] = 1080527,
-			["sc"] = 3,
-			["id"] = "10124:0:0:-18",
-			["cc"] = 4,
-			["H2099"] = 1080527,
+			["id"] = "109217:0:0:0",
+			["cc"] = 0,
+			["H2099"] = 51500,
 		},
 		["Sumptuous Leggings of the Aurora"] = {
 			["mr"] = 100000,
@@ -10883,12 +11139,132 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 100000,
 		},
+		["Enchant Cloak - Superior Agility"] = {
+			["H2100"] = 497998,
+			["cc"] = 8,
+			["id"] = "38959:0:0:0",
+			["sc"] = 3,
+			["mr"] = 497998,
+		},
+		["Enchant Cloak - Lesser Agility"] = {
+			["H2100"] = 17907558,
+			["cc"] = 8,
+			["id"] = "38835:0:0:0",
+			["sc"] = 3,
+			["mr"] = 17907558,
+		},
+		["Taunka Legguards of Intellect"] = {
+			["mr"] = 2304345,
+			["sc"] = 2,
+			["id"] = "36120:0:0:-26",
+			["cc"] = 4,
+			["H2099"] = 2304345,
+		},
 		["Shadowskulk Leggings"] = {
 			["mr"] = 1099990,
 			["sc"] = 2,
 			["id"] = "66962:0:0:0",
 			["cc"] = 4,
 			["H2099"] = 1099990,
+		},
+		["Nagahide Leggings of Nature Protection"] = {
+			["mr"] = 20000000,
+			["sc"] = 1,
+			["id"] = "31246:0:0:-34",
+			["cc"] = 4,
+			["H2099"] = 20000000,
+		},
+		["Enchant Cloak - Minor Protection"] = {
+			["H2100"] = 369995,
+			["cc"] = 8,
+			["id"] = "38775:0:0:0",
+			["sc"] = 3,
+			["mr"] = 369995,
+		},
+		["Enchant Cloak - Greater Speed"] = {
+			["H2100"] = 16919995,
+			["cc"] = 8,
+			["id"] = "39003:0:0:0",
+			["sc"] = 3,
+			["mr"] = 16919995,
+		},
+		["Bluefen Leggings of the Elder"] = {
+			["mr"] = 1178904,
+			["sc"] = 1,
+			["id"] = "55756:0:0:-42",
+			["cc"] = 4,
+			["H2099"] = 1178904,
+		},
+		["Mandragoran Leggings of the Aurora"] = {
+			["mr"] = 2004996,
+			["sc"] = 1,
+			["id"] = "106509:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 2004996,
+		},
+		["Pattern: Deathscale Leggings"] = {
+			["mr"] = 654000,
+			["sc"] = 1,
+			["id"] = "72005:0:0:0",
+			["cc"] = 9,
+			["H2099"] = 654000,
+		},
+		["Cormorant Leggings of the Tiger"] = {
+			["mr"] = 399999,
+			["sc"] = 3,
+			["id"] = "36264:0:0:-14",
+			["cc"] = 4,
+			["H2099"] = 399999,
+		},
+		["Brilliant Hexweave Cloak of the Fireflash"] = {
+			["mr"] = 19288986,
+			["cc"] = 4,
+			["id"] = "114819:0:1:0",
+			["H2090"] = 19288986,
+			["sc"] = 1,
+		},
+		["Very Manly Leggings"] = {
+			["mr"] = 5989943,
+			["sc"] = 1,
+			["id"] = "87463:0:0:0",
+			["cc"] = 4,
+			["H2099"] = 5989943,
+		},
+		["Thick Scale Legguards of Strength"] = {
+			["mr"] = 3841000,
+			["sc"] = 3,
+			["id"] = "15551:0:0:-17",
+			["cc"] = 4,
+			["H2099"] = 3841000,
+		},
+		["Ango'rosh Legguards of the Elder"] = {
+			["mr"] = 499999,
+			["sc"] = 4,
+			["id"] = "24931:0:0:-44",
+			["cc"] = 4,
+			["H2099"] = 499999,
+		},
+		["Sallow Pigment"] = {
+			["mr"] = 19999999,
+			["cc"] = 7,
+			["id"] = "129034:0:0:0",
+			["H2119"] = 20000000,
+			["sc"] = 16,
+			["L2119"] = 19999999,
+		},
+		["Gryphon Mail Legguards of the Falcon"] = {
+			["mr"] = 9979997,
+			["sc"] = 3,
+			["id"] = "15627:0:0:-11",
+			["cc"] = 4,
+			["H2099"] = 9979997,
+		},
+		["Diamond-Cut Refractor Scope"] = {
+			["mr"] = 250000,
+			["cc"] = 0,
+			["id"] = "44739:0:0:0",
+			["H2092"] = 250000,
+			["sc"] = 0,
 		},
 		["Amberpine Legguards of the Bandit"] = {
 			["mr"] = 2063304,
@@ -10904,40 +11280,40 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 24208292,
 		},
-		["Nifflevar Legguards of Agility"] = {
-			["mr"] = 731128,
-			["sc"] = 3,
-			["id"] = "36208:0:0:-18",
-			["cc"] = 4,
-			["H2099"] = 731128,
-		},
-		["Bloodscale Legguards of Nimbleness"] = {
-			["mr"] = 7790000,
+		["Tome of the Tranquil Mind"] = {
+			["mr"] = 999999,
+			["cc"] = 15,
+			["id"] = "141446:0:0:0",
+			["H2119"] = 999999,
 			["sc"] = 4,
-			["id"] = "24947:0:0:-27",
-			["cc"] = 4,
-			["H2099"] = 7790000,
 		},
-		["Mandragoran Leggings of the Aurora"] = {
-			["mr"] = 2004996,
+		["Fjarnskaggl"] = {
+			["mr"] = 205555,
+			["cc"] = 7,
+			["id"] = "124104:0:0:0",
+			["H2119"] = 205555,
+			["sc"] = 9,
+		},
+		["Obliterum"] = {
+			["mr"] = 60989999,
+			["cc"] = 8,
+			["H2121"] = 60989999,
+			["id"] = "124125:0:0:0",
+			["sc"] = 11,
+		},
+		["Ritual Leggings of Spirit"] = {
+			["mr"] = 1000000,
 			["sc"] = 1,
-			["id"] = "106509:0:0:0",
+			["id"] = "14125:0:0:-15",
 			["cc"] = 4,
-			["H2099"] = 2004996,
+			["H2099"] = 1000000,
 		},
-		["Contender's Dragonscale Leggings"] = {
-			["mr"] = 31064588,
-			["sc"] = 3,
-			["id"] = "85795:0:0:0",
-			["cc"] = 4,
-			["H2099"] = 31064588,
-		},
-		["Cormorant Leggings of the Tiger"] = {
-			["mr"] = 399999,
-			["sc"] = 3,
-			["id"] = "36264:0:0:-14",
-			["cc"] = 4,
-			["H2099"] = 399999,
+		["Four of Promises"] = {
+			["mr"] = 90000000,
+			["cc"] = 12,
+			["H2121"] = 90000000,
+			["id"] = "128725:0:0:0",
+			["sc"] = 0,
 		},
 		["Thick Scale Legguards of the Bear"] = {
 			["mr"] = 1139999,
@@ -10960,12 +11336,12 @@ AUCTIONATOR_PRICE_DATABASE = {
 			["cc"] = 4,
 			["H2099"] = 150004668,
 		},
-		["Very Manly Leggings"] = {
-			["mr"] = 5989943,
-			["sc"] = 1,
-			["id"] = "87463:0:0:0",
+		["Ironhide Legguards of Power"] = {
+			["mr"] = 4288273,
+			["sc"] = 3,
+			["id"] = "15646:0:0:-20",
 			["cc"] = 4,
-			["H2099"] = 5989943,
+			["H2099"] = 4288273,
 		},
 		["Arachnidian Legguards of the Owl"] = {
 			["mr"] = 800987,
@@ -10988,6 +11364,7 @@ AUCTIONATOR_TOONS = {
 	},
 	["Krazyito"] = {
 		["firstSeen"] = 1350266976,
+		["guid"] = "Player-3684-08217F54",
 		["firstVersion"] = "3.0.5",
 	},
 	["Krázýító"] = {

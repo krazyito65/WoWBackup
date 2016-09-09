@@ -13,6 +13,7 @@ L["A damage meter."] = true
 L["Skada summary"] = true
 
 L["opens the configuration window"] = true
+L["Memory usage is high. You may want to reset Skada, and enable one of the automatic reset options."] = true
 L["resets all data"] = true
 
 L["Current"] = "Current fight"
@@ -448,3 +449,22 @@ L["Tile size"] = true
 L["The size of the texture pattern."] = true
 L["Border"] = true
 L["General"] = true
+L["Inline display is a horizontal window style."] = true
+L["Data text acts as an LDB data feed. It can be integrated in any LDB display such as Titan Panel or ChocolateBar. It also has an optional internal frame."] = true
+L["Bar display is the normal bar window used by most damage meters. It can be extensively styled."] = true
+
+L["Theme applied!"] = true
+L["Themes"] = true
+L["Theme"] = true
+L["Apply theme"] = true
+L["Save theme"] = true
+L["Name of your new theme."] = true
+L["Name"] = true
+L["Save"] = true
+L["Apply"] = true
+L["Delete"] = true
+L["Delete theme"] = true
+L["Various tweaks to get around deficiences and problems in the game's combat logs. Carries a small performance penalty."] = true
+L["Adds a set of standard themes to Skada. Custom themes can also be used."] = true
+L["Smart"] = true
+L["Memory usage is high. You may want to reset Skada, and enable one of the automatic reset options."] = true

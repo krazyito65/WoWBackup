@@ -1,13 +1,9 @@
 
 local L = BigWigs:NewBossLocale("Algalon the Observer", "frFR")
 if L then
-	L.engage_trigger = "Vos actions sont illogiques. Tous les résultats possibles de cette rencontre ont été calculés. Le Panthéon recevra le message de l'Observateur quelle que soit l'issue."
-
 	L.smash_message = "Arrivée d'un Choc cosmique !"
 	L.blackhole_message = "Trou noir %d !"
 	L.bigbang_soon = "Big Bang imminent !"
-
-	L.end_trigger = "J'ai vu des mondes baigner dans les flammes" -- à vérifier
 end
 
 L = BigWigs:NewBossLocale("Auriaya", "frFR")
@@ -180,7 +176,6 @@ if L then
 	L.phase2_trigger = "Tranchécaille bloquée au sol !"
 	L.phase2_message = "Phases 2 !"
 	L.phase2_warning = "Phase 2 imminente !"
-	L.stun_bar = "Étourdie"
 
 	L.breath_trigger = "%s inspire profondément…"
 	L.breath_message = "Souffle de flammes !"

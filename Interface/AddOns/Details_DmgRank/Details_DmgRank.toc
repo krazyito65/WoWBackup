@@ -3,7 +3,7 @@
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## OptionalDeps:  Ace3, LibSharedMedia-3.0, LibBossIDs-1.0, LibGraph-2.0, !ClassColors
-## X-Curse-Packaged-Version: r540
+## X-Curse-Packaged-Version: r547
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

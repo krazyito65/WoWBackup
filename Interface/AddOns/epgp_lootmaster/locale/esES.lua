@@ -7,7 +7,7 @@ if not L then return end
 
 L["Add note"] = "A\195\177adir nota"
 L["Allow candidates to add notes to each item."] = "Permitir a los candidatos a\195\177adir notas a cada objeto."
-L["Allows you to manually set the response for a given candidate"] = "Te permite a\195\177adir una respuesta manual para un determinado candidato" -- Needs review
+L["Allows you to manually set the response for a given candidate"] = "Te permite a\195\177adir una respuesta manual para un determinado candidato"
 L["Always enable bidding"] = "Siempre activar la subasta" -- Needs review
 L["Always: the bidding inputs will always be available when using the auto announcing features.\
 \
@@ -58,7 +58,7 @@ L["Candidate's current equipment:"] = "Equipamiento actual del candidato:" -- Ne
 L["- Cannot distribute loot -"] = "- No se puede distribuir el bot\195\173n -"
 L["\
 \
-|cFFFF8080WARNING: Alot of settings have been hidden because the EPGPLootmaster 'ML' module has been disabled. Please enabled it from the addon configuration screen.|r"] = "|cFFFF8080ALERTA: Muchas de las opciones de configuraci\195\179n est\195\161n ocultas porque el m\195\179dulo EPGPLootmaster 'ML' ha sido desactivado. Por favor, act\195\173valo desde la pantalla de gesti\195\179n de addons.|r" -- Needs review
+|cFFFF8080WARNING: Alot of settings have been hidden because the EPGPLootmaster 'ML' module has been disabled. Please enabled it from the addon configuration screen.|r"] = "|cFFFF8080ALERTA: Muchas de las opciones de configuraci\195\179n est\195\161n ocultas porque el m\195\179dulo EPGPLootmaster 'ML' ha sido desactivado. Por favor, act\195\173valo desde la pantalla de gesti\195\179n de addons.|r"
 L["Change this to the GP value you wish to set for this item"] = "Cambiar esto al valor de GP que desees establecer para este objeto" -- Needs review
 L["Check if you want display incoming monitor updates. This function allows you to see the masterlooter interface so you can help in making decisions about the loot distribution."] = "Marca la casilla si quieres mostrar actualizaciones entrantes del monitor. Esta funci\195\179n te permite ver la interfaz del maestro despojador por lo que te puede ayudar a tomar decisiones sobre la distribuci\195\179n del bot\195\173n." -- Needs review
 L["Check if you want send outgoing monitor messages. This functions allows other raidmembers to see the masterlooter interface so they can help in making decisions about the loot distribution. You will only send out messages if you are the master looter."] = "Marca la casilla si quieres enviar mensajes salientes del monitor. Esta funci\195\179n permite a otros miembros de la banda ver la interfaz del maestro despojador por lo que pueden ayudar a tomar decisiones sobre la distribuci\195\179n del bot\195\173n. S\195\179lo enviar\195\161 mensajes si eres el maestro despojador." -- Needs review
@@ -126,7 +126,7 @@ You are the loot master, would you like to use EPGPLootmaster to distribute loot
 Eres el maestro despojador, \194\191quieres utilizar EPGPLootmaster para distribuir el bot\195\173n?\
 \
 (Se te volver\195\161 a preguntar la pr\195\179xima vez. Usa /lm config para cambiar este comportamiento)"
-L["<ERROR> Could not increase GP in officernotes for %s %s (EPGP not installed or no rights?!)"] = "<ERROR> No se pudo incrementar GP en las notas de oficial por %s %s (\194\191EPGP no instalado o incorrecto?!) " -- Needs review
+L["<ERROR> Could not increase GP in officernotes for %s %s (EPGP not installed or no rights?!)"] = "<ERROR> No se pudo incrementar GP en las notas de oficial por %s %s (\194\191EPGP no instalado o incorrecto?!) "
 L["Error while parsing message '%s' from %s: %s"] = "Error mientras se procesaba el mensaje '%s' de %s: %s" -- Needs review
 L["Extra functions"] = "Funciones extra" -- Needs review
 L["fallback:"] = "Caso de error:" -- Needs review
@@ -176,7 +176,7 @@ L["Mask monitors while selecting"] = "Enmarcarar monitores mientras se seleccion
 L["Master Looter Module not enabled"] = "M\195\179dulo de Maestro Despojador no activo"
 L["Minor Upgrade"] = "Mejora menor"
 L["Monitoring"] = "Monitorizando" -- Needs review
-L["** MONITORING ** Only %s may distribute this item **"] = "** MONITORIZANDO ** Solo %s puede distribuir este objeto **" -- Needs review
+L["** MONITORING ** Only %s may distribute this item **"] = "** MONITORIZANDO ** Solo %s puede distribuir este objeto **"
 L["** MONITOR ONLY **"] = "** S\195\147LO MONITORIZACI\195\147N **"
 L["Monitor text color"] = "Color del texto del monitor" -- Needs review
 L["My note: %s"] = "Mi nota: %s"
@@ -219,13 +219,13 @@ L["Play audio warning on loot selection popup."] = "Reproduce un sonido de adver
 L["Please click this button to vote for %s for the selected item"] = "Por favor haz clic en este bot\195\179n para votar por %s para el objeto seleccionado" -- Needs review
 L["Please enable the lootmaster ML module."] = "Por favor active el m\195\179dulo lootmaster ML." -- Needs review
 L["Please enter the name of the default candidate to receive the BoE and BoU items here."] = "Por favor introduce aqu\195\173 el nombre del candidato por defecto a recibir los objetos que se ligar al equipar y al usarse." -- Needs review
-L[". Please note that the candidate will receive a notice about this in whisper."] = "Tenga en cuenta que el candidato recibir\195\161 un aviso sobre esto en un susurro." -- Needs review
+L[". Please note that the candidate will receive a notice about this in whisper."] = "Tenga en cuenta que el candidato recibir\195\161 un aviso sobre esto en un susurro."
 L["Raidinfo Check"] = "Comprobaci\195\179n de la informaci\195\179n de banda" -- Needs review
 L["Raid lock expired, available"] = "Bloqueo de banda expirado, disponible" -- Needs review
 L["Raid/Party"] = "Banda/Grupo" -- Needs review
 L["Random roll"] = "Tirada de dados aleatoria" -- Needs review
 L["Rank"] = "Rango" -- Needs review
-L["(Re)announce loot to candidate"] = "(Re)anunciar bot\195\173n al candidato" -- Needs review
+L["(Re)announce loot to candidate"] = "(Re)anunciar bot\195\173n al candidato"
 L["Registered bid %d, %s for %s"] = "Puja registrada %d, %s para %s" -- Needs review
 L["Registered %s for %s"] = "Registrado %s para %s" -- Needs review
 L["Reopens the loot selection popup at the candidate, this offers the candidate to vote for the loot after a crash or disconnect."] = "Reabre la ventana emergente de selecci\195\179n de bot\195\173n al candidato, esto ofrece al candidato la posibilidad de votar por el bot\195\173n despu\195\169s de un fallo o desconexi\195\179n." -- Needs review
@@ -237,7 +237,7 @@ L["Save"] = "Guardar" -- Needs review
 L["Saved to %d, but not yet locked"] = "Guardado a %d, pero no a\195\186n bloqueado" -- Needs review
 L["Saved to %d, locked"] = "Guardado a %d, bloqueado" -- Needs review
 L["Saved to your instance"] = "Guardado a tu instancia" -- Needs review
-L["--==[    SELECT AN INSTANCE    ]==--        "] = "\009--==[    SELECCIONA UNA INSTANCIA   ]==--     " -- Needs review
+L["--==[    SELECT AN INSTANCE    ]==--        "] = "\009--==[    SELECCIONA UNA INSTANCIA   ]==--     "
 L["Selected (temporarely hidden)"] = "Seleccionado (temporalmente oculto)" -- Needs review
 L["Selection buttons"] = "Botones de selecci\195\179n" -- Needs review
 L["Send a message to the selected candidate."] = "Enviar un mensaje al candidato seleccionado." -- Needs review
@@ -284,10 +284,10 @@ L["This will disallow players from voting on themselves"] = "Esto denegar\195\16
 L["This will emulate the \"Player receives [item].\" locally. Usually used to \"fix\" the portal problem in naxx."] = "Esto emular\195\161 el \"Jugador recibe [objeto]\". localmente. Usualmente utilizado para \"arreglar\" los problemas de portal en naxx." -- Needs review
 L["This will open the selecton screen on their client."] = "Esto abrir\195\161 la pantalla de selecci\195\179n en su cliente." -- Needs review
 L["This will play an audible warning when the loot selection popup is opened and requires your input."] = "Esto reproducir\195\161 una advertencia audible cuando la ventana emergente de selecci\195\179n de bot\195\173n se abre y requiere su gesti\195\179n." -- Needs review
-L[" (Unable to register in CT_RaidTracker; no raid started)"] = "(No se pudo registrar en CT_RaidTracker, ninguna banda iniciada)" -- Needs review
-L[" (Unable to register in HeadCount; item found, candidate wrong)"] = "(No se pudo registrar en HeadCount; objeto encontrado, candidato err\195\179neo)" -- Needs review
+L[" (Unable to register in CT_RaidTracker; no raid started)"] = "(No se pudo registrar en CT_RaidTracker, ninguna banda iniciada)"
+L[" (Unable to register in HeadCount; item found, candidate wrong)"] = "(No se pudo registrar en HeadCount; objeto encontrado, candidato err\195\179neo)"
 L[" (Unable to register in HeadCount; itemID not found)"] = " (No se pudo registrar en HeadCount; ID de objeto no encontrado)"
-L[" (Unable to register in HeadCount; last item not found)"] = "(No se pudo registrar en HeadCount; \195\186ltimo objeto no encontrado)" -- Needs review
+L[" (Unable to register in HeadCount; last item not found)"] = "(No se pudo registrar en HeadCount; \195\186ltimo objeto no encontrado)"
 L[" (Unable to register in HeadCount; no active raid)"] = " (No se pudo registrar en HeadCount; no hay banda activa)"
 L[" (Unable to register in HeadCount; no lootlist available)"] = " (No se pudo registrar en HeadCount; lista de bot\195\173n no disponible)"
 L[" (Unable to register in HeadCount; no raidTracker)"] = "(No se pudo registrar en HeadCount; raidTracker no encontrado)"

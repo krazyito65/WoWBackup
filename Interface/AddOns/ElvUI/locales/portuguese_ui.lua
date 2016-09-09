@@ -3,9 +3,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "ptBR")
 if not L then return end
 
---TEMP
-L["A taint has occured that is preventing you from using the queue system. Please reload your user interface and try again."] = "Um erro aconteceu que está previnindo você de usar o sistema de fila. Por favor recarregue sua interface e tente novamente."
-
 --*_ADDON locales
 L["INCOMPATIBLE_ADDON"] = "The addon %s is not compatible with ElvUI's %s module. Please select either the addon or the ElvUI module to disable."
 
@@ -36,7 +33,6 @@ L["Trigger"] = "Gatilho"
 L["Bank"] = true;
 L["Deposit Reagents"] = true;
 L["Hold Control + Right Click:"] = "Segurar Control + Clique Direito:"
-L["Hold Shift + Drag:"] = "Segurar Shift + Arrastar:"
 L["Purchase Bags"] = true;
 L["Purchase"] = "Comprar"
 L["Reagent Bank"] = true;
@@ -85,6 +81,7 @@ L["Earned:"] = "Ganho:"
 L["Feet"] = "Pés"
 L["Friends List"] = "Lista de Amigos"
 L["Friends"] = "Amigos"
+L["Gold:"] = true;
 L["goldabbrev"] = "|cffffd700g|r"
 L["Hands"] = "Mãos"
 L["Head"] = "Cabeça"
@@ -169,7 +166,6 @@ L["Layout"] = "Layout"
 L["Lock"] = "Travar"
 L["Low Resolution"] = "Baixa Resolução"
 L["low"] = "baixo"
-L["Movers unlocked. Move them now and click Lock when you are done."] = "Movedores destravados. Mova-os agora e clique Travar quando acabar."
 L["Nudge"] = "Ajuste fino"
 L["Physical DPS"] = "DPS Físico"
 L["Please click the button below so you can setup variables and ReloadUI."] = "Por favor, clique no botão abaixo para que possa configurar as variáveis e Recarregar a IU."
@@ -232,7 +228,12 @@ L["Alternative Power"] = "Recurso Alternativo"
 L["Archeology Progress Bar"] = true;
 L["Arena Frames"] = "Quadros de Arenas"
 L["Artifact Bar"] = true;
+L["Bag Mover (Grow Down)"] = true;
+L["Bag Mover (Grow Up)"] = true;
+L["Bag Mover"] = true;
 L["Bags"] = "Bolsas"
+L["Bank Mover (Grow Down)"] = true;
+L["Bank Mover (Grow Up)"] = true;
 L["Bar "] = "Barra "
 L["BNet Frame"] = "Quadro do Bnet"
 L["Boss Button"] = "Botão de Chefe"
@@ -280,6 +281,12 @@ L["TargetTarget Frame"] = "Quadro do Alvo do Alvo"
 L["TargetTargetTarget Frame"] = true;
 L["Tooltip"] = "Tooltip"
 L["Vehicle Seat Frame"] = "Quadro de Assento de Veículo"
+L["DESC_MOVERCONFIG"] = [=[Movedores destravados. Mova-os agora e clique Travar quando acabar.
+
+Options:
+  Shift + RightClick - Hides mover temporarily.
+  Ctrl + RightClick - Resets mover position to default.
+]=]
 
 --Plugin Installer
 L["ElvUI Plugin Installation"] = true;

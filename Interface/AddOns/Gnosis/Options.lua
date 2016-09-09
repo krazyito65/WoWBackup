@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Options.lua last changed 2016-07-21T06:24:03Z
-
 -- local functions
 local tonumber = tonumber;
 local type = type;
@@ -35,8 +32,8 @@ function Gnosis:OptCreateBasicTables()
 		vehicle = "Vehicle",
 	};
 
-	Gnosis.tSpecs = { [0] = "1 & 2", [1] = "1", [2] = "2" };
-
+	Gnosis.tSpecs = { [0] = "1 & 2 & 3 & 4", [1] = "1", [2] = "2", [3] = "3", [4] = "4", [5] = Gnosis.L["tSpecsSelectSpec"] };
+	
 	Gnosis.tBarTypes = { cb = Gnosis.L["BT_Castbar"], ti = Gnosis.L["BT_MSTimer"] };
 
 	Gnosis.fontoutlines = { ["NONE"] = Gnosis.L["TabCapNONE"], ["OUTLINE"] = "OUTLINE", ["THICKOUTLINE"] = "THICKOUTLINE", ["MONOCHROME"] = "MONOCHROME", ["OUTLINE, MONOCHROME"] = "OUTLINE, MONOCHROME", ["THICKOUTLINE, MONOCHROME"] = "THICKOUTLINE, MONOCHROME" };
@@ -279,8 +276,17 @@ function Gnosis:OptCreateBasicTables()
 				end,
 				width = "full",
 			},
-			impbars = {
+			reanchorallbars = {
 				order = 12,
+				name = Gnosis.L["OptReanchorAllBars"],
+				type = "execute",
+				func = function()
+					Gnosis:AnchorAllBarsAndSetParams();
+				end,
+				width = "full",
+			},
+			impbars = {
+				order = 13,
 				name = Gnosis.L["OptImportBar"],
 				type = "execute",
 				func = function()
@@ -289,7 +295,7 @@ function Gnosis:OptCreateBasicTables()
 				width = "full",
 			},
 			expbars = {
-				order = 13,
+				order = 14,
 				name = Gnosis.L["OptExportAllBars"],
 				type = "execute",
 				func = function()
@@ -298,7 +304,7 @@ function Gnosis:OptCreateBasicTables()
 				width = "full",
 			},
 			respd = {
-				order = 14,
+				order = 15,
 				name = Gnosis.L["OptResetPlayerData"],
 				type = "execute",
 				func = function()
@@ -900,17 +906,34 @@ function Gnosis:CreateCastbarsOpt()
 					style = "dropdown",
 					width = "full",
 				},
-				specact = {
+				specactcustom = {
 					order = self:GetNextTableIndex(),
 					name = Gnosis.L["OptCBActiveSpec"],
+					desc = Gnosis.L["OptCBActiveSpecDesc"],
+					type = "input",
+					get = function(info)
+						return Gnosis:TableToCommaSeparatedNumbers(Gnosis.s.cbconf[key].spectab);
+					end,
+					set = function(info,val)
+						Gnosis.s.cbconf[key].spectab = 
+							Gnosis:CommaSeparatedNumbersToTable(val, 1, 4);
+						Gnosis:SetBarParams(key);
+					end,
+					width = "full",
+				},
+				specact = {
+					order = self:GetNextTableIndex(),
+					name = "",
 					type = "select",
 					values = Gnosis.tSpecs,
-					get = function(info) return Gnosis.s.cbconf[key].spec; end,
+					get = function(info) return 5; end,
 					set = function(info,val)
-							Gnosis.s.cbconf[key].spec = val;
-							Gnosis:SetBarParams(key);
-							Gnosis:CreateCBTables();
-						end,
+						local specstr = (val >= 1 and val <= 4) and ("" .. val) or "1,2,3,4";
+						Gnosis.s.cbconf[key].spectab = 
+							Gnosis:CommaSeparatedNumbersToTable(specstr, 1, 4);
+						Gnosis:SetBarParams(key);
+						Gnosis:CreateCBTables();
+					end,
 					style = "dropdown",
 					width = "full",
 				},
@@ -1320,6 +1343,16 @@ function Gnosis:CreateCastbarsOpt()
 							set = function(info,val) Gnosis.s.cbconf[key].fSparkWidthMulti = val; Gnosis:SetBarParams(key); end,
 							isPercent = true,
 						},
+						latbarfixed = {
+							order = self:GetNextTableIndex(),
+							name = Gnosis.L["OptCBFixLatBox"],
+							type = "range",
+							min = 0.01, max = 0.25,
+							step = 0.01, bigStep = 0.01,
+							get = function(info) return Gnosis.s.cbconf[key].latbarfixed; end,
+							set = function(info,val) Gnosis.s.cbconf[key].latbarfixed = val; end,
+							isPercent = true,
+						},
 						latbarsize = {
 							order = self:GetNextTableIndex(),
 							name = Gnosis.L["OptCBMaxLatBox"],
@@ -1329,17 +1362,7 @@ function Gnosis:CreateCastbarsOpt()
 							get = function(info) return Gnosis.s.cbconf[key].latbarsize; end,
 							set = function(info,val) Gnosis.s.cbconf[key].latbarsize = val; end,
 							isPercent = true,
-						},
-						latbarfixed = {
-							order = self:GetNextTableIndex(),
-							name = Gnosis.L["OptCBFixLatBox"],
-							type = "range",
-							min = 0.01, max = 0.1,
-							step = 0.01, bigStep = 0.01,
-							get = function(info) return Gnosis.s.cbconf[key].latbarfixed; end,
-							set = function(info,val) Gnosis.s.cbconf[key].latbarfixed = val; end,
-							isPercent = true,
-						},
+						},						
 						baralpha = {
 							order = self:GetNextTableIndex(),
 							name = Gnosis.L["OptCBAlpha"],

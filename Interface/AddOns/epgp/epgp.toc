@@ -2,13 +2,13 @@
 ## Title: EPGP
 ## Notes: Effort Points/Gear Points Loot System
 ## Author: Alkis Evlogimenos
-## Version: v5.12.0
+## Version: v5.12.3
 ## SavedVariables: EPGP_DB
 ## X-Category: Guild
 ## X-Website: http://code.google.com/p/epgp/
 ## X-Compatible-With: 70000
 ## X-Since-Interface: 60000
-## X-Curse-Packaged-Version: v5.12.0
+## X-Curse-Packaged-Version: v5.12.3
 ## X-Curse-Project-Name: epgp (dkp reloaded)
 ## X-Curse-Project-ID: epgp-dkp-reloaded
 ## X-Curse-Repository-ID: wow/epgp-dkp-reloaded/mainline

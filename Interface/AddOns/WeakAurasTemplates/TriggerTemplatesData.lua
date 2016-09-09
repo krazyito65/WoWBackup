@@ -2519,7 +2519,7 @@ templates.class.MONK = {
         { spell = 195321, type = "buff", unit = "player" }, -- Transfer the Power
         { spell = 195381, type = "buff", unit = "player" }, -- Healing Winds
         { spell = 196608, type = "buff", unit = "player", talent = 2 }, -- Eye of the Tiger
-        { spell = 196741, type = "buff", unit = "player", talent = 15 }, -- Hit Combo
+        { spell = 196741, type = "buff", unit = "player", talent = 18 }, -- Hit Combo
       },
       icon = 611420
     },
@@ -2567,6 +2567,7 @@ templates.class.MONK = {
         { spell = 122783, type = "ability", talent = 14}, -- Diffuse Magic
         { spell = 123904, type = "ability", talent = 17}, -- Invoke Xuen, the White Tiger
         { spell = 123986, type = "ability", talent = 1}, -- Chi Burst
+        { spell = 137639, type = "ability"}, -- Storm, Earth, and Fire
         { spell = 152173, type = "ability", talent = 21}, -- Serenity
         { spell = 152175, type = "ability", talent = 20}, -- Whirling Dragon Punch
         { spell = 205320, type = "ability"}, -- Strike of the Windlord
@@ -3894,7 +3895,7 @@ templates.class.MONK[1][6] = {
 templates.class.MONK[2][6] = {
   title = L["Ability Charges"],
   args = {
-    { spell = 205406, type = "spellcount"}, -- Sheilun's Gift
+    { spell = 205406, type = "ability", showOn = "always"}, -- Sheilun's Gift
   },
   icon = 1242282,
 };
@@ -3902,7 +3903,7 @@ templates.class.MONK[2][6] = {
 templates.class.MONK[3][6] = {
   title = L["Ability Charges"],
   args = {
-    { spell = 101546, type = "spellcount"}, -- Spinning Crane Kick
+    { spell = 101546, type = "ability", showOn = "always"}, -- Spinning Crane Kick
   },
   icon = 606543,
 };

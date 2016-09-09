@@ -7,14 +7,15 @@ local _G = _G
 local format = format
 
 --WoW API / Variables
-local GetWatchedFactionInfo, GetNumFactions, GetFactionInfo = GetWatchedFactionInfo, GetNumFactions, GetFactionInfo
 local GetFriendshipReputation = GetFriendshipReputation
-
-local REPUTATION, STANDING = REPUTATION, STANDING
+local GetWatchedFactionInfo, GetNumFactions, GetFactionInfo = GetWatchedFactionInfo, GetNumFactions, GetFactionInfo
+local InCombatLockdown = InCombatLockdown
+local ToggleCharacter = ToggleCharacter
 local FACTION_BAR_COLORS = FACTION_BAR_COLORS
---Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: GameTooltip, RightChatPanel
+local REPUTATION, STANDING = REPUTATION, STANDING
 
+--Global variables that we don't cache, list them here for mikk's FindGlobals script
+-- GLOBALS: GameTooltip, RightChatPanel, CreateFrame
 
 local backupColor = FACTION_BAR_COLORS[1]
 local FactionStandingLabelUnknown = UNKNOWN
@@ -28,9 +29,9 @@ function mod:UpdateReputation(event)
 	local name, reaction, min, max, value = GetWatchedFactionInfo()
 	local numFactions = GetNumFactions();
 
-	if not name then
+	if not name or (event == "PLAYER_REGEN_DISABLED" and self.db.reputation.hideInCombat) then
 		bar:Hide()
-	else
+	elseif name and (not self.db.reputation.hideInCombat or not InCombatLockdown()) then
 		bar:Show()
 		
 		if self.db.reputation.hideInVehicle then
@@ -65,13 +66,19 @@ function mod:UpdateReputation(event)
 		else
 			standingLabel = FactionStandingLabelUnknown
 		end
-
+		
 		if textFormat == 'PERCENT' then
 			text = format('%s: %d%% [%s]', name, ((value - min) / (max - min) * 100), isFriend and friendText or standingLabel)
 		elseif textFormat == 'CURMAX' then
 			text = format('%s: %s - %s [%s]', name, E:ShortValue(value - min), E:ShortValue(max - min), isFriend and friendText or standingLabel)
 		elseif textFormat == 'CURPERC' then
 			text = format('%s: %s - %d%% [%s]', name, E:ShortValue(value - min), ((value - min) / (max - min) * 100), isFriend and friendText or standingLabel)
+		elseif textFormat == 'CUR' then
+			text = format('%s: %s [%s]', name, E:ShortValue(value - min), isFriend and friendText or standingLabel)
+		elseif textFormat == 'REM' then
+			text = format('%s: %s [%s]', name, E:ShortValue((max - min) - (value-min)), isFriend and friendText or standingLabel)
+		elseif textFormat == 'CURREM' then
+			text = format('%s: %s - %s [%s]', name, E:ShortValue(value - min), E:ShortValue((max - min) - (value-min)), isFriend and friendText or standingLabel)
 		end
 
 		bar.text:SetText(text)
@@ -95,6 +102,10 @@ function mod:ReputationBar_OnEnter()
 		GameTooltip:AddDoubleLine(REPUTATION..':', format('%d / %d (%d%%)', value - min, max - min, (value - min) / ((max - min == 0) and max or (max - min)) * 100), 1, 1, 1)
 	end
 	GameTooltip:Show()
+end
+
+function mod:ReputationBar_OnClick()
+	ToggleCharacter("ReputationFrame");
 end
 
 function mod:UpdateReputationDimensions()
@@ -124,8 +135,14 @@ end
 
 
 function mod:LoadReputationBar()
-	self.repBar = self:CreateBar('ElvUI_ReputationBar', self.ReputationBar_OnEnter, 'RIGHT', RightChatPanel, 'LEFT', E.Border - E.Spacing*3, 0)
+	self.repBar = self:CreateBar('ElvUI_ReputationBar', self.ReputationBar_OnEnter, self.ReputationBar_OnClick, 'RIGHT', RightChatPanel, 'LEFT', E.Border - E.Spacing*3, 0)
 	E:RegisterStatusBar(self.repBar.statusBar)
+
+	self.repBar.eventFrame = CreateFrame("Frame")
+	self.repBar.eventFrame:Hide()
+	self.repBar.eventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+	self.repBar.eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
+	self.repBar.eventFrame:SetScript("OnEvent", function(self, event) mod:UpdateReputation(event) end)
 
 	self:UpdateReputationDimensions()
 

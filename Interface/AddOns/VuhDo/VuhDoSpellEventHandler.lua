@@ -86,6 +86,10 @@ function VUHDO_spellcastSucceeded(aUnit, aSpellName)
 		VUHDO_updateAllCyclicBouquets(true);
 	end
 
+	if aSpellName == VUHDO_SPELL_ID.ACTIVATING_SPECIALIZATION then
+		VUHDO_activateSpecc(tostring(GetSpecialization()) or "1");
+	end
+
 	VUHDO_aoeUpdateAll();
 end
 

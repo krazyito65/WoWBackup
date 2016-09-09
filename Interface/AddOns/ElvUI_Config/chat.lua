@@ -4,6 +4,7 @@ local CH = E:GetModule('Chat')
 E.Options.args.chat = {
 	type = "group",
 	name = L["Chat"],
+	childGroups = "tab",
 	get = function(info) return E.db.chat[ info[#info] ] end,
 	set = function(info, value) E.db.chat[ info[#info] ] = value end,
 	args = {
@@ -23,8 +24,12 @@ E.Options.args.chat = {
 			order = 3,
 			type = "group",
 			name = L["General"],
-			guiInline = true,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["General"],
+				},
 				url = {
 					order = 1,
 					type = 'toggle',
@@ -176,15 +181,41 @@ E.Options.args.chat = {
 						["%H:%M:%S "] =	"15:27:32"
 					},
 				},
-
+				useCustomTimeColor = {
+					order = 16,
+					type = "toggle",
+					name = L["Custom Timestamp Color"],
+					disabled = function() return not E.db.chat.timeStampFormat == "NONE" end,
+				},
+				customTimeColor = {
+					order = 17,
+					type = "color",
+					hasAlpha = false,
+					name = L["Timestamp Color"],
+					disabled = function() return (not E.db.chat.timeStampFormat == "NONE" or not E.db.chat.useCustomTimeColor) end,
+					get = function(info)
+						local t = E.db.chat.customTimeColor
+						local d = P.chat.customTimeColor
+						return t.r, t.g, t.b, t.a, d.r, d.g, d.b
+					end,
+					set = function(info, r, g, b)
+						E.db.chat.customTimeColor = {}
+						local t = E.db.chat.customTimeColor
+						t.r, t.g, t.b = r, g, b
+					end,
+				},
 			},
 		},
 		alerts = {
 			order = 4,
 			type = 'group',
 			name = L["Alerts"],
-			guiInline = true,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Alerts"],
+				},
 				whisperSound = {
 					order = 1,
 					type = 'select', dialogControl = 'LSM30_Sound',
@@ -216,8 +247,12 @@ E.Options.args.chat = {
 			order = 5,
 			type = 'group',
 			name = L["Panels"],
-			guiInline = true,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Panels"],
+				},
 				lockPositions = {
 					order = 1,
 					type = 'toggle',
@@ -363,10 +398,14 @@ E.Options.args.chat = {
 		fontGroup = {
 			order = 120,
 			type = 'group',
-			guiInline = true,
 			name = L["Fonts"],
 			set = function(info, value) E.db.chat[ info[#info] ] = value; CH:SetupChat() end,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Fonts"],
+				},
 				font = {
 					type = "select", dialogControl = 'LSM30_Font',
 					order = 1,
@@ -381,8 +420,7 @@ E.Options.args.chat = {
 					values = {
 						['NONE'] = L["None"],
 						['OUTLINE'] = 'OUTLINE',
-
-						['MONOCHROMEOUTLINE'] = 'MONOCROMEOUTLINE',
+						['MONOCHROMEOUTLINE'] = 'MONOCHROMEOUTLINE',
 						['THICKOUTLINE'] = 'THICKOUTLINE',
 					},
 				},

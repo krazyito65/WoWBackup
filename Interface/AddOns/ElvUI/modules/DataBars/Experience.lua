@@ -11,9 +11,10 @@ local GetPetExperience, UnitXP, UnitXPMax = GetPetExperience, UnitXP, UnitXPMax
 local UnitLevel = UnitLevel
 local IsXPUserDisabled, GetXPExhaustion = IsXPUserDisabled, GetXPExhaustion
 local GetExpansionLevel = GetExpansionLevel
-
 local MAX_PLAYER_LEVEL = MAX_PLAYER_LEVEL
 local MAX_PLAYER_LEVEL_TABLE = MAX_PLAYER_LEVEL_TABLE
+local InCombatLockdown = InCombatLockdown
+
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
 -- GLOBALS: GameTooltip, LeftChatPanel, CreateFrame
 
@@ -29,14 +30,15 @@ function mod:UpdateExperience(event)
 	if not mod.db.experience.enable then return end
 
 	local bar = self.expBar
+	local hideXP = ((UnitLevel('player') == MAX_PLAYER_LEVEL and self.db.experience.hideAtMaxLevel) or IsXPUserDisabled())
 
-	if (UnitLevel('player') == MAX_PLAYER_LEVEL and self.db.experience.hideAtMaxLevel) or IsXPUserDisabled() then
+	if hideXP or (event == "PLAYER_REGEN_DISABLED" and self.db.experience.hideInCombat) then
 		E:DisableMover(self.expBar.mover:GetName())
 		bar:Hide()
-	else
+	elseif not hideXP and (not self.db.experience.hideInCombat or not InCombatLockdown()) then
 		E:EnableMover(self.expBar.mover:GetName())
 		bar:Show()
-		
+
 		if self.db.experience.hideInVehicle then
 			E:RegisterObjectForVehicleLock(bar, E.UIParent)
 		else
@@ -62,6 +64,12 @@ function mod:UpdateExperience(event)
 				text = format('%s - %s R:%s', E:ShortValue(cur), E:ShortValue(max), E:ShortValue(rested))
 			elseif textFormat == 'CURPERC' then
 				text = format('%s - %d%% R:%s [%d%%]', E:ShortValue(cur), cur / max * 100, E:ShortValue(rested), rested / max * 100)
+			elseif textFormat == 'CUR' then
+				text = format('%s R:%s', E:ShortValue(cur), E:ShortValue(rested))
+			elseif textFormat == 'REM' then
+				text = format('%s R:%s', E:ShortValue(max - cur), E:ShortValue(rested))
+			elseif textFormat == 'CURREM' then
+				text = format('%s - %s R:%s', E:ShortValue(cur), E:ShortValue(max - cur), E:ShortValue(rested))
 			end
 		else
 			bar.rested:SetMinMaxValues(0, 1)
@@ -73,6 +81,12 @@ function mod:UpdateExperience(event)
 				text = format('%s - %s', E:ShortValue(cur), E:ShortValue(max))
 			elseif textFormat == 'CURPERC' then
 				text = format('%s - %d%%', E:ShortValue(cur), cur / max * 100)
+			elseif textFormat == 'CUR' then
+				text = format('%s', E:ShortValue(cur))
+			elseif textFormat == 'REM' then
+				text = format('%s', E:ShortValue(max - cur))
+			elseif textFormat == 'CURREM' then
+				text = format('%s - %s', E:ShortValue(cur), E:ShortValue(max - cur))
 			end
 		end
 
@@ -102,13 +116,17 @@ function mod:ExperienceBar_OnEnter()
 	GameTooltip:Show()
 end
 
+function mod:ExperienceBar_OnClick()
+
+end
+
 function mod:UpdateExperienceDimensions()
 	self.expBar:Width(self.db.experience.width)
 	self.expBar:Height(self.db.experience.height)
 
 	self.expBar.text:FontTemplate(nil, self.db.experience.textSize)
 	self.expBar.rested:SetOrientation(self.db.experience.orientation)
-	self.expBar.statusBar:SetReverseFill(self.db.experience.reverseFill)	
+	self.expBar.statusBar:SetReverseFill(self.db.experience.reverseFill)
 
 	self.expBar.statusBar:SetOrientation(self.db.experience.orientation)
 	self.expBar.rested:SetReverseFill(self.db.experience.reverseFill)
@@ -117,7 +135,7 @@ function mod:UpdateExperienceDimensions()
 		self.expBar:SetAlpha(0)
 	else
 		self.expBar:SetAlpha(1)
-	end	
+	end
 end
 
 function mod:EnableDisable_ExperienceBar()
@@ -142,13 +160,19 @@ function mod:EnableDisable_ExperienceBar()
 end
 
 function mod:LoadExperienceBar()
-	self.expBar = self:CreateBar('ElvUI_ExperienceBar', self.ExperienceBar_OnEnter, 'LEFT', LeftChatPanel, 'RIGHT', -E.Border + E.Spacing*3, 0)
+	self.expBar = self:CreateBar('ElvUI_ExperienceBar', self.ExperienceBar_OnEnter, self.ExperienceBar_OnClick, 'LEFT', LeftChatPanel, 'RIGHT', -E.Border + E.Spacing*3, 0)
 	self.expBar.statusBar:SetStatusBarColor(0, 0.4, 1, .8)
 	self.expBar.rested = CreateFrame('StatusBar', nil, self.expBar)
 	self.expBar.rested:SetInside()
 	self.expBar.rested:SetStatusBarTexture(E.media.normTex)
 	E:RegisterStatusBar(self.expBar.rested)
 	self.expBar.rested:SetStatusBarColor(1, 0, 1, 0.2)
+
+	self.expBar.eventFrame = CreateFrame("Frame")
+	self.expBar.eventFrame:Hide()
+	self.expBar.eventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
+	self.expBar.eventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
+	self.expBar.eventFrame:SetScript("OnEvent", function(self, event) mod:UpdateExperience(event) end)
 
 	self:UpdateExperienceDimensions()
 

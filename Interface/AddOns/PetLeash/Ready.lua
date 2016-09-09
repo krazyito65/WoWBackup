@@ -85,6 +85,8 @@ function module:OnInitialize()
     self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
     self:RegisterEvent("UNIT_ENTERED_VEHICLE")
     self:RegisterEvent("UNIT_EXITED_VEHICLE")
+    self:RegisterEvent("PLAYER_STARTED_MOVING")
+    self:RegisterEvent("PLAYER_FLAGS_CHANGED")
 
     self:UpdateChecks()
 end
@@ -108,6 +110,25 @@ function module:OnEnable()
     
     LibPetJournal.RegisterCallback(self, "PetListUpdated")
     self:RegisterMessage("PetLeash-EnableState", "OnAddOnState")
+
+    hooksecurefunc("JumpOrAscendStart", function()
+        self:SetReady("sitting", true)
+    end)
+
+    hooksecurefunc("SitStandOrDescendStart", function()
+        -- If we're flying or mounted, this doesn't do anything interesting.
+        -- Otherwise it toggles our sitting/standing state, and unfortunately
+        -- we can't tell which (except when we stop sitting via jumping/moving)
+        if not IsFlying() and not IsMounted() then
+            self:ToggleReady("sitting")
+        end
+    end)
+
+    hooksecurefunc("SendChatMessage", function(msg, msgtype)
+        if msgtype == "AFK" then
+            self.afk_message = msg
+        end
+    end)
 end
 
 function module:OnAddOnState(event, enabled)
@@ -179,7 +200,7 @@ function module:UpdateChecks(profile)
     self:EnableCheck("have_pets", true)
     self:EnableCheck("barbar", true)
     self:EnableCheck("thunderisle_saurok", true)
-    self:EnableCheck("eating", true)
+    self:EnableCheck("sitting", true)
     self:EnableCheck("feigned", true, profile.dismissWhenStealthed)
     self:EnableCheck("looting", true)
     self:EnableCheck("vehicle", true)           -- XXX not tested
@@ -240,6 +261,14 @@ function module:SetReady(name, value)
     end
     
     self.is_irrelevant[name] = not not value
+end
+
+function module:ToggleReady(name)
+    if self.is_false[name] then
+        self:SetReady(name, true)
+    else
+        self:SetReady(name, false)
+    end
 end
 
 function module:LastCheck()
@@ -407,7 +436,9 @@ function module:UNIT_AURA(event, unit)
     self:SetReady("thunderisle_saurok", not PlayerHasAura(136461))
    
     -- eating means we are sitting down
-    self:SetReady("eating", not PlayerHasAuraInList(FOOD_SPELLS))
+    if PlayerHasAuraInList(FOOD_SPELLS) then
+        self:SetReady("sitting", true)
+    end
 
     -- feign death
     self:SetReady("feigned", not PlayerHasAura(5384))
@@ -454,3 +485,15 @@ function module:UNIT_EXITED_VEHICLE(event, unit)
     end
 end
 
+function module:PLAYER_STARTED_MOVING(event)
+    self:SetReady("sitting", true)
+end
+
+function module:PLAYER_FLAGS_CHANGED(event)
+    -- if an afk message is set, it was player initiated, which
+    -- doesn't cause them to sit down
+    if UnitIsAFK("player") and self.afk_message == nil then
+        self:SetReady("sitting", false)
+    end
+    self.afk_message = nil
+end

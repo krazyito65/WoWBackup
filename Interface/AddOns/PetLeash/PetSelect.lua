@@ -203,7 +203,6 @@ do
         highlight:SetAllPoints(checkbg)
 
         local menu = CreateFrame("FRAME", Type.."_Menu"..num, UIParent, "UIDropDownMenuTemplate")
-        UIDropDownMenu_Initialize(menu, Menu_Initialize)
 
         local widget = {
             frame       = frame,
@@ -218,6 +217,8 @@ do
             widget[method] = func
         end
         check.obj, menu.obj = widget, widget
+
+        UIDropDownMenu_Initialize(menu, Menu_Initialize, "MENU")
 
         return AceGUI:RegisterAsWidget(widget)
     end
@@ -510,11 +511,11 @@ do
 
         local listHeight = floor(#self.petIDs/self.cols)
         if listHeight > self.pageHeight then
-            self.scrollFrame:SetPoint("TOPRIGHT", self.filterBox, "BOTTOMRIGHT", -16, -5)
+            self.scrollFrame:SetPoint("TOPRIGHT", self.filterButton, "BOTTOMRIGHT", -16, -5)
             self.scrollbar:Show()
             self.scrollbar:SetMinMaxValues(0, floor(listHeight - self.pageHeight + 2))
         else
-            self.scrollFrame:SetPoint("TOPRIGHT", self.filterBox, "BOTTOMRIGHT", 0, -5)
+            self.scrollFrame:SetPoint("TOPRIGHT", self.filterButton, "BOTTOMRIGHT", 0, -5)
             self.scrollbar:Hide()
         end
     end
@@ -527,8 +528,45 @@ do
     end
 
     local function filterBox_OnTextChanged(filterBox)
-        filterBox.obj:SetScroll()
-        filterBox.obj:Update()
+        if filterBox.obj then
+            filterBox.obj:SetScroll()
+            filterBox.obj:Update()
+        end
+    end
+
+    local function filterMenu_ToggleItem(menu, self, item)
+        self[item] = not self[item]
+        self:Update()
+    end
+
+    local function filterMenu_Initialize(frame, menuLevel, menuList)
+        local self = frame.obj
+        if not self then
+            return
+        end
+
+        local info = UIDropDownMenu_CreateInfo()
+        info.text = L["Selected"]
+        info.checked = self.selected
+        info.isNotRadio = true
+        info.func = filterMenu_ToggleItem
+        info.arg1 = self
+        info.arg2 = "selected"
+        UIDropDownMenu_AddButton(info, menuLevel)
+
+        local info = UIDropDownMenu_CreateInfo()
+        info.text = L["Unselected"]
+        info.checked = self.unselected
+        info.isNotRadio = true
+        info.func = filterMenu_ToggleItem
+        info.arg1 = self
+        info.arg2 = "unselected"
+        UIDropDownMenu_AddButton(info, menuLevel)
+    end
+
+    local function filterButton_OnClick(filterButton)
+        local self = filterButton.obj
+        ToggleDropDownMenu(1, nil, self.filterMenu, filterButton, 0, 0)
     end
 
     local function scrollFrame_OnMouseWheel(scrollFrame, value)
@@ -586,6 +624,9 @@ do
             self.clearButton.frame:SetParent(self.frame)
             self.clearButton.frame:Show()
 
+            self.selected = true
+            self.unselected = true
+
             self.frozen = true
             self:SetWidth(200)
             self:SetHeight(200)
@@ -622,11 +663,13 @@ do
             self.defaultCheck:ClearAllPoints()
             self.clearButton:ClearAllPoints()
             self.filterBox:ClearAllPoints()
+            self.filterButton:ClearAllPoints()
 
             self.defaultCheck:SetPoint("TOPLEFT")
-            if width < 340 then
+
+            if width < 380 then
                 -- 2 or more rows
-                if width < 240 then
+                if width < 280 then
                     -- 3 rows
                     self.defaultCheck:SetWidth(width)
                     self.clearButton:SetPoint("TOPRIGHT", self.defaultCheck.frame, "BOTTOMRIGHT")
@@ -637,22 +680,30 @@ do
                 end
                 self.clearButton:SetWidth(120)
 
-                local filterBoxWidth = width
+                local filterBoxWidth = width - 78
                 if filterBoxWidth > 200 then
                     filterBoxWidth = 200
                 end
-                self.filterBox:SetPoint("TOPRIGHT", self.clearButton.frame, "BOTTOMRIGHT")
+
+                self.filterButton:SetSize(93, 22)
+                self.filterButton:SetPoint("TOPRIGHT", self.clearButton.frame, "BOTTOMRIGHT")
+
+                self.filterBox:SetPoint("RIGHT", self.filterButton, "LEFT")
                 self.filterBox:SetWidth(filterBoxWidth)
             else
                 -- one row
-                local filterBoxWidth = width - 240
+                local filterBoxWidth = width - 240 - 78
                 if filterBoxWidth > 200 then
                     filterBoxWidth = 200
                 end
                 self.defaultCheck:SetWidth(120)
                 self.clearButton:SetPoint("LEFT", self.defaultCheck.frame, "RIGHT")
                 self.clearButton:SetWidth(120)
-                self.filterBox:SetPoint("TOPRIGHT")
+
+                self.filterButton:SetSize(72, 22)
+                self.filterButton:SetPoint("TOPRIGHT", self.frame)
+
+                self.filterBox:SetPoint("RIGHT", self.filterButton, "LEFT")
                 self.filterBox:SetWidth(filterBoxWidth)
             end
         end,
@@ -720,7 +771,22 @@ do
             
             wipe(self.petIDs)
             for _,petID in LibPetJournal:IteratePetIDs() do
-                if not C_PetJournal.PetNeedsFanfare(petID) then
+                local v
+                local matchesSelected = true
+                if self.lookupTable then
+                    local v = self.lookupTable[petID]
+                    if v == nil then
+                        v = self.defaultValue
+                    end
+
+                    if v ~= nil and v ~= 0 then
+                        matchesSelected = self.selected
+                    else
+                        matchesSelected = self.unselected
+                    end
+                end
+
+                if matchesSelected and not C_PetJournal.PetNeedsFanfare(petID) then
                     local _, customName, _, _, _, _, _, name, icon, petType = C_PetJournal.GetPetInfoByPetID(petID)
                     if filter == "" or (customName and strfind(strlower(customName), filter, nil, true)) or strfind(strlower(name), filter, nil, true) then
                         tinsert(self.petIDs, petID)
@@ -744,9 +810,19 @@ do
         filterBox:SetHeight(20)
         filterBox:SetScript("OnTextChanged", filterBox_OnTextChanged)
 
+        local filterButton = CreateFrame("Button", nil, frame, "UIMenuButtonStretchTemplate")
+        filterButton:SetText(FILTER)
+        filterButton:SetScript("OnClick", filterButton_OnClick)
+        filterButton.Icon = filterButton:CreateTexture(nil, "ARTWORK")
+        filterButton.Icon:SetSize(10, 12)
+        filterButton.Icon:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+        filterButton.Icon:SetPoint("RIGHT", -5, 0)
+
+        local filterMenu = CreateFrame("FRAME", Type.."_FilterMenu"..num, UIParent, "UIDropDownMenuTemplate")
+
         -- we currently only use scrollframe to provide clipping
         local scrollFrame = CreateFrame("ScrollFrame", nil, frame)
-        scrollFrame:SetPoint("TOPRIGHT", filterBox, "BOTTOMRIGHT", -16, -5)
+        scrollFrame:SetPoint("TOPRIGHT", filterButton, "BOTTOMRIGHT", -16, -5)
         scrollFrame:SetPoint("BOTTOMLEFT", frame)
         scrollFrame:EnableMouseWheel(true)
         scrollFrame:SetScript("OnMouseWheel", scrollFrame_OnMouseWheel)
@@ -778,8 +854,12 @@ do
         end
 
         widget.items, widget.petIDs = {}, {}
-        widget.content, widget.scrollFrame, widget.filterBox, widget.scrollbar = content, scrollFrame, filterBox, scrollbar
-        filterBox.obj, scrollFrame.obj, scrollbar.obj = widget, widget, widget
+        widget.content, widget.scrollFrame, widget.filterBox, widget.scrollbar, widget.filterButton, widget.filterMenu
+            = content, scrollFrame, filterBox, scrollbar, filterButton, filterMenu
+        filterBox.obj, scrollFrame.obj, scrollbar.obj, filterButton.obj, filterMenu.obj
+            = widget, widget, widget, widget, widget
+
+        UIDropDownMenu_Initialize(filterMenu, filterMenu_Initialize, "MENU")
 
         return AceGUI:RegisterAsWidget(widget)
     end

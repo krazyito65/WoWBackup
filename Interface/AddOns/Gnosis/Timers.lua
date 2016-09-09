@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Timers.lua last changed 2016-07-21T06:24:03Z
-
 local UnitCastingInfo = UnitCastingInfo;
 local UnitChannelInfo = UnitChannelInfo;
 local GetItemInfo = GetItemInfo;
@@ -1152,7 +1149,9 @@ function Gnosis:Timers_Talent(bar, timer, ti)
 			local column_num = tonumber(column);
 			
 			if (tier_num and column_num) then
-				local _, tname, ttex, tsel = GetTalentInfo(tier_num, column_num, Gnosis.iCurSpec);
+				--local _, tname, ttex, tsel = GetTalentInfo(tier_num, column_num, Gnosis.iCurSpec);
+				-- bandaid...
+				local _, tname, ttex, tsel = GetTalentInfo(tier_num, column_num, 1);
 				
 				-- talent selected?
 				if (tsel) then
@@ -1367,7 +1366,7 @@ function Gnosis:CreateSingleTimerTable()
 		local conf = Gnosis.s.cbconf[key];
 		local timer_id = 0;
 
-		if (conf.bEn and conf.bartype == "ti" and (conf.spec == 0 or conf.spec == self.iCurSpec)) then
+		if (conf.bEn and conf.bartype == "ti" and conf.spectab[self.iCurSpec]) then
 			value.timers = {};
 			value.iTimerSort = nil;
 
@@ -1384,7 +1383,7 @@ function Gnosis:CreateSingleTimerTable()
 					break;
 				end
 
-				local unit, recast, staticdur, zoom, spec, iconoverride, portraitunit,
+				local unit, recast, staticdur, zoom, specstr, iconoverride, portraitunit,
 					shown, hidden, plays, playm, playf, mcnt, msize, tooltipvalue,
 					aurastacks, auraeffect, startcnt, startcntcpy, stopcnt, runetype,
 					resource_decimals, chargecnt, spellid;
@@ -1409,16 +1408,20 @@ function Gnosis:CreateSingleTimerTable()
 				aurastacks, str = self:ExtractRegex(str, "auravalue=([+-]?[0-9]*%.?[0-9]*)", "auravalue=\"([+-]?[0-9]*%.?[0-9]*)\"");
 				aurastacks, str = self:ExtractRegex(str, "aurastacks=([+-]?[0-9]*%.?[0-9]*)", "aurastacks=\"([+-]?[0-9]*%.?[0-9]*)\"");
 				auraeffect, str = self:ExtractRegex(str, "auraeffect=([+-]?[0-9]*%.?[0-9]*)", "auraeffect=\"([+-]?[0-9]*%.?[0-9]*)\"");
-				spec, str = self:ExtractRegex(str, "spec=(%d+)", "spec=\"(%d+)\"");
+				specstr, str = self:ExtractRegex(str, "spec=([0-4])", "spec=\"([^\"]+)\"");
 				runetype, str = self:ExtractRegex(str, "runetype=(%d+)", "runetype=\"(%d+)\"");
 				spellid, str = self:ExtractRegex(str, "spellid=(%d+)", "spellid=\"(%d+)\"");
-				
-				recast, staticdur, zoom, spec, spellid =
+								
+				recast, staticdur, zoom, spellid =
 					recast and (tonumber(recast) * 1000),
 					staticdur and (tonumber(staticdur) * 1000),
 					zoom and (tonumber(zoom) * 1000),
-					spec and tonumber(spec),
 					spellid and tonumber(spellid);
+				
+				local spectab;
+				if (specstr) then
+					spectab = self:CommaSeparatedNumbersToTable(specstr, 1, 4);
+				end
 				
 				-- stack/effect value display variable
 				if (aurastacks and tonumber(aurastacks)) then
@@ -1790,7 +1793,7 @@ function Gnosis:CreateSingleTimerTable()
 				if (tiType) then
 					local tTimer = {
 						type = tiType,
-						spec = spec,
+						spectab = spectab,
 						filter = strFilter,
 						spell = spell,
 						showlag = bShowLag,
@@ -2018,7 +2021,7 @@ function Gnosis:ScanTimerbar(bar, fCurTime)
 			local checkentry = true;
 			
 			-- check current spec
-			if (v.spec and v.spec ~= self.iCurSpec) then
+			if (v.spectab and v.spectab[self.iCurSpec] == false) then
 				checkentry = false;
 			else
 				-- selected unit exists?

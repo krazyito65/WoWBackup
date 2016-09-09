@@ -5,7 +5,7 @@ end
 local L = WeakAuras.L
 
 -- Options translation
--- L["Add Triggers"] = ""
+L["Add Triggers"] = "Ajouter Déclencheur"
 L["Always Active"] = "Toujours actif"
 L["- Any"] = "- N'importe"
 L["Back"] = "Retour"

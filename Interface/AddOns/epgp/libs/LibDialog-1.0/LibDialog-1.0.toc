@@ -11,7 +11,7 @@
 ## X-Curse-Project-Name: LibDialog-1.0
 ## X-Curse-Project-ID: libdialog-1-0
 ## X-Curse-Repository-ID: wow/libdialog-1-0/mainline
-## X-Curse-Packaged-Version: v5.12.0
+## X-Curse-Packaged-Version: v5.12.3
 ## X-Curse-Project-Name: epgp (dkp reloaded)
 ## X-Curse-Project-ID: epgp-dkp-reloaded
 ## X-Curse-Repository-ID: wow/epgp-dkp-reloaded/mainline

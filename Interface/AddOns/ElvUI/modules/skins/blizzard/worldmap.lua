@@ -14,7 +14,9 @@ local function LoadSkin()
 	WorldMapFrameNavBarOverlay:StripTextures()
 
 	WorldMapFrameNavBarHomeButton:StripTextures()
-	WorldMapFrameNavBarHomeButton:SetTemplate("Default", true)
+	WorldMapFrameNavBarHomeButton:CreateBackdrop("Default", true)
+	WorldMapFrameNavBarHomeButton.backdrop:SetPoint("TOPLEFT", WorldMapFrameNavBarHomeButton, "TOPLEFT", 0, 0)
+	WorldMapFrameNavBarHomeButton.backdrop:SetPoint("BOTTOMRIGHT", WorldMapFrameNavBarHomeButton, "BOTTOMRIGHT", -15, 0)
 	WorldMapFrameNavBarHomeButton:SetFrameLevel(1)
 	WorldMapFrameNavBarHomeButton.text:FontTemplate()
 
@@ -96,6 +98,24 @@ local function LoadSkin()
 	S:HandleNextPrevButton(WorldMapFrame.UIElementsFrame.OpenQuestPanelButton)
 	S:HandleNextPrevButton(WorldMapFrame.UIElementsFrame.CloseQuestPanelButton)
 	SquareButton_SetIcon(WorldMapFrame.UIElementsFrame.CloseQuestPanelButton, 'LEFT')
+
+	-- WorldMapFrame Tooltip Statusbar
+	local function HandleTooltipStatusBar()
+		local bar = _G["WorldMapTaskTooltipStatusBar"].Bar
+		local label = bar.Label
+
+		if bar then
+			bar:StripTextures()
+			bar:SetStatusBarTexture(E["media"].normTex)
+			bar:SetTemplate("Transparent")
+			E:RegisterStatusBar(bar)
+
+			label:ClearAllPoints()
+			label:Point("CENTER", bar, 0, 0)
+			label:SetDrawLayer("OVERLAY")
+		end
+	end
+	hooksecurefunc("TaskPOI_OnEnter", HandleTooltipStatusBar)
 end
 
 S:RegisterSkin('ElvUI', LoadSkin)

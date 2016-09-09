@@ -79,7 +79,7 @@ do
 			frame.highlight = frame:CreateTexture(nil, "OVERLAY");
 			frame.highlight:SetAllPoints(frame);
 		end
-		frame.highlight:SetTexture(color.r, color.g, color.b, color.a);
+		frame.highlight:SetColorTexture(color.r, color.g, color.b, color.a);
 	end
 	
 	local SetBackgroundColor = function(frame, color)
@@ -87,7 +87,7 @@ do
 			frame.background = frame:CreateTexture(nil, "BACKGROUND");
 			frame.background:SetAllPoints(frame);
 		end
-		frame.background:SetTexture(color.r, color.g, color.b, color.a);
+		frame.background:SetColorTexture(color.r, color.g, color.b, color.a);
 	end
 	
 	local FireHandlerWithArgs = function (handler, data, ...)
@@ -258,7 +258,7 @@ do
 				bg:SetPoint("BOTTOM", self.frame, "BOTTOM", 0, 4);
 				bg:SetPoint("TOPLEFT", col, "BOTTOMLEFT", 0, -4);
 				bg:SetPoint("TOPRIGHT", col, "BOTTOMRIGHT", 0, -4);
-				bg:SetTexture(color.r, color.g, color.b, color.a);
+				bg:SetColorTexture(color.r, color.g, color.b, color.a);
 			end
 		end
 		

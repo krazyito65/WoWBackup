@@ -283,13 +283,13 @@ L.HideGarrisonUpdates		= "Verberge Garnisonsmeldungen während Bosskämpfen"
 L.HideGuildChallengeUpdates	= "Verberge Gildenerfolgsmeldungen während Bosskämpfen"
 L.HideTooltips				= "Verberge Tooltips während Bosskämpfen"
 L.DisableSFX				= "Deaktiviere Soundeffekte während Bosskämpfen"
-L.HideApplicantAlerts		= "Unterdrücke Anwärteralarme in organisierten Gruppen"
-L.HideApplicantAlertsFull	= "falls Gruppe voll ist"
-L.HideApplicantAlertsNotL	= "falls du nicht der Gruppenleiter bist (\"Gruppe ist voll\"-Filter, falls du der Leiter bist)"
 L.SpamBlockSayYell			= "Sprechblasen-Ansagen im Chatfenster ausblenden"
 L.DisableCinematics			= "Verberge Videosequenzen"
 L.AfterFirst				= "Nach jeweils einmaligem Abspielen"
 L.Always					= ALWAYS
+L.DisableTalkingHead		= "Blockiere \"Sprechenden Kopf\""
+L.CombatOnly				= "im Kampf deaktivieren (alle)"
+L.RaidCombat				= "im Kampf deaktivieren (nur Bosse)"
 
 L.Panel_ExtraFeatures		= "Sonstige Funktionen"
 --

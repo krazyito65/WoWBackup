@@ -47,6 +47,7 @@ local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 -- GLOBALS: ElvUIPlayerBuffs, ElvUIPlayerDebuffs, LeftChatPanel, RightChatPanel
 -- GLOBALS: ElvUI_StaticPopup1, ElvUI_StaticPopup1Button1, OrderHallCommandBar
 -- GLOBALS: ElvUI_StanceBar, ObjectiveTrackerFrame, GameTooltip, Minimap
+-- GLOBALS: ElvUIParent, ElvUI_TopPanel, hooksecurefunc, InterfaceOptionsCameraPanelMaxDistanceSlider
 
 
 --Constants
@@ -105,9 +106,6 @@ E.DispelClasses = {
 		['Poison'] = true,
 		['Magic'] = false,
 		['Disease'] = true
-	},
-	['MAGE'] = {
-		['Curse'] = true
 	},
 	['DRUID'] = {
 		['Magic'] = false,
@@ -497,7 +495,6 @@ E.UIParent = CreateFrame('Frame', 'ElvUIParent', UIParent);
 E.UIParent:SetFrameLevel(UIParent:GetFrameLevel());
 E.UIParent:SetPoint('BOTTOM', UIParent, 'BOTTOM');
 E.UIParent:SetSize(UIParent:GetSize());
-E.UIParent.origHeight = E.UIParent:GetHeight()
 E['snapBars'][#E['snapBars'] + 1] = E.UIParent
 
 E.HiddenFrame = CreateFrame('Frame')
@@ -939,7 +936,6 @@ function E:UpdateAll(ignoreInstall)
 	bags.db = self.db.bags
 	bags:Layout();
 	bags:Layout(true);
-	bags:PositionBagFrames()
 	bags:SizeAndPositionBagBar()
 	bags:UpdateItemLevelDisplay()
 	bags:UpdateCountDisplay()
@@ -1209,168 +1205,7 @@ function E:InitializeModules()
 end
 
 --DATABASE CONVERSIONS
-function E:DBConversions()
-	--Boss Frame auras have been changed to support friendly/enemy filters in case there is an encounter with a friendly boss
-	--Try to convert any filter settings the user had to the new format
-	if not E.db.bossAuraFiltersConverted then
-		local tempBuffs = E.db.unitframe.units.boss.buffs
-		local tempDebuffs = E.db.unitframe.units.boss.debuffs
-		local filterSettings = {
-			"playerOnly",
-			"useBlacklist",
-			"useWhitelist",
-			"noDuration",
-			"onlyDispellable",
-			"bossAuras",
-		}
-
-		--Buffs
-		for _, setting in pairs(filterSettings) do
-			if type(E.db.unitframe.units.boss.buffs[setting]) == "boolean" then
-				E.db.unitframe.units.boss.buffs[setting] = {friendly = tempBuffs[setting], enemy = tempBuffs[setting]}
-			elseif type(E.db.unitframe.units.boss.buffs[setting]) ~= "table" or
-			 (type(E.db.unitframe.units.boss.buffs[setting]) == "table" and (E.db.unitframe.units.boss.buffs[setting].friendly == nil or E.db.unitframe.units.boss.buffs[setting].enemy == nil)) then
-				--Something went wrong here, reset filter setting to default
-				E.db.unitframe.units.boss.buffs[setting] = nil
-			end
-		end
-
-		--Debuffs
-		for _, setting in pairs(filterSettings) do
-			if not setting == "noConsolidated" then --There is no noConsolidated setting for Debuffs
-				if type(E.db.unitframe.units.boss.debuffs[setting]) == "boolean" then
-					E.db.unitframe.units.boss.debuffs[setting] = {friendly = tempDebuffs[setting], enemy = tempDebuffs[setting]}
-				elseif type(E.db.unitframe.units.boss.debuffs[setting]) ~= "table" or
-				 (type(E.db.unitframe.units.boss.debuffs[setting]) == "table" and (E.db.unitframe.units.boss.debuffs[setting].friendly == nil or E.db.unitframe.units.boss.debuffs[setting].enemy == nil)) then
-					--Something went wrong here, reset filter setting to default
-					E.db.unitframe.units.boss.debuffs[setting] = nil
-				end
-			end
-		end
-
-		E.db.bossAuraFiltersConverted = true
-	end
-
-	--Convert stored mover strings to use the new comma delimiter
-	if E.db.movers then
-		for mover, moverString in pairs(E.db.movers) do
-		   if find(moverString, "\031") then --Old delimiter found
-			  moverString = gsub(moverString, "\031", ",") --Replace with new delimiter
-			  E.db.movers[mover] = moverString --Store updated mover string
-		   end
-		end
-	end
-
-	--Convert stored BuffIndicator key/value pairs to use spellID as key
-	if not E.global.unitframe.buffwatchBackup then E.global.unitframe.buffwatchBackup = {} end
-	local shouldRemove
-	for class in pairs(E.global.unitframe.buffwatch) do
-		if not E.global.unitframe.buffwatchBackup[class] then E.global.unitframe.buffwatchBackup[class] = {} end
-		shouldRemove = {}
-		for i, values in pairs(E.global.unitframe.buffwatch[class]) do
-			if values.id then --Added by user, all info stored in SavedVariables
-				if i ~= values.id then
-					--Mark entry for removal
-					shouldRemove[i] = true
-				end
-				E.global.unitframe.buffwatch[class][values.id] = values
-				if not E.global.unitframe.buffwatchBackup[class][values.id] then E.global.unitframe.buffwatchBackup[class][values.id] = values end --Store a copy in case something goes wrong
-
-			elseif G.oldBuffWatch[class] and G.oldBuffWatch[class][i] then
-				--Default BuffIndicator, grab info from legacy table
-				local spellID = G.oldBuffWatch[class][i].id
-				if spellID then
-					--Store a copy in case something goes wrong
-					if not E.global.unitframe.buffwatchBackup[class][spellID] then
-						E.global.unitframe.buffwatchBackup[class][spellID] = G.oldBuffWatch[class][i]
-						E:CopyTable(E.global.unitframe.buffwatchBackup[class][spellID], values)
-					end
-					E.global.unitframe.buffwatch[class][spellID] = G.oldBuffWatch[class][i] --Store default info under new spellID key
-					E:CopyTable(E.global.unitframe.buffwatch[class][spellID], values) --Transfer user-changed settings to new table
-					E.global.unitframe.buffwatch[class][i] = nil --Remove old entry
-				end
-			end
-		end
-		--Remove old entries of user-added BuffIndicators
-		for id in pairs(shouldRemove) do
-			E.global.unitframe.buffwatch[class][id] = nil
-		end
-	end
-	
-	--Move spells from the "Whitelist (Strict)" filter to the "Whitelist" filter
-	if E.global.unitframe['aurafilters']['Whitelist (Strict)'] and E.global.unitframe['aurafilters']['Whitelist (Strict)'].spells then
-		for spell, spellInfo in pairs(E.global.unitframe['aurafilters']['Whitelist (Strict)'].spells) do
-			if type(spellInfo) == 'table' then
-				local enabledValue = spellInfo.enable
-				--We don't care about old defaults, as the only default entries in the Whitelist (Strict) filter were from an MoP raid instance. No need to copy that information over.
-
-				if spellInfo.spellID then --Spell the user added himself, all needed info is available and should be copied over
-					local spellID = tonumber(spellInfo.spellID)
-					E.global.unitframe['aurafilters']['Whitelist']['spells'][spellID] = {['enable'] = enabledValue}
-				end
-			end
-			--Remove old entry
-			E.global.unitframe['aurafilters']['Whitelist (Strict)']["spells"][spell] = nil
-		end
-		--Finally remove old table
-		E.global.unitframe['aurafilters']['Whitelist (Strict)'] = nil
-	end
-
-	--Move spells from the "Blacklist (Strict)" filter to the "Blacklist" filter
-	--This one is easier, as all spells have been stored with spellID as key
-	if E.global.unitframe.InvalidSpells then
-		for spellID, enabledValue in pairs(E.global.unitframe.InvalidSpells) do
-			--Copy over information
-			E.global.unitframe['aurafilters']['Blacklist']['spells'][spellID] = {['enable'] = enabledValue}
-			--Remove old entry
-			E.global.unitframe.InvalidSpells[spellID] = nil
-		end
-		--Finally remove old table
-		E.global.unitframe.InvalidSpells = nil
-	end
-	
-	--Because default filters now store spells with spellID as key, any default spells the user has changed will show up as a duplicate entry but with spellName as key.
-	--We will copy over the information and remove old default entries stored with spell name as key.
-	local filters = {
-		"CCDebuffs",
-		"TurtleBuffs",
-		"PlayerBuffs",
-		"Blacklist",
-		"Whitelist",
-		"RaidDebuffs",
-	}
-	for _, filterName in pairs(filters) do
-		for spellID, spellInfo in pairs(G.unitframe["aurafilters"][filterName].spells) do --Use spellIDs from current default table
-			local spellName = GetSpellInfo(spellID) --Get spell name and try to match it to existing entry in table
-
-			if spellName and E.global.unitframe["aurafilters"][filterName]["spells"][spellName] then --Match found
-				local spell = E.global.unitframe["aurafilters"][filterName]["spells"][spellName]
-				local enabledValue = spell.enable
-				local priority = spell.priority
-				local stackThreshold = spell.stackThreshold
-				
-				--Fallback to default values if value is nil
-				if enabledValue == nil then enabledValue = (spellInfo.enable or true) end
-				if priority == nil then priority = (spellInfo.priority or 0) end
-				if stackThreshold == nil then stackThreshold = (spellInfo.stackThreshold or 0) end
-
-				--Copy over information from old entry to new entry stored with spellID as key
-				E.global.unitframe["aurafilters"][filterName]["spells"][spellID] = {["enabled"] = enabledValue, ["priority"] = priority, ["stackThreshold"] = stackThreshold}
-				--Remove old entry
-				E.global.unitframe["aurafilters"][filterName]["spells"][spellName] = nil
-			end
-		end
-	end
-
-	--Add missing .point, .xOffset and .yOffset values to Buff Indicators that are missing them for whatever reason
-	for class in pairs(E.global.unitframe.buffwatch) do
-		for _, values in pairs(E.global.unitframe.buffwatch[class]) do
-			if not values.point then values.point = "TOPLEFT" end
-			if not values.xOffset then values.xOffset = 0 end
-			if not values.yOffset then values.yOffset = 0 end
-		end
-	end
-	
+function E:DBConversions()	
 	--Convert actionbar button spacing to backdrop spacing, so users don't get any unwanted changes
 	if not E.db.actionbar.backdropSpacingConverted then
 		for i = 1, 10 do
@@ -1410,48 +1245,82 @@ function E:DBConversions()
 	if E.db.nameplate then
 		E.db.nameplate = nil
 	end
+
+	--We have changed the required separator from a comma to a semicolon.
+	--Because there is no good way to determine if a comma is part of an item string or not,
+	--we just have to reset it all and let people build a new list.
+	if not E.db.bagSortIgnoreItemsReset then
+		E.db.bags.ignoreItems = ""
+		E.db.bagSortIgnoreItemsReset = true
+	end
 end
 
 local CPU_USAGE = {}
-local function CompareCPUDiff(module, minCalls)
-	local greatestUsage, greatestCalls, greatestName
-	local greatestDiff = 0;
-	local mod = E:GetModule(module, true) or E
+local function CompareCPUDiff(showall, module, minCalls)
+	local greatestUsage, greatestCalls, greatestName, newName, newFunc
+	local greatestDiff, lastModule, mod, newUsage, calls, differance = 0;
 
 	for name, oldUsage in pairs(CPU_USAGE) do
-		local newUsage, calls = GetFunctionCPUUsage(mod[name], true)
-		local differance = newUsage - oldUsage
-
-		if differance > greatestDiff and calls > (minCalls or 15) then
-			greatestName = name
-			greatestUsage = newUsage
-			greatestCalls = calls
-			greatestDiff = differance
+		newName, newFunc = name:match("^([^:]+):(.+)$")
+		if not newFunc then
+			E:Print('CPU_USAGE:', name, newFunc)
+		else
+			if newName ~= lastModule then
+				mod = E:GetModule(newName, true) or E
+				lastModule = newName
+			end
+			newUsage, calls = GetFunctionCPUUsage(mod[newFunc], true)
+			differance = newUsage - oldUsage
+			if showall and calls > minCalls then
+				E:Print(calls, name, differance)
+			end
+			if (differance > greatestDiff) and calls > minCalls then
+				greatestName, greatestUsage, greatestCalls, greatestDiff = name, newUsage, calls, differance
+			end
 		end
 	end
 
-	if(greatestName) then
-		E:Print(greatestName.. " had the CPU usage of: "..greatestUsage.."ms. And has been called ".. greatestCalls.." times.")
+	if greatestName then
+		E:Print(greatestName.. " had the CPU usage difference of: "..greatestUsage.."ms. And has been called ".. greatestCalls.." times.")
+	else
+		E:Print('CPU Usage: No CPU Usage differences found.')
 	end
 end
 
 function E:GetTopCPUFunc(msg)
-	local module, delay, minCalls = msg:match("^([^%s]+)%s+(.*)$")
+	local module, showall, delay, minCalls = msg:match("^([^%s]+)%s*([^%s]*)%s*([^%s]*)%s*(.*)$")
+	local mod
 
-	module = module == "nil" and nil or module
-	delay = delay == "nil" and nil or tonumber(delay)
-	minCalls = minCalls == "nil" and nil or tonumber(minCalls)
+	module = (module == "nil" and nil) or module
+	if not module then
+		E:Print('cpuusage: module (arg1) is required! This can be set as "all" too.')
+		return
+	end
+	showall = (showall == "true" and true) or false
+	delay = (delay == "nil" and nil) or tonumber(delay) or 5
+	minCalls = (minCalls == "nil" and nil) or tonumber(minCalls) or 15
 
 	twipe(CPU_USAGE)
-	local mod = self:GetModule(module, true) or self
-	for name, func in pairs(mod) do
-		if type(mod[name]) == "function" and name ~= "GetModule" then
-			CPU_USAGE[name] = GetFunctionCPUUsage(mod[name], true)
+	if module == "all" then
+		for _, registeredModule in pairs(self['RegisteredModules']) do
+			mod = self:GetModule(registeredModule, true) or self
+			for name, func in pairs(mod) do
+				if type(mod[name]) == "function" and name ~= "GetModule" then
+					CPU_USAGE[registeredModule..":"..name] = GetFunctionCPUUsage(mod[name], true)
+				end
+			end
+		end
+	else
+		mod = self:GetModule(module, true) or self
+		for name, func in pairs(mod) do
+			if type(mod[name]) == "function" and name ~= "GetModule" then
+				CPU_USAGE[module..":"..name] = GetFunctionCPUUsage(mod[name], true)
+			end
 		end
 	end
 
-	self:Delay(delay or 5, CompareCPUDiff, module, minCalls)
-	self:Print("Calculating CPU Usage..")
+	self:Delay(delay, CompareCPUDiff, showall, module, minCalls)
+	self:Print("Calculating CPU Usage differences (module: "..(module or "?")..", showall: "..tostring(showall)..", minCalls: "..tostring(minCalls)..", delay: "..tostring(delay)..")")
 end
 
 function E:Initialize()
@@ -1524,26 +1393,33 @@ function E:Initialize()
 		print(select(2, E:GetModule('Chat'):FindURL("CHAT_MSG_DUMMY", format(L["LOGIN_MSG"]:gsub("ElvUI", E.UIName), self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version)))..'.')
 	end
 
-	--Resize ElvUIParent when entering/leaving Class Hall (stupid Class Hall Command Bar)
-	local function HookForResize()
-		OrderHallCommandBar:HookScript("OnShow", function()
-			local height = E.UIParent.origHeight - OrderHallCommandBar:GetHeight()
-			E.UIParent:SetHeight(height)
-		end)
-		OrderHallCommandBar:HookScript("OnHide", function()
-			E.UIParent:SetHeight(E.UIParent.origHeight)
-		end)
+	--Disable OrderHall Bar if needed
+	local function HandleCommandBar()
+		if E.global.general.disableOrderHallBar then
+			local bar = OrderHallCommandBar
+			bar:UnregisterAllEvents()
+			bar:SetScript("OnShow", bar.Hide)
+			bar:Hide()
+			UIParent:UnregisterEvent("UNIT_AURA")--Only used for OrderHall Bar
+		end
 	end
-
 	if OrderHallCommandBar then
-		HookForResize()
+		HandleCommandBar()
 	else
 		local f = CreateFrame("Frame")
 		f:RegisterEvent("ADDON_LOADED")
 		f:SetScript("OnEvent", function(self, event, addon)
 			if addon == "Blizzard_OrderHallUI" then
-				HookForResize()
+				HandleCommandBar()
 			end
 		end)
 	end
+
+	--We need to set the real max distance after the slider control has been set up because it is reset at this point
+	--We only do this if the user had set max camera distance to "Far" in the options. At some point Blizzard will fix the resetting.
+	hooksecurefunc("BlizzardOptionsPanel_SetupControl", function(control)
+		if control == InterfaceOptionsCameraPanelMaxDistanceSlider and E:Round(tonumber(GetCVar("cameraDistanceMaxFactor")), 1) == 1.9 then
+			SetCVar("cameraDistanceMaxFactor", 2.6)
+		end
+	end)
 end

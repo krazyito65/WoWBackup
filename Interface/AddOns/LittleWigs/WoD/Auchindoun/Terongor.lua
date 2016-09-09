@@ -19,6 +19,7 @@ function mod:GetOptions()
 		156854, -- Drain Life
 		{157168, "ICON"}, -- Fixate
 		156856, -- Rain of Fire
+		156975, -- Chaos Bolt
 	}
 end
 
@@ -39,6 +40,7 @@ function mod:OnBossEnable()
 	self:Log("SPELL_CAST_START", "ChaosWave", 157001)
 	self:Log("SPELL_CAST_START", "DemonicLeap", 157039)
 	self:Log("SPELL_CAST_SUCCESS", "DrainLife", 156854)
+	self:Log("SPELL_CAST_START", "ChaosBolt", 156975)
 
 	self:RegisterUnitEvent("UNIT_SPELLCAST_SUCCEEDED", "Success", "boss1")
 end
@@ -48,15 +50,16 @@ end
 --
 
 function mod:SeedOfMalevolence(args)
+	self:TargetMessage(args.spellId, args.destName, "Attention", "Alert")
+	self:TargetBar(args.spellId, 18, args.destName)
 	if self:Me(args.destGUID) then
-		self:Message(args.spellId, "Personal", "Alert", CL.you:format(args.spellName))
-		self:TargetBar(args.spellId, 18, args.destName)
 		self:Flash(args.spellId)
 		self:OpenProximity(args.spellId, 10)
 	end
 end
 
 function mod:SeedOfMalevolenceRemoved(args)
+	self:StopBar(args.spellId, args.destName) -- on death
 	if self:Me(args.destGUID) then
 		self:CloseProximity(args.spellId)
 	end
@@ -103,6 +106,11 @@ end
 
 function mod:DrainLife(args)
 	self:Message(args.spellId, "Attention", "Long", CL.casting:format(args.spellName))
+end
+
+function mod:ChaosBolt(args)
+	self:Message(args.spellId, "Attention", "Long", CL.casting:format(args.spellName))
+	self:Bar(args.spellId, 24)
 end
 
 function mod:Success(_, _, _, _, spellId)

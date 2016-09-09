@@ -1,3 +1,49 @@
+Version 3.77
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- AOE advisor not yet updated for Legion
+--   Need new spell formulas and coefficients
+--   No support yet for new AOEs like 'Power Word: Radiance'
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+
+
+Bugfixes:
+-- Fixed role detection for Survival Hunters
+-- Fixed role detection for Monks
+
+
+Improvements:
+-- Text provider '+<#n>k' now abbreviates millions as '+<#n>M'
+-- Hitpoints text now abbreviates millions as '<n>M'
+-- Tooltip text now abbreviates millions as '<n>M'
+
+
+--------------------------------------------------------------
+Version 3.76
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- AOE advisor not yet updated for Legion
+--   Need new spell formulas and coefficients
+--   No support yet for new AOEs like 'Power Word: Radiance'
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+
+
+Bugfixes:
+-- Activate profile/key layout when only the player changes specialization
+-- Fix nil reference in bar customizer for clusters after spec change
+
+
+--------------------------------------------------------------
 Version 3.75
 
 
@@ -7,20 +53,24 @@ Known issues:
 --   Bodyguards have no unit ID so for now are only partially supported
 -- AOE advisor not yet updated for Legion
 --   Need new spell formulas and coefficients
+--   No support yet for new AOEs like 'Power Word: Radiance'
 -- Incoming heal estimation reported is not even close to accurate
 --   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
--- Holy Priest spells derived from Chakra stance behave oddly as of 6.0.2
---   Stance specific spells must all use the spell name Holy Word: Chastise
 
 
 Bugfixes:
 -- Priest 'Purge the Wicked' can be directly assigned as a spell bind again
 -- Fixed HoT clock start time rounding error
+-- Fixed error on level up where VuhDo would try to handle specialization 
+--   changes while still in combat lockdown
 
 
 Improvements:
 -- Added Priest 'Clarity of Will' as a default HoT icon option
 -- Custom flag bouquet validator now listens for VUHDO_UPDATE_NUM_CLUSTER
+-- Only explicitly refresh an auras if it is whitelisted (eg. 'Atonement')
+--   and listen for all SPELL_AURA events not just APPLIED so the updates 
+--   are consistently immediate
 
 
 --------------------------------------------------------------

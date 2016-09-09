@@ -1,14 +1,10 @@
 
 local L = BigWigs:NewBossLocale("Algalon the Observer", "zhCN")
 if L then
-	L.engage_trigger = "你们的行动不合逻辑。这场战斗所有可能产生的结果都已被计算在内。无论结果如何，万神殿都会收到观察者发出的信息。"
-
 	L.smash_message = "即将 宇宙重击！"
 	L.blackhole_message = "黑洞爆炸：>%dx< 出现！"
 	L.bigbang_bar = "<下一大爆炸>"
 	L.bigbang_soon = "即将 大爆炸！"
-
-	L.end_trigger = "我曾经看过尘世沉浸在造物者的烈焰之中"
 end
 
 L = BigWigs:NewBossLocale("Auriaya", "zhCN")
@@ -119,6 +115,8 @@ end
 
 L = BigWigs:NewBossLocale("Flame Leviathan", "zhCN")
 if L then
+	L.engage = "进入战斗警报"
+	L.engage_desc = "当烈焰巨兽进入战斗时发出警报。"
 	L.engage_trigger = "检测到敌对实体。威胁评定协议启动。向主要目标发动攻击。30秒后重新评估。"
 	L.engage_message = "%s已激怒！"
 
@@ -173,8 +171,6 @@ end
 
 L = BigWigs:NewBossLocale("Razorscale", "zhCN")
 if L then
---	L["Razorscale Controller"] = true,
-
 	L.phase = "阶段"
 	L.phase_desc = "当锋鳞转换不同阶段时发出警报。"
 	L.ground_trigger = "快一点！她马上就要挣脱了！"
@@ -185,7 +181,6 @@ if L then
 	L.phase2_trigger = "%s被永久地禁锢在地面上！"
 	L.phase2_message = "第二阶段！"
 	L.phase2_warning = "即将 第二阶段！"
-	L.stun_bar = "<昏迷>"
 
 	L.breath_trigger = "%s深深地吸了一口气……"
 	L.breath_message = "烈焰喷射！"

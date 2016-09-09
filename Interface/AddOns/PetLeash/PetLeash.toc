@@ -1,13 +1,13 @@
 ## Interface: 70000
 ## Title: PetLeash
-## Version: 3.0.17
+## Version: 3.1
 ## Notes: Walks the Dog 
 ## Author: End
 ## X-Email: end@cornhooves.org
 ## X-Credits: Various Translators
 ## X-Category: Miscellaneous
 ## SavedVariables: PetLeash3DB
-## OptionalDeps: Ace3, LibAboutPanel, LibPetJournal-2.0
+## OptionalDeps: Ace3, LibAboutPanel, LibPetJournal-2.0, LibDBIcon-1.0
 embeds.xml
 locales.xml
 PetLeash.lua

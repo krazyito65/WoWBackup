@@ -17,8 +17,8 @@ LoggerHeadDB = {
 		["Mackabermas - Sargeras"] = "Default",
 		["Krazyito - Stormrage"] = "Default",
 		["Krâzyito - Mal'Ganis"] = "Default",
-		["Krazyíto - Gnomeregan"] = "Default",
-		["Krazymonk - Gnomeregan"] = "Default",
+		["Krazyitó - Gnomeregan"] = "Default",
+		["Apridis - Eldre'Thalas"] = "Default",
 		["Krazyíto - Mal'Ganis"] = "Default",
 		["Krazyito - Burning Blade"] = "Default",
 		["Krazybank - Mal'Ganis"] = "Default",
@@ -33,8 +33,8 @@ LoggerHeadDB = {
 		["Fãlor - Gnomeregan"] = "Default",
 		["Krazýito - Mal'Ganis"] = "Default",
 		["Krazymonk - Sargeras"] = "Default",
-		["Apridis - Eldre'Thalas"] = "Default",
-		["Krazyitó - Gnomeregan"] = "Default",
+		["Krazymonk - Gnomeregan"] = "Default",
+		["Krazyíto - Gnomeregan"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -62,6 +62,10 @@ LoggerHeadDB = {
 						true, -- [1]
 						true, -- [2]
 						[8] = true,
+					},
+					["Eye of Azshara"] = {
+						true, -- [1]
+						true, -- [2]
 					},
 					["Utgarde Keep"] = {
 						true, -- [1]
@@ -92,6 +96,9 @@ LoggerHeadDB = {
 						true, -- [1]
 						true, -- [2]
 						[8] = true,
+					},
+					["Vault of the Wardens"] = {
+						[2] = true,
 					},
 					["Lost City of the Tol'vir"] = {
 						true, -- [1]
@@ -132,6 +139,10 @@ LoggerHeadDB = {
 					["Zul'Farrak"] = {
 						false, -- [1]
 					},
+					["Maw of Souls"] = {
+						true, -- [1]
+						true, -- [2]
+					},
 					["Azjol-Nerub"] = {
 						true, -- [1]
 					},
@@ -148,7 +159,7 @@ LoggerHeadDB = {
 					},
 					["Scarlet Monastery"] = {
 						true, -- [1]
-						false, -- [2]
+						true, -- [2]
 						[8] = false,
 					},
 					["The Stonecore"] = {
@@ -161,10 +172,23 @@ LoggerHeadDB = {
 					["End Time"] = {
 						[2] = false,
 					},
+					["Black Rook Hold"] = {
+						[2] = true,
+					},
+					["Zul'Gurub"] = {
+						[2] = false,
+					},
+					["Lower Blackrock Spire"] = {
+						false, -- [1]
+					},
 					["Temple of the Jade Serpent"] = {
 						false, -- [1]
 						false, -- [2]
 						[8] = false,
+					},
+					["The Oculus"] = {
+						false, -- [1]
+						false, -- [2]
 					},
 					["Auchindoun: Mana-Tombs"] = {
 						false, -- [1]
@@ -173,42 +197,47 @@ LoggerHeadDB = {
 					["FW Horde Garrison Level 3"] = {
 						false, -- [1]
 					},
-					["Gnomeregan"] = {
+					["Bloodmaul Slag Mines"] = {
 						false, -- [1]
-					},
-					["Skyreach"] = {
-						true, -- [1]
 						true, -- [2]
 						[8] = true,
 					},
-					["Wailing Caverns"] = {
+					["Gnomeregan"] = {
 						false, -- [1]
 					},
-					["Stormstout Brewery"] = {
-						false, -- [1]
-						false, -- [2]
+					["Iron Docks"] = {
+						[2] = true,
 						[8] = true,
 					},
 					["Hellfire Citadel: The Blood Furnace"] = {
 						false, -- [1]
 						false, -- [2]
 					},
-					["Blackrock Depths"] = {
+					["Stormstout Brewery"] = {
 						false, -- [1]
+						false, -- [2]
+						[8] = true,
+					},
+					["Auchindoun: Sethekk Halls"] = {
+						false, -- [1]
+						false, -- [2]
+					},
+					["Coilfang: The Underbog"] = {
+						false, -- [1]
+					},
+					["Blackrock Caverns"] = {
+						false, -- [1]
+						false, -- [2]
+					},
+					["Magister's Terrace"] = {
+						false, -- [1]
+						false, -- [2]
 					},
 					["Zul'Aman"] = {
 						[2] = false,
 					},
-					["Well of Eternity"] = {
-						[2] = false,
-					},
-					["The Everbloom"] = {
-						true, -- [1]
-						true, -- [2]
-						[8] = true,
-					},
-					["Grim Batol"] = {
-						true, -- [1]
+					["Trial of the Champion"] = {
+						false, -- [1]
 						false, -- [2]
 					},
 					["Auchindoun: Shadow Labyrinth"] = {
@@ -218,31 +247,34 @@ LoggerHeadDB = {
 					["Coilfang: The Steamvault"] = {
 						true, -- [1]
 					},
-					["Utgarde Pinnacle"] = {
-						true, -- [1]
+					["Uldaman"] = {
+						false, -- [1]
 					},
 					["Gate of the Setting Sun"] = {
 						false, -- [1]
 						false, -- [2]
 						[8] = false,
 					},
-					["Zul'Gurub"] = {
-						[2] = false,
-					},
-					["Uldaman"] = {
+					["Hellfire Citadel: Ramparts"] = {
 						false, -- [1]
+					},
+					["Upper Blackrock Spire"] = {
+						true, -- [1]
+						true, -- [2]
+						[8] = true,
 					},
 					["Violet Hold"] = {
-						false, -- [1]
-						false, -- [2]
-					},
-					["Halls of Origination"] = {
 						false, -- [1]
 						false, -- [2]
 					},
 					["Tempest Keep: The Mechanar"] = {
 						false, -- [1]
 						false, -- [2]
+					},
+					["Scholomance"] = {
+						true, -- [1]
+						false, -- [2]
+						[8] = true,
 					},
 					["The Escape From Durnholde"] = {
 						false, -- [1]
@@ -259,7 +291,16 @@ LoggerHeadDB = {
 					["FW Horde Garrison Level 1"] = {
 						false, -- [1]
 					},
+					["Halls of Origination"] = {
+						false, -- [1]
+						false, -- [2]
+					},
 					["Scarlet Halls"] = {
+						false, -- [1]
+						false, -- [2]
+						[8] = false,
+					},
+					["Shado-Pan Monastery"] = {
 						false, -- [1]
 						false, -- [2]
 						[8] = false,
@@ -268,61 +309,49 @@ LoggerHeadDB = {
 						true, -- [1]
 						false, -- [2]
 					},
-					["Shado-Pan Monastery"] = {
-						false, -- [1]
-						false, -- [2]
-						[8] = false,
+					["Assault on Violet Hold"] = {
+						[2] = true,
 					},
-					["Hellfire Citadel: Ramparts"] = {
-						false, -- [1]
-					},
-					["Trial of the Champion"] = {
-						false, -- [1]
-						false, -- [2]
-					},
-					["Scholomance"] = {
+					["Utgarde Pinnacle"] = {
 						true, -- [1]
-						false, -- [2]
-						[8] = true,
 					},
 					["Razorfen Kraul"] = {
 						false, -- [1]
 					},
-					["Upper Blackrock Spire"] = {
+					["The Everbloom"] = {
 						true, -- [1]
 						true, -- [2]
 						[8] = true,
 					},
-					["Magister's Terrace"] = {
-						false, -- [1]
+					["Well of Eternity"] = {
+						[2] = false,
+					},
+					["Grim Batol"] = {
+						true, -- [1]
 						false, -- [2]
 					},
-					["Coilfang: The Underbog"] = {
+					["Neltharion's Lair"] = {
+						true, -- [1]
+						true, -- [2]
+					},
+					["Wailing Caverns"] = {
 						false, -- [1]
 					},
-					["Auchindoun: Sethekk Halls"] = {
-						false, -- [1]
-						false, -- [2]
-					},
-					["Blackrock Caverns"] = {
-						false, -- [1]
-						false, -- [2]
-					},
-					["Iron Docks"] = {
-						[2] = true,
-						[8] = true,
-					},
-					["The Oculus"] = {
-						false, -- [1]
-						false, -- [2]
-					},
-					["Bloodmaul Slag Mines"] = {
-						false, -- [1]
+					["Skyreach"] = {
+						true, -- [1]
 						true, -- [2]
 						[8] = true,
 					},
-					["Lower Blackrock Spire"] = {
+					["Blackrock Depths"] = {
 						false, -- [1]
+					},
+					["Darkheart Thicket"] = {
+						true, -- [1]
+						true, -- [2]
+					},
+					["Halls of Valor"] = {
+						true, -- [1]
+						true, -- [2]
 					},
 				},
 				["scenario"] = {
@@ -340,8 +369,8 @@ LoggerHeadDB = {
 					["Mogu Island Progression Events"] = {
 						false, -- [1]
 					},
-					["Unga Ingoo"] = {
-						false, -- [1]
+					["Proving Grounds"] = {
+						true, -- [1]
 					},
 					["Assault on Zan'vess"] = {
 						true, -- [1]
@@ -355,12 +384,49 @@ LoggerHeadDB = {
 					["Greenstone Village"] = {
 						false, -- [1]
 					},
-					["Proving Grounds"] = {
-						true, -- [1]
+					["Unga Ingoo"] = {
+						false, -- [1]
 					},
 				},
-				["none"] = {
-					["Eastern Kingdoms"] = {
+				["pvp"] = {
+					["Eye of the Storm"] = {
+						[3] = false,
+						[8] = false,
+						[0] = false,
+					},
+					["Warsong Gulch"] = {
+						[3] = false,
+						[8] = false,
+						[0] = false,
+					},
+					["Twin Peaks"] = {
+						[0] = false,
+						[3] = false,
+						[8] = false,
+					},
+					["The Battle for Gilneas"] = {
+						[8] = false,
+						[3] = false,
+					},
+					["Alterac Valley"] = {
+						[8] = false,
+						[0] = false,
+					},
+					["Arathi Basin"] = {
+						[8] = false,
+					},
+					["Rated Eye of the Storm"] = {
+						[3] = false,
+					},
+					["Isle of Conquest"] = {
+						[8] = false,
+						[0] = false,
+					},
+					["Strand of the Ancients"] = {
+						[8] = false,
+						[0] = false,
+					},
+					["Temple of Kotmogu"] = {
 						[0] = false,
 					},
 				},
@@ -369,22 +435,22 @@ LoggerHeadDB = {
 						true, -- [1]
 						[0] = false,
 					},
-					["The Ring of Valor"] = {
+					["Nagrand Arena"] = {
 						false, -- [1]
+						[0] = false,
+					},
+					["Tol'Viron Arena"] = {
+						false, -- [1]
+					},
+					["Dalaran Sewers"] = {
+						true, -- [1]
 						[0] = false,
 					},
 					["Ruins of Lordaeron"] = {
 						true, -- [1]
 						[0] = false,
 					},
-					["Dalaran Sewers"] = {
-						true, -- [1]
-						[0] = false,
-					},
-					["Tol'Viron Arena"] = {
-						false, -- [1]
-					},
-					["Nagrand Arena"] = {
+					["The Ring of Valor"] = {
 						false, -- [1]
 						[0] = false,
 					},
@@ -413,10 +479,10 @@ LoggerHeadDB = {
 						[6] = true,
 						[7] = true,
 						[3] = true,
-						[16] = false,
-						[14] = true,
-						[5] = true,
 						[4] = true,
+						[14] = true,
+						[16] = false,
+						[5] = true,
 					},
 					["Dragon Soul"] = {
 						[3] = true,
@@ -424,8 +490,11 @@ LoggerHeadDB = {
 						[4] = true,
 						[5] = false,
 					},
-					["Tempest Keep"] = {
-						[4] = false,
+					["Firelands"] = {
+						[3] = true,
+						[6] = false,
+						[4] = true,
+						[5] = false,
 					},
 					["Blackwing Descent"] = {
 						[3] = false,
@@ -436,25 +505,22 @@ LoggerHeadDB = {
 					["Black Temple"] = {
 						[3] = false,
 					},
-					["Throne of Thunder"] = {
-						nil, -- [1]
-						nil, -- [2]
-						true, -- [3]
-						true, -- [4]
-						true, -- [5]
-						true, -- [6]
-						true, -- [7]
+					["Molten Core"] = {
+						[9] = true,
 					},
-					["Blackwing Lair"] = {
-						[8] = false,
+					["Highmaul"] = {
+						true, -- [1]
+						[14] = true,
+						[16] = true,
+						[15] = true,
+						[17] = true,
 					},
 					["Naxxramas"] = {
 						[4] = false,
 						[3] = false,
 					},
-					["Onyxia's Lair"] = {
+					["Coilfang: Serpentshrine Cavern"] = {
 						[4] = false,
-						[3] = false,
 					},
 					["The Eye of Eternity"] = {
 						[4] = false,
@@ -464,17 +530,20 @@ LoggerHeadDB = {
 						[3] = false,
 						[4] = false,
 					},
-					["Hellfire Citadel"] = {
-						[14] = true,
-						[16] = true,
-						[15] = true,
-						[17] = true,
+					["The Bastion of Twilight"] = {
+						[3] = false,
+						[6] = false,
+						[4] = true,
+						[5] = false,
 					},
 					["Blackrock Foundry"] = {
 						[14] = true,
 						[16] = true,
 						[15] = true,
 						[17] = true,
+					},
+					["Trial of the Crusader"] = {
+						[3] = false,
 					},
 					["Terrace of Endless Spring"] = {
 						nil, -- [1]
@@ -484,9 +553,6 @@ LoggerHeadDB = {
 						true, -- [5]
 						true, -- [6]
 						true, -- [7]
-					},
-					["Trial of the Crusader"] = {
-						[3] = false,
 					},
 					["The Ruby Sanctum"] = {
 						[6] = false,
@@ -516,78 +582,41 @@ LoggerHeadDB = {
 						true, -- [6]
 						false, -- [7]
 					},
-					["The Bastion of Twilight"] = {
-						[3] = false,
-						[6] = false,
-						[4] = true,
-						[5] = false,
-					},
-					["Coilfang: Serpentshrine Cavern"] = {
+					["Onyxia's Lair"] = {
 						[4] = false,
+						[3] = false,
 					},
-					["Highmaul"] = {
-						true, -- [1]
+					["Hellfire Citadel"] = {
 						[14] = true,
 						[16] = true,
 						[15] = true,
 						[17] = true,
 					},
-					["Molten Core"] = {
-						[9] = true,
+					["Blackwing Lair"] = {
+						[8] = false,
 					},
-					["Firelands"] = {
-						[3] = true,
-						[6] = false,
-						[4] = true,
-						[5] = false,
+					["Throne of Thunder"] = {
+						nil, -- [1]
+						nil, -- [2]
+						true, -- [3]
+						true, -- [4]
+						true, -- [5]
+						true, -- [6]
+						true, -- [7]
+					},
+					["Tempest Keep"] = {
+						[4] = false,
 					},
 				},
-				["pvp"] = {
-					["Eye of the Storm"] = {
-						[3] = false,
-						[0] = false,
-						[8] = false,
-					},
-					["Warsong Gulch"] = {
-						[3] = false,
-						[0] = false,
-						[8] = false,
-					},
-					["Twin Peaks"] = {
-						[0] = false,
-						[8] = false,
-						[3] = false,
-					},
-					["The Battle for Gilneas"] = {
-						[8] = false,
-						[3] = false,
-					},
-					["Alterac Valley"] = {
-						[8] = false,
-						[0] = false,
-					},
-					["Arathi Basin"] = {
-						[8] = false,
-					},
-					["Rated Eye of the Storm"] = {
-						[3] = false,
-					},
-					["Isle of Conquest"] = {
-						[8] = false,
-						[0] = false,
-					},
-					["Temple of Kotmogu"] = {
-						[0] = false,
-					},
-					["Strand of the Ancients"] = {
-						[8] = false,
+				["none"] = {
+					["Eastern Kingdoms"] = {
 						[0] = false,
 					},
 				},
 			},
 			["version"] = 3,
 			["minimap"] = {
-				["minimapPos"] = 109.877497338805,
+				["minimapPos"] = 11.8012919256771,
 			},
 		},
 	},

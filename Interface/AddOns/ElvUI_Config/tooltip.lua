@@ -5,7 +5,7 @@ local TT = E:GetModule('Tooltip')
 E.Options.args.tooltip = {
 	type = "group",
 	name = L["Tooltip"],
-	childGroups = "select",
+	childGroups = "tab",
 	get = function(info) return E.db.tooltip[ info[#info] ] end,
 	set = function(info, value) E.db.tooltip[ info[#info] ] = value; end,
 	args = {
@@ -27,6 +27,11 @@ E.Options.args.tooltip = {
 			name = L["General"],
 			disabled = function() return not E.Tooltip; end,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["General"],
+				},
 				cursorAnchor = {
 					order = 1,
 					type = 'toggle',
@@ -74,11 +79,6 @@ E.Options.args.tooltip = {
 						["BOTH"] = L["Both"],
 						["NONE"] = L["None"],
 					},
-				},
-				useCustomFactionColors = {
-					order = 8,
-					type = 'toggle',
-					name = L["Custom Faction Colors"],
 				},
 				fontGroup = {
 					order = 9,
@@ -144,7 +144,15 @@ E.Options.args.tooltip = {
 					type = "group",
 					name = L["Custom Faction Colors"],
 					guiInline = true,
-					args = {},
+					args = {
+						useCustomFactionColors = {
+							order = 0,
+							type = 'toggle',
+							name = L["Custom Faction Colors"],
+							get = function(info) return E.db.tooltip.useCustomFactionColors end,
+							set = function(info, value) E.db.tooltip.useCustomFactionColors = value; end,
+						},
+					},
 					get = function(info)
 						local t = E.db.tooltip.factionColors[ info[#info] ]
 						local d = P.tooltip.factionColors[ info[#info] ]
@@ -165,6 +173,11 @@ E.Options.args.tooltip = {
 			get = function(info) return E.db.tooltip.visibility[ info[#info] ] end,
 			set = function(info, value) E.db.tooltip.visibility[ info[#info] ] = value; end,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Visibility"],
+				},
 				actionbars = {
 					order = 1,
 					type = 'select',
@@ -219,6 +232,11 @@ E.Options.args.tooltip = {
 			get = function(info) return E.db.tooltip.healthBar[ info[#info] ] end,
 			set = function(info, value) E.db.tooltip.healthBar[ info[#info] ] = value; end,
 			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Health Bar"],
+				},
 				height = {
 					order = 1,
 					name = L["Height"],

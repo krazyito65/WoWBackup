@@ -3,9 +3,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "esES") or AceLocale:NewLocale("ElvUI", "esMX")
 if not L then return end
 
---TEMP
-L["A taint has occured that is preventing you from using the queue system. Please reload your user interface and try again."] = "Un error ha ocurrido que te impide usar el sistema de cola. Recarga tu interfaz y trata nuevamente."
-
 --*_ADDON locales
 L["INCOMPATIBLE_ADDON"] = "The addon %s is not compatible with ElvUI's %s module. Please select either the addon or the ElvUI module to disable."
 
@@ -36,7 +33,6 @@ L["Trigger"] = "Disparador"
 L["Bank"] = true;
 L["Deposit Reagents"] = true;
 L["Hold Control + Right Click:"] = "Mantén Control y Haz Clic Derecho:"
-L["Hold Shift + Drag:"] = "Mantén Shift y Arrastra:"
 L["Purchase Bags"] = true;
 L["Purchase"] = "Comprar"
 L["Reagent Bank"] = true;
@@ -85,6 +81,7 @@ L["Earned:"] = "Ganada:"
 L["Feet"] = "Pies"
 L["Friends List"] = "Lista de Amigos"
 L["Friends"] = "Amigos"
+L["Gold:"] = true;
 L["goldabbrev"] = "|cffffd700g|r"
 L["Hands"] = "Manos"
 L["Head"] = "Cabeza"
@@ -169,7 +166,6 @@ L["Layout"] = "Distribución"
 L["Lock"] = "Bloquear"
 L["Low Resolution"] = "Baja Resolución"
 L["low"] = "baja"
-L["Movers unlocked. Move them now and click Lock when you are done."] = "Fijadores desbloqueados. Muévelos ahora y haz click en Bloquear cuando termines."
 L["Nudge"] = "Ajuste Fino"
 L["Physical DPS"] = "DPS Físico"
 L["Please click the button below so you can setup variables and ReloadUI."] = "Haz clic en el botón de abajo para configurar variables y recargar la interfaz."
@@ -232,7 +228,12 @@ L["Alternative Power"] = "Poder Alternativo"
 L["Archeology Progress Bar"] = true;
 L["Arena Frames"] = "Marcos de Arena"
 L["Artifact Bar"] = true;
+L["Bag Mover (Grow Down)"] = true;
+L["Bag Mover (Grow Up)"] = true;
+L["Bag Mover"] = true;
 L["Bags"] = "Bolsas"
+L["Bank Mover (Grow Down)"] = true;
+L["Bank Mover (Grow Up)"] = true;
 L["Bar "] = "Barra "
 L["BNet Frame"] = "Marco BNet"
 L["Boss Button"] = "Botón de Jefe"
@@ -280,6 +281,12 @@ L["TargetTarget Frame"] = "Marco de Objetivo de Objetivo"
 L["TargetTargetTarget Frame"] = true;
 L["Tooltip"] = "Descripción Emergente"
 L["Vehicle Seat Frame"] = "Marco del Asiento del Vehículo"
+L["DESC_MOVERCONFIG"] = [=[Fijadores desbloqueados. Muévelos ahora y haz click en Bloquear cuando termines.
+
+Options:
+  Shift + RightClick - Hides mover temporarily.
+  Ctrl + RightClick - Resets mover position to default.
+]=]
 
 --Plugin Installer
 L["ElvUI Plugin Installation"] = true;

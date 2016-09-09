@@ -313,7 +313,7 @@ function S:HandleDropDownBox(frame, width)
 	frame.backdrop:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
 end
 
-function S:HandleCheckBox(frame, noBackdrop)
+function S:HandleCheckBox(frame, noBackdrop, noReplaceTextures)
 	assert(frame, 'does not exist.')
 	frame:StripTextures()
 	if noBackdrop then
@@ -324,46 +324,48 @@ function S:HandleCheckBox(frame, noBackdrop)
 		frame.backdrop:SetInside(nil, 4, 4)
 	end
 
-	if frame.SetCheckedTexture then
-		frame:SetCheckedTexture("Interface\\Buttons\\UI-CheckBox-Check")
-		if noBackdrop then
-			frame:GetCheckedTexture():SetInside(nil, -4, -4)
+	if not noReplaceTextures then
+		if frame.SetCheckedTexture then
+			frame:SetCheckedTexture("Interface\\Buttons\\UI-CheckBox-Check")
+			if noBackdrop then
+				frame:GetCheckedTexture():SetInside(nil, -4, -4)
+			end
 		end
+
+		if frame.SetDisabledTexture then
+			frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+			if noBackdrop then
+				frame:GetDisabledTexture():SetInside(nil, -4, -4)
+			end
+		end
+
+		frame:HookScript('OnDisable', function(self)
+			if not self.SetDisabledTexture then return; end
+			if self:GetChecked() then
+				self:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
+			else
+				self:SetDisabledTexture("")
+			end
+		end)
+
+		hooksecurefunc(frame, "SetNormalTexture", function(self, texPath)
+			if texPath ~= "" then
+				self:SetNormalTexture("");
+			end
+		end)
+
+		hooksecurefunc(frame, "SetPushedTexture", function(self, texPath)
+			if texPath ~= "" then
+				self:SetPushedTexture("");
+			end
+		end)
+
+		hooksecurefunc(frame, "SetHighlightTexture", function(self, texPath)
+			if texPath ~= "" then
+				self:SetHighlightTexture("");
+			end
+		end)
 	end
-
-	if frame.SetDisabledTexture then
-		frame:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
-		if noBackdrop then
-			frame:GetDisabledTexture():SetInside(nil, -4, -4)
-		end
-	end
-
-	frame:HookScript('OnDisable', function(self)
-		if not self.SetDisabledTexture then return; end
-		if self:GetChecked() then
-			self:SetDisabledTexture("Interface\\Buttons\\UI-CheckBox-Check-Disabled")
-		else
-			self:SetDisabledTexture("")
-		end
-	end)
-
-	hooksecurefunc(frame, "SetNormalTexture", function(self, texPath)
-		if texPath ~= "" then
-			self:SetNormalTexture("");
-		end
-	end)
-
-	hooksecurefunc(frame, "SetPushedTexture", function(self, texPath)
-		if texPath ~= "" then
-			self:SetPushedTexture("");
-		end
-	end)
-
-	hooksecurefunc(frame, "SetHighlightTexture", function(self, texPath)
-		if texPath ~= "" then
-			self:SetHighlightTexture("");
-		end
-	end)
 end
 
 function S:HandleIcon(icon, parent)
@@ -378,7 +380,7 @@ end
 function S:HandleItemButton(b, shrinkIcon)
 	if b.isSkinned then return; end
 
-	local icon = b.icon or b.IconTexture or b.iconTexture
+	local icon = b.icon or b.Icon or b.IconTexture or b.iconTexture
 	local texture
 	if b:GetName() and _G[b:GetName()..'IconTexture'] then
 		icon = _G[b:GetName()..'IconTexture']
@@ -466,6 +468,67 @@ function S:HandleSliderFrame(frame)
 					region:Point(point, anchor, anchorPoint, x, y - 4)
 				end
 			end
+		end
+	end
+end
+
+function S:HandleFollowerPage(follower, hasItems)
+	local abilities = follower.followerTab.AbilitiesFrame.Abilities
+	if follower.numAbilitiesStyled == nil then
+		follower.numAbilitiesStyled = 1
+	end
+	local numAbilitiesStyled = follower.numAbilitiesStyled
+	local ability = abilities[numAbilitiesStyled]
+	while ability do
+		local icon = ability.IconButton.Icon
+		S:HandleIcon(icon, ability.IconButton)
+		icon:SetDrawLayer("BORDER", 0)
+		numAbilitiesStyled = numAbilitiesStyled + 1
+		ability = abilities[numAbilitiesStyled]
+	end
+	follower.numAbilitiesStyled = numAbilitiesStyled
+
+	if hasItems then
+		local weapon = follower.followerTab.ItemWeapon
+		local armor = follower.followerTab.ItemArmor
+		if not weapon.backdrop then
+			S:HandleIcon(weapon.Icon, weapon)
+			weapon.Border:SetTexture(nil)
+			weapon.backdrop:SetFrameLevel(weapon:GetFrameLevel())
+		end
+		if not armor.backdrop then
+			S:HandleIcon(armor.Icon, armor)
+			armor.Border:SetTexture(nil)
+			armor.backdrop:SetFrameLevel(armor:GetFrameLevel())
+		end
+	end
+
+	local xpbar = follower.followerTab.XPBar
+	xpbar:StripTextures()
+	xpbar:SetStatusBarTexture(E["media"].normTex)
+	xpbar:CreateBackdrop("Transparent")
+end
+
+function S:HandleShipFollowerPage(followerTab)
+	local traits = followerTab.Traits
+	for i = 1, #traits do
+		local icon = traits[i].Portrait
+		local border = traits[i].Border
+		border:SetTexture(nil) -- I think the default border looks nice, not sure if we want to replace that
+		-- The landing page icons display inner borders
+		if followerTab.isLandingPage then
+			icon:SetTexCoord(unpack(E.TexCoords))
+		end
+	end
+
+	local equipment = followerTab.EquipmentFrame.Equipment
+	for i = 1, #equipment do
+		local icon = equipment[i].Icon
+		local border = equipment[i].Border
+		border:SetAtlas("ShipMission_ShipFollower-TypeFrame") -- This border is ugly though, use the traits border instead
+		-- The landing page icons display inner borders
+		if followerTab.isLandingPage then
+			icon:SetTexCoord(unpack(E.TexCoords))
 		end
 	end
 end

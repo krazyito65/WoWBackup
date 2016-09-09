@@ -39,6 +39,7 @@ function module:OnInitialize()
         OnTooltipShow = function(...) self:Broker_OnTooltipShow(...) end
     })
     
+    LibStub("LibDBIcon-1.0"):Register("PetLeash", self.broker, addon.db.profile.minimap)
 
     self:RegisterMessage("PetLeash-EnableState", "OnEnableState")
 end

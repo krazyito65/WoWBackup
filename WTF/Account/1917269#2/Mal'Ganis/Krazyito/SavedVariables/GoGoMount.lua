@@ -10,61 +10,14 @@ GoGo_Prefs = {
 	["AutoExcludeFlyingMounts"] = false,
 	["DruidFormNotRandomize"] = false,
 	["Zones"] = {
-		[121] = {
+		["Bleeding Hollow Cave"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 945,
 		},
-		[964] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[492] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[988] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[504] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[512] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[798] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[806] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[941] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[949] = {
+		[1100] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -76,7 +29,31 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[989] = {
+		[935] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1038] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[485] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[809] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[873] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -89,18 +66,17 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[751] = {
+		[1105] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Hidden Marsh Ruins"] = {
+		[969] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 945,
 		},
 		["Ahn'kahet: The Old Kingdom"] = {
 			["Preferred"] = {
@@ -109,164 +85,25 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[42] = {
+		[1042] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[461] = {
+		[810] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[465] = {
+		[747] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[807] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[950] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[481] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[485] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[720] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[736] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Dragon Soul"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[382] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[768] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Halls of Lightning"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 495,
-		},
-		["Bleeding Hollow Cave"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 945,
-		},
-		[13] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[862] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[951] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Utgarde Pinnacle"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 491,
-		},
-		["Stonemaul Arena"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 949,
-		},
-		[721] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[856] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["The Shattered Halls"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 478,
-		},
-		[14] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[626] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Mana-Tombs"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[896] = {
+		[811] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -279,27 +116,33 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		["Shrine of Seven Stars"] = {
+		[1045] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 811,
 		},
-		["Blasted Lands"] = {
+		["Dragon Soul"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 962,
 		},
-		[928] = {
+		["Gundrak"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 496,
+		},
+		[1046] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[809] = {
+		[1048] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -312,55 +155,33 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 1011,
 		},
-		[478] = {
+		[941] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[482] = {
+		["Shrine of Seven Stars"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 811,
+		},
+		[504] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[321] = {
+		["Howling Fjord"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 491,
 		},
-		[976] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[984] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[4] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[873] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[1008] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[889] = {
+		[181] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -373,93 +194,25 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		["Scarlet Monastery"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[769] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[-1] = {
+		[1008] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[860] = {
+		[626] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-		},
-		["The Nexus"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
 		},
 		[945] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[953] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[604] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[969] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[987] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[731] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[993] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[747] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[443] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[161] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -472,13 +225,452 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 495,
 		},
-		[466] = {
+		[946] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[606] = {
+		[978] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[947] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1011] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[820] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Evenlight Cavern"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 945,
+		},
+		[443] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[948] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Vale of Eternal Blossoms"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 811,
+		},
+		["Bladespire Citadel"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 941,
+		},
+		[20] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[21] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[949] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1066] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Sabermaw Den"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 950,
+		},
+		[29] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[950] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[492] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[759] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[34] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[42] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[951] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1015] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[856] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[461] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[984] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[889] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[953] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Hidden Marsh Ruins"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 945,
+		},
+		["Utgarde Pinnacle"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 491,
+		},
+		[858] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[478] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[731] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1018] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1076] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[604] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[891] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1077] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[700] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[987] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Blasted Lands"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		["Halls of Lightning"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 495,
+		},
+		[860] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[733] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[-1] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1080] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Stonemaul Arena"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 949,
+		},
+		["The Shattered Halls"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 478,
+		},
+		[1081] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[989] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1021] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[798] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[862] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[512] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[321] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Scarlet Monastery"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		[736] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[768] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1086] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Mana-Tombs"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		[1017] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[896] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["The Nexus"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		[481] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1065] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[769] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1067] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[721] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1024] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[4] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[988] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[32] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[993] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -496,19 +688,25 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[811] = {
+		[1091] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[946] = {
+		[482] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[700] = {
+		[1027] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[466] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -520,152 +718,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[181] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[978] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[499] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[994] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-		},
-		[820] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Blighted Hollow"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 945,
-		},
-		[891] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Ulduar"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		["Howling Fjord"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 491,
-		},
-		[510] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Evenlight Cavern"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 945,
-		},
-		["Ragefire Chasm"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[858] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[947] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[935] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Rainfern Grotto"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 945,
-		},
-		[810] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Vale of Eternal Blossoms"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 811,
-		},
-		[733] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[995] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["Bladespire Citadel"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 941,
-		},
-		[1011] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		["The Slave Pens"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
 		},
 		[490] = {
 			["Preferred"] = {
@@ -673,7 +730,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[29] = {
+		[1092] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -686,28 +743,118 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		["Gundrak"] = {
+		[928] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 496,
 		},
-		["Sabermaw Den"] = {
+		[751] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 950,
 		},
-		["Krasarang Wilds"] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 857,
 		},
-		[948] = {
+		["Blighted Hollow"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 945,
+		},
+		[995] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[807] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[13] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[606] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[382] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Ragefire Chasm"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		[465] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[964] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[499] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Rainfern Grotto"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 945,
+		},
+		[14] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1007] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[121] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1033] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[510] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -719,25 +866,79 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		["The Slave Pens"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 962,
+		},
+		[720] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[806] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[764] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[161] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1041] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Krasarang Wilds"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 857,
+		},
+		[1022] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1082] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 	["DisableUpdateNotice"] = false,
 	["DruidDisableInCombat"] = false,
-	["version"] = "7.0.7",
+	["version"] = "7.0.12",
 	["RemoveBuffs"] = true,
 	["DruidClickForm"] = true,
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
-		122708, -- [1]
-		61469, -- [2]
+		75973, -- [1]
+		93326, -- [2]
 		55531, -- [3]
 		121820, -- [4]
-		61447, -- [5]
-		75973, -- [6]
-		93326, -- [7]
+		61469, -- [5]
 	},
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 }
 GoGo_DebugLog = {
 }

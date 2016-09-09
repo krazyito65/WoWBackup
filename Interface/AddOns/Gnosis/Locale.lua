@@ -1,7 +1,4 @@
-﻿-- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Locale.lua last changed 2016-07-21T06:24:03Z
-
-Gnosis.LSet = {
+﻿Gnosis.LSet = {
 	["default"] = "default (English)",
 	["deDE"] = "deDE (Deutsch)",
 	["frFR"] = "frFR (Français)",
@@ -63,6 +60,7 @@ Gnosis.L["OptAddonEnable_Name"] = "Addon aktivieren"
 Gnosis.L["OptBarXYcoordDesc"] = "x,y-Koordinaten"
 Gnosis.L["OptBarXYcoordName"] = "Leistenposition: x, y"
 Gnosis.L["OptCBActiveSpec"] = "Aktiviert für Talente"
+Gnosis.L["OptCBActiveSpecDesc"] = "Spezialisierungen (mit Komma getrennt), z.B. 1,2,4"
 Gnosis.L["OptCBAddListElem"] = "Eintrag hinzufügen"
 Gnosis.L["OptCBAdjIcon"] = "Symbolposition anpassen (wenn freigegeben)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "Latenztextposition"
@@ -114,7 +112,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "Erweitert kanalisierte Zauber, wenn der ide
 Gnosis.L["OptCBExtendChannels_N"] = "Kanalisieren erweitern"
 Gnosis.L["OptCBFadeout"] = "Ausblendzeit"
 Gnosis.L["OptCBFillAtEnd"] = "Zauberleiste bei Zauberende auffüllen"
-Gnosis.L["OptCBFixLatBox"] = "Fixierte Größe der nicht-Spieler Tick Box [in %]"
+Gnosis.L["OptCBFixLatBox"] = "Minimum Tick/Latenz-Box [in % der Leiste]"
 Gnosis.L["OptCBFont"] = "Schrift"
 Gnosis.L["OptCBFontOutline"] = "Schriftumriss"
 Gnosis.L["OptCBFontSizeLat"] = "Latenzschriftgröße (0=automatisch)"
@@ -141,7 +139,7 @@ Gnosis.L["OptCBListNeither"] = "weder"
 Gnosis.L["OptCBListWhite"] = "whitelist"
 Gnosis.L["OptCBLockAll_D"] = "Alle Leisten festsetzen"
 Gnosis.L["OptCBLockAll_N"] = "Festsetzen"
-Gnosis.L["OptCBMaxLatBox"] = "Maximalgröße der Latenzbox [in %]"
+Gnosis.L["OptCBMaxLatBox"] = "Maximum Tick/Latenz-Box [in % der Leiste]"
 Gnosis.L["OptCBNewCB_D"] = [=[Neue Leiste erstellen. Ein gültiger Namen muss angeben werden.
 
 Halten der Shift-Taste erstellt eine symbolartige Leiste.]=]
@@ -323,6 +321,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Deaktiviert \"Clipping\"-Sound"
 Gnosis.L["OptPlayTickSound_N"] = "Tick-Sound abspielen"
 Gnosis.L["OptPMoC"] = "Bei Clip Musik abspielen"
 Gnosis.L["OptPSoC"] = "Bei Clip Sound abspielen"
+Gnosis.L["OptReanchorAllBars"] = "Leisten neu verankern (bei Problemen nach Leistenimport)"
 Gnosis.L["OptResetPlayerData"] = "Spielerdaten zurücksetzen (lädt Interface neu)"
 Gnosis.L["OptResizeOptions"] = "Größe der Interface-Optionen zum Start verändern"
 Gnosis.L["OptSaveconfigExists"] = "eine Konfiguration mit diesem Namen existiert bereits"
@@ -366,12 +365,12 @@ Gnosis.L["OptTimeFormatToggleDesc"] = "Bei Aktivierung werden andere Optionen de
 Gnosis.L["OptTimeFormatToggleName"] = "Individuelles Zeitformat"
 Gnosis.L["OptTimerScanEveryN"] = "Mehrfachzauber-Timerleisten aktualisieren alle [ms]"
 Gnosis.L["OptTotTicks"] = "Gesamte Ticks"
-Gnosis.L["OptWfCL_Desc"] = "Ausgabe/Clip Test in ms, um Kampftextverzögerung entgegenzuwirken." -- Needs review
+Gnosis.L["OptWfCL_Desc"] = "Ausgabe/Clip Test in ms, um Kampftextverzögerung entgegenzuwirken."
 Gnosis.L["OptWfCL_Name"] = "Warte auf Kampftext [ms]"
 Gnosis.L["OptWidth"] = "Breite"
 Gnosis.L["PasteScript"] = "Importdaten in die Editbox einfügen"
 Gnosis.L["PremadeNfs1"] = "Zauber |cffff0000(Rang, etc., z.B. Stapel)|r (kombinierte Handelsgüterherstellung)"
-Gnosis.L["PremadeNfs2"] = "Zauber |cffff0000(Auraeffektwert)|r" -- Needs review
+Gnosis.L["PremadeNfs2"] = "Zauber |cffff0000(Auraeffektwert)|r"
 Gnosis.L["PremadeNfs3"] = "|cffffff00Name der Einheit|r: Zauber"
 Gnosis.L["PremadeTfs1"] = "|cffff0000Pushback|r Verbleibend / Total, z.B. |cffff0000+1.0|r 1.4 / 3.00"
 Gnosis.L["PremadeTfs2"] = "|cffff0000Pushback|r Verbleibend / Total, wie oben, jedoch ohne Minutenanzeige"
@@ -400,6 +399,7 @@ Gnosis.L["TabCTClipTest"] = "Kampftext/Cliptest"
 Gnosis.L["TabFreeAlign"] = "Freie Anordnung"
 Gnosis.L["TabNameTime"] = "Name...Zeit"
 Gnosis.L["TabTimeName"] = "Zeit...Name"
+Gnosis.L["tSpecsSelectSpec"] = "Spezialisierungen auswählen oder manuell editieren"
 Gnosis.L["Vertical"] = "Vertikal"
 Gnosis.L["Yes"] = "Ja"
 
@@ -453,6 +453,7 @@ Gnosis.L["OptAddonEnable_Name"] = "启用插件"
 Gnosis.L["OptBarXYcoordDesc"] = "x,y-坐标"
 Gnosis.L["OptBarXYcoordName"] = "施法条位置: x, y"
 Gnosis.L["OptCBActiveSpec"] = "为天赋类型启用"
+Gnosis.L["OptCBActiveSpecDesc"] = "add comma seperated specializations, e.g. 1,2,4" -- Requires localization
 Gnosis.L["OptCBAddListElem"] = "增加条目"
 Gnosis.L["OptCBAdjIcon"] = "调整图标位置 (当解锁时)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "调整延迟文字位置"
@@ -504,7 +505,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "Extend channeled spell while chain-casting 
 Gnosis.L["OptCBExtendChannels_N"] = "Extend channels" -- Requires localization
 Gnosis.L["OptCBFadeout"] = "淡出时间"
 Gnosis.L["OptCBFillAtEnd"] = "当施法结束时填充施法条"
-Gnosis.L["OptCBFixLatBox"] = "非玩家跳数框精确尺寸 [% 施法条]"
+Gnosis.L["OptCBFixLatBox"] = "非玩家跳数框精确尺寸 [% 施法条]" -- Needs review
 Gnosis.L["OptCBFont"] = "字体"
 Gnosis.L["OptCBFontOutline"] = "字体描边"
 Gnosis.L["OptCBFontSizeLat"] = "延迟字体大小 (0=自动)"
@@ -531,7 +532,7 @@ Gnosis.L["OptCBListNeither"] = "都"
 Gnosis.L["OptCBListWhite"] = "白名单"
 Gnosis.L["OptCBLockAll_D"] = "Lock all bars" -- Requires localization
 Gnosis.L["OptCBLockAll_N"] = "Lock" -- Requires localization
-Gnosis.L["OptCBMaxLatBox"] = "延迟框最大尺寸 [% 施法条]"
+Gnosis.L["OptCBMaxLatBox"] = "延迟框最大尺寸 [% 施法条]" -- Needs review
 Gnosis.L["OptCBNewCB_D"] = "创建新的施法条必须给出一个可用的施法条名" -- Needs review
 Gnosis.L["OptCBNewCB_N"] = "新的施法条" -- Needs review
 Gnosis.L["OptCBNewCBName_D"] = "创建新的施法条前请输入可用的施法条名字"
@@ -707,6 +708,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Deactivates clipping sound." -- Requires local
 Gnosis.L["OptPlayTickSound_N"] = "播放跳数音效" -- Needs review
 Gnosis.L["OptPMoC"] = "Play music on clip" -- Needs review
 Gnosis.L["OptPSoC"] = "Play sound on clip" -- Needs review
+Gnosis.L["OptReanchorAllBars"] = "Reanchor all bars (might be required after import)" -- Requires localization
 Gnosis.L["OptResetPlayerData"] = "重置玩家数据 (重载界面)"
 Gnosis.L["OptResizeOptions"] = "Resize interface options frame on startup" -- Requires localization
 Gnosis.L["OptSaveconfigExists"] = "配置已经存在, 请首先删除或者改名"
@@ -784,6 +786,7 @@ Gnosis.L["TabCTClipTest"] = "战斗文字/Cliptest"
 Gnosis.L["TabFreeAlign"] = "自由对齐"
 Gnosis.L["TabNameTime"] = "名字...时间"
 Gnosis.L["TabTimeName"] = "时间...名字"
+Gnosis.L["tSpecsSelectSpec"] = "select specialization or edit manually" -- Requires localization
 Gnosis.L["Vertical"] = "垂直"
 Gnosis.L["Yes"] = "是"
 
@@ -813,7 +816,7 @@ Gnosis.L["IfNoCBs"] = "沒有任何施法條" -- Needs review
 Gnosis.L["IfOpenGUI"] = "開啟選項視窗"
 Gnosis.L["Import"] = "匯入"
 Gnosis.L["ImportFromHyperlink"] = "Import bar configuration? If the bar already exists, it's configuration values will be overwritten." -- Requires localization
-Gnosis.L["ImportKeepPos"] = "Import, keep position" -- Requires localization
+Gnosis.L["ImportKeepPos"] = "導入、 保持位置"
 Gnosis.L["MsgBlizCBIsDis"] = "暴雪施法條已經被其他插件所隱藏"
 Gnosis.L["MsgBlizCBRestored"] = "暴雪施法條恢復 (詳見圖形配置界面選項)"
 Gnosis.L["MsgDis"] = "(已禁用)"
@@ -834,6 +837,7 @@ Gnosis.L["OptAddonEnable_Name"] = "啟用插件"
 Gnosis.L["OptBarXYcoordDesc"] = "x,y-坐標"
 Gnosis.L["OptBarXYcoordName"] = "施法條位置: x, y"
 Gnosis.L["OptCBActiveSpec"] = "依天賦規則啟用"
+Gnosis.L["OptCBActiveSpecDesc"] = "add comma seperated specializations, e.g. 1,2,4" -- Requires localization
 Gnosis.L["OptCBAddListElem"] = "增加條目"
 Gnosis.L["OptCBAdjIcon"] = "調整圖標位置 (當解鎖時)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "調整延遲文字位置"
@@ -851,13 +855,13 @@ Gnosis.L["OptCBAncOffset"] = "偏移 X,Y"
 Gnosis.L["OptCBAncToCursor"] = "定位到滑鼠"
 Gnosis.L["OptCBAncToFrame"] = "定位到框體"
 Gnosis.L["OptCBAncType"] = "錨點類型"
-Gnosis.L["OptCBBarType"] = "Bartype" -- Requires localization
+Gnosis.L["OptCBBarType"] = "施法條類型"
 Gnosis.L["OptCBBorderCol"] = "邊框顏色"
 Gnosis.L["OptCBBorderColInt"] = "邊框顏色 (不可打斷)"
 Gnosis.L["OptCBBorderSize"] = "邊框大小"
 Gnosis.L["OptCBBorderTex_D"] = "Additional border texture of fixed size. You might want to unlock the icon and reduce the normal border size to 0 when using additional border textures. This border texture will not affect the icon border." -- Requires localization
 Gnosis.L["OptCBBorderTex_N"] = "附加的邊框材質"
-Gnosis.L["OptCBBWListedSpells"] = "黑/白名單中列表的法術" -- Needs review
+Gnosis.L["OptCBBWListedSpells"] = "黑/白名單法術與計時設置"
 Gnosis.L["OptCBCBBgCol"] = "施法條背景顏色"
 Gnosis.L["OptCBCBColFail"] = "施法條顏色 (失敗)"
 Gnosis.L["OptCBCBColInt"] = "施法條顏色 (打斷)"
@@ -871,8 +875,8 @@ Gnosis.L["OptCBCombatSelAlways"] = "進入或離開戰鬥"
 Gnosis.L["OptCBCombatSelInC"] = "僅進入戰鬥"
 Gnosis.L["OptCBCombatSelOoC"] = "僅離開戰鬥"
 Gnosis.L["OptCBCombSel"] = "當...時顯示施法條"
-Gnosis.L["OptCBCopyCB_D"] = "拷貝施法條, 請確保在新的施法條編輯框中輸入壹個可用的名字." -- Needs review
-Gnosis.L["OptCBCopyCB_N"] = "拷貝施法條" -- Needs review
+Gnosis.L["OptCBCopyCB_D"] = "複製施法條, 請確保在新的施法條編輯框中輸入一個有效的名稱。"
+Gnosis.L["OptCBCopyCB_N"] = "複製施法條"
 Gnosis.L["OptCBEnCastSucDesc"] = "修改當施法成功結束後的顏色"
 Gnosis.L["OptCBEnCastSucName"] = "啟用成功施法"
 Gnosis.L["OptCBEnCB"] = "啟用施法條" -- Needs review
@@ -885,7 +889,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "Extend channeled spell while chain-casting 
 Gnosis.L["OptCBExtendChannels_N"] = "Extend channels" -- Requires localization
 Gnosis.L["OptCBFadeout"] = "淡出時間"
 Gnosis.L["OptCBFillAtEnd"] = "當施法結束時填充施法條"
-Gnosis.L["OptCBFixLatBox"] = "非玩家跳數框精確尺寸 [% 施法條]"
+Gnosis.L["OptCBFixLatBox"] = "延遲框最小刻度 [% 施法條]"
 Gnosis.L["OptCBFont"] = "字型"
 Gnosis.L["OptCBFontOutline"] = "字型描邊"
 Gnosis.L["OptCBFontSizeLat"] = "延遲字型大小 (0=自動)"
@@ -900,32 +904,32 @@ Gnosis.L["OptCBGroupSelSolo"] = "Solo, 不在團隊"
 Gnosis.L["OptCBIconBorderSize"] = "圖標邊框 (當解鎖時)"
 Gnosis.L["OptCBInstanceSelAlways"] = "inside or outside instance (always)" -- Requires localization
 Gnosis.L["OptCBInstanceSelArena"] = "in arena" -- Requires localization
-Gnosis.L["OptCBInstanceSelBattleground"] = "in battleground" -- Requires localization
-Gnosis.L["OptCBInstanceSelFiveMan"] = "in 5-man instance" -- Requires localization
+Gnosis.L["OptCBInstanceSelBattleground"] = "在戰場"
+Gnosis.L["OptCBInstanceSelFiveMan"] = "在5人副本"
 Gnosis.L["OptCBInstanceSelInside"] = "inside instance" -- Requires localization
 Gnosis.L["OptCBInstanceSelOutside"] = "outside instance" -- Requires localization
-Gnosis.L["OptCBInstanceSelRaid"] = "in raid instance" -- Requires localization
+Gnosis.L["OptCBInstanceSelRaid"] = "於團體副本"
 Gnosis.L["OptCBInvBarDir"] = "反轉施法條方向"
 Gnosis.L["OptCBLatBoxCol"] = "延遲框顏色"
 Gnosis.L["OptCBListBlack"] = "黑名單"
 Gnosis.L["OptCBListNeither"] = "都"
 Gnosis.L["OptCBListWhite"] = "白名單"
-Gnosis.L["OptCBLockAll_D"] = "Lock all bars" -- Requires localization
+Gnosis.L["OptCBLockAll_D"] = "鎖定所有項目條"
 Gnosis.L["OptCBLockAll_N"] = "Lock" -- Requires localization
-Gnosis.L["OptCBMaxLatBox"] = "延遲框最大尺寸 [% 施法條]"
-Gnosis.L["OptCBNewCB_D"] = "創建新的施法條必須給出壹個可用的施法條名" -- Needs review
-Gnosis.L["OptCBNewCB_N"] = "新的施法條" -- Needs review
+Gnosis.L["OptCBMaxLatBox"] = "延遲框最大刻度 [% 施法條]"
+Gnosis.L["OptCBNewCB_D"] = "建立新施法條，請在相鄰的輸入框鍵入有效名稱。"
+Gnosis.L["OptCBNewCB_N"] = "新的施法條(圖標式)"
 Gnosis.L["OptCBNewCBName_D"] = "創建新的施法條前請輸入可用的施法條名字"
-Gnosis.L["OptCBNewListElem_D"] = [=[Castbars:
-Enter names of spells to black- or whitelist.
+Gnosis.L["OptCBNewListElem_D"] = [=[施法條：
+鍵入法術名稱用於黑/白名單。
 
-Multi-Spell Timer:
-Basic format for every entry: cmds:spell/effect/item
+多重施法計時：
+輸入基本格式：cmds [options] : type
 
-More info @ Gnosis' description page at curse.com or in the .pdf which can be found in your WoW Folder/Addons/Gnosis (not yet done).]=] -- Needs review
+更多資訊參考 curse.com上Gnosis的說明網頁，以及你的魔獸資料夾/Addons/Gnosis中的PDF檔。]=]
 Gnosis.L["OptCBNewListElem_N"] = "輸入要添加的法術名字"
 Gnosis.L["OptCBOrient"] = "方向"
-Gnosis.L["OptCBRelSel"] = "Show casts of" -- Requires localization
+Gnosis.L["OptCBRelSel"] = "顯示施法"
 Gnosis.L["OptCBRelSelAll"] = "所有單位"
 Gnosis.L["OptCBRelSelEnemy"] = "敵對"
 Gnosis.L["OptCBRelSelFriendly"] = "友方"
@@ -934,8 +938,8 @@ Gnosis.L["OptCBRemListElem"] = "移除當前條目"
 Gnosis.L["OptCBRotIcon"] = "旋轉圖示"
 Gnosis.L["OptCBRotLatencyN"] = "Rotate latency" -- Requires localization
 Gnosis.L["OptCBRotNameD"] = "Forces free alignment if used" -- Requires localization
-Gnosis.L["OptCBRotNameN"] = "Rotate name" -- Requires localization
-Gnosis.L["OptCBRotTimeN"] = "Rotate time" -- Requires localization
+Gnosis.L["OptCBRotNameN"] = "循環名稱"
+Gnosis.L["OptCBRotTimeN"] = "循環時間"
 Gnosis.L["OptCBScaleBar"] = "縮放施法條"
 Gnosis.L["OptCBScaleIcon"] = "縮放圖標 (當解鎖時)"
 Gnosis.L["OptCBShowChanTicks"] = "顯示通道法術跳數"
@@ -964,12 +968,12 @@ Gnosis.L["OptCBUnlockAll_D"] = "Unlock all bars. Disabled bars or bars selected 
 Gnosis.L["OptCBUnlockAll_N"] = "Unlock" -- Requires localization
 Gnosis.L["OptCBUnlockIcon_D"] = "從施法條上解鎖圖標"
 Gnosis.L["OptCBUnlockIcon_N"] = "解鎖圖標"
-Gnosis.L["OptCBWordWrapD"] = "Allow text to wrap to additional lines" -- Requires localization
-Gnosis.L["OptCBWordWrapN"] = "Allow word wrap" -- Requires localization
+Gnosis.L["OptCBWordWrapD"] = "允許文本換行到其他行"
+Gnosis.L["OptCBWordWrapN"] = "允許自動換行"
 Gnosis.L["OptCHCastnameGrp"] = "施法名稱選項"
 Gnosis.L["OptCHCasttimeGrp"] = "施法時間選項"
 Gnosis.L["OptClipWarn_Desc"] = "在非範圍作用之引導法術的第一跳之前，發出即將截短之警示"
-Gnosis.L["OptClipWarn_Name"] = "Clipping warning [ms]" -- Needs review
+Gnosis.L["OptClipWarn_Name"] = "快速警告 [毫秒]"
 Gnosis.L["OptCombTicks"] = "合並跳數並通過戰鬥文字輸出"
 Gnosis.L["OptConfDelConf"] = "移除配置"
 Gnosis.L["OptConfDelConfMBText"] = "是否要刪除設置 |cffffff7f%s|r？"
@@ -1001,7 +1005,7 @@ Gnosis.L["OptCTO_Parrot"] = "Parrot"
 Gnosis.L["OptCTO_SCT"] = "Scrolling Combat Text"
 Gnosis.L["OptEn"] = "啟用"
 Gnosis.L["OptEnAutoCreateOptons"] = "初始時自動創建選項表格"
-Gnosis.L["OptEnClipTest"] = "Enable clip test" -- Needs review
+Gnosis.L["OptEnClipTest"] = "啟用快速測試"
 Gnosis.L["OptExportAllBars"] = "Export all bars" -- Requires localization
 Gnosis.L["OptFile"] = "File" -- Requires localization
 Gnosis.L["OptFirstStartFrame"] = "打開初始使用框體"
@@ -1030,7 +1034,8 @@ Gnosis.L["OptMusic"] = "音樂"
 Gnosis.L["OptNameFormatStringDesc"] = [=[輸入字符用來顯示為名字
 
 name: 法術名
-abbr<cnt>: 縮寫法術名如果字符長於壹個數值, 除非和名字想通
+trunc<cnt>: 截短法術名如果長過一個數值
+abbr<cnt>: 縮寫法術名如果長過一個數值(首字母縮寫)
 rank<text>: 如果等級可用顯示等級文字
 misc: 如果沒有等級則顯示多種信息
 arabic: 等級顯示為阿拉伯數字 (e.g. 13)
@@ -1049,7 +1054,7 @@ tscur: 顯示剩余的商業技能物品計數
 tstot: 顯示總的商業技能物品計數
 txts<text>: 如果商業技能信息可用顯示文字
 
-\n: force new line]=] -- Needs review
+\n: force new line]=]
 Gnosis.L["OptNameFormatStringName"] = "名字格式字符"
 Gnosis.L["OptNameFormatToggleDesc"] = "如果啟用則 '顯示施法名' 和 '顯示施法等級' 選項將被忽略."
 Gnosis.L["OptNameFormatToggleName"] = "啟用名字格式字符Enable name format string"
@@ -1079,7 +1084,7 @@ col<r,g,b[,a]>: e.g. col<1.0,1.0,0.0> to change color
 col<school>: where school is shadow,arcane...
 col<pre>: change color to previous one
 col<class>: change color to target class color (if available)
-col<cpre>: revert to previous color (if target class color is available)]=] -- Requires localization
+col<cpre>: revert to previous color (if target class color is available)]=]
 Gnosis.L["OptPFoC"] = "Play file on clip" -- Requires localization
 Gnosis.L["OptPlayFile"] = "Play custom file" -- Requires localization
 Gnosis.L["OptPlayMusic"] = "播放音樂檔案" -- Needs review
@@ -1088,6 +1093,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Deactivates clipping sound." -- Requires local
 Gnosis.L["OptPlayTickSound_N"] = "Play tick sound" -- Requires localization
 Gnosis.L["OptPMoC"] = "Play music on clip" -- Needs review
 Gnosis.L["OptPSoC"] = "Play sound on clip" -- Needs review
+Gnosis.L["OptReanchorAllBars"] = "Reanchor all bars (might be required after import)" -- Requires localization
 Gnosis.L["OptResetPlayerData"] = "重置玩家數據 (重載界面)"
 Gnosis.L["OptResizeOptions"] = "Resize interface options frame on startup" -- Requires localization
 Gnosis.L["OptSaveconfigExists"] = "配置已經存在, 請首先刪除或者改名"
@@ -1165,6 +1171,7 @@ Gnosis.L["TabCTClipTest"] = "戰鬥文字/Cliptest"
 Gnosis.L["TabFreeAlign"] = "自由對齊"
 Gnosis.L["TabNameTime"] = "名字...時間"
 Gnosis.L["TabTimeName"] = "時間...名字"
+Gnosis.L["tSpecsSelectSpec"] = "select specialization or edit manually" -- Requires localization
 Gnosis.L["Vertical"] = "垂直"
 Gnosis.L["Yes"] = "是"
 
@@ -1216,6 +1223,7 @@ Gnosis.L["OptAddonEnable_Name"] = "애드온 사용"
 Gnosis.L["OptBarXYcoordDesc"] = "x,y-좌표"
 Gnosis.L["OptBarXYcoordName"] = "바 위치: x, y"
 Gnosis.L["OptCBActiveSpec"] = "특성 옵션 사용"
+Gnosis.L["OptCBActiveSpecDesc"] = "전문화 구분에 콤마를 추가하세요, 예. 1,2,4"
 Gnosis.L["OptCBAddListElem"] = "항목 추가"
 Gnosis.L["OptCBAdjIcon"] = "아이콘 위치 조절 (잠금을 해제한 경우에)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "지연율 문자 위치 조절"
@@ -1267,7 +1275,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "정신 집중 주문이 끝나기 전에 �
 Gnosis.L["OptCBExtendChannels_N"] = "정신 집중 주문 연장"
 Gnosis.L["OptCBFadeout"] = "사라짐 시간"
 Gnosis.L["OptCBFillAtEnd"] = "시전 후 바를 채우기"
-Gnosis.L["OptCBFixLatBox"] = "비플레이어 틱 박스의 고정 크기 [바의 %]"
+Gnosis.L["OptCBFixLatBox"] = "틱/지연율 박스 최소 크기 [바의 %]"
 Gnosis.L["OptCBFont"] = "글꼴"
 Gnosis.L["OptCBFontOutline"] = "글꼴 외곽선"
 Gnosis.L["OptCBFontSizeLat"] = "지연율 글꼴 크기 (0=자동)"
@@ -1294,7 +1302,7 @@ Gnosis.L["OptCBListNeither"] = "둘 다 안함"
 Gnosis.L["OptCBListWhite"] = "허용목록"
 Gnosis.L["OptCBLockAll_D"] = "모든 바 잠금"
 Gnosis.L["OptCBLockAll_N"] = "잠금"
-Gnosis.L["OptCBMaxLatBox"] = "지연율 박스의 최대 크기 [바의 %]"
+Gnosis.L["OptCBMaxLatBox"] = "틱/지연율 박스 최대 크기 [바의 %]"
 Gnosis.L["OptCBNewCB_D"] = [=[새로운 바를 만듭니다. 가까운 입력창에 유요한 이름을 입력하세요.
 
 쉬프트 키를 누르고 클릭하면 아이콘 형식의 바를 만듭니다.]=]
@@ -1476,6 +1484,7 @@ Gnosis.L["OptPlayTickSound_D"] = "틱 끊김 소리를 비활성화합니다."
 Gnosis.L["OptPlayTickSound_N"] = "틱 소리 재생"
 Gnosis.L["OptPMoC"] = "틱 시전 시 음악 재생"
 Gnosis.L["OptPSoC"] = "틱 시전 시 소리 재생"
+Gnosis.L["OptReanchorAllBars"] = "모든 바 위치 재설정 (가져오기 후 필수)"
 Gnosis.L["OptResetPlayerData"] = "플레이어 자료 초기화 (인터페이스 재시작)"
 Gnosis.L["OptResizeOptions"] = "시작 시 인터페이스 옵션 창 크기 조절"
 Gnosis.L["OptSaveconfigExists"] = "설정이 이미 있습니다. 이전 것을 삭제하거나 이름을 변경하세요."
@@ -1554,6 +1563,7 @@ Gnosis.L["TabCTClipTest"] = "전투문자/틱 끊김 검사"
 Gnosis.L["TabFreeAlign"] = "임의 정렬"
 Gnosis.L["TabNameTime"] = "이름...시간"
 Gnosis.L["TabTimeName"] = "시간...이름"
+Gnosis.L["tSpecsSelectSpec"] = "전문화를 선택하거나 수동으로 편집하기"
 Gnosis.L["Vertical"] = "수직"
 Gnosis.L["Yes"] = "네"
 
@@ -1604,6 +1614,7 @@ Gnosis.L["OptAddonEnable_Name"] = "Включить"
 Gnosis.L["OptBarXYcoordDesc"] = "Координаты - x,y"
 Gnosis.L["OptBarXYcoordName"] = "Расположение полосы: x, y" -- Needs review
 Gnosis.L["OptCBActiveSpec"] = "Включен при смене талантов" -- Needs review
+Gnosis.L["OptCBActiveSpecDesc"] = "add comma seperated specializations, e.g. 1,2,4" -- Requires localization
 Gnosis.L["OptCBAddListElem"] = "Добавить запись"
 Gnosis.L["OptCBAdjIcon"] = "Регулировка позиции иконки (когда разблок.)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "Регулировка позиции текста задержки"
@@ -1857,6 +1868,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Отключает звук обрывания
 Gnosis.L["OptPlayTickSound_N"] = "Включить звук обрывания" -- Needs review
 Gnosis.L["OptPMoC"] = "Проиграть музыку при обрывании"
 Gnosis.L["OptPSoC"] = "Проиграть звук при обрывании"
+Gnosis.L["OptReanchorAllBars"] = "Reanchor all bars (might be required after import)" -- Requires localization
 Gnosis.L["OptResetPlayerData"] = "Сброс данных игрока (перезагрузка интерфейса)"
 Gnosis.L["OptResizeOptions"] = "Изменить размер рамки интерфейса опций в начале загрузки" -- Needs review
 Gnosis.L["OptSaveconfigExists"] = "конфигурация уже существует, удалите или измените название"
@@ -1934,6 +1946,7 @@ Gnosis.L["TabCTClipTest"] = "Текст боя/обрывания"
 Gnosis.L["TabFreeAlign"] = "Свободное выравнивание"
 Gnosis.L["TabNameTime"] = "Название...Время"
 Gnosis.L["TabTimeName"] = "Время...Название"
+Gnosis.L["tSpecsSelectSpec"] = "select specialization or edit manually" -- Requires localization
 Gnosis.L["Vertical"] = "Вертикально"
 Gnosis.L["Yes"] = "Да" -- Needs review
 
@@ -1987,6 +2000,7 @@ Gnosis.L["OptAddonEnable_Name"] = "Activer l'addon" -- Needs review
 Gnosis.L["OptBarXYcoordDesc"] = "coordonées X,Y" -- Needs review
 Gnosis.L["OptBarXYcoordName"] = "Position de la barre: X,Y" -- Needs review
 Gnosis.L["OptCBActiveSpec"] = "Enabled for talent spec" -- Requires localization
+Gnosis.L["OptCBActiveSpecDesc"] = "add comma seperated specializations, e.g. 1,2,4" -- Requires localization
 Gnosis.L["OptCBAddListElem"] = "Ajouter une entrée" -- Needs review
 Gnosis.L["OptCBAdjIcon"] = "Ajuster la position de l'icône (quand déverrouillé)" -- Needs review
 Gnosis.L["OptCBAdjLatTextCoord"] = "Ajuster la position du texte de latence" -- Needs review
@@ -2038,7 +2052,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "Extend channeled spell while chain-casting 
 Gnosis.L["OptCBExtendChannels_N"] = "Extend channels" -- Requires localization
 Gnosis.L["OptCBFadeout"] = "Fadeout time" -- Requires localization
 Gnosis.L["OptCBFillAtEnd"] = "Fill bar up at castend" -- Requires localization
-Gnosis.L["OptCBFixLatBox"] = "Fixed size of non player tick box [% of bar]" -- Requires localization
+Gnosis.L["OptCBFixLatBox"] = "Minimum tick/latency box size [% of bar]" -- Requires localization
 Gnosis.L["OptCBFont"] = "Font" -- Requires localization
 Gnosis.L["OptCBFontOutline"] = "Font outline" -- Requires localization
 Gnosis.L["OptCBFontSizeLat"] = "Latency font size (0=automatic)" -- Requires localization
@@ -2065,7 +2079,7 @@ Gnosis.L["OptCBListNeither"] = "neither" -- Requires localization
 Gnosis.L["OptCBListWhite"] = "whitelist" -- Requires localization
 Gnosis.L["OptCBLockAll_D"] = "Lock all bars" -- Requires localization
 Gnosis.L["OptCBLockAll_N"] = "Lock" -- Requires localization
-Gnosis.L["OptCBMaxLatBox"] = "Maximum size of latency box [% of bar]" -- Requires localization
+Gnosis.L["OptCBMaxLatBox"] = "Maximum tick/latency box size [% of bar]" -- Requires localization
 Gnosis.L["OptCBNewCB_D"] = [=[Create new bar. Please enter a valid name in the adjacent edit box.
 
 Holding the shift key will create an icon-like bar.]=] -- Requires localization
@@ -2247,6 +2261,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Deactivates clipping sound." -- Requires local
 Gnosis.L["OptPlayTickSound_N"] = "Play tick sound" -- Requires localization
 Gnosis.L["OptPMoC"] = "Play music on clip" -- Requires localization
 Gnosis.L["OptPSoC"] = "Play sound on clip" -- Requires localization
+Gnosis.L["OptReanchorAllBars"] = "Reanchor all bars (might be required after import)" -- Requires localization
 Gnosis.L["OptResetPlayerData"] = "Reset player data (reloads interface)" -- Requires localization
 Gnosis.L["OptResizeOptions"] = "Resize interface options frame on startup" -- Requires localization
 Gnosis.L["OptSaveconfigExists"] = "configuration already exists, please delete first or change name" -- Requires localization
@@ -2325,6 +2340,7 @@ Gnosis.L["TabCTClipTest"] = "Combattext/Cliptest" -- Requires localization
 Gnosis.L["TabFreeAlign"] = "Free alignment" -- Requires localization
 Gnosis.L["TabNameTime"] = "Name...Time" -- Requires localization
 Gnosis.L["TabTimeName"] = "Time...Name" -- Requires localization
+Gnosis.L["tSpecsSelectSpec"] = "select specialization or edit manually" -- Requires localization
 Gnosis.L["Vertical"] = "Vertical" -- Requires localization
 Gnosis.L["Yes"] = "Yes" -- Requires localization
 
@@ -2378,6 +2394,7 @@ Gnosis.L["OptAddonEnable_Name"] = "Enable Addon"
 Gnosis.L["OptBarXYcoordDesc"] = "x,y-coordinate"
 Gnosis.L["OptBarXYcoordName"] = "Bar position: x, y"
 Gnosis.L["OptCBActiveSpec"] = "Enabled for talent spec"
+Gnosis.L["OptCBActiveSpecDesc"] = "add comma seperated specializations, e.g. 1,2,4"
 Gnosis.L["OptCBAddListElem"] = "Add entry"
 Gnosis.L["OptCBAdjIcon"] = "Adjust icon position (when unlocked)"
 Gnosis.L["OptCBAdjLatTextCoord"] = "Adjust latency text position"
@@ -2429,7 +2446,7 @@ Gnosis.L["OptCBExtendChannels_D"] = "Extend channeled spell while chain-casting 
 Gnosis.L["OptCBExtendChannels_N"] = "Extend channels"
 Gnosis.L["OptCBFadeout"] = "Fadeout time"
 Gnosis.L["OptCBFillAtEnd"] = "Fill bar up at castend"
-Gnosis.L["OptCBFixLatBox"] = "Fixed size of non player tick box [% of bar]"
+Gnosis.L["OptCBFixLatBox"] = "Minimum tick/latency box size [% of bar]"
 Gnosis.L["OptCBFont"] = "Font"
 Gnosis.L["OptCBFontOutline"] = "Font outline"
 Gnosis.L["OptCBFontSizeLat"] = "Latency font size (0=automatic)"
@@ -2456,7 +2473,7 @@ Gnosis.L["OptCBListNeither"] = "neither"
 Gnosis.L["OptCBListWhite"] = "whitelist"
 Gnosis.L["OptCBLockAll_D"] = "Lock all bars"
 Gnosis.L["OptCBLockAll_N"] = "Lock"
-Gnosis.L["OptCBMaxLatBox"] = "Maximum size of latency box [% of bar]"
+Gnosis.L["OptCBMaxLatBox"] = "Maximum tick/latency box size [% of bar]"
 Gnosis.L["OptCBNewCB_D"] = [=[Create new bar. Please enter a valid name in the adjacent edit box.
 
 Holding the shift key will create an icon-like bar.]=]
@@ -2638,6 +2655,7 @@ Gnosis.L["OptPlayTickSound_D"] = "Deactivates clipping sound."
 Gnosis.L["OptPlayTickSound_N"] = "Play tick sound"
 Gnosis.L["OptPMoC"] = "Play music on clip"
 Gnosis.L["OptPSoC"] = "Play sound on clip"
+Gnosis.L["OptReanchorAllBars"] = "Reanchor all bars (might be required after import)"
 Gnosis.L["OptResetPlayerData"] = "Reset player data (reloads interface)"
 Gnosis.L["OptResizeOptions"] = "Resize interface options frame on startup"
 Gnosis.L["OptSaveconfigExists"] = "configuration already exists, please delete first or change name"
@@ -2716,6 +2734,7 @@ Gnosis.L["TabCTClipTest"] = "Combattext/Cliptest"
 Gnosis.L["TabFreeAlign"] = "Free alignment"
 Gnosis.L["TabNameTime"] = "Name...Time"
 Gnosis.L["TabTimeName"] = "Time...Name"
+Gnosis.L["tSpecsSelectSpec"] = "select specialization or edit manually"
 Gnosis.L["Vertical"] = "Vertical"
 Gnosis.L["Yes"] = "Yes"
 

@@ -29,6 +29,14 @@ function Analytics:Save(appDB)
 	if private.lastEventTime then
 		appDB.analytics.updateTime = private.lastEventTime
 	end
+	-- remove any events which are over 14 days old
+	for i = #appDB.analytics.data, 1, -1 do
+		local event = appDB.analytics.data
+		local eventTime = strmatch(appDB.analytics.data[i], "([0-9]+)%]$") or ""
+		if (tonumber(eventTime) or 0) < time() - 14 * 24 * 60 * 60 then
+			tremove(appDB.analytics.data, i)
+		end
+	end
 	for _, event in ipairs(private.events) do
 		tinsert(appDB.analytics.data, event)
 	end
@@ -47,7 +55,7 @@ private.embeds = {
 		end
 		TSMAPI:Assert(type(moduleEvent) == "string" and strmatch(moduleEvent, "^[A-Z_]+$"))
 		TSMAPI:Assert(type(arg) == "string" or type(arg) == "number" or type(arg) == "boolean")
-		arg = "\""..tostring(arg).."\""
+		arg = "\""..gsub(tostring(arg), "\"", "'").."\""
 		moduleEvent = "\""..moduleEvent.."\""
 		local moduleName = "\""..TSM.Modules:GetName(obj).."\""
 		local moduleVersion = "\""..(obj._version or "").."\""

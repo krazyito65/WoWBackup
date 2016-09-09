@@ -11,20 +11,23 @@ local Debug = LibStub("LibDebug-1.0")
 local ItemUtils = LibStub("LibItemUtils-1.0")
 
 -- This is the high price equipslot multiplier.
+-- Values adjusted to be proportional to the amount of stats provided by each slot in Legion
 local EQUIPSLOT_MULTIPLIER_1 = {
   INVTYPE_HEAD = 1,
-  INVTYPE_NECK = 0.5,
-  INVTYPE_SHOULDER = 0.75,
   INVTYPE_CHEST = 1,
-  INVTYPE_ROBE = 1,
-  INVTYPE_WAIST = 0.75,
   INVTYPE_LEGS = 1,
+  INVTYPE_WRIST = 0.56,
+  INVTYPE_FINGER = 0.56,
+  INVTYPE_CLOAK = 0.56,
+  INVTYPE_NECK = 0.56,
+  INVTYPE_SHOULDER = 0.75,
+  INVTYPE_WAIST = 0.75,
   INVTYPE_FEET = 0.75,
-  INVTYPE_WRIST = 0.5,
   INVTYPE_HAND = 0.75,
-  INVTYPE_FINGER = 0.5,
   INVTYPE_TRINKET = 1.25,
-  INVTYPE_CLOAK = 0.5,
+  INVTYPE_RELIC = 0.667,
+
+  -- The below are not relevant for Legion items, only for old
   INVTYPE_WEAPON = 1.5,
   INVTYPE_SHIELD = 1.5,
   INVTYPE_2HWEAPON = 2,
@@ -34,10 +37,12 @@ local EQUIPSLOT_MULTIPLIER_1 = {
   INVTYPE_RANGED = 2.0,
   INVTYPE_RANGEDRIGHT = 2.0,
   INVTYPE_THROWN = 0.5,
-  INVTYPE_RELIC = 0.5,
+
   -- Hack for Tier 9 25M heroic tokens.
   INVTYPE_CUSTOM_MULTISLOT_TIER = 0.9,
 }
+
+-- Note: The second multiplier is not really used in Legion
 
 -- This is the low price equipslot multiplier (off hand weapons, non
 -- tanking shields).
@@ -547,6 +552,9 @@ local CUSTOM_ITEM_DATA = {
   [127969] = { 4, 705, "INVTYPE_TRINKET", true },
   [127970] = { 4, 705, "INVTYPE_TRINKET", true },
   [127968] = { 4, 705, "INVTYPE_TRINKET", true },
+  
+  -- T19 tokens
+    -- FILL HERE. No info yet available on WowHead
 }
 
 -- Used to add extra GP if the item contains bonus stats
@@ -575,6 +583,17 @@ local quality_threshold = 4
 
 local recent_items_queue = {}
 local recent_items_map = {}
+
+local relicSubClass
+local function GetRelicSubClassString()
+	if not relicSubClass then		-- If not cached obtain 
+		local _, itemLink, rarity, level, _, itemClass, itemSubClass, _, equipLoc = GetItemInfo(140819)		-- ID of some relic
+		relicSubClass = itemSubClass
+	end
+
+	return relicSubClass
+end
+
 
 -- Given a list of item bonuses, return the ilvl delta it represents
 -- (15 for Heroic, 30 for Mythic)
@@ -627,7 +646,7 @@ end
 function lib:GetValue(item)
   if not item then return end
 
-  local _, itemLink, rarity, level, _, _, _, _, equipLoc = GetItemInfo(item)
+  local _, itemLink, rarity, level, _, itemClass, itemSubClass, _, equipLoc = GetItemInfo(item)
   if not itemLink then return end
 
   -- Get the item ID to check against known token IDs
@@ -663,6 +682,11 @@ function lib:GetValue(item)
   -- Is the item above our minimum threshold?
   if not rarity or rarity < quality_threshold then
     return nil, nil, level, rarity, equipLoc
+  end
+  
+  -- Check if it is a Relic
+  if equipLoc == "" and itemSubClass == GetRelicSubClassString() then
+    equipLoc = "INVTYPE_RELIC"
   end
 
   -- Does the item have bonus sockets or tertiary stats?  If so,
@@ -701,8 +725,11 @@ function lib:GetValue(item)
   elseif version < 60200 then
     standard_ilvl = 680
     ilvl_denominator = 30
-  else
+  elseif version < 70000 then
     standard_ilvl = 710
+    ilvl_denominator = 30
+  else
+    standard_ilvl = 875
     ilvl_denominator = 30
   end
   local multiplier = 1000 * 2 ^ (-standard_ilvl / ilvl_denominator)

@@ -69,6 +69,7 @@ local auraSortValues = {
 	['DURATION'] = L["Duration"],
 	['NAME'] = NAME,
 	['INDEX'] = L["Index"],
+	["PLAYER"] = PLAYER,
 }
 
 local auraSortMethodValues = {
@@ -2785,27 +2786,6 @@ E.Options.args.unitframe.args.player = {
 					type = 'input',
 					width = 'full',
 					desc = L["TEXT_FORMAT_DESC"],
-				},
-			},
-		},
-		stagger = {
-			order = 1400,
-			type = 'group',
-			name = L["Stagger Bar"],
-			get = function(info) return E.db.unitframe.units['player']['stagger'][ info[#info] ] end,
-			set = function(info, value) E.db.unitframe.units['player']['stagger'][ info[#info] ] = value; UF:CreateAndUpdateUF('player') end,
-			disabled = E.myclass ~= "MONK",
-			args = {
-				enable = {
-					type = 'toggle',
-					order = 1,
-					name = L["Enable"],
-				},
-				width = {
-					order = 2,
-					name = L["Width"],
-					type = 'range',
-					min = 5, max = 25, step = 1,
 				},
 			},
 		},

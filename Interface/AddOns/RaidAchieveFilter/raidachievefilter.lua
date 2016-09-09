@@ -149,7 +149,7 @@ function RaidAchFilter:Initialize()
 	scrBar:SetMinMaxValues(1, 100) 
 	scrBar:SetValueStep(50) 
 	scrBar.scrollStep = 50
-	scrBar:SetValue(0) 
+	scrBar:SetValue(0)
 	scrBar:SetScript("OnValueChanged", 
 		function (self, value) self:GetParent():SetVerticalScroll(value) end) 
 	local scrTex = scrBar:CreateTexture(nil, "BACKGROUND") 

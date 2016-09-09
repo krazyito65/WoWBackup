@@ -208,7 +208,7 @@ function ConstructFunction(prototype, trigger, inverse)
   end
 
   local input;
-  if (not inverse and prototype.statesParameter) then
+  if (prototype.statesParameter) then
     input = {"state", "event"};
   else
     input = {"event"};
@@ -291,16 +291,16 @@ function ConstructFunction(prototype, trigger, inverse)
   return ret;
 end
 
-function WeakAuras.EndEvent(id, triggernum, force)
-  local allStates = WeakAuras.GetTriggerStateForTrigger(id, triggernum);
-  allStates[""] = allStates[""] or {};
-  local state = allStates[""];
-
-  if (state.show ~= false and state.show ~= nil) then
-    state.show = false;
-    state.changed = true;
+function WeakAuras.EndEvent(id, triggernum, force, state)
+  if state then
+    if (state.show ~= false and state.show ~= nil) then
+      state.show = false;
+      state.changed = true;
+    end
+    return state.changed;
+  else
+    return false
   end
-  return state.changed;
 end
 
 function WeakAuras.ActivateEvent(id, triggernum, data, state)
@@ -502,9 +502,31 @@ function WeakAuras.ScanEvents(event, arg1, arg2, ...)
             end
           end
           if (untriggerCheck) then
-            if(data.untriggerFunc and data.untriggerFunc(event, arg1, arg2, ...)) then
-              if (WeakAuras.EndEvent(id, triggernum)) then
-                updateTriggerState = true;
+            if (data.statesParameter == "all") then
+              if(data.untriggerFunc and data.untriggerFunc(allStates, event, arg1, arg2, ...)) then
+                for id, state in pairs(allStates) do
+                  if (state.changed) then
+                    if (WeakAuras.EndEvent(id, triggernum, nil, state)) then
+                      updateTriggerState = true;
+                    end
+                  end
+                end
+              end
+            elseif (data.statesParameter == "one") then
+              allStates[""] = allStates[""] or {};
+              local state = allStates[""];
+              if(data.untriggerFunc and data.untriggerFunc(state, event, arg1, arg2, ...)) then
+                if (WeakAuras.EndEvent(id, triggernum, nil, state)) then
+                  updateTriggerState = true;
+                end
+              end
+            else
+              if(data.untriggerFunc and data.untriggerFunc(event, arg1, arg2, ...)) then
+                allStates[""] = allStates[""] or {};
+                local state = allStates[""];
+                if(WeakAuras.EndEvent(id, triggernum, nil, state)) then
+                  updateTriggerState = true;
+                end
               end
             end
           end
@@ -1172,9 +1194,13 @@ do
   cdReadyFrame:RegisterEvent("RUNE_POWER_UPDATE");
   cdReadyFrame:RegisterEvent("RUNE_TYPE_UPDATE");
   cdReadyFrame:RegisterEvent("UNIT_SPELLCAST_SENT");
+  cdReadyFrame:RegisterEvent("PLAYER_TALENT_UPDATE");
+  cdReadyFrame:RegisterEvent("PLAYER_PVP_TALENT_UPDATE");
   cdReadyFrame:SetScript("OnEvent", function(self, event, ...)
 
-    if(event == "SPELL_UPDATE_COOLDOWN" or event == "SPELL_UPDATE_CHARGES" or event == "RUNE_POWER_UPDATE" or event == "RUNE_TYPE_UPDATE") then
+    if(event == "SPELL_UPDATE_COOLDOWN" or event == "SPELL_UPDATE_CHARGES"
+       or event == "RUNE_POWER_UPDATE" or event == "RUNE_TYPE_UPDATE"
+       or event == "PLAYER_TALENT_UPDATE" or event == "PLAYER_PVP_TALENT_UPDATE") then
       WeakAuras.CheckCooldownReady();
     elseif(event == "UNIT_SPELLCAST_SENT") then
       local unit, name = ...;

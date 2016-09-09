@@ -3,9 +3,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "koKR")
 if not L then return end
 
---TEMP
-L["A taint has occured that is preventing you from using the queue system. Please reload your user interface and try again."] = "대기열 시스템에 오류가 발생했습니다. 애드온을 리로드하고 다시 시도해주세요."
-
 --*_ADDON locales
 L["INCOMPATIBLE_ADDON"] = "%s 애드온의 기능이 ElvUI의 %s 모듈과 상충됩니다. 그 애드온을 쓰지 않거나 ElvUI의 기능을 사용해제하세요."
 
@@ -36,7 +33,6 @@ L["Trigger"] = "묶음을 펼치고 각 주문에 지정하세요."
 L["Bank"] = "은행"
 L["Deposit Reagents"] = REAGENTBANK_DEPOSIT
 L["Hold Control + Right Click:"] = "Shift 우클릭:"
-L["Hold Shift + Drag:"] = "Shift 드래그:"
 L["Purchase Bags"] = "가방 슬롯 구입"
 L["Purchase"] = "구입"
 L["Reagent Bank"] = REAGENT_BANK
@@ -85,6 +81,7 @@ L["Earned:"] = "수입:"
 L["Feet"] = "발"
 L["Friends List"] = "친구 목록"
 L["Friends"] = "친구"
+L["Gold:"] = true;
 L["goldabbrev"] = "|TInterface\\MoneyFrame\\UI-MoneyIcons:0:0:1:0:64:16:1:16:1:16|t" --"|cffffd700●|r"
 L["Hands"] = "손"
 L["Head"] = "머리"
@@ -169,7 +166,6 @@ L["Layout"] = "레이아웃"
 L["Lock"] = "잠금"
 L["Low Resolution"] = "저해상도 세팅"
 L["low"] = "저"
-L["Movers unlocked. Move them now and click Lock when you are done."] = "프레임을 드래그로 원하는 위치로 이동시키세요.|n[잠금] 버튼을 누르면 이동모드가 종료됩니다."
 L["Nudge"] = "미세조정"
 L["Physical DPS"] = "근접 딜러"
 L["Please click the button below so you can setup variables and ReloadUI."] = "아래 버튼을 누르면 설치를 마무리하고 UI를 재시작합니다."
@@ -232,7 +228,12 @@ L["Alternative Power"] = "특수상황 진행 바"
 L["Archeology Progress Bar"] = "고고학 진척도 바"
 L["Arena Frames"] = "투기장 프레임"
 L["Artifact Bar"] = true;
+L["Bag Mover (Grow Down)"] = true;
+L["Bag Mover (Grow Up)"] = true;
+L["Bag Mover"] = true;
 L["Bags"] = "가방"
+L["Bank Mover (Grow Down)"] = true;
+L["Bank Mover (Grow Up)"] = true;
 L["Bar "] = "바 "
 L["BNet Frame"] = "배틀넷 알림"
 L["Boss Button"] = "특수능력 버튼"
@@ -280,6 +281,12 @@ L["TargetTarget Frame"] = "대상의대상 프레임"
 L["TargetTargetTarget Frame"] = "대상의대상의대상 프레임"
 L["Tooltip"] = "툴팁"
 L["Vehicle Seat Frame"] = "차량 좌석 프레임"
+L["DESC_MOVERCONFIG"] = [=[프레임을 드래그로 원하는 위치로 이동시키세요.|n[잠금] 버튼을 누르면 이동모드가 종료됩니다.
+
+Options:
+  Shift + RightClick - Hides mover temporarily.
+  Ctrl + RightClick - Resets mover position to default.
+]=]
 
 --Plugin Installer
 L["ElvUI Plugin Installation"] = true;

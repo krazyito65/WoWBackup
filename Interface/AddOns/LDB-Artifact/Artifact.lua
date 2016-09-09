@@ -45,12 +45,15 @@ artifactXP.OnTooltipShow = function(tooltip)
   if ( HasArtifactEquipped() ) then
 	  local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop = C_ArtifactUI.GetEquippedArtifactInfo();
 	  local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP)
-	  local earnedXP = totalXP;
+	  local spentXP = totalXP;
 	  local i = 0;
-	  while i <= pointsSpent do
-	    earnedXP = earnedXP + C_ArtifactUI.GetCostForPointAtRank(i);
+	  while i < pointsSpent do
+	    spentXP = spentXP + C_ArtifactUI.GetCostForPointAtRank(i);
 		i = i + 1;
 	  end
+	  spentXP = spentXP - 100;
+	  
+	  local _, _, _, earnedXP = GetAchievementCriteriaInfo(11158, 1)
 	  
 	  tooltip:SetText(name, HIGHLIGHT_FONT_COLOR:GetRGB())
 	  tooltip:AddLine(" ");
@@ -58,7 +61,12 @@ artifactXP.OnTooltipShow = function(tooltip)
 	  tooltip:AddLine(" ");
 	  tooltip:AddLine(ARTIFACT_POWER_TOOLTIP_BODY:format(numPointsAvailableToSpend), nil, nil, nil, true);
 	  tooltip:AddLine(" ");
-	  tooltip:AddLine(string.format("Earned AP: %d", earnedXP), HIGHLIGHT_FONT_COLOR:GetRGB());
+		if earnedXP ~= 100000 then
+	    tooltip:AddLine(string.format("Earned AP: |cff00ff00%d|r", earnedXP), HIGHLIGHT_FONT_COLOR:GetRGB());
+		end
+	  if earnedXP ~= spentXP then
+		  tooltip:AddLine(string.format("Artifact AP: |cff00ff00%d|r", spentXP), HIGHLIGHT_FONT_COLOR:GetRGB());
+	  end
 	  tooltip:AddLine(" ");
 	  tooltip:AddLine("Use Shift+Click to send the current Artifact Power to the chat box", nil, nil, nil, true)
 	else

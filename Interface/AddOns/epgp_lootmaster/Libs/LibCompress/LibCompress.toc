@@ -3,7 +3,7 @@
 ## X-Curse-Project-Name: LibCompress
 ## X-Curse-Project-ID: libcompress
 ## X-Curse-Repository-ID: wow/libcompress/mainline
-## X-Curse-Packaged-Version: 6.69
+## X-Curse-Packaged-Version: 6.71
 ## X-Curse-Project-Name: EPGPLootmaster
 ## X-Curse-Project-ID: epgp_lootmaster
 ## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline

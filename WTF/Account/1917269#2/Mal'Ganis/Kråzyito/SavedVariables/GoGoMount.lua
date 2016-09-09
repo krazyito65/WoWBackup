@@ -28,6 +28,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[32] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Trading Post"] = {
 			["Preferred"] = {
 			},
@@ -132,19 +138,19 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 606,
 		},
-		["Durotar"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 4,
-		},
 		["Azshara"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 181,
+		},
+		["Durotar"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 4,
 		},
 		[949] = {
 			["Preferred"] = {
@@ -196,7 +202,7 @@ GoGo_Prefs = {
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.6",
+	["version"] = "7.0.9",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 		580, -- [1]

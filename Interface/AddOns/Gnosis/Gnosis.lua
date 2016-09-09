@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Gnosis.lua last changed 2016-07-21T06:24:03Z
-
 Gnosis = LibStub("AceAddon-3.0"):NewAddon("Gnosis", "AceConsole-3.0", "AceEvent-3.0");
 Gnosis.gui = LibStub("AceGUI-3.0");
 Gnosis.comm = LibStub("AceComm-3.0");

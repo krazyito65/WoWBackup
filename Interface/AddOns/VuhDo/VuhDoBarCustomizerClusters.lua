@@ -143,6 +143,12 @@ function VUHDO_updateAllClusterIcons(aUnit, anInfo)
 	if not sClusterSlot then return; end
 
 	for _, tButton in pairs(tAllButtons) do
+		-- FIXME: right after spec change the bar icon frame for "CLUSTER" is nil
+		-- FIXME: not entirely sure why but this will prevent nil reference until next update
+		if not VUHDO_getBarIcon(tButton, sClusterSlot) then
+			return;
+		end
+
 		if tNumLow < sThreshFair or not anInfo["range"] then
 			VUHDO_getBarIconFrame(tButton, sClusterSlot):Hide();
 			VUHDO_getBarIconTimer(tButton, sClusterSlot):SetText("");

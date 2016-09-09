@@ -191,7 +191,8 @@ do
 		end
 
 		bar.candyBarDuration:ClearAllPoints()
-		bar.candyBarDuration:SetPoint("RIGHT", bar.candyBarBar, "RIGHT", -2, 0)
+		bar.candyBarDuration:SetPoint("TOPLEFT", bar.candyBarBar, "TOPLEFT", 2, 0)
+		bar.candyBarDuration:SetPoint("BOTTOMRIGHT", bar.candyBarBar, "BOTTOMRIGHT", -2, 0)
 
 		bar.candyBarLabel:ClearAllPoints()
 		bar.candyBarLabel:SetPoint("TOPLEFT", bar.candyBarBar, "TOPLEFT", 2, 0)
@@ -220,7 +221,6 @@ do
 			icon:ClearAllPoints()
 			icon:SetPoint("BOTTOMRIGHT", bar, "BOTTOMLEFT", -5, 0)
 			icon:SetSize(16, 16)
-			icon:Show() -- XXX temp
 			bar:Set("bigwigs:restoreicon", tex)
 
 			local iconBd = bar.candyBarIconFrameBackdrop
@@ -234,13 +234,13 @@ do
 			iconBd:Show()
 		end
 
-		bar.candyBarLabel:SetJustifyH("LEFT")
 		bar.candyBarLabel:ClearAllPoints()
-		bar.candyBarLabel:SetPoint("LEFT", bar, "LEFT", 4, 10)
+		bar.candyBarLabel:SetPoint("LEFT", bar.candyBarBar, "LEFT", 2, 10)
+		bar.candyBarLabel:SetPoint("RIGHT", bar.candyBarBar, "RIGHT", -2, 10)
 
-		bar.candyBarDuration:SetJustifyH("RIGHT")
 		bar.candyBarDuration:ClearAllPoints()
-		bar.candyBarDuration:SetPoint("RIGHT", bar, "RIGHT", -4, 10)
+		bar.candyBarDuration:SetPoint("RIGHT", bar.candyBarBar, "RIGHT", -2, 10)
+		bar.candyBarDuration:SetPoint("LEFT", bar.candyBarBar, "LEFT", 2, 10)
 	end
 
 	barStyles.MonoUI = {
@@ -340,7 +340,7 @@ do
 	local E = ElvUI and ElvUI[1]
 	local backdropBorder = {
 		bgFile = "Interface\\Buttons\\WHITE8X8",
-		edgeFile = "Interface\\Buttons\\WHITE8X8", 
+		edgeFile = "Interface\\Buttons\\WHITE8X8",
 		tile = false, tileSize = 0, edgeSize = 1,
 		insets = {left = 0, right = 0, top = 0, bottom = 0}
 	}
@@ -402,12 +402,11 @@ do
 			icon:ClearAllPoints()
 			icon:SetPoint("BOTTOMRIGHT", bar, "BOTTOMLEFT", E and (E.PixelMode and -1 or -5) or -1, 0)
 			icon:SetSize(20, 20)
-			icon:Show() -- XXX temp
 			bar:Set("bigwigs:restoreicon", tex)
 
 			local iconBd = bar.candyBarIconFrameBackdrop
 
-			if E then 
+			if E then
 				iconBd:SetTemplate("Transparent")
 				iconBd:SetOutside(bar.candyBarIconFrame)
 				if not E.PixelMode and iconBd.iborder then
@@ -452,7 +451,8 @@ plugin.defaultDB = {
 	outline = "NONE",
 	growup = true,
 	time = true,
-	align = "LEFT",
+	alignText = "LEFT",
+	alignTime = "RIGHT",
 	icon = true,
 	fill = nil,
 	barStyle = "Default",
@@ -576,65 +576,31 @@ do
 							THICKOUTLINE = L.thick,
 						},
 					},
-					fontSize = {
-						type = "range",
-						name = L.fontSize,
-						order = 3,
-						max = 40,
-						min = 6,
-						step = 1,
-					},
 					monochrome = {
 						type = "toggle",
 						name = L.monochrome,
 						desc = L.monochromeDesc,
-						order = 3.5,
+						order = 3,
 					},
-					texture = {
-						type = "select",
-						name = L.texture,
+					fontSize = {
+						type = "range",
+						name = L.fontSize,
+						width = "double",
 						order = 4,
-						values = media:List("statusbar"),
-						itemControl = "DDI-Statusbar",
+						max = 200, softMax = 72,
+						min = 1,
+						step = 1,
 					},
-					barStyle = {
-						type = "select",
-						name = L.style,
+					header1 = {
+						type = "header",
+						name = "",
 						order = 5,
-						values = barStyleRegister,
-					},
-					align = {
-						type = "select",
-						name = L.align,
-						values = {
-							LEFT = L.left,
-							CENTER = L.center,
-							RIGHT = L.right,
-						},
-						style = "radio",
-						width = "half",
-						order = 6,
-					},
-					icon = {
-						type = "toggle",
-						name = L.icon,
-						desc = L.iconDesc,
-						order = 7,
-						width = "half",
-					},
-					time = {
-						type = "toggle",
-						name = L.time,
-						desc = L.timeDesc,
-						order = 8,
-						width = "half",
 					},
 					fill = {
 						type = "toggle",
 						name = L.fill,
 						desc = L.fillDesc,
-						order = 9,
-						width = "half",
+						order = 6,
 						set = function(info, value)
 							local key = info[#info]
 							db[key] = value
@@ -646,6 +612,56 @@ do
 								k:SetFill(value)
 							end
 						end,
+					},
+					alignText = {
+						type = "select",
+						name = L.alignText,
+						order = 7,
+						values = {
+							LEFT = L.left,
+							CENTER = L.center,
+							RIGHT = L.right,
+						},
+					},
+					alignTime = {
+						type = "select",
+						name = L.alignTime,
+						order = 8,
+						values = {
+							LEFT = L.left,
+							CENTER = L.center,
+							RIGHT = L.right,
+						},
+					},
+					texture = {
+						type = "select",
+						name = L.texture,
+						order = 9,
+						values = media:List("statusbar"),
+						itemControl = "DDI-Statusbar",
+					},
+					barStyle = {
+						type = "select",
+						name = L.style,
+						order = 10,
+						values = barStyleRegister,
+					},
+					header2 = {
+						type = "header",
+						name = "",
+						order = 11,
+					},
+					icon = {
+						type = "toggle",
+						name = L.icon,
+						desc = L.iconDesc,
+						order = 12,
+					},
+					time = {
+						type = "toggle",
+						name = L.time,
+						desc = L.timeDesc,
+						order = 13,
 					},
 				},
 			},
@@ -882,30 +898,31 @@ do
 			tmp[#tmp + 1] = bar
 		end
 		table.sort(tmp, barSorter)
-		local lastDownBar, lastUpBar = nil, nil
+		local lastBar = nil
 		local up = nil
 		if anchor == normalAnchor then up = db.growup else up = db.emphasizeGrowup end
-		for i, bar in next, tmp do
+		for i = 1, #tmp do
+			local bar = tmp[i]
 			local spacing = currentBarStyler.GetSpacing(bar) or 0
 			bar:ClearAllPoints()
 			if up or (db.emphasizeGrowup and bar:Get("bigwigs:emphasized")) then
-				if lastUpBar then -- Growing from a bar
-					bar:SetPoint("BOTTOMLEFT", lastUpBar, "TOPLEFT", 0, spacing)
-					bar:SetPoint("BOTTOMRIGHT", lastUpBar, "TOPRIGHT", 0, spacing)
+				if lastBar then -- Growing from a bar
+					bar:SetPoint("BOTTOMLEFT", lastBar, "TOPLEFT", 0, spacing)
+					bar:SetPoint("BOTTOMRIGHT", lastBar, "TOPRIGHT", 0, spacing)
 				else -- Growing from the anchor
 					bar:SetPoint("BOTTOMLEFT", anchor, "BOTTOMLEFT", 0, 0)
 					bar:SetPoint("BOTTOMRIGHT", anchor, "BOTTOMRIGHT", 0, 0)
 				end
-				lastUpBar = bar
+				lastBar = bar
 			else
-				if lastDownBar then -- Growing from a bar
-					bar:SetPoint("TOPLEFT", lastDownBar, "BOTTOMLEFT", 0, -spacing)
-					bar:SetPoint("TOPRIGHT", lastDownBar, "BOTTOMRIGHT", 0, -spacing)
+				if lastBar then -- Growing from a bar
+					bar:SetPoint("TOPLEFT", lastBar, "BOTTOMLEFT", 0, -spacing)
+					bar:SetPoint("TOPRIGHT", lastBar, "BOTTOMRIGHT", 0, -spacing)
 				else -- Growing from the anchor
 					bar:SetPoint("TOPLEFT", anchor, "TOPLEFT", 0, 0)
 					bar:SetPoint("TOPRIGHT", anchor, "TOPRIGHT", 0, 0)
 				end
-				lastDownBar = bar
+				lastBar = bar
 			end
 		end
 	end
@@ -946,7 +963,6 @@ local function onDragHandleMouseDown(self) self:GetParent():StartSizing("BOTTOMR
 local function onDragHandleMouseUp(self, button) self:GetParent():StopMovingOrSizing() end
 local function onResize(self, width)
 	db[self.w] = width
-	rearrangeBars(self)
 end
 local function onDragStart(self) self:StartMoving() end
 local function onDragStop(self)
@@ -1058,6 +1074,8 @@ local function updateProfile()
 		plugin:SetBarStyle(db.barStyle)
 		plugin:RegisterMessage("DBM_AddonMessage", "OnDBMSync")
 	end
+	-- XXX temp cleanup [7.0]
+	db.align = nil
 end
 
 --------------------------------------------------------------------------------
@@ -1246,40 +1264,30 @@ end
 
 function plugin:StopSpecificBar(_, module, text)
 	if not normalAnchor then return end
-	local dirty = nil
 	for k in next, normalAnchor.bars do
 		if k:Get("bigwigs:module") == module and k:GetLabel() == text then
 			k:Stop()
-			dirty = true
 		end
 	end
-	if dirty then rearrangeBars(normalAnchor) dirty = nil end
 	for k in next, emphasizeAnchor.bars do
 		if k:Get("bigwigs:module") == module and k:GetLabel() == text then
 			k:Stop()
-			dirty = true
 		end
 	end
-	if dirty then rearrangeBars(emphasizeAnchor) end
 end
 
 function plugin:StopModuleBars(_, module)
 	if not normalAnchor then return end
-	local dirty = nil
 	for k in next, normalAnchor.bars do
 		if k:Get("bigwigs:module") == module then
 			k:Stop()
-			dirty = true
 		end
 	end
-	if dirty then rearrangeBars(normalAnchor) dirty = nil end
 	for k in next, emphasizeAnchor.bars do
 		if k:Get("bigwigs:module") == module then
 			k:Stop()
-			dirty = true
 		end
 	end
-	if dirty then rearrangeBars(emphasizeAnchor) end
 end
 
 --------------------------------------------------------------------------------
@@ -1301,21 +1309,6 @@ function plugin:GetBarTimeLeft(module, text)
 	return 0
 end
 
-function plugin:GetRespawnTimeLeft()
-	if not normalAnchor then return end
-	for k in next, normalAnchor.bars do
-		if k:GetLabel() == L.respawn then
-			return k.remaining
-		end
-	end
-	for k in next, emphasizeAnchor.bars do
-		if k:GetLabel() == L.respawn then
-			return k.remaining
-		end
-	end
-	return 0
-end
-
 --------------------------------------------------------------------------------
 -- Clickable bars
 --
@@ -1327,11 +1320,9 @@ local function barClicked(bar, button)
 end
 
 local function barOnEnter(bar)
-	bar.candyBarLabel:SetJustifyH(db.align == "CENTER" and "LEFT" or "CENTER")
 	bar.candyBarBackground:SetVertexColor(1, 1, 1, 0.8)
 end
 local function barOnLeave(bar)
-	bar.candyBarLabel:SetJustifyH(db.align)
 	local module = bar:Get("bigwigs:module")
 	local key = bar:Get("bigwigs:option")
 	bar.candyBarBackground:SetVertexColor(colors:GetColor("barBackground", module, key))
@@ -1412,7 +1403,6 @@ clickHandlers.remove = function(bar)
 	local anchor = bar:Get("bigwigs:anchor")
 	plugin:SendMessage("BigWigs_SilenceOption", bar:Get("bigwigs:option"), bar.remaining + 0.3)
 	bar:Stop()
-	rearrangeBars(anchor)
 end
 
 -- Removes all bars EXCEPT the clicked one
@@ -1424,7 +1414,6 @@ clickHandlers.removeOther = function(bar)
 				k:Stop()
 			end
 		end
-		rearrangeBars(normalAnchor)
 	end
 	if emphasizeAnchor then
 		for k in next, emphasizeAnchor.bars do
@@ -1433,7 +1422,6 @@ clickHandlers.removeOther = function(bar)
 				k:Stop()
 			end
 		end
-		rearrangeBars(emphasizeAnchor)
 	end
 end
 
@@ -1462,7 +1450,8 @@ function plugin:BigWigs_StartBar(_, module, key, text, time, icon, isApprox)
 	bar:SetColor(colors:GetColor("barColor", module, key))
 	bar:SetTextColor(colors:GetColor("barText", module, key))
 	bar:SetShadowColor(colors:GetColor("barTextShadow", module, key))
-	bar.candyBarLabel:SetJustifyH(db.align)
+	bar.candyBarLabel:SetJustifyH(db.alignText)
+	bar.candyBarDuration:SetJustifyH(db.alignTime)
 
 	local flags = nil
 	if db.monochrome and db.outline ~= "NONE" then
@@ -1602,52 +1591,6 @@ do
 	end
 end
 
-local startPull
-do
-	local timer, timeLeft = nil, 0
-	local function printPull()
-		timeLeft = timeLeft - 1
-		if timeLeft == 0 then
-			plugin:CancelTimer(timer)
-			timer = nil
-			plugin:SendMessage("BigWigs_Message", plugin, nil, L.pulling, "Attention", "Interface\\Icons\\ability_warrior_charge")
-			plugin:SendMessage("BigWigs_Sound", plugin, nil, "Alarm")
-		elseif timeLeft > 2 and IsEncounterInProgress() then -- Cancel the pull timer if we ninja pulled
-			startPull(0, COMBAT)
-		elseif timeLeft < 11 then
-			plugin:SendMessage("BigWigs_Message", plugin, nil, L.pullIn:format(timeLeft), "Attention")
-			local module = BigWigs:GetPlugin("Sounds", true)
-			if timeLeft < 6 and module and module.db.profile.sound then
-				plugin:SendMessage("BigWigs_PlayCountdownNumber", plugin, timeLeft)
-			end
-		end
-	end
-	function startPull(seconds, nick, isDBM)
-		if (not UnitIsGroupLeader(nick) and not UnitIsGroupAssistant(nick) and not UnitIsUnit(nick, "player")) or (IsEncounterInProgress() and nick ~= COMBAT) then return end
-		seconds = tonumber(seconds)
-		if not seconds or seconds < 0 or seconds > 60 then return end
-		seconds = floor(seconds)
-		if timeLeft == seconds then return end -- Throttle
-		timeLeft = seconds
-		if timer then
-			plugin:CancelTimer(timer)
-			if seconds == 0 then
-				timeLeft = 0
-				BigWigs:Print(L.pullStopped:format(nick))
-				plugin:SendMessage("BigWigs_StopBar", plugin, L.pull)
-				plugin:SendMessage("BigWigs_StopPull", plugin, seconds, nick, isDBM)
-				return
-			end
-		end
-		BigWigs:Print(L.pullStarted:format(isDBM and "DBM" or "BigWigs", nick))
-		timer = plugin:ScheduleRepeatingTimer(printPull, 1)
-		plugin:SendMessage("BigWigs_Message", plugin, nil, L.pullIn:format(timeLeft), "Attention")
-		plugin:SendMessage("BigWigs_Sound", plugin, nil, "Long")
-		plugin:SendMessage("BigWigs_StartBar", plugin, nil, L.pull, seconds, "Interface\\Icons\\ability_warrior_charge")
-		plugin:SendMessage("BigWigs_StartPull", plugin, seconds, nick, isDBM)
-	end
-end
-
 do
 	local timerTbl, lastBreak = nil, 0
 	function startBreak(seconds, nick, isDBM, reboot)
@@ -1708,8 +1651,6 @@ end
 function plugin:OnDBMSync(_, sender, prefix, seconds, text)
 	if prefix == "U" then
 		startCustomBar(seconds.." "..text, sender, nil, true)
-	elseif prefix == "PT" then
-		startPull(seconds, sender, true)
 	elseif prefix == "BT" then
 		startBreak(seconds, sender, true)
 	end
@@ -1719,8 +1660,6 @@ function plugin:OnSync(sync, seconds, nick)
 	if seconds and nick then
 		if sync == "BWCustomBar" then
 			startCustomBar(seconds, nick)
-		elseif sync == "BWPull" then
-			startPull(seconds, nick)
 		elseif sync == "BWBreak" then
 			startBreak(seconds, nick)
 		end
@@ -1770,32 +1709,6 @@ SlashCmdList.BIGWIGSLOCALBAR = function(input)
 end
 SLASH_BIGWIGSLOCALBAR1 = "/localbar"
 
-SlashCmdList.BIGWIGSPULL = function(input)
-	if not plugin:IsEnabled() then BigWigs:Enable() end
-	if IsEncounterInProgress() then BigWigs:Print(L.encounterRestricted) return end -- Doesn't make sense to allow this in combat
-	if not IsInGroup() or UnitIsGroupLeader("player") or UnitIsGroupAssistant("player") then -- Solo or leader/assist
-		local s, respawn = input:match("(%d-) (.*)")
-		if respawn and string.lower(respawn) == "true" then
-			input = plugin:GetRespawnTimeLeft() + tonumber(s)
-		end
-		local seconds = tonumber(input)
-		if not seconds or seconds < 0 or seconds > 60 then BigWigs:Print(L.wrongPullFormat) return end
-
-		if seconds ~= 0 then
-			BigWigs:Print(L.sendPull)
-		end
-		BigWigs:Transmit("BWPull", input)
-
-		if IsInGroup() then
-			local _, _, _, _, _, _, _, mapID = GetInstanceInfo()
-			SendAddonMessage("D4", ("PT\t%s\t%d"):format(input, mapID or 0), IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- DBM message
-		end
-	else
-		BigWigs:Print(L.requiresLeadOrAssist)
-	end
-end
-SLASH_BIGWIGSPULL1 = "/pull"
-
 SlashCmdList.BIGWIGSBREAK = function(input)
 	if not plugin:IsEnabled() then BigWigs:Enable() end
 	if IsEncounterInProgress() then BigWigs:Print(L.encounterRestricted) return end -- Doesn't make sense to allow this in combat
@@ -1817,4 +1730,3 @@ SlashCmdList.BIGWIGSBREAK = function(input)
 	end
 end
 SLASH_BIGWIGSBREAK1 = "/break"
-

@@ -104,7 +104,7 @@ V['skins'] = {
 		["transmogrify"] = true,
 		["stable"] = true,
 		["bgmap"] = true,
-		['mounts'] = true,
+		['collections'] = true,
 		['petbattleui'] = true,
 		['losscontrol'] = true,
 		['itemUpgrade'] = true,
@@ -114,6 +114,7 @@ V['skins'] = {
 		["orderhall"] = true,
 		["artifact"] = true,
 		["talkinghead"] = true,
+		["AdventureMap"] = true,
 	},
 }
 

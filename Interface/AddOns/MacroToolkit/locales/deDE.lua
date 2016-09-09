@@ -87,6 +87,7 @@ L["Go Small"] = "Go Small" -- Requires localization
 L["group"] = "Gruppe"
 L["harm"] = "feindlich"
 L["help"] = "helfen" -- Needs review
+L["Hide 'Macro shortened by n characters' popup"] = "Hide 'Macro shortened by n characters' popup" -- Requires localization
 L["Icons"] = "Symbole"
 L["indoors"] = "indoors" -- Requires localization
 L["Insert slot"] = "Slot einf\195\188gen"

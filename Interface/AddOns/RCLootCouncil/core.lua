@@ -73,7 +73,8 @@ function RCLootCouncil:OnInitialize()
 		NOTHING			= { color = {0.5,0.5,0.5,1},		sort = 505,		text = L["Offline or RCLootCouncil not installed"], },
 		PASS				= { color = {0.7, 0.7,0.7,1},		sort = 800,		text = L["Pass"],},
 		AUTOPASS			= { color = {0.7,0.7,0.7,1},		sort = 801,		text = L["Autopass"], },
-		DISABLED			= { color = {0.3, 0.35, 0.5},		sort = 802,		text = L["Candidate has disabled RCLootCouncil"], },
+		DISABLED			= { color = {0.3,0.35,0.5,1},		sort = 802,		text = L["Candidate has disabled RCLootCouncil"], },
+		NOTINRAID		= { color = {0.7,0.6,0,1}, 		sort = 803, 	text = L["Candidate is not in the instance"]},
 		--[[1]]			  { color = {0,1,0,1},				sort = 1,		text = L["Mainspec/Need"],},
 		--[[2]]			  { color = {1,0.5,0,1},			sort = 2,		text = L["Offspec/Greed"],	},
 		--[[3]]			  { color = {0,0.7,0.7,1},			sort = 3,		text = L["Minor Upgrade"],},
@@ -129,18 +130,56 @@ function RCLootCouncil:OnInitialize()
 			silentAutoPass = false, -- Show autopass message
 			--neverML = false, -- Never use the addon as ML
 			minimizeInCombat = false,
+			iLvlDecimal = false,
 
 			UI = { -- stores all ui information
-				['**'] = { -- Defaults for Lib-Window
+				['**'] = { -- Defaults
 					y		= 0,
 					x		= 0,
 					point	= "CENTER",
 					scale	= 0.8,
+					bgColor = {0.1, 1, 0, 1},
+					borderColor = {0, 0.8, 0, 0.75},
+					border = "Blizzard Garrison Background 2",
+					background = "Blizzard Dialog Gold",
 				},
 				lootframe = { -- We want the Loot Frame to get a little lower
 					y = -200,
 				},
+				default = {}, -- base line
 			},
+
+			skins = {
+				new_blue = {
+					name = "Midnight blue",
+					bgColor = {0, 0, 0.2, 1}, -- Blue-ish
+					borderColor = {0.3, 0.3, 0.5, 1}, -- More Blue-ish
+					border = "Blizzard Tooltip",
+					background = "Blizzard Tooltip",
+				},
+				old_red = {
+					name = "Old golden red",
+					bgColor = {0.5, 0, 0 ,1},
+					borderColor = {1, 0.5, 0, 1},
+					border = "Blizzard Tooltip",
+					background = "Blizzard Dialog Background Gold",
+				},
+				minimalGrey = {
+					name = "Minimal Grey",
+					bgColor = {0.25, 0.25, 0.25, 1},
+					borderColor = {1, 1, 1, 0.2},
+					border = "Blizzard Tooltip",
+					background = "Blizzard Tooltip",
+				},
+				legion = {
+					name = "Legion Green",
+					bgColor = {0.1, 1, 0, 1},
+					borderColor = {0, 0.8, 0, 0.75},
+					background = "Blizzard Garrison Background 2",
+					border = "Blizzard Dialog Gold",
+				},
+			},
+			currentSkin = "legion",
 
 			modules = { -- For storing module specific data
 				['*'] = {},
@@ -178,6 +217,8 @@ function RCLootCouncil:OnInitialize()
 				{ color = {1, 1, 1, 1}, disenchant = false, log = false, sort = 403,	text = L["Free"],},
 			},
 			disenchant = true, -- Disenchant enabled, i.e. there's a true in awardReasons.disenchant
+
+			timeout = 30,
 
 			-- List of items to ignore:
 			ignore = {
@@ -263,26 +304,9 @@ function RCLootCouncil:OnEnable()
 		self:SendCommand("guild", "verTest", self.version, self.tVersion) -- send out a version check
 	end
 
-	-- Any upgrade to v2.0.0 or from Alpha.12 needs a db reset and possibly lootDB import
-	if (self.db.global.version and self.db.global.version < "2.0.0") or (self.db.global.tVersion and self.db.global.tVersion <= "Alpha.12") then -- Upgraded to v.2.0.0
-		self:Debug("First time v2.0.0 upgrade!")
-		local lootdb = {}
-		if self.db.factionrealm.lootDB then
-			self:Debug("Extracting old LootDB")
-			for k,v in pairs(self.db.factionrealm.lootDB) do
-				lootdb[k] = v
-			end
-			self:Debug("Done")
-		end
-		self:Debug("Resetting DB")
-		self.db:ResetDB("Default")
-		self:Debug("Done\nImporting LootDB")
-		for k,v in pairs(lootdb) do
-			self.lootDB.factionrealm[k] = v
-		end
-		self:Debug("Done")
-		self:Print("Your settings have been reset due to upgrading to v2.0.0")
-	end
+	-- For some reasons all frames are blank until ActivateSkin() is called, even though the values used
+	-- in the :CreateFrame() all :Prints as expected :o
+	self:ActivateSkin(db.currentSkin)
 
 	self.db.global.version = self.version;
 	self.db.global.logMaxEntries = self.defaults.global.logMaxEntries -- reset it now for zzz
@@ -541,7 +565,16 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 						return self:Debug("Sent 'DISABLED' response to", sender)
 					end
 
-					-- v2.0.1: It seems people somehow receives mldb with numButtons, so check for it aswell.
+					-- Out of instance support
+					-- assume 8 people means we're actually raiding
+					if GetNumGroupMembers() >= 8 and not IsInInstance() then
+						self:DebugLog("NotInRaid respond to lootTable")
+						for ses, v in ipairs(lootTable) do
+						 	self:SendCommand("group", "response", self:CreateResponse(ses, v.link, v.ilvl, "NOTINRAID", v.equipLoc))
+						end
+						return
+					end
+					-- v2.0.1: It seems people somehow receives mldb without numButtons, so check for it aswell.
 					if not self.mldb or (self.mldb and not self.mldb.numButtons) then -- Really shouldn't happen, but I'm tired of people somehow not receiving it...
 						self:Debug("Received loot table without having mldb :(", sender)
 						self:SendCommand(self.masterLooter, "MLdb_request")
@@ -582,6 +615,8 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 				-- prepare the voting frame for the right people
 				if self.isCouncil or self.mldb.observe then
 					self:CallModule("votingframe")
+				else
+					self:GetActiveModule("votingframe"):Disable()
 				end
 
 			elseif command == "MLdb" and not self.isMasterLooter then -- ML sets his own mldb
@@ -953,7 +988,7 @@ function RCLootCouncil:CreateResponse(session, link, ilvl, response, equipLoc, n
 		self.playerName,
 		{	gear1 = g1,
 			gear2 = g2,
-			ilvl = math.floor(select(2,GetAverageItemLevel())),
+			ilvl = select(2,GetAverageItemLevel()),
 			diff = diff,
 			note = note,
 			response = response
@@ -1192,6 +1227,19 @@ function RCLootCouncil:GetItemIDFromLink(link)
 	return tonumber(strmatch(link, "item:(%d+):"))
 end
 
+function RCLootCouncil:GetItemStringFromLink(link)
+	return strmatch(link, "item:([%d:]+)")
+end
+
+function RCLootCouncil:GetItemNameFromLink(link)
+	return strmatch(link, "%[(.+)%]")
+end
+
+function RCLootCouncil.round(num, decimals)
+	if type(num) ~= "number" then return "" end
+	return tonumber(string.format("%." .. (decimals or 0) .. "f", num))
+end
+
 --- Custom, better UnitIsUnit() function
 -- Blizz UnitIsUnit() doesn't know how to compare unit-realm with unit
 -- Seems to be because unit-realm isn't a valid unitid
@@ -1219,7 +1267,11 @@ function RCLootCouncil:UnitName(unit)
 	-- Then see if we already have a realm name appended
 	local find = strfind(unit, "-", nil, true)
 	if find and find < #unit then -- "-" isn't the last character
-		return unit
+		-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName()
+		-- returns Title Case. We need this to be consistant, so just titlecase the name part now:
+		local name, realm = unit:sub(1, find), unit:sub(find+1)
+		name = name:lower():gsub("^%l", string.upper) -- All but first must be lower
+		return name..realm
 	end
 	-- Proceed with UnitName()
 	local name, realm = UnitName(unit)
@@ -1308,7 +1360,7 @@ end
 function RCLootCouncil:CreateFrame(name, cName, title, width, height)
 	local f = CreateFrame("Frame", name, nil) -- LibWindow seems to work better with nil parent
 	f:Hide()
-	f:SetFrameStrata("HIGH")
+	f:SetFrameStrata("DIALOG")
 	f:SetWidth(450)
 	f:SetHeight(height or 325)
 	lwin:Embed(f)
@@ -1318,14 +1370,16 @@ function RCLootCouncil:CreateFrame(name, cName, title, width, height)
 	f:SetScript("OnMouseWheel", function(f,delta) if IsControlKeyDown() then lwin.OnMouseWheel(f,delta) end end)
 
 	local tf = CreateFrame("Frame", nil, f)
+	--tf:SetFrameStrata("DIALOG")
+	tf:SetToplevel(true)
 	tf:SetBackdrop({
-	     bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
-	     edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+	     bgFile = AceGUIWidgetLSMlists.background[db.UI.default.background],
+	     edgeFile = AceGUIWidgetLSMlists.border[db.UI.default.border],
 	     tile = true, tileSize = 64, edgeSize = 12,
 	     insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	})
-	tf:SetBackdropColor(0,0,0,0.7)
-	tf:SetBackdropBorderColor(0,0.595,0.87,1)
+	tf:SetBackdropColor(unpack(db.UI.default.bgColor))
+	tf:SetBackdropBorderColor(unpack(db.UI.default.borderColor))
 	tf:SetHeight(22)
 	tf:EnableMouse()
 	tf:SetMovable(true)
@@ -1353,17 +1407,17 @@ function RCLootCouncil:CreateFrame(name, cName, title, width, height)
 
 	local c = CreateFrame("Frame", nil, f) -- frame that contains the actual content
 	c:SetBackdrop({
-	   --bgFile = "Interface\\DialogFrame\\UI-DialogBox-Gold-Background",
-		bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-	   edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+	     --bgFile = "Interface\\DialogFrame\\UI-DialogBox-Gold-Background",
+		bgFile = AceGUIWidgetLSMlists.background[db.UI.default.background],
+	   edgeFile = AceGUIWidgetLSMlists.border[db.UI.default.border],
 	   tile = true, tileSize = 64, edgeSize = 12,
 	   insets = { left = 2, right = 2, top = 2, bottom = 2 }
 	})
 	c:EnableMouse(true)
 	c:SetWidth(450)
 	c:SetHeight(height or 325)
-	c:SetBackdropColor(0,0.003,0.21,1)
-	c:SetBackdropBorderColor(0.3,0.3,0.5,1)
+	c:SetBackdropColor(unpack(db.UI.default.bgColor))
+	c:SetBackdropBorderColor(unpack(db.UI.default.borderColor))
 	c:SetPoint("TOPLEFT")
 	c:SetScript("OnMouseDown", function(self) self:GetParent():StartMoving() end)
 	c:SetScript("OnMouseUp", function(self) self:GetParent():StopMovingOrSizing(); self:GetParent():SavePosition() end)
@@ -1396,7 +1450,48 @@ function RCLootCouncil:CreateFrame(name, cName, title, width, height)
 		old_setheight(self, width)
 		self.content:SetHeight(height)
 	end
+	f.Update = function(self)
+		self.content:SetBackdrop({
+			bgFile = AceGUIWidgetLSMlists.background[db.UI[cName].background],
+			edgeFile = AceGUIWidgetLSMlists.border[db.UI[cName].border],
+			tile = false, tileSize = 64, edgeSize = 12,
+			insets = { left = 2, right = 2, top = 2, bottom = 2 }
+		})
+		self.title:SetBackdrop({
+			bgFile = AceGUIWidgetLSMlists.background[db.UI[cName].background],
+			edgeFile = AceGUIWidgetLSMlists.border[db.UI[cName].border],
+			tile = false, tileSize = 64, edgeSize = 12,
+			insets = { left = 2, right = 2, top = 2, bottom = 2 }
+		})
+		self.content:SetBackdropColor(unpack(db.UI[cName].bgColor))
+		self.content:SetBackdropBorderColor(unpack(db.UI[cName].borderColor))
+		self.title:SetBackdropColor(unpack(db.UI[cName].bgColor))
+		self.title:SetBackdropBorderColor(unpack(db.UI[cName].borderColor))
+	end
 	return f
+end
+
+--- Update all frames registered with RCLootCouncil:CreateFrame()
+-- @usage Updates all the frame's colors as set in the db
+function RCLootCouncil:UpdateFrames()
+	for _, frame in pairs(frames) do
+		frame:Update()
+	end
+end
+
+--- Applies a skin to all frames
+-- @param key Index in db.skins
+-- @usage Apply a certain skin once added to the db.skins table
+function RCLootCouncil:ActivateSkin(key)
+	if not db.skins[key] then return end
+	for k,v in pairs(db.UI) do
+		v.bgColor = {unpack(db.skins[key].bgColor)}
+		v.borderColor = {unpack(db.skins[key].borderColor)}
+		v.background = db.skins[key].background
+		v.border = db.skins[key].border
+	end
+	db.currentSkin = key
+	self:UpdateFrames()
 end
 
 --- Creates a standard button for RCLootCouncil

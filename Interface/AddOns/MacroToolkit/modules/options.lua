@@ -160,8 +160,16 @@ local checkPanel = {
 			get = function() return MT.db.profile.confirmdelete end,
 			set = function(info, value) MT.db.profile.confirmdelete = value end,
 		},
-		allcharmacros = {
+		hidepopup = {
 			order = 9,
+			type = "toggle",
+			name = L["Hide 'Macro shortened by n characters' popup"],
+			width = "full",
+			get = function() return MT.db.profile.hidepopup end,
+			set = function(info, value) MT.db.profile.hidepopup = value end,
+		},
+		allcharmacros = {
+			order = 10,
 			type = "toggle",
 			name = L["Make all character specific macros available to all characters"],
 			width = "full",
@@ -176,12 +184,12 @@ local checkPanel = {
 				end,
 			},
 		allcharmacrosdesc1 = {
-			order = 10,
+			order = 11,
 			type = "description",
 			name = L["This may impact performance and loading time on low end machines"],
 		},
 		allcharmacrosdesc2 = {
-			order = 11,
+			order = 12,
 			type = "description",
 			name = L["You will need to log into each of your characters with Macro Toolkit enabled to update Macro Toolkit's copy of that character's macros"],
 		},

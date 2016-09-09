@@ -58,7 +58,7 @@ end
 
 function mod:Inhale(args)
 	self:Bar(args.spellId, 9, CL.cast:format(args.spellName))
-	self:Message(args.spellId, "Urgent", "Warning")
+	self:Message(args.spellId, "Urgent", "Alarm")
 end
 
 function mod:BodySlam(args)

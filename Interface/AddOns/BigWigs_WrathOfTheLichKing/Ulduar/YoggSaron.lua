@@ -2,7 +2,7 @@
 -- Module Declaration
 --
 
-local mod, CL = BigWigs:NewBoss("Yogg-Saron", 529)
+local mod, CL = BigWigs:NewBoss("Yogg-Saron", 529, 1649)
 if not mod then return end
 --Sara = 33134, Yogg brain = 33890
 mod:RegisterEnableMob(33288, 33134, 33890)
@@ -239,7 +239,7 @@ do
 	end
 	function mod:EmpowerIcon(args)
 		if empowerscanner or (not UnitIsGroupLeader("player") and not UnitIsGroupAssistant("player")) then return end
-		if bit.band(self.db.profile[(GetSpellInfo(64465))], BigWigs.C.ICON) ~= BigWigs.C.ICON then return end
+		if bit.band(self.db.profile[64465], BigWigs.C.ICON) ~= BigWigs.C.ICON then return end
 		empowerscanner = self:ScheduleRepeatingTimer(scanTarget, 0.3, args.destGUID)
 	end
 end

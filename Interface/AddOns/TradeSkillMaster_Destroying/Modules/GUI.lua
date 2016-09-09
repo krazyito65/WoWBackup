@@ -12,7 +12,14 @@ local GUI = TSM:NewModule("GUI", "AceEvent-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("TradeSkillMaster_Destroying")
 local private = { data = {}, ignore = {}, threadId = nil, hidden = nil }
 
-
+local GEM_CHIPS = {
+	["i:129099"] = "i:129100",
+	["i:130200"] = "i:129100",
+	["i:130201"] = "i:129100",
+	["i:130202"] = "i:129100",
+	["i:130203"] = "i:129100",
+	["i:130204"] = "i:129100",
+}
 
 -- ============================================================================
 -- Module Functions
@@ -425,6 +432,7 @@ function private.DestroyingThread(self)
 						local itemString = TSMAPI.Item:ToItemString(GetLootSlotLink(i))
 						local quantity = select(3, GetLootSlotInfo(i)) or 0
 						if itemString and quantity > 0 then
+							itemString = GEM_CHIPS[itemString] or itemString
 							temp.result[itemString] = quantity
 						end
 					end

@@ -127,15 +127,16 @@ local function scanBag(bagId, isBank, bagTable, bagItemsWithCount)
 		if itemLink ~= nil then
 			local itemData = Amr.Serializer.ParseItemLink(itemLink)
 			if itemData ~= nil then
+			
 				-- only add equippable items to bag data
-				if IsEquippableItem(itemLink) or Amr.SetTokenIds[itemData.id] then
+				--if IsEquippableItem(itemLink) or Amr.SetTokenIds[itemData.id] then
 	                if isBank then
                     	_lastBankBagId = bagId
                     	_lastBankSlotId = slotId
                 	end
 										
                 	table.insert(bagTable, itemLink)
-                end
+                --end
 				
 				-- all items and counts, used for e.g. shopping list and reagents, etc.
                 if bagItemsWithCount then

@@ -1,7 +1,7 @@
 -- AskMrRobot-Serializer will serialize and communicate character data between users.
 -- This is used primarily to associate character information to logs uploaded to askmrrobot.com.
 
-local MAJOR, MINOR = "AskMrRobot-Serializer", 39
+local MAJOR, MINOR = "AskMrRobot-Serializer", 41
 local Amr, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Amr then return end -- already loaded by something else
@@ -1145,7 +1145,7 @@ function Amr:SerializePlayerData(data, complete)
     	if data.BagItems then
 	        for i, v in ipairs(data.BagItems) do
 				local itemData = Amr.ParseItemLink(v)
-				if itemData ~= nil and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id]) then
+				if itemData ~= nil --[[and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id])]] then
 					itemData.link = v
 					table.insert(itemObjects, itemData)
 				end
@@ -1154,7 +1154,7 @@ function Amr:SerializePlayerData(data, complete)
 	    if data.BankItems then
 	        for i, v in ipairs(data.BankItems) do
 	        	local itemData = Amr.ParseItemLink(v)
-				if itemData ~= nil and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id]) then
+				if itemData ~= nil --[[and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id])]] then
 					itemData.link = v
 					table.insert(itemObjects, itemData)
 				end
@@ -1163,7 +1163,7 @@ function Amr:SerializePlayerData(data, complete)
 	    if data.VoidItems then
 	        for i, v in ipairs(data.VoidItems) do
 	        	local itemData = Amr.ParseItemLink(v)
-				if itemData ~= nil and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id]) then
+				if itemData ~= nil --[[and (IsEquippableItem(v) or Amr.SetTokenIds[itemData.id])]] then
 					itemData.link = v
 					table.insert(itemObjects, itemData)
 				end

@@ -32,7 +32,7 @@ MT.defaults = {
 		conditioncolour = "ff8b5a2b", defaultcolour = "ffffffff", errorcolour = "ffff0000",
 		itemcolour = "fff08080", mtcolour = "ffcd2ea9", seqcolour ="ff006600", comcolour="ff00aa00",
 		usecolours = true, unknown = false, replacemt = true, doublewide = false, broker = false,
-		viscondtions = true, visoptionsbutton = true, viscustom = true,
+		viscondtions = true, visoptionsbutton = true, viscustom = true, hidepopup = false,
 		visaddscript = true, visaddslot = true, viscrest = false,
 		visbackup = true, visclear = true, visshare = true, useiconlib = true,
 		visextend = true, viserrors = true, vismacrobox = true,
@@ -448,10 +448,12 @@ end
 function MT:FindScript(scriptname) for _, s in ipairs(MT.scripts) do if s[1] == scriptname then return s end end end
 
 function MT:ShowShortened(chars)
-	StaticPopupDialogs["MACROTOOLKIT_SHORTENED"] = {
-		text = string.format((chars == 1) and L["Macro shortened by %d character"] or L["Macro shortened by %d characters"], chars),
-		button1 = _G.OKAY, timeout = 0, exclusive = 1, whileDead = 1, hideOnEscape = 1}
-	StaticPopup_Show("MACROTOOLKIT_SHORTENED")
+	if not MT.db.profile.hidepopup then -- ticket 147
+		StaticPopupDialogs["MACROTOOLKIT_SHORTENED"] = {
+			text = string.format((chars == 1) and L["Macro shortened by %d character"] or L["Macro shortened by %d characters"], chars),
+			button1 = _G.OKAY, timeout = 0, exclusive = 1, whileDead = 1, hideOnEscape = 1}
+		StaticPopup_Show("MACROTOOLKIT_SHORTENED")
+	else PlaySound("igCharacterInfoOpen") end
 end
 
 function MT:SetMacros(account, extra, copy)

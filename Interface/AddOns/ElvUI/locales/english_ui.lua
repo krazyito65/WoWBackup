@@ -3,9 +3,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0");
 local L = AceLocale:NewLocale("ElvUI", "enUS", true, true);
 if not L then return; end
 
---TEMP
-L["A taint has occured that is preventing you from using the queue system. Please reload your user interface and try again."] = true;
-
 --*_ADDON locales
 L["INCOMPATIBLE_ADDON"] = "The addon %s is not compatible with ElvUI's %s module. Please select either the addon or the ElvUI module to disable."
 
@@ -36,7 +33,6 @@ L["Trigger"] = true;
 L["Bank"] = true;
 L["Deposit Reagents"] = true;
 L["Hold Control + Right Click:"] = true;
-L["Hold Shift + Drag:"] = true;
 L["Purchase Bags"] = true;
 L["Purchase"] = true;
 L["Reagent Bank"] = true;
@@ -85,6 +81,7 @@ L["Earned:"] = true;
 L["Feet"] = true;
 L["Friends List"] = true;
 L["Friends"] = true; --Also in Skins
+L["Gold:"] = true;
 L["goldabbrev"] = "|cffffd700g|r" --Also used in Bags
 L["Hands"] = true;
 L["Head"] = true;
@@ -232,7 +229,12 @@ L["Alternative Power"] = true;
 L["Archeology Progress Bar"] = true;
 L["Arena Frames"] = true; --Also used in UnitFrames
 L["Artifact Bar"] = true;
+L["Bag Mover (Grow Down)"] = true;
+L["Bag Mover (Grow Up)"] = true;
+L["Bag Mover"] = true;
 L["Bags"] = true; --Also in DataTexts
+L["Bank Mover (Grow Down)"] = true;
+L["Bank Mover (Grow Up)"] = true;
 L["Bar "] = true; --Also in ActionBars
 L["BNet Frame"] = true;
 L["Boss Button"] = true;
@@ -280,6 +282,12 @@ L["TargetTarget Frame"] = true; --Also used in UnitFrames
 L["TargetTargetTarget Frame"] = true; --Also used in UnitFrames
 L["Tooltip"] = true;
 L["Vehicle Seat Frame"] = true;
+L["DESC_MOVERCONFIG"] = [=[Movers unlocked. Move them now and click Lock when you are done.
+
+Options:
+  Shift + RightClick - Hides mover temporarily.
+  Ctrl + RightClick - Resets mover position to default.
+]=]
 
 --Plugin Installer
 L["ElvUI Plugin Installation"] = true;

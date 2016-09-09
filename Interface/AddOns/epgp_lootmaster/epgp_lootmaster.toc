@@ -1,15 +1,15 @@
-## Interface: 60200
+## Interface: 70000
 ## X-Min-Interface: 50000
 ## Title: EPGP LootMaster - |cFFFF8080Core|r
 ## Author: Bushmaster-Darksorrow-EU
-## Version: 6.69
+## Version: 6.71
 ## Notes: Full loot distributing system for EPGP.
 ## X-Category: Guild
 ## OptionalDeps: EPGP, HeadCount, HeadCount2, CT_RaidTracker, MizusRaidTracker
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: EPGPLootMaster
-## X-Curse-Packaged-Version: 6.69
+## X-Curse-Packaged-Version: 6.71
 ## X-Curse-Project-Name: EPGPLootmaster
 ## X-Curse-Project-ID: epgp_lootmaster
 ## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline

@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- OptionsFuncs.lua last changed 2016-07-21T06:24:03Z
-
 -- local functions
 local pairs = pairs;
 local ipairs = ipairs;
@@ -14,6 +11,7 @@ local string_len = strlenutf8;
 local string_trim = strtrim;
 local string_gmatch = string.gmatch;
 local table_insert = table.insert;
+local table_sort = table.sort;
 
 -- local variables
 local _;
@@ -94,6 +92,56 @@ function Gnosis:OptSimpleToggle(key, idx, namestr, descstr, variable, cfgtab)
 		get = function(info) return Gnosis.s[cfgtab][key][variable]; end,
 		set = function(info,val) Gnosis.s[cfgtab][key][variable] = val; end,
 	};
+end
+
+function Gnosis:CommaSeparatedNumbersToTable(inputString, minNum, maxNum)
+	if (type(inputString) ~= "string") then
+		return {};
+	end
+	
+	local retTab = {};
+	
+	-- fill table with minNum to maxNum
+	for num=minNum,maxNum do
+		retTab[num] = false;
+	end
+	
+	-- set table entries true for matched numbers
+	for num in string_gmatch(inputString, ".-(%d+).-") do
+		if (num) then
+			local number = tonumber(num);
+			
+			if (number and number >= minNum and number <= maxNum) then
+				retTab[number] = true;
+			end
+		end
+	end
+	
+	return retTab;
+end
+
+function Gnosis:TableToCommaSeparatedNumbers(tabNumbers)
+	if (type(tabNumbers) ~= "table" or next(tabNumbers) == nil) then
+		return "";
+	end
+	-- create ordered array
+	local unordererd_tab = {};
+	for idx in pairs(tabNumbers) do
+		if (tabNumbers[idx]) then
+			table_insert(unordererd_tab, idx);
+		end
+	end
+	table_sort(unordererd_tab);
+	
+	-- create ordered, comma separated, string
+	local first = true;
+	local str = "";
+	for idx, val in ipairs(unordererd_tab) do
+		str = (first and "" or (str .. ",")) .. val;
+		first = nil;
+	end
+	
+	return str;
 end
 
 function Gnosis:MultilineFromTable(t)

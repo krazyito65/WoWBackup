@@ -1,14 +1,10 @@
 
 local L = BigWigs:NewBossLocale("Algalon the Observer", "koKR")
 if L then
-	L.engage_trigger = "너희 행동은 비논리적이다."
-
 	L.smash_message = "곧 우주의 강타!"
 	L.blackhole_message = "검은 구멍 폭발 %dx 소환"
 	L.bigbang_bar = "다음 대폭발"
 	L.bigbang_soon = "곧 대폭발!"
-
-	L.end_trigger = "나는 창조주의 불길이 씻어내린 세상을 보았다."
 end
 
 L = BigWigs:NewBossLocale("Auriaya", "koKR")
@@ -183,7 +179,6 @@ if L then
 	L.phase2_trigger = "%s|1이;가; 완전히 땅에 내려앉았습니다!"
 	L.phase2_message = "2 단계!"
 	L.phase2_warning = "곧 2 단계!"
-	L.stun_bar = "기절"
 
 	L.breath_trigger = "%s|1이;가; 숨을 깊게 들이쉽니다."
 	L.breath_message = "화염 숨결!"

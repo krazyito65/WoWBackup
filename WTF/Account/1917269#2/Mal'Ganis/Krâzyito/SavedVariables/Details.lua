@@ -19,8 +19,8 @@ _detalhes_database = {
 		["tabelas"] = {
 		},
 	},
-	["last_day"] = "05",
-	["combat_counter"] = 9708,
+	["last_day"] = "29",
+	["combat_counter"] = 9710,
 	["plugin_database"] = {
 		["DETAILS_PLUGIN_DAMAGE_RANK"] = {
 			["lasttry"] = {
@@ -38,10 +38,10 @@ _detalhes_database = {
 				"17: 7,707,779", -- [4]
 				"16: 9,165,073", -- [5]
 			},
-			["dps"] = 4717953.004695,
-			["author"] = "Details! Team",
-			["level"] = 20,
 			["enabled"] = true,
+			["dps"] = 4717953.004695,
+			["level"] = 20,
+			["author"] = "Details! Team",
 		},
 		["DETAILS_PLUGIN_DEATH_GRAPHICS"] = {
 			["last_boss"] = "139116",
@@ -59,15 +59,15 @@ _detalhes_database = {
 			["showing_type"] = 3,
 			["max_deaths_for_current"] = 15,
 			["last_player"] = false,
-			["max_segments_for_current"] = 2,
+			["InstalledAt"] = 1468968231,
 			["last_encounter_hash"] = false,
-			["enabled"] = true,
+			["author"] = "Details! Team",
 			["timeline_cutoff_time"] = 3,
 			["last_segment"] = false,
 			["last_combat_id"] = 518,
 			["timeline_cutoff_delete_time"] = 3,
-			["author"] = "Details! Team",
-			["InstalledAt"] = 1468968231,
+			["enabled"] = true,
+			["max_segments_for_current"] = 2,
 		},
 		["DETAILS_PLUGIN_ENCOUNTER_DETAILS"] = {
 			["enabled"] = true,
@@ -149,12 +149,12 @@ _detalhes_database = {
 					"Interface\\Icons\\ability_blackhand_marked4death", -- [4]
 					["id"] = 1704,
 				},
-				["156928"] = {
-					"156928", -- [1]
-					"Slag Eruption", -- [2]
-					31.5, -- [3]
-					"Interface\\Icons\\spell_fire_ragnaros_lavabolt", -- [4]
-					["id"] = 1704,
+				["181973"] = {
+					"181973", -- [1]
+					"Feast of Souls", -- [2]
+					123, -- [3]
+					"Interface\\Icons\\spell_misc_zandalari_council_soulswap", -- [4]
+					["id"] = 1783,
 				},
 				["179909"] = {
 					"179909", -- [1]
@@ -184,178 +184,22 @@ _detalhes_database = {
 					"Interface\\Icons\\Ability_Smash", -- [4]
 					["id"] = 1704,
 				},
-				["181973"] = {
-					"181973", -- [1]
-					"Feast of Souls", -- [2]
-					123, -- [3]
-					"Interface\\Icons\\spell_misc_zandalari_council_soulswap", -- [4]
-					["id"] = 1783,
+				["156928"] = {
+					"156928", -- [1]
+					"Slag Eruption", -- [2]
+					31.5, -- [3]
+					"Interface\\Icons\\spell_fire_ragnaros_lavabolt", -- [4]
+					["id"] = 1704,
 				},
 			},
 			["encounter_timers_dbm"] = {
 			},
 			["author"] = "Details! Team",
 			["opened"] = 27,
-			["hide_on_combat"] = false,
+			["window_scale"] = 1,
 			["show_icon"] = 4,
 			["max_emote_segments"] = 3,
-			["window_scale"] = 1,
-		},
-		["DETAILS_PLUGIN_YANP"] = {
-			["enabled"] = true,
-			["rightclick_closed"] = true,
-			["auto_open"] = true,
-			["auto_close"] = true,
-			["hide_on_combat"] = true,
-			["author"] = "Details! Team",
-			["deaths_table"] = {
-			},
-			["shown_time"] = 30,
-		},
-		["DETAILS_PLUGIN_RAIDCHECK"] = {
-			["enabled"] = true,
-			["pre_pot_tanks"] = false,
-			["mythic_1_4"] = true,
-			["author"] = "Details! Team",
-			["use_report_panel"] = true,
-			["pre_pot_healers"] = false,
-		},
-		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-		},
-		["DETAILS_PLUGIN_TINY_THREAT"] = {
-			["updatespeed"] = 1,
-			["animate"] = false,
-			["showamount"] = false,
-			["useplayercolor"] = false,
-			["useclasscolors"] = false,
-			["author"] = "Details! Team",
-			["playercolor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-			},
-			["enabled"] = true,
-		},
-		["DETAILS_PLUGIN_TIME_ATTACK"] = {
-			["enabled"] = true,
-			["realm_last_shown"] = 40,
-			["saved_as_anonymous"] = true,
-			["recently_as_anonymous"] = true,
-			["dps"] = 0,
-			["disable_sharing"] = false,
-			["history"] = {
-			},
-			["time"] = 40,
-			["history_lastindex"] = 0,
-			["realm_lastamt"] = 0,
-			["realm_history"] = {
-				{
-					1450572743, -- [1]
-					["DamageDone"] = 9697747,
-					["Time"] = 40,
-					["ID"] = 79759717,
-					["Dps"] = 242310,
-					["Source"] = "Unidentified",
-					["ItemLevel"] = 733,
-				}, -- [1]
-			},
-			["author"] = "Details! Team",
-		},
-		["DETAILS_PLUGIN_TIME_LINE"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-		},
-		["DETAILS_PLUGIN_VANGUARD"] = {
-			["enabled"] = true,
-			["tank_block_texture"] = "Details Serenity",
-			["tank_block_color"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.8, -- [4]
-			},
-			["show_inc_bars"] = true,
-			["author"] = "Details! Team",
-			["first_run"] = true,
-			["tank_block_size"] = 150,
-		},
-		["DETAILS_PLUGIN_RAID_POWER_BARS"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-		},
-		["DETAILS_PLUGIN_DPS_TUNING"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-			["SpellBarsShowType"] = 3,
-		},
-		["DETAILS_PLUGIN_CHART_VIEWER"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-			["tabs"] = {
-				{
-					["name"] = "Your Damage",
-					["segment_type"] = 2,
-					["version"] = "v2.0",
-					["data"] = "Player Damage Done",
-					["texture"] = "line",
-				}, -- [1]
-				{
-					["iType"] = "raid-DAMAGER",
-					["version"] = "v2.0",
-					["options"] = {
-						["iType"] = "raid-DAMAGER",
-						["name"] = "Damager (Same Class)",
-					},
-					["segment_type"] = 1,
-					["name"] = "Damager (Same Class)",
-					["data"] = "PRESET_DAMAGE_SAME_CLASS",
-					["texture"] = "line",
-				}, -- [2]
-				{
-					["iType"] = "raid-HEALER",
-					["version"] = "v2.0",
-					["options"] = {
-						["iType"] = "raid-HEALER",
-						["name"] = "Raid Healing Done",
-					},
-					["segment_type"] = 1,
-					["name"] = "Raid Healing Done",
-					["data"] = "PRESET_RAID_HEAL",
-					["texture"] = "line",
-				}, -- [3]
-				{
-					["iType"] = "raid-HEALER",
-					["version"] = "v2.0",
-					["options"] = {
-						["iType"] = "raid-HEALER",
-						["name"] = "Healing (Same Class)",
-					},
-					["segment_type"] = 1,
-					["name"] = "Healing (Same Class)",
-					["data"] = "PRESET_HEAL_SAME_CLASS",
-					["texture"] = "line",
-				}, -- [4]
-				{
-					["iType"] = "raid-HEALER",
-					["version"] = "v2.0",
-					["options"] = {
-						["iType"] = "raid-HEALER",
-						["name"] = "All Healers",
-					},
-					["segment_type"] = 1,
-					["name"] = "All Healers",
-					["data"] = "PRESET_ALL_HEALERS",
-					["texture"] = "line",
-				}, -- [5]
-				["last_selected"] = 5,
-			},
-			["options"] = {
-				["auto_create"] = true,
-				["show_method"] = 4,
-				["window_scale"] = 1,
-			},
+			["hide_on_combat"] = false,
 		},
 		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
 			["font_color"] = {
@@ -379,16 +223,14 @@ _detalhes_database = {
 			},
 			["arrow_anchor_x"] = 0,
 			["row_texture"] = "Details Serenity",
-			["point"] = "LEFT",
-			["main_frame_locked"] = false,
+			["main_frame_size"] = {
+				250, -- [1]
+				230, -- [2]
+			},
+			["row_height"] = 20,
 			["enabled"] = false,
 			["arrow_size"] = 10,
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
+			["scale"] = 1,
 			["row_spacement"] = 21,
 			["main_frame_color"] = {
 				0, -- [1]
@@ -396,8 +238,14 @@ _detalhes_database = {
 				0, -- [3]
 				0.2, -- [4]
 			},
-			["main_frame_strata"] = "LOW",
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
+			},
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
+			["author"] = "Details! Team",
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -405,32 +253,187 @@ _detalhes_database = {
 				["font_shadow"] = true,
 				["y"] = 0,
 				["update_speed"] = 0.05,
-				["size"] = 32,
-				["x"] = 0,
 				["attribute_type"] = 1,
+				["x"] = 0,
+				["size"] = 32,
 			},
-			["font_size"] = 10,
 			["x"] = 8.75213241577149,
 			["font_face"] = "Friz Quadrata TT",
 			["y"] = -57.9828643798828,
+			["font_size"] = 10,
+			["main_frame_strata"] = "LOW",
+			["main_frame_locked"] = false,
+			["point"] = "LEFT",
+		},
+		["DETAILS_PLUGIN_CHART_VIEWER"] = {
+			["enabled"] = true,
 			["author"] = "Details! Team",
-			["scale"] = 1,
-			["row_height"] = 20,
-			["main_frame_size"] = {
-				250, -- [1]
-				230, -- [2]
+			["tabs"] = {
+				{
+					["name"] = "Your Damage",
+					["segment_type"] = 2,
+					["version"] = "v2.0",
+					["data"] = "Player Damage Done",
+					["texture"] = "line",
+				}, -- [1]
+				{
+					["version"] = "v2.0",
+					["iType"] = "raid-DAMAGER",
+					["options"] = {
+						["iType"] = "raid-DAMAGER",
+						["name"] = "Damager (Same Class)",
+					},
+					["segment_type"] = 1,
+					["name"] = "Damager (Same Class)",
+					["data"] = "PRESET_DAMAGE_SAME_CLASS",
+					["texture"] = "line",
+				}, -- [2]
+				{
+					["version"] = "v2.0",
+					["iType"] = "raid-HEALER",
+					["options"] = {
+						["iType"] = "raid-HEALER",
+						["name"] = "Raid Healing Done",
+					},
+					["segment_type"] = 1,
+					["name"] = "Raid Healing Done",
+					["data"] = "PRESET_RAID_HEAL",
+					["texture"] = "line",
+				}, -- [3]
+				{
+					["version"] = "v2.0",
+					["iType"] = "raid-HEALER",
+					["options"] = {
+						["iType"] = "raid-HEALER",
+						["name"] = "Healing (Same Class)",
+					},
+					["segment_type"] = 1,
+					["name"] = "Healing (Same Class)",
+					["data"] = "PRESET_HEAL_SAME_CLASS",
+					["texture"] = "line",
+				}, -- [4]
+				{
+					["version"] = "v2.0",
+					["iType"] = "raid-HEALER",
+					["options"] = {
+						["iType"] = "raid-HEALER",
+						["name"] = "All Healers",
+					},
+					["segment_type"] = 1,
+					["name"] = "All Healers",
+					["data"] = "PRESET_ALL_HEALERS",
+					["texture"] = "line",
+				}, -- [5]
+				["last_selected"] = 5,
 			},
+			["options"] = {
+				["show_method"] = 4,
+				["auto_create"] = true,
+				["window_scale"] = 1,
+			},
+		},
+		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_YANP"] = {
+			["enabled"] = true,
+			["auto_open"] = true,
+			["rightclick_closed"] = true,
+			["auto_close"] = true,
+			["author"] = "Details! Team",
+			["hide_on_combat"] = true,
+			["deaths_table"] = {
+			},
+			["shown_time"] = 30,
+		},
+		["DETAILS_PLUGIN_DPS_TUNING"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["SpellBarsShowType"] = 3,
+		},
+		["DETAILS_PLUGIN_RAIDCHECK"] = {
+			["enabled"] = true,
+			["pre_pot_tanks"] = false,
+			["mythic_1_4"] = true,
+			["author"] = "Details! Team",
+			["use_report_panel"] = true,
+			["pre_pot_healers"] = false,
+		},
+		["DETAILS_PLUGIN_VANGUARD"] = {
+			["enabled"] = true,
+			["tank_block_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.8, -- [4]
+			},
+			["tank_block_texture"] = "Details Serenity",
+			["show_inc_bars"] = true,
+			["author"] = "Details! Team",
+			["first_run"] = true,
+			["tank_block_size"] = 150,
+		},
+		["DETAILS_PLUGIN_RAID_POWER_BARS"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_TIME_LINE"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_TIME_ATTACK"] = {
+			["enabled"] = true,
+			["realm_last_shown"] = 40,
+			["saved_as_anonymous"] = true,
+			["recently_as_anonymous"] = true,
+			["dps"] = 0,
+			["disable_sharing"] = false,
+			["history"] = {
+			},
+			["time"] = 40,
+			["history_lastindex"] = 0,
+			["author"] = "Details! Team",
+			["realm_history"] = {
+				{
+					1450572743, -- [1]
+					["DamageDone"] = 9697747,
+					["Time"] = 40,
+					["ID"] = 79759717,
+					["Dps"] = 242310,
+					["ItemLevel"] = 733,
+					["Source"] = "Unidentified",
+				}, -- [1]
+			},
+			["realm_lastamt"] = 0,
+		},
+		["DETAILS_PLUGIN_TINY_THREAT"] = {
+			["updatespeed"] = 1,
+			["enabled"] = true,
+			["animate"] = false,
+			["useplayercolor"] = false,
+			["author"] = "Details! Team",
+			["useclasscolors"] = false,
+			["playercolor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+			},
+			["showamount"] = false,
 		},
 	},
 	["last_encounter"] = "Tyrant Velhari",
 	["character_data"] = {
-		["logons"] = 943,
+		["logons"] = 944,
 	},
-	["nick_tag_cache"] = {
-		["nextreset"] = 1471729100,
-		["last_version"] = 8,
+	["cached_talents"] = {
+		["Player-3684-08801343"] = {
+		},
 	},
-	["last_instance_time"] = 1459467972,
+	["announce_firsthit"] = {
+		["enabled"] = true,
+		["channel"] = "SELF",
+	},
 	["tabela_instancias"] = {
 	},
 	["combat_id"] = 519,
@@ -438,10 +441,7 @@ _detalhes_database = {
 	},
 	["savedbuffs"] = {
 	},
-	["SoloTablesSaved"] = {
-		["LastSelected"] = "DETAILS_PLUGIN_DPS_TUNING",
-		["Mode"] = 2,
-	},
+	["last_version"] = "v5.21",
 	["announce_deaths"] = {
 		["enabled"] = false,
 		["last_hits"] = 1,
@@ -491,46 +491,29 @@ _detalhes_database = {
 			{
 				["buff_uptime"] = 0,
 				["ress"] = 0,
-				["debuff_uptime"] = 0,
-				["cooldowns_defensive"] = 0,
-				["interrupt"] = 0,
-				["dispell"] = 0,
-				["cc_break"] = 0,
 				["dead"] = 0,
+				["cc_break"] = 0,
+				["interrupt"] = 0,
+				["debuff_uptime"] = 0,
+				["dispell"] = 0,
+				["cooldowns_defensive"] = 0,
 			}, -- [4]
-			["frags_total"] = 0,
 			["voidzone_damage"] = 0,
+			["frags_total"] = 0,
 		},
 		["player_last_events"] = {
 		},
 		["frags_need_refresh"] = false,
 		["__call"] = {
 		},
-		["PhaseData"] = {
-			{
-				1, -- [1]
-				1, -- [2]
-			}, -- [1]
-			["heal_section"] = {
-			},
-			["heal"] = {
-			},
-			["damage_section"] = {
-			},
-			["damage"] = {
-			},
-		},
+		["data_inicio"] = 0,
 		["end_time"] = 264048.632,
+		["hasSaved"] = true,
 		["frags"] = {
 		},
 		["data_fim"] = 0,
+		["overall_refreshed"] = true,
 		["CombatSkillCache"] = {
-		},
-		["data_inicio"] = 0,
-		["start_time"] = 264048.632,
-		["TimeData"] = {
-			["Player Damage Done"] = {
-			},
 		},
 		["totals_grupo"] = {
 			0, -- [1]
@@ -544,16 +527,38 @@ _detalhes_database = {
 			{
 				["buff_uptime"] = 0,
 				["ress"] = 0,
-				["debuff_uptime"] = 0,
-				["cooldowns_defensive"] = 0,
-				["interrupt"] = 0,
-				["dispell"] = 0,
-				["cc_break"] = 0,
 				["dead"] = 0,
+				["cc_break"] = 0,
+				["interrupt"] = 0,
+				["debuff_uptime"] = 0,
+				["dispell"] = 0,
+				["cooldowns_defensive"] = 0,
 			}, -- [4]
 		},
+		["start_time"] = 264048.632,
+		["TimeData"] = {
+			["Player Damage Done"] = {
+			},
+		},
+		["PhaseData"] = {
+			{
+				1, -- [1]
+				1, -- [2]
+			}, -- [1]
+			["damage"] = {
+			},
+			["heal_section"] = {
+			},
+			["heal"] = {
+			},
+			["damage_section"] = {
+			},
+		},
 	},
-	["last_version"] = "v5.14",
+	["SoloTablesSaved"] = {
+		["LastSelected"] = "DETAILS_PLUGIN_DPS_TUNING",
+		["Mode"] = 2,
+	},
 	["local_instances_config"] = {
 		{
 			["segment"] = 0,
@@ -692,20 +697,17 @@ _detalhes_database = {
 			},
 		}, -- [4]
 	},
-	["announce_firsthit"] = {
-		["enabled"] = true,
-		["channel"] = "SELF",
-	},
+	["last_instance_time"] = 1459467972,
 	["announce_cooldowns"] = {
-		["enabled"] = false,
 		["ignored_cooldowns"] = {
 		},
+		["enabled"] = false,
 		["custom"] = "",
 		["channel"] = "RAID",
 	},
-	["cached_talents"] = {
-		["Player-3684-08801343"] = {
-		},
+	["nick_tag_cache"] = {
+		["nextreset"] = 1473809416,
+		["last_version"] = 8,
 	},
 	["last_instance_id"] = 1358,
 	["cached_specs"] = {

@@ -13,6 +13,8 @@ local format, strsub = string.format, string.sub
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local InCombatLockdown = InCombatLockdown
+local CinematicFrame = CinematicFrame
+local MovieFrame = MovieFrame
 local MoveViewLeftStart = MoveViewLeftStart
 local MoveViewLeftStop = MoveViewLeftStop
 local CloseAllBags = CloseAllBags
@@ -59,7 +61,7 @@ function AFK:UpdateTimer()
 end
 
 function AFK:SetAFK(status)
-	if(InCombatLockdown()) then return end
+	if(InCombatLockdown() or CinematicFrame:IsShown() or MovieFrame:IsShown()) then return end
 	if(status) then
 		MoveViewLeftStart(CAMERA_SPEED);
 		self.AFKMode:Show()
@@ -229,7 +231,7 @@ local function Chat_OnEvent(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg
 		body = body:gsub("%[BN_CONVERSATION:", '%['.."")
 	end
 
-	self:AddMessage(CH:ConcatenateTimeStamp(body), info.r, info.g, info.b, info.id, false, accessID, typeID);
+	self:AddMessage(body, info.r, info.g, info.b, info.id, false, accessID, typeID);
 end
 
 function AFK:LoopAnimations()

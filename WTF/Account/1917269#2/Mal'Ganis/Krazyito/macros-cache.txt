@@ -8,7 +8,7 @@ VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
 /use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
 END
 VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
-/use [mod:ctrl] Etheralus, the Eternal Reward; [nomod, @mouseover] Cenarion Ward
+/use [mod:ctrl] Horn of Valor; [nomod, @mouseover] Cenarion Ward
 END
 VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -22,6 +22,7 @@ VER 3 010000000000004C " COOLIOS" "INV_MISC_QUESTIONMARK"
 #showtooltip
 /cast [mod:ctrl] Berserking(Racial)
 /use [mod:ctrl] 14
+/use [mod:ctrl] 13
 /use [nomod] Celestial Alignment
 END
 VER 3 0100000000000065 " DASH" "INV_MISC_QUESTIONMARK"

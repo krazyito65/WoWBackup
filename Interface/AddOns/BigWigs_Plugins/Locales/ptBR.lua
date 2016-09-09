@@ -6,6 +6,8 @@ L.abilityNameDesc = "Mostra/oculta o nome da habilidade em cima da janela."
 L.Alarm = "Alarme"
 L.Alert = "Alerta"
 L.align = "Alinhação"
+--L.alignText = "Align Text"
+--L.alignTime = "Align Time"
 L.altPowerTitle = "PoderAlt" -- Needs review
 L.Attention = "Atenção"
 L.background = "Fundo"
@@ -146,6 +148,9 @@ L.pullIn = "Pull em %d seg"
 L.pulling = "Puxando!"
 L.pullStarted = "Pull iniciado via %s por %s."
 L.pullStopped = "Pull cancelado por %s."
+L.raidIconsDesc = [=[Alguns encontros usam os icones de raide para marcar jogadores que são de interesse especial para seu grupo. Por exemplo, os efeitos tipo 'bomba' e controle mental. Se estiver desativado, não marcará nada.
+
+|cffff4411Somente aplicará as marcas se você for assistente ou lider!|r]=]
 L.raidIconsDescription = [=[Elementos de tipo 'bomba' e similares em um jogador podem ser de interesse especial. Aqui você pode configurar como se deveria marcar com icones algunos personagens.
 
 Só se usa um icone para cada encontro se usará o primario, nunca se usará o mesmo icone para 2 habilidades distintas, para isto esta o icone secundario.

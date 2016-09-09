@@ -1,6 +1,21 @@
---	16:51 09.08.2016
+--	0:13 28.08.2016
 
 --[[
+3765
+* Temp fix errors with artifact scaning
+
+3760
+* Raid cooldowns: updates due to last legendary tuning
+* Raid cooldowns: added new options tab "Visibility"
+* Added version checker
+
+3750
+* Raid Inspect: added tab to view aftifact relics
+* Raid cooldowns: updates due to last class balance changes
+* Raid cooldowns: added legion trinkets
+* Raid cooldowns: added option: show only in combat
+* Minor fixes
+
 3740
 * New module: WeakAuras checks
 http://i.imgur.com/59cZVTY.png
@@ -11,7 +26,7 @@ http://i.imgur.com/59cZVTY.png
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3740
+ExRT.V = 3765
 ExRT.T = "R"
 ExRT.is7 = false		--> Legion (7.x) Client
 
@@ -23,6 +38,7 @@ ExRT.Modules = {}		--> список всех модулей
 ExRT.ModulesLoaded = {}		--> список загруженных модулей [для Dev & Advanced]
 ExRT.ModulesOptions = {}
 ExRT.Debug = {}
+ExRT.RaidVersions = {}
 
 ExRT.A = {}			--> ссылки на все модули
 
@@ -607,7 +623,9 @@ function ExRT.F.GetExMsg(sender, prefix, ...)
 	elseif prefix == "version" then
 		local msgver = ...
 		print(sender..": "..msgver)
+		ExRT.RaidVersions[sender] = msgver
 	elseif prefix == "version2" then
+		ExRT.RaidVersions[sender] = ...
 		if isVersionCheckCallback then
 			local msgver = ...
 			print(sender..": "..msgver)

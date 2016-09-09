@@ -5485,8 +5485,8 @@ function window:CreateFrame3()
 			{"makeDefault", 11},
 			{"applyToAll", 12},
 			
-			{"PDWAnchor", 13, true},
-			{"PDWSkinLabel", 14},
+			--{"PDWAnchor", 13, true},
+			--{"PDWSkinLabel", 14},
 		}
 		
 		local right_side = {
@@ -5629,7 +5629,7 @@ function window:CreateFrame4()
 
 	-- spacement
 		g:NewLabel (frame4, _, "$parentBarSpacementLabel", "BarSpacementLabel", Loc ["STRING_OPTIONS_BAR_SPACING"], "GameFontHighlightLeft")
-		local s = g:NewSlider (frame4, _, "$parentBarSpacementSizeSlider", "BarSpacementSlider", SLIDER_WIDTH, SLIDER_HEIGHT, 0, 10, 1, instance.row_info.space.between, nil, nil, nil, options_slider_template)
+		local s = g:NewSlider (frame4, _, "$parentBarSpacementSizeSlider", "BarSpacementSlider", SLIDER_WIDTH, SLIDER_HEIGHT, -2, 10, 1, instance.row_info.space.between, nil, nil, nil, options_slider_template)
 		--config_slider (s)
 	
 		frame4.BarSpacementSlider:SetPoint ("left", frame4.BarSpacementLabel, "right", 2)

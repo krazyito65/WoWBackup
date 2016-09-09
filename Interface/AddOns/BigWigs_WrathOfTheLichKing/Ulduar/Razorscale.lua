@@ -2,7 +2,7 @@
 -- Module Declaration
 --
 
-local mod, CL = BigWigs:NewBoss("Razorscale", 529)
+local mod, CL = BigWigs:NewBoss("Razorscale", 529, 1639)
 if not mod then return end
 --[[
 	33287 = Expedition Engineer
@@ -38,7 +38,6 @@ if L then
 	L.phase2_trigger = "%s grounded permanently!"
 	L.phase2_message = "Phase 2!"
 	L.phase2_warning = "Phase 2 Soon!"
-	L.stun_bar = "Stun"
 
 	L.breath_trigger = "%s takes a deep breath..."
 	L.breath_message = "Flame Breath!"
@@ -91,7 +90,7 @@ function mod:UNIT_HEALTH_FREQUENT(unit)
 	if self:MobId(UnitGUID(unit)) == 33186 then
 		local hp = UnitHealth(unit) / UnitHealthMax(unit) * 100
 		if hp > 51 and hp < 55 then
-			self:Message("phase", "Positive", nil, L["phase2_warning"])
+			self:Message("phase", "Positive", nil, L["phase2_warning"], false)
 			self:UnregisterUnitEvent("UNIT_HEALTH_FREQUENT", "target", "focus")
 		end
 	end
@@ -99,7 +98,7 @@ end
 
 function mod:Phase2()
 	phase = 2
-	self:StopBar(L["stun_bar"])
+	self:StopBar(171163) -- Stun
 	self:Message("phase", "Attention", nil, L["phase2_message"], false)
 end
 
@@ -120,7 +119,7 @@ end
 
 function mod:Grounded()
 	self:Message("phase", "Attention", "Long", L["ground_message"], false)
-	self:Bar("phase", 38, L["stun_bar"], 20170) --20170, looks like a stun :p
+	self:Bar("phase", 38, 171163) -- spell_frost_stun / Stun / icon id 135860
 	count = 0
 end
 
@@ -133,8 +132,8 @@ function mod:Airphase()
 		started = true
 		phase = 1
 	else
-		self:StopBar(L["stun_bar"])
-		self:Message("phase", "Attention", "Info", L["air_message"])
+		self:StopBar(171163) -- Stun
+		self:Message("phase", "Attention", "Info", L["air_message"], false)
 	end
 end
 
@@ -144,7 +143,7 @@ end
 function mod:Airphase10()
 	count = 0
 	self:Bar("harpoon", 22, L["harpoon_nextbar"]:format(1), "INV_Spear_06")
-	self:StopBar(L["stun_bar"])
+	self:StopBar(171163) -- Stun
 	--self:Message(L["air_message"], "Attention", nil, "Info")
 end
 

@@ -1,13 +1,9 @@
 local L = BigWigs:NewBossLocale("Algalon the Observer", "deDE")
 if L then
-	L.engage_trigger = "Euer Handeln ist unlogisch. Alle Möglichkeiten dieser Begegnung wurden berechnet. Das Pantheon wird die Nachricht des Beobachters erhalten, ungeachtet des Ausgangs."
-
 	L.smash_message = "Kosmischer Schlag kommt!"
 	L.blackhole_message = "Schwarzes Loch %dx!"
 	L.bigbang_bar = "Nächster Großer Knall"
 	L.bigbang_soon = "Großer Knall bald!"
-
-	L.end_trigger = "Ich sah Welten umhüllt von den Flammen der Schöpfer"
 end
 
 L = BigWigs:NewBossLocale("Auriaya", "deDE")
@@ -174,8 +170,6 @@ end
 
 L = BigWigs:NewBossLocale("Razorscale", "deDE")
 if L then
-	L["Razorscale Controller"] = "Klingenschuppe Controller"
-
 	L.phase = "Phasen"
 	L.phase_desc = "Warnt bei Phasenwechsel."
 	L.ground_trigger = "Beeilt Euch! Sie wird nicht lange am Boden bleiben!"
@@ -186,7 +180,6 @@ if L then
 	L.phase2_trigger = "%s dauerhaft an den Boden gebunden!"
 	L.phase2_message = "Phase 2"
 	L.phase2_warning = "Phase 2 bald!"
-	L.stun_bar = "Betäubt"
 
 	L.breath_trigger = "%s holt tief Luft..."
 	L.breath_message = "Flammenatem!"

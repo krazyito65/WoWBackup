@@ -87,6 +87,7 @@ L["Go Small"] = "Go Small" -- Requires localization
 L["group"] = "\208\179\209\128\209\131\208\191\208\191\208\176" -- Needs review
 L["harm"] = "\208\178\209\128\208\176\208\182\208\180\208\181\208\177\208\189\209\139\208\185" -- Needs review
 L["help"] = "\208\180\209\128\209\131\208\182\208\181\209\129\209\130\208\178\208\181\208\189\208\189\209\139\208\185" -- Needs review
+L["Hide 'Macro shortened by n characters' popup"] = "Hide 'Macro shortened by n characters' popup" -- Requires localization
 L["Icons"] = "\208\183\208\189\208\176\209\135\208\186\208\184" -- Needs review
 L["indoors"] = "\208\178 \208\191\208\190\208\188\208\181\209\137\208\181\208\189\208\184\208\184" -- Needs review
 L["Insert slot"] = "\208\146\209\129\209\130\208\176\208\178\208\184\209\130\209\140 \209\129\208\187\208\190\209\130" -- Needs review

@@ -18,11 +18,12 @@ function mod:OnLeave()
 	GameTooltip:Hide()
 end
 
-function mod:CreateBar(name, onEnter, ...)
+function mod:CreateBar(name, onEnter, onClick, ...)
 	local bar = CreateFrame('Button', name, E.UIParent)
 	bar:Point(...)
 	bar:SetScript('OnEnter', onEnter)
 	bar:SetScript('OnLeave', mod.OnLeave)
+	bar:SetScript("OnClick", onClick)
 	bar:SetFrameStrata('LOW')
 	bar:SetTemplate('Transparent')
 	bar:Hide()
@@ -69,7 +70,7 @@ function mod:Initialize()
 	self:LoadReputationBar()
 	self:LoadHonorBar()
 	self:LoadArtifactBar()
-	
+
 	self:RegisterEvent("PLAYER_LEVEL_UP")
 end
 

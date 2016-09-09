@@ -3124,14 +3124,18 @@ function GoGo_ZoneCheck()
 		-- can ride = true
 		if GetCurrentMapDungeonLevel() == 11 then
 			-- We're in the Underbelly area, enable the item mount
-			GoGo_Variables.MountDB[220123][10002] = 200
-			GoGo_Variables.MountDB[220123][7] = true
-			GoGo_Variables.MountDB[220123][8] = true
+			GoGo_Variables.MountDB[220124][10002] = 200
+			GoGo_Variables.MountDB[220124][7] = true
+			GoGo_Variables.MountDB[220124][8] = true
 		end --if
+	elseif GoGo_Variables.Player.ZoneID == 1015 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Azsuna")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
 	elseif GoGo_Variables.Player.ZoneID == 1021 then
---	"240609.26499668 Information: Location = Dalaran - Dalaran -  - Dalaran", -- [130]
---	"240609.36767671 Information: Current zone area ID as per GetCurrentMapAreaID(): 1021", -- [131]
--- Fell through hole in new Dalaran to an area below the city to get this...
+		-- Broken Isles Dalaran - Rooms used for scenarios as part of the various class specific quests
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Dalaran")
 		end --if
@@ -3140,6 +3144,40 @@ function GoGo_ZoneCheck()
 	elseif GoGo_Variables.Player.ZoneID == 1026 then
 		if GoGo_Variables.Debug >= 10 then
 			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hellfire Citadel (instance)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1052 then
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Mardum, the Shattered Abyss")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1054 then
+		-- Broken Isles version of Dalaran - The Violet Hold instance (scenario) for mages starting their quest line for the 7.0 expansion
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for The Violet Hold")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 1068 then
+		-- Mage hangout area in (Broken Isles) Dalaran
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Hall of the Guardian")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = false
+	elseif GoGo_Variables.Player.ZoneID == 1076 then
+		-- The Ulduar scenario as part of the quest line for the pre-release events to Warcraft 7 - Legion
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Ulduar (scenario)")
+		end --if
+		GoGo_Variables.ZoneExclude.CanFly = false
+		-- can ride = true
+	elseif GoGo_Variables.Player.ZoneID == 1100 then
+		-- The Kharazan scenario as part of the quest line for the pre-release events to Warcraft 7 - Legion
+		if GoGo_Variables.Debug >= 10 then
+			GoGo_DebugAddLine("GoGo_ZoneCheck: Setting up for Kharazan (scenario)")
 		end --if
 		GoGo_Variables.ZoneExclude.CanFly = false
 		-- can ride = true
@@ -4598,109 +4636,120 @@ function GoGo_AddOptionCheckboxes(GoGo_FrameParentText)
 
 	if GoGo_MountCount == 0 then
 		return nil
-	else
-		for loopcount=1, GoGo_MountCount do
-			local GoGo_MountID = GoGo_Mounts[loopcount]
-			local GoGo_checkboxrow = (-44 + (-16 * loopcount))
-			local GoGo_CheckBoxName = GoGo_FrameParentText .. GoGo_MountID
-			if _G[GoGo_CheckBoxName] then
-				_G[GoGo_CheckBoxName]:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
-				_G[GoGo_CheckBoxName]:SetChecked(false)
---				_G[GoGo_CheckBoxName].tooltipText = "" -- clear tool tip text
-			else
-				GoGo_CheckButton = CreateFrame("CheckButton", GoGo_CheckBoxName, GoGo_FrameParent, "ChatConfigCheckButtonTemplate")
-				GoGo_CheckButton:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
-				getglobal(GoGo_CheckButton:GetName() .. 'Text'):SetText(GoGo_GetIDName(GoGo_MountID))
-			end --if
-
-			if GoGo_Variables.Player.Class == "HUNTER" then  -- clear aspect of cheetah / pack incase hunter option changes
-				if GoGo_MountID == GoGo_Variables.Localize.AspectPack and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah] then
-					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Hide()
-					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Show()
-				elseif GoGo_MountID == GoGo_Variables.Localize.AspectCheetah and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack] then
-					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Show()
-					_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Hide()
-				end --if
-			end --if
-			
-			if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
-				if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"]) > 0 then
-					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"]) do
-						if GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"][GoGo_FavoriteCount] == GoGo_MountID then
-							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked " .. GoGo_MountID)
-						end --if
-					end --for
-				end --if
-				_G[GoGo_CheckBoxName]:SetScript("OnClick",
-					function(self)
-						GoGo_ZonePrefMount(GoGo_MountID)
-					end --function
-				)
-			elseif GoGo_FrameParentText == "GoGo_GlobalFavorites_ContentFrame" then
-				if GoGo_Prefs.GlobalPrefMounts then
-					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
-						if GoGo_Prefs.GlobalPrefMounts[GoGo_FavoriteCount] == GoGo_MountID then
-							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
-						end --if
-					end --for
-				end --if
-				_G[GoGo_CheckBoxName]:SetScript("OnClick",
-					function(self)
-						GoGo_GlobalPrefMount(GoGo_MountID)
-					end --function
-				)
-			elseif GoGo_FrameParentText == "GoGo_ExtraPassengerMounts_ContentFrame" then
-				if GoGo_Prefs.ExtraPassengerMounts then
-					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.ExtraPassengerMounts) do
-						if GoGo_Prefs.ExtraPassengerMounts[GoGo_FavoriteCount] == GoGo_MountID then
-							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
-						end --if
-					end --for
-				end --if
-				_G[GoGo_CheckBoxName]:SetScript("OnClick",
-					function(self)
-						GoGo_ExtraPassengerMounts(GoGo_MountID)
-					end --function
-				)
-			elseif GoGo_FrameParentText == "GoGo_GlobalExclusions_ContentFrame" then
-				if GoGo_Prefs.GlobalExclude then
-					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalExclude) do
-						if GoGo_Prefs.GlobalExclude[GoGo_FavoriteCount] == GoGo_MountID then
-							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
-						end --if
-					end --for
-				end --if
-				_G[GoGo_CheckBoxName]:SetScript("OnClick",
-					function(self)
-						GoGo_GlobalExcludeMount(GoGo_MountID)
-					end --function
-				)
- 			elseif GoGo_FrameParentText == "GoGo_ZoneExclusions_ContentFrame" then
-				if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"]) > 0 then
-					--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
-					for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"]) do
-						if GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"][GoGo_FavoriteCount] == GoGo_MountID then
-							_G[GoGo_CheckBoxName]:SetChecked(1)
---							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
-						end --if
-					end --for
-				end --if
-				_G[GoGo_CheckBoxName]:SetScript("OnClick",
-					function(self)
-						GoGo_ZoneExcludeMount(GoGo_MountID)
-					end --function
-				)
-			end --if
-		end --for
 	end --if
+
+	local tMountNames = {}
+	local tMountIDNames = {}
+	local sMountName
+	local i
+	for i=1, GoGo_MountCount do
+		sMountName = GoGo_GetIDName(GoGo_Mounts[i])
+		table.insert(tMountNames, sMountName)
+		tMountIDNames[sMountName] = GoGo_Mounts[i]
+	end --for
+	table.sort(tMountNames)
+
+	for i=1, GoGo_MountCount do
+		local GoGo_MountID = tMountIDNames[tMountNames[i]]
+		local GoGo_checkboxrow = (-44 + (-16 * i))
+		local GoGo_CheckBoxName = GoGo_FrameParentText .. GoGo_MountID
+		if _G[GoGo_CheckBoxName] then
+			_G[GoGo_CheckBoxName]:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
+			_G[GoGo_CheckBoxName]:SetChecked(false)
+--				_G[GoGo_CheckBoxName].tooltipText = "" -- clear tool tip text
+		else
+			GoGo_CheckButton = CreateFrame("CheckButton", GoGo_CheckBoxName, GoGo_FrameParent, "ChatConfigCheckButtonTemplate")
+			GoGo_CheckButton:SetPoint("TOPLEFT", 16, GoGo_checkboxrow)
+			getglobal(GoGo_CheckButton:GetName() .. 'Text'):SetText(GoGo_GetIDName(GoGo_MountID))
+		end --if
+
+		if GoGo_Variables.Player.Class == "HUNTER" then  -- clear aspect of cheetah / pack incase hunter option changes
+			if GoGo_MountID == GoGo_Variables.Localize.AspectPack and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah] then
+				_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Hide()
+				_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Show()
+			elseif GoGo_MountID == GoGo_Variables.Localize.AspectCheetah and _G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack] then
+				_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectCheetah]:Show()
+				_G[GoGo_FrameParentText .. GoGo_Variables.Localize.AspectPack]:Hide()
+			end --if
+		end --if
+		
+		if GoGo_FrameParentText == "GoGo_ZoneFavorites_ContentFrame" then
+			if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"]) > 0 then
+				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"]) do
+					if GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Preferred"][GoGo_FavoriteCount] == GoGo_MountID then
+						_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked " .. GoGo_MountID)
+					end --if
+				end --for
+			end --if
+			_G[GoGo_CheckBoxName]:SetScript("OnClick",
+				function(self)
+					GoGo_ZonePrefMount(GoGo_MountID)
+				end --function
+			)
+		elseif GoGo_FrameParentText == "GoGo_GlobalFavorites_ContentFrame" then
+			if GoGo_Prefs.GlobalPrefMounts then
+				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalPrefMounts) do
+					if GoGo_Prefs.GlobalPrefMounts[GoGo_FavoriteCount] == GoGo_MountID then
+						_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+					end --if
+				end --for
+			end --if
+			_G[GoGo_CheckBoxName]:SetScript("OnClick",
+				function(self)
+					GoGo_GlobalPrefMount(GoGo_MountID)
+				end --function
+			)
+		elseif GoGo_FrameParentText == "GoGo_ExtraPassengerMounts_ContentFrame" then
+			if GoGo_Prefs.ExtraPassengerMounts then
+				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.ExtraPassengerMounts) do
+					if GoGo_Prefs.ExtraPassengerMounts[GoGo_FavoriteCount] == GoGo_MountID then
+						_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+					end --if
+				end --for
+			end --if
+			_G[GoGo_CheckBoxName]:SetScript("OnClick",
+				function(self)
+					GoGo_ExtraPassengerMounts(GoGo_MountID)
+				end --function
+			)
+		elseif GoGo_FrameParentText == "GoGo_GlobalExclusions_ContentFrame" then
+			if GoGo_Prefs.GlobalExclude then
+				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.GlobalExclude) do
+					if GoGo_Prefs.GlobalExclude[GoGo_FavoriteCount] == GoGo_MountID then
+						_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+					end --if
+				end --for
+			end --if
+			_G[GoGo_CheckBoxName]:SetScript("OnClick",
+				function(self)
+					GoGo_GlobalExcludeMount(GoGo_MountID)
+				end --function
+			)
+		elseif GoGo_FrameParentText == "GoGo_ZoneExclusions_ContentFrame" then
+			if table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"]) > 0 then
+				--GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): zone exists ")
+				for GoGo_FavoriteCount = 1, table.getn(GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"]) do
+					if GoGo_Prefs.Zones[GoGo_Variables.Player.ZoneID]["Excluded"][GoGo_FavoriteCount] == GoGo_MountID then
+						_G[GoGo_CheckBoxName]:SetChecked(1)
+--							GoGo_DebugAddLine("GoGo_AddOptionCheckboxes(): set checked ")
+					end --if
+				end --for
+			end --if
+			_G[GoGo_CheckBoxName]:SetScript("OnClick",
+				function(self)
+					GoGo_ZoneExcludeMount(GoGo_MountID)
+				end --function
+			)
+		end --if
+	end --for
 end --function
 
 ---------
@@ -4816,7 +4865,7 @@ function GoGo_DebugCollectInformation()
 		buff = UnitBuff("player", i)
 	end --while
 	if #buffs < 1 then
-		buffs = "We are unbuffed"
+		buffs = "We are not buffed"
 	else
 		buffs[1] = "We are buffed with: "..buffs[1]
 		buffs = table.concat(buffs, ", ")

@@ -35,6 +35,7 @@ local IsControlKeyDown = IsControlKeyDown;
 local IsShiftKeyDown = IsShiftKeyDown;
 local VUHDO_atan2 = math.atan2;
 local VUHDO_PI, VUHDO_2_PI = math.pi, math.pi * 2;
+local floor = floor;
 local pairs = pairs;
 local type = type;
 local abs = abs;
@@ -887,3 +888,16 @@ function VUHDO_isSpecialUnit(aUnit)
 
 end
 
+
+
+function VUHDO_round(number, digits)
+
+	if digits then
+		local shift = 10 ^ digits;
+
+		return floor(number * shift + 0.5) / shift;
+	else
+		return floor(number + 0.5);
+	end
+
+end

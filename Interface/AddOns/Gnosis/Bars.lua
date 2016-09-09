@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Bars.lua last changed 2016-07-21T06:24:03Z
-
 -- local functions
 local UnitCastingInfo = UnitCastingInfo;
 local UnitChannelInfo = UnitChannelInfo;
@@ -56,12 +53,14 @@ function Gnosis:CheckStoredCastbarOptions()
 	local iUpgrade210 = 0;
 	local iUpgrade254 = 0;
 	local iUpgrade325 = 0;
+	local iUpgrade462 = 0;
 	local strUpgrade150 = "upgrading bars to v1.50 options:\n  ";
 	local strUpgrade195 = "upgrading bars to v1.95 options:\n  ";
 	local strUpgrade210 = "upgrading bars to v2.10 options:\n  ";
 	local strUpgrade254 = "upgrading bars to v2.54 options:\n  ";
 	local strUpgrade325 = "upgrading bars to v3.25 options:\n  ";
-
+	local strUpgrade462 = "upgrading bars to v4.62 options:\n  ";
+	
 	for cbname, cbopt in pairs(self.s.cbconf) do
 		-- upgrade castbar if needed (v1.50)
 		if(not cbopt.cboptver and cbopt.width and cbopt.height and cbopt.anchor) then
@@ -161,39 +160,51 @@ function Gnosis:CheckStoredCastbarOptions()
 			cbopt.cboptver = 3.25;
 		end
 
+		-- upgrade to v4.62
+		if(cbopt.cboptver < 4.62) then
+			iUpgrade462 = iUpgrade462 + 1;
+			strUpgrade462 = strUpgrade462 .. cbname .. "  ";
+			
+			-- only removing spec entry, automatically adding spectab
+			-- enabling all three or four talent specializations
+			cbopt.spec = nil;
+			
+			cbopt.cboptver = 4.62;
+		end
+		
 		-- add colBarNI if missing
 		cbopt.colBarNI = cbopt.colBarNI or cbopt.colBar;
 
 		-- add missing option values
 		self:UpgradeTable(cbopt, self.tCastbarDefaults);
 
-		if(cbopt.unit == "gcd_reverse") then
+		if (cbopt.unit == "gcd_reverse") then
 			-- remove gcd_reverse unit (-> to gcd with inversed bar direction)
 			cbopt.unit = "gcd";
 			cbopt.bInvDir = not cbopt.bInvDir;
 		end
 
 		-- new unit names for swing timers
-		if(cbopt.unit == "mel") then
+		if (cbopt.unit == "mel") then
 			cbopt.unit = "sm";
-		elseif(cbopt.unit == "rng") then
+		elseif (cbopt.unit == "rng") then
 			cbopt.unit = "sr";
-		elseif(cbopt.unit == "melrng") then
+		elseif (cbopt.unit == "melrng") then
 			cbopt.unit = "smr";
 		end
 	end
 	
-	if(iUpgrade150 > 0) then
+	if (iUpgrade150 > 0) then
 		strUpgrade150 = strUpgrade150 .. "\n  ..." .. iUpgrade150 .. " bars upgraded\n  ...please check those bars' options";
 		self:Print(strUpgrade150);
 	end
 
-	if(iUpgrade195 > 0) then
+	if (iUpgrade195 > 0) then
 		strUpgrade195 = strUpgrade195 .. "\n  ..." .. iUpgrade195 .. " bars upgraded\n  ...please check those bars' options";
 		self:Print(strUpgrade195);
 	end
 
-	if(iUpgrade210 > 0) then
+	if (iUpgrade210 > 0) then
 		strUpgrade210 = strUpgrade210 .. "\n  ..." .. iUpgrade210 .. " bars upgraded\n  ...please check those bars' options";
 		self:Print(strUpgrade210);
 	end
@@ -203,11 +214,16 @@ function Gnosis:CheckStoredCastbarOptions()
 		self:Print(strUpgrade254);
 	end
 	
-	if(iUpgrade325 > 0) then
+	if (iUpgrade325 > 0) then
 		strUpgrade325 = strUpgrade325 .. "\n  ..." .. iUpgrade325 .. " bars upgraded\n  ...please check those bars' options";
 		self:Print(strUpgrade325);
 	end
 
+	if (iUpgrade462 > 0) then
+		strUpgrade462 = strUpgrade462 .. "\n  ..." .. iUpgrade462 .. " bars upgraded\n  ...please check those bars' options";
+		self:Print(strUpgrade462);
+	end
+	
 	self:CreateCBTables();
 end
 
@@ -234,7 +250,7 @@ function Gnosis:SetupScanUnits()
 	wipe(self.scan);
 
 	for cbname, cbopt in pairs(self.s.cbconf) do
-		if(cbopt.bEn and (cbopt.spec == 0 or cbopt.spec == self.iCurSpec) and cbopt.bartype == "cb") then
+		if(cbopt.bEn and cbopt.spectab[self.iCurSpec] and cbopt.bartype == "cb") then
 			local u = string_match(cbopt.unit, "(.+)target") or string_match(cbopt.unit, "(mouseover)");
 
 			if(u) then
@@ -346,7 +362,7 @@ function Gnosis:CreateFastLookupCastbars()
 	for key, value in pairs(self.castbars) do
 		local conf = Gnosis.s.cbconf[key];
 
-		if(conf.bEn and (conf.spec == 0 or conf.spec == self.iCurSpec) and conf.bartype == "cb") then
+		if(conf.bEn and conf.spectab[self.iCurSpec] and conf.bartype == "cb") then
 			if(not self.cb_fl[conf.unit]) then
 				self.cb_fl[conf.unit] = {};
 			end
@@ -737,7 +753,7 @@ function Gnosis:SetBarParams(name, cfgtab, bartab)
 		bar:SetFrameStrata(tParams.strata);
 	end
 
-	if (not tParams.bEn or (self.iCurSpec and tParams.spec > 0 and tParams.spec ~= self.iCurSpec)) then
+	if (not tParams.bEn or (self.iCurSpec and not tParams.spectab[self.iCurSpec])) then
 		self:CleanupCastbar(bar);
 		bar:Hide();		-- bar disabled
 	else
@@ -937,7 +953,7 @@ function Gnosis:UIScaleUpdate()
 	self:AnchorAllBars();
 
 	-- update coordinates of config options
-	if(Gnosis.optCBs:IsShown()) then
+	if (Gnosis.optCBs:IsShown()) then
 		Gnosis.optCBs:Hide();
 		Gnosis.optCBs:Show();
 	end
@@ -955,6 +971,13 @@ function Gnosis:AnchorAllBars()
 	end
 end
 
+function Gnosis:AnchorAllBarsAndSetParams()
+	for k, v in pairs(self.castbars) do
+		self:AnchorBar(k);
+		self:SetBarParams(k);
+	end
+end
+
 function Gnosis:AnchorBar(name)
 	local cb, cfg = self.castbars[name], self.s.cbconf[name];
 	cb.afrom, cb.ato = self.tPoints[cfg.anchorfrom], self.tPoints[cfg.anchorto];
@@ -965,7 +988,7 @@ function Gnosis:AnchorBar(name)
 	local mult = uis / cbs;
 	local xm, ym = GetScreenWidth(), GetScreenHeight();
 
-	if(not cfg.anchor or not(tonumber(cfg.anchor.px) and tonumber(cfg.anchor.py))) then
+	if (not cfg.anchor or not(tonumber(cfg.anchor.px) and tonumber(cfg.anchor.py))) then
 		cfg.anchor = {
 			["px"] = 0.5,		-- CENTER
 			["py"] = 0.5,		-- CENTER
@@ -975,10 +998,10 @@ function Gnosis:AnchorBar(name)
 	local px, py = cfg.anchor.px, cfg.anchor.py;
 	cb.reanchor = false;
 	cb:ClearAllPoints();
-	if(cfg.anchortype == 3) then		-- anchor to cursor
+	if (cfg.anchortype == 3) then		-- anchor to cursor
 		cb.reanchor = true;
 		self:ReAnchorBar(cb);
-	elseif(cfg.anchortype == 2 and _G[cfg.anchorframe]) then	-- anchor to frame
+	elseif (cfg.anchortype == 2 and _G[cfg.anchorframe]) then	-- anchor to frame
 		cb:SetPoint(cb.afrom, _G[cfg.anchorframe], cb.ato, cb.ax / uis, cb.ay / uis);
 	else	-- no anchor
 		cb:SetPoint("CENTER", UIParent, "BOTTOMLEFT", px * xm * mult, py * ym * mult);
@@ -2089,7 +2112,7 @@ function Gnosis:SetupCastbar(cb, bIsChannel, fCurTime)
 	if (bnTS) then
 		cb.bIsTrade = nil;
 
-		if((self.activebars[barname] or self.fadeoutbars[barname])) then
+		if ((self.activebars[barname] or self.fadeoutbars[barname])) then
 			self:CleanupCastbar(cb, true);
 		end
 
@@ -2120,7 +2143,7 @@ function Gnosis:SetupCastbar(cb, bIsChannel, fCurTime)
 	if (notInterruptible) then
 		cb.bar:SetStatusBarColor(unpack(cfg.colBarNI));
 		self:SetBorderColor(cb, cfg.colBorderNI, cfg.colBarBg);
-		if(cfg.bShowShield) then
+		if (cfg.bShowShield) then
 			cb.sicon:Show();
 		else
 			cb.sicon:Hide();
@@ -2174,14 +2197,14 @@ function Gnosis:SetupCastbar(cb, bIsChannel, fCurTime)
 		if (not(cs and cs.ben and cfg.bShowTicks) and cfg.bShowLat) then
 			cb.lb[1]:ClearAllPoints();
 			if (cfg.orient == 2) then
-				cb.lb[1]:SetHeight(cb.barheight * min(self.lag / cb.duration, cfg.latbarsize));
+				cb.lb[1]:SetHeight(cb.barheight * max(min(self.lag / cb.duration, cfg.latbarsize), cfg.latbarfixed));
 				local direction = (cb.channel and (not cfg.bChanAsNorm)) and "BOTTOM" or "TOP";
 				if (cfg.bInvDir) then
 					direction = (direction == "BOTTOM") and "TOP" or "BOTTOM";
 				end				
 				cb.lb[1]:SetPoint(direction);
 			else
-				cb.lb[1]:SetWidth(cb.barwidth * min(self.lag / cb.duration, cfg.latbarsize));
+				cb.lb[1]:SetWidth(cb.barwidth * max(min(self.lag / cb.duration, cfg.latbarsize), cfg.latbarfixed));
 				local direction = (cb.channel and (not cfg.bChanAsNorm)) and "LEFT" or "RIGHT";
 				if (cfg.bInvDir) then
 					direction = (direction == "LEFT") and "RIGHT" or "LEFT";
@@ -2233,9 +2256,9 @@ function Gnosis:CloseAllTradeskillBars()
 	local fCurTime = GetTime() * 1000.0;
 
 	local cb = self:FindCB("player");
-	if(cb) then
+	if (cb) then
 		repeat
-			if(cb.bIsTrade) then
+			if (cb.bIsTrade) then
 				local conf = cb.conf;
 				if(conf.bUnlocked or conf.bShowWNC) then
 					self:CleanupCastbar(cb, fCurTime);
@@ -2293,10 +2316,9 @@ end
 function Gnosis:DrawTicks(cb, cfg)
 	if (cfg.bShowTicks) then
 		-- calculate new tick marker size
-		local valLBperc = ((cfg.unit == "player")
-			--and max(min(self.lag / cb.duration, cfg.latbarsize), cfg.latbarfixed)
-			and min(self.lag / cb.duration, cfg.latbarsize)
-			or cfg.latbarfixed);
+		local valLBperc = (cfg.unit == "player")
+			and max(min(self.lag / cb.duration, cfg.latbarsize), cfg.latbarfixed)
+			or cfg.latbarfixed;
 
 		-- never create latency box larger than half of distance between ticks
 		-- vital for long channels with high number of ticks (e.g. hellfire with 15 ticks)

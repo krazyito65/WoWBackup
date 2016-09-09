@@ -509,7 +509,7 @@ function private:UpdateCooldownsFrame()
 
 		local totalNeeded = 0
 		for _, pc in pairs(potentialCrafts) do
-			if pc.item == info.name then
+			if craft and pc.item == info.name then
 				totalNeeded = totalNeeded + pc.need
 			end
 		end
@@ -549,6 +549,7 @@ function private.SetBlizzardProfessionFrameVisible(visible)
 		TradeSkillFrame_LoadUI()
 		TradeSkillFrame:SetScript("OnHide", private.BlizzardProfessionFrameOnHide)
 		ShowUIPanel(TradeSkillFrame)
+		TradeSkillFrame:OnDataSourceChanged()
 		private:CreateSwitchButton()
 		private.switchBtn:Show()
 		private.switchBtn:Update()
@@ -669,6 +670,7 @@ function private.ProfessionWindowManagerThread(self)
 		if event == "SHOW" then
 			private.ProfessionWindowManagerHandleShowThread(self)
 		elseif event == "SWITCH" then
+			TradeSkill:ClearFilters()
 			private.SetBlizzardProfessionFrameVisible(TSM.db.global.showingDefaultFrame)
 			private.SetTSMCraftingProfessionFrameVisible(not TSM.db.global.showingDefaultFrame)
 		elseif event == "HIDE" then
@@ -703,6 +705,9 @@ function TradeSkill:ClearFilters()
 	C_TradeSkillUI.ClearRecipeSourceTypeFilter()
 	C_TradeSkillUI.SetOnlyShowMakeableRecipes(false)
 	C_TradeSkillUI.SetOnlyShowSkillUpRecipes(false)
+	C_TradeSkillUI.SetOnlyShowLearnedRecipes(true)
+	C_TradeSkillUI.SetOnlyShowUnlearnedRecipes(false)
+	PanelTemplates_SetTab(TradeSkillFrame.RecipeList, 1)
 	if private.frame then
 		-- reset the search bar
 		private.frame.professionsTab.searchBar:SetTextColor(1, 1, 1, 0.5)

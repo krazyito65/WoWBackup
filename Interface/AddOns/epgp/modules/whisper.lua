@@ -25,6 +25,10 @@ function mod:CHAT_MSG_WHISPER(event_name, msg, sender)
     member = sender
   end
 
+  if not string.find(member, "%-") then	
+    member = member .. "-" .. EPGP:GetOurRealmName();
+  end
+
   senderMap[member] = sender
 
   if not EPGP:GetEPGP(member) then

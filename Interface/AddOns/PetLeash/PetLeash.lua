@@ -49,7 +49,9 @@ local defaults = {
             citiesOnly = false,
             onZone = false,
         },
-
+        minimap = {
+            hide = true,
+        },
         sets = {
             ["$Default"] = {
                 name = DEFAULT,

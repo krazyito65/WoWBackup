@@ -27,7 +27,11 @@ VER 3 0000000000000079 " extrabutton" "INV_MISC_QUESTIONMARK"
 /targetlasttarget
 END
 VER 3 000000000000007D " gogo button" "ACHIEVEMENT_GUILDPERK_MOUNTUP"
-/click GoGoButton
+/click [nomod] GoGoButton
+/click [mod:shift] GoGoButton3
+/stopmacro [nomod, mod:shift]
+/script EjectPassengerFromSeat(1)
+/script EjectPassengerFromSeat(2)
 END
 VER 3 0000000000000035 "world marks" "ability_deathknight_hemorrhagicfever"
 /cwm [mod:shift] all

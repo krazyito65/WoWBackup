@@ -88,7 +88,7 @@ Skada.defaults = {
 		showranks=true,
 		setstokeep=10,
 		tooltips=true,
-		tooltippos="default",
+		tooltippos="smart",
 		tooltiprows=3,
 		informativetooltips=true,
 		onlykeepbosses=false,
@@ -151,10 +151,11 @@ function Skada:AddColumnOptions(mod)
 	end
 end
 
-function Skada:AddLoadableModuleCheckbox(mod, name)
+function Skada:AddLoadableModuleCheckbox(mod, name, description)
 	local new = {
 		type = "toggle",
 		name = name,
+        desc=description,
 		order=1,
 	}
 	Skada.options.args.modules.args[mod] = new
@@ -285,7 +286,7 @@ Skada.options = {
 						type="select",
 						name=L["Tooltip position"],
 						desc=L["Position of the tooltips."],
-						values=	{["default"] = L["Default"], ["topright"] = L["Top right"], ["topleft"] = L["Top left"]},
+						values=	{["default"] = L["Default"], ["topright"] = L["Top right"], ["topleft"] = L["Top left"], ["smart"] = L["Smart"]},
 						get=function() return Skada.db.profile.tooltippos end,
 						set=function(self, opt) Skada.db.profile.tooltippos = opt end,
 						order=4,
@@ -431,7 +432,7 @@ Skada.options = {
 						name=L["Data segments to keep"],
 						desc=L["The number of fight segments to keep. Persistent segments are not included in this."],
 						min=0,
-						max=30,
+						max=99,
 						step=1,
 						get=function() return Skada.db.profile.setstokeep end,
 						set=function(self, val) Skada.db.profile.setstokeep = val end,
@@ -525,4 +526,3 @@ Skada.options = {
 			}
 	}
 }
-

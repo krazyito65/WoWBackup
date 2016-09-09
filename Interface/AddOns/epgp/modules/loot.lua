@@ -24,7 +24,12 @@ local ignored_items = {
   [30318] = true, -- Netherstrand Longbow
   [30319] = true, -- Nether Spikes
   [30320] = true, -- Bundle of Nether Spikes
+  [52722] = true, -- Maelstrom Crystal
+  [74248] = true, -- Sha Crystal
   [94222] = true, -- Key to the Palace of Lei Shen  
+  [115504] = true, -- Fractured Temporal Crystal
+  [113588] = true, -- Temporal Crystal
+  [124442] = true, -- Chaos Crystal
 }
 
 local in_combat = false

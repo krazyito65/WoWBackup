@@ -44,6 +44,12 @@ function mod:HideAuraIcons(auras)
 	end
 end
 
+--Allow certain auras with a duration of 0
+local durationOverride = {
+	[146739] = true, --Absolute Corruption (Warlock)
+	[203981] = true, --Soul fragments (Demon Hunter)
+}
+
 function mod:UpdateElement_Auras(frame)
 	local hasBuffs = false
 	local hasDebuffs = false
@@ -83,7 +89,7 @@ function mod:UpdateElement_Auras(frame)
 			while ( frameNum <= maxDebuffs ) do
 				local name, _, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, _, spellId, _, isBossAura = UnitDebuff(frame.displayedUnit, index, filter);
 				if ( name ) then
-					if (unitCaster == mod.playerUnitToken and not frame.Debuffs.shownIDs[spellId] and (duration > 0 or (duration == 0 and spellId == 146739)) and duration <= self.db.units[frame.UnitType].debuffs.filters.maxDuration) then
+					if (unitCaster == mod.playerUnitToken and not frame.Debuffs.shownIDs[spellId] and (duration > 0 or (duration == 0 and durationOverride[spellId])) and duration <= self.db.units[frame.UnitType].debuffs.filters.maxDuration) then
 						local debuffFrame = frame.Debuffs.icons[frameNum];
 						mod:SetAura(debuffFrame, index, name, filter, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, spellId, isBossAura)
 						frameNum = frameNum + 1;
@@ -130,7 +136,7 @@ function mod:UpdateElement_Auras(frame)
 			while ( frameNum <= maxBuffs ) do
 				local name, _, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, _, spellId, _, isBossAura = UnitBuff(frame.displayedUnit, index, filter);
 				if ( name ) then
-					if ( unitCaster == mod.playerUnitToken and not frame.Buffs.shownIDs[spellId] and duration > 0 and duration <= self.db.units[frame.UnitType].buffs.filters.maxDuration ) then
+					if ( unitCaster == mod.playerUnitToken and not frame.Buffs.shownIDs[spellId] and (duration > 0 or (duration == 0 and durationOverride[spellId])) and duration <= self.db.units[frame.UnitType].buffs.filters.maxDuration ) then
 						local buffFrame = frame.Buffs.icons[frameNum];
 						mod:SetAura(buffFrame, index, name, filter, icon, count, debuffType, duration, expirationTime, unitCaster, canStealOrPurge, spellId, isBossAura)
 						frameNum = frameNum + 1;
@@ -205,8 +211,8 @@ function mod:UpdateAuraIcons(auras)
 	local maxAuras = auras.db.numAuras
 	local numCurrentAuras = #auras.icons
 	if numCurrentAuras > maxAuras then
-		for i = auras.db.numAuras, #auras.icons do
-			tinsert(auras.icons[i], auraCache)
+		for i = maxAuras, numCurrentAuras do
+			tinsert(auraCache, auras.icons[i])
 			auras.icons[i]:Hide()
 			auras.icons[i] = nil
 		end
@@ -225,13 +231,13 @@ function mod:UpdateAuraIcons(auras)
 
 		if(auras.side == "LEFT") then
 			if(i == 1) then
-				auras.icons[i]:SetPoint("LEFT", auras, "LEFT")
+				auras.icons[i]:SetPoint("BOTTOMLEFT", auras, "BOTTOMLEFT")
 			else
 				auras.icons[i]:SetPoint("LEFT", auras.icons[i-1], "RIGHT", E.Border + E.Spacing*3, 0)
 			end
 		else
 			if(i == 1) then
-				auras.icons[i]:SetPoint("RIGHT", auras, "RIGHT")
+				auras.icons[i]:SetPoint("BOTTOMRIGHT", auras, "BOTTOMRIGHT")
 			else
 				auras.icons[i]:SetPoint("RIGHT", auras.icons[i-1], "LEFT", -(E.Border + E.Spacing*3), 0)
 			end

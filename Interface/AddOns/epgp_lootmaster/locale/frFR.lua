@@ -260,7 +260,7 @@ L["Specify how many buttons you want to show on your clients. You will need to c
 L["%splease whisper me !epgp need/greed/pass %s [GP bid]  (or use the popup if you have EPGPLootmaster installed)"] = "%sSvp veuillez me /w !epgp besoin/cupidit\195\169/passer %s [GP Offre] ( ou utiliser le popup si vous avez EPGPLootmaster install\195\169)"
 L["%splease whisper me !epgp need/greed/pass %s  (or use the popup if you have EPGPLootmaster installed)"] = "%s s'il te plait whisp moi : !epgp besoin/cupidit\195\169/passe %s (ou utilise la fen\195\170tre EPGPLootmaster si tu l'as install\195\169)"
 L["%s received %s for bank%4$s."] = "%s re\195\167oit %s pour la banque%4$s."
-L["%s received %s for disenchantment%4$s."] = "%s re\195\167oit %s pour le d\195\169senchanter%4%s."
+L["%s received %s for disenchantment%4$s."] = "%s re\195\167oit %s pour le d\195\169senchanter%4$s." -- Needs review
 L["%s received %s for %s GP%s."] = "%s re\195\167oit %s pour %s GP%s."
 L["%s received %s for unknown reason%4$s."] = "%s re\195\167oit %s pour raison inconnue%4$s."
 L["%s rolled %s."] = "%s rand pour %s."

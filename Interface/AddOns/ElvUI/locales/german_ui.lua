@@ -3,9 +3,6 @@ local AceLocale = LibStub:GetLibrary("AceLocale-3.0")
 local L = AceLocale:NewLocale("ElvUI", "deDE")
 if not L then return end
 
---TEMP
-L["A taint has occured that is preventing you from using the queue system. Please reload your user interface and try again."] = "Ein Fehler der dich daran hindert das Warteschlangensystem zu nutzen ist aufgetreten. Bitte lade dein Interface neu und versuche es nochmal."
-
 --*_ADDON locales
 L["INCOMPATIBLE_ADDON"] = "Das Addon %s ist nicht mit dem ElvUI %s Modul kompatibel. Bitte deaktiviere entweder das Addon oder deaktiviere das ElvUI Modul."
 
@@ -36,7 +33,6 @@ L["Trigger"] = "Auslöser"
 L["Bank"] = true;
 L["Deposit Reagents"] = "Reagenzien einlagern"
 L["Hold Control + Right Click:"] = "Halte Steuerung + Rechtsklick:"
-L["Hold Shift + Drag:"] = "Halte Shift + Bewege die Maus:"
 L["Purchase Bags"] = "Taschen kaufen"
 L["Purchase"] = "Kaufen"
 L["Reagent Bank"] = "Reagenzien Bank"
@@ -85,6 +81,7 @@ L["Earned:"] = "Verdient:"
 L["Feet"] = "Füße"
 L["Friends List"] = "Freundesliste"
 L["Friends"] = "Freunde" --Also in Skins
+L["Gold:"] = true;
 L["goldabbrev"] = "|cffffd700g|r" --Also used in gold datatext
 L["Hands"] = "Hände"
 L["Head"] = "Kopf"
@@ -169,7 +166,6 @@ L["Layout"] = "Layout"
 L["Lock"] = "Sperren"
 L["Low Resolution"] = "Niedrige Auflösung"
 L["low"] = "niedrig"
-L["Movers unlocked. Move them now and click Lock when you are done."] = "Ankerpunkte entriegelt. Bewege die Ankerpunkte und klicke 'sperren', wenn du fertig bist."
 L["Nudge"] = "Stoß"
 L["Physical DPS"] = "Physische DPS"
 L["Please click the button below so you can setup variables and ReloadUI."] = "Bitte klicke die Taste unten um den Installationsprozess abzuschließen und das Benutzerinterface neu zu laden."
@@ -231,8 +227,13 @@ L["You don't have permission to mark targets."] = "Du hast keine Rechte um ein Z
 L["Alternative Power"] = "Alternative Energie"
 L["Archeology Progress Bar"] = "Archeologie Fortschrittsleiste"
 L["Arena Frames"] = "Arena Fenster" --Also used in UnitFrames
-L["Artifact Bar"] = "Artifaktleiste"
+L["Artifact Bar"] = "Artefaktleiste"
+L["Bag Mover (Grow Down)"] = "Taschen Anker (Nach unten wachsen)"
+L["Bag Mover (Grow Up)"] = "Taschen Anker (Nach oben wachsen)"
+L["Bag Mover"] = "Taschen Anker"
 L["Bags"] = "Taschen" --Also in DataTexts
+L["Bank Mover (Grow Down)"] = "Bank Anker (Nach unten wachsen)"
+L["Bank Mover (Grow Up)"] = "Bank Anker (Nach oben wachsen)"
 L["Bar "] = "Leiste " --Also in ActionBars
 L["BNet Frame"] = "BNet-Fenster"
 L["Boss Button"] = "Boss Button"
@@ -280,6 +281,12 @@ L["TargetTarget Frame"] = "Ziel des Ziels Fenster" --Also used in UnitFrames
 L["TargetTargetTarget Frame"] = "Ziel des Ziels des Ziels Fenster"
 L["Tooltip"] = "Tooltip"
 L["Vehicle Seat Frame"] = "Fahrzeugfenster"
+L["DESC_MOVERCONFIG"] = [=[Ankerpunkte entriegelt. Bewege die Ankerpunkte und klicke 'sperren', wenn du fertig bist.
+
+Options:
+  Shift + Rechtsklick - Blendet den Anker vorübergehend aus.
+  Strg + Rechtsklick - Setzt den Anker auf Ursprungsposition zurück.
+]=]
 
 --Plugin Installer
 L["ElvUI Plugin Installation"] = true;

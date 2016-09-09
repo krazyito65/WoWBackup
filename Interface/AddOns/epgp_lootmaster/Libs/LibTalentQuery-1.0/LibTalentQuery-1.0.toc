@@ -12,7 +12,7 @@
 ## X-Curse-Project-Name: LibTalentQuery-1.0
 ## X-Curse-Project-ID: libtalentquery-1-0
 ## X-Curse-Repository-ID: wow/libtalentquery-1-0/mainline
-## X-Curse-Packaged-Version: 6.69
+## X-Curse-Packaged-Version: 6.71
 ## X-Curse-Project-Name: EPGPLootmaster
 ## X-Curse-Project-ID: epgp_lootmaster
 ## X-Curse-Repository-ID: wow/epgp_lootmaster/mainline

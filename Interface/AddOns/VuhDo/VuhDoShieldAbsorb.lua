@@ -297,7 +297,9 @@ function VUHDO_parseCombatLogShieldAbsorb(aMessage, aSrcGuid, aDstGuid, aShieldN
 		VUHDO_DEBUFF_SHIELDS[tUnit] = nil;
 		VUHDO_SHIELD_LAST_SOURCE_GUID[tUnit] = nil;
 	elseif VUHDO_IMMEDIATE_HOTS[aShieldName] and VUHDO_ACTIVE_HOTS[aShieldName] and 
-		"SPELL_AURA_APPLIED" == aMessage then
+		("SPELL_AURA_APPLIED" == aMessage or "SPELL_AURA_REMOVED" == aMessage or 
+		 "SPELL_AURA_REFRESH" == aMessage or "SPELL_AURA_BROKEN" == aMessage or 
+		 "SPELL_AURA_BROKEN_SPELL" == aMessage) then
 		VUHDO_updateAllHoTs();
 		VUHDO_updateAllCyclicBouquets(true);
 	end

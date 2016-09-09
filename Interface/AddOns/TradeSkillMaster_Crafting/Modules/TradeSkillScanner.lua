@@ -78,6 +78,16 @@ function private.ScanCurrentProfessionThread(self, args)
 	local professionName, playerName, isLinked = unpack(args)
 	local numTradeSkills = #C_TradeSkillUI.GetFilteredRecipeIDs()
 
+	-- Calculate a hash of learned spells to see if we need to rescan the profession
+	local hashData = {}
+	for _, spellId in ipairs(C_TradeSkillUI.GetFilteredRecipeIDs()) do
+		if C_TradeSkillUI.GetRecipeInfo(spellId).learned then
+			tinsert(hashData, spellId)
+		end
+	end
+	sort(hashData)
+	local hash = TSMAPI.Util:CalculateHash(table.concat(hashData, ";"))
+
 	-- whenever we yield there's a chance that the profession may change
 	-- set a yield invariant so that the thread will be killed if it does
 	self:SetYieldInvariant(function()
@@ -124,7 +134,7 @@ function private.ScanCurrentProfessionThread(self, args)
 
 	-- check if we've scanned this profession successfully within the past 2 hours and it hasn't changed
 	local cacheInfo = TSM.db.factionrealm.professionScanCache[playerName .. professionName]
-	if (not C_TradeSkillUI.IsNPCCrafting()) and cacheInfo and cacheInfo.numTradeSkills == numTradeSkills and cacheInfo.scanTime > time() - 2 * 60 * 60 then
+	if (not C_TradeSkillUI.IsNPCCrafting()) and cacheInfo and cacheInfo.hash == hash and cacheInfo.scanTime > time() - 2 * 60 * 60 then
 		if private.scanThreadCallback then
 			private.scanThreadCallback()
 		end
@@ -133,13 +143,22 @@ function private.ScanCurrentProfessionThread(self, args)
 
 	-- get profession craft info
 	local professionCrafts = {}
+	local toRemove = {}
 	local numYields = 0
 	while true do
 		local numMissing = 0
 		for _, spellId in ipairs(C_TradeSkillUI.GetFilteredRecipeIDs()) do
-			professionCrafts[spellId] = professionCrafts[spellId] or private:GetCraftInfo(spellId)
-			if not professionCrafts[spellId] then
-				numMissing = numMissing + 1
+			local recipeInfo = C_TradeSkillUI.GetRecipeInfo(spellId)
+			if recipeInfo.learned and not toRemove[spellId] then
+				professionCrafts[spellId] = professionCrafts[spellId] or private:GetCraftInfo(spellId)
+				if not professionCrafts[spellId] then
+					numMissing = numMissing + 1
+				end
+				-- check if we have skilled up and have lower ranked recipes to remove
+				if recipeInfo.previousRecipeID then
+					toRemove[recipeInfo.previousRecipeID] = true
+					professionCrafts[recipeInfo.previousRecipeID] = nil
+				end
 			end
 			self:Yield()
 		end
@@ -272,7 +291,7 @@ function private.ScanCurrentProfessionThread(self, args)
 	for itemString, fixedCustomPrice in pairs(fixedMatCosts) do
 		TSM.db.factionrealm.mats[itemString].customValue = fixedCustomPrice
 	end
-	TSM.db.factionrealm.professionScanCache[playerName .. professionName] = { numTradeSkills = numTradeSkills, scanTime = time() }
+	TSM.db.factionrealm.professionScanCache[playerName .. professionName] = { hash = hash, scanTime = time() }
 	if private.scanThreadCallback then
 		private.scanThreadCallback()
 	end

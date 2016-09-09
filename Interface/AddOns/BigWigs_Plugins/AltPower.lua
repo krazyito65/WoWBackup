@@ -170,8 +170,8 @@ do
 				type = "range",
 				name = L.fontSize,
 				order = 5,
-				max = 24,
-				min = 8,
+				max = 200, softMax = 72,
+				min = 1,
 				step = 1,
 				disabled = disabled,
 			},
@@ -369,7 +369,7 @@ do
 			end
 		end)
 
-		local bg = display:CreateTexture(nil, "PARENT")
+		local bg = display:CreateTexture()
 		bg:SetAllPoints(display)
 		bg:SetColorTexture(0, 0, 0, 0.3)
 		display.background = bg

@@ -37,7 +37,12 @@ The following search keywords can also be used:
     • bou : Bind on use items.
     • boe : Bind on equip items.
     • boa : Bind on account items.
-    • quest : Quest bound items.]=];
+    • quest : Quest bound items.
+    • reagents, reagent, crafting : Profession reagents.
+    • naval : Naval equipment.
+    • follower, followe, follow : Follower items.
+    • relic, reli, rel : Artifact Relics.
+    • power, powe, pow : Items granting Artifact Power.]=];
 L["TEXT_FORMAT_DESC"] = [=[Proporciona una cadena para cambiar el formato de texto.
 
 Ejemplos:
@@ -59,16 +64,6 @@ Formatos de Nombre:
 'name:long' - Nombre restringido a 20 caracteres
 
 Para desactivarlo dejar el campo en blanco, si necesitas más información visita http://www.tukui.org]=];
-L["IGNORE_ITEMS_DESC"] = [=[Valid entries:
-
-Item links or item names
-
-Terms from Search Syntax. Examples:
-q:epic
-s:Tank Set
-q:epic&lvl:>300
-
-See "Bags->Search Syntax" for more.]=];
 
 --ActionBars
 L["Action Paging"] = "Paginación"
@@ -83,8 +78,10 @@ L["Button Spacing"] = "Separación de Botones"
 L["Buttons Per Row"] = "Botones por Fila"
 L["Buttons"] = "Botones"
 L["Change the alpha level of the frame."] = "Cambia el nivel de transparencia del marco"
+L["Color of the actionbutton when not usable."] = true;
 L["Color of the actionbutton when out of power (Mana, Rage, Focus, Holy Power)."] = "Color del botón cuando no tengas poder (Mana, Ira, Enfoque, Poder Sagrado)"
 L["Color of the actionbutton when out of range."] = "Color del botón cuando el objetivo esté fuera de rango"
+L["Color of the actionbutton when usable."] = true;
 L["Color when the text is about to expire"] = "Color del texto cuando esté a punto de expirar."
 L["Color when the text is in the days format."] = "Color del texto cuando tenga formato de días."
 L["Color when the text is in the hours format."] = "Color del texto cuando tenga formato de horas."
@@ -114,6 +111,7 @@ L["Masque Support"] = true;
 L["Minutes"] = "Minutos"
 L["Mouse Over"] = "Pasar el ratón sobre"
 L["Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop."] = "Multiplica el ancho o alto de los fondos por este valor. Es útil si deseas tener más de una barra con fondo."
+L["Not Usable"] = true;
 L["Out of Power"] = "Sin Poder"
 L["Out of Range"] = "Fuera de Rango"
 L["Restore Bar"] = "Restaurar Barra"
@@ -130,6 +128,7 @@ L["This setting will be updated upon changing stances."] = true;
 L["Threshold before text turns red and is in decimal form. Set to -1 for it to never turn red"] = "Umbral para que el texto se ponga rojo y esté en forma decimal. Establécelo en -1 para que nunca se ponga rojo"
 L["Toggles the display of the actionbars backdrop."] = "Muestra/Oculta el fondo de las barras de acción."
 L["Transparency level when not in combat, no target exists, full health, not casting, and no focus target exists."] = true;
+L["Usable"] = true;
 L["Visibility State"] = "Estado de Visibilidad"
 L["Width Multiplier"] = "Multiplicador de Anchura"
 L[ [=[This works like a macro, you can run different situations to get the actionbar to page differently.
@@ -140,10 +139,11 @@ L[ [=[This works like a macro, you can run different situations to get the actio
  Ejemplo: '[combat] show;hide']=]
 
 --Bags
+L["Add an item or search syntax to the ignored list. Items matching the search syntax will be ignored."] = true;
+L["Add Item or Search Syntax"] = true;
 L["Adjust the width of the bag frame."] = "Ajustar el ancho del marco de las bolsas."
 L["Adjust the width of the bank frame."] = "Ajustar el ancho del marco del banco."
 L["Align the width of the bag frame to fit inside the chat box."] = "Alinea el ancho del marco de las bolsas para que quepa dentro del chat"
-L["Align To Chat"] = "Alinear al chat"
 L["Ascending"] = "Ascendente"
 L["Bag Sorting"] = true;
 L["Bag-Bar"] = "Barra de las Bolsas"
@@ -162,13 +162,13 @@ L["Displays item level on equippable items."] = true;
 L["Enable/Disable the all-in-one bag."] = "Habilitar/Deshabilitar la bolsa todo en uno."
 L["Enable/Disable the Bag-Bar."] = "Activa/Desactiva la barra de las bolsas."
 L["Full"] = true;
+L["Here you can add items or search terms that you want to be excluded from sorting. To remove an item just click on its name in the list."] = true;
 L["Icons and Text (Short)"] = true;
 L["Icons and Text"] = "Iconos y Texto"
-L["Ignore Items"] = "Ignorar Objetos"
+L["Ignored Items and Search Syntax"] = true;
 L["Item Count Font"] = true;
 L["Item Level Threshold"] = true;
 L["Item Level"] = true;
-L["Items in this list or items that match any Search Syntax query in this list will be ignored when sorting. Separate each entry with a comma."] = true;
 L["Money Format"] = true;
 L["Panel Width (Bags)"] = "Ancho del Panel (Bolsas)"
 L["Panel Width (Bank)"] = "Ancho del Panel (Banco)"
@@ -194,10 +194,6 @@ L["This makes the item level display more reliable but uses more resources. If t
 L["Top to Bottom"] = "De Arriba hacia Abajo"
 L["Use coin icons instead of colored text."] = true;
 L["Use Tooltip Scanning"] = true;
-L["X Offset Bags"] = true;
-L["X Offset Bank"] = true;
-L["Y Offset Bags"] = true;
-L["Y Offset Bank"] = true;
 
 --Buffs and Debuffs
 L["Begin a new row or column after this many auras."] = "Empieza una nueva fila o columna después de estas auras."
@@ -240,6 +236,7 @@ L["Chat EditBox Position"] = "Posición del Cuadro de Edición del Chat"
 L["Chat History"] = "Historial de Chat"
 L["Class Color Mentions"] = true;
 L["Copy Text"] = "Copiar Texto"
+L["Custom Timestamp Color"] = true;
 L["Display LFG Icons in group chat."] = true;
 L["Display the hyperlink tooltip while hovering over a hyperlink."] = "Muestra la descripción emergente del enlace cuando pasas el cursor sobre él."
 L["Enable the use of separate size options for the right chat panel."] = true;
@@ -287,6 +284,7 @@ L["Tab Font Size"] = "Tamaño de Fuente de la Pestaña"
 L["Tab Font"] = "Fuente de la Pestaña"
 L["Tab Panel Transparency"] = "Transparencia del Panel de Pestañas"
 L["Tab Panel"] = "Panel de Pestañas"
+L["Timestamp Color"] = true;
 L["Toggle showing of the left and right chat panels."] = "Muestra/Oculta los paneles de chat izquierdo y derecho."
 L["Toggle the chat tab panel backdrop."] = "Muestra/oculta el fondo del panel de pestañas"
 L["URL Links"] = "Enlaces URL"
@@ -323,7 +321,9 @@ L["Testing:"] = "Pruebas:"
 
 --DataBars
 L["DATABAR_DESC"] = "Setup on-screen display of information bars."
+L["Current - Remaining"] = true;
 L["DataBars"] = true;
+L["Hide in Combat"] = true;
 
 --DataTexts
 L["24-Hour Time"] = "Tiempo de 24 horas"
@@ -335,7 +335,6 @@ L["Blocks datatext tooltip from showing in combat."] = true;
 L["BottomLeftMiniPanel"] = "Minimap BottomLeft (Inside)"
 L["BottomMiniPanel"] = "Minimap Bottom (Inside)"
 L["BottomRightMiniPanel"] = "Minimap BottomRight (Inside)"
-L["Change settings for the display of the location text that is on the minimap."] = "Cambia la configuración para mostrar el texto de ubicación que está en el minimapa."
 L["Datatext Panel (Left)"] = "Panel Izquierdo de los Datos de texto"
 L["Datatext Panel (Right)"] = "Panel Derecho de los Datos de texto"
 L["DataTexts"] = "Textos de Datos"
@@ -375,7 +374,6 @@ L["You must be targeting a player."] = "Debes enfocar a un jugador."
 --General
 L["Accept Invites"] = "Aceptar Invitaciones"
 L["Adjust the position of the threat bar to either the left or right datatext panels."] = "Ajusta la posición de la barra de amenaza a la izquierda o derecha de los paneles de texto de datos."
-L["Adjust the size of the minimap."] = "Ajusta el tamaño del minimapa."
 L["AFK Mode"] = true;
 L["Animate Config"] = true;
 L["Announce Interrupts"] = "Anunciar Interrupciones"
@@ -395,6 +393,7 @@ L["Bottom Panel"] = "Panel Inferior"
 L["Chat Bubbles Style"] = true;
 L["Chat Bubbles"] = true;
 L["Direction the bar moves on gains/losses"] = true;
+L["Disable OrderHall Bar"] = true;
 L["Disable Tutorial Buttons"] = true;
 L["Disables the tutorial button found on some frames."] = true;
 L["Display a panel across the bottom of the screen. This is for cosmetic only."] = "Despliega un panel a través de la parte inferior de la pantalla. Es es sólo algo cosmético."
@@ -404,7 +403,6 @@ L["Display emotion icons in chat."] = "Muestra emoticonos en el chat."
 L["Emotion Icons"] = "Emoticonos"
 L["Enable/Disable the loot frame."] = "Activa/Desactiva el marco de botín."
 L["Enable/Disable the loot roll frame."] = "Activa/Desactiva el marco de sorteo de botín."
-L["Enable/Disable the minimap. |cffFF0000Warning: This will prevent you from seeing the minimap datatexts.|r"] = true;
 L["Enhanced PVP Messages"] = true;
 L["General"] = "General"
 L["Height of the objective tracker. Increase size to be able to see more objectives."] = true;
@@ -416,14 +414,14 @@ L["Log Taints"] = "Registro Exhaustivo"
 L["Login Message"] = "Mensaje de inicio"
 L["Loot Roll"] = "Marco de Botín"
 L["Loot"] = "Botín"
-L["Make the world map smaller."] = true;
+L["Lowest Allowed UI Scale"] = true;
 L["Multi-Monitor Support"] = true;
 L["Name Font"] = "Fuente para Nombres"
+L["Number Prefix"] = true;
 L["Objective Frame Height"] = true;
 L["Party / Raid"] = true;
 L["Party Only"] = true;
 L["Position of bonus quest reward frame relative to the objective tracker."] = true;
-L["Puts coordinates on the world map."] = true;
 L["Raid Only"] = true;
 L["Remove Backdrop"] = "Quitar Fondo"
 L["Reset all frames to their original positions."] = "Coloca todos los marcos en sus posiciones originales"
@@ -433,7 +431,6 @@ L["Send ADDON_ACTION_BLOCKED errors to the Lua Error frame. These errors are les
 L["Skin Backdrop (No Borders)"] = true;
 L["Skin Backdrop"] = "Apariencia del Fondo"
 L["Skin the blizzard chat bubbles."] = "Modificar la apariencia de las Burbujas de Chat de Blizzard"
-L["Smaller World Map"] = true;
 L["Talking Head Scale"] = true;
 L["The font that appears on the text above players heads. |cffFF0000WARNING: This requires a game restart or re-log for this change to take effect.|r"] = "Cambia la fuente del texto que aparece encima de las cabezas de los jugadores. |cffFF0000AVISO: Esto requiere que reinicies el juego o reconectes."
 L["The Thin Border Theme option will change the overall apperance of your UI. Using Thin Border Theme is a slight performance increase over the traditional layout."] = true;
@@ -441,9 +438,6 @@ L["Thin Border Theme"] = true;
 L["Toggle Tutorials"] = "Mostrar/Ocultar Tutoriales"
 L["Top Panel"] = "Panel Superior"
 L["When you go AFK display the AFK screen."] = true;
-L["World Map Coordinates"] = true;
-L["X-Offset"] = true;
-L["Y-Offset"] = true;
 
 --Media
 L["Applies the font and font size settings throughout the entire user interface. Note: Some font size settings will be skipped due to them having a smaller font size by default."] = true;
@@ -475,22 +469,34 @@ L["The texture that will be used mainly for statusbars."] = "La textura que se u
 L["This texture will get used on objects like chat windows and dropdown menus."] = "Esta textura se usará en objetos como las ventanas de chat y menús desplegables."
 L["Value Color"] = "Color de Dato"
 
---Minimap
+--Maps
+L["Adjust the size of the minimap."] = "Ajusta el tamaño del minimapa."
 L["Always Display"] = "Mostrar Siempre"
 L["Bottom Left"] = true;
 L["Bottom Right"] = true;
 L["Bottom"] = true;
+L["Change settings for the display of the location text that is on the minimap."] = "Cambia la configuración para mostrar el texto de ubicación que está en el minimapa."
+L["Enable/Disable the minimap. |cffFF0000Warning: This will prevent you from seeing the minimap datatexts.|r"] = true;
 L["Instance Difficulty"] = true;
 L["Left"] = "Izquierda"
 L["LFG Queue"] = true;
 L["Location Text"] = "Texto de Ubicación"
+L["Make the world map smaller."] = true;
+L["Map Opacity When Moving"] = true;
+L["Maps"] = "Mapas";
 L["Minimap Buttons"] = true;
 L["Minimap Mouseover"] = "Ratón por encima del Minimapa"
+L["Open Ticket"] = true;
+L["Puts coordinates on the world map."] = true;
 L["Right"] = "Derecha"
 L["Scale"] = true;
+L["Smaller World Map"] = true;
 L["Top Left"] = true;
 L["Top Right"] = true;
 L["Top"] = true;
+L["World Map Coordinates"] = true;
+L["X-Offset"] = true;
+L["Y-Offset"] = true;
 
 --Misc
 L["Install"] = "Instalar"
@@ -513,10 +519,14 @@ L["Cast Color"] = true;
 L["Cast No Interrupt Color"] = true;
 L["Clamp nameplates to the top of the screen when outside of view."] = true;
 L["Clamp Nameplates"] = true;
+L["Clickable Height"] = true;
+L["Clickable Width"] = true;
 L["Color Tanked"] = true;
 L["Control enemy nameplates toggling on or off when in combat."] = true;
 L["Control friendly nameplates toggling on or off when in combat."] = true;
+L["Controls how big of an area on the screen will accept clicks to target unit."] = true;
 L["Controls how many auras are displayed, this will also affect the size of the auras."] = true;
+L["Controls which nameplates will be displayed."] = true;
 L["Copy settings from another unit."] = true;
 L["Copy Settings From"] = true;
 L["Default Settings"] = true;
@@ -524,6 +534,7 @@ L["Display a healer icon over known healers inside battlegrounds or arenas."] = 
 L["Display Minions"] = true;
 L["Display Minor Units"] = true;
 L["Display NPC Titles whenever healthbars arent displayed and names are."] = true;
+L["Display Style"] = true;
 L["Enable/Disable the scaling of targetted nameplates."] = true;
 L["Enemy Combat Toggle"] = true;
 L["Enemy NPC Frames"] = true;
@@ -534,11 +545,14 @@ L["Filters"] = "Filtros"
 L["Friendly Combat Toggle"] = true;
 L["Friendly NPC Frames"] = true;
 L["Friendly Player Frames"] = true;
+L["General Options"] = true;
 L["Good Color"] = true;
 L["Good Scale"] = true;
 L["Good Transition Color"] = true;
 L["Healer Frames"] = true;
 L["Healer Icon"] = "Icono de Sanador"
+L["Hide Spell Name"] = true;
+L["Hide Time"] = true;
 L["Hide"] = "Ocultar"
 L["Icon Base Height"] = true;
 L["Load Distance"] = true;
@@ -547,7 +561,6 @@ L["Make the unitframe glow yellow when it is below this percent of health, it wi
 L["NamePlates"] = "Placas de Nombre"
 L["Non-Target Transparency"] = true;
 L["Only load nameplates for units within this range."] = true;
-L["Only show a nameplate for the unit you have targetted."] = true;
 L["Only Show Target"] = true;
 L["Personal Auras"] = true;
 L["Player Nameplate"] = true;
@@ -557,16 +570,19 @@ L["Scale of the nameplate that is targetted."] = true;
 L["Set Settings to Default"] = true;
 L["Set the transparency level of nameplates that are not the target nameplate."] = true;
 L["Set to either stack nameplates vertically or allow them to overlap."] = true;
+L["Shortcuts"] = true;
 L["Show NPC Titles"] = true;
 L["Tagged NPC"] = true;
 L["Tanked Color"] = true;
 L["Target Scale"] = true;
+L["Target, Quest, Combat"] = true;
 L["Targeted Nameplate"] = true;
 L["Threat"] = "Amenaza"
 L["Toggle Off While In Combat"] = true;
 L["Toggle On While In Combat"] = true;
 L["Use Class Color"] = true;
 L["Use Tanked Color when a nameplate is being effectively tanked by another tank."] = true;
+L["Use Target Glow"] = true;
 L["Use Target Scale"] = true;
 L["Use Threat Color"] = true;
 
@@ -628,7 +644,6 @@ L["Mail Frame"] = "Correo"
 L["Merchant Frame"] = "Mercader"
 L["Mirror Timers"] = true;
 L["Misc Frames"] = "Misceláneos"
-L["Mounts & Pets"] = "Monturas y Mascotas"
 L["Non-Raid Frame"] = "No-Banda"
 L["Orderhall"] = true;
 L["Pet Battle"] = "Combate de Mascotas"
@@ -991,7 +1006,6 @@ L["Spec Icon"] = "Icono de Especialidad"
 L["Spell not found in list."] = "Hechizo no encontrado en la lista."
 L["Stack Counter"] = true;
 L["Stack Threshold"] = true;
-L["Stagger Bar"] = "Barra de Tambaleo"
 L["Start Near Center"] = "Comenzar Cerca del Centro"
 L["Statusbar Fill Orientation"] = true;
 L["StatusBar Texture"] = "Textura de la Barra de Estado"

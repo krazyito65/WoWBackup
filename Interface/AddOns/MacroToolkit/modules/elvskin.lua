@@ -159,12 +159,14 @@ function MT:LoadElvSkin(frame)
 		MacroToolkitPopupCancel:SetPoint("BOTTOMRIGHT", -11, 9)
 		MacroToolkitPopupOk:ClearAllPoints()
 		MacroToolkitPopupOk:SetPoint("RIGHT", MacroToolkitPopupCancel, "LEFT", -6, 0)
+		MacroToolkitPopupGoLarge:ClearAllPoints()
+		MacroToolkitPopupGoLarge:SetPoint("TOPRIGHT", -13, -59)
 		MacroToolkitPopup:HookScript("OnShow",
 			function(this)
 				this:ClearAllPoints()
 				this:SetPoint("TOPLEFT", MacroToolkitFrame, "TOPRIGHT", 5, -2)
 			end)
-		buttons = {"MacroToolkitPopupOk", "MacroToolkitPopupCancel"}
+		buttons = {"MacroToolkitPopupOk", "MacroToolkitPopupCancel", "MacroToolkitPopupGoLarge"}
 	end
 	
 	if frame == MacroToolkitBindingFrame then

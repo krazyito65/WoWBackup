@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ]]
 local MAJOR_VERSION = "LibActionButton-1.0-ElvUI"
-local MINOR_VERSION = 4
+local MINOR_VERSION = 6
 
 if not LibStub then error(MAJOR_VERSION .. " requires LibStub.") end
 local lib, oldversion = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
@@ -42,6 +42,7 @@ local _G = _G
 local type, error, tostring, tonumber, assert, select = type, error, tostring, tonumber, assert, select
 local setmetatable, wipe, unpack, pairs, next = setmetatable, wipe, unpack, pairs, next
 local str_match, format, tinsert, tremove = string.match, format, tinsert, tremove
+local C_ToyBox = C_ToyBox
 
 -- Global vars/functions that we don't upvalue since they might get hooked, or upgraded
 -- List them here for Mikk's FindGlobals script
@@ -97,6 +98,9 @@ local Item_MT = {__index = Item}
 local Macro = setmetatable({}, {__index = Generic})
 local Macro_MT = {__index = Macro}
 
+local Toy = setmetatable({}, {__index = Generic})
+local Toy_MT = {__index = Toy}
+
 local Custom = setmetatable({}, {__index = Generic})
 local Custom_MT = {__index = Custom}
 
@@ -107,6 +111,7 @@ local type_meta_map = {
 	spell  = Spell_MT,
 	item   = Item_MT,
 	macro  = Macro_MT,
+	toy    = Toy_MT,
 	custom = Custom_MT
 }
 
@@ -124,9 +129,12 @@ local DefaultConfig = {
 	outOfRangeColoring = "button",
 	tooltip = "enabled",
 	showGrid = false,
+	useColoring = true,
 	colors = {
 		range = { 0.8, 0.1, 0.1 },
 		mana = { 0.5, 0.5, 1.0 },
+		usable = { 1.0, 1.0, 1.0 },
+		notUsable = { 0.4, 0.4, 0.4 },
 	},
 	hideElements = {
 		macro = false,
@@ -1165,22 +1173,24 @@ function UpdateButtonState(self)
 end
 
 function UpdateUsable(self)
-	-- TODO: make the colors configurable
-	-- TODO: allow disabling of the whole recoloring
-	if self.config.outOfRangeColoring == "button" and self.outOfRange then
-		self.icon:SetVertexColor(unpack(self.config.colors.range))
-	else
-		local isUsable, notEnoughMana = self:IsUsable()
-		if isUsable then
-			self.icon:SetVertexColor(1.0, 1.0, 1.0)
-			--self.NormalTexture:SetVertexColor(1.0, 1.0, 1.0)
-		elseif notEnoughMana then
-			self.icon:SetVertexColor(unpack(self.config.colors.mana))
-			--self.NormalTexture:SetVertexColor(0.5, 0.5, 1.0)
+	if self.config.useColoring then
+		if self.config.outOfRangeColoring == "button" and self.outOfRange then
+			self.icon:SetVertexColor(unpack(self.config.colors.range))
 		else
-			self.icon:SetVertexColor(0.4, 0.4, 0.4)
-			--self.NormalTexture:SetVertexColor(1.0, 1.0, 1.0)
+			local isUsable, notEnoughMana = self:IsUsable()
+			if isUsable then
+				self.icon:SetVertexColor(unpack(self.config.colors.usable))
+				--self.NormalTexture:SetVertexColor(1.0, 1.0, 1.0)
+			elseif notEnoughMana then
+				self.icon:SetVertexColor(unpack(self.config.colors.mana))
+				--self.NormalTexture:SetVertexColor(0.5, 0.5, 1.0)
+			else
+				self.icon:SetVertexColor(unpack(self.config.colors.notUsable))
+				--self.NormalTexture:SetVertexColor(1.0, 1.0, 1.0)
+			end
 		end
+	else
+		self.icon:SetVertexColor(unpack(self.config.colors.usable))
 	end
 	lib.callbacks:Fire("OnButtonUsable", self)
 end
@@ -1558,6 +1568,24 @@ Macro.IsConsumableOrStackable = function(self) return nil end
 Macro.IsUnitInRange           = function(self, unit) return nil end
 Macro.SetTooltip              = function(self) return nil end
 Macro.GetSpellId              = function(self) return nil end
+
+-----------------------------------------------------------
+--- Toy Button
+Toy.HasAction               = function(self) return true end
+Toy.GetActionText           = function(self) return "" end
+Toy.GetTexture              = function(self) return select(3, C_ToyBox.GetToyInfo(self._state_action)) end
+Toy.GetCharges              = function(self) return nil end
+Toy.GetCount                = function(self) return 0 end
+Toy.GetCooldown             = function(self) return GetItemCooldown(self._state_action) end
+Toy.IsAttack                = function(self) return nil end
+Toy.IsEquipped              = function(self) return nil end
+Toy.IsCurrentlyActive       = function(self) return nil end
+Toy.IsAutoRepeat            = function(self) return nil end
+Toy.IsUsable                = function(self) return nil end
+Toy.IsConsumableOrStackable = function(self) return nil end
+Toy.IsUnitInRange           = function(self, unit) return nil end
+Toy.SetTooltip              = function(self) return GameTooltip:SetToyByItemID(self._state_action) end
+Toy.GetSpellId              = function(self) return nil end
 
 -----------------------------------------------------------
 --- Custom Button

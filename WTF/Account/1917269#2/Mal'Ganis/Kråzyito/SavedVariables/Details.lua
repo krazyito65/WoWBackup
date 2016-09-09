@@ -19,8 +19,8 @@ _detalhes_database = {
 		["tabelas"] = {
 		},
 	},
-	["last_day"] = "08",
-	["combat_counter"] = 625,
+	["last_day"] = "29",
+	["combat_counter"] = 629,
 	["plugin_database"] = {
 		["DETAILS_PLUGIN_DAMAGE_RANK"] = {
 			["lasttry"] = {
@@ -28,8 +28,8 @@ _detalhes_database = {
 			["annouce"] = true,
 			["dpshistory"] = {
 			},
-			["author"] = "Details! Team",
 			["dps"] = 0,
+			["author"] = "Details! Team",
 			["level"] = 1,
 			["enabled"] = true,
 		},
@@ -72,9 +72,114 @@ _detalhes_database = {
 			["author"] = "Details! Team",
 			["window_scale"] = 1,
 		},
-		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
+		["DETAILS_PLUGIN_CHART_VIEWER"] = {
 			["enabled"] = true,
 			["author"] = "Details! Team",
+			["tabs"] = {
+				{
+					["name"] = "Your Damage",
+					["segment_type"] = 2,
+					["version"] = "v2.0",
+					["data"] = "Player Damage Done",
+					["texture"] = "line",
+				}, -- [1]
+				{
+					["version"] = "v2.0",
+					["iType"] = "raid-TANK",
+					["options"] = {
+						["iType"] = "raid-TANK",
+						["name"] = "Tanks Damage Taken",
+					},
+					["segment_type"] = 1,
+					["name"] = "Tanks Damage Taken",
+					["data"] = "PRESET_TANK_TAKEN",
+					["texture"] = "line",
+				}, -- [2]
+				["last_selected"] = 2,
+			},
+			["options"] = {
+				["auto_create"] = true,
+				["show_method"] = 4,
+				["window_scale"] = 1,
+			},
+		},
+		["DETAILS_PLUGIN_TINY_THREAT"] = {
+			["updatespeed"] = 1,
+			["animate"] = false,
+			["showamount"] = false,
+			["useplayercolor"] = false,
+			["useclasscolors"] = false,
+			["author"] = "Details! Team",
+			["playercolor"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+			},
+			["enabled"] = true,
+		},
+		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
+			["font_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["is_first_run"] = false,
+			["arrow_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
+			["main_frame_size"] = {
+				250, -- [1]
+				230, -- [2]
+			},
+			["minimap"] = {
+				["minimapPos"] = 240.783009177893,
+				["radius"] = 160,
+				["hide"] = false,
+			},
+			["arrow_anchor_x"] = 0,
+			["row_texture"] = "Details Serenity",
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
+			},
+			["main_frame_locked"] = false,
+			["enabled"] = false,
+			["arrow_size"] = 10,
+			["author"] = "Details! Team",
+			["row_spacement"] = 21,
+			["main_frame_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.2, -- [4]
+			},
+			["main_frame_strata"] = "LOW",
+			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
+			["font_size"] = 10,
+			["per_second"] = {
+				["enabled"] = false,
+				["point"] = "CENTER",
+				["scale"] = 1.5,
+				["font_shadow"] = true,
+				["y"] = 0,
+				["update_speed"] = 0.05,
+				["size"] = 32,
+				["x"] = 0,
+				["attribute_type"] = 1,
+			},
+			["x"] = 8.75213241577149,
+			["font_face"] = "Friz Quadrata TT",
+			["arrow_anchor_y"] = 0,
+			["y"] = -57.9828643798828,
+			["point"] = "LEFT",
+			["row_height"] = 20,
+			["scale"] = 1,
 		},
 		["DETAILS_PLUGIN_YANP"] = {
 			["enabled"] = true,
@@ -1311,58 +1416,24 @@ _detalhes_database = {
 			},
 			["shown_time"] = 30,
 		},
-		["DETAILS_PLUGIN_CHART_VIEWER"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-			["tabs"] = {
-				{
-					["name"] = "Your Damage",
-					["segment_type"] = 2,
-					["version"] = "v2.0",
-					["data"] = "Player Damage Done",
-					["texture"] = "line",
-				}, -- [1]
-				{
-					["version"] = "v2.0",
-					["iType"] = "raid-TANK",
-					["options"] = {
-						["iType"] = "raid-TANK",
-						["name"] = "Tanks Damage Taken",
-					},
-					["segment_type"] = 1,
-					["name"] = "Tanks Damage Taken",
-					["data"] = "PRESET_TANK_TAKEN",
-					["texture"] = "line",
-				}, -- [2]
-				["last_selected"] = 2,
-			},
-			["options"] = {
-				["auto_create"] = true,
-				["show_method"] = 4,
-				["window_scale"] = 1,
-			},
-		},
-		["DETAILS_PLUGIN_TINY_THREAT"] = {
-			["updatespeed"] = 1,
-			["showamount"] = false,
-			["animate"] = false,
-			["useplayercolor"] = false,
-			["useclasscolors"] = false,
-			["author"] = "Details! Team",
-			["playercolor"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-			},
-			["enabled"] = true,
-		},
-		["DETAILS_PLUGIN_DPS_TUNING"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-			["SpellBarsShowType"] = 1,
-		},
 		["DETAILS_PLUGIN_TIME_LINE"] = {
 			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
+		["DETAILS_PLUGIN_TIME_ATTACK"] = {
+			["enabled"] = true,
+			["realm_last_shown"] = 40,
+			["saved_as_anonymous"] = true,
+			["recently_as_anonymous"] = true,
+			["dps"] = 0,
+			["disable_sharing"] = false,
+			["history"] = {
+			},
+			["time"] = 40,
+			["history_lastindex"] = 0,
+			["realm_lastamt"] = 0,
+			["realm_history"] = {
+			},
 			["author"] = "Details! Team",
 		},
 		["DETAILS_PLUGIN_VANGUARD"] = {
@@ -1383,6 +1454,11 @@ _detalhes_database = {
 			["enabled"] = true,
 			["author"] = "Details! Team",
 		},
+		["DETAILS_PLUGIN_DPS_TUNING"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["SpellBarsShowType"] = 1,
+		},
 		["DETAILS_PLUGIN_RAIDCHECK"] = {
 			["enabled"] = true,
 			["pre_pot_tanks"] = false,
@@ -1391,93 +1467,17 @@ _detalhes_database = {
 			["use_report_panel"] = true,
 			["pre_pot_healers"] = false,
 		},
-		["DETAILS_PLUGIN_TIME_ATTACK"] = {
+		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
 			["enabled"] = true,
-			["realm_last_shown"] = 40,
-			["saved_as_anonymous"] = true,
-			["recently_as_anonymous"] = true,
-			["dps"] = 0,
-			["disable_sharing"] = false,
-			["history"] = {
-			},
-			["time"] = 40,
-			["history_lastindex"] = 0,
-			["realm_lastamt"] = 0,
-			["realm_history"] = {
-			},
 			["author"] = "Details! Team",
-		},
-		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
-			["font_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["is_first_run"] = false,
-			["arrow_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
-			["main_frame_size"] = {
-				250, -- [1]
-				230, -- [2]
-			},
-			["minimap"] = {
-				["minimapPos"] = 240.783009177893,
-				["radius"] = 160,
-				["hide"] = false,
-			},
-			["arrow_anchor_x"] = 0,
-			["row_texture"] = "Details Serenity",
-			["main_frame_strata"] = "LOW",
-			["main_frame_locked"] = false,
-			["enabled"] = false,
-			["arrow_size"] = 10,
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
-			["row_spacement"] = 21,
-			["main_frame_color"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.2, -- [4]
-			},
-			["author"] = "Details! Team",
-			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["y"] = -57.9828643798828,
-			["font_size"] = 10,
-			["x"] = 8.75213241577149,
-			["font_face"] = "Friz Quadrata TT",
-			["arrow_anchor_y"] = 0,
-			["per_second"] = {
-				["enabled"] = false,
-				["point"] = "CENTER",
-				["scale"] = 1.5,
-				["font_shadow"] = true,
-				["y"] = 0,
-				["update_speed"] = 0.05,
-				["size"] = 32,
-				["x"] = 0,
-				["attribute_type"] = 1,
-			},
-			["point"] = "LEFT",
-			["row_height"] = 20,
-			["scale"] = 1,
 		},
 	},
 	["last_encounter"] = "Jin'rokh the Breaker",
 	["character_data"] = {
-		["logons"] = 79,
+		["logons"] = 81,
 	},
 	["nick_tag_cache"] = {
-		["nextreset"] = 1471729151,
+		["nextreset"] = 1473811035,
 		["last_version"] = 8,
 	},
 	["last_instance_time"] = 1469989011,
@@ -1605,7 +1605,7 @@ _detalhes_database = {
 			},
 		},
 	},
-	["last_version"] = "v5.15",
+	["last_version"] = "v5.21",
 	["local_instances_config"] = {
 		{
 			["segment"] = 0,

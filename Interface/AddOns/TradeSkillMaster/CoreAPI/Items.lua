@@ -17,18 +17,18 @@ STATIC_DATA.weaponClassName = GetItemClassInfo(LE_ITEM_CLASS_WEAPON)
 STATIC_DATA.armorClassName = GetItemClassInfo(LE_ITEM_CLASS_ARMOR)
 -- Needed because NUM_LE_ITEM_CLASSS contains an erroneous value
 local ITEM_CLASS_IDS = {
-    LE_ITEM_CLASS_WEAPON,
-    LE_ITEM_CLASS_ARMOR,
-    LE_ITEM_CLASS_CONTAINER,
-    LE_ITEM_CLASS_GEM,
-    LE_ITEM_CLASS_ITEM_ENHANCEMENT,
-    LE_ITEM_CLASS_CONSUMABLE,
-    LE_ITEM_CLASS_GLYPH,
-    LE_ITEM_CLASS_TRADEGOODS,
-    LE_ITEM_CLASS_RECIPE,
-    LE_ITEM_CLASS_BATTLEPET,
-    LE_ITEM_CLASS_QUESTITEM,
-    LE_ITEM_CLASS_MISCELLANEOUS
+	LE_ITEM_CLASS_WEAPON,
+	LE_ITEM_CLASS_ARMOR,
+	LE_ITEM_CLASS_CONTAINER,
+	LE_ITEM_CLASS_GEM,
+	LE_ITEM_CLASS_ITEM_ENHANCEMENT,
+	LE_ITEM_CLASS_CONSUMABLE,
+	LE_ITEM_CLASS_GLYPH,
+	LE_ITEM_CLASS_TRADEGOODS,
+	LE_ITEM_CLASS_RECIPE,
+	LE_ITEM_CLASS_BATTLEPET,
+	LE_ITEM_CLASS_QUESTITEM,
+	LE_ITEM_CLASS_MISCELLANEOUS
 }
 
 for _, classId in ipairs(ITEM_CLASS_IDS) do
@@ -82,7 +82,8 @@ local GET_PET_INFO_KEYS = {
 for key in pairs(GET_ITEM_INFO_INSTANT_KEYS) do
 	TSMAPI:Assert(GET_ITEM_INFO_KEYS[key])
 end
-TSMAPI.Item.MAX_REQUESTS_PENDING = 200 -- allow this to be configured via /run
+local MAX_REQUESTS_PENDING = 200
+local UPGRADE_VALUE_SHIFT = 1000000
 
 
 -- ============================================================================
@@ -194,43 +195,38 @@ function TSMAPI.Item:IsSoulbound(...)
 		TSMAPI:Assert(false, "Invalid arguments")
 	end
 
-	if not TSMScanTooltip then
-		CreateFrame("GameTooltip", "TSMScanTooltip", UIParent, "GameTooltipTemplate")
-	end
-	TSMScanTooltip:SetOwner(UIParent, "ANCHOR_NONE")
-	TSMScanTooltip:ClearLines()
+	local scanTooltip = private.GetScanTooltip()
 
 	local result = nil
 	if itemString then
 		-- it's an itemString
-		TSMScanTooltip:SetHyperlink(private.ToWoWItemString(itemString))
+		scanTooltip:SetHyperlink(private.ToWoWItemString(itemString))
 	elseif bag and slot then
 		local itemID = GetContainerItemID(bag, slot)
 		local maxCharges
 		if itemID then
-			TSMScanTooltip:SetItemByID(itemID)
-			maxCharges = private:GetTooltipCharges(TSMScanTooltip)
+			scanTooltip:SetItemByID(itemID)
+			maxCharges = private:GetTooltipCharges(scanTooltip)
 		end
 		if bag == -1 then
-			TSMScanTooltip:SetInventoryItem("player", slot + 39)
+			scanTooltip:SetInventoryItem("player", slot + 39)
 		else
-			TSMScanTooltip:SetBagItem(bag, slot)
+			scanTooltip:SetBagItem(bag, slot)
 		end
 		if maxCharges then
-			if private:GetTooltipCharges(TSMScanTooltip) ~= maxCharges then
+			if private:GetTooltipCharges(scanTooltip) ~= maxCharges then
 				result = true
 			end
 		end
 	else
 		TSMAPI:Assert(false) -- should never get here
 	end
-
 	if result then
-		TSMScanTooltip:Hide()
 		return result
 	end
-	for id=1, TSMScanTooltip:NumLines() do
-		local text = _G["TSMScanTooltipTextLeft" .. id]
+
+	for id=1, scanTooltip:NumLines() do
+		local text = _G[scanTooltip:GetName().."TextLeft" .. id]
 		text = text and text:GetText()
 		if text then
 			if (text == ITEM_BIND_ON_PICKUP and id < 4) or text == ITEM_SOULBOUND or text == ITEM_BIND_QUEST then
@@ -240,7 +236,6 @@ function TSMAPI.Item:IsSoulbound(...)
 			end
 		end
 	end
-	TSMScanTooltip:Hide()
 	return result
 end
 
@@ -255,23 +250,18 @@ function TSMAPI.Item:IsCraftingReagent(itemLink)
 		return false
 	end
 
-	if not TSMScanTooltip then
-		CreateFrame("GameTooltip", "TSMScanTooltip", UIParent, "GameTooltipTemplate")
-	end
-	TSMScanTooltip:SetOwner(UIParent, "ANCHOR_NONE")
-	TSMScanTooltip:ClearLines()
-	TSMScanTooltip:SetHyperlink(itemLink)
+	local scanTooltip = private.GetScanTooltip()
+	scanTooltip:SetHyperlink(itemLink)
 
 	local result = nil
-	for id = 1, TSMScanTooltip:NumLines() do
-		local text = _G["TSMScanTooltipTextLeft" .. id]
+	for id = 1, scanTooltip:NumLines() do
+		local text = _G[scanTooltip:GetName().."TextLeft" .. id]
 		text = text and text:GetText()
 		if text and (text == PROFESSIONS_USED_IN_COOKING) then
 			result = true
 			break
 		end
 	end
-	TSMScanTooltip:Hide()
 	return result
 end
 
@@ -678,7 +668,7 @@ function private.ItemInfoThread(self)
 				lastStatusPending = numRemaining
 			end
 		end
-		maxPending = min(maxPending + 1, TSMAPI.Item.MAX_REQUESTS_PENDING)
+		maxPending = min(maxPending + 1, MAX_REQUESTS_PENDING)
 		self:Sleep(0.1)
 	end
 end
@@ -818,8 +808,23 @@ function TSMAPI.Item:GetItemLevel(itemString)
 		local itemLevel = select(3, strsplit(":", itemString))
 		return tonumber(itemLevel) or 0
 	elseif itemString ~= baseItemString and info and info._getInfoResult then
-		-- we have the base item info, so should be able to call GetItemInfo() for this version of the item
-		return select(4, GetItemInfo(private.ToWoWItemString(itemString))) or info.itemLevel
+		if private.GetUpgradeValue(itemString) then
+			-- we need to do tooltip scanning to get the correct item level
+			local scanTooltip = private.GetScanTooltip()
+			scanTooltip:SetHyperlink(private.ToWoWItemString(itemString))
+			for id = 1, scanTooltip:NumLines() do
+				local text = _G[scanTooltip:GetName().."TextLeft" .. id]
+				local itemLevel = text and strmatch(text:GetText(), gsub(ITEM_LEVEL, "%%d", "([0-9]+)"))
+				if itemLevel then
+					return tonumber(itemLevel)
+				end
+			end
+			-- failed to get the item level from the tooltip
+			return
+		else
+			-- we have the base item info, so should be able to call GetItemInfo() for this version of the item
+			return select(4, GetItemInfo(private.ToWoWItemString(itemString))) or info.itemLevel
+		end
 	end
 	return info and info.itemLevel
 end
@@ -858,9 +863,19 @@ end
 -- Helper Functions
 -- ============================================================================
 
-function private:GetTooltipCharges()
-	for id=1, TSMScanTooltip:NumLines() do
-		local text = _G["TSMScanTooltipTextLeft" .. id]
+function private.GetScanTooltip()
+	if not TSMScanTooltip then
+		CreateFrame("GameTooltip", "TSMScanTooltip", UIParent, "GameTooltipTemplate")
+	end
+	TSMScanTooltip:Show()
+	TSMScanTooltip:SetClampedToScreen(false)
+	TSMScanTooltip:SetOwner(UIParent, "ANCHOR_BOTTOMRIGHT", 1000000, 100000)
+	return TSMScanTooltip
+end
+
+function private:GetTooltipCharges(scanTooltip)
+	for id = 1, scanTooltip:NumLines() do
+		local text = _G[scanTooltip:GetName().."TextLeft" .. id]
 		if text and text:GetText() then
 			local maxCharges = strmatch(text:GetText(), "^([0-9]+) Charges?$")
 			if maxCharges then
@@ -874,33 +889,63 @@ function private.ToWoWItemString(itemString)
 	local _, itemId, rand, numBonus = (":"):split(itemString)
 	local level = UnitLevel("player")
 	local spec = GetSpecialization()
-	if spec then
-		spec = GetSpecializationInfo(spec) or ""
-	else
-		spec = ""
+	spec = spec and GetSpecializationInfo(spec) or ""
+	local upgradeValue = private.GetUpgradeValue(itemString)
+	if upgradeValue and numBonus then
+		local bonusIds = strmatch(itemString, "i:[0-9]+:[0-9%-]*:[0-9]+:(.+):"..upgradeValue.."$")
+		return "item:"..itemId.."::::::"..(rand or "").."::"..level..":"..spec..":512::"..numBonus..":"..bonusIds..":"..(upgradeValue-UPGRADE_VALUE_SHIFT)..":::"
 	end
 	return "item:"..itemId.."::::::"..(rand or "").."::"..level..":"..spec..":::"..(numBonus and strmatch(itemString, "i:[0-9]+:[0-9%-]*:(.*)") or "")..":::"
 end
 
+function private.RemoveExtra(itemString)
+	local num = 1
+	while num > 0 do
+		itemString, num = gsub(itemString, ":0?$", "")
+	end
+	return itemString
+end
+
 function private:FixItemString(itemString)
 	itemString = gsub(itemString, ":0:", "::")-- remove 0s which are in the middle
-	itemString = gsub(gsub(itemString, ":0?$", ""), ":0?$", "") -- remove extra zeroes
-	-- make sure we have the correct number of bonusIds and remove the uniqueId from the end if necessary
+	itemString = private.RemoveExtra(itemString)
+	-- make sure we have the correct number of bonusIds
 	-- get the number of bonusIds (plus one for the count)
 	local numParts = select("#", (":"):split(itemString)) - 3
 	if numParts > 0 then
 		-- get the number of extra parts we have
 		local count = select(4, (":"):split(itemString))
-		count = count == "" and 0 or count
+		count = tonumber(count) or 0
 		local numExtraParts = numParts - 1 - count
+		local lastExtraPart = tonumber(strmatch(itemString, ":([0-9]+)$"))
 		for i=1, numExtraParts do
 			itemString = gsub(itemString, ":[0-9]*$", "")
 		end
-		itemString = gsub(gsub(itemString, ":0?$", ""), ":0?$", "") -- remove extra zeroes
+		-- we might have already applied the upgrade value shift
+		if numExtraParts == 1 and (lastExtraPart >= 98 and lastExtraPart <= 110) or (lastExtraPart - UPGRADE_VALUE_SHIFT >= 90 and lastExtraPart - UPGRADE_VALUE_SHIFT <= 110) then
+			-- this extra part is likely the upgradeValue which we want to keep so increase it by UPGRADE_VALUE_SHIFT
+			if lastExtraPart < UPGRADE_VALUE_SHIFT then
+				lastExtraPart = lastExtraPart + UPGRADE_VALUE_SHIFT
+			end
+			-- itemString = gsub(itemString, ":"..count..":", ":"..(count+1)..":")
+			itemString = itemString..":"..lastExtraPart
+		end
+		itemString = private.RemoveExtra(itemString)
 		-- filter out bonusIds we don't care about
 		return private:FilterImportantBonsuIds(itemString)
 	end
 	return itemString
+end
+
+function private.GetUpgradeValue(itemString)
+	local bonusIds = strmatch(itemString, "i:[0-9]+:[0-9%-]*:[0-9]*:(.+)$")
+	if not bonusIds then return end
+	for id in gmatch(bonusIds, "[0-9]+") do
+		id = tonumber(id)
+		if id > UPGRADE_VALUE_SHIFT then
+			return id
+		end
+	end
 end
 
 function private:FilterImportantBonsuIds(itemString)
@@ -908,14 +953,23 @@ function private:FilterImportantBonsuIds(itemString)
 	if not bonusIds then return itemString end
 	if not private.bonusIdCache[bonusIds] then
 		wipe(private.bonusIdTemp)
+		local adjust = 0
 		for id in gmatch(bonusIds, "[0-9]+") do
-            id = TSM.STATIC_DATA.importantBonusIdMap[tonumber(id)]
-			if id and not tContains(private.bonusIdTemp, id) then
-				tinsert(private.bonusIdTemp, id)
+			id = tonumber(id)
+			if id > UPGRADE_VALUE_SHIFT then
+				if not tContains(private.bonusIdTemp, id) then
+					tinsert(private.bonusIdTemp, id)
+					adjust = adjust + 1
+				end
+			else
+				id = TSM.STATIC_DATA.importantBonusIdMap[id]
+				if id and not tContains(private.bonusIdTemp, id) then
+					tinsert(private.bonusIdTemp, id)
+				end
 			end
 		end
 		sort(private.bonusIdTemp)
-		private.bonusIdCache[bonusIds] = { num = #private.bonusIdTemp, value = strjoin(":", unpack(private.bonusIdTemp)) }
+		private.bonusIdCache[bonusIds] = { num = #private.bonusIdTemp - adjust, value = strjoin(":", unpack(private.bonusIdTemp)) }
 	end
 	if private.bonusIdCache[bonusIds].num == 0 then
 		if rand == "" or tonumber(rand) == 0 then

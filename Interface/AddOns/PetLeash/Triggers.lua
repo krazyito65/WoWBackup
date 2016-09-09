@@ -285,7 +285,7 @@ addon:RegisterTrigger("specialLocation", {
     _Values = { city = L["City"], battleground = BATTLEGROUND, instance = L["Instance"] },
     FillOptions = function(self, parent, settings) 
         parent:AddChild(self:MakeOption("loc", "select", settings,
-                                        "name", "Type",
+                                        "name", TYPE,
                                         "values", self._Values))   
     end,
     Check = function(self)
@@ -360,6 +360,36 @@ addon:RegisterTrigger("macro", {
         self:ScheduleRepeatingTimer(function() 
             self:CheckUpdate()
         end, 0.2)
+    end
+})
+
+addon:RegisterTrigger("specialization", {
+    GetName = function(self)
+        return L["Class Specialization"]
+    end,
+    OnNew = function(self, new)
+        new.spec = 1
+    end,
+    FillOptions = function(self, parent, settings)
+        local values = {}
+        for i = 1,4 do
+            local namefmt = ""
+            local _, name = GetSpecializationInfo(i)
+            if name then
+                namefmt = format(" (%s)", name)
+            end
+
+            values[i] = format("#%d%s", i, namefmt)
+        end
+
+        parent:AddChild(self:MakeOption("spec", "select", settings,
+                                        "name", SPECIALIZATION, "values", values))
+    end,
+    Check = function(self)
+        return GetSpecialization() == self.settings.spec
+    end,
+    OnInitialize = function(self)
+        self:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
     end
 })
 

@@ -6,39 +6,6 @@ DeathGraphsDBDeaths = {
 		["name"] = "Beastlord Darmac",
 		["id"] = 1122,
 		["diff"] = 15,
-		["player_db"] = {
-			["Shabinka-Tichondrius"] = {
-				["overall"] = {
-					[155611] = 31422,
-					[162275] = 47234,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Shabinka-Tichondrius",
-				["class"] = "MAGE",
-			},
-			["Felikks-Tichondrius"] = {
-				["overall"] = {
-					[155611] = 15486,
-					[155499] = 22408,
-					[162275] = 44555,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Felikks-Tichondrius",
-				["class"] = "SHAMAN",
-			},
-			["Kwaai-Tichondrius"] = {
-				["overall"] = {
-					[156823] = 51420,
-					[155499] = 89900,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Kwaai-Tichondrius",
-				["class"] = "HUNTER",
-			},
-		},
 		["boss_table"] = {
 			["diff_string"] = "Heroic",
 			["index"] = 3,
@@ -50,6 +17,39 @@ DeathGraphsDBDeaths = {
 			["encounter"] = "Beastlord Darmac",
 			["diff"] = 15,
 		},
+		["player_db"] = {
+			["Shabinka-Tichondrius"] = {
+				["name"] = "Shabinka-Tichondrius",
+				["class"] = "MAGE",
+				["overall"] = {
+					[155611] = 31422,
+					[162275] = 47234,
+				},
+				["deaths"] = {
+				},
+			},
+			["Felikks-Tichondrius"] = {
+				["name"] = "Felikks-Tichondrius",
+				["class"] = "SHAMAN",
+				["overall"] = {
+					[155611] = 15486,
+					[155499] = 22408,
+					[162275] = 44555,
+				},
+				["deaths"] = {
+				},
+			},
+			["Kwaai-Tichondrius"] = {
+				["name"] = "Kwaai-Tichondrius",
+				["class"] = "HUNTER",
+				["overall"] = {
+					[156823] = 51420,
+					[155499] = 89900,
+				},
+				["deaths"] = {
+				},
+			},
+		},
 	},
 	["112315"] = {
 		["hash"] = "112315",
@@ -57,142 +57,6 @@ DeathGraphsDBDeaths = {
 		["name"] = "Flamebender Ka'graz",
 		["id"] = 1123,
 		["diff"] = 15,
-		["player_db"] = {
-			["Minamimoto-Tichondrius"] = {
-				["overall"] = {
-					[155511] = 69304,
-					[154938] = 689148,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Minamimoto-Tichondrius",
-				["class"] = "WARLOCK",
-			},
-			["Felikks-Tichondrius"] = {
-				["overall"] = {
-					82226, -- [1]
-					[155314] = 21092,
-					[154938] = 538824,
-					[155511] = 47847,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Felikks-Tichondrius",
-				["class"] = "SHAMAN",
-			},
-			["Toknsmoke-Tichondrius"] = {
-				["overall"] = {
-					[163633] = 123209,
-					[155511] = 190498,
-					[155484] = 86938,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Toknsmoke-Tichondrius",
-				["class"] = "MAGE",
-			},
-			["Ademuro-Tichondrius"] = {
-				["overall"] = {
-					[156018] = 100364,
-					[156713] = 116389,
-					[155049] = 37824,
-					[155484] = 32464,
-					[155511] = 132859,
-					[155318] = 189285,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Ademuro-Tichondrius",
-				["class"] = "DRUID",
-			},
-			["Xtalvia-Tichondrius"] = {
-				["overall"] = {
-					[155511] = 51821,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Xtalvia-Tichondrius",
-				["class"] = "PRIEST",
-			},
-			["Nalud-Tichondrius"] = {
-				["overall"] = {
-					333097, -- [1]
-					[154938] = 344372,
-					[163284] = 9713,
-					[155511] = 77687,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Nalud-Tichondrius",
-				["class"] = "SHAMAN",
-			},
-			["Rabakh-Tichondrius"] = {
-				["overall"] = {
-					484289, -- [1]
-					[163284] = 412815,
-					[155074] = 101709,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Rabakh-Tichondrius",
-				["class"] = "DEATHKNIGHT",
-			},
-			["Kråzyito"] = {
-				["overall"] = {
-					118725, -- [1]
-					[155074] = 428182,
-					[155511] = 48468,
-					[155049] = 255316,
-					[124255] = 119643,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Kråzyito",
-				["class"] = "MONK",
-			},
-			["Sunhands-Tichondrius"] = {
-				["overall"] = {
-				},
-				["deaths"] = {
-				},
-				["name"] = "Sunhands-Tichondrius",
-				["class"] = "PRIEST",
-			},
-			["Nephthÿs-Tichondrius"] = {
-				["overall"] = {
-					398787, -- [1]
-					[155511] = 110243,
-					[156040] = 65931,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Nephthÿs-Tichondrius",
-				["class"] = "WARRIOR",
-			},
-			["Kwaai-Tichondrius"] = {
-				["overall"] = {
-					[155511] = 135949,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Kwaai-Tichondrius",
-				["class"] = "HUNTER",
-			},
-			["Krutchs-Tichondrius"] = {
-				["overall"] = {
-					128615, -- [1]
-					[163284] = 150022,
-					[155074] = 344440,
-					[155511] = 38906,
-					[154938] = 85290,
-					[163633] = 82337,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Krutchs-Tichondrius",
-				["class"] = "WARRIOR",
-			},
-		},
 		["boss_table"] = {
 			["diff_string"] = "Heroic",
 			["index"] = 4,
@@ -205,6 +69,142 @@ DeathGraphsDBDeaths = {
 			["ej_instance_id"] = 457,
 			["diff"] = 15,
 		},
+		["player_db"] = {
+			["Minamimoto-Tichondrius"] = {
+				["name"] = "Minamimoto-Tichondrius",
+				["class"] = "WARLOCK",
+				["overall"] = {
+					[155511] = 69304,
+					[154938] = 689148,
+				},
+				["deaths"] = {
+				},
+			},
+			["Felikks-Tichondrius"] = {
+				["name"] = "Felikks-Tichondrius",
+				["class"] = "SHAMAN",
+				["overall"] = {
+					82226, -- [1]
+					[155314] = 21092,
+					[154938] = 538824,
+					[155511] = 47847,
+				},
+				["deaths"] = {
+				},
+			},
+			["Toknsmoke-Tichondrius"] = {
+				["name"] = "Toknsmoke-Tichondrius",
+				["class"] = "MAGE",
+				["overall"] = {
+					[163633] = 123209,
+					[155511] = 190498,
+					[155484] = 86938,
+				},
+				["deaths"] = {
+				},
+			},
+			["Ademuro-Tichondrius"] = {
+				["name"] = "Ademuro-Tichondrius",
+				["class"] = "DRUID",
+				["overall"] = {
+					[156018] = 100364,
+					[156713] = 116389,
+					[155049] = 37824,
+					[155484] = 32464,
+					[155511] = 132859,
+					[155318] = 189285,
+				},
+				["deaths"] = {
+				},
+			},
+			["Xtalvia-Tichondrius"] = {
+				["name"] = "Xtalvia-Tichondrius",
+				["class"] = "PRIEST",
+				["overall"] = {
+					[155511] = 51821,
+				},
+				["deaths"] = {
+				},
+			},
+			["Nalud-Tichondrius"] = {
+				["name"] = "Nalud-Tichondrius",
+				["class"] = "SHAMAN",
+				["overall"] = {
+					333097, -- [1]
+					[154938] = 344372,
+					[163284] = 9713,
+					[155511] = 77687,
+				},
+				["deaths"] = {
+				},
+			},
+			["Rabakh-Tichondrius"] = {
+				["name"] = "Rabakh-Tichondrius",
+				["class"] = "DEATHKNIGHT",
+				["overall"] = {
+					484289, -- [1]
+					[163284] = 412815,
+					[155074] = 101709,
+				},
+				["deaths"] = {
+				},
+			},
+			["Kråzyito"] = {
+				["name"] = "Kråzyito",
+				["class"] = "MONK",
+				["overall"] = {
+					118725, -- [1]
+					[155074] = 428182,
+					[155511] = 48468,
+					[155049] = 255316,
+					[124255] = 119643,
+				},
+				["deaths"] = {
+				},
+			},
+			["Sunhands-Tichondrius"] = {
+				["name"] = "Sunhands-Tichondrius",
+				["class"] = "PRIEST",
+				["overall"] = {
+				},
+				["deaths"] = {
+				},
+			},
+			["Nephthÿs-Tichondrius"] = {
+				["name"] = "Nephthÿs-Tichondrius",
+				["class"] = "WARRIOR",
+				["overall"] = {
+					398787, -- [1]
+					[155511] = 110243,
+					[156040] = 65931,
+				},
+				["deaths"] = {
+				},
+			},
+			["Kwaai-Tichondrius"] = {
+				["name"] = "Kwaai-Tichondrius",
+				["class"] = "HUNTER",
+				["overall"] = {
+					[155511] = 135949,
+				},
+				["deaths"] = {
+				},
+			},
+			["Krutchs-Tichondrius"] = {
+				["name"] = "Krutchs-Tichondrius",
+				["class"] = "WARRIOR",
+				["overall"] = {
+					128615, -- [1]
+					[163284] = 150022,
+					[155074] = 344440,
+					[155511] = 38906,
+					[154938] = 85290,
+					[163633] = 82337,
+				},
+				["deaths"] = {
+				},
+			},
+		},
 	},
 	["114715"] = {
 		["hash"] = "114715",
@@ -212,8 +212,6 @@ DeathGraphsDBDeaths = {
 		["name"] = "Operator Thogar",
 		["id"] = 1147,
 		["diff"] = 15,
-		["player_db"] = {
-		},
 		["boss_table"] = {
 			["diff_string"] = "Heroic",
 			["index"] = 6,
@@ -227,33 +225,47 @@ DeathGraphsDBDeaths = {
 			["ej_instance_id"] = 457,
 			["killed"] = true,
 		},
+		["player_db"] = {
+		},
 	},
 	["116115"] = {
 		["hash"] = "116115",
 		["type"] = "deaths",
 		["name"] = "Gruul",
 		["id"] = 1161,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 1,
+			["zone"] = "Blackrock Foundry",
+			["id"] = 1691,
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "Gruul",
+			["diff"] = 15,
+			["ej_instance_id"] = 457,
+			["encounter"] = "Gruul",
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
+				["class"] = "WARLOCK",
 				["deaths"] = {
 				},
-				["class"] = "WARLOCK",
-				["name"] = "Minamimoto-Tichondrius",
 				["overall"] = {
 					[173190] = 32371,
 					[173192] = 86450,
 					[155301] = 223967,
 				},
+				["name"] = "Minamimoto-Tichondrius",
 			},
 			["Felikks-Tichondrius"] = {
+				["class"] = "SHAMAN",
 				["deaths"] = {
 				},
-				["class"] = "SHAMAN",
-				["name"] = "Felikks-Tichondrius",
 				["overall"] = {
 					[173192] = 125892,
 					[155080] = 18896,
 				},
+				["name"] = "Felikks-Tichondrius",
 			},
 			["Akudemi-Kil'jaeden"] = {
 				["deaths"] = {
@@ -265,13 +277,13 @@ DeathGraphsDBDeaths = {
 				["name"] = "Akudemi-Kil'jaeden",
 			},
 			["Ademuro-Tichondrius"] = {
+				["class"] = "DRUID",
 				["deaths"] = {
 				},
-				["class"] = "DRUID",
-				["name"] = "Ademuro-Tichondrius",
 				["overall"] = {
 					[155080] = 197894,
 				},
+				["name"] = "Ademuro-Tichondrius",
 			},
 			["Wolfemerald-AlteracMountains"] = {
 				["deaths"] = {
@@ -293,12 +305,12 @@ DeathGraphsDBDeaths = {
 				["name"] = "Mylitlepwny-Eonar",
 			},
 			["Sunhands-Tichondrius"] = {
+				["class"] = "PRIEST",
 				["deaths"] = {
 				},
-				["class"] = "PRIEST",
-				["name"] = "Sunhands-Tichondrius",
 				["overall"] = {
 				},
+				["name"] = "Sunhands-Tichondrius",
 			},
 			["Schottky-Thrall"] = {
 				["deaths"] = {
@@ -318,14 +330,14 @@ DeathGraphsDBDeaths = {
 				["name"] = "Tasty",
 			},
 			["Kwaai-Tichondrius"] = {
+				["class"] = "HUNTER",
 				["deaths"] = {
 				},
-				["class"] = "HUNTER",
-				["name"] = "Kwaai-Tichondrius",
 				["overall"] = {
 					[155080] = 360171,
 					[173190] = 30753,
 				},
+				["name"] = "Kwaai-Tichondrius",
 			},
 			["Kinjirou-Kil'jaeden"] = {
 				["deaths"] = {
@@ -347,49 +359,49 @@ DeathGraphsDBDeaths = {
 				["name"] = "Beautiful",
 			},
 			["Guldrek-Tichondrius"] = {
+				["class"] = "WARLOCK",
 				["deaths"] = {
 				},
-				["class"] = "WARLOCK",
-				["name"] = "Guldrek-Tichondrius",
 				["overall"] = {
 					[155530] = 67311,
 					[155078] = 195712,
 					[155080] = 221828,
 				},
+				["name"] = "Guldrek-Tichondrius",
 			},
 			["Kråzyito"] = {
+				["class"] = "MONK",
 				["deaths"] = {
 				},
-				["class"] = "MONK",
-				["name"] = "Kråzyito",
 				["overall"] = {
 					[162322] = 438629,
 					[124255] = 105961,
 					[155530] = 20783,
 					[155080] = 406010,
 				},
+				["name"] = "Kråzyito",
 			},
 			["Jensarai-Tichondrius"] = {
+				["class"] = "MAGE",
 				["deaths"] = {
 				},
-				["class"] = "MAGE",
-				["name"] = "Jensarai-Tichondrius",
 				["overall"] = {
 					[155301] = 242955,
 					[173190] = 35785,
 				},
+				["name"] = "Jensarai-Tichondrius",
 			},
 			["Xtalvia-Tichondrius"] = {
+				["class"] = "PRIEST",
 				["deaths"] = {
 				},
-				["class"] = "PRIEST",
-				["name"] = "Xtalvia-Tichondrius",
 				["overall"] = {
 					[155080] = 13404,
 					[173190] = 23728,
 					[173192] = 33334,
 					[155301] = 167973,
 				},
+				["name"] = "Xtalvia-Tichondrius",
 			},
 			["Vinaell-Area52"] = {
 				["deaths"] = {
@@ -402,14 +414,14 @@ DeathGraphsDBDeaths = {
 				["name"] = "Vinaell-Area52",
 			},
 			["Nephthÿs-Tichondrius"] = {
+				["class"] = "WARRIOR",
 				["deaths"] = {
 				},
-				["class"] = "WARRIOR",
-				["name"] = "Nephthÿs-Tichondrius",
 				["overall"] = {
 					[155301] = 249049,
 					[173190] = 70619,
 				},
+				["name"] = "Nephthÿs-Tichondrius",
 			},
 			["Kritische-Area52"] = {
 				["deaths"] = {
@@ -421,28 +433,16 @@ DeathGraphsDBDeaths = {
 				["name"] = "Kritische-Area52",
 			},
 			["Krutchs-Tichondrius"] = {
+				["class"] = "WARRIOR",
 				["deaths"] = {
 				},
-				["class"] = "WARRIOR",
-				["name"] = "Krutchs-Tichondrius",
 				["overall"] = {
 					32857, -- [1]
 					[155078] = 215783,
 					[155080] = 27908,
 				},
+				["name"] = "Krutchs-Tichondrius",
 			},
-		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 1,
-			["zone"] = "Blackrock Foundry",
-			["id"] = 1691,
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "Gruul",
-			["diff"] = 15,
-			["ej_instance_id"] = 457,
-			["encounter"] = "Gruul",
 		},
 		["diff"] = 15,
 	},
@@ -452,17 +452,6 @@ DeathGraphsDBDeaths = {
 		["name"] = "Hans'gar & Franzok",
 		["id"] = 1155,
 		["diff"] = 15,
-		["player_db"] = {
-			["Nephthÿs-Tichondrius"] = {
-				["overall"] = {
-					[156938] = 606055,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Nephthÿs-Tichondrius",
-				["class"] = "WARRIOR",
-			},
-		},
 		["boss_table"] = {
 			["diff_string"] = "Heroic",
 			["index"] = 5,
@@ -476,6 +465,17 @@ DeathGraphsDBDeaths = {
 			["ej_instance_id"] = 457,
 			["killed"] = true,
 		},
+		["player_db"] = {
+			["Nephthÿs-Tichondrius"] = {
+				["name"] = "Nephthÿs-Tichondrius",
+				["class"] = "WARRIOR",
+				["overall"] = {
+					[156938] = 606055,
+				},
+				["deaths"] = {
+				},
+			},
+		},
 	},
 	["120315"] = {
 		["hash"] = "120315",
@@ -483,127 +483,6 @@ DeathGraphsDBDeaths = {
 		["name"] = "The Iron Maidens",
 		["id"] = 1203,
 		["diff"] = 15,
-		["player_db"] = {
-			["Minamimoto-Tichondrius"] = {
-				["overall"] = {
-				},
-				["deaths"] = {
-				},
-				["name"] = "Minamimoto-Tichondrius",
-				["class"] = "WARLOCK",
-			},
-			["Felikks-Tichondrius"] = {
-				["overall"] = {
-					212785, -- [1]
-					[156610] = 3443,
-					[155841] = 127621,
-					[158601] = 34020,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Felikks-Tichondrius",
-				["class"] = "SHAMAN",
-			},
-			["Kwaai-Tichondrius"] = {
-				["overall"] = {
-					[158080] = 232164,
-					[155841] = 111343,
-					[158078] = 130379,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Kwaai-Tichondrius",
-				["class"] = "HUNTER",
-			},
-			["Ademuro-Tichondrius"] = {
-				["overall"] = {
-					216396, -- [1]
-					[155841] = 150487,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Ademuro-Tichondrius",
-				["class"] = "DRUID",
-			},
-			["Nalud-Tichondrius"] = {
-				["overall"] = {
-					[156669] = 67098,
-					[157884] = 196235,
-					[158601] = 652442,
-					[156610] = 13710,
-					[158321] = 127879,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Nalud-Tichondrius",
-				["class"] = "SHAMAN",
-			},
-			["Shabinka-Tichondrius"] = {
-				["overall"] = {
-					256166, -- [1]
-					[156669] = 71694,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Shabinka-Tichondrius",
-				["class"] = "MAGE",
-			},
-			["Kråzyito"] = {
-				["overall"] = {
-					274574, -- [1]
-					[155841] = 55231,
-					[124255] = 68648,
-					[158601] = 290887,
-					[157884] = 166220,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Kråzyito",
-				["class"] = "MONK",
-			},
-			["Rabakh-Tichondrius"] = {
-				["overall"] = {
-					418658, -- [1]
-					[158601] = 1152698,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Rabakh-Tichondrius",
-				["class"] = "DEATHKNIGHT",
-			},
-			["Nephthÿs-Tichondrius"] = {
-				["overall"] = {
-					[158601] = 408990,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Nephthÿs-Tichondrius",
-				["class"] = "WARRIOR",
-			},
-			["Toknsmoke-Tichondrius"] = {
-				["overall"] = {
-					261794, -- [1]
-					[164279] = 75456,
-					[158009] = 292118,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Toknsmoke-Tichondrius",
-				["class"] = "MAGE",
-			},
-			["Krutchs-Tichondrius"] = {
-				["overall"] = {
-					166591, -- [1]
-					[156610] = 1965,
-					[158601] = 301479,
-					[164279] = 94311,
-				},
-				["deaths"] = {
-				},
-				["name"] = "Krutchs-Tichondrius",
-				["class"] = "WARRIOR",
-			},
-		},
 		["boss_table"] = {
 			["diff_string"] = "Heroic",
 			["index"] = 9,
@@ -616,6 +495,127 @@ DeathGraphsDBDeaths = {
 			["ej_instance_id"] = 457,
 			["diff"] = 15,
 		},
+		["player_db"] = {
+			["Minamimoto-Tichondrius"] = {
+				["name"] = "Minamimoto-Tichondrius",
+				["class"] = "WARLOCK",
+				["overall"] = {
+				},
+				["deaths"] = {
+				},
+			},
+			["Felikks-Tichondrius"] = {
+				["name"] = "Felikks-Tichondrius",
+				["class"] = "SHAMAN",
+				["overall"] = {
+					212785, -- [1]
+					[156610] = 3443,
+					[155841] = 127621,
+					[158601] = 34020,
+				},
+				["deaths"] = {
+				},
+			},
+			["Kwaai-Tichondrius"] = {
+				["name"] = "Kwaai-Tichondrius",
+				["class"] = "HUNTER",
+				["overall"] = {
+					[158080] = 232164,
+					[155841] = 111343,
+					[158078] = 130379,
+				},
+				["deaths"] = {
+				},
+			},
+			["Ademuro-Tichondrius"] = {
+				["name"] = "Ademuro-Tichondrius",
+				["class"] = "DRUID",
+				["overall"] = {
+					216396, -- [1]
+					[155841] = 150487,
+				},
+				["deaths"] = {
+				},
+			},
+			["Nalud-Tichondrius"] = {
+				["name"] = "Nalud-Tichondrius",
+				["class"] = "SHAMAN",
+				["overall"] = {
+					[156669] = 67098,
+					[157884] = 196235,
+					[158601] = 652442,
+					[156610] = 13710,
+					[158321] = 127879,
+				},
+				["deaths"] = {
+				},
+			},
+			["Shabinka-Tichondrius"] = {
+				["name"] = "Shabinka-Tichondrius",
+				["class"] = "MAGE",
+				["overall"] = {
+					256166, -- [1]
+					[156669] = 71694,
+				},
+				["deaths"] = {
+				},
+			},
+			["Kråzyito"] = {
+				["name"] = "Kråzyito",
+				["class"] = "MONK",
+				["overall"] = {
+					274574, -- [1]
+					[124255] = 68648,
+					[157884] = 166220,
+					[158601] = 290887,
+					[155841] = 55231,
+				},
+				["deaths"] = {
+				},
+			},
+			["Rabakh-Tichondrius"] = {
+				["name"] = "Rabakh-Tichondrius",
+				["class"] = "DEATHKNIGHT",
+				["overall"] = {
+					418658, -- [1]
+					[158601] = 1152698,
+				},
+				["deaths"] = {
+				},
+			},
+			["Nephthÿs-Tichondrius"] = {
+				["name"] = "Nephthÿs-Tichondrius",
+				["class"] = "WARRIOR",
+				["overall"] = {
+					[158601] = 408990,
+				},
+				["deaths"] = {
+				},
+			},
+			["Toknsmoke-Tichondrius"] = {
+				["name"] = "Toknsmoke-Tichondrius",
+				["class"] = "MAGE",
+				["overall"] = {
+					261794, -- [1]
+					[164279] = 75456,
+					[158009] = 292118,
+				},
+				["deaths"] = {
+				},
+			},
+			["Krutchs-Tichondrius"] = {
+				["name"] = "Krutchs-Tichondrius",
+				["class"] = "WARRIOR",
+				["overall"] = {
+					166591, -- [1]
+					[156610] = 1965,
+					[158601] = 301479,
+					[164279] = 94311,
+				},
+				["deaths"] = {
+				},
+			},
+		},
 	},
 }
 DeathGraphsDBEndurance = {
@@ -625,6 +625,17 @@ DeathGraphsDBEndurance = {
 		["name"] = "Beastlord Darmac",
 		["id"] = 1122,
 		["diff"] = 15,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 3,
+			["zone"] = "Blackrock Foundry",
+			["id"] = 1694,
+			["mapid"] = 1205,
+			["name"] = "Beastlord Darmac",
+			["ej_instance_id"] = 457,
+			["encounter"] = "Beastlord Darmac",
+			["diff"] = 15,
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 1,
@@ -719,17 +730,6 @@ DeathGraphsDBEndurance = {
 				["class"] = "WARRIOR",
 			},
 		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 3,
-			["zone"] = "Blackrock Foundry",
-			["id"] = 1694,
-			["mapid"] = 1205,
-			["name"] = "Beastlord Darmac",
-			["ej_instance_id"] = 457,
-			["encounter"] = "Beastlord Darmac",
-			["diff"] = 15,
-		},
 	},
 	["112315"] = {
 		["hash"] = "112315",
@@ -737,6 +737,18 @@ DeathGraphsDBEndurance = {
 		["name"] = "Flamebender Ka'graz",
 		["id"] = 1123,
 		["diff"] = 15,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 4,
+			["zone"] = "Blackrock Foundry",
+			["id"] = 1689,
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "Flamebender Ka'graz",
+			["encounter"] = "Flamebender Ka'graz",
+			["ej_instance_id"] = 457,
+			["diff"] = 15,
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 3,
@@ -898,18 +910,6 @@ DeathGraphsDBEndurance = {
 				["class"] = "WARRIOR",
 			},
 		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 4,
-			["zone"] = "Blackrock Foundry",
-			["id"] = 1689,
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "Flamebender Ka'graz",
-			["encounter"] = "Flamebender Ka'graz",
-			["ej_instance_id"] = 457,
-			["diff"] = 15,
-		},
 	},
 	["114715"] = {
 		["hash"] = "114715",
@@ -917,6 +917,19 @@ DeathGraphsDBEndurance = {
 		["name"] = "Operator Thogar",
 		["id"] = 1147,
 		["diff"] = 15,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 6,
+			["zone"] = "Blackrock Foundry",
+			["encounter"] = "Operator Thogar",
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "Operator Thogar",
+			["diff"] = 15,
+			["id"] = 1692,
+			["ej_instance_id"] = 457,
+			["killed"] = true,
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 1,
@@ -996,25 +1009,24 @@ DeathGraphsDBEndurance = {
 				["class"] = "WARRIOR",
 			},
 		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 6,
-			["zone"] = "Blackrock Foundry",
-			["encounter"] = "Operator Thogar",
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "Operator Thogar",
-			["diff"] = 15,
-			["id"] = 1692,
-			["ej_instance_id"] = 457,
-			["killed"] = true,
-		},
 	},
 	["116115"] = {
 		["hash"] = "116115",
 		["type"] = "endurance",
 		["name"] = "Gruul",
 		["id"] = 1161,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 1,
+			["zone"] = "Blackrock Foundry",
+			["id"] = 1691,
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "Gruul",
+			["diff"] = 15,
+			["ej_instance_id"] = 457,
+			["encounter"] = "Gruul",
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 2,
@@ -1180,18 +1192,6 @@ DeathGraphsDBEndurance = {
 				},
 			},
 		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 1,
-			["zone"] = "Blackrock Foundry",
-			["id"] = 1691,
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "Gruul",
-			["diff"] = 15,
-			["ej_instance_id"] = 457,
-			["encounter"] = "Gruul",
-		},
 		["diff"] = 15,
 	},
 	["115515"] = {
@@ -1200,6 +1200,19 @@ DeathGraphsDBEndurance = {
 		["name"] = "Hans'gar & Franzok",
 		["id"] = 1155,
 		["diff"] = 15,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 5,
+			["zone"] = "Blackrock Foundry",
+			["encounter"] = "Hans'gar & Franzok",
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "Hans'gar & Franzok",
+			["diff"] = 15,
+			["id"] = 1693,
+			["ej_instance_id"] = 457,
+			["killed"] = true,
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 1,
@@ -1284,19 +1297,6 @@ DeathGraphsDBEndurance = {
 				["class"] = "WARRIOR",
 			},
 		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 5,
-			["zone"] = "Blackrock Foundry",
-			["encounter"] = "Hans'gar & Franzok",
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "Hans'gar & Franzok",
-			["diff"] = 15,
-			["id"] = 1693,
-			["ej_instance_id"] = 457,
-			["killed"] = true,
-		},
 	},
 	["120315"] = {
 		["hash"] = "120315",
@@ -1304,6 +1304,18 @@ DeathGraphsDBEndurance = {
 		["name"] = "The Iron Maidens",
 		["id"] = 1203,
 		["diff"] = 15,
+		["boss_table"] = {
+			["diff_string"] = "Heroic",
+			["index"] = 9,
+			["zone"] = "Blackrock Foundry",
+			["id"] = 1695,
+			["mapid"] = 1205,
+			["try_number"] = 1,
+			["name"] = "The Iron Maidens",
+			["encounter"] = "The Iron Maidens",
+			["ej_instance_id"] = 457,
+			["diff"] = 15,
+		},
 		["player_db"] = {
 			["Minamimoto-Tichondrius"] = {
 				["encounters"] = 2,
@@ -1439,18 +1451,6 @@ DeathGraphsDBEndurance = {
 				},
 				["class"] = "WARRIOR",
 			},
-		},
-		["boss_table"] = {
-			["diff_string"] = "Heroic",
-			["index"] = 9,
-			["zone"] = "Blackrock Foundry",
-			["id"] = 1695,
-			["mapid"] = 1205,
-			["try_number"] = 1,
-			["name"] = "The Iron Maidens",
-			["encounter"] = "The Iron Maidens",
-			["ej_instance_id"] = 457,
-			["diff"] = 15,
 		},
 	},
 }

@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- CreateStatusBar.lua last changed 2016-07-21T06:24:03Z
-
 -- local functions
 local CreateFrame = CreateFrame;
 local min = min;

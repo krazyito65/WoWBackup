@@ -76,7 +76,6 @@ end
 
 local VUHDO_CLASS_ROLES = {
 	[VUHDO_ID_ROGUES] = VUHDO_ID_MELEE_DAMAGE,
-	[VUHDO_ID_HUNTERS] = VUHDO_ID_RANGED_DAMAGE,
 	[VUHDO_ID_MAGES] = VUHDO_ID_RANGED_DAMAGE,
 	[VUHDO_ID_WARLOCKS] = VUHDO_ID_RANGED_DAMAGE,
 };
@@ -182,7 +181,7 @@ function VUHDO_inspectLockRole()
 			VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_MELEE_DAMAGE;
 
 		elseif VUHDO_ID_SHAMANS == tClassId then
-			if 263 == tTreeId then
+			if 263 == tTreeId then -- Enhancement
 				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_MELEE_DAMAGE;
 			else -- 2
 				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_RANGED_DAMAGE;
@@ -192,6 +191,13 @@ function VUHDO_inspectLockRole()
 			if 103 == tTreeId then -- Feral
 				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_MELEE_DAMAGE;
 			else -- 2
+				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_RANGED_DAMAGE;
+			end
+
+		elseif VUHDO_ID_HUNTERS == tClassId then
+			if 255 == tTreeId then -- Survival
+				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_MELEE_DAMAGE;
+			else
 				VUHDO_INSPECTED_ROLES[tInfo["name"]] = VUHDO_ID_RANGED_DAMAGE;
 			end
 
@@ -237,7 +243,7 @@ local function VUHDO_determineDfToolRole(anInfo)
 		elseif anInfo["classId"] == VUHDO_ID_PRIESTS then
 			VUHDO_DF_TOOL_ROLES[tName] = VUHDO_ID_RANGED_DAMAGE;
 			tReturnRole = VUHDO_ID_RANGED_DAMAGE;
-		else -- Shaman/Druid
+		else -- Shaman/Druid/Hunter
 			VUHDO_DF_TOOL_ROLES[tName] = VUHDO_ID_MELEE_DAMAGE;
 			tReturnRole = nil;
 		end
@@ -381,7 +387,6 @@ function VUHDO_determineRole(aUnit)
 			end
 		end
 
-	-- TODO: monk is missing for some reason?
 	elseif 31 == tClassId then -- VUHDO_ID_DEMON_HUNTERS
 		_, tDefense = UnitDefense(aUnit);
 		tLevel = UnitLevel(aUnit) or 0;
@@ -397,8 +402,28 @@ function VUHDO_determineRole(aUnit)
 			return 61; -- VUHDO_ID_MELEE_DAMAGE
 		end
 
-	end
+	elseif 22 == tClassId then -- VUHDO_ID_HUNTERS
+		if UnitPowerMax(aUnit) == 100 then -- Survival
+			return 61; -- VUHDO_ID_MELEE_DAMAGE
+		else
+			return 62; -- VUHDO_ID_RANGED_DAMAGE
+		end
 
+	elseif 30 == tClassId then -- VUHDO_ID_MONKS
+		tPowerType = UnitPowerType(aUnit);
+
+		if VUHDO_UNIT_POWER_MANA == tPowerType then
+			return 63; -- VUHDO_ID_RANGED_HEAL
+		elseif VUHDO_UNIT_POWER_ENERGY == tPowerType then
+			if UnitPowerMax(aUnit, SPELL_POWER_CHI) > 4 then -- WW Monks have 5 Chi (6 w/ Ascension)
+				return 61; -- VUHDO_ID_MELEE_DAMAGE
+			else
+				return 60; -- VUHDO_ID_MELEE_TANK
+			end
+		end
+
+	end
+ 
 	return nil;
 end
 

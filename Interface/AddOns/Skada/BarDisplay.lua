@@ -12,13 +12,18 @@ local mod = Skada:NewModule("BarDisplay", "SpecializedLibBars-1.0")
 local libwindow = LibStub("LibWindow-1.1")
 local media = LibStub("LibSharedMedia-3.0")
 
+-- Aliases
+local table_sort = _G.table.sort
+local next, pairs, ipairs, type = next, pairs, ipairs, type
+
 --
 -- Display implementation.
 --
 
 -- Add to Skada's enormous list of display providers.
 mod.name = L["Bar display"]
-Skada.displays["bar"] = mod
+mod.description = L["Bar display is the normal bar window used by most damage meters. It can be extensively styled."]
+Skada:AddDisplaySystem("bar", mod)
 
 -- Called when a Skada window starts using this display provider.
 function mod:Create(window)
@@ -160,6 +165,7 @@ local ttactive = false
 local function BarEnter(bar)
 	local win, id, label = bar.win, bar.id, bar.text
     ttactive = true
+    Skada:SetTooltipPosition(GameTooltip, win.bargroup)
     Skada:ShowTooltip(win, id, label)
 end
 
@@ -232,7 +238,7 @@ function mod:Update(win)
 
 	-- Sort if we are showing spots with "showspots".
 	if win.metadata.showspots then
-		table.sort(win.dataset, value_sort)
+		table_sort(win.dataset, value_sort)
 	end
 
 	-- Find out if we have icons in this update, and if so, adjust accordingly.
@@ -375,7 +381,11 @@ function mod:Update(win)
 			end
 
 			if win.metadata.showspots and Skada.db.profile.showranks and not data.ignore then
-				bar:SetLabel(("%2u. %s"):format(nr, data.label))
+                if win.db.barorientation == 1 then
+                    bar:SetLabel(("%2u. %s"):format(nr, data.label))
+                else
+                    bar:SetLabel(("%s %2u"):format(data.label, nr))
+                end
 			else
 				bar:SetLabel(data.label)
 			end
@@ -568,8 +578,9 @@ function mod:ApplySettings(win)
 	g:ShowButton(L["Stop"], p.buttons.stop)
 
 	-- Window
-    local padtop = (p.enabletitle and p.title.height)
-    Skada:ApplyBorder(g, p.background.bordertexture, p.background.bordercolor, p.background.borderthickness, padtop)
+    local padtop = (p.enabletitle and not p.reversegrowth and p.title.height)
+    local padbottom = (p.enabletitle and p.reversegrowth and p.title.height)
+    Skada:ApplyBorder(g, p.background.bordertexture, p.background.bordercolor, p.background.borderthickness, padtop, padbottom)
     
 	windowbackdrop.bgFile = p.background.texturepath or media:Fetch("background", p.background.texture)
 	windowbackdrop.tile = false

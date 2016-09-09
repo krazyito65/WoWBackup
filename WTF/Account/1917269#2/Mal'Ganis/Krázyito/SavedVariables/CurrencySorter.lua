@@ -1,31 +1,41 @@
 
 Cs_order = {
 	{
-		["start"] = 1,
+		["start"] = 10,
 		["name"] = "Warlords of Draenor",
-		["stop"] = 6,
+		["stop"] = 15,
 	}, -- [1]
 	{
-		["start"] = 7,
+		["start"] = 4,
 		["name"] = "Dungeon and Raid",
-		["stop"] = 9,
+		["stop"] = 5,
 	}, -- [2]
 	{
-		["start"] = 10,
+		["start"] = 6,
 		["name"] = "Miscellaneous",
-		["stop"] = 12,
+		["stop"] = 7,
 	}, -- [3]
 	{
-		["start"] = 13,
+		["start"] = 8,
 		["name"] = "Player vs. Player",
-		["stop"] = 16,
+		["stop"] = 9,
 	}, -- [4]
 	{
-		["start"] = 17,
+		["start"] = 16,
 		["name"] = "Mists of Pandaria",
-		["stop"] = 18,
+		["stop"] = 17,
 	}, -- [5]
-	["Nummax"] = 18,
+	{
+		["start"] = 1,
+		["name"] = "Legion",
+		["stop"] = 3,
+	}, -- [6]
+	{
+		["start"] = 18,
+		["name"] = "Cataclysm",
+		["stop"] = 21,
+	}, -- [7]
 	["Firsttime"] = 1,
+	["Nummax"] = 21,
 	["sixone"] = true,
 }

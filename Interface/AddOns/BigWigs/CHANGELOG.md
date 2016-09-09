@@ -1,29 +1,51 @@
 # BigWigs
 
-## [v7.3](https://github.com/BigWigsMods/BigWigs/tree/v7.3) (2016-08-14) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v7.2...v7.3)
+## [v9](https://github.com/BigWigsMods/BigWigs/tree/v9) (2016-09-09) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v8...v9)
 
--   update travis file
--   esES update. (#10)
--   Update deDE.lua
--   Update deDE.lua (#9)
--   esES update. (#8)
--   ruRU update. (#7)
--   zhCN/zhTW update. (#6)
--   Tweak dev print.
--   Note the API docs.
--   Delete Docs/
-    All the relevant info was moved to the GitHub wiki
--   Tweak doc comments
--   LDoc BossPrototype and PluginPrototype
-    Requires a LDoc version > 1.4.4-1/scm-2 (@within was fixed 2016-06-18)
-    Example run from ./Docs: ldoc -x md -l . ../Core/BossPrototype.lua
--   Cenarius: Fix Cleansed Ground check
--   EleretheRenferal: Minor text fixes
--   Ilgynoth: Fix horror spawn messages, add warnings for Spew Corruption and Mind Flay, rename Deathglare to Eye of Fate
--   Ursoc: Unbalanced got renamed to Momentum
--   EleretheRenferal: fix options
--   EmeraldNightmare: Arrange modules like the encounter journal
--   Nythendra: Updated timers after normal testing
--   Stop grabbing the version from the toc, this way people can /reload after updating again and not receive update nags.
--   ruRU update. (#5)
+-   bump version  
+-   ruRU update (#32)  
+-   Update deDE (#31)  
+-   frFR Update (#30)  
+-   Move the "raid icon" option into the icons panel.  
+-   Options: add locale, cleanups  
+-   Options: Add bosses to main config (#29)  
+-   Update deDE (#28)  
+-   bump DBM version  
+-   esES update. (#27)  
+-   esES update. (#26)  
+-   Options: Just expand the header without selecting to prevent addon loading  
+-   ruRU update (#25)  
+-   Options: Fix print to chat invalid spell id message  
+-   Options: Select the first instance when clicking a header  
+-   Options: add some comments  
+-   cleanup some whitespace  
+-   Translate "bosses" text and remove some old locale entries.  
+-   Options: Split LittleWigs content into expansions.  
+-   Options: Sort content by expansion.  
+-   Pull: Allow tanks in LFG to send pull timers.  
+-   Pull: comment out the gear check code.  
+-   Fix the logic for auto selecting the current zone in the config.  
+-   Options: Move boss configuration to our own dedicated window.  
+-   Loader: Cleanup the dungeon timer code.  
+-   Update deDE (#22)  
+-   Pull: Be more restrictive with what we class as a bad item.  
+-   Pull: Initial import of a "bad gear check". Warns you of potentially bad items you have equipped when a pull timer starts.  
+-   Plugins/Flash: Don't delay frame creation.  
+-   Plugins/Flash: Cleanups, removing some pointlessly created frames.  
+-   Update deDE (#20)  
+-   Update deDE (#21)  
+-   Colors: Fix color wrapper.  
+-   frFR Update (#19)  
+-   update authors  
+-   Remove SVN comment  
+-   Pull: Fix options  
+-   ruRU update (#18)  
+-   Colors: Add a temporary wrapper for color names.  
+-   Pull: Fix lua error  
+-   Pull: add automatic combat logging option.  
+-   Split pulling functionality into its own module. Add an "emphasized" option and make it default.  
+-   Cleanup invalid texture layers.  
+-   esES update. (#17)  
+-   esES update.  
+-   zhCN/zhTW update. (#16)  

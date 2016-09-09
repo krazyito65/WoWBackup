@@ -98,6 +98,8 @@ if not L then return end
 -- L["S_TEXT"] = ""
 -- L["S_TEXTURE"] = ""
 -- L["S_TEXTUREBACKGROUND"] = ""
+-- L["S_UNIT_ENEMY"] = ""
+-- L["S_UNIT_FRIENDLY"] = ""
 -- L["S_WIDTH"] = ""
 -- L["S_XOFFSET"] = ""
 -- L["S_YOFFSET"] = ""

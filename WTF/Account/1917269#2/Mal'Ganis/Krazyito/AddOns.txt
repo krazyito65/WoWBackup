@@ -334,7 +334,7 @@ ArenaUnitFrames: disabled
 MoveAnything: disabled
 LibGroupTalents-1.0: enabled
 LibTalentQuery-1.0: enabled
-LoggerHead: enabled
+LoggerHead: disabled
 RSA_DeathKnight: disabled
 RSA_Hunter: disabled
 RSA_Mage: disabled
@@ -500,7 +500,7 @@ Tukui_ElvUI_Skins: disabled
 RCLootCouncil: enabled
 BL_Cooldown: disabled
 RiggsBar: disabled
-AskMrRobot: disabled
+AskMrRobot: enabled
 DBM-Brawlers: enabled
 DBM-SiegeOfOrgrimmar: disabled
 DBM-ThroneofThunder: disabled
@@ -518,7 +518,7 @@ PhoenixStyleMod_Panda_tier3: enabled
 PhoenixStyleMod_Panda_tier2: enabled
 PhoenixStyleMod_Panda_tier1: enabled
 DeathNote: disabled
-TomTom: disabled
+TomTom: enabled
 CloudSerpent: disabled
 TurnIn: disabled
 ElvUI_AddOnSkins: disabled
@@ -628,7 +628,7 @@ HeadCount: enabled
 HeadCount2: enabled
 CT_RaidTracker: enabled
 MizusRaidTracker: enabled
-simulationcraft: enabled
+simulationcraft: disabled
 WowLua: enabled
 AddOnSkins: enabled
 CallbackHandler-1.0: enabled
@@ -672,7 +672,7 @@ VEM-Draenor: disabled
 VEM-Highmaul: disabled
 VEM-Party-WoD: disabled
 HandyNotes_DraenorTreasures: disabled
-HandyNotes: disabled
+HandyNotes: enabled
 MogIt: disabled
 MogIt_Accessories: disabled
 MogIt_Cloth: disabled
@@ -840,3 +840,5 @@ LibSpellRange-1.0: enabled
 CostBasis: enabled
 LibRealmInfo: enabled
 LibStrataFix: enabled
+LDB-Artifact: disabled
+HereBeDragons-1.0: enabled

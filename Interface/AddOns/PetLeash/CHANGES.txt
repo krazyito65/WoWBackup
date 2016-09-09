@@ -1,6 +1,33 @@
 Changelog
 =========
 
+3.1 (2016-08-17)
+----------------
+
+- Merge branch 'next' [Robin Schoonover]
+
+- Fix LibDBIcon embed inclusion. [Robin Schoonover]
+
+- Delay menu initialization, and make sure to use MENU type. [Robin
+  Schoonover]
+
+- Use checkbox for selected/unselected filters. [Robin Schoonover]
+
+- Add selected/unselected filter to pet selection. [Robin Schoonover]
+
+- Fix type localization. [Robin Schoonover]
+
+- Add class spec trigger. [Robin Schoonover]
+
+- Add minimap button from LibDBIcon, but default to hidden. [Robin
+  Schoonover]
+
+- Add embed for LibDBIcon-1.0 [Robin Schoonover]
+
+- Detect when player sits down from going afk. [Robin Schoonover]
+
+- Try to detect when the player is sitting down. [Robin Schoonover]
+
 3.0.17 (2016-08-08)
 -------------------
 

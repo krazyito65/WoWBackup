@@ -1,3 +1,41 @@
+v3.5.9
+*Fixed some issues related to items with various bonuses.
+
+v3.5.8
+*Fixed a bug preventing legion ores from showing as prospectable.
+
+v3.5.7
+*Switched to Roseate Pigment for ink vendor trades.
+
+v3.5.6
+*Added soulbound materials added in Legion.
+
+v3.5.5
+*Fixed error caused by some Legion items (mainly with regards to TSM_Destroying).
+*Fixed issue with tooltip flashing in the bottom-left of the screen.
+
+v3.5.4
+*Added workaround for item level issue with some legion items.
+
+v3.5.3
+*Added preliminary prospect / milling ratios for crafting searches and destroy values.
+*Fixed an issue with soulbound item detection.
+
+v3.5.2
+*Added preliminary disenchant ratios for crafting searches and destroy values.
+
+v3.5.1
+*Added missing bonus ids.
+*Fixed some tooltip issues.
+
+v3.5
+*Replaced LibExtraTip with built-in tooltip code to improve reliablity and fix various bugs.
+*Improved performance of importing large groups.
+*Added some automatic cleanup of app-related data which is no longer of any use.
+
+v3.4.31
+*Fixed some tooltip issues.
+
 v3.4.30
 *Fixed issue where moving random enchant / staged items were treated as base items.
 

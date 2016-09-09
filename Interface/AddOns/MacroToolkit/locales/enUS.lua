@@ -146,6 +146,7 @@ L["Use icon name lookup library for icon search"] = true
 L["This will enable macro icon names instead of numbers. Uses about 2MB of RAM."] = true
 L["Go Large"] = true
 L["Go Small"] = true
+L["Hide 'Macro shortened by n characters' popup"] = true
 
 --conditions
 L["Condition Builder"] = true

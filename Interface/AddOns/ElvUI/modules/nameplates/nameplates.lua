@@ -225,6 +225,7 @@ function mod:SetTargetFrame(frame)
 			self:ConfigureElement_PowerBar(frame)
 			self:ConfigureElement_CastBar(frame)
 			self:ConfigureElement_Glow(frame)
+			self:ConfigureElement_Elite(frame)
 
 			self:ConfigureElement_Level(frame)
 			self:ConfigureElement_Name(frame)
@@ -259,6 +260,13 @@ function mod:SetTargetFrame(frame)
 	end
 
 	mod:ClassBar_Update(frame)
+
+	if (self.db.displayStyle == "TARGET" and not frame.isTarget and frame.UnitType ~= "PLAYER") then
+		--Hide if we only allow our target to be displayed and the frame is not our current target and the frame is not the player nameplate
+		frame:Hide()
+	else
+		frame:Show()
+	end
 end
 
 function mod:StyleFrame(frame, useMainFrame)
@@ -333,7 +341,7 @@ function mod:NAME_PLATE_UNIT_ADDED(event, unit, frame)
 		mod.PlayerFrame = frame
 	end
 
-	if(self.db.units[frame.UnitFrame.UnitType].healthbar.enable or self.db.onlyShowTarget) then
+	if(self.db.units[frame.UnitFrame.UnitType].healthbar.enable or self.db.displayStyle ~= "ALL") then
 		self:ConfigureElement_HealthBar(frame.UnitFrame)
 		self:ConfigureElement_PowerBar(frame.UnitFrame)
 		self:ConfigureElement_CastBar(frame.UnitFrame)
@@ -353,9 +361,16 @@ function mod:NAME_PLATE_UNIT_ADDED(event, unit, frame)
 	self:ConfigureElement_Level(frame.UnitFrame)
 	self:ConfigureElement_Name(frame.UnitFrame)
 	self:ConfigureElement_NPCTitle(frame.UnitFrame)
+	self:ConfigureElement_Elite(frame.UnitFrame)
 	self:RegisterEvents(frame.UnitFrame, unit)
 	self:UpdateElement_All(frame.UnitFrame, unit)
-	frame.UnitFrame:Show()
+
+	if (self.db.displayStyle == "TARGET" and not frame.UnitFrame.isTarget and frame.UnitFrame.UnitType ~= "PLAYER") then
+		--Hide if we only allow our target to be displayed and the frame is not our current target and the frame is not the player nameplate
+		frame.UnitFrame:Hide()
+	else
+		frame.UnitFrame:Show()
+	end
 end
 
 function mod:NAME_PLATE_UNIT_REMOVED(event, unit, frame, ...)
@@ -385,6 +400,7 @@ function mod:NAME_PLATE_UNIT_REMOVED(event, unit, frame, ...)
 	frame.UnitFrame.Name:SetText("")
 	frame.UnitFrame.NPCTitle:ClearAllPoints()
 	frame.UnitFrame.NPCTitle:SetText("")
+	frame.UnitFrame.Elite:Hide()
 	frame.UnitFrame:Hide()
 	frame.UnitFrame.isTarget = nil
 	frame.UnitFrame.displayedUnit = nil
@@ -424,8 +440,8 @@ end
 
 function mod:SetBaseNamePlateSize()
 	local self = mod
-	local baseWidth = self.db.units["ENEMY_NPC"].healthbar.width
-	local baseHeight = self.db.units["ENEMY_NPC"].castbar.height + self.db.units["ENEMY_NPC"].healthbar.height + 30
+	local baseWidth = self.db.clickableWidth
+	local baseHeight = self.db.clickableHeight
 	NamePlateDriverFrame:SetBaseNamePlateSize(baseWidth, baseHeight)
 	self.PlayerFrame__:SetSize(baseWidth, baseHeight)
 end
@@ -458,7 +474,7 @@ function mod:UpdateInVehicle(frame, noEvents)
 end
 
 function mod:UpdateElement_All(frame, unit, noTargetFrame)
-	if(self.db.units[frame.UnitType].healthbar.enable or self.db.onlyShowTarget or frame.isTarget) then
+	if(self.db.units[frame.UnitType].healthbar.enable or (self.db.displayStyle ~= "ALL") or frame.isTarget) then
 		mod:UpdateElement_MaxHealth(frame)
 		mod:UpdateElement_Health(frame)
 		mod:UpdateElement_HealthColor(frame)
@@ -479,6 +495,7 @@ function mod:UpdateElement_All(frame, unit, noTargetFrame)
 	mod:UpdateElement_Name(frame)
 	mod:UpdateElement_NPCTitle(frame)
 	mod:UpdateElement_Level(frame)
+	mod:UpdateElement_Elite(frame)
 
 	if(not noTargetFrame) then --infinite loop lol
 		mod:SetTargetFrame(frame)
@@ -503,6 +520,7 @@ function mod:NAME_PLATE_CREATED(event, frame)
 	frame.UnitFrame.Debuffs = self:ConstructElement_Auras(frame.UnitFrame, 5, "RIGHT")
 	frame.UnitFrame.HealerIcon = self:ConstructElement_HealerIcon(frame.UnitFrame)
 	frame.UnitFrame.RaidIcon = self:ConstructElement_RaidIcon(frame.UnitFrame)
+	frame.UnitFrame.Elite = self:ConstructElement_Elite(frame.UnitFrame)
 end
 
 function mod:OnEvent(event, unit, ...)
@@ -633,7 +651,7 @@ end
 function mod:UpdateCVars()
 	E:LockCVar("nameplateShowSelf", (self.db.units.PLAYER.alwaysShow == true or self.db.units.PLAYER.enable ~= true) and "0" or "1")
 	E:LockCVar("nameplateMotion", self.db.motionType == "STACKED" and "1" or "0")
-	E:LockCVar("nameplateShowAll", self.db.onlyShowTarget == true and "0" or "1")
+	E:LockCVar("nameplateShowAll", self.db.displayStyle ~= "ALL" and "0" or "1")
 	E:LockCVar("nameplateShowFriendlyMinions", self.db.units.FRIENDLY_PLAYER.minions == true and "1" or "0")
 	E:LockCVar("nameplateShowEnemyMinions", self.db.units.ENEMY_PLAYER.minions == true and "1" or "0")
 	E:LockCVar("nameplateShowEnemyMinus", self.db.units.ENEMY_NPC.minors == true and "1" or "0")
@@ -717,6 +735,10 @@ function mod:PLAYER_REGEN_ENABLED()
 	end
 end
 
+function mod:TogglePlayerMouse()
+	self.PlayerFrame__:EnableMouse(not self.db.units.PLAYER.clickthrough)
+end
+
 function mod:Initialize()
 	self.db = E.db["nameplates"]
 	if E.private["nameplates"].enable ~= true then return end
@@ -762,6 +784,7 @@ function mod:Initialize()
 	self:NAME_PLATE_UNIT_REMOVED("NAME_PLATE_UNIT_REMOVED", "player", self.PlayerFrame__)
 	E:CreateMover(self.PlayerFrame__, "PlayerNameplate", L["Player Nameplate"])
 	self:TogglePlayerDisplayType()
+	self.PlayerFrame__:EnableMouse(not self.db.units.PLAYER.clickthrough)
 
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 

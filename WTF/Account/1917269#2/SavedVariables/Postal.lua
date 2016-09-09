@@ -1,5 +1,39 @@
 
 Postal3DB = {
+	["profileKeys"] = {
+		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
+		["Kråzyito - Gnomeregan"] = "Kråzyito - Gnomeregan",
+		["Meatrisolyn - Proudmoore"] = "Meatrisolyn - Proudmoore",
+		["Krazyito - Sargeras"] = "Krazyito - Sargeras",
+		["Krázýító - Gnomeregan"] = "Krázýító - Gnomeregan",
+		["Krâzyito - Mal'Ganis"] = "Krâzyito - Mal'Ganis",
+		["Krazyito - Stormrage"] = "Krazyito - Stormrage",
+		["Krazyitò - Gnomeregan"] = "Krazyitò - Gnomeregan",
+		["Krazyìto - Mal'Ganis"] = "Krazyìto - Mal'Ganis",
+		["Krazyitø - Gnomeregan"] = "Krazyitø - Gnomeregan",
+		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
+		["Krazymonk - Gnomeregan"] = "Krazymonk - Gnomeregan",
+		["Mackabermas - Sargeras"] = "Mackabermas - Sargeras",
+		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
+		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
+		["Krazydruidiv - Bonechewer"] = "Krazydruidiv - Bonechewer",
+		["Krazyito - Fizzcrank"] = "Krazyito - Fizzcrank",
+		["Krazyito - Burning Blade"] = "Krazyito - Burning Blade",
+		["Apridis - Eldre'Thalas"] = "Apridis - Eldre'Thalas",
+		["Krazyitó - Illidan"] = "Krazyitó - Illidan",
+		["Warlifre - Blade's Edge"] = "Warlifre - Blade's Edge",
+		["Krazýito - Gnomeregan"] = "Krazýito - Gnomeregan",
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krãzyito - Gnomeregan"] = "Krãzyito - Gnomeregan",
+		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
+		["Krázyito - Gnomeregan"] = "Krázyito - Gnomeregan",
+		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
+		["Fãlor - Gnomeregan"] = "Fãlor - Gnomeregan",
+		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
+		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
+		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
+		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
+	},
 	["global"] = {
 		["BlackBook"] = {
 			["alts"] = {
@@ -8,7 +42,7 @@ Postal3DB = {
 				"Krazydruidiv|Bonechewer|Horde|1|DRUID", -- [3]
 				"Krazyito|Burning Blade|Horde|100|DRUID", -- [4]
 				"Krazyito|Gnomeregan|Alliance|1|DRUID", -- [5]
-				"Krazyito|Mal'Ganis|Horde|100|DRUID", -- [6]
+				"Krazyito|Mal'Ganis|Horde|110|DRUID", -- [6]
 				"Krazyito|Sargeras|Alliance|90|DRUID", -- [7]
 				"Krazyito|Stormrage|Alliance|1|DRUID", -- [8]
 				"Krazyitò|Gnomeregan|Alliance|80|DRUID", -- [9]
@@ -23,7 +57,7 @@ Postal3DB = {
 				"Krazýito|Gnomeregan|Alliance|90|SHAMAN", -- [18]
 				"Krazýito|Mal'Ganis|Horde|29|PRIEST", -- [19]
 				"Krázyito|Gnomeregan|Alliance|90|HUNTER", -- [20]
-				"Krázyito|Mal'Ganis|Horde|100|SHAMAN", -- [21]
+				"Krázyito|Mal'Ganis|Horde|110|SHAMAN", -- [21]
 				"Krázýító|Gnomeregan|Alliance|90|WARLOCK", -- [22]
 				"Krâzyito|Mal'Ganis|Horde|100|DRUID", -- [23]
 				"Krãzyito|Gnomeregan|Alliance|90|PALADIN", -- [24]
@@ -33,62 +67,14 @@ Postal3DB = {
 			},
 		},
 	},
-	["profileKeys"] = {
-		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
-		["Kråzyito - Gnomeregan"] = "Kråzyito - Gnomeregan",
-		["Meatrisolyn - Proudmoore"] = "Meatrisolyn - Proudmoore",
-		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
-		["Krázýító - Gnomeregan"] = "Krázýító - Gnomeregan",
-		["Krâzyito - Mal'Ganis"] = "Krâzyito - Mal'Ganis",
-		["Krazyito - Stormrage"] = "Krazyito - Stormrage",
-		["Krazyitò - Gnomeregan"] = "Krazyitò - Gnomeregan",
-		["Krazyìto - Mal'Ganis"] = "Krazyìto - Mal'Ganis",
-		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
-		["Krazyito - Gnomeregan"] = "Krazyito - Gnomeregan",
-		["Krazymonk - Gnomeregan"] = "Krazymonk - Gnomeregan",
-		["Mackabermas - Sargeras"] = "Mackabermas - Sargeras",
-		["Krazyito - Fizzcrank"] = "Krazyito - Fizzcrank",
-		["Apridis - Eldre'Thalas"] = "Apridis - Eldre'Thalas",
-		["Krazýito - Gnomeregan"] = "Krazýito - Gnomeregan",
-		["Krázyito - Gnomeregan"] = "Krázyito - Gnomeregan",
-		["Krazyito - Burning Blade"] = "Krazyito - Burning Blade",
-		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
-		["Krazyitó - Illidan"] = "Krazyitó - Illidan",
-		["Warlifre - Blade's Edge"] = "Warlifre - Blade's Edge",
-		["Krazydruidiv - Bonechewer"] = "Krazydruidiv - Bonechewer",
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Krãzyito - Gnomeregan"] = "Krãzyito - Gnomeregan",
-		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
-		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
-		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
-		["Fãlor - Gnomeregan"] = "Fãlor - Gnomeregan",
-		["Krazyitø - Gnomeregan"] = "Krazyitø - Gnomeregan",
-		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
-		["Krazyito - Sargeras"] = "Krazyito - Sargeras",
-		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
-	},
 	["profiles"] = {
-		["Krazyíto - Gnomeregan"] = {
+		["Krazyitó - Gnomeregan"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [1]
-					"Krázýító|Gnomeregan|Alliance", -- [2]
-					"Krazýito|Gnomeregan|Alliance", -- [3]
-					"Krazymonk|Gnomeregan|Alliance", -- [4]
-					"Krazyito|Gnomeregan|Alliance", -- [5]
-					"Pattyfatsax|Gnomeregan|Alliance", -- [6]
-					"Erde|Gnomeregan|Alliance", -- [7]
-					"Dyingheart|Gnomeregan|Alliance", -- [8]
-					"Donadony|Gnomeregan|Alliance", -- [9]
-					"Kråzyito|Gnomeregan|Alliance", -- [10]
-					"Rollwhee|Gnomeregan|Alliance", -- [11]
-					"Zoopa|Gnomeregan|Alliance", -- [12]
-					"Krãzyito|Gnomeregan|Alliance", -- [13]
-					"Kinematic|Gnomeregan|Alliance", -- [14]
-					"Gral|Gnomeregan|Alliance", -- [15]
-					"Narph|Gnomeregan|Alliance", -- [16]
-					"Tantrums|Gnomeregan|Alliance", -- [17]
-					"Taeyang|Gnomeregan|Alliance", -- [18]
+					"Krazyíto|Gnomeregan|Alliance", -- [1]
+					"Krázyito-Gnomeregan|Gnomeregan|Alliance", -- [2]
+					"Krazyitø-Gnomeregan|Gnomeregan|Alliance", -- [3]
+					"Krazyitø|Gnomeregan|Alliance", -- [4]
 				},
 			},
 		},
@@ -102,20 +88,29 @@ Postal3DB = {
 		},
 		["Meatrisolyn - Proudmoore"] = {
 		},
-		["Kråzyito - Mal'Ganis"] = {
+		["Krazyito - Sargeras"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyito|Mal'Ganis|Horde", -- [1]
-					"Krâzyito|Mal'Ganis|Horde", -- [2]
-					"Durdydan|Mal'Ganis|Horde", -- [3]
-					"Musclewízard|Mal'Ganis|Horde", -- [4]
-					"Fortyz|Mal'Ganis|Horde", -- [5]
-					"Shinobars|Mal'Ganis|Horde", -- [6]
-					"Rr|Mal'Ganis|Horde", -- [7]
-					"Krazymonk-sargeras|Mal'Ganis|Horde", -- [8]
-					"Krazyitó|Mal'Ganis|Horde", -- [9]
-					"Krazyito-sargeras|Mal'Ganis|Horde", -- [10]
-					"Krazyito-Mal'Ganis|Mal'Ganis|Horde", -- [11]
+					"Traintheele|Sargeras|Alliance", -- [1]
+					"Krazyitó-Gnomeregan|Sargeras|Alliance", -- [2]
+					"Mezzoflation|Sargeras|Alliance", -- [3]
+					"Krázýító-gnomeregan|Sargeras|Alliance", -- [4]
+					"Krazymonk|Sargeras|Alliance", -- [5]
+					"Florelea|Sargeras|Alliance", -- [6]
+					"Raanch|Sargeras|Alliance", -- [7]
+					"Krázyito-gnomeregan|Sargeras|Alliance", -- [8]
+					"Krazyitó-gnomeregan|Sargeras|Alliance", -- [9]
+					"Tergerun-Sargeras|Sargeras|Alliance", -- [10]
+					"Mamme|Sargeras|Alliance", -- [11]
+					"Deathcode|Sargeras|Alliance", -- [12]
+					"Valisha|Sargeras|Alliance", -- [13]
+					"Abuginzorg|Sargeras|Alliance", -- [14]
+					"Vivios|Sargeras|Alliance", -- [15]
+					"Xyphan|Sargeras|Alliance", -- [16]
+					"Mhalix|Sargeras|Alliance", -- [17]
+					"Bdawgz|Sargeras|Alliance", -- [18]
+					"Cerinez|Sargeras|Alliance", -- [19]
+					"Saalty|Sargeras|Alliance", -- [20]
 				},
 			},
 		},
@@ -160,10 +155,17 @@ Postal3DB = {
 				},
 			},
 		},
-		["Krazýito - Mal'Ganis"] = {
+		["Krazyitø - Gnomeregan"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyito|Mal'Ganis|Horde", -- [1]
+					"Krazyíto|Gnomeregan|Alliance", -- [1]
+					"Krázýító|Gnomeregan|Alliance", -- [2]
+					"Krazyitó|Gnomeregan|Alliance", -- [3]
+					"Krãzyito-Gnomeregan|Gnomeregan|Alliance", -- [4]
+					"Krázyito|Gnomeregan|Alliance", -- [5]
+					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [6]
+					"Kråzyito|Gnomeregan|Alliance", -- [7]
+					"Krazyito|Gnomeregan|Alliance", -- [8]
 				},
 			},
 		},
@@ -221,39 +223,10 @@ Postal3DB = {
 		},
 		["Mackabermas - Sargeras"] = {
 		},
-		["Krazyito - Fizzcrank"] = {
-		},
-		["Apridis - Eldre'Thalas"] = {
-		},
-		["Krazýito - Gnomeregan"] = {
+		["Krazyíto - Mal'Ganis"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyíto|Gnomeregan|Alliance", -- [1]
-					"Krazyitø|Gnomeregan|Alliance", -- [2]
-					"Krázýító|Gnomeregan|Alliance", -- [3]
-					"Krazymonk|Gnomeregan|Alliance", -- [4]
-				},
-			},
-		},
-		["Krázyito - Gnomeregan"] = {
-			["BlackBook"] = {
-				["recent"] = {
-					"Krazyíto|Gnomeregan|Alliance", -- [1]
-					"Krazyitó-Mal'Ganis|Gnomeregan|Alliance", -- [2]
-					"Krazyitø|Gnomeregan|Alliance", -- [3]
-					"Krazyito-sargeras|Gnomeregan|Alliance", -- [4]
-					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [5]
-					"Krazyitó|Gnomeregan|Alliance", -- [6]
-					"Krãzyito|Gnomeregan|Alliance", -- [7]
-					"Krazymonk|Gnomeregan|Alliance", -- [8]
-				},
-			},
-		},
-		["Krazyito - Burning Blade"] = {
-			["BlackBook"] = {
-				["recent"] = {
-					"Flappystar|Burning Blade|Horde", -- [1]
-					"Krázyito-Mal'Ganis|Burning Blade|Horde", -- [2]
+					"Krazyito|Mal'Ganis|Horde", -- [1]
 				},
 			},
 		},
@@ -266,32 +239,54 @@ Postal3DB = {
 				},
 			},
 		},
+		["Krazydruidiv - Bonechewer"] = {
+		},
+		["Krazyito - Fizzcrank"] = {
+		},
+		["Krazyito - Burning Blade"] = {
+			["BlackBook"] = {
+				["recent"] = {
+					"Flappystar|Burning Blade|Horde", -- [1]
+					"Krázyito-Mal'Ganis|Burning Blade|Horde", -- [2]
+				},
+			},
+		},
+		["Apridis - Eldre'Thalas"] = {
+		},
 		["Krazyitó - Illidan"] = {
 		},
 		["Warlifre - Blade's Edge"] = {
 		},
-		["Krazydruidiv - Bonechewer"] = {
+		["Krazýito - Gnomeregan"] = {
+			["BlackBook"] = {
+				["recent"] = {
+					"Krazyíto|Gnomeregan|Alliance", -- [1]
+					"Krazyitø|Gnomeregan|Alliance", -- [2]
+					"Krázýító|Gnomeregan|Alliance", -- [3]
+					"Krazymonk|Gnomeregan|Alliance", -- [4]
+				},
+			},
 		},
 		["Krazyito - Mal'Ganis"] = {
 			["BlackBook"] = {
 				["recent"] = {
 					"Krázyito|Mal'Ganis|Horde", -- [1]
-					"Krazyìto|Mal'Ganis|Horde", -- [2]
-					"Kråzyito|Mal'Ganis|Horde", -- [3]
-					"Krazybank|Mal'Ganis|Horde", -- [4]
-					"Krâzyito|Mal'Ganis|Horde", -- [5]
-					"Shiftmode|Mal'Ganis|Horde", -- [6]
-					"Bradyhunt|Mal'Ganis|Horde", -- [7]
-					"Rancavus|Mal'Ganis|Horde", -- [8]
-					"Tosk-Mal'Ganis|Mal'Ganis|Horde", -- [9]
-					"Kronklez-Mal'Ganis|Mal'Ganis|Horde", -- [10]
-					"Shiftmode-Mal'Ganis|Mal'Ganis|Horde", -- [11]
-					"Martialblak-Mal'Ganis|Mal'Ganis|Horde", -- [12]
-					"Cheesemizzle-Mal'Ganis|Mal'Ganis|Horde", -- [13]
-					"Zahoy-Mal'Ganis|Mal'Ganis|Horde", -- [14]
-					"Rágebar-Mal'Ganis|Mal'Ganis|Horde", -- [15]
-					"Irtluzbek|Mal'Ganis|Horde", -- [16]
-					"Bigfatk-Mal'Ganis|Mal'Ganis|Horde", -- [17]
+					"Bigfatk-Mal'Ganis|Mal'Ganis|Horde", -- [2]
+					"Krazyìto|Mal'Ganis|Horde", -- [3]
+					"Kråzyito|Mal'Ganis|Horde", -- [4]
+					"Krazybank|Mal'Ganis|Horde", -- [5]
+					"Krâzyito|Mal'Ganis|Horde", -- [6]
+					"Shiftmode|Mal'Ganis|Horde", -- [7]
+					"Bradyhunt|Mal'Ganis|Horde", -- [8]
+					"Rancavus|Mal'Ganis|Horde", -- [9]
+					"Tosk-Mal'Ganis|Mal'Ganis|Horde", -- [10]
+					"Kronklez-Mal'Ganis|Mal'Ganis|Horde", -- [11]
+					"Shiftmode-Mal'Ganis|Mal'Ganis|Horde", -- [12]
+					"Martialblak-Mal'Ganis|Mal'Ganis|Horde", -- [13]
+					"Cheesemizzle-Mal'Ganis|Mal'Ganis|Horde", -- [14]
+					"Zahoy-Mal'Ganis|Mal'Ganis|Horde", -- [15]
+					"Rágebar-Mal'Ganis|Mal'Ganis|Horde", -- [16]
+					"Irtluzbek|Mal'Ganis|Horde", -- [17]
 					"Xitch-Mal'Ganis|Mal'Ganis|Horde", -- [18]
 					"Lockyfragboa-Mal'Ganis|Mal'Ganis|Horde", -- [19]
 					"Berrygentle-Mal'Ganis|Mal'Ganis|Horde", -- [20]
@@ -317,19 +312,26 @@ Postal3DB = {
 				},
 			},
 		},
-		["Krazyíto - Mal'Ganis"] = {
+		["Krázyito - Gnomeregan"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyito|Mal'Ganis|Horde", -- [1]
+					"Krazyíto|Gnomeregan|Alliance", -- [1]
+					"Krazyitó-Mal'Ganis|Gnomeregan|Alliance", -- [2]
+					"Krazyitø|Gnomeregan|Alliance", -- [3]
+					"Krazyito-sargeras|Gnomeregan|Alliance", -- [4]
+					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [5]
+					"Krazyitó|Gnomeregan|Alliance", -- [6]
+					"Krãzyito|Gnomeregan|Alliance", -- [7]
+					"Krazymonk|Gnomeregan|Alliance", -- [8]
 				},
 			},
 		},
 		["Krázyito - Mal'Ganis"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyìto|Mal'Ganis|Horde", -- [1]
-					"Zka|Mal'Ganis|Horde", -- [2]
-					"Krazyito|Mal'Ganis|Horde", -- [3]
+					"Krazyito|Mal'Ganis|Horde", -- [1]
+					"Krazyìto|Mal'Ganis|Horde", -- [2]
+					"Zka|Mal'Ganis|Horde", -- [3]
 					"Shinobars|Mal'Ganis|Horde", -- [4]
 				},
 			},
@@ -344,17 +346,10 @@ Postal3DB = {
 				},
 			},
 		},
-		["Krazyitø - Gnomeregan"] = {
+		["Krazýito - Mal'Ganis"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyíto|Gnomeregan|Alliance", -- [1]
-					"Krázýító|Gnomeregan|Alliance", -- [2]
-					"Krazyitó|Gnomeregan|Alliance", -- [3]
-					"Krãzyito-Gnomeregan|Gnomeregan|Alliance", -- [4]
-					"Krázyito|Gnomeregan|Alliance", -- [5]
-					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [6]
-					"Kråzyito|Gnomeregan|Alliance", -- [7]
-					"Krazyito|Gnomeregan|Alliance", -- [8]
+					"Krazyito|Mal'Ganis|Horde", -- [1]
 				},
 			},
 		},
@@ -382,39 +377,45 @@ Postal3DB = {
 				},
 			},
 		},
-		["Krazyito - Sargeras"] = {
+		["Kråzyito - Mal'Ganis"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Traintheele|Sargeras|Alliance", -- [1]
-					"Krazyitó-Gnomeregan|Sargeras|Alliance", -- [2]
-					"Mezzoflation|Sargeras|Alliance", -- [3]
-					"Krázýító-gnomeregan|Sargeras|Alliance", -- [4]
-					"Krazymonk|Sargeras|Alliance", -- [5]
-					"Florelea|Sargeras|Alliance", -- [6]
-					"Raanch|Sargeras|Alliance", -- [7]
-					"Krázyito-gnomeregan|Sargeras|Alliance", -- [8]
-					"Krazyitó-gnomeregan|Sargeras|Alliance", -- [9]
-					"Tergerun-Sargeras|Sargeras|Alliance", -- [10]
-					"Mamme|Sargeras|Alliance", -- [11]
-					"Deathcode|Sargeras|Alliance", -- [12]
-					"Valisha|Sargeras|Alliance", -- [13]
-					"Abuginzorg|Sargeras|Alliance", -- [14]
-					"Vivios|Sargeras|Alliance", -- [15]
-					"Xyphan|Sargeras|Alliance", -- [16]
-					"Mhalix|Sargeras|Alliance", -- [17]
-					"Bdawgz|Sargeras|Alliance", -- [18]
-					"Cerinez|Sargeras|Alliance", -- [19]
-					"Saalty|Sargeras|Alliance", -- [20]
+					"Krázyito|Mal'Ganis|Horde", -- [1]
+					"Krazyito|Mal'Ganis|Horde", -- [2]
+					"Krâzyito|Mal'Ganis|Horde", -- [3]
+					"Durdydan|Mal'Ganis|Horde", -- [4]
+					"Musclewízard|Mal'Ganis|Horde", -- [5]
+					"Fortyz|Mal'Ganis|Horde", -- [6]
+					"Shinobars|Mal'Ganis|Horde", -- [7]
+					"Rr|Mal'Ganis|Horde", -- [8]
+					"Krazymonk-sargeras|Mal'Ganis|Horde", -- [9]
+					"Krazyitó|Mal'Ganis|Horde", -- [10]
+					"Krazyito-sargeras|Mal'Ganis|Horde", -- [11]
+					"Krazyito-Mal'Ganis|Mal'Ganis|Horde", -- [12]
 				},
 			},
 		},
-		["Krazyitó - Gnomeregan"] = {
+		["Krazyíto - Gnomeregan"] = {
 			["BlackBook"] = {
 				["recent"] = {
-					"Krazyíto|Gnomeregan|Alliance", -- [1]
-					"Krázyito-Gnomeregan|Gnomeregan|Alliance", -- [2]
-					"Krazyitø-Gnomeregan|Gnomeregan|Alliance", -- [3]
-					"Krazyitø|Gnomeregan|Alliance", -- [4]
+					"Krazymonk-sargeras|Gnomeregan|Alliance", -- [1]
+					"Krázýító|Gnomeregan|Alliance", -- [2]
+					"Krazýito|Gnomeregan|Alliance", -- [3]
+					"Krazymonk|Gnomeregan|Alliance", -- [4]
+					"Krazyito|Gnomeregan|Alliance", -- [5]
+					"Pattyfatsax|Gnomeregan|Alliance", -- [6]
+					"Erde|Gnomeregan|Alliance", -- [7]
+					"Dyingheart|Gnomeregan|Alliance", -- [8]
+					"Donadony|Gnomeregan|Alliance", -- [9]
+					"Kråzyito|Gnomeregan|Alliance", -- [10]
+					"Rollwhee|Gnomeregan|Alliance", -- [11]
+					"Zoopa|Gnomeregan|Alliance", -- [12]
+					"Krãzyito|Gnomeregan|Alliance", -- [13]
+					"Kinematic|Gnomeregan|Alliance", -- [14]
+					"Gral|Gnomeregan|Alliance", -- [15]
+					"Narph|Gnomeregan|Alliance", -- [16]
+					"Tantrums|Gnomeregan|Alliance", -- [17]
+					"Taeyang|Gnomeregan|Alliance", -- [18]
 				},
 			},
 		},

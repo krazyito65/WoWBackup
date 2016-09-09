@@ -43,7 +43,7 @@
 --
 
 
-local revision =("$Revision: 15127 $"):sub(12, -3)
+local revision =("$Revision: 15177 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -3428,15 +3428,50 @@ local function CreateOptionsMenu()
 		end)
 		blockMovieDropDown:SetPoint("TOPLEFT", filterYell, "TOPLEFT", 0, -40)
 
-		local pingFilterOptions = {
-			{	text	= L.Disable,					value 	= 0},
-			{	text	= L.HideApplicantAlertsFull,	value 	= 1},
-			{	text	= L.HideApplicantAlertsNotL,	value 	= 2},
+		local talkingHeadOptions = {
+			{	text	= L.SWFNever,	value 	= "Never"},
+			{	text	= L.RaidCombat,	value 	= "BossCombatOnly"},
+			{	text	= L.CombatOnly,	value 	= "CombatOnly"},
+			{	text	= L.Always,		value 	= "Always"},
 		}
-		local blockApplicantsDropDown = hideBlizzArea:CreateDropdown(L.HideApplicantAlerts, pingFilterOptions, "DBM", "HideApplicantAlerts", function(value)
-			DBM.Options.HideApplicantAlerts = value
+		local talkingHeadDropDown = hideBlizzArea:CreateDropdown(L.DisableTalkingHead, talkingHeadOptions, "DBM", "TalkingHeadFilter", function(value)
+			DBM.Options.TalkingHeadFilter = value
+			local disabled, loaded = DBM:TalkingHeadStatus()
+			if loaded then
+				if value == "Always" and not disabled then
+					TalkingHeadFrame:UnregisterAllEvents()
+					--TalkingHeadFrame_CloseImmediately()
+				else
+					if value == "Never" and disabled then
+						TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
+						TalkingHeadFrame:RegisterEvent("TALKINGHEAD_CLOSE")
+						TalkingHeadFrame:RegisterEvent("SOUNDKIT_FINISHED")
+						TalkingHeadFrame:RegisterEvent("LOADING_SCREEN_ENABLED")
+					elseif value == "CombatOnly" then
+						if InCombatLockdown() and not disabled then
+							TalkingHeadFrame:UnregisterAllEvents()
+							--TalkingHeadFrame_CloseImmediately()
+						else
+							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
+							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_CLOSE")
+							TalkingHeadFrame:RegisterEvent("SOUNDKIT_FINISHED")
+							TalkingHeadFrame:RegisterEvent("LOADING_SCREEN_ENABLED")
+						end
+					elseif value == "BossCombatOnly" then
+						if IsEncounterInProgress() and not disabled then
+							TalkingHeadFrame:UnregisterAllEvents()
+							--TalkingHeadFrame_CloseImmediately()
+						else
+							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_REQUESTED")
+							TalkingHeadFrame:RegisterEvent("TALKINGHEAD_CLOSE")
+							TalkingHeadFrame:RegisterEvent("SOUNDKIT_FINISHED")
+							TalkingHeadFrame:RegisterEvent("LOADING_SCREEN_ENABLED")
+						end
+					end
+				end
+			end
 		end)
-		blockApplicantsDropDown:SetPoint("TOPLEFT", blockMovieDropDown, "TOPLEFT", 0, -45)
+		talkingHeadDropDown:SetPoint("TOPLEFT", blockMovieDropDown, "TOPLEFT", 0, -45)
 
 		--hideBlizzArea:AutoSetDimension()
 		hideBlizzPanel:SetMyOwnHeight()

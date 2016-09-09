@@ -1,6 +1,3 @@
---- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
---- Callback.lua last changed 2016-07-21T06:24:03Z
-
 -- local functions
 local GetTime = GetTime;
 local UnitChannelInfo = UnitChannelInfo;
@@ -641,11 +638,11 @@ function Gnosis:DISPLAY_SIZE_CHANGED()
 end
 
 function Gnosis:PLAYER_TALENT_UPDATE()
-	self.iCurSpec = GetActiveSpecGroup();
-
+	self.iCurSpec = GetSpecialization();
+	
 	for key, value in pairs(self.castbars) do
 		local conf = Gnosis.s.cbconf[key];
-		if (conf.bEn and conf.spec > 0) then
+		if (conf.bEn) then
 			self:SetBarParams(value.name)
 		end
 	end

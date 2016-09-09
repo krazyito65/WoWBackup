@@ -756,7 +756,7 @@ end
 ]]
 
 function Amr:InitializeGear()
-	Amr:AddEventHandler("PLAYER_SPECIALIZATION_CHANGED", onActiveTalentGroupChanged)
+	Amr:AddEventHandler("ACTIVE_TALENT_GROUP_CHANGED", onActiveTalentGroupChanged)
 
 	--Amr:AddEventHandler("CHAT_MSG_CHANNEL", testfunc)
 	

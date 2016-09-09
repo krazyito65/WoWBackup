@@ -98,9 +98,6 @@ function AddOn:OnInitialize()
 	end
 	
 	local GameMenuButton = CreateFrame("Button", nil, GameMenuFrame, "GameMenuButtonTemplate")
-	GameMenuButton:Size(GameMenuButtonLogout:GetWidth(), GameMenuButtonLogout:GetHeight())
-
-	GameMenuButton:Point("TOPLEFT", GameMenuButtonAddons, "BOTTOMLEFT", 0, -1)
 	GameMenuButton:SetText(AddOnName)
 	GameMenuButton:SetScript("OnClick", function(self)
 		AddOn:ToggleConfig()
@@ -108,7 +105,21 @@ function AddOn:OnInitialize()
 	end)
 	GameMenuFrame[AddOnName] = GameMenuButton
 
-	hooksecurefunc('GameMenuFrame_UpdateVisibleButtons', self.PositionGameMenuButton)	
+	if not IsAddOnLoaded("ConsolePort") then
+		GameMenuButton:Size(GameMenuButtonLogout:GetWidth(), GameMenuButtonLogout:GetHeight())
+		GameMenuButton:Point("TOPLEFT", GameMenuButtonAddons, "BOTTOMLEFT", 0, -1)
+		hooksecurefunc('GameMenuFrame_UpdateVisibleButtons', self.PositionGameMenuButton)
+	else
+		if GameMenuButton.Middle then
+			GameMenuButton.Middle:Hide()
+			GameMenuButton.Left:Hide()
+			GameMenuButton.Right:Hide()
+		end
+		ConsolePort:GetData().Atlas.SetFutureButtonStyle(GameMenuButton, nil, nil, true)
+		GameMenuButton:Size(240, 46)
+		GameMenuButton:Point("TOP", GameMenuButtonWhatsNew, "BOTTOMLEFT", 0, -1)
+		GameMenuFrame:Size(530, 576)
+	end
 end
 
 function AddOn:PositionGameMenuButton()

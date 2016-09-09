@@ -1,9 +1,9 @@
 Version: 1
 Frame: ItemRefTooltip
 FrameLevel: 1
-Anchor: CENTER
-X: 326
-Y: -32
+Anchor: RIGHT
+X: -439
+Y: 177
 W: 128
 H: 64
 Frame: ColorPickerFrame
@@ -30,10 +30,10 @@ H: 32
 Frame: DetailsPlayerDetailsWindow
 FrameLevel: 1
 Anchor: CENTER
-X: 293
-Y: 171
-W: 590
-H: 354
+X: 194
+Y: 84
+W: 790
+H: 454
 Frame: EventTrackerFrame
 FrameLevel: 1
 Anchor: LEFT

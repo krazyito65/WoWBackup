@@ -1,6 +1,3 @@
--- Gnosis v4.61 last changed 2016-07-21T06:24:03Z
--- Encoding.lua last changed 2016-07-21T06:24:03Z
-
 local string_char = string.char;
 local string_byte = string.byte;
 local string_char = string.char;

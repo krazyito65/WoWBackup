@@ -39,9 +39,9 @@ L[" (CD)"] = "（冷却时间）"
 L["Changes the scale of the profession frame."] = "变更专业框架缩放尺寸。" -- Needs review
 L[ [=[Changes the scale of the profession frame. 
 
-Open the profession window to enable.]=] ] = [=[变更专业框架缩放尺寸。
+Open the profession window to enable.]=] ] = [=[
 
-打开专业窗口激活。]=] -- Needs review
+Open the profession window to enable.]=]
 -- L["Characters"] = ""
 L["Characters (Bags/Bank/AH/Mail) to Ignore:"] = "角色(包/银行/拍卖行/邮件)忽略:"
 L["Clear Filters"] = "清除筛选"
@@ -81,7 +81,7 @@ L["Default Price"] = "默认价格"
 L["Default Price Settings"] = "默认价格设置"
 -- L["Disable Crafting AH Search"] = ""
 -- L["Disable DE Search"] = ""
-L["Enable Smart Crafting for Quests"] = "激活队列自动制造" -- Needs review
+L["Enable Smart Crafting for Quests"] = "启用自动制造" -- Needs review
 L["Enchant Vellum"] = "附魔羊皮纸"
 L[ [=[Estimated Cost: %s
 Estimated Profit: %s]=] ] = [=[估算成本: %s
@@ -100,12 +100,12 @@ L["General"] = "基本设置"
 L["General Settings"] = "基本设置"
 L["Guilds (Guild Banks) to Ignore:"] = "公会(公会银行)忽略:"
 -- L["Have Mats"] = ""
-L["Here, you can select which of your TSM groups you would like to restock based on their Crafting operations."] = "在这里，你可以根据制造操作来选择TSM分组。" -- Needs review
+L["Here, you can select which of your TSM groups you would like to restock based on their Crafting operations."] = "这里，你可以根据某些TSM分组中制造操作的需要，来选择这些分组所要补充的材料。" -- Needs review
 L["Here you can view and adjust how Crafting is calculating the price for this material."] = "你可以在这里查看和调整队列中原料价格的计算方法。"
 L["Hide Queue"] = "隐藏队列"
-L["Hold the left mouse button down and drag this handle to resize the window."] = "按住并拖动手柄来调整窗口大小。" -- Needs review
+L["Hold the left mouse button down and drag this handle to resize the window."] = "左键拖动这个指针来调整窗口大小。"
 L["If checked, if there is more than one way to craft the item then the craft cost will exclude any craft with a daily cooldown when calculating the lowest craft cost."] = "如果勾选此项,当计算可以通过多种方法制造出的产品的成本时,会排出需要有一天冷却时间的那种制造方法。"
-L["If checked, only crafts which you can craft with items in your bags (ignoring vendor items) will be shown below."] = "如果勾选，将只显示能用背包内材料制造的物品（忽略商店材料）。" -- Needs review
+L["If checked, only crafts which you can craft with items in your bags (ignoring vendor items) will be shown below."] = "如果选中本选项，则将仅显示可通过背包内材料（NPC出售材料除外）制造的物品"
 L["If checked, the crafting cost of items will be shown in the tooltip for the item."] = "如果勾选,在提示信息中将会显示该物品的制造成本。"
 L["If checked, the material cost of items will be shown in the tooltip for the item."] = "在鼠标提示中显示该物品的制造成本。"
 -- L["If checked, the mats needed to craft an item and their prices will be shown in item tooltips."] = ""

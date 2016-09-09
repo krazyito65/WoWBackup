@@ -222,6 +222,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 811,
 		},
+		[32] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[466] = {
 			["Preferred"] = {
 			},
@@ -247,12 +253,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Mana-Tombs"] = {
+		[382] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[989] = {
 			["Preferred"] = {
@@ -350,12 +355,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Storehouse"] = {
+		["Warspear Hold"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 976,
+			["ZoneID"] = 1011,
 		},
 		[969] = {
 			["Preferred"] = {
@@ -363,7 +368,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[768] = {
+		[964] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -412,19 +417,17 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 873,
 		},
-		["Utgarde Pinnacle"] = {
+		[769] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 491,
 		},
-		["The Slave Pens"] = {
+		[321] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[4] = {
 			["Preferred"] = {
@@ -444,12 +447,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Dawnseeker's Promontory"] = {
+		["Enchanter's Study"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 928,
+			["ZoneID"] = -1,
 		},
 		[962] = {
 			["Preferred"] = {
@@ -469,6 +472,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[499] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Dread Wastes"] = {
 			["Preferred"] = {
 			},
@@ -476,13 +485,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 858,
 		},
-		[499] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[606] = {
+		[733] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -508,12 +511,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = -1,
 		},
-		["Valley of the Four Winds"] = {
+		["Bladespire Citadel"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 807,
+			["ZoneID"] = 941,
 		},
 		[976] = {
 			["Preferred"] = {
@@ -535,12 +538,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		["The Storm Peaks"] = {
+		[947] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 495,
 		},
 		[820] = {
 			["Preferred"] = {
@@ -548,11 +550,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[947] = {
+		["The Storm Peaks"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 495,
 		},
 		["Rainfern Grotto"] = {
 			["Preferred"] = {
@@ -561,12 +564,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		["Bladespire Citadel"] = {
+		["Valley of the Four Winds"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 941,
+			["ZoneID"] = 807,
 		},
 		["Vale of Eternal Blossoms"] = {
 			["Preferred"] = {
@@ -575,7 +578,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 811,
 		},
-		[733] = {
+		[606] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -587,12 +590,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Enchanter's Study"] = {
+		["Dawnseeker's Promontory"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = -1,
+			["ZoneID"] = 928,
 		},
 		[1011] = {
 			["Preferred"] = {
@@ -600,17 +603,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[321] = {
+		["The Slave Pens"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
-		[769] = {
+		["Utgarde Pinnacle"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 491,
 		},
 		[29] = {
 			["Preferred"] = {
@@ -618,18 +623,18 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[964] = {
+		[768] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Warspear Hold"] = {
+		["Storehouse"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 1011,
+			["ZoneID"] = 976,
 		},
 		["Sabermaw Den"] = {
 			["Preferred"] = {
@@ -651,19 +656,20 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[382] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.3",
+	["version"] = "7.0.9",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 		98204, -- [1]
@@ -824,7 +830,7 @@ GoGo_Prefs = {
 		61447, -- [5]
 		75973, -- [6]
 	},
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 }
 GoGo_DebugLog = {
 }
