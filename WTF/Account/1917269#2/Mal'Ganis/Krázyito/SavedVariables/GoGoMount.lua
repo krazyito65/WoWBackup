@@ -143,7 +143,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1081] = {
+		[1067] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -155,7 +155,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[-1] = {
+		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -185,31 +185,26 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1042] = {
+		[261] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1008] = {
+		[1070] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[976] = {
+		["Highmaul"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 994,
 		},
 		[13] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[201] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -221,18 +216,23 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[201] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[1060] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Storehouse"] = {
+		[1100] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 976,
 		},
 		[321] = {
 			["Preferred"] = {
@@ -282,11 +282,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1100] = {
+		["Storehouse"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 976,
 		},
 		[1041] = {
 			["Preferred"] = {
@@ -294,20 +295,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Highmaul"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 994,
-		},
-		[1070] = {
+		[976] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[261] = {
+		[1008] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1042] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -319,13 +319,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1011] = {
+		[-1] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1067] = {
+		[1081] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -333,7 +333,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = false,
+	["autodismount"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -344,7 +344,7 @@ GoGo_Prefs = {
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["autodismount"] = true,
+	["DisableWaterFlight"] = false,
 }
 GoGo_DebugLog = {
 }

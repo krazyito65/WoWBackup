@@ -1,4 +1,11 @@
 Version: 1
+Frame: TomTomBlock
+FrameLevel: 1
+Anchor: TOPRIGHT
+X: -193
+Y: -201
+W: 100
+H: 30
 Frame: ItemRefTooltip
 FrameLevel: 1
 Anchor: RIGHT
@@ -55,3 +62,10 @@ X: 0
 Y: 0
 W: 648
 H: 420
+Frame: TomTomCrazyArrow
+FrameLevel: 1
+Anchor: CENTER
+X: 2
+Y: 274
+W: 56
+H: 42

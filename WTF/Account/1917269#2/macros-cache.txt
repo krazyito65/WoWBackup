@@ -1,9 +1,3 @@
-VER 3 0000000000000082 " " "INV_MISC_QUESTIONMARK"
-/use milling
-/use Gorgrond Flytrap
-/use Nagrand Arrowbloom
-/use Starflower
-END
 VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
  /run SetRaidTarget("Target", 3)
 8 = {skull}
@@ -17,6 +11,26 @@ VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
 END
 VER 3 0000000000000063 " " "Ability_Iyyokuk_Mantid_Red"
 /run SetRaidTarget("Target", 8)
+END
+VER 3 0000000000000083 " " "INV_MISC_QUESTIONMARK"
+/run T={}
+/run T[#T+1]={43594, "Suramar 29.0, 84.8 Soul Vaults (Halls of the Eclipse)"}
+/run T[#T+1]={43588, "Suramar 59.3, 42.8 Kel'balor"}
+/run T[#T+1]={43587, "Suramar 65.8, 41.9 Elor'shan"}
+/run T[#T+1]={43593, "Suramar 20.4, 50.4 Falanar South (Falan
+END
+VER 3 0000000000000082 " " "INV_MISC_QUESTIONMARK"
+/use milling
+/use Gorgrond Flytrap
+/use Nagrand Arrowbloom
+/use Starflower
+END
+VER 3 0000000000000084 " " "INV_MISC_QUESTIONMARK"
+/run T={}
+/run T[#T+1]={43594, "Suramar 29.0, 84.8 Soul Vaults (Halls of the Eclipse)"}
+/run T[#T+1]={43588, "Suramar 59.3, 42.8 Kel'balor"}
+/run T[#T+1]={43587, "Suramar 65.8, 41.9 Elor'shan"}
+/run T[#T+1]={43593, "Suramar 20.4, 50.4 Falanar South (Falan
 END
 VER 3 0000000000000052 "  conformation" "SPELL_ARCANE_ARCANE01"
 /click StaticPopup1Button1

@@ -21,9 +21,9 @@ AddOnSkinsOptions = {
 	["SkinDebug"] = false,
 	["EmbedSexyCooldown"] = false,
 	["SkadaBackdrop"] = true,
-	["OmenBackdrop"] = true,
-	["EmbedIsHidden"] = false,
 	["TransparentEmbed"] = false,
+	["EmbedIsHidden"] = false,
+	["OmenBackdrop"] = true,
 	["MiscFixes"] = true,
 	["EmbedMain"] = "Skada",
 }

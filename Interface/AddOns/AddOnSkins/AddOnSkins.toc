@@ -6,7 +6,7 @@
 ## OptionalDep: ElvUI, BuyEmAll, DSM, Tukui, HydraUI
 ## X-Tukui-ProjectID: 128
 ## X-Tukui-ProjectFolders: AddOnSkins
-## X-Curse-Packaged-Version: 3.38-2-g67966cc
+## X-Curse-Packaged-Version: 3.38-3-gc02be50
 ## X-Curse-Project-Name: AddOnSkins
 ## X-Curse-Project-ID: elvui_addonskins
 ## X-Curse-Repository-ID: wow/elvui_addonskins/mainline
