@@ -1,51 +1,8 @@
 # BigWigs
 
-## [v9](https://github.com/BigWigsMods/BigWigs/tree/v9) (2016-09-09) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v8...v9)
+## [v9-3-ga90ac36](https://github.com/BigWigsMods/BigWigs/tree/a90ac36d951209e9065c559f472d73b445f0bc3f) (2016-09-11) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v9...a90ac36d951209e9065c559f472d73b445f0bc3f)
 
--   bump version  
--   ruRU update (#32)  
--   Update deDE (#31)  
--   frFR Update (#30)  
--   Move the "raid icon" option into the icons panel.  
--   Options: add locale, cleanups  
--   Options: Add bosses to main config (#29)  
--   Update deDE (#28)  
--   bump DBM version  
--   esES update. (#27)  
--   esES update. (#26)  
--   Options: Just expand the header without selecting to prevent addon loading  
--   ruRU update (#25)  
--   Options: Fix print to chat invalid spell id message  
--   Options: Select the first instance when clicking a header  
--   Options: add some comments  
--   cleanup some whitespace  
--   Translate "bosses" text and remove some old locale entries.  
--   Options: Split LittleWigs content into expansions.  
--   Options: Sort content by expansion.  
--   Pull: Allow tanks in LFG to send pull timers.  
--   Pull: comment out the gear check code.  
--   Fix the logic for auto selecting the current zone in the config.  
--   Options: Move boss configuration to our own dedicated window.  
--   Loader: Cleanup the dungeon timer code.  
--   Update deDE (#22)  
--   Pull: Be more restrictive with what we class as a bad item.  
--   Pull: Initial import of a "bad gear check". Warns you of potentially bad items you have equipped when a pull timer starts.  
--   Plugins/Flash: Don't delay frame creation.  
--   Plugins/Flash: Cleanups, removing some pointlessly created frames.  
--   Update deDE (#20)  
--   Update deDE (#21)  
--   Colors: Fix color wrapper.  
--   frFR Update (#19)  
--   update authors  
--   Remove SVN comment  
--   Pull: Fix options  
--   ruRU update (#18)  
--   Colors: Add a temporary wrapper for color names.  
--   Pull: Fix lua error  
--   Pull: add automatic combat logging option.  
--   Split pulling functionality into its own module. Add an "emphasized" option and make it default.  
--   Cleanup invalid texture layers.  
--   esES update. (#17)  
--   esES update.  
--   zhCN/zhTW update. (#16)  
+-   zhCN/zhTW update. (#34)  
+-   BossBlock: Add Maw of Souls cinematic.  
+-   ruRU update. (#33)  

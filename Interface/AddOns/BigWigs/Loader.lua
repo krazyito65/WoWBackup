@@ -18,12 +18,12 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "e93ac1e" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "a90ac36" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
-	--[===[@alpha@
+	--@alpha@
 	-- The following code will only be present in alpha ZIPs.
 	releaseType = ALPHA
-	--@end-alpha@]===]
+	--@end-alpha@
 
 	-- If we find "@" then we're running from Git directly.
 	if myGitHash:find("@", nil, true) then

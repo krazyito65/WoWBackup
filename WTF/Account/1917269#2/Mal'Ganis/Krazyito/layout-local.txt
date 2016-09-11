@@ -34,13 +34,6 @@ X: -138
 Y: -112
 W: 32
 H: 32
-Frame: DetailsPlayerDetailsWindow
-FrameLevel: 1
-Anchor: CENTER
-X: 194
-Y: 84
-W: 790
-H: 454
 Frame: EventTrackerFrame
 FrameLevel: 1
 Anchor: LEFT
@@ -69,3 +62,10 @@ X: 2
 Y: 274
 W: 56
 H: 42
+Frame: DetailsPlayerDetailsWindow
+FrameLevel: 1
+Anchor: CENTER
+X: 194
+Y: 84
+W: 790
+H: 454

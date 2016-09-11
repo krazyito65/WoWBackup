@@ -1,4 +1,11 @@
 Version: 1
+Frame: TomTomBlock
+FrameLevel: 1
+Anchor: RIGHT
+X: -33
+Y: -284
+W: 100
+H: 30
 Frame: ItemRefTooltip
 FrameLevel: 1
 Anchor: LEFT
@@ -27,13 +34,6 @@ X: -165
 Y: -116
 W: 32
 H: 32
-Frame: VuhDoNewOptionsTabbedFrame
-FrameLevel: 9
-Anchor: CENTER
-X: 0
-Y: 0
-W: 648
-H: 420
 Frame: DetailsPlayerDetailsWindow
 FrameLevel: 1
 Anchor: RIGHT
@@ -41,3 +41,10 @@ X: -309
 Y: -74
 W: 790
 H: 454
+Frame: VuhDoNewOptionsTabbedFrame
+FrameLevel: 9
+Anchor: CENTER
+X: 0
+Y: 0
+W: 648
+H: 420
