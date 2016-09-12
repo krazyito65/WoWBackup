@@ -565,12 +565,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Scarlet Monastery"] = {
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[736] = {
 			["Preferred"] = {
@@ -584,11 +583,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1086] = {
+		["Scarlet Monastery"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		["Mana-Tombs"] = {
 			["Preferred"] = {
@@ -682,19 +682,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[930] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[1091] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[962] = {
+		[930] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[482] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -712,7 +712,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[121] = {
+		[962] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -842,7 +842,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[482] = {
+		[121] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {

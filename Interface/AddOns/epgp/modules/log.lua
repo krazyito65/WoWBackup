@@ -242,7 +242,7 @@ function mod:Import(jsonStr)
     return
   end
 
-  if d.region and d.region ~= GetCVar("portal") then
+  if d.region and d.region:lower() ~= GetCVar("portal"):lower() then
     EPGP:Print(L["The imported data is invalid"])
     return
   end

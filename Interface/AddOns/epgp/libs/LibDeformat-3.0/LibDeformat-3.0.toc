@@ -6,7 +6,7 @@
 ## X-Category: Library
 ## X-License: MIT
 ## LoadOnDemand: 1
-## X-Curse-Packaged-Version: v5.12.3
+## X-Curse-Packaged-Version: v5.12.4
 ## X-Curse-Project-Name: epgp (dkp reloaded)
 ## X-Curse-Project-ID: epgp-dkp-reloaded
 ## X-Curse-Repository-ID: wow/epgp-dkp-reloaded/mainline

@@ -419,6 +419,9 @@ function EPGP:ImportRoster(t, new_base_gp)
   local notes = {}
   for _, entry in pairs(t) do
     local name, ep, gp = unpack(entry)
+    if not string.find(name, "%-") then	
+        name = name .. "-" .. ourRealmName;
+    end
     notes[name] = EncodeNote(ep, gp)
   end
 

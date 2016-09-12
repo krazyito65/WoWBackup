@@ -33,22 +33,22 @@ AskMrRobotDb3 = {
 				[109693] = 572,
 				[58181] = 1,
 				[71783] = 1,
-				[78762] = 1,
+				[109128] = 3,
 				[71468] = 1,
 				[17057] = 2,
-				[109128] = 3,
+				[78762] = 1,
 				[71228] = 1,
-				[72870] = 1,
+				[77091] = 1,
 				[78481] = 2,
 				[45582] = 1,
 				[45584] = 1,
-				[109119] = 159,
-				[59230] = 1,
 				[77241] = 1,
+				[59230] = 1,
+				[109119] = 159,
 				[116053] = 10,
 				[115805] = 93,
-				[71146] = 1,
 				[71335] = 1,
+				[71146] = 1,
 				[65905] = 1,
 				[71333] = 1,
 				[78781] = 1,
@@ -63,7 +63,7 @@ AskMrRobotDb3 = {
 				[63388] = 12,
 				[78819] = 1,
 				[10938] = 1,
-				[77091] = 1,
+				[72870] = 1,
 				[72848] = 1,
 				[109125] = 4,
 			},
@@ -102,8 +102,8 @@ AskMrRobotDb3 = {
 			["Talents"] = {
 				"1133133", -- [1]
 				"0000000", -- [2]
-				"3331331", -- [3]
-				"2133232", -- [4]
+				"1331331", -- [3]
+				"2133212", -- [4]
 			},
 			["BankItems"] = {
 				"|cffa335ee|Hitem:114821::::::::100:102::::::|h[Hexweave Bag]|h|r", -- [1]
@@ -432,9 +432,9 @@ AskMrRobotDb3 = {
 				[141351] = 1,
 				[124117] = 34,
 				[103678] = 1,
-				[110560] = 1,
-				[138292] = 176,
 				[114116] = 19,
+				[138292] = 176,
+				[110560] = 1,
 				[132223] = 3,
 				[137207] = 1,
 				[87216] = 1,
@@ -456,20 +456,30 @@ AskMrRobotDb3 = {
 				{
 					["Relics"] = {
 						"|cff1eff00|Hitem:141292::::::::110:102:::3:1812:1442:1809:::|h[Crystallizing Mana]|h|r", -- [1]
-						"|cff0070dd|Hitem:137327::::::::110:102::2:2:1726:1477:::|h[Relinquishing Grip of Helheim]|h|r", -- [2]
+						"|cff0070dd|Hitem:141269::::::::110:102::30:3:3397:1492:1675:::|h[Tranquil Clipping]|h|r", -- [2]
 						"|cff0070dd|Hitem:141292::::::::110:102::29:3:3396:1487:1675:::|h[Crystallizing Mana]|h|r", -- [3]
 					},
 					["Powers"] = {
 						[1044] = 1,
+						[1049] = 1,
 						[1035] = 3,
-						[1294] = 1,
 						[1047] = 1,
 						[1036] = 3,
 						[1040] = 3,
-						[1049] = 1,
+						[1294] = 1,
 					},
 				}, -- [1]
-				nil, -- [2]
+				{
+					["Relics"] = {
+						"", -- [1]
+						"", -- [2]
+						"", -- [3]
+					},
+					["Powers"] = {
+						[1153] = 1,
+						[1327] = 1,
+					},
+				}, -- [2]
 				{
 					["Relics"] = {
 						"|cff1eff00|Hitem:141293::::::::110:104:::3:1812:1442:1809:::|h[Spellfire Oil]|h|r", -- [1]
@@ -509,27 +519,27 @@ AskMrRobotDb3 = {
 				{
 					"|cffa335ee|Hitem:139070::::::::110:102::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
 					"|cffa335ee|Hitem:134495::::::::110:102::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
-					"|cffa335ee|Hitem:137364::::::::110:102::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
+					"|cffa335ee|Hitem:137364:5882:::::::110:102::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
-					"|cff0070dd|Hitem:139723::::::::110:102::11:2:3386:3383:::|h[Robes of the Dreamgrove]|h|r", -- [5]
+					"|cffa335ee|Hitem:128884::::::::110:102::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:102::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:102::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
-					"|cffa335ee|Hitem:134442::::::::110:102::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
+					"|cffa335ee|Hitem:128885::::::::110:102::13:5:689:1694:3408:601:669:::|h[Dreadleather Footpads of the Fireflash]|h|r", -- [8]
 					"|cffa335ee|Hitem:137512::::::::110:102::23:3:1727:1492:1813:::|h[Flame Juggler's Armbands]|h|r", -- [9]
-					"|cffa335ee|Hitem:134371::::::::110:102::23:3:1727:1502:1813:::|h[Felbat Leather Gloves]|h|r", -- [10]
-					"|cffa335ee|Hitem:133638::::::::110:102::23:3:1727:1492:1813:::|h[Woe-Bearer's Band]|h|r", -- [11]
+					"|cffa335ee|Hitem:128886::::::::110:102::13:5:689:1695:3408:600:669:::|h[Dreadleather Gloves of the Fireflash]|h|r", -- [10]
+					"|cffa335ee|Hitem:130229::::::::110:102::13:4:3349:689:601:669:::|h[Prophetic Band of the Fireflash]|h|r", -- [11]
 					"|cffa335ee|Hitem:134537::::::::110:102::23:4:1727:1808:1492:1813:::|h[Signet of the Highborne Magi]|h|r", -- [12]
-					"|cffa335ee|Hitem:134292::::::::110:102::36:4:3432:607:1507:3336:::|h[Nightborne Researcher's Phial]|h|r", -- [13]
+					"|cffa335ee|Hitem:128710::::::::110:102::13:3:689:600:669:::|h[Darkmoon Deck: Promises]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:102::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
 					"|cffa335ee|Hitem:137531::::::::110:102::23:3:1727:1502:3336:::|h[Cloak of Enthralling Darkness]|h|r", -- [15]
-					"|cffe6cc80|Hitem:128858::141292:137327:141292::::110:102:256:9:1:722:244:3:1812:1442:1809:2:1726:1477:3:3396:1487:1675|h[Scythe of Elune]|h|r", -- [16]
+					"|cffe6cc80|Hitem:128858::141292:141269:141292::::110:102:256:9:1:722:407:3:1812:1442:1809:3:3397:1492:1675:3:3396:1487:1675|h[Scythe of Elune]|h|r", -- [16]
 				}, -- [1]
 				{
 					"|cffa335ee|Hitem:139070::::::::110:103::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
-					"|cffa335ee|Hitem:134495::::::::110:103::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
-					"|cffa335ee|Hitem:137364::::::::110:103::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
+					"|cffa335ee|Hitem:134499::::::::110:103::23:3:1727:1497:3336:::|h[Raven Filigree Pendant]|h|r", -- [2]
+					"|cffa335ee|Hitem:137364:5882:::::::110:103::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
-					"|cff0070dd|Hitem:139723::::::::110:103::11:2:3386:3383:::|h[Robes of the Dreamgrove]|h|r", -- [5]
+					"|cffa335ee|Hitem:128884::::::::110:103::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:103::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:103::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
 					"|cffa335ee|Hitem:134442::::::::110:103::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
@@ -540,15 +550,15 @@ AskMrRobotDb3 = {
 					"|cffa335ee|Hitem:136975::::::::110:103::23:3:1727:1492:1813:::|h[Hunger of the Pack]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:103::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
 					"|cffa335ee|Hitem:137531::::::::110:103::23:3:1727:1502:3336:::|h[Cloak of Enthralling Darkness]|h|r", -- [15]
-					"|cffe6cc80|Hitem:128821::::::::110:103:256:9:1:724:265:::|h[Claws of Ursoc]|h|r", -- [16]
-					"|cffe6cc80|Hitem:128822::::::::110:103:256:::265:::|h[Claws of Ursoc]|h|r", -- [17]
+					"|cffe6cc80|Hitem:128860::::::::110:103:256:9:1:723:436:::|h[Fangs of Ashamane]|h|r", -- [16]
+					"|cffe6cc80|Hitem:128859::::::::110:103:256:::436:::|h[Fangs of Ashamane]|h|r", -- [17]
 				}, -- [2]
 				{
 					"|cffa335ee|Hitem:139070::::::::110:104::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
 					"|cffa335ee|Hitem:134499::::::::110:104::23:3:1727:1497:3336:::|h[Raven Filigree Pendant]|h|r", -- [2]
 					"|cffa335ee|Hitem:137364:5882:::::::110:104::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
-					"|cff0070dd|Hitem:139723::::::::110:104::11:2:3386:3383:::|h[Robes of the Dreamgrove]|h|r", -- [5]
+					"|cffa335ee|Hitem:128884::::::::110:104::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:104::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:104::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
 					"|cffa335ee|Hitem:134442::::::::110:104::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
@@ -564,18 +574,18 @@ AskMrRobotDb3 = {
 				}, -- [3]
 				{
 					"|cffa335ee|Hitem:139070::::::::110:105::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
-					"|cffa335ee|Hitem:134499::::::::110:105::23:3:1727:1497:3336:::|h[Raven Filigree Pendant]|h|r", -- [2]
+					"|cffa335ee|Hitem:134495::::::::110:105::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
 					"|cffa335ee|Hitem:137364:5882:::::::110:105::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
-					"|cff0070dd|Hitem:139723::::::::110:105::11:2:3386:3383:::|h[Robes of the Dreamgrove]|h|r", -- [5]
+					"|cffa335ee|Hitem:128884::::::::110:105::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:105::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:105::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
-					"|cffa335ee|Hitem:134442::::::::110:105::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
+					"|cffa335ee|Hitem:128885::::::::110:105::13:5:689:1694:3408:601:669:::|h[Dreadleather Footpads of the Fireflash]|h|r", -- [8]
 					"|cffa335ee|Hitem:137512::::::::110:105::23:3:1727:1492:1813:::|h[Flame Juggler's Armbands]|h|r", -- [9]
-					"|cffa335ee|Hitem:134371::::::::110:105::23:3:1727:1502:1813:::|h[Felbat Leather Gloves]|h|r", -- [10]
-					"|cffa335ee|Hitem:133638::::::::110:105::23:3:1727:1492:1813:::|h[Woe-Bearer's Band]|h|r", -- [11]
+					"|cffa335ee|Hitem:128886::::::::110:105::13:5:689:1695:3408:600:669:::|h[Dreadleather Gloves of the Fireflash]|h|r", -- [10]
+					"|cffa335ee|Hitem:130229::::::::110:105::13:4:3349:689:601:669:::|h[Prophetic Band of the Fireflash]|h|r", -- [11]
 					"|cffa335ee|Hitem:134537::::::::110:105::23:4:1727:1808:1492:1813:::|h[Signet of the Highborne Magi]|h|r", -- [12]
-					"|cffa335ee|Hitem:136975::::::::110:105::23:3:1727:1492:1813:::|h[Hunger of the Pack]|h|r", -- [13]
+					"|cffa335ee|Hitem:128710::::::::110:105::13:3:689:600:669:::|h[Darkmoon Deck: Promises]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:105::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
 					"|cffa335ee|Hitem:137531::::::::110:105::23:3:1727:1502:3336:::|h[Cloak of Enthralling Darkness]|h|r", -- [15]
 					"|cffe6cc80|Hitem:128306::141256:133683:137307::::110:105:256:9:1:725:49:3:3397:1497:3336:3:1727:1497:3336:3:1727:1502:3336|h[G'Hanir, the Mother Tree]|h|r", -- [16]
@@ -675,9 +685,9 @@ AskMrRobotDb3 = {
 				[86565] = 1,
 				[118711] = 2,
 				[118472] = 5,
-				[89195] = 1,
-				[6833] = 1,
 				[69815] = 5,
+				[6833] = 1,
+				[89195] = 1,
 				[116825] = 1,
 				[111667] = 2,
 				[128768] = 4,
@@ -702,9 +712,9 @@ AskMrRobotDb3 = {
 				[34829] = 1,
 				[98083] = 1,
 				[98086] = 1,
-				[111557] = 4,
+				[89882] = 1,
 				[34861] = 19,
-				[141002] = 1,
+				[111557] = 4,
 				[127883] = 4,
 				[113262] = 132,
 				[115508] = 5,
@@ -714,8 +724,8 @@ AskMrRobotDb3 = {
 				[109119] = 7,
 				[109126] = 209,
 				[116117] = 1,
-				[113263] = 38,
 				[109693] = 1561,
+				[113263] = 38,
 				[85500] = 1,
 				[120945] = 640,
 				[113264] = 105,
@@ -741,7 +751,7 @@ AskMrRobotDb3 = {
 				[98082] = 1,
 				[98092] = 1,
 				[9172] = 1,
-				[89882] = 1,
+				[141002] = 1,
 				[81055] = 4,
 				[111671] = 2,
 				[52019] = 1,
@@ -822,14 +832,14 @@ AskMrRobotDb3 = {
 					"|cff00ccff|Hitem:122245::::::::20:66:::1:582:::|h[Polished Helm of Valor]|h|r", -- [1]
 					"|cff00ccff|Hitem:122662:5318:::::::20:66:::1:582:::|h[Eternal Talisman of Evasion]|h|r", -- [2]
 					"|cff00ccff|Hitem:122372::::::::20:66:::1:582:::|h[Strengthened Stockade Pauldrons]|h|r", -- [3]
+					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
 					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
-					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
 					[8] = "|cffffffff|Hitem:24146::::::::20:66::::::|h[Initiate's Boots]|h|r",
 					[5] = "|cff00ccff|Hitem:122387:4419:::::::20:66:::1:582:::|h[Burnished Breastplate of Might]|h|r",
 					[15] = "|cff00ccff|Hitem:122266:5311:::::::20:66:::1:582:::|h[Ripped Sandstorm Cloak]|h|r",
 					[14] = "|cff00ccff|Hitem:122530::::::::20:66::::::|h[Inherited Mark of Tyranny]|h|r",
 					[16] = "|cff00ccff|Hitem:122389::::::::20:66:::1:582:::|h[Bloodsoaked Skullforge Reaver]|h|r",
-					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
+					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
 				},
 			},
 		},

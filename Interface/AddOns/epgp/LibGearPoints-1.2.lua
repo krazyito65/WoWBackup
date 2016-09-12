@@ -726,11 +726,13 @@ function lib:GetValue(item)
     standard_ilvl = 680
     ilvl_denominator = 30
   elseif version < 70000 then
-    standard_ilvl = 710
+    standard_ilvl = 710		-- HFC HC
     ilvl_denominator = 30
   else
-    standard_ilvl = 875
+    standard_ilvl = 865		-- The Emerald Nightmare HC
     ilvl_denominator = 30
+
+--    standard_ilvl = 890	-- The Nighthold HC
   end
   local multiplier = 1000 * 2 ^ (-standard_ilvl / ilvl_denominator)
   local gp_base = multiplier * 2 ^ (level/ilvl_denominator)
