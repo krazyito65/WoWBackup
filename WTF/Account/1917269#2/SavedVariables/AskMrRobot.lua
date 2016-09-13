@@ -18,55 +18,6 @@ AskMrRobotDb3 = {
 			["Talents"] = {
 				[3] = "0000000",
 			},
-			["BankItemsAndCounts"] = {
-				[10940] = 1,
-				[45581] = 1,
-				[65907] = 1,
-				[109129] = 4,
-				[6372] = 4,
-				[71337] = 1,
-				[115508] = 20,
-				[115524] = 219,
-				[70105] = 1,
-				[109118] = 124,
-				[65904] = 1,
-				[109693] = 572,
-				[58181] = 1,
-				[71783] = 1,
-				[109128] = 3,
-				[71468] = 1,
-				[17057] = 2,
-				[78762] = 1,
-				[71228] = 1,
-				[77091] = 1,
-				[78481] = 2,
-				[45582] = 1,
-				[45584] = 1,
-				[77241] = 1,
-				[59230] = 1,
-				[109119] = 159,
-				[116053] = 10,
-				[115805] = 93,
-				[71335] = 1,
-				[71146] = 1,
-				[65905] = 1,
-				[71333] = 1,
-				[78781] = 1,
-				[109127] = 300,
-				[77151] = 1,
-				[77974] = 1,
-				[111557] = 85,
-				[71209] = 1,
-				[77247] = 1,
-				[77251] = 1,
-				[109126] = 7,
-				[63388] = 12,
-				[78819] = 1,
-				[10938] = 1,
-				[72870] = 1,
-				[72848] = 1,
-				[109125] = 4,
-			},
 			["BankItems"] = {
 				"|cff1eff00|Hitem:45584::::::::100:264::::::|h[Thunder Bluff Tabard]|h|r", -- [1]
 				"|cff1eff00|Hitem:45581::::::::100:264::::::|h[Orgrimmar Tabard]|h|r", -- [2]
@@ -96,6 +47,126 @@ AskMrRobotDb3 = {
 				"|cffa335ee|Hitem:78481:::::::1837567104:100:264::::::|h[No'Kaled, the Elements of Death]|h|r", -- [26]
 				"|cffa335ee|Hitem:78481:4099::::::-1739409920:100:264::::::|h[No'Kaled, the Elements of Death]|h|r", -- [27]
 				"|cffa335ee|Hitem:71783:4099::::::1337526656:100:264::::::|h[Shatterskull Bonecrusher]|h|r", -- [28]
+			},
+			["BankItemsAndCounts"] = {
+				[10940] = 1,
+				[45581] = 1,
+				[65907] = 1,
+				[109129] = 4,
+				[6372] = 4,
+				[71337] = 1,
+				[115508] = 20,
+				[115524] = 219,
+				[70105] = 1,
+				[109118] = 124,
+				[65904] = 1,
+				[109693] = 572,
+				[109125] = 4,
+				[71468] = 1,
+				[77091] = 1,
+				[71783] = 1,
+				[17057] = 2,
+				[10938] = 1,
+				[71228] = 1,
+				[72870] = 1,
+				[78481] = 2,
+				[45582] = 1,
+				[45584] = 1,
+				[78819] = 1,
+				[63388] = 12,
+				[109119] = 159,
+				[116053] = 10,
+				[115805] = 93,
+				[109126] = 7,
+				[71146] = 1,
+				[77251] = 1,
+				[77247] = 1,
+				[78781] = 1,
+				[71209] = 1,
+				[77151] = 1,
+				[77974] = 1,
+				[111557] = 85,
+				[109127] = 300,
+				[71333] = 1,
+				[65905] = 1,
+				[71335] = 1,
+				[59230] = 1,
+				[77241] = 1,
+				[78762] = 1,
+				[109128] = 3,
+				[72848] = 1,
+				[58181] = 1,
+			},
+		},
+		["Krazyíto - Mal'Ganis"] = {
+			["Logging"] = {
+				["LastDiff"] = 0,
+				["LastZone"] = "Northrend",
+			},
+			["Talents"] = {
+				[2] = "0000000",
+			},
+			["Equipped"] = {
+				[2] = {
+					"|cff00ccff|Hitem:122245::::::::20:66:::1:582:::|h[Polished Helm of Valor]|h|r", -- [1]
+					"|cff00ccff|Hitem:122662:5318:::::::20:66:::1:582:::|h[Eternal Talisman of Evasion]|h|r", -- [2]
+					"|cff00ccff|Hitem:122372::::::::20:66:::1:582:::|h[Strengthened Stockade Pauldrons]|h|r", -- [3]
+					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
+					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
+					[8] = "|cffffffff|Hitem:24146::::::::20:66::::::|h[Initiate's Boots]|h|r",
+					[16] = "|cff00ccff|Hitem:122389::::::::20:66:::1:582:::|h[Bloodsoaked Skullforge Reaver]|h|r",
+					[15] = "|cff00ccff|Hitem:122266:5311:::::::20:66:::1:582:::|h[Ripped Sandstorm Cloak]|h|r",
+					[14] = "|cff00ccff|Hitem:122530::::::::20:66::::::|h[Inherited Mark of Tyranny]|h|r",
+					[5] = "|cff00ccff|Hitem:122387:4419:::::::20:66:::1:582:::|h[Burnished Breastplate of Might]|h|r",
+					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
+				},
+			},
+		},
+		["Krazýito - Mal'Ganis"] = {
+			["Logging"] = {
+				["LastDiff"] = 0,
+				["LastZone"] = "Eastern Kingdoms",
+			},
+			["Talents"] = {
+				"0000000", -- [1]
+			},
+		},
+		["Krâzyito - Mal'Ganis"] = {
+			["Logging"] = {
+				["LastDiff"] = 1,
+				["LastZone"] = "FW Horde Garrison Level 3",
+			},
+			["Talents"] = {
+				"0000000", -- [1]
+			},
+		},
+		["Kråzyito - Mal'Ganis"] = {
+			["Logging"] = {
+				["LastDiff"] = 1,
+				["LastZone"] = "FW Horde Garrison Level 3",
+			},
+			["Talents"] = {
+				"0000000", -- [1]
+			},
+			["Equipped"] = {
+				{
+					"|cffa335ee|Hitem:113978::::::::100:268::5:1:566:::|h[Sorka's Nightshade Cowl]|h|r", -- [1]
+					"|cffa335ee|Hitem:113952:5293:115805::::::100:268::5:2:564:566:::|h[Choker of Bestial Force]|h|r", -- [2]
+					"|cffa335ee|Hitem:128350::::::::100:268:4::3:182:651:653:529:::|h[Bladefang Spaulders of the Feverflare]|h|r", -- [3]
+					nil, -- [4]
+					"|cffa335ee|Hitem:113951::::::::100:268::3::::|h[Unrendable Wolfhide Robes]|h|r", -- [5]
+					"|cffa335ee|Hitem:113964::::::::100:268::5:1:566:::|h[Conductor's Multi-Pocket Girdle]|h|r", -- [6]
+					"|cffa335ee|Hitem:116206::::::::100:268::4::::|h[Warmage's Legwraps]|h|r", -- [7]
+					"|cffa335ee|Hitem:113664::::::::100:268::5:1:566:::|h[Sandals of Mycoid Musing]|h|r", -- [8]
+					"|cffa335ee|Hitem:124564::::::::100:268:4:4:3:90:653:648:529:::|h[Bladefang Bracers of the Quickblade]|h|r", -- [9]
+					"|cffa335ee|Hitem:124576::::::::100:268:4::3:118:653:648:529:::|h[Bladefang Gauntlets of the Feverflare]|h|r", -- [10]
+					"|cffa335ee|Hitem:113908:5299:::::::100:268::5:1:566:::|h[Razoredge Blade Ring]|h|r", -- [11]
+					"|cffa335ee|Hitem:118303:5326:::::::100:268::11::::|h[Spellbound Solium Band of Sorcerous Invincibility]|h|r", -- [12]
+					"|cffa335ee|Hitem:112319::::::::100:268:4:13:2:525:529:529:::|h[Knight's Badge]|h|r", -- [13]
+					"|cffa335ee|Hitem:113905::::::::100:268::5:1:566:::|h[Tablet of Turnbuckle Teamwork]|h|r", -- [14]
+					"|cffa335ee|Hitem:113637:5300:::::::100:268::5:2:561:566:::|h[Cloak of Frenzied Rage]|h|r", -- [15]
+					"|cff0070dd|Hitem:140694::::::::100:268:512:11:1:3380:100:::|h[Brewmasher's Staff]|h|r", -- [16]
+				}, -- [1]
 			},
 		},
 		["Krazyito - Mal'Ganis"] = {
@@ -410,43 +481,43 @@ AskMrRobotDb3 = {
 				[118662] = 1,
 				[112384] = 1,
 				[141591] = 1,
-				[65274] = 1,
+				[128318] = 1,
 				[40585] = 1,
 				[133765] = 1,
 				[141655] = 1,
-				[141652] = 1,
+				[39354] = 60,
 				[124124] = 59,
 				[133956] = 1,
 				[63207] = 1,
-				[121804] = 1,
-				[109223] = 13,
+				[52251] = 1,
+				[118914] = 1,
 				[118576] = 20,
-				[63353] = 1,
-				[141005] = 1,
-				[109218] = 10,
-				[127991] = 137,
+				[121366] = 1,
+				[139786] = 5,
 				[109599] = 6,
+				[136975] = 1,
+				[109218] = 10,
 				[63378] = 1,
 				[118632] = 2,
-				[134292] = 1,
-				[141351] = 1,
+				[87216] = 1,
+				[137207] = 1,
 				[124117] = 34,
 				[103678] = 1,
-				[114116] = 19,
+				[132223] = 3,
 				[138292] = 176,
 				[110560] = 1,
-				[132223] = 3,
-				[137207] = 1,
-				[87216] = 1,
-				[136975] = 1,
+				[114116] = 19,
+				[141351] = 1,
+				[134292] = 1,
+				[127991] = 137,
 				[109076] = 80,
-				[139786] = 5,
-				[121366] = 1,
-				[118914] = 1,
-				[52251] = 1,
+				[141005] = 1,
+				[63353] = 1,
+				[109223] = 13,
+				[121804] = 1,
 				[118006] = 20,
-				[39354] = 60,
-				[128318] = 1,
+				[141652] = 1,
+				[65274] = 1,
 			},
 			["Logging"] = {
 				["LastDiff"] = 0,
@@ -461,12 +532,12 @@ AskMrRobotDb3 = {
 					},
 					["Powers"] = {
 						[1044] = 1,
-						[1049] = 1,
+						[1294] = 1,
 						[1035] = 3,
-						[1047] = 1,
+						[1049] = 1,
 						[1036] = 3,
 						[1040] = 3,
-						[1294] = 1,
+						[1047] = 1,
 					},
 				}, -- [1]
 				{
@@ -503,6 +574,7 @@ AskMrRobotDb3 = {
 						"|cffa335ee|Hitem:137307::::::::110:105::23:3:1727:1502:3336:::|h[Corrupted Knot]|h|r", -- [3]
 					},
 					["Powers"] = {
+						[126] = 1,
 						[132] = 3,
 						[140] = 3,
 						[133] = 2,
@@ -536,18 +608,18 @@ AskMrRobotDb3 = {
 				}, -- [1]
 				{
 					"|cffa335ee|Hitem:139070::::::::110:103::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
-					"|cffa335ee|Hitem:134499::::::::110:103::23:3:1727:1497:3336:::|h[Raven Filigree Pendant]|h|r", -- [2]
+					"|cffa335ee|Hitem:134495::::::::110:103::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
 					"|cffa335ee|Hitem:137364:5882:::::::110:103::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
 					"|cffa335ee|Hitem:128884::::::::110:103::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:103::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:103::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
-					"|cffa335ee|Hitem:134442::::::::110:103::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
+					"|cffa335ee|Hitem:128885::::::::110:103::13:5:689:1694:3408:601:669:::|h[Dreadleather Footpads of the Fireflash]|h|r", -- [8]
 					"|cffa335ee|Hitem:137512::::::::110:103::23:3:1727:1492:1813:::|h[Flame Juggler's Armbands]|h|r", -- [9]
-					"|cffa335ee|Hitem:134371::::::::110:103::23:3:1727:1502:1813:::|h[Felbat Leather Gloves]|h|r", -- [10]
-					"|cffa335ee|Hitem:133638::::::::110:103::23:3:1727:1492:1813:::|h[Woe-Bearer's Band]|h|r", -- [11]
+					"|cffa335ee|Hitem:128886::::::::110:103::13:5:689:1695:3408:600:669:::|h[Dreadleather Gloves of the Fireflash]|h|r", -- [10]
+					"|cffa335ee|Hitem:130229::::::::110:103::13:4:3349:689:601:669:::|h[Prophetic Band of the Fireflash]|h|r", -- [11]
 					"|cffa335ee|Hitem:134537::::::::110:103::23:4:1727:1808:1492:1813:::|h[Signet of the Highborne Magi]|h|r", -- [12]
-					"|cffa335ee|Hitem:136975::::::::110:103::23:3:1727:1492:1813:::|h[Hunger of the Pack]|h|r", -- [13]
+					"|cffa335ee|Hitem:128710::::::::110:103::13:3:689:600:669:::|h[Darkmoon Deck: Promises]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:103::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
 					"|cffa335ee|Hitem:137531::::::::110:103::23:3:1727:1502:3336:::|h[Cloak of Enthralling Darkness]|h|r", -- [15]
 					"|cffe6cc80|Hitem:128860::::::::110:103:256:9:1:723:436:::|h[Fangs of Ashamane]|h|r", -- [16]
@@ -555,16 +627,16 @@ AskMrRobotDb3 = {
 				}, -- [2]
 				{
 					"|cffa335ee|Hitem:139070::::::::110:104::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
-					"|cffa335ee|Hitem:134499::::::::110:104::23:3:1727:1497:3336:::|h[Raven Filigree Pendant]|h|r", -- [2]
+					"|cffa335ee|Hitem:134495::::::::110:104::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
 					"|cffa335ee|Hitem:137364:5882:::::::110:104::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
 					nil, -- [4]
 					"|cffa335ee|Hitem:128884::::::::110:104::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:104::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:104::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
-					"|cffa335ee|Hitem:134442::::::::110:104::23:3:1727:1492:1813:::|h[Tooled Rivermoor Boots]|h|r", -- [8]
+					"|cffa335ee|Hitem:128885::::::::110:104::13:5:689:1694:3408:601:669:::|h[Dreadleather Footpads of the Fireflash]|h|r", -- [8]
 					"|cffa335ee|Hitem:137512::::::::110:104::23:3:1727:1492:1813:::|h[Flame Juggler's Armbands]|h|r", -- [9]
-					"|cffa335ee|Hitem:134371::::::::110:104::23:3:1727:1502:1813:::|h[Felbat Leather Gloves]|h|r", -- [10]
-					"|cffa335ee|Hitem:133638::::::::110:104::23:3:1727:1492:1813:::|h[Woe-Bearer's Band]|h|r", -- [11]
+					"|cffa335ee|Hitem:128886::::::::110:104::13:5:689:1695:3408:600:669:::|h[Dreadleather Gloves of the Fireflash]|h|r", -- [10]
+					"|cffa335ee|Hitem:130229::::::::110:104::13:4:3349:689:601:669:::|h[Prophetic Band of the Fireflash]|h|r", -- [11]
 					"|cffa335ee|Hitem:134537::::::::110:104::23:4:1727:1808:1492:1813:::|h[Signet of the Highborne Magi]|h|r", -- [12]
 					"|cffa335ee|Hitem:136975::::::::110:104::23:3:1727:1492:1813:::|h[Hunger of the Pack]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:104::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
@@ -573,17 +645,17 @@ AskMrRobotDb3 = {
 					"|cffe6cc80|Hitem:128822::::::::110:104:256:::274:::|h[Claws of Ursoc]|h|r", -- [17]
 				}, -- [3]
 				{
-					"|cffa335ee|Hitem:139070::::::::110:105::36:3:3432:1507:3336:::|h[Tranquil Bough Hood]|h|r", -- [1]
+					"|cffa335ee|Hitem:137415::::::::110:105::23:3:1727:1502:3336:::|h[Gaze of Fleeting Hours]|h|r", -- [1]
 					"|cffa335ee|Hitem:134495::::::::110:105::23:3:1727:1492:1813:::|h[Chain of the Underking]|h|r", -- [2]
-					"|cffa335ee|Hitem:137364:5882:::::::110:105::23:3:1727:1497:3336:::|h[Crashing Oceantide Mantle]|h|r", -- [3]
+					"|cffa335ee|Hitem:134453::::::::110:105::23:4:1727:1808:1502:3336:::|h[Spaulders of Aberrant Inhibition]|h|r", -- [3]
 					nil, -- [4]
 					"|cffa335ee|Hitem:128884::::::::110:105::13:5:689:1691:3408:600:669:::|h[Dreadleather Jerkin of the Fireflash]|h|r", -- [5]
 					"|cffa335ee|Hitem:134455::::::::110:105::23:3:1727:1497:3336:::|h[Sinister Ashfall Cord]|h|r", -- [6]
 					"|cffa335ee|Hitem:134194::::::::110:105::2:3:1726:1512:3337:::|h[Biornskin Leggings]|h|r", -- [7]
-					"|cffa335ee|Hitem:128885::::::::110:105::13:5:689:1694:3408:601:669:::|h[Dreadleather Footpads of the Fireflash]|h|r", -- [8]
+					"|cffa335ee|Hitem:137497::::::::110:105::23:3:1727:1492:1813:::|h[Footpads of the Swift Balestra]|h|r", -- [8]
 					"|cffa335ee|Hitem:137512::::::::110:105::23:3:1727:1492:1813:::|h[Flame Juggler's Armbands]|h|r", -- [9]
 					"|cffa335ee|Hitem:128886::::::::110:105::13:5:689:1695:3408:600:669:::|h[Dreadleather Gloves of the Fireflash]|h|r", -- [10]
-					"|cffa335ee|Hitem:130229::::::::110:105::13:4:3349:689:601:669:::|h[Prophetic Band of the Fireflash]|h|r", -- [11]
+					"|cffa335ee|Hitem:133638::::::::110:105::23:3:1727:1492:1813:::|h[Woe-Bearer's Band]|h|r", -- [11]
 					"|cffa335ee|Hitem:134537::::::::110:105::23:4:1727:1808:1492:1813:::|h[Signet of the Highborne Magi]|h|r", -- [12]
 					"|cffa335ee|Hitem:128710::::::::110:105::13:3:689:600:669:::|h[Darkmoon Deck: Promises]|h|r", -- [13]
 					"|cffa335ee|Hitem:133642::::::::110:105::23:3:1727:1492:1813:::|h[Horn of Valor]|h|r", -- [14]
@@ -674,18 +746,18 @@ AskMrRobotDb3 = {
 				[39354] = 271,
 				[122583] = 1,
 				[23323] = 1,
-				[111674] = 1,
+				[118391] = 8,
 				[110290] = 1,
 				[64400] = 1,
 				[115504] = 7,
-				[109138] = 183,
+				[111228] = 1,
 				[125787] = 1,
-				[107273] = 1,
-				[84661] = 1,
+				[98093] = 1,
+				[86547] = 2,
 				[86565] = 1,
 				[118711] = 2,
 				[118472] = 5,
-				[69815] = 5,
+				[88535] = 1,
 				[6833] = 1,
 				[89195] = 1,
 				[116825] = 1,
@@ -694,17 +766,17 @@ AskMrRobotDb3 = {
 				[34685] = 1,
 				[127780] = 3,
 				[113261] = 94,
-				[128364] = 1,
+				[98079] = 1,
 				[93403] = 1,
-				[117405] = 1,
 				[118935] = 1,
-				[111675] = 2,
-				[3371] = 437,
-				[74250] = 1,
+				[117405] = 1,
+				[122272] = 1,
+				[74718] = 1,
+				[75525] = 1,
 				[124099] = 409,
 				[98080] = 1,
-				[98087] = 1,
-				[109137] = 18,
+				[60233] = 1,
+				[52019] = 1,
 				[109118] = 14,
 				[141001] = 1,
 				[129295] = 1,
@@ -717,154 +789,80 @@ AskMrRobotDb3 = {
 				[111557] = 4,
 				[127883] = 4,
 				[113262] = 132,
-				[115508] = 5,
+				[98082] = 1,
 				[3823] = 25,
-				[118354] = 1,
-				[111669] = 1,
+				[127779] = 2,
 				[109119] = 7,
-				[109126] = 209,
-				[116117] = 1,
-				[109693] = 1561,
+				[111669] = 1,
+				[127884] = 1,
+				[118922] = 1,
+				[127882] = 2,
 				[113263] = 38,
-				[85500] = 1,
 				[120945] = 640,
-				[113264] = 105,
-				[127783] = 3,
-				[109141] = 237,
-				[111673] = 1,
+				[85500] = 1,
+				[74249] = 45,
+				[64402] = 1,
+				[111672] = 4,
+				[116268] = 16,
 				[118475] = 1,
 				[98091] = 1,
 				[109585] = 3,
 				[104304] = 1,
 				[23324] = 1,
 				[111670] = 1,
-				[116268] = 16,
-				[111672] = 4,
-				[64402] = 1,
-				[74249] = 45,
+				[111673] = 1,
+				[109141] = 237,
+				[127783] = 3,
+				[113264] = 105,
 				[45038] = 11,
-				[127882] = 2,
-				[118922] = 1,
-				[127884] = 1,
+				[109693] = 1561,
+				[116117] = 1,
+				[109126] = 209,
 				[86569] = 1,
-				[127779] = 2,
-				[98082] = 1,
+				[118354] = 1,
+				[115508] = 5,
 				[98092] = 1,
 				[9172] = 1,
 				[141002] = 1,
 				[81055] = 4,
 				[111671] = 2,
-				[52019] = 1,
-				[60233] = 1,
+				[109137] = 18,
+				[98087] = 1,
 				[127784] = 3,
-				[75525] = 1,
-				[74718] = 1,
-				[122272] = 1,
+				[74250] = 1,
+				[3371] = 437,
+				[111675] = 2,
 				[54617] = 1,
-				[98079] = 1,
+				[128364] = 1,
 				[127880] = 3,
-				[88535] = 1,
-				[86547] = 2,
-				[98093] = 1,
-				[111228] = 1,
+				[69815] = 5,
+				[84661] = 1,
+				[107273] = 1,
+				[109138] = 183,
 				[83080] = 1,
 				[18607] = 1,
-				[118391] = 8,
+				[111674] = 1,
 			},
 		},
-		["Krazýito - Mal'Ganis"] = {
-			["Logging"] = {
-				["LastDiff"] = 0,
-				["LastZone"] = "Eastern Kingdoms",
-			},
-			["Talents"] = {
-				"0000000", -- [1]
-			},
-		},
-		["Krâzyito - Mal'Ganis"] = {
-			["Logging"] = {
-				["LastDiff"] = 1,
-				["LastZone"] = "FW Horde Garrison Level 3",
-			},
-			["Talents"] = {
-				"0000000", -- [1]
-			},
-		},
-		["Kråzyito - Mal'Ganis"] = {
-			["Logging"] = {
-				["LastDiff"] = 1,
-				["LastZone"] = "FW Horde Garrison Level 3",
-			},
-			["Talents"] = {
-				"0000000", -- [1]
-			},
-			["Equipped"] = {
-				{
-					"|cffa335ee|Hitem:113978::::::::100:268::5:1:566:::|h[Sorka's Nightshade Cowl]|h|r", -- [1]
-					"|cffa335ee|Hitem:113952:5293:115805::::::100:268::5:2:564:566:::|h[Choker of Bestial Force]|h|r", -- [2]
-					"|cffa335ee|Hitem:128350::::::::100:268:4::3:182:651:653:529:::|h[Bladefang Spaulders of the Feverflare]|h|r", -- [3]
-					nil, -- [4]
-					"|cffa335ee|Hitem:113951::::::::100:268::3::::|h[Unrendable Wolfhide Robes]|h|r", -- [5]
-					"|cffa335ee|Hitem:113964::::::::100:268::5:1:566:::|h[Conductor's Multi-Pocket Girdle]|h|r", -- [6]
-					"|cffa335ee|Hitem:116206::::::::100:268::4::::|h[Warmage's Legwraps]|h|r", -- [7]
-					"|cffa335ee|Hitem:113664::::::::100:268::5:1:566:::|h[Sandals of Mycoid Musing]|h|r", -- [8]
-					"|cffa335ee|Hitem:124564::::::::100:268:4:4:3:90:653:648:529:::|h[Bladefang Bracers of the Quickblade]|h|r", -- [9]
-					"|cffa335ee|Hitem:124576::::::::100:268:4::3:118:653:648:529:::|h[Bladefang Gauntlets of the Feverflare]|h|r", -- [10]
-					"|cffa335ee|Hitem:113908:5299:::::::100:268::5:1:566:::|h[Razoredge Blade Ring]|h|r", -- [11]
-					"|cffa335ee|Hitem:118303:5326:::::::100:268::11::::|h[Spellbound Solium Band of Sorcerous Invincibility]|h|r", -- [12]
-					"|cffa335ee|Hitem:112319::::::::100:268:4:13:2:525:529:529:::|h[Knight's Badge]|h|r", -- [13]
-					"|cffa335ee|Hitem:113905::::::::100:268::5:1:566:::|h[Tablet of Turnbuckle Teamwork]|h|r", -- [14]
-					"|cffa335ee|Hitem:113637:5300:::::::100:268::5:2:561:566:::|h[Cloak of Frenzied Rage]|h|r", -- [15]
-					"|cff0070dd|Hitem:140694::::::::100:268:512:11:1:3380:100:::|h[Brewmasher's Staff]|h|r", -- [16]
-				}, -- [1]
-			},
-		},
-		["Krazyíto - Mal'Ganis"] = {
-			["Logging"] = {
-				["LastDiff"] = 0,
-				["LastZone"] = "Northrend",
-			},
-			["Talents"] = {
-				[2] = "0000000",
-			},
-			["Equipped"] = {
-				[2] = {
-					"|cff00ccff|Hitem:122245::::::::20:66:::1:582:::|h[Polished Helm of Valor]|h|r", -- [1]
-					"|cff00ccff|Hitem:122662:5318:::::::20:66:::1:582:::|h[Eternal Talisman of Evasion]|h|r", -- [2]
-					"|cff00ccff|Hitem:122372::::::::20:66:::1:582:::|h[Strengthened Stockade Pauldrons]|h|r", -- [3]
-					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
-					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
-					[8] = "|cffffffff|Hitem:24146::::::::20:66::::::|h[Initiate's Boots]|h|r",
-					[5] = "|cff00ccff|Hitem:122387:4419:::::::20:66:::1:582:::|h[Burnished Breastplate of Might]|h|r",
-					[15] = "|cff00ccff|Hitem:122266:5311:::::::20:66:::1:582:::|h[Ripped Sandstorm Cloak]|h|r",
-					[14] = "|cff00ccff|Hitem:122530::::::::20:66::::::|h[Inherited Mark of Tyranny]|h|r",
-					[16] = "|cff00ccff|Hitem:122389::::::::20:66:::1:582:::|h[Bloodsoaked Skullforge Reaver]|h|r",
-					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
-				},
-			},
-		},
+	},
+	["global"] = {
+		["Region"] = "US",
 	},
 	["profileKeys"] = {
 		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
 		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
-		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
 		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
 		["Krâzyito - Mal'Ganis"] = "Krâzyito - Mal'Ganis",
 		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
-		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
-	},
-	["global"] = {
-		["Region"] = "US",
+		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 	},
 	["profiles"] = {
 		["Krazyitó - Mal'Ganis"] = {
 		},
 		["Krázyito - Mal'Ganis"] = {
 		},
-		["Krazyito - Mal'Ganis"] = {
-			["minimap"] = {
-				["minimapPos"] = 274.162986159962,
-			},
+		["Krazyíto - Mal'Ganis"] = {
 		},
 		["Krazýito - Mal'Ganis"] = {
 		},
@@ -872,7 +870,10 @@ AskMrRobotDb3 = {
 		},
 		["Kråzyito - Mal'Ganis"] = {
 		},
-		["Krazyíto - Mal'Ganis"] = {
+		["Krazyito - Mal'Ganis"] = {
+			["minimap"] = {
+				["minimapPos"] = 274.162986159962,
+			},
 		},
 	},
 }

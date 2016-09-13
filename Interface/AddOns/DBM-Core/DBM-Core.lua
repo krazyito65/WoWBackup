@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15203 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15208 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -101,15 +101,9 @@ DBM.DefaultOptions = {
 	VoiceOverSpecW2 = "DefaultOnly",
 	AlwaysPlayVoice = false,
 	ShowCountdownText = false,
-	RaidWarningPosition = {
-		Point = "TOP",
-		X = 0,
-		Y = -185,
-	},
 	Enabled = true,
 	ShowWarningsInChat = true,
 	ShowSWarningsInChat = true,
-	ShowFakedRaidWarnings = false,
 	WarningIconLeft = true,
 	WarningIconRight = true,
 	WarningIconChat = true,
@@ -1704,7 +1698,6 @@ end
 
 function DBM:RepositionFrames()
 	-- rearrange position
-	self:SetRaidWarningPositon()
 	self:UpdateWarningOptions()
 	self:UpdateSpecialWarningOptions()
 	self.Arrow:LoadPosition()
@@ -2971,11 +2964,6 @@ function DBM:AddDefaultOptions(t1, t2)
 	end
 end
 
-function DBM:SetRaidWarningPositon()
-	RaidWarningFrame:ClearAllPoints()
-	RaidWarningFrame:SetPoint(self.Options.RaidWarningPosition.Point, UIParent, self.Options.RaidWarningPosition.Point, self.Options.RaidWarningPosition.X, self.Options.RaidWarningPosition.Y)
-end
-
 function DBM:LoadModOptions(modId, inCombat, first)
 	local oldSavedVarsName = modId:gsub("-", "").."_SavedVars"
 	local savedVarsName = modId:gsub("-", "").."_AllSavedVars"
@@ -3406,9 +3394,6 @@ do
 		-- load special warning options
 		self:UpdateWarningOptions()
 		self:UpdateSpecialWarningOptions()
-		-- set this with a short delay to prevent issues with other addons also trying to do the same thing with another position ;)
-		self:Schedule(5, self.SetRaidWarningPositon, self)
-		self:Schedule(20, self.SetRaidWarningPositon, self)--A second attempt after we are sure all other mods are loaded, so we can work around issues with movemanything or other mods.
 		--Fix old options that use .wav instead of .ogg, to prevent no sounds bug as of 6.1+
 		if self.Options.RaidWarningSound:find(".wav") then self.Options.RaidWarningSound = self.DefaultOptions.RaidWarningSound end
 		if self.Options.SpecialWarningSound:find(".wav") then self.Options.SpecialWarningSound = self.DefaultOptions.SpecialWarningSound end
@@ -6548,10 +6533,7 @@ do
 	end
 
 	--This is the source of the taints. As well as function DBM:AddMsg(text, prefix) function
-	--It's also required and impossible to avoid since we need this stuff
-	--This taint LOOKS like a StaticPopupDialog taint but it is not. That taint was actaully fixed in 5.3
-	--Install http://www.wowace.com/addons/notaint/ which embeds libchatanims to fix problem.
-	--Additional information at http://www.wowace.com/addons/libchatanims/
+	--Which is why we embed libchatanims to fix those taints.
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER_INFORM", filterOutgoing)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_BN_WHISPER_INFORM", filterOutgoing)
 	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", filterIncoming)
@@ -8562,16 +8544,7 @@ do
 				if not DBM.Options.WarningIconChat then
 					text = text:gsub(textureExp, "") -- textures @ chat frame can (and will) distort the font if using certain combinations of UI scale, resolution and font size TODO: is this still true as of cataclysm?
 				end
-				if DBM.Options.ShowFakedRaidWarnings then
-					for i = 1, select("#", GetFramesRegisteredForEvent("CHAT_MSG_RAID_WARNING")) do
-						local frame = select(i, GetFramesRegisteredForEvent("CHAT_MSG_RAID_WARNING"))
-						if frame ~= RaidWarningFrame and frame:GetScript("OnEvent") then
-							frame:GetScript("OnEvent")(frame, "CHAT_MSG_RAID_WARNING", text, playerName, GetDefaultLanguage("player"), "", playerName, "", 0, 0, "", 0, 99, UnitGUID("player"))
-						end
-					end
-				else
-					self.mod:AddMsg(text, nil)
-				end
+				self.mod:AddMsg(text, nil)
 			end
 			if self.sound then
 				DBM:PlaySoundFile(DBM.Options.RaidWarningSound)
