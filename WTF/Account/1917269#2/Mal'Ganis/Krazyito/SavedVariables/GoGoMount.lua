@@ -571,17 +571,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1087] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
-		[1082] = {
+		["Scarlet Monastery"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[736] = {
 			["Preferred"] = {
@@ -595,20 +597,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Scarlet Monastery"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[1022] = {
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[1017] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1065] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -633,7 +634,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1041] = {
+		[1067] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -645,7 +646,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[161] = {
+		[721] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -657,7 +658,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1024] = {
+		[4] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -669,13 +670,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[988] = {
+		[32] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[241] = {
+		[510] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -693,7 +694,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[510] = {
+		[490] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -735,11 +736,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1007] = {
+		["Zul'Drak"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[1092] = {
 			["Preferred"] = {
@@ -765,7 +767,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1014] = {
+		[807] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -790,7 +792,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[13] = {
+		[606] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -802,7 +804,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[606] = {
+		[13] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -815,7 +817,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[807] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -840,14 +842,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		["Zul'Drak"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[490] = {
+		[1007] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -859,19 +854,25 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1033] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[1091] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[32] = {
+		[1033] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[241] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[988] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -884,7 +885,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[4] = {
+		[1024] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -896,19 +897,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[721] = {
+		[161] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1067] = {
+		[1041] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1065] = {
+		[1087] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -921,14 +922,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 857,
 		},
-		["Mana-Tombs"] = {
+		[1022] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
-		[1086] = {
+		[1082] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -936,7 +936,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 	["DisableUpdateNotice"] = false,
 	["DruidDisableInCombat"] = false,
 	["version"] = "7.0.12",
@@ -950,7 +950,7 @@ GoGo_Prefs = {
 		121820, -- [4]
 		61469, -- [5]
 	},
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 }
 GoGo_DebugLog = {
 }

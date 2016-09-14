@@ -34,8 +34,8 @@ local function artifactXP_PopulateValues()
 		artifactXP.text = string.format("%d/%d AP (|cffff0000+%d|r)", xp, xpForNextPoint, numPointsAvailableToSpend)
 	else
 		artifactXP.text = string.format("%d/%d AP", xp, xpForNextPoint)
-		artifactXP.value = string.format("%d", xp)
-		artifactXP.suffic = "AP"
+		artifactXP.value = string.format("|cffffff00-%d|r", xpForNextPoint - xp)
+		artifactXP.suffix = "AP"
 	end
   end
   
