@@ -6,7 +6,7 @@ if GetLocale()=="deDE" or GetLocale()=="ruRU" or GetLocale()=="zhTW" or GetLocal
 end
 
 
-	raversion=7.001
+	raversion=7.002
 	local raverstiptext="alpha"
 	if string.len(raversion)==6 then
 		raverstiptext="beta"
@@ -616,6 +616,7 @@ if IsAddOnLoaded("RaidAchievement_PandaHeroics") then phra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_PandaScenarios") then pzra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_WoDHeroics") then wodhra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_WoDRaids") then wodrra_closeallpr() end
+if IsAddOnLoaded("RaidAchievement_LegionHeroics") then legionhra_closeallpr() end
 PSFeamain3:Hide()
 PSFeamain10:Hide()
 PSFeamain11:Hide()
@@ -918,6 +919,46 @@ end
 end
 
 
+function legionhra_button()
+PSFea_closeallpr()
+if(thisaddonworkea)then
+if IsAddOnLoaded("RaidAchievement_LegionHeroics")==false then
+LoadAddOn("RaidAchievement_LegionHeroics")
+if IsAddOnLoaded("RaidAchievement_LegionHeroics") then
+print("|cff99ffffRaidAchievement|r - "..pseamoduleload.." "..psealeftmenulegion.."!")
+end
+end
+if IsAddOnLoaded("RaidAchievement_LegionHeroics") then
+legionhra_button2()
+else
+PSFeamain12:Show()
+end
+else
+PSFeamain10:Show()
+end
+end
+
+
+function legionrra_button()
+PSFea_closeallpr()
+if(thisaddonworkea)then
+if IsAddOnLoaded("RaidAchievement_LegionRaids")==false then
+LoadAddOn("RaidAchievement_LegionRaids")
+if IsAddOnLoaded("RaidAchievement_LegionRaids") then
+print("|cff99ffffRaidAchievement|r - "..pseamoduleload.." "..psealeftmenulegion2.."!")
+end
+end
+if IsAddOnLoaded("RaidAchievement_LegionRaids") then
+legionrra_button2()
+else
+PSFeamain12:Show()
+end
+else
+PSFeamain10:Show()
+end
+end
+
+
 
 function nxra_button()
 PSFea_closeallpr()
@@ -1189,7 +1230,21 @@ local loaded, reason = LoadAddOn("RaidAchievement_WoDRaids")
 if loaded then
 print("|cff99ffffRaidAchievement|r - "..pseamoduleload.." RaidAchievement_WoDRaids!")
 else
-print("|cff99ffffRaidAchievement|r - "..pseamodulenotload.." RaidAchievement_WoDRaids! "..raerrormodulereq.." RaidAchievement_Pandaria")
+print("|cff99ffffRaidAchievement|r - "..pseamodulenotload.." RaidAchievement_WoDRaids! "..raerrormodulereq.." RaidAchievement_WoD")
+end
+end
+end
+
+
+--тут добавить рейды Legion
+if GetCurrentMapAreaID()==9999999999999999999 or GetCurrentMapAreaID()==9999999999999999999 then
+if IsAddOnLoaded("RaidAchievement_WoDRaids")==false and waslegionrtryloadea==nil then
+waslegionrtryloadea=1
+local loaded, reason = LoadAddOn("RaidAchievement_LegionRaids")
+if loaded then
+print("|cff99ffffRaidAchievement|r - "..pseamoduleload.." RaidAchievement_LegionRaids!")
+else
+print("|cff99ffffRaidAchievement|r - "..pseamodulenotload.." RaidAchievement_LegionRaids! "..raerrormodulereq.." RaidAchievement_Legion")
 end
 end
 end
@@ -1361,6 +1416,44 @@ print("|cff99ffffRaidAchievement|r - "..pseamodulenotload.." WoDHeroics! "..raer
 end
 end
 end
+
+
+
+--героики Legion
+local idheroics={1081,9999999999999999,1067,1046,1041,1042,9999999999999999,9999999999999999,1045,1066}
+local buul=0
+for i=1,#idheroics do
+	if idheroics[i]==GetCurrentMapAreaID() then
+		buul=1
+	end
+end
+if select(3,GetInstanceInfo())==2 and buul==1 then
+
+local chattt="party"
+if select(3,GetInstanceInfo())==17 or IsLFGModeActive(LE_LFG_CATEGORY_LFD) or IsLFGModeActive(LE_LFG_CATEGORY_SCENARIO) then
+  chattt="Instance_CHAT"
+end
+
+if GetNumGroupMembers()>1 then
+SendAddonMessage("RAother", "5"..raversion, chattt)
+end
+if thisaddonwork then
+SendAddonMessage("PSaddon", "17"..psversion, chattt)
+end
+
+if IsAddOnLoaded("RaidAchievement_LegionHeroics")==false and waslhtryloadea==nil then
+waslhtryloadea=1
+local loaded, reason = LoadAddOn("RaidAchievement_LegionHeroics")
+if loaded then
+print("|cff99ffffRaidAchievement|r - "..pseamoduleload.." LegionHeroics!")
+else
+print("|cff99ffffRaidAchievement|r - "..pseamodulenotload.." LegionHeroics! "..raerrormodulereq.." RaidAchievement_Legion")
+end
+end
+end
+
+
+
 
 
 end

@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15208 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15213 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -414,7 +414,7 @@ local addsGUIDs = {}
 local targetEventsRegistered = false
 local targetMonitor = nil
 local statusWhisperDisabled = false
-local wowTOC = select(4, GetBuildInfo())
+local wowVersionString, _, _, wowTOC = GetBuildInfo()
 local dbmToc = 0
 local isTalkingHeadLoaded = false
 local talkingHeadUnregistered = false
@@ -1937,7 +1937,7 @@ do
 			DBM:AddMsg(DBM_CORE_LAG_CHECKING)
 			C_TimerAfter(5, function() DBM:ShowLag() end)
 		elseif cmd:sub(1, 3) == "hud" then
-			if DBM.Options.EnablePatchRestrictions and IsInInstance() then
+			if DBM:HasMapRestrictions() then
 				DBM:AddMsg(DBM_CORE_NO_HUD)
 				return
 			end
@@ -2031,7 +2031,7 @@ do
 				DBM:AddMsg(DBM_CORE_HUD_SUCCESS:format(strFromTime(hudDuration)))
 			end
 		elseif cmd:sub(1, 5) == "arrow" then
-			if DBM.Options.EnablePatchRestrictions and IsInInstance() then
+			if DBM:HasMapRestrictions() then
 				DBM:AddMsg(DBM_CORE_NO_ARROW)
 				return
 			end
@@ -2088,7 +2088,7 @@ do
 			DBM.Options.DebugMode = DBM.Options.DebugMode == false and true or false
 			DBM:AddMsg("Debug Message is " .. (DBM.Options.DebugMode and "ON" or "OFF"))
 		elseif cmd:sub(1, 8) == "whereiam" or cmd:sub(1, 8) == "whereami" then
-			if DBM.Options.EnablePatchRestrictions and IsInInstance() then
+			if DBM:HasMapRestrictions() then
 				DBM:AddMsg("Location debug not available do to instance restrictions")
 				return
 			end
@@ -2116,7 +2116,9 @@ do
 		if DBM.RangeCheck:IsShown() then
 			DBM.RangeCheck:Hide(true)
 		else
-			if IsInInstance() then
+			if DBM:HasMapRestrictions() then
+				DBM:AddMsg(DBM_CORE_NO_RANGE)
+			elseif IsInInstance() then
 				DBM:AddMsg(DBM_CORE_NO_RANGE_SOON)
 			end
 			if r and (r < 201) then
@@ -5104,12 +5106,7 @@ do
 	end
 
 	function DBM:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, spellGUID, spellId)
-		local correctSpellId = 0
-		if wowTOC >= 70000 then--in Legion spellId arg is canned as of latest build, it existed until talarn testing.
-			correctSpellId = tonumber(select(5, strsplit("-", spellGUID)), 10)
-		else
-			correctSpellId = spellId
-		end
+		local correctSpellId = tonumber(select(5, strsplit("-", spellGUID)), 10)
 		self:Debug("UNIT_SPELLCAST_SUCCEEDED fired: "..UnitName(uId).."'s "..spellName.."("..correctSpellId..")", 3)
 	end
 
@@ -6000,8 +5997,7 @@ do
 	local autoTLog = false
 	
 	local function isCurrentContent()
-		if LastInstanceMapID == 1205 or LastInstanceMapID == 1228 or LastInstanceMapID == 1448 or --Draenor (Remove August 30th)
-		LastInstanceMapID == 1520 or LastInstanceMapID == 1530 or LastInstanceMapID == 1220 then--Legion
+		if LastInstanceMapID == 1520 or LastInstanceMapID == 1530 or LastInstanceMapID == 1220 then--Legion
 			return true
 		end
 		return false
@@ -6115,8 +6111,16 @@ function DBM:GetGroupSize()
 	return LastGroupSize
 end
 
+function DBM:HasMapRestrictions()
+	local isInstance, instanceType = IsInInstance()
+	--Restrictions active in all party, raid, pvp, arena maps. No restrictions in "none" or "scenario"
+	if (wowVersionString == "7.1.0" or self.Options.EnablePatchRestrictions) and isInstance and instanceType ~= "scenario" then
+		return true
+	end
+	return false
+end
+
 function DBM:PlaySoundFile(path, ignoreSFX)
---	if wowTOC == 70000 then return end--Check if this is fixed in newer build
 	local soundSetting = self.Options.UseSoundChannel
 	if soundSetting == "Dialog" then
 		PlaySoundFile(path, "Dialog")
@@ -6128,7 +6132,6 @@ function DBM:PlaySoundFile(path, ignoreSFX)
 end
 
 function DBM:PlaySound(path)
-	if wowTOC == 70000 then return end--Check if this is fixed in newer build
 	local soundSetting = self.Options.UseSoundChannel
 	if soundSetting == "Master" then
 		PlaySound(path, "Master")
@@ -6822,7 +6825,8 @@ do
 	MovieFrame:HookScript("OnEvent", function(self, event, id)
 		if event == "PLAY_MOVIE" and id and not neverFilter[id] then
 			DBM:Debug("PLAY_MOVIE fired for ID: "..id, 2)
-			if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or C_Scenario.IsInScenario() or DBM.Options.MovieFilter == "Never" then return end
+			local isInstance, instanceType = IsInInstance()
+			if not isInstance or C_Garrison:IsOnGarrisonMap() or instanceType == "scenario" or DBM.Options.MovieFilter == "Never" then return end
 			if DBM.Options.MovieFilter == "Block" or DBM.Options.MovieFilter == "AfterFirst" and DBM.Options.MoviesSeen[id] then
 				MovieFrame_OnMovieFinished(self)
 				DBM:AddMsg(DBM_CORE_MOVIE_SKIPPED)
@@ -6834,7 +6838,8 @@ do
 
 	function DBM:CINEMATIC_START()
 		self:Debug("CINEMATIC_START fired", 2)
-		if not IsInInstance() or C_Garrison:IsOnGarrisonMap() or C_Scenario.IsInScenario() or self.Options.MovieFilter == "Never" then return end
+		local isInstance, instanceType = IsInInstance()
+		if not isInstance or C_Garrison:IsOnGarrisonMap() or instanceType == "scenario" or self.Options.MovieFilter == "Never" then return end
 		SetMapToCurrentZone()
 		local currentFloor = GetCurrentMapDungeonLevel() or 0
 		if self.Options.MovieFilter == "Block" or self.Options.MovieFilter == "AfterFirst" and self.Options.MoviesSeen[LastInstanceMapID..currentFloor] then
@@ -7162,6 +7167,7 @@ do
 end
 
 bossModPrototype.AntiSpam = DBM.AntiSpam
+bossModPrototype.HasMapRestrictions = DBM.HasMapRestrictions
 bossModPrototype.GetUnitCreatureId = DBM.GetUnitCreatureId
 bossModPrototype.GetCIDFromGUID = DBM.GetCIDFromGUID
 bossModPrototype.IsCreatureGUID = DBM.IsCreatureGUID

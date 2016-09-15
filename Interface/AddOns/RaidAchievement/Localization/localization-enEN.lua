@@ -135,6 +135,9 @@ pzratitle       = "    Pandaria Scenarios"
 psealeftmenuwod = "WoD Heroics"
 psealeftmenuwod2  = "WoD Raids"
 
+psealeftmenulegion = "Legion Heroics"
+psealeftmenulegion2 = "Legion Raids"
+
 
 
 

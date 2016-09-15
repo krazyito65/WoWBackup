@@ -14,7 +14,7 @@
 ## Notes: A collection of BigWigs modules from the Wrath of the Lich King era.
 ## Notes-zhCN: BigWigs 巫妖王之怒模块。
 ## Notes-zhTW: A collection of BigWigs modules from the Wrath of the Lich King era.
-## Notes-deDE: A collection of BigWigs modules from the Wrath of the Lich King era.
+## Notes-deDE: Eine Sammlung von BigWigs-Modulen aus der Ära Wrath of the Lich King.
 ## Notes-frFR: A collection of BigWigs modules from the Wrath of the Lich King era.
 ## Notes-itIT: A collection of BigWigs modules from the Wrath of the Lich King era.
 ## Notes-koKR: A collection of BigWigs modules from the Wrath of the Lich King era.
@@ -25,7 +25,7 @@
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
-## Version: 50
+## Version: v7.0.1
 
 ## X-Category: Raid
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
