@@ -1,8 +1,9 @@
 # BigWigs
 
-## [v9-5-gf7d026e](https://github.com/BigWigsMods/BigWigs/tree/f7d026e2404d66abe07881539ba6a8120ebc4d2f) (2016-09-12) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v9...f7d026e2404d66abe07881539ba6a8120ebc4d2f)
+## [v9-6-g62dfca6](https://github.com/BigWigsMods/BigWigs/tree/62dfca67a69d9a93dafe0d2a1feda9c0b5e74df9) (2016-09-15) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v9...62dfca67a69d9a93dafe0d2a1feda9c0b5e74df9)
 
+-   Add skeleton for Trial of Valor  
 -   update toc notes  
 -   Bars: work around bar style registration issues with a temporary delay.  
 -   zhCN/zhTW update. (#34)  
