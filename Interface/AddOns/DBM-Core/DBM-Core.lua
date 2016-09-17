@@ -41,7 +41,7 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15220 $"):sub(12, -3)),
+	Revision = tonumber(("$Revision: 15224 $"):sub(12, -3)),
 	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
 	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
 }
@@ -6112,9 +6112,10 @@ function DBM:GetGroupSize()
 end
 
 function DBM:HasMapRestrictions()
-	local isInstance, instanceType = IsInInstance()
+	--Check playerX and playerY. if they are nil restrictions are active
 	--Restrictions active in all party, raid, pvp, arena maps. No restrictions in "none" or "scenario"
-	if (wowVersionString == "7.1.0" or self.Options.EnablePatchRestrictions) and isInstance and instanceType ~= "scenario" then
+	local playerX, playerY = UnitPosition("player")
+	if self.Options.EnablePatchRestrictions or not playerX or not playerY then
 		return true
 	end
 	return false
@@ -6342,7 +6343,7 @@ do
 			SetMapToCurrentZone()
 			currentMapId = GetCurrentMapAreaID()
 		end
-		self:Schedule(120 + math.random(0, 600) , self.AprilFools, self)
+		self:Schedule(120 + math.random(0, 300) , self.AprilFools, self)
 		if currentMapId ~= 1014 then return end--Legion Dalaran
 		playDelay(self, 1)
 		self:Schedule(5, playDelay, self, 2)
@@ -6356,7 +6357,7 @@ do
 	function DBM:PLAYER_ENTERING_WORLD()
 		local weekday, month, day, year = CalendarGetDate()--Must be called after PLAYER_ENTERING_WORLD
 		if month == 4 and day == 1 then--April 1st
-			self:Schedule(180 + math.random(0, 600) , self.AprilFools, self)
+			self:Schedule(180 + math.random(0, 300) , self.AprilFools, self)
 		end
 		if GetLocale() == "ptBR" or GetLocale() == "frFR" or GetLocale() == "itIT" then
 			C_TimerAfter(10, function() if self.Options.HelpMessageVersion < 4 then self.Options.HelpMessageVersion = 4 self:AddMsg(DBM_CORE_NEED_LOCALS) end end)

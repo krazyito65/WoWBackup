@@ -1,7 +1,5 @@
 
 DetailsTimeLineDB = {
-	["window_scale"] = 1,
-	["max_segments"] = 4,
 	["deaths_data"] = {
 		{
 			["Destinye-SteamwheedleCartel"] = {
@@ -55,6 +53,7 @@ DetailsTimeLineDB = {
 		{
 		}, -- [4]
 	},
+	["max_segments"] = 4,
 	["combat_data"] = {
 		{
 			["date_end"] = "20:13:40",
@@ -80,6 +79,12 @@ DetailsTimeLineDB = {
 			["name"] = "Ymiron, the Fallen King",
 			["total_time"] = 95.0069999999832,
 		}, -- [4]
+	},
+	["backdrop_color"] = {
+		0, -- [1]
+		0, -- [2]
+		0, -- [3]
+		0.4, -- [4]
 	},
 	["debuff_timeline"] = {
 		{
@@ -352,20 +357,6 @@ DetailsTimeLineDB = {
 					["source"] = "Enslaved Shieldmaiden",
 					["active"] = false,
 				},
-				[200208] = {
-					68.7949999999837, -- [1]
-					72.8069999999716, -- [2]
-					["source"] = "Seacursed Soulkeeper",
-					["active"] = false,
-				},
-				[199185] = {
-					37.3799999999756, -- [1]
-					42.4899999999907, -- [2]
-					75.6759999999777, -- [3]
-					81.6789999999746, -- [4]
-					["source"] = "Cursed Falke",
-					["active"] = false,
-				},
 				[201566] = {
 					15.5619999999763, -- [1]
 					16.5639999999839, -- [2]
@@ -376,6 +367,20 @@ DetailsTimeLineDB = {
 					89.5839999999735, -- [7]
 					94.5259999999835, -- [8]
 					["source"] = "Seacursed Slaver",
+					["active"] = false,
+				},
+				[199185] = {
+					37.3799999999756, -- [1]
+					42.4899999999907, -- [2]
+					75.6759999999777, -- [3]
+					81.6789999999746, -- [4]
+					["source"] = "Cursed Falke",
+					["active"] = false,
+				},
+				[200208] = {
+					68.7949999999837, -- [1]
+					72.8069999999716, -- [2]
+					["source"] = "Seacursed Soulkeeper",
 					["active"] = false,
 				},
 				[194674] = {
@@ -425,6 +430,7 @@ DetailsTimeLineDB = {
 			},
 		}, -- [4]
 	},
+	["hide_on_combat"] = false,
 	["cooldowns_timeline"] = {
 		{
 			["Alira"] = {
@@ -601,11 +607,5 @@ DetailsTimeLineDB = {
 			},
 		}, -- [4]
 	},
-	["hide_on_combat"] = false,
-	["backdrop_color"] = {
-		0, -- [1]
-		0, -- [2]
-		0, -- [3]
-		0.4, -- [4]
-	},
+	["window_scale"] = 1,
 }
