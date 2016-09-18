@@ -15,6 +15,7 @@ local ItemUtils = LibStub("LibItemUtils-1.0")
 local EQUIPSLOT_MULTIPLIER_1 = {
   INVTYPE_HEAD = 1,
   INVTYPE_CHEST = 1,
+  INVTYPE_ROBE = 1,
   INVTYPE_LEGS = 1,
   INVTYPE_WRIST = 0.56,
   INVTYPE_FINGER = 0.56,

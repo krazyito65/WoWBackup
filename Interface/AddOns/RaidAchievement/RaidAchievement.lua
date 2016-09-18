@@ -6,7 +6,7 @@ if GetLocale()=="deDE" or GetLocale()=="ruRU" or GetLocale()=="zhTW" or GetLocal
 end
 
 
-	raversion=7.003
+	raversion=7.004
 	local raverstiptext="alpha"
 	if string.len(raversion)==6 then
 		raverstiptext="beta"
@@ -1420,14 +1420,15 @@ end
 
 
 --героики Legion
-local idheroics={1081,9999999999999999,1067,1046,1041,1042,9999999999999999,9999999999999999,1045,1066}
+local idheroics={1081,1087,1067,1046,1041,1042,1065,1079,1045,1066}
 local buul=0
 for i=1,#idheroics do
 	if idheroics[i]==GetCurrentMapAreaID() then
 		buul=1
 	end
 end
-if select(3,GetInstanceInfo())==2 and buul==1 then
+-- ТОЛЬКО ЭПОХАЛЬНЫЕ ПОДЗЕМЕЛЬЯ!!!!! 2 - просто героики, а 23 - эпохальные МИТИК!
+if select(3,GetInstanceInfo())==23 and buul==1 then
 
 local chattt="party"
 if select(3,GetInstanceInfo())==17 or IsLFGModeActive(LE_LFG_CATEGORY_LFD) or IsLFGModeActive(LE_LFG_CATEGORY_SCENARIO) then

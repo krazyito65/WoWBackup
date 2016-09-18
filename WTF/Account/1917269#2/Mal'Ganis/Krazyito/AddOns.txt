@@ -842,3 +842,4 @@ LibRealmInfo: enabled
 LibStrataFix: enabled
 LDB-Artifact: disabled
 HereBeDragons-1.0: enabled
+MacroToolkitIcons: disabled
