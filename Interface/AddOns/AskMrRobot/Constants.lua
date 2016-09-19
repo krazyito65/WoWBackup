@@ -26,6 +26,7 @@ Amr.SetTokenIds = Amr.Serializer.SetTokenIds
 Amr.GetItemTooltip = Amr.Serializer.GetItemTooltip
 Amr.GetItemLevel = Amr.Serializer.GetItemLevel
 Amr.GetItemUniqueId = Amr.Serializer.GetItemUniqueId
+Amr.ArtifactIdToSpecNumber = Amr.Serializer.ArtifactIdToSpecNumber
 
 -- map of slot ID to display text
 Amr.SlotDisplayText = {
@@ -160,6 +161,8 @@ function Amr.CreateItemLink(itemObj)
 		table.insert(parts, 4)
 	elseif itemObj.level and itemObj.level ~= 0 then
 		table.insert(parts, 512)
+	elseif itemObj.relicBonusIds then
+		table.insert(parts, 256)
 	else
 		table.insert(parts, 0)
 	end
@@ -184,10 +187,24 @@ function Amr.CreateItemLink(itemObj)
 		table.insert(parts, 0)
 	end
 	
-	-- technically relic stuff comes after this... but we ignore it for now, too much of a pain
-	table.insert(parts, 0)
-	table.insert(parts, 0)
-	table.insert(parts, 0)
+	-- sometimes we provide relic bonus IDs
+	if itemObj.relicBonusIds then
+		for i = 1,3 do
+			local bonusList = itemObj.relicBonusIds[i]
+			if bonusList and #bonusList > 0 then
+				table.insert(parts, #bonusList)
+				for bi, bv in ipairs(bonusList) do
+					table.insert(parts, bv)
+				end
+			else
+				table.insert(parts, 0)
+			end
+		end
+	else
+		table.insert(parts, 0)
+		table.insert(parts, 0)
+		table.insert(parts, 0)
+	end
     
     return table.concat(parts, ":")
 end

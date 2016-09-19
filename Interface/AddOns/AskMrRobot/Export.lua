@@ -270,7 +270,6 @@ local function scanTalents()
 end
 
 local function scanArtifact()
-	-- TODO: when they put in a real API for this, switch to that instead of using UI methods directly
 	local powers = C_ArtifactUI.GetPowers()
 	if not powers then return end
 	
@@ -292,7 +291,11 @@ local function scanArtifact()
 	powers = C_ArtifactUI.GetPowers()
 	if not powers then return end
 	
-	local spec = GetSpecialization()
+	-- use the artifact item ID to figure out which spec this is for, since you can open your artifact on any spec
+	local itemID = C_ArtifactUI.GetArtifactInfo()
+	local spec = Amr.ArtifactIdToSpecNumber[itemID]	
+	--local spec = GetSpecialization()
+	
 	Amr.db.char.Artifacts[spec] = {
 		Powers = powerRanks,
 		Relics = relicInfo

@@ -599,10 +599,12 @@ local function logPlayerExtraData()
 end
 
 function Amr:InitializeCombatLog()
-	updateAutoLogging()
+	--updateAutoLogging()
 end
 
+--[[
 Amr:AddEventHandler("UPDATE_INSTANCE_INFO", updateAutoLogging)
 Amr:AddEventHandler("PLAYER_DIFFICULTY_CHANGED", updateAutoLogging)
 Amr:AddEventHandler("ENCOUNTER_START", updateAutoLogging)
 Amr:AddEventHandler("PLAYER_REGEN_DISABLED", logPlayerExtraData)
+]]

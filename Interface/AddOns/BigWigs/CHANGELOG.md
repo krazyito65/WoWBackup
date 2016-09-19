@@ -1,8 +1,9 @@
 # BigWigs
 
-## [v9-6-g62dfca6](https://github.com/BigWigsMods/BigWigs/tree/62dfca67a69d9a93dafe0d2a1feda9c0b5e74df9) (2016-09-15) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v9...62dfca67a69d9a93dafe0d2a1feda9c0b5e74df9)
+## [v9-7-gf91b64e](https://github.com/BigWigsMods/BigWigs/tree/f91b64e52301c1917a3a75a9ba206767cae4cf9f) (2016-09-19) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v9...f91b64e52301c1917a3a75a9ba206767cae4cf9f)
 
+-   Options: Fix an error when moving the divider on bosses tabs  
 -   Add skeleton for Trial of Valor  
 -   update toc notes  
 -   Bars: work around bar style registration issues with a temporary delay.  

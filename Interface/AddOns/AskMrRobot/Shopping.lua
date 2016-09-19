@@ -20,6 +20,10 @@ local _chk3
 local _chk4
 local _isAhOpen = false
 
+local function incrementTableItem(tbl, key, inc)
+	tbl[key] = tbl[key] and tbl[key] + inc or inc
+end
+
 local function onShopFrameClose(widget)
 	AceGUI:Release(widget)
 	_frameShop = nil
@@ -179,7 +183,7 @@ local function renderShopSection(list, scroll, header)
 		scroll:AddChild(panel)
 		
 		lbl = AceGUI:Create("AmrUiLabel")
-		lbl:SetWidth(35)
+		lbl:SetWidth(40)
 		lbl:SetWordWrap(false)
 		lbl:SetFont(Amr.CreateFont("Bold", 20, Amr.Colors.White))
 		lbl:SetText(count .. "x")
@@ -215,125 +219,7 @@ local function renderShopSection(list, scroll, header)
 	
 end
 
-function Amr:RefreshShoppingUi()
-
-	_chk1:SetVisible(false)
-	_chk2:SetVisible(false)
-	_chk3:SetVisible(false)
-	_chk4:SetVisible(false)
-	
-	_chk1:SetChecked(false)
-	_chk2:SetChecked(false)
-	_chk3:SetChecked(false)
-	_chk4:SetChecked(false)
-	
-	-- clear out any previous data
-	_panelContent:ReleaseChildren()
-	
-	local data = Amr.db.global.Shopping[_selectedPlayer]
-	if not data then		
-		_panelContent:SetLayout("None")
-		
-		local lbl = AceGUI:Create("AmrUiLabel")
-		lbl:SetFont(Amr.CreateFont("Italic", 18, Amr.Colors.TextTan))
-		lbl:SetText(L.ShopEmpty)
-		lbl:SetJustifyH("CENTER")
-		lbl:SetPoint("TOP", _panelContent.content, "TOP", 0, -30)
-		_panelContent:AddChild(lbl)
-	else
-		-- set labels on checkboxes
-		if data.specs[1] and data.specs[1] ~= 0 then
-			_chk1:SetText(L.SpecsShort[data.specs[1]])
-			_chk1:SetVisible(true)
-			_chk1:SetChecked(_specs[1])
-		end
-		
-		if data.specs[2] and data.specs[2] ~= 0 then
-			_chk2:SetText(L.SpecsShort[data.specs[2]])
-			_chk2:SetVisible(true)
-			_chk2:SetChecked(_specs[2])
-		end
-		
-		if data.specs[3] and data.specs[3] ~= 0 then
-			_chk3:SetText(L.SpecsShort[data.specs[3]])
-			_chk3:SetVisible(true)
-			_chk3:SetChecked(_specs[3])
-		end
-		
-		if data.specs[4] and data.spes[4] ~= 0 then
-			_chk4:SetText(L.SpecsShort[data.specs[4]])
-			_chk4:SetVisible(true)
-			_chk4:SetChecked(_specs[4])
-		end
-		
-		local spec = 0
-		if not _specs[1] and not _specs[2] and not _specs[3] and not _specs[4] then
-			-- all unchecked, show nothing
-		else
-			-- both is 0, otherwise the one that is selected
-			if not _specs[1] or not _specs[2] then
-				spec = _specs[1] and 1 or 2
-			end
-			
-			_panelContent:SetLayout("Fill")
-			
-			local scroll = AceGUI:Create("AmrUiScrollFrame")
-			scroll:SetLayout("List")
-			_panelContent:AddChild(scroll)
-			
-			renderShopSection(data.gems[spec], scroll, L.ShopHeaderGems)
-			renderShopSection(data.enchants[spec], scroll, L.ShopHeaderEnchants)		
-			renderShopSection(data.materials[spec], scroll, L.ShopHeaderMaterials)
-		end
-	end
-				
-end
-
--- compare gear to everything the player owns, and return the minimum gems/enchants/materials needed to optimize
-local function getShoppingData(player, gear, spec)
-
-	local ret = {
-		gems = {},
-		enchants = {},
-		materials = {}
-	}
-	
-	-- used to prevent considering the same item twice
-	local usedItems = {}
-	
-	for slotId, optimalItem in pairs(gear) do
-		local matchItemLink, matchItem = Amr:FindMatchingItem(optimalItem, player, usedItems)
-		local itemInfo = Amr.db.char.ExtraItemData[spec][optimalItem.id]
-		
-		-- find gem/enchant differences on the best-matching item
-		
-		-- gems
-		if itemInfo and itemInfo.socketColors then
-			for i = 1, #itemInfo.socketColors do
-				local g = optimalItem.gemIds[i]
-				local isGemEquipped = g ~= 0 and matchItem and matchItem.gemIds and matchItem.gemIds[i] == g
-				
-				if not isGemEquipped then
-					ret.gems[g] = ret.gems[g] and ret.gems[g] + 1 or 1
-				end
-			end
-		end
-		
-		-- enchant
-		if optimalItem.enchantId and optimalItem.enchantId ~= 0 then
-			local e = optimalItem.enchantId
-			local isEnchantEquipped = matchItem and matchItem.enchantId and matchItem.enchantId == e
-			
-			if not isEnchantEquipped then
-				ret.enchants[e] = ret.enchants[e] and ret.enchants[e] + 1 or 1
-			end
-		end
-	end
-	
-	return ret
-end
-
--- get the number of a specified item that the player currently owns
+-- get the number of a specified gem/enchant/material that the player currently owns
 local function getOwnedCount(itemId)
 	local ret = 0
 	
@@ -350,126 +236,205 @@ local function getOwnedCount(itemId)
 	return ret
 end
 
+local function removeOwned(list, owned)
+	
+	for itemId, count in pairs(list) do
+		-- load up how many of an item we have
+		if not owned.loaded[itemId] then
+			owned.counts[itemId] = getOwnedCount(itemId)
+			owned.loaded[itemId] = true
+		end
+		
+		-- see how many we can remove from the required count
+		local used = math.min(owned.counts[itemId], count)
+		
+		-- update owned count so we can't double-use something
+		owned.counts[itemId] = owned.counts[itemId] - used;
+		
+		-- reduce the requirement, removing entirely if we have it completely covered
+		list[itemId] = list[itemId] - used;
+		if list[itemId] == 0 then
+			list[itemId] = nil
+		end
+	end
+end
+
+function Amr:RefreshShoppingUi()
+
+	local posToCheck = { _chk1, _chk2, _chk3, _chk4 }
+	local chk
+	
+	-- reset spec checkboxes
+	for specPos = 1,4 do
+		chk = posToCheck[specPos]
+		chk:SetVisible(false)
+		chk:SetChecked(false)
+	end
+		
+	-- clear out any previous data
+	_panelContent:ReleaseChildren()
+	
+	local data = Amr.db.global.Shopping[_selectedPlayer]
+	if not data then		
+		_panelContent:SetLayout("None")
+		
+		local lbl = AceGUI:Create("AmrUiLabel")
+		lbl:SetFont(Amr.CreateFont("Italic", 18, Amr.Colors.TextTan))
+		lbl:SetText(L.ShopEmpty)
+		lbl:SetJustifyH("CENTER")
+		lbl:SetPoint("TOP", _panelContent.content, "TOP", 0, -30)
+		_panelContent:AddChild(lbl)
+	else
+		local allStuff = { gems = {}, enchants = {}, materials = {} }
+		local hasStuff = false
+		local visited = {}
+		
+		for specPos = 1,4 do
+			-- set labels on checkboxes
+			if data.specs[specPos] and data.specs[specPos] ~= 0 then
+				chk = posToCheck[specPos]
+				chk:SetText(L.SpecsShort[data.specs[specPos]])
+				chk:SetVisible(true)
+				chk:SetChecked(_specs[specPos])
+				
+				-- gather up all stuff for checked specs
+				if _specs[specPos] then
+					hasStuff = true
+					
+					for inventoryId, stuff in pairs(data.stuff[specPos]) do
+						if not visited[inventoryId] then
+							if stuff.gems then
+								for itemId, count in pairs(stuff.gems) do
+									incrementTableItem(allStuff.gems, itemId, count)
+								end
+							end
+							
+							if stuff.enchants then
+								for itemId, count in pairs(stuff.enchants) do
+									incrementTableItem(allStuff.enchants, itemId, count)
+								end
+							end
+							
+							if stuff.materials then
+								for itemId, count in pairs(stuff.materials) do
+									incrementTableItem(allStuff.materials, itemId, count)
+								end
+							end
+						
+							-- make sure not to count the same physical item twice
+							if inventoryId ~= -1 then
+								visited[inventoryId] = true
+							end
+						end
+					end
+				end
+				
+			end
+			
+		end
+		
+		if hasStuff then		
+			-- remove what we already own
+			local owned = { counts = {}, loaded = {} }
+			removeOwned(allStuff.gems, owned)
+			removeOwned(allStuff.enchants, owned)
+			removeOwned(allStuff.materials, owned)
+			
+			_panelContent:SetLayout("Fill")
+			
+			local scroll = AceGUI:Create("AmrUiScrollFrame")
+			scroll:SetLayout("List")
+			_panelContent:AddChild(scroll)
+			
+			renderShopSection(allStuff.gems, scroll, L.ShopHeaderGems)
+			renderShopSection(allStuff.enchants, scroll, L.ShopHeaderEnchants)		
+			renderShopSection(allStuff.materials, scroll, L.ShopHeaderMaterials)
+		end
+	end
+				
+end
+
+-- compare gear to everything the player owns, and return the minimum gems/enchants/materials needed to optimize, grouped by inventory ID so that we can combine multiple specs without double-counting
+local function getShoppingData(player, gear, spec)
+
+	local ret = {}
+	
+	-- used to prevent considering the same item twice
+	local usedItems = {}
+	
+	for slotId, optimalItem in pairs(gear) do
+		local matchItemLink, matchItem = Amr:FindMatchingItem(optimalItem, player, usedItems)
+		local itemInfo = Amr.db.char.ExtraItemData[spec][optimalItem.id]
+		local inventoryId = optimalItem.inventoryId or -1
+		
+		-- find gem/enchant differences on the best-matching item
+		
+		-- gems, but skip artifact relics (will have relicBonusIds set)
+		if not optimalItem.relicBonusIds and itemInfo and itemInfo.socketColors then
+			for i = 1, #itemInfo.socketColors do
+				local g = optimalItem.gemIds[i]
+				local isGemEquipped = g ~= 0 and matchItem and matchItem.gemIds and matchItem.gemIds[i] == g
+				
+				if not isGemEquipped then
+					if not ret[inventoryId] then
+						ret[inventoryId] = { gems = {}, enchants = {}, materials = {} }
+					end
+					incrementTableItem(ret[inventoryId].gems, g, 1)
+				end
+			end
+		end
+		
+		-- enchant
+		if optimalItem.enchantId and optimalItem.enchantId ~= 0 then
+			local e = optimalItem.enchantId
+			local isEnchantEquipped = matchItem and matchItem.enchantId and matchItem.enchantId == e
+			
+			if not isEnchantEquipped then
+				-- enchant info, look in all spec extra info cache
+				local enchInfo = nil
+				for specPos = 1,4 do
+					if Amr.db.char.ExtraEnchantData[specPos] then
+						enchInfo = Amr.db.char.ExtraEnchantData[specPos][e]
+						if enchInfo then break end
+					end
+				end
+
+				if enchInfo then
+					if not ret[inventoryId] then
+						ret[inventoryId] = { gems = {}, enchants = {}, materials = {} }
+					end
+					incrementTableItem(ret[inventoryId].enchants, enchInfo.itemId, 1)
+					
+					if enchInfo.materials then
+						for k, v in pairs(enchInfo.materials) do
+							incrementTableItem(ret[inventoryId].materials, k, v)
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	return ret
+end
+
 -- look at both gear sets and find stuff that a player needs to acquire to gem/enchant their gear
 function Amr:UpdateShoppingData(player)
 
-	-- TODO: re-enable shopping list when Legion comes out
-	do return end
-	
-	-- 0 is combination of all specs
 	local required = {
-		gems = {
-			[0] = {},
-			[1] = {},
-			[2] = {},
-			[3] = {},
-			[4] = {}
-		},
-		enchants = {
-			[0] = {},
-			[1] = {},
-			[2] = {},
-			[3] = {},
-			[4] = {}
-		},
-		materials = {
-			[0] = {},
-			[1] = {},
-			[2] = {},
-			[3] = {},
-			[4] = {}
-		},
+		stuff = {},
 		specs = player.Specs
 	}
 	
 	local enchantItemIdToId = {}
 	
 	for spec, gear in pairs(Amr.db.char.GearSets) do
-		local obj = getShoppingData(player, gear, spec)
-		for k, v in pairs(obj.gems) do
-			local gemInfo = Amr.db.char.ExtraGemData[spec][k]
-			if gemInfo then
-				local prev = required.gems[spec][gemInfo.id]
-				required.gems[spec][gemInfo.id] = prev and prev + v or v
-				
-				prev = required.gems[0][gemInfo.id]
-				required.gems[0][gemInfo.id] = prev and prev + v or v
-			end
-		end
-		for k, v in pairs(obj.enchants) do
-			local enchInfo = Amr.db.char.ExtraEnchantData[spec][k]
-			if enchInfo then
-				enchantItemIdToId[enchInfo.itemId] = k
-				
-				local prev = required.enchants[spec][enchInfo.itemId]
-				required.enchants[spec][enchInfo.itemId] = prev and prev + v or v
-				
-				prev = required.enchants[0][enchInfo.itemId]
-				required.enchants[0][enchInfo.itemId] = prev and prev + v or v
-			end
-		end
-	end
-	
-	-- now subtract stuff the player already has, and generate a list of materials as well
-	for spec = 0, 4 do
-		local specId = spec == 0 and 1 or GetSpecializationInfo(spec)
-		if specId then
-			-- now check if the player has any of the gems or enchants in their inventory, and subtract those
-			for itemId, count in pairs(required.gems[spec]) do
-				required.gems[spec][itemId] = math.max(count - getOwnedCount(itemId), 0)
-				
-				if required.gems[spec][itemId] == 0 then
-					required.gems[spec][itemId] = nil
-				end
-			end
-			
-			for itemId, count in pairs(required.enchants[spec]) do
-				-- look in both spec extra info cache
-				local e = enchantItemIdToId[itemId]		
-				local enchInfo = nil
-				if Amr.db.char.ExtraEnchantData[1] then
-					enchInfo = Amr.db.char.ExtraEnchantData[1][e]
-				end
-				if not enchInfo then
-					if Amr.db.char.ExtraEnchantData[2] then
-						enchInfo = Amr.db.char.ExtraEnchantData[2][e]
-					end
-				end
-				
-				if enchInfo then
-					required.enchants[spec][itemId] = math.max(count - getOwnedCount(itemId), 0)
-
-					if required.enchants[spec][itemId] == 0 then
-						required.enchants[spec][itemId] = nil
-					else
-						-- count up required materials
-						if enchInfo.materials then
-							local c = required.enchants[spec][itemId]
-							for k, v in pairs(enchInfo.materials) do
-								local prev = required.materials[spec][k]
-								required.materials[spec][k] = prev and prev + (v * c) or (v * c)
-							end
-						end
-					end			
-				end	
-			end
-			
-			-- check if player has any of the materials already
-			for itemId, count in pairs(required.materials[spec]) do
-				required.materials[spec][itemId] = math.max(count - getOwnedCount(itemId), 0)
-				
-				if required.materials[spec][itemId] == 0 then
-					required.materials[spec][itemId] = nil
-				end
-			end
-		end
+		required.stuff[spec] = getShoppingData(player, gear, spec)
 	end
 	
 	Amr.db.global.Shopping[player.Name .. "-" .. player.Realm] = required
 end
 
--- TODO: re-enable shopping list with Legion
---[[
 Amr:AddEventHandler("AUCTION_HOUSE_SHOW", function() 
 	_isAhOpen = true
 	if Amr.db.profile.options.shopAh then
@@ -483,4 +448,3 @@ Amr:AddEventHandler("AUCTION_HOUSE_CLOSED", function()
 		Amr:HideShopWindow()
 	end
 end)
-]]

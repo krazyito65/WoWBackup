@@ -190,7 +190,7 @@ local function createMainWindow()
 	t:SetTabs({
 		{text=L.TabExportText, value="Export"}, 
 		{text=L.TabGearText, value="Gear"}, 
-		{text=L.TabLogText, value="Log"}, 
+		--{text=L.TabLogText, value="Log"}, 
 		{text=L.TabTeamText, value="Team"},
 		{text=L.TabOptionsText, value="Options"}
 	})

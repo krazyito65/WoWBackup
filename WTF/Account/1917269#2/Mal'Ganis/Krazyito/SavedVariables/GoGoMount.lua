@@ -29,6 +29,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[903] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[935] = {
 			["Preferred"] = {
 			},
@@ -108,13 +114,6 @@ GoGo_Prefs = {
 			},
 			["Excluded"] = {
 			},
-		},
-		["Shrine of Two Moons"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
 		},
 		[1045] = {
 			["Preferred"] = {
@@ -578,12 +577,11 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		["Scarlet Monastery"] = {
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[736] = {
 			["Preferred"] = {
@@ -597,11 +595,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1086] = {
+		["Scarlet Monastery"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[1017] = {
 			["Preferred"] = {
@@ -621,12 +620,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["The Nexus"] = {
+		[1087] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[481] = {
 			["Preferred"] = {
@@ -909,11 +907,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1087] = {
+		["The Nexus"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		["Krasarang Wilds"] = {
 			["Preferred"] = {

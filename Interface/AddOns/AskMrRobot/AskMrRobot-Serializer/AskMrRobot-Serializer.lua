@@ -1,7 +1,7 @@
 -- AskMrRobot-Serializer will serialize and communicate character data between users.
 -- This is used primarily to associate character information to logs uploaded to askmrrobot.com.
 
-local MAJOR, MINOR = "AskMrRobot-Serializer", 41
+local MAJOR, MINOR = "AskMrRobot-Serializer", 42
 local Amr, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Amr then return end -- already loaded by something else
@@ -173,6 +173,65 @@ Amr.SupportedInstanceIds = {
 	[1228] = true,
 	[1205] = true,
 	[1448] = true
+}
+
+-- just to make life easier, maps ID of each artifact weapon to the spec number (1-4)
+Amr.ArtifactIdToSpecNumber = {
+	[128402] = 1, -- DK
+	[128292] = 2,
+	[128403] = 3,
+	[127829] = 1, -- DH
+	[128832] = 2,
+	[128858] = 1, -- Druid
+	[128860] = 2,
+	[128821] = 3,
+	[128306] = 4,
+	[128861] = 1, -- Hunter
+	[128826] = 2,
+	[128808] = 3,
+	[127857] = 1, -- Mage
+	[128820] = 2,
+	[128862] = 3,
+	[128938] = 1, -- Monk
+	[128937] = 2,
+	[128940] = 3,
+	[128823] = 1, -- Paladin
+	[128866] = 2,
+	[120978] = 3,
+	[128868] = 1, -- Priest
+	[128825] = 2,
+	[128827] = 3,
+	[128870] = 1, -- Rogue
+	[128872] = 2,
+	[128476] = 3,
+	[128935] = 1, -- Shaman
+	[128819] = 2,
+	[128911] = 3,
+	[128942] = 1, -- Warlock
+	[128943] = 2,
+	[128941] = 3,
+	[128910] = 1, -- Warrior
+	[128908] = 2,
+	[128289] = 3,
+	
+	--[128293] = 2, -- Frost OH
+	--[127830] = 1, -- Havoc OH
+	--[128831] = 2, -- Vengeance OH
+	--[128859] = 2, -- Feral OH
+	--[128822] = 3, -- Guardian OH
+	--[133959] = 2, -- Fire OH
+	--[133948] = 3, -- Windwalker OH
+	--[128867] = 2, -- Prot MH
+	--[133958] = 3, -- Shadow OH
+	--[128869] = 1, -- Rogue OH's
+	--[134552] = 2,
+	--[128479] = 3,
+	--[128936] = 1, -- Shaman OH's
+	--[128873] = 2,
+	--[128934] = 3,
+	--[137246] = 2, -- Demo MH
+	--[134553] = 2, -- Fury OH
+	--[128288] = 3  -- Prot MH
 }
 
 -- IDs of set tokens that we would care about in a player's inventory

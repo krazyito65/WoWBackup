@@ -221,6 +221,11 @@ function Amr:ImportCharacter(data, isTest)
         if itemString ~= "" and itemString ~= "_" then
             local tokens = {}
             local bonusIds = {}
+			local relicBonusIds = {}
+			table.insert(relicBonusIds, {})
+			table.insert(relicBonusIds, {})
+			table.insert(relicBonusIds, {})
+			local hasRelics = false
             local hasBonuses = false
             local token = ""
             local prop = "i"
@@ -258,6 +263,15 @@ function Amr:ImportCharacter(data, isTest)
                     if prop == "b" then
                         table.insert(bonusIds, val)
                         hasBonuses = true
+					elseif prop == "m" then
+						table.insert(relicBonusIds[1], val)
+						hasRelics = true
+					elseif prop == "n" then
+						table.insert(relicBonusIds[2], val)
+						hasRelics = true
+					elseif prop == "o" then
+						table.insert(relicBonusIds[3], val)
+						hasRelics = true
                     else
                         tokens[prop] = val
                     end
@@ -278,12 +292,17 @@ function Amr:ImportCharacter(data, isTest)
             obj.upgradeId = tokens["u"] or 0
 			obj.level = tokens["v"] or 0
             obj.enchantId = tokens["e"] or 0
+			obj.inventoryId = tokens["t"] or 0
             
             obj.gemIds = {}
             table.insert(obj.gemIds, tokens["x"] or 0)
             table.insert(obj.gemIds, tokens["y"] or 0)
             table.insert(obj.gemIds, tokens["z"] or 0)
             table.insert(obj.gemIds, 0)
+			
+			if hasRelics then
+				obj.relicBonusIds = relicBonusIds
+			end
             
             if hasBonuses then
                 obj.bonusIds = bonusIds

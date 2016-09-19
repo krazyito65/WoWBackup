@@ -19,7 +19,7 @@ _NPCScan: disabled
 AchScreenshotter: disabled
 AckisRecipeList: disabled
 ACP: enabled
-AtlasLoot: disabled
+AtlasLoot: enabled
 AtlasLoot_BurningCrusade: disabled
 AtlasLoot_Cataclysm: disabled
 AtlasLoot_ClassicWoW: disabled
@@ -439,7 +439,7 @@ LittleWigs_Zul'Drak: disabled
 LittleWigs_ZulGurub: disabled
 Portfolio: disabled
 WeakAurasModelPaths: enabled
-Outfitter: disabled
+Outfitter: enabled
 _NPCScan.Overlay: disabled
 GatherMate2: disabled
 GatherMate2_Data: disabled
@@ -493,7 +493,7 @@ LittleWigs_MogushanPalace: disabled
 LittleWigs_ScarletHalls: disabled
 LittleWigs_ScarletMonastery: disabled
 LittleWigs_ShadoPanMonastery: disabled
-Pawn: disabled
+Pawn: enabled
 ChaosGambler: disabled
 HaloPro: disabled
 Tukui_ElvUI_Skins: disabled
@@ -843,3 +843,8 @@ LibStrataFix: enabled
 LDB-Artifact: disabled
 HereBeDragons-1.0: enabled
 MacroToolkitIcons: disabled
+EQCompare: enabled
+EquipCompare: enabled
+LinkWrangler: enabled
+MobInfo2: enabled
+MultiTips: enabled

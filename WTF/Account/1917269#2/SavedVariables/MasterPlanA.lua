@@ -1,58 +1,58 @@
 
 MasterPlanAG = {
 	["Mal'Ganis"] = {
+		["Krazyìto"] = {
+			["faction"] = "Horde",
+			["class"] = "DEMONHUNTER",
+		},
+		["Krazyíto"] = {
+			["faction"] = "Horde",
+			["class"] = "PALADIN",
+		},
 		["Krázyito"] = {
 			["summary"] = {
 				["inProgress"] = {
 					[272] = 1452625303,
-					[371] = 1452639705,
 					[367] = 1452639708,
 					[337] = 1452661296,
+					[371] = 1452639705,
 				},
 			},
+			["faction"] = "Horde",
 			["curOil"] = 195,
-			["lastCacheTime"] = 1470362011,
 			["class"] = "SHAMAN",
 			["curRes"] = 2453,
-			["faction"] = "Horde",
+			["lastCacheTime"] = 1470362011,
 		},
-		["Krazyíto"] = {
-			["class"] = "PALADIN",
-			["faction"] = "Horde",
-		},
-		["Krazyìto"] = {
-			["class"] = "DEMONHUNTER",
+		["Krazýito"] = {
+			["class"] = "PRIEST",
 			["faction"] = "Horde",
 		},
 		["Krazyito"] = {
-			["faction"] = "Horde",
+			["lastCacheTime"] = 1473633441,
 			["summary"] = {
-				["ti2"] = 122486,
-				["ti3"] = 127855,
+				["tt2"] = 1472082125,
+				["tt3"] = true,
 				["tt1"] = 1472405306,
 				["ti1"] = 118531,
-				["tt3"] = true,
-				["tt2"] = 1472082125,
+				["ti3"] = 127855,
+				["ti2"] = 122486,
 			},
 			["curOil"] = 3565,
 			["cacheSize"] = 1000,
-			["lastCacheTime"] = 1473633441,
-			["curRes"] = 10000,
 			["class"] = "DRUID",
-		},
-		["Krazýito"] = {
+			["curRes"] = 10000,
 			["faction"] = "Horde",
-			["class"] = "PRIEST",
 		},
 		["Krazybank"] = {
-			["class"] = "HUNTER",
 			["faction"] = "Horde",
+			["class"] = "HUNTER",
 		},
 	},
 	["Area 52"] = {
 		["Krazyito"] = {
-			["class"] = "DRUID",
 			["faction"] = "Horde",
+			["class"] = "DRUID",
 		},
 	},
 	["Burning Blade"] = {
@@ -61,31 +61,29 @@ MasterPlanAG = {
 		["Krazyitó"] = {
 		},
 		["Krãzyito"] = {
-			["class"] = "PALADIN",
 			["faction"] = "Alliance",
+			["class"] = "PALADIN",
 		},
 		["Krazyíto"] = {
-			["faction"] = "Alliance",
 			["class"] = "PRIEST",
+			["faction"] = "Alliance",
 		},
 		["Krázyito"] = {
-			["faction"] = "Alliance",
 			["class"] = "HUNTER",
-		},
-		["Krazyitò"] = {
+			["faction"] = "Alliance",
 		},
 		["Krázýító"] = {
-			["faction"] = "Alliance",
 			["class"] = "WARLOCK",
+			["faction"] = "Alliance",
+		},
+		["Krazyitò"] = {
 		},
 	},
 	["Illidan"] = {
 		["Krazyito"] = {
 		},
 	},
-	["Stormrage"] = {
-		["Krazyito"] = {
-		},
+	["IgnoreRewards"] = {
 	},
 	["Proudmoore"] = {
 		["Meatrisolyn"] = {
@@ -95,6 +93,8 @@ MasterPlanAG = {
 		["Krazymonk"] = {
 		},
 	},
-	["IgnoreRewards"] = {
+	["Stormrage"] = {
+		["Krazyito"] = {
+		},
 	},
 }

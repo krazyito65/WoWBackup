@@ -41,9 +41,9 @@
 --  Globals/Default Options  --
 -------------------------------
 DBM = {
-	Revision = tonumber(("$Revision: 15224 $"):sub(12, -3)),
-	DisplayVersion = "7.0.5 alpha", -- the string that is shown as version
-	ReleaseRevision = 15192 -- the revision of the latest stable version that is available
+	Revision = tonumber(("$Revision: 15232 $"):sub(12, -3)),
+	DisplayVersion = "7.0.6 alpha", -- the string that is shown as version
+	ReleaseRevision = 15226 -- the revision of the latest stable version that is available
 }
 DBM.HighestRelease = DBM.ReleaseRevision --Updated if newer version is detected, used by update nags to reflect critical fixes user is missing on boss pulls
 
@@ -1750,6 +1750,34 @@ do
 	
 	SLASH_DEADLYBOSSMODS1 = "/dbm"
 	SLASH_DEADLYBOSSMODSRPULL1 = "/rpull"
+	if GetAddOnEnableState(playerName, "TomTom") == 0 then
+		SLASH_DEADLYBOSSMODSWAY1 = "/way"--/way not used because DBM would load before TomTom and can't check 
+		SlashCmdList["DEADLYBOSSMODSWAY"] = function(msg)
+			if DBM:HasMapRestrictions() then
+				DBM:AddMsg(DBM_CORE_NO_ARROW)
+				return
+			end
+			local x, y = string.split(" ", msg:sub(1):trim())
+			local xNum, yNum = tonumber(x or ""), tonumber(y or "")
+			local success
+			if xNum and yNum then
+				DBM.Arrow:ShowRunTo(xNum, yNum, 0.5, nil, true)
+				success = true
+			else--Check if they used , instead of space.
+				x, y = string.split(",", msg:sub(1):trim())
+				xNum, yNum = tonumber(x or ""), tonumber(y or "")
+				if xNum and yNum then
+					DBM.Arrow:ShowRunTo(xNum, yNum, 0.5, nil, true)
+					success = true
+				end
+			end
+			if not success then
+				DBM:AddMsg(DBM_ARROW_WAY_USAGE)
+			else
+				DBM:AddMsg(DBM_ARROW_WAY_SUCCESS)
+			end
+		end
+	end
 	if not BigWigs then
 		--Register pull and break slash commands for BW converts, if BW isn't loaded
 		--This shouldn't raise an issue since BW SHOULD load before DBM in any case they are both present.

@@ -221,7 +221,11 @@ local function renderGear(spec, container)
 					-- set item name, tooltip, and ilvl
 					obj.nameLabel:SetText(link:gsub("%[", ""):gsub("%]", ""))
 					Amr:SetItemTooltip(obj.nameLabel, link)
-					obj.ilvlLabel:SetText(iLevel)					
+					
+					-- the game's info gives the wrong item level, so we have to scan for it
+					iLevel = (quality ~= 6 or optimalItem.relicBonusIds) and Amr.GetItemLevel(nil, nil, link) or ""
+					obj.ilvlLabel:SetText(iLevel)			
+					
 				end, { ilvlLabel = lblIlvl, nameLabel = lblItem })
 			end
 						
@@ -231,6 +235,7 @@ local function renderGear(spec, container)
 
 				-- gems
 				if itemInfo and itemInfo.socketColors then
+					local prevSocket = nil
 					for i = 1, #itemInfo.socketColors do
 						local g = optimalItem.gemIds[i]
 						local isGemEquipped = g ~= 0 and matchItem and matchItem.gemIds and matchItem.gemIds[i] == g
@@ -241,7 +246,11 @@ local function renderGear(spec, container)
 						socketBorder:SetBackgroundColor(Amr.Colors.Black, isGemEquipped and 0 or 1)
 						socketBorder:SetWidth(26)
 						socketBorder:SetHeight(26)
-						socketBorder:SetPoint("LEFT", lblItem.frame, "RIGHT", 30, 0)
+						if not prevSocket then
+							socketBorder:SetPoint("LEFT", lblItem.frame, "RIGHT", 30, 0)
+						else
+							socketBorder:SetPoint("LEFT", prevSocket.frame, "RIGHT", 2, 0)
+						end
 						if isGemEquipped then
 							socketBorder:SetAlpha(0.3)
 						end
@@ -268,13 +277,19 @@ local function renderGear(spec, container)
 						if g ~= 0 then
 							local gemInfo = Amr.db.char.ExtraGemData[spec][g]
 							if gemInfo then
-								Amr.GetItemInfo(gemInfo.id, function(obj, name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture)					
+								local gident = gemInfo.id
+								if optimalItem.relicBonusIds then
+									gident = Amr.CreateItemLink({ id = gemInfo.id, enchantId = 0, gemIds = {0,0,0,0}, suffixId = 0, bonusIds = optimalItem.relicBonusIds[i]})
+								end
+								Amr.GetItemInfo(gident, function(obj, name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture)					
 									-- set icon and a tooltip
 									obj:SetIcon(texture)
 									Amr:SetItemTooltip(obj, link)
 								end, socketIcon)
 							end
 						end
+						
+						prevSocket = socketBorder
 					end
 				end
 				
@@ -378,7 +393,6 @@ function Amr:RenderTabGear(container)
 	container:AddChild(t)	
 	_gearTabs = t;
 	
-	--[[
 	local btnShop = AceGUI:Create("AmrUiButton")
 	btnShop:SetText(L.GearButtonShop)
 	btnShop:SetBackgroundColor(Amr.Colors.Blue)
@@ -388,7 +402,6 @@ function Amr:RenderTabGear(container)
 	btnShop:SetPoint("TOPRIGHT", container.content, "TOPRIGHT", -20, -25)
 	btnShop:SetCallback("OnClick", function(widget) Amr:ShowShopWindow() end)
 	container:AddChild(btnShop)
-	]]
 	
 	if not _activeTab then
 		_activeTab = tostring(GetSpecialization())
@@ -423,6 +436,7 @@ end
 local _waitingForSpec = 0
 local _waitingForItemLock = nil
 local _pendingEquip = nil
+local _pendingRemove = nil
 
 -- scan a bag for the best matching item
 local function scanBagForItem(item, bagId, bestItem, bestDiff, bestLink)
@@ -443,6 +457,24 @@ local function scanBagForItem(item, bagId, bestItem, bestDiff, bestLink)
 		end
 	end
 	return bestItem, bestDiff, bestLink
+end
+
+local function onEquipGearSetComplete()
+	-- create an equipment manager set
+	local specId, specName = GetSpecializationInfo(GetSpecialization())
+	
+	local item = Amr.ParseItemLink(GetInventoryItemLink("player", INVSLOT_MAINHAND))
+	if not item or not Amr.ArtifactIdToSpecNumber[item.id] then
+		item = Amr.ParseItemLink(GetInventoryItemLink("player", INVSLOT_OFFHAND))
+		if item and not Amr.ArtifactIdToSpecNumber[item.id] then
+			item = nil
+		end
+	end
+	if item then
+		Amr.GetItemInfo(item.id, function(customArg, name, link, quality, iLevel, reqLevel, class, subclass, maxStack, equipSlot, texture)
+			SaveEquipmentSet("AMR " .. specName, texture)
+		end)
+	end
 end
 
 -- find the first empty slot in the player's backpack+bags
@@ -584,13 +616,55 @@ local function tryEquipNextItem()
 	
 end
 
-local function onItemUnlocked(bagId, slotId)
+local function removeNextItem()
+	if not _pendingRemove then return end
+	
+	local list = _pendingRemove.slotsToRemove
+	local slot = list[#list - _pendingRemove.remaining + 1]
+	
+	-- find first empty bag slot
+	local invBag, invSlot = findFirstEmptyBagSlot()
+	if not invBag then
+		-- stop if bags are too full
+		Amr:Print(L.GearEquipErrorBagFull)
+		_pendingRemove = nil
+		_pendingEquip = nil
+		return
+	end
+	
+	PickupInventoryItem(slot)
+	PickupContainerItem(invBag, invSlot)
+	
+	-- set flag so that when we clear cursor and release the item lock, we can respond to the event and continue
+	_waitingForItemLock = {
+		bagId = invBag,
+		slotId = invSlot,
+		isRemove = true
+	}
+	
+	ClearCursor()
+end
 
+local function onItemUnlocked(bagId, slotId)
+	
 	if _waitingForItemLock then
-		-- waiting on a move from bank to bags to complete, just continue as normal afterwards
+		-- waiting on a move from bank to bags to complete, or waiting on removing an item to complete, just continue as normal afterwards
 		if bagId == _waitingForItemLock.bagId and slotId == _waitingForItemLock.slotId then
+			local isremove = _waitingForItemLock.isRemove
 			_waitingForItemLock = nil
-			tryEquipNextItem()
+			
+			if isremove then
+				_pendingRemove.remaining = _pendingRemove.remaining - 1
+				if _pendingRemove.remaining > 0 then
+					removeNextItem()
+				else
+					-- we have removed all items that we want to remove, now do the equip
+					_pendingRemove = nil
+					tryEquipNextItem()
+				end
+			else
+				tryEquipNextItem()
+			end
 		end
 		
 	elseif _pendingEquip and _pendingEquip.destSlot then
@@ -681,6 +755,18 @@ local function startEquipGearSet(spec)
 	end
 
 	if remaining > 0 then
+		-- if this is not our first try, then remove weapons before starting
+		local toRemove = {}
+		local removesRemaining = 0
+		if _pendingEquip and _pendingEquip.tries > 0 then
+			for slotId, item in pairs(itemsToEquip) do
+				if slotId == 16 or slotId == 17 then
+					table.insert(toRemove, slotId)
+					removesRemaining = removesRemaining + 1
+				end
+			end			
+		end
+		
 		_pendingEquip = {
 			tries = _pendingEquip and _pendingEquip.spec == spec and _pendingEquip.tries or 0,
 			spec = spec,
@@ -696,9 +782,18 @@ local function startEquipGearSet(spec)
 			break
 		end
 		
-		tryEquipNextItem()
+		if removesRemaining > 0 then
+			_pendingRemove = {
+				slotsToRemove = toRemove,
+				remaining = removesRemaining
+			}
+			removeNextItem()
+		else
+			tryEquipNextItem()
+		end
 	else
 		_pendingEquip = nil
+		onEquipGearSetComplete()
 	end
 end
 

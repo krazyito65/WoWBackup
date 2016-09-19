@@ -3,10 +3,10 @@ Details_StreamerDB = {
 	["characters"] = {
 		["Krazyíto - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Krazyitö - Sargeras"] = "Krazyito - Mal'Ganis",
+		["Krazyíto - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krázýító - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krâzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Kråzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazyito - Illidan"] = "Krazyito - Mal'Ganis",
 		["Krãzyito - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krazyìto - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krazyitó - Mal'Ganis"] = "Krazyito - Mal'Ganis",
@@ -14,8 +14,8 @@ Details_StreamerDB = {
 		["Krázyito - Gnomeregan"] = "Krazyito - Mal'Ganis",
 		["Krazýito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
 		["Krazymonk - Sargeras"] = "Krazyito - Mal'Ganis",
-		["Krazyito - Illidan"] = "Krazyito - Mal'Ganis",
-		["Krazyíto - Gnomeregan"] = "Krazyito - Mal'Ganis",
+		["Kråzyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
+		["Krazyitö - Sargeras"] = "Krazyito - Mal'Ganis",
 	},
 	["profiles"] = {
 		["Krazyito - Mal'Ganis"] = {
@@ -44,12 +44,7 @@ Details_StreamerDB = {
 			["main_frame_locked"] = false,
 			["enabled"] = false,
 			["arrow_size"] = 10,
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
+			["main_frame_strata"] = "LOW",
 			["row_spacement"] = 21,
 			["main_frame_color"] = {
 				0, -- [1]
@@ -57,8 +52,14 @@ Details_StreamerDB = {
 				0, -- [3]
 				0.2, -- [4]
 			},
-			["main_frame_strata"] = "LOW",
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
+			},
 			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
+			["font_size"] = 10,
 			["per_second"] = {
 				["enabled"] = false,
 				["point"] = "CENTER",
@@ -70,7 +71,6 @@ Details_StreamerDB = {
 				["x"] = 0,
 				["attribute_type"] = 1,
 			},
-			["font_size"] = 10,
 			["x"] = 8.75213241577149,
 			["font_face"] = "Friz Quadrata TT",
 			["y"] = -57.9828643798828,
