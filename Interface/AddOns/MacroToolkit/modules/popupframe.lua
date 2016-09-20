@@ -45,34 +45,28 @@ function MT:CreateMTPopup()
 	mtpf:EnableMouse(true)
 	mtpf:SetScale(MT.db.profile.scale)
 	mtpf:SetSize(297, 411)
-	--mtpf:SetSize(446, 617)
 	mtpf:SetPoint("TOPLEFT", MacroToolkitFrame, "TOPRIGHT", 0, 0)
 	mtpf:Hide()
 
 	local mtpftl = mtpf:CreateTexture("BACKGROUND")
 	mtpftl:SetTexture("Interface\\MacroFrame\\MacroPopup-TopLeft")
 	mtpftl:SetSize(256, 368)
-	--mtpftl:SetSize(405, 368)
 	mtpftl:SetPoint("TOPLEFT")
 
 	local mtpftr = mtpf:CreateTexture("BACKGROUND")
 	mtpftr:SetTexture("Interface\\MacroFrame\\MacroPopup-TopRight")
 	mtpftr:SetSize(64, 368)
 	mtpftr:SetPoint("TOPLEFT", 256, 0)
-	--mtpftr:SetPoint("TOPLEFT", 405, 0)
 	
 	local mtpfbl = mtpf:CreateTexture("BACKGROUND")
 	mtpfbl:SetTexture("Interface\\MacroFrame\\MacroPopup-BotLeft")
 	mtpfbl:SetSize(256, 64)
-	--mtpfbl:SetSize(405, 64)
 	mtpfbl:SetPoint("TOPLEFT", 0, -368)
-	--mtpfbl:SetPoint("TOPLEFT", 0, -574)
 	
 	local mtpfbr = mtpf:CreateTexture("BACKGROUND")
 	mtpfbr:SetTexture("Interface\\MacroFrame\\MacroPopup-BotRight")
 	mtpfbr:SetSize(64, 64)
 	mtpfbr:SetPoint("TOPLEFT", 256, -368)
-	--mtpfbr:SetPoint("TOPLEFT", 405, -574)
 	
 	local mtpfml = mtpf:CreateTexture("BACKGROUND")
 	mtpfml:SetTexture("Interface\\MacroFrame\\MacroPopup-TopLeft")
@@ -148,9 +142,7 @@ function MT:CreateMTPopup()
 	}
 	local aisframe = MT.AIS:CreateIconSelectorFrame("MacroToolkitPopupIcons", mtpf, aisoptions)
 	aisframe:SetSize(296, 276)
-	--aisframe:SetSize(445, 482)
 	aisframe:SetPoint("TOPLEFT", 0, -85)
-	--aisframe:SetPoint("TOPLEFT", 6, -85)
 	aisframe.scrollFrame.ScrollBar:ClearAllPoints()
 	aisframe.scrollFrame.ScrollBar:SetPoint("TOPLEFT", aisframe.scrollFrame, "TOPRIGHT", -10, -36)
 	aisframe.scrollFrame.ScrollBar:SetPoint("BOTTOMLEFT", aisframe.scrollFrame, "BOTTOMRIGHT", -10, 36)
@@ -161,12 +153,40 @@ function MT:CreateMTPopup()
 	searchLabel:SetHeight(22)
 	searchLabel:SetPoint("TOPLEFT", aisframe, "BOTTOMLEFT", 20, 15)
 
+	local function searchtextchanged(editBox, userInput)
+		if userInput then
+			local searchtext = editBox:GetText()
+			-- ticket 149
+			if MT.SpellCheck then
+				local _, _, textnum, _, _, _ = GetSpellInfo(searchtext)
+				searchtext = textnum or ""
+			end
+			aisframe:SetSearchParameter(searchtext)
+		end
+	end
+	
 	local searchBox = CreateFrame("EditBox", "MacroToolkitSearchBox", mtpf, "InputBoxTemplate")
 	searchBox:SetAutoFocus(false)
 	searchBox:SetSize(150, 22)
 	searchBox:SetPoint("LEFT", searchLabel, "RIGHT", 10, 0)
-	searchBox:SetScript("OnTextChanged", function(editBox, userInput) if userInput then aisframe:SetSearchParameter(editBox:GetText()) end end)
+	searchBox:SetScript("OnTextChanged", searchtextchanged)
 	
+	local spellsearch = CreateFrame("CheckButton", "MacroToolkitSpellCheck", mtpf, "UICheckButtonTemplate")
+	spellsearch:SetSize(32, 32)
+	spellsearch:SetPoint("LEFT", searchBox, "RIGHT", 10, 0)
+	
+	function showchecktip()
+		GameTooltip:SetOwner(MacroToolkitSpellCheck, "ANCHOR_TOPRIGHT")
+		GameTooltip:ClearLines()
+		GameTooltip:AddDoubleLine(format("%s%s%s",_G.NORMAL_FONT_COLOR_CODE, L["Spell ID"], _G.FONT_COLOR_CODE_CLOSE))
+		GameTooltip:AddLine(L["Search by spell ID"], 1, 1, 1)
+		--GameTooltip:AddLine(L["(experimental)"], 1, 1, 1)
+		GameTooltip:Show()
+	end
+	
+	spellsearch:SetScript("OnEnter", showchecktip)
+	spellsearch:SetScript("OnLeave", function() GameTooltip:Hide() end)
+	spellsearch:SetScript("OnClick", function(this, button) MT.SpellCheck = this:GetChecked() searchtextchanged(MacroToolkitSearchBox, true) end)
 	--[[
 	local mtpfscroll = CreateFrame("ScrollFrame", "MacroToolkitPopupScroll", mtpf, "FauxScrollFrameTemplate")
 	mtpfscroll:SetSize(296, 276)
@@ -207,7 +227,6 @@ function MT:CreateMTPopup()
 	local mtpfcancel = CreateFrame("Button", "MacroToolkitPopupCancel", mtpf, "UIPanelButtonTemplate")
 	mtpfcancel:SetText(_G.CANCEL)
 	mtpfcancel:SetSize(78, 22)
-	--mtpfcancel:SetSize(105, 22)
 	mtpfcancel:SetPoint("BOTTOMRIGHT", -11, 13)
 	mtpfcancel:SetScript("OnClick",
 		function()
@@ -218,7 +237,6 @@ function MT:CreateMTPopup()
 	local mtpfok = CreateFrame("Button", "MacroToolkitPopupOk", mtpf, "UIPanelButtonTemplate")
 	mtpfok:SetText(_G.OKAY)
 	mtpfok:SetSize(78, 22)
-	--mtpfok:SetSize(125, 22)
 	mtpfok:SetPoint("RIGHT", mtpfcancel, "LEFT", -2, 0)
 	mtpfok:SetScript("OnClick", function() MT:PopupOkayButtonOnClick() end)
 

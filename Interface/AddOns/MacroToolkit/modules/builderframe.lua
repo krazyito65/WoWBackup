@@ -144,16 +144,17 @@ function MT:CreateBuilderFrame()
 		"extrabar", "flyable", "noflyable", "flying", "noflying", "form", "indoors",
 		"outdoors", "mod", "nomod", "mounted", "nomounted", "overridebar", "party", "raid",
 		"pet", "nopet", "petbattle", "possessbar", "spec", "stealth", "nostealth",
-		"swimming", "noswimming", "talent", "vehicleui", "novehicleui", "worn",
+		"swimming", "noswimming", "pvptalent", "talent", "vehicleui", "novehicleui", "worn",
 	}
 	L["zero"] = ""
 	local ddother = {}
 	for _, o in ipairs(ddotherorder) do ddother[o] = L[o] end
 
-	local function addvaluechanged(key, row, pdd, eb)
+	local function addvaluechanged(key, row, pdd, eb, ed)
 		local realkey = key
 		local negate
 		local ddvals = {}
+		local edvals = {}
 		if string.sub(key, 1, 2) == "no" then
 			realkey = string.sub(key, 3)
 			negate = true
@@ -161,34 +162,52 @@ function MT:CreateBuilderFrame()
 		local ctype = negate and 0 or (MT.conditions[realkey] or 0)
 		if ctype == 1 then
 			ddvals.zero = ""
-			for n = 1, 6 do ddvals[tostring(n)] = n end
+			local cap = 7
+			if realkey == "spec" then cap = 4 end
+			for n = 1, cap do ddvals[tostring(n)] = n end
 			pdd:SetList(ddvals)
 			pdd.frame:Show()
 			eb.frame:Hide()
+			ed.frame:Hide()
 		elseif ctype == 2 or ctype == 3 then
 			pdd.frame:Hide()
 			eb.frame:Show()
+			ed.frame:Hide()
 		elseif ctype == 4 then
 			local b = {"zero","party","raid"}
 			for _, bt in ipairs(b) do ddvals[bt] = L[bt] end
 			pdd:SetList(ddvals, b)
 			pdd.frame:Show()
 			eb.frame:Hide()
+			ed.frame:Hide()
 		elseif ctype == 5 then
 			local b = {"zero","alt","shift","ctrl"}
 			for _, bt in ipairs(b) do ddvals[bt] = L[bt] end
 			pdd:SetList(ddvals, b)
 			pdd.frame:Show()
 			eb.frame:Hide()
+			ed.frame:Hide()
 		elseif ctype == 6 then
 			local b = {"zero","LeftButton","MiddleButton","RightButton","Button4","Button5"}
 			for _, bt in ipairs(b) do ddvals[bt] = L[bt] end
 			pdd:SetList(ddvals, b)
 			pdd.frame:Show()
 			eb.frame:Hide()
+			ed.frame:Hide()
+		elseif ctype == 7 then
+			ddvals.zero = ""
+			for n = 1, 7 do ddvals[tostring(n)] = n end
+			pdd:SetList(ddvals)
+			pdd.frame:Show()
+			eb.frame:Hide()
+			edvals.zero = ""
+			for n = 1, 3 do edvals[tostring(n)] = n end
+			ed:SetList(edvals)
+			ed.frame:Show()
 		else
 			pdd.frame:Hide()
 			eb.frame:Hide()
+			ed.frame:Hide()
 		end
 		MT.builder[format("add%d", row)] = (key == "zero") and "" or key
 		MT.builder[format("addp%d", row)] = nil
@@ -199,23 +218,36 @@ function MT:CreateBuilderFrame()
 		MT.builder[format("addp%d", row)] = (value == "zero") and "" or value
 		updatepreview()
 	end
+	
+	local function addsvaluechanged(value, row)
+		if MT.builder[format("addp%d", row)] or "" ~= "" then
+			MT.builder[format("adds%d", row)] = (value == "zero") and "" or (format("/%s", value))
+			updatepreview()
+		end
+	end
+	
 	local mtbfaddp1 = AceGUI:Create("Dropdown")
 	local mtbfadde1 = AceGUI:Create("EditBox")
+	local mtbfadds1 = AceGUI:Create("Dropdown")
 	local mtbfaddp2 = AceGUI:Create("Dropdown")
 	local mtbfadde2 = AceGUI:Create("EditBox")
+	local mtbfadds2 = AceGUI:Create("Dropdown")
 	local mtbfaddp3 = AceGUI:Create("Dropdown")
 	local mtbfadde3 = AceGUI:Create("EditBox")
+	local mtbfadds3 = AceGUI:Create("Dropdown")
 	local mtbfaddp4 = AceGUI:Create("Dropdown")
 	local mtbfadde4 = AceGUI:Create("EditBox")
+	local mtbfadds4 = AceGUI:Create("Dropdown")
 	local mtbfaddp5 = AceGUI:Create("Dropdown")
 	local mtbfadde5 = AceGUI:Create("EditBox")
+	local mtbfadds5 = AceGUI:Create("Dropdown")
 	local mtbfadd1 = AceGUI:Create("Dropdown")
 	mtbfadd1.frame:SetParent(mtbf)
 	mtbfadd1:SetList(ddother, ddotherorder)
 	mtbfadd1:SetWidth(200)
 	mtbfadd1:SetLabel(L["Additional conditions"])
 	mtbfadd1.label:SetTextColor(1, 1, 1, 1)
-	mtbfadd1:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 1, mtbfaddp1, mtbfadde1) end)
+	mtbfadd1:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 1, mtbfaddp1, mtbfadde1, mtbfadds1) end)
 	mtbfadd1:SetPoint("TOPLEFT", mtbftopts1.frame, "BOTTOMLEFT", 0, -5)
 	
 	mtbfaddp1.frame:SetParent(mtbf)
@@ -230,11 +262,17 @@ function MT:CreateBuilderFrame()
 	mtbfadde1:SetPoint("LEFT", mtbfadd1.frame, "RIGHT", 3, -9)
 	mtbfadde1.frame:Hide()
 	
+	mtbfadds1.frame:SetParent(mtbf)
+	mtbfadds1:SetWidth(150)
+	mtbfadds1:SetCallback("OnValueChanged", function(info, name, key) addsvaluechanged(key, 1) end)
+	mtbfadds1:SetPoint("LEFT", mtbfadde1.frame, "RIGHT", 3, 0)
+	mtbfadds1.frame:Hide()
+	
 	local mtbfadd2 = AceGUI:Create("Dropdown")
 	mtbfadd2.frame:SetParent(mtbf)
 	mtbfadd2:SetList(ddother, ddotherorder)
 	mtbfadd2:SetWidth(200)
-	mtbfadd2:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 2, mtbfaddp2, mtbfadde2) end)
+	mtbfadd2:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 2, mtbfaddp2, mtbfadde2, mtbfadds2) end)
 	mtbfadd2:SetPoint("TOPLEFT", mtbfadd1.frame, "BOTTOMLEFT", 0, -10)
 	
 	mtbfaddp2.frame:SetParent(mtbf)
@@ -249,11 +287,17 @@ function MT:CreateBuilderFrame()
 	mtbfadde2:SetPoint("LEFT", mtbfadd2.frame, "RIGHT", 3, 0)
 	mtbfadde2.frame:Hide()
 	
+	mtbfadds2.frame:SetParent(mtbf)
+	mtbfadds2:SetWidth(150)
+	mtbfadds2:SetCallback("OnValueChanged", function(info, name, key) addsvaluechanged(key, 2) end)
+	mtbfadds2:SetPoint("LEFT", mtbfadde2.frame, "RIGHT", 3, 0)
+	mtbfadds2.frame:Hide()
+	
 	local mtbfadd3 = AceGUI:Create("Dropdown")
 	mtbfadd3.frame:SetParent(mtbf)
 	mtbfadd3:SetList(ddother, ddotherorder)
 	mtbfadd3:SetWidth(200)
-	mtbfadd3:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 3, mtbfaddp3, mtbfadde3) end)
+	mtbfadd3:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 3, mtbfaddp3, mtbfadde3, mtbfadds3) end)
 	mtbfadd3:SetPoint("TOPLEFT", mtbfadd2.frame, "BOTTOMLEFT", 0, -10)
 	
 	mtbfaddp3.frame:SetParent(mtbf)
@@ -268,11 +312,17 @@ function MT:CreateBuilderFrame()
 	mtbfadde3:SetPoint("LEFT", mtbfadd2.frame, "RIGHT", 3, 0)
 	mtbfadde3.frame:Hide()
 	
+	mtbfadds3.frame:SetParent(mtbf)
+	mtbfadds3:SetWidth(150)
+	mtbfadds3:SetCallback("OnValueChanged", function(info, name, key) addsvaluechanged(key, 3) end)
+	mtbfadds3:SetPoint("LEFT", mtbfadde3.frame, "RIGHT", 3, 0)
+	mtbfadds3.frame:Hide()
+	
 	local mtbfadd4 = AceGUI:Create("Dropdown")
 	mtbfadd4.frame:SetParent(mtbf)
 	mtbfadd4:SetList(ddother, ddotherorder)
 	mtbfadd4:SetWidth(200)
-	mtbfadd4:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 4, mtbfaddp4, mtbfadde4) end)
+	mtbfadd4:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 4, mtbfaddp4, mtbfadde4, mtbfadds4) end)
 	mtbfadd4:SetPoint("TOPLEFT", mtbfadd3.frame, "BOTTOMLEFT", 0, -10)
 	
 	mtbfaddp4.frame:SetParent(mtbf)
@@ -287,11 +337,17 @@ function MT:CreateBuilderFrame()
 	mtbfadde4:SetPoint("LEFT", mtbfadd4.frame, "RIGHT", 3, 0)
 	mtbfadde4.frame:Hide()
 	
+	mtbfadds4.frame:SetParent(mtbf)
+	mtbfadds4:SetWidth(150)
+	mtbfadds4:SetCallback("OnValueChanged", function(info, name, key) addsvaluechanged(key, 4) end)
+	mtbfadds4:SetPoint("LEFT", mtbfadde4.frame, "RIGHT", 3,0)
+	mtbfadds4.frame:Hide()
+	
 	local mtbfadd5 = AceGUI:Create("Dropdown")
 	mtbfadd5.frame:SetParent(mtbf)
 	mtbfadd5:SetList(ddother, ddotherorder)
 	mtbfadd5:SetWidth(200)
-	mtbfadd5:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 5, mtbfaddp5, mtbfadde5) end)
+	mtbfadd5:SetCallback("OnValueChanged", function(info, name, key) addvaluechanged(key, 5, mtbfaddp5, mtbfadde5, mtbfadds5) end)
 	mtbfadd5:SetPoint("TOPLEFT", mtbfadd4.frame, "BOTTOMLEFT", 0, -10)
 	
 	mtbfaddp5.frame:SetParent(mtbf)
@@ -305,6 +361,12 @@ function MT:CreateBuilderFrame()
 	mtbfadde5:SetCallback("OnEnterPressed", function(info, name, value) addpvaluechanged(value, 5) end)
 	mtbfadde5:SetPoint("LEFT", mtbfadd5.frame, "RIGHT", 3, 0)
 	mtbfadde5.frame:Hide()
+	
+	mtbfadds5.frame:SetParent(mtbf)
+	mtbfadds5:SetWidth(150)
+	mtbfadds5:SetCallback("OnValueChanged", function(info, name, key) addsvaluechanged(key, 5) end)
+	mtbfadds5:SetPoint("LEFT", mtbfadde5.frame, "RIGHT", 3, 0)
+	mtbfadds5.frame:Hide()
 	
 	local mtbpreview = mtbf:CreateFontString("MacroToolkitPreview", "ARTWORK", "GameFontHighlightSmall")
 	mtbpreview:SetTextColor(1, 1, 1, 0.7)
@@ -329,9 +391,11 @@ function MT:CreateBuilderFrame()
 			local ddobjs1 = {mtbftarget, mtbftopts1, mtbftopts2, mtbftopts3, mtbftopts4, mtbfadd1, mtbfadd2, mtbfadd3, mtbfadd4, mtbfadd5}
 			local ddobjs2 = {mtbfaddp1, mtbfaddp2, mtbfaddp3, mtbfaddp4, mtbfaddp5}
 			local ebobjs = {mtbfother, mtbfadde1, mtbfadde2, mtbfadde3, mtbfadde4, mtbfadde5}
+			local edobjs = {mtbfadds1, mtbfadds2, mtbfadds3, mtbfadds4, mtbfadds5}
 			for _, dd in ipairs(ddobjs1) do dd:SetValue("zero") end
 			for _, dd in ipairs(ddobjs2) do dd:SetValue("zero"); dd.frame:Hide() end
 			for _, eb in ipairs(ebobjs) do eb:SetText(""); eb.frame:Hide() end
+			for _, ed in ipairs(edobjs) do ed:SetValue("zero"); ed.frame:Hide() end
 			mtbpreview:SetText("")
 			MT:Skin(mtbf)
 		end)
@@ -353,16 +417,17 @@ function MT:BuildConditions()
 	for o = 1, 5 do
 		local opt = b[format("add%d", o)]
 		local arg = b[format("addp%d", o)] or ""
+		local arg2 = b[format("adds%d", o)] or ""
 		if opt then
 			if (MT.conditions[opt] or 0 > 0) and (string.len(arg) > 0) then
-				table.insert(cargs, {o = opt, a = arg})
+				table.insert(cargs, {o = opt, a = arg, a2=arg2})
 			else conditions = format("%s%s,", conditions, opt) end
 		end
 	end
 	table.sort(cargs, function(a, b) return a.o < b.o end)
 	local lastarg
 	for _, o in ipairs(cargs) do
-		if o.o ~= lastarg then conditions = format("%s%s:%s,", conditions, o.o, o.a)
+		if o.o ~= lastarg then conditions = format("%s%s:%s%s,", conditions, o.o, o.a, o.a2)
 		else conditions = format("%s/%s,", conditions, o.a) end
 		lastarg = o.o
 	end

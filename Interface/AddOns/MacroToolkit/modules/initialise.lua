@@ -58,7 +58,7 @@ MT.slots = {
 	[18]=_G.INVTYPE_RANGED,
 	[19]=_G.INVTYPE_TABARD,
 }
---0=none,1=numeric,2=textual,3=alphanumeric,4=party/raid,5=mod keys,6=mouse buttons
+--0=none,1=numeric,2=textual,3=alphanumeric,4=party/raid,5=mod keys,6=mouse buttons,7=numeric with /
 MT.conditions={
 	["actionbar"]=1,
 	["bar"]=1,
@@ -90,12 +90,13 @@ MT.conditions={
 	["pet"]=2,
 	["petbattle"]=0,
 	["possessbar"]=1,
+	["pvptalent"]=7,
 	["raid"]=0,
 	["spec"]=1,
 	["stance"]=1,
 	["stealth"]=0,
 	["swimming"]=0,
-	["talent"]=1,
+	["talent"]=7,
 	["unithasvehicleui"]=0,
 	["vehicleui"]=0,
 	["worn"]=2,

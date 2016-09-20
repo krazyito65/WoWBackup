@@ -570,14 +570,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Mana-Tombs"] = {
+		[1082] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
-		[1086] = {
+		[1022] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -608,7 +607,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1065] = {
+		[1087] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -620,11 +619,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1087] = {
+		["The Nexus"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[481] = {
 			["Preferred"] = {
@@ -632,7 +632,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1067] = {
+		[1041] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -644,7 +644,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[721] = {
+		[161] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -656,7 +656,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[4] = {
+		[1024] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -668,13 +668,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[32] = {
+		[988] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[510] = {
+		[241] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -734,12 +734,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Zul'Drak"] = {
+		[1007] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		[1092] = {
 			["Preferred"] = {
@@ -765,7 +764,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[807] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -790,7 +789,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[606] = {
+		[13] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -802,7 +801,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[13] = {
+		[606] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -815,7 +814,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[1014] = {
+		[807] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -840,11 +839,12 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		[1007] = {
+		["Zul'Drak"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[482] = {
 			["Preferred"] = {
@@ -864,13 +864,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[241] = {
+		[510] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[988] = {
+		[32] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -883,7 +883,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[1024] = {
+		[4] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -895,24 +895,23 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[161] = {
+		[721] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1041] = {
+		[1067] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["The Nexus"] = {
+		[1065] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
 		["Krasarang Wilds"] = {
 			["Preferred"] = {
@@ -921,21 +920,22 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 857,
 		},
-		[1022] = {
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1082] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 	["DisableUpdateNotice"] = false,
 	["DruidDisableInCombat"] = false,
 	["version"] = "7.0.12",
@@ -949,7 +949,7 @@ GoGo_Prefs = {
 		121820, -- [4]
 		61469, -- [5]
 	},
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 }
 GoGo_DebugLog = {
 }

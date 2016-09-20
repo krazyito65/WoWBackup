@@ -829,6 +829,22 @@ local interfacePanel = {
 					fontSize = "medium",
 					name = format("\n%s", L["The macro editor height can be increased by dragging the bottom of Macro Toolkit's frame downwards"]),
 				},
+				spacer2 = {
+					order = 11,
+					type = "description",
+					name = "\n",
+				},
+				resetpos = {
+					order = 12,
+					type = "execute",
+					name = L["Reset position"],
+					func =
+						function() 
+							MT.db.profile.x = (UIParent:GetWidth() - 638) / 2
+							MT.db.profile.y = (UIParent:GetHeight() - 424) / 2
+							MacroToolkitFrame:SetPoint("BOTTOMLEFT", MT.db.profile.x, MT.db.profile.y)
+						end,
+				},
 			},
 		},
 	},

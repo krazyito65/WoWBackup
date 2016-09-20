@@ -147,6 +147,10 @@ L["This will enable macro icon names instead of numbers. Uses about 2MB of RAM."
 L["Go Large"] = true
 L["Go Small"] = true
 L["Hide 'Macro shortened by n characters' popup"] = true
+L["Spell ID"] = true
+L["Search by spell ID"] = true
+L["(experimental)"] = true
+L["Reset position"] = true
 
 --conditions
 L["Condition Builder"] = true
@@ -219,6 +223,7 @@ L["novehicleui"] = "player has no vehicle UI"
 L["worn"] = "equipped"
 L["Upgrade Mists of Pandria macros? Only answer yes if you used Macro Toolkit in Mists of Pandaria. This only needs to be done once per character."] = true
 L["talent"] = true
+L["pvptalent"] = "PVP talent"
 L["Macro Toolkit has found %d orphaned macros. Restore?"] = true
 L["Restoring macro"] = true
 

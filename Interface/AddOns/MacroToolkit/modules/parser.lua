@@ -131,13 +131,14 @@ local function validateCommandVerb(commandtext, parameters)
 	local param = string.len(trim(parameters or "")) > 0
 	local c, cc = format("|c%s", MT.db.profile.defaultcolour), format("|c%s", MT.db.profile.commandcolour)
 	local p = false
+	local prefix = MT.slash
+	
 	commandtext = trim(commandtext)
-	local msg = format("%s: %s%s%s", L["Invalid command"], MT.slash, cc, commandtext)
+	if commandtext == string.sub(_G.SLASH_SHOWTOOLTIP1, 2) or commandtext == string.sub(_G.SLASH_SHOW1, 2) then prefix = "#" end
+	local msg = format("%s: %s%s%s", L["Invalid command"], prefix, cc, commandtext)
 	--ticket 139
 	if string.sub(commandtext, 1, 1) == MT.slash then
 		msg = nil
-		--not going to colour the comments for the time being as the code cannot properly handle both slashes
-		--cc = format("|c%s", MT.db.profile.scriptcolour)
 	else
 		for k, v in pairs(MT.commands) do
 			if k == commandtext then
@@ -170,15 +171,22 @@ local function validateCommandVerb(commandtext, parameters)
 	if not msg then c = cc
 	else
 		msg = format("%s|r", msg)
-		if not p then msg = format("%s\n      %s: %s%s|r", msg, L["did you mean"], MT.slash, findMatch(commandtext, MT.commands)) end
+		local matched = findMatch(commandtext, MT.commands)
+		prefix = MT.slash
+		if matched == string.sub(_G.SLASH_SHOWTOOLTIP1, 2) or matched == string.sub(_G.SLASH_SHOW1, 2) then prefix = "#" end
+		if not p then msg = format("%s\n      %s: %s%s|r", msg, L["did you mean"], prefix, matched) end
 	end
 	return c, msg
 end
 
-local function isNumeric(args)
+local function isNumeric(args, withslash)
 	local numeric = true
 	local arg1
 	for _, a in ipairs(args) do
+		--handle / in numeric arguments
+		if withslash then
+			if string.sub(a, string.len(a) - 1, 1) ~= "/" then a = string.gsub(a, "/", "") end
+		end
 		if not tonumber(trim(a)) then
 			numeric = nil
 			arg1 = a
@@ -344,10 +352,16 @@ local function validateCondition(condition, optionarguments)
 							msg = format("%s: %s%s|r - %s", L["Arguments must be alphanumeric"], cc, condition, arg1)
 							cond = false
 						else msg = nil end
-					elseif v > 3 then --validate group
+					elseif v > 3 and v < 7 then --validate group
 						valid, arg1 = isValid(optionarguments, v)
 						if not valid then
 							msg = format("%s: %s%s|r - %s", L["Invalid argument"], cc, condition, arg1)
+							cond = false
+						else msg = nil end
+					elseif v == 7 then
+						valid, arg1 = isNumeric(optionarguments, true)
+						if not valid then
+							msg = format("%s: %s%s|r - %s", L["Arguments must be numeric"], cc, condition, arg1)
 							cond = false
 						else msg = nil end
 					end

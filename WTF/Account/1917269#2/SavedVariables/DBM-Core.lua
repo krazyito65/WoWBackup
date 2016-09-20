@@ -219,7 +219,7 @@ DBM_AllSavedOptions = {
 		["SpecialWarningFlashRepeat4"] = false,
 		["RangeFrameUpdates"] = "Average",
 		["AutoCorrectTimer"] = false,
-		["HideGarrisonUpdates"] = true,
+		["RoleSpecAlert"] = true,
 		["RaidWarningSound"] = "Sound\\Doodad\\BellTollNightElf.ogg",
 		["CustomSounds"] = 0,
 		["SpecialWarningFontColor"] = {
@@ -228,7 +228,7 @@ DBM_AllSavedOptions = {
 			1, -- [3]
 		},
 		["SpecialWarningFlashRepeat3"] = true,
-		["ShortTimerText"] = true,
+		["HideGarrisonUpdates"] = true,
 		["WhisperStats"] = true,
 		["VoiceOverSpecW2"] = "None",
 		["WarningIconLeft"] = true,
@@ -258,7 +258,7 @@ DBM_AllSavedOptions = {
 		["BigBrotherAnnounceToRaid"] = false,
 		["DontPlayPTCountdown"] = true,
 		["CountdownVoice"] = "Corsica",
-		["RoleSpecAlert"] = true,
+		["ShortTimerText"] = true,
 		["ShowTranscriptorMessage"] = true,
 		["DontShowUserTimers"] = false,
 		["CountdownVoice3v2"] = "HoTS_G",

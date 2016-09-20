@@ -138,6 +138,7 @@ function MT:LoadElvSkin(frame)
 	end
 	
 	if frame == MacroToolkitPopup then
+		S:HandleCheckBox(MacroToolkitSpellCheck)
 		--S:HandleScrollBar(MacroToolkitPopupScrollScrollBar)
 		S:HandleScrollBar(MacroToolkitPopupIcons.scrollFrame.ScrollBar)
 		MacroToolkitPopup:StripTextures()

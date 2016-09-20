@@ -791,6 +791,7 @@ function IconSelectorFrame.private_OnInternalFrameSizeChanged(internalFrame, wid
 						]]--
 						GameTooltip:AddDoubleLine(NORMAL_FONT_COLOR_CODE .. _G.EMBLEM_SYMBOL ..  FONT_COLOR_CODE_CLOSE)
 						GameTooltip:AddLine(tostring(tex), 1, 1, 1)
+						if type(button.texture) == "number" and MacroToolkit.usingiconlib then GameTooltip:AddLine(tostring(button.texture), 0.5, 0.5, 0.5) end
 						--[[
 						Helpers.AddTaggedInformationToTooltip(keywordString, "spell", L["Spell: "], NORMAL_FONT_COLOR)
 						Helpers.AddTaggedInformationToTooltip(keywordString, "companion", L["Companion: "], NORMAL_FONT_COLOR)
@@ -1200,9 +1201,9 @@ function SearchObject:private_OnSearchTick()
 		end
 
 		local id, kind, texture = self:GetIconInfo(self.searchIndex)
-		if type(texture) == "number" and MacroToolkit.usingiconlib then
-			if MacroToolkit.TextureNames[texture] then
-				texture = MacroToolkit.TextureNames[texture]
+		if MacroToolkit.SpellCheck ~= true then
+			if type(texture) == "number" and MacroToolkit.usingiconlib then
+				if MacroToolkit.TextureNames[texture] then texture = MacroToolkit.TextureNames[texture] end
 			end
 		end
 		if self.OnIconScanned then self:OnIconScanned(texture, self.searchIndex, id, kind) end

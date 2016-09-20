@@ -750,6 +750,7 @@ L["STRING_OPTIONS_MENU_SHOWBUTTONS"] = "Exibir Botões" -- Needs review
 L["STRING_OPTIONS_MENU_SHOWBUTTONS_DESC"] = "Seleciona quais botões são exibidos na barra de título." -- Needs review
 L["STRING_OPTIONSMENU_SKIN"] = "Seletor de Skin" -- Needs review
 L["STRING_OPTIONSMENU_SPELLS"] = "Customização de Magia" -- Needs review
+-- L["STRING_OPTIONSMENU_SPELLS_CONSOLIDATE"] = ""
 L["STRING_OPTIONS_MENUS_SHADOW"] = "Sombra" -- Needs review
 L["STRING_OPTIONS_MENUS_SHADOW_DESC"] = "Adiciona uma fina sombra em todos os botões." -- Needs review
 L["STRING_OPTIONS_MENUS_SPACEMENT"] = "Espaçamento" -- Needs review
