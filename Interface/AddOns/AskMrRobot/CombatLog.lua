@@ -89,6 +89,7 @@ function Amr:RenderTabLog(container)
 	btnReload:SetCallback("OnClick", ReloadUI)
 	container:AddChild(btnReload)
 	
+	--[[
 	local lbl = AceGUI:Create("AmrUiLabel")
 	lbl:SetText(L.LogReloadNote)
 	lbl:SetWidth(200)	
@@ -139,7 +140,7 @@ function Amr:RenderTabLog(container)
 	btnWipe:SetPoint("TOPRIGHT", btnUndoWipe.frame, "TOPLEFT", -40, 0)
 	btnWipe:SetCallback("OnClick", function() Amr:Wipe() end)
 	container:AddChild(btnWipe)
-
+	
 	lbl = AceGUI:Create("AmrUiLabel")
 	lbl:SetText(L.LogWipeNote)
 	lbl:SetWidth(200)	
@@ -155,13 +156,14 @@ function Amr:RenderTabLog(container)
 	lbl2:SetJustifyH("MIDDLE")
 	lbl2:SetPoint("TOP", lbl.frame, "BOTTOM", 0, -2)
 	container:AddChild(lbl2)
+	]]
 	
 	-- auto-logging controls
-	lbl = AceGUI:Create("AmrUiLabel")
+	local lbl = AceGUI:Create("AmrUiLabel")
 	lbl:SetWidth(600)
 	lbl:SetText(L.LogAutoTitle)
 	lbl:SetFont(Amr.CreateFont("Bold", 24, Amr.Colors.TextHeaderActive))
-	lbl:SetPoint("TOPLEFT", lbl2.frame, "BOTTOMLEFT", 0, -40)
+	lbl:SetPoint("TOPLEFT", _btnToggle.frame, "BOTTOMLEFT", 0, -40)
 	container:AddChild(lbl)
 	
 	_chkAutoAll = AceGUI:Create("AmrUiCheckBox")
@@ -191,6 +193,7 @@ function Amr:RenderTabLog(container)
 	autoSections = nil
 	
 	-- instructions
+	--[[
 	lbl = AceGUI:Create("AmrUiLabel")
 	lbl:SetText(L.LogInstructionsTitle)
 	lbl:SetWidth(480)	
@@ -204,6 +207,7 @@ function Amr:RenderTabLog(container)
 	lbl2:SetFont(Amr.CreateFont("Italic", 14, Amr.Colors.Text))
 	lbl2:SetPoint("TOPLEFT", lbl.frame, "BOTTOMLEFT", 0, -10)
 	container:AddChild(lbl2)
+	]]
 	
 	-- initialize state of controls
 	Amr:RefreshLogUi()
@@ -287,6 +291,10 @@ local function updateAutoLogging(force, noWait)
 	Amr.db.char.Logging.LastZone = zone
 	Amr.db.char.Logging.LastDiff = difficultyId
 
+	if not Amr.db.profile.Logging.Auto[tonumber(instanceId)] then
+		Amr.db.profile.Logging.Auto[tonumber(instanceId)] = {}
+	end
+	
 	if Amr.IsSupportedInstanceId(instanceId) and Amr.db.profile.Logging.Auto[tonumber(instanceId)][tonumber(difficultyId)] then
 		-- we are in a supported zone that we want to auto-log, turn logging on 
 		
@@ -318,12 +326,17 @@ function Amr:RefreshLogUi()
 	_lblLogging:SetVisible(self:IsLogging())
 	
 	-- hide/show undo wipe button based on whether a wipe has been called recently
-	_panelUndoWipe:SetVisible(Amr.db.char.Logging.LastWipe and true or false)
+	if _panelUndoWipe then
+		_panelUndoWipe:SetVisible(Amr.db.char.Logging.LastWipe and true or false)
+	end
 	
 	local all = isAllAutoLoggingEnabled()
 	_chkAutoAll:SetChecked(all)
 	
 	for i, instanceId in ipairs(Amr.InstanceIdsOrdered) do
+		if not Amr.db.profile.Logging.Auto[instanceId] then
+			Amr.db.profile.Logging.Auto[instanceId] = {}
+		end
 		for k, difficultyId in pairs(Amr.Difficulties) do
 			_autoChecks[instanceId][difficultyId]:SetChecked(Amr.db.profile.Logging.Auto[instanceId][difficultyId])
 		end
@@ -344,6 +357,7 @@ end
 
 function Amr:StartLogging()
 
+	--[[
 	local now = time()
 	local oldDuration = 60 * 60 * 24 * 10
 	
@@ -399,7 +413,8 @@ function Amr:StartLogging()
 	if Amr.db.char.Logging.LastWipe and difftime(now, Amr.db.char.Logging.LastWipe) > oldDuration then
 		Amr.db.char.Logging.LastWipe = nil
 	end
-
+	]]
+	
 	-- enable game log file
 	updateGameLogging(true)
 	Amr.db.char.Logging.Enabled = true
@@ -422,6 +437,8 @@ function Amr:StopLogging()
 end
 
 function Amr:Wipe()
+
+	--[[
 	local t = time()
 	table.insert(Amr.db.global.Logging.Wipes, t)
 	Amr.db.char.Logging.LastWipe = t
@@ -429,10 +446,12 @@ function Amr:Wipe()
 	self:Print(L.LogChatWipe(date('%I:%M %p', t)))
 
 	self:RefreshLogUi()
+	]]
 end
 
 function Amr:UndoWipe()
 
+	--[[
 	local t = Amr.db.char.Logging.LastWipe
 	local wipes = Amr.db.global.Logging.Wipes
 	
@@ -452,6 +471,7 @@ function Amr:UndoWipe()
 	end
 	
 	self:RefreshLogUi()
+	]]
 end
 
 function Amr:ToggleAutoLog(instanceId, difficultyId)
@@ -482,6 +502,7 @@ function Amr:ToggleAllAutoLog()
 end
 
 function Amr:ProcessPlayerSnapshot(msg)
+	--[[
 	if not self:IsLogging() then return end
 	
     -- message will be of format: timestamp\nregion\nrealm\nname\n[stuff]
@@ -520,12 +541,12 @@ function Amr:ProcessPlayerSnapshot(msg)
 	if setup ~= previousSetup then
 		playerList[timestamp] = setup
 	end
-	
+	]]
 end
 
 -- read auras and pet mapping info (pet may not be necessary anymore... but doesn't hurt)
 local function getPlayerExtraData(data, unitId, petId)
-
+	--[[
 	local guid = UnitGUID(unitId)
 	if guid == nil then return end
 	
@@ -559,9 +580,11 @@ local function getPlayerExtraData(data, unitId, petId)
     end
 
 	data[region .. ":" .. realm .. ":" .. name] = table.concat(fields, ";")
+	]]
 end
 
 local function logPlayerExtraData()
+	--[[
 	if not Amr:IsLogging() or not Amr:IsSupportedInstance() then return end
 
 	local timestamp = time()
@@ -596,6 +619,7 @@ local function logPlayerExtraData()
 		end
 		Amr.db.global.Logging.PlayerExtras[name][timestamp] = val
 	end
+	]]
 end
 
 function Amr:InitializeCombatLog()
@@ -606,5 +630,5 @@ end
 Amr:AddEventHandler("UPDATE_INSTANCE_INFO", updateAutoLogging)
 Amr:AddEventHandler("PLAYER_DIFFICULTY_CHANGED", updateAutoLogging)
 Amr:AddEventHandler("ENCOUNTER_START", updateAutoLogging)
-Amr:AddEventHandler("PLAYER_REGEN_DISABLED", logPlayerExtraData)
+--Amr:AddEventHandler("PLAYER_REGEN_DISABLED", logPlayerExtraData)
 ]]

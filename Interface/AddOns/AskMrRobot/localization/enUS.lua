@@ -85,17 +85,8 @@ L.StatsShort = {
 }
 
 L.InstanceNames = {
-	[1228] = "Highmaul",
-	[1205] = "Blackrock Foundry",
-	[1448] = "Hellfire Citadel",
-	[1182] = "Auchindoun",
-	[1175] = "Bloodmaul Slag Mines",
-	[1208] = "Grimrail Depot",
-	[1195] = "Iron Docks",
-	[1176] = "Shadowmoon Burial Grounds",
-	[1209] = "Skyreach",
-	[1279] = "The Everbloom",
-	[1358] = "Upper Blackrock Spire"
+	[1094] = "Emerald Nightmare",
+	[1088] = "Nighthold"
 }
 
 L.DifficultyNames = {
@@ -145,9 +136,7 @@ L.CoverCancel = "cancel"
 L.MinimapTooltip = 
 [[Left Click to open the Ask Mr. Robot window.
 
-Right Click to change spec and equip your saved gear for that spec.
-
-Ctrl + Left Click to mark a fight as a wipe.]]
+Right Click to cycle specs and equip your saved gear for that spec.]]
 
 L.MainStatusText = function(version, url)
 	return version .. " loaded. Documentation available at " .. url
@@ -252,7 +241,7 @@ L.ShopHeaderMaterials = "Enchanting Materials"
 --[[----------------------------------------------------------------------
 Combat Log Tab
 ------------------------------------------------------------------------]]
-L.LogChatStart = "You are now logging combat, and Mr. Robot is logging character data for your raid."
+L.LogChatStart = "You are now logging combat." -- , and Mr. Robot is logging character data for your raid
 L.LogChatStop = "Combat logging has been stopped."
 
 L.LogChatWipe = function(wipeTime)
@@ -409,6 +398,9 @@ L.OptionsAutoGearDesc = "Whenever you change spec (via the in-game UI, another a
 
 L.OptionsShopAhName = "Automatically show shopping list at auction house"
 L.OptionsShopAhDesc = "Whenever you open the auction house, automatically show the shopping list window.  You can click on items in the shopping list to quickly search for them in the auction house."
+
+L.OptionsDisableEmName = "Disable creating Equipment Manager sets"
+L.OptionsDisableEmDesc = "A Blizzard Equipment Manager set is created whenever you equip an AMR gear set, useful for marking items in your optimized sets. Check to disable this behavior if desired."
 
 L.OptionsUiScaleName = "Ask Mr. Robot UI scale"
 L.OptionsUiScaleDesc = "Enter a value between 0.5 and 1.5 to change the scale of the Ask Mr. Robot user interface, press Enter, then close/open the window for it take effect. If the positioning gets messed up, use the /amr reset command."

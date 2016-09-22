@@ -89,6 +89,7 @@ local function initializeDb()
 			options = {
 				autoGear = false,      -- auto-equip saved gear sets when changing specs
 				shopAh = false,        -- auto-show shopping list at AH
+				disableEm = false,     -- disable auto-creation of equipment manager sets
 				uiScale = 1            -- custom scale for AMR UI
 			},
 			Logging = {                -- global logging settings

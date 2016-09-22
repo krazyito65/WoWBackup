@@ -107,7 +107,7 @@ Amr.SpecIcons = {
 }
 
 -- instance IDs ordered in preferred display order
-Amr.InstanceIdsOrdered = { 1448, 1205, 1228 }
+Amr.InstanceIdsOrdered = { 1094, 1088 }
 
 Amr.Difficulties = {
 	Lfr = 17,

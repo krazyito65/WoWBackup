@@ -1,18 +1,17 @@
 ## Interface: 70000
 ## Author: p3lim
-## Version: 70000.22-Release
+## Version: 70000.23-Release
 ## Title: QuickQuest
 ## Notes: Quest automation wizardry
-## OptionalDeps: LibStub, LibGossipQuestInfo, Wasabi
+## OptionalDeps: LibGossipQuestInfo, Wasabi
 ## SavedVariables: QuickQuestDB, QuickQuestBlacklistDB
-## X-Curse-Packaged-Version: 70000.22-Release
+## X-Curse-Packaged-Version: 70000.23-Release
 ## X-Curse-Project-Name: QuickQuest
 ## X-Curse-Project-ID: quickquest
 ## X-Curse-Repository-ID: wow/quickquest/mainline
 
-libs\LibStub\LibStub.lua
 libs\LibGossipQuestInfo\LibGossipQuestInfo.lua
-libs\Wasabi\Wasabi.xml
+libs\Wasabi\embed.xml
 
 Localization.lua
 Config.lua

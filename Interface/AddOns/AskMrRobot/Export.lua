@@ -270,6 +270,8 @@ local function scanTalents()
 end
 
 local function scanArtifact()
+	if not Amr.db or not Amr.db.char or not Amr.db.char.Artifacts then return end
+	
 	local powers = C_ArtifactUI.GetPowers()
 	if not powers then return end
 	
@@ -292,14 +294,16 @@ local function scanArtifact()
 	if not powers then return end
 	
 	-- use the artifact item ID to figure out which spec this is for, since you can open your artifact on any spec
-	local itemID = C_ArtifactUI.GetArtifactInfo()
+	local itemID = C_ArtifactUI.GetArtifactInfo()	
 	local spec = Amr.ArtifactIdToSpecNumber[itemID]	
 	--local spec = GetSpecialization()
 	
-	Amr.db.char.Artifacts[spec] = {
-		Powers = powerRanks,
-		Relics = relicInfo
-	}
+	if spec then
+		Amr.db.char.Artifacts[spec] = {
+			Powers = powerRanks,
+			Relics = relicInfo
+		}
+	end
 end
 
 -- Returns a data object containing all information about the current player needed for an export:

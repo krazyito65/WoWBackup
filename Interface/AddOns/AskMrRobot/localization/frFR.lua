@@ -85,17 +85,8 @@ L.StatsShort = {
 }
 
 L.InstanceNames = {
-	[1228] = "Cognefort",
-	[1205] = "Fonderie des Rochenoires",
-	[1448] = "Hellfire Citadel",
-	[1182] = "Auchindoun",
-	[1175] = "Mine de la Masse-Sanglante",
-	[1208] = "Dépôt de Tristerail",
-	[1195] = "Quais de Fer",
-	[1176] = "Terres sacrées d'Ombrelune",
-	[1209] = "Orée-du-Ciel",
-	[1279] = "La Flore éternelle",
-	[1358] = "Sommet du pic Rochenoire"
+	[1094] = "Emerald Nightmare",
+	[1088] = "Nighthold"
 }
 
 L.DifficultyNames = {

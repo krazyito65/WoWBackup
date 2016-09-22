@@ -12,7 +12,7 @@
 ## LoadOnDemand: 0
 ## DefaultState: enabled
 ## X-Website: http://www.deadlybossmods.com
-## X-Curse-Packaged-Version: 7.0.5-10-g952db2a
+## X-Curse-Packaged-Version: 7.0.6-5-g4ba0d22
 ## X-Curse-Project-Name: Deadly Boss Mods
 ## X-Curse-Project-ID: deadly-boss-mods
 ## X-Curse-Repository-ID: wow/deadly-boss-mods/mainline

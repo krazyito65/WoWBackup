@@ -5,6 +5,7 @@ local AceGUI = LibStub("AceGUI-3.0")
 local _chkMinimap
 local _chkAutoGear
 local _chkAh
+local _chkEm
 local _txtScale
 
 local function onTextboxEnter(widget)
@@ -113,8 +114,11 @@ function Amr:RenderTabOptions(container)
 	_chkAh, desc = createCheck(container, "shopAh", L.OptionsShopAhName, L.OptionsShopAhDesc)
 	_chkAh:SetPoint("TOPLEFT", desc2.frame, "BOTTOMLEFT", -24, -20)
 	
-	_txtScale, desc2 = createSmallTextbox(container, "uiScale", L.OptionsUiScaleName, L.OptionsUiScaleDesc)
-	_txtScale:SetPoint("TOPLEFT", desc.frame, "BOTTOMLEFT", -43, -20)
+	_chkEm, desc2 = createCheck(container, "disableEm", L.OptionsDisableEmName, L.OptionsDisableEmDesc)
+	_chkEm:SetPoint("TOPLEFT", desc.frame, "BOTTOMLEFT", -24, -20)
+	
+	_txtScale, desc = createSmallTextbox(container, "uiScale", L.OptionsUiScaleName, L.OptionsUiScaleDesc)
+	_txtScale:SetPoint("TOPLEFT", desc2.frame, "BOTTOMLEFT", -43, -20)
 	
 	-- initialize state of controls
 	Amr:RefreshOptionsUi()
@@ -136,6 +140,10 @@ function Amr:RefreshOptionsUi()
 	
 	if _chkAh then
 		_chkAh:SetChecked(self.db.profile.options.shopAh)
+	end
+	
+	if _chkEm then
+		_chkEm:SetChecked(self.db.profile.options.disableEm)
 	end
 	
 	if _txtScale then

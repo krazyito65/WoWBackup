@@ -89,6 +89,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[1081] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[614] = {
 			["Preferred"] = {
 			},
@@ -101,7 +107,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[962] = {
+		[1094] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -119,7 +125,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1011] = {
+		[-1] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -143,7 +149,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1014] = {
+		[1067] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -155,7 +161,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1067] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -173,11 +179,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[261] = {
+		["Highmaul"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 994,
 		},
 		[1022] = {
 			["Preferred"] = {
@@ -197,7 +204,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1070] = {
+		[640] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -215,11 +222,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1100] = {
+		["Storehouse"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 976,
 		},
 		[13] = {
 			["Preferred"] = {
@@ -227,13 +235,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1056] = {
+		[201] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[201] = {
+		[1056] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -257,7 +265,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1018] = {
+		[504] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -275,7 +283,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[504] = {
+		[1018] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -299,12 +307,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Storehouse"] = {
+		[1100] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 976,
 		},
 		[1041] = {
 			["Preferred"] = {
@@ -318,18 +325,17 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[640] = {
+		[1070] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["Highmaul"] = {
+		[261] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 994,
 		},
 		[1057] = {
 			["Preferred"] = {
@@ -337,13 +343,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[-1] = {
+		[1011] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1081] = {
+		[962] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -351,7 +357,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["autodismount"] = true,
+	["DisableWaterFlight"] = false,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
@@ -362,7 +368,7 @@ GoGo_Prefs = {
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["DisableWaterFlight"] = false,
+	["autodismount"] = true,
 }
 GoGo_DebugLog = {
 }

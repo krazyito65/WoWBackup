@@ -2,7 +2,6 @@
 ACP_Data = {
 	["sorter"] = "Group By Name",
 	["NoRecurse"] = false,
-	["NoChildren"] = true,
 	["AddonSet"] = {
 		{
 			"ActionBarSaver", -- [1]
@@ -958,6 +957,7 @@ ACP_Data = {
 			"DBM-Core", -- [33]
 		},
 	},
+	["NoChildren"] = true,
 	["collapsed"] = {
 		["DoTimer"] = true,
 		["MikScrollingBattleText"] = true,
@@ -970,20 +970,20 @@ ACP_Data = {
 		["AtlasLoot"] = true,
 		["TidyPlates"] = true,
 		["CombatReplay"] = true,
-		["Broker"] = true,
+		["OmniCC"] = true,
 		["EQDkp"] = true,
-		["Details"] = true,
+		["DocsUI"] = true,
 		["Libraries"] = true,
 		["DataStore"] = true,
 		["BigWigs"] = true,
-		["DocsUI"] = true,
+		["Details"] = true,
 		["TradeSkillMaster"] = true,
 		["PhoenixStyleMod"] = true,
 		["GatherMate2"] = true,
-		["PetTracker"] = true,
 		["Ellipsis"] = true,
+		["PetTracker"] = true,
 		["LittleWigs"] = true,
-		["OmniCC"] = true,
+		["Broker"] = true,
 		["DiminishingReturns"] = true,
 		["BalancePowerTracker"] = true,
 		["LootCouncil"] = true,

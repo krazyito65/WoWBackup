@@ -1,15 +1,14 @@
 ## Interface: 70000
 ## Author: p3lim
-## Version: @project-version@
+## Version: 2
 ## Title: Lib: Wasabi
 ## Notes: Library for implementing addon configs
 ## OptionalDeps: LibStub
+## X-Curse-Packaged-Version: 2
+## X-Curse-Project-Name: Wasabi
+## X-Curse-Project-ID: wasabi
+## X-Curse-Repository-ID: wow/wasabi/mainline
 
-LibStub\LibStub.lua
+embed.xml
 
-Wasabi.xml
 
-#@do-not-package@
-## SavedVariables: WasabiDB, WasabiSubDB, WasabiObjectsDB
-tests\options.lua
-#@end-do-not-package@

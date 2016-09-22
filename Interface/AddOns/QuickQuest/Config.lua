@@ -7,9 +7,9 @@ local defaults = {
 	modifier = 'SHIFT',
 	reverse = false,
 	share = false,
+	withered = true,
+	nomi = true,
 }
-
-local isBetaClient = select(4, GetBuildInfo()) >= 70000
 
 local Options = LibStub('Wasabi'):New(addonName, 'QuickQuestDB', defaults)
 Options:AddSlash('/qq')
@@ -19,17 +19,9 @@ Options:Initialize(function(self)
 	Title:SetPoint('TOPLEFT', 16, -16)
 	Title:SetText(addonName)
 
-	local Items
-	if(not isBetaClient) then
-		Items = self:CreateCheckButton('items')
-		Items:SetPoint('TOPLEFT', Title, 'BOTTOMLEFT', 0, -8)
-		Items:SetText(L['Automatically start quests from items'])
-	end
-
 	local Share = self:CreateCheckButton('share')
-	Share:SetPoint('TOPLEFT', Items or Title, 'BOTTOMLEFT', 0, -8)
+	Share:SetPoint('TOPLEFT', Title, 'BOTTOMLEFT', 0, -8)
 	Share:SetText(L['Automatically share quests when picked up'])
-	Share:SetNewFeature(true)
 
 	local Gossip = self:CreateCheckButton('gossip')
 	Gossip:SetPoint('TOPLEFT', Share, 'BOTTOMLEFT', 0, -8)
@@ -65,11 +57,21 @@ Options:Initialize(function(self)
 	Reverse:SetText(L['Reverse the behaviour of the modifier key'])
 	Reverse:On('Update', 'Click', function(self)
 		if(Reverse:GetChecked()) then
-			Modifier:SetText(L['Hold this key to to temporarily enable automation'])
+			Modifier:SetFormattedText(L['Hold this key to to temporarily %s automation'], L['enable'])
 		else
-			Modifier:SetText(L['Hold this key to to temporarily disable automation'])
+			Modifier:SetFormattedText(L['Hold this key to to temporarily %s automation'], L['disable'])
 		end
 	end)
+
+	local Withered = self:CreateCheckButton('withered')
+	Withered:SetPoint('TOPLEFT', Reverse, 'BOTTOMLEFT', -24, -8)
+	Withered:SetText(L['Disable while doing the withered training scenario in Suramar'])
+	Withered:SetNewFeature(true)
+
+	local Nomi = self:CreateCheckButton('nomi')
+	Nomi:SetPoint('TOPLEFT', Withered, 'BOTTOMLEFT', 0, -8)
+	Nomi:SetText(L['Always accept and complete Nomi\'s daily quest, despite being low-level'])
+	Nomi:SetNewFeature(true)
 end)
 
 local defaultBlacklist = {

@@ -85,17 +85,8 @@ L.StatsShort = {
 }
 
 L.InstanceNames = {
-	[1228] = "Altomaglio",
-	[1205] = "Fonderia dei Roccianera",
-	[1448] = "Cittadella del Fuoco Infernale",
-	[1182] = "Auchindoun",
-	[1175] = "Miniere dei MAgliorosso",
-	[1208] = "Treno Frecciacupa",
-	[1195] = "Darsena di Ferro",
-	[1176] = "Necropoli dei Torvaluna",
-	[1209] = "Vetta dei Cieli",
-	[1279] = "Verdeterno",
-	[1358] = "Bastioni di Roccianera Superiore"
+	[1094] = "Emerald Nightmare",
+	[1088] = "Nighthold"
 }
 
 L.DifficultyNames = {

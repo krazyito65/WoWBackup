@@ -564,19 +564,25 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[321] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		[1082] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
+		[321] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[1022] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -601,19 +607,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[1017] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[1087] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[896] = {
+		[1041] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -626,19 +620,19 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
+		[896] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1087] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[481] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[1041] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[769] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -650,7 +644,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[764] = {
+		[769] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[721] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -662,7 +662,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[720] = {
+		[4] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -680,6 +680,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[510] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[993] = {
 			["Preferred"] = {
 			},
@@ -692,7 +698,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[490] = {
+		[1007] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -734,11 +740,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1007] = {
+		["Zul'Drak"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[1092] = {
 			["Preferred"] = {
@@ -758,13 +765,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[751] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1014] = {
+		[807] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -783,13 +790,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[465] = {
+		[13] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[13] = {
+		[1094] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -801,7 +808,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[606] = {
+		[465] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -814,7 +821,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[807] = {
+		[751] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -839,13 +846,6 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		["Zul'Drak"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
 		[482] = {
 			["Preferred"] = {
 			},
@@ -858,19 +858,25 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[490] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		[1033] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[510] = {
+		[32] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[32] = {
+		[720] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -883,19 +889,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[4] = {
+		[764] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
 		[806] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[721] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -913,6 +913,12 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
+		[1017] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 		["Krasarang Wilds"] = {
 			["Preferred"] = {
 			},
@@ -920,18 +926,18 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 857,
 		},
-		[1086] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 962,
+		},
+		[606] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 	},
 	["DisableMountNotice"] = false,

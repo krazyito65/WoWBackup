@@ -460,6 +460,8 @@ local function scanBagForItem(item, bagId, bestItem, bestDiff, bestLink)
 end
 
 local function onEquipGearSetComplete()
+	if Amr.db.profile.options.disableEm then return end
+	
 	-- create an equipment manager set
 	local specId, specName = GetSpecializationInfo(GetSpecialization())
 	

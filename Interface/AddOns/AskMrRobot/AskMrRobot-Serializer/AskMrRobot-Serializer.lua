@@ -1,7 +1,7 @@
 -- AskMrRobot-Serializer will serialize and communicate character data between users.
 -- This is used primarily to associate character information to logs uploaded to askmrrobot.com.
 
-local MAJOR, MINOR = "AskMrRobot-Serializer", 42
+local MAJOR, MINOR = "AskMrRobot-Serializer", 43
 local Amr, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Amr then return end -- already loaded by something else
@@ -147,32 +147,14 @@ Amr.FactionIds = {
 }
 
 Amr.InstanceIds = {
-	Auchindoun = 1182,
-	BloodmaulSlagMines = 1175,
-	GrimrailDepot = 1208,
-	IronDocks = 1195,
-	ShadowmoonBurialGrounds = 1176,
-	Skyreach = 1209,
-	TheEverbloom = 1279,
-	UpperBlackrockSpire = 1358,
-	Highmaul = 1228,
-	BlackrockFoundry = 1205,
-	HellfireCitadel = 1448
+	EmeraldNightmare = 1094,
+	Nighthold = 1530
 }
 
 -- instances that AskMrRobot currently supports logging for
 Amr.SupportedInstanceIds = {
-	--[1182] = true,
-	--[1175] = true,
-	--[1208] = true,
-	--[1195] = true,
-	--[1176] = true,
-	--[1209] = true,
-	--[1279] = true,
-	--[1358] = true,
-	[1228] = true,
-	[1205] = true,
-	[1448] = true
+	[1094] = true,
+	[1088] = true
 }
 
 -- just to make life easier, maps ID of each artifact weapon to the spec number (1-4)
@@ -747,11 +729,20 @@ end
 
 -- returns true if this is an instance that AskMrRobot supports for logging
 function Amr.IsSupportedInstanceId(instanceMapID)
+	for k,v in pairs(Amr.SupportedInstanceIds) do
+		local instanceId = GetAreaMapInfo(k)
+		if instanceId == tonumber(instanceMapID) then
+			return true
+		end
+	end
+	return false
+	--[[
 	if Amr.SupportedInstanceIds[tonumber(instanceMapID)] then
 		return true
 	else
 		return false
 	end
+	]]
 end
 
 -- returns true if currently in a supported instance for logging
@@ -1133,7 +1124,7 @@ function Amr:SerializePlayerData(data, complete)
         if data.Specs[spec] and (complete or spec == data.ActiveSpec) then
             table.insert(fields, ".s" .. spec) -- indicates the start of a spec block
 			table.insert(fields, data.Specs[spec])
-            table.insert(fields, data.Talents[spec])
+            table.insert(fields, data.Talents[spec] or "")
 			
 			local powerids = {}
 			local powerranks = {}
@@ -1185,6 +1176,8 @@ function Amr:SerializePlayerData(data, complete)
     
         -- export reputations
         local reps = {}
+		table.insert(reps, "_")
+		--[[
         local noreps = true
         if data.Reputations then
             for k, v in pairs(data.Reputations) do
@@ -1195,7 +1188,8 @@ function Amr:SerializePlayerData(data, complete)
         if noreps then
             table.insert(reps, "_")
         end
-        
+        ]]
+		
         table.insert(fields, ".r")
         table.insert(fields, table.concat(reps, ","))    
     

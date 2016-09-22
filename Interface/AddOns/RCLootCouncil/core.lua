@@ -91,7 +91,7 @@ function RCLootCouncil:OnInitialize()
 	-- Option table defaults
 	self.defaults = {
 		global = {
-			logMaxEntries = 500,
+			logMaxEntries = 1000,
 			log = {}, -- debug log
 			localizedSubTypes = {},
 		},
@@ -255,6 +255,7 @@ function RCLootCouncil:OnInitialize()
 	-- register chat and comms
 	self:RegisterChatCommand("rc", "ChatCommand")
   	self:RegisterChatCommand("rclc", "ChatCommand")
+	self.customChatCmd = {} -- Modules that wants their cmds used with "/rc"
 	self:RegisterComm("RCLootCouncil")
 	self.db = LibStub("AceDB-3.0"):New("RCLootCouncilDB", self.defaults, true)
 	self.lootDB = LibStub("AceDB-3.0"):New("RCLootCouncilLootDB")
@@ -304,6 +305,11 @@ function RCLootCouncil:OnEnable()
 		self:SendCommand("guild", "verTest", self.version, self.tVersion) -- send out a version check
 	end
 
+	if self.db.global.version and self.db.global.version < "2.1.1"
+		and self.db.global.localizedSubTypes.created then -- We need to reset subtype locales due to changes in v2.1.1
+		self.db.global.localizedSubTypes.created = false
+	end
+
 	-- For some reasons all frames are blank until ActivateSkin() is called, even though the values used
 	-- in the :CreateFrame() all :Prints as expected :o
 	self:ActivateSkin(db.currentSkin)
@@ -312,7 +318,7 @@ function RCLootCouncil:OnEnable()
 	self.db.global.logMaxEntries = self.defaults.global.logMaxEntries -- reset it now for zzz
 
 	if self.tVersion then
-		self.db.global.logMaxEntries = 1000 -- bump it for test version
+		self.db.global.logMaxEntries = 2000 -- bump it for test version
 	end
 	if self.db.global.tVersion and self.debug then -- recently ran a test version, so reset debugLog
 		self.db.global.log = {}
@@ -488,6 +494,10 @@ function RCLootCouncil:ChatCommand(msg)
 		printtable(historyDB)
 --@end-debug@]===]
 	else
+		-- Check if the input matches anything
+		for k, v in pairs(self.customChatCmd) do
+			if k == input then return v.module[v.func](v.module, arg1, arg2) end
+		end
 		self:ChatCommand("help")
 	end
 end
@@ -628,7 +638,7 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 
 			elseif command == "verTest" and not self:UnitIsUnit(sender, "player") then -- Don't reply to our own verTests
 				local otherVersion, tVersion = unpack(data)
-				self:SendCommand(sender, "verTestReply", self.playerName, self.playerClass, self.guildRank, self.version, self.tVersion)
+				self:SendCommand(sender, "verTestReply", self.playerName, self.playerClass, self.guildRank, self.version, self.tVersion, self:GetInstalledModulesFormattedData())
 				if self.version < otherVersion and not self.verCheckDisplayed and (not (tVersion or self.tVersion)) then
 					self:Print(format(L["version_outdated_msg"], self.version, otherVersion))
 					self.verCheckDisplayed = true
@@ -731,7 +741,7 @@ end
 
 function RCLootCouncil:Test(num)
 	self:Debug("Test", num)
-	local testItems = {105473,105407,105513,105465,105482,104631,105450,105537,104554,105509,104412,105499,104476,104544,104495,105568,105594,105514,105479,104532,105639,104508,105621,}
+	local testItems = {105473,105407,105513,105465,105482,104631,105450,105537,104554,105509,104412,105499,104476,104544,104495,105568,105514,105479,104532,105639,104508,105621,}
 	local items = {};
 	-- pick "num" random items
 	for i = 1, num do
@@ -843,6 +853,21 @@ function RCLootCouncil:GetPlayersGear(link, equipLoc)
 	return item1, item2;
 end
 
+function RCLootCouncil:GetArtifactRelics(link)
+	local id = self:GetItemIDFromLink(link)
+	local g1,g2;
+	for i = 1, C_ArtifactUI.GetEquippedArtifactNumRelicSlots() do
+		if C_ArtifactUI.CanApplyRelicItemIDToEquippedArtifactSlot(id,i) then -- We can equip it
+			if g1 then
+				g2 = select(4,C_ArtifactUI.GetEquippedArtifactRelicInfo(i))
+			else
+				g1 = select(4,C_ArtifactUI.GetEquippedArtifactRelicInfo(i))
+			end
+		end
+	end
+	return g1, g2
+end
+
 function RCLootCouncil:Timer(type, ...)
 	self:Debug("Timer "..type.." passed")
 	if type == "LocalizeSubTypes" then
@@ -908,6 +933,7 @@ local subTypeLookup = {
 	["Two-Handed Swords"]	= 124389, -- Calamity's Edge
 	["Wands"]					= 128096, -- Demonspine Wand
 	["Warglaives"]				= 141604, -- Glaive of the Fallen
+	["Artifact Relic"]		= 141271, -- Hope of the Forest
 }
 
 -- Never autopass these armor types
@@ -917,7 +943,16 @@ local autopassOverride = {
 
 function RCLootCouncil:AutoPassCheck(subType, equipLoc, link)
 	if not tContains(autopassOverride, equipLoc) then
-		if subType and autopassTable[self.db.global.localizedSubTypes[subType]] then
+		if equipLoc == "" and subType == self.db.global.localizedSubTypes["Artifact Relic"] then
+			local id = self:GetItemIDFromLink(link)
+			for i = 1, C_ArtifactUI.GetEquippedArtifactNumRelicSlots() do
+				if C_ArtifactUI.CanApplyRelicItemIDToEquippedArtifactSlot(id,i) then -- We can equip it
+					return false -- We can equip it, so don't autopassTable
+				end
+			end
+			return true -- We checked all the slots, and it didn't fit anywhere
+
+		elseif subType and autopassTable[self.db.global.localizedSubTypes[subType]] then
 			return tContains(autopassTable[self.db.global.localizedSubTypes[subType]], self.playerClass)
 		end
 		-- The item wasn't a type we check for, but it might be a token
@@ -977,10 +1012,16 @@ end
 -- @param response	The selected response, must be index of db.responses
 -- @param equipLoc	The item in the session's equipLoc
 -- @param note			The player's note
+-- @param subType		The item's subType, needed for Artifact Relics
 -- @returns A formatted table that can be passed directly to :SendCommand("group", "response", -return-)
-function RCLootCouncil:CreateResponse(session, link, ilvl, response, equipLoc, note)
+function RCLootCouncil:CreateResponse(session, link, ilvl, response, equipLoc, note, subType)
 	self:DebugLog("CreateResponse", session, link, ilvl, response, equipLoc, note)
-	local g1, g2 = self:GetPlayersGear(link, equipLoc)
+	local g1, g2;
+	if equipLoc == "" and subType == self.db.global.localizedSubTypes["Artifact Relic"] then
+		g1, g2 = self:GetArtifactRelics(link)
+	else
+	 	g1, g2 = self:GetPlayersGear(link, equipLoc)
+	end
 	local diff = nil
 	if g1 then diff = (ilvl - select(4, GetItemInfo(g1))) end
 	return
@@ -1025,7 +1066,8 @@ function RCLootCouncil:GetPlayerInfo()
 			end
 		end
 	end
-	return self.playerName, self.playerClass, self:GetPlayerRole(), self.guildRank, enchant, lvl
+	local ilvl = select(2,GetAverageItemLevel())
+	return self.playerName, self.playerClass, self:GetPlayerRole(), self.guildRank, enchant, lvl, ilvl
 end
 
 function RCLootCouncil:GetPlayerRole()
@@ -1206,6 +1248,28 @@ function RCLootCouncil:GetCouncilInGroup()
 	return council
 end
 
+function RCLootCouncil:GetInstalledModulesFormattedData()
+	local modules = {}
+	-- We're interested in everything that isn't a default module
+	local test = function(name)
+		for _, k in pairs(defaultModules) do
+			if k == name then return true end
+		end
+	end
+	for k in pairs(self.modules) do
+		if not test(k) then tinsert(modules, k) end
+	end
+	-- Now for the formatting
+	for num, name in pairs(modules) do
+		if self:GetModule(name).version then -- People might not have added version
+			modules[num] = self:GetModule(name).baseName.. " - "..self:GetModule(name).version
+		else
+			modules[num] = self:GetModule(name).baseName.. " - "..L["Unknown"]
+		end
+	end
+	return modules
+end
+
 function RCLootCouncil:SessionError(...)
 	self:Print(L["session_error"])
 	self:Debug(...)
@@ -1267,12 +1331,12 @@ function RCLootCouncil:UnitName(unit)
 	-- Then see if we already have a realm name appended
 	local find = strfind(unit, "-", nil, true)
 	if find and find < #unit then -- "-" isn't the last character
-		-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName()
-		-- returns Title Case. We need this to be consistant, so just titlecase the name part now:
-		local name, realm = unit:sub(1, find), unit:sub(find+1)
-		name = name:lower():gsub("^%l", string.upper) -- All but first must be lower
-		return name..realm
+		-- Should be save to return unit
+		return unit
 	end
+	-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName()
+	-- needs title case (see ticket #145). We need this to be consistant, so just titlecase the unit:
+	unit = unit:lower():gsub("^%l", string.upper)
 	-- Proceed with UnitName()
 	local name, realm = UnitName(unit)
 	if not realm or realm == "" then realm = self.realmName end -- Extract our own realm
@@ -1307,6 +1371,18 @@ end
 function RCLootCouncil:RegisterUserModule(type, name)
 	assert(defaultModules[type], format("Module \"%s\" is not a default module.", tostring(type)))
 	userModules[type] = name
+end
+
+--- Enables a module to add chat commands to the "/rc" prefix
+-- @param module The object to call func on.
+-- @param funcRef The function reference to call on module. Passed with module as first arg, and up to two user args.
+-- @param ... The command(s) the user can input
+-- @usage For example in GroupGear: addon:CustomChatCmd(GroupGear, "Enable", "gg")
+-- will result in GroupGear:Enable() being called if the user types "/rc gg"
+function RCLootCouncil:CustomChatCmd(module, funcRef, ...)
+	for i = 1, select("#", ...) do
+		self.customChatCmd[select(i, ...)] = {module = module, func = funcRef}
+	end
 end
 
 --#end Module support -----------------------------------------------------

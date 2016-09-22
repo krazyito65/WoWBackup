@@ -1,7 +1,7 @@
 local QuickQuest = CreateFrame('Frame')
 QuickQuest:SetScript('OnEvent', function(self, event, ...) self[event](...) end)
 
-local isBetaClient = select(4, GetBuildInfo()) >= 70000
+local L = select(2, ...)
 
 local metatable = {
 	__call = function(methods, ...)
@@ -11,12 +11,12 @@ local metatable = {
 	end
 }
 
-local modifier = false
+local modifier, DISABLED = false
 function QuickQuest:Register(event, method, override)
 	local newmethod
 	if(not override) then
 		newmethod = function(...)
-			if(QuickQuestDB.reverse == modifier) then
+			if(QuickQuestDB.reverse == modifier and not DISABLED) then
 				method(...)
 			end
 		end
@@ -68,18 +68,10 @@ QuickQuest:Register('QUEST_GREETING', function()
 
 	local available = GetNumAvailableQuests()
 	if(available > 0) then
-		if(isBetaClient) then
-			for index = 1, available do
-				local isTrivial, _, _, _, isIgnored = GetAvailableQuestInfo(index)
-				if((not isTrivial and not isIgnored) or IsTrackingHidden()) then
-					SelectAvailableQuest(index)
-				end
-			end
-		else
-			for index = 1, available do
-				if(not IsAvailableQuestTrivial(index) or IsTrackingHidden()) then
-					SelectAvailableQuest(index)
-				end
+		for index = 1, available do
+			local isTrivial, _, _, _, isIgnored = GetAvailableQuestInfo(index)
+			if((not isTrivial and not isIgnored) or IsTrackingHidden()) then
+				SelectAvailableQuest(index)
 			end
 		end
 	end
@@ -114,6 +106,12 @@ local ignoreGossipNPC = {
 	[84684] = true, -- Lieutenant Thorn (Alliance)
 }
 
+local rogueClassHallInsignia = {
+	[97004] = true, -- "Red" Jack Findle
+	[96782] = true, -- Lucian Trias
+	[93188] = true, -- Mongar
+}
+
 QuickQuest:Register('GOSSIP_SHOW', function()
 	local npcID = GetNPCID()
 	if(ignoreQuestNPC[npcID]) then
@@ -136,12 +134,17 @@ QuickQuest:Register('GOSSIP_SHOW', function()
 			local _, _, trivial, ignored = GetAvailableGossipQuestInfo(index)
 			if((not trivial and not ignored) or IsTrackingHidden()) then
 				SelectGossipAvailableQuest(index)
+			elseif(trivial and npcID == 64337 and QuickQuestDB.nomi) then
+				SelectGossipAvailableQuest(index)
 			end
 		end
 	end
 
+	if(rogueClassHallInsignia[npcID]) then
+		return SelectGossipOption(1)
+	end
+
 	if(available == 0 and active == 0 and GetNumGossipOptions() == 1) then
-		local npcID = GetNPCID()
 		if(QuickQuestDB.faireport) then
 			if(npcID == 57850) then
 				return SelectGossipOption(1)
@@ -190,7 +193,7 @@ QuickQuest:Register('QUEST_DETAIL', function(questStartItemID)
 	if(QuestGetAutoAccept() or (questStartItemID ~= nil and questStartItemID ~= 0)) then
 		AcknowledgeAutoAcceptQuest()
 	else
-		if(isBetaClient and IsQuestIgnored() and not IsTrackingHidden()) then
+		if(IsQuestIgnored() and not IsTrackingHidden()) then
 			return
 		end
 
@@ -270,8 +273,16 @@ QuickQuest:Register('QUEST_COMPLETE', function()
 end)
 
 local cashRewards = {
-	[45724] = 1e5, -- Champion's Purse
-	[64491] = 2e6, -- Royal Reward
+	[45724] = 1e5, -- Champion's Purse, 10 gold
+	[64491] = 2e6, -- Royal Reward, 200 gold
+
+	-- Items from the Sixtrigger brothers quest chain in Stormheim
+	[138127] = 15, -- Mysterious Coin, 15 copper
+	[138129] = 11, -- Swatch of Priceless Silk, 11 copper
+	[138131] = 24, -- Magical Sprouting Beans, 24 copper
+	[138123] = 15, -- Shiny Gold Nugget, 15 copper
+	[138125] = 16, -- Crystal Clear Gemstone, 16 copper
+	[138133] = 27, -- Elixir of Endless Wonder, 27 copper
 }
 
 QuickQuest:Register('QUEST_COMPLETE', function()
@@ -307,74 +318,11 @@ QuickQuest:Register('MODIFIER_STATE_CHANGED', function(key, state)
 	end
 end, true)
 
-if(not isBetaClient) then
-	local atBank, atMail, atMerchant
-	QuickQuest:Register('BANKFRAME_OPENED', function()
-		atBank = true
-	end, true)
-
-	QuickQuest:Register('BANKFRAME_CLOSED', function()
-		atBank = false
-	end, true)
-
-	QuickQuest:Register('GUILDBANKFRAME_OPENED', function()
-		atBank = true
-	end, true)
-
-	QuickQuest:Register('GUILDBANKFRAME_CLOSED', function()
-		atBank = false
-	end, true)
-
-	QuickQuest:Register('MAIL_SHOW', function()
-		atMail = true
-	end, true)
-
-	QuickQuest:Register('MAIL_CLOSED', function()
-		atMail = false
-	end, true)
-
-	QuickQuest:Register('MERCHANT_SHOW', function()
-		atMerchant = true
-	end, true)
-
-	QuickQuest:Register('MERCHANT_CLOSED', function()
-		atMerchant = false
-	end, true)
-
-	local questTip = CreateFrame('GameTooltip', 'QuickQuestTip', UIParent, 'GameTooltipTemplate')
-	local questString = string.gsub(ITEM_MIN_LEVEL, '%%d', '(%%d+)')
-
-	local function GetContainerItemQuestLevel(bag, slot)
-		questTip:SetOwner(UIParent, 'ANCHOR_NONE')
-		questTip:SetBagItem(bag, slot)
-
-		for index = 1, questTip:NumLines() do
-			local level = tonumber(string.match(_G['QuickQuestTipTextLeft' .. index]:GetText(), questString))
-			if(level) then
-				return level
-			end
-		end
-
-		return 1
+local function CheckScenario()
+	if(QuickQuestDB.withered) then
+		local name = C_Scenario.IsInScenario() and C_Scenario.GetInfo()
+		DISABLED = name == L['The Collapse']
 	end
-
-	local function BagUpdate(bag)
-		if(not QuickQuestDB.items) then return end
-		if(atBank or atMail or atMerchant) then return end
-
-		for slot = 1, GetContainerNumSlots(bag) do
-			local _, id, active = GetContainerItemQuestInfo(bag, slot)
-			if(id and not active and not IsQuestFlaggedCompleted(id) and not QuickQuestBlacklistDB.items[id]) then
-				local level = GetContainerItemQuestLevel(bag, slot)
-				if(level <= UnitLevel('player')) then
-					UseContainerItem(bag, slot)
-				end
-			end
-		end
-	end
-
-	QuickQuest:Register('PLAYER_LOGIN', function()
-		QuickQuest:Register('BAG_UPDATE', BagUpdate)
-	end)
 end
 
+QuickQuest:Register('PLAYER_ENTERING_WORLD', CheckScenario, true)

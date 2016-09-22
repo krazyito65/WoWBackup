@@ -1,11 +1,8 @@
 
 --------------------------------------------------------------------------------
 -- TODO List:
--- - Tuning sounds / message colors
--- - Remove alpha engaged message
--- - p1 proximity range: 5
+-- - p1 proximity range: 5?
 -- - TouchOfCorruption doesnt stack on normal. Do we need warnings for that?
--- - Add mouseover / nameplate marking for Deathglare Tentacle
 
 --------------------------------------------------------------------------------
 -- Module Declaration
@@ -22,6 +19,8 @@ mod.respawnTime = 30
 --
 
 local fixateOnMe = nil
+local deathglareMarked = {} -- save GUIDs of marked mobs
+local deathglareMarks  = { [6] = true, [5] = true, [4] = true, [3] = true } -- available marks to use
 
 --------------------------------------------------------------------------------
 -- Localization
@@ -31,6 +30,10 @@ local L = mod:GetLocale()
 if L then
 	L.nightmare_horror = -13188 -- Nightmare Horror
 	L.nightmare_horror_icon = 209387 -- Seeping Corruption icon
+
+	L.custom_off_deathglare_marker = "Deathglare Tentacle marker"
+	L.custom_off_deathglare_marker_desc = "Mark Deathglare Tentacles with {rt6}{rt5}{rt4}{rt3}, requires promoted or leader.\n|cFFFF0000Only 1 person in the raid should have this enabled to prevent marking conflicts.|r\n|cFFADFF2FTIP: If the raid has chosen you to turn this on, having nameplates enabled or quickly mousing over the spears is the fastest way to mark them.|r"
+	L.custom_off_deathglare_marker_icon = 6
 end
 
 --------------------------------------------------------------------------------
@@ -58,6 +61,7 @@ function mod:GetOptions()
 
 		-- Deathglare Tentacle
 		208697, -- Mind Flay
+		"custom_off_deathglare_marker",
 
 		--[[ Stage Two ]]--
 		{209915, "COUNTDOWN"}, -- Stuff of Nightmares
@@ -85,7 +89,6 @@ function mod:OnBossEnable()
 	-- Nightmare Ichor
 	self:Log("SPELL_AURA_APPLIED", "Fixate", 210099)
 	self:Log("SPELL_AURA_REMOVED", "FixateRemoved", 210099)
-	self:Log("SPELL_AURA_APPLIED", "TouchOfCorruption", 209469)
 	self:Log("SPELL_AURA_APPLIED_DOSE", "TouchOfCorruption", 209469)
 	self:Log("SPELL_CAST_START", "NightmareExplosion", 209471)
 
@@ -99,6 +102,7 @@ function mod:OnBossEnable()
 
 	-- Deathglare Tentacle
 	self:Log("SPELL_CAST_START", "MindFlay", 208697)
+	self:Death("DeathglareDeath", 105322)
 
 	--[[ Stage Two ]]--
 	self:Log("SPELL_AURA_APPLIED", "StuffOfNightmares", 209915)
@@ -109,15 +113,50 @@ function mod:OnBossEnable()
 end
 
 function mod:OnEngage()
-	self:Message("berserk", "Neutral", nil, "Ilgynoth Engaged (Beta v2)", "ability_malkorok_blightofyshaarj_red")
 	fixateOnMe = nil
 	self:CDBar(208689, 11.5) -- Ground Slam
 	self:Bar("nightmare_horror", 69, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
+
+	wipe(deathglareMarked)
+	if self:GetOption("custom_off_deathglare_marker") then
+		deathglareMarks = { [6] = true, [5] = true, [4] = true, [3] = true }
+
+		self:RegisterEvent("UPDATE_MOUSEOVER_UNIT", "DeathglareMark")
+		self:RegisterEvent("UNIT_TARGET", "DeathglareMark")
+		self:RegisterEvent("NAME_PLATE_UNIT_ADDED", "DeathglareMark")
+	end
+end
+
+function mod:OnBossDisable()
+	wipe(deathglareMarked)
+	self:UnregisterEvent("UPDATE_MOUSEOVER_UNIT")
+	self:UnregisterEvent("UNIT_TARGET")
+	self:UnregisterEvent("NAME_PLATE_UNIT_ADDED")
 end
 
 --------------------------------------------------------------------------------
 -- Event Handlers
 --
+
+function mod:DeathglareMark(event, firedUnit)
+	local unit = event == "NAME_PLATE_UNIT_ADDED" and firedUnit or firedUnit and firedUnit.."target" or "mouseover"
+	local guid = UnitGUID(unit)
+
+	if self:MobId(guid) == 105322 and not deathglareMarked[guid] then
+		local icon = next(deathglareMarks)
+		if icon then -- At least one icon unused
+			SetRaidTarget(unit, icon)
+			deathglareMarks[icon] = nil -- Mark is no longer available
+			deathglareMarked[guid] = icon -- Save the tentacle we marked and the icon we marked it with
+		end
+	end
+end
+
+function mod:DeathglareDeath(args)
+	if deathglareMarked[args.destGUID] then -- Did we mark the Tentacle?
+		deathglareMarks[deathglareMarked[args.destGUID]] = true -- Mark used is available again
+	end
+end
 
 -- Dominator Tentacle
 function mod:RAID_BOSS_WHISPER(_, msg, sender)
@@ -133,9 +172,16 @@ function mod:GroundSlam(args)
 	self:CDBar(args.spellId, 20.5)
 end
 
-function mod:NightmarishFury(args)
-	self:Message(args.spellId, "Urgent")
-	self:Bar(args.spellId, 10)
+do
+	local prev = 0
+	function mod:NightmarishFury(args)
+		local t = GetTime()
+		if t-prev > 1 then
+			prev = t
+			self:Message(args.spellId, "Urgent")
+			self:Bar(args.spellId, 10)
+		end
+	end
 end
 
 -- Nightmare Ichor
@@ -192,23 +238,27 @@ do
 		end
 
 		if self:Me(args.destGUID) then
+			self:TargetBar(args.spellId, 10, args.destName)
 			self:Flash(args.spellId)
 			self:Say(args.spellId)
-			self:TargetBar(args.spellId, args.destName, 10)
 		end
 	end
 end
 
 -- Deathglare Tentacle
 function mod:MindFlay(args)
-	self:Message(args.spellId, "Attention", self:Interrupter(args.sourceGUID) and "Info")
+	if self:Interrupter(args.sourceGUID) then -- avoid spam
+		self:Message(args.spellId, "Attention", "Info", CL.casting:format(args.spellName))
+	end
 end
 
 --[[ Stage Two ]]--
 function mod:StuffOfNightmares(args)
-	self:Message(args.spellId, "Neutral", "Info")
-	self:CDBar(208689, 11.5) -- Ground Slam
-	self:Bar("nightmare_horror", 99, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
+	if IsEncounterInProgress() then -- Gets buffed when the boss spawns
+		self:Message(args.spellId, "Neutral", "Info")
+		self:CDBar(208689, 11.5) -- Ground Slam
+		self:Bar("nightmare_horror", 99, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
+	end
 end
 
 function mod:StuffOfNightmaresRemoved(args)
