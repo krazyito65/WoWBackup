@@ -766,7 +766,7 @@ TitanPerformance: disabled
 Carousel: disabled
 CarouselOptions: disabled
 Hansgar_And_Franzok_Assist: disabled
-PetLeash: disabled
+PetLeash: enabled
 ElvUI_Enhanced: disabled
 Details_RaidInfo-HellfireCitadel: enabled
 BigWigs_Voice: disabled
@@ -848,3 +848,4 @@ EquipCompare: enabled
 LinkWrangler: enabled
 MobInfo2: enabled
 MultiTips: enabled
+LibPetJournal-2.0: enabled

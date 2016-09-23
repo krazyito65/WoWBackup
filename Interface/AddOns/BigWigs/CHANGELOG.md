@@ -1,9 +1,7 @@
 # BigWigs
 
-## [v11](https://github.com/BigWigsMods/BigWigs/tree/v11) (2016-09-22) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v10.3...v11)
+## [v11.1-2-gfb51b8f](https://github.com/BigWigsMods/BigWigs/tree/fb51b8f41a58abe90fd2ef1fc93a013e4c40a6cc) (2016-09-23) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v11.1...fb51b8f41a58abe90fd2ef1fc93a013e4c40a6cc)
 
--   bump version  
--   Plugins/Pull: Fix an error when engaging a boss during the countdown.  
--   Xavius: Fix missing option key  
--   frFR Update (#38)  
+-   Xavius: Show AltPower for tanks and healers  
+-   Xavius: Fix Tormenting Swipe and Corruption Meteor options, Horror spawn message  

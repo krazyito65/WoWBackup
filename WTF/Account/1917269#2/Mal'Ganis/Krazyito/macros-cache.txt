@@ -1,7 +1,3 @@
-VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
-END
 VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl] Horn of Valor; [nomod, @mouseover] Cenarion Ward
 END
@@ -9,6 +5,10 @@ VER 3 0100000000000068 " " "INV_MISC_QUESTIONMARK"
 #showtooltip Renewal
 /use Bear Form
 /use Renewal
+END
+VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
 END
 VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -63,8 +63,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-R1SR1WT1NM1NM1NM2NT2EM2WM2PM2EM3RM3RM3RM3RM3RM4MR4MR4HR4LR4MR5HR5HR5DR5IH[x]6PH6DH6IH6SH8DM[x][x][x][x][x][x][x][x][x][x]6DH[x][x][x][x][x][x][x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NGenRanNinStrBurFelShiJinJaeOrcAliIrrLoaLosHicLimTosDraKylLeaAllDetXigMii[x]ZuiVoxBigBerWil[x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x]Fou[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

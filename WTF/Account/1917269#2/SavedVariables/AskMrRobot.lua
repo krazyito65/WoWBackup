@@ -111,14 +111,14 @@ AskMrRobotDb3 = {
 					"|cff00ccff|Hitem:122245::::::::20:66:::1:582:::|h[Polished Helm of Valor]|h|r", -- [1]
 					"|cff00ccff|Hitem:122662:5318:::::::20:66:::1:582:::|h[Eternal Talisman of Evasion]|h|r", -- [2]
 					"|cff00ccff|Hitem:122372::::::::20:66:::1:582:::|h[Strengthened Stockade Pauldrons]|h|r", -- [3]
+					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
 					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
-					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
 					[8] = "|cffffffff|Hitem:24146::::::::20:66::::::|h[Initiate's Boots]|h|r",
 					[16] = "|cff00ccff|Hitem:122389::::::::20:66:::1:582:::|h[Bloodsoaked Skullforge Reaver]|h|r",
 					[15] = "|cff00ccff|Hitem:122266:5311:::::::20:66:::1:582:::|h[Ripped Sandstorm Cloak]|h|r",
 					[14] = "|cff00ccff|Hitem:122530::::::::20:66::::::|h[Inherited Mark of Tyranny]|h|r",
 					[5] = "|cff00ccff|Hitem:122387:4419:::::::20:66:::1:582:::|h[Burnished Breastplate of Might]|h|r",
-					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
+					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
 				},
 			},
 		},
@@ -672,18 +672,18 @@ AskMrRobotDb3 = {
 			["Artifacts"] = {
 				{
 					["Relics"] = {
-						"|cff1eff00|Hitem:141292::::::::110:102:::3:1812:1442:1809:::|h[Crystallizing Mana]|h|r", -- [1]
-						"|cff0070dd|Hitem:141269::::::::110:102::30:3:3397:1492:1675:::|h[Tranquil Clipping]|h|r", -- [2]
-						"|cff0070dd|Hitem:141292::::::::110:102::29:3:3396:1487:1675:::|h[Crystallizing Mana]|h|r", -- [3]
+						"|cff1eff00|Hitem:141292::::::::110:105:::3:1812:1442:1809:::|h[Crystallizing Mana]|h|r", -- [1]
+						"|cff0070dd|Hitem:141269::::::::110:105::30:3:3397:1492:1675:::|h[Tranquil Clipping]|h|r", -- [2]
+						"|cff0070dd|Hitem:141292::::::::110:105::29:3:3396:1487:1675:::|h[Crystallizing Mana]|h|r", -- [3]
 					},
 					["Powers"] = {
 						[1044] = 1,
-						[1049] = 1,
+						[1294] = 1,
 						[1035] = 3,
-						[1047] = 1,
+						[1049] = 1,
 						[1036] = 3,
 						[1040] = 3,
-						[1294] = 1,
+						[1047] = 1,
 					},
 				}, -- [1]
 				{
@@ -908,9 +908,9 @@ AskMrRobotDb3 = {
 				[124439] = 6,
 				[64400] = 1,
 				[109143] = 84,
-				[86565] = 1,
-				[125787] = 1,
 				[128510] = 1,
+				[125787] = 1,
+				[86565] = 1,
 				[75525] = 1,
 				[112320] = 1,
 				[118711] = 2,
@@ -924,10 +924,10 @@ AskMrRobotDb3 = {
 				[104304] = 1,
 				[127780] = 3,
 				[109137] = 18,
-				[117405] = 1,
-				[93403] = 1,
 				[60233] = 1,
+				[93403] = 1,
 				[118935] = 1,
+				[117405] = 1,
 				[111228] = 1,
 				[124118] = 9,
 				[127884] = 1,

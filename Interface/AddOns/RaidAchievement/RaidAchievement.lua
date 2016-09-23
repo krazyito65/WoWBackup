@@ -6,7 +6,7 @@ if GetLocale()=="deDE" or GetLocale()=="ruRU" or GetLocale()=="zhTW" or GetLocal
 end
 
 
-	raversion=7.005
+	raversion=7.006
 	local raverstiptext="alpha"
 	if string.len(raversion)==6 then
 		raverstiptext="beta"
@@ -617,6 +617,7 @@ if IsAddOnLoaded("RaidAchievement_PandaScenarios") then pzra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_WoDHeroics") then wodhra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_WoDRaids") then wodrra_closeallpr() end
 if IsAddOnLoaded("RaidAchievement_LegionHeroics") then legionhra_closeallpr() end
+if IsAddOnLoaded("RaidAchievement_LegionRaids") then legionrra_closeallpr() end
 PSFeamain3:Hide()
 PSFeamain10:Hide()
 PSFeamain11:Hide()
@@ -1237,7 +1238,7 @@ end
 
 
 --тут добавить рейды Legion
-if GetCurrentMapAreaID()==9999999999999999999 or GetCurrentMapAreaID()==9999999999999999999 then
+if GetCurrentMapAreaID()==1094 or GetCurrentMapAreaID()==1088 then
 if IsAddOnLoaded("RaidAchievement_WoDRaids")==false and waslegionrtryloadea==nil then
 waslegionrtryloadea=1
 local loaded, reason = LoadAddOn("RaidAchievement_LegionRaids")

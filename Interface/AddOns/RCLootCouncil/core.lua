@@ -1144,12 +1144,19 @@ end
 function RCLootCouncil:NewMLCheck()
 	local old_ml = self.masterLooter
 	self.isMasterLooter, self.masterLooter = self:GetML()
-
+	if self.masterLooter == "Unknown" then
+		-- ML might be unknown for some reason
+		self:Debug("Unknown ML")
+		return self:ScheduleTimer("NewMLCheck", 2)
+	end
 	if self:UnitIsUnit(old_ml, "player") and not self.isMasterLooter then
 		-- We were ML, but no longer, so disable masterlooter module
 		self:GetActiveModule("masterlooter"):Disable()
 	end
 	if self:UnitIsUnit(old_ml, self.masterLooter) or db.usage.never then return end -- no change
+	-- At this point we know the ML has changed, so we can wipe the council
+	self:Debug("Resetting council as we have a new ML!")
+	self.council = {}
 	if not self.isMasterLooter and self.masterLooter then return end -- Someone else is ML
 
 	-- We are ML and shouldn't ask the player for usage
@@ -1209,8 +1216,8 @@ function RCLootCouncil:GetML()
 			name = self:UnitName("party"..mlPartyID)
 		end
 		self:Debug("MasterLooter = ", name)
-		-- Check to see if we have recieved mldb within 10 secs, otherwise request it
-		self:ScheduleTimer("Timer", 10, "MLdb_check")
+		-- Check to see if we have recieved mldb within 5 secs, otherwise request it
+		self:ScheduleTimer("Timer", 5, "MLdb_check")
 		return IsMasterLooter(), name
 	end
 	return false, nil;
@@ -1334,12 +1341,14 @@ function RCLootCouncil:UnitName(unit)
 		-- Should be save to return unit
 		return unit
 	end
-	-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName()
-	-- needs title case (see ticket #145). We need this to be consistant, so just titlecase the unit:
-	unit = unit:lower():gsub("^%l", string.upper)
+	-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName() won't
+	-- always work with that (see ticket #145). We need this to be consistant, so just lowercase the unit:
+	unit = unit:lower()
 	-- Proceed with UnitName()
 	local name, realm = UnitName(unit)
 	if not realm or realm == "" then realm = self.realmName end -- Extract our own realm
+	-- We also want to make sure the returned name is always title cased (it might not always be! ty Blizzard)
+	name = name:lower():gsub("^%l", string.upper)
 	return name and name.."-"..realm or nil
 end
 

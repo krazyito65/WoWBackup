@@ -2,7 +2,6 @@
 MasterPlanAG = {
 	["Mal'Ganis"] = {
 		["Krázyito"] = {
-			["class"] = "SHAMAN",
 			["summary"] = {
 				["inProgress"] = {
 					[272] = 1452625303,
@@ -12,6 +11,7 @@ MasterPlanAG = {
 				},
 			},
 			["curOil"] = 195,
+			["class"] = "SHAMAN",
 			["lastCacheTime"] = 1470362011,
 			["curRes"] = 2453,
 			["faction"] = "Horde",
