@@ -1131,10 +1131,11 @@ local function parseItemIdentifier(ident)
 	item.gemIds = { 0, 0, 0, 0 }
 	item.suffixId = math.abs(tonumber(parts[2]))
 	item.upgradeId = tonumber(parts[3])
+	item.level = tonumber(parts[4])
 	
-	if #parts > 3 then
+	if #parts > 4 then
 		item.bonusIds = {}
-		for b = 4, #parts do
+		for b = 5, #parts do
 			table.insert(item.bonusIds, tonumber(parts[b]))
 		end
 		table.sort(item.bonusIds)

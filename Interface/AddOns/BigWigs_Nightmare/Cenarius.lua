@@ -56,7 +56,7 @@ function mod:GetOptions()
 		-- P2
 		214505, -- Entangling Nightmares
 		214529, -- Spear of Nightmares
-		
+
 		--[[ Malfurion Stormrage ]]--
 		212681, -- Cleansed Ground
 
@@ -92,7 +92,7 @@ end
 
 function mod:OnBossEnable()
 	--[[ Cenarius ]]--
-	self:RegisterUnitEvent("UNIT_SPELLCAST_SUCCESS", nil, "boss1")
+	self:RegisterUnitEvent("UNIT_SPELLCAST_SUCCEEDED", nil, "boss1")
 	self:Log("SPELL_CAST_START", "ForcesOfNightmare", 212726)
 	self:Log("SPELL_AURA_APPLIED", "CreepingNightmares", 210279)
 	self:Log("SPELL_AURA_APPLIED_DOSE", "CreepingNightmares", 210279)
@@ -149,17 +149,19 @@ end
 --
 
 --[[ Cenarius ]]--
-function mod:UNIT_SPELLCAST_SUCCESS(unit, spellName, _, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, _, _, spellId)
 	if spellId == 210290 then -- Nightmare Brambles
-		local targetGUID = UnitGUID('boss1target') --selects target 2sec prior to the cast
-		local targetName = UnitName('boss1target')
-		if self:Me(targetGUID) then
-			self:Flash(210290)
-			self:Say(210290)
+		self:Bar(spellId, phase == 2 and 20 or 30) -- at some point starts casting with 15sec-20sec cd
+		local targetGUID = UnitGUID("boss1target") -- selects target 2sec prior to the cast
+		if targetGUID then
+			if self:Me(targetGUID) then
+				self:Flash(spellId)
+				self:Say(spellId)
+			end
+			local targetName = self:UnitName("boss1target")
+			self:TargetMessage(spellId, targetName, "Urgent", "Alarm")
+			self:PrimaryIcon(spellId, targetName)
 		end
-		self:Bar(args.spellId, phase == 2 and 20 or 30) -- at some point starts casting with 15sec-20sec cd
-		self:TargetMessage(210290, targetName, "Urgent", "Alarm")
-		self:PrimaryIcon(210290, targetName)
 	elseif spellId == 217368 then -- Phase 2
 		phase = 2
 		self:Bar(210290, 13) -- Nightmare Brambles
@@ -255,7 +257,7 @@ function mod:CorruptAlliesOfNature(args)
 	local t = GetTime()
 	if t-prev > 10 then
 		prev = t
-			self:Message(args.spellId, "Attention", "Info", CL.incoming:format(args.spellName))
+		self:Message(args.spellId, "Attention", "Info", CL.incoming:format(args.spellName))
 	end
 end
 

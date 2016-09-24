@@ -6,7 +6,7 @@ Amr.MIN_IMPORT_VERSION = 36
 
 -- min addon version that we will support for inter-addon communication for e.g. the team optimizer
 --  last update to version 36 for Legion pre-patch
-Amr.MIN_ADDON_VERSION = 36
+Amr.MIN_ADDON_VERSION = 44
 
 -- import some constants from the serializer for convenience
 Amr.ChatPrefix = Amr.Serializer.ChatPrefix
@@ -107,7 +107,7 @@ Amr.SpecIcons = {
 }
 
 -- instance IDs ordered in preferred display order
-Amr.InstanceIdsOrdered = { 1094, 1088 }
+Amr.InstanceIdsOrdered = { 1520, 1530 }
 
 Amr.Difficulties = {
 	Lfr = 17,

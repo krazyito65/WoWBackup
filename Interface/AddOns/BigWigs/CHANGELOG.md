@@ -1,7 +1,16 @@
 # BigWigs
 
-## [v11.1-2-gfb51b8f](https://github.com/BigWigsMods/BigWigs/tree/fb51b8f41a58abe90fd2ef1fc93a013e4c40a6cc) (2016-09-23) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v11.1...fb51b8f41a58abe90fd2ef1fc93a013e4c40a6cc)
+## [v11.3](https://github.com/BigWigsMods/BigWigs/tree/v11.3) (2016-09-23) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v11.2...v11.3)
 
--   Xavius: Show AltPower for tanks and healers  
--   Xavius: Fix Tormenting Swipe and Corruption Meteor options, Horror spawn message  
+-   Nightmare/Xavius: Various fixes  
+-   Ilgynoth: Minor text fixes  
+-   Ilgynoth:  
+    * Add spawn bars for Deathglare and Corruptor tentacles  
+    * Add a message counting down bloods needed till hearth phase  
+    * Minor fixes  
+-   esES update. (#46)  
+-   Cenarius: Fix Nightmare Brambles  
+-   bump DBM version  
+-   Nightmare/Cenarius: Fix brambles error.  
+-   Nightmare: Update locale files, closes #44  

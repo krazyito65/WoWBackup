@@ -85,8 +85,8 @@ L.StatsShort = {
 }
 
 L.InstanceNames = {
-	[1094] = "Emerald Nightmare",
-	[1088] = "Nighthold"
+	[1520] = "Emerald Nightmare",
+	[1530] = "Nighthold"
 }
 
 L.DifficultyNames = {

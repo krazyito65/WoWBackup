@@ -85,8 +85,8 @@ L.StatsShort = {
 }
 
 L.InstanceNames = {
-	[1094] = "Emerald Nightmare",
-	[1088] = "Nighthold"
+	[1520] = "Emerald Nightmare",
+	[1530] = "Nighthold"
 }
 
 L.DifficultyNames = {
@@ -258,7 +258,7 @@ L.LogButtonReloadText = "Reload UI"
 L.LogButtonWipeText = "Wipe!"
 L.LogButtonUndoWipeText = "Undo Wipe"
 
-L.LogNote = "You are currently logging combat and gear data."
+L.LogNote = "You are currently logging combat data."
 L.LogReloadNote = "Either exit WoW entirely, or reload your UI just before uploading a log file."
 L.LogWipeNote = "The person uploading the log must be the one to use this wipe command."
 L.LogWipeNote2 = function(cmd)

@@ -1,7 +1,7 @@
 -- AskMrRobot-Serializer will serialize and communicate character data between users.
 -- This is used primarily to associate character information to logs uploaded to askmrrobot.com.
 
-local MAJOR, MINOR = "AskMrRobot-Serializer", 43
+local MAJOR, MINOR = "AskMrRobot-Serializer", 44
 local Amr, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Amr then return end -- already loaded by something else
@@ -147,14 +147,14 @@ Amr.FactionIds = {
 }
 
 Amr.InstanceIds = {
-	EmeraldNightmare = 1094,
+	EmeraldNightmare = 1520,
 	Nighthold = 1530
 }
 
 -- instances that AskMrRobot currently supports logging for
 Amr.SupportedInstanceIds = {
-	[1094] = true,
-	[1088] = true
+	[1520] = true,
+	[1530] = true
 }
 
 -- just to make life easier, maps ID of each artifact weapon to the spec number (1-4)
@@ -729,20 +729,11 @@ end
 
 -- returns true if this is an instance that AskMrRobot supports for logging
 function Amr.IsSupportedInstanceId(instanceMapID)
-	for k,v in pairs(Amr.SupportedInstanceIds) do
-		local instanceId = GetAreaMapInfo(k)
-		if instanceId == tonumber(instanceMapID) then
-			return true
-		end
-	end
-	return false
-	--[[
 	if Amr.SupportedInstanceIds[tonumber(instanceMapID)] then
 		return true
 	else
 		return false
 	end
-	]]
 end
 
 -- returns true if currently in a supported instance for logging

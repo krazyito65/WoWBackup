@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1750, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15254 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15262 $"):sub(12, -3))
 mod:SetCreatureID(104636)
 mod:SetEncounterID(1877)
 mod:SetZone()
@@ -33,7 +33,7 @@ local warnNightmareBrambles			= mod:NewTargetAnnounce(210290, 2)
 local warnBeastsOfNightmare			= mod:NewSpellAnnounce(214876, 2)--Generic for now, figure out what to do with later.
 local warnPhase2					= mod:NewPhaseAnnounce(2, 2)
 ----Forces of Nightmare
-local warnDesiccatingStomp			= mod:NewCastAnnounce(211073, 3, nil, nil, "Melee")--Basic warning for now, will change to special if needed
+local warnDesiccatingStomp			= mod:NewCastAnnounce(211073, 3, nil, nil, true, 2)--Basic warning for now, will change to special if needed
 local warnRottenBreath				= mod:NewTargetAnnounce(211192, 2)
 local warnScornedTouch				= mod:NewTargetAnnounce(211471, 3)
 --Malfurion Stormrage
@@ -69,7 +69,7 @@ local timerEntanglingNightmareCD	= mod:NewNextTimer(51, 214505, nil, nil, nil, 1
 ----Malfurion
 local timerCleansingGroundCD		= mod:NewNextTimer(77, 214249, nil, nil, nil, 3)--Phase 2 version only for now. Not sure if cast more than once though?
 ----Forces of Nightmare
-local timerTouchofLifeCD			= mod:NewCDTimer(12, 211368, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)--increased to 15?
+local timerTouchofLifeCD			= mod:NewCDTimer(15, 211368, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)
 local timerRottenBreathCD			= mod:NewCDTimer(25, 211192, nil, nil, nil, 3)
 
 --Cenarius
@@ -121,8 +121,7 @@ function mod:OnCombatStart(delay)
 		timerNightmareBlastCD:Start(31.2-delay)
 	end
 	if not self.Options.AlertedBramble then
-		DBM:AddMsg("Note: DBM cannot detect who is actually fixated by Bramble (no mod can, Blizzard has assured this). It does, however, detect who the initial target is for the SPAWN. Boss picks player, throws it at that player (dbm does detect correct player for this and notifies them and those near them to move away from spawn point at least). After this, it picks someone that may or may not be the target he threw it at (likely by proximity)")
-		self.Options.AlertedBramble = true
+		DBM:AddMsg(L.BrambleMessage)
 	end
 end
 
@@ -132,6 +131,10 @@ function mod:OnCombatEnd()
 	end
 	if self.Options.HudMapOnBreath then
 		DBMHudMap:Disable()
+	end
+	if not self.Options.AlertedBramble then
+		DBM:AddMsg(L.BrambleMessage)
+		self.Options.AlertedBramble = true
 	end
 end
 
@@ -187,8 +190,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerBeastsOfNightmareCD:Start()
 	elseif spellId == 214529 then
 		if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, args.destName) then return end--You are not near current tank, you're probably 3rd tank on Doom Guards that never taunts massive blast
-		specWarnSpearOfNightmaresOther:Show(args.destName)
-		voiceSpearOfNightmares:Play("tauntboss")
+		if not args:IsPlayer() then
+			specWarnSpearOfNightmaresOther:Show(args.destName)
+			voiceSpearOfNightmares:Play("tauntboss")
+		end
 	end
 end
 
