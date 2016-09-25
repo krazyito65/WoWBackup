@@ -454,8 +454,8 @@ local function maybeRecordHeal(
 		spellName)
 	
 	for i = 1, 99999 do
-		local buffName, _, _, _, _, _, _, caster, _, _, buffID, _, _, v1, v2, v3
-			= UnitBuff(targetInfo.playername, i)
+		--local buffName, _, _, _, _, _, _, caster, _, _, buffID, _, _, v1, v2, v3 = UnitBuff(targetInfo.playername, i)
+		local buffName, _, _, _, _, _, _, caster, _, _, buffID, _, _, _, _, _, v1, v2, v3 = UnitBuff(targetInfo.playername, i)
 		if buffName == nil then
 			break
 		end

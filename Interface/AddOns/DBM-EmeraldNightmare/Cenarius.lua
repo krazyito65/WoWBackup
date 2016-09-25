@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1750, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15262 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15263 $"):sub(12, -3))
 mod:SetCreatureID(104636)
 mod:SetEncounterID(1877)
 mod:SetZone()
@@ -188,12 +188,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if spellId == 214876 then
 		warnBeastsOfNightmare:Show()
 		timerBeastsOfNightmareCD:Start()
-	elseif spellId == 214529 then
+	elseif spellId == 214529 and not args:IsPlayer() then
 		if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, args.destName) then return end--You are not near current tank, you're probably 3rd tank on Doom Guards that never taunts massive blast
-		if not args:IsPlayer() then
-			specWarnSpearOfNightmaresOther:Show(args.destName)
-			voiceSpearOfNightmares:Play("tauntboss")
-		end
+		specWarnSpearOfNightmaresOther:Show(args.destName)
+		voiceSpearOfNightmares:Play("tauntboss")
 	end
 end
 

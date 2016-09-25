@@ -67,7 +67,7 @@ if L then
 	L.nightmare_horror = -13188 -- Nightmare Horror
 	L.nightmare_horror_icon = 209387 -- Seeping Corruption icon
 
-	L.corruptor_tentacle = - -13191 -- Corruptor Tentacle
+	L.corruptor_tentacle = -13191 -- Corruptor Tentacle
 	L.corruptor_tentacle_icon = 208929 -- Spew Corruption icon
 
 	L.deathglare_tentacle = -13190 -- Deathglare Tentacle
@@ -264,27 +264,10 @@ do
 	end
 end
 
-do
-	local scheduled, lastMessage = nil, 0
-
-	local function announceBloodRemaining(self, remaining)
-		self:Message("forces", "Positive", nil, L.bloods_remaining:format(remaining), false)
-		lastMessage = GetTime()
-		scheduled = nil
-	end
-
-	function mod:EyeDamage(args)
-		bloodsRemaining = bloodsRemaining - 1
-
-		if scheduled then
-			self:CancelTimer(scheduled)
-		end
-
-		if lastMessage-GetTime() > 10 then -- Don't delay by more than 10s
-			announceBloodRemaining(self, bloodsRemaining)
-		else
-			scheduled = self:ScheduleTimer(announceBloodRemaining, 3, self, bloodsRemaining)
-		end
+function mod:EyeDamage(args)
+	bloodsRemaining = bloodsRemaining - 1
+	if (bloodsRemaining % 5 == 0 or bloodsRemaining < 5) and bloodsRemaining > 0 then
+		self:Message("forces", "Positive", nil, L.bloods_remaining:format(bloodsRemaining), false)
 	end
 end
 
