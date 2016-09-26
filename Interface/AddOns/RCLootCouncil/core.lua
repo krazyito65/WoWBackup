@@ -49,7 +49,7 @@ function RCLootCouncil:OnInitialize()
   	self.version = GetAddOnMetadata("RCLootCouncil", "Version")
 	self.nnp = false
 	self.debug = false
-	self.tVersion = nil -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion"
+	self.tVersion = "Beta2" -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion"
 
 	self.playerClass = select(2, UnitClass("player"))
 	self.guildRank = L["Unguilded"]
@@ -59,6 +59,7 @@ function RCLootCouncil:OnInitialize()
 	self.isCouncil = false -- Are we in the Council?
 	self.enabled = true -- turn addon on/off
 	self.inCombat = false -- Are we in combat?
+	self.recentReconnectRequest = false
 
 	self.verCheckDisplayed = false -- Have we shown a "out-of-date"?
 
@@ -535,7 +536,11 @@ function RCLootCouncil:SendCommand(target, command, ...)
 					-- Remake command to be "xrealm" and put target and command in the table
 					-- See "RCLootCouncil:HandleXRealmComms()" for more info
 					toSend = self:Serialize("xrealm", {target, command, ...})
-					self:SendCommMessage("RCLootCouncil", toSend, "RAID")
+					if GetNumGroupMembers() > 0 then -- We're in a group
+						self:SendCommMessage("RCLootCouncil", toSend, "RAID")
+					else -- We're not, probably a guild verTest
+						self:SendCommMessage("RCLootCouncil", toSend, "GUILD")
+					end
 				end
 
 			else -- Should also be our own realm
@@ -688,6 +693,20 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 				else
 					self:Debug("Non ML:", sender, "sent end session command!")
 				end
+
+			elseif command == "lootAck" and not self:UnitIsUnit(sender, "player") and self.enabled then
+				-- It seems we have message dropping. If we receive a lootAck, but we don't have lootTable, then something's wrong!
+				if not self.lootTable or #self.lootTable == 0 then
+					self:Debug("!!!! We got an lootAck without having lootTable!!!!")
+					if not self.masterLooter then -- Extra sanity check
+						return self:DebugLog("We don't have a ML?!")
+					end
+					if not self.recentReconnectRequest then -- we don't want to do it too often!
+						self:SendCommand(self.masterLooter, "reconnect")
+						self.recentReconnectRequest = true
+						self:ScheduleTimer("ResetReconnectRequest", 5) -- 5 sec break between each try
+					end
+				end
 			end
 		else
 			-- Most likely pre 2.0 command
@@ -709,11 +728,16 @@ function RCLootCouncil:HandleXRealmComms(mod, command, data, sender)
 		local target = tremove(data, 1)
 		if self:UnitIsUnit(target, "player") then
 			local command = tremove(data, 1)
-			mod:OnCommReceived("RCLootCouncil", self:Serialize(command, data), "WHISPER", self:UnitName(sender))
+			mod:OnCommReceived("RCLootCouncil", self:Serialize(command, data), "WHISPER", sender)
 		end
 		return true
 	end
 	return false
+end
+
+function RCLootCouncil:ResetReconnectRequest()
+	self.recentReconnectRequest = false
+	self:DebugLog("ResetReconnectRequest")
 end
 
 function RCLootCouncil:Debug(msg, ...)
@@ -887,30 +911,6 @@ function RCLootCouncil:Timer(type, ...)
 	end
 end
 
--- Classes that should auto pass a subtype
-local autopassTable = {
-	["Cloth"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "ROGUE", "HUNTER", "SHAMAN", "DEMONHUNTER"},
-	["Leather"] 				= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "HUNTER", "SHAMAN", "PRIEST", "MAGE", "WARLOCK"},
-	["Mail"] 					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "ROGUE", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Plate"]					= {"DRUID", "MONK", "ROGUE", "HUNTER", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Shields"] 				= {"DEATHKNIGHT", "DRUID", "MONK", "ROGUE", "HUNTER","PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Bows"] 					= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Crossbows"] 				= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Daggers"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "HUNTER", },
-	["Guns"]						= {"DEATHKNIGHT", "PALADIN", "DRUID", "MONK","SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Fist Weapons"] 			= {"DEATHKNIGHT", "PALADIN",  "PRIEST", "MAGE", "WARLOCK"},
-	["One-Handed Axes"]		= {"DRUID", "ROGUE", "PRIEST", "MAGE", "WARLOCK"},
-	["One-Handed Maces"]		= {"HUNTER", "MAGE", "WARLOCK"},
-	["One-Handed Swords"] 	= {"DRUID", "SHAMAN", "PRIEST",},
-	["Polearms"] 				= {"ROGUE", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Staves"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN",  "ROGUE", "DEMONHUNTER"},
-	["Two-Handed Axes"]		= {"DRUID", "ROGUE", "MONK", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Two-Handed Maces"]		= {"MONK", "ROGUE", "HUNTER", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Two-Handed Swords"]	= {"DRUID", "MONK", "ROGUE", "SHAMAN", "PRIEST", "MAGE", "WARLOCK", "DEMONHUNTER"},
-	["Wands"]					= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "ROGUE", "HUNTER", "SHAMAN", "DEMONHUNTER"},
-	["Warglaives"]				= {"WARRIOR", "DEATHKNIGHT", "PALADIN", "DRUID", "MONK", "ROGUE", "PRIEST", "MAGE", "WARLOCK", "HUNTER", "SHAMAN",}
-}
-
 -- Used to find localized subType names
 local subTypeLookup = {
 	["Cloth"]					= 124168, -- Felgrease-Smudged Robes
@@ -935,34 +935,6 @@ local subTypeLookup = {
 	["Warglaives"]				= 141604, -- Glaive of the Fallen
 	["Artifact Relic"]		= 141271, -- Hope of the Forest
 }
-
--- Never autopass these armor types
-local autopassOverride = {
-	"INVTYPE_CLOAK",
-}
-
-function RCLootCouncil:AutoPassCheck(subType, equipLoc, link)
-	if not tContains(autopassOverride, equipLoc) then
-		if equipLoc == "" and subType == self.db.global.localizedSubTypes["Artifact Relic"] then
-			local id = self:GetItemIDFromLink(link)
-			for i = 1, C_ArtifactUI.GetEquippedArtifactNumRelicSlots() do
-				if C_ArtifactUI.CanApplyRelicItemIDToEquippedArtifactSlot(id,i) then -- We can equip it
-					return false -- We can equip it, so don't autopassTable
-				end
-			end
-			return true -- We checked all the slots, and it didn't fit anywhere
-
-		elseif subType and autopassTable[self.db.global.localizedSubTypes[subType]] then
-			return tContains(autopassTable[self.db.global.localizedSubTypes[subType]], self.playerClass)
-		end
-		-- The item wasn't a type we check for, but it might be a token
-		local id = type(link) == "number" and link or self:GetItemIDFromLink(link) -- Convert to id if needed
-		if RCTokenClasses[id] then -- It's a token
-			return not tContains(RCTokenClasses[id], self.playerClass)
-		end
-	end
-	return false
-end
 
 function RCLootCouncil:LocalizeSubTypes()
 	if self.db.global.localizedSubTypes.created then return end -- We only need to create it once

@@ -2,11 +2,11 @@
 ## Title: LDB Artifact
 ## Notes: A simple data broker display for current Artifact Power
 ## Author: Znuff
-## X-Date: 2016-09-11T03:19:10Z
+## X-Date: 2016-09-18T04:12:08Z
 ## X-Email: znuffy@gmail.com
-## Version: v1.3
+## Version: v1.4
 ## OptionalDeps: LibDataBroker-1.1
-## X-Curse-Packaged-Version: v1.3
+## X-Curse-Packaged-Version: v1.4
 ## X-Curse-Project-Name: Broker Artifact
 ## X-Curse-Project-ID: ldb-artifact
 ## X-Curse-Repository-ID: wow/ldb-artifact/mainline

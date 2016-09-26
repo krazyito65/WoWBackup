@@ -80,10 +80,11 @@ artifactXP.OnClick = function(frame, button)
 			-- do stuff to send ArtifactXP to chat
 			local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop = C_ArtifactUI.GetEquippedArtifactInfo();
 			local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP)
+			local artifactLink = GetInventoryItemLink("player", 16)
 			if ( numPointsAvailableToSpend > 0 ) then
-				DEFAULT_CHAT_FRAME.editBox:SetText(string.format("%s: %d/%d (Rank %d+%d)", name, xp, xpForNextPoint, pointsSpent, numPointsAvailableToSpend))
+				DEFAULT_CHAT_FRAME.editBox:SetText(string.format("%s: %d/%d (Rank %d+%d)", artifactLink, xp, xpForNextPoint, pointsSpent, numPointsAvailableToSpend))
 			else 
-				DEFAULT_CHAT_FRAME.editBox:SetText(string.format("%s: %d/%d (Rank %d)", name, xp, xpForNextPoint, pointsSpent))
+				DEFAULT_CHAT_FRAME.editBox:SetText(string.format("%s: %d/%d (Rank %d)", artifactLink, xp, xpForNextPoint, pointsSpent))
 			end
 		else
 			ArtifactFrame_LoadUI()

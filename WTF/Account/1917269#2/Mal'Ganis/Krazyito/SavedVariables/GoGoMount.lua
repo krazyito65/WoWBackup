@@ -564,7 +564,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1082] = {
+		[606] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -576,17 +576,19 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1022] = {
+		["Mana-Tombs"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
-		[1086] = {
+		["Scarlet Monastery"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
 		[736] = {
 			["Preferred"] = {
@@ -600,25 +602,23 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Scarlet Monastery"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 962,
-		},
-		[1041] = {
+		[1086] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		["The Nexus"] = {
+		[1017] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
+		},
+		[1065] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		[896] = {
 			["Preferred"] = {
@@ -638,7 +638,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[161] = {
+		[1067] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -656,7 +656,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1024] = {
+		[764] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -668,13 +668,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[988] = {
+		[720] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[241] = {
+		[32] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -698,7 +698,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1007] = {
+		[490] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -765,7 +765,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1014] = {
+		[751] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -790,7 +790,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[13] = {
+		[465] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -808,7 +808,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[465] = {
+		[13] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -821,7 +821,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[751] = {
+		[1014] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -858,7 +858,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[490] = {
+		[1007] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -870,13 +870,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[32] = {
+		[241] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[720] = {
+		[988] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -889,7 +889,7 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 962,
 		},
-		[764] = {
+		[1024] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -901,19 +901,20 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1067] = {
+		[161] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[1065] = {
+		["The Nexus"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
+			["ZoneID"] = 962,
 		},
-		[1017] = {
+		[1041] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -926,14 +927,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 857,
 		},
-		["Mana-Tombs"] = {
+		[1022] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 962,
 		},
-		[606] = {
+		[1082] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -941,7 +941,7 @@ GoGo_Prefs = {
 		},
 	},
 	["DisableMountNotice"] = false,
-	["DisableWaterFlight"] = false,
+	["autodismount"] = false,
 	["DisableUpdateNotice"] = false,
 	["DruidDisableInCombat"] = false,
 	["version"] = "7.0.12",
@@ -955,7 +955,7 @@ GoGo_Prefs = {
 		121820, -- [4]
 		61469, -- [5]
 	},
-	["autodismount"] = false,
+	["DisableWaterFlight"] = false,
 }
 GoGo_DebugLog = {
 }
