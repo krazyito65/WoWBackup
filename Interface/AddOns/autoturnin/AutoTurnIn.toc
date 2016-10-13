@@ -13,12 +13,16 @@
 ## X-Date: 2016-07-21
 ## X-Category: Quest
 ## X-Embeds: Ace3
-## X-Curse-Packaged-Version: 7.0.9
+## X-Curse-Packaged-Version: 7.1.0
 ## X-Curse-Project-Name: AutoTurnIn
 ## X-Curse-Project-ID: autoturnin
 ## X-Curse-Repository-ID: wow/autoturnin/mainline
 
 embeds.xml
+libs\DropDownMenu\UIDropDownMenuTemplates.xml
+libs\DropDownMenu\UIDropDownMenu.lua
+libs\DropDownMenu\EasyMenu.lua
+
 loc\localization_RU.lua
 loc\localization_EN.lua
 loc\localization_DE.lua

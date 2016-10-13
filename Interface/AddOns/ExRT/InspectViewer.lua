@@ -708,6 +708,7 @@ function module.options:Load()
 					for _,item in pairs(line.items) do
 						item:Hide()
 						item.text:SetText("")
+						item.text:Color()
 						item.border:Hide()
 					end
 					line.perksData = nil
@@ -742,11 +743,17 @@ function module.options:Load()
 									end
 									line.items[j].texture:SetTexture(itemTexture)
 									line.items[j].link = item
+									local itemColor = select(4,GetItemQualityColor(itemQuality or 1))
+									if itemQuality == 6 then
+										itemLevel = nil
+									end
+									line.items[j].text:SetText("|c"..(itemColor or "ffffffff")..(itemLevel or ""))
+									
 									if (enchantID == 0 and (slotID == 2 or slotID == 15 or slotID == 11 or slotID == 12 or (not ExRT.isLegionContent and (slotID == 16 or (module.db.specHasOffhand[spec or 0] and slotID == 17)))) and module.db.colorizeNoEnch) or
 										(items_ilvl[slotID] and items_ilvl[slotID] > 0 and items_ilvl[slotID] < colorizeLowIlvl630 and module.db.colorizeLowIlvl) or
 										(module.db.colorizeNoGems and ExRT.F.IsBonusOnItem(item,module.db.socketsBonusIDs) and IsItemHasNotGem(item)) or 
 										(module.db.colorizeNoGems and (slotID == 16 or slotID == 17) and itemQuality == 6 and IsArtifactItemHasNot3rdGem(item)) or 
-										(module.db.colorizeNoTopEnchGems and not IsTopEnchAndGems(item) and not ((slotID == 16 or slotID == 17) and itemQuality == 6)) or
+										(module.db.colorizeNoTopEnchGems and not IsTopEnchAndGems(item) and not ((slotID == 16 or slotID == 17) and itemQuality == 6) and not (slotID == 3)) or
 										(module.db.colorizeNoValorUpgrade and not IsValorUpgraded(item)) or
 										(items_ilvl[slotID] and items_ilvl[slotID] > 0 and items_ilvl[slotID] < colorizeLowIlvl685 and module.db.colorizeLowIlvl685)
 										then
@@ -895,9 +902,10 @@ function module.options:Load()
 						
 						local db
 						for long_name,DB in pairs(module.db.artifactDB) do
-							if ExRT.F.delUnitNameServer(long_name) == name then
-								db = DB
-								break
+							if ExRT.F.delUnitNameServer(long_name) == ExRT.F.delUnitNameServer(name) then
+								if (not db) or (DB.time > db.time) then
+									db = DB
+								end
 							end						
 						end
 						
@@ -965,9 +973,10 @@ function module.options:Load()
 						
 						local db
 						for long_name,DB in pairs(module.db.artifactDB) do
-							if ExRT.F.delUnitNameServer(long_name) == name then
-								db = DB
-								break
+							if ExRT.F.delUnitNameServer(long_name) == ExRT.F.delUnitNameServer(name) then
+								if (not db) or (DB.time > db.time) then
+									db = DB
+								end
 							end						
 						end
 						
@@ -1247,6 +1256,8 @@ function module.options:Load()
 			item.border.background = item.border:CreateTexture(nil,"OVERLAY")
 			item.border.background:SetPoint("TOPLEFT")
 			item.border.background:SetPoint("BOTTOMRIGHT")
+			
+			--item.ilvl = ELib:Text(item,"",11):Color():Point("RIGHT",item,"LEFT",-2,0):Size(0,30):Outline()
 			
 			item.border:Hide()
 			item:Hide()
@@ -1925,7 +1936,10 @@ function module.options:Load()
 					end
 				end
 			end
-		end		
+		end	
+		for i=numUsedLines+1,#PerksTab.DependencyLines do
+			PerksTab.DependencyLines[i]:Hide()
+		end
 	end
 
 	

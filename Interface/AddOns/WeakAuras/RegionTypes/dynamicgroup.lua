@@ -256,11 +256,10 @@ local function modify(parent, region, data)
                 tray:SetWidth(regionData.data.width);
                 tray:SetHeight(regionData.data.height);
 
-                if (tray.region ~= regionData.region or tray.selfPoint ~= selfPoint) then
+                local point, relativeTo, relativePoint, xOfs, yOfs = regionData.region:GetPoint();
+                if (relativeTo ~= tray or relativePoint ~= selfPoint or point ~= selfPoint or xOfs ~= 0 or yOfs ~= 0) then
                     regionData.region:ClearAllPoints();
-                    regionData.region:SetPoint(selfPoint, region.trays[regionData.key], selfPoint);
-                    tray.region = regionData.region;
-                    tray.selfPoint = selfPoint;
+                    regionData.region:SetPoint(selfPoint, tray, selfPoint);
                 end
             end
         end
@@ -625,15 +624,12 @@ local function modify(parent, region, data)
     region:PositionChildren();
 
     -- Adjust frame-level sorting
-    local lowestRegion = WeakAuras.regions[data.controlledChildren[#data.controlledChildren]] and WeakAuras.regions[data.controlledChildren[#data.controlledChildren]].region
-    if(lowestRegion) then
-        local frameLevel = lowestRegion:GetFrameLevel()
-        for i=1,#region.controlledRegions do
-            local childRegion = region.controlledRegions[i].region
-            if(childRegion) then
-                frameLevel = frameLevel + 1
-                childRegion:SetFrameLevel(frameLevel)
-            end
+    local frameLevel = 1;
+    for i=1,#region.controlledRegions do
+        local childRegion = region.controlledRegions[i].region
+        if(childRegion) then
+            frameLevel = frameLevel + 4
+            childRegion:SetFrameLevel(frameLevel)
         end
     end
 

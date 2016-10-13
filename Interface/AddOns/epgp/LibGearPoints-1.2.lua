@@ -570,6 +570,7 @@ local ITEM_BONUS_GP = {
   [564] = 200, -- extra socket
   [565] = 200, -- extra socket
   [572] = 200, -- extra socket
+  [1808] = 200, -- extra socket
 }
 
 -- The default quality threshold:

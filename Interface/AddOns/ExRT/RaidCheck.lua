@@ -24,7 +24,7 @@ module.db.tableFood = {
 --Haste		Mastery		Crit		Versa		Fire dmg
 [201330]=225,	[201332]=225,	[201223]=225,	[201334]=225,	[201336]=225,
 [225598]=300,	[225599]=300,	[225597]=300,	[225600]=300,	[225601]=300,
-[225603]=375,	[225604]=375,	[225602]=375,	[225604]=375,	[225606]=375,
+[225603]=375,	[225604]=375,	[225602]=375,	[225605]=375,	[225606]=375,
 
 }
 module.db.StaminaFood = {[160600]=true,[175784]=true,[160883]=true,[165802]=true,[180747]=true}
@@ -71,9 +71,9 @@ module.db.RaidCheckReadyPPLNum = 0
 module.db.RaidCheckReadyCheckHideSchedule = nil
 
 module.db.tableRunes = {
-	[175456]=true,	--Agi
-	[175457]=true,	--Int
-	[175439]=true,	--Str
+	--[175456]=true,	--Agi
+	--[175457]=true,	--Int
+	--[175439]=true,	--Str
 	
 	[224001]=true,	--Legion
 }
@@ -162,7 +162,7 @@ end
 
 
 local function GetRunes(checkType)
-	local f = {[0]={},[50]={}}
+	local f = {[0]={},[375]={}}
 	local gMax = ExRT.F.GetRaidDiffMaxGroup()
 	for j=1,40 do
 		local name,_,subgroup = GetRaidRosterInfo(j)
@@ -175,7 +175,7 @@ local function GetRunes(checkType)
 				else
 					local isRune = module.db.tableRunes[spellId]
 					if isRune then
-						f[50][ #f[50]+1 ] = name
+						f[375][ #f[375]+1 ] = name
 						isAnyBuff = true
 					end
 				end
@@ -187,7 +187,7 @@ local function GetRunes(checkType)
 	end
 	
 	if not checkType or checkType == 1 then
-		for _,stats in ipairs({0,50}) do
+		for _,stats in ipairs({0,375}) do
 			local result = format("|cff00ff00%d (%d):|r ",stats,#f[stats])
 			for i=1,#f[stats] do
 				result = result .. f[stats][i]
@@ -241,7 +241,9 @@ local function GetFood(checkType)
 							stats = ceil( stats / 1.5 )
 						end
 						stats = stats or foodType
-						if spellId == 188534 then stats = 125 end
+						if spellId == 188534 then stats = 125
+						elseif spellId == 225606 then stats = 375
+						elseif spellId == 225601 then stats = 300 end
 					
 						f[stats] = f[stats] or {}
 						f[stats][ #f[stats]+1 ] = name

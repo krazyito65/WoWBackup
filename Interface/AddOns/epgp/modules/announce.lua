@@ -43,16 +43,16 @@ end
 
 function mod:EPAward(event_name, name, reason, amount, mass)
   if mass then return end
-  mod:Announce(L["%+d EP (%s) to %s"], amount, reason, name)
+  mod:Announce(L["%+d EP (%s) to %s"], amount, reason, EPGP:GetDisplayCharacterName(name))
 end
 
 function mod:GPAward(event_name, name, reason, amount, mass)
   if mass then return end
-  mod:Announce(L["%+d GP (%s) to %s"], amount, reason, name)
+  mod:Announce(L["%+d GP (%s) to %s"], amount, reason, EPGP:GetDisplayCharacterName(name))
 end
 
 function mod:BankedItem(event_name, name, reason, amount, mass)
-  mod:Announce(L["%s to %s"], reason, name)
+  mod:Announce(L["%s to %s"], reason, EPGP:GetDisplayCharacterName(name))
 end
 
 local function MakeCommaSeparated(t)
@@ -60,6 +60,7 @@ local function MakeCommaSeparated(t)
   local awarded = ""
 
   for name in pairs(t) do
+    name = EPGP:GetDisplayCharacterName(name)
     if first then
       awarded = name
       first = false
@@ -128,14 +129,14 @@ function mod:CoinLootGood(event_name, sender, rewardLink, numCoins)
   if not UnitInRaid("player") or diffculty == 7 then return end
 
   local _, _, _, ilvl, _, _, _, _, _ = GetItemInfo(rewardLink)
-  mod:Announce(format(L["Bonus roll for %s (%s left): got %s (ilvl %d)"], sender, numCoins, rewardLink, ilvl or 1))
+  mod:Announce(format(L["Bonus roll for %s (%s left): got %s (ilvl %d)"], EPGP:GetDisplayCharacterName(sender), numCoins, rewardLink, ilvl or 1))
 end
 
 function mod:CoinLootBad(event_name, sender, numCoins)
   local _, _, diffculty = GetInstanceInfo()
   if not UnitInRaid("player") or diffculty == 7 then return end
 
-  mod:Announce(format(L["Bonus roll for %s (%s left): got gold"], sender, numCoins))
+  mod:Announce(format(L["Bonus roll for %s (%s left): got gold"], EPGP:GetDisplayCharacterName(sender), numCoins))
 end
 
 mod.dbDefaults = {

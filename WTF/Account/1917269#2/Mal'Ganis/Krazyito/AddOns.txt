@@ -249,10 +249,10 @@ VuhDo: enabled
 SpartanUI: disabled
 AtlasLoot_Loader: disabled
 AceGUI-3.0-SharedMediaWidgets: enabled
-epgp: disabled
+epgp: enabled
 SkadaWindowButtons: disabled
-epgp_lootmaster_ml: disabled
-epgp_lootmaster: disabled
+epgp_lootmaster_ml: enabled
+epgp_lootmaster: enabled
 oRA3: disabled
 TauntMaster: disabled
 SkadaAvoidanceMitigation: disabled
@@ -518,7 +518,7 @@ PhoenixStyleMod_Panda_tier3: enabled
 PhoenixStyleMod_Panda_tier2: enabled
 PhoenixStyleMod_Panda_tier1: enabled
 DeathNote: disabled
-TomTom: enabled
+TomTom: disabled
 CloudSerpent: disabled
 TurnIn: disabled
 ElvUI_AddOnSkins: disabled
@@ -715,7 +715,7 @@ BadBoy_History: enabled
 BanditsGuileHelper: disabled
 !BugGrabber: enabled
 BugSack: enabled
-CurrencySorter: enabled
+CurrencySorter: disabled
 DataStore_Garrisons: disabled
 ExRT: enabled
 LFG_Silence: enabled
@@ -786,7 +786,7 @@ CT_Viewport: disabled
 Grail-Rewards: disabled
 QuickQuest: enabled
 Broker_TimeToExecute: enabled
-epgp-lootmaster-fp: disabled
+epgp-lootmaster-fp: enabled
 LeechTrinketCounter: disabled
 WowheadGarrisonTimer: disabled
 GoGoMount: enabled
@@ -849,3 +849,5 @@ LinkWrangler: enabled
 MobInfo2: enabled
 MultiTips: enabled
 LibPetJournal-2.0: enabled
+RCLootCouncil_GroupGear: enabled
+lib-st: enabled

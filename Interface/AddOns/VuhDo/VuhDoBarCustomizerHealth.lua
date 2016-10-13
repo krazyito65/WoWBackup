@@ -137,7 +137,7 @@ end
 --
 local function VUHDO_getKiloText(aNumber, aMaxNumber, aSetup)
 	return aSetup["LIFE_TEXT"]["verbose"] and aNumber 
-		or aMaxNumber >= 1000000 and format("%.1fM", aNumber * 0.000001)
+		or (aNumber >= 1000000 or aNumber <= -1000000) and format("%.1fM", aNumber * 0.000001)
 		or aMaxNumber > 100000 and format("%.0fk", aNumber * 0.001)
 		or aMaxNumber > 10000 and format("%.1fk", aNumber * 0.001)
 		or aNumber;

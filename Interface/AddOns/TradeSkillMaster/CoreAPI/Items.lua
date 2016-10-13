@@ -183,6 +183,7 @@ function TSMAPI.Item:IsSoulbound(...)
 	if type(firstArg) == "string" then
 		TSMAPI:Assert(numArgs <= 2, "Too many arguments provided with itemString")
 		itemString, ignoreBOA = ...
+		itemString = TSMAPI.Item:ToItemString(itemString)
 		if strmatch(itemString, "^p:") then
 			-- battle pets are not soulbound
 			return
@@ -194,13 +195,19 @@ function TSMAPI.Item:IsSoulbound(...)
 	else
 		TSMAPI:Assert(false, "Invalid arguments")
 	end
-	local itemLink = bag and slot and GetContainerItemLink(bag, slot)
-	if itemLink and private.soulboundCache[itemLink] then
-		return private.soulboundCache[itemLink]
+	if itemString then
+		if not private.soulboundCache[itemString] then
+			private.soulboundCache[itemString] = { result = nil, resultIgnoreBOA = nil }
+		end
+		if ignoreBOA and private.soulboundCache[itemString].resultIgnoreBOA ~= nil then
+			return private.soulboundCache[itemString].resultIgnoreBOA
+		elseif not ignoreBOA and private.soulboundCache[itemString].result ~= nil then
+			return private.soulboundCache[itemString].result
+		end
 	end
 
 	local scanTooltip = private.GetScanTooltip()
-	local result = nil
+	local result = false
 	if itemString then
 		-- it's an itemString
 		scanTooltip:SetHyperlink(private.ToWoWItemString(itemString))
@@ -228,7 +235,8 @@ function TSMAPI.Item:IsSoulbound(...)
 		return result
 	end
 
-	for id=1, scanTooltip:NumLines() do
+	local numLines = scanTooltip:NumLines()
+	for id=1, numLines do
 		local text = private.GetTooltipText(_G[scanTooltip:GetName().."TextLeft"..id])
 		if text then
 			if (text == ITEM_BIND_ON_PICKUP and id < 4) or text == ITEM_SOULBOUND or text == ITEM_BIND_QUEST then
@@ -239,8 +247,15 @@ function TSMAPI.Item:IsSoulbound(...)
 		end
 	end
 
-	if itemLink then
-		private.soulboundCache[itemLink] = result
+	if not result and numLines <= 1 then
+		-- the tooltip didn't fully load
+		return nil
+	elseif itemString then
+		if ignoreBOA then
+			private.soulboundCache[itemString].resultIgnoreBOA = result
+		elseif not ignoreBOA then
+			private.soulboundCache[itemString].result = result
+		end
 	end
 
 	return result
@@ -355,9 +370,9 @@ function Items:ScanMerchant(event)
 	for i=1, GetMerchantNumItems() do
 		local itemString = TSMAPI.Item:ToItemString(GetMerchantItemLink(i))
 		if itemString then
-			local price, _, _, _, extendedCost = select(3, GetMerchantItemInfo(i))
+			local price, quantity, _, _, extendedCost = select(3, GetMerchantItemInfo(i))
 			if price > 0 and not extendedCost then
-				TSM.db.global.vendorItems[itemString] = price
+				TSM.db.global.vendorItems[itemString] = TSMAPI.Util:Round(price / quantity)
 			else
 				TSM.db.global.vendorItems[itemString] = nil
 			end
@@ -1005,7 +1020,6 @@ function private:FixItemString(itemString)
 			if lastExtraPart < UPGRADE_VALUE_SHIFT then
 				lastExtraPart = lastExtraPart + UPGRADE_VALUE_SHIFT
 			end
-			-- itemString = gsub(itemString, ":"..count..":", ":"..(count+1)..":")
 			itemString = itemString..":"..lastExtraPart
 		end
 		itemString = private.RemoveExtra(itemString)

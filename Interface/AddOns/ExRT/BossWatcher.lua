@@ -11838,8 +11838,8 @@ function BWInterfaceFrameLoad()
 		[1873] = PositionsTab_Variables.Maps[1520][4],	--"Il'gynoth, The Heart of Corruption"
 		[1841] = PositionsTab_Variables.Maps[1520][10],	--"Ursoc"
 		[1854] = PositionsTab_Variables.Maps[1520][5],	--"Dragons of Nightmare"
-		[1864] = PositionsTab_Variables.Maps[1520][11],	--"Xavius"
-		[1877] = PositionsTab_Variables.Maps[1520][12],	--"Cenarius"
+		[1864] = PositionsTab_Variables.Maps[1520][12],	--"Xavius"
+		[1877] = PositionsTab_Variables.Maps[1520][11],	--"Cenarius"
 		
 		[1849] = PositionsTab_Variables.Maps[1530][1],	--"Skorpyron"
 		[1865] = PositionsTab_Variables.Maps[1530][1],	--"Anomaly"

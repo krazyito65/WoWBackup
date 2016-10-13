@@ -25,9 +25,9 @@ local focusedGazeCount = 1
 
 local L = mod:GetLocale()
 if L then
-	L.custom_off_gaze_assist = "Focused Gaze Assist"
-	L.custom_off_gaze_assist_desc = "Show raid icons in bars and messages for Focused Gaze. Using {rt4} for odd, {rt6} for even soaks. Requires promoted or leader."
-	L.custom_off_gaze_assist_icon = 4
+	L.custom_on_gaze_assist = "Focused Gaze Assist"
+	L.custom_on_gaze_assist_desc = "Show raid icons in bars and messages for Focused Gaze. Using {rt4} for odd, {rt6} for even soaks. Requires promoted or leader."
+	L.custom_on_gaze_assist_icon = 4
 end
 
 --------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ function mod:GetOptions()
 		{197943, "TANK"}, -- Overwhelm
 		{204859, "TANK_HEALER"}, -- Rend Flesh
 		{198006, "ICON", "FLASH", "PULSE", "SAY"}, -- Focused Gaze
-		"custom_off_gaze_assist",
+		"custom_on_gaze_assist",
 		198108, -- Momentum
 		197969, -- Roaring Cacophony
 		205611, -- Miasma
@@ -58,11 +58,12 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "FocusedGaze", 198006)
 	self:Log("SPELL_AURA_REMOVED", "FocusedGazeRemoved", 198006)
 	self:Log("SPELL_AURA_APPLIED", "Momentum", 198108)
+	self:Log("SPELL_AURA_APPLIED_DOSE", "Momentum", 198108)
+	self:Log("SPELL_AURA_APPLIED", "BloodFrenzy", 198388)
+
 	self:Log("SPELL_AURA_APPLIED", "MiasmaDamage", 205611)
 	self:Log("SPELL_DAMAGE", "MiasmaDamage", 212238)
 	self:Log("SPELL_MISSED", "MiasmaDamage", 212238)
-	self:Log("SPELL_ABSORBED", "MiasmaDamage", 212238)
-	self:Log("SPELL_AURA_APPLIED", "BloodFrenzy", 198388)
 end
 
 function mod:OnEngage()
@@ -71,12 +72,12 @@ function mod:OnEngage()
 
 	self:Bar(197943, 10) -- Overwhelm
 	self:Bar(204859, 15) -- Rend Flesh, time to _applied
-	if self:GetOption("custom_off_gaze_assist") then
+	if not self:LFR() and self:GetOption("custom_on_gaze_assist") then
 		self:Bar(198006, 19, CL.count_icon:format(self:SpellName(198006), focusedGazeCount, 4)) -- Focused Gaze, green
 	else
 		self:Bar(198006, 19, CL.count:format(self:SpellName(198006), focusedGazeCount)) -- Focused Gaze
 	end
-	self:Bar(197969, self:LFR() and 45 or 40, CL.count:format(self:SpellName(197969), cacophonyCount)) -- Roaring Cacophony
+	self:Bar(197969, self:Mythic() and 20 or 40, CL.count:format(self:SpellName(197969), cacophonyCount)) -- Roaring Cacophony
 	self:Berserk(300)
 
 	self:RegisterUnitEvent("UNIT_HEALTH_FREQUENT", nil, "boss1")
@@ -92,12 +93,18 @@ end
 
 function mod:RoaringCacophonySuccess(args)
 	local text = CL.count:format(args.spellName, cacophonyCount)
-	if self:Mythic() and cacophonyCount % 2 == 0 then
-		text = text.." - ".. CL.spawning:format(cacophonyCount == 2 and CL.add or CL.adds) -- this might be too long
+	if self:Mythic() and cacophonyCount > 2 and cacophonyCount % 2 == 1 then
+		text = text.." - ".. CL.spawning:format(CL.add)
 	end
 	self:Message(args.spellId, "Urgent", "Alarm", text)
+
 	cacophonyCount = cacophonyCount + 1
-	self:Bar(args.spellId, self:LFR() and 40 or cacophonyCount % 2 == 0 and 10 or 30, CL.count:format(args.spellName, cacophonyCount))
+
+	local next = cacophonyCount % 2 == 0 and 10 or 30
+	if self:Mythic() then
+		next = cacophonyCount == 2 and 20 or cacophonyCount % 2 == 0 and 30 or 10
+	end
+	self:Bar(args.spellId, next, CL.count:format(args.spellName, cacophonyCount))
 end
 
 function mod:Overwhelm(args)
@@ -128,14 +135,16 @@ function mod:FocusedGaze(args)
 	local icon = focusedGazeCount % 2 == 0 and 6 or 4 -- blue (even), green (odd)
 	local countSay = CL.count:format(args.spellName, focusedGazeCount)
 	local countMessage = countSay
+	local showingIcons = false
 
-	if not self:LFR() and self:GetOption("custom_off_gaze_assist") then
+	if not self:LFR() and self:GetOption("custom_on_gaze_assist") then
+		showingIcons = true
 		countSay = CL.count_rticon:format(args.spellName, focusedGazeCount, icon)
 		countMessage = CL.count_icon:format(args.spellName, focusedGazeCount, icon)
 	end
 
 	if self:Me(args.destGUID) then
-		self:Flash(args.spellId, not self:LFR() and self:GetOption("custom_off_gaze_assist") and icon)
+		self:Flash(args.spellId, showingIcons and icon)
 		self:Say(args.spellId, countSay)
 	end
 
@@ -143,7 +152,11 @@ function mod:FocusedGaze(args)
 	self:TargetMessage(args.spellId, args.destName, "Important", "Warning", countMessage, args.spellId, true)
 	self:TargetBar(args.spellId, 6, args.destName, countMessage)
 	focusedGazeCount = focusedGazeCount + 1
-	self:Bar(args.spellId, 40, CL.count_icon:format(args.spellName, focusedGazeCount, focusedGazeCount % 2 == 0 and 6 or 4))
+	if showingIcons then
+		self:Bar(args.spellId, 40, CL.count_icon:format(args.spellName, focusedGazeCount, focusedGazeCount % 2 == 0 and 6 or 4))
+	else
+		self:Bar(args.spellId, 40, CL.count:format(args.spellName, focusedGazeCount))
+	end
 end
 
 function mod:FocusedGazeRemoved(args)
@@ -169,13 +182,13 @@ do
 end
 
 function mod:UNIT_HEALTH_FREQUENT(unit)
-	local hp = UnitHealth(unit) / UnitHealthMax(unit) * 100
-	if hp < 35 then -- Blood Frenzy at 30%
+	local hp = UnitHealth(unit) / UnitHealthMax(unit)
+	if hp < 0.35 then -- Blood Frenzy at 30%
 		self:UnregisterUnitEvent("UNIT_HEALTH_FREQUENT", unit)
 		self:Message(198388, "Neutral", "Info", CL.soon:format(self:SpellName(198388))) -- Blood Frenzy
 	end
 end
 
 function mod:BloodFrenzy(args)
-	self:Message(args.spellId, "Urgent", "Long")
+	self:Message(args.spellId, "Urgent", "Long", "30% - ".. args.spellName)
 end

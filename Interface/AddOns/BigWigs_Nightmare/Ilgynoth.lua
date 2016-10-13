@@ -3,8 +3,6 @@
 -- TODO List:
 -- - TouchOfCorruption doesnt stack on normal. Do we need warnings for that?
 -- - SummonNightmareHorror cd
--- - Is the percentage per blob the same (5%) for every difficulty?
---   LFR (?) - Normal (✔) - Heroic (✔) - Mythic (?)
 
 --------------------------------------------------------------------------------
 -- Module Declaration
@@ -22,9 +20,10 @@ mod.respawnTime = 30
 
 local mobCollector = {}
 local fixateOnMe = nil
-local insidePhase = 1
+local phase = 1 -- 1 = Outside, 2 = Boss, 3 = Outside, 4 = Boss
 local deathglareMarked = {} -- save GUIDs of marked mobs
 local deathglareMarks  = { [6] = true, [5] = true, [4] = true, [3] = true } -- available marks to use
+local deathBlossomCount = 1
 
 local phaseStartTime = 0
 
@@ -39,7 +38,7 @@ local spawnData = {
 			{ 82.0, 2}, -- 2x
 		},
 	},
-	[2] = { -- Outside Phase 2, time after Stuff of Nightmares (209915) applied
+	[3] = { -- Outside Phase 2, time after Stuff of Nightmares (209915) applied
 		[-13190] = { -- Deathglare Tentacle, Mind Flay (208697) SPELL_CAST_START
 			{ 21.5, 2}, -- 2x
 			{116.5, 2}, -- 2x
@@ -48,6 +47,38 @@ local spawnData = {
 			{ 45.0, 3}, -- 3x
 			{140.0, 2}, -- 2x
 			{175.0, 4}, -- 4x
+		},
+	}
+}
+local spawnDataMythic = {
+	[1] = { -- Outside Phase 1
+		[-13190] = { -- Deathglare Tentacle, Mind Flay (208697) SPELL_CAST_START
+			{ 21.5, 1}, -- 1x
+			{ 96.5, 2}, -- 2x
+			{181.5, 1}, -- 1x
+			{251.0, 1}, -- 1x
+		},
+		[-13191] = { -- Corruptor Tentacle, Spew Corruption (208929) SPELL_CAST_START
+			{ 90.0, 2}, -- 2x
+			{185.0, 2}, -- 2x
+			{235.0, 1}, -- 1x
+			{280.0, 2}, -- 2x
+			{300.0, 3}, -- 3x
+		},
+	},
+	[3] = { -- Outside Phase 2, time after Stuff of Nightmares (209915) applied
+		[-13190] = { -- Deathglare Tentacle, Mind Flay (208697) SPELL_CAST_START
+			{ 21.5, 1}, -- 1x
+			{ 26.5, 1}, -- 1x
+			{116.5, 2}, -- 2x
+			{231.5, 2}, -- 2x
+			{251.5, 1}, -- 1x
+		},
+		[-13191] = { -- Corruptor Tentacle, Spew Corruption (208929) SPELL_CAST_START
+			{ 45.0, 2}, -- 2x
+			{120.0, 2}, -- 2x
+			{235.0, 2}, -- 2x
+			{300.0, 4}, -- 4x
 		},
 	}
 }
@@ -73,11 +104,14 @@ if L then
 	L.deathglare_tentacle = -13190 -- Deathglare Tentacle
 	L.deathglare_tentacle_icon = 208697 -- Mind Flay icon
 
+	L.shriveled_eyestalk = -13570 -- Shriveled Eyestalk
+	L.shriveled_eyestalk_icon = 208697 -- Mind Flay icon
+
 	L.custom_off_deathglare_marker = "Deathglare Tentacle marker"
-	L.custom_off_deathglare_marker_desc = "Mark Deathglare Tentacles with {rt6}{rt5}{rt4}{rt3}, requires promoted or leader.\n|cFFFF0000Only 1 person in the raid should have this enabled to prevent marking conflicts.|r\n|cFFADFF2FTIP: If the raid has chosen you to turn this on, having nameplates enabled or quickly mousing over the spears is the fastest way to mark them.|r"
+	L.custom_off_deathglare_marker_desc = "Mark Deathglare Tentacles with {rt6}{rt5}{rt4}{rt3}, requires promoted or leader.\n|cFFFF0000Only 1 person in the raid should have this enabled to prevent marking conflicts.|r\n|cFFADFF2FTIP: If the raid has chosen you to turn this on, having nameplates enabled or quickly mousing over the tentacles is the fastest way to mark them.|r"
 	L.custom_off_deathglare_marker_icon = 6
 
-	L.bloods_remaining = "%d Bloods remaining"
+	L.bloods_remaining = "%d |4Blood:Bloods; remaining"
 end
 
 --------------------------------------------------------------------------------
@@ -86,6 +120,10 @@ end
 
 function mod:GetOptions()
 	return {
+		{"stages", "COUNTDOWN"},
+		223121, -- Final Torpor
+		212886, -- Nightmare Corruption
+
 		--[[ Stage One ]]--
 		"forces",
 
@@ -100,7 +138,7 @@ function mod:GetOptions()
 
 		-- Nightmare Horror
 		"nightmare_horror", -- Nightmare Horror
-		210984, -- Eye of Fate
+		{210984, "TANK_HEALER"}, -- Eye of Fate
 
 		-- Corruptor Tentacle
 		{208929, "SAY", "FLASH"}, -- Spew Corruption
@@ -110,23 +148,31 @@ function mod:GetOptions()
 		"custom_off_deathglare_marker",
 
 		--[[ Stage Two ]]--
-		209915, -- Stuff of Nightmares
-		{210781, "COUNTDOWN"}, -- Dark Reconstitution
-		223121, -- Final Torpor
 		{215128, "SAY", "FLASH", "PROXIMITY"}, -- Cursed Blood
+
+		--[[ Mythic ]]--
+		218415, -- Death Blossom
+		"shriveled_eyestalk",
 	},{
+		["stages"] = "general",
 		["forces"] = -13184, -- Stage One
 		[208689] = -13189, -- Dominator Tentacle
 		[210099] = -13186, -- Nightmare Ichor
 		["nightmare_horror"] = -13188, -- Nightmare Horror (this looks like shit)
 		[208929] = -13191, -- Corruptor Tentacle
 		[208697] = -13190, -- Deathglare Tentacle
-		[209915] = -13192, -- Stage Two
+		[215128] = -13192, -- Stage Two
+		[218415] = "mythic",
 	}
 end
 
 function mod:OnBossEnable()
 	--[[ Stage One ]]--
+	self:Log("SPELL_AURA_APPLIED", "NightmareCorruption", 212886)
+	self:Log("SPELL_ABSORBED", "NightmareCorruption", 212886)
+	self:Log("SPELL_MISSED", "NightmareCorruption", 212886)
+	self:Log("SPELL_PERIODIC_DAMAGE", "NightmareCorruption", 212886)
+
 	-- Dominator Tentacle
 	self:RegisterEvent("RAID_BOSS_WHISPER")
 	self:Log("SPELL_CAST_START", "GroundSlam", 208689)
@@ -143,6 +189,7 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "SummonNightmareHorror", 209387) -- Seeping Corruption, buffed on spawn
 	self:Log("SPELL_AURA_APPLIED", "EyeOfFate", 210984)
 	self:Log("SPELL_AURA_APPLIED_DOSE", "EyeOfFate", 210984)
+	self:Log("SPELL_CAST_SUCCESS", "EyeOfFateCast", 210984)
 
 	-- Corruptor Tentacle
 	self:Log("SPELL_CAST_START", "CorruptorTentacleSpawn", 208929) -- They start casting Spew Corruption instantly
@@ -159,36 +206,35 @@ function mod:OnBossEnable()
 	self:Log("SPELL_CAST_START", "FinalTorpor", 223121)
 	self:Log("SPELL_AURA_APPLIED", "CursedBlood", 215128)
 	self:Log("SPELL_AURA_REMOVED", "CursedBloodRemoved", 215128)
+
+	--[[ Mythic ]]--
+	self:Log("SPELL_CAST_START", "DeathBlossom", 218415)
+	self:Log("SPELL_CAST_SUCCESS", "DeathBlossomSuccess", 218415)
 end
 
 function mod:OnEngage()
 	wipe(mobCollector)
 	fixateOnMe = nil
-	insidePhase = 1
-	bloodsRemaining = 20
+	phase = 1
+	deathBlossomCount = 1
+	bloodsRemaining = self:LFR() and 15 or self:Mythic() and 22 or 20
 	self:CDBar(208689, 11.5) -- Ground Slam
-	self:CDBar("nightmare_horror", 65, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
+	self:CDBar("nightmare_horror", self:Mythic() and 80 or 65, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
+
+	if self:Mythic() then
+		self:Bar(218415, 60) -- Death Blossom
+	end
 
 	phaseStartTime = GetTime()
-	self:StartSpawnTimer(-13190, 1)
-	self:StartSpawnTimer(-13191, 1)
-
+	self:StartSpawnTimer(-13190, 1) -- Deathglare Tentacle
+	self:StartSpawnTimer(-13191, 1) -- Corruptor Tentacle
 
 	wipe(deathglareMarked)
 	if self:GetOption("custom_off_deathglare_marker") then
 		deathglareMarks = { [6] = true, [5] = true, [4] = true, [3] = true }
 
-		self:RegisterEvent("UPDATE_MOUSEOVER_UNIT", "DeathglareMark")
-		self:RegisterEvent("UNIT_TARGET", "DeathglareMark")
-		self:RegisterEvent("NAME_PLATE_UNIT_ADDED", "DeathglareMark")
+		self:RegisterTargetEvents("DeathglareMark")
 	end
-end
-
-function mod:OnBossDisable()
-	wipe(deathglareMarked)
-	self:UnregisterEvent("UPDATE_MOUSEOVER_UNIT")
-	self:UnregisterEvent("UNIT_TARGET")
-	self:UnregisterEvent("NAME_PLATE_UNIT_ADDED")
 end
 
 --------------------------------------------------------------------------------
@@ -196,9 +242,9 @@ end
 --
 
 function mod:StartSpawnTimer(addType, count)
-	--local data = self:Mythic() and spawnDataMythic or self:LFR() and spawnDataLFR or spawnData TODO
-	local data = spawnData
-	local info = data and data[insidePhase][addType][count]
+	if phase == 2 or phase == 4 then return end -- No spawns in boss phase
+	local data = self:Mythic() and spawnDataMythic or spawnData
+	local info = data and data[phase][addType][count]
 	if not info then
 		-- all out of spawn data
 		return
@@ -212,16 +258,14 @@ function mod:StartSpawnTimer(addType, count)
 		self:Bar("forces", length, nextDeathglareText, L.deathglare_tentacle_icon)
 	else
 		nextCorruptorText = CL.count:format(self:SpellName(addType), numSpawns)
-		self:CDBar("forces", length, nextCorruptorText, L.corruptor_tentacle_icon)
+		self:Bar("forces", length, nextCorruptorText, L.corruptor_tentacle_icon)
 	end
 
 	self:ScheduleTimer("StartSpawnTimer", length, addType, count+1)
 end
 
-function mod:DeathglareMark(event, firedUnit)
-	local unit = event == "NAME_PLATE_UNIT_ADDED" and firedUnit or firedUnit and firedUnit.."target" or "mouseover"
+function mod:DeathglareMark(event, unit)
 	local guid = UnitGUID(unit)
-
 	if self:MobId(guid) == 105322 and not deathglareMarked[guid] then
 		local icon = next(deathglareMarks)
 		if icon then -- At least one icon unused
@@ -235,6 +279,17 @@ end
 function mod:DeathglareDeath(args)
 	if deathglareMarked[args.destGUID] then -- Did we mark the Tentacle?
 		deathglareMarks[deathglareMarked[args.destGUID]] = true -- Mark used is available again
+	end
+end
+
+do
+	local prev = 0
+	function mod:NightmareCorruption(args)
+		local t = GetTime()
+		if self:Me(args.destGUID) and t-prev > 1.5 then
+			prev = t
+			self:Message(args.spellId, "Personal", "Alert", CL.you:format(args.spellName))
+		end
 	end
 end
 
@@ -307,17 +362,16 @@ end
 function mod:SummonNightmareHorror(args)
 	self:Message("nightmare_horror", "Important", "Info", CL.spawned:format(self:SpellName(L.nightmare_horror)), L.nightmare_horror_icon)
 	self:Bar("nightmare_horror", 220, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror < TODO beta timer, need live data
-	if self:Tank() or self:Healer() then
-		self:CDBar(210984, 10) -- Deathglare
-	end
+	self:Bar(210984, 13.8) -- Eye of Fate
 end
 
 function mod:EyeOfFate(args)
-	if self:Tank() or self:Healer() then
-		local amount = args.amount or 1
-		self:StackMessage(args.spellId, args.destName, amount, "Important", self:Tank() and amount > 1 and "Warning")
-		self:CDBar(args.spellId, 10)
-	end
+	local amount = args.amount or 1
+	self:StackMessage(args.spellId, args.destName, amount, "Important", self:Tank() and amount > 1 and "Warning")
+end
+
+function mod:EyeOfFateCast(args)
+	self:Bar(args.spellId, 10)
 end
 
 -- Corruptor Tentacle
@@ -360,7 +414,11 @@ do
 			local t = GetTime()
 			if t-prev > 2 then
 				prev = t
-				self:Message(args.spellId, "Neutral", "Info", CL.spawned:format(self:SpellName(L.deathglare_tentacle)), L.deathglare_tentacle_icon)
+				if self:Mythic() and phase == 4 then
+					self:Message("shriveled_eyestalk", "Neutral", "Info", CL.spawned:format(self:SpellName(L.shriveled_eyestalk)), L.shriveled_eyestalk_icon)
+				else
+					self:Message(args.spellId, "Neutral", "Info", CL.spawned:format(self:SpellName(L.deathglare_tentacle)), L.deathglare_tentacle_icon)
+				end
 			end
 		end
 
@@ -371,44 +429,49 @@ do
 end
 
 --[[ Stage Two ]]--
-function mod:StuffOfNightmares(args)
-	if IsEncounterInProgress() then -- Gets buffed when the boss spawns
-		self:Message(args.spellId, "Neutral", "Info")
+function mod:StuffOfNightmares()
+	if self.isEngaged then -- Gets buffed when the boss spawns
+		self:Message("stages", "Neutral", "Long", CL.stage:format(1), false)
+		phase = phase + 1
+		bloodsRemaining = self:LFR() and 15 or self:Mythic() and 22 or 20
+
 		self:Bar("nightmare_horror", 99, L.nightmare_horror, L.nightmare_horror_icon) -- Summon Nightmare Horror
-		insidePhase = insidePhase + 1
-
 		phaseStartTime = GetTime()
-		self:StartSpawnTimer(-13190, 1)
-		self:StartSpawnTimer(-13191, 1)
+		self:StartSpawnTimer(-13190, 1) -- Deathglare Tentacle
+		self:StartSpawnTimer(-13191, 1) -- Corruptor Tentacle
 
-		bloodsRemaining = 20
+		deathBlossomCount = 1
+		if self:Mythic() then
+			self:Bar(218415, 80) -- Death Blossom
+		end
 	end
 end
 
-function mod:StuffOfNightmaresRemoved(args)
-	self:Message(args.spellId, "Neutral", "Info", CL.removed:format(args.spellName))
-
+function mod:StuffOfNightmaresRemoved()
 	self:StopBar(L.nightmare_horror)
 	self:StopBar(nextCorruptorText)
 	self:StopBar(nextDeathglareText)
+	self:StopBar(218415) -- Death Blossom
 
-	-- The boss casts the "Intermission ending" spell after 10s in the phase, but
-	-- we want the bars as soon as the phase starts. This requires hard coding the
-	-- spell ids.
-	-- Intermission 1: Dark Reconstitution (210781), 50+10s (heroic)
-	-- Intermission 2: FinalTorpor (223121), 90+10s (heroic)
-	-- In mod:DarkReconstitution() and mod:FinalTorpor() we overwrite the bars
-	-- started here, just to make sure. It's just me being paranoid.
-	local intermissionSpellId = insidePhase == 1 and 210781 or 223121
-	self:Bar(intermissionSpellId, insidePhase == 1 and 60 or 100, CL.cast:format(self:SpellName(intermissionSpellId)))
+	self:Message("stages", "Neutral", "Long", CL.stage:format(2), false)
+	phase = phase + 1
+
+	if self:Mythic() and phase == 4 then
+		self:Bar("shriveled_eyestalk", 10, L.shriveled_eyestalk, L.shriveled_eyestalk_icon)
+		self:ScheduleTimer("Bar", 10, "shriveled_eyestalk", 20, L.shriveled_eyestalk, L.shriveled_eyestalk_icon)
+	end
 end
 
 function mod:DarkReconstitution(args)
-	self:Bar(args.spellId, 50, CL.cast:format(args.spellName)) -- cast after 10s in phase, overwriting bar started in mod:StuffOfNightmaresRemoved()
+	local timer = self:Mythic() and 55 or 50
+	self:DelayedMessage("stages", timer-10, "Neutral", CL.custom_sec:format(CL.stage:format(1), 10), args.spellId, "Info")
+	self:Bar("stages", timer, CL.stage:format(1), args.spellId) -- cast after 10s in phase (5s in Mythic)
 end
 
 function mod:FinalTorpor(args)
-	self:Bar(args.spellId, 90, CL.cast:format(args.spellName)) -- cast after 10s in phase, overwriting bar started in mod:StuffOfNightmaresRemoved()
+	local timer = self:Mythic() and 55 or 90
+	self:DelayedMessage(args.spellId, timer-10, "Neutral", CL.custom_sec:format(args.spellName, 10), args.spellId, "Info")
+	self:Bar(args.spellId, timer) -- cast after 10s in phase (5s in Mythic)
 end
 
 do
@@ -461,5 +524,23 @@ do
 				self:OpenProximity(args.spellId, 11, proxList)
 			end
 		end
+	end
+end
+
+--[[ Mythic ]]--
+function mod:DeathBlossom(args)
+	self:Message(args.spellId, "Urgent", "Alarm")
+	self:Bar(args.spellId, 15, CL.cast:format(args.spellName))
+	deathBlossomCount = deathBlossomCount + 1
+end
+
+function mod:DeathBlossomSuccess(args)
+	self:Message(args.spellId, "Positive", "Long", CL.over:format(args.spellName))
+	local time = deathBlossomCount == 2 and 90 or deathBlossomCount == 3 and 20 or 0
+	if phase == 3 then
+		time = deathBlossomCount == 2 and 60 or deathBlossomCount == 3 and 100 or 0
+	end
+	if time > 0 then
+		self:Bar(args.spellId, time)
 	end
 end

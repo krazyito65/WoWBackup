@@ -1,7 +1,9 @@
 # BigWigs
 
-## [v12.2-2-g56085a9](https://github.com/BigWigsMods/BigWigs/tree/56085a9c86c6bd4c9871b17d3a13cc32241a3746) (2016-09-26) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v12.2...56085a9c86c6bd4c9871b17d3a13cc32241a3746)
+## [v18](https://github.com/BigWigsMods/BigWigs/tree/v18) (2016-10-12) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v17...v18)
 
--   Nightmare/Trash: Add Unstable Decay  
--   Nightmare/Nythendra: Fix berserk time  
+-   bump version  
+-   Nightmare/Trash: tweak totem marking  
+-   Xavius: Fix Lua error  
+-   Cenarius: Fix Lua error  

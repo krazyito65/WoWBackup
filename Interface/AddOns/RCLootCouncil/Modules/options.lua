@@ -832,7 +832,7 @@ function addon:OptionsTable()
 									},
 									timeout = {
 										order = 2,
-										name = L["Lenght"],
+										name = L["Length"],
 										desc = L["Choose timeout length in seconds"],
 										type = "range",
 										width = "full",
@@ -862,6 +862,28 @@ function addon:OptionsTable()
 										hidden = function() return not self.db.profile.acceptWhispers end,
 									},
 									-- Made further down
+								},
+							},
+							moreInfoOptions = {
+								order = 4,
+								type = "group",
+								name = L["More Info"],
+								inline = true,
+								args = {
+									desc = {
+										order = 1,
+										type = "description",
+										name = L["more_info_desc"],
+									},
+									numMoreInfoButtons = {
+										order = 2,
+										name = L["Number of responses"],
+										type = "range",
+										width = "full",
+										min = 0,
+										max = self.db.profile.maxButtons,
+										step = 1,
+									}
 								},
 							},
 							reset = {

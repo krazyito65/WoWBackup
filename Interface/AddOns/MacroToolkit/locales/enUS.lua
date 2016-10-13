@@ -53,6 +53,7 @@ L["Insert slot"] = true
 L["Backup"] = true
 L["Delete Backup"] = true
 L["Delete all macros"] = true
+L["Delete all macros on the current tab"] = true
 L["Manage Backups"] = true
 L["Restore"] = true
 L["Restore Backup"] = true

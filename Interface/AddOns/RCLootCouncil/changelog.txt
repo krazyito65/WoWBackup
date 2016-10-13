@@ -1,6 +1,28 @@
+==== v2.1.5 ====
+*++Item differences++
+**Now always calculated on the lowest ilvl if two items of the same type is equipped.
+
+**Added Essence of Clarity to the ignore list.
+
+*Bugfixes:
+**//Remade the check that would fail to award double items (#180).//
+**//Loot History will now correctly show the response as it was when awarded (#181).//
+**//Fixed a weird error probably related to Russian lua locale (#179)
+**//Added a fix to time calculations that could sometimes cause an error.//
+**//Using the Version Checker on the guild will now properly have people respond to it.//
+
 ==== v2.1.4 ====
 *++Offspec artifact relics++
 **Added support for offspec artifact, so you longer autopass those items.
+
+*++Mouseover more info++
+**The voting frame now updates the more info tooltip every time you mouseover a candidate.
+**New option to display info about latest loot from more responses. Checkout MasterLooter -> Buttons and Responses -> More Info options.
+
+*++Date-Time column in Loot History++
+**You can now see, and sort by, date and time the item was awarded in the loot history.
+
+*You can no longer start an empty session.
 
 *Bugfixes:
 **//Fixed potential error when handling X-Realm comms (#156).//

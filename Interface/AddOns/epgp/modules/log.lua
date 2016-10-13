@@ -208,9 +208,13 @@ function mod:TrimToOneMonth()
   callbacks:Fire("LogChanged", #self.db.profile.log)
 end
 
+local function GetRegion()
+	return LibStub("LibRealmInfo"):GetCurrentRegion()
+end
+
 function mod:Export()
   local d = {}
-  d.region = GetCVar("portal")
+  d.region = GetRegion()
   d.guild = select(1, GetGuildInfo("player"))
   d.realm = GetRealmName()
   d.base_gp = EPGP:GetBaseGP()
@@ -242,7 +246,7 @@ function mod:Import(jsonStr)
     return
   end
 
-  if d.region and d.region:lower() ~= GetCVar("portal"):lower() then
+  if d.region and d.region:lower() ~= GetRegion():lower() then
     EPGP:Print(L["The imported data is invalid"])
     return
   end

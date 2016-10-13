@@ -3,7 +3,7 @@
 ## X-Curse-Project-Name: LibCompress
 ## X-Curse-Project-ID: libcompress
 ## X-Curse-Repository-ID: wow/libcompress/mainline
-## X-Curse-Packaged-Version: r554
+## X-Curse-Packaged-Version: r561
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

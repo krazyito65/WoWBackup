@@ -43,13 +43,14 @@ local userModules = {
 local frames = {} -- Contains all frames created by RCLootCouncil:CreateFrame()
 local unregisterGuildEvent = false
 local player_relogged = true -- Determines if we potentially need data from the ML due to /rl
+local lootTable = {}
 
 function RCLootCouncil:OnInitialize()
 	--IDEA Consider if we want everything on self, or just whatever modules could need.
   	self.version = GetAddOnMetadata("RCLootCouncil", "Version")
 	self.nnp = false
 	self.debug = false
-	self.tVersion = "Beta3" -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion"
+	self.tVersion = nil -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion"
 
 	self.playerClass = select(2, UnitClass("player"))
 	self.guildRank = L["Unguilded"]
@@ -60,7 +61,6 @@ function RCLootCouncil:OnInitialize()
 	self.enabled = true -- turn addon on/off
 	self.inCombat = false -- Are we in combat?
 	self.recentReconnectRequest = false
-	local lootTable = {}
 
 	self.verCheckDisplayed = false -- Have we shown a "out-of-date"?
 
@@ -211,6 +211,7 @@ function RCLootCouncil:OnInitialize()
 				{	text = L["Greed"],				whisperKey = L["whisperKey_greed"],},	-- 2
 				{	text = L["Minor Upgrade"],		whisperKey = L["whisperKey_minor"],},	-- 3
 			},
+			numMoreInfoButtons = 1,
 			maxAwardReasons = 10,
 			numAwardReasons = 3,
 			awardReasons = {
@@ -231,6 +232,7 @@ function RCLootCouncil:OnInitialize()
 				113588, -- Temporal Crystal
 				124442, -- Chaos Crystal (Legion)
 				124441, -- Leylight Shard (Legion)
+				141303,141304,141305, -- Essence of Clarity (Emerald Nightmare quest item)
 			},
 		},
 	} -- defaults end
@@ -343,6 +345,7 @@ function RCLootCouncil:OnEnable()
 		buttons = {
 			{	text = L["Yes"],
 				on_click = function()
+					self:DebugLog("Player confirmed usage")
 					local lootMethod = GetLootMethod()
 					if lootMethod ~= "master" then
 						self:Print(L["Changing LootMethod to Master Looting"])
@@ -364,6 +367,7 @@ function RCLootCouncil:OnEnable()
 			},
 			{	text = L["No"],
 				on_click = function()
+					self:DebugLog("Player declined usage")
 					RCLootCouncil:Print(L[" is not active in this raid."])
 				end,
 			},
@@ -400,6 +404,7 @@ end
 function RCLootCouncil:ChatCommand(msg)
 	local input, arg1, arg2 = self:GetArgs(msg,3)
 	input = strlower(input or "")
+	self:Debug("/", input, arg1, arg2)
 	if not input or input:trim() == "" or input == "help" or input == L["help"] then
 		if self.tVersion then print(format(L["chat tVersion string"],self.version, self.tVersion))
 		else print(format(L["chat version String"],self.version)) end
@@ -432,7 +437,6 @@ function RCLootCouncil:ChatCommand(msg)
 
 
 	elseif input == 'test' or input == L["test"] then
-		--self:Print(db.ui.versionCheckScale)
 		self:Test(tonumber(arg1) or 1)
 
 	elseif input == 'version' or input == L["version"] or input == "v" or input == "ver" then
@@ -449,8 +453,12 @@ function RCLootCouncil:ChatCommand(msg)
 		self:Print(L["whisper_help"])
 
 	elseif (input == "add" or input == L["add"]) then
+		if not arg1 or arg1 == "" then return self:ChatCommand("help") end
 		if self.isMasterLooter then
 			self:GetActiveModule("masterlooter"):AddUserItem(arg1)
+			if arg2 then
+				self:GetActiveModule("masterlooter"):AddUserItem(arg2)
+			end
 		else
 			self:Print(L["You cannot use this command without being the Master Looter"])
 		end
@@ -586,7 +594,7 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 					if GetNumGroupMembers() >= 8 and not IsInInstance() then
 						self:DebugLog("NotInRaid respond to lootTable")
 						for ses, v in ipairs(lootTable) do
-						 	self:SendCommand("group", "response", self:CreateResponse(ses, v.link, v.ilvl, "NOTINRAID", v.equipLoc))
+						 	self:SendCommand("group", "response", self:CreateResponse(ses, v.link, v.ilvl, "NOTINRAID", v.equipLoc, nil, v.subType))
 						end
 						return
 					end
@@ -605,7 +613,7 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 								if self:AutoPassCheck(v.subType, v.equipLoc, v.link) then
 									self:Debug("Autopassed on: ", v.link)
 									if not db.silentAutoPass then self:Print(format(L["Autopassed on 'item'"], v.link)) end
-									self:SendCommand("group", "response", self:CreateResponse(ses, v.link, v.ilvl, "AUTOPASS", v.equipLoc))
+									self:SendCommand("group", "response", self:CreateResponse(ses, v.link, v.ilvl, "AUTOPASS", v.equipLoc, nil, v.subType))
 									lootTable[ses].autopass = true
 								end
 							else
@@ -644,6 +652,10 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 
 			elseif command == "verTest" and not self:UnitIsUnit(sender, "player") then -- Don't reply to our own verTests
 				local otherVersion, tVersion = unpack(data)
+				-- We want to reply to guild chat if that's where the message is sent
+				if distri == "GUILD" then
+					sender = "guild"
+				end
 				self:SendCommand(sender, "verTestReply", self.playerName, self.playerClass, self.guildRank, self.version, self.tVersion, self:GetInstalledModulesFormattedData())
 				if self.version < otherVersion and not self.verCheckDisplayed and (not (tVersion or self.tVersion)) then
 					self:Print(format(L["version_outdated_msg"], self.version, otherVersion))
@@ -688,6 +700,7 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 				if self:UnitIsUnit(sender, self.masterLooter) then
 					self:Print(format(L["'player' has ended the session"], self.Ambiguate(self.masterLooter)))
 					self:GetActiveModule("lootframe"):Disable()
+					lootTable = {}
 					if self.isCouncil or self.mldb.observe then -- Don't call the voting frame if it wasn't used
 						self:GetActiveModule("votingframe"):EndSession(db.autoClose)
 					end
@@ -766,7 +779,9 @@ end
 
 function RCLootCouncil:Test(num)
 	self:Debug("Test", num)
-	local testItems = {105473,105407,105513,105465,105482,104631,105450,105537,104554,105509,104412,105499,104476,104544,104495,105568,105514,105479,104532,105639,104508,105621,}
+	local testItems = {105473,105407,105513,105465,105482,104631,105450,105537,104554,105509,104412,105499,104476,104544,104495,105568,105514,105479,104532,105639,104508,105621,
+		137471,137463,137474,137472,137468, -- Artifact relics
+	}
 	local items = {};
 	-- pick "num" random items
 	for i = 1, num do
@@ -988,7 +1003,7 @@ end
 -- @param subType		The item's subType, needed for Artifact Relics
 -- @returns A formatted table that can be passed directly to :SendCommand("group", "response", -return-)
 function RCLootCouncil:CreateResponse(session, link, ilvl, response, equipLoc, note, subType)
-	self:DebugLog("CreateResponse", session, link, ilvl, response, equipLoc, note)
+	self:DebugLog("CreateResponse", session, link, ilvl, response, equipLoc, note, subType)
 	local g1, g2;
 	if equipLoc == "" and subType == self.db.global.localizedSubTypes["Artifact Relic"] then
 		g1, g2 = self:GetArtifactRelics(link)
@@ -996,7 +1011,11 @@ function RCLootCouncil:CreateResponse(session, link, ilvl, response, equipLoc, n
 	 	g1, g2 = self:GetPlayersGear(link, equipLoc)
 	end
 	local diff = nil
-	if g1 then diff = (ilvl - select(4, GetItemInfo(g1))) end
+	if g2 then
+		local g1diff, g2diff = select(4, GetItemInfo(g1)), select(4, GetItemInfo(g2))
+		diff = g1diff >= g2diff and ilvl - g2diff or ilvl - g1diff
+	elseif g1 then -- Artifact Relic might be nil
+		diff = (ilvl - select(4, GetItemInfo(g1))) end
 	return
 		session,
 		self.playerName,
@@ -1068,7 +1087,7 @@ end
 
 function RCLootCouncil:GetNumberOfDaysFromNow(oldDate)
 	local d, m, y = strsplit("/", oldDate, 3)
-	local sinceEpoch = time({year = "20"..y, month = m, day = d}) -- convert from string to seconds since epoch
+	local sinceEpoch = time({year = "20"..y, month = m, day = d, hour = 0}) -- convert from string to seconds since epoch
 	local diff = date("*t", time() - sinceEpoch) -- get the difference as a table
 	-- Convert to number of d/m/y
 	return diff.day - 1, diff.month - 1, diff.year - 1970
@@ -1117,7 +1136,7 @@ end
 function RCLootCouncil:NewMLCheck()
 	local old_ml = self.masterLooter
 	self.isMasterLooter, self.masterLooter = self:GetML()
-	if self.masterLooter == "Unknown" then
+	if self.masterLooter and self.masterLooter ~= "" and strfind(self.masterLooter, "Unknown") then
 		-- ML might be unknown for some reason
 		self:Debug("Unknown ML")
 		return self:ScheduleTimer("NewMLCheck", 2)
@@ -1127,10 +1146,11 @@ function RCLootCouncil:NewMLCheck()
 		self:GetActiveModule("masterlooter"):Disable()
 	end
 	if self:UnitIsUnit(old_ml, self.masterLooter) or db.usage.never then return end -- no change
+	if self.masterLooter == nil then return end -- We're not using ML
 	-- At this point we know the ML has changed, so we can wipe the council
 	self:Debug("Resetting council as we have a new ML!")
 	self.council = {}
-	if not self.isMasterLooter and self.masterLooter then return end -- Someone else is ML
+	if not self.isMasterLooter and self.masterLooter then return end -- Someone else has become ML
 
 	-- We are ML and shouldn't ask the player for usage
 	if self.isMasterLooter and db.usage.ml then -- addon should auto start
@@ -1311,8 +1331,10 @@ function RCLootCouncil:UnitName(unit)
 	-- Then see if we already have a realm name appended
 	local find = strfind(unit, "-", nil, true)
 	if find and find < #unit then -- "-" isn't the last character
-		-- Should be save to return unit
-		return unit
+		-- Let's give it same treatment as below so we're sure it's the same
+		local name, realm = strsplit("-", unit, 2)
+		name = name:lower():gsub("^%l", string.upper)
+		return name.."-"..realm
 	end
 	-- Apparently functions like GetRaidRosterInfo() will return "real" name, while UnitName() won't
 	-- always work with that (see ticket #145). We need this to be consistant, so just lowercase the unit:

@@ -175,7 +175,7 @@ L["Frame Strata"] = "Strate du cadre"
 L["From Template"] = "D'après un modèle"
 L["Glow Action"] = "Action de l'éclat"
 L["Green Rune"] = "Rune verte"
-L["Group"] = "Grouper"
+L["Group"] = "Groupe"
 L["Group aura count description"] = [=[Le nombre de membres du %s qui doivent être affectés par une ou plusieurs des auras sélectionnées pour que l'affichage soit déclenché.
 Si le nombre entré est un entier (ex. 5), le nombre de membres du raid affectés sera comparé au nombre entré.
 Si le nombre entré est decimal (ex. 0.5), une fraction (ex. 1/2), ou un pourcentage (ex. 50%%), alors cette fraction du %s doit être affectée.

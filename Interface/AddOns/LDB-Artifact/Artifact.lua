@@ -29,14 +29,28 @@ local function artifactXP_PopulateValues()
   
   artifactXP.icon = icon
   
+	xpLeft = xpForNextPoint - xp
+	
   if ( xpForNextPoint > 0 ) then
-	if ( numPointsAvailableToSpend > 0 ) then
-		artifactXP.text = string.format("%d/%d AP (|cffff0000+%d|r)", xp, xpForNextPoint, numPointsAvailableToSpend)
-	else
-		artifactXP.text = string.format("%d/%d AP", xp, xpForNextPoint)
-		artifactXP.value = string.format("|cffffff00-%d|r", xpForNextPoint - xp)
-		artifactXP.suffix = "AP"
-	end
+	
+		if xpForNextPoint >= 100000 then
+			xpForNextPoint = string.format("%.1f|cff696969k|r", xpForNextPoint / 1000)
+			if xp > 1000 then
+				xp = string.format("%.1f|cff696969k|r", xp / 1000)
+			end
+		end
+		
+		if xpLeft >= 10000 then
+			xpLeft = string.format("-%.1f|cff696969k|r", xpLeft / 1000)
+		end
+		
+		if ( numPointsAvailableToSpend > 0 ) then
+			artifactXP.text = string.format("%s/%s AP (|cffff0000+%d|r)", xp, xpForNextPoint, numPointsAvailableToSpend)
+		else
+			artifactXP.text = string.format("%s/%s AP", xp, xpForNextPoint)
+			artifactXP.value = string.format("|cffffff00%s|r", xpLeft)
+			artifactXP.suffix = "AP"
+		end
   end
   
 end

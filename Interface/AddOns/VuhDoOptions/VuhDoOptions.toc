@@ -8,7 +8,7 @@
 ## DefaultState: Enabled
 ## Dependencies: VuhDo
 ## LoadOnDemand: 0
-## X-Curse-Packaged-Version: v3.77-beta-1
+## X-Curse-Packaged-Version: v3.77-beta-4
 ## X-Curse-Project-Name: VuhDo
 ## X-Curse-Project-ID: vuhdo
 ## X-Curse-Repository-ID: wow/vuhdo/mainline

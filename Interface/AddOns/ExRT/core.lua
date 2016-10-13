@@ -1,6 +1,14 @@
---	0:13 28.08.2016
+--	18:05 01.10.2016
 
 --[[
+3780
+* New bossmods: Dragons, Il'gynoth, Xavius
+* Fixed bug with inspecting artifact traits for people from other realms
+* Raid Inspect: added ilvl text on items (except artifact weapon)
+* Fixed food checks
+* Another roundup for fixing conflicting with other addons
+* Minor fixes
+
 3765
 * Temp fix errors with artifact scaning
 
@@ -26,7 +34,7 @@ http://i.imgur.com/59cZVTY.png
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3765
+ExRT.V = 3780
 ExRT.T = "R"
 ExRT.is7 = false		--> Legion (7.x) Client
 

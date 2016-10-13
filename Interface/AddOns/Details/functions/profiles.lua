@@ -953,7 +953,8 @@ local default_profile = {
 		remove_realm_from_name = true,
 		trash_concatenate = false,
 		trash_auto_remove = true,
-	
+		world_combat_is_trash = false,
+		
 	--> death log
 		deadlog_limit = 16,
 		deadlog_events = 32,
@@ -998,7 +999,7 @@ local default_profile = {
 		use_battleground_server_parser = true,
 		force_activity_time_pvp = true,
 		death_tooltip_width = 300,
-		override_spellids = false,
+		override_spellids = true,
 	
 	--> skins
 		standard_skin = false,

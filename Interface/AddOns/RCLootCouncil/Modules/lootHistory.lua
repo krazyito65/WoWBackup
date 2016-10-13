@@ -34,9 +34,10 @@ function LootHistory:OnInitialize()
 	scrollCols = {
 		{name = "",					width = ROW_HEIGHT, },			-- Class icon, should be same row as player
 		{name = L["Name"],		width = 100, 				},		-- Name of the player
+		{name = L["Time"],		width = 125, comparesort = self.DateTimeSort	},			-- Time of awarding
 		{name = "",					width = ROW_HEIGHT, },			-- Item at index icon
 		{name = L["Item"],		width = 250, 				}, 	-- Item string
-		{name = L["Reason"],		width = 230, comparesort = self.ResponseSort, sort = "asc", sortnext = 2},	-- Response aka the text supplied to lootDB...response
+		{name = L["Reason"],		width = 220, comparesort = self.ResponseSort, sort = "asc", sortnext = 2},	-- Response aka the text supplied to lootDB...response
 	}
 	filterMenu = CreateFrame("Frame", "RCLootCouncil_LootHistory_FilterMenu", UIParent, "Lib_UIDropDownMenuTemplate")
 	Lib_UIDropDownMenu_Initialize(filterMenu, self.FilterMenu, "MENU")
@@ -126,6 +127,7 @@ function LootHistory:BuildData()
 					cols = {
 						{DoCellUpdate = addon.SetCellClassIcon, args = {x.class}},
 						{value = addon.Ambiguate(name), color = addon:GetClassColor(x.class)},
+						{value = date.. "-".. i.time or "", args = {time = i.time, date = date},},
 						{DoCellUpdate = self.SetCellGear, args={i.lootWon}},
 						{value = i.lootWon},
 						{DoCellUpdate = self.SetCellResponse, args = {color = i.color, response = i.response, responseID = i.responseID or 0, isAwardReason = i.isAwardReason}}
@@ -193,17 +195,32 @@ end
 
 function LootHistory.SetCellResponse(rowFrame, frame, data, cols, row, realrow, column, fShow, table, ...)
 	local args = data[realrow].cols[column].args
-	if args.responseID and args.responseID ~= 0 and not args.isAwardReason then
-		frame.text:SetText(addon.responses[args.responseID].text)
-	else
-		frame.text:SetText(args.response)
-	end
+	frame.text:SetText(args.response)
+	
 	if args.color then -- Never version saves the color with the entry
 		frame.text:SetTextColor(unpack(args.color))
-	elseif args.responseID > 0 then -- try to recreate color from ID
+	elseif args.responseID and args.responseID > 0 then -- try to recreate color from ID
 		frame.text:SetTextColor(addon:GetResponseColor(args.responseID))
 	else -- default to white
 		frame.text:SetTextColor(1,1,1,1)
+	end
+end
+
+local sinceEpoch = {} -- Stores epoch seconds for both, we should reuse it
+function LootHistory.DateTimeSort(table, rowa, rowb, sortbycol)
+	local cella, cellb = table:GetCell(rowa, sortbycol), table:GetCell(rowb, sortbycol);
+	local timea, datea, timeb, dateb = cella.args.time, cella.args.date, cellb.args.time, cellb.args.date
+	local d, m, y = strsplit("/", datea, 3)
+	local h, min, s = strsplit(":", timea, 3)
+	sinceEpoch.a = time({year = "20"..y, month = m, day = d, hour = h, min = min, sec = s})
+	d, m, y = strsplit("/", dateb, 3)
+	h, min, s = strsplit(":", timeb, 3)
+	sinceEpoch.b = time({year = "20"..y, month = m, day = d, hour = h, min = min, sec = s})
+	local direction = table.cols[sortbycol].sort or table.cols[sortbycol].defaultsort or "asc";
+	if direction:lower() == "asc" then
+		return sinceEpoch.a < sinceEpoch.b;
+	else
+		return sinceEpoch.a > sinceEpoch.b;
 	end
 end
 
@@ -229,10 +246,8 @@ function LootHistory.ResponseSort(table, rowa, rowb, sortbycol)
 	rowa, rowb = table:GetRow(rowa), table:GetRow(rowb);
 	local a,b
 	local aID, bID = data[rowa.date][rowa.name][rowa.num].responseID, data[rowb.date][rowb.name][rowb.num].responseID
-	local awardReason = true
 
 	-- NOTE: I'm pretty sure it can only be an awardReason when responseID is nil or 0
-
 	if aID and aID ~= 0 then
 		if data[rowa.date][rowa.name][rowa.num].isAwardReason then
 			a = db.awardReasons[aID].sort
@@ -439,7 +454,7 @@ function LootHistory:UpdateMoreInfo(rowFrame, cellFrame, dat, cols, row, realrow
 	local data = data[row.date][row.name][row.num]
 	tip:AddLine(addon.Ambiguate(row.name), color.r, color.g, color.b)
 	tip:AddLine("")
-	tip:AddDoubleLine(L["Time:"], (data.time or L["Unknown"]) .." ".. row.date or L["Unknown"], 1,1,1, 1,1,1)
+	tip:AddDoubleLine(L["Time"]..":", (data.time or L["Unknown"]) .." ".. row.date or L["Unknown"], 1,1,1, 1,1,1)
 	tip:AddDoubleLine(L["Loot won:"], data.lootWon or L["Unknown"], 1,1,1, 1,1,1)
 	if data.itemReplaced1 then
 		tip:AddDoubleLine(L["Item(s) replaced:"], data.itemReplaced1, 1,1,1)

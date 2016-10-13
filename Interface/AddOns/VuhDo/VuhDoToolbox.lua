@@ -461,7 +461,8 @@ end
 
 --
 function VUHDO_isSpellKnown(aSpellName)
-	return GetSpellBookItemInfo(aSpellName) ~= nil
+	return (type(aSpellName) == "number" and IsSpellKnown(aSpellName))
+		or GetSpellBookItemInfo(aSpellName) ~= nil
 		or VUHDO_NAME_TO_SPELL[aSpellName] ~= nil and GetSpellBookItemInfo(VUHDO_NAME_TO_SPELL[aSpellName]);
 end
 

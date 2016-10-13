@@ -1,3 +1,31 @@
+v3.6.8
+*Fixed bug causing interface lag in certain situations.
+
+v3.6.7
+*Fixed an issue with vendor buy price if items was sold in stacks (like crystal vials).
+*Fixed a bug with caching soulbound items that prevented bags from being sold if you had the same bag equipped.
+
+v3.6.6
+*Fixed potential bug with detecting soulbound items.
+
+v3.6.5
+*Improve caching of soulbound items.
+
+v3.6.4
+*Added caching of bag inventory.
+*Fixed issues with detecting soulbound BOA items.
+
+v3.6.3
+*Fixed issue with scan results getting cleared.
+
+v3.6.2
+*Fixed importing of large groups causing interface lag and errors.
+*Fixed bug with importing of BoA items.
+*Fixed potential duplicate scan results from some queries.
+
+v3.6.1
+*Fixed a bug with scan speed optimization for some items.
+
 v3.6
 *Added brand new optimization to dramatically increase scan speed, primarily for high-volume items.
 *Fixed bug which potentially affected buying of auctions (with TSM_Shopping).

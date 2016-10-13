@@ -38,7 +38,7 @@ function TSMAPI.Auction:ScanQuery(module, query, callbackHandler, resolveSellers
 	private.database = database
 	private.currentModule = module
 	if query.usable then
-		private.usableOptimize = true
+		private.usableOptimize = {}
 	elseif query.name ~= "" and (not query.items or #query.items == 1) then
 		private.optimize = true
 	end
@@ -299,6 +299,9 @@ function private:StorePageResults(duplicateRecord)
 	end
 
 	for i=1, numAuctions do
+		if private.usableOptimize then
+			private.usableOptimize[private.pageTemp[i]] = true
+		end
 		private.database:InsertAuctionRecord(private.pageTemp[i])
 	end
 end
@@ -460,6 +463,34 @@ function private.ScanAllPagesThread(self, query)
 				numPages = query.page
 			else
 				-- there are more pages to scan, but we don't know how many
+				numPages = math.huge
+			end
+			-- in some cases, the usable filter is broken, so liberally default to regular scanning if we think that has happened (once we've gone through all pages)
+			local usableBroken = nil
+			if query.page == numPages and query.items then
+				-- check if any items have no results (likely due to the bug)
+				for _, itemString in ipairs(query.items) do
+					local found = false
+					itemString = TSMAPI.Item:ToBaseItemString(itemString)
+					for _, record in ipairs(private.database.records) do
+						if record.baseItemString == itemString then
+							found = true
+							break
+						end
+					end
+					if not found then
+						usableBroken = itemString
+						break
+					end
+				end
+			end
+			if usableBroken then
+				-- revert to a normal scan
+				TSM:LOG_WARN("Usable broken (%s)", usableBroken)
+				private.database:RemoveRecords(private.usableOptimize)
+				private.usableOptimize = nil
+				query.usable = nil
+				query.page = 0
 				numPages = math.huge
 			end
 		else

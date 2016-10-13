@@ -41,7 +41,7 @@ MT.defaults = {
 		confirmdelete = true,
 		x = (UIParent:GetWidth() - 638) / 2,
 		y = (UIParent:GetHeight() - 424) / 2,
-		scale = UIParent:GetScale(),
+		scale = 1,
 		height = 424,
 		dynamicicon = true, abilityicons = true, achicons = true,
 		invicons = true, itemicons = true, miscicons = true, spellicons = true,
@@ -169,12 +169,7 @@ function MT:eventHandler(this, event, arg1, ...)
 				end
 			end
 		end
-		
-		--upgrade all macros to WoD
-		if MT.db.char.extended then
-			if not MT.db.char.wodupgrade and countTables(MT.db.char.extended) > 0 then StaticPopup_Show("MACROTOOLKIT_WOD_UPGRADE") end
-		end
-		
+
 		if MT.db.global.extended then
 			if not type(MT.db.global.extended["1"]) == "table" then
 				for i, e in pairs(MT.db.global.extended) do
@@ -296,7 +291,7 @@ function MT:ClearAllMacros()
 	if tab < 3 then
 		for m = mend, mstart, -1 do
 			DeleteMacro(m)
-			MT:MacroFrame      ()
+			MT:MacroFrameUpdate()
 			_G[format("MTSB%d", m)]:SetAttribute("macrotext", "")
 			_G[format("MTSB%d", m)]:SetAttribute("dynamic", false)
 		end
@@ -1104,7 +1099,11 @@ function MT:BackupMacros(backupname)
 		else name, texture, body = GetMacroInfo(m) end
 		if name then
 			if string.find(body, "MTSB") then body = _G[format("MTSB%d", m)]:GetAttribute("macrotext") end
-			fname = string.gsub(string.upper(texture), "INTERFACE\\ICONS\\", "")
+			if type(texture) == "number"  then
+				fname = texture
+			else
+				fname = string.gsub(string.upper(texture), "INTERFACE\\ICONS\\", "")
+			end
 			table.insert(macros.m, {index = m, icon = fname, body = body, name = name})
 		end
 	end
@@ -1168,22 +1167,6 @@ local function MTSpellButton_OnModifiedClick(this, button)
 			return
 		end
 	end
-end
-
-function MT:UpgradeToWod()
-	for omn = 33, 50 do
-		if MT.db.char.extended[tostring(omn)] then
-			local mn = getExMacroIndex(tostring(omn))
-			if mn then
-				MT.db.char.extended[tostring(mn)] = MT.db.char.extended[tostring(omn)]
-				MT.db.char.extended[tostring(omn)] = nil
-				local body = GetMacroBody(mn)
-				body = string.gsub(body, string.format("MTSB%d", omn), string.format("MTSB%d", mn))
-				EditMacro(mn, nil, nil, body)
-			end
-		end
-	end
-	MT.db.char.wodupgrade = true
 end
 
 function MT:CombatMessage()

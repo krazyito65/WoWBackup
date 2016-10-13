@@ -33,7 +33,7 @@ L.Profiles = "Profiles"
 L.LegendaryRing = "Legendary Ring"
 L.Attendance = "Raid Attendance"
 L.WhoPulled = "Who Pulled"
-L.WAChecker = "WeakAuras checker"
+L.WAChecker = "WeakAuras checks"
 
 L.messagebutsend = "Send"
 L.messagebutclear = "Clear"

@@ -167,8 +167,8 @@ local VUHDO_CLASS_DEFAULT_SPELL_ASSIGNMENT = {
 		["shift2"] = {"shift-", "2", VUHDO_SPELL_ID.CHAIN_HEAL},
 		["shift3"] = {"shift-", "3", "menu" },
 
-		["altctrl1"] = {"alt-ctrl-", "1", VUHDO_SPELL_ID.PURGE},
-		["altctrl2"] = {"alt-ctrl-", "2", VUHDO_SPELL_ID.PURGE},
+		["altctrl1"] = {"alt-ctrl-", "1", VUHDO_SPELL_ID.PURIFY_SPIRIT},
+		["altctrl2"] = {"alt-ctrl-", "2", VUHDO_SPELL_ID.PURIFY_SPIRIT},
 	},
 
 	["PRIEST"] = {
@@ -190,7 +190,7 @@ local VUHDO_CLASS_DEFAULT_SPELL_ASSIGNMENT = {
 		["ctrl4"] = {"ctrl-", "4", VUHDO_SPELL_ID.PRAYER_OF_MENDING},
 		["ctrl5"] = {"ctrl-", "5", VUHDO_SPELL_ID.PRAYER_OF_MENDING},
 
-		["shift2"] = {"shift-", "2", VUHDO_SPELL_ID.DISPEL_MAGIC},
+		["shift2"] = {"shift-", "2", VUHDO_SPELL_ID.PURIFY},
 		["shift3"] = {"shift-", "3", "menu"},
 	},
 
@@ -210,7 +210,7 @@ local VUHDO_CLASS_DEFAULT_SPELL_ASSIGNMENT = {
 		["ctrl4"] = {"ctrl-", "4", VUHDO_SPELL_ID.TRANQUILITY},
 		["ctrl5"] = {"ctrl-", "5", VUHDO_SPELL_ID.TRANQUILITY},
 
-		["shift2"] = {"shift-", "2", VUHDO_SPELL_ID.REMOVE_CURSE},
+		["shift2"] = {"shift-", "2", VUHDO_SPELL_ID.NATURES_CURE},
 	},
 
 	["MONK"] = {
@@ -1328,6 +1328,74 @@ function VUHDO_loadDefaultConfig()
 		-- Tyrant Velhari
 		180164, -- Touch of Harm
 		180166  -- Touch of Harm
+	);
+
+	-- 7.0 - Legion
+	VUHDO_addCustomSpellIds(31, 
+		-- [[ Emerald Nightmare ]]
+		-- Nythendra
+		204504, -- Infested
+		203045, -- Infested Ground
+		203096, -- Rot
+		204463, -- Volatile Rot
+		203646, -- Burst of Corruption
+		221028, -- Unstable Decay
+		-- Il'gynoth, Heart of Corruption
+		212886, -- Nightmare Corruption
+		215845, -- Dispersed Spores
+		210099, -- Fixate
+		209469, -- Touch of Corruption 
+		209471, -- Nightmare Explosion
+		208697, -- Mind Flay
+		208929, -- Spew Corruption
+		215128, -- Cursed Blood
+		-- Erethe Renferal
+		215307, -- Web of Pain
+		215460, -- Necrotic Venom
+		213124, -- Venomous Pool
+		210850, -- Twisting Shadows
+		218519, -- Wind Burn
+		210228, -- Dripping Fangs
+		-- Ursoc
+		204859, -- Rend Flesh
+		198006, -- Focused Gaze
+		198108, -- Momentum
+		197980, -- Nightmarish Cacophony
+		205611, -- Miasma
+		-- Dragons of Nightmare
+		203102, -- Mark of Ysondre
+		207681, -- Nightmare Bloom
+		204731, -- Wasting Dread
+		203125, -- Mark of Emeriss
+		203787, -- Volatile Infection
+		203086, -- Mark of Lethon
+		204044, -- Shadow Burst
+		203121, -- Mark of Taerar
+		204078, -- Bellowing Roar
+		214543, -- Collapsing Nightmare
+		-- Cenarius
+		212681, -- Cleansed Ground
+		210279, -- Creeping Nightmares
+		210315, -- Nightmare Brambles
+		226821, -- Desiccating Stomp
+		211507, -- Nightmare Javelin
+		211471, -- Scorned Touch
+		216516, -- Ancient Dream
+		211989, -- Unbound Touch
+		211990, -- Unbound Essence
+		-- Xavius
+		206005, -- Dream Simulacrum
+		206109, -- Awakening to the Nightmare
+		208431, -- Descent into Madness
+		207409, -- Madness
+		206651, -- Darkening Soul
+		211802, -- Nightmare Blades
+		205771, -- Tormenting Fixation
+		209158, -- Blackening Soul
+		205612, -- Blackened
+		210451, -- Bonds of Terror
+		208385, -- Tainted Discharge
+		211634  -- The Infinite Dark
 	);
 
 	local debuffRemovalList = {};

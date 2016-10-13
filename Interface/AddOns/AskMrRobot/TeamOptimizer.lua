@@ -794,6 +794,11 @@ local function pruneGearForItemExport()
 	Amr.db.global.TeamOpt.LootGear = newInfo	
 end
 
+local _ignoreLoot = {
+	[139562] = true,
+	[136903] = true
+}
+
 local function scanMasterLoot()
 	-- only care if we are in a raid or group
 	if not IsInGroup() and not IsInRaid() then return end
@@ -817,7 +822,13 @@ local function scanMasterLoot()
 		local lootType = GetLootSlotType(i)
 		if lootType == 1 then
 			local link = GetLootSlotLink(i)
-			table.insert(loot, link)
+			local success, itemObj = pcall(Amr.ParseItemLink, link)
+			
+			if not success or not itemObj or _ignoreLoot[itemObj.id] then
+				-- ignore items that can't be read or that we explicitly don't care about
+			else			
+				table.insert(loot, link)
+			end
 		end
 	end
 	

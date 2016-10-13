@@ -37,7 +37,7 @@ local L = WeakAuras.L
 -- GLOBALS: FONT_COLOR_CODE_CLOSE RED_FONT_COLOR_CODE
 -- GLOBALS: GameTooltip GameTooltip_Hide StaticPopup_Show StaticPopupDialogs STATICPOPUP_NUMDIALOGS DEFAULT_CHAT_FRAME
 -- GLOBALS: CombatText_AddMessage COMBAT_TEXT_SCROLL_FUNCTION WorldFrame MAX_TALENT_TIERS MAX_PVP_TALENT_TIERS NUM_TALENT_COLUMNS MAX_PVP_TALENT_COLUMNS
--- GLOBALS: SLASH_WEAKAURAS1 SLASH_WEAKAURAS2 SlashCmdList GTFO UNKNOWNOBJECT C_PetBattles
+-- GLOBALS: SLASH_WEAKAURAS1 SLASH_WEAKAURAS2 SlashCmdList GTFO UNKNOWNOBJECT C_PetBattles LE_PARTY_CATEGORY_INSTANCE
 
 local queueshowooc;
 
@@ -2147,15 +2147,20 @@ function WeakAuras.PerformActions(data, type, region)
       WeakAuras.Announce(actions.message, "CHANNEL", nil, channel, data.id, type);
     end
     elseif(actions.message_type == "SMARTRAID") then
-    if UnitInBattleground("player") then
-      SendChatMessage(actions.message, "INSTANCE_CHAT")
-    elseif UnitInRaid("player") then
-      SendChatMessage(actions.message, "RAID")
-    elseif UnitInParty("player") then
-      SendChatMessage(actions.message, "PARTY")
-    else
-      SendChatMessage(actions.message, "SAY")
-    end
+      local isInstanceGroup = IsInGroup(LE_PARTY_CATEGORY_INSTANCE)
+      if UnitInBattleground("player") then
+        SendChatMessage(actions.message, "INSTANCE_CHAT")
+      elseif UnitInRaid("player") then
+        SendChatMessage(actions.message, "RAID")
+      elseif UnitInParty("player") then
+        if isInstanceGroup then
+          SendChatMessage(actions.message, "INSTANCE_CHAT")
+        else
+          SendChatMessage(actions.message, "PARTY")
+        end
+      else
+        SendChatMessage(actions.message, "SAY")
+      end
     else
     WeakAuras.Announce(actions.message, actions.message_type, nil, nil, data.id, type);
     end
@@ -2322,8 +2327,14 @@ function WeakAuras.UpdateAnimations()
       animations[id] = nil;
       end
 
-      if(anim.onFinished) then
-      anim.onFinished();
+      if(anim.loop) then
+        WeakAuras.Animate(anim.namespace, anim.data,
+                          anim.type, anim.anim,
+                          anim.region, anim.inverse,
+                          anim.onFinished, anim.loop,
+                          anim.cloneId);
+      elseif(anim.onFinished) then
+        anim.onFinished();
       end
     end
   end
@@ -2343,7 +2354,6 @@ end
 function WeakAuras.Animate(namespace, data, type, anim, region, inverse, onFinished, loop, cloneId)
   local id = data.id;
   local key = tostring(region);
-  local inAnim = anim;
   local valid;
   if(anim and anim.type == "custom" and anim.duration and (anim.use_translate or anim.use_alpha or (anim.use_scale and region.Scale) or (anim.use_rotate and region.Rotate) or (anim.use_color and region.Color))) then
   valid = true;
@@ -2463,10 +2473,6 @@ function WeakAuras.Animate(namespace, data, type, anim, region, inverse, onFinis
     end
   end
 
-  if(loop) then
-    onFinished = function() WeakAuras.Animate(namespace, data, type, inAnim, region, inverse, onFinished, loop, cloneId) end
-  end
-
   animations[key] = animations[key] or {};
   animations[key].progress = progress
   animations[key].startX = startX
@@ -2506,6 +2512,9 @@ function WeakAuras.Animate(namespace, data, type, anim, region, inverse, onFinis
   animations[key].onFinished = onFinished
   animations[key].name = id
   animations[key].cloneId = cloneId or ""
+  animations[key].namespace = namespace;
+  animations[key].data = data;
+  animations[key].anim = anim;
 
   if not(updatingAnimations) then
     frame:SetScript("OnUpdate", WeakAuras.UpdateAnimations);
@@ -2984,15 +2993,12 @@ end
 function WeakAuras.FixGroupChildrenOrder()
   for id, data in pairs(db.displays) do
     if(data.controlledChildren) then
-      local lowestRegion = WeakAuras.regions[data.controlledChildren[1]] and WeakAuras.regions[data.controlledChildren[1]].region;
-      if(lowestRegion) then
-        local frameLevel = lowestRegion:GetFrameLevel()
-        for i=1, #data.controlledChildren do
-          local childRegion = WeakAuras.regions[data.controlledChildren[i]] and WeakAuras.regions[data.controlledChildren[i]].region;
-          if(childRegion) then
-            frameLevel = frameLevel + 1
-            childRegion:SetFrameLevel(frameLevel);
-          end
+      local frameLevel = 1;
+      for i=1, #data.controlledChildren do
+        local childRegion = WeakAuras.regions[data.controlledChildren[i]] and WeakAuras.regions[data.controlledChildren[i]].region;
+        if(childRegion) then
+          frameLevel = frameLevel + 4
+          childRegion:SetFrameLevel(frameLevel);
         end
       end
     end

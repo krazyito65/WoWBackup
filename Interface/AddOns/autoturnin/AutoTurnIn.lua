@@ -28,31 +28,26 @@ AutoTurnIn.funcList = {[1] = function() return false end, [2]=IsAltKeyDown, [3]=
 AutoTurnIn.OptionsPanel, AutoTurnIn.RewardPanel = nil, nil
 AutoTurnIn.autoEquipList={}
 AutoTurnIn.questCache={}	-- daily quest cache. Initially is built from player's quest log
+AutoTurnIn.knownGossips={}
 AutoTurnIn.ERRORVALUE = nil
 
 
 function AutoTurnIn:LibDataStructure()
+-- see https://github.com/tekkub/libdatabroker-1-1/wiki/api
 	AutoTurnIn.ldbstruct = {
 		type = "data source",
 		icon = "Interface\\QUESTFRAME\\UI-QuestLog-BookIcon",
 		label = addonName,
 		OnClick = function(clickedframe, button)
+			-- if InCombatLockdown() then return end
 			if (button == "LeftButton") then
-				if (InterfaceOptionsFrame:IsVisible() and InterfaceOptionsFrameAddOns.selection) then
-					if (InterfaceOptionsFrameAddOns.selection:GetName() == AutoTurnIn.OptionsPanel:GetName()) then --"AutoTurnInOptionsPanel"
-						InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.RewardPanel)
-					elseif (InterfaceOptionsFrameAddOns.selection:GetName() == AutoTurnIn.RewardPanel:GetName() ) then --"AutoTurnInRewardPanel"
-						InterfaceOptionsFrameCancel:Click()
-					end
-				else
-					InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.OptionsPanel)
-				end
+				self:ShowOptions()
 			else 
 				self:SetEnabled(not AutoTurnInCharacterDB.enabled)
 			end			
 		end,
 	}
-	
+
 	function AutoTurnIn.ldbstruct:OnTooltipShow()
 		self:AddLine(addonName)
 		self:AddLine("Left mouse button shows options.")
@@ -62,6 +57,22 @@ function AutoTurnIn:LibDataStructure()
 	return AutoTurnIn.ldbstruct
 end 	
 
+function AutoTurnIn:ShowOptions()
+	-- too much things became tainted if called in combat.
+	if InCombatLockdown() then return end
+	if (InterfaceOptionsFrame:IsVisible() and InterfaceOptionsFrameAddOns.selection) then
+		if (InterfaceOptionsFrameAddOns.selection:GetName() == AutoTurnIn.OptionsPanel:GetName()) then --"AutoTurnInOptionsPanel"
+			InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.RewardPanel)
+		elseif (InterfaceOptionsFrameAddOns.selection:GetName() == AutoTurnIn.RewardPanel:GetName() ) then --"AutoTurnInRewardPanel"
+		-- it used to be a cancel. But BlizzardUI contains weird bug which taints all the interface if InterfaceOptionsFrameCancel:Click() called 
+			InterfaceOptionsFrameOkay:Click()
+		end
+	else
+		-- http://wowpedia.org/Patch_5.3.0/API_changes double call is a workaround
+		InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.OptionsPanel)
+		InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.OptionsPanel)
+	end
+end
 
 function AutoTurnIn:OnInitialize()
 	self:RegisterChatCommand("au", "ConsoleComand")
@@ -129,6 +140,23 @@ function AutoTurnIn:RegisterGossipEvents()
 	self:RegisterEvent("QUEST_COMPLETE")
 	self:RegisterEvent("QUEST_LOG_UPDATE")
 	self:RegisterEvent("QUEST_ACCEPTED")
+	
+	local gossipFunc1 = function() AutoTurnIn:Print(L["ivechosen"]); SelectGossipOption(1) end
+	local gossipFunc2 = function() if (GetNumGossipOptions() == 2) then SelectGossipOption(1) end end
+	local gossipFunc3 = function() if AutoTurnInCharacterDB.todarkmoon and GetRealZoneText() ~= L["Darkmoon Island"] then SelectGossipOption(1); StaticPopup1Button1:Click() end end
+	local gossipFunc4 = function() if AutoTurnInCharacterDB.darkmoonteleport then SelectGossipOption(1); StaticPopup1Button1:Click() end end
+	
+	AutoTurnIn.knownGossips = {
+		["93188"]=gossipFunc1, -- Mongar
+		["96782"]=gossipFunc1, -- Lucian Trias
+	    ["97004"]=gossipFunc1, -- "Red" Jack Findle
+		["55267"]=gossipFunc1, -- YoungPandaren
+		["79815"]=gossipFunc2, -- Grunlek, free seals Alliance
+		["77377"]=gossipFunc2, -- Kristen Stoneforge, free seals Horde
+		["54334"]=gossipFunc3, -- travel to Darkmoon
+		["55382"]=gossipFunc3, -- travel to Darkmoon
+		["57850"]=gossipFunc4, -- DarkmoonFaireTeleportologist
+	}
 end
 
 function AutoTurnIn:QUEST_LOG_UPDATE()
@@ -186,9 +214,7 @@ end
 function AutoTurnIn:ConsoleComand(arg)
 	arg = strlower(arg)
 	if (#arg == 0) then
-		-- http://wowpedia.org/Patch_5.3.0/API_changes double call is a workaround
-		InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.OptionsPanel)
-		InterfaceOptionsFrame_OpenToCategory(AutoTurnIn.OptionsPanel)
+		self:ShowOptions()
 	elseif arg == "on" then
 		self:SetEnabled(true)
 		self:Print(L["enabled"])
@@ -233,7 +259,9 @@ function AutoTurnIn:QUEST_GREETING()
 
     if not AutoTurnInCharacterDB.completeonly then
         for index=1, GetNumAvailableQuests() do
-            local isTrivial, isDaily, isRepeatable = GetAvailableQuestInfo(index)
+            local isTrivial, isDaily, isRepeatable, isIgnored = GetAvailableQuestInfo(index)
+			if (isIgnored) then return end -- Legion functionality
+			
             local triviaAndAllowedOrNotTrivia = (not isTrivial) or AutoTurnInCharacterDB.trivial
             local title = GetAvailableTitle(index)
             local quest = L.quests[title]
@@ -319,26 +347,6 @@ function AutoTurnIn:isDarkmoonAndAllowed(questCount)
 			(GetZoneText() == L["Darkmoon Island"])
 end
 
-function AutoTurnIn:isYoungPandaren()
-	return (AutoTurnIn:GetNPCGUID() == "55267")
-end
-
-function AutoTurnIn:isFreeSeal()
-	return (AutoTurnIn:GetNPCGUID() == "79815") or (AutoTurnIn:GetNPCGUID() == "77377")
-end
-
-function AutoTurnIn:isDarkmoonFaireMysticMage()
-	local guid = AutoTurnIn:GetNPCGUID() 
-	local isMage = (guid == "54334") or (guid == "55382")
-
-	return AutoTurnInCharacterDB.todarkmoon and
-		(isMage and GetRealZoneText() ~= L["Darkmoon Island"])
-end
-
-function AutoTurnIn:isDarkmoonFaireTeleportologist()
-	return AutoTurnInCharacterDB.darkmoonteleport and (AutoTurnIn:GetNPCGUID() == "57850")
-end
-
 function AutoTurnIn:GOSSIP_SHOW()
 	if (not self:AllowedToHandle(true)) then
 		return
@@ -364,22 +372,7 @@ function AutoTurnIn:GOSSIP_SHOW()
 		end
 	end
 
-	-- If free seal is available grab unconditionally it as there's no downside not to do it
-    if self:isFreeSeal() then
-		local opcount = GetNumGossipOptions()
-		if (opcount == 2) then
-			SelectGossipOption(1)
-		end
-    end
-
-	if self:isYoungPandaren() then
-		SelectGossipOption(1)
-	end
-	
-	if self:isDarkmoonFaireMysticMage() or self:isDarkmoonFaireTeleportologist() then
-		SelectGossipOption(1)
-		StaticPopup1Button1:Click()
-	end
+	self:HandleGossip()
 end
 
 function AutoTurnIn:QUEST_DETAIL()
@@ -388,7 +381,7 @@ function AutoTurnIn:QUEST_DETAIL()
 	end
 	if QuestGetAutoAccept() then
 		CloseQuest()
-	elseif self:AllowedToHandle() and self:isAppropriate() and (not AutoTurnInCharacterDB.completeonly) then
+	elseif (not IsQuestIgnored()) and self:AllowedToHandle() and self:isAppropriate() and (not AutoTurnInCharacterDB.completeonly) then
 		QuestInfoDescriptionText:SetAlphaGradient(0, -1)
 		QuestInfoDescriptionText:SetAlpha(1)
 		AcceptQuest()
@@ -407,6 +400,12 @@ function AutoTurnIn:QUEST_PROGRESS()
 		CompleteQuest()
     end
 end
+
+function AutoTurnIn:HandleGossip()
+	local guid = AutoTurnIn:GetNPCGUID()
+	local func = AutoTurnIn.knownGossips[guid]
+	if func then func() end
+end 
 
 -- return true if an item is of `ranged` type and is suitable with current options
 function AutoTurnIn:IsRangedAndRequired(subclass)

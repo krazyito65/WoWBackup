@@ -15,12 +15,16 @@ Known issues:
 Bugfixes:
 -- Fixed role detection for Survival Hunters
 -- Fixed role detection for Monks
+-- Mage 'Remove Curse' is no longer a valid dispel
+-- Updated all class dispel abilities
+-- Updated all default spell bindings for healer dispels
 
 
 Improvements:
 -- Text provider '+<#n>k' now abbreviates millions as '+<#n>M'
--- Hitpoints text now abbreviates millions as '<n>M'
+-- Bar health text now abbreviates million as '<n>M'
 -- Tooltip text now abbreviates millions as '<n>M'
+-- Added default custom debuffs for Emerald Nightmare raid encounters
 
 
 --------------------------------------------------------------

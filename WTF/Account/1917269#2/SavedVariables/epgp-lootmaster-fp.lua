@@ -1,5 +1,5 @@
 
-EPGPLootMasterSelectFrameX = nil
-EPGPLootMasterSelectFrameY = nil
-EPGPLootMasterFrameX = 474.551025390625
-EPGPLootMasterFrameY = -234.483154296875
+EPGPLootMasterSelectFrameX = 843.572875976563
+EPGPLootMasterSelectFrameY = -301.145172119141
+EPGPLootMasterFrameX = 683.507873535156
+EPGPLootMasterFrameY = -249.799179077148

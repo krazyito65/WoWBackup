@@ -43,6 +43,7 @@ L["Custom slash command"] = "\232\135\170\229\174\154\228\185\137\230\150\156\23
 L["datetime format"] = "%y/%m/%d %H:%M:%S"
 L["dead"] = "\230\173\187\228\186\161"
 L["Delete all macros"] = "\229\136\160\233\153\164\230\137\128\230\156\137\229\174\143\229\145\189\228\187\164"
+L["Delete all macros on the current tab"] = "Delete all macros on the current tab" -- Requires localization
 L["Delete Backup"] = "\229\136\160\233\153\164\229\164\135\228\187\189"
 L["Destroy grey items"] = "\230\145\167\230\175\129\231\129\176\232\137\178\231\137\169\229\147\129"
 L["did you mean"] = "\228\189\160\231\154\132\230\132\143\230\128\157\230\152\175"

@@ -32,7 +32,7 @@ module.db.diffNames = {
 	[23] = DUNGEON_DIFFICULTY_5PLAYER..": "..PLAYER_DIFFICULTY6,
 	[24] = "5ppl: Timewalker",
 }
-module.db.diffPos = {1,2,23,9,3,4,5,6,7,14,15,16}
+module.db.diffPos = {1,2,23,8,9,3,4,5,6,7,14,15,16}
 module.db.dropDownNow = nil
 module.db.onlyMy = nil
 module.db.scrollPos = 1

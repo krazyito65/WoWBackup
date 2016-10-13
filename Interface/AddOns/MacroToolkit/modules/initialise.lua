@@ -305,16 +305,3 @@ StaticPopupDialogs.MACROTOOLKIT_CONFIRM_DELETING_CHARACTER_SPECIFIC_BINDINGS = {
 	whileDead = 1,
 	showAlert = 1,
 }
-
-StaticPopupDialogs.MACROTOOLKIT_WOD_UPGRADE = {
-	text = L["Upgrade Mists of Pandria macros? Only answer yes if you used Macro Toolkit in Mists of Pandaria. This only needs to be done once per character."],
-	button1= _G.YES,
-	button2 = _G.NO,
-	timeout = 0,
-	exclusive = 1,
-	whileDead = 1,
-	hideOnEscape = 0,
-	showAlert = 1,
-	OnAccept = function() MT:UpgradeToWod() end,
-	OnCancel = function() MT.db.char.wodupgrade = true end,
-}

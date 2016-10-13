@@ -1,4 +1,4 @@
- 
+
 if (true) then
 	--return
 	--but not today
@@ -474,6 +474,9 @@ function EnemyGrid:SelectLayoutWizard()
 		end
 	end)
 	WelcomeFrame:SetScript ("OnHide", function()
+		if (WelcomeFrame.DontShowAgain.value) then
+			EnemyGrid.db.profile.first_run = true
+		end
 		if (not InCombatLockdown()) then
 			if (WelcomeFrame.ChangedShowFriends) then
 				SetCVar ("nameplateShowFriends", "0")
@@ -542,7 +545,13 @@ function EnemyGrid:SelectLayoutWizard()
 	wf.confirm = DF:CreateButton (wf, confirm_layout, 120, 20, L["S_APPLY"])
 	wf.confirm:InstallCustomTexture()
 	wf.confirm:SetPoint ("bottomright", wf, "bottomright", -10, 10)
-
+	
+	wf.DontShowAgain = DF:CreateSwitch (wf, empty_func, false, _, _, _, _, "DontShowAgain", _, _, _, _, "do not show this panel again.", DF:GetTemplate ("switch", "OPTIONS_CHECKBOX_TEMPLATE"), DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
+	wf.DontShowAgain:SetPoint ("bottomleft", wf.change_later, "topleft", 0, 2)
+	wf.DontShowAgain:SetAsCheckBox()
+	wf.DontShowAgain.Label = DF:CreateLabel (wf.DontShowAgain, "do not show this panel again.", 12, "orange")
+	wf.DontShowAgain.Label:SetPoint ("left", wf.DontShowAgain, "right", 2, 0)
+	
 	wf:Show()
 end
 	
@@ -1236,6 +1245,8 @@ local re_RefreshAmountOfUnitsShown = function()
 	EnemyGrid.RefreshAmountOfUnitsShown()
 end
 
+--print (PlayerCanAttack (unitId))
+
 local BuildHandlerFunc = function (amtTargets, barsAllowed)
 	local handler = [[
 		if (newstate == 1) then
@@ -1434,12 +1445,14 @@ function EnemyGrid.OnInit()
 	--DF:AddMemberForWidget ("textentry", "GET", "amountchar", function(self) return self:GetText():len() end)
 	--DF:AddMemberForWidget ("textentry", "SET", "newtext", function(self, text) return self:SetText (text) end)
 	
-	if (not EnemyGrid.db.profile.first_run) then
-		C_Timer.After (5, function() EnemyGrid:SelectLayoutWizard() end)
-		if (not InCombatLockdown()) then
-			SetCVar ("nameplateMaxDistance", 100)
+	C_Timer.After (8, function()
+		if (not EnemyGrid.db.profile.first_run) then
+			C_Timer.After (5, function() EnemyGrid:SelectLayoutWizard() end)
+			if (not InCombatLockdown()) then
+				SetCVar ("nameplateMaxDistance", 100)
+			end
 		end
-	end
+	end)
 	
 	--EnemyGrid.db.profile.max_targets = 40
 	
@@ -2117,6 +2130,7 @@ function EnemyGrid.OnInit()
 			end
 			
 		elseif (event == "NAME_PLATE_UNIT_REMOVED") then
+			--[[  --animations are disabled at the moment
 			for i = 1, 16 do
 				if (EnemyGrid.unitFrameContainer[i].unit == plateID) then
 					local healthBar = EnemyGrid.unitFrameContainer[i].healthBar
@@ -2133,6 +2147,7 @@ function EnemyGrid.OnInit()
 					break
 				end
 			end
+			--]]
 		end
 
 	end

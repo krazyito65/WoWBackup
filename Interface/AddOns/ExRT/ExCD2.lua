@@ -86,7 +86,7 @@ module.db.findspecspells = {
 	[203524] = 73, [20243] = 73, [23922] = 73,
 	
 	[202767] = 102, [78674] = 102, [190984] = 102,
-	[210722] = 103, [52610] = 103, [1822] = 103, 
+	[210722] = 103, [52610] = 103, --[1822] = 103, 
 	[200851] = 104, [33917] = 104, [22842] = 104,
 	[208253] = 105, [188550] = 105, [48438] = 105, 
 
@@ -115,7 +115,7 @@ module.db.findspecspells = {
 	[196586] = 267, [29722] = 267, [116858] = 267, 
 	
 	[214326] = 268, [205523] = 268, [121253] = 268, 
-	[205320] = 269, [113656] = 269, [100780] = 269,
+	[205320] = 269, [113656] = 269, --[100780] = 269,
 	[205406] = 270, [115151] = 270, [116670] = 270,
 	
 	[201467] = 577, [162243] = 577, [198013] = 577,
@@ -802,6 +802,7 @@ module.db.spell_cdByTalent_fix = {		--Изменение кд талантом\�
 	[34861] = {196429,{-3,-6,-10,-13,-16,-20}},
 	[47585] = {193642,{-10,-20,-30,-40,-50,-60}},
 	[20608] = {207357,-600},
+	[21169] = {207357,-600},
 	[195676] = {187301,{-2,-4,-6,-8,-10,-12}},
 	[104773] = {211131,{-10,-20,-30,-40,-50,60},215223,-30},
 	[191427] = {201460,{-20,-40,-60,-80,-100,-120}},
@@ -8897,7 +8898,7 @@ do
 		
 		ExCD2_ClearTierSetsInfoFromUnit(name)	--------> ExCD2
 		
-		local isArtifactEqipped = nil
+		local isArtifactEqipped = 0
 		local ArtifactIlvlSlot1,ArtifactIlvlSlot2 = 0,0
 		for i=1,#moduleInspect.db.itemsSlotTable do
 			local itemSlotID = moduleInspect.db.itemsSlotTable[i]
@@ -8910,10 +8911,10 @@ do
 				--inspectScantip:SetInventoryItem(inspectedName, itemSlotID)
 				local itemID = itemLink:match("item:(%d+):")
 				
-				if itemSlotID == 16 then
+				if itemSlotID == 16 or itemSlotID == 17 then
 					local _,_,quality = GetItemInfo(itemLink)
 					if quality == 6 then
-						isArtifactEqipped = true
+						isArtifactEqipped = isArtifactEqipped + 1
 					end
 				end
 				
@@ -8947,7 +8948,7 @@ do
 							
 							inspectData['items_ilvl'][itemSlotID] = ilvl
 							
-							if isArtifactEqipped then
+							if isArtifactEqipped > 0 then
 								if itemSlotID == 16 then
 									ArtifactIlvlSlot1 = ilvl
 								else
@@ -8977,10 +8978,10 @@ do
 			
 			inspectScantip:ClearLines()
 		end
-		if isArtifactEqipped then
-			inspectData['ilvl'] = inspectData['ilvl'] - ArtifactIlvlSlot1 - ArtifactIlvlSlot2 + max(ArtifactIlvlSlot1,ArtifactIlvlSlot2)
+		if isArtifactEqipped > 0 then
+			inspectData['ilvl'] = inspectData['ilvl'] - ArtifactIlvlSlot1 - ArtifactIlvlSlot2 + max(ArtifactIlvlSlot1,ArtifactIlvlSlot2) * isArtifactEqipped
 		end
-		inspectData['ilvl'] = inspectData['ilvl'] / (inspectData['items'][17] and not isArtifactEqipped and 16 or 15)
+		inspectData['ilvl'] = inspectData['ilvl'] / (inspectData['items'][17] and 16 or 15)
 
 		--------> ExCD2
 		for tierUID,count in pairs(inspectData['tiersets']) do
@@ -9556,6 +9557,12 @@ local function artifactUI_CheckMajorFrames(self)
 		if self then
 			self:Cancel()
 		end
+		
+		UIParent:UnregisterEvent("ARTIFACT_UPDATE")
+		C_Timer.After(.1,function()
+			UIParent:RegisterEvent("ARTIFACT_UPDATE")
+		end)
+		
 		UpdateArtifactData()
 		return true
 	end
@@ -9734,15 +9741,16 @@ do
 		end
 	end
 	
+
+	
 	function GetArtifactTraitsKnown(playerName, spellID)
-		local data = moduleInspect.db.artifactDB[playerName]
-		if not data then
-			for name,D in pairs(moduleInspect.db.artifactDB) do
-				if name:find("^"..playerName) then
-					data = D
-					break
+		local data
+		for long_name,DB in pairs(moduleInspect.db.artifactDB) do
+			if ExRT.F.delUnitNameServer(long_name) == playerName then
+				if (not data) or (DB.time > data.time) then
+					data = DB
 				end
-			end
+			end						
 		end
 		if not data then
 			return 0

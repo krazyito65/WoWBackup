@@ -193,17 +193,17 @@ end
 function MT:RestoreBackup()
 	local tab = PanelTemplates_GetSelectedTab(MacroToolkitFrame)
 	local var = (tab == 1 or tab == 3) and "global" or "char"
-	local offset = 101
+	local offset = 1001
 	if tab == 3 then offset = offset + MT:CountExtra() end
 	for i, d in ipairs(MT.db[var].backups) do
 		if d.d == MT.backup then
 			MT:RefreshPlayerSpellIconInfo()
 			for _, m in ipairs(d.m) do
 				if tab == 3 then
-					if m.index > 100 then MT.db.global.extra[offset] = {name = m.name, texture = m.icon, body = m.body} end
+					if m.index > 1000 then MT.db.global.extra[offset] = {name = m.name, texture = m.icon, body = m.body} end
 					offset = offset + 1
-					if offset > 100 + _G.MAX_ACCOUNT_MACROS then break end
-				elseif m.index < 100 then
+					if offset > 1000 + _G.MAX_ACCOUNT_MACROS then break end
+				elseif m.index < 1000 then
 					if strlenutf8(m.body) > 255 then createextended(m.name, m.icon, m.body, tab)
 					else CreateMacro(m.name, m.icon, m.body, m.index > _G.MAX_ACCOUNT_MACROS) end
 				end

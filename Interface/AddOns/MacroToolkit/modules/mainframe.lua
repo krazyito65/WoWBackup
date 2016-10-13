@@ -833,7 +833,7 @@ function MT:CreateMTFrame()
 		function()
 			local tab = PanelTemplates_GetSelectedTab(mtframe)
 			local mtype = _G[format("MacroToolkitFrameTab%d", tab)]:GetText()
-			StaticPopupDialogs.MACROTOOLKIT_DELETEBACKUP.text = format("|cffeedd82%s|r\n\n|cffff0000%s|r\n\n%s", mtype, L["Delete all macros"], L["Are you sure? This operation cannot be undone."])
+			StaticPopupDialogs.MACROTOOLKIT_DELETEBACKUP.text = format("|cffeedd82%s|r\n\n|cffff0000%s|r\n\n%s", mtype, L["Delete all macros on the current tab"], L["Are you sure? This operation cannot be undone."])
 			StaticPopupDialogs.MACROTOOLKIT_DELETEBACKUP.OnAccept = function() MT:ClearAllMacros() end
 			StaticPopup_Show("MACROTOOLKIT_DELETEBACKUP")
 		end)

@@ -2,7 +2,9 @@ local L = BigWigs:NewBossLocale("Cenarius", "deDE")
 if not L then return end
 if L then
 	L.forces = "Mächte"
-	--L.bramblesSay = "Brambles near %s"
+	L.bramblesSay = "Gestrüpp bei %s"
+	--L.custom_off_multiple_breath_bar = "Show multiple Rotten Breath bars"
+	--L.custom_off_multiple_breath_bar_desc = "Per default BigWigs will only show the Rotten Breath bar of one drake. Enable this option if you want to see the timer for each drake."
 end
 
 L = BigWigs:NewBossLocale("Elerethe Renferal", "deDE")
@@ -17,12 +19,16 @@ if L then
 	L.custom_off_deathglare_marker = "Todesblicktentakel markieren"
 	L.custom_off_deathglare_marker_desc = "Markiert Todesblicktentakel mit {rt6}{rt5}{rt4}{rt3}, benötigt Leiter oder Assistent.\n|cFFFF0000Nur eine Person im Schlachtzug sollte diese Option aktiviert haben, um Markierungskonflikte zu verhindern.|r\n|cFFADFF2FTIP: Wenn der Schlachtzug sich dafür entschieden hat, dass du diese Option aktivierst, ist der schnellste Weg mit der Maus über die Mobs zu fahren, um sie zu markieren.|r"
 
-	--L.bloods_remaining = "%d Bloods remaining"
+	L.bloods_remaining = "%d Blut verbleibend"
 end
 
 L = BigWigs:NewBossLocale("Emerald Nightmare Trash", "deDE")
 if L then
 	L.gelatinizedDecay = "Verrottender Schleim"
+	L.befouler = "Pestherzbesudler"
+	L.shaman = "Terrorschamane"
+	--L.custom_on_mark_totem = "Mark the Totems"
+	--L.custom_on_mark_totem_desc = "Mark the Totems with {rt8}{rt7}, requires promoted or leader."
 end
 
 L = BigWigs:NewBossLocale("Ursoc", "deDE")

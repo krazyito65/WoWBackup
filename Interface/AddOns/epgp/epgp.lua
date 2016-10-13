@@ -349,6 +349,29 @@ function EPGP:GetOurRealmName()
   return ourRealmName
 end
 
+-- Convert name into Nickname-Realm format (add current realm if none specified)
+function EPGP:GetFullCharacterName(name)
+	if string.find(name, "%-") then
+		return name;
+	else
+		return name .. "-" .. ourRealmName;
+	end
+end
+
+-- Short name if on our server, full name if from different server
+function EPGP:GetDisplayCharacterName(name)
+	local dashIndex = string.find(name, "%-")
+	if not dashIndex then
+		return name			-- Already short, we assume it's on our server
+	end
+
+	if ourRealmName == string.sub(name, dashIndex + 1) then
+		return string.sub(name, 1, dashIndex - 1)
+	else
+		return name
+	end
+end
+
 local function ParseGuildNote(callback, name, note)
   -- Debug("Parsing Guild Note for %s [%s]", name, note)
   -- Delete current state about this toon.
@@ -362,9 +385,7 @@ local function ParseGuildNote(callback, name, note)
     local mainName = note
 
     -- Allow specifying 'short' names in the officer notes, add the server by default
-    if not string.find(mainName, "%-") then	
-        mainName = mainName .. "-" .. ourRealmName;
-    end
+	mainName = EPGP:GetFullCharacterName(mainName)
 
     local main_ep = EPGP:DecodeNote(GS:GetNote(mainName))
     if not main_ep then
@@ -419,9 +440,7 @@ function EPGP:ImportRoster(t, new_base_gp)
   local notes = {}
   for _, entry in pairs(t) do
     local name, ep, gp = unpack(entry)
-    if not string.find(name, "%-") then	
-        name = name .. "-" .. ourRealmName;
-    end
+	name = EPGP:GetFullCharacterName(name)
     notes[name] = EncodeNote(ep, gp)
   end
 

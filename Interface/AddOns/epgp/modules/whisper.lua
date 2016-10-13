@@ -25,9 +25,7 @@ function mod:CHAT_MSG_WHISPER(event_name, msg, sender)
     member = sender
   end
 
-  if not string.find(member, "%-") then	
-    member = member .. "-" .. EPGP:GetOurRealmName();
-  end
+  member = EPGP:GetFullCharacterName(member)
 
   senderMap[member] = sender
 

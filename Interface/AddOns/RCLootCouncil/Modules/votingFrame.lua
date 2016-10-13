@@ -340,9 +340,8 @@ function RCVotingFrame:BuildST()
 end
 
 function RCVotingFrame:UpdateMoreInfo(row, data)
-	addon:Debug("MoreInfo:", moreInfo)
 	local name
-	if data then
+	if data and row then
 		name  = data[row].name
 	else -- Try to extract the name from the selected row
 		name = self.frame.st:GetSelection() and self.frame.st:GetRow(self.frame.st:GetSelection()).name or nil
@@ -359,7 +358,7 @@ function RCVotingFrame:UpdateMoreInfo(row, data)
 
 	--Extract loot history for that name
 	local lootDB = addon:GetHistoryDB()
-	local latestMsFound, entry = false, nil
+	local entry
 
 	-- Their name might be saved without realmname :/
 	local nameCheck
@@ -371,29 +370,30 @@ function RCVotingFrame:UpdateMoreInfo(row, data)
 	end
 	tip:AddLine(addon.Ambiguate(name), color.r, color.g, color.b)
 	color = {} -- Color of the response
+	local lastestAwardFound, responseText = 0, {}
 	if nameCheck then -- they're in the DB!
-		tip:AddLine("")
+		tip:AddLine(L["Latest item(s) won"])
 		for i = #lootDB[name], 1, -1 do -- Start from the end
 			entry = lootDB[name][i]
-			if entry.responseID == 1 and not latestMsFound and not entry.isAwardReason then -- Latest MS roll
-				tip:AddDoubleLine(format(L["Latest 'item' won:"], addon:GetResponseText(entry.responseID)), "", 1,1,1, 1,1,1)
-				tip:AddLine(entry.lootWon)
-				tip:AddDoubleLine(entry.time .. " " ..entry.date, format(L["'n days' ago"], addon:ConvertDateToString(addon:GetNumberOfDaysFromNow(entry.date))), 1,1,1, 1,1,1)
-				tip:AddLine(" ") -- Spacer
-				latestMsFound = true
+			count[entry.responseID] = count[entry.responseID] and count[entry.responseID] + 1 or 1
+			responseText[entry.responseID] = responseText[entry.responseID] and responseText[entry.responseID] or entry.response
+			if not color[entry.responseID] or unpack(color[entry.responseID],1,3) == unpack({1,1,1}) and #entry.color ~= 0  then -- If it's not already added
+				color[entry.responseID] = #entry.color ~= 0 and #entry.color == 4 and entry.color or {1,1,1}
 			end
-			count[entry.response] = count[entry.response] and count[entry.response] + 1 or 1
-			if not color[entry.response] or unpack(color[entry.response],1,3) == unpack({1,1,1}) and #entry.color ~= 0  then -- If it's not already added
-				color[entry.response] = #entry.color ~= 0 and #entry.color == 4 and entry.color or {1,1,1}
+			if type(entry.responseID) == "number" and entry.responseID <= db.numMoreInfoButtons and not entry.isAwardReason and lastestAwardFound < 5 then
+				tip:AddDoubleLine(entry.lootWon, entry.response .. ", ".. format(L["'n days' ago"], addon:ConvertDateToString(addon:GetNumberOfDaysFromNow(entry.date))), nil,nil,nil,unpack(color[entry.responseID],1,3))
+				lastestAwardFound = lastestAwardFound + 1
 			end
-
 		end -- end counting
+		tip:AddLine(" ") -- spacer
+		tip:AddLine(L["Totals"])
 		local totalNum = 0
-		for response, num in pairs(count) do
-			local r,g,b = unpack(color[response],1,3)
-			tip:AddDoubleLine(response, num, r,g,b, r,g,b) -- Make sure we don't add the alpha value
+		for id, num in pairs(count) do
+			local r,g,b = unpack(color[id],1,3)
+			tip:AddDoubleLine(responseText[id], num, r,g,b, r,g,b) -- Make sure we don't add the alpha value
 			totalNum = totalNum + num
 		end
+		tip:AddLine(" ")
 		tip:AddDoubleLine(L["Total items received:"], totalNum, 0,1,1, 0,1,1)
 	else
 		tip:AddLine(L["No entries in the Loot History"])
@@ -427,6 +427,21 @@ function RCVotingFrame:GetFrame()
 			-- Return false to have the default OnClick handler take care of left clicks
 			return false
 		end,
+	})
+	-- We also want to show moreInfo on mouseover
+	st:RegisterEvents({
+		["OnEnter"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
+			if row then self:UpdateMoreInfo(realrow, data) end
+			-- Return false to have the default OnEnter handler take care mouseover
+			return false
+		end
+	})
+	-- We also like to return to the actual selected player when we remove the mouse
+	st:RegisterEvents({
+		["OnLeave"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
+			self:UpdateMoreInfo()
+			return false
+		end
 	})
 	st:SetFilter(RCVotingFrame.filterFunc)
 	st:EnableSelection(true)
@@ -825,7 +840,6 @@ function RCVotingFrame.filterFunc(table, row)
 end
 
 function ResponseSort(table, rowa, rowb, sortbycol)
-	if type(rowa) == "table" then printtable(rowa) end
 	local column = table.cols[sortbycol]
 	local a, b = table:GetRow(rowa), table:GetRow(rowb);
 	a, b = addon:GetResponseSort(lootTable[session].candidates[a.name].response), addon:GetResponseSort(lootTable[session].candidates[b.name].response)

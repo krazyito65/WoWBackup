@@ -1,3 +1,7 @@
+VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
+#showtooltip
+/use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
+END
 VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl] Horn of Valor; [nomod, @mouseover] Cenarion Ward
 END
@@ -5,10 +9,6 @@ VER 3 0100000000000068 " " "INV_MISC_QUESTIONMARK"
 #showtooltip Renewal
 /use Bear Form
 /use Renewal
-END
-VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
-#showtooltip
-/use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
 END
 VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -51,7 +51,7 @@ VER 3 0100000000000069 "dispel macro" "INV_MISC_QUESTIONMARK"
 END
 VER 3 0100000000000024 "regrow" "INV_MISC_QUESTIONMARK"
 #showtooltip
-/cast [mod:ctrl, @player] innervate;  [@mouseover] Regrowth
+/cast [mod:shift, @mouseover] innervate; [mod:ctrl, @player] innervate;  [@mouseover] Regrowth
 END
 VER 3 0100000000000028 "resto moonfare" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -63,8 +63,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-P1WT1DR1MR1SR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R1SR1NM1ET1RM2MR2LR2MR3HR3HR3HR4PH4IH[x]4OH8WM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NSelTauXitVyb[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NGenBurShiLosTosKylXitLogDraMalMiiMar[x]ZhaRág[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

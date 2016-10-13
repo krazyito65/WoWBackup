@@ -103,6 +103,7 @@
 	local OBJECT_TYPE_PETS = 0x00003000
 	local AFFILIATION_GROUP = 0x00000007
 	local REACTION_FRIENDLY = 0x00000010 
+	local REACTION_MINE = 0x00000001 
 	
 	local ENVIRONMENTAL_FALLING_NAME = Loc ["STRING_ENVIRONMENTAL_FALLING"]
 	local ENVIRONMENTAL_DROWNING_NAME = Loc ["STRING_ENVIRONMENTAL_DROWNING"]
@@ -134,6 +135,7 @@
 		[210155] = 210153, --deamonhunter Death Sweep
 		[227518] = 201428, --deamonhunter Annihilation
 		[187727] = 178741, --deamonhunter Immolation Aura
+		[201789] = 201628, --deamonhunter Fury of the Illidari
 		
 		[205164] = 205165, --death knight Crystalline Swords
 		
@@ -250,6 +252,12 @@
 			who_serial, who_name, who_flags = parser:GetRealHitSourceFromBuffOwner (paladin_gbom, who_serial, who_name, who_flags, SPELLNAME_PALADIN_GBOM)
 		elseif (spellid == SPELLID_SHAMAN_SLASH_DAMAGE) then
 			who_serial, who_name, who_flags = parser:GetRealHitSourceFromBuffOwner (shaman_slash, who_serial, who_name, who_flags, SPELLNAME_SHAMAN_SLASH)
+		end
+		
+		if (spellid == 220893) then --Rogue's Akaari's Soul - Soul Rip
+			if (who_flags and _bit_band (who_flags, REACTION_MINE) ~= 0) then
+				who_serial, who_name, who_flags = UnitGUID ("player"), _detalhes.playername, 0x00000417
+			end
 		end
 		
 		--> REMOVE AFTER LEGION LAUNCH
@@ -3512,7 +3520,7 @@ SPELL_POWER_OBSOLETE2 = 15;
 	function _detalhes.parser_functions:ENCOUNTER_START (...)
 	
 		if (_detalhes.debug) then
-			_detalhes:Msg ("(debug) ENCOUNTER_START event triggered.")
+			_detalhes:Msg ("(debug) |cFFFFFF00ENCOUNTER_START|r event triggered.")
 		end
 	
 		_detalhes.latest_ENCOUNTER_END = _detalhes.latest_ENCOUNTER_END or 0
@@ -3584,7 +3592,14 @@ SPELL_POWER_OBSOLETE2 = 15;
 	function _detalhes.parser_functions:ENCOUNTER_END (...)
 	
 		if (_detalhes.debug) then
-			_detalhes:Msg ("(debug) ENCOUNTER_END event triggered.")
+			_detalhes:Msg ("(debug) |cFFFFFF00ENCOUNTER_END|r event triggered.")
+		end
+		
+		if (_detalhes.zone_type == "party") then
+			if (_detalhes.debug) then
+				_detalhes:Msg ("(debug) the zone type is 'party', ignoring ENCOUNTER_END.")
+			end
+			return
 		end
 	
 		local encounterID, encounterName, difficultyID, raidSize, endStatus = _select (1, ...)
@@ -3676,19 +3691,21 @@ SPELL_POWER_OBSOLETE2 = 15;
 
 		if (_detalhes.schedule_remove_overall) then
 			if (_detalhes.debug) then
-				_detalhes:Msg ("(debug) found schedule overall data deletion.")
+				_detalhes:Msg ("(debug) found schedule overall data clean up.")
 			end
 			_detalhes.schedule_remove_overall = false
 			_detalhes.tabela_historico:resetar_overall()
 		end
 		
-		if (_detalhes.schedule_add_to_overall) then
+		if (_detalhes.schedule_add_to_overall and _detalhes.schedule_add_to_overall [1]) then
 			if (_detalhes.debug) then
-				_detalhes:Msg ("(debug) found schedule overall data addition.")
+				_detalhes:Msg ("(debug) adding ", #_detalhes.schedule_add_to_overall, "combats in queue to overall data.")
 			end
-			_detalhes.schedule_add_to_overall = false
-
-			_detalhes.historico:adicionar_overall (_detalhes.tabela_vigente)
+			
+			for i = #_detalhes.schedule_add_to_overall, 1, -1 do
+				local CombatToAdd = tremove (_detalhes.schedule_add_to_overall, i)
+				_detalhes.historico:adicionar_overall (CombatToAdd)
+			end
 		end
 		
 		if (_detalhes.schedule_store_boss_encounter) then

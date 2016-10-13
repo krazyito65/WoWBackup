@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1750, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15263 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 15307 $"):sub(12, -3))
 mod:SetCreatureID(104636)
 mod:SetEncounterID(1877)
 mod:SetZone()
@@ -27,7 +27,6 @@ mod:RegisterEventsInCombat(
 --TODO, see if destructive Nightmares has a fixate of sorts to warn one being chased by bad whisps
 --TODO, evaluate stomp and need of timer/etc
 --TODO, Further assess thorns. it doesn't need warnings at all if adds never tanked near boss in first place
---TODO, figure out good voice for specWarnCreepingNightmares. "clear stacks"?
 --Cenarius
 local warnNightmareBrambles			= mod:NewTargetAnnounce(210290, 2)
 local warnBeastsOfNightmare			= mod:NewSpellAnnounce(214876, 2)--Generic for now, figure out what to do with later.
@@ -40,9 +39,8 @@ local warnScornedTouch				= mod:NewTargetAnnounce(211471, 3)
 local warnCleansingGround			= mod:NewCastAnnounce(212630, 1)
 
 --Cenarius
-local specWarnCreepingNightmares	= mod:NewSpecialWarningStack(210279, nil, 20, nil, 1)--Stack warning subject to tuning
-local specWarnNightmareBrambles		= mod:NewSpecialWarningRun(210290, nil, nil, nil, 1, 2)
-local yellNightmareBrambles			= mod:NewYell(210290)
+local specWarnCreepingNightmares	= mod:NewSpecialWarningStack(210279, nil, 20, nil, 1, 6)--Stack warning subject to tuning
+local yellNightmareBrambles			= mod:NewYell(210290, L.BrambleYell)
 local specWarnNightmareBramblesNear	= mod:NewSpecialWarningClose(210290, nil, nil, nil, 1, 2)
 --local specWarnDreadThorns			= mod:NewSpecialWarningMoveAway(210346, "Tank", nil, nil, 1, 2)--Move away warning? Have to move away from other adds
 local specWarnNightmareBlast		= mod:NewSpecialWarningDefensive(213162, nil, nil, nil, 1, 2)
@@ -75,9 +73,11 @@ local timerRottenBreathCD			= mod:NewCDTimer(25, 211192, nil, nil, nil, 3)
 --Cenarius
 local countdownForcesOfNightmare	= mod:NewCountdown(78.8, 212726)
 local countdownNightmareBrambles	= mod:NewCountdown("Alt30", 210290, "Ranged")--Never once saw this target melee
+local countdownNightmareBlast		= mod:NewCountdown("Alt32", 213162, "Tank")
 ----Forces of Nightmare
 
 --Cenarius
+local voiceCreepingNightmares		= mod:NewVoice(210279)--stackhigh
 local voiceNightmareBrambles		= mod:NewVoice(210290)--runout/watchstep
 local voicePhaseChange				= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
 --local voiceDreadThorns				= mod:NewVoice(210346, "Tank")--bossout
@@ -95,6 +95,23 @@ mod:AddHudMapOption("HudMapOnBreath", 211192)
 mod.vb.phase = 1
 mod.vb.addsCount = 0
 local scornedWarned = false
+local scanForAWhile = 0
+
+local function findTheGodDamnBrambles(self)
+	scanForAWhile = scanForAWhile + 1
+	for uId in DBM:GetGroupMembers() do
+		-- Has aggro on something, but not a tank
+		if uId and not self:IsTanking(uId) and UnitThreatSituation(uId) == 3 then
+			local targetName = UnitName(uId)
+			if targetName then
+				DBM:Debug(targetName.." has aggro and is not tanking", 2)
+			end
+		end
+	end
+	if scanForAWhile < 20 then
+		self:Schedule(1, findTheGodDamnBrambles, self)
+	end
+end
 
 function mod:BreathTarget(targetname, uId)
 	if not targetname then return end
@@ -118,7 +135,8 @@ function mod:OnCombatStart(delay)
 	timerNightmareBramblesCD:Start(27.5-delay)--Cast finish. Cast start is actually a yell and not worth using anyways since DBM doesn't warn spawn point until cast finish
 	countdownNightmareBrambles:Start(27.5-delay)
 	if self:IsMythic() then
-		timerNightmareBlastCD:Start(31.2-delay)
+		timerNightmareBlastCD:Start(30.5-delay)
+		countdownNightmareBlast:Start(30.5-delay)
 	end
 	if not self.Options.AlertedBramble then
 		DBM:AddMsg(L.BrambleMessage)
@@ -170,13 +188,14 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 213162 then
 		timerNightmareBlastCD:Start()
+		countdownNightmareBlast:Start(32.8)
 		local targetName, uId, bossuid = self:GetBossTarget(104636, true)
 		local tanking, status = UnitDetailedThreatSituation("player", bossuid)
 		if tanking or (status == 3) then--Player is current target
 			specWarnNightmareBlast:Show()
 			voiceNightmareBlast:Play("defensive")
 		else
-			if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, targetName) then return end--You are not near current tank, you're probably 3rd tank on Doom Guards that never taunts massive blast
+			if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, targetName) then return end--You are not near current tank, you're probably 3rd tank on Adds that never taunts nightmare blast
 			specWarnNightmareBlastOther:Schedule(2, targetName)
 			voiceNightmareBlast:Schedule(2, "tauntboss")
 		end
@@ -189,7 +208,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnBeastsOfNightmare:Show()
 		timerBeastsOfNightmareCD:Start()
 	elseif spellId == 214529 and not args:IsPlayer() then
-		if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, args.destName) then return end--You are not near current tank, you're probably 3rd tank on Doom Guards that never taunts massive blast
+		if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, args.destName) then return end--You are not near current tank, you're probably 3rd tank on Adds that never taunts nightmare blast
 		specWarnSpearOfNightmaresOther:Show(args.destName)
 		voiceSpearOfNightmares:Play("tauntboss")
 	end
@@ -217,6 +236,7 @@ function mod:SPELL_AURA_APPLIED_DOSE(args)
 		if amount % 5 == 0 then--Every 5
 			if amount >= 20 then--Starting at 20
 				specWarnCreepingNightmares:Show(amount)
+				voiceCreepingNightmares:Play("stackhigh")
 			end
 		end
 	end
@@ -249,7 +269,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 		if not UnitExists(uId.."target") then return end--Blizzard decided to go even further out of way to break this detection, if this happens we don't want nil errors for users.
 		local targetName = DBM:GetUnitFullName(uId.."target")
 		if UnitIsUnit("player", uId.."target") then
-			specWarnNightmareBrambles:Show()
+			specWarnNightmareBramblesNear:Show(YOU)
 			yellNightmareBrambles:Yell()
 			voiceNightmareBrambles:Play("runout")
 		elseif self:CheckNearby(8, targetName) then
@@ -259,12 +279,17 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 			warnNightmareBrambles:Show(targetName)
 		end
 		timerNightmareBramblesCD:Start()
+		scanForAWhile = 0
+		if DBM.Options.DebugMode then
+			self:Schedule(1, findTheGodDamnBrambles, self)
+		end
 	elseif spellId == 217368 then--Overwhelming Nightmare (Phase 2)
 		self.vb.phase = 2
 		warnPhase2:Show()
 		voicePhaseChange:Play("ptwo")
 		timerForcesOfNightmareCD:Stop()
 		timerNightmareBlastCD:Stop()
+		countdownNightmareBlast:Cancel()
 		timerDreadThornsCD:Stop()
 		timerNightmareBramblesCD:Stop()
 		timerCleansingGroundCD:Stop()

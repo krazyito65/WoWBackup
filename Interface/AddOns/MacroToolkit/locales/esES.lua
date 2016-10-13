@@ -43,6 +43,7 @@ L["Custom slash command"] = "Comandos de barra personalizados" -- Needs review
 L["datetime format"] = "%d/%m/%y %H:%M:%S" -- Needs review
 L["dead"] = "muerto" -- Needs review
 L["Delete all macros"] = "Borrar todas las macros" -- Needs review
+L["Delete all macros on the current tab"] = "Delete all macros on the current tab" -- Requires localization
 L["Delete Backup"] = "Borrar copia de seguridad" -- Needs review
 L["Destroy grey items"] = "Destruir objetos grises" -- Needs review
 L["did you mean"] = "quieres decir" -- Needs review
