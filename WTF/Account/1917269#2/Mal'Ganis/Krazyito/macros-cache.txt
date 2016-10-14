@@ -63,8 +63,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-R1SR1NM1ET1RM2MR2LR2MR3HR3HR3HR4PH4IH[x]4OH8WM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R1SR1WT1DT1DH1WT2MR2IR2MR2OM2DM3HR3HR3HR3LR3LR4SH4SH[x]4OH4PH7DR8HR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-NGenBurShiLosTosKylXitLogDraMalMiiMar[x]ZhaRág[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NGenJinCenBigRanTosMarXitIrtStrDraMalLogKroKylBerKla[x]ZhaMiiTauAll[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
