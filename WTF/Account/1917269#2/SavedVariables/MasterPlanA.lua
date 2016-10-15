@@ -61,23 +61,23 @@ MasterPlanAG = {
 			["summary"] = {
 				["inProgress"] = {
 					[272] = 1452625303,
-					[367] = 1452639708,
 					[337] = 1452661296,
+					[367] = 1452639708,
 					[371] = 1452639705,
 				},
 			},
 			["faction"] = "Horde",
 			["curOil"] = 195,
-			["class"] = "SHAMAN",
-			["curRes"] = 2453,
 			["lastCacheTime"] = 1470362011,
+			["curRes"] = 2453,
+			["class"] = "SHAMAN",
 		},
 		["Krazýito"] = {
 			["class"] = "PRIEST",
 			["faction"] = "Horde",
 		},
 		["Krazyito"] = {
-			["lastCacheTime"] = 1473633441,
+			["class"] = "DRUID",
 			["summary"] = {
 				["tt2"] = 1472082125,
 				["tt3"] = true,
@@ -86,11 +86,11 @@ MasterPlanAG = {
 				["ti3"] = 127855,
 				["ti2"] = 122486,
 			},
-			["curOil"] = 3565,
-			["cacheSize"] = 1000,
-			["class"] = "DRUID",
-			["curRes"] = 10000,
 			["faction"] = "Horde",
+			["cacheSize"] = 1000,
+			["lastCacheTime"] = 1473633441,
+			["curRes"] = 10000,
+			["curOil"] = 3565,
 		},
 		["Krazybank"] = {
 			["faction"] = "Horde",

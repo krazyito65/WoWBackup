@@ -29,10 +29,6 @@ local dreamingCount = 1
 
 local L = mod:GetLocale()
 if L then
-	L.custom_off_blade_marker = "Nightmare Blade marker"
-	L.custom_off_blade_marker_desc = "Mark the targets of Nightmare Blades with {rt1}{rt2}, requires promoted or leader."
-	L.custom_off_blade_marker_icon = 1
-
 	L.horror = -12973
 
 	L.linked = "Bonds of Terror on YOU! - Linked with %s!"
@@ -42,6 +38,7 @@ end
 -- Initialization
 --
 
+local bladeMarker = mod:AddMarkerOption(false, "player", 1, 211802, 1, 2) -- Nightmare Blades
 function mod:GetOptions()
 	return {
 		--[[ General ]]--
@@ -60,7 +57,7 @@ function mod:GetOptions()
 		--[[ Stage One: The Decent Into Madness ]]--
 		{206651, "TANK_HEALER"}, -- Darkening Soul
 		{211802, "SAY", "FLASH"}, -- Nightmare Blades
-		"custom_off_blade_marker",
+		bladeMarker,
 		210264, -- Manifest Corruption
 		205771, -- Tormenting Fixation
 		205741, -- Lurking Eruption (Lurking Terror)
@@ -169,7 +166,10 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(_, spellName, _, _, spellId)
 		self:Bar(224508, 20.7) -- Corruption Meteor
 		self:Bar(211802, 33) -- Nightmare Blades
 	elseif spellId == 205843 then -- The Dreaming
-		local percentage = dreamingCount == 1 and "97% - " or dreamingCount == 2 and "80% - " or dreamingCount == 3 and "60% - " or "45% - "
+		local percentage = dreamingCount == 1 and "97% - " or "60% - "
+		if self:Mythic() then
+			percentage = dreamingCount == 1 and "97% - " or dreamingCount == 2 and "80% - " or dreamingCount == 3 and "60% - " or "45% - "
+		end
 		self:Message(spellId, "Positive", "Long", percentage .. CL.count:format(spellName, dreamingCount))
 		self:Bar(spellId, 6, CL.cast:format(CL.count:format(spellName, dreamingCount)))
 		dreamingCount = dreamingCount + 1
@@ -243,7 +243,7 @@ end
 
 function mod:HorrorDeath(args)
 	self:StopBar(207830) -- Corrupting Nova
-	self:CDBar(224649) -- Tormenting Swipe
+	self:StopBar(224649) -- Tormenting Swipe
 end
 
 --[[ Stage One: The Decent Into Madness ]]--
@@ -262,7 +262,7 @@ do
 		end
 
 		bladeList[#bladeList+1] = args.destName
-		if self:GetOption("custom_off_blade_marker") then
+		if self:GetOption(bladeMarker) then
 			SetRaidTarget(args.destName, #bladeList) -- 1,2
 		end
 
@@ -277,7 +277,7 @@ do
 	end
 
 	function mod:NightmareBladesRemoved(args)
-		if self:GetOption("custom_off_blade_marker") then
+		if self:GetOption(bladeMarker) then
 			SetRaidTarget(args.destName, 0)
 		end
 	end

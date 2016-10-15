@@ -22,7 +22,7 @@ RKDatabase = {
 	["profiles"] = {
 		["Default"] = {
 			["firstLoad"] = false,
-			["diffShown"] = 16,
+			["prevDiffShown"] = 16,
 			["recordTimes"] = {
 				["Highmaul"] = {
 					["Brackenspore"] = {
@@ -212,7 +212,7 @@ RKDatabase = {
 			},
 			["prevTierShown"] = 15,
 			["tierShown"] = 15,
-			["prevDiffShown"] = 14,
+			["diffShown"] = 16,
 		},
 	},
 }

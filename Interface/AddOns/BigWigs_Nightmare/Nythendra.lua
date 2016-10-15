@@ -25,21 +25,17 @@ local mindControlledPlayers = 0
 local myInfestedStacks = 0
 
 --------------------------------------------------------------------------------
--- Localization
---
-
-local L = mod:GetLocale()
-
---------------------------------------------------------------------------------
 -- Initialization
 --
 
+local rotMarker = mod:AddMarkerOption(false, "player", 1, 203096, 1, 2, 3, 4, 5) -- Rot
 function mod:GetOptions()
 	return {
 		--[[ General ]]--
 		202977, -- Infested Breath
 		{203096, "SAY", "FLASH", "PROXIMITY"}, -- Rot
-		{204463, "SAY", "FLASH"}, -- Volatile Rot
+		rotMarker,
+		{204463, "SAY", "FLASH", "ICON"}, -- Volatile Rot
 		203552, -- Heart of the Swarm
 		203045, -- Infested Ground
 		"berserk",
@@ -60,6 +56,7 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "Rot", 203096)
 	self:Log("SPELL_AURA_REMOVED", "RotRemoved", 203096)
 	self:Log("SPELL_AURA_APPLIED", "VolatileRot", 204463)
+	self:Log("SPELL_AURA_REMOVED", "VolatileRotRemoved", 204463)
 	self:Log("SPELL_CAST_START", "HeartOfTheSwarm", 203552)
 	self:Log("SPELL_AURA_APPLIED", "InfestedGroundDamage", 203045)
 	self:Log("SPELL_PERIODIC_DAMAGE", "InfestedGroundDamage", 203045)
@@ -121,6 +118,9 @@ do
 		if not isOnMe then
 			self:OpenProximity(args.spellId, 10, proxList)
 		end
+		if self:GetOption(rotMarker) then
+			SetRaidTarget(args.destName, #proxList)
+		end
 
 		playerList[#playerList+1] = args.destName
 		if #playerList == 1 then
@@ -140,6 +140,9 @@ do
 			self:CloseProximity(args.spellId)
 		end
 
+		if self:GetOption(rotMarker) then
+			SetRaidTarget(args.destName, 0)
+		end
 		tDeleteItem(proxList, args.destName)
 
 		if not isOnMe then -- Don't change proximity if it's on you and expired on someone else
@@ -153,15 +156,20 @@ do
 end
 
 function mod:VolatileRot(args)
+	if self:Me(args.destGUID) then
+		self:Say(args.spellId)
+		self:Flash(args.spellId)
+	end
+	self:PrimaryIcon(args.spellId, args.destName)
 	self:TargetMessage(args.spellId, args.destName, "Urgent", "Warning", nil, nil, self:Tank())
 	self:TargetBar(args.spellId, 8, args.destName)
 	if self:BarTimeLeft(203552) > 23 then -- Heart of the Swarm
 		self:CDBar(args.spellId, 23)
 	end
-	if self:Me(args.destGUID) then
-		self:Say(args.spellId)
-		self:Flash(args.spellId)
-	end
+end
+
+function mod:VolatileRotRemoved(args)
+	self:PrimaryIcon(args.spellId)
 end
 
 function mod:HeartOfTheSwarm(args)

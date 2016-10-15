@@ -49,3 +49,7 @@ L.trash = "Trash"
 L.underyou = "%s en dessous de VOUS !"
 L.you = "%s sur VOUS !"
 
+-- Common raid marking locale
+L.marker = "Marquage %s"
+L.marker_player_desc = "Marque les joueurs affectés par %s avec %s. Nécessite d'être assistant ou chef de raid."
+L.marker_npc_desc = "Marque %s avec %s. Nécessite d'être assistant ou chef de raid."
