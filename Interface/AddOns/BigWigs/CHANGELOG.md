@@ -1,8 +1,10 @@
 # BigWigs
 
-## [v18-16-gd6f8393](https://github.com/BigWigsMods/BigWigs/tree/d6f8393e426abd98bb50f3a0a6b9ebd886ef2b1b) (2016-10-15) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v18...d6f8393e426abd98bb50f3a0a6b9ebd886ef2b1b)
+## [v18-18-g49a8d9a](https://github.com/BigWigsMods/BigWigs/tree/49a8d9a4c642b339caa007f93a968376977e6b6a) (2016-10-16) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v18...49a8d9a4c642b339caa007f93a968376977e6b6a)
 
+-   TrialOfValor/Helya: Initial module  
+-   TrialOfValor/Odyn: Updates after heroic testing  
 -   Deprecate :RangeMessage  
 -   Xavius: Fix dreaming percentages for non mythic  
 -   frFR Update (#75)  
