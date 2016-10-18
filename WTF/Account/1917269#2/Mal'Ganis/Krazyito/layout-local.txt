@@ -1,4 +1,11 @@
 Version: 1
+Frame: DBMRangeCheckRadar
+FrameLevel: 1
+Anchor: RIGHT
+X: -378
+Y: 195
+W: 128
+H: 128
 Frame: ItemRefTooltip
 FrameLevel: 1
 Anchor: CENTER
@@ -27,13 +34,6 @@ X: -138
 Y: -112
 W: 32
 H: 32
-Frame: DetailsPlayerDetailsWindow
-FrameLevel: 1
-Anchor: RIGHT
-X: -68
-Y: -16
-W: 790
-H: 454
 Frame: EventTrackerFrame
 FrameLevel: 1
 Anchor: CENTER
@@ -62,3 +62,10 @@ X: 26
 Y: -42
 W: 1044
 H: 825
+Frame: DetailsPlayerDetailsWindow
+FrameLevel: 1
+Anchor: CENTER
+X: -34
+Y: -70
+W: 790
+H: 454

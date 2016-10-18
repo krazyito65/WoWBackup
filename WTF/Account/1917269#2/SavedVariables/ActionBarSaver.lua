@@ -18,15 +18,15 @@ ActionBarSaverDB = {
 				[74] = "spell|34428||Victory Rush||",
 				[76] = "spell|6343||Thunder Clap|Battle, Defensive Stance|",
 				[109] = "spell|6603||Auto Attack||",
-				[58] = "spell|6673||Battle Shout||",
+				[59] = "spell|58984||Shadowmeld|Racial|",
 				[60] = "spell|3018||Shoot||",
 				[61] = "spell|83958||Mobile Banking||",
 				[86] = "spell|34428||Victory Rush||",
 				[88] = "spell|6343||Thunder Clap|Battle, Defensive Stance|",
 				[97] = "spell|6603||Auto Attack||",
-				[96] = "spell|355||Taunt|Defensive Stance|",
-				[48] = "macro|48||selling runs|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/2 <Apotheosis> is selling full 8/8 H clears. There are options for loot, title, and mount. pst for more information.",
 				[49] = "spell|100||Charge|Battle Stance|",
+				[48] = "macro|48||selling runs|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/2 <Apotheosis> is selling full 8/8 H clears. There are options for loot, title, and mount. pst for more information.",
+				[96] = "spell|355||Taunt|Defensive Stance|",
 				[50] = "spell|78||Heroic Strike||",
 				[51] = "companion|8394|||MOUNT|",
 				[78] = "spell|5308||Execute|Battle, Berserker Stance|",
@@ -35,7 +35,7 @@ ActionBarSaverDB = {
 				[77] = "spell|7386||Sunder Armor||",
 				[56] = "spell|12809||Concussion Blow||",
 				[57] = "spell|2565||Shield Block|Defensive Stance|",
-				[59] = "spell|58984||Shadowmeld|Racial|",
+				[58] = "spell|6673||Battle Shout||",
 			},
 			["tank"] = {
 				"spell|23922||Shield Slam||", -- [1]
@@ -112,11 +112,11 @@ ActionBarSaverDB = {
 				"item|6948||Hearthstone", -- [72]
 			},
 			["shino"] = {
-				[33] = "companion|8394|||MOUNT|",
+				[91] = "spell|100||Charge|Battle Stance|",
 				[85] = "spell|355||Taunt|Defensive Stance|",
 				[87] = "spell|6552||Pummel||",
 				[89] = "spell|772||Rend|Battle, Defensive Stance|",
-				[91] = "spell|100||Charge|Battle Stance|",
+				[62] = "spell|34428||Victory Rush||",
 				[93] = "spell|6572||Revenge|Defensive Stance|",
 				[95] = "spell|2565||Shield Block|Defensive Stance|",
 				[97] = "spell|6603||Auto Attack||",
@@ -126,7 +126,7 @@ ActionBarSaverDB = {
 				[74] = "spell|5308||Execute|Battle, Berserker Stance|",
 				[76] = "spell|57755||Heroic Throw||",
 				[109] = "spell|6603||Auto Attack||",
-				[45] = "item|6948||Hearthstone",
+				[78] = "spell|6343||Thunder Clap|Battle, Defensive Stance|",
 				[82] = "spell|7384||Overpower|Battle Stance|",
 				[84] = "spell|78||Heroic Strike||",
 				[86] = "spell|58984||Shadowmeld|Racial|",
@@ -137,13 +137,13 @@ ActionBarSaverDB = {
 				[96] = "spell|78||Heroic Strike||",
 				[67] = "spell|57755||Heroic Throw||",
 				[69] = "spell|7386||Sunder Armor||",
-				[49] = "spell|7386||Sunder Armor||",
-				[73] = "spell|23922||Shield Slam||",
 				[65] = "spell|12975||Last Stand||",
-				[78] = "spell|6343||Thunder Clap|Battle, Defensive Stance|",
+				[73] = "spell|23922||Shield Slam||",
+				[49] = "spell|7386||Sunder Armor||",
+				[45] = "item|6948||Hearthstone",
 				[79] = "spell|100||Charge|Battle Stance|",
 				[81] = "spell|772||Rend|Battle, Defensive Stance|",
-				[62] = "spell|34428||Victory Rush||",
+				[33] = "companion|8394|||MOUNT|",
 			},
 		},
 		["PALADIN"] = {
@@ -200,18 +200,18 @@ ActionBarSaverDB = {
 				[38] = "macro|38|||Interface\\Icons\\Spell_Holy_FlashHeal|#showtooltip/n/use [@mouseover] Flash Heal",
 				[39] = "macro|39|||Interface\\Icons\\Spell_Holy_Penance|#showtooltip/n/use [mod:ctrl, @mouseover] Power Infusion; [@mouseover] Penance",
 				[42] = "macro|42|||Interface\\Icons\\Spell_Holy_GreaterHeal|#showtooltip/n/use [mod:ctrl, @mouseover] Pain Suppression;  [@mouseover] Greater Heal",
-				[49] = "companion|75973|||MOUNT|",
-				[52] = "item|5512||Healthstone",
-				[65] = "spell|2096||Mind Vision||",
-				[50] = "spell|32375||Mass Dispel||",
 				[51] = "spell|59752||Every Man for Himself|Racial|",
 				[71] = "spell|83968||Mass Resurrection|Guild Perk|",
+				[65] = "spell|2096||Mind Vision||",
+				[50] = "spell|32375||Mass Dispel||",
+				[69] = "spell|73325||Leap of Faith||",
+				[52] = "item|5512||Healthstone",
 				[53] = "macro|53|||Interface\\Icons\\Spell_Holy_FlashHeal|#showtooltip/n/use [@mouseover] Flash Heal",
 				[54] = "spell|47540||Penance||",
 				[67] = "spell|8122||Psychic Scream||",
 				[56] = "spell|64901||Hymn of Hope||",
 				[57] = "spell|527||Purify||",
-				[69] = "spell|73325||Leap of Faith||",
+				[49] = "companion|75973|||MOUNT|",
 			},
 			["holy"] = {
 				"macro|1|||Interface\\Icons\\Spell_Holy_DivineProvidence|#showtooltip/n/cast [@mouseover,help,nodead][] Holy Word: Chastise", -- [1]
@@ -372,172 +372,7 @@ ActionBarSaverDB = {
 				"spell|588||Inner Fire||", -- [84]
 			},
 		},
-		["SHAMAN"] = {
-			["ele"] = {
-				"spell|79206||Spiritwalker's Grace||", -- [1]
-				"spell|51490||Thunderstorm||", -- [2]
-				"spell|8050||Flame Shock||", -- [3]
-				"spell|51505||Lava Burst||", -- [4]
-				"spell|16166||Elemental Mastery||", -- [5]
-				"macro|6|||INTERFACE\\ICONS\\spell_shaman_earthquake|#showtooltip/n/cast [mod:shift] Healing Rain; Earthquake", -- [6]
-				"spell|1535||Fire Nova||", -- [7]
-				"spell|421||Chain Lightning||", -- [8]
-				"spell|73680||Unleash Elements||", -- [9]
-				"spell|57994||Wind Shear||", -- [10]
-				"spell|331||Healing Wave||", -- [11]
-				"spell|8004||Healing Surge||", -- [12]
-				"spell|8042||Earth Shock||", -- [13]
-				"item|5512||Healthstone", -- [14]
-				"spell|66842||Call of the Elements||", -- [15]
-				"spell|403||Lightning Bolt||", -- [16]
-				"spell|73920||Healing Rain||", -- [17]
-				nil, -- [18]
-				"item|58257||Highland Spring Water", -- [19]
-				"item|65499||Conjured Mana Cake", -- [20]
-				"spell|73899||Primal Strike||", -- [21]
-				"item|23247||Burning Blossom", -- [22]
-				"spell|52127||Water Shield||", -- [23]
-				"spell|324||Lightning Shield||", -- [24]
-				"spell|20594||Stoneform|Racial|", -- [25]
-				"spell|51730||Earthliving Weapon||", -- [26]
-				"spell|8024||Flametongue Weapon||", -- [27]
-				nil, -- [28]
-				"spell|546||Water Walking||", -- [29]
-				nil, -- [30]
-				"spell|131||Water Breathing||", -- [31]
-				"spell|5730||Stoneclaw Totem||", -- [32]
-				"spell|2484||Earthbind Totem||", -- [33]
-				"spell|8177||Grounding Totem||", -- [34]
-				nil, -- [35]
-				"spell|2008||Ancestral Spirit||", -- [36]
-				"item|6948||Hearthstone", -- [37]
-				"spell|556||Astral Recall||", -- [38]
-				"spell|83958||Mobile Banking||", -- [39]
-				"spell|2894||Fire Elemental Totem||", -- [40]
-				"spell|2062||Earth Elemental Totem||", -- [41]
-				"spell|32182||Heroism||", -- [42]
-				"item|62649||Fortune Cookie", -- [43]
-				nil, -- [44]
-				"item|6372||Swim Speed Potion", -- [45]
-				nil, -- [46]
-				"macro|47||selling runs|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/2 <Apotheosis> is selling full 8/8 H clears. There are options for loot, title, and mount. pst for more information.", -- [47]
-				"spell|3273||First Aid||", -- [48]
-				"macro|49|||Interface\\Icons\\Spell_Nature_SpiritWolf|#showtooltip/n/cast [indoors] Ghost Wolf; [nocombat, harm] Ghost Wolf; [combat] Ghost Wolf; [flyable] Tyrael's Charger; Tyrael's Charger/n/dismount [mounted]", -- [49]
-				"spell|8056||Frost Shock||", -- [50]
-				"spell|8143||Tremor Totem||", -- [51]
-				nil, -- [52]
-				"spell|51514||Hex||", -- [53]
-				"spell|32182||Heroism||", -- [54]
-				nil, -- [55]
-				"spell|76780||Bind Elemental||", -- [56]
-				"macro|57||Dodge This Vent|Interface\\Icons\\INV_Misc_Food_58|+++++++++++++++++/nDodge This Vent/narsenic.typefrag.com/n49178/ndtvent123/n+++++++++++++++++", -- [57]
-				nil, -- [58]
-				"spell|73920||Healing Rain||", -- [59]
-				"macro|60||Fireside chat.|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/tar Jarod Shadowsong/n/tar Thisalee Crow/n/tar Athorn Windsong/n/tar Deldren Ravenelm/n/stopmacro [noexists]/n/run SetRaidTarget(\"target\", 8)", -- [60]
-				"spell|403||Lightning Bolt||", -- [61]
-				"companion|32289|||MOUNT|", -- [62]
-				nil, -- [63]
-				"spell|83968||Mass Resurrection||", -- [64]
-				"spell|83967||Have Group, Will Travel||", -- [65]
-				"spell|2645||Ghost Wolf||", -- [66]
-				"companion|6777|||MOUNT|", -- [67]
-				[135] = "spell|5394||Healing Stream Totem||",
-				[139] = "spell|5394||Healing Stream Totem||",
-				[136] = "spell|3738||Wrath of Air Totem||",
-				[140] = "spell|3738||Wrath of Air Totem||",
-				[144] = "spell|8512||Windfury Totem||",
-				[133] = "spell|3599||Searing Totem||",
-				[137] = "spell|8190||Magma Totem||",
-				[141] = "spell|3599||Searing Totem||",
-				[134] = "spell|8075||Strength of Earth Totem||",
-				[138] = "spell|8071||Stoneskin Totem||",
-				[142] = "spell|8075||Strength of Earth Totem||",
-				[73] = "spell|403||Lightning Bolt||",
-				[143] = "spell|5394||Healing Stream Totem||",
-			},
-			["enh"] = {
-				"spell|17364||Stormstrike||", -- [1]
-				"spell|60103||Lava Lash||", -- [2]
-				"spell|73680||Unleash Elements||", -- [3]
-				"spell|403||Lightning Bolt||", -- [4]
-				"spell|1535||Fire Nova||", -- [5]
-				"spell|73920||Healing Rain||", -- [6]
-				"spell|79206||Spiritwalker's Grace||", -- [7]
-				"spell|30823||Shamanistic Rage||", -- [8]
-				"spell|8017||Rockbiter Weapon||", -- [9]
-				"spell|57994||Wind Shear||", -- [10]
-				"spell|331||Healing Wave||", -- [11]
-				"spell|8004||Healing Surge||", -- [12]
-				"spell|8042||Earth Shock||", -- [13]
-				"spell|8050||Flame Shock||", -- [14]
-				"item|5512||Healthstone", -- [15]
-				"spell|66842||Call of the Elements||", -- [16]
-				nil, -- [17]
-				"item|65499||Conjured Mana Cake", -- [18]
-				"item|58257||Highland Spring Water", -- [19]
-				"spell|73680||Unleash Elements||", -- [20]
-				"spell|73899||Primal Strike||", -- [21]
-				"item|65499||Conjured Mana Cake", -- [22]
-				"spell|52127||Water Shield||", -- [23]
-				"spell|324||Lightning Shield||", -- [24]
-				"spell|20594||Stoneform|Racial|", -- [25]
-				"spell|5730||Stoneclaw Totem||", -- [26]
-				"spell|2484||Earthbind Totem||", -- [27]
-				"spell|51514||Hex||", -- [28]
-				"spell|76780||Bind Elemental||", -- [29]
-				"spell|8143||Tremor Totem||", -- [30]
-				"spell|131||Water Breathing||", -- [31]
-				"spell|8177||Grounding Totem||", -- [32]
-				"spell|32182||Heroism||", -- [33]
-				"spell|8232||Windfury Weapon||", -- [34]
-				"spell|8024||Flametongue Weapon||", -- [35]
-				"spell|2008||Ancestral Spirit||", -- [36]
-				"item|6948||Hearthstone", -- [37]
-				"spell|556||Astral Recall||", -- [38]
-				nil, -- [39]
-				"spell|2894||Fire Elemental Totem||", -- [40]
-				"spell|2062||Earth Elemental Totem||", -- [41]
-				"spell|421||Chain Lightning||", -- [42]
-				"spell|32182||Heroism||", -- [43]
-				"item|23247||Burning Blossom", -- [44]
-				"item|62649||Fortune Cookie", -- [45]
-				"item|6372||Swim Speed Potion", -- [46]
-				"spell|79206||Spiritwalker's Grace||", -- [47]
-				"spell|3273||First Aid||", -- [48]
-				"macro|49|||Interface\\Icons\\Spell_Nature_WispSplode|#showtooltip/n/cast [indoors] Ghost Wolf; [nocombat, harm] Ghost Wolf; [combat] Ghost Wolf; [flyable] Tyrael's Charger; Tyrael's Charger/n/dismount [mounted]", -- [49]
-				"spell|51533||Feral Spirit||", -- [50]
-				"spell|8056||Frost Shock||", -- [51]
-				"spell|8050||Flame Shock||", -- [52]
-				"spell|51514||Hex||", -- [53]
-				"spell|76780||Bind Elemental||", -- [54]
-				"spell|2645||Ghost Wolf||", -- [55]
-				"macro|56||Button|Interface\\Icons\\Temp|/click ExtraActionButton1", -- [56]
-				"macro|57||Dodge This Vent|Interface\\Icons\\INV_Misc_Food_58|+++++++++++++++++/nDodge This Vent/narsenic.typefrag.com/n49178/ndtvent123/n+++++++++++++++++", -- [57]
-				nil, -- [58]
-				"macro|59||apoth mumble|Interface\\Icons\\Ability_Creature_Disease_05|++++++++++++++++++++/nApoth Mumble/n70.38.24.110/n64738/nnarphlovesfigureskating/n++++++++++++++++++++", -- [59]
-				"macro|60||Fireside chat.|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/tar Jarod Shadowsong/n/tar Thisalee Crow/n/tar Athorn Windsong/n/tar Deldren Ravenelm/n/stopmacro [noexists]/n/run SetRaidTarget(\"target\", 8)", -- [60]
-				nil, -- [61]
-				"companion|32289|||MOUNT|", -- [62]
-				[135] = "spell|5394||Healing Stream Totem||",
-				[139] = "spell|5394||Healing Stream Totem||",
-				[143] = "spell|5394||Healing Stream Totem||",
-				[66] = "companion|6777|||MOUNT|",
-				[70] = "macro|70|||INTERFACE\\ICONS\\spell_shaman_unleashweapon_frost|#showtooltip/n/castsequence [@none] Frostbrand Weapon, Flametongue Weapon/n/use 17/n/click StaticPopup1Button1",
-				[140] = "spell|8512||Windfury Totem||",
-				[144] = "spell|8512||Windfury Totem||",
-				[133] = "spell|3599||Searing Totem||",
-				[137] = "spell|8190||Magma Totem||",
-				[141] = "spell|3599||Searing Totem||",
-				[65] = "spell|10662||Leatherworking||",
-				[67] = "spell|83967||Have Group, Will Travel||",
-				[69] = "macro|69||apoth mumble|Interface\\Icons\\Ability_Creature_Disease_05|++++++++++++++++++++/nApoth Mumble/n70.38.24.110/n64738/nnarphlovesfigureskating/n++++++++++++++++++++",
-				[71] = "spell|324||Lightning Shield||",
-				[73] = "spell|403||Lightning Bolt||",
-				[138] = "spell|8071||Stoneskin Totem||",
-				[134] = "spell|8075||Strength of Earth Totem||",
-				[142] = "spell|8075||Strength of Earth Totem||",
-				[136] = "spell|8512||Windfury Totem||",
-			},
+		["HUNTER"] = {
 		},
 		["WARLOCK"] = {
 			["destro"] = {
@@ -787,18 +622,18 @@ ActionBarSaverDB = {
 				[51] = "spell|69070||Rocket Jump|Racial|",
 				[71] = "spell|83968||Mass Resurrection|Guild Perk|",
 				[44] = "spell|13750||Adrenaline Rush||",
-				[39] = "macro|39|||Interface\\Icons\\Spell_Shadow_RitualOfSacrifice|#showtooltip/n/use [stance:0] Sinister Strike/n/use [stance:1] Ambush",
+				[11] = "spell|69041||Rocket Barrage|Racial|",
 				[72] = "item|6948||Hearthstone",
-				[75] = "spell|1833||Cheap Shot||",
+				[41] = "spell|51690||Killing Spree||",
 				[9] = "spell|2983||Sprint||",
-				[73] = "spell|6770||Sap||",
 				[37] = "macro|37|||Interface\\Icons\\Ability_Rogue_SliceDice|#showtooltip/n/targetlasttarget [noexists]/n/use slice and dice",
+				[73] = "spell|6770||Sap||",
 				[45] = "spell|408||Kidney Shot||",
 				[53] = "spell|114018||Shroud of Concealment||",
 				[61] = "spell|1804||Pick Lock||",
 				[74] = "spell|1966||Feint||",
-				[41] = "spell|51690||Killing Spree||",
-				[11] = "spell|69041||Rocket Barrage|Racial|",
+				[75] = "spell|1833||Cheap Shot||",
+				[39] = "macro|39|||Interface\\Icons\\Spell_Shadow_RitualOfSacrifice|#showtooltip/n/use [stance:0] Sinister Strike/n/use [stance:1] Ambush",
 			},
 			["sub"] = {
 				nil, -- [1]
@@ -836,15 +671,15 @@ ActionBarSaverDB = {
 				[71] = "spell|83968||Mass Resurrection|Guild Perk|",
 				[44] = "spell|51713||Shadow Dance||",
 				[72] = "item|6948||Hearthstone",
-				[81] = "spell|921||Pick Pocket||",
-				[37] = "macro|37|||Interface\\Icons\\Ability_Rogue_SliceDice|#showtooltip/n/targetlasttarget [noexists]/n/use slice and dice",
+				[38] = "spell|2098||Eviscerate||",
+				[77] = "spell|703||Garrote||",
 				[73] = "spell|6770||Sap||",
 				[45] = "spell|408||Kidney Shot||",
 				[53] = "spell|114018||Shroud of Concealment||",
 				[61] = "spell|1804||Pick Lock||",
 				[74] = "spell|1966||Feint||",
-				[77] = "spell|703||Garrote||",
-				[38] = "spell|2098||Eviscerate||",
+				[37] = "macro|37|||Interface\\Icons\\Ability_Rogue_SliceDice|#showtooltip/n/targetlasttarget [noexists]/n/use slice and dice",
+				[81] = "spell|921||Pick Pocket||",
 			},
 		},
 		["DRUID"] = {
@@ -1158,19 +993,19 @@ ActionBarSaverDB = {
 				[84] = "spell|5215||Prowl||",
 				[117] = "spell|1126||Mark of the Wild||",
 				[119] = "item|116268||Draenic Invisibility Potion",
-				[111] = "spell|22812||Barkskin||",
+				[99] = "spell|62606||Savage Defense|Active Mitigation|",
 				[101] = "item|5512||Healthstone",
 				[94] = "spell|1850||Dash||",
-				[98] = "spell|33745||Lacerate||",
-				[67] = "companion|136400|||MOUNT|",
 				[69] = "item|119093||Aviana's Feather",
+				[67] = "companion|136400|||MOUNT|",
+				[100] = "spell|22842||Frenzied Regeneration||",
 				[71] = "item|71259||Leyara's Locket",
 				[73] = "spell|33917||Mangle||",
 				[75] = "spell|22812||Barkskin||",
 				[108] = "spell|6795||Growl||",
-				[100] = "spell|22842||Frenzied Regeneration||",
+				[98] = "spell|33745||Lacerate||",
 				[112] = "item|109218||Draenic Intellect Potion",
-				[99] = "spell|62606||Savage Defense|Active Mitigation|",
+				[111] = "spell|22812||Barkskin||",
 			},
 			["boomkin"] = {
 				"item|109223||Healing Tonic", -- [1]
@@ -1355,26 +1190,24 @@ ActionBarSaverDB = {
 				"spell|5221||Shred||", -- [74]
 				"spell|22812||Barkskin||", -- [75]
 				"macro|76||extrabutton|Interface\\Icons\\INV_MISC_QUESTIONMARK|/target [@mouseover]/n/click ExtraActionButton1/n/targetlasttarget", -- [76]
-				nil, -- [77]
-				"item|116268||Draenic Invisibility Potion", -- [78]
-				nil, -- [79]
-				"spell|20484||Rebirth||", -- [80]
-				"item|117452||Gorgrond Mineral Water", -- [81]
-				"macro|82|||Interface\\ICONS\\INV_Misc_ SelfieCamera_01.blp|#showtooltip/n/use [mod:ctrl] Transmorphic Tincture/n/use [nomod] S.E.L.F.I.E. Camera MkII", -- [82]
-				"spell|22568||Ferocious Bite||", -- [83]
-				"spell|5215||Prowl||", -- [84]
+				[78] = "item|116268||Draenic Invisibility Potion",
+				[80] = "spell|20484||Rebirth||",
+				[81] = "item|117452||Gorgrond Mineral Water",
+				[82] = "macro|82|||Interface\\ICONS\\INV_Misc_ SelfieCamera_01.blp|#showtooltip/n/use [mod:ctrl] Transmorphic Tincture/n/use [nomod] S.E.L.F.I.E. Camera MkII",
+				[83] = "spell|22568||Ferocious Bite||",
+				[84] = "spell|5215||Prowl||",
 				[87] = "spell|106898||Stampeding Roar||",
-				[93] = "spell|188550||Lifebloom||",
-				[95] = "spell|16914||Hurricane|Solar|",
-				[99] = "spell|22842||Frenzied Regeneration||",
-				[109] = "spell|8921||Moonfire|Lunar|",
-				[90] = "spell|740||Tranquility||",
 				[92] = "spell|48438||Wild Growth||",
-				[94] = "spell|33786||Cyclone||",
 				[96] = "spell|5215||Prowl||",
 				[104] = "spell|22842||Frenzied Regeneration||",
-				[106] = "spell|106898||Stampeding Roar||",
+				[93] = "spell|188550||Lifebloom||",
+				[90] = "spell|740||Tranquility||",
+				[109] = "spell|8921||Moonfire|Lunar|",
 				[108] = "spell|6795||Growl||",
+				[106] = "spell|106898||Stampeding Roar||",
+				[95] = "spell|16914||Hurricane|Solar|",
+				[99] = "spell|22842||Frenzied Regeneration||",
+				[94] = "spell|33786||Cyclone||",
 			},
 		},
 		["MONK"] = {
@@ -1519,8 +1352,8 @@ ActionBarSaverDB = {
 				[73] = "spell|108557||Jab||",
 				[61] = "macro|61|||Interface\\Icons\\ACHIEVEMENT_GUILDPERK_FASTTRACK_RANK2|/rw GROUP 1 = {CROSS}/n/RW GROUP 2 = {SQUARE}/n/RW GROUP 3 = {TRIANGLE}/n/RW GROUP 4 = {DIAMOND}/n/RW GROUP 5 = Spread out",
 				[74] = "spell|100787||Tiger Palm||",
-				[97] = "item|5512||Healthstone",
 				[75] = "spell|100784||Blackout Kick||",
+				[97] = "item|5512||Healthstone",
 			},
 			["dps"] = {
 				nil, -- [1]
@@ -1697,10 +1530,10 @@ ActionBarSaverDB = {
 				[97] = "item|109223||Healing Tonic",
 				[101] = "spell|115313||Summon Jade Serpent Statue||",
 				[98] = "spell|115310||Revival||",
-				[99] = "spell|122278||Dampen Harm||",
+				[100] = "spell|115460||Detonate Chi||",
 				[95] = "spell|115450||Detox||",
 				[84] = "spell|115546||Provoke||",
-				[100] = "spell|115460||Detonate Chi||",
+				[99] = "spell|122278||Dampen Harm||",
 			},
 			["horde-tank"] = {
 				[31] = "item|6948||Hearthstone",
@@ -1736,18 +1569,181 @@ ActionBarSaverDB = {
 				[87] = "spell|121253||Keg Smash||",
 				[52] = "companion|97493|||MOUNT|",
 				[60] = "spell|115178||Resuscitate||",
-				[73] = "spell|100780||Jab||",
-				[89] = "spell|115181||Breath of Fire||",
+				[38] = "spell|100784||Blackout Kick||",
+				[71] = "item|79329||Relic of Niuzao",
 				[37] = "spell|115072||Expel Harm||",
 				[45] = "spell|122057||Clash||",
 				[65] = "spell|115921||Legacy of the Emperor||",
 				[41] = "item|5512||Healthstone",
 				[74] = "spell|100787||Tiger Palm||",
-				[71] = "item|79329||Relic of Niuzao",
-				[38] = "spell|100784||Blackout Kick||",
+				[89] = "spell|115181||Breath of Fire||",
+				[73] = "spell|100780||Jab||",
 			},
 		},
-		["HUNTER"] = {
+		["SHAMAN"] = {
+			["ele"] = {
+				"spell|79206||Spiritwalker's Grace||", -- [1]
+				"spell|51490||Thunderstorm||", -- [2]
+				"spell|8050||Flame Shock||", -- [3]
+				"spell|51505||Lava Burst||", -- [4]
+				"spell|16166||Elemental Mastery||", -- [5]
+				"macro|6|||INTERFACE\\ICONS\\spell_shaman_earthquake|#showtooltip/n/cast [mod:shift] Healing Rain; Earthquake", -- [6]
+				"spell|1535||Fire Nova||", -- [7]
+				"spell|421||Chain Lightning||", -- [8]
+				"spell|73680||Unleash Elements||", -- [9]
+				"spell|57994||Wind Shear||", -- [10]
+				"spell|331||Healing Wave||", -- [11]
+				"spell|8004||Healing Surge||", -- [12]
+				"spell|8042||Earth Shock||", -- [13]
+				"item|5512||Healthstone", -- [14]
+				"spell|66842||Call of the Elements||", -- [15]
+				"spell|403||Lightning Bolt||", -- [16]
+				"spell|73920||Healing Rain||", -- [17]
+				nil, -- [18]
+				"item|58257||Highland Spring Water", -- [19]
+				"item|65499||Conjured Mana Cake", -- [20]
+				"spell|73899||Primal Strike||", -- [21]
+				"item|23247||Burning Blossom", -- [22]
+				"spell|52127||Water Shield||", -- [23]
+				"spell|324||Lightning Shield||", -- [24]
+				"spell|20594||Stoneform|Racial|", -- [25]
+				"spell|51730||Earthliving Weapon||", -- [26]
+				"spell|8024||Flametongue Weapon||", -- [27]
+				nil, -- [28]
+				"spell|546||Water Walking||", -- [29]
+				nil, -- [30]
+				"spell|131||Water Breathing||", -- [31]
+				"spell|5730||Stoneclaw Totem||", -- [32]
+				"spell|2484||Earthbind Totem||", -- [33]
+				"spell|8177||Grounding Totem||", -- [34]
+				nil, -- [35]
+				"spell|2008||Ancestral Spirit||", -- [36]
+				"item|6948||Hearthstone", -- [37]
+				"spell|556||Astral Recall||", -- [38]
+				"spell|83958||Mobile Banking||", -- [39]
+				"spell|2894||Fire Elemental Totem||", -- [40]
+				"spell|2062||Earth Elemental Totem||", -- [41]
+				"spell|32182||Heroism||", -- [42]
+				"item|62649||Fortune Cookie", -- [43]
+				nil, -- [44]
+				"item|6372||Swim Speed Potion", -- [45]
+				nil, -- [46]
+				"macro|47||selling runs|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/2 <Apotheosis> is selling full 8/8 H clears. There are options for loot, title, and mount. pst for more information.", -- [47]
+				"spell|3273||First Aid||", -- [48]
+				"macro|49|||Interface\\Icons\\Spell_Nature_SpiritWolf|#showtooltip/n/cast [indoors] Ghost Wolf; [nocombat, harm] Ghost Wolf; [combat] Ghost Wolf; [flyable] Tyrael's Charger; Tyrael's Charger/n/dismount [mounted]", -- [49]
+				"spell|8056||Frost Shock||", -- [50]
+				"spell|8143||Tremor Totem||", -- [51]
+				nil, -- [52]
+				"spell|51514||Hex||", -- [53]
+				"spell|32182||Heroism||", -- [54]
+				nil, -- [55]
+				"spell|76780||Bind Elemental||", -- [56]
+				"macro|57||Dodge This Vent|Interface\\Icons\\INV_Misc_Food_58|+++++++++++++++++/nDodge This Vent/narsenic.typefrag.com/n49178/ndtvent123/n+++++++++++++++++", -- [57]
+				[59] = "spell|73920||Healing Rain||",
+				[60] = "macro|60||Fireside chat.|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/tar Jarod Shadowsong/n/tar Thisalee Crow/n/tar Athorn Windsong/n/tar Deldren Ravenelm/n/stopmacro [noexists]/n/run SetRaidTarget(\"target\", 8)",
+				[61] = "spell|403||Lightning Bolt||",
+				[62] = "companion|32289|||MOUNT|",
+				[64] = "spell|83968||Mass Resurrection||",
+				[65] = "spell|83967||Have Group, Will Travel||",
+				[66] = "spell|2645||Ghost Wolf||",
+				[67] = "companion|6777|||MOUNT|",
+				[138] = "spell|8071||Stoneskin Totem||",
+				[139] = "spell|5394||Healing Stream Totem||",
+				[140] = "spell|3738||Wrath of Air Totem||",
+				[133] = "spell|3599||Searing Totem||",
+				[141] = "spell|3599||Searing Totem||",
+				[134] = "spell|8075||Strength of Earth Totem||",
+				[142] = "spell|8075||Strength of Earth Totem||",
+				[135] = "spell|5394||Healing Stream Totem||",
+				[143] = "spell|5394||Healing Stream Totem||",
+				[136] = "spell|3738||Wrath of Air Totem||",
+				[144] = "spell|8512||Windfury Totem||",
+				[137] = "spell|8190||Magma Totem||",
+				[73] = "spell|403||Lightning Bolt||",
+			},
+			["enh"] = {
+				"spell|17364||Stormstrike||", -- [1]
+				"spell|60103||Lava Lash||", -- [2]
+				"spell|73680||Unleash Elements||", -- [3]
+				"spell|403||Lightning Bolt||", -- [4]
+				"spell|1535||Fire Nova||", -- [5]
+				"spell|73920||Healing Rain||", -- [6]
+				"spell|79206||Spiritwalker's Grace||", -- [7]
+				"spell|30823||Shamanistic Rage||", -- [8]
+				"spell|8017||Rockbiter Weapon||", -- [9]
+				"spell|57994||Wind Shear||", -- [10]
+				"spell|331||Healing Wave||", -- [11]
+				"spell|8004||Healing Surge||", -- [12]
+				"spell|8042||Earth Shock||", -- [13]
+				"spell|8050||Flame Shock||", -- [14]
+				"item|5512||Healthstone", -- [15]
+				"spell|66842||Call of the Elements||", -- [16]
+				nil, -- [17]
+				"item|65499||Conjured Mana Cake", -- [18]
+				"item|58257||Highland Spring Water", -- [19]
+				"spell|73680||Unleash Elements||", -- [20]
+				"spell|73899||Primal Strike||", -- [21]
+				"item|65499||Conjured Mana Cake", -- [22]
+				"spell|52127||Water Shield||", -- [23]
+				"spell|324||Lightning Shield||", -- [24]
+				"spell|20594||Stoneform|Racial|", -- [25]
+				"spell|5730||Stoneclaw Totem||", -- [26]
+				"spell|2484||Earthbind Totem||", -- [27]
+				"spell|51514||Hex||", -- [28]
+				"spell|76780||Bind Elemental||", -- [29]
+				"spell|8143||Tremor Totem||", -- [30]
+				"spell|131||Water Breathing||", -- [31]
+				"spell|8177||Grounding Totem||", -- [32]
+				"spell|32182||Heroism||", -- [33]
+				"spell|8232||Windfury Weapon||", -- [34]
+				"spell|8024||Flametongue Weapon||", -- [35]
+				"spell|2008||Ancestral Spirit||", -- [36]
+				"item|6948||Hearthstone", -- [37]
+				"spell|556||Astral Recall||", -- [38]
+				nil, -- [39]
+				"spell|2894||Fire Elemental Totem||", -- [40]
+				"spell|2062||Earth Elemental Totem||", -- [41]
+				"spell|421||Chain Lightning||", -- [42]
+				"spell|32182||Heroism||", -- [43]
+				"item|23247||Burning Blossom", -- [44]
+				"item|62649||Fortune Cookie", -- [45]
+				"item|6372||Swim Speed Potion", -- [46]
+				"spell|79206||Spiritwalker's Grace||", -- [47]
+				"spell|3273||First Aid||", -- [48]
+				"macro|49|||Interface\\Icons\\Spell_Nature_WispSplode|#showtooltip/n/cast [indoors] Ghost Wolf; [nocombat, harm] Ghost Wolf; [combat] Ghost Wolf; [flyable] Tyrael's Charger; Tyrael's Charger/n/dismount [mounted]", -- [49]
+				"spell|51533||Feral Spirit||", -- [50]
+				"spell|8056||Frost Shock||", -- [51]
+				"spell|8050||Flame Shock||", -- [52]
+				"spell|51514||Hex||", -- [53]
+				"spell|76780||Bind Elemental||", -- [54]
+				"spell|2645||Ghost Wolf||", -- [55]
+				"macro|56||Button|Interface\\Icons\\Temp|/click ExtraActionButton1", -- [56]
+				"macro|57||Dodge This Vent|Interface\\Icons\\INV_Misc_Food_58|+++++++++++++++++/nDodge This Vent/narsenic.typefrag.com/n49178/ndtvent123/n+++++++++++++++++", -- [57]
+				nil, -- [58]
+				"macro|59||apoth mumble|Interface\\Icons\\Ability_Creature_Disease_05|++++++++++++++++++++/nApoth Mumble/n70.38.24.110/n64738/nnarphlovesfigureskating/n++++++++++++++++++++", -- [59]
+				"macro|60||Fireside chat.|Interface\\Icons\\Ability_Hunter_MarkedForDeath|/tar Jarod Shadowsong/n/tar Thisalee Crow/n/tar Athorn Windsong/n/tar Deldren Ravenelm/n/stopmacro [noexists]/n/run SetRaidTarget(\"target\", 8)", -- [60]
+				nil, -- [61]
+				"companion|32289|||MOUNT|", -- [62]
+				[135] = "spell|5394||Healing Stream Totem||",
+				[139] = "spell|5394||Healing Stream Totem||",
+				[143] = "spell|5394||Healing Stream Totem||",
+				[66] = "companion|6777|||MOUNT|",
+				[70] = "macro|70|||INTERFACE\\ICONS\\spell_shaman_unleashweapon_frost|#showtooltip/n/castsequence [@none] Frostbrand Weapon, Flametongue Weapon/n/use 17/n/click StaticPopup1Button1",
+				[140] = "spell|8512||Windfury Totem||",
+				[144] = "spell|8512||Windfury Totem||",
+				[133] = "spell|3599||Searing Totem||",
+				[137] = "spell|8190||Magma Totem||",
+				[141] = "spell|3599||Searing Totem||",
+				[65] = "spell|10662||Leatherworking||",
+				[67] = "spell|83967||Have Group, Will Travel||",
+				[69] = "macro|69||apoth mumble|Interface\\Icons\\Ability_Creature_Disease_05|++++++++++++++++++++/nApoth Mumble/n70.38.24.110/n64738/nnarphlovesfigureskating/n++++++++++++++++++++",
+				[71] = "spell|324||Lightning Shield||",
+				[73] = "spell|403||Lightning Bolt||",
+				[136] = "spell|8512||Windfury Totem||",
+				[142] = "spell|8075||Strength of Earth Totem||",
+				[134] = "spell|8075||Strength of Earth Totem||",
+				[138] = "spell|8071||Stoneskin Totem||",
+			},
 		},
 	},
 	["spellSubs"] = {
