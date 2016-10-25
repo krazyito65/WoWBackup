@@ -19,31 +19,31 @@ EPGPLootMaster = {
 		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
 		["Mackabermas - Sargeras"] = "Mackabermas - Sargeras",
 		["Krazyito - Kil'jaeden"] = "Krazyito - Kil'jaeden",
-		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
+		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
 		["Krazyitó - Lightbringer"] = "Krazyitó - Lightbringer",
 		["Krazyito - Stormrage"] = "Krazyito - Stormrage",
-		["Krazyito - Black Dragonflight"] = "Krazyito - Black Dragonflight",
-		["Krazypvp - Gnomeregan"] = "Krazypvp - Gnomeregan",
+		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
+		["Fãlor - Gnomeregan"] = "Fãlor - Gnomeregan",
 		["Irt - Antonidas"] = "Irt - Antonidas",
 		["Krazyîto - Gnomeregan"] = "Krazyîto - Gnomeregan",
-		["Krazyito - Sargeras"] = "Krazyito - Sargeras",
-		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
+		["Kråzyito - Gnomeregan"] = "Kråzyito - Gnomeregan",
 		["Krazyito - Fizzcrank"] = "Krazyito - Fizzcrank",
+		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
 		["Krazyito - Burning Blade"] = "Krazyito - Burning Blade",
 		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Kázyito - Skywall"] = "Kázyito - Skywall",
+		["Apridis - Eldre'Thalas"] = "Apridis - Eldre'Thalas",
 		["Warlifre - Blade's Edge"] = "Warlifre - Blade's Edge",
 		["Krazýito - Gnomeregan"] = "Krazýito - Gnomeregan",
 		["Krazÿito - Gnomeregan"] = "Krazÿito - Gnomeregan",
-		["Apridis - Eldre'Thalas"] = "Apridis - Eldre'Thalas",
+		["Kázyito - Skywall"] = "Kázyito - Skywall",
 		["Krazyitó - Mal'Ganis"] = "Krazyitó - Mal'Ganis",
-		["Kråzyito - Gnomeregan"] = "Kråzyito - Gnomeregan",
+		["Krazyito - Sargeras"] = "Krazyito - Sargeras",
 		["Krázyito - Mal'Ganis"] = "Krázyito - Mal'Ganis",
-		["Fãlor - Gnomeregan"] = "Fãlor - Gnomeregan",
-		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
+		["Krazypvp - Gnomeregan"] = "Krazypvp - Gnomeregan",
+		["Krazyito - Black Dragonflight"] = "Krazyito - Black Dragonflight",
 		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
 		["Krázyito - Skywall"] = "Krázyito - Skywall",
-		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
+		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
 	},
 	["profiles"] = {
 		["Krazymonk - Gnomeregan"] = {
@@ -62,11 +62,11 @@ EPGPLootMaster = {
 					["Karazhan (10 Player)"] = "Karazhan^3^10",
 					["Dragon Soul (10 Player (Heroic))"] = "Dragon Soul^5^10",
 					["Trial of the Crusader (10 Player)"] = "Trial of the Crusader^3^10",
-					["Blackwing Descent (10 Player (Heroic))"] = "Blackwing Descent^5^10",
-					["Ulduar (10 Player)"] = "Ulduar^3^10",
-					["Terrace of Endless Spring (10 Player (Heroic))"] = "Terrace of Endless Spring^5^10",
-					["Mogu'shan Vaults (10 Player)"] = "Mogu'shan Vaults^3^10",
 					["Heart of Fear (10 Player)"] = "Heart of Fear^3^10",
+					["Ulduar (10 Player)"] = "Ulduar^3^10",
+					["Mogu'shan Vaults (10 Player)"] = "Mogu'shan Vaults^3^10",
+					["Terrace of Endless Spring (10 Player (Heroic))"] = "Terrace of Endless Spring^5^10",
+					["Blackwing Descent (10 Player (Heroic))"] = "Blackwing Descent^5^10",
 				},
 			},
 			["votingSendGuildRankList"] = {
@@ -75,16 +75,16 @@ EPGPLootMaster = {
 				nil, -- [3]
 				true, -- [4]
 			},
-			["hideOnSelection"] = false,
+			["votingSendAssistantOnly"] = false,
 			["monitorSendAssistantOnly"] = false,
-			["votingDisallowSelf"] = false,
+			["filterEPGPLootmasterMessages"] = false,
 			["bidding"] = false,
 			["votingSendGuildRank"] = true,
-			["filterEPGPLootmasterMessages"] = false,
+			["AutoLootThreshold"] = 4,
 			["AutoLooter"] = "Gral",
 			["monitorSendGuildRank"] = true,
-			["AutoLootThreshold"] = 4,
-			["votingSendAssistantOnly"] = false,
+			["votingDisallowSelf"] = false,
+			["hideOnSelection"] = false,
 		},
 		["Krázýító - Gnomeregan"] = {
 		},
@@ -94,37 +94,28 @@ EPGPLootMaster = {
 			["mainUIScale"] = 1.06666666666667,
 			["voting"] = false,
 			["filterEPGPLootmasterMessages"] = false,
-			["monitorSendAssistantOnly"] = false,
+			["allowCandidateNotes"] = false,
 			["monitorSend"] = false,
 			["bidding"] = false,
-			["allowCandidateNotes"] = false,
+			["monitorSendAssistantOnly"] = false,
 		},
-		["Krazyitó - Gnomeregan"] = {
+		["Krazyíto - Gnomeregan"] = {
+			["AutoLooter"] = "Krazyíto",
+			["bidding"] = false,
 		},
-		["Krazyito - Sargeras"] = {
-			["hideMLOnCombat"] = false,
+		["Kråzyito - Mal'Ganis"] = {
 		},
 		["Krazÿito - Gnomeregan"] = {
 		},
-		["Krazyitø - Gnomeregan"] = {
+		["Krazýito - Mal'Ganis"] = {
 		},
 		["Krazyíto - Mal'Ganis"] = {
 		},
-		["Krazypvp - Gnomeregan"] = {
+		["Fãlor - Gnomeregan"] = {
 		},
 		["Kazyîto - Gnomeregan"] = {
 		},
 		["Krazyito - Black Dragonflight"] = {
-		},
-		["Mackabermas - Sargeras"] = {
-		},
-		["Krazydruidiv - Bonechewer"] = {
-		},
-		["Krazýito - Gnomeregan"] = {
-		},
-		["Krãzyito - Gnomeregan"] = {
-		},
-		["Krazyitó - Mal'Ganis"] = {
 		},
 		["Krazyito - Mal'Ganis"] = {
 			["button3_color"] = "1e7300",
@@ -144,23 +135,21 @@ EPGPLootMaster = {
 			["button5_fallback"] = "",
 			["button1_fallback"] = "",
 			["button2_color"] = "41f000",
-			["button3"] = "Upgrade (shit)",
-			["monitorSendGuildRank"] = true,
 			["button4_color"] = "bdc600",
 			["button4_fallback"] = "NEED",
+			["votingEnableAuto"] = true,
+			["button3"] = "Upgrade (shit)",
+			["button5"] = "pass",
+			["button6"] = "Tier 4p",
+			["button6_color"] = "bdc600",
+			["button2"] = "MS Upgrade",
+			["button2_fallback"] = "",
 			["votingSendGuildRankList"] = {
 				nil, -- [1]
 				nil, -- [2]
 				true, -- [3]
 				true, -- [4]
 			},
-			["monitorSendAssistantOnly"] = false,
-			["button7_color"] = "9a5d00",
-			["button6"] = "Tier 4p",
-			["button6_color"] = "bdc600",
-			["button2"] = "MS Upgrade",
-			["ignoreResponseCorrections"] = true,
-			["button5"] = "pass",
 			["button1"] = "MS BIS",
 			["detectedRaidLookups"] = {
 				["25-man instances"] = {
@@ -168,8 +157,8 @@ EPGPLootMaster = {
 					["Icecrown Citadel (25 Player)"] = "Icecrown Citadel^4^25",
 				},
 				["5-man heroic"] = {
-					["Auchindoun (Heroic)"] = "Auchindoun^2^5",
 					["Skyreach (Heroic)"] = "Skyreach^2^5",
+					["Auchindoun (Heroic)"] = "Auchindoun^2^5",
 					["Shadowmoon Burial Grounds (Heroic)"] = "Shadowmoon Burial Grounds^2^5",
 					["Grimrail Depot (Heroic)"] = "Grimrail Depot^2^5",
 					["Upper Blackrock Spire (Heroic)"] = "Upper Blackrock Spire^2^5",
@@ -177,38 +166,49 @@ EPGPLootMaster = {
 					["The Everbloom (Heroic)"] = "The Everbloom^2^5",
 					["Iron Docks (Heroic)"] = "Iron Docks^2^5",
 				},
+				["10-man instances"] = {
+					["Mogu'shan Vaults (10 Player)"] = "Mogu'shan Vaults^3^10",
+				},
 				["Unknown type"] = {
 					["Highmaul (Heroic)"] = "Highmaul^15^30",
 					["Highmaul (Normal)"] = "Highmaul^14^30",
 					["Highmaul (Mythic)"] = "Highmaul^16^20",
 				},
-				["10-man instances"] = {
-					["Mogu'shan Vaults (10 Player)"] = "Mogu'shan Vaults^3^10",
-				},
 			},
 			["button1_color"] = "41f000",
-			["button3_fallback"] = "MINORUPGRADE",
+			["monitorSendGuildRank"] = true,
 			["votingDisallowSelf"] = false,
-			["votingEnableAuto"] = true,
-			["votingSendGuildRank"] = true,
-			["button7"] = "OS / Xmog",
-			["button2_fallback"] = "",
+			["monitorSendAssistantOnly"] = false,
 			["popupUIScale"] = 1,
+			["votingSendGuildRank"] = true,
+			["ignoreResponseCorrections"] = true,
+			["button7"] = "OS / Xmog",
+			["button3_fallback"] = "MINORUPGRADE",
+			["button7_color"] = "9a5d00",
 			["button7_fallback"] = "GREED",
+		},
+		["Krazydruidiv - Bonechewer"] = {
+		},
+		["Krazýito - Gnomeregan"] = {
+		},
+		["Krãzyito - Gnomeregan"] = {
+		},
+		["Krazyitó - Mal'Ganis"] = {
+		},
+		["Mackabermas - Sargeras"] = {
 		},
 		["Krázyito - Mal'Ganis"] = {
 		},
-		["Fãlor - Gnomeregan"] = {
+		["Krazypvp - Gnomeregan"] = {
 		},
-		["Krazýito - Mal'Ganis"] = {
+		["Krazyitø - Gnomeregan"] = {
 		},
 		["Krazymonk - Sargeras"] = {
 		},
-		["Kråzyito - Mal'Ganis"] = {
+		["Krazyito - Sargeras"] = {
+			["hideMLOnCombat"] = false,
 		},
-		["Krazyíto - Gnomeregan"] = {
-			["AutoLooter"] = "Krazyíto",
-			["bidding"] = false,
+		["Krazyitó - Gnomeregan"] = {
 		},
 	},
 }

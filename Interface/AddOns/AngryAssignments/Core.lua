@@ -12,8 +12,8 @@ BINDING_NAME_AngryAssign_LOCK = "Toggle Lock"
 BINDING_NAME_AngryAssign_DISPLAY = "Toggle Display"
 BINDING_NAME_AngryAssign_OUTPUT = "Output Assignment to Chat"
 
-local AngryAssign_Version = 'v1.8.2'
-local AngryAssign_Timestamp = '20160828140714'
+local AngryAssign_Version = 'v1.8.3'
+local AngryAssign_Timestamp = '20161024174322'
 
 local protocolVersion = 1
 local comPrefix = "AnAss"..protocolVersion
@@ -777,7 +777,7 @@ function AngryAssign_PageMenu(pageId)
 end
 
 local CategoriesDropDownList
-function AngryAssign_CategoryMenu(catId)
+local function AngryAssign_CategoryMenu(catId)
 	local cat = AngryAssign_Categories[catId]
 	if not cat then return end
 
@@ -1157,7 +1157,7 @@ function AngryAssign:UpdateTree(id)
 	if not self.window then return end
 	self.window.tree:SetTree( self:GetTree() )
 	if id then
-		self.window.tree:SelectByValue( id )
+		self:SetSelectedId( id )
 	end
 end
 

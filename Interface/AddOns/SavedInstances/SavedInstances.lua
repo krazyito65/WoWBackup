@@ -14,7 +14,7 @@ local maxdiff = 23 -- max number of instance difficulties
 local maxcol = 4 -- max columns per player+instance
 
 addon.svnrev = {}
-addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 518 $"):match("%d+"))
+addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 526 $"):match("%d+"))
 
 -- local (optimal) references to provided functions
 local table, math, bit, string, pairs, ipairs, unpack, strsplit, time, type, wipe, tonumber, select, strsub = 
@@ -94,6 +94,9 @@ local currency = {
   1129,-- Seal of Inevitable Fate
   1166,-- Timewarped Badge 
   1226,-- Nethershards
+  1273,-- Seal of Broken Fate
+  1149,-- Sightless Eye
+  1275,-- Curious Coin
 }
 addon.currency = currency
 
@@ -133,8 +136,8 @@ addon.LFRInstances = {
   [985] = { total=3, base=10, parent=989, altid=nil, remap={ 9, 10, 12 } }, -- Hellfire4: Destructor's Rise
   [986] = { total=1, base=13, parent=989, altid=nil }, -- Hellfire5: Black Gate
 
-  [1287] ={ total=3, base=1,  parent=1350,altid=nil }, -- EN1: Darkbough
-  [1288] ={ total=3, base=4,  parent=1350,altid=nil }, -- EN2: Tormented Guardians
+  [1287] ={ total=3, base=1,  parent=1350,altid=nil, remap={ 1, 3, 5 } }, -- EN1: Darkbough
+  [1288] ={ total=3, base=4,  parent=1350,altid=nil, remap={ 2, 4, 6 } }, -- EN2: Tormented Guardians
   [1289] ={ total=1, base=7,  parent=1350,altid=nil }, -- EN3: Rift of Aln
 
   [1290] ={ total=3, base=1,  parent=1353,altid=nil }, -- NH1: Arcing Aqueducts
@@ -174,6 +177,18 @@ addon.WorldBosses = {
 
   [1262] = { quest=37464, expansion=5, level=100 }, -- Rukhmar
   [1452] = { quest=94015, expansion=5, level=100 }, -- Kazzak
+
+  [1749] = { quest=42270, expansion=6, level=110 }, -- Nithogg
+  [1756] = { quest=42269, expansion=6, level=110 }, -- The Soultakers
+  [1763] = { quest=42779, expansion=6, level=110 }, -- Shar'thos
+  [1769] = { quest=43192, expansion=6, level=110 }, -- Levantus
+  --[1770] = { quest=, expansion=6, level=110 }, -- Humongris
+  [1774] = { quest=43193, expansion=6, level=110 }, -- Calamir
+  --[1783] = { quest=, expansion=6, level=110 }, -- Na'zak the Fiend
+  [1789] = { quest=43448, expansion=6, level=110 }, -- Drugon the Frostblood
+  --[1790] = { quest=, expansion=6, level=110 }, -- Ana-Mouz
+  [1795] = { quest=43985, expansion=6, level=110 }, -- Flotsam
+  [1796] = { quest=44287, expansion=6, level=110 }, -- Withered Jim
 
   -- bosses with no EJ entry (eid is a placeholder)
   [9001] = { quest=38276, name=GARRISON_LOCATION_TOOLTIP.." "..BOSS, expansion=5, level=100 },
@@ -255,6 +270,7 @@ local QuestExceptions = {
   [37819] = "Regular", -- Darkmoon Faire races referral
   [31752] = "AccountDaily", -- Blingtron
   [34774] = "AccountDaily", -- Blingtron 5000
+  [40753] = "AccountDaily", -- Blingtron 6000
   -- also pre-populate a few important quests
   [32640] = "Weekly",  -- Champions of the Thunder King
   [32641] = "Weekly",  -- Champions of the Thunder King
@@ -283,6 +299,17 @@ local WoDSealQuests = {
   [37453] = "Weekly",
 }
 for k,v in pairs(WoDSealQuests) do
+  QuestExceptions[k] = v
+end
+local LegionSealQuests = {
+  [43895] = "Weekly",
+  [43896] = "Weekly",
+  [43897] = "Weekly",
+  [43892] = "Weekly",
+  [43893] = "Weekly",
+  [43894] = "Weekly",
+}
+for k,v in pairs(LegionSealQuests) do
   QuestExceptions[k] = v
 end
 
@@ -534,16 +561,18 @@ vars.defaultDB = {
 		CurrencyValueColor = true,
 		Currency776 = false, -- Warforged Seals
 		Currency738 = false, -- Lesser Charm of Good Fortune
-		Currency823 = true,  -- Apexis Crystal
-  		Currency824 = true,  -- Garrison Resources
-		Currency1101= true,  -- Oil
+		Currency823 = false,  -- Apexis Crystal
+  		Currency824 = false,  -- Garrison Resources
+		Currency1101= false,  -- Oil
 		Currency994 = false, -- Seal of Tempered Fate
 		Currency1129= false, -- Seal of Inevitable Fate
 		Currency1155= true,  -- Ancient Mana
 		Currency1166= true,  -- Timewarped Badge
 		Currency1191= true,  -- Valor Points
 		Currency1220= true,  -- Order Resources
-		Currency1226= true,  -- Nethershards
+		Currency1226= false, -- Nethershards
+		Currency1273= true,  -- Seal of Broken Fate
+		Currency1149= true,  -- Sightless Eye
 		CurrencyMax = false,
 		CurrencyEarned = true,
 	},
@@ -590,7 +619,7 @@ function addon:SkinFrame(frame,name)
     if frame.SetTemplate then
       frame:SetTemplate("Transparent")
     end
-    local close = _G[name.."CloseButton"]
+    local close = _G[name.."CloseButton"] or frame.CloseButton
     if close and close.SetAlpha then
       if ElvUI then
         ElvUI[1]:GetModule('Skins'):HandleCloseButton(close)
@@ -869,6 +898,7 @@ addon.transInstance = {
   [531] = 161,  -- AQ temple: ticket 137 frFR
   [1228] = 897, -- Highmaul: ticket 175 ruRU
   [552] = 1011, -- Arcatraz: ticket 216 frFR
+  [1516] = 1190, -- Arcway: ticket 227/233 ptBR
 }
 
 -- some instances (like sethekk halls) are named differently by GetSavedInstanceInfo() and LFGGetDungeonInfoByID()
@@ -1673,6 +1703,14 @@ function addon:UpdateCurrency()
 	        ci.earnedThisWeek = ci.earnedThisWeek + 1
 	      end
 	    end
+	  elseif idx == 1273 then -- Seal of Broken Fate returns zero for weekly quantities
+	    ci.weeklyMax = 3 -- the max via quests
+	    ci.earnedThisWeek = 0
+	    for id in pairs(LegionSealQuests) do
+	      if IsQuestFlaggedCompleted(id) then
+	        ci.earnedThisWeek = ci.earnedThisWeek + 1
+	      end
+	    end
 	  end
           ci.season = addon:GetSeasonCurrency(idx)
 	  if ci.weeklyMax == 0 then ci.weeklyMax = nil end -- don't store useless info
@@ -2382,6 +2420,7 @@ function core:toonInit()
 	ti.LClass, ti.Class = UnitClass("player")
 	ti.Level = UnitLevel("player")
 	ti.Show = ti.Show or "saved"
+	ti.Order = ti.Order or 50
 	ti.Quests = ti.Quests or {}
 	ti.Skills = ti.Skills or {}
 	-- try to get a reset time, but don't overwrite existing, which could break quest list
@@ -3115,6 +3154,7 @@ local function UpdateTooltip(self,elap)
 	   tooltip:SetBackdrop(GameTooltip:GetBackdrop())
     	   tooltip:SetBackdropColor(GameTooltip:GetBackdropColor()); 
 	   tooltip:SetBackdropBorderColor(GameTooltip:GetBackdropBorderColor())
+	   addon:SkinFrame(tooltip, tooltip:GetName())
 	   addon.firstupdate = false
 	end
  	addon.updatetooltip_throttle = (addon.updatetooltip_throttle or 10) + elap 
@@ -4231,7 +4271,20 @@ local trade_spells = {
 	[156587] = true,	-- Alchemical Catalyst (4)
 	[168042] = true,	-- Alchemical Catalyst (10), 3 charges w/ 24hr recharge
 	[181643] = "xmute",	-- Transmute: Savage Blood
-
+	-- Legion
+        [188800] = "wildxmute", -- Transmute: Wild Transmutation (Rank 1)
+        [188801] = "wildxmute", -- Transmute: Wild Transmutation (Rank 2)
+        [188802] = "wildxmute", -- Transmute: Wild Transmutation (Rank 3)
+        [213248] = "legionxmute", -- Transmute: Ore to Cloth
+        [213249] = "legionxmute", -- Transmute: Cloth to Skins
+        [213250] = "legionxmute", -- Transmute: Skins to Ore
+        [213251] = "legionxmute", -- Transmute: Ore to Herbs
+        [213252] = "legionxmute", -- Transmute: Cloth to Herbs
+        [213253] = "legionxmute", -- Transmute: Skins to Herbs
+        [213254] = "legionxmute", -- Transmute: Fish to Gems
+        [213255] = "legionxmute", -- Transmute: Meat to Pants
+        [213256] = "legionxmute", -- Transmute: Meat to Pet
+        [213257] = "legionxmute", -- Transmute: Blood of Sargeras	
 
         -- Enchanting
         [28027] = "sphere", 	-- Prismatic Sphere (2-day shared, 5.2.0 verified)
@@ -4310,6 +4363,8 @@ local trade_spells = {
 
 local cdname = {
 	["xmute"] =  GetSpellInfo(2259).. ": "..L["Transmute"],
+        ["wildxmute"] =  GetSpellInfo(2259).. ": "..L["Wild Transmute"],
+        ["legionxmute"] =  GetSpellInfo(2259).. ": "..L["Legion Transmute"],
 	["facet"] =  GetSpellInfo(25229)..": "..L["Facets of Research"],
 	["sphere"] = GetSpellInfo(7411).. ": "..GetSpellInfo(28027),
 	["magni"] =  GetSpellInfo(2108).. ": "..GetSpellInfo(140040)

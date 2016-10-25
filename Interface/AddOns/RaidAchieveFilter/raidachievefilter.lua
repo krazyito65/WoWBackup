@@ -74,14 +74,14 @@ function RaidAchFilter:Toggle()
 	if not f then
 		RaidAchFilter:Initialize(); RaidAchFilter:ShowAch(1); RaidAchFilter:ZoneChange()
 		if fra then 
-			if ( AchievementFrame:IsShown() ) then f:ClearAllPoints(); f:SetPoint("TOPLEFT",fra,"TOPRIGHT",4,0)end 
+			if ( AchievementFrame:IsShown() ) and f then f:ClearAllPoints(); f:SetPoint("TOPLEFT",fra,"TOPRIGHT",4,0)end 
 		end
 	elseif f:IsVisible() then 
 		f:Hide()
 	else 
 		f:Show()
 		if fra then 
-			if ( AchievementFrame:IsShown() ) then f:ClearAllPoints(); f:SetPoint("TOPLEFT",fra,"TOPRIGHT",4,0) end 
+			if ( AchievementFrame:IsShown() ) and f then f:ClearAllPoints(); f:SetPoint("TOPLEFT",fra,"TOPRIGHT",4,0) end 
 		end
 	end
 	
@@ -281,7 +281,7 @@ function RaidAchFilter:Initialize()
 				info.value = "submenub5"
 				UIDropDownMenu_AddButton(info, level)
 			elseif UIDROPDOWNMENU_MENU_VALUE == "topmenu3" then
-				for i = 86, 100 do --Scenarios!
+				for i = 87, 101 do --Scenarios!
 				  info.value = i
 				  info.checked = false
 				  info.hasArrow = false
@@ -387,7 +387,7 @@ function RaidAchFilter:Initialize()
 					  UIDropDownMenu_AddButton(info, level)
 				end
 			elseif UIDROPDOWNMENU_MENU_VALUE == "submenub5" then
-				for i = 76, 85 do
+				for i = 76, 86 do
 					  info.value = i
 					  info.checked = false
 					  info.text = RAFdb.MapName[i]

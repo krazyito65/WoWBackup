@@ -43,7 +43,7 @@ function MT:CreateMTPopup()
 	mtpf = CreateFrame("Frame", "MacroToolkitPopup", UIParent)
 	mtpf:SetMovable(true)
 	mtpf:EnableMouse(true)
-	mtpf:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then mtpf:SetScale(MT.db.profile.scale) end
 	mtpf:SetSize(297, 411)
 	mtpf:SetPoint("TOPLEFT", MacroToolkitFrame, "TOPRIGHT", 0, 0)
 	mtpf:Hide()

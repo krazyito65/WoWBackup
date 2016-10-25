@@ -191,6 +191,7 @@ local zoneEJids = {
 	RaidLootT17BF = 457,
 	RaidLootT18HC = 669,
 	S_ZoneT19Nightmare = 768,
+	S_ZoneT19ToV = 861,
 	S_ZoneT19Suramar = 786,
 }
 for prefix,eID in pairs(zoneEJids) do
@@ -208,6 +209,10 @@ local encounterIDtoEJidData = {
 	[1863] = 1732,
 	[1872] = 1743,
 	[1866] = 1737,
+	
+	[1958] = 1819,
+	[1962] = 1830,
+	[2008] = 1829,
 
 	[1853] = 1703,
 	[1841] = 1667,

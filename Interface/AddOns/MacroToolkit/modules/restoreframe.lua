@@ -11,7 +11,7 @@ function MT:CreateRestoreFrame()
 	local mtrf = CreateFrame("Frame", "MacroToolkitRestoreFrame", UIParent)
 	mtrf:SetMovable(true)
 	mtrf:EnableMouse(true)
-	mtrf:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then mtrf:SetScale(MT.db.profile.scale) end
 	mtrf:SetSize(297, 298)
 	mtrf:SetPoint("TOPLEFT", MacroToolkitFrame, "TOPRIGHT", 0, 0)
 	mtrf:Hide()

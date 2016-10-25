@@ -1,6 +1,6 @@
 local GlobalAddonName, ExRT = ...
 
-local module = ExRT.mod:New("Arrow",ExRT.L.Arrow,nil,true)
+local module = ExRT.mod:New("Arrow",ExRT.L.Arrow,true,true)
 local ELib,L = ExRT.lib,ExRT.L
 
 local VExRT = nil
@@ -37,8 +37,12 @@ local floor = math.floor
 local sin, cos, atan2, sqrt, min = math.sin, math.cos, math.atan2, math.sqrt, math.min
 local GetPlayerMapPosition = GetPlayerMapPosition
 local GetCurrentMapZone, GetCurrentMapDungeonLevel, GetCurrentMapAreaID = GetCurrentMapZone, GetCurrentMapDungeonLevel, GetCurrentMapAreaID
-local GetTime, GetPlayerFacing = GetTime, GetPlayerFacing
+local GetTime, GGetPlayerFacing = GetTime, GetPlayerFacing
 local UnitPosition = UnitPosition
+
+local function GetPlayerFacing()
+	return GGetPlayerFacing() or 0
+end
 
 --------------------
 --  Create Frame  --
@@ -692,7 +696,7 @@ end
 function ExRT.F.ArrowTextPlayer(unit,width,height)
 	local pY,pX = UnitPosition('player')
 	local tY,tX = UnitPosition(unit)
-	if not tX or (tY == 0 and tX == 0) then
+	if not tX or (tY == 0 and tX == 0) or not pY then
 		return ""
 	end
 	local angle = atan2(pX - tX, pY - tY)
@@ -765,82 +769,4 @@ local function FindArrow()
 	end)
 	local y,x = UnitPosition("player")
 	arrowFrame:ShowRunTo(x, y, 3, nil, true, true)
-end
-
-function module.options:Load()
-	self:CreateTilte()
-
-	self.shtml1 = ELib:Text(self,L.ArrowTextLeft,13):Size(650,200):Point(5,-30):Top()
-	
-	do
-		local textRight = L.ArrowTextRight
-		for i=1,8 do
-			textRight = textRight:gsub("{"..i.."}","|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_"..i..":0|t")
-		end
-		
-		self.shtml2 = ELib:Text(self,textRight,13):Size(480,200):Point(170,-30):Top():Color(1,1,1)
-	end
-	
-	self.ButtonSetPos = ELib:Button(self,L.ArrowSetPoint):Size(255,20):Point(5,-180):OnClick(function()
-		if frame:IsShown() then
-			frame:Hide()
-		else
-			local y,x = UnitPosition("player")
-			arrowFrame:ShowRunTo(x, y, 3, nil, true, true)
-		end
-	end)
-	self.ButtonSetPos = ELib:Button(self,L.ArrowResetPos):Size(255,20):Point(5,-205):OnClick(function()
-		VExRT.Arrow.PointX = nil
-		VExRT.Arrow.PointY = nil
-		VExRT.Arrow.Point1 = nil
-		VExRT.Arrow.Point2 = nil
-
-		frame:ClearAllPoints()
-		arrowFrame:LoadPosition("TOP",UIParent,"TOP",0,-30)
-	end)
-	self.ButtonFindPos = ELib:Button(self,L.ArrowFind.." |TInterface\\common\\help-i:24|t"):Size(255,20):Point(5,-230):OnClick(function()
-		FindArrow()
-	end)
-	
-	self.chkFix = ELib:Check(self,L.ArrowFixate,VExRT.Arrow.Fix):Point(7,-255):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.Arrow.Fix = true
-			frame:SetMovable(false)
-		else
-			VExRT.Arrow.Fix = nil
-			frame:SetMovable(true)
-		end
-	end)
-	
-	self.SliderScale = ELib:Slider(self,L.ArrowScale):Point("TOP",0,-295):Size(640):Range(5,300):SetTo(VExRT.Arrow.Scale or 100):OnChange(function(self,event) 
-		event = event - event%1
-		VExRT.Arrow.Scale = event
-		ExRT.F.SetScaleFix(frame,event/100)
-		self.tooltipText = event
-		self:tooltipReload(self)
-	end)
-	
-	self.SliderAlpha = ELib:Slider(self,L.ArrowAlpha):Point("TOP",0,-325):Size(640):Range(0,100):SetTo(VExRT.Arrow.Alpha or 100):OnChange(function(self,event) 
-		event = event - event%1
-		VExRT.Arrow.Alpha = event
-		frame:SetAlpha(event/100)
-		self.tooltipText = event
-		self:tooltipReload(self)
-	end)
-	
-	local getbottomtext = L.ArrowTextBottom
-	local examples = ""
-	self.shtml3 = ELib:Text(self,getbottomtext..examples,12):Size(650,200):Point(5,-375):Top()
-	
-	local tmr = 0
-	self:SetScript("OnUpdate",function(self,elapsed)
-		tmr = tmr + elapsed
-		if tmr > 0.04 then
-			tmr = 0
-			local examples = "GExRT.F.ArrowTextPlayer(\""..UnitName'player'.."\")    ==>   "..GExRT.F.ArrowTextPlayer('player').."|n"..
-				"GExRT.F.ArrowTextCoord(1000,1000,24)    ==>   "..GExRT.F.ArrowTextCoord(1000,1000,24).."     *world coords|n"..
-				"GExRT.F.ArrowTextMapCoord(50,50,24)    ==>   "..GExRT.F.ArrowTextMapCoord(50,50,24).."       *map coords (0-100)"
-			self.shtml3:SetText(getbottomtext..examples)
-		end
-	end)
 end

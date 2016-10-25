@@ -346,6 +346,8 @@ function RCLootCouncil:OnEnable()
 			{	text = L["Yes"],
 				on_click = function()
 					self:DebugLog("Player confirmed usage")
+					-- The player might have passed on ML before accepting :O
+					if not self.isMasterLooter then return end
 					local lootMethod = GetLootMethod()
 					if lootMethod ~= "master" then
 						self:Print(L["Changing LootMethod to Master Looting"])
@@ -1218,7 +1220,8 @@ end
 
 function RCLootCouncil:IsCouncil(name)
 	local ret = tContains(self.council, self:UnitName(name))
-	if self:UnitIsUnit(name, self.playerName) and self.isMasterLooter or self.nnp then ret = true end -- ML and nnp is always council
+	if self:UnitIsUnit(name, self.playerName) and self.isMasterLooter
+	 or self.nnp or self:UnitIsUnit(name, self.masterLooter) then ret = true end -- ML and nnp is always council
 	self:DebugLog(tostring(ret).." =", "IsCouncil", name)
 	return ret
 end
@@ -1241,7 +1244,7 @@ function RCLootCouncil:GetCouncilInGroup()
 	elseif self.isCouncil then -- When we're alone
 		tinsert(council, self.playerName)
 	end
-	if #council == 0 and self.masterLooter then -- We can't have empty council
+	if self.masterLooter and not tContains(council, self.masterLooter) then -- We always need to count the ML
 		tinsert(council, self.masterLooter)
 	end
 	self:DebugLog("GetCouncilInGroup", unpack(council))

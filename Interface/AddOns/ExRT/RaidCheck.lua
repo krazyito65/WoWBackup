@@ -9,45 +9,26 @@ local ELib,L = ExRT.lib,ExRT.L
 
 module.db.isEncounter = nil
 module.db.tableFood = {
---Stamina,	Spirit,		Int,		Agi,		Str 		Crit		Haste		Mastery		MS		Versatility	Armor		Other
-[160600]=50,	[160778]=50,							[160724]=50,	[160726]=50,	[160793]=50,	[160832]=50,	[160839]=50,	[160722]=50,
-[160600]=75,	[160895]=75,							[160889]=75,	[160893]=75,	[160897]=75,	[160900]=75,	[160902]=75,	[160885]=75,	
-[175784]=75,									[174062]=75,	[174079]=75,	[174077]=75,	[174080]=75,	[174078]=75,			--Blue food
-										[175785]=75,
-[160883]=100,									[175218]=100,	[175219]=100,	[175220]=100,	[175222]=100,	[175223]=100,
-[165802]=100,
-[180747]=125,									[180745]=125,	[180748]=125,	[180750]=125,	[180749]=125,	[180746]=125,
-
-[188534]=125, --new food
-
---Legion
---Haste		Mastery		Crit		Versa		Fire dmg
+--Haste		Mastery		Crit		Versa		Fire dmg	Other
 [201330]=225,	[201332]=225,	[201223]=225,	[201334]=225,	[201336]=225,
-[225598]=300,	[225599]=300,	[225597]=300,	[225600]=300,	[225601]=300,
+[225598]=300,	[225599]=300,	[225597]=300,	[225600]=300,	[225601]=300,	[177931]=300,
 [225603]=375,	[225604]=375,	[225602]=375,	[225605]=375,	[225606]=375,
-
 }
-module.db.StaminaFood = {[160600]=true,[175784]=true,[160883]=true,[165802]=true,[180747]=true}
+module.db.StaminaFood = {}
 
-module.db.tableFood_headers = ExRT.isLegionContent and {0,225,300,375} or {0,50,75,100,125}
+module.db.tableFood_headers = {0,225,300,375}
 module.db.tableFlask = {
-	--Stamina,	Spirit,		Int,		Agi,		Str 
-	[156077]=200,			[156070]=200,	[156073]=200,	[156071]=200,
-	[156084]=250,			[156079]=250,	[156064]=250,	[156080]=250,
-	
-	[188035]=1300,			[188031]=1300,	[188033]=1300,	[188034]=1300,
+	--Stamina,	Int,		Agi,		Str 
+	[188035]=1300,	[188031]=1300,	[188033]=1300,	[188034]=1300,
 }
 module.db.tableFlask_headers = ExRT.isLegionContent and {0,1300} or {0,200,250}
 module.db.tablePotion = {
-	[105702]=true,	[156426]=true,			--Int
-	[105697]=true,	[156423]=true,			--Agi	
-	[105706]=true,	[156428]=true,			--Str
-	[105709]=true,	[156436]=true,	[188017]=true,	--Mana 3k, 17k
-	[105701]=true,	[156432]=true,	[188030]=true,	--Mana 4.5k, 25.5k
-	[105707]=true,			[188024]=true,	--Run haste
-	[105698]=true,	[156430]=true,	[188029]=true,	--Armor
-	[105704]=true,	[156455]=true,	[188018]=true,	--Health + Mana [alchim]	
-	[125282]=true,					--Kafa Boost
+	[229206]=true,	--All Stats
+	[188017]=true,	--Mana 3k, 17k
+	[188030]=true,	--Mana 4.5k, 25.5k
+	[188024]=true,	--Run haste
+	[188029]=true,	--Armor
+	[188018]=true,	--Health + Mana [alchim]	
 	
 	[188028]=true,	--Potion of the Old War
 	[188027]=true,	--Potion of Deadly Grace
@@ -71,19 +52,12 @@ module.db.RaidCheckReadyPPLNum = 0
 module.db.RaidCheckReadyCheckHideSchedule = nil
 
 module.db.tableRunes = {
-	--[175456]=true,	--Agi
-	--[175457]=true,	--Int
-	--[175439]=true,	--Str
-	
 	[224001]=true,	--Legion
 }
 
-module.db.minFoodLevelToActual = ExRT.isLegionContent and {
+module.db.minFoodLevelToActual = {
 	[100] = 300,
 	[125] = 375,
-} or {
-	[100] = 100,
-	[125] = 125,
 }
 
 
@@ -162,7 +136,7 @@ end
 
 
 local function GetRunes(checkType)
-	local f = {[0]={},[375]={}}
+	local f = {[0]={},[325]={}}
 	local gMax = ExRT.F.GetRaidDiffMaxGroup()
 	for j=1,40 do
 		local name,_,subgroup = GetRaidRosterInfo(j)
@@ -175,7 +149,7 @@ local function GetRunes(checkType)
 				else
 					local isRune = module.db.tableRunes[spellId]
 					if isRune then
-						f[375][ #f[375]+1 ] = name
+						f[325][ #f[325]+1 ] = name
 						isAnyBuff = true
 					end
 				end
@@ -187,7 +161,7 @@ local function GetRunes(checkType)
 	end
 	
 	if not checkType or checkType == 1 then
-		for _,stats in ipairs({0,375}) do
+		for _,stats in ipairs({0,325}) do
 			local result = format("|cff00ff00%d (%d):|r ",stats,#f[stats])
 			for i=1,#f[stats] do
 				result = result .. f[stats][i]
@@ -243,7 +217,8 @@ local function GetFood(checkType)
 						stats = stats or foodType
 						if spellId == 188534 then stats = 125
 						elseif spellId == 225606 then stats = 375
-						elseif spellId == 225601 then stats = 300 end
+						elseif spellId == 225601 then stats = 300
+						elseif spellId == 177931 then stats = 300 end
 					
 						f[stats] = f[stats] or {}
 						f[stats][ #f[stats]+1 ] = name

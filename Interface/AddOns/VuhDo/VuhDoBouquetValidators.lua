@@ -1139,6 +1139,15 @@ end
 
 --
 local tShieldLeft;
+local function VUHDO_overflowCountValidator(anInfo, _)
+	tShieldLeft = select(17, UnitDebuff(anInfo["unit"], VUHDO_SPELL_ID.DEBUFF_OVERFLOW)) or 0;
+	return tShieldLeft >= 1000, nil, -1, floor(tShieldLeft * 0.001 + 0.5), -1;
+end
+
+
+
+--
+local tShieldLeft;
 local function VUHDO_shieldCountValidator(anInfo, _)
 	tShieldLeft = VUHDO_getUnitOverallShieldRemain(anInfo["unit"]);
 	return tShieldLeft >= 1000, nil, -1, floor(tShieldLeft * 0.001 + 0.5), -1;
@@ -1680,6 +1689,12 @@ VUHDO_BOUQUET_BUFFS_SPECIAL = {
 		["displayName"] = VUHDO_I18N_DEF_PVP_STATUS,
 		["validator"] = VUHDO_pvpIconValidator,
 		["interests"] = { VUHDO_UPDATE_MINOR_FLAGS },
+	},
+
+	["OVERFLOW_COUNTER"] = {
+		["displayName"] = VUHDO_I18N_DEF_COUNTER_OVERFLOW_ABSORB,
+		["validator"] = VUHDO_overflowCountValidator,
+		["interests"] = { VUHDO_UPDATE_SHIELD },
 	},
 
 	["SHIELDS_COUNTER"] = {

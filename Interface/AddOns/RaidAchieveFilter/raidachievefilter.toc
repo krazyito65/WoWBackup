@@ -1,6 +1,6 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: RaidAchieveFilter
-## Version: 1.9.1
+## Version: 1.9.2
 ## Author: distnz
 ## SavedVariables: RAchF_DB
 ## Notes: Filters your raid/dungeon/scenario achievements by instance.

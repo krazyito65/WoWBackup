@@ -5,23 +5,6 @@ VUHDO_PLAYER_HOTS = { };
 VUHDO_SPELL_TYPE_HOT = 1;  -- Spell type heal over time
 
 
-VUHDO_GCD_SPELLS = {
-	-- TODO: many of these GCD spell IDs are now deprecated, replace them
-	["WARRIOR"] = GetSpellInfo(78), -- Heroic Strike
-	["ROGUE"] = GetSpellInfo(1752), -- Sinister Strike
-	["HUNTER"] = GetSpellInfo(1494), -- Track beasts
-	["PALADIN"] = VUHDO_SPELL_ID.FLASH_OF_LIGHT, -- Flash of Light
-	["MAGE"] = GetSpellInfo(133), -- Fire Ball
-	["WARLOCK"] = GetSpellInfo(686), -- Shadow Bolt
-	["SHAMAN"] = GetSpellInfo(8004), --  Healing Surge
-	["DRUID"] = VUHDO_SPELL_ID.REJUVENATION, -- Rejuvenation
-	["PRIEST"] = VUHDO_SPELL_ID.BUFF_POWER_WORD_FORTITUDE, -- Power Word: Fortitude
-	["DEATHKNIGHT"] = GetSpellInfo(48266), -- Blood Presence
-	["MONK"] = GetSpellInfo(100780), -- Jab
-	["DEMONHUNTER"] = GetSpellInfo(162243), -- Demon's Bite
-};
-
-
 
 local twipe = table.wipe;
 local pairs = pairs;

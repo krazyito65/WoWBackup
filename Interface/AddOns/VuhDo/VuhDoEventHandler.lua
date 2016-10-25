@@ -1181,8 +1181,9 @@ function VUHDO_OnUpdate(_, aTimeDelta)
 	end
 
 	-- Update GCD-Bar
-	if VUHDO_GCD_UPDATE and VUHDO_GCD_SPELLS[VUHDO_PLAYER_CLASS] then
-		tGcdStart, tGcdDuration = GetSpellCooldown(VUHDO_GCD_SPELLS[VUHDO_PLAYER_CLASS]);
+	if VUHDO_GCD_UPDATE then
+		tGcdStart, tGcdDuration = GetSpellCooldown(VUHDO_SPELL_ID.GLOBAL_COOLDOWN);
+
 		if (tGcdDuration or 0) == 0 then
 			VuhDoGcdStatusBar:SetValue(0);
 			VUHDO_GCD_UPDATE = false;

@@ -1,3 +1,2 @@
 
-GoGo_Prefs_Template = {
-}
+GoGoMount_MountSettings = nil

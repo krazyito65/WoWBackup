@@ -1,6 +1,18 @@
 Changelog
 =========
 
+3.1.1 (2016-10-10)
+------------------
+
+- Update deDE. [Robin Schoonover]
+
+- Put pet triggers list in a scroll frame. [Robin Schoonover]
+
+- Ignore the haunted momento. [Robin Schoonover]
+
+  It doesn't work the same way anymore.
+
+
 3.1 (2016-08-17)
 ----------------
 

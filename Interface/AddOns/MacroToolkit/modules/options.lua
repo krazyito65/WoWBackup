@@ -31,6 +31,17 @@ local function removeCharMacros()
 	MT.OptionsFrame:Show()
 end
 
+function MT:SetScale(value)
+	if not value then return end
+	MT.db.profile.scale = value
+	MacroToolkitFrame:SetScale(value)
+	if MacroToolkitRestoreFrame then MacroToolkitRestoreFrame:SetScale(value) end
+	if MacroTtoolkitPopup then MacroToolkitPopup:SetScale(value) end
+	if MacroToolkitScriptFrame then MacroToolkitScriptFrame:SetScale(value) end
+	if MacroTookitBuilderFrame then MacroToolkitBuilderFrame:SetScale(value) end
+	MacroToolkitFrame:SetSize(638, MT.db.profile.height)
+end
+					
 local function addCharMacros()
 	MT.db.global.allcharmacros = true
 	local numMacros = select(2, GetNumMacros())
@@ -793,17 +804,8 @@ local interfacePanel = {
 					isPercent = true,
 					step = 0.01,
 					width = "double",
-					get = function() return MT.db.profile.scale end,
-					set = 
-						function(info, value)
-							MT.db.profile.scale = value
-							MacroToolkitFrame:SetScale(value)
-							if MacroToolkitRestoreFrame then MacroToolkitRestoreFrame:SetScale(value) end
-							if MacroTtoolkitPopup then MacroToolkitPopup:SetScale(value) end
-							if MacroToolkitScriptFrame then MacroToolkitScriptFrame:SetScale(value) end
-							if MacroTookitBuilderFrame then MacroToolkitBuilderFrame:SetScale(value) end
-							MacroToolkitFrame:SetSize(638, MT.db.profile.height)
-						end,
+					get = function() return MT.db.profile.scale or MacroToolkitFrame:GetScale() end,
+					set = function(info, value) MT:SetScale(value) end,
 				},
 				note1 = {
 					order = 7,

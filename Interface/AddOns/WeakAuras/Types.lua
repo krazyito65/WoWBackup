@@ -49,6 +49,16 @@ WeakAuras.group_sort_types = {
   none = L["None"]
 };
 
+WeakAuras.group_hybrid_position_types = {
+  hybridFirst = L["Marked First"],
+  hybridLast = L["Marked Last"]
+};
+
+WeakAuras.group_hybrid_sort_types = {
+  ascending = L["Ascending"],
+  descending = L["Descending"],
+};
+
 WeakAuras.precision_types = {
   [0] = "12",
   [1] = "12.3",
@@ -1145,10 +1155,15 @@ WeakAuras.chat_message_types = {
   CHAT_MSG_EMOTE = L["Emote"],
   CHAT_MSG_GUILD = L["Guild"],
   CHAT_MSG_MONSTER_YELL = L["Monster Yell"],
+  CHAT_MSG_MONSTER_EMOTE = L["Monster Emote"],
+  CHAT_MSG_MONSTER_SAY = L["Monster Say"],
+  CHAT_MSG_MONSTER_WHISPER = L["Monster Whisper"],
+  CHAT_MSG_MONSTER_PARTY = L["Monster Party"],
   CHAT_MSG_OFFICER = L["Officer"],
   CHAT_MSG_PARTY = L["Party"],
   CHAT_MSG_RAID = L["Raid"],
   CHAT_MSG_RAID_BOSS_EMOTE = L["Boss Emote"],
+  CHAT_MSG_RAID_BOSS_WHISPER = L["Boss Whisper"],
   CHAT_MSG_RAID_WARNING = L["Raid Warning"],
   CHAT_MSG_SAY = L["Say"],
   CHAT_MSG_WHISPER = L["Whisper"],
@@ -1214,6 +1229,7 @@ WeakAuras.sound_types = {
   ["Interface\\AddOns\\WeakAuras\\Media\\Sounds\\TempleBellHuge.ogg"] = "Temple Bell",
   ["Interface\\AddOns\\WeakAuras\\Media\\Sounds\\Torch.ogg"] = "Torch",
   ["Interface\\AddOns\\WeakAuras\\Media\\Sounds\\WarningSiren.ogg"] = "Warning Siren",
+  ["Sound\\Creature\\LichKing\\IC_Lich King_Special01.ogg"] = "Lich King Apocalypse",
   [" custom"] = "Custom",
   [" KitID"] = "Sound by Kit ID",
 };
@@ -1298,3 +1314,21 @@ WeakAuras.cooldown_progress_behavior_types = {
   showOnReady    = L["Not on cooldown"],
   showAlways     = L["Always"]
 };
+
+WeakAuras.item_slot_types = {
+  [1]  = L["Head"],
+  [2]  = L["Neck"],
+  [3]  = L["Shoulder"],
+  [5]  = L["Chest"],
+  [6]  = L["Waist"],
+  [7]  = L["Legs"],
+  [8]  = L["Feet"],
+  [9]  = L["Wrist"],
+  [10] = L["Hands"],
+  [11] = L["Finger 1"],
+  [12] = L["Finger 2"],
+  [13] = L["Trinket 1"],
+  [14] = L["Trinket 2"],
+  [15] = L["Back"],
+  [19] = L["Tabard"]
+}

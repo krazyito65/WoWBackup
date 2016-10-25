@@ -58,7 +58,7 @@ function MT:CreateMTFrame()
 		MT.db.profile.y = mtframe:GetBottom()
 	end
 
-	mtframe:SetScale(MT.db.profile.scale)
+	--mtframe:SetScale(MT.db.profile.scale)
 	mtframe:SetSize(638, MT.db.profile.height)
 	mtframe:SetMovable(true)
 	mtframe:EnableMouse(true)
@@ -881,6 +881,7 @@ function MT:CreateMTFrame()
 	mtbind:SetScript("OnClick", function() if not MT.MTKF then MT.MTKF = MT:CreateBindingFrame() end; MT.MTKF:Show() end)
 
 	MT:UpdateInterfaceOptions()
+	MT:SetScale(MT.db.profile.scale)
 	tinsert(UISpecialFrames, "MacroToolkitFrame")
 	return mtframe
 end

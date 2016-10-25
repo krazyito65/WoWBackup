@@ -1,6 +1,6 @@
 ## Interface: 70000
 ## Title: PetLeash
-## Version: 3.1
+## Version: 3.1.1
 ## Notes: Walks the Dog 
 ## Author: End
 ## X-Email: end@cornhooves.org

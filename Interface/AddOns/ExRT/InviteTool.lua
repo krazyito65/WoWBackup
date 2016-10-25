@@ -516,7 +516,7 @@ function module.main:ADDON_LOADED()
 		module:RegisterEvents('CHAT_MSG_WHISPER','CHAT_MSG_BN_WHISPER')
 	end
 	if VExRT.InviteTool.AutoInvAccept then
-		module:RegisterEvents('PARTY_INVITE_REQUEST')
+		module:RegisterEvents('PARTY_INVITE_REQUEST','GROUP_INVITE_CONFIRMATION')
 	end
 	
 	module:RegisterSlash()
@@ -653,6 +653,25 @@ do
 				elseif frame:IsVisible() and frame.which=="PARTY_INVITE_XREALM" then
 					frame.inviteAccepted = true
 					StaticPopup_Hide("PARTY_INVITE_XREALM")
+					return
+				end
+			end
+		end
+	end
+	function module.main:GROUP_INVITE_CONFIRMATION(nameinv)
+		local firstInvite = GetNextPendingInviteConfirmation()
+		if ( not firstInvite ) then
+			return
+		end
+		local confirmationType, name = GetInviteConfirmationInfo(firstInvite)
+		local suggesterGuid, suggesterName, relationship = GetInviteReferralInfo(firstInvite)
+		if (suggesterName and IsFriend(ExRT.F.delUnitNameServer(suggesterName))) or (name and IsFriend(ExRT.F.delUnitNameServer(name))) then
+			RespondToInviteConfirmation(firstInvite, true)
+			for i = 1, 4 do
+				local frame = _G["StaticPopup"..i]
+				if frame:IsVisible() and frame.which=="GROUP_INVITE_CONFIRMATION" then
+					StaticPopup_Hide("GROUP_INVITE_CONFIRMATION")
+					UpdateInviteConfirmationDialogs()
 					return
 				end
 			end

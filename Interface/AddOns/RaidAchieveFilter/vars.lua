@@ -31,7 +31,7 @@ RAFdb.AchID[23] = {8536,8528,8532,8521,8530,8520,8453,8448,8538,8529,8527,8543,8
 RAFdb.AchID[24] = {8978,8979,8981,8929,8980,8982,8930,8983,8984,8952,8966,8967,8956,8932,8968,8969,8970,8971,8972,8973,8989,8990,8991,8992}--BRFoundry
 RAFdb.AchID[25] = {10026,10057,10013,10054,9972,9979,9988,10086,10012,10087,9989,10030,10073,10027,10032,10033,10034,10035,10253,10037,10040,10038,10039,10041,10042,10043,10023,10024,10025,10020,10019}--Hellfire
 RAFdb.AchID[26] = {8948,8947,8974,8975,8958,8976,8977,8949,8960,8961,8962,8963,8964,8965,8986,8987,8988}--Highmaul
-RAFdb.AchID[27] = {10555,10771,10830,10753,10663,10772,10755,10821,10822,10823,10824,10825,10826,10827,10818,10819,10820}--EmeraldNightmare
+RAFdb.AchID[27] = {10555,10771,10830,10753,10663,10772,10755,10821,10822,10823,10824,10825,10826,10827,10818,10819,10820}--ENightmare
 RAFdb.AchID[28] = {10678,10697,10742,10817,10704,10575,10754,10851,10699,10696,10840,10842,10843,10844,10847,10848,10846,10845,10849,10850,10829,10837,10838,10839}--Nighthold
 
 if uFaction == "A" then tinsert(RAFdb.AchID[23], 8679) else tinsert(RAFdb.AchID[23], 8680) end 
@@ -94,10 +94,11 @@ RAFdb.AchID[78] = {10610,10611,10816}--Court of Stars
 RAFdb.AchID[79] = {10766,10769,10783,10784,10785}--Darkheart Thicket
 RAFdb.AchID[80] = {10456,10457,10458,10780,10781,10782}--Eye of Azshara
 RAFdb.AchID[81] = {10542,10544,10543,10786,10788,10789}--Halls of Valor
-RAFdb.AchID[82] = {10411,10413,10412,10807,10808,10809}--Maw of Souls
-RAFdb.AchID[83] = {10996,10875,10795,10796,10797}--Neltharion's Lair
-RAFdb.AchID[84] = {10773,10775,10776,10803}--The Arcway
-RAFdb.AchID[85] = {10707,10679,10680,10801,10802,10803}--Vault of the Wardens
+RAFdb.AchID[82] = {11433,11338,11430,11429,11432,11335}--Karazhan
+RAFdb.AchID[83] = {10411,10413,10412,10807,10808,10809}--Maw of Souls
+RAFdb.AchID[84] = {10996,10875,10795,10796,10797}--Neltharion's Lair
+RAFdb.AchID[85] = {10773,10775,10776,10803}--The Arcway
+RAFdb.AchID[86] = {10707,10679,10680,10801,10802,10803}--Vault of the Wardens
 RAFdb.MapID = {
 --Raids
 604,604,535,535,718,527,531,531,609,543,543,529,529,--LK
@@ -110,61 +111,61 @@ RAFdb.MapID = {
 753,756,820,757,759,819,747,764,768,767,769,816,781,793,--Cata
 875,885,871,874,898,877,887,876,867,--MoP
 984,964,993,987,969,989,1008,995,--WoD
-1066,1081,1087,1067,1046,1041,1042,1065,1079,1045}--Legion
+1066,1081,1087,1067,1046,1041,1100,1042,1065,1079,1045}--Legion
 --Scenarios
 if uFaction == "A" then 
-	RAFdb.AchID[86] = {7261,7258,7257,7252,8310}--Brewing
-	RAFdb.AchID[87] = {7989,7990,7991,7992,7993,7988}--Patience
-	RAFdb.AchID[88] = {7273,7272,7271}--Arena
-	RAFdb.AchID[89] = {8016,8017}--Assault
-	RAFdb.AchID[90] = {8347,8314,8364}--Battle
-	RAFdb.AchID[91] = {8329,8330,8316,8312}--Blood
-	RAFdb.AchID[92] = {6931,6930,6923}--Brewmoon
-	RAFdb.AchID[93] = {7275,7276,8368,7522,8311}--Crypt
-	RAFdb.AchID[94] = {7987,7984,7986,8009}--Dagger
-	RAFdb.AchID[95] = {8319,8317,8318}--DarkHeart
-	RAFdb.AchID[96] = {7267,7266,7265}--Greenstone
-	RAFdb.AchID[97] = {8012,8011,8010}--Lion's
-	RAFdb.AchID[98] = {8295,8294,8327}--Ragefire
-	RAFdb.AchID[99] = {7526,7527,7523}--Theramore
-	RAFdb.AchID[100] = {7231,7232,7239,7249,7248}--Unga
+	RAFdb.AchID[87] = {7261,7258,7257,7252,8310}--Brewing
+	RAFdb.AchID[88] = {7989,7990,7991,7992,7993,7988}--Patience
+	RAFdb.AchID[89] = {7273,7272,7271}--Arena
+	RAFdb.AchID[90] = {8016,8017}--Assault
+	RAFdb.AchID[91] = {8347,8314,8364}--Battle
+	RAFdb.AchID[92] = {8329,8330,8316,8312}--Blood
+	RAFdb.AchID[93] = {6931,6930,6923}--Brewmoon
+	RAFdb.AchID[94] = {7275,7276,8368,7522,8311}--Crypt
+	RAFdb.AchID[95] = {7987,7984,7986,8009}--Dagger
+	RAFdb.AchID[96] = {8319,8317,8318}--DarkHeart
+	RAFdb.AchID[97] = {7267,7266,7265}--Greenstone
+	RAFdb.AchID[98] = {8012,8011,8010}--Lion's
+	RAFdb.AchID[99] = {8295,8294,8327}--Ragefire
+	RAFdb.AchID[100] = {7526,7527,7523}--Theramore
+	RAFdb.AchID[101] = {7231,7232,7239,7249,7248}--Unga
 	local MapIDs = {878,912,899,883,940,939,884,900,914,937,880,911,938,906,882}
 	for i = 1, #MapIDs do tinsert(RAFdb.MapID, MapIDs[i]) end
-	for i = 1, 100 do RAFdb.MapName[i] = GetMapNameByID(RAFdb.MapID[i]) end
-	RAFdb.MapName[88] = "Arena of Annihilation"-- (Proving Grounds)
-	RAFdb.MapName[91] = "Blood in the Snow"-- (Dun Morogh)
-	RAFdb.MapName[95] = "Dark Heart of Pandaria"-- (Vale of Eternal Blossoms)
-	RAFdb.MapName[96] = "Greenstone Village"-- (Jade Forest)
-	RAFdb.MapName[97] = "Lion's Landing"-- (Krasarang Wilds)
-	RAFdb.MapName[99] = "Theramore's Fall"-- (Dustwallow Marsh)
+	for i = 1, 101 do RAFdb.MapName[i] = GetMapNameByID(RAFdb.MapID[i]) end
+	RAFdb.MapName[89] = "Arena of Annihilation"-- (Proving Grounds)
+	RAFdb.MapName[92] = "Blood in the Snow"-- (Dun Morogh)
+	RAFdb.MapName[96] = "Dark Heart of Pandaria"-- (Vale of Eternal Blossoms)
+	RAFdb.MapName[97] = "Greenstone Village"-- (Jade Forest)
+	RAFdb.MapName[98] = "Lion's Landing"-- (Krasarang Wilds)
+	RAFdb.MapName[100] = "Theramore's Fall"-- (Dustwallow Marsh)
 else
-	RAFdb.AchID[86] = {7261,7258,7257,7252,8310}--Brewing
-	RAFdb.AchID[87] = {7989,7990,7991,7992,7993,7988}--Patience
-	RAFdb.AchID[88] = {7273,7272,7271}--Arena
-	RAFdb.AchID[89] = {8016,8017}--Assault
-	RAFdb.AchID[90] = {8347,8315,8366}--Battle
-	RAFdb.AchID[91] = {8329,8330,8316,8312}--Blood
-	RAFdb.AchID[92] = {6931,6930,6923}--Brewmoon
-	RAFdb.AchID[93] = {7275,7276,8368,7522,8311}--Crypt
-	RAFdb.AchID[94] = {7987,7984,7986,8009}--Dagger
-	RAFdb.AchID[95] = {8319,8317,8318}--DarkHeart
-	RAFdb.AchID[96] = {8015,8014,8013}--Domination
-	RAFdb.AchID[97] = {7267,7266,7265}--Greenstone
-	RAFdb.AchID[98] = {8295,8294,8327}--Ragefire
-	RAFdb.AchID[99] = {7529,7530,7524}--Theramore
-	RAFdb.AchID[100] = {7231,7232,7239,7249,7248}--Unga
+	RAFdb.AchID[87] = {7261,7258,7257,7252,8310}--Brewing
+	RAFdb.AchID[88] = {7989,7990,7991,7992,7993,7988}--Patience
+	RAFdb.AchID[89] = {7273,7272,7271}--Arena
+	RAFdb.AchID[90] = {8016,8017}--Assault
+	RAFdb.AchID[91] = {8347,8315,8366}--Battle
+	RAFdb.AchID[92] = {8329,8330,8316,8312}--Blood
+	RAFdb.AchID[93] = {6931,6930,6923}--Brewmoon
+	RAFdb.AchID[94] = {7275,7276,8368,7522,8311}--Crypt
+	RAFdb.AchID[95] = {7987,7984,7986,8009}--Dagger
+	RAFdb.AchID[96] = {8319,8317,8318}--DarkHeart
+	RAFdb.AchID[97] = {8015,8014,8013}--Domination
+	RAFdb.AchID[98] = {7267,7266,7265}--Greenstone
+	RAFdb.AchID[99] = {8295,8294,8327}--Ragefire
+	RAFdb.AchID[100] = {7529,7530,7524}--Theramore
+	RAFdb.AchID[101] = {7231,7232,7239,7249,7248}--Unga
 	local MapIDs = {878,912,899,883,940,939,884,900,914,937,920,880,938,907,882}
 	for i = 1, #MapIDs do tinsert(RAFdb.MapID, MapIDs[i]) end
-	for i = 1, 100 do RAFdb.MapName[i] = GetMapNameByID(RAFdb.MapID[i]) end
-	RAFdb.MapName[86] = "Arena of Annihilation"--(Proving Grounds)
-	RAFdb.MapName[89] = "Blood in the Snow"--(Dun Morogh)
-	RAFdb.MapName[93] = "Dark Heart of Pandaria"--(Vale of Eternal Blossoms)
-	RAFdb.MapName[94] = "Domination Point"--(Krasarang Wilds)
-	RAFdb.MapName[95] = "Greenstone Village"--(Jade Forest)
-	RAFdb.MapName[97] = "Theramore's Fall"--(Dustwallow Marsh)
+	for i = 1, 101 do RAFdb.MapName[i] = GetMapNameByID(RAFdb.MapID[i]) end
+	RAFdb.MapName[89] = "Arena of Annihilation"--(Proving Grounds)
+	RAFdb.MapName[92] = "Blood in the Snow"--(Dun Morogh)
+	RAFdb.MapName[96] = "Dark Heart of Pandaria"--(Vale of Eternal Blossoms)
+	RAFdb.MapName[97] = "Domination Point"--(Krasarang Wilds)
+	RAFdb.MapName[98] = "Greenstone Village"--(Jade Forest)
+	RAFdb.MapName[100] = "Theramore's Fall"--(Dustwallow Marsh)
 end
 RAFdb.MapName[76] = "Assault on Violet Hold"
-RAFdb.MapName[82] = "Maw of Souls"
+RAFdb.MapName[83] = "Maw of Souls"
 RAFdb.MapName[1] = RAFdb.MapName[1].." [10]"
 RAFdb.MapName[2] = RAFdb.MapName[2].." [25]"--ICC
 RAFdb.MapName[3] = RAFdb.MapName[3].." [10]"

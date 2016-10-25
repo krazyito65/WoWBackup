@@ -523,9 +523,9 @@ function WeakAuras.ConstructFunction(prototype, trigger)
               local any = false;
               for value, _ in pairs(trigger[name].multi) do
                 if not arg.test then
-                  test = test..name.."=="..(tonumber(value) or "\""..value.."\"").." or ";
+                  test = test..name.."=="..(tonumber(value) or "[["..value.."]]").." or ";
                 else
-                  test = test..arg.test:format(tonumber(value) or "\""..value.."\"").." or ";
+                  test = test..arg.test:format(tonumber(value) or "[["..value.."]]").." or ";
                 end
                 any = true;
               end
@@ -538,9 +538,9 @@ function WeakAuras.ConstructFunction(prototype, trigger)
             elseif(trigger["use_"..name]) then -- single selection
               local value = trigger[name].single;
               if not arg.test then
-                test = trigger[name].single and "("..name.."=="..(tonumber(value) or "\""..value.."\"")..")";
+                test = trigger[name].single and "("..name.."=="..(tonumber(value) or "[["..value.."]]")..")";
               else
-                test = trigger[name].single and "("..arg.test:format(tonumber(value) or "\""..value.."\"")..")";
+                test = trigger[name].single and "("..arg.test:format(tonumber(value) or "[["..value.."]]")..")";
               end
             end
           elseif(arg.type == "toggle") then
@@ -555,7 +555,7 @@ function WeakAuras.ConstructFunction(prototype, trigger)
             test = "("..arg.test:format(trigger[name])..")";
           elseif(arg.type == "longstring" and trigger[name.."_operator"]) then
             if(trigger[name.."_operator"] == "==") then
-              test = "("..name.."==\""..trigger[name].."\")";
+              test = "("..name.."==[["..trigger[name].."]])";
             else
               test = "("..name..":"..trigger[name.."_operator"]:format(trigger[name])..")";
             end
@@ -563,7 +563,7 @@ function WeakAuras.ConstructFunction(prototype, trigger)
             if(type(trigger[name]) == "table") then
               trigger[name] = "error";
             end
-            test = "("..name..(trigger[name.."_operator"] or "==")..(number or "\""..(trigger[name] or "").."\"")..")";
+            test = "("..name..(trigger[name.."_operator"] or "==")..(number or "[["..(trigger[name] or "").."]]")..")";
           end
           if(arg.required) then
             tinsert(required, test);
@@ -1664,8 +1664,23 @@ function WeakAuras.Modernize(data)
     end
   end
 
+  if data.regionType == "model" then
+    if (data.api == nil) then
+      data.api = false;
+    end
+  end
+
   if (not data.activeTriggerMode) then
     data.activeTriggerMode = 0;
+  end
+
+  if (data.sort == "hybrid") then
+    if (not data.hybridPosition) then
+      data.hybridPosition = "hybridLast";
+    end
+    if (not data.hybridSortMode) then
+      data.hybridSortMode = "descending";
+    end
   end
 end
 
@@ -2095,9 +2110,12 @@ function WeakAuras.SetAllStatesHiddenExcept(id, triggernum, list)
 end
 
 function WeakAuras.ReleaseClone(id, cloneId, regionType)
+   if (not clones[id]) then
+     return;
+   end
    local region = clones[id][cloneId];
    clones[id][cloneId] = nil;
-   clonePool[regionType][#clonePool[regionType]] = region;
+   clonePool[regionType][#clonePool[regionType] + 1] = region;
 end
 
 -- This function is currently never called if WeakAuras is paused, but it is set up so that it can take a different action
@@ -3141,7 +3159,16 @@ local function startStopTimers(id, cloneId, triggernum, state)
               WeakAuras.UpdatedTriggerState(id);
             end
           end,
-          state.expirationTime - GetTime() + 0.01);
+          -- We don't want to hide immediately on the expirationTime as that can create flicker.
+          -- That is: Consider two auras that track a cooldown or a buff with inverse Conditions
+          -- What we want to have, is that if one aura hides the other aura is shown
+          -- Now a aura is either hidden by receiving a COOLDOWN_CHANGED, or AURA_APPLIED/AURA_REMOVED event
+          -- or because the autoHide timer expired
+          -- Since there's not a 100% synchronization between when the autoHide timer expires and when
+          -- the event happens, we delay the autoHide timer for a bit, so that we usually get the event
+          -- first
+          -- Note: Maybe having the autoHide timer is actually unnecessary for most auras...
+          state.expirationTime - GetTime() + 0.03);
         record.expirationTime = state.expirationTime;
       end
     else -- no auto hide, delete timer

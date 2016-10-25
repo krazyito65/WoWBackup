@@ -14,7 +14,7 @@ function MT:CreateScriptFrame()
 
 	mtsf:SetMovable(true)
 	mtsf:EnableMouse(true)
-	mtsf:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then mtsf:SetScale(MT.db.profile.scale) end
 	mtsf:SetSize(638, 424)
 	mtsf:SetPoint("BOTTOMLEFT", MT.db.profile.x, MT.db.profile.y)
 	mtsf:SetScript("OnMouseDown", function() mtsf:StartMoving() end)

@@ -745,7 +745,7 @@ function module.options:Load()
 									line.items[j].link = item
 									local itemColor = select(4,GetItemQualityColor(itemQuality or 1))
 									if itemQuality == 6 then
-										itemLevel = nil
+										itemLevel = items_ilvl[slotID]
 									end
 									line.items[j].text:SetText("|c"..(itemColor or "ffffffff")..(itemLevel or ""))
 									

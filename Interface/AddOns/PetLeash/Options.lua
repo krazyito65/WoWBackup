@@ -406,6 +406,13 @@ do
             addNew:SetUserData("mainPage", frame)
             frame:AddChild(addNew)
 
+            local scroll = AceGUI:Create("ScrollFrame")
+            scroll:SetLayout("Flow")
+            scroll:SetFullWidth(true)
+            scroll:SetFullHeight(true)
+            frame:SetUserData("scrollFrame", scroll)
+            frame:AddChild(scroll)
+
             local setDB = addon.db.profile.sets
             wipe(setsTmp)
             for setName in pairs(setDB) do
@@ -427,7 +434,7 @@ do
                 editButton:SetCallback("OnClick", setEditButton_OnClick)
                 group:AddChild(editButton)
 
-                frame:AddChild(group)
+                scroll:AddChild(group)
             end
 
             frame:ResumeLayout()

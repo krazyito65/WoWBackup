@@ -41,7 +41,6 @@ MT.defaults = {
 		confirmdelete = true,
 		x = (UIParent:GetWidth() - 638) / 2,
 		y = (UIParent:GetHeight() - 424) / 2,
-		scale = 1,
 		height = 424,
 		dynamicicon = true, abilityicons = true, achicons = true,
 		invicons = true, itemicons = true, miscicons = true, spellicons = true,

@@ -113,14 +113,6 @@ SpecialItems["item:38506"] = function(item)
     end
 end
 
--- Haunted Memento
-SpecialItems["item:40110"] = function(item)
-    item:RegisterEvent("BAG_UPDATE")
-    function item:Check()
-        return GetItemCount(40110) > 0 
-    end
-end
-
 -- Venomhide Hatchling (20day Raptor Mount quest)
 SpecialItems["item:46362"] = function(item)
     item:RegisterEvent("BAG_UPDATE")

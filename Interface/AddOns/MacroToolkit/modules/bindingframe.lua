@@ -13,7 +13,7 @@ function MT:CreateBindingFrame()
 	frame:SetFrameStrata("DIALOG")
 	frame:EnableKeyboard(true)
 	frame:EnableMouse(true)
-	frame:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then frame:SetScale(MT.db.profile.scale) end
 	frame:SetSize(500, 206)
 	frame:SetPoint("TOP", 0 , -135)
 	frame:SetToplevel(true)

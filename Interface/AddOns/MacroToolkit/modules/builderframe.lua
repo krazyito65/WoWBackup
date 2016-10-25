@@ -25,7 +25,7 @@ function MT:CreateBuilderFrame()
 	mtbf:SetMovable(true)
 	mtbf:EnableMouse(true)
 	mtbf:EnableKeyboard(true)
-	mtbf:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then mtbf:SetScale(MT.db.profile.scale) end
 	mtbf:SetSize(638, 424)
 	mtbf:SetPoint("BOTTOMLEFT", MT.db.profile.x, MT.db.profile.y)
 	mtbf:SetScript("OnMouseDown", function() mtbf:StartMoving() end)

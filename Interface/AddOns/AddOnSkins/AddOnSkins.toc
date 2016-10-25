@@ -1,12 +1,12 @@
 ## Interface: 70000
 ## Title: |cff1784d1AddOnSkins|r
-## Version: 3.39
+## Version: 3.40
 ## Author: Azilroka, Sortokk
 ## SavedVariables: AddOnSkinsDB
 ## OptionalDep: ElvUI, BuyEmAll, DSM, Tukui
 ## X-Tukui-ProjectID: 128
 ## X-Tukui-ProjectFolders: AddOnSkins
-## X-Curse-Packaged-Version: 3.39-16-gf5bfa00
+## X-Curse-Packaged-Version: 3.40-2-ge3a020d
 ## X-Curse-Project-Name: AddOnSkins
 ## X-Curse-Project-ID: elvui_addonskins
 ## X-Curse-Repository-ID: wow/elvui_addonskins/mainline

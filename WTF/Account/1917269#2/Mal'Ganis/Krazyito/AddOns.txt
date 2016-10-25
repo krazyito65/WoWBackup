@@ -249,10 +249,10 @@ VuhDo: enabled
 SpartanUI: disabled
 AtlasLoot_Loader: disabled
 AceGUI-3.0-SharedMediaWidgets: enabled
-epgp: enabled
+epgp: disabled
 SkadaWindowButtons: disabled
-epgp_lootmaster_ml: enabled
-epgp_lootmaster: enabled
+epgp_lootmaster_ml: disabled
+epgp_lootmaster: disabled
 oRA3: disabled
 TauntMaster: disabled
 SkadaAvoidanceMitigation: disabled
@@ -786,7 +786,7 @@ CT_Viewport: disabled
 Grail-Rewards: disabled
 QuickQuest: enabled
 Broker_TimeToExecute: enabled
-epgp-lootmaster-fp: enabled
+epgp-lootmaster-fp: disabled
 LeechTrinketCounter: disabled
 WowheadGarrisonTimer: disabled
 GoGoMount: enabled

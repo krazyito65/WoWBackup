@@ -1,8 +1,19 @@
+==== v2.1.6 ====
+*++Shared Loot History++
+**It's now possible to share and syncronize your loot history. For now it's a manual copy/paste job using
+**the new "Player Export" format and the import button. Hopes are to make it automatic some day.
+**Note: Importing someone's history will only add to your own, not delete anything.
+
+*Bugfixes:
+**//Accepting the usage popup will no longer do anything if you're not the ML.//
+**//Fixed a potential voting frame related bug depending on installed addons (#190) - thanks to Stoobert_Broon.//
+**//Councilmembers wouldn't count the ML in the number of votes if he hadn't assigned himself to the council.//
+
 ==== v2.1.5 ====
 *++Item differences++
 **Now always calculated on the lowest ilvl if two items of the same type is equipped.
 
-**Added Essence of Clarity to the ignore list.
+*Added Essence of Clarity to the ignore list.
 
 *Bugfixes:
 **//Remade the check that would fail to award double items (#180).//

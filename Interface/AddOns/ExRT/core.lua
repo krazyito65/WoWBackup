@@ -1,6 +1,9 @@
---	18:05 01.10.2016
+--	21:51 21.10.2016
 
 --[[
+3790
+* 7.1 Update
+
 3780
 * New bossmods: Dragons, Il'gynoth, Xavius
 * Fixed bug with inspecting artifact traits for people from other realms
@@ -34,7 +37,7 @@ http://i.imgur.com/59cZVTY.png
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3780
+ExRT.V = 3790
 ExRT.T = "R"
 ExRT.is7 = false		--> Legion (7.x) Client
 

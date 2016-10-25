@@ -21,19 +21,11 @@ function module.options:Load()
 		end
 	end)
 		
-	self.shtml1 = ELib:Text(self,"- "..L.RaidLootT17Highmaul.."\n- "..L.RaidLootT17BF.."\n -"..L.RaidLootT18HC.."\n -"..L.S_ZoneT19Nightmare.."\n -"..L.S_ZoneT19Suramar,12):Size(620,0):Point("TOP",0,-65):Top()
+	self.shtml1 = ELib:Text(self,"- "..L.RaidLootT17Highmaul.."\n- "..L.RaidLootT17BF.."\n -"..L.RaidLootT18HC.."\n -"..L.S_ZoneT19Nightmare..(ExRT.clientVersion >= 70100 and "\n -"..L.S_ZoneT19ToV or "").."\n -"..L.S_ZoneT19Suramar,12):Size(620,0):Point("TOP",0,-65):Top()
 
 	self.shtml2 = ELib:Text(self,L.LoggingHelp1,12):Size(650,0):Point("TOP",self.shtml1,"BOTTOM",0,-15):Top()
 	
-	self.disableLFR = ELib:Check(self,L.RaidCheckDisableInLFR,VExRT.Logging.disableLFR):Point("TOP",self.shtml2,"BOTTOM",0,-15):Point("LEFT",self,5,0):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.Logging.disableLFR = true
-		else
-			VExRT.Logging.disableLFR = nil
-		end
-	end)
-	
-	self.enable5ppLegion = ELib:Check(self,DUNGEONS..": "..EXPANSION_NAME6,VExRT.Logging.enable5ppLegion):Point("TOPLEFT",self.disableLFR,0,-25):OnClick(function(self) 
+	self.enable5ppLegion = ELib:Check(self,DUNGEONS..": "..EXPANSION_NAME6.." ("..PLAYER_DIFFICULTY6.."+)",VExRT.Logging.enable5ppLegion):Point("TOP",self.shtml2,"BOTTOM",0,-15):Point("LEFT",self,5,0):OnClick(function(self) 
 		if self:GetChecked() then
 			VExRT.Logging.enable5ppLegion = true
 		else
@@ -44,20 +36,18 @@ end
 
 
 function module:Enable()
-	module:RegisterEvents('ZONE_CHANGED_NEW_AREA')
+	module:RegisterEvents('ZONE_CHANGED_NEW_AREA','CHALLENGE_MODE_START')
 	module.main:ZONE_CHANGED_NEW_AREA()
 end
 function module:Disable()
-	module:UnregisterEvents('ZONE_CHANGED_NEW_AREA')
+	module:UnregisterEvents('ZONE_CHANGED_NEW_AREA','CHALLENGE_MODE_START')
 	module.main:ZONE_CHANGED_NEW_AREA()
 end
 
 
 function module.main:ADDON_LOADED()
 	VExRT = _G.VExRT
-	VExRT.Logging = VExRT.Logging or {
-		disableLFR = true,
-	}
+	VExRT.Logging = VExRT.Logging or {}
 
 	if VExRT.Logging.enabled then
 		module:Enable()
@@ -67,11 +57,11 @@ end
 local function GetCurrentMapForLogging()
 	if VExRT.Logging.enabled then
 		local _, zoneType, difficulty, _, _, _, _, mapID = GetInstanceInfo()
-		if VExRT.Logging.disableLFR and (difficulty == 7 or difficulty == 17) then
+		if difficulty == 7 or difficulty == 17 then
 			return false
 		elseif zoneType == 'raid' and (tonumber(mapID) and mapID >= module.db.minRaidMapID) then
 			return true
-		elseif VExRT.Logging.enable5ppLegion and zoneType == 'party' and (tonumber(mapID) and mapID >= module.db.minPartyMapID) then
+		elseif VExRT.Logging.enable5ppLegion and difficulty == 8 and (tonumber(mapID) and mapID >= module.db.minPartyMapID) then
 			return true
 		end
 	end
@@ -97,4 +87,7 @@ end
 
 function module.main:ZONE_CHANGED_NEW_AREA()
 	ExRT.F.ScheduleTimer(ZoneNewFunction, 2)
+end
+function module.main:CHALLENGE_MODE_START()
+	ExRT.F.ScheduleTimer(ZoneNewFunction, 1)
 end

@@ -8979,9 +8979,9 @@ do
 			inspectScantip:ClearLines()
 		end
 		if isArtifactEqipped > 0 then
-			inspectData['ilvl'] = inspectData['ilvl'] - ArtifactIlvlSlot1 - ArtifactIlvlSlot2 + max(ArtifactIlvlSlot1,ArtifactIlvlSlot2) * isArtifactEqipped
+			inspectData['ilvl'] = inspectData['ilvl'] - ArtifactIlvlSlot1 - ArtifactIlvlSlot2 + max(ArtifactIlvlSlot1,ArtifactIlvlSlot2) * 2
 		end
-		inspectData['ilvl'] = inspectData['ilvl'] / (inspectData['items'][17] and 16 or 15)
+		inspectData['ilvl'] = inspectData['ilvl'] / ((inspectData['items'][17] or isArtifactEqipped > 0) and 16 or 15)
 
 		--------> ExCD2
 		for tierUID,count in pairs(inspectData['tiersets']) do

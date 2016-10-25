@@ -16,6 +16,22 @@ module.db.spellsCoins = {
 	[221044] = L.bossName[1877], --7.0 Raid Nightmare Bonus Roll Loot - Boss 06
 	[221045] = L.bossName[1864], --7.0 Raid Nightmare Bonus Roll Loot - Boss 07
 	
+	[232462] = L.bossName[1958], --7.1 Raid Trial of Valor - Bonus Roll Loot - Boss 01
+	[232463] = L.bossName[1962], --7.1 Raid Trial of Valor - Bonus Roll Loot - Boss 02
+	[232464] = L.bossName[2008], --7.1 Raid Trial of Valor - Bonus Roll Loot - Boss 03
+
+	[232088] = "Karazhan - Boss 01", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 01
+	[232089] = "Karazhan - Boss 02", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 02
+	[232090] = "Karazhan - Boss 03", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 03
+	[232091] = "Karazhan - Boss 04", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 04
+	[232092] = "Karazhan - Boss 05", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 05
+	[232093] = "Karazhan - Boss 06", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 06
+	[232094] = "Karazhan - Boss 07", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 07
+	[232095] = "Karazhan - Boss 08", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 08
+	[232096] = "Karazhan - Boss 09", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 09
+	[232097] = "Karazhan - Boss 10", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 10
+	[232098] = "Karazhan - Boss 11", --7.1 Dungeon - Karazhan - Bonus Roll Loot - Boss 11
+	
 	[226523] = "Darkheart Thicket - Boss 01", --7.0 Dungeon - Darkheart Thicket - Bonus Roll Loot - Boss 01
 	[226524] = "Darkheart Thicket - Boss 02", --7.0 Dungeon - Darkheart Thicket - Bonus Roll Loot - Boss 02
 	[226525] = "Darkheart Thicket - Boss 03", --7.0 Dungeon - Darkheart Thicket - Bonus Roll Loot - Boss 03

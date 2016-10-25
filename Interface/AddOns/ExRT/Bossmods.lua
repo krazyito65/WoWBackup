@@ -2,7 +2,7 @@ local GlobalAddonName, ExRT = ...
 
 local UnitAura, UnitIsDeadOrGhost, UnitIsConnected, UnitPower, UnitGUID, UnitName, UnitPosition, UnitInRange, UnitIsUnit, UnitClass = UnitAura, UnitIsDeadOrGhost, UnitIsConnected, UnitPower, UnitGUID, UnitName, UnitPosition, UnitInRange, UnitIsUnit, UnitClass
 local GetTime, tonumber, tostring, sort, wipe, PI, pairs, type = GetTime, tonumber, tostring, table.sort, table.wipe, PI, pairs, type
-local cos, sin, sqrt, acos, abs, floor, min, max, atan, GGetPlayerMapPosition, GetPlayerFacing, GetNumGroupMembers = math.cos, math.sin, math.sqrt, acos, math.abs, math.floor, math.min, math.max, atan, GetPlayerMapPosition, GetPlayerFacing, GetNumGroupMembers
+local cos, sin, sqrt, acos, abs, floor, min, max, atan, GGetPlayerMapPosition, GGetPlayerFacing, GetNumGroupMembers = math.cos, math.sin, math.sqrt, acos, math.abs, math.floor, math.min, math.max, atan, GetPlayerMapPosition, GetPlayerFacing, GetNumGroupMembers
 local ClassColorNum, SetMapToCurrentZone, GetCurrentMapAreaID, GetCurrentMapDungeonLevel, GetRaidRosterInfo, GetMobID, RAID_CLASS_COLORS, table_len, GetUnitTypeByGUID, delUnitNameServer = ExRT.F.classColorNum, SetMapToCurrentZone, GetCurrentMapAreaID, GetCurrentMapDungeonLevel, GetRaidRosterInfo, ExRT.F.GUIDtoID, RAID_CLASS_COLORS, ExRT.F.table_len, ExRT.F.GetUnitTypeByGUID, ExRT.F.delUnitNameServer
 
 local VExRT = nil
@@ -38,6 +38,9 @@ do
 		end
 		return GGetPlayerMapPosition(...)
 	end
+end
+local function GetPlayerFacing()
+	return GGetPlayerFacing() or 0
 end
 
 -----------------------------------------
@@ -4434,6 +4437,8 @@ function Archimonde:Load()
 		
 		if groupSize == 0 then
 			local y,x = UnitPosition'player'
+			y=y or 0
+			x=x or 0
 			wipe(DEBUG_POS)
 			DEBUG_POS[1] = {x = x + 15, y = y + 15}
 			DEBUG_POS[2] = {x = x - 15, y = y + 15}
@@ -4606,6 +4611,9 @@ function Archimonde:Load()
 		if trottle > 0.02 then
 			trottle = 0
 			local playerY,playerX = UnitPosition('player')
+			if not playerY then
+				return
+			end
 			
 			local tLx,tLy,tRx,tRy,bRx,bRy,bLx,bLy = playerX + VIEW_DISTANCE,playerY + VIEW_DISTANCE,playerX - VIEW_DISTANCE,playerY + VIEW_DISTANCE,playerX - VIEW_DISTANCE, playerY - VIEW_DISTANCE,playerX + VIEW_DISTANCE,playerY - VIEW_DISTANCE
 			
@@ -6837,7 +6845,7 @@ function Dragons:Load()
 		return arr[i]
 	end
 	
-	local FlowerDuration = select(3,GetInstanceInfo()) == 16 and 60 or 40
+	local FlowerDuration = select(3,GetInstanceInfo()) == 16 and 30 or 40
 	
 	local linesCount = {
 		L = 0,
@@ -6958,7 +6966,7 @@ function Dragons:Load()
 			end
 		elseif event == 'ENCOUNTER_START' and timestamp == 1854 then
 			wipe(flowers)
-			FlowerDuration = select(3,GetInstanceInfo()) == 16 and 60 or 40
+			FlowerDuration = select(3,GetInstanceInfo()) == 16 and 30 or 40
 			UpdateLines()
 		elseif event == 'ENCOUNTER_END' and timestamp == 1854 then
 			wipe(flowers)
@@ -7177,33 +7185,12 @@ function module.options:Load()
 	
 	AddTitle(3,L.S_ZoneT19Nightmare)
 	
-	local Dragons_loadbut = AddButton(3,L.bossName[1854],"",Dragons.Load,67748,true,not VExRT.Bossmods.DragonsAutoload,L.bossmodsAutoLoadTooltip)
-	Dragons_loadbut.chk:SetScript("OnClick", function(self,event) 
-		if self:GetChecked() then
-			VExRT.Bossmods.DragonsAutoload = nil
-		else
-			VExRT.Bossmods.DragonsAutoload = true
-		end
-	end)
+	AddButton(3,L.bossName[1854],"",Dragons.Load,67748,false,not VExRT.Bossmods.DragonsAutoload,L.bossmodsAutoLoadTooltip)
 	
-	local Ilgynoth_loadbut = AddButton(3,L.bossName[1873],"",Ilgynoth.Load,69115,true,not VExRT.Bossmods.IlgynothAutoload,L.bossmodsAutoLoadTooltip)
-	Ilgynoth_loadbut.chk:SetScript("OnClick", function(self,event) 
-		if self:GetChecked() then
-			VExRT.Bossmods.IlgynothAutoload = nil
-		else
-			VExRT.Bossmods.IlgynothAutoload = true
-		end
-	end)
+	AddButton(3,L.bossName[1873],"",Ilgynoth.Load,69115,false,not VExRT.Bossmods.IlgynothAutoload,L.bossmodsAutoLoadTooltip)
 		
-	local Xavius_loadbut = AddButton(3,L.bossName[1864]..": "..L.BossmodsArchimondeRadar,"",Archimonde.Load,65636,true,not VExRT.Bossmods.XaviusAutoload,L.bossmodsAutoLoadTooltip)
-	Xavius_loadbut.chk:SetScript("OnClick", function(self,event) 
-		if self:GetChecked() then
-			VExRT.Bossmods.XaviusAutoload = nil
-		else
-			VExRT.Bossmods.XaviusAutoload = true
-		end
-	end)
-	
+	local Xavius_loadbut = AddButton(3,L.bossName[1864]..": "..L.BossmodsArchimondeRadar,"",Archimonde.Load,65636,false,not VExRT.Bossmods.XaviusAutoload,L.bossmodsAutoLoadTooltip)
+	Xavius_loadbut:Disable()
 	
 	local BossmodsSlider1 = ELib:Slider(self,L.bossmodsalpha):Size(640):Point("TOP",0,-550):Range(0,100):SetTo(VExRT.Bossmods.Alpha or 100):OnChange(function(self,event) 
 		event = event - event%1
@@ -7675,16 +7662,6 @@ function module.main:ENCOUNTER_START(encounterID,encounterName,difficultyID,grou
 			ArchimondeInfernals:Load()
 			ArchimondeInfernals.mainframe:Engage()
 		end
-	elseif encounterID == 1854 and (not Dragons.mainFrame or not Dragons.mainFrame:IsVisible()) and not VExRT.Bossmods.DragonsAutoload then
-		Dragons:Load()
-	elseif encounterID == 1873 and not Ilgynoth.setupFrame and not VExRT.Bossmods.IlgynothAutoload then
-		Ilgynoth:Load()
-		Ilgynoth.setupFrame:Hide()
-	elseif encounterID == 1864 then
-		if (not Archimonde.mainframe or not Archimonde.mainframe.isEnabled) and not VExRT.Bossmods.XaviusAutoload then
-			Archimonde:Load()
-			Archimonde.mainframe:Hide()
-		end
 	end
 end
 
@@ -7721,16 +7698,16 @@ function module.main:ENCOUNTER_END(encounterID,_,_,_,success)
 		ExRT.F:ExBossmodsCloseAll()
 	elseif encounterID == 1854 and Dragons.mainFrame then
 		ExRT.F:ExBossmodsCloseAll()
-	elseif encounterID == 1873 and Ilgynoth.setupFrame and Ilgynoth.setupFrame.isEnabled then
+	elseif encounterID == 1873 and Ilgynoth.setupFrame and Ilgynoth.setupFrame.isEnabled and ExRT.clientVersion < 70100 then
 		ExRT.F:ExBossmodsCloseAll()
-	elseif encounterID == 1864 and Archimonde.mainframe and Archimonde.mainframe.isEnabled then
+	elseif encounterID == 1864 and Archimonde.mainframe and Archimonde.mainframe.isEnabled and ExRT.clientVersion < 70100 then
 		ExRT.F:ExBossmodsCloseAll()
 	end
 end
 
 function module.main:ZONE_CHANGED()
 	local y,x,_,map = UnitPosition'player'
-	if map == 1448 then
+	if map == 1448 and y then
 		if x > 2455 and x < 2620 and y < 4105 and y > 3980 then
 			module:RegisterEvents('PLAYER_TARGET_CHANGED')
 		else

@@ -12,7 +12,7 @@ function MT:CreateCopyFrame()
 		MT.db.profile.y = mtcframe:GetBottom()
 	end
 
-	mtcframe:SetScale(MT.db.profile.scale)
+	if MT.db.profile.scale then mtcframe:SetScale(MT.db.profile.scale) end
 	mtcframe:SetSize(638, 424)
 	mtcframe:SetMovable(true)
 	mtcframe:EnableMouse(true)

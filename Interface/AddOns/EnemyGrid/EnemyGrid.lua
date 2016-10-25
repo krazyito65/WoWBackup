@@ -83,9 +83,6 @@ local default_config = {
 		show_title_text = true,
 		grow_direction = 1,
 		
-		show_friendly = false,
-		show_enemies = true,
-		
 		bar_texture = "Details Serenity",
 		bar_texturebackground = "PlaterBackground",
 		bar_width = 100,
@@ -415,7 +412,6 @@ local EnemyGrid = DF:CreateAddOn ("EnemyGrid", "EnemyGridDB", default_config, op
 
 EnemyGrid.QuestCache = {}
 EnemyGrid.ClassBuffCache = {}
-EnemyGrid.CurrentlyShownIDs = {}
 
 local CONST_RANGECHECK_INTERVAL = .1
 
@@ -474,9 +470,6 @@ function EnemyGrid:SelectLayoutWizard()
 		end
 	end)
 	WelcomeFrame:SetScript ("OnHide", function()
-		if (WelcomeFrame.DontShowAgain.value) then
-			EnemyGrid.db.profile.first_run = true
-		end
 		if (not InCombatLockdown()) then
 			if (WelcomeFrame.ChangedShowFriends) then
 				SetCVar ("nameplateShowFriends", "0")
@@ -545,13 +538,7 @@ function EnemyGrid:SelectLayoutWizard()
 	wf.confirm = DF:CreateButton (wf, confirm_layout, 120, 20, L["S_APPLY"])
 	wf.confirm:InstallCustomTexture()
 	wf.confirm:SetPoint ("bottomright", wf, "bottomright", -10, 10)
-	
-	wf.DontShowAgain = DF:CreateSwitch (wf, empty_func, false, _, _, _, _, "DontShowAgain", _, _, _, _, "do not show this panel again.", DF:GetTemplate ("switch", "OPTIONS_CHECKBOX_TEMPLATE"), DF:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
-	wf.DontShowAgain:SetPoint ("bottomleft", wf.change_later, "topleft", 0, 2)
-	wf.DontShowAgain:SetAsCheckBox()
-	wf.DontShowAgain.Label = DF:CreateLabel (wf.DontShowAgain, "do not show this panel again.", 12, "orange")
-	wf.DontShowAgain.Label:SetPoint ("left", wf.DontShowAgain, "right", 2, 0)
-	
+
 	wf:Show()
 end
 	
@@ -1244,129 +1231,22 @@ end
 local re_RefreshAmountOfUnitsShown = function()
 	EnemyGrid.RefreshAmountOfUnitsShown()
 end
-
---print (PlayerCanAttack (unitId))
-
-local BuildHandlerFunc = function (amtTargets, barsAllowed)
-	local handler = [[
-		if (newstate == 1) then
-			local nextBarIndex
-			for i = 1, @TARGETS do
-				local inUse = self:GetAttribute ( "state-inuse" .. i )
-				if (not inUse) then
-					nextBarIndex = i
-					break
-				end
-			end
-			
-			if (not nextBarIndex) then
-				return
-			end
-			
-			local currentlyShown = self:GetAttribute ("bars-shown")
-			if (currentlyShown < @TOTALTARGETS) then
-				self:SetAttribute ("bars-shown", currentlyShown + 1)
-			else
-				return
-			end
-			
-			local stateIndex = stateid:gsub ("eg", "")
-			local unitId = "nameplate" .. stateIndex
-			local frame = self:GetFrameRef ("eg" .. nextBarIndex)
-			frame:SetAttribute ("unit", unitId)
-			frame:Show()
-			frame:CallMethod ("UpdateUnitFrame", true)
-			self:SetAttribute ( "state-inuse" .. nextBarIndex, stateid)
-			
-		elseif (newstate == 0) then
-			local barIndex
-			for i = 1, @TARGETS do
-				if (self:GetAttribute ("state-inuse" .. i) == stateid) then
-					local frame = self:GetFrameRef ("eg" .. i)
-					frame:Hide()
-					frame:CallMethod ("OnHideUnitFrame")
-					self:SetAttribute ( "state-inuse" .. i, false)
-					self:SetAttribute ("bars-shown", self:GetAttribute ("bars-shown") - 1)
-					barIndex = i
-					break
-				end
-			end
-			
-			if (barIndex) then
-				for i = barIndex, @TARGETS do
-					local barra_ocupada = self:GetAttribute ( "state-inuse" .. i)
-					if (not barra_ocupada) then
-						for o = i+1, @TARGETS do
-							local esta_ocupada = self:GetAttribute ( "state-inuse" .. o)
-							if (esta_ocupada) then
-								local frame_old = self:GetFrameRef ("eg" .. o)
-								local UnitID = frame_old:GetAttribute ("unit")
-								
-								if ( UnitID and UnitExists ( UnitID ) ) then
-									local frame_new = self:GetFrameRef ("eg" .. i)
-									
-									self:SetAttribute ( "state-inuse" .. i, "eg" .. UnitID:gsub ("nameplate", ""))
-									self:SetAttribute ( "state-inuse" .. o, false)
-		
-									frame_new:SetAttribute ("unit", UnitID)
-								
-									frame_old:Hide()
-									frame_old:CallMethod ("OnHideUnitFrame")
-								
-									frame_new:Show()
-									frame_new:CallMethod ("UpdateUnitFrame")
-									
-									break
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	]]
-	
-	return handler:gsub ("@TARGETS", amtTargets):gsub ("@TOTALTARGETS", barsAllowed)
-end
-
 function EnemyGrid.RefreshAmountOfUnitsShown()
 	if (InCombatLockdown()) then
 		C_Timer.After (1, re_RefreshAmountOfUnitsShown)
 	end
-	
-	local macro = "1"
-	local handler = BuildHandlerFunc (40, EnemyGrid.db.profile.max_targets)
-	
-	local EnemyGridUnitHandler = EnemyGridUnitHandler
-
-	local showFriendly = EnemyGrid.db.profile.show_friendly
-	local showEnemy = EnemyGrid.db.profile.show_enemies
-	if (showFriendly and showEnemy) then
-		macro = "[@nameplate!ID, exists] 1; 0"
-	elseif (showEnemy) then
-		macro = "[@nameplate!ID, exists, harm] 1; 0"
-	elseif (showFriendly) then
-		macro = "[@nameplate!ID, exists, help] 1; 0"
-	end
-
 	for i = 1, EnemyGrid.db.profile.max_targets do
 		local unitFrame = EnemyGrid.unitFrameContainer [i]
-		--RegisterUnitWatch (unitFrame)
-		--RegisterStateDriver (unitFrame, "visibility", "[@nameplate" .. i .. ", exists, harm] [@boss1, exists, harm] show; hide")
-		
-		RegisterStateDriver (EnemyGridUnitHandler, "eg" .. i, macro:gsub ("!ID", i))
-		EnemyGridUnitHandler:SetAttribute ("_onstate-eg" .. i, handler)
-		
+		RegisterUnitWatch (unitFrame)
 		unitFrame.isDisabled = nil
 		
-		--if (UnitExists (unitFrame.unit)) then
-		--	EnemyGrid.HandleNameplateEvents (EnemyGrid.ScreenPanel, "NAME_PLATE_UNIT_ADDED", unitFrame.unit)
-		--end
+		if (UnitExists (unitFrame.unit)) then
+			EnemyGrid.HandleNameplateEvents (EnemyGrid.ScreenPanel, "NAME_PLATE_UNIT_ADDED", unitFrame.unit)
+		end
 	end
 	for i = EnemyGrid.db.profile.max_targets+1, 40 do
 		local unitFrame = EnemyGrid.unitFrameContainer [i]
-		--UnregisterUnitWatch (unitFrame)
-		UnregisterStateDriver (EnemyGridUnitHandler, "eg" .. i)
+		UnregisterUnitWatch (unitFrame)
 		unitFrame.isDisabled = true
 		unitFrame:Hide()
 	end
@@ -1380,81 +1260,18 @@ function EnemyGrid:RefreshConfig()
 	end
 end
 
-local checkRange = function (self) --~range_check ~rangecheck
-	--UnitInRange(frame.displayedUnit) para friedndly pc
-
-	local isOnRange = IsSpellInRange (EnemyGrid.SpellForRangeCheck, self.NamePlateId)
-	if (isOnRange == 1) then
-		self:SetAlpha (1)
-		self.castBar.Icon:SetAlpha (1)
-		self.castBar.background:SetAlpha (1)
-	else
-		local alpha = EnemyGrid.db.profile.frame_range_alpha
-		self:SetAlpha (alpha)
-		self.castBar.Icon:SetAlpha ((alpha+.2))
-		self.castBar.background:SetAlpha ((alpha+.2))
-	end
-end
-
-nextRangeCheck = CONST_RANGECHECK_INTERVAL
-
-local onTickFunc = function (self, deltaTime) --self = healthBar
-	if (not UnitExists (self.NamePlateId)) then
-		--self.playerName:SetText ("")
-		--self.healthPercent:SetText ("")
-		--self:SetAlpha (0)
-		--self:SetScript ("OnUpdate", nil)
-		--print ("nao existe:", self.NamePlateId)
-	else
-		--vida do mob
-		local currentHealth = UnitHealth (self.NamePlateId)
-		self:SetValue (currentHealth)
-		
-		local health = currentHealth / self.maxValue * 100
-		
-		self.healthPercent:SetText (floor (health) .. "%")
-		if (HEALTH_CUT_OFF) then
-			if (health <= HEALTH_CUT_OFF and not self.healthCutOff:IsShown()) then
-				self.healthCutOff:SetPoint ("left", self:GetParent(), "left", self:GetWidth() / 100 * HEALTH_CUT_OFF, 0)
-				self.healthCutOff.ShowAnimation:Play()
-			end
-		end
-
-		--se esta no range
-		if (self.nextRangeCheck < 0) then
-			if (not self.IgnoreRangeCheck) then
-				checkRange (self)
-			end
-			self.nextRangeCheck = CONST_RANGECHECK_INTERVAL
-		else
-			self.nextRangeCheck = self.nextRangeCheck - deltaTime
-		end
-		
-		if (InCombatLockdown()) then
-			local reaction = UnitReaction ("player", self.unit)
-			if (reaction <= 4 and not IsTapDenied (self)) then
-				EnemyGrid.UpdateAggroPlates (self)
-			end
-		end
-	end
-end
-
 function EnemyGrid.OnInit()
-	
+
 	--C_Timer.After (1, EnemyGrid.OpenOptionsPanel)
 	--DF:AddMemberForWidget ("textentry", "GET", "amountchar", function(self) return self:GetText():len() end)
 	--DF:AddMemberForWidget ("textentry", "SET", "newtext", function(self, text) return self:SetText (text) end)
 	
-	C_Timer.After (8, function()
-		if (not EnemyGrid.db.profile.first_run) then
-			C_Timer.After (5, function() EnemyGrid:SelectLayoutWizard() end)
-			if (not InCombatLockdown()) then
-				SetCVar ("nameplateMaxDistance", 100)
-			end
+	if (not EnemyGrid.db.profile.first_run) then
+		C_Timer.After (5, function() EnemyGrid:SelectLayoutWizard() end)
+		if (not InCombatLockdown()) then
+			SetCVar ("nameplateMaxDistance", 100)
 		end
-	end)
-	
-	--EnemyGrid.db.profile.max_targets = 40
+	end
 	
 	--C_Timer.After (3, function() EnemyGrid:SelectLayoutWizard() end)
 	
@@ -1561,199 +1378,12 @@ function EnemyGrid.OnInit()
 		colorHealthWithExtendedColors = false,
 		greyOutWhenTapDenied = true,
 	}
-
+	
 	local maxTargets = EnemyGrid.db.profile.max_targets
-	
-	local UnitHandler = CreateFrame ("frame", "EnemyGridUnitHandler", UIParent, "SecureHandlerStateTemplate")
-	UnitHandler:SetAttribute ("bars-shown", 0)
-	
-	local OnHideUnitFrame = function (self, id)
-		--unitFrame.healthBar:SetAlpha (.1)
-		
-		local unit = self:GetAttribute ("unit")
-		
-		EnemyGrid.CurrentlyShownIDs [unit] = nil
-		
-		local unitFrame = self
-		
-		if (self.healthBar.fadeOut:IsPlaying()) then
-			unitFrame.healthBar.fadeOut:Stop()
-		end
-		
-		if (unitFrame.IsPlayerTarget) then
-			EnemyGrid.RemoveTarget (unitFrame)
-		end
-		unitFrame:UnregisterEvent ("UNIT_AURA")
-		clearDebuffsOnPlate (unitFrame)
-		
-		local castFrame = unitFrame.castBar
-		castFrame:SetScript ("OnEvent", nil)
-		castFrame:SetScript ("OnUpdate", nil)
-		castFrame:SetScript ("OnShow", nil)
-		castFrame:Hide()
-	end
-	
-	local UpdateUnitFrame = function (self, justShown)
-		
-		local unit = self:GetAttribute ("unit")
-		local unitFrame = self
-		
-		EnemyGrid.CurrentlyShownIDs [unit] = self
-		
-		local plateID = unit
-		unitFrame.NamePlateId = unit
-		unitFrame.unit = unit
-		unitFrame.displayedUnit = unit
-		unitFrame.healthBar.unit = unit
-		unitFrame.healthBar.NamePlateId = unit
-
-		unitFrame.healthBar.castBar.NamePlateId = unit
-		
-		unitFrame:SetAlpha (1)
-		unitFrame.healthBar.IgnoreRangeCheck = nil
-		
-		local name = UnitName (plateID) or "none"
-		unitFrame.playerName:SetText (name)
-		local stringSize = EnemyGrid.db.profile.name_text_stringsize
-		
-		while (unitFrame.playerName:GetStringWidth() > stringSize) do
-			name = strsub (name, 1, #name-1)
-			unitFrame.playerName:SetText (name)
-		end
-		
-		unitFrame.healthBar:SetAlpha (1)
-		unitFrame.castBar.Icon:SetAlpha (1)
-		unitFrame.castBar.background:SetAlpha (1)
-		unitFrame.guid = UnitGUID (plateID)
-		unitFrame.quest = nil
-		unitFrame.class = nil
-		unitFrame.healthBar.guid = unitFrame.guid
-		unitFrame.healthBar.maxValue = UnitHealthMax (plateID)
-		unitFrame.healthBar:SetMinMaxValues (0, unitFrame.healthBar.maxValue)
-		
-		--print (name, unitFrame.healthBar.maxValue, unit, self:GetName())
-		
-		unitFrame.healthBar.nextRangeCheck = CONST_RANGECHECK_INTERVAL
-		
-		unitFrame.healthCutOff:Hide()
-		
-		--o que esta sendo mostrado na namaplate
-		local reaction = UnitReaction ("player", plateID)
-		unitFrame.reaction = reaction
-
-		if (UnitIsPlayer (plateID)) then
-			--é um jogador
-			if (reaction > 4) then
-				--jogador amigo, apenas trocar a cor da barra
-				unitFrame.actorType = ACTORTYPE_FRIENDLY_PLAYER
-			else
-				
-				--jogador inimigo, trocar a cor da barra e mostar o icone indicador
-				if (EnemyGrid.db.profile.iconIndicator_show_faction) then
-					if (EnemyGrid.factionGroup == "Horde") then
-						unitFrame.iconIndicator:SetTexture ([[Interface\PVPFrame\PVP-Currency-Alliance]])
-						unitFrame.iconIndicator:SetTexCoord (4/32, 29/32, 2/32, 30/32)
-					else
-						unitFrame.iconIndicator:SetTexture ([[Interface\PVPFrame\PVP-Currency-Horde]])
-						unitFrame.iconIndicator:SetTexCoord (0, 1, 0, 1)
-					end
-					unitFrame.iconIndicator:Show()
-				end
-				unitFrame.actorType = ACTORTYPE_ENEMY_PLAYER
-			end
-			
-			--ajusta a cor do frame de acordo com a classe do jogador
-			if (EnemyGrid.db.profile.bar_color_by_class) then
-				local _, playerClass = UnitClass (plateID)
-				local color = RAID_CLASS_COLORS [playerClass]
-				EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, color.r, color.g, color.b)
-				unitFrame.class = playerClass
-			else 
-				if (reaction > 4) then
-					EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.npc_friendly_color))
-				else
-					EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.npc_enemy_color))
-				end
-			end
-		else
-			--print (reaction, plateID, UnitName (plateID), UnitExists (plateID))
-			
-			if (reaction > 4) then
-				unitFrame.actorType = ACTORTYPE_FRIENDLY_NPC
-				CompactUnitFrame_UpdateHealthColor (unitFrame)
-			else
-				unitFrame.actorType = ACTORTYPE_ENEMY_NPC
-
-				--verifica se é um npc de quest
-				if (EnemyGrid.db.profile.quest_enabled) then
-					local isQuestMob = EnemyGrid.IsQuestObjective (unitFrame)
-					if (isQuestMob and not IsTapDenied (unitFrame)) then
-						if (unitFrame.reaction == UNITREACTION_NEUTRAL) then
-							EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.quest_color_neutral))
-							unitFrame.quest = true
-						else
-							EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.quest_color_enemy))
-							unitFrame.quest = true
-						end
-					else
-						CompactUnitFrame_UpdateHealthColor (unitFrame)
-					end
-				else
-					CompactUnitFrame_UpdateHealthColor (unitFrame)
-				end
-			end
-		end
-		
-		--seta os eventos
-		unitFrame.healthBar:SetScript ("OnUpdate", onTickFunc)
-		unitFrame:RegisterUnitEvent ("UNIT_AURA", plateID)
-		namePlateOnEvent (unitFrame, "UNIT_AURA")
-		
-		checkRange (unitFrame.healthBar)
-		if (justShown) then
-			if (unitFrame.healthBar.fadeOut:IsPlaying()) then
-				unitFrame.healthBar.fadeOut:Stop()
-			end
-			if (unitFrame.healthBar.fadeIn:IsPlaying()) then
-				unitFrame.healthBar.fadeIn:Stop()
-			end
-			
-			unitFrame.healthBar.fadeIn.Alpha:SetFromAlpha (unitFrame.healthBar:GetAlpha())
-			unitFrame.healthBar.fadeIn.Alpha:SetToAlpha (unitFrame.healthBar:GetAlpha())
-			--unitFrame.healthBar.fadeIn:Play()
-		end
-		
-		EnemyGrid:RAID_TARGET_UPDATE (unitFrame)
-		
-		unitFrame.iconIndicator:Hide()
-		
-		if (EnemyGrid.db.profile.cast_enabled) then
-			unitFrame.castBar:SetScript ("OnEvent", CastingBarFrame_OnEvent)
-			unitFrame.castBar:SetScript ("OnUpdate", CastingBarFrame_OnUpdate)
-			unitFrame.castBar:SetScript ("OnShow", CastingBarFrame_OnShow)
-			unitFrame.castBar.unit = nil
-			CastingBarFrame_SetUnit (unitFrame.castBar, plateID, false, false)
-		else
-			unitFrame.castBar.unit = nil
-		end
-		
-		if (UnitIsUnit (plateID, "target")) then
-			EnemyGrid.SetAsTarget (unitFrame)
-		else
-			if (unitFrame.IsPlayerTarget) then
-				EnemyGrid.RemoveTarget (unitFrame)
-			end
-		end
-	end	
-	
 	for i = 1, 40 do
 		-- ~create
 		local button = CreateFrame ("button", "EnemyGrid_UnitFrame" .. i, EnemyGrid.ScreenPanel, "SecureUnitButtonTemplate,SecureHandlerEnterLeaveTemplate,SecureHandlerShowHideTemplate")
 		tinsert (EnemyGrid.unitFrameContainer, button)
-		
-		button.UpdateUnitFrame = UpdateUnitFrame
-		button.OnHideUnitFrame = OnHideUnitFrame
-		
 		button.NamePlateId = "nameplate" .. i
 		button.unit = "nameplate" .. i
 		button.displayedUnit = "nameplate" .. i
@@ -1765,39 +1395,17 @@ function EnemyGrid.OnInit()
 		button.optionTable = frameOptions
 		button:Hide()
 		
-		--button:SetAttribute ("unit", button.NamePlateId)
+		button:SetAttribute ("unit", button.NamePlateId)
 		button:SetAttribute ("_onleave", "self:ClearBindings();")
 		button:SetAttribute ("_onshow", "self:ClearBindings();")
 		button:SetAttribute ("_onhide", "self:ClearBindings();")
 		button:RegisterForClicks ("AnyDown")
-		
-		UnitHandler:SetFrameRef ("eg" .. i, button)
-		UnitHandler:SetAttribute ("state-inuse" .. i, false)
-		button:SetFrameRef ("self", button)
-		
-		button:SetScript ("OnEvent", namePlateOnEvent)
-		
-		--RegisterUnitWatch (button)
-		
-		--RegisterStateDriver (button, "visibility", "[@nameplate" .. i .. ", exists, harm] [@boss1, exists, harm] show; hide")
-		--[@focus,exists][@mouseover,exists]
-		
+		RegisterUnitWatch (button)
 		--RegisterStateDriver (button, "visibility") --is there any difference?
+		button:SetScript ("OnEvent", namePlateOnEvent)
 		
 		--health statusbar
 		local healthBar = CreateFrame ("statusbar", "EnemyGrid_UnitFrame" .. i .. "HealthBar", button)
-		
-		local fadeIn = DF:CreateAnimationHub (healthBar)
-		fadeIn.Alpha = DF:CreateAnimation (fadeIn, "alpha", 1, .08, 0, 1)
-		--DF:CreateAnimation (fadeIn, "scale", 1, .05, 1, .2, 1, 1, "top")
-		--DF:CreateAnimation (fadeIn, "scale", 2, .05, 1.075, 1.075, 1.0, 1.0, "top")
-		healthBar.fadeIn = fadeIn
-		
-		local fadeOut = DF:CreateAnimationHub (healthBar)
-		fadeOut.Alpha = DF:CreateAnimation (fadeOut, "alpha", 1, .08, 1, 0)
-		---DF:CreateAnimation (fadeOut, "scale", 1, .2, 1, 1, 1, 0, "top")
-		healthBar.fadeOut = fadeOut
-		
 		healthBar:SetPoint ("topleft", 1, -1)
 		healthBar:SetPoint ("bottomright", -1, 1)
 		healthBar:SetAlpha (.1)
@@ -2000,7 +1608,65 @@ function EnemyGrid.OnInit()
 			end
 		end
 	end)
+	
+	local checkRange = function (self) --~range_check ~rangecheck
+		--UnitInRange(frame.displayedUnit) para friedndly pc
+	
+		local isOnRange = IsSpellInRange (EnemyGrid.SpellForRangeCheck, self.NamePlateId)
+		if (isOnRange == 1) then
+			self:SetAlpha (1)
+			self.castBar.Icon:SetAlpha (1)
+			self.castBar.background:SetAlpha (1)
+		else
+			local alpha = EnemyGrid.db.profile.frame_range_alpha
+			self:SetAlpha (alpha)
+			self.castBar.Icon:SetAlpha ((alpha+.2))
+			self.castBar.background:SetAlpha ((alpha+.2))
+		end
+	end
+	
+	nextRangeCheck = CONST_RANGECHECK_INTERVAL
+	
+	local onTickFunc = function (self, deltaTime) --self = healthBar
+		if (not UnitExists (self.NamePlateId)) then
+			self.playerName:SetText ("")
+			self.healthPercent:SetText ("")
+			self:SetAlpha (0)
+			self:SetScript ("OnUpdate", nil)
+		else
+			--vida do mob
+			local currentHealth = UnitHealth (self.NamePlateId)
+			self:SetValue (currentHealth)
+			
+			local health = currentHealth / self.maxValue * 100
+			
+			self.healthPercent:SetText (floor (health) .. "%")
+			if (HEALTH_CUT_OFF) then
+				if (health <= HEALTH_CUT_OFF and not self.healthCutOff:IsShown()) then
+					self.healthCutOff:SetPoint ("left", self:GetParent(), "left", self:GetWidth() / 100 * HEALTH_CUT_OFF, 0)
+					self.healthCutOff.ShowAnimation:Play()
+				end
+			end
 
+			--se esta no range
+			if (self.nextRangeCheck < 0) then
+				if (not self.IgnoreRangeCheck) then
+					checkRange (self)
+				end
+				self.nextRangeCheck = CONST_RANGECHECK_INTERVAL
+			else
+				self.nextRangeCheck = self.nextRangeCheck - deltaTime
+			end
+			
+			if (InCombatLockdown()) then
+				local reaction = UnitReaction ("player", self.unit)
+				if (reaction <= 4 and not IsTapDenied (self)) then
+					EnemyGrid.UpdateAggroPlates (self)
+				end
+			end
+		end
+	end
+	
 	EnemyGrid.petCache = {}
 	
 	function EnemyGrid.UpdateAggroPlates (self) --self = healthBar
@@ -2009,7 +1675,7 @@ function EnemyGrid.OnInit()
 			return
 		end
 		
-		--self:SetAlpha (1)
+		self:SetAlpha (1)
 		
 		local isTanking, threatStatus = UnitDetailedThreatSituation ("player", self.unit)
 		
@@ -2071,7 +1737,6 @@ function EnemyGrid.OnInit()
 					if (UnitAffectingCombat (self.unit)) then
 						EnemyGrid.ForceChangeHealthBarColor (self, unpack (EnemyGrid.db.profile.dps.colors.noaggro))
 					else
-						--print ("fora de combatew...", self.unit)
 						EnemyGrid.ForceChangeHealthBarColor (self, unpack (EnemyGrid.db.profile.dps.colors.nocombat))
 						self:SetAlpha (EnemyGrid.db.profile.not_affecting_combat_alpha)
 					end
@@ -2079,8 +1744,6 @@ function EnemyGrid.OnInit()
 			end
 		end
 	end
-	
---	/dump (UnitAffectingCombat ("nameplate1") and "true" or "false") .. " " .. UnitName ("nameplate1")	
 	
 	function EnemyGrid.ForceChangeHealthBarColor (healthBar, r, g, b)
 		if (r ~= healthBar.r or g ~= healthBar.g or b ~= healthBar.b) then
@@ -2094,7 +1757,7 @@ function EnemyGrid.OnInit()
 			local unitFrame = EnemyGrid.unitFrameContainer [i]
 			if (not unitFrame.isDisabled) then
 				if (UnitExists (unitFrame.unit)) then
-					--EnemyGrid.HandleNameplateEvents (EnemyGrid.ScreenPanel, "NAME_PLATE_UNIT_ADDED", unitFrame.unit)
+					EnemyGrid.HandleNameplateEvents (EnemyGrid.ScreenPanel, "NAME_PLATE_UNIT_ADDED", unitFrame.unit)
 					namePlateOnEvent (unitFrame, "UNIT_AURA")
 
 					if (InCombatLockdown()) then
@@ -2110,46 +1773,161 @@ function EnemyGrid.OnInit()
 	
 	function EnemyGrid.HandleNameplateEvents (self, event, plateID)
 	
-		if (event == "ENCOUNTER_START") then
-			EnemyGrid.InBossEncounter = true
-			EnemyGrid.CanShow (true)
+		local unitFrame = EnemyGrid.unitFrameIDsContainer [plateID]
+		if (not unitFrame or unitFrame.isDisabled) then
 			return
-			
-		elseif (event == "ENCOUNTER_END") then
-			EnemyGrid.InBossEncounter = false
-			EnemyGrid.CanShow (true)
-			return
-			
 		end
 		
-		--> ~added ãdded
-		--self nameplateObject / event / plateID
+		--> ~added
 		if (event == "NAME_PLATE_UNIT_ADDED") then 
-			if (EnemyGrid.CurrentlyShownIDs [plateID]) then
-				UpdateUnitFrame (EnemyGrid.CurrentlyShownIDs [plateID])
+		
+			if (UnitIsUnit (plateID, "player")) then
+				--esconde por que trackeou a personal healthbar
+				unitFrame:SetAlpha (0)
+				unitFrame.healthBar.IgnoreRangeCheck = true
+				return
+			else
+				unitFrame:SetAlpha (1)
+				unitFrame.healthBar.IgnoreRangeCheck = nil
+			end
+			
+			local name = UnitName (plateID) or "none"
+			unitFrame.playerName:SetText (name)
+			local stringSize = EnemyGrid.db.profile.name_text_stringsize
+			
+			while (unitFrame.playerName:GetStringWidth() > stringSize) do
+				name = strsub (name, 1, #name-1)
+				unitFrame.playerName:SetText (name)
+			end
+			
+			unitFrame.healthBar:SetAlpha (1)
+			unitFrame.castBar.Icon:SetAlpha (1)
+			unitFrame.castBar.background:SetAlpha (1)
+			unitFrame.guid = UnitGUID (plateID)
+			unitFrame.quest = nil
+			unitFrame.class = nil
+			unitFrame.healthBar.guid = unitFrame.guid
+			unitFrame.healthBar.maxValue = UnitHealthMax (plateID)
+			unitFrame.healthBar:SetMinMaxValues (0, unitFrame.healthBar.maxValue)
+			unitFrame.healthBar.nextRangeCheck = CONST_RANGECHECK_INTERVAL
+			
+			unitFrame.healthCutOff:Hide()
+			
+			--o que esta sendo mostrado na namaplate
+			local reaction = UnitReaction ("player", plateID)
+			unitFrame.reaction = reaction
+
+			if (UnitIsPlayer (plateID)) then
+				--é um jogador
+				if (reaction > 4) then
+					--jogador amigo, apenas trocar a cor da barra
+					unitFrame.actorType = ACTORTYPE_FRIENDLY_PLAYER
+				else
+					
+					--jogador inimigo, trocar a cor da barra e mostar o icone indicador
+					if (EnemyGrid.db.profile.iconIndicator_show_faction) then
+						if (EnemyGrid.factionGroup == "Horde") then
+							unitFrame.iconIndicator:SetTexture ([[Interface\PVPFrame\PVP-Currency-Alliance]])
+							unitFrame.iconIndicator:SetTexCoord (4/32, 29/32, 2/32, 30/32)
+						else
+							unitFrame.iconIndicator:SetTexture ([[Interface\PVPFrame\PVP-Currency-Horde]])
+							unitFrame.iconIndicator:SetTexCoord (0, 1, 0, 1)
+						end
+						unitFrame.iconIndicator:Show()
+					end
+					unitFrame.actorType = ACTORTYPE_ENEMY_PLAYER
+				end
+				
+				--ajusta a cor do frame de acordo com a classe do jogador
+				if (EnemyGrid.db.profile.bar_color_by_class) then
+					local _, playerClass = UnitClass (plateID)
+					local color = RAID_CLASS_COLORS [playerClass]
+					EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, color.r, color.g, color.b)
+					unitFrame.class = playerClass
+				else 
+					if (reaction > 4) then
+						EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.npc_friendly_color))
+					else
+						EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.npc_enemy_color))
+					end
+				end
+			else
+				if (reaction > 4) then
+					unitFrame.actorType = ACTORTYPE_FRIENDLY_NPC
+					CompactUnitFrame_UpdateHealthColor (unitFrame)
+				else
+					unitFrame.actorType = ACTORTYPE_ENEMY_NPC
+
+					--verifica se é um npc de quest
+					if (EnemyGrid.db.profile.quest_enabled) then
+						local isQuestMob = EnemyGrid.IsQuestObjective (unitFrame)
+						if (isQuestMob and not IsTapDenied (unitFrame)) then
+							if (unitFrame.reaction == UNITREACTION_NEUTRAL) then
+								EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.quest_color_neutral))
+								unitFrame.quest = true
+							else
+								EnemyGrid.ForceChangeHealthBarColor (unitFrame.healthBar, unpack (EnemyGrid.db.profile.quest_color_enemy))
+								unitFrame.quest = true
+							end
+						else
+							CompactUnitFrame_UpdateHealthColor (unitFrame)
+						end
+					else
+						CompactUnitFrame_UpdateHealthColor (unitFrame)
+					end
+				end
+			end
+			
+			--seta os eventos
+			unitFrame.healthBar:SetScript ("OnUpdate", onTickFunc)
+			unitFrame:RegisterUnitEvent ("UNIT_AURA", plateID)
+			namePlateOnEvent (unitFrame, "UNIT_AURA")
+			checkRange (unitFrame.healthBar)
+			EnemyGrid:RAID_TARGET_UPDATE (unitFrame)
+			
+			unitFrame.iconIndicator:Hide()
+			
+			if (EnemyGrid.db.profile.cast_enabled) then
+				unitFrame.castBar:SetScript ("OnEvent", CastingBarFrame_OnEvent)
+				unitFrame.castBar:SetScript ("OnUpdate", CastingBarFrame_OnUpdate)
+				unitFrame.castBar:SetScript ("OnShow", CastingBarFrame_OnShow)
+				unitFrame.castBar.unit = nil
+				CastingBarFrame_SetUnit (unitFrame.castBar, plateID, false, false)
+			else
+				unitFrame.castBar.unit = nil
+			end
+			
+			if (UnitIsUnit (plateID, "target")) then
+				EnemyGrid.SetAsTarget (unitFrame)
+			else
+				if (unitFrame.IsPlayerTarget) then
+					EnemyGrid.RemoveTarget (unitFrame)
+				end
 			end
 			
 		elseif (event == "NAME_PLATE_UNIT_REMOVED") then
-			--[[  --animations are disabled at the moment
-			for i = 1, 16 do
-				if (EnemyGrid.unitFrameContainer[i].unit == plateID) then
-					local healthBar = EnemyGrid.unitFrameContainer[i].healthBar
-					
-					if (healthBar.fadeOut:IsPlaying()) then
-						healthBar.fadeOut:Stop()
-					end
-					if (healthBar.fadeIn:IsPlaying()) then
-						healthBar.fadeIn:Stop()
-					end
-
-					healthBar.fadeOut.Alpha:SetFromAlpha (healthBar:GetAlpha())
-					--healthBar.fadeOut:Play()
-					break
-				end
+			--unitFrame.healthBar:SetAlpha (.1)
+			if (unitFrame.IsPlayerTarget) then
+				EnemyGrid.RemoveTarget (unitFrame)
 			end
-			--]]
+			unitFrame:UnregisterEvent ("UNIT_AURA")
+			clearDebuffsOnPlate (unitFrame)
+			
+			local castFrame = unitFrame.castBar
+			castFrame:SetScript ("OnEvent", nil)
+			castFrame:SetScript ("OnUpdate", nil)
+			castFrame:SetScript ("OnShow", nil)
+			castFrame:Hide()
+			
+		elseif (event == "ENCOUNTER_START") then
+			EnemyGrid.InBossEncounter = true
+			EnemyGrid.CanShow (true)
+		
+		elseif (event == "ENCOUNTER_END") then
+			EnemyGrid.InBossEncounter = false
+			EnemyGrid.CanShow (true)
+			
 		end
-
 	end
 	
 	EnemyGrid.ScreenPanel:SetScript ("OnEvent", EnemyGrid.HandleNameplateEvents)
@@ -2194,7 +1972,7 @@ function EnemyGrid.OnInit()
 	function EnemyGrid:PLAYER_TARGET_CHANGED()
 		for i = 1, EnemyGrid.db.profile.max_targets do
 			local unitFrame = EnemyGrid.unitFrameIDsContainer ["nameplate" .. i]
-			if (UnitIsUnit (unitFrame:GetAttribute ("unit") or "", "target")) then
+			if (UnitIsUnit ("nameplate" .. i, "target")) then
 				--unitFrame.highlightTexture:Show()
 				unitFrame.overlayFrame:SetBackdropBorderColor (1, 1, 0, 1)
 				unitFrame.IsPlayerTarget = true
@@ -3137,10 +2915,8 @@ function EnemyGrid.OpenOptionsPanel()
 			type = "range",
 			get = function() return EnemyGrid.db.profile.max_targets end,
 			set = function (self, fixedparam, value) 
-				-- ~disabled ~test ~version
 				EnemyGrid.db.profile.max_targets = value
 				EnemyGrid.RefreshAmountOfUnitsShown()
-				--print ("nop, is disabled on this alpha version")
 			end,
 			min = 1,
 			max = 40,
@@ -3302,32 +3078,6 @@ function EnemyGrid.OpenOptionsPanel()
 			desc = L["S_BORDERCOLOR"],
 			--nocombat = true,
 		},
-		
-		--[[
-		{
-			type = "toggle",
-			get = function() return EnemyGrid.db.profile.show_enemies end,
-			set = function (self, fixedparam, value) 
-				EnemyGrid.db.profile.show_enemies = value
-				EnemyGrid.RefreshAmountOfUnitsShown()
-			end,
-			name = L["S_UNIT_ENEMY"],
-			desc = L["S_UNIT_ENEMY"],
-			nocombat = true,
-		},
-		--]]
-		{
-			type = "toggle",
-			get = function() return EnemyGrid.db.profile.show_friendly end,
-			set = function (self, fixedparam, value) 
-				EnemyGrid.db.profile.show_friendly = value
-				EnemyGrid.RefreshAmountOfUnitsShown()
-			end,
-			name = L["S_UNIT_FRIENDLY"],
-			desc = L["S_UNIT_FRIENDLY"],
-			nocombat = true,
-		},
-		
 		--[[
 		{
 			type = "toggle",
@@ -3439,7 +3189,53 @@ function EnemyGrid.OpenOptionsPanel()
 			desc = L["S_AGGROCOLORS_DPS_HIGHAGGRO_DESC"],
 		},
 		
-		--quest color
+		--npc color
+		{type = "blank"},
+		{type = "label", get = function() return L["S_NPCCOLOR"] end, text_template = text_template},
+		{
+			type = "color",
+			get = function()
+				local color = EnemyGrid.db.profile.npc_enemy_color
+				return {color[1], color[2], color[3], color[4]}
+			end,
+			set = function (self, r, g, b, a) 
+				local color = EnemyGrid.db.profile.npc_enemy_color
+				color[1], color[2], color[3], color[4] = r, g, b, a
+				EnemyGrid.ReEvent()
+			end,
+			name = L["S_ENEMY"],
+			desc = L["S_ENEMY"],
+		},
+		{
+			type = "color",
+			get = function()
+				local color = EnemyGrid.db.profile.npc_neutral_color
+				return {color[1], color[2], color[3], color[4]}
+			end,
+			set = function (self, r, g, b, a) 
+				local color = EnemyGrid.db.profile.npc_neutral_color
+				color[1], color[2], color[3], color[4] = r, g, b, a
+				EnemyGrid.ReEvent()
+			end,
+			name = L["S_NEUTRAL"],
+			desc = L["S_NEUTRAL"],
+		},
+		{
+			type = "color",
+			get = function()
+				local color = EnemyGrid.db.profile.npc_friendly_color
+				return {color[1], color[2], color[3], color[4]}
+			end,
+			set = function (self, r, g, b, a) 
+				local color = EnemyGrid.db.profile.npc_friendly_color
+				color[1], color[2], color[3], color[4] = r, g, b, a
+				EnemyGrid.ReEvent()
+			end,
+			name = L["S_FRIENDLY"],
+			desc = L["S_FRIENDLY"],
+		},
+		
+		--npc color
 		{type = "blank"},
 		{type = "label", get = function() return L["S_QUESTCOLOR"] end, text_template = text_template},
 		{
@@ -3453,7 +3249,7 @@ function EnemyGrid.OpenOptionsPanel()
 			name = L["S_ENABLED"],
 			desc = L["S_ENABLED"],
 		},
-
+		
 		{
 			type = "color",
 			get = function()
@@ -4606,7 +4402,8 @@ function EnemyGrid.OpenOptionsPanel()
 			name = L["S_ALWAYSSHOWDEBUFFS"],
 			desc = L["S_ALWAYSSHOWDEBUFFS_DESC"],
 		},
-
+		
+		
 	}
 
 	DF:BuildMenu (auraFrame, options_table, mainStartX, mainStartY, mainHeightSize + 20, true, options_text_template, options_dropdown_template, options_switch_template, true, options_slider_template, options_button_template)		
@@ -4616,7 +4413,3 @@ function EnemyGrid.OpenOptionsPanel()
 	f:Show()
 end
 -- endd doo
-
-
--------------------------
---> tests

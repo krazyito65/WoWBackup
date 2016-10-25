@@ -283,36 +283,7 @@ module.db.reductionBySpec = {
 module.db.reductionCurrent = {}
 module.db.reductionPowerWordBarrierCaster = nil
 
-module.db.reductionIsNotAoe = ExRT.isLegionContent and {
-
-} or {	--Spells list from BRF,HC that isnot aoe (Rouge Feint check)
-	-- Note: I'm so lazy to update this after creating: too much work for func that is super rare usable
-	[6603]=true, 	[156888]=true, 	[156203]=true,	[156879]=true,	[175020]=true,	[163284]=true,
-	[155314]=true,	[162322]=true,	[156772]=true,	[155611]=true,	[155657]=true,	[162498]=true,
-	[156297]=true,	[156823]=true,	[173471]=true,	[158140]=true,	[175013]=true,	[155923]=true,
-	[165298]=true,	[156938]=true,	[156646]=true,	[156824]=true,	[173192]=true,	[162277]=true,
-	[156604]=true,	[155030]=true,	[156825]=true,	[156617]=true,	[161570]=true,	[155900]=true,
-	[162976]=true,	[159044]=true,	[156401]=true,	[179201]=true,	[164380]=true,	[165195]=true,
-	[163754]=true,	[155921]=true,	[156270]=true,	[156310]=true,	[155701]=true,	[156669]=true,
-	[155841]=true,	[158601]=true,	[158080]=true,	[158321]=true,	[156280]=true,	[158709]=true,
-	[160436]=true,	[158009]=true,	[158686]=true,	[158710]=true,	[156214]=true,	[157059]=true,
-	[173939]=true,	[157247]=true,	[155242]=true,	[158246]=true,	[176133]=true,	[155223]=true,
-	[155743]=true,	[155201]=true,	[156932]=true,
-	
-	[182074]=true,	[179897]=true,	[182159]=true,	[180389]=true,	[180199]=true,	[184396]=true,
-	[180618]=true,	[184874]=true,	[182600]=true,	[185239]=true,	[182325]=true,	[181832]=true,
-	[181295]=true,	[179995]=true,	[185053]=true,	[185189]=true,	[182601]=true,	[186770]=true,
-	[187815]=true,	[179428]=true,	[181653]=true,	[185426]=true,	[187819]=true,	[180270]=true,
-	[181345]=true,	[185519]=true,	[185521]=true,	[186559]=true,	[186560]=true,	[187169]=true,
-	[181305]=true,	[181082]=true,	[184990]=true,	[180569]=true,	[180252]=true,	[180604]=true,
-	[180533]=true,	[180600]=true,	[182218]=true,	[184239]=true,	[185066]=true,	[185065]=true,
-	[184652]=true,	[184847]=true,	[186993]=true,	[184681]=true,	[184675]=true,	[183226]=true,
-	[184676]=true,	[181122]=true,	[181358]=true,	[181359]=true,	[183610]=true,	[182171]=true,
-	[181276]=true,	[184252]=true,	[181841]=true,	[182088]=true,	[185826]=true,	[182031]=true,
-	[188208]=true,	[186073]=true,	[186448]=true,	[186500]=true,	[186063]=true,	[186785]=true,
-	[186271]=true,	[186547]=true,	[186292]=true,	[183586]=true,	[183828]=true,	[184964]=true,
-	[190049]=true,	[187047]=true,	[189891]=true,	[187255]=true,	[183864]=true,	[188796]=true,
-}
+module.db.reductionIsNotAoe = {}
 
 module.db.def_trackingDamageSpells = ExRT.isLegionContent and {
 	[209471]=1873,	--Il'gynoth: Nightmare Explosion
@@ -579,7 +550,7 @@ Death type:
 2: heal
 3: death
 ]]
-local deathMaxEvents = 50
+local deathMaxEvents = 100
 
 local function addDeath(destGUID,timestamp)
 	local destData = deathLog[destGUID]
@@ -2045,7 +2016,7 @@ function _BW_Start(encounterID,encounterName)
 	module.db.lastFightID = module.db.lastFightID + 1
 	
 	freezeFix = nil
-
+	
 	local maxFights = (VExRT.BossWatcher.fightsNum or 10)
 	for i=maxFights,2,-1 do
 		if not freezeFix then
@@ -2378,22 +2349,6 @@ do
 			if timers_improved_segment ~= nowTimer then
 				timers_improved_segment = nowTimer
 				StartSegment()
-			end
-		end
-		
-		--------------> Positions
-		do
-			_positionsTimer = _positionsTimer + elapsed
-			local nowTimer = ceil(_positionsTimer * 2)
-			if _positionsTimerRounded ~= nowTimer then
-				_positionsTimerRounded = nowTimer
-				local data = {}
-				positionsData[_positionsTimerRounded] = data
-				for i=1,#_positionsRaidSnapshot do
-					local name = _positionsRaidSnapshot[i]
-					local y,x,z,map = UnitPosition(name)
-					data[name] = {x,y,map}
-				end
 			end
 		end
 	end
@@ -3402,7 +3357,7 @@ function BWInterfaceFrameLoad()
 			local currFight = module.db.data[module.db.nowNum]
 			local fight_dur = currFight.encounterEnd - currFight.encounterStart
 			if fightData and fight_dur < 1.5 then
-				local fight_dur = GetTime() - currFight.encounterStart
+				fight_dur = GetTime() - currFight.encounterStart
 			end
 			TLframe.textLeft:SetText( date("%H:%M:%S", currFight.encounterStartGlobal) )
 			TLframe.textRight:SetText( date("%M:%S", fight_dur) )
@@ -3596,7 +3551,9 @@ function BWInterfaceFrameLoad()
 			end
 			table.sort(addToToolipTable,function (a,b) return a[2] < b[2] end)
 			for i=1,#addToToolipTable do
-				table.insert(TLframe[ addToToolipTable[i][1] ].tooltip,{addToToolipTable[i][3],1,1,1})
+				if TLframe[ addToToolipTable[i][1] ] then
+					table.insert(TLframe[ addToToolipTable[i][1] ].tooltip,{addToToolipTable[i][3],1,1,1})
+				end
 			end
 			
 			SegmentsPage_UpdateTextures()
@@ -6588,16 +6545,19 @@ function BWInterfaceFrameLoad()
 			end
 		end
 		local mobID = ExRT.F.GUIDtoID(destGUID)
-		local mobSpawnID = 0
+		local mobSpawnID1,mobSpawnID2 = 0,0
 		do
 			local spawnString = destGUID:match("%-([^%-]+)$") or "0"
-			mobSpawnID = tonumber(spawnString, 16) or 0
+			if spawnString then
+				mobSpawnID1 = tonumber(spawnString:sub(1,5), 16) or 0
+				mobSpawnID2 = tonumber(spawnString:sub(6), 16) or 0
+			end
 		end
 		textResult = textResult .. "Mob ID: ".. mobID .. "\n"
-		textResult = textResult .. "Spawn ID: ".. mobSpawnID .. "\n"
+		textResult = textResult .. "Spawn ID: ".. mobSpawnID1 .. "-" .. mobSpawnID2 .. "\n"
 		textResult = textResult .. "GUID: ".. destGUID .. "\n"
 		reportData[4][3][#reportData[4][3]+1] = "Mob ID: ".. mobID
-		reportData[4][3][#reportData[4][3]+1] = "Spawn ID: ".. mobSpawnID
+		reportData[4][3][#reportData[4][3]+1] = "Spawn ID: ".. mobSpawnID1 .. "-" .. mobSpawnID2
 		reportData[4][3][#reportData[4][3]+1] = "GUID: ".. destGUID
 		
 		if module.db.nowData.maxHP[destGUID] then
@@ -11416,466 +11376,16 @@ function BWInterfaceFrameLoad()
 		DisableMap = nil,
 		SelectedMap = nil,
 		NamesToDots = {},
-		Maps = {
-			-----> Dungeons
-			[1279] = { type = "dungeon", content = 6,
-				{2354.1669921875,956.25,935.4169921875,10.416015625,"OvergrownOutpost"},
-				{-1018.7474365234,1160.4200439453,-1475.0025634766,856.25,"OvergrownOutpost",1},
-			},
-			[1358] = { type = "dungeon", content = 6,
-				{10.586999893188,304.39801025391,-876.25201416016,-286.82800292969,"UpperBlackrockSpire",1},
-				{10.586999893188,304.39801025391,-876.25201416016,-286.82800292969,"UpperBlackrockSpire",2},
-				{10.586999893188,304.39801025391,-876.25201416016,-286.82800292969,"UpperBlackrockSpire",3},
-			},
-			[1208] = { type = "dungeon", content = 6,
-				{1784.3800048828,1806.25,1465.6300048828,1593.75,"BlackrockTrainDepotDungeon",1},
-				{1784.3800048828,1806.25,1465.6300048828,1593.75,"BlackrockTrainDepotDungeon",2},
-				{1775,1740,1505,1560,"BlackrockTrainDepotDungeon",3},
-				{2035,1748.3333740234,1740,1551.6666259766,"BlackrockTrainDepotDungeon",4},
-			},
-			[1209] = { type = "dungeon", content = 6,
-				{2227.1235351563,1367.9899902344,1434.6165771484,839.65197753906,"SpiresofArakDungeon",1},
-				{1945.8707275391,1166.3199462891,1608.3692626953,941.31896972656,"SpiresofArakDungeon",2},
-			},
-			[1195] = { type = "dungeon", content = 6,
-				{100,7533.3330078125,-1700,6333.3330078125,"IronDocks",1},
-			},
-			[1182] = { type = "dungeon", content = 6,
-				{4633.3330078125,2733.3330078125,1233.3330078125,466.666015625,"DraenorAuchindoun",1},
-			},
-			[1176] = { type = "dungeon", content = 6,
-				{318.99398803711,2019.5833740234,-339.75601196289,1580.4166259766,"ShadowmoonDungeon",1},
-				{-200,2117.5,-1025,1567.5,"ShadowmoonDungeon",2},
-				{-700,1790.8333740234,-950,1624.1666259766,"ShadowmoonDungeon",3},
-			},
-			[1175] = { type = "dungeon", content = 6,
-				{439.583984375,2600,-847.916015625,1741.6669921875,"OgreMines",1},
-			},
-			[595] = { type = "dungeon", content = 3,
-				{2152.0832519531,2297.9165039063,327.08331298828,1081.25,"CoTStratholme"},
-				{1856.3599853516,2641.9599609375,731.05999755859,1891.7600097656,"CoTStratholme",1},
-			},
-			[619] = { type = "dungeon", content = 3,
-				{-233.33332824707,849.99993896484,-1206.25,202.08332824707,"Ahnkahet",1},
-			},
-			[574] = { type = "dungeon", content = 3,
-				{424.17498779297,515.38800048828,-310.40600585938,25.666500091553,"UtgardeKeep",1},
-				{242.92500305176,304.3869934082,-238.15600585938,-16.333299636841,"UtgardeKeep",2},
-				{225.67500305176,415.72100830078,-510.90600585938,-75.333503723145,"UtgardeKeep",3},
-			},
-			[575] = { type = "dungeon", content = 3,
-				{-148.62300109863,552.87701416016,-697.55902099609,186.91999816895,"UtgardePinnacle",1},
-				{8.6219596862793,661.9580078125,-747.55798339844,157.8390045166,"UtgardePinnacle",2},
-			},
-			[602] = { type = "dungeon", content = 3,
-				{283.68600463867,1534.5400390625,-282.54901123047,1157.0500488281,"HallsofLightning",1},
-				{169.68800354004,1431.8800048828,-538.54901123047,959.71997070313,"HallsofLightning",2},
-			},
-			[599] = { type = "dungeon", content = 3,
-				{2766.6665039063,2200,-633.33331298828,-66.666664123535,"Ulduar77",1},
-			},
-			[578] = { type = "dungeon", content = 3,
-				{1301.9599609375,1220.2099609375,787.25299072266,877.07098388672,"Nexus80",1},
-				{1376.9599609375,1370.2099609375,712.25299072266,927.07098388672,"Nexus80",2},
-				{1301.9599609375,1270.2099609375,787.25299072266,927.07098388672,"Nexus80",3},
-				{1191.9599609375,1186.8701171875,897.25897216797,990.40283203125,"Nexus80",4},
-			},
-			[604] = { type = "dungeon", content = 3,
-				{1310.4166259766,2122.9165039063,166.66665649414,1360.4166259766,"Gundrak",1},
-			},
-			[601] = { type = "dungeon", content = 3,
-				{722.97399902344,794.125,-30,292.14199829102,"AzjolNerub",1},
-				{692.97399902344,645.78997802734,400,450.47399902344,"AzjolNerub",2},
-				{829.625,640,462.125,395,"AzjolNerub",3},
-			},
-			[600] = { type = "dungeon", content = 3,
-				{-307.06900024414,-182.5659942627,-927.01000976563,-595.85998535156,"DrakTharonKeep",1},
-				{-382.06900024414,-182.5659942627,-1002.0100097656,-595.85998535156,"DrakTharonKeep",2},
-			},
-			[608] = { type = "dungeon", content = 3,
-				{983.33331298828,2006.2498779297,600,1749.9998779297,"VioletHold",1},
-			},
-			[650] = { type = "dungeon", content = 3,
-				{2100,2200,-499.99996948242,466.66665649414,"TheArgentColiseum",1},
-			},
-			[632] = { type = "dungeon", content = 3,
-				{7033.3330078125,6466.6665039063,-4366.6665039063,-1133.3332519531,"TheForgeofSouls",1},
-			},
-			[658] = { type = "dungeon", content = 3,
-				{839.58331298828,1256.25,-693.75,233.33332824707,"PitofSaron"},
-			},
-			[668] = { type = "dungeon", content = 3,
-				{7033.3330078125,6466.6665039063,-5966.6665039063,-2200,"HallsofReflection",1},
-			},
-			[558] = { type = "dungeon", content = 2,
-				{327.55722045898,354.95098876953,-414.98321533203,-140.07600402832,"AuchenaiCrypts",1},
-				{215.05725097656,334.95098876953,-602.48321533203,-210.07600402832,"AuchenaiCrypts",2},
-			},
-			[556] = { type = "dungeon", content = 2,
-				{515.79724121094,173.65400695801,-187.6982421875,-295.34298706055,"SethekkHalls",1},
-				{515.79724121094,173.65400695801,-187.6982421875,-295.34298706055,"SethekkHalls",2},
-			},
-			[555] = { type = "dungeon", content = 2,
-				{185.07917785645,62.796901702881,-656.44317626953,-498.21798706055,"ShadowLabyrinth",1},
-			},
-			[542] = { type = "dungeon", content = 2,
-				{498.98901367188,603.13598632813,-504.5299987793,-65.87670135498,"TheBloodFurnace",1},
-			},
-			[546] = { type = "dungeon", content = 2,
-				{240.97700500488,423.73516845703,-653.94299316406,-172.87818908691,"TheUnderbog",1},
-			},
-			[547] = { type = "dungeon", content = 2,
-				{53.934101104736,201.72003173828,-836.1240234375,-391.65203857422,"TheSlavePens",1},
-			},
-			[553] = { type = "dungeon", content = 2,
-				{649.75323486328,248.02499389648,-107.64924621582,-256.91000366211,"TheBotanica",1},
-			},
-			[557] = { type = "dungeon", content = 2,
-				{276.93408203125,90.07080078125,-546.35107421875,-458.78601074219,"ManaTombs",1},
-			},
-			[545] = { type = "dungeon", content = 2,
-				{160.02200317383,158.56721496582,-716.74200439453,-425.94219970703,"TheSteamvault",1},
-				{160.02200317383,158.56721496582,-716.74200439453,-425.94219970703,"TheSteamvault",2},
-			},
-			[554] = { type = "dungeon", content = 2,
-				{334.4580078125,349.98620605469,-341.7799987793,-100.83919525146,"TheMechanar",1},
-				{334.4580078125,412.98602294922,-341.7799987793,-37.839344024658,"TheMechanar",2},
-			},
-			[552] = { type = "dungeon", content = 2,
-				{284.57901000977,384.36502075195,-405.10501098633,-75.424331665039,"TheArcatraz",1},
-				{300.7610168457,408.03201293945,-245.28703308105,44,"TheArcatraz",2},
-				{214.07899475098,575.28900146484,-422.60501098633,150.83297729492,"TheArcatraz",3},
-			},
-			[269] = { type = "dungeon", content = 2,
-				{7649.9995117188,-1500,6562.4995117188,-2225,"CoTTheBlackMorass"},
-			},
-			[560] = { type = "dungeon", content = 2,
-				{1854.1666259766,3127.0832519531,-477.08331298828,1572.9166259766,"CoTHillsbradFoothills"},
-			},
-			
-			-----> PvP
-			[1116] = { type = "pvp",
-				{-2672.919921875,5577.080078125,-5795.830078125,3495.830078125,"Ashran"},
-			},
-			[1105] = { type = "pvp",
-				{1068.75,189.583984375,-14.583984375,-533.333984375,"GoldRush"},
-			},
-			[1035] = { type = "pvp",
-				{1743.75,2083.3330078125,904.1669921875,1522.9169921875,"ValleyOfPowerScenario"},
-			},
-			[727] = { type = "pvp",
-				{1320.8330078125,1495.8330078125,-929.166015625,-4.166015625,"STVDiamondMineBG",1},
-			},
-			[761] = { type = "pvp",
-				{1745.8332519531,1604.1666259766,443.74996948242,735.41662597656,"GilneasBattleground2"},
-			},
-			[566] = { type = "pvp",
-				{2660.4165039063,2918.75,389.58331298828,1404.1666259766,"NetherstormArena"},
-			},
-			[30] = { type = "pvp",
-				{1781.2498779297,1085.4166259766,-2456.25,-1739.5832519531,"AlteracValley"},
-			},
-			[489] = { type = "pvp",
-				{2041.6666259766,1627.0832519531,895.83331298828,862.49993896484,"WarsongGulch"},
-			},
-			[529] = { type = "pvp",
-				{1858.3332519531,1508.3332519531,102.08332824707,337.5,"ArathiBasin"},
-			},
-			[607] = { type = "pvp",
-				{787.5,1883.3332519531,-956.24993896484,720.83331298828,"StrandoftheAncients"},
-			},
-		
-			-----> Debug
-			[1153] = { type = "other",
-				{4885.416015625,5814.5830078125,4183.3330078125,5345.8330078125,"garrisonffhorde_tier3"},
-			},
-			
-			-----> Raids
-			[996] = { type = "raid", content = 5,
-				{-2497.916015625,-789.583984375,-3200,-1258.333984375,"TerraceOfEndlessSpring"},
-			},
-			[1009] = { type = "raid", content = 5,
-				{700,-1966.6667480469,0,-2433.3334960938,"HeartofFear",1},
-				{1430.0100097656,-1769.9985351563,-9.9943704605103,-2730.0014648438,"HeartofFear",2},
-			},
-			[1008] = { type = "raid", content = 5,
-				{1562.5003662109,4194.169921875,874.99060058594,3735.830078125,"MogushanVaults",1},
-				{1677.5048828125,4376.669921875,1244.9951171875,4088.330078125,"MogushanVaults",2},
-				{2065,4280,1315,3780,"MogushanVaults",3},
-			},
-			[967] = { type = "raid", content = 4,
-				{-833.5927734375,-565.0927734375,-3940.3012695313,-2628.1579589844,"DragonSoul"},
-				{-1716.25,-1625,-2113.75,-1890,"DragonSoul",1},
-				{-2834.5,-1625,-3262,-1910,"DragonSoul",2},
-				{13709.099609375,13651.733398438,13523.900390625,13528.266601563,"DragonSoul",3},
-				{1.25,1,-0.25,0,"DragonSoul",4},
-				{1.25,1,-0.25,0,"DragonSoul",5},
-				{12535.42578125,-11516,11427.07421875,-12254.900390625,"DragonSoul",6},
-			},
-			[720] = { type = "raid", content = 4,
-				{718.75,424.99996948242,-868.74993896484,-633.33331298828,"Firelands"},
-				{677.0830078125,593.75,302.0830078125,343.75,"Firelands",1},
-				{670,1225,-770,265,"Firelands",2},
-			},
-			[671] = { type = "raid", content = 4,
-				{-106.43550872803,-180.95700073242,-1184.7705078125,-899.84698486328,"TheBastionofTwilight",1},
-				{-256.42700195313,-770.95501708984,-1034.7700195313,-1289.8499755859,"TheBastionofTwilight",2},
-				{-224.92799377441,-707.95501708984,-1267.2700195313,-1402.8499755859,"TheBastionofTwilight",3},
-			},
-			[669] = { type = "raid", content = 4,
-				{174.10899353027,-0.99963402748108,-675.58502197266,-567.46197509766,"BlackwingDescent",1},
-				{249.10899353027,359,-750.583984375,-307.46200561523,"BlackwingDescent",2},
-			},
-			[754] = { type = "raid", content = 4,
-				{2100,600,-499.99996948242,-1133.3332519531,"ThroneoftheFourWinds",1},
-			},
-			[757] = { type = "raid", content = 4,
-				{2633.3332519531,1133.3332519531,33.333332061768,-600,"BaradinHold"},
-			},
-			[631] = { type = "raid", content = 3,
-				{2739.8000488281,138.80700683594,1384.3299560547,-764.84002685547,"IcecrownCitadel",1},
-				{2698,-43.333301544189,1631,-754.6669921875,"IcecrownCitadel",2},
-				{2311.8000488281,-449.99798583984,2116.330078125,-580.31298828125,"IcecrownCitadel",3},
-				{2767.2800292969,4528.2202148438,1993.5699462891,4012.4099121094,"IcecrownCitadel",4},
-				{3364.8000488281,4768.2299804688,2216.0600585938,4002.4099121094,"IcecrownCitadel",5},
-				{2960.2800292969,4704.8798828125,2586.5700683594,4455.75,"IcecrownCitadel",6},
-				{-1978.2900390625,605.79901123047,-2271.5500488281,410.2919921875,"IcecrownCitadel",7},
-				{-2400.330078125,579.39599609375,-2648.2600097656,414.10800170898,"IcecrownCitadel",8},
-			},
-			[603] = { type = "raid", content = 3,
-				{1583.3332519531,1168.75,-1704.1666259766,-1022.9166259766,"Ulduar"},
-				{224.21600341797,1839.0100097656,-445.23498535156,1392.7099609375,"Ulduar",1},
-				{653.72100830078,2564.6799316406,-674.73999023438,1679.0400390625,"Ulduar",2},
-				{594.75,2219,-315.75,1612,"Ulduar",3},
-				{3254.4499511719,3168.830078125,1684.9899902344,2122.5300292969,"Ulduar",4},
-				{309.45498657227,2247.75,-310.01400756836,1834.7700195313,"Ulduar",5},
-			},
-			[724] = { type = "raid", content = 3,
-				{902.08331298828,3429.1665039063,150,2927.0832519531,"TheRubySanctum"},
-			},
-			[615] = { type = "raid", content = 3,
-				{1133.3332519531,3616.6665039063,-29.166666030884,2841.6665039063,"TheObsidianSanctum"},
-			},
-			[624] = { type = "raid", content = 3,
-				{1033.3332519531,600,-1566.6666259766,-1133.3332519531,"VaultofArchavon",1},
-			},
-			[616] = { type = "raid", content = 3,
-				{2766.6665039063,2200,-633.33331298828,-66.666664123535,"TheEyeofEternity",1},
-			},
-			[533] = { type = "raid", content = 3,
-				{-2640.2700195313,3615.830078125,-3734.1000976563,2886.6101074219,"Naxxramas",1},
-				{-3140.2700195313,3615.830078125,-4234.1000976563,2886.6101074219,"Naxxramas",2},
-				{-2587,3136,-3787,2336,"Naxxramas",3},
-				{-3087.0200195313,3136.830078125,-4287.3500976563,2336.6101074219,"Naxxramas",4},
-				{-2330.2800292969,3691.2199707031,-4400.08984375,2311.3400878906,"Naxxramas",5},
-				{-4866.3500976563,3816.5400390625,-5522.2900390625,3379.25,"Naxxramas",6},
-			},
-			[649] = { type = "raid", content = 3,
-				{328.73098754883,693.01898193359,-41.255199432373,446.36099243164,"TheArgentColiseum",1},
-				{528.73602294922,926.35400390625,-211.25999450684,433.02398681641,"TheArgentColiseum",2},
-			},
-			[1136] = { type = "raid", content = 5,
-				{1239.5830078125,1310.4169921875,481.25,806.25,"OrgrimmarRaid"},
-				{1150.0100097656,1729.1716308594,199.99499511719,1095.8283691406,"OrgrimmarRaid",1},
-				{1278.75,1000,716.25,625,"OrgrimmarRaid",2},
-				{-4020.830078125,1654.5166015625,-5162.5,893.40338134766,"OrgrimmarRaid",3},
-				{-3789.583984375,2125,-5000,1318.75,"OrgrimmarRaid",4},
-				{-4163.9702148438,1932.2716064453,-4526.0600585938,1690.8784179688,"OrgrimmarRaid",5},
-				{-4237.5,1900,-4837.5,1500,"OrgrimmarRaid",6},
-				{-4582.5,2165,-5467.5,1575,"OrgrimmarRaid",7},
-				{-4490,1865.8333740234,-5700,1059.1666259766,"OrgrimmarRaid",8},
-				{-5230,2157.080078125,-5875,1727.0799560547,"OrgrimmarRaid",9},
-				{-5082.5,1790,-5967.5,1200,"OrgrimmarRaid",10},
-				{-5403.75,1275,-5876.25,960,"OrgrimmarRaid",11},
-				{-5179.9970703125,1204.1700439453,-6010.0029296875,650.8330078125,"OrgrimmarRaid",12},
-				{-5222.5,1215,-5567.5,985,"OrgrimmarRaid",13},
-				{-5709.1298828125,1150,-5971.6298828125,975,"OrgrimmarRaid",14},
-			},
-			[1098] = { type = "raid", content = 5,
-				{7027.5,6113.3334960938,5742.5,5256.6665039063,"ThunderKingRaid",1},
-				{6175.0048828125,6246.669921875,4624.9951171875,5213.330078125,"ThunderKingRaid",2},
-				{5245,6605.8334960938,4215,5919.1665039063,"ThunderKingRaid",3},
-				{4609.6401367188,6312.8735351563,4018.3601074219,5918.6865234375,"ThunderKingRaid",4},
-				{5245,6128.3334960938,4215,5441.6665039063,"ThunderKingRaid",5},
-				{4950,6402.8334960938,4040,5796.1665039063,"ThunderKingRaid",6},
-				{4505,5985,3695,5445,"ThunderKingRaid",7},
-				{4978.75,5733.3334960938,4361.25,5321.6665039063,"ThunderKingRaid",8},
-			},
-			[1205] = { type = "raid", content = 6,
-				{3938.75,611.3330078125,3001,-13.833630561829,"FoundryRaid",1},
-				{3901.25,485,3098.75,-50,"FoundryRaid",2},
-				{3659.75,455,3097.25,80,"FoundryRaid",3},
-				{3628.1303710938,682.08697509766,2939.3696289063,222.91299438477,"FoundryRaid",4},
-				{3713.810546875,674.58197021484,3263.189453125,374.16799926758,"FoundryRaid",5},
-			},
-			[1228] = { type = "raid", content = 6,
-				{8468.75,4254.1669921875,7062.5,3316.6669921875,"HighmaulRaid"},
-				{7693.75,3545,7446.25,3380,"HighmaulRaid",1},
-				{7775,3603.3332519531,7375,3336.6667480469,"HighmaulRaid",2},
-				{8855.3095703125,4195,8195.3095703125,3755,"HighmaulRaid",3},
-				{8993.75,4350,8056.25,3725,"HighmaulRaid",4},
-				{8981.25,4350,8118.75,3775,"HighmaulRaid",5},
-			},
-			[1448] = { type = "raid", content = 6,
-				{-264.58401489258,4183.330078125,-977.083984375,3708.330078125,"HellfireRaid"},
-				{-24.99760055542,4099.794921875,-530.00201416016,3763.1252441406,"HellfireRaid",1},
-				{-175.99499511719,4218.0034179688,-490,4008.6665039063,"HellfireRaid",2},
-				{-70.831558227539,4437.5,-508.33645629883,4145.830078125,"HellfireRaid",3},
-				{25,3880,-485,3540,"HellfireRaid",4},
-				{2805,4340,2220,3950,"HellfireRaid",5},
-				{2361.25,4275,1963.75,4010,"HellfireRaid",6},
-				{2750.0048828125,4054.169921875,2024.9951171875,3570.830078125,"HellfireRaid",7},
-				{-84.807403564453,-2869.9997558594,-489.19299316406,-3139.5903320313,"HellfireRaid",8},
-				{-1900,4275.0014648438,-2493.75,3879.1682128906,"HellfireRaid",9},
-			},
-			[1520] = { type = "raid", content = 7,
-				{1675.0100097656,2091.6733398438,1024.9899902344,1658.3266601563,"NightmareRaid",1},
-				{1695.0100097656,2075.0017089844,1070,1658.3283691406,"NightmareRaid",2},
-				{11637.80078125,11680.06640625,10978.59765625,11257.06640625,"NightmareRaid",3},
-				{12535.42578125,-12679.200195313,12066.67578125,-12991.700195313,"NightmareRaid",4},
-				{-12552.07421875,862.5,-13295.825195313,366.66598510742,"NightmareRaid",5},
-				{9097.080078125,-1124.6999511719,3330.4099121094,-4968.4501953125,"NightmareRaid",6},
-				{4925.0600585938,-2066.6000976563,1075.0600585938,-4633.2700195313,"NightmareRaid",7},
-				{2600.0239257813,-2216.6899414063,-99.978996276855,-4016.7199707031,"NightmareRaid",8},
-				{3708.2700195313,-3533.330078125,-3241.7299804688,-8166.66015625,"NightmareRaid",9},
-				{-12729.200195313,-12037.5,-13506.299804688,-12556.299804688,"NightmareRaid",10},
-				{-12443.75,11481.299804688,-12943.849609375,11147.900390625,"NightmareRaid",11},
-				{-4916.6499023438,-2833.3500976563,-5216.6499023438,-3033.3500976563,"NightmareRaid",12},
-				{8200.0048828125,-2154.830078125,7999.9951171875,-2288.169921875,"NightmareRaid",13},
-			},
-			[1530] = { type = "raid", content = 7,
-				{3837.5,625,2562.5,-225,"SuramarRaid",1},
-				{3684.5314941406,706.0419921875,2985.4685058594,240,"SuramarRaid",2},
-				{3643.75,650,2556.25,-75,"SuramarRaid",3},
-				{3232.5,880,2467.5,370,"SuramarRaid",4},
-				{3510,375,3165,145,"SuramarRaid",5},
-				{3368.1298828125,675.21002197266,2880,349.79000854492,"SuramarRaid",6},
-				{3266.25,375.25,3003,199.75,"SuramarRaid",7},
-				{3274.9606933594,340,3033.7893066406,179.21899414063,"SuramarRaid",8},
-				{3268.75,374.58334350586,3000,195.41667175293,"SuramarRaid",9},
-			},
-		},
+		Maps = {},
 		SelectedDot = nil,
 		DebuffsBlackList = {
 			[160029] = true,	--Resurrecting; haven't CLEU event for removing
 		},
 	}
-	--[[
-		Dump maps func:
-		function DumpCurrentMapToFightLogFormat(mapID)
-			if mapID then
-				SetMapByID(mapID)
-			else
-				mapID = GetCurrentMapAreaID()
-			end
-			local mapName = GetMapInfo()
-			local _,MxL,MyT,MxR,MyB = GetCurrentMapZone()
-			local Levels = {GetNumDungeonMapLevels()}
-			local mapNameLevelFix = 0
-			local terrainMapID = GetAreaMapInfo(mapID)
-			JJBox(format("[%d] = {",terrainMapID or -1))
-			if numLevels == 0 and firstLevel == 0 then
-				JJBox("{"..MxL..","..MyT..","..MxR..","..MyB..","..'"'..mapName..'"},')
-				JJBox("},")
-				return
-			end
-			if Levels and #Levels > 0 then
-				for i=1,#Levels do
-					SetDungeonMapLevel(Levels[i])
-					local num,xR,yB,xL,yT = GetCurrentMapDungeonLevel()
-					if DungeonUsesTerrainMap() then
-						num = num - 1
-					end
-					if num == 0 and not xR then
-						JJBox("{"..MxL..","..MyT..","..MxR..","..MyB..","..'"'..mapName..'"},')
-						--mapNameLevelFix = 1
-					elseif xR and yB and xL and yT then
-						JJBox("{"..xL..","..yT..","..xR..","..yB..","..'"'..mapName..'",'..(num-mapNameLevelFix).."},")
-					end
-				end
-			end
-			JJBox("},")
-			JJShow()
-		end
-	]]
 	
-	PositionsTab_Variables.BossToMap = {
-		[1721] = PositionsTab_Variables.Maps[1228][3],	--"Kargath Bladefist"
-		[1706] = PositionsTab_Variables.Maps[1228][1],	--"The Butcher"
-		[1720] = PositionsTab_Variables.Maps[1228][1],	--"Brackenspore"
-		[1722] = PositionsTab_Variables.Maps[1228][1],	--"Tectus, The Living Mountain"
-		[1719] = PositionsTab_Variables.Maps[1228][4],	--"Twin Ogron"
-		[1723] = PositionsTab_Variables.Maps[1228][4],	--"Ko'ragh"
-		[1705] = PositionsTab_Variables.Maps[1228][6],	--"Imperator Mar'gok"
-	
-		[1694] = PositionsTab_Variables.Maps[1205][4],	--"Дармак Повелитель Зверей"
-		[1692] = PositionsTab_Variables.Maps[1205][4],	--"Оператор Тогар"
-		[1695] = PositionsTab_Variables.Maps[1205][1],	--"Железные леди"
-		[1691] = PositionsTab_Variables.Maps[1205][2],	--"Груул"
-		[1696] = PositionsTab_Variables.Maps[1205][2],	--"Рудожуй Пожиратель"
-		[1690] = PositionsTab_Variables.Maps[1205][2],	--"Горнило"
-		[1693] = PositionsTab_Variables.Maps[1205][1],	--"Ганс'гар и Франзок"
-		[1689] = PositionsTab_Variables.Maps[1205][1],	--"Ка'граз Пламенная"
-		[1713] = PositionsTab_Variables.Maps[1205][1],	--"Кромог, Легенда Горы"
-		[1704] = PositionsTab_Variables.Maps[1205][5],	--"Чернорук"
-		
-		[1778] = PositionsTab_Variables.Maps[1448][1],	--"Hellfire Assault"
-		[1785] = PositionsTab_Variables.Maps[1448][1],	--"Iron Reaver"
-		[1783] = PositionsTab_Variables.Maps[1448][2],	--"Gorefiend"
-		[1798] = PositionsTab_Variables.Maps[1448][5],	--"Hellfire High Council"
-		[1787] = PositionsTab_Variables.Maps[1448][4],	--"Kormrok"
-		[1786] = PositionsTab_Variables.Maps[1448][5],	--"Kilrogg Deadeye"
-		[1788] = PositionsTab_Variables.Maps[1448][6],	--"Shadow-Lord Iskar"
-		[1777] = PositionsTab_Variables.Maps[1448][6],	--"Fel Lord Zakuun"
-		[1800] = PositionsTab_Variables.Maps[1448][7],	--"Xhul'horac"
-		[1794] = PositionsTab_Variables.Maps[1448][8],	--"Socrethar the Eternal"
-		[1784] = PositionsTab_Variables.Maps[1448][8],	--"Tyrant Velhari"
-		[1795] = PositionsTab_Variables.Maps[1448][9],	--"Mannoroth"
-		[1799] = PositionsTab_Variables.Maps[1448][10],	--"Archimonde"
-		
-		[1853] = PositionsTab_Variables.Maps[1520][1],	--"Plague Dragon": <Nythendra>
-		[1876] = PositionsTab_Variables.Maps[1520][3],	--"Elerethe Renferal"
-		[1873] = PositionsTab_Variables.Maps[1520][4],	--"Il'gynoth, The Heart of Corruption"
-		[1841] = PositionsTab_Variables.Maps[1520][10],	--"Ursoc"
-		[1854] = PositionsTab_Variables.Maps[1520][5],	--"Dragons of Nightmare"
-		[1864] = PositionsTab_Variables.Maps[1520][12],	--"Xavius"
-		[1877] = PositionsTab_Variables.Maps[1520][11],	--"Cenarius"
-		
-		[1849] = PositionsTab_Variables.Maps[1530][1],	--"Skorpyron"
-		[1865] = PositionsTab_Variables.Maps[1530][1],	--"Anomaly"
-		[1867] = PositionsTab_Variables.Maps[1530][1],	--"Trilliax"
-		[1842] = PositionsTab_Variables.Maps[1530][3],	--"Krosus"
-		[1862] = PositionsTab_Variables.Maps[1530][5],	--"Tichondrius"
-		[1871] = PositionsTab_Variables.Maps[1530][3],	--"Spellblade Aluriel"
-		[1886] = PositionsTab_Variables.Maps[1530][4],	--"High Botanist Tel'arn"
-		[1863] = PositionsTab_Variables.Maps[1530][6],	--"Star Augur Etraeus"
-		[1872] = PositionsTab_Variables.Maps[1530][7],	--"Grand Magistrix Elisande"
-		[1866] = PositionsTab_Variables.Maps[1530][9],	--"Gul'dan"
-	}
+	PositionsTab_Variables.BossToMap = {}
 	
 	local function PositionsTab_UpdatePositions(segment)
-		local positionsData = module.db.data[module.db.nowNum].positionsData[segment]
-		local tab = BWInterfaceFrame.tab.tabs[10]
-		if not positionsData or not tab.minX or not tab.maxX or not tab.minY or not tab.maxY then
-			return
-		end
-		for name,data in pairs(positionsData) do
-			local dot = PositionsTab_Variables.NamesToDots[name]
-			if dot then
-				local x,y = data[1],data[2]
-				if x and y then
-					dot.posX = x
-					dot.posY = y
-					x = (tab.minX - x) / (tab.minX - tab.maxX) * tab.scroll.C:GetWidth()
-					y = (tab.minY - y) / (tab.minY - tab.maxY) * tab.scroll.C:GetHeight()
-					dot:SetPoint("CENTER",tab.scroll.C,"TOPLEFT",x,-y)
-					dot:Show()
-				else
-					dot:Hide()
-				end
-			end
-		end
-		
 		local time = ceil(segment / 2)
 		for i=1,40 do
 			tab.raidFrames[i]:Update(segment)
@@ -11884,46 +11394,9 @@ function BWInterfaceFrameLoad()
 			tab.unitFrames[i]:Update(time)
 		end
 	end
-	local function PositionsTab_UpdateDistanceEarned(segment,segmentsData)
-		local tab = BWInterfaceFrame.tab.tabs[10]
-		local result = L.BossWatcherDistanceEarned..": "
-		if segmentsData[segment] then
-			local tmp = {}
-			local total = 0
-			for name,dist in pairs(segmentsData[segment]) do
-				local unitGUID = ExRT.F.table_find2(module.db.data[module.db.nowNum].raidguids,name)
-				local colorStr
-				if unitGUID then
-					local _,class = GetPlayerInfoByGUID(unitGUID)
-					if class then
-						colorStr = ExRT.F.classColor(class)
-					end
-				end
-				if name:find("%-") then
-					name = name:match("^([^%-]+)%-")
-				end
-				tmp[#tmp+1] = {"|c"..(colorStr or "ffbbbbbb")..name.."|r",dist}
-				total = total + dist
-			end
-			result = result .. format("%dy",total) .. "|n"
-			sort(tmp,function(a,b) return a[2]>b[2] end)
-			for i=1,#tmp do
-				result = result .. tmp[i][1] .. ": ".. format("%dy",tmp[i][2]) .. (i < #tmp and "|n" or "")
-			end
-			tab.EarnedFrame:SetHeight(10*(#tmp+1))
-			if #tmp == 0 then
-				result = " -- "
-			end
-		end
-		tab.EarnedFrame.text:SetText(result)
-		local w = tab.EarnedFrame.text:GetStringWidth()
-		tab.EarnedFrame:SetWidth(w)
-	end
 	
 	tab.timeSlider = ELib:Slider(tab,L.BossWatcherPositionsSlider):Size(780):Point("TOP",-10,-20):Range(1,1):OnChange(function (self,value)
 		value = ExRT.F.Round(value)
-		
-		PositionsTab_UpdateDistanceEarned(value,self.distanceEarned)
 		
 		local time = floor(value / 2)
 		self.tooltipText = format("%d:%02d",time / 60,time % 60)
@@ -12159,41 +11632,6 @@ function BWInterfaceFrameLoad()
 		}
 	end
 	
-	tab.EarnedFrame = CreateFrame("Frame",nil,tab.scroll)
-	tab.EarnedFrame:SetWidth(150)
-	tab.EarnedFrame:SetPoint("BOTTOMRIGHT",tab.SelectMapDropDown,"TOPRIGHT",0,5)
-	tab.EarnedFrame.background = ELib:Texture(tab.EarnedFrame,0.05,0.05,0.07,.7):Point('x')
-	ELib:Border(tab.EarnedFrame,1,0,0,0,1)
-	tab.EarnedFrame.text = ELib:Text(tab.EarnedFrame,"",10):Point('x'):Left():Top():Color()
-	
-	tab.EarnedFrame.close = ELib:Button(tab.EarnedFrame,"",1):Point("BOTTOMRIGHT",tab.EarnedFrame,"TOPRIGHT",0,0):Size(14,14):OnClick(function(self)
-		local parent = self:GetParent()
-		parent.EarnedFrameExploreButton:Show()
-		parent:Hide()
-		VExRT.BossWatcher.optionsPositionsDist = nil
-	end)
-	tab.EarnedFrame.close:SetHighlightTexture( ELib:Texture(tab.EarnedFrame.close,"Interface\\AddOns\\ExRT\\media\\DiesalGUIcons16x256x128"):Point('x'):Color(1,0,0,1):TexCoord(0.5,0.5625,0.5,0.625) )
-	tab.EarnedFrame.close:SetNormalTexture( ELib:Texture(tab.EarnedFrame.close,"Interface\\AddOns\\ExRT\\media\\DiesalGUIcons16x256x128"):Point('x'):Color(1,1,1,.7):TexCoord(0.5,0.5625,0.5,0.625) )
-	
-	tab.EarnedFrameExploreButton = ELib:Button(tab.scroll,"",1):Point("BOTTOMRIGHT",tab.SelectMapDropDown,"TOPRIGHT",-2,5):Size(16,16):Tooltip(L.BossWatcherDistanceEarned):OnClick(function(self)
-		self:Hide()
-		self.EarnedFrame:Show()
-		VExRT.BossWatcher.optionsPositionsDist = true
-	end)
-	tab.EarnedFrameExploreButton.EarnedFrame = tab.EarnedFrame
-	tab.EarnedFrame.EarnedFrameExploreButton = tab.EarnedFrameExploreButton
-	ELib:Border(tab.EarnedFrameExploreButton,1,0.24,0.25,0.30,1)
-	tab.EarnedFrameExploreButton.background = ELib:Texture(tab.EarnedFrameExploreButton,0,0,0,.3):Point('x')
-
-	tab.EarnedFrameExploreButton:SetHighlightTexture( ELib:Texture(tab.EarnedFrameExploreButton,"Interface\\AddOns\\ExRT\\media\\DiesalGUIcons16x256x128"):Point("TOPLEFT",-5,2):Point("BOTTOMRIGHT",5,-2):Color(1,1,1,1):TexCoord(0.25,0.3125,0.625,0.5) )
-	tab.EarnedFrameExploreButton:SetNormalTexture( ELib:Texture(tab.EarnedFrameExploreButton,"Interface\\AddOns\\ExRT\\media\\DiesalGUIcons16x256x128"):Point("TOPLEFT",-5,2):Point("BOTTOMRIGHT",5,-2):Color(1,1,1,.7):TexCoord(0.25,0.3125,0.625,0.5) )
-	
-	if VExRT.BossWatcher.optionsPositionsDist then
-		tab.EarnedFrameExploreButton:Hide()
-	else
-		tab.EarnedFrame:Hide()
-	end
-
 	local function PositionsTab_RaidFrame_UpdateHP(self,segment)
 		if not self.Unit then
 			self:Hide()
@@ -12213,7 +11651,7 @@ function BWInterfaceFrameLoad()
 			self.hp:Hide()
 		else
 			self.hp:Show()
-			self.hp:SetWidth(max(hpNow / hpMax * 50,1))
+			self.hp:SetWidth(max(hpNow / hpMax * 70,1))
 		end
 		
 		local data = self.debuffsData and self.debuffsData[segment]
@@ -12292,9 +11730,9 @@ function BWInterfaceFrameLoad()
 		for j=1,5 do
 			local frame = CreateFrame("Button",nil,tab.scroll)
 			tab.raidFrames[(i-1)*5+j] = frame
-			frame:SetSize(50,16)
-			frame:SetPoint("BOTTOMLEFT",tab.scroll,5+(i-1)*53,5+(j-1)*19)
-			frame.text = ELib:Text(frame,UnitName('player'),10):Size(50,14):Point(0,0):Center():Color()
+			frame:SetSize(70,26)
+			frame:SetPoint("BOTTOMLEFT",tab.scroll,5+(i-1)*(70+3),5+(j-1)*(26+3))
+			frame.text = ELib:Text(frame,UnitName('player'),10):Size(60,14):Point("BOTTOMLEFT",5,3):Left():Color()
 			frame.text:SetDrawLayer("ARTWORK", 0)
 			
 			frame.bordertop = frame:CreateTexture(nil, "BORDER")
@@ -12320,12 +11758,12 @@ function BWInterfaceFrameLoad()
 			frame.borderright:SetColorTexture(0,0,0,1)
 			
 			frame.back = frame:CreateTexture(nil, "BACKGROUND",nil,-5)
-			frame.back:SetSize(50,16)
+			frame.back:SetSize(70,26)
 			frame.back:SetPoint("LEFT",0,0)
 			frame.back:SetColorTexture(.05,.05,.05,1)
 
 			frame.hp = frame:CreateTexture(nil, "BACKGROUND",nil,0)
-			frame.hp:SetSize(50,16)
+			frame.hp:SetSize(70,26)
 			frame.hp:SetPoint("LEFT",0,0)
 			frame.hp:SetColorTexture(.3,.3,.3,1)
 			
@@ -12333,7 +11771,7 @@ function BWInterfaceFrameLoad()
 			
 			frame.debuffs = {}
 			for i=1,5 do
-				frame.debuffs[i] = ELib:Frame(frame):Point("CENTER",frame,"TOPLEFT",4 + (i-1)*9,-2):Size(8,8):Texture(GetSpellTexture(25771),nil):TexturePoint('x')
+				frame.debuffs[i] = ELib:Frame(frame):Point("CENTER",frame,"TOPLEFT",7 + (i-1)*(12+1),-4):Size(12,12):Texture(GetSpellTexture(25771),nil):TexturePoint('x')
 				frame.debuffs[i]:SetScript("OnEnter",PositionsTab_RaidFrame_DebuffOnEnter)
 				frame.debuffs[i]:SetScript("OnLeave",PositionsTab_RaidFrame_DebuffOnLeave)
 			end
@@ -12429,9 +11867,8 @@ function BWInterfaceFrameLoad()
 	function PositionsTab_UpdatePage()
 		local tab = BWInterfaceFrame.tab.tabs[10]
 		local positionsData = module.db.data[module.db.nowNum].positionsData
-		local minX,maxX,minY,maxY
+		local minX,maxX,minY,maxY = 0,1,0,1
 		local knownMap = nil
-		local distanceEarned = {[1]={}}
 		
 		local encounterID = module.db.data[module.db.nowNum].encounterID
 		if encounterID and PositionsTab_Variables.BossToMap[encounterID] then
@@ -12439,27 +11876,6 @@ function BWInterfaceFrameLoad()
 		end
 		knownMap = PositionsTab_Variables.SelectedMap or knownMap
 		
-		for _,posData in ipairs(positionsData) do
-			for name,data in pairs(posData) do
-				if data[1] and data[2] and data[1] ~= 0 and data[2] ~= 0 then
-					minX = minX and max(minX,data[1]) or data[1]
-					maxX = maxX and min(maxX,data[1]) or data[1]
-					minY = minY and max(minY,data[2]) or data[2]
-					maxY = maxY and min(maxY,data[2]) or data[2]
-					
-					if not knownMap and data[3] and PositionsTab_Variables.Maps[ data[3] ] then
-						local compareMap = PositionsTab_Variables.Maps[ data[3] ]
-						for i=1,#compareMap do
-							if data[1] < compareMap[i][1] and data[1] > compareMap[i][3] and data[2] < compareMap[i][2] and data[2] > compareMap[i][4] then
-								knownMap = compareMap[i]
-								break
-							end
-						end
-					end
-				end
-			end
-			
-		end
 		if knownMap and not PositionsTab_Variables.DisableMap then
 			tab.minX = knownMap[1]
 			tab.maxX = knownMap[3]
@@ -12492,23 +11908,9 @@ function BWInterfaceFrameLoad()
 		wipe(PositionsTab_Variables.NamesToDots)
 		local dotCount = 0
 		local raidFrames = {}
-		if positionsData[1] then
-			for name,data in pairs(positionsData[1]) do
-				dotCount = dotCount + 1
-				if not tab.player[dotCount] then
-					local dot = CreateFrame("Frame",nil,tab.scroll.C)
-					tab.player[dotCount] = dot
-					dot:SetSize(18,18)
-					dot.SubDot = CreateFrame("Button",nil,dot)
-					dot.SubDot:SetPoint("CENTER",0,0)
-					dot.SubDot:SetSize(18,18)
-					dot.SubDot:SetScript("OnClick",PositionsTab_DotOnClick)
-					dot.texture = dot.SubDot:CreateTexture(nil, "ARTWORK")
-					dot.texture:SetAllPoints(dot.SubDot)
-					dot.texture:SetTexture("Interface\\AddOns\\ExRT\\media\\blip.tga")
-				end
-				PositionsTab_Variables.NamesToDots[ name ] = tab.player[dotCount]
-				
+		local graphData = module.db.data[module.db.nowNum].graphData
+		if graphData and graphData[1] then
+			for name,data in pairs(graphData[1]) do
 				local unitGUID = ExRT.F.table_find2(module.db.data[module.db.nowNum].raidguids,name)
 				local cR,cG,cB = .8,.8,.8
 				if unitGUID then
@@ -12517,14 +11919,13 @@ function BWInterfaceFrameLoad()
 						cR,cG,cB = ExRT.F.classColorNum(class)
 					end
 				end
-				tab.player[dotCount].texture:SetVertexColor(cR,cG,cB,1)
-				tab.player[dotCount].playerName = name
 				
 				raidFrames[#raidFrames + 1] = {name,cR,cG,cB}
 			end
 		end
 		sort(raidFrames,function(a,b) return a[1]<b[1] end)
-		if module.db.data[module.db.nowNum].graphData and module.db.data[module.db.nowNum].graphData[1] then
+		--tinsert(raidFrames,1,{"target",.7,.7,.7})
+		if graphData and graphData[1] then
 			for i=1,#raidFrames do
 				tab.raidFrames[i].Unit = raidFrames[i][1]
 				tab.raidFrames[i].text:SetTextColor(raidFrames[i][2],raidFrames[i][3],raidFrames[i][4],1)
@@ -12595,31 +11996,8 @@ function BWInterfaceFrameLoad()
 				tab.unitFrames[i]:Update()
 			end
 		end
-		
-		for i=2,#positionsData do
-			distanceEarned[i] = {}
-			for name,data in pairs(positionsData[i]) do
-				distanceEarned[1][name] = 0
-				local prevData = positionsData[i-1] and positionsData[i-1][name]
-				if prevData then
-					distanceEarned[i][name] = 0
 				
-					local prevX,prevY = prevData[1],prevData[2]
-					local currX,currY = data[1],data[2]
-					
-					if currX and currY then
-						local dX = prevX - currX
-						local dY = prevY - currY
-						local dist = sqrt(dX * dX + dY * dY)
-						
-						distanceEarned[i][name] = dist + (distanceEarned[i-1] and distanceEarned[i-1][name] or 0)
-					end
-				end
-			end
-		end
-		
-		tab.timeSlider:SetMinMaxValues(1,max(1,#positionsData))
-		tab.timeSlider.distanceEarned = distanceEarned
+		tab.timeSlider:SetMinMaxValues(1,max(.5,#graphData)*2)
 		
 		tab.scroll.C:SetScale(1)
 		tab.scroll.scrollH = 0

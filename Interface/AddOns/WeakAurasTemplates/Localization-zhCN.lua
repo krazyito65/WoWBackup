@@ -5,6 +5,7 @@ end
 local L = WeakAuras.L
 
 -- Options translation
+-- L["Ability Charges"] = ""
 L["Add Triggers"] = "添加触发器"
 L["Always Active"] = "总是激活"
 L["- Any"] = "-任何"
