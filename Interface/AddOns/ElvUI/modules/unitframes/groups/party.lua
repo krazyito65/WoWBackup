@@ -1,32 +1,29 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
-
---Cache global variables
---Lua functions
-local _G = _G
-local pairs = pairs
-local tinsert = table.insert
---WoW API / Variables
-local CreateFrame = CreateFrame
-local InCombatLockdown = InCombatLockdown
-local UnregisterStateDriver = UnregisterStateDriver
-local RegisterStateDriver = RegisterStateDriver
-local IsInInstance = IsInInstance
-
---Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: UnitFrame_OnEnter, UnitFrame_OnLeave
-
 local _, ns = ...
 local ElvUF = ns.oUF
 assert(ElvUF, "ElvUI was unable to locate oUF.")
 
-function UF:Construct_PartyFrames(unitGroup)
+--Cache global variables
+--Lua functions
+local _G = _G
+local tinsert = table.insert
+--WoW API / Variables
+local CreateFrame = CreateFrame
+local InCombatLockdown = InCombatLockdown
+local IsInInstance = IsInInstance
+local RegisterStateDriver = RegisterStateDriver
+local UnregisterStateDriver = UnregisterStateDriver
+
+--Global variables that we don't cache, list them here for mikk's FindGlobals script
+-- GLOBALS: UnitFrame_OnEnter, UnitFrame_OnLeave
+
+function UF:Construct_PartyFrames()
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 
 	self.RaisedElementParent = CreateFrame('Frame', nil, self)
-	self.RaisedElementParent:SetFrameStrata("MEDIUM")
-	self.RaisedElementParent:SetFrameLevel(self:GetFrameLevel() + 10)
+	self.RaisedElementParent:SetFrameLevel(self:GetFrameLevel() + 100)
 	self.BORDER = E.Border
 	self.SPACING = E.Spacing
 	self.SHADOW_SPACING = 3
@@ -69,7 +66,6 @@ function UF:Construct_PartyFrames(unitGroup)
 		self.RaidIcon = UF:Construct_RaidIcon(self)
 		self.ReadyCheck = UF:Construct_ReadyCheckIcon(self)
 		self.HealPrediction = UF:Construct_HealComm(self)
-		self.GPS = UF:Construct_GPS(self)
 		self.customTexts = {}
 		self.Sparkle = CreateFrame("Frame", nil, self)
 		self.Sparkle:SetAllPoints(self.Health)
@@ -246,8 +242,6 @@ function UF:Update_PartyFrames(frame, db)
 
 		UF:Configure_HealComm(frame)
 
-		UF:Configure_GPS(frame)
-
 		UF:Configure_RaidRoleIcons(frame)
 
 		UF:UpdateAuraWatch(frame)
@@ -259,7 +253,7 @@ function UF:Update_PartyFrames(frame, db)
 
 	UF:Configure_Range(frame)
 
-	frame:UpdateAllElements()
+	frame:UpdateAllElements("ElvUI_UpdateAllElements")
 end
 
 UF['headerstoload']['party'] = {nil, 'ELVUI_UNITPET, ELVUI_UNITTARGET'}

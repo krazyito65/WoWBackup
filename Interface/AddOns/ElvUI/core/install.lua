@@ -3,7 +3,6 @@ local E, L, V, P, G, _ = unpack(select(2, ...)); --Inport: Engine, Locales, Priv
 --Cache global variables
 --Lua functions
 local _G = _G
-local unpack = unpack
 local format = format
 --WoW API / Variables
 local CreateFrame = CreateFrame
@@ -24,7 +23,6 @@ local FCF_SetLocked = FCF_SetLocked
 local FCF_DockFrame, FCF_UnDockFrame = FCF_DockFrame, FCF_UnDockFrame
 local FCF_OpenNewWindow = FCF_OpenNewWindow
 local FCF_SavePositionAndDimensions = FCF_SavePositionAndDimensions
-local FCF_GetChatWindowInfo = FCF_GetChatWindowInfo
 local FCF_SetWindowName = FCF_SetWindowName
 local FCF_StopDragging = FCF_StopDragging
 local FCF_SetChatWindowFontSize = FCF_SetChatWindowFontSize
@@ -38,7 +36,7 @@ local CUSTOM_CLASS_COLORS = CUSTOM_CLASS_COLORS
 --Global variables that we don't cache, list them here for the mikk's Find Globals script
 -- GLOBALS: ElvUIInstallFrame, InstallStepComplete, InstallStatus, InstallNextButton, InstallPrevButton
 -- GLOBALS: InstallOption1Button, InstallOption2Button, InstallOption3Button, InstallOption4Button
--- GLOBALS: LeftChatToggleButton, RightChatToggleButton, RightChatDataPanel
+-- GLOBALS: LeftChatToggleButton, RightChatToggleButton, RightChatDataPanel, CreateAnimationGroup
 -- GLOBALS: ChatFrame1, ChatFrame2, ChatFrame3, InterfaceOptionsActionBarsPanelPickupActionKeyDropDown
 
 local CURRENT_PAGE = 0
@@ -59,8 +57,6 @@ local function SetupChat()
 
 	for i = 1, NUM_CHAT_WINDOWS do
 		local frame = _G[format("ChatFrame%s", i)]
-		local chatFrameId = frame:GetID()
-		local chatName = FCF_GetChatWindowInfo(chatFrameId)
 
 		-- move general bottom left
 		if i == 1 then
@@ -204,6 +200,7 @@ local function SetupCVars()
 	SetCVar('lockActionBars', 1)
 	SetCVar('SpamFilter', 0)
 	SetCVar("nameplateShowSelf", 0)
+	SetCVar("cameraDistanceMaxZoomFactor", 2.6)
 	
 	InterfaceOptionsActionBarsPanelPickupActionKeyDropDown:SetValue('SHIFT')
 	InterfaceOptionsActionBarsPanelPickupActionKeyDropDown:RefreshValue()
@@ -437,7 +434,6 @@ function E:SetupLayout(layout, noDataReset)
 			E.db.unitframe.units.party.roleIcon.position = "BOTTOMRIGHT"
 			E.db.unitframe.units.party.health.text_format = "[healthcolor][health:deficit]"
 			E.db.unitframe.units.party.health.position = "BOTTOM"
-			E.db.unitframe.units.party.GPSArrow.size = 40
 			E.db.unitframe.units.party.width = 80
 			E.db.unitframe.units.party.height = 45
 			E.db.unitframe.units.party.name.text_format = "[namecolor][name:short]"
@@ -750,7 +746,7 @@ local function SetPage(PageNum)
 	if PageNum == 1 then
 		f.SubTitle:SetFormattedText(L["Welcome to ElvUI version %s!"]:gsub("ElvUI", E.UIName), E.version)
 		f.Desc1:SetText(L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."]:gsub("ElvUI", E.UIName))
-		f.Desc2:SetText(L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."])
+		f.Desc2:SetText(L["The in-game configuration menu can be accessed by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."])
 		f.Desc3:SetText(L["Please press the continue button to go onto the next step."])
 
 		InstallOption1Button:Show()

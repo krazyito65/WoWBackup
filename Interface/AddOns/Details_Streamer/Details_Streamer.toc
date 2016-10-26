@@ -1,9 +1,9 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Details!: Streamer (plugin)
 ## Notes: Show which spells you are casting, viewers can see what are you doing and follow your steps.
 ## RequiredDeps: Details
 ## SavedVariables: Details_StreamerDB
-## X-Curse-Packaged-Version: r561
+## X-Curse-Packaged-Version: r565
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

@@ -172,6 +172,7 @@ local function LoadSkin()
 				reward.border = CreateFrame("Frame", nil, reward)
 				S:HandleIcon(reward.Icon, reward.border)
 				reward.Quantity:SetParent(reward.border)
+				reward.IconBorder:SetAlpha(0)
 			end
 		end
 	end
@@ -378,5 +379,5 @@ local function SkinTooltip()
 	end)
 end
 
-S:RegisterSkin('Blizzard_GarrisonUI', LoadSkin)
-S:RegisterSkin('ElvUI', SkinTooltip)
+S:AddCallbackForAddon('Blizzard_GarrisonUI', "Garrison", LoadSkin)
+S:AddCallback("GarrisonTooltips", SkinTooltip)

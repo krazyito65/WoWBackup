@@ -72,6 +72,7 @@ local function createConfigEnv()
 			return format("|cff%02x%02x%02x", r*255, g*255, b*255)
 		end,
 		ColorGradient = ElvUF.ColorGradient,
+		_COLORS = ElvUF.colors
 	}, {
 		__index = _G,
 		__newindex = function(tbl, key, value) _G[key] = value end,
@@ -186,7 +187,7 @@ function UF:UnshowChildUnits(header, ...)
 	end
 end
 
-local function OnAttributeChanged(self, name, value)
+local function OnAttributeChanged(self)
 	if not self:GetParent().forceShow and not self.forceShow then return; end
 	if not self:IsShown() then return end
 
@@ -234,7 +235,6 @@ function UF:HeaderConfig(header, configMode)
 
 	for i=1, #header.groups do
 		local group = header.groups[i]
-		local db = group.db
 
 		if group:IsShown() then
 			group.forceShow = header.forceShow

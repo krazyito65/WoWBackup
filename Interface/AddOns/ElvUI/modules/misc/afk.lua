@@ -7,36 +7,36 @@ local CH = E:GetModule("Chat")
 --Lua functions
 local _G = _G
 local GetTime = GetTime
-local tostring = tostring
+local tostring, pcall = tostring, pcall
 local floor = floor
-local format, strsub = string.format, string.sub
+local format, strsub, gsub = string.format, string.sub, string.gsub
 --WoW API / Variables
-local CreateFrame = CreateFrame
-local InCombatLockdown = InCombatLockdown
-local CinematicFrame = CinematicFrame
-local MovieFrame = MovieFrame
-local MoveViewLeftStart = MoveViewLeftStart
-local MoveViewLeftStop = MoveViewLeftStop
-local CloseAllBags = CloseAllBags
-local IsInGuild = IsInGuild
-local GetGuildInfo = GetGuildInfo
-local PVEFrame_ToggleFrame = PVEFrame_ToggleFrame
-local GetBattlefieldStatus = GetBattlefieldStatus
-local UnitIsAFK = UnitIsAFK
-local SetCVar = SetCVar
-local Screenshot = Screenshot
-local IsShiftKeyDown = IsShiftKeyDown
-local GetColoredName = GetColoredName
-local RemoveExtraSpaces = RemoveExtraSpaces
-local Chat_GetChatCategory = Chat_GetChatCategory
 local ChatFrame_GetMobileEmbeddedTexture = ChatFrame_GetMobileEmbeddedTexture
 local ChatHistory_GetAccessID = ChatHistory_GetAccessID
-local GetScreenWidth = GetScreenWidth
+local Chat_GetChatCategory = Chat_GetChatCategory
+local CinematicFrame = CinematicFrame
+local CloseAllWindows = CloseAllWindows
+local CreateFrame = CreateFrame
+local GetBattlefieldStatus = GetBattlefieldStatus
+local GetColoredName = GetColoredName
+local GetGuildInfo = GetGuildInfo
 local GetScreenHeight = GetScreenHeight
+local GetScreenWidth = GetScreenWidth
+local InCombatLockdown = InCombatLockdown
+local IsInGuild = IsInGuild
+local IsShiftKeyDown = IsShiftKeyDown
+local MoveViewLeftStart = MoveViewLeftStart
+local MoveViewLeftStop = MoveViewLeftStop
+local MovieFrame = MovieFrame
+local PVEFrame_ToggleFrame = PVEFrame_ToggleFrame
+local RemoveExtraSpaces = RemoveExtraSpaces
+local Screenshot = Screenshot
+local SetCVar = SetCVar
 local UnitFactionGroup = UnitFactionGroup
-local RAID_CLASS_COLORS = RAID_CLASS_COLORS
+local UnitIsAFK = UnitIsAFK
 local CUSTOM_CLASS_COLORS = CUSTOM_CLASS_COLORS
 local DND = DND
+local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
 -- GLOBALS: UIParent, PVEFrame, ElvUIAFKPlayerModel, ChatTypeInfo
@@ -87,7 +87,6 @@ function AFK:SetAFK(status)
 
 		self.AFKMode.chat:RegisterEvent("CHAT_MSG_WHISPER")
 		self.AFKMode.chat:RegisterEvent("CHAT_MSG_BN_WHISPER")
-		self.AFKMode.chat:RegisterEvent("CHAT_MSG_BN_CONVERSATION")
 		self.AFKMode.chat:RegisterEvent("CHAT_MSG_GUILD")
 
 		self.isAFK = true
@@ -182,7 +181,7 @@ local function Chat_OnEvent(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg
 	local type = strsub(event, 10);
 	local info = ChatTypeInfo[type];
 
-	if(event == "CHAT_MSG_BN_WHISPER" or event == "CHAT_MSG_BN_CONVERSATION") then
+	if(event == "CHAT_MSG_BN_WHISPER") then
 		coloredName = CH:GetBNFriendColor(arg2, arg13)
 	end
 
@@ -264,6 +263,11 @@ function AFK:Initialize()
 	self.AFKMode.chat:SetMaxLines(500)
 	self.AFKMode.chat:EnableMouseWheel(true)
 	self.AFKMode.chat:SetFading(false)
+	self.AFKMode.chat:SetMovable(true)
+	self.AFKMode.chat:EnableMouse(true)
+	self.AFKMode.chat:RegisterForDrag("LeftButton")
+	self.AFKMode.chat:SetScript("OnDragStart", self.AFKMode.chat.StartMoving)
+	self.AFKMode.chat:SetScript("OnDragStop", self.AFKMode.chat.StopMovingOrSizing)
 	self.AFKMode.chat:SetScript("OnMouseWheel", Chat_OnMouseWheel)
 	self.AFKMode.chat:SetScript("OnEvent", Chat_OnEvent)
 

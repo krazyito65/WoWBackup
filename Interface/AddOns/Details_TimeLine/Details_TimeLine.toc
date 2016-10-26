@@ -1,10 +1,10 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Details Time Line (plugin)
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
 ## SavedVariablesPerCharacter: DetailsTimeLineDB
-## X-Curse-Packaged-Version: r49
+## X-Curse-Packaged-Version: r50
 ## X-Curse-Project-Name: Details!: Time Line (plugin)
 ## X-Curse-Project-ID: details_timeline
 ## X-Curse-Repository-ID: wow/details_timeline/mainline

@@ -7,7 +7,6 @@ local LSM = LibStub("LibSharedMedia-3.0")
 local GetTime = GetTime
 local select, unpack = select, unpack
 local floor = math.floor
-local format, find, join = string.format, string.find, string.join
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local C_TimerAfter = C_Timer.After
@@ -21,7 +20,7 @@ local GetInventoryItemTexture = GetInventoryItemTexture
 local IsAddOnLoaded = IsAddOnLoaded
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: BuffFrame, TemporaryEnchantFrame, DebuffTypeColor, Minimap 
+-- GLOBALS: BuffFrame, TemporaryEnchantFrame, DebuffTypeColor, Minimap, MMHolder
 -- GLOBALS: LeftMiniPanel, InterfaceOptionsFrameCategoriesButton12
 
 local Masque = LibStub("Masque", true)
@@ -174,7 +173,7 @@ end
 function A:UpdateAura(button, index)
 	local filter = button:GetParent():GetAttribute('filter')
 	local unit = button:GetParent():GetAttribute("unit")
-	local name, rank, texture, count, dtype, duration, expirationTime, caster, isStealable, shouldConsolidate, spellID, canApplyAura, isBossDebuff = UnitAura(unit, index, filter)
+	local name, _, texture, count, dtype, duration, expirationTime = UnitAura(unit, index, filter)
 
 	if(name) then
 		if(duration > 0 and expirationTime) then

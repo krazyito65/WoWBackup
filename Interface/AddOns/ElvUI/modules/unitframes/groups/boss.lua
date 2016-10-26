@@ -1,24 +1,25 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
+local _, ns = ...
+local ElvUF = ns.oUF
+assert(ElvUF, "ElvUI was unable to locate oUF.")
 
 --Cache global variables
 --Lua functions
 local _G = _G
-local pairs = pairs
 local tinsert = table.insert
-local format = format
 --WoW API / Variables
+local CreateFrame = CreateFrame
 local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
 -- GLOBALS: BossHeaderMover
 
-local _, ns = ...
-local ElvUF = ns.oUF
-assert(ElvUF, "ElvUI was unable to locate oUF.")
-
 local BossHeader = CreateFrame('Frame', 'BossHeader', UIParent)
 function UF:Construct_BossFrames(frame)
+	frame.RaisedElementParent = CreateFrame('Frame', nil, frame)
+	frame.RaisedElementParent:SetFrameLevel(frame:GetFrameLevel() + 100)
+
 	frame.Health = self:Construct_HealthBar(frame, true, true, 'RIGHT')
 
 	frame.Power = self:Construct_PowerBar(frame, true, true, 'LEFT')
@@ -38,7 +39,7 @@ function UF:Construct_BossFrames(frame)
 	frame:RegisterEvent('PLAYER_ENTERING_WORLD', UF.UpdateTargetGlow)
 	frame:RegisterEvent('GROUP_ROSTER_UPDATE', UF.UpdateTargetGlow)
 
-	frame.Castbar = self:Construct_Castbar(frame, 'RIGHT')
+	frame.Castbar = self:Construct_Castbar(frame)
 	frame.RaidIcon = UF:Construct_RaidIcon(frame)
 	frame.AltPowerBar = self:Construct_AltPowerBar(frame)
 	frame.ClassBar = "AltPowerBar"
@@ -166,7 +167,7 @@ function UF:Update_BossFrames(frame, db)
 		BossHeader:Height(frame.UNIT_HEIGHT)
 	end
 
-	frame:UpdateAllElements()
+	frame:UpdateAllElements("ElvUI_UpdateAllElements")
 end
 
 UF['unitgroupstoload']['boss'] = {MAX_BOSS_FRAMES}

@@ -1,9 +1,9 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Addon Cpu Usage
 ## Notes: Show how much your addons are using the CPU.
 ## SavedVariables: AddonCpuUsageDB
 ## SavedVariablesPerCharacter: AddonCpuUsageDBLocal
-## X-Curse-Packaged-Version: r16
+## X-Curse-Packaged-Version: r17
 ## X-Curse-Project-Name: AddOns CPU Usage
 ## X-Curse-Project-ID: addons-cpu-usage
 ## X-Curse-Repository-ID: wow/addons-cpu-usage/mainline

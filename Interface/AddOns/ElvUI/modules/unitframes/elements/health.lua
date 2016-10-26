@@ -7,7 +7,6 @@ local random = random
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local UnitIsTapDenied = UnitIsTapDenied
-local UnitIsTapDeniedByPlayer = UnitIsTapDeniedByPlayer
 local UnitReaction = UnitReaction
 local UnitIsPlayer = UnitIsPlayer
 local UnitClass = UnitClass
@@ -21,7 +20,6 @@ function UF:Construct_HealthBar(frame, bg, text, textPos)
 	local health = CreateFrame('StatusBar', nil, frame)
 	UF['statusbars'][health] = true
 
-	health:SetFrameStrata("LOW")
 	health:SetFrameLevel(10) --Make room for Portrait and Power which should be lower by default
 	health.PostUpdate = self.PostUpdateHealth
 
@@ -35,7 +33,6 @@ function UF:Construct_HealthBar(frame, bg, text, textPos)
 	if text then
 		health.value = frame.RaisedElementParent:CreateFontString(nil, 'OVERLAY')
 		UF:Configure_FontString(health.value)
-		health.value:SetParent(frame)
 
 		local x = -2
 		if textPos == 'LEFT' then
@@ -192,7 +189,7 @@ function UF:PostUpdateHealth(unit, min, max)
 
 	local r, g, b = self:GetStatusBarColor()
 	local colors = E.db['unitframe']['colors'];
-	if (colors.healthclass == true and colors.colorhealthbyvalue == true) or (colors.colorhealthbyvalue and parent.isForced) and not (UnitIsTapDenied(unit)) then
+	if (((colors.healthclass == true and colors.colorhealthbyvalue == true) or (colors.colorhealthbyvalue and parent.isForced)) and not UnitIsTapDenied(unit)) then
 		local newr, newg, newb = ElvUF.ColorGradient(min, max, 1, 0, 0, 1, 1, 0, r, g, b)
 
 		self:SetStatusBarColor(newr, newg, newb)

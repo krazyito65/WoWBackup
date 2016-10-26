@@ -4,7 +4,7 @@ local UF = E:GetModule('UnitFrames');
 --Cache global variables
 --Lua functions
 local select, unpack = select, unpack
-local ceil, floor, max = math.ceil, math.floor, math.max
+local floor, max = math.floor, math.max
 local find, sub, gsub = string.find, string.sub, string.gsub
 --WoW API / Variables
 local CreateFrame = CreateFrame
@@ -67,8 +67,7 @@ function UF:Configure_ClassBar(frame, cur)
 			CLASSBAR_WIDTH = CLASSBAR_WIDTH * (frame.MAX_CLASS_BAR - 1) / frame.MAX_CLASS_BAR
 		end
 
-		bars:SetFrameStrata("MEDIUM")
-		bars:SetFrameLevel(frame:GetFrameLevel() + 5)
+		bars:SetFrameLevel(50) --RaisedElementParent uses 100, we want it lower than this
 
 		if bars.Holder and bars.Holder.mover then
 			bars.Holder.mover:SetScale(0.0001)
@@ -82,7 +81,6 @@ function UF:Configure_ClassBar(frame, cur)
 			bars:Point("BOTTOMLEFT", frame.Health.backdrop, "TOPLEFT", frame.BORDER, frame.SPACING*3)
 		end
 
-		bars:SetFrameStrata("LOW")
 		bars:SetFrameLevel(frame:GetFrameLevel() + 5)
 
 		if bars.Holder and bars.Holder.mover then
@@ -326,7 +324,7 @@ function UF:Construct_ClassBar(frame)
 	return bars
 end
 
-function UF:UpdateClassBar(cur, max, hasMaxChanged, powerType, event)
+function UF:UpdateClassBar(cur, max, hasMaxChanged)
 	local frame = self.origParent or self:GetParent()
 	local db = frame.db
 	if not db then return; end
@@ -419,7 +417,6 @@ end
 -------------------------------------------------------------
 function UF:Construct_AdditionalPowerBar(frame)
 	local additionalPower = CreateFrame('StatusBar', "AdditionalPowerBar", frame)
-	additionalPower:SetFrameStrata("LOW")
 	additionalPower:SetFrameLevel(additionalPower:GetFrameLevel() + 1)
 	additionalPower.colorPower = true
 	additionalPower.PostUpdate = UF.PostUpdateAdditionalPower
@@ -468,7 +465,7 @@ function UF:PostUpdateAdditionalPower(unit, min, max, event)
 			self.text:ClearAllPoints()
 			if not frame.CLASSBAR_DETACHED then
 				self.text:SetParent(powerValueParent)
-				if (powerValueText ~= "" and powerValueText ~= " ") then
+				if (powerValueText and (powerValueText ~= "" and powerValueText ~= " ")) then
 					if find(powerTextPosition, "RIGHT") then
 						self.text:Point("RIGHT", powerValue, "LEFT", 3, 0)
 						self.text:SetFormattedText(color.."%d%%|r |cffD7BEA5- |r", floor(min / max * 100))
@@ -531,7 +528,6 @@ function UF:Construct_Stagger(frame)
 	stagger:CreateBackdrop("Default",nil, nil, self.thinBorders)
 	stagger.PostUpdate = UF.PostUpdateStagger
 	stagger.PostUpdateVisibility = UF.PostUpdateVisibilityStagger
-	stagger:SetFrameStrata("LOW")
 
 	stagger:SetScript("OnShow", ToggleResourceBar)
 	stagger:SetScript("OnHide", ToggleResourceBar)
@@ -539,7 +535,7 @@ function UF:Construct_Stagger(frame)
 	return stagger
 end
 
-function UF:PostUpdateStagger(maxHealth, stagger, staggerPercent, r, g, b)
+function UF:PostUpdateStagger(maxHealth, stagger)
 	local frame = self.origParent or self:GetParent()
 	local db = frame.db
 
@@ -552,7 +548,6 @@ end
 
 function UF:PostUpdateVisibilityStagger(event, unit, isShown, stateChanged)
 	local frame = self
-	local db = frame.db
 
 	if(isShown) then
 		frame.ClassBar = 'Stagger'

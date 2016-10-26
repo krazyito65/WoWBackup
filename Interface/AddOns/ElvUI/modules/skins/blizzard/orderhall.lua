@@ -26,7 +26,7 @@ local function LoadSkin()
 	OrderHallCommandBar.ClassIcon:SetSize(46, 20)
 	OrderHallCommandBar.CurrencyIcon:SetAtlas("legionmission-icon-currency", false)
 	OrderHallCommandBar.AreaName:SetVertexColor(classColor.r, classColor.g, classColor.b)
-	OrderHallCommandBar.WorldMapButton:Kill()
+	OrderHallCommandBar.WorldMapButton:Hide()
 
 	-- MissionFrame
 	OrderHallMissionFrame.ClassHallIcon:Kill()
@@ -94,4 +94,4 @@ local function LoadSkin()
 	S:HandleCloseButton(TalentFrame.CloseButton)
 end
 
-S:RegisterSkin('Blizzard_OrderHallUI', LoadSkin)
+S:AddCallbackForAddon('Blizzard_OrderHallUI', "OrderHall", LoadSkin)

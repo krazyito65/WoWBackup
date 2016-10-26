@@ -13,7 +13,7 @@
 ## X-Curse-Project-Name: Details!: Time Line (plugin)
 ## X-Curse-Project-ID: details_timeline
 ## X-Curse-Repository-ID: wow/details_timeline/mainline
-## X-Curse-Packaged-Version: r49
+## X-Curse-Packaged-Version: r50
 ## X-Curse-Project-Name: Details!: Time Line (plugin)
 ## X-Curse-Project-ID: details_timeline
 ## X-Curse-Repository-ID: wow/details_timeline/mainline

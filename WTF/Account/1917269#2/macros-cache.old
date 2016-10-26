@@ -32,6 +32,9 @@ VER 3 0000000000000017 " " "ability_deathwing_bloodcorruption_death"
 2 = {circle}
 1 = {star}
 END
+VER 3 0000000000000086 " " "INV_MISC_QUESTIONMARK"
+/castsequence=Rejuvenation,we
+END
 VER 3 0000000000000052 "  conformation" "SPELL_ARCANE_ARCANE01"
 /click StaticPopup1Button1
 END

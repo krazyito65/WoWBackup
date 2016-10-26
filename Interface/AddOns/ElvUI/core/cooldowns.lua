@@ -2,16 +2,15 @@ local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, Private
 
 --Cache global variables
 --Lua functions
-local floor, min = math.floor, math.min
-local GetTime = GetTime
+local floor = math.floor
 --WoW API / Variables
 local CreateFrame = CreateFrame
+local GetTime = GetTime
 local hooksecurefunc = hooksecurefunc
 
 --Global variables that we don't cache, list them here for the mikk's Find Globals script
 -- GLOBALS: UIParent
 
-local MIN_SCALE = 0.5
 local ICON_SIZE = 36 --the normal size for an icon (don't change this)
 local FONT_SIZE = 20 --the base font size to use at a scale of 1
 local MIN_SCALE = 0.5 --the minimum scale we want to show cooldown counts at, anything below this will be hidden
@@ -48,7 +47,7 @@ local function Cooldown_OnUpdate(cd, elapsed)
 	end
 end
 
-function E:Cooldown_OnSizeChanged(cd, width, height)
+function E:Cooldown_OnSizeChanged(cd, width)
 	local fontScale = floor(width +.5) / ICON_SIZE
 	local override = cd:GetParent():GetParent().SizeOverride
 	if override then
@@ -103,7 +102,6 @@ end
 
 function E:OnSetCooldown(start, duration)
 	if(self.noOCC) then return end
-	local button = self:GetParent()
 
 	if start > 0 and duration > MIN_DURATION then
 		local timer = self.timer or E:CreateCooldownTimer(self)
@@ -126,11 +124,6 @@ function E:RegisterCooldown(cooldown)
 	hooksecurefunc(cooldown, "SetCooldown", E.OnSetCooldown)
 	cooldown.isHooked = true
 	cooldown:SetHideCountdownNumbers(true)
-	cooldown.SetHideCountdownNumbers = E.noop
-	if E.private.actionbar.hideCooldownBling then
-		cooldown:SetDrawBling(false)
-		cooldown.SetDrawBling = E.noop
-	end
 end
 
 function E:UpdateCooldownSettings()

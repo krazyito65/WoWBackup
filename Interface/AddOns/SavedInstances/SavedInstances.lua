@@ -14,7 +14,7 @@ local maxdiff = 23 -- max number of instance difficulties
 local maxcol = 4 -- max columns per player+instance
 
 addon.svnrev = {}
-addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 526 $"):match("%d+"))
+addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 528 $"):match("%d+"))
 
 -- local (optimal) references to provided functions
 local table, math, bit, string, pairs, ipairs, unpack, strsplit, time, type, wipe, tonumber, select, strsub = 
@@ -3154,7 +3154,7 @@ local function UpdateTooltip(self,elap)
 	   tooltip:SetBackdrop(GameTooltip:GetBackdrop())
     	   tooltip:SetBackdropColor(GameTooltip:GetBackdropColor()); 
 	   tooltip:SetBackdropBorderColor(GameTooltip:GetBackdropBorderColor())
-	   addon:SkinFrame(tooltip, tooltip:GetName())
+	   addon:SkinFrame(tooltip, "SavedInstancesTooltip")
 	   addon.firstupdate = false
 	end
  	addon.updatetooltip_throttle = (addon.updatetooltip_throttle or 10) + elap 

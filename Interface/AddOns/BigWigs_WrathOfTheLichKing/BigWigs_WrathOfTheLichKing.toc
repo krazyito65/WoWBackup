@@ -1,4 +1,4 @@
-## Interface: 70000
+## Interface: 70100
 
 ## Title: BigWigs [|cffeda55fWrath of the Lich King|r]
 ## Title-zhCN: BigWigs [|cffeda55f巫妖王之怒|r]
@@ -25,7 +25,7 @@
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
-## Version: v7.0.2
+## Version: v7.1.0
 
 ## X-Category: Raid
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.

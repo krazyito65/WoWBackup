@@ -9,7 +9,7 @@ local UIFrameFadeIn, UIFrameFadeOut = UIFrameFadeIn, UIFrameFadeOut
 
 --Global variables that we don't cache, list them here for the mikk's Find Globals script
 -- GLOBALS: HideLeftChat, HideRightChat, HideBothChat, LeftChatPanel, RightChatPanel, Minimap
--- GLOBALS: GameTooltip, LeftChatTab, RightChatTab
+-- GLOBALS: GameTooltip, LeftChatTab, RightChatTab, LeftChatToggleButton, RightChatToggleButton
 -- GLOBALS: LeftChatDataPanel, LeftMiniPanel, RightChatDataPanel, RightMiniPanel, ElvConfigToggle
 
 local PANEL_HEIGHT = 22;
@@ -64,15 +64,15 @@ function LO:TopPanelVisibility()
 	end
 end
 
-local function ChatPanelLeft_OnFade(self)
+local function ChatPanelLeft_OnFade()
 	LeftChatPanel:Hide()
 end
 
-local function ChatPanelRight_OnFade(self)
+local function ChatPanelRight_OnFade()
 	RightChatPanel:Hide()
 end
 
-local function ChatButton_OnEnter(self, ...)
+local function ChatButton_OnEnter(self)
 	if E.db[self.parent:GetName()..'Faded'] then
 		self.parent:Show()
 		UIFrameFadeIn(self.parent, 0.2, self.parent:GetAlpha(), 1)
@@ -87,7 +87,7 @@ local function ChatButton_OnEnter(self, ...)
 	end
 end
 
-local function ChatButton_OnLeave(self, ...)
+local function ChatButton_OnLeave(self)
 	if E.db[self.parent:GetName()..'Faded'] then
 		UIFrameFadeOut(self.parent, 0.2, self.parent:GetAlpha(), 0)
 		UIFrameFadeOut(self, 0.2, self:GetAlpha(), 0)
@@ -96,7 +96,7 @@ local function ChatButton_OnLeave(self, ...)
 	GameTooltip:Hide()
 end
 
-local function ChatButton_OnClick(self, btn)
+local function ChatButton_OnClick(self)
 	GameTooltip:Hide()
 
 	if E.db[self.parent:GetName()..'Faded'] then

@@ -29,7 +29,7 @@ local function LoadSkin()
 	end
 
 	for i = 1, 2 do
-		tab = _G[format("MacroFrameTab%s", i)]
+		local tab = _G[format("MacroFrameTab%s", i)]
 		tab:Height(22)
 	end
 	MacroFrameTab1:Point("TOPLEFT", MacroFrame, "TOPLEFT", 85, -39)
@@ -111,4 +111,4 @@ local function LoadSkin()
 	end
 end
 
-S:RegisterSkin("Blizzard_MacroUI", LoadSkin)
+S:AddCallbackForAddon("Blizzard_MacroUI", "Macro", LoadSkin)

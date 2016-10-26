@@ -20,13 +20,6 @@ X: -453
 Y: -84
 W: 210
 H: 326
-Frame: DBMMinimapButton
-FrameLevel: 5
-Anchor: TOPRIGHT
-X: -138
-Y: -112
-W: 32
-H: 32
 Frame: DetailsPlayerDetailsWindow
 FrameLevel: 1
 Anchor: CENTER

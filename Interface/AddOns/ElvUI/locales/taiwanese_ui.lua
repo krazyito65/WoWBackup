@@ -33,6 +33,7 @@ L["Trigger"] = "觸發器"
 L["Bank"] = true;
 L["Deposit Reagents"] = true;
 L["Hold Control + Right Click:"] = '按住 Ctrl 並按滑鼠右鍵：'
+L["Hold Shift + Drag:"] = '按住 Shift 並拖曳：'
 L["Purchase Bags"] = true;
 L["Purchase"] = "購買銀行欄位"
 L["Reagent Bank"] = true;
@@ -59,6 +60,11 @@ L["RW"] = "團隊警告"
 L["says"] = "說"
 L["whispers"] = "密語"
 L["yells"] = "大喊"
+
+--DataBars
+L["Current Level:"] = true;
+L["Honor XP:"] = true;
+L["Honor Remaining:"] = true;
 
 --DataTexts
 L["(Hold Shift) Memory Usage"] = "(按住Shift) 記憶體使用量"
@@ -101,6 +107,7 @@ L["Offhand"] = "副手"
 L["Profit:"] = "利潤: "
 L["Reset Data: Hold Shift + Right Click"] = "重置數據: 按住 Shift + 右鍵點擊"
 L["Saved Raid(s)"] = "已有進度的副本"
+L["Saved Dungeon(s)"] = true;
 L["Server: "] = "伺服器: "
 L["Session:"] = "本次登入:"
 L["Shoulder"] = "肩部"
@@ -117,6 +124,7 @@ L["Waist"] = "腰部"
 L["Wrist"] = "護腕"
 L["|cffFFFFFFLeft Click:|r Change Talent Specialization"] = true;
 L["|cffFFFFFFRight Click:|r Change Loot Specialization"] = true;
+L["|cffFFFFFFShift + Left Click:|r Show Talent Specialization UI"] = true;
 
 --DebugTools
 L["%s: %s tried to call the protected function '%s'."] = "%s: %s 嘗試調用保護函數'%s'."
@@ -180,7 +188,7 @@ L["Skip Process"] = "略過"
 L["Sticky Frames"] = "框架依附"
 L["Tank"] = "坦克"
 L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = "對話視窗與WOW 原始對話視窗的操作方式相同, 你可以拖拉、移動分頁或重新命名分頁. 請按下方按鈕以設定對話視窗."
-L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = "若要進入內建設定選單, 請輸入/ec, 或者按一下小地圖旁的「C」按鈕.若要略過安裝程序, 請按下方按鈕."
+L["The in-game configuration menu can be accessed by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = "若要進入內建設定選單, 請輸入/ec, 或者按一下小地圖旁的「C」按鈕.若要略過安裝程序, 請按下方按鈕."
 L["Theme Set"] = "主題設置"
 L["Theme Setup"] = "主題安裝"
 L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."] = "此安裝程序有助你瞭解ElvUI 部份功能, 並可協助你預先設定UI."
@@ -281,6 +289,7 @@ L["TargetTarget Frame"] = "目標的目標框架" --Also used in UnitFrames
 L["TargetTargetTarget Frame"] = true;
 L["Tooltip"] = "浮動提示"
 L["Vehicle Seat Frame"] = "載具座位框"
+L["Zone Ability"] = true
 L["DESC_MOVERCONFIG"] = [=[解除框架移動鎖定. 現在可以移動它們, 移好後請點擊「鎖定」.
 
 Options:
@@ -317,6 +326,7 @@ L["|cFFE30000Lua error recieved. You can view the error message when you exit co
 
 --Static Popups
 L["A setting you have changed will change an option for this character only. This setting that you have changed will be uneffected by changing user profiles. Changing this setting requires that you reload your User Interface."] = "你所做的改動只會影響到使用這個插件的本角色, 你需要重新加載介面才能使改動生效."
+L["Are you sure you want to apply this font to all ElvUI elements?"] = true;
 L["Are you sure you want to delete all your gray items?"] = "是否確定要刪除所有灰色物品?"
 L["Are you sure you want to disband the group?"] = "確定要解散隊伍?"
 L["Are you sure you want to reset all the settings on this profile?"] = "確定需要重置這個配置文件中的所有設置?"
@@ -371,5 +381,6 @@ L["You can toggle the microbar by using your middle mouse button on the minimap 
 L["You can use the /resetui command to reset all of your movers. You can also use the command to reset a specific mover, /resetui <mover name>.\nExample: /resetui Player Frame"] = "使用/resetui命令可以重置你的所有框架位置. 你也可以通過命令/resetui <框架名稱> 單獨重置某個框架.\n例如: /resetui Player Frame"
 
 --UnitFrames
+L["Dead"] = true;
 L["Ghost"] = "鬼魂"
 L["Offline"] = "離線"

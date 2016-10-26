@@ -606,18 +606,17 @@ local function LoadSkin()
 		end
 	end)
 
-	--[[GuildInviteFrame:StripTextures()
+	GuildInviteFrame:StripTextures()
 	GuildInviteFrame:SetTemplate('Transparent')
-	GuildInviteFrameLevel:StripTextures()
-	GuildInviteFrameLevel:ClearAllPoints()
-	GuildInviteFrameLevel:Point('TOP', GuildInviteFrame, 'CENTER', -15, -25)
+	GuildInviteFrame.Points:ClearAllPoints()
+	GuildInviteFrame.Points:Point('TOP', GuildInviteFrame, 'CENTER', 15, -25)
 	S:HandleButton(GuildInviteFrameJoinButton)
 	S:HandleButton(GuildInviteFrameDeclineButton)
 	GuildInviteFrame:Height(225)
 	GuildInviteFrame:HookScript("OnEvent", function()
 		GuildInviteFrame:Height(225)
 	end)
-	GuildInviteFrameWarningText:Kill()]]
+	GuildInviteFrameWarningText:Kill()
 
 	--[[local function SkinWatchFrameItems()
 		for i=1, WATCHFRAME_NUM_ITEMS do
@@ -918,14 +917,12 @@ local function LoadSkin()
 		"RecordLoopbackSoundButton",
 		"PlayLoopbackSoundButton",
 		"AudioOptionsVoicePanelChatMode1KeyBindingButton",
-		"CompactUnitFrameProfilesSaveButton",
-		"CompactUnitFrameProfilesDeleteButton",
 		"InterfaceOptionsSocialPanelTwitterLoginButton",
 		"InterfaceOptionsDisplayPanelResetTutorials",
 		"InterfaceOptionsSocialPanelRedockChat"
 	}
 	for _, button in pairs(buttons) do
-		if button then
+		if _G[button] then
 			S:HandleButton(_G[button])
 		end
 	end
@@ -934,6 +931,8 @@ local function LoadSkin()
 	if CompactUnitFrameProfiles then --Some addons disable the Blizzard addon
 		S:HandleCheckBox(CompactUnitFrameProfilesRaidStylePartyFrames)
 		S:HandleButton(CompactUnitFrameProfilesGeneralOptionsFrameResetPositionButton)
+		S:HandleButton(CompactUnitFrameProfilesSaveButton)
+		S:HandleButton(CompactUnitFrameProfilesDeleteButton)
 	end
 	GraphicsButton:StripTextures()
 	RaidButton:StripTextures()
@@ -1085,4 +1084,4 @@ local function LoadSkin()
 	hooksecurefunc("NavBar_AddButton", SkinNavBarButtons)
 end
 
-S:RegisterSkin('ElvUI', LoadSkin)
+S:AddCallback("Misc", LoadSkin)

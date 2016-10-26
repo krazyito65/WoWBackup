@@ -1,15 +1,13 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
+local _, ns = ...
+local ElvUF = ns.oUF
+assert(ElvUF, "ElvUI was unable to locate oUF.")
 
 --Cache global variables
 --Lua functions
 local _G = _G
-local pairs = pairs
-local format = format
-
-local _, ns = ...
-local ElvUF = ns.oUF
-assert(ElvUF, "ElvUI was unable to locate oUF.")
+local tinsert = table.insert
 
 function UF:Construct_TargetTargetFrame(frame)
 	frame.Health = self:Construct_HealthBar(frame, true, true, 'RIGHT')
@@ -102,7 +100,7 @@ function UF:Update_TargetTargetFrame(frame, db)
 	UF:Configure_CustomTexts(frame)
 
 	E:SetMoverSnapOffset(frame:GetName()..'Mover', -(12 + self.db['units'].player.castbar.height))
-	frame:UpdateAllElements()
+	frame:UpdateAllElements("ElvUI_UpdateAllElements")
 end
 
 tinsert(UF['unitstoload'], 'targettarget')

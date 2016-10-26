@@ -85,11 +85,11 @@ E.PopupDialogs["CONFIRM_LOSE_BINDING_CHANGES"] = {
 	text = CONFIRM_LOSE_BINDING_CHANGES,
 	button1 = OKAY,
 	button2 = CANCEL,
-	OnAccept = function(self)
+	OnAccept = function()
 		E:GetModule('ActionBars'):ChangeBindingProfile()
 		E:GetModule('ActionBars').bindingsChanged = nil;
 	end,
-	OnCancel = function(self)
+	OnCancel = function()
 		if ( ElvUIBindPopupWindowCheckButton:GetChecked() ) then
 			ElvUIBindPopupWindowCheckButton:SetChecked();
 		else
@@ -125,8 +125,8 @@ E.PopupDialogs['DISABLE_INCOMPATIBLE_ADDON'] = {
 
 E.PopupDialogs['INCOMPATIBLE_ADDON'] = {
 	text = L["INCOMPATIBLE_ADDON"],
-	OnAccept = function(self) DisableAddOn(E.PopupDialogs['INCOMPATIBLE_ADDON'].addon); ReloadUI(); end,
-	OnCancel = function(self) E.private[lower(E.PopupDialogs['INCOMPATIBLE_ADDON'].module)].enable = false; ReloadUI(); end,
+	OnAccept = function() DisableAddOn(E.PopupDialogs['INCOMPATIBLE_ADDON'].addon); ReloadUI(); end,
+	OnCancel = function() E.private[lower(E.PopupDialogs['INCOMPATIBLE_ADDON'].module)].enable = false; ReloadUI(); end,
 	button3 = L["Disable Warning"],
 	OnAlt = function ()
 		E:StaticPopup_Hide('INCOMPATIBLE_ADDON')
@@ -224,7 +224,7 @@ E.PopupDialogs["BUY_BANK_SLOT"] = {
 	text = CONFIRM_BUY_BANK_SLOT,
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function(self)
+	OnAccept = function()
 		PurchaseSlot()
 	end,
 	OnShow = function(self)
@@ -253,7 +253,7 @@ E.PopupDialogs["RESETUI_CHECK"] = {
 	text = L["Are you sure you want to reset every mover back to it's default position?"],
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function(self)
+	OnAccept = function()
 		E:ResetAllUI()
 	end,
 	timeout = 0,
@@ -338,6 +338,55 @@ E.PopupDialogs["WARNING_BLIZZARD_ADDONS"] = {
 	timeout = 0,
 	hideOnEscape = false,
 	OnAccept = function() EnableAddOn("Blizzard_CompactRaidFrames"); ReloadUI(); end,
+}
+
+E.PopupDialogs['APPLY_FONT_WARNING'] = {
+	text = L["Are you sure you want to apply this font to all ElvUI elements?"],
+	OnAccept = function()
+		local font = E.db.general.font
+		local fontSize = E.db.general.fontSize
+
+		E.db.bags.itemLevelFont = font
+		E.db.bags.itemLevelFontSize = fontSize
+		E.db.bags.countFont = font
+		E.db.bags.countFontSize = fontSize
+		E.db.nameplates.font = font
+		--E.db.nameplate.fontSize = fontSize --Dont use this because nameplate font it somewhat smaller than the rest of the font sizes
+		--E.db.nameplate.buffs.font = font
+		--E.db.nameplate.buffs.fontSize = fontSize  --Dont use this because nameplate font it somewhat smaller than the rest of the font sizes
+		--E.db.nameplate.debuffs.font = font
+		--E.db.nameplate.debuffs.fontSize = fontSize   --Dont use this because nameplate font it somewhat smaller than the rest of the font sizes
+		E.db.actionbar.font = font
+		--E.db.actionbar.fontSize = fontSize	--This may not look good if a big font size is chosen
+		E.db.auras.font = font
+		E.db.auras.fontSize = fontSize
+		E.db.chat.font = font
+		E.db.chat.fontSize = fontSize
+		E.db.chat.tabFont = font
+		E.db.chat.tapFontSize = fontSize
+		E.db.datatexts.font = font
+		E.db.datatexts.fontSize = fontSize
+		E.db.tooltip.font = font
+		E.db.tooltip.fontSize = fontSize
+		E.db.tooltip.headerFontSize = fontSize
+		E.db.tooltip.textFontSize = fontSize
+		E.db.tooltip.smallTextFontSize = fontSize
+		E.db.tooltip.healthBar.font = font
+		--E.db.tooltip.healthbar.fontSize = fontSize -- Size is smaller than default
+		E.db.unitframe.font = font
+		--E.db.unitframe.fontSize = fontSize  -- Size is smaller than default
+		E.db.unitframe.units.party.rdebuffs.font = font
+		E.db.unitframe.units.raid.rdebuffs.font = font
+		E.db.unitframe.units.raid40.rdebuffs.font = font
+
+		E:UpdateAll(true)
+	end,
+	OnCancel = function() E:StaticPopup_Hide('APPLY_FONT_WARNING'); end,
+	button1 = YES,
+	button2 = CANCEL,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = false,
 }
 
 local MAX_STATIC_POPUPS = 4

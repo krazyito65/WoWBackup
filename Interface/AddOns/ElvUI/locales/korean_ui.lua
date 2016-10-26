@@ -33,6 +33,7 @@ L["Trigger"] = "묶음을 펼치고 각 주문에 지정하세요."
 L["Bank"] = "은행"
 L["Deposit Reagents"] = REAGENTBANK_DEPOSIT
 L["Hold Control + Right Click:"] = "Shift 우클릭:"
+L["Hold Shift + Drag:"] = "Shift 드래그:"
 L["Purchase Bags"] = "가방 슬롯 구입"
 L["Purchase"] = "구입"
 L["Reagent Bank"] = REAGENT_BANK
@@ -59,6 +60,11 @@ L["RW"] = "경보"
 L["says"] = "일반"
 L["whispers"] = "귓"
 L["yells"] = "외침"
+
+--DataBars
+L["Current Level:"] = true;
+L["Honor XP:"] = true;
+L["Honor Remaining:"] = true;
 
 --DataTexts
 L["(Hold Shift) Memory Usage"] = "Shift: 메모리 사용량"
@@ -101,6 +107,7 @@ L["Offhand"] = "보조장비"
 L["Profit:"] = "이익:"
 L["Reset Data: Hold Shift + Right Click"] = "기록 리셋: Shift + 우클릭"
 L["Saved Raid(s)"] = "귀속된 던전"
+L["Saved Dungeon(s)"] = true;
 L["Server: "] = "서버:"
 L["Session:"] = "현재 접속:"
 L["Shoulder"] = "어깨"
@@ -117,6 +124,7 @@ L["Waist"] = "허리"
 L["Wrist"] = "손목"
 L["|cffFFFFFFLeft Click:|r Change Talent Specialization"] = "클릭 : 전문화 교체"
 L["|cffFFFFFFRight Click:|r Change Loot Specialization"] = "우클릭 : 전리품 전문화 변경"
+L["|cffFFFFFFShift + Left Click:|r Show Talent Specialization UI"] = true;
 
 --DebugTools
 L["%s: %s tried to call the protected function '%s'."] = "%s: %s 기능이 사용할 수 없는 %s 함수를 사용하려 합니다."
@@ -180,7 +188,7 @@ L["Skip Process"] = "건너뛰기"
 L["Sticky Frames"] = "자석"
 L["Tank"] = "탱커"
 L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = "보편적인 설정을 적용할 뿐이므로, 마음대로 채널표시나 색상을 변경할 수 있습니다.|n아래 버튼을 클릭하면 채팅창 설정을 적용합니다."
-L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = "게임 내 설정창은 채팅창에 /ec를 입력하시거나 미니맵 옆의 C버튼을 클릭하면 열립니다. 그냥 사용하고자 한다면 아래의 |cff2eb7e4[건너뛰기]|r 버튼을 누르세요."
+L["The in-game configuration menu can be accessed by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = "게임 내 설정창은 채팅창에 /ec를 입력하시거나 미니맵 옆의 C버튼을 클릭하면 열립니다. 그냥 사용하고자 한다면 아래의 |cff2eb7e4[건너뛰기]|r 버튼을 누르세요."
 L["Theme Set"] = "테마 적용"
 L["Theme Setup"] = "테마 설정"
 L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."] = "이 설치과정을 통해 ElvUI를 좀 더 자신에게 맞게 설정하고|n몇가지 기능에 대해 알 수 있습니다."
@@ -281,6 +289,7 @@ L["TargetTarget Frame"] = "대상의대상 프레임"
 L["TargetTargetTarget Frame"] = "대상의대상의대상 프레임"
 L["Tooltip"] = "툴팁"
 L["Vehicle Seat Frame"] = "차량 좌석 프레임"
+L["Zone Ability"] = true
 L["DESC_MOVERCONFIG"] = [=[프레임을 드래그로 원하는 위치로 이동시키세요.|n[잠금] 버튼을 누르면 이동모드가 종료됩니다.
 
 Options:
@@ -317,6 +326,7 @@ L["|cFFE30000Lua error recieved. You can view the error message when you exit co
 
 --Static Popups
 L["A setting you have changed will change an option for this character only. This setting that you have changed will be uneffected by changing user profiles. Changing this setting requires that you reload your User Interface."] = "이 설정은 캐릭터별로 따로 저장되므로|n프로필에 영향을 주지도, 받지도 않습니다.|n|n설정 적용을 위해 리로드 하시겠습니까?"
+L["Are you sure you want to apply this font to all ElvUI elements?"] = true;
 L["Are you sure you want to delete all your gray items?"] = "모든 잡동사니를 버리겠습니까?"
 L["Are you sure you want to disband the group?"] = "현재 그룹을 해산하시겠습니까?"
 L["Are you sure you want to reset all the settings on this profile?"] = "현재 사용중인 프로필을 초기화 하시겠습니까?"
@@ -371,5 +381,6 @@ L["You can toggle the microbar by using your middle mouse button on the minimap 
 L["You can use the /resetui command to reset all of your movers. You can also use the command to reset a specific mover, /resetui <mover name>.\nExample: /resetui Player Frame"] = "|cff2eb7e4/resetui|r 입력으로 움직였던 모든 프레임의 위치를 초기화할 수 있습니다. |cff2eb7e4 /resetui 프레임이름|r 으로 특정 프레임만 초기화도 가능합니다."
 
 --UnitFrames
+L["Dead"] = true;
 L["Ghost"] = "유령"
 L["Offline"] = "오프라인"

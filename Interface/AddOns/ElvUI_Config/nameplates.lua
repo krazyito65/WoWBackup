@@ -143,6 +143,7 @@ local function GetUnitSettings(unit, name)
 						name = L["Enable"],
 						type = "toggle",
 						disabled = function() return unit == "PLAYER" end,
+						hidden = function() return unit == "PLAYER" end,
 					},
 					height = {
 						order = 2,
@@ -273,6 +274,26 @@ local function GetUnitSettings(unit, name)
 						name = L["Height"],
 						type = "range",
 						min = 4, max = 20, step = 1,
+					},
+					castTimeFormat = {
+						order = 5,
+						type = "select",
+						name = L["Cast Time Format"],
+						values = {
+							["CURRENT"] = L["Current"],
+							["CURRENT_MAX"] = L["Current / Max"],
+							["REMAINING"] = L["Remaining"],
+						},
+					},
+					channelTimeFormat = {
+						order = 6,
+						type = "select",
+						name = L["Channel Time Format"],
+						values = {
+							["CURRENT"] = L["Current"],
+							["CURRENT_MAX"] = L["Current / Max"],
+							["REMAINING"] = L["Remaining"],
+						},
 					},
 				},
 			},
@@ -486,8 +507,8 @@ local function GetUnitSettings(unit, name)
 		}
 		group.args.alwaysShow = {
 			order = -13,
-			name = L["Always Display"],
-			desc = L["By forcing the nameplate to always show it will not move on the screen to stay below your characters feet."],
+			name = L["Use Static Position"],
+			desc = L["When enabled the nameplate will stay visible in a locked position."],
 			type = "toggle"
 		}
 		group.args.clickthrough = {
@@ -495,6 +516,14 @@ local function GetUnitSettings(unit, name)
 			name = L["Click Through"],
 			type = "toggle",
 			set = function(info, value) E.db.nameplates.units[unit][ info[#info] ] = value; NP:TogglePlayerMouse() end,
+			disabled = function() return not E.db.nameplates.units[unit].alwaysShow end,
+		}
+		group.args.combatFade = {
+			order = -11,
+			name = L["Combat Fade"],
+			desc = L["Hide the nameplate unless you are in combat, you are not on full health or have a target you can attack."],
+			type = "toggle",
+			set = function(info, value) E.db.nameplates.units[unit][ info[#info] ] = value; NP:UpdateVisibility() end,
 			disabled = function() return not E.db.nameplates.units[unit].alwaysShow end,
 		}
 		group.args.healthGroup.args.useClassColor = {
@@ -586,6 +615,25 @@ local function GetUnitSettings(unit, name)
 					name = L["Y-Offset"],
 					type = "range",
 					min = -100, max = 100, step = 1,
+				},
+			},
+		}
+		group.args.detection = {
+			order = 11,
+			name = L["Detection"],
+			type = "group",
+			get = function(info) return E.db.nameplates.units[unit].detection[ info[#info] ] end,
+			set = function(info, value) E.db.nameplates.units[unit].detection[ info[#info] ] = value; NP:ConfigureAll() end,
+			args = {
+				header = {
+					order = 0,
+					type = "header",
+					name = L["Suramar Detection"],
+				},
+				enable = {
+					order = 1,
+					name = L["Enable"],
+					type = "toggle",
 				},
 			},
 		}

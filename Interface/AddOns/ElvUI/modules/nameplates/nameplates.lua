@@ -1,6 +1,5 @@
 ﻿local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local mod = E:NewModule('NamePlates', 'AceHook-3.0', 'AceEvent-3.0', 'AceTimer-3.0')
-local LSM = LibStub("LibSharedMedia-3.0")
 
 --Cache global variables
 --Lua functions
@@ -20,10 +19,14 @@ local hooksecurefunc = hooksecurefunc
 local IsInInstance = IsInInstance
 local RegisterUnitWatch = RegisterUnitWatch
 local SetCVar = SetCVar
+local UnitAffectingCombat = UnitAffectingCombat
 local UnitCanAttack = UnitCanAttack
 local UnitExists = UnitExists
 local UnitGroupRolesAssigned = UnitGroupRolesAssigned
 local UnitHasVehicleUI = UnitHasVehicleUI
+local UnitHealth = UnitHealth
+local UnitHealthMax = UnitHealthMax
+local UnitIsDead = UnitIsDead
 local UnitIsPlayer = UnitIsPlayer
 local UnitIsUnit = UnitIsUnit
 local UnitName = UnitName
@@ -107,6 +110,9 @@ function mod:PLAYER_ENTERING_WORLD()
 			self:CancelTimer(self.CheckHealerTimer)
 			self.CheckHealerTimer = nil;
 		end
+	end
+	if self.db.units.PLAYER.alwaysShow then
+		mod:UpdateVisibility()
 	end
 end
 
@@ -226,7 +232,7 @@ function mod:SetTargetFrame(frame)
 			self:ConfigureElement_CastBar(frame)
 			self:ConfigureElement_Glow(frame)
 			self:ConfigureElement_Elite(frame)
-
+			self:ConfigureElement_Detection(frame)
 			self:ConfigureElement_Level(frame)
 			self:ConfigureElement_Name(frame)
 			self:ConfigureElement_NPCTitle(frame)
@@ -298,6 +304,8 @@ function mod:CheckUnitType(frame)
 	elseif(role ~= "HEALER" and frame.UnitType == "HEALER") then
 		self:UpdateAllFrame(frame)
 	elseif frame.UnitType == "FRIENDLY_PLAYER" then
+		--This line right here is likely the cause of the fps drop when entering world
+		--CheckUnitType is being called about 1000 times because the "UNIT_FACTION" event is being triggered this amount of times for some insane reason
 		self:UpdateAllFrame(frame)
 	elseif(frame.UnitType == "FRIENDLY_NPC" or frame.UnitType == "HEALER") then
 		if(CanAttack) then
@@ -310,7 +318,7 @@ function mod:CheckUnitType(frame)
 	end
 end
 
-function mod:NAME_PLATE_UNIT_ADDED(event, unit, frame)
+function mod:NAME_PLATE_UNIT_ADDED(_, unit, frame)
 	local frame = frame or self:GetNamePlateForUnit(unit);
 	frame.UnitFrame.unit = unit
 	frame.UnitFrame.displayedUnit = unit
@@ -362,6 +370,7 @@ function mod:NAME_PLATE_UNIT_ADDED(event, unit, frame)
 	self:ConfigureElement_Name(frame.UnitFrame)
 	self:ConfigureElement_NPCTitle(frame.UnitFrame)
 	self:ConfigureElement_Elite(frame.UnitFrame)
+	self:ConfigureElement_Detection(frame.UnitFrame)
 	self:RegisterEvents(frame.UnitFrame, unit)
 	self:UpdateElement_All(frame.UnitFrame, unit)
 
@@ -373,7 +382,7 @@ function mod:NAME_PLATE_UNIT_ADDED(event, unit, frame)
 	end
 end
 
-function mod:NAME_PLATE_UNIT_REMOVED(event, unit, frame, ...)
+function mod:NAME_PLATE_UNIT_REMOVED(_, unit, frame)
 	local frame = frame or self:GetNamePlateForUnit(unit);
 	frame.UnitFrame.unit = nil
 
@@ -401,6 +410,7 @@ function mod:NAME_PLATE_UNIT_REMOVED(event, unit, frame, ...)
 	frame.UnitFrame.NPCTitle:ClearAllPoints()
 	frame.UnitFrame.NPCTitle:SetText("")
 	frame.UnitFrame.Elite:Hide()
+	frame.UnitFrame.DetectionModel:Hide()
 	frame.UnitFrame:Hide()
 	frame.UnitFrame.isTarget = nil
 	frame.UnitFrame.displayedUnit = nil
@@ -425,6 +435,10 @@ end
 
 function mod:ConfigureAll()
 	if E.private.nameplates.enable ~= true then return; end
+
+	--We don't allow player nameplate health to be disabled
+	self.db.units.PLAYER.healthbar.enable = true
+
 	self:ForEachPlate("UpdateAllFrame")
 	self:UpdateCVars()
 	self:TogglePlayerDisplayType()
@@ -478,7 +492,6 @@ function mod:UpdateElement_All(frame, unit, noTargetFrame)
 		mod:UpdateElement_MaxHealth(frame)
 		mod:UpdateElement_Health(frame)
 		mod:UpdateElement_HealthColor(frame)
-
 		mod:UpdateElement_Glow(frame)
 		mod:UpdateElement_Cast(frame)
 		mod:UpdateElement_Auras(frame)
@@ -496,13 +509,14 @@ function mod:UpdateElement_All(frame, unit, noTargetFrame)
 	mod:UpdateElement_NPCTitle(frame)
 	mod:UpdateElement_Level(frame)
 	mod:UpdateElement_Elite(frame)
+	mod:UpdateElement_Detection(frame)
 
 	if(not noTargetFrame) then --infinite loop lol
 		mod:SetTargetFrame(frame)
 	end
 end
 
-function mod:NAME_PLATE_CREATED(event, frame)
+function mod:NAME_PLATE_CREATED(_, frame)
 	frame.UnitFrame = CreateFrame("BUTTON", frame:GetName().."UnitFrame", UIParent);
 	frame.UnitFrame:EnableMouse(false);
 	frame.UnitFrame:SetAllPoints(frame)
@@ -516,18 +530,26 @@ function mod:NAME_PLATE_CREATED(event, frame)
 	frame.UnitFrame.Name = self:ConstructElement_Name(frame.UnitFrame)
 	frame.UnitFrame.NPCTitle = self:ConstructElement_NPCTitle(frame.UnitFrame)
 	frame.UnitFrame.Glow = self:ConstructElement_Glow(frame.UnitFrame)
-	frame.UnitFrame.Buffs = self:ConstructElement_Auras(frame.UnitFrame, 5, "LEFT")
-	frame.UnitFrame.Debuffs = self:ConstructElement_Auras(frame.UnitFrame, 5, "RIGHT")
+	frame.UnitFrame.Buffs = self:ConstructElement_Auras(frame.UnitFrame, "LEFT")
+	frame.UnitFrame.Debuffs = self:ConstructElement_Auras(frame.UnitFrame, "RIGHT")
 	frame.UnitFrame.HealerIcon = self:ConstructElement_HealerIcon(frame.UnitFrame)
 	frame.UnitFrame.RaidIcon = self:ConstructElement_RaidIcon(frame.UnitFrame)
 	frame.UnitFrame.Elite = self:ConstructElement_Elite(frame.UnitFrame)
+	frame.UnitFrame.DetectionModel = self:ConstructElement_Detection(frame.UnitFrame)
 end
 
 function mod:OnEvent(event, unit, ...)
+	if (unit and self.displayedUnit and (not UnitIsUnit(unit, self.displayedUnit) and not ((unit == "vehicle" or unit == "player") and (self.displayedUnit == "vehicle" or self.displayedUnit == "player")))) then 
+		return
+	end
+
 	if(event == "UNIT_HEALTH" or event == "UNIT_HEALTH_FREQUENT") then
 		mod:UpdateElement_Health(self)
 		mod:UpdateElement_HealPrediction(self)
 		mod:UpdateElement_Glow(self)
+		if unit == "vehicle" or unit == "player" then
+			mod:UpdateVisibility()
+		end
 	elseif(event == "UNIT_ABSORB_AMOUNT_CHANGED" or event == "UNIT_HEAL_ABSORB_AMOUNT_CHANGED" or event == "UNIT_HEAL_PREDICTION") then
 		mod:UpdateElement_HealPrediction(self)
 	elseif(event == "UNIT_MAXHEALTH") then
@@ -547,6 +569,7 @@ function mod:OnEvent(event, unit, ...)
 		mod:SetTargetFrame(self)
 		mod:UpdateElement_Glow(self)
 		mod:UpdateElement_HealthColor(self)
+		mod:UpdateVisibility()
 	elseif(event == "UNIT_AURA") then
 		mod:UpdateElement_Auras(self)
 		if(self.IsPlayerFrame) then
@@ -581,7 +604,6 @@ function mod:OnEvent(event, unit, ...)
 end
 
 function mod:RegisterEvents(frame, unit)
-	local unit = frame.unit;
 	local displayedUnit;
 	if ( unit ~= frame.displayedUnit ) then
 		displayedUnit = frame.displayedUnit;
@@ -699,7 +721,7 @@ function mod:TogglePlayerDisplayType()
 	end
 end
 
-function mod:UpdateVehicleStatus(event, unit)
+function mod:UpdateVehicleStatus()
 	if ( UnitHasVehicleUI("player") ) then
 		self.playerUnitToken = "vehicle"
 	else
@@ -719,6 +741,10 @@ function mod:PLAYER_REGEN_DISABLED()
 	elseif(self.db.showEnemyCombat == "TOGGLE_OFF") then
 		SetCVar("nameplateShowEnemies", 0);
 	end
+
+	if self.db.units.PLAYER.alwaysShow then
+		self:UpdateVisibility()
+	end
 end
 
 function mod:PLAYER_REGEN_ENABLED()
@@ -733,6 +759,26 @@ function mod:PLAYER_REGEN_ENABLED()
 	elseif(self.db.showEnemyCombat == "TOGGLE_OFF") then
 		SetCVar("nameplateShowEnemies", 1);
 	end
+	self:UpdateVisibility()
+end
+
+function mod:UpdateVisibility()
+	local frame = self.PlayerFrame__
+	if self.db.units.PLAYER.alwaysShow then
+		local target, dead = UnitExists("target"), UnitIsDead("target")
+		local combat = UnitAffectingCombat("player")
+		local curHP, maxHP = UnitHealth("player"), UnitHealthMax("player")
+		local CanAttack = UnitCanAttack("player", "target")
+		if self.db.units.PLAYER.combatFade and (curHP ~= maxHP or combat or (target and CanAttack and not dead)) then
+			frame.UnitFrame:Show()
+		elseif not self.db.units.PLAYER.combatFade then
+			frame.UnitFrame:Show()
+		else
+			frame.UnitFrame:Hide()
+		end
+	else
+		frame.UnitFrame:Hide()
+	end
 end
 
 function mod:TogglePlayerMouse()
@@ -742,6 +788,9 @@ end
 function mod:Initialize()
 	self.db = E.db["nameplates"]
 	if E.private["nameplates"].enable ~= true then return end
+
+	--We don't allow player nameplate health to be disabled
+	self.db.units.PLAYER.healthbar.enable = true
 
 	self:UpdateVehicleStatus()
 

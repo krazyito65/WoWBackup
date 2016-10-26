@@ -9,12 +9,11 @@ local tonumber, pairs, ipairs, error, unpack, select, tostring = tonumber, pairs
 local assert, print, type, collectgarbage, pcall, date = assert, print, type, collectgarbage, pcall, date
 local twipe, tinsert, tremove = table.wipe, tinsert, tremove
 local floor = floor
-local format, find, split, match, strrep, len, sub, gsub = string.format, string.find, string.split, string.match, strrep, string.len, string.sub, string.gsub
+local format, find, strrep, len, sub = string.format, string.find, strrep, string.len, string.sub
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local C_Timer_After = C_Timer.After
 local C_PetBattles_IsInBattle = C_PetBattles.IsInBattle
-local DoEmote = DoEmote
 local GetBonusBarOffset = GetBonusBarOffset
 local GetCombatRatingBonus = GetCombatRatingBonus
 local GetCVar, SetCVar, GetCVarBool = GetCVar, SetCVar, GetCVarBool
@@ -27,10 +26,8 @@ local GetSpellInfo = GetSpellInfo
 local InCombatLockdown = InCombatLockdown
 local IsAddOnLoaded = IsAddOnLoaded
 local IsInInstance, IsInGroup, IsInRaid = IsInInstance, IsInGroup, IsInRaid
-local PlayMusic, StopMusic = PlayMusic, StopMusic
 local RequestBattlefieldScoreData = RequestBattlefieldScoreData
 local SendAddonMessage = SendAddonMessage
-local SendChatMessage = SendChatMessage
 local UnitGroupRolesAssigned = UnitGroupRolesAssigned
 local UnitHasVehicleUI = UnitHasVehicleUI
 local UnitLevel, UnitStat, UnitAttackPower = UnitLevel, UnitStat, UnitAttackPower
@@ -39,7 +36,6 @@ local CUSTOM_CLASS_COLORS = CUSTOM_CLASS_COLORS
 local ERR_NOT_IN_COMBAT = ERR_NOT_IN_COMBAT
 local LE_PARTY_CATEGORY_HOME = LE_PARTY_CATEGORY_HOME
 local LE_PARTY_CATEGORY_INSTANCE = LE_PARTY_CATEGORY_INSTANCE
-local NUM_PET_ACTION_SLOTS = NUM_PET_ACTION_SLOTS
 local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
 --Global variables that we don't cache, list them here for the mikk's Find Globals script
@@ -286,7 +282,7 @@ function E:UpdateMedia()
 end
 
 E.LockedCVars = {}
-function E:PLAYER_REGEN_ENABLED(event)
+function E:PLAYER_REGEN_ENABLED(_)
 	if(self.CVarUpdate) then
 		for cvarName, value in pairs(self.LockedCVars) do
 			if(GetCVar(cvarName) ~= value) then
@@ -333,7 +329,7 @@ local MasqueGroupToTableElement = {
 	["Debuffs"] = {"auras", "debuffs"},
 }
 
-local function MasqueCallback(Addon, Group, SkinID, Gloss, Backdrop, Colors, Disabled)
+local function MasqueCallback(_, Group, _, _, _, _, Disabled)
 	if not E.private then return; end
 	local element = MasqueGroupToTableElement[Group]
 
@@ -493,8 +489,9 @@ end
 --This frame everything in ElvUI should be anchored to for Eyefinity support.
 E.UIParent = CreateFrame('Frame', 'ElvUIParent', UIParent);
 E.UIParent:SetFrameLevel(UIParent:GetFrameLevel());
-E.UIParent:SetPoint('BOTTOM', UIParent, 'BOTTOM');
+E.UIParent:SetPoint('CENTER', UIParent, 'CENTER');
 E.UIParent:SetSize(UIParent:GetSize());
+E.UIParent.origHeight = E.UIParent:GetHeight()
 E['snapBars'][#E['snapBars'] + 1] = E.UIParent
 
 E.HiddenFrame = CreateFrame('Frame')
@@ -853,7 +850,6 @@ function E:SplitString(s, delim)
 end
 
 function E:SendMessage()
-	local _, instanceType = IsInInstance()
 	if IsInRaid() then
 		SendAddonMessage("ELVUI_VERSIONCHK", E.version, (not IsInRaid(LE_PARTY_CATEGORY_HOME) and IsInRaid(LE_PARTY_CATEGORY_INSTANCE)) and "INSTANCE_CHAT" or "RAID")
 	elseif IsInGroup() then
@@ -868,9 +864,8 @@ end
 
 local myName = E.myname.."-"..E.myrealm;
 myName = myName:gsub("%s+", "")
-local frames = {}
 
-local function SendRecieve(self, event, prefix, message, channel, sender)
+local function SendRecieve(_, event, prefix, message, _, sender)
 
 	if event == "CHAT_MSG_ADDON" then
 		if(sender == myName) then return end
@@ -911,7 +906,13 @@ function E:UpdateAll(ignoreInstall)
 	self.db.theme = nil;
 	self.db.install_complete = nil;
 
+	--The mover is positioned before it is resized, which causes issues for unitframes
+	--Allow movers to be "pushed" outside the screen, when they are resized they should be back in the screen area.
+	--We set movers to be clamped again at the bottom of this function.
+	self:SetMoversClampedToScreen(false)
+
 	self:SetMoversPositions()
+
 	self:UpdateMedia()
 	self:UpdateCooldownSettings()
 	if self.RefreshGUI then self:RefreshGUI() end --Refresh Config
@@ -928,6 +929,7 @@ function E:UpdateAll(ignoreInstall)
 	local AB = self:GetModule('ActionBars')
 	AB.db = self.db.actionbar
 	AB:UpdateButtonSettings()
+	AB:UpdatePetCooldownSettings()
 	AB:UpdateMicroPositionDimensions()
 	AB:Extra_SetAlpha()
 	AB:Extra_SetScale()
@@ -998,7 +1000,9 @@ function E:UpdateAll(ignoreInstall)
 	LO:TopPanelVisibility()
 	LO:SetDataPanelStyle()
 
-	self:GetModule('Blizzard'):ObjectiveFrameHeight()
+	self:GetModule('Blizzard'):SetObjectiveFrameHeight()
+	
+	self:SetMoversClampedToScreen(true) --Go back to using clamp after resizing has taken place.
 
 	collectgarbage('collect');
 end
@@ -1013,7 +1017,7 @@ function E:RemoveNonPetBattleFrames()
 	self:RegisterEvent("PLAYER_REGEN_DISABLED", "AddNonPetBattleFrames")
 end
 
-function E:AddNonPetBattleFrames(event)
+function E:AddNonPetBattleFrames()
 	if InCombatLockdown() then return end
 	for object, data in pairs(E.FrameLocks) do
 		local obj = _G[object] or object
@@ -1077,7 +1081,7 @@ function E:UnregisterPetBattleHideFrames(object)
 	E.FrameLocks[object] = nil
 end
 
-function E:EnterVehicleHideFrames(event, unit)
+function E:EnterVehicleHideFrames(_, unit)
 	if unit ~= "player" then return; end
 	
 	for object in pairs(E.VehicleLocks) do
@@ -1085,7 +1089,7 @@ function E:EnterVehicleHideFrames(event, unit)
 	end
 end
 
-function E:ExitVehicleShowFrames(event, unit)
+function E:ExitVehicleShowFrames(_, unit)
 	if unit ~= "player" then return; end
 	
 	for object, originalParent in pairs(E.VehicleLocks) do
@@ -1245,18 +1249,10 @@ function E:DBConversions()
 	if E.db.nameplate then
 		E.db.nameplate = nil
 	end
-
-	--We have changed the required separator from a comma to a semicolon.
-	--Because there is no good way to determine if a comma is part of an item string or not,
-	--we just have to reset it all and let people build a new list.
-	if not E.db.bagSortIgnoreItemsReset then
-		E.db.bags.ignoreItems = ""
-		E.db.bagSortIgnoreItemsReset = true
-	end
 end
 
 local CPU_USAGE = {}
-local function CompareCPUDiff(showall, module, minCalls)
+local function CompareCPUDiff(showall, minCalls)
 	local greatestUsage, greatestCalls, greatestName, newName, newFunc
 	local greatestDiff, lastModule, mod, newUsage, calls, differance = 0;
 
@@ -1319,7 +1315,7 @@ function E:GetTopCPUFunc(msg)
 		end
 	end
 
-	self:Delay(delay, CompareCPUDiff, showall, module, minCalls)
+	self:Delay(delay, CompareCPUDiff, showall, minCalls)
 	self:Print("Calculating CPU Usage differences (module: "..(module or "?")..", showall: "..tostring(showall)..", minCalls: "..tostring(minCalls)..", delay: "..tostring(delay)..")")
 end
 
@@ -1393,14 +1389,23 @@ function E:Initialize()
 		print(select(2, E:GetModule('Chat'):FindURL("CHAT_MSG_DUMMY", format(L["LOGIN_MSG"]:gsub("ElvUI", E.UIName), self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version)))..'.')
 	end
 
-	--Disable OrderHall Bar if needed
+	--Disable OrderHall Bar or resize ElvUIParent if needed
 	local function HandleCommandBar()
-		if E.global.general.disableOrderHallBar then
+		if E.global.general.commandBarSetting == "DISABLED" then
 			local bar = OrderHallCommandBar
 			bar:UnregisterAllEvents()
 			bar:SetScript("OnShow", bar.Hide)
 			bar:Hide()
 			UIParent:UnregisterEvent("UNIT_AURA")--Only used for OrderHall Bar
+		elseif E.global.general.commandBarSetting == "ENABLED_RESIZEPARENT" then
+			E.UIParent:SetPoint("BOTTOM", UIParent, "BOTTOM");
+			OrderHallCommandBar:HookScript("OnShow", function()
+				local height = E.UIParent.origHeight - OrderHallCommandBar:GetHeight()
+				E.UIParent:SetHeight(height)
+			end)
+			OrderHallCommandBar:HookScript("OnHide", function()
+				E.UIParent:SetHeight(E.UIParent.origHeight)
+			end)
 		end
 	end
 	if OrderHallCommandBar then
@@ -1409,17 +1414,17 @@ function E:Initialize()
 		local f = CreateFrame("Frame")
 		f:RegisterEvent("ADDON_LOADED")
 		f:SetScript("OnEvent", function(self, event, addon)
-			if addon == "Blizzard_OrderHallUI" then
+			if event == "ADDON_LOADED" and addon == "Blizzard_OrderHallUI" then
+				if InCombatLockdown() then
+					self:RegisterEvent("PLAYER_REGEN_ENABLED")
+				else
+					HandleCommandBar()
+				end
+				self:UnregisterEvent(event)
+			elseif event == "PLAYER_REGEN_ENABLED" then
 				HandleCommandBar()
+				self:UnregisterEvent(event)
 			end
 		end)
 	end
-
-	--We need to set the real max distance after the slider control has been set up because it is reset at this point
-	--We only do this if the user had set max camera distance to "Far" in the options. At some point Blizzard will fix the resetting.
-	hooksecurefunc("BlizzardOptionsPanel_SetupControl", function(control)
-		if control == InterfaceOptionsCameraPanelMaxDistanceSlider and E:Round(tonumber(GetCVar("cameraDistanceMaxFactor")), 1) == 1.9 then
-			SetCVar("cameraDistanceMaxFactor", 2.6)
-		end
-	end)
 end

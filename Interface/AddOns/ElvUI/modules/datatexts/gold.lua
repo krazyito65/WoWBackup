@@ -9,11 +9,10 @@ local join = string.join
 local IsLoggedIn = IsLoggedIn
 local GetMoney = GetMoney
 local IsShiftKeyDown = IsShiftKeyDown
-local ToggleAllBags = ToggleAllBags
 local GetBackpackCurrencyInfo = GetBackpackCurrencyInfo
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: ElvDB
+-- GLOBALS: ElvDB, ToggleAllBags
 
 local MAX_WATCHED_TOKENS = MAX_WATCHED_TOKENS
 local CURRENCY = CURRENCY
@@ -22,7 +21,7 @@ local Profit	= 0
 local Spent		= 0
 local resetInfoFormatter = join("", "|cffaaaaaa", L["Reset Data: Hold Shift + Right Click"], "|r")
 
-local function OnEvent(self, event, ...)
+local function OnEvent(self)
 	if not IsLoggedIn() then return end
 	local NewMoney = GetMoney();
 	ElvDB = ElvDB or { };
@@ -84,7 +83,7 @@ local function OnEnter(self)
 	DT.tooltip:AddDoubleLine(L["Total: "], E:FormatMoney(totalGold, style, textOnly), 1, 1, 1, 1, 1, 1)
 
 	for i = 1, MAX_WATCHED_TOKENS do
-		local name, count, extraCurrencyType, icon, itemID = GetBackpackCurrencyInfo(i)
+		local name, count = GetBackpackCurrencyInfo(i)
 		if name and i == 1 then
 			DT.tooltip:AddLine(" ")
 			DT.tooltip:AddLine(CURRENCY)

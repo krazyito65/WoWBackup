@@ -11,15 +11,20 @@ local GetActionCooldown = GetActionCooldown
 local HasExtraActionBar = HasExtraActionBar
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: ExtraActionBarFrame, DraenorZoneAbilityFrame
+-- GLOBALS: ExtraActionBarFrame, ZoneAbilityFrame
+
+local ExtraActionBarHolder, ZoneAbilityHolder
 
 local function FixExtraActionCD(cd)
 	local start, duration = GetActionCooldown(cd:GetParent().action)
+	cd:SetHideCountdownNumbers(true)
 	E.OnSetCooldown(cd, start, duration, 0, 0)
 end
 
 function AB:Extra_SetAlpha()
+	if not E.private.actionbar.enable then return; end
 	local alpha = E.db.actionbar.extraActionButton.alpha
+
 	for i=1, ExtraActionBarFrame:GetNumChildren() do
 		local button = _G["ExtraActionButton"..i]
 		if button then
@@ -34,29 +39,37 @@ function AB:Extra_SetAlpha()
 end
 
 function AB:Extra_SetScale()
+	if not E.private.actionbar.enable then return; end
 	local scale = E.db.actionbar.extraActionButton.scale
+
 	if ExtraActionBarFrame then
 		ExtraActionBarFrame:SetScale(scale)
+		ExtraActionBarHolder:Size(ExtraActionBarFrame:GetWidth() * scale)
 	end
 
 	if ZoneAbilityFrame then
 		ZoneAbilityFrame:SetScale(scale)
+		ZoneAbilityHolder:Size(ZoneAbilityFrame:GetWidth() * scale)
 	end
 end
 
 function AB:SetupExtraButton()
-	local holder = CreateFrame('Frame', nil, E.UIParent)
-	holder:Point('BOTTOM', E.UIParent, 'BOTTOM', 0, 150)
-	holder:Size(ExtraActionBarFrame:GetSize())
+	ExtraActionBarHolder = CreateFrame('Frame', nil, E.UIParent)
+	ExtraActionBarHolder:Point('BOTTOM', E.UIParent, 'BOTTOM', 0, 150)
+	ExtraActionBarHolder:Size(ExtraActionBarFrame:GetSize())
 
-	ExtraActionBarFrame:SetParent(holder)
+	ExtraActionBarFrame:SetParent(ExtraActionBarHolder)
 	ExtraActionBarFrame:ClearAllPoints()
-	ExtraActionBarFrame:Point('CENTER', holder, 'CENTER')
+	ExtraActionBarFrame:Point('CENTER', ExtraActionBarHolder, 'CENTER')
 	ExtraActionBarFrame.ignoreFramePositionManager  = true
 
-	ZoneAbilityFrame:SetParent(holder)
+	ZoneAbilityHolder = CreateFrame('Frame', nil, E.UIParent)
+	ZoneAbilityHolder:Point('BOTTOM', ExtraActionBarFrame, 'TOP', 0, 2)
+	ZoneAbilityHolder:Size(ExtraActionBarFrame:GetSize())
+
+	ZoneAbilityFrame:SetParent(ZoneAbilityHolder)
 	ZoneAbilityFrame:ClearAllPoints()
-	ZoneAbilityFrame:Point('CENTER', holder, 'CENTER')
+	ZoneAbilityFrame:Point('CENTER', ZoneAbilityHolder, 'CENTER')
 	ZoneAbilityFrame.ignoreFramePositionManager = true
 
 	for i=1, ExtraActionBarFrame:GetNumChildren() do
@@ -82,7 +95,7 @@ function AB:SetupExtraButton()
 	end
 
 	local button = ZoneAbilityFrame.SpellButton
-		if button then
+	if button then
 		button:SetNormalTexture('')
 		button:StyleButton(nil, nil, nil, true)
 		button:SetTemplate()
@@ -99,8 +112,9 @@ function AB:SetupExtraButton()
 		ExtraActionBarFrame:Show();
 	end
 
+	E:CreateMover(ExtraActionBarHolder, 'BossButton', L["Boss Button"], nil, nil, nil, 'ALL,ACTIONBARS');
+	E:CreateMover(ZoneAbilityHolder, 'ZoneAbility', L["Zone Ability"], nil, nil, nil, 'ALL,ACTIONBARS');
+
 	AB:Extra_SetAlpha()
 	AB:Extra_SetScale()
-
-	E:CreateMover(holder, 'BossButton', L["Boss Button"], nil, nil, nil, 'ALL,ACTIONBARS');
 end

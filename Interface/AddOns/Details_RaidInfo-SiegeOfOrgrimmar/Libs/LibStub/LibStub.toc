@@ -9,7 +9,7 @@
 ## X-Curse-Project-Name: LibStub
 ## X-Curse-Project-ID: libstub
 ## X-Curse-Repository-ID: wow/libstub/mainline
-## X-Curse-Packaged-Version: r4
+## X-Curse-Packaged-Version: r5
 ## X-Curse-Project-Name: Details!: Legacy Raids (info)
 ## X-Curse-Project-ID: details-legacy-raids-info
 ## X-Curse-Repository-ID: wow/details-legacy-raids-info/mainline

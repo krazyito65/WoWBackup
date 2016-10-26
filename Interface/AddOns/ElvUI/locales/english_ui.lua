@@ -33,6 +33,7 @@ L["Trigger"] = true;
 L["Bank"] = true;
 L["Deposit Reagents"] = true;
 L["Hold Control + Right Click:"] = true;
+L["Hold Shift + Drag:"] = true;
 L["Purchase Bags"] = true;
 L["Purchase"] = true;
 L["Reagent Bank"] = true;
@@ -59,6 +60,11 @@ L["RW"] = true;
 L["says"] = true;
 L["whispers"] = true;
 L["yells"] = true;
+
+--DataBars
+L["Current Level:"] = true;
+L["Honor XP:"] = true;
+L["Honor Remaining:"] = true;
 
 --DataTexts
 L["(Hold Shift) Memory Usage"] = true;
@@ -101,6 +107,7 @@ L["Offhand"] = true;
 L["Profit:"] = true;
 L["Reset Data: Hold Shift + Right Click"] = true;
 L["Saved Raid(s)"] = true;
+L["Saved Dungeon(s)"] = true;
 L["Server: "] = true;
 L["Session:"] = true;
 L["Shoulder"] = true;
@@ -117,6 +124,7 @@ L["Waist"] = true;
 L["Wrist"] = true;
 L["|cffFFFFFFLeft Click:|r Change Talent Specialization"] = true;
 L["|cffFFFFFFRight Click:|r Change Loot Specialization"] = true;
+L["|cffFFFFFFShift + Left Click:|r Show Talent Specialization UI"] = true;
 
 --DebugTools
 L["%s: %s tried to call the protected function '%s'."] = true;
@@ -181,7 +189,7 @@ L["Skip Process"] = true;
 L["Sticky Frames"] = true;
 L["Tank"] = true;
 L["The chat windows function the same as Blizzard standard chat windows, you can right click the tabs and drag them around, rename, etc. Please click the button below to setup your chat windows."] = true;
-L["The in-game configuration menu can be accesses by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = true;
+L["The in-game configuration menu can be accessed by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."] = true;
 L["Theme Set"] = true;
 L["Theme Setup"] = true;
 L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."] = true;
@@ -282,6 +290,7 @@ L["TargetTarget Frame"] = true; --Also used in UnitFrames
 L["TargetTargetTarget Frame"] = true; --Also used in UnitFrames
 L["Tooltip"] = true;
 L["Vehicle Seat Frame"] = true;
+L["Zone Ability"] = true
 L["DESC_MOVERCONFIG"] = [=[Movers unlocked. Move them now and click Lock when you are done.
 
 Options:
@@ -318,6 +327,7 @@ L["|cFFE30000Lua error recieved. You can view the error message when you exit co
 
 --Static Popups
 L["A setting you have changed will change an option for this character only. This setting that you have changed will be uneffected by changing user profiles. Changing this setting requires that you reload your User Interface."] = true;
+L["Are you sure you want to apply this font to all ElvUI elements?"] = true;
 L["Are you sure you want to delete all your gray items?"] = true;
 L["Are you sure you want to disband the group?"] = true;
 L["Are you sure you want to reset all the settings on this profile?"] = true;
@@ -372,5 +382,6 @@ L["You can toggle the microbar by using your middle mouse button on the minimap 
 L["You can use the /resetui command to reset all of your movers. You can also use the command to reset a specific mover, /resetui <mover name>.\nExample: /resetui Player Frame"] = true;
 
 --UnitFrames
+L["Dead"] = true;
 L["Ghost"] = true;
-L["Offline"] = true;	
+L["Offline"] = true;

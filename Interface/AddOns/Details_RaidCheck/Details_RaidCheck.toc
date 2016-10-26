@@ -1,8 +1,8 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Details Raid Check (plugin)
 ## Notes: Show a icon on Details title bar showing flask, food, pre-pots.
 ## RequiredDeps: Details
-## X-Curse-Packaged-Version: r561
+## X-Curse-Packaged-Version: r565
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

@@ -146,6 +146,19 @@ function ACU:OnInitialize()
 
 end
 
+function ACU.StopRealTime()
+	if (ACU.RealTimeTick) then
+		ACU.RealTimeTick:Cancel()
+		ACU.RealTimeTick = nil
+		ACU:Msg ("real time ended.")
+	end
+	if (ACU.RealTimeTimer) then
+		ACU.RealTimeTimer:Cancel()
+	end
+	ACU.RealTimeTimer = nil
+	ACU.realtime_timer_string:SetText ("")
+end
+
 ACU:RegisterChatCommand ("cpu", function (command) 
 	
 	if (command == "debug") then
@@ -154,16 +167,18 @@ ACU:RegisterChatCommand ("cpu", function (command)
 		EventFrame:RegisterEvent ("PLAYER_REGEN_DISABLED")
 		EventFrame:RegisterEvent ("PLAYER_REGEN_ENABLED")
 		
-	elseif (command == "realtime") then
+	elseif (command == "realtime" or command:find ("realtime")) then
+		
+		local command, timer = command:match("^(%S*)%s*(.-)$")
+		timer = tonumber (timer)
+		
 		if (ACU:IsProfileEnabled()) then
 			if (ACU.RealTimeTick) then
-				ACU.RealTimeTick:Cancel()
-				ACU.RealTimeTick = nil
-				ACU:Msg ("real time ended.")
+				ACU.StopRealTime()
 				return
 			end
 			ACU:Msg ("real time started.")
-			ACU:StartRealTime()
+			ACU:StartRealTime (timer)
 		else
 			ACU:Msg ("cpu profiling isn't enabled, please open the window with /cpu and click on the enable profile button.")
 		end
@@ -800,8 +815,18 @@ local tutorial_phrases = {
 			--local pcolor = ACU:GetPercentColor (psec)
 			local milliseconds = psec * 1000
 			
-			line.total_usage:SetText (format ("%.2fs", data [2] / 1000) .. "|r")
-			line.total_psec:SetText (format ("%.2f", milliseconds) .. "|r")
+			if (ACU.RealTimeTick) then
+				line.total_usage:SetText (format ("%.8f", data [2] / 1000) .. "|r")
+			else
+				line.total_usage:SetText (format ("%.2fs", data [2] / 1000) .. "|r")
+			end
+			
+			if (ACU.RealTimeTick) then
+				--line.total_psec:SetText (format ("%.10f", data [2]/total_time/1000))
+				line.total_psec:SetText (format ("%.8f", milliseconds))
+			else
+				line.total_psec:SetText (format ("%.2f", milliseconds) .. "|r")
+			end
 			line.total_percent:SetText (format ("%.2f%%", data [2] / t.total_cpu_by_addons * 100) .. "|r")
 			
 			line.graphic_checkbox:SetChecked (t.showing [data [1]])
@@ -916,6 +941,10 @@ local tutorial_phrases = {
 				ReloadUI()
 			end
 		end)
+		
+		local realtime_timer_string = f:CreateFontString (nil, "overlay", "GameFontNormal")
+		realtime_timer_string:SetPoint ("right", enable_disable, "left", -10, 0)
+		ACU.realtime_timer_string = realtime_timer_string
 		
 		local t = enable_disable:CreateFontString (nil, "overlay", "GameFontNormal")
 		t:SetPoint ("center", enable_disable, "center")
@@ -1127,8 +1156,12 @@ local tutorial_phrases = {
 		
 		ACU.DataPool [1] = ordered
 		ACU:UpdateTableFrame()
+		
+		if (ACU.RealTimeTimer) then
+			ACU.realtime_timer_string:SetText (floor (ACU.RealTimeTimer.FinishesAt - GetTime()))
+		end
 	end
-	function ACU:StartRealTime()
+	function ACU:StartRealTime (amount_of_time)
 		real_time_table = {}
 		real_time_table.addons = {}
 		real_time_table.total = 0
@@ -1154,8 +1187,22 @@ local tutorial_phrases = {
 		end
 		
 		CPUResetUsage()
+
+		if (ACU.RealTimeTimer) then
+			ACU.RealTimeTimer:Cancel()
+		end
+		if (ACU.RealTimeTick) then
+			ACU.RealTimeTick:Cancel()
+		end
 		
 		ACU.RealTimeTick = C_Timer.NewTicker (1, do_realtime_tick)
+		ACU.RealTimeTimer = nil
+		
+		if (amount_of_time) then
+			ACU.RealTimeTimer = C_Timer.NewTimer (amount_of_time, ACU.StopRealTime)
+			ACU.RealTimeTimer.TotalTime = amount_of_time
+			ACU.RealTimeTimer.FinishesAt = GetTime() + amount_of_time
+		end
 	end
 	
 	function ACU:UpdateTableFrame()

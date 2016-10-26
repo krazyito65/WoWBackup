@@ -25,6 +25,7 @@ function DT:Initialize()
 	TT:HookScript(self.tooltip, 'OnShow', 'SetStyle')
 
 	self:RegisterLDB()
+	self:RegisterCustomCurrencyDT() --Register all the user created currency datatexts from the "CustomCurrency" DT.
 	self:LoadDataTexts()
 
 	self:RegisterEvent('PLAYER_ENTERING_WORLD', 'LoadDataTexts')
@@ -73,7 +74,7 @@ function DT:RegisterLDB()
 			obj.OnClick(self, button)
 		end
 
-		local function textUpdate(event, name, key, value, dataobj)
+		local function textUpdate(_, name, _, value)
 			if value == nil or (len(value) >= 3) or value == 'n/a' or name == value then
 				curFrame.text:SetText(value ~= 'n/a' and value or name)
 			else

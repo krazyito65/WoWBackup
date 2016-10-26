@@ -126,7 +126,7 @@ local function CreatePluginFunctions()
 			if (not DeathGraphs.BossEncounterStartAt) then
 				DeathGraphs.BossEncounterStartAt = GetTime()
 			end
-			print ("ADL: registering COMBATLOG")
+			--print ("ADL: registering COMBATLOG")
 		
 		elseif (event == "COMBAT_PLAYER_ENTER") then --> combat started
 			DeathGraphs.BossEncounterStartAt = GetTime()
@@ -341,7 +341,7 @@ local function CreatePluginFunctions()
 							tremove (DeathGraphs.current_database)
 						end						
 						
-						print ("ADL:", combat.is_boss.name, combat:GetCombatTime())
+						--print ("ADL:", combat.is_boss.name, combat:GetCombatTime())
 						
 						--> timeline stuff, spellcast
 						DeathGraphs.graph_database [DeathGraphs.last_encounter_hash] = DeathGraphs.graph_database [DeathGraphs.last_encounter_hash] or {deaths = {}, spells = {}, ids = {}}

@@ -21,7 +21,6 @@ local UnitOnTaxi = UnitOnTaxi
 local VehicleExit = VehicleExit
 local PetDismiss = PetDismiss
 local CanExitVehicle = CanExitVehicle
-local ActionBarController_GetCurrentActionBarState = ActionBarController_GetCurrentActionBarState
 local TaxiRequestEarlyLanding = TaxiRequestEarlyLanding
 local MainMenuBarVehicleLeaveButton_OnEnter = MainMenuBarVehicleLeaveButton_OnEnter
 local RegisterStateDriver = RegisterStateDriver
@@ -39,16 +38,11 @@ local GetNumFlyouts, GetFlyoutInfo = GetNumFlyouts, GetFlyoutInfo
 local GetFlyoutID = GetFlyoutID
 local GetMouseFocus = GetMouseFocus
 local HasOverrideActionBar, HasVehicleActionBar = HasOverrideActionBar, HasVehicleActionBar
-local GetCVarBool, SetCVar = GetCVarBool, SetCVar
+local SetCVar = SetCVar
 local C_PetBattlesIsInBattle = C_PetBattles.IsInBattle
 local NUM_ACTIONBAR_BUTTONS = NUM_ACTIONBAR_BUTTONS
-local LE_ACTIONBAR_STATE_MAIN = LE_ACTIONBAR_STATE_MAIN
-local BOTTOMLEFT_ACTIONBAR_PAGE = BOTTOMLEFT_ACTIONBAR_PAGE
-local BOTTOMRIGHT_ACTIONBAR_PAGE = BOTTOMRIGHT_ACTIONBAR_PAGE
-local RIGHT_ACTIONBAR_PAGE = RIGHT_ACTIONBAR_PAGE
-local LEFT_ACTIONBAR_PAGE = LEFT_ACTIONBAR_PAGE
 
---Global variables that we don't cache, list them here for mikk's FindGlobals script
+--Global variables that we don't need to cache, list them here for mikk's FindGlobals script
 -- GLOBALS: LeaveVehicleButton, Minimap, SpellFlyout, SpellFlyoutHorizontalBackground
 -- GLOBALS: SpellFlyoutVerticalBackground, IconIntroTracker, MultiCastActionBarFrame
 -- GLOBALS: PetActionBarFrame, PossessBarFrame, OverrideActionBar, StanceBarFrame
@@ -59,14 +53,13 @@ local LEFT_ACTIONBAR_PAGE = LEFT_ACTIONBAR_PAGE
 -- GLOBALS: InterfaceOptionsActionBarsPanelBottomRight, InterfaceOptionsActionBarsPanelBottomLeft
 -- GLOBALS: InterfaceOptionsActionBarsPanelRight, InterfaceOptionsActionBarsPanelRightTwo
 -- GLOBALS: InterfaceOptionsActionBarsPanelPickupActionKeyDropDownButton
--- GLOBALS: InterfaceOptionsActionBarsPanelLockActionBars
+-- GLOBALS: InterfaceOptionsActionBarsPanelLockActionBars, LOCK_ACTIONBAR
 -- GLOBALS: InterfaceOptionsActionBarsPanelPickupActionKeyDropDown
--- GLOBALS: InterfaceOptionsStatusTextPanelXP
+-- GLOBALS: InterfaceOptionsStatusTextPanelXP, ArtifactWatchBar, HonorWatchBar
 -- GLOBALS: PlayerTalentFrame, SpellFlyoutBackgroundEnd, UIParent
 -- GLOBALS: VIEWABLE_ACTION_BAR_PAGES, SHOW_MULTI_ACTIONBAR_1, SHOW_MULTI_ACTIONBAR_2
 -- GLOBALS: SHOW_MULTI_ACTIONBAR_3, SHOW_MULTI_ACTIONBAR_4
 
-local Sticky = LibStub("LibSimpleSticky-1.0");
 local _LOCK
 local LAB = LibStub("LibActionButton-1.0-ElvUI")
 local LSM = LibStub("LibSharedMedia-3.0")
@@ -119,7 +112,7 @@ AB["barDefaults"] = {
 }
 
 AB.customExitButton = {
-	func = function(button)
+	func = function()
 		if UnitExists('vehicle') then
 			VehicleExit()
 		else
@@ -153,19 +146,22 @@ function AB:PositionAndSizeBar(barName)
 		numColumns = 1;
 	end
 
-	--Size of all buttons + Spacing between all buttons + Spacing between additional rows of buttons + Spacing between backdrop and buttons + Spacing on end borders with non-thin borders
-	local barWidth = (size * (buttonsPerRow * widthMult)) + ((buttonSpacing * (buttonsPerRow - 1)) * widthMult) + (buttonSpacing * (widthMult-1)) + (backdropSpacing*2) + ((self.db[barName].backdrop == true and E.Border or E.Spacing)*2)
-	local barHeight = (size * (numColumns * heightMult)) + ((buttonSpacing * (numColumns - 1)) * heightMult) + (buttonSpacing * (heightMult-1)) + (backdropSpacing*2) + ((self.db[barName].backdrop == true and E.Border or E.Spacing)*2)
-	bar:Width(barWidth);
-	bar:Height(barHeight);
-
-	bar.mouseover = self.db[barName].mouseover
-
 	if self.db[barName].backdrop == true then
 		bar.backdrop:Show();
 	else
 		bar.backdrop:Hide();
+		--Set size multipliers to 1 when backdrop is disabled
+		widthMult = 1
+		heightMult = 1
 	end
+
+	--Size of all buttons + Spacing between all buttons + Spacing between additional rows of buttons + Spacing between backdrop and buttons + Spacing on end borders with non-thin borders
+	local barWidth = (size * (buttonsPerRow * widthMult)) + ((buttonSpacing * (buttonsPerRow - 1)) * widthMult) + (buttonSpacing * (widthMult-1)) + ((self.db[barName].backdrop == true and (E.Border + backdropSpacing) or E.Spacing)*2)
+	local barHeight = (size * (numColumns * heightMult)) + ((buttonSpacing * (numColumns - 1)) * heightMult) + (buttonSpacing * (heightMult-1)) + ((self.db[barName].backdrop == true and (E.Border + backdropSpacing) or E.Spacing)*2)
+	bar:Width(barWidth);
+	bar:Height(barHeight);
+
+	bar.mouseover = self.db[barName].mouseover
 
 	local horizontalGrowth, verticalGrowth;
 	if point == "TOPLEFT" or point == "TOPRIGHT" then
@@ -192,7 +188,7 @@ function AB:PositionAndSizeBar(barName)
 		bar:SetParent(E.UIParent)
 	end
 	local button, lastButton, lastColumnButton;
-	local firstButtonSpacing = backdropSpacing + (self.db[barName].backdrop == true and E.Border or E.Spacing)
+	local firstButtonSpacing = (self.db[barName].backdrop == true and (E.Border + backdropSpacing) or E.Spacing)
 	for i=1, NUM_ACTIONBAR_BUTTONS do
 		button = bar.buttons[i];
 		lastButton = bar.buttons[i-1];
@@ -418,7 +414,7 @@ function AB:PLAYER_REGEN_ENABLED()
 	self:UnregisterEvent('PLAYER_REGEN_ENABLED')
 end
 
-local function Vehicle_OnEvent(self, event)
+local function Vehicle_OnEvent(self)
 	if ( CanExitVehicle() ) and not E.db.general.minimap.icons.vehicleLeave.hide then
 		self:Show()
 		self:GetNormalTexture():SetVertexColor(1, 1, 1)
@@ -607,11 +603,9 @@ function AB:StyleButton(button, noBackdrop, useMasque)
 	local flash	 = _G[name.."Flash"];
 	local hotkey = _G[name.."HotKey"];
 	local border  = _G[name.."Border"];
-	local macroName = _G[name.."Name"];
 	local normal  = _G[name.."NormalTexture"];
 	local normal2 = button:GetNormalTexture()
 	local shine = _G[name.."Shine"];
-	local combat = InCombatLockdown()
 	local color = self.db.fontColor
 
 	if not button.noBackdrop then
@@ -732,7 +726,7 @@ function AB:BlizzardOptionsPanel_OnEvent()
 	InterfaceOptionsActionBarsPanelRight:SetScript('OnEnter', nil)
 end
 
-function AB:FadeParent_OnEvent(event)
+function AB:FadeParent_OnEvent()
 	local cur, max = UnitHealth("player"), UnitHealthMax("player")
 	local cast, channel = UnitCastingInfo("player"), UnitChannelInfo("player")
 	local target, focus = UnitExists("target"), UnitExists("focus")
@@ -880,6 +874,9 @@ function AB:UpdateButtonConfig(bar, buttonName)
 	bar.buttonConfig.colors.mana = E:GetColorTable(self.db.noPowerColor)
 	bar.buttonConfig.colors.usable = E:GetColorTable(self.db.usableColor)
 	bar.buttonConfig.colors.notUsable = E:GetColorTable(self.db.notUsableColor)
+	bar.buttonConfig.disableCountDownNumbers = true
+	bar.buttonConfig.useDrawBling = (self.db.hideCooldownBling ~= true)
+	bar.buttonConfig.useDrawSwipeOnCharges = self.db.useDrawSwipeOnCharges
 
 	for i, button in pairs(bar.buttons) do
 		bar.buttonConfig.keyBoundTarget = format(buttonName.."%d", i)
@@ -1120,6 +1117,7 @@ function AB:Initialize()
 	self:CreateVehicleLeave()
 
 	self:UpdateButtonSettings()
+	self:UpdatePetCooldownSettings()
 
 	self:LoadKeyBinder()
 	self:RegisterEvent("UPDATE_BINDINGS", "ReassignBindings")
@@ -1136,7 +1134,7 @@ function AB:Initialize()
 
 	--We handle actionbar lock for regular bars, but the lock on PetBar needs to be handled by WoW so make some necessary updates
 	SetCVar('lockActionBars', (self.db.lockActionBars == true and 1 or 0))
-	LOCK_ACTIONBAR = (self.db.lockActionBars == true and "1" or "0")
+	LOCK_ACTIONBAR = (self.db.lockActionBars == true and "1" or "0") --Keep an eye on this, in case it taints
 
 	SpellFlyout:HookScript("OnShow", SetupFlyoutButton)
 end

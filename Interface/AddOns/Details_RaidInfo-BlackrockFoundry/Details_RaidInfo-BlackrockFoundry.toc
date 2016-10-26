@@ -2,7 +2,7 @@
 ## Title: Details: Blackrock Foundry
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
-## X-Curse-Packaged-Version: r4
+## X-Curse-Packaged-Version: r5
 ## X-Curse-Project-Name: Details!: Legacy Raids (info)
 ## X-Curse-Project-ID: details-legacy-raids-info
 ## X-Curse-Repository-ID: wow/details-legacy-raids-info/mainline

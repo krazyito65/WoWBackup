@@ -1,9 +1,9 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Details Damage, the Game! (plugin)
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## OptionalDeps:  Ace3, LibSharedMedia-3.0, LibBossIDs-1.0, LibGraph-2.0, !ClassColors
-## X-Curse-Packaged-Version: r561
+## X-Curse-Packaged-Version: r565
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

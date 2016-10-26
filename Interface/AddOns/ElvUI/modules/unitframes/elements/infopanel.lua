@@ -1,9 +1,12 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
 
+--Global variables that we don't need to cache, list them here for mikk's FindGlobals script
+-- GLOBALS: CreateFrame
+
 function UF:Construct_InfoPanel(frame)
 	local infoPanel = CreateFrame("Frame", nil, frame)
-	infoPanel:SetFrameStrata("LOW")
+
 	infoPanel:SetFrameLevel(7) --Health is 10 and filled power is 5 by default
 	local thinBorders = self.thinBorders
 	infoPanel:CreateBackdrop("Default", true, nil, thinBorders)

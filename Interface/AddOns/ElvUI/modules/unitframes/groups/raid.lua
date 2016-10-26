@@ -1,32 +1,29 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
-
---Cache global variables
---Lua functions
-local pairs = pairs
-local tinsert = table.insert
---WoW API / Variables
-local CreateFrame = CreateFrame
-local InCombatLockdown = InCombatLockdown
-local IsInInstance = IsInInstance
-local GetInstanceInfo = GetInstanceInfo
-local UnregisterStateDriver = UnregisterStateDriver
-local RegisterStateDriver = RegisterStateDriver
-
---Global variables that we don't cache, list them here for mikk's FindGlobals script
--- GLOBALS: UnitFrame_OnEnter, UnitFrame_OnLeave, ElvUF_Raid
-
 local _, ns = ...
 local ElvUF = ns.oUF
 assert(ElvUF, "ElvUI was unable to locate oUF.")
 
-function UF:Construct_RaidFrames(unitGroup)
+--Cache global variables
+--Lua functions
+local tinsert = table.insert
+--WoW API / Variables
+local CreateFrame = CreateFrame
+local GetInstanceInfo = GetInstanceInfo
+local InCombatLockdown = InCombatLockdown
+local IsInInstance = IsInInstance
+local RegisterStateDriver = RegisterStateDriver
+local UnregisterStateDriver = UnregisterStateDriver
+
+--Global variables that we don't cache, list them here for mikk's FindGlobals script
+-- GLOBALS: UnitFrame_OnEnter, UnitFrame_OnLeave, ElvUF_Raid
+
+function UF:Construct_RaidFrames()
 	self:SetScript('OnEnter', UnitFrame_OnEnter)
 	self:SetScript('OnLeave', UnitFrame_OnLeave)
 
 	self.RaisedElementParent = CreateFrame('Frame', nil, self)
-	self.RaisedElementParent:SetFrameStrata("MEDIUM")
-	self.RaisedElementParent:SetFrameLevel(self:GetFrameLevel() + 10)
+	self.RaisedElementParent:SetFrameLevel(self:GetFrameLevel() + 100)
 
 	self.Health = UF:Construct_HealthBar(self, true, true, 'RIGHT')
 
@@ -54,7 +51,6 @@ function UF:Construct_RaidFrames(unitGroup)
 	self.RaidIcon = UF:Construct_RaidIcon(self)
 	self.ReadyCheck = UF:Construct_ReadyCheckIcon(self)
 	self.HealPrediction = UF:Construct_HealComm(self)
-	self.GPS = UF:Construct_GPS(self)
 	self.Range = UF:Construct_Range(self)
 	self.customTexts = {}
 	self.InfoPanel = UF:Construct_InfoPanel(self)
@@ -79,10 +75,7 @@ function UF:RaidSmartVisibility(event)
 		self.isInstanceForced = nil
 		local inInstance, instanceType = IsInInstance()
 		if(inInstance and (instanceType == 'raid' or instanceType == 'pvp')) then
-			local _, _, _, _, maxPlayers, _, _, mapID, maxPlayersInstance = GetInstanceInfo()
-			--[[if maxPlayersInstance > 0 then
-				maxPlayers = maxPlayersInstance
-			end]]
+			local _, _, _, _, maxPlayers, _, _, mapID = GetInstanceInfo()
 
 			if UF.mapIDs[mapID] then
 				maxPlayers = UF.mapIDs[mapID]
@@ -114,7 +107,7 @@ function UF:RaidSmartVisibility(event)
 	end
 end
 
-function UF:Update_RaidHeader(header, db, isForced)
+function UF:Update_RaidHeader(header, db)
 	header:GetParent().db = db
 
 	local headerHolder = header:GetParent()
@@ -225,9 +218,6 @@ function UF:Update_RaidFrames(frame, db)
 	--OverHealing
 	UF:Configure_HealComm(frame)
 
-	--GPSArrow
-	UF:Configure_GPS(frame)
-
 	--Raid Roles
 	UF:Configure_RaidRoleIcons(frame)
 
@@ -243,7 +233,7 @@ function UF:Update_RaidFrames(frame, db)
 	--CustomTexts
 	UF:Configure_CustomTexts(frame)
 
-	frame:UpdateAllElements()
+	frame:UpdateAllElements("ElvUI_UpdateAllElements")
 end
 
 UF['headerstoload']['raid'] = true

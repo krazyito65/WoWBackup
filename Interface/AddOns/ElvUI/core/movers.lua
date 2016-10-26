@@ -4,12 +4,13 @@ local Sticky = LibStub("LibSimpleSticky-1.0")
 --Cache global variables
 --Lua functions
 local _G = _G
-local type, unpack, pairs = type, unpack, pairs
-local min = math.min
+local type, unpack, pairs, error = type, unpack, pairs, error
 local format, split, find = string.format, string.split, string.find
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local InCombatLockdown = InCombatLockdown
+local IsControlKeyDown = IsControlKeyDown
+local IsShiftKeyDown = IsShiftKeyDown
 local ERR_NOT_IN_COMBAT = ERR_NOT_IN_COMBAT
 
 --Global variables that we don't cache, list them here for the mikk's Find Globals script
@@ -208,7 +209,7 @@ local function CreateMover(parent, name, text, overlay, snapOffset, postdrag)
 		self:SetBackdropBorderColor(unpack(E["media"].rgbvaluecolor))
 	end
 
-	local function OnMouseWheel(self, delta)
+	local function OnMouseWheel(_, delta)
 		if IsShiftKeyDown() then
 			E:NudgeMover(delta)
 		else
@@ -233,7 +234,7 @@ local function CreateMover(parent, name, text, overlay, snapOffset, postdrag)
 
 	if postdrag ~= nil and type(postdrag) == 'function' then
 		f:RegisterEvent("PLAYER_ENTERING_WORLD")
-		f:SetScript("OnEvent", function(self, event)
+		f:SetScript("OnEvent", function(self)
 			postdrag(f, E:GetScreenQuadrant(f))
 			self:UnregisterAllEvents()
 		end)
@@ -346,7 +347,6 @@ end
 
 function E:CreateMover(parent, name, text, overlay, snapoffset, postdrag, moverTypes)
 	if not moverTypes then moverTypes = 'ALL,GENERAL' end
-	local p, p2, p3, p4, p5 = parent:GetPoint()
 
 	if E.CreatedMovers[name] == nil then
 		E.CreatedMovers[name] = {}
@@ -443,7 +443,6 @@ function E:ResetMovers(arg)
 	else
 		for name, _ in pairs(E.CreatedMovers) do
 			for key, value in pairs(E.CreatedMovers[name]) do
-				local mover
 				if key == "text" then
 					if arg == value then
 						local f = _G[name]
@@ -494,6 +493,13 @@ function E:SetMoversPositions()
 			f:ClearAllPoints()
 			f:Point(point, anchor, secondaryPoint, x, y)
 		end
+	end
+end
+
+function E:SetMoversClampedToScreen(value)
+	for name, _ in pairs(E.CreatedMovers) do
+		local f = _G[name]
+		f:SetClampedToScreen(value)
 	end
 end
 

@@ -2668,7 +2668,7 @@ do
 			if (deathAbilityGraph.LastBoss) then
 				deathAbilityGraph.Refresh (deathAbilityGraph.LastBoss)
 			else
-				print ("boss not found")
+				--print ("boss not found")
 			end
 		end
 		local timeCutOffMenu = {
@@ -2831,10 +2831,10 @@ do
 				if (deathAbilityGraph.LastBoss) then
 					deathAbilityGraph.Refresh (deathAbilityGraph.LastBoss)
 				else
-					print ("boss not found")
+					--print ("boss not found")
 				end
 			else
-				print ("CurrentBossTable not found")
+				--print ("CurrentBossTable not found")
 			end
 		end
 		

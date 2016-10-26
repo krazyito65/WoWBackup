@@ -249,22 +249,30 @@ local function BuildABConfig()
 				order = 10,
 				disabled = function() return not E.private.actionbar.enable end,
 			},
-			heightMult = {
+			backdropSpacing = {
 				order = 11,
+				type = 'range',
+				name = L["Backdrop Spacing"],
+				desc = L["The spacing between the backdrop and the buttons."],
+				min = 0, max = 10, step = 1,
+				disabled = function() return not E.private.actionbar.enable end,
+			},
+			heightMult = {
+				order = 12,
 				type = 'range',
 				name = L["Height Multiplier"],
 				desc = L["Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop."],
 				min = 1, max = 5, step = 1,
 			},
 			widthMult = {
-				order = 12,
+				order = 13,
 				type = 'range',
 				name = L["Width Multiplier"],
 				desc = L["Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop."],
 				min = 1, max = 5, step = 1,
 			},
 			alpha = {
-				order = 13,
+				order = 14,
 				type = 'range',
 				name = L["Alpha"],
 				isPercent = true,
@@ -272,7 +280,7 @@ local function BuildABConfig()
 			},		
 			visibility = {
 				type = 'input',
-				order = 14,
+				order = 15,
 				name = L["Visibility State"],
 				desc = L["This works like a macro, you can run different situations to get the actionbar to show/hide differently.\n Example: '[combat] show;hide'"],
 				width = 'full',
@@ -332,21 +340,27 @@ local function BuildABConfig()
 				desc = L["The frame is not shown unless you mouse over the frame."],
 				type = "toggle",
 			},
-			inheritGlobalFade = {
+			usePositionOverride = {
 				order = 6,
+				type = "toggle",
+				name = L["Use Position Override"],
+				desc = L["When enabled it will use the Anchor Point setting to determine growth direction, otherwise it will be determined by where the bar is positioned."],
+			},
+			inheritGlobalFade = {
+				order = 7,
 				type = 'toggle',
 				name = L["Inherit Global Fade"],
 				desc = L["Inherit the global fade, mousing over, targetting, setting focus, losing health, entering combat will set the remove transparency. Otherwise it will use the transparency level in the general actionbar settings for global fade alpha."],
 			},				
 			buttons = {
-				order = 7,
+				order = 8,
 				type = 'range',
 				name = L["Buttons"],
 				desc = L["The amount of buttons to display."],
 				min = 1, max = NUM_PET_ACTION_SLOTS, step = 1,
 			},
 			buttonsPerRow = {
-				order = 8,
+				order = 9,
 				type = 'range',
 				name = L["Buttons Per Row"],
 				desc = L["The amount of buttons to display per row."],
@@ -357,7 +371,7 @@ local function BuildABConfig()
 				name = L["Button Size"],
 				desc = L["The size of the action buttons."],
 				min = 15, max = 60, step = 1,
-				order = 9,
+				order = 10,
 				disabled = function() return not E.private.actionbar.enable end,
 			},
 			buttonspacing = {
@@ -365,32 +379,40 @@ local function BuildABConfig()
 				name = L["Button Spacing"],
 				desc = L["The spacing between buttons."],
 				min = 0, max = 20, step = 1,
-				order = 10,
+				order = 11,
+				disabled = function() return not E.private.actionbar.enable end,
+			},
+			backdropSpacing = {
+				order = 12,
+				type = 'range',
+				name = L["Backdrop Spacing"],
+				desc = L["The spacing between the backdrop and the buttons."],
+				min = 0, max = 10, step = 1,
 				disabled = function() return not E.private.actionbar.enable end,
 			},
 			heightMult = {
-				order = 11,
+				order = 13,
 				type = 'range',
 				name = L["Height Multiplier"],
 				desc = L["Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop."],
 				min = 1, max = 5, step = 1,
 			},
 			widthMult = {
-				order = 12,
+				order = 14,
 				type = 'range',
 				name = L["Width Multiplier"],
 				desc = L["Multiply the backdrops height or width by this value. This is usefull if you wish to have more than one bar behind a backdrop."],
 				min = 1, max = 5, step = 1,
 			},
 			alpha = {
-				order = 13,
+				order = 15,
 				type = 'range',
 				name = L["Alpha"],
 				isPercent = true,
 				min = 0, max = 1, step = 0.01,
 			},			
 			style = {
-				order = 14,
+				order = 16,
 				type = 'select',
 				name = L["Style"],
 				desc = L["This setting will be updated upon changing stances."],
@@ -469,11 +491,28 @@ E.Options.args.actionbar = {
 			type = "toggle",
 			name = L["Hide Cooldown Bling"],
 			desc = L["Hides the bling animation on buttons at the end of the global cooldown."],
-			get = function(info) return E.private.actionbar.hideCooldownBling end,
-			set = function(info, value) E.private.actionbar.hideCooldownBling = value; E:StaticPopup_Show("CONFIG_RL") end,
+			get = function(info) return E.db.actionbar.hideCooldownBling end,
+			set = function(info, value) E.db.actionbar.hideCooldownBling = value;
+				for _, bar in pairs(AB["handledBars"]) do
+					AB:UpdateButtonConfig(bar, bar.bindButtons)
+				end
+				AB:UpdatePetCooldownSettings()
+			end,
+		},
+		useDrawSwipeOnCharges = {
+			order = 9,
+			type = "toggle",
+			name = L["Use Draw Swipe"],
+			desc = L["Shows a swipe animation when a spell is recharging but still has charges left."],
+			get = function(info) return E.db.actionbar.useDrawSwipeOnCharges end,
+			set = function(info, value) E.db.actionbar.useDrawSwipeOnCharges = value;
+				for _, bar in pairs(AB["handledBars"]) do
+					AB:UpdateButtonConfig(bar, bar.bindButtons)
+				end
+			end,
 		},
 		movementModifier = {
-			order = 9,
+			order = 10,
 			type = 'select',
 			name = PICKUP_ACTION_KEY_TEXT,
 			desc = L["The button you must hold down in order to drag an ability to another action button."],
@@ -486,7 +525,7 @@ E.Options.args.actionbar = {
 			},
 		},
 		globalFadeAlpha = {
-			order = 10,
+			order = 11,
 			type = 'range',
 			name = L["Global Fade Transparency"],
 			desc = L["Transparency level when not in combat, no target exists, full health, not casting, and no focus target exists."],
@@ -495,7 +534,7 @@ E.Options.args.actionbar = {
 			set = function(info, value) E.db.actionbar[ info[#info] ] = value; AB.fadeParent:SetAlpha(1-value) end,
 		},
 		colorGroup = {
-			order = 11,
+			order = 12,
 			type = "group",
 			name = L["Colors"],
 			guiInline = true,

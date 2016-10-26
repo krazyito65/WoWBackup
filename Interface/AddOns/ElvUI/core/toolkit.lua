@@ -4,8 +4,7 @@ local LSM = LibStub("LibSharedMedia-3.0")
 --Cache global variables
 --Lua functions
 local _G = _G
-local unpack, type, select, getmetatable = unpack, type, select, getmetatable
-local floor = math.floor
+local unpack, type, select, getmetatable, assert = unpack, type, select, getmetatable, assert
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local RAID_CLASS_COLORS = RAID_CLASS_COLORS
@@ -363,3 +362,7 @@ while object do
 
 	object = EnumerateFrames(object)
 end
+
+--Hacky fix for issue on 7.1 PTR where scroll frames no longer seem to inherit the methods from the "Frame" widget
+local scrollFrame = CreateFrame("ScrollFrame")
+addapi(scrollFrame)

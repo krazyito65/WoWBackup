@@ -67,6 +67,9 @@ local function LoadSkin()
 		['MoneyFrame'] = true,
 		['XPFrame'] = true,
 		['SkillPointFrame'] = true, -- this may have extra textures.. need to check on it when possible
+		['HonorFrame'] = true,
+		['ArtifactXPFrame'] = true,
+		['TitleFrame'] = true,
 	}
 
 	local function HandleReward(frame)
@@ -118,4 +121,4 @@ local function LoadSkin()
 	hooksecurefunc("TaskPOI_OnEnter", HandleTooltipStatusBar)
 end
 
-S:RegisterSkin('ElvUI', LoadSkin)
+S:AddCallback("WorldMap", LoadSkin)

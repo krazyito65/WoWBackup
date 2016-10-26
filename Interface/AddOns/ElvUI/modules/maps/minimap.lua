@@ -6,36 +6,36 @@ E.Minimap = M
 --Lua functions
 local _G = _G
 local tinsert = table.insert
-local gsub, upper, strsub = string.gsub, string.upper, strsub
+local strsub = strsub
 --WoW API / Variables
-local CreateFrame = CreateFrame
-local ToggleCharacter = ToggleCharacter
-local ShowUIPanel, HideUIPanel = ShowUIPanel, HideUIPanel
-local ToggleCollectionsJournal = ToggleCollectionsJournal
-local ToggleFrame = ToggleFrame
-local ToggleAchievementFrame = ToggleAchievementFrame
-local ToggleFriendsFrame = ToggleFriendsFrame
-local GarrisonLandingPageMinimapButton_OnClick = GarrisonLandingPageMinimapButton_OnClick
-local IsInGuild = IsInGuild
-local ToggleGuildFrame = ToggleGuildFrame
-local ToggleLFDParentFrame = ToggleLFDParentFrame
-local IsAddOnLoaded = IsAddOnLoaded
-local CloseMenus = CloseMenus
 local CloseAllWindows = CloseAllWindows
-local PlaySound = PlaySound
-local MainMenuMicroButton_SetNormal = MainMenuMicroButton_SetNormal
-local ToggleHelpFrame = ToggleHelpFrame
-local GetZonePVPInfo = GetZonePVPInfo
-local IsShiftKeyDown = IsShiftKeyDown
-local ToggleDropDownMenu = ToggleDropDownMenu
-local Minimap_OnClick = Minimap_OnClick
+local CloseMenus = CloseMenus
+local CreateFrame = CreateFrame
+local C_Timer_After = C_Timer.After
+local GarrisonLandingPageMinimapButton_OnClick = GarrisonLandingPageMinimapButton_OnClick
 local GetMinimapZoneText = GetMinimapZoneText
-local InCombatLockdown = InCombatLockdown
+local GetZonePVPInfo = GetZonePVPInfo
 local GuildInstanceDifficulty = GuildInstanceDifficulty
+local InCombatLockdown = InCombatLockdown
+local IsAddOnLoaded = IsAddOnLoaded
+local IsShiftKeyDown = IsShiftKeyDown
+local MainMenuMicroButton_SetNormal = MainMenuMicroButton_SetNormal
+local Minimap_OnClick = Minimap_OnClick
+local PlaySound = PlaySound
+local ShowUIPanel, HideUIPanel = ShowUIPanel, HideUIPanel
+local ToggleAchievementFrame = ToggleAchievementFrame
+local ToggleCharacter = ToggleCharacter
+local ToggleCollectionsJournal = ToggleCollectionsJournal
+local ToggleDropDownMenu = ToggleDropDownMenu
+local ToggleFrame = ToggleFrame
+local ToggleFriendsFrame = ToggleFriendsFrame
+local ToggleGuildFrame = ToggleGuildFrame
+local ToggleHelpFrame = ToggleHelpFrame
+local ToggleLFDParentFrame = ToggleLFDParentFrame
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
 -- GLOBALS: GetMinimapShape, SpellBookFrame, PlayerTalentFrame, TalentFrame_LoadUI
--- GLOBALS: PlayerTalentFrame, TimeManagerFrame
+-- GLOBALS: PlayerTalentFrame, TimeManagerFrame, HelpOpenTicketButton, HelpOpenWebTicketButton
 -- GLOBALS: GameTimeFrame, GuildFrame, GuildFrame_LoadUI, Minimap, MinimapCluster
 -- GLOBALS: BuffsMover, DebuffsMover, LookingForGuildFrame, MiniMapWorldMapButton
 -- GLOBALS: LookingForGuildFrame_LoadUI, EncounterJournal_LoadUI, EncounterJournal
@@ -49,12 +49,8 @@ local GuildInstanceDifficulty = GuildInstanceDifficulty
 -- GLOBALS: MiniMapChallengeMode, MinimapBorder, MinimapBorderTop, MinimapZoomIn, MinimapZoomOut
 -- GLOBALS: MiniMapVoiceChatFrame, MinimapNorthTag, MinimapZoneTextButton, MiniMapTracking
 -- GLOBALS: MiniMapMailBorder, MiniMapMailIcon, QueueStatusMinimapButtonBorder, UIParent
-
-local Astrolabe, AstrolabeMapMonitor
-if IsAddOnLoaded("Gatherer") then
-	Astrolabe = DongleStub("Astrolabe-1.0")
-	AstrolabeMapMonitor = DongleStub("AstrolabeMapMonitor")
-end
+-- GLOBALS: BottomMiniPanel, BottomLeftMiniPanel, BottomRightMiniPanel, TopMiniPanel
+-- GLOBALS: TopLeftMiniPanel, TopRightMiniPanel, MinimapBackdrop
 
 local menuFrame = CreateFrame("Frame", "MinimapRightClickMenu", E.UIParent)
 
@@ -163,9 +159,6 @@ function M:Minimap_OnMouseUp(btn)
 			E:DropDown(menuList, menuFrame, -160, 0)
 		end
 	elseif btn == "RightButton" then
-		local xoff = -1
-
-		if position:match("RIGHT") then xoff = E:Scale(-16) end
 		ToggleDropDownMenu(1, nil, MiniMapTrackingDropDown, "cursor")
 	else
 		Minimap_OnClick(self)
@@ -184,6 +177,7 @@ function M:Update_ZoneText()
 	if E.db.general.minimap.locationText == 'HIDE' or not E.private.general.minimap.enable then return; end
 	Minimap.location:SetText(strsub(GetMinimapZoneText(),1,46))
 	Minimap.location:SetTextColor(M:GetLocTextColor())
+	Minimap.location:FontTemplate(E.LSM:Fetch("font", E.db.general.minimap.locationFont), E.db.general.minimap.locationFontSize, E.db.general.minimap.locationFontOutline)
 end
 
 function M:PLAYER_REGEN_ENABLED()
@@ -199,6 +193,21 @@ local function PositionTicketButtons()
 	HelpOpenWebTicketButton:Point(pos, Minimap, pos, E.db.general.minimap.icons.ticket.xOffset or 0, E.db.general.minimap.icons.ticket.yOffset or 0)
 end
 hooksecurefunc("HelpOpenTicketButton_Move", PositionTicketButtons)
+
+local isResetting
+local function ResetZoom()
+	Minimap:SetZoom(0)
+	MinimapZoomIn:Enable(); --Reset enabled state of buttons
+	MinimapZoomOut:Disable();
+	isResetting = false
+end
+local function SetupZoomReset()
+	if E.db.general.minimap.resetZoom.enable and not isResetting then
+		isResetting = true
+		C_Timer_After(E.db.general.minimap.resetZoom.time, ResetZoom)
+	end
+end
+hooksecurefunc(Minimap, "SetZoom", SetupZoomReset)
 
 function M:UpdateSettings()
 	if InCombatLockdown() then
@@ -221,7 +230,7 @@ function M:UpdateSettings()
 			RightMiniPanel:Hide()
 		end
 	end
-	
+
 	if BottomMiniPanel then
 		if E.db.datatexts.minimapBottom and E.private.general.minimap.enable then
 			BottomMiniPanel:Show()
@@ -229,7 +238,7 @@ function M:UpdateSettings()
 			BottomMiniPanel:Hide()
 		end
 	end
-	
+
 	if BottomLeftMiniPanel then
 		if E.db.datatexts.minimapBottomLeft and E.private.general.minimap.enable then
 			BottomLeftMiniPanel:Show()
@@ -237,7 +246,7 @@ function M:UpdateSettings()
 			BottomLeftMiniPanel:Hide()
 		end
 	end
-	
+
 	if BottomRightMiniPanel then
 		if E.db.datatexts.minimapBottomRight and E.private.general.minimap.enable then
 			BottomRightMiniPanel:Show()
@@ -245,7 +254,7 @@ function M:UpdateSettings()
 			BottomRightMiniPanel:Hide()
 		end
 	end
-	
+
 	if TopMiniPanel then
 		if E.db.datatexts.minimapTop and E.private.general.minimap.enable then
 			TopMiniPanel:Show()
@@ -253,7 +262,7 @@ function M:UpdateSettings()
 			TopMiniPanel:Hide()
 		end
 	end
-	
+
 	if TopLeftMiniPanel then
 		if E.db.datatexts.minimapTopLeft and E.private.general.minimap.enable then
 			TopLeftMiniPanel:Show()
@@ -261,7 +270,7 @@ function M:UpdateSettings()
 			TopLeftMiniPanel:Hide()
 		end
 	end
-	
+
 	if TopRightMiniPanel then
 		if E.db.datatexts.minimapTopRight and E.private.general.minimap.enable then
 			TopRightMiniPanel:Show()
@@ -338,7 +347,7 @@ function M:UpdateSettings()
 		QueueStatusMinimapButton:ClearAllPoints()
 		QueueStatusMinimapButton:Point(pos, Minimap, pos, E.db.general.minimap.icons.lfgEye.xOffset or 3, E.db.general.minimap.icons.lfgEye.yOffset or 0)
 		QueueStatusMinimapButton:SetScale(scale)
-		QueueStatusFrame:SetScale(1/scale)
+		QueueStatusFrame:SetScale(scale)
 	end
 
 	if MiniMapInstanceDifficulty and GuildInstanceDifficulty then
@@ -465,7 +474,7 @@ function M:Initialize()
 	self:RegisterEvent("ZONE_CHANGED_INDOORS", "Update_ZoneText")
 	self:RegisterEvent('ADDON_LOADED')
 	self:UpdateSettings()
-	
+
 	--Make sure these invisible frames follow the minimap.
 	MinimapCluster:ClearAllPoints()
 	MinimapCluster:SetAllPoints(Minimap)

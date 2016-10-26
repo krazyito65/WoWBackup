@@ -1,22 +1,16 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Inport: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local UF = E:GetModule('UnitFrames');
+local _, ns = ...
+local ElvUF = ns.oUF
+assert(ElvUF, "ElvUI was unable to locate oUF.")
 
 --Cache global variables
 --Lua functions
 local _G = _G
-local pairs = pairs
 local tinsert = table.insert
-local format = format
---WoW API / Variables
-local RAID_CLASS_COLORS = RAID_CLASS_COLORS
-local CUSTOM_CLASS_COLORS = CUSTOM_CLASS_COLORS
 
 --Global variables that we don't cache, list them here for mikk's FindGlobals script
 -- GLOBALS: ElvUF_Target
-
-local _, ns = ...
-local ElvUF = ns.oUF
-assert(ElvUF, "ElvUI was unable to locate oUF.")
 
 function UF:Construct_FocusFrame(frame)
 	frame.Health = self:Construct_HealthBar(frame, true, true, 'RIGHT')
@@ -31,7 +25,7 @@ function UF:Construct_FocusFrame(frame)
 
 	frame.Buffs = self:Construct_Buffs(frame)
 
-	frame.Castbar = self:Construct_Castbar(frame, 'LEFT', L["Focus Castbar"])
+	frame.Castbar = self:Construct_Castbar(frame, L["Focus Castbar"])
 	frame.Castbar.SafeZone = nil
 	frame.Castbar.LatencyTexture:Hide()
 	frame.RaidIcon = UF:Construct_RaidIcon(frame)
@@ -40,7 +34,6 @@ function UF:Construct_FocusFrame(frame)
 	frame.AuraBars = self:Construct_AuraBarHeader(frame)
 	frame.Range = UF:Construct_Range(frame)
 	frame.Threat = UF:Construct_Threat(frame)
-	frame.GPS = self:Construct_GPS(frame)
 	frame.InfoPanel = self:Construct_InfoPanel(frame)
 
 	frame.customTexts = {}
@@ -111,9 +104,6 @@ function UF:Update_FocusFrame(frame, db)
 	--OverHealing
 	UF:Configure_HealComm(frame)
 
-	--GPSArrow
-	UF:Configure_GPS(frame)
-
 	--Raid Icon
 	UF:Configure_RaidIcon(frame)
 
@@ -126,7 +116,7 @@ function UF:Update_FocusFrame(frame, db)
 	--CustomTexts
 	UF:Configure_CustomTexts(frame)
 
-	frame:UpdateAllElements()
+	frame:UpdateAllElements("ElvUI_UpdateAllElements")
 end
 
 tinsert(UF['unitstoload'], 'focus')

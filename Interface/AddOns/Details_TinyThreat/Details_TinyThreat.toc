@@ -1,9 +1,9 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Details Tiny Threat (plugin)
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
-## X-Curse-Packaged-Version: r561
+## X-Curse-Packaged-Version: r565
 ## X-Curse-Project-Name: Details!
 ## X-Curse-Project-ID: details
 ## X-Curse-Repository-ID: wow/details/mainline

@@ -8,7 +8,7 @@ assert(ElvUF, "ElvUI was unable to locate oUF.")
 local _G = _G
 local unpack, pairs = unpack, pairs
 local twipe = table.wipe
-local ceil, sqrt, floor = math.ceil, math.sqrt, math.floor
+local floor = math.floor
 local format = string.format
 --WoW API / Variables
 local C_PetJournal_GetPetTeamAverageLevel = C_PetJournal.GetPetTeamAverageLevel
@@ -17,7 +17,6 @@ local GetNumGroupMembers = GetNumGroupMembers
 local GetPVPTimer = GetPVPTimer
 local GetQuestGreenRange = GetQuestGreenRange
 local GetRelativeDifficultyColor = GetRelativeDifficultyColor
-local GetShapeshiftFormID = GetShapeshiftFormID
 local GetSpecialization = GetSpecialization
 local GetThreatStatusColor = GetThreatStatusColor
 local GetTime = GetTime
@@ -55,24 +54,13 @@ local UnitPowerType = UnitPowerType
 local UnitReaction = UnitReaction
 local UnitStagger = UnitStagger
 local ALTERNATE_POWER_INDEX = ALTERNATE_POWER_INDEX
-local DEAD = DEAD
 local DEFAULT_AFK_MESSAGE = DEFAULT_AFK_MESSAGE
-local MOONKIN_FORM = MOONKIN_FORM
 local PVP = PVP
-local SHADOW_ORBS_SHOW_LEVEL = SHADOW_ORBS_SHOW_LEVEL
 local SPEC_MONK_BREWMASTER = SPEC_MONK_BREWMASTER
 local SPEC_PALADIN_RETRIBUTION = SPEC_PALADIN_RETRIBUTION
-local SPEC_PRIEST_SHADOW = SPEC_PRIEST_SHADOW
-local SPEC_WARLOCK_AFFLICTION = SPEC_WARLOCK_AFFLICTION
-local SPEC_WARLOCK_DEMONOLOGY = SPEC_WARLOCK_DEMONOLOGY
-local SPEC_WARLOCK_DESTRUCTION = SPEC_WARLOCK_DESTRUCTION
-local SPELL_POWER_BURNING_EMBERS = SPELL_POWER_BURNING_EMBERS
 local SPELL_POWER_CHI = SPELL_POWER_CHI
-local SPELL_POWER_DEMONIC_FURY = SPELL_POWER_DEMONIC_FURY
-local SPELL_POWER_ECLIPSE = SPELL_POWER_ECLIPSE
 local SPELL_POWER_HOLY_POWER = SPELL_POWER_HOLY_POWER
 local SPELL_POWER_MANA = SPELL_POWER_MANA
-local SPELL_POWER_SHADOW_ORBS = SPELL_POWER_SHADOW_ORBS
 local SPELL_POWER_SOUL_SHARDS = SPELL_POWER_SOUL_SHARDS
 local UNITNAME_SUMMON_TITLE17 = UNITNAME_SUMMON_TITLE17
 local UNKNOWN = UNKNOWN
@@ -201,7 +189,7 @@ end
 
 ElvUF.Tags.Events['health:current'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:current'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 	if (status) then
 		return status
 	else
@@ -211,7 +199,7 @@ end
 
 ElvUF.Tags.Events['health:deficit'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:deficit'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
 	if (status) then
 		return status
@@ -222,7 +210,7 @@ end
 
 ElvUF.Tags.Events['health:current-percent'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:current-percent'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
 	if (status) then
 		return status
@@ -233,7 +221,7 @@ end
 
 ElvUF.Tags.Events['health:current-max'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:current-max'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
 	if (status) then
 		return status
@@ -244,7 +232,7 @@ end
 
 ElvUF.Tags.Events['health:current-max-percent'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:current-max-percent'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
 	if (status) then
 		return status
@@ -262,7 +250,7 @@ end
 
 ElvUF.Tags.Events['health:percent'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH UNIT_CONNECTION PLAYER_FLAGS_CHANGED'
 ElvUF.Tags.Methods['health:percent'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 
 	if (status) then
 		return status
@@ -299,21 +287,6 @@ end
 ElvUF.Tags.Events['health:percent-nostatus'] = 'UNIT_HEALTH_FREQUENT UNIT_MAXHEALTH'
 ElvUF.Tags.Methods['health:percent-nostatus'] = function(unit)
 	return E:GetFormattedText('PERCENT', UnitHealth(unit), UnitHealthMax(unit))
-end
-
-ElvUF.Tags.Events['powercolor'] = 'UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER'
-ElvUF.Tags.Methods['powercolor'] = function(unit)
-	local pType, pToken, altR, altG, altB = UnitPowerType(unit)
-	local color = ElvUF['colors'].power[pToken]
-	if color then
-		return Hex(color[1], color[2], color[3])
-	elseif altR then
-		--UnitPowerType is not consistent in how it returns rgb color values
-		if altR > 1 or altG > 1 or altB > 1 then
-			altR, altG, altB = altR/255, altG/255, altB/255
-		end
-		return Hex(altR, altG, altB)
-	end
 end
 
 ElvUF.Tags.Events['power:current'] = 'UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER'
@@ -370,8 +343,8 @@ ElvUF.Tags.Methods['power:max'] = function(unit)
 	return E:GetFormattedText('CURRENT', max, max)
 end
 
-ElvUF.Tags.Methods['manacolor'] = function(unit)
-	local altR, altG, altB = PowerBarColor["MANA"]
+ElvUF.Tags.Methods['manacolor'] = function()
+	local altR, altG, altB = PowerBarColor["MANA"].r, PowerBarColor["MANA"].g, PowerBarColor["MANA"].b
 	local color = ElvUF['colors'].power["MANA"]
 	if color then
 		return Hex(color[1], color[2], color[3])
@@ -515,7 +488,7 @@ end
 
 ElvUF.Tags.Events['name:veryshort:status'] = 'UNIT_NAME_UPDATE UNIT_CONNECTION PLAYER_FLAGS_CHANGED UNIT_HEALTH'
 ElvUF.Tags.Methods['name:veryshort:status'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 	local name = UnitName(unit)
 	if (status) then
 		return status
@@ -526,7 +499,7 @@ end
 
 ElvUF.Tags.Events['name:short:status'] = 'UNIT_NAME_UPDATE UNIT_CONNECTION PLAYER_FLAGS_CHANGED UNIT_HEALTH'
 ElvUF.Tags.Methods['name:short:status'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 	local name = UnitName(unit)
 	if (status) then
 		return status
@@ -537,7 +510,7 @@ end
 
 ElvUF.Tags.Events['name:medium:status'] = 'UNIT_NAME_UPDATE UNIT_CONNECTION PLAYER_FLAGS_CHANGED UNIT_HEALTH'
 ElvUF.Tags.Methods['name:medium:status'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 	local name = UnitName(unit)
 	if (status) then
 		return status
@@ -548,7 +521,7 @@ end
 
 ElvUF.Tags.Events['name:long:status'] = 'UNIT_NAME_UPDATE UNIT_CONNECTION PLAYER_FLAGS_CHANGED UNIT_HEALTH'
 ElvUF.Tags.Methods['name:long:status'] = function(unit)
-	local status = UnitIsDead(unit) and DEAD or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+	local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
 	local name = UnitName(unit)
 	if (status) then
 		return status
@@ -739,7 +712,7 @@ end
 
 ElvUF.Tags.Events['classpower:current-percent'] = 'UNIT_POWER_FREQUENT PLAYER_TALENT_UPDATE UPDATE_SHAPESHIFT_FORM'
 ElvUF.Tags.Methods['classpower:current-percent'] = function()
-	local min, max, staggerPercent = GetClassPower(E.myclass)
+	local min, max = GetClassPower(E.myclass)
 	if min == 0 then
 		return ' '
 	else
