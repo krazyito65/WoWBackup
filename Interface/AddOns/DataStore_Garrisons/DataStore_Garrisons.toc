@@ -1,14 +1,14 @@
-﻿## Interface: 70000
+﻿## Interface: 70100
 ## Title: DataStore_Garrisons
 ## Notes: Stores information about garrisons and followers
 ## Author: Thaoky (EU-Marécages de Zangar)
-## Version: r16
+## Version: r17
 ## Dependencies: DataStore
 ## OptionalDeps: Ace3
 ## SavedVariables: DataStore_GarrisonsDB
 ## X-Category: Interface Enhancements
 ## X-Embeds: Ace3
-## X-Curse-Packaged-Version: r16
+## X-Curse-Packaged-Version: r17
 ## X-Curse-Project-Name: DataStore_Garrisons
 ## X-Curse-Project-ID: datastore_garrisons
 ## X-Curse-Repository-ID: wow/datastore_garrisons/mainline

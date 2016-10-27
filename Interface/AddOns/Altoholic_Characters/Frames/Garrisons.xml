@@ -72,7 +72,7 @@
 				<FontString parentKey="Name" inherits="GameFontNormal" justifyH="LEFT">
 					<Size x="220" y="32" />
 					<Anchors>
-						<Anchor point="TOPLEFT" x="53" y="8" />
+						<Anchor point="TOPLEFT" x="45" y="6" />
 					</Anchors>
 				</FontString>
 				<Texture parentKey="CostIcon" file="Interface\Icons\inv_garrison_resource" hidden="true" alphaMode="ADD">
@@ -104,12 +104,12 @@
 		<Frames>
 			<Button parentKey="Type" inherits="AltoItemButtonTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" x="10" y="0" />
+					<Anchor point="TOPLEFT" x="2" y="-2" />
 				</Anchors>
 			</Button>
 			<Button parentKey="Follower1" inherits="AltoMissionFollowerTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="TOPRIGHT" x="5" y="-10" />
+					<Anchor point="TOPLEFT" relativeKey="$parent.Name" relativePoint="TOPRIGHT" x="5" y="-9" />
 				</Anchors>
 			</Button>
 			<Button parentKey="Follower2" inherits="AltoMissionFollowerTemplate">
@@ -124,7 +124,7 @@
 			</Button>
 			<Button parentKey="Reward1" inherits="AltoMissionRewardTemplate">
 				<Anchors>
-					<Anchor point="TOPRIGHT" x="-50" y="0" />
+					<Anchor point="TOPRIGHT" x="-50" y="-4" />
 				</Anchors>
 			</Button>
 			<Button parentKey="Reward2" inherits="AltoMissionRewardTemplate">
@@ -134,20 +134,16 @@
 			</Button>
 			
 		</Frames>
-		<HighlightTexture name="$parentHighlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
+		<HighlightTexture parentKey="Highlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
 			<Size x="560" y="39" />
 			<Anchors>
-				<Anchor point="TOPLEFT" x="50" y="0" />
+				<Anchor point="TOPLEFT" x="42" y="-2" />
 			</Anchors>
 			<TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
 		</HighlightTexture>
 	</Button>
 
-	<Frame name="AltoholicFrameGarrisonMissions" parent="AltoholicTabCharacters" hidden="true">
-		<Size x="615" y="306" />
-		<Anchors>
-			<Anchor point="TOPRIGHT" x="39" y="-105" />
-		</Anchors>
+	<Frame name="AltoholicFrameGarrisonMissions" parent="AltoholicTabCharacters" inherits="AltoDataPanelTemplate">
 		<Frames>
 			<ScrollFrame parentKey="ScrollFrame" inherits="AltoBaseScrollFrameTemplate" hidden="true">
 				<Scripts>

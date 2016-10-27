@@ -3,7 +3,6 @@ local addon = _G[addonName]
 local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
 
 local THIS_ACCOUNT = "Default"
 local THIS_REALM = GetRealmName()
@@ -511,7 +510,7 @@ local function ProcessTooltip(tooltip, link)
 	
 	-- 25/01/2015: Removed the code that displayed the pet owners, since they have been account wide for a while now..
 	
-	if itemType == BI["Glyph"] then
+	if itemType == GetItemClassInfo(LE_ITEM_CLASS_GLYPH) then
 		AddGlyphOwners(itemID, tooltip)
 		return
 	end

@@ -661,4 +661,4 @@ VUHDO_GLOBAL_ICONS = {
 	["207386"] = 306845,
 	["Frost Blast"] = "Interface\\Icons\\Spell_Frost_FrostBlast",
 }
-VUHDO_GI_SCAN_IDX = 59451
+VUHDO_GI_SCAN_IDX = 501

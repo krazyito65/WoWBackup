@@ -28,18 +28,18 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[-1] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Tanaan Jungle"] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 			["ZoneID"] = 970,
+		},
+		[-1] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
 		},
 		[301] = {
 			["Preferred"] = {
@@ -48,19 +48,20 @@ GoGo_Prefs = {
 			},
 		},
 	},
-	["DisableMountNotice"] = false,
 	["autodismount"] = true,
+	["DisableMountNotice"] = false,
+	["DisableWaterFlight"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.12",
+	["version"] = "7.1.1",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["DisableWaterFlight"] = true,
+	["PrefVer"] = 1,
 }
 GoGo_DebugLog = {
 }

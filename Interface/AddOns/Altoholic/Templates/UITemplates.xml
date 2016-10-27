@@ -22,6 +22,14 @@
 		</Scripts>
 	</Button>
 
+	<!-- Template to simplify sizing & positioning of data panel frames -->
+	<Frame name="AltoDataPanelTemplate" hidden="true" virtual="true">
+		<Size x="607" y="306" />
+		<Anchors>
+			<Anchor point="TOPLEFT" x="190" y="-102" />
+		</Anchors>
+	</Frame>
+	
 	<!-- Simple item button template -->
  	<Button name="AltoItemButtonTemplate" inherits="AltoButtonTemplate" virtual="true">
 		<Layers>
@@ -284,7 +292,7 @@
 			</Button>
 			<Button parentKey="Item1" inherits="AltoIconListItemTemplate">
 				<Anchors>
-					<Anchor point="BOTTOMLEFT" relativeKey="$parent" relativePoint="BOTTOMLEFT" x="185" y="0" />
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent" relativePoint="BOTTOMLEFT" x="180" y="0" />
 				</Anchors>
 			</Button>
 			<Button parentKey="Item2" inherits="AltoIconListItemTemplate">

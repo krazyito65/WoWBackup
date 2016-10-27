@@ -668,6 +668,7 @@ end
 local tInfo;
 local tAllButtons;
 function VUHDO_updateHealthBarsFor(aUnit, anUpdateMode)
+	if not aUnit then return end --fix unit==nil on HEALTH-Events in patch 7.1
 	VUHDO_updateBouquetsForEvent(aUnit, anUpdateMode);
 
   tAllButtons = VUHDO_getUnitButtons(aUnit);

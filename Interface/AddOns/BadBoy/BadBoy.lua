@@ -1,30 +1,28 @@
 
--- GLOBALS: BADBOY_NOLINK, BADBOY_POPUP, BADBOY_BLACKLIST, BadBoyLog, BNGetNumFriends, BNGetNumFriendGameAccounts, BNGetFriendGameAccountInfo
--- GLOBALS: CanComplainChat, ChatFrame1, GetRealmName, GetTime, print, REPORT_SPAM_CONFIRMATION, ReportPlayer, StaticPopup_Show, StaticPopup_Resize
--- GLOBALS: UnitInParty, UnitInRaid, CalendarGetDate, SetCVar, wipe
+-- GLOBALS: BADBOY_BLACKLIST, BadBoyLog, ChatFrame1, GetTime, print, ReportPlayer, CalendarGetDate, SetCVar
 local myDebug = false
 
-local reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam blocked, click to report!]|h|r"
+local reportMsg = "BadBoy: Spam blocked, click to report!"
 do
 	local L = GetLocale()
 	if L == "frFR" then
-		reportMsg = "BadBoy : |cff6BB247|Hbadboy|h[Spam bloqué, cliquez pour signaler !]|h|r"
+		reportMsg = "BadBoy : Spam bloqué, cliquez pour signaler !"
 	elseif L == "deDE" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam geblockt, zum Melden klicken!]|h|r"
+		reportMsg = "BadBoy: Spam geblockt, zum Melden klicken"
 	elseif L == "zhTW" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[垃圾訊息已被阻擋, 點擊以舉報 !]|h|r"
+		reportMsg = "BadBoy: 垃圾訊息已被阻擋, 點擊以舉報 !"
 	elseif L == "zhCN" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[垃圾信息已被拦截，点击举报！]|h|r"
+		reportMsg = "BadBoy: 垃圾信息已被拦截，点击举报！"
 	elseif L == "esES" or L == "esMX" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam bloqueado, haz clic para reportarlo.]|h|r"
+		reportMsg = "BadBoy: Spam bloqueado, haz clic para reportarlo."
 	elseif L == "ruRU" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Спам заблокирован. Нажмите, чтобы сообщить!]|h|r"
+		reportMsg = "BadBoy: Спам заблокирован. Нажмите, чтобы сообщить!"
 	elseif L == "koKR" then
-		--reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam blocked, click to report!]|h|r"
+		--reportMsg = "BadBoy: Spam blocked, click to report!"
 	elseif L == "ptBR" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam bloqueado, clique para denunciar!]|h|r"
+		reportMsg = "BadBoy: Spam bloqueado, clique para denunciar!"
 	elseif L == "itIT" then
-		reportMsg = "BadBoy: |cff6BB247|Hbadboy|h[Spam bloccata, clic qui per riportare!]|h|r"
+		reportMsg = "BadBoy: Spam bloccata, clic qui per riportare!"
 	end
 end
 
@@ -88,36 +86,6 @@ local commonList = {
 	"купи", --buy [serbian]
 	"быcтpo", --fast/quickly
 	"ищemпocтaвщикoв", --ищем поставщиков --looking for suppliers
-}
-
---These entries add +2 points
-local heavyList = {
-	"[\226\130\172%$\194\163]+%d+.?%d*[fp][oe]r%d+[%.,]?%d*[kg]", --Add separate line if they start approx prices
-	"[\226\130\172%$\194\163]+%d+[%.,]?%d*[/\\=]%d+[%.,]?%d*[kg]",
-	"%d+[%.,]?%d*eur?o?s?[fp][oe]r%d+[%.,]?%d*[kg]",
-	"%d+[%.,]?%d*[\226\130\172%$\194\163]+[/\\=>]+%d+[%.,]?%d*[kg]",
-	"%d+[%.,]?%d*[kg][/\\=][\226\130\172%$\194\163]+%d+",
-	"%d+[%.,]?%d*[kg][/\\=]%d+[%.,]?%d*[\226\130\172%$\194\163]+",
-	"%d+[%.,]?%d*[kg][/\\=]%d+[%.,]?%d*e[uv]",
-	"%d+[%.,]?%d*[kg][%.,]?only%d+[%.,]?%d*eu",
-	"%d+[%.,]?%d*[kg]for%d+[%.,]?%d*eu",
-	"%d+o?[kg][/\\=]%$?%d+[%.,]%d+", --1OK=9.59
-	"%d+[%.,]?[%do]*[/\\=]%d+[%.,]?%d*[kge]",
-	"%d+[%.,]?%d*eur?[o0]?s?[/\\=<>]+%d+[%.,]?[%do]*[kg]",
-	"%d+[%.,]?%d*eur?[o0]?s?[/\\=<>]+l[0o]+[kg]",
-	"%d+[%.,]?%d*usd[/\\=]%d+[%.,]?%d*[kg]",
-	"%d+[%.,]?%d*usd[fp][oe]r%d+[%.,]?%d*[kg]",
-	"%d+[%.,]?%d*[kg][/\\=]%d+[%.,]?%d*usd",
-	"%d+[%.,]?[o%d]*[kg]%d+bonus[/\\=]%d+[%.,]?[o%d]+",
-	"%d+[%.,]?%d*[кp]+зa%d+[%.,]?%d*[pк]+", --14к за 21р / 17р за 1к
-}
-
---These entries add +2 points, but only 1 entry will count
-local heavyRestrictedList = {
-	"www[%.,]",
-	"[%.,]c[o0@]m",
-	"[%.,]net",
-	"dotc[o0@]m",
 }
 
 --These entries add +1 point to the phishing count
@@ -188,6 +156,7 @@ local boostingWhiteList = {
 	"onlyacceptinggold",
 	"goldonly",
 	"goldprices",
+	"forgold",
 	"tonight",
 	"gametime",
 	"servertime",
@@ -634,6 +603,7 @@ local instantReportList = {
 	"boost.*artifact.*mythic.*boostila", --[Boostila.com] BEST PRICE FOR BOOST on THE EMERALD NIGHTMARE (NM-HC),Artifact power quests farm, Mythic Dungeons, Character lvling and more!  SEE ON [Boostila.com]
 	"wts.*cheap.*fast.*loot.*mythic.*dungeon.*wisp.*everyday", --WTS cheap & fast Emerald Nightmare lootraids, Mythic15++ Dungeons. Wisp! Everyday!
 	"wts.*arena.*rbg.*rating.*loot.*info", --WTS Arena/Rbg ratings 1800-2400 , WTS 7/7HC emerald lootrun /w for info
+	"wts.*dungeon.*fast.*le?ve?ling.*emerald.*info", --[WTS] <<New Mythic/Heroic Dungeons>> | <<Artifact farm>> | <<Fast 100-110>> | <<Honor & Prestige Leveling>> | Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
 	"wts.*fast.*dungeon.*rbg.*emerald.*info", --[WTS] <<Fast 100-110>> | <<New Mythic/Mythic+ Dungeons>> | <<Honor/Prestige leveling>> | <<RBG Wins> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
 	"wts.*fast.*dungeon.*pvp.*emerald.*info", --[WTS] <<Fast 100-110>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
 	"wts.*character.*dungeon.*pvp.*emerald.*info", --[WTS] <<Character ↑↑ 100-110 ↑↑ lvl>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
@@ -649,11 +619,16 @@ local instantReportList = {
 	"wts.*tonight.*arena.*rbg.*mythic.*coaching", --WTS Emerald Nightmare 7/7 MYTHIC with ML tonight , 1 spot for now / Arena/RBG/Mythics/Coaching /w for info
 	--Legion 139Toman Game Time 30Toman Gold har 1k 450Toman Level Up ham Anjam midim |Web: www.iran-blizzard.com  Tel: 000000000000
 	"legion.*gametime.*iranblizzard[%.,]com", --Legion 140T - Game Time 30Day 35T - 60Day 70Toman - www.iran-blizzard.com
-	"trade.*cheapest.*sale.*buy", --=>>[www.bank4dh.com]<<=32U=100K. 5-15 mins Trade. More More cheapest   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! Buy more than 200k will get 10%  or [Obliterum]*7 or  [Vial of the Sands]as bounes   [www.bank4dh.com]
+	--=>>[www.bank4dh.com]<<=19E=100K. 5-15 mins Trade. More L895   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! /2 =>>[www.bank4dh.com]<<=
+	"bank4dh.*skype", --=>>[www.bank4dh.com]<<=32U=100K. 5-15 mins Trade. More More cheapest   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! Buy more than 200k will get 10%  or [Obliterum]*7 or  [Vial of the Sands]as bounes   [www.bank4dh.com]
 	"wts.*mythic.*powerle?ve?l.*glory.*info", --▲ WTS RUN in Emerald Nightmare (Normal or heroic) TODAY ▲ Mythic+ ▲ Power leveling 100-110 ▲ All Glory ▲ we have a lot runs every day ▲ and more other ▲ /W for more information ▲
 	"perfectway[%.,]one.*prestige", --(Perfectway.one) Dungeons Mythic/ Mythic+, EN normal/heroic, PvP PRESTIGE RANKS (Perfectway.one)
 	"rbg.*mount.*prestige.*accshare", --███WTS RBG40&75wins/Vicious Saddle/all 6 vicious mounts/honor rank/prestige[Vicious War Trike]and[Vicious Warstrider]no acc share,carry right now/w me
 	"mythic.*boostinglive.*faster", --Mythic dungeons, Heroic raids, and more on [boostinglive.com] !Dress up your character faster than others!
+	"koroboost.*everyday.*mythic", --Top guild "Koroboost" inviting you everyday from 1:00 pm CET  to mythic/mythic + dungeons. Became [Brokenly Epic] within 4 hours. Msg me!
+	"doyouwant.*level110.*12h.*noproblem.*msgme.*info", --Do you want [Level 110] within 12h? No problem, Msg me for info ♥♥
+	"gamesales[%.,]pro.*service.*arena", --[Gamesales.pro] - an assistance in PvP and PvE services: starting from training and ending with achievement of the highest ranks in the arena. [Gamesales.pro-] an opportunity to get the best in a short time. Find out more at [http://www.gamesales.pro]
+	"rbg.*artifact.*honor.*mount.*carry", --█░█WTS RBG 1-75wins(Artifact Power+Honor Rank)6Vicious mount[Vicious Saddle]also[Reins of the Long-Forgotten Hippogryph]carry u right now ▲PST
 
 	--[[  Spanish  ]]--
 	"oro.*tutiendawow.*barato", --¿Todavía sin tu prepago actualizada? ¡CÓMPRALA POR ORO EN WWW.TUTIENDAWOW.COM! ¡PRECIOS ANTICRISIS! ¡65KS 60 DÍAS! Visita nuestra web y accede a nuestro CHAT EN VIVO. ENTREGAS INMEDIATAS. MAS BARATO QUE FICHA WOW.
@@ -661,11 +636,14 @@ local instantReportList = {
 	--[[  French  ]]--
 	"osboosting[%.,]com.*tarifs.*remise", --☼ www.os-boosting.com ☼ Le meilleur du boosting WoW à des tarifs imbattables. Donjons mythique 10/10 - Raids Cauchemar d'Emeraude 7/7 Normal & Héroïque - Métiers 700-800 - Pack 12 Pets TCG - Réputations Legion - Gold   | Code remise 5%: OS5%
 	"wallgaming.*loot.*keystone", --¤ www.WallGaming.com ¤ Raids Cauchemar d'Emeraude HM 7/7 6 loots/+ | Gloire au héros de Legion | Donjons Mythique 10/10 +5keystone | Arène 2c2 3c3 2000 & 2200 | Honneur PvP niveau 50 | Pets & Montures TCG |  N°1 FR
+	"profitez.*loot.*wallgaming", --☺♥ Profitez des dernières nouveautés de Legion maintenant  ♥☺ Cauchemar d'Emeraude HM Master Loot | Gloire au héros de Legion | Donjons Mythique+ / Karazhan 9/9 Mythique | Selle Vicieuse | Stuff PvE & PvP | www.wallgaming.com  Team FR
+	"gold.*web.*prestigewow[%.,]fr", --Propose PL Honneur et Prestige ; Débloque tous les talents pvp, équipement 840-870 ilvl, monture, puissance d'artefact & nouveau skin pour l'arme artefact, gold et bien plus encore ! Visitez notre site web : www.prestige-wow.fr pour plus d'infos !
 
 	--[[ Danish ]]--
 	"verificeret.*levering.*skype", --Sælger guld 20k for 33kr og 100k for 149Kr, Nem-ID verificeret. Levering er Direkte! også på andre realms. Skype zumzumff  TILBYDER 500K TIL 650KR!
 	"^sælgerguldfor%d+", --sælger guld for 170kr pr. 100k (w for andre servere)
 	"^sælgerguld.*mobilepay", --Sælger guld, forgår over mobile pay, 100k - 150 kr
+	"tilbud.*sælger%d+k.*mobilepay", --Dagens tilbud: Sælger 200 K for blot 280 kr - whisper for mere info: Mobilepay & Swipp
 
 	--[[ Swedish ]]--
 	"saljerguld.*detail.*stock", --Säljer guld 1.7kore details Stock: 3000k
@@ -734,20 +712,6 @@ local IsSpam = function(msg)
 			if myDebug then print("commonList", commonList[i], points, phishPoints, boostingPoints) end
 		end
 	end
-	for i=1, #heavyList do
-		if strfind(msg, heavyList[i]) then
-			points = points + 2 --Heavy section gets 2 points
-			if myDebug then print("heavyList", heavyList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-	for i=1, #heavyRestrictedList do
-		if strfind(msg, heavyRestrictedList[i]) then
-			points = points + 2
-			phishPoints = phishPoints + 1
-			if myDebug then print("heavyRestrictedList", heavyRestrictedList[i], points, phishPoints, boostingPoints) end
-			break --Only 1 trigger can get points in the strict section
-		end
-	end
 	for i=1, #phishingList do
 		if strfind(msg, phishingList[i]) then
 			phishPoints = phishPoints + 1
@@ -774,31 +738,25 @@ local IsSpam = function(msg)
 end
 
 --[[ Chat Scanning ]]--
-local Ambiguate, gsub, next, type, tremove = Ambiguate, gsub, next, type, tremove
+local Ambiguate, BNGetGameAccountInfoByGUID, gsub, next, type, tremove = Ambiguate, BNGetGameAccountInfoByGUID, gsub, next, type, tremove
+local IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat = IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat
 local blockedLineId, chatLines, chatPlayers = 0, {}, {}
-local spamCollector, prevLink, spamLineId = {}, 0, 0
+local spamCollector, spamLogger, prevShow = {}, {}, 0
+local btn
+local function BadBoyIsFriendly(name, flag, lineId, guid)
+	if not guid then return true end -- LocalDefense automated prints
+	local _, characterName = BNGetGameAccountInfoByGUID(guid)
+	if characterName or not CanComplainChat(lineId) or IsGuildMember(guid) or IsCharacterFriend(guid) or UnitInRaid(name) or UnitInParty(name) or flag == "GM" or flag == "DEV" then
+		return true
+	end
+end
 local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, channelNum, _, _, lineId, guid)
 	blockedLineId = 0
 	if event == "CHAT_MSG_CHANNEL" and (channelId == 0 or type(channelId) ~= "number") then return end --Only scan official custom channels (gen/trade)
 
 	local trimmedPlayer = Ambiguate(player, "none")
-	if not myDebug and (not CanComplainChat(lineId) or UnitInRaid(trimmedPlayer) or UnitInParty(trimmedPlayer)) then return end --Don't scan ourself/friends/GMs/guildies or raid/party members
+	if not myDebug and BadBoyIsFriendly(trimmedPlayer, flag, lineId, guid) then return end
 
-	if flag == "GM" or flag == "DEV" then return end --GM's can't get past the CanComplainChat call but "apparently" someone had a GM reported by the phishing filter which I don't believe, no harm in having this check I guess
-	if event == "CHAT_MSG_WHISPER" then --These scan prevention checks only apply to whispers, it would be too heavy to apply to all chat
-		--RealID support, don't scan people that whisper us via their character instead of RealID
-		--that aren't on our friends list, but are on our RealID list. CanComplainChat should really support this...
-		local _, num = BNGetNumFriends()
-		for i=1, num do
-			local gameAccs = BNGetNumFriendGameAccounts(i)
-			for j=1, gameAccs do
-				local _, rName, rGame, rServer = BNGetFriendGameAccountInfo(i, j)
-				if rName == trimmedPlayer and rGame == "WoW" and rServer == GetRealmName() then
-					return
-				end
-			end
-		end
-	end
 	local debug = msg --Save original message format
 	msg = msg:lower() --Lower all text, remove capitals
 
@@ -816,6 +774,9 @@ local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, chan
 				--
 				if spamCollector[guid] and IsSpam(msg) then -- Reduce the chances of a spam report expiring (line id is too old) by refreshing it
 					spamCollector[guid] = lineId
+					if BADBOY_TOOLTIP then
+						spamLogger[guid] = debug
+					end
 				end
 				--
 				return
@@ -834,40 +795,20 @@ local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, chan
 		if myDebug then
 			print("|cFF33FF99BadBoy_REPORT|r: ", debug, "-", event, "-", trimmedPlayer)
 		else
-			if BADBOY_POPUP then --Manual reporting via popup
-				local dialog = StaticPopup_Show("CONFIRM_REPORT_SPAM_CHAT", trimmedPlayer, nil, lineId)
-				dialog.text:SetFormattedText("BadBoy: %s \n\n %s", REPORT_SPAM_CONFIRMATION:format(trimmedPlayer), debug) --Add original spam line to Blizzard popup message
-				StaticPopup_Resize(dialog, "CONFIRM_REPORT_SPAM_CHAT")
-			elseif not BADBOY_NOLINK and (not BADBOY_BLACKLIST or not BADBOY_BLACKLIST[guid]) then
+			if not BADBOY_BLACKLIST or not BADBOY_BLACKLIST[guid] then
 				spamCollector[guid] = lineId
-				--Show block message
+				if BADBOY_TOOLTIP then
+					spamLogger[guid] = debug
+				end
 				local t = GetTime()
-				if t-prevLink > 90 then
-					prevLink = t
-					spamLineId = lineId
-					ChatFrame1:AddMessage(reportMsg, 1, 1, 1, nil, nil, nil, -5678) -- Use -5678 as a unique signature
+				if t-prevShow > 90 then
+					prevShow = t
+					btn:Show()
 				end
 			end
 		end
 		blockedLineId = lineId
 		return
-	-- If chat links are enabled, and we have spam, and it's been longer than 100sec since the previous link, and there's been 15 chat entries since the previous link
-	elseif not BADBOY_NOLINK and next(spamCollector) and GetTime() - prevLink > 100 and lineId - spamLineId > 15 then
-		local canReport = false
-		for k, v in next, spamCollector do
-			if CanComplainChat(v) then
-				canReport = true
-				break
-			end
-		end
-		if canReport then -- We have spam we can report, repeat message
-			prevLink = GetTime()
-			spamLineId = lineId
-			ChatFrame1:AddMessage(reportMsg, 1, 1, 1, nil, nil, nil, -5678) -- Use -5678 as a unique signature
-		else -- The spam has expired and we can no longer report it, wipe and remove the messages
-			wipe(spamCollector)
-			ChatFrame1:RemoveMessagesByExtraData(-5678) -- Remove messages from the chat frame with the -5678 signature
-		end
 	end
 end
 local filterFunc = function(_, _, _, _, _, _, _, _, _, _, _, _, lineId)
@@ -876,24 +817,85 @@ local filterFunc = function(_, _, _, _, _, _, _, _, _, _, _, _, lineId)
 	end
 end
 
---[[ Configure report links ]]--
 do
-	local SetHyperlink = ItemRefTooltip.SetHyperlink
-	function ItemRefTooltip:SetHyperlink(link, ...)
-		if link and link == "badboy" then
-			for k, v in next, spamCollector do
-				if CanComplainChat(v) then
-					BADBOY_BLACKLIST[k] = true
-					ReportPlayer("spam", v)
-				end
+	btn = CreateFrame("Button", nil, ChatFrame1)
+	btn:SetWidth(32)
+	btn:SetHeight(32)
+	btn:SetPoint("BOTTOMLEFT", 10, 10)
+	btn:SetFrameStrata("DIALOG")
+	local tx = btn:CreateTexture()
+	tx:SetAllPoints(btn)
+	tx:SetMask("Interface\\CharacterFrame\\TempPortraitAlphaMask")
+	tx:SetTexture(132360) -- Interface/Icons/Ability_Warrior_ShieldMastery
+	local animGroup = btn:CreateAnimationGroup()
+	animGroup:SetLooping("REPEAT")
+	local alpha1 = animGroup:CreateAnimation("Alpha")
+	alpha1:SetOrder(1)
+	alpha1:SetDuration(0.5)
+	alpha1:SetFromAlpha(0)
+	alpha1:SetToAlpha(0.8)
+	local alpha2 = animGroup:CreateAnimation("Alpha")
+	alpha2:SetOrder(2)
+	alpha2:SetDuration(1)
+	alpha2:SetFromAlpha(0.8)
+	alpha2:SetToAlpha(0)
+	local scale = animGroup:CreateAnimation("Scale")
+	scale:SetOrder(1)
+	scale:SetFromScale(0.3,0.3)
+	scale:SetToScale(1,1)
+	scale:SetDuration(1)
+	animGroup:Play()
+	btn:Hide()
+
+	local ticker = nil
+	local tickerFunc = function()
+		local canReport = false
+		for k, v in next, spamCollector do
+			if CanComplainChat(v) then
+				canReport = true
+			else
 				spamCollector[k] = nil
+				spamLogger[k] = nil
 			end
-			prevLink = GetTime() -- Refresh throttle so we don't risk showing another link straight after reporting
-			ChatFrame1:RemoveMessagesByExtraData(-5678) -- Remove messages from the chat frame with the -5678 signature
-		else
-			SetHyperlink(self, link, ...)
+		end
+		if not canReport then
+			btn:Hide()
 		end
 	end
+	btn:SetScript("OnShow", function()
+		if ticker then ticker:Cancel() end
+		ticker = C_Timer.NewTicker(5, tickerFunc)
+	end)
+	btn:SetScript("OnHide", function()
+		if ticker then
+			ticker:Cancel()
+			ticker = nil
+		end
+	end)
+	btn:SetScript("OnClick", function(self)
+		for k, v in next, spamCollector do
+			if CanComplainChat(v) then
+				BADBOY_BLACKLIST[k] = true
+				ReportPlayer("spam", v)
+			end
+			spamCollector[k] = nil
+			spamLogger[k] = nil
+		end
+		prevShow = GetTime() -- Refresh throttle so we don't risk showing again straight after reporting
+		self:Hide()
+	end)
+	btn:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_TOP")
+		GameTooltip:AddLine(reportMsg, 0.5, 0.5, 1)
+		if next(spamLogger) then
+			GameTooltip:AddLine(" ", 0.5, 0.5, 1)
+			for k, v in next, spamLogger do
+				GameTooltip:AddLine(v, 0.2, 1, 0)
+			end
+		end
+		GameTooltip:Show()
+	end)
+	btn:SetScript("OnLeave", GameTooltip_Hide)
 end
 
 --[[ Add Filters ]]--
@@ -925,21 +927,17 @@ end
 --[[ Blacklist ]]--
 do
 	local f = CreateFrame("Frame")
-	f:RegisterEvent("ADDON_LOADED")
-	f:RegisterEvent("PLAYER_LOGIN")
-	f:SetScript("OnEvent", function(frame, event, addon)
-		if addon == "BadBoy" then
-			-- Blacklist DB setup, needed since Blizz nerfed ReportPlayer so hard the block sometimes only lasts a few minutes.
-			local _, _, day = CalendarGetDate()
-			if type(BADBOY_BLACKLIST) ~= "table" or BADBOY_BLACKLIST.dayFromCal ~= day then
-				BADBOY_BLACKLIST = {dayFromCal = day}
-			end
-			frame:UnregisterEvent(event)
-		elseif event == "PLAYER_LOGIN" then
-			SetCVar("spamFilter", 1)
-			frame:UnregisterEvent(event)
-			frame:SetScript("OnEvent", nil)
+	f:RegisterEvent("PLAYER_LOGIN") -- Can't use ADDON_LOADED as CalendarGetDate isn't always ready on very first login.
+	f:SetScript("OnEvent", function(frame, event)
+		-- Blacklist DB setup, needed since Blizz nerfed ReportPlayer so hard the block sometimes only lasts a few minutes.
+		local _, _, day = CalendarGetDate()
+		if type(BADBOY_BLACKLIST) ~= "table" or BADBOY_BLACKLIST.dayFromCal ~= day then
+			BADBOY_BLACKLIST = {dayFromCal = day}
 		end
+		SetCVar("spamFilter", 1)
+		frame:UnregisterEvent(event)
+		frame:SetScript("OnEvent", nil)
 	end)
 end
 
+_G.BadBoyIsFriendly = BadBoyIsFriendly

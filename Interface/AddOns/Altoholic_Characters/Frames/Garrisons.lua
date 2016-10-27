@@ -175,7 +175,7 @@ function ns:Update()
 			
 			
 			-- Rewards
-			local rewardInfo = C_Garrison.GetMissionRewardInfo(missionID)
+			local rewardInfo = C_Garrison.GetMissionRewardInfo(missionID) or {}
 			local rewardIndex = 2
 			
 			for _, reward in pairs(rewardInfo) do

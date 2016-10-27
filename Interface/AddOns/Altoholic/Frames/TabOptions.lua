@@ -120,6 +120,17 @@ local support = {
 
 -- this content will be subject to frequent changes, do not bother translating it !!
 local whatsnew = {
+	{	name = "7.1.001 Changes",
+		bulletedList = {
+			"DataStore_Quests: added an option to select the hour at which daily quests are reset.",
+			"Updated the lists of achievements with the new ones added in Legion.",
+			"The talent panel is finally back. You can now also see the stat priority when mousing over the specialization name. ",
+			"DataStore_Talents: major overhaul to support the new panel. Old functions have obviously been deprecated.",
+			"LibCraftReagents is now deprecated, its functionality is now handled by DataStore_Crafts, which now has access to all recipes (even unlearned).",
+			"DataStore_Mails: Fixed the invalid attachment counts in the tooltip for mails sent by guild mates.",
+			"Removed LibBabble-Inventory, replaced the translations it provided by values returned by the game's API.",
+		},
+	},
 	{	name = "7.0.006 Changes",
 		bulletedList = {
 			"DataStore: Fixed guild identification when the character is on a different realm than the guild.",

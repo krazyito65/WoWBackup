@@ -1,33 +1,7 @@
 ﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="GuildBank.lua"></Script>
-
-	<Button name="AltoGuildBankIconTemplate" inherits="AltoButtonTemplate" virtual="true">
-		<Scripts>
-			<OnEnter>
-				Altoholic.Guild.Bank:Icon_OnEnter(self)
-			</OnEnter>
-		</Scripts>
-	</Button>
 	
-	<Button name="AltoGuildBankTabIconTemplate" inherits="AltoButtonTemplate" virtual="true">
-		<Scripts>
-			<OnClick>
-				Altoholic.Guild.Bank:TabIcon_OnClick(self, button)
-			</OnClick>
-			<OnEnter>
-				Altoholic.Guild.Bank:TabIcon_OnEnter(self)
-			</OnEnter>
-			<OnLeave>
-				AltoTooltip:Hide();
-			</OnLeave>
-		</Scripts>
-	</Button>
-		
-	<Frame parent="AltoholicTabGuild" parentKey="Bank" hidden="true">
-		<Size x="615" y="306" />
-		<Anchors>
-			<Anchor point="TOPRIGHT" x="39" y="-105" />
-		</Anchors>
+	<Frame parentKey="Bank" parent="AltoholicTabGuild" inherits="AltoDataPanelTemplate">
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString parentKey="Info1" inherits="GameFontNormalSmall" justifyH="LEFT">
@@ -55,7 +29,7 @@
 		</Layers>
 		<Frames>
 			<!-- Menu Icons -->
-			<Frame parentKey="MenuIcons" name="AltoholicTabGuildBank_MenuIcons">
+			<Frame parentKey="MenuIcons">
 				<Size x="170" y="37" />
 				<Anchors>
 					<Anchor point="LEFT" relativeTo="AltoholicFrameSearchLabel" relativePoint="RIGHT" x="60" y="-23" />
@@ -65,16 +39,25 @@
 						<Anchors>
 							<Anchor point="TOPLEFT" />
 						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\Achievement_GuildPerk_Everyones a Hero_rank2" />
+						</KeyValues>
 					</Button>
 					<Button parentKey="TabsIcon" inherits="AltoGuildBankIconTemplate" id="2">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.GuildIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\Achievement_GuildPerk_MobileBanking" />
+						</KeyValues>
 					</Button>
 					<Button parentKey="UpdateIcon" inherits="AltoGuildBankIconTemplate" id="3">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.TabsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Icons\Achievement_GuildPerk_Bartering" />
+						</KeyValues>
 					</Button>
 					<Button parentKey="RarityIcon" inherits="AltoGuildBankIconTemplate" id="4">
 						<Anchors>
@@ -165,12 +148,9 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				Altoholic.Guild.Bank:OnLoad()
+				Altoholic:SetClassExtensions(self, "AltoGuildBank")
+				self:Init()
 			</OnLoad>
-			<OnHide>
-				DropDownList1:Hide()
-			</OnHide>
 		</Scripts>
 	</Frame>
-	
 </Ui>

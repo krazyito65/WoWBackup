@@ -146,7 +146,7 @@ local callbacks = {
 				return
 			end
 			
-			currentItemID = LCI:GetCraftResultItem(spellID)
+			currentItemID = DataStore:GetCraftResultItem(spellID)
 			local orange, yellow, green, grey = LCL:GetCraftLevels(spellID)
 			
 			if orange then

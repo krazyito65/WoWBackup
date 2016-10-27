@@ -4,21 +4,12 @@ local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
-local THIS_ACCOUNT = "Default"
-
 local ICON_NOT_STARTED = "Interface\\RaidFrame\\ReadyCheck-NotReady" 
 local ICON_PARTIAL = "Interface\\RaidFrame\\ReadyCheck-Waiting"
 local ICON_COMPLETED = "Interface\\RaidFrame\\ReadyCheck-Ready" 
 
-local parentName = "AltoholicTabAchievements"
-local parent
-
 local view
 local highlightIndex
-
-addon.Tabs.Achievements = {}
-
-local ns = addon.Tabs.Achievements		-- ns = namespace
 
 local function BuildView()
 	view = view or {}
@@ -46,25 +37,82 @@ local function Header_OnClick(frame)
 	local header = view[highlightIndex]
 	header.isCollapsed = not header.isCollapsed
 
-	ns:Update();
-	AltoholicFrameAchievements:Show()
-	addon.Achievements:SetCategory(header.id)
-	addon.Achievements:Update()
+	local tab = frame:GetParent()
+	
+	tab:Update()
+	tab:Show()
+	tab.Achievements:SetCategory(header.id)
+	tab.Achievements:Update()
 end
 
 local function Item_OnClick(frame)
 	highlightIndex = frame.subCategoryIndex
 	local item = view[highlightIndex]
 	
-	ns:Update();
-	AltoholicFrameAchievements:Show()
-	addon.Achievements:SetCategory(item)
-	addon.Achievements:Update()
+	local tab = frame:GetParent()
+	
+	tab:Update()
+	tab:Show()
+	tab.Achievements:SetCategory(item)
+	tab.Achievements:Update()
 end
 
-function ns:Update()
-	local account, realm = parent.SelectRealm:GetCurrentRealm()
-	parent.ClassIcons:Update(account, realm)
+local function OnAchievementEarned(event, id)
+	if id then
+		AltoholicTabAchievements.Achievements:Update()
+	end
+end
+
+local function _Init(frame)
+	frame.SelectRealm:RegisterClassEvent("RealmChanged", function(self, account, realm) 
+			frame.ClassIcons:Update(account, realm)
+			frame.Status:SetText("")
+			frame.Achievements:Update()
+		end)
+		
+	frame.SelectRealm:RegisterClassEvent("DropDownInitialized", function(self) 
+			self:AddTitle()
+			self:AddTitle(format("%s%s", colors.gold, L["Not started"]), ICON_NOT_STARTED)
+			self:AddTitle(format("%s%s", colors.gold, L["Started"]), ICON_PARTIAL)
+			self:AddTitle(format("%s%s", colors.gold, COMPLETE), ICON_COMPLETED)
+		end)
+		
+	frame.ClassIcons.OnCharacterChanged = function(self)
+			local account, realm = frame.SelectRealm:GetCurrentRealm()
+			self:Update(account, realm)
+			frame.Achievements:Update()
+		end
+		
+	addon:RegisterEvent("ACHIEVEMENT_EARNED", OnAchievementEarned)
+	
+	-- test new menu view
+	
+	
+	-- local view = frame.LeftMenu:CreateView(frame.LeftMenu.name)
+	-- local cats = GetCategoryList()
+		
+	-- for _, categoryID in ipairs(cats) do
+		-- local catName, parentID = GetCategoryInfo(categoryID)
+		
+		-- if parentID == -1 then		-- add categories, followed by their respective sub-categories
+			-- frame.LeftMenu:AddHeader(view, catName, onClickCallback)
+			-- table.insert(view, { id = categoryID, isCollapsed = true } )
+			
+			-- for _, subCatID in ipairs(cats) do
+				-- local _, subCatParentID = GetCategoryInfo(subCatID)
+				-- if subCatParentID == categoryID then
+					-- table.insert(view, subCatID )
+				-- end
+			-- end
+		-- end
+	-- end
+	
+	
+end
+
+local function _Update(frame)
+	local account, realm = frame.SelectRealm:GetCurrentRealm()
+	frame.ClassIcons:Update(account, realm)
 
 	if not view then
 		BuildView()
@@ -100,7 +148,7 @@ function ns:Update()
 		buttonWidth = 136
 	end
 	
-	local scrollFrame = parent.ScrollFrame
+	local scrollFrame = frame.ScrollFrame
 	local numRows = scrollFrame.numRows
 	local offset = scrollFrame:GetOffset()
 	local menuButton
@@ -145,32 +193,13 @@ function ns:Update()
 	scrollFrame:Update(#MenuCache)
 end
 
-function ns:GetRealm()
-	local account, realm = parent.SelectRealm:GetCurrentRealm()
+local function _GetRealm(frame)
+	local account, realm = frame.SelectRealm:GetCurrentRealm()
 	return realm, account
 end
 
-function ns:OnLoad()
-	parent = _G[parentName]
-	
-	parent.SelectRealm:RegisterClassEvent("RealmChanged", function(frame, account, realm) 
-			parent.ClassIcons:Update(account, realm)
-			parent.Status:SetText("")
-			addon.Achievements:Update()
-		end)
-		
-	parent.SelectRealm:RegisterClassEvent("DropDownInitialized", function(frame) 
-			frame:AddTitle()
-			frame:AddTitle(colors.gold..L["Not started"], ICON_NOT_STARTED)
-			frame:AddTitle(colors.gold..L["Started"], ICON_PARTIAL)
-			frame:AddTitle(colors.gold..COMPLETE, ICON_COMPLETED)
-		end)
-end
-
-local function OnAchievementEarned(event, id)
-	if id then
-		addon.Achievements:Update()
-	end
-end
-
-addon:RegisterEvent("ACHIEVEMENT_EARNED", OnAchievementEarned)
+addon:RegisterClassExtensions("AltoTabAchievements", {
+	Init = _Init,
+	Update = _Update,
+	GetRealm = _GetRealm,
+})

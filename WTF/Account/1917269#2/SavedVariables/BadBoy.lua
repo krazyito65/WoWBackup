@@ -1,6 +1,5 @@
 
-BADBOY_POPUP = nil
-BADBOY_NOLINK = nil
 BADBOY_BLACKLIST = {
-	["dayFromCal"] = 0,
+	["Player-3684-0907210A"] = true,
+	["dayFromCal"] = 26,
 }

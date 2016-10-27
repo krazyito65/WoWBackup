@@ -59,10 +59,11 @@
 			<ScrollFrame parentKey="ScrollFrame" inherits="AltoMenuScrollFrameTemplate">
 				<Scripts>
 					<OnVerticalScroll>
-						self:OnVerticalScroll(offset, 20, Altoholic.Tabs.Achievements.Update)
+						local parent = self:GetParent()
+						self:OnVerticalScroll(offset, 20, parent.Update, parent)
 					</OnVerticalScroll>
 					<OnShow>
-						Altoholic.Tabs.Achievements:Update();
+						self:GetParent().Achievements:Update()
 					</OnShow>
 				</Scripts>
 				<KeyValues>
@@ -76,17 +77,11 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				Altoholic.Tabs.Achievements:OnLoad()
-				
-				self.ClassIcons.OnCharacterChanged = function(self)
-						local parent = self:GetParent()
-						local account, realm = parent.SelectRealm:GetCurrentRealm()
-						self:Update(account, realm)
-						Altoholic.Achievements:Update()
-					end
+				Altoholic:SetClassExtensions(self, "AltoTabAchievements")
+				self:Init()
 			</OnLoad>
 			<OnShow>
-				Altoholic.Tabs.Achievements:Update()
+				self:Update()
 			</OnShow>
 		</Scripts>
 	</Frame>

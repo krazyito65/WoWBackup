@@ -47,6 +47,14 @@ local AddonDB_Defaults = {
 	}
 }
 
+local ReferenceDB_Defaults = {
+	global = {
+		Reagents = {},		-- [recipeID] = "itemID1,count1 | itemID2,count2 | ..."
+		ResultItems = {}	-- [recipeID] = itemID
+	}
+}
+
+
 local SPELL_ID_ALCHEMY = 2259
 local SPELL_ID_BLACKSMITHING = 3100
 local SPELL_ID_ENCHANTING = 7411
@@ -246,8 +254,37 @@ local function ScanRecipes()
 	local categoryCount = 0
 	local categoryID = -1
 	
+	local resultItems = addon.ref.global.ResultItems
+	local reagentsDB = addon.ref.global.Reagents
+	local reagentsInfo = {}
+	
 	for i, recipeID in pairs(recipes) do
 		local info = C_TradeSkillUI.GetRecipeInfo(recipeID)
+		
+		-- scan reagents for all recipes (even unlearned)
+		wipe(reagentsInfo)
+		
+		local numReagents = C_TradeSkillUI.GetRecipeNumReagents(recipeID)
+		for reagentIndex = 1, numReagents do
+			local _, _, count = C_TradeSkillUI.GetRecipeReagentInfo(recipeID, reagentIndex)
+			local link = C_TradeSkillUI.GetRecipeReagentItemLink(recipeID, reagentIndex)
+			
+			if link and count then
+				local itemID = tonumber(link:match("item:(%d+)"))
+				if itemID then
+					table.insert(reagentsInfo, format("%s,%s", itemID, count))
+				end
+			end
+		end
+		
+		reagentsDB[recipeID] = table.concat(reagentsInfo, "|")
+
+		-- Resulting item ID
+		local itemLink = C_TradeSkillUI.GetRecipeItemLink(recipeID)
+		if itemLink then
+			resultItems[recipeID] = tonumber(itemLink:match("item:(%d+)"))
+		end
+		
 		if info.learned then
 			
 			-- save the category
@@ -400,6 +437,8 @@ local function OnChatMsgSystem(self, msg)
 end
 
 local function OnDataSourceChanged(self)
+	if C_TradeSkillUI.IsTradeSkillLinked() or C_TradeSkillUI.IsTradeSkillGuild() or C_TradeSkillUI.IsNPCCrafting() then return end
+	
 	ScanTradeSkills()
 end
 
@@ -450,9 +489,9 @@ local function _GetCraftLineInfo(profession, index)
 	end
 	
 	local color = bAnd(craft, 3)	-- first 2 bits = color
-	local id = RShift(craft, 2)	-- other bits = spell id
+	local recipeID = RShift(craft, 2)	-- other bits = recipeID
 	
-	return false, color, id
+	return false, color, recipeID
 end
 
 local function _GetCraftCooldownInfo(profession, index)
@@ -592,6 +631,15 @@ local function _IsArtifactKnown(character, spellID)
 	return character.ArcheologyItems[spellID]
 end
 
+local function _GetCraftReagents(recipeID)
+	return addon.ref.global.Reagents[recipeID]
+end
+
+local function _GetCraftResultItem(recipeID)
+	return addon.ref.global.ResultItems[recipeID]
+end
+
+
 local PublicMethods = {
 	GetProfession = _GetProfession,
 	GetProfessions = _GetProfessions,
@@ -616,10 +664,13 @@ local PublicMethods = {
 	GetRaceNumArtifacts = _GetRaceNumArtifacts,
 	GetArtifactInfo = _GetArtifactInfo,
 	IsArtifactKnown = _IsArtifactKnown,
+	GetCraftReagents = _GetCraftReagents,
+	GetCraftResultItem = _GetCraftResultItem,
 }
 
 function addon:OnInitialize()
 	addon.db = LibStub("AceDB-3.0"):New(addonName .. "DB", AddonDB_Defaults)
+	addon.ref = LibStub("AceDB-3.0"):New(addonName .. "RefDB", ReferenceDB_Defaults)
 
 	DataStore:RegisterModule(addonName, addon, PublicMethods)
 	DataStore:SetCharacterBasedMethod("GetProfession")

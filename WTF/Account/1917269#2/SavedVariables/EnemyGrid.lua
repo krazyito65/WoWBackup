@@ -72,7 +72,6 @@ EnemyGridDB = {
 			["name_text_font"] = "PT Sans Narrow",
 			["bar_width"] = 180,
 			["aura_width"] = 26,
-			["cast_statusbar_texture"] = "PlaterTexture",
 			["frame_backdropcolor"] = {
 				0.643137254901961, -- [1]
 				0.643137254901961, -- [2]
@@ -100,6 +99,7 @@ EnemyGridDB = {
 				nil, -- [3]
 				0.310000002384186, -- [4]
 			},
+			["cast_statusbar_texture"] = "PlaterTexture",
 			["first_run"] = true,
 			["percent_text_size"] = 16,
 			["name_text_stringsize"] = 102,

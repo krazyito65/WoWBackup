@@ -6,30 +6,12 @@ if not DataStore then return end
 
 local addonName = "DataStore_Talents"
 
-_G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0")
+_G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0")
 
 local addon = _G[addonName]
 
-local THIS_ACCOUNT = "Default"
-local commPrefix = "DS_Tal"		-- let's keep it a bit shorter than the addon name, this goes on a comm channel, a byte is a byte ffs :p
-
--- Message types
-local MSG_TALENTS_REQUEST					= 1	-- request talents ..
-local MSG_TALENTS_TRANSFER					= 2	-- .. and send the data
-
 local AddonDB_Defaults = {
 	global = {
-		Guilds = {
-			['*'] = {			-- ["Account.Realm.Name"] 
-				Members = {
-					['*'] = {				-- ["MemberName"] 
-						lastUpdate = nil,
-						Class = nil,
-						TalentTrees = {},
-					}
-				}
-			},
-		},
 		Characters = {
 			['*'] = {				-- ["Account.Realm.Name"] 
 				lastUpdate = nil,
@@ -59,8 +41,91 @@ local ReferenceDB_Defaults = {
 	}
 }
 
-local UI_ICONS_PATH = "Interface\\Icons\\"
-local BACKGROUND_PATH = "Interface\\TalentFrame\\"
+--[[
+Source : http://www.icy-veins.com/
+Last update : 23/09/2016 (7.0)
+
+Note: The priorities come from Icy Veins, although I have not respected them 100%, based on my own experience, view, and discussions with guild mates.
+They are meant to be an indication for classes you do not play too often, 
+and I do not wish to enter religious discussions about who is right or wrong, or about which stat is actually better :)
+
+ex: in some cases, Icy Veins indicated that the primary stat (STR, INT, ..) has a lesser priority than mastery or crit .. 
+well, I still kept the primary stat as #1 in the list, because in most cases, you WILL have this stat on each item.
+
+And if you reach the point where this difference matters, then you probably don't need the information any more, 
+because you supposedly already know your class well enough.
+--]]
+
+local statPriority = {
+	-- Cloth
+	["MAGE"] = {
+		{ SPELL_STAT4_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_MASTERY }, -- Arcane
+		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, SPELL_HASTE, STAT_MASTERY }, -- Fire
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY }, -- Frost
+	},
+	["PRIEST"] = {
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_MASTERY, STAT_VERSATILITY }, -- Discipline
+		{ SPELL_STAT4_NAME, STAT_MASTERY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_VERSATILITY }, -- Holy
+		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_MASTERY, STAT_VERSATILITY }, -- Shadow
+	},	
+	["WARLOCK"] = {
+		{ SPELL_STAT4_NAME, STAT_MASTERY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_VERSATILITY }, -- Affliction
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_MASTERY, STAT_VERSATILITY }, -- Demonology
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY }, -- Destruction
+	},	
+	
+	-- Leather
+	["DEMONHUNTER"] = {
+		{ SPELL_STAT2_NAME, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, SPELL_HASTE, STAT_MASTERY }, -- Havoc
+		{ SPELL_STAT2_NAME, STAT_MASTERY, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, SPELL_HASTE }, -- Vengeance
+	},
+	["ROGUE"] = {
+		{ SPELL_STAT2_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, STAT_MASTERY, SPELL_HASTE }, -- Assassination
+		{ SPELL_STAT2_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, STAT_MASTERY, SPELL_HASTE }, -- Outlaw
+		{ SPELL_STAT2_NAME, STAT_VERSATILITY, STAT_MASTERY, STAT_CRITICAL_STRIKE, SPELL_HASTE }, -- Subtlety
+	},
+	["DRUID"] = {
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY }, -- Balance
+		{ SPELL_STAT2_NAME, STAT_MASTERY, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, SPELL_HASTE }, -- Feral
+		{ SPELL_STAT2_NAME, STAT_VERSATILITY, STAT_MASTERY, SPELL_HASTE, STAT_CRITICAL_STRIKE }, -- Guardian
+		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_MASTERY, STAT_VERSATILITY }, -- Restoration
+	},
+	["MONK"] = {
+		{ SPELL_STAT2_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_MASTERY, STAT_VERSATILITY }, -- Brewmaster
+		{ SPELL_STAT4_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_MASTERY }, -- Mistweaver
+		{ SPELL_STAT2_NAME, STAT_MASTERY, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, SPELL_HASTE }, -- Windwalker
+	},
+	
+	-- Mail
+	["HUNTER"] = {
+		{ SPELL_STAT2_NAME, STAT_MASTERY, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY }, -- Beast Mastery
+		{ SPELL_STAT2_NAME, STAT_MASTERY, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY }, -- Marksmanship
+		{ SPELL_STAT2_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, STAT_MASTERY, SPELL_HASTE }, -- Survival
+	},
+	["SHAMAN"] = {
+		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_VERSATILITY, STAT_MASTERY }, -- Elemental
+		{ SPELL_STAT2_NAME, STAT_MASTERY, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY }, -- Enhancement
+		{ SPELL_STAT4_NAME, STAT_MASTERY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_VERSATILITY }, -- Restoration
+	},	
+	
+	-- Plate
+	["DEATHKNIGHT"] = {
+		{ SPELL_STAT1_NAME, SPELL_HASTE, STAT_MASTERY, STAT_CRITICAL_STRIKE, STAT_VERSATILITY }, -- Blood
+		{ SPELL_STAT1_NAME, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_MASTERY, STAT_VERSATILITY }, -- Frost
+		{ SPELL_STAT1_NAME, SPELL_HASTE, STAT_MASTERY, STAT_CRITICAL_STRIKE, STAT_VERSATILITY }, -- Unholy
+	},
+	["WARRIOR"] = {
+		{ SPELL_STAT1_NAME, STAT_MASTERY, STAT_VERSATILITY, SPELL_HASTE, STAT_CRITICAL_STRIKE }, -- Arms
+		{ SPELL_STAT1_NAME, SPELL_HASTE, STAT_MASTERY, STAT_VERSATILITY, STAT_CRITICAL_STRIKE }, -- Fury
+		{ SPELL_STAT1_NAME, STAT_VERSATILITY, STAT_MASTERY, SPELL_HASTE, STAT_CRITICAL_STRIKE }, -- Protection
+	},
+	["PALADIN"] = {
+		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY, SPELL_HASTE }, -- Holy
+		{ SPELL_STAT1_NAME, STAT_VERSATILITY, SPELL_HASTE, STAT_MASTERY, STAT_CRITICAL_STRIKE }, -- Protection
+		{ SPELL_STAT1_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY }, -- Retribution
+	},
+}
+
 
 -- *** Utility functions ***
 local bAnd = bit.band
@@ -79,61 +144,8 @@ local function RightShift(value, numBits)
 	return math.floor(value / 2^numBits)
 end
 
-local function GetThisGuild()
-	local key = DataStore:GetThisGuildKey()
-	return key and addon.db.global.Guilds[key] 
-end
-
-local function GetMemberKey(guild, member)
-	-- returns the appropriate key to address a guild member. 
-	--	Either it's a known alt ==> point to the characters table
-	--	Or it's a guild member ==> point to the guild table
-	local main = DataStore:GetNameOfMain(member)
-	if main and main == UnitName("player") then
-		local key = format("%s.%s.%s", THIS_ACCOUNT, GetRealmName(), member)
-		return addon.db.global.Characters[key]
-	end
-	return guild.Members[member]
-end
-
-local function GuildBroadcast(messageType, ...)
-	local serializedData = addon:Serialize(messageType, ...)
-	addon:SendCommMessage(commPrefix, serializedData, "GUILD")
-end
-
-local function GuildWhisper(player, messageType, ...)
-	if DataStore:IsGuildMemberOnline(player) then
-		local serializedData = addon:Serialize(messageType, ...)
-		addon:SendCommMessage(commPrefix, serializedData, "WHISPER", player)
-	end
-end
-
 
 -- *** Scanning functions ***
-local LocaleExceptions = {}		--- see ScanTalentReference() for an explanation on the purpose of this table
-
--- SpellBookName = TalentTreeName	
-if GetLocale() == "enUS" then
-	LocaleExceptions["Elemental Combat"] = "Elemental"
-	LocaleExceptions["Shadow Magic"] = "Shadow"
-	LocaleExceptions["Feral"] = "Feral Combat"
-elseif GetLocale() == "frFR" then
-	LocaleExceptions["Combat élémentaire"] = "Élémentaire"
---	LocaleExceptions["Arcanes"] = "Arcane"
-	LocaleExceptions["Magie de l'ombre"] = "Ombre"
-	LocaleExceptions["Farouche"] = "Combat farouche"
-	LocaleExceptions["Equilibre"] = "Équilibre"
-elseif GetLocale() == "deDE" then 
-	LocaleExceptions["Elementarkampf"] = "Elementar" 
-	LocaleExceptions["Schattenmagie"] = "Schatten" 
-elseif GetLocale() == "koKR" then 
-	LocaleExceptions["회복"] = "복원"
-elseif GetLocale() == "zhTW" then 
-	LocaleExceptions["生存技能"] = "生存"
-	LocaleExceptions["暗影魔法"] = "暗影"
-	LocaleExceptions["元素戰鬥"] = "元素"
-end
-
 local function ScanTalents()
 	local level = UnitLevel("player")
 	if not level or level < 15 then return end		-- don't scan anything for low level characters
@@ -181,24 +193,16 @@ local function ScanTalentReference()
 	local specialization = GetSpecialization()
 	local specRef = ref.Specializations[specialization]
 	
-	specRef.id, specRef.name, _, specRef.icon = GetSpecializationInfo(specialization)
+	specRef.id = GetSpecializationInfo(specialization)
 	
 	wipe(specRef.talents)
 	
 	for tier = 1, GetMaxTalentTier() do
 		for column = 1, 3 do
-			local talentID, name, texture = GetTalentInfo(tier, column, 1)		-- param 3 = spec group, always 1 since 7.0
-
-			-- if talent ID is not enough ..
-			-- all paths start with this prefix, let's hope blue does not change this :)
-			-- saves a lot of memory not to keep the full path for each talent (about 16k in total for all classes)
-			-- iconPath = string.gsub(iconPath, UI_ICONS_PATH, "")
-			-- iconPath = string.gsub(iconPath, string.upper(UI_ICONS_PATH), "")
+			local talentID = GetTalentInfo(tier, column, 1)		-- param 3 = spec group, always 1 since 7.0
+			-- Retrieve info with : GetTalentInfoByID(talentID)
 			
 			table.insert(specRef.talents, talentID)
-			-- table.insert(specRef.talents, format("%s,%s,%s", talentID, name, texture))
-			-- specRef.talents[talentNum] = id .. "|" .. nameTalent .. "|" .. iconPath .. "|" .. tier .. "|" ..  column
-		
 		end
 	end
 end
@@ -210,6 +214,10 @@ local function OnPlayerAlive()
 	ScanTalentReference()
 end
 
+local function OnPlayerSpecializationChanged()
+	ScanTalents()
+	ScanTalentReference()
+end
 
 -- ** Mixins **
 local function _GetReferenceTable()
@@ -217,21 +225,36 @@ local function _GetReferenceTable()
 end
 
 local function	_GetClassReference(class)
-	assert(type(class) == "string")
-	return addon.ref.global[class]
+	if type(class) == "string" then
+		return addon.ref.global[class]
+	end
 end
 
-local function _GetTreeReference(class, tree)
+local function _GetSpecializationReference(class, spec)
 	assert(type(class) == "string")
-	assert(type(tree) == "string")
-	return addon.ref.global[class].Trees[tree]
+	assert(type(spec) == "number")
+	
+	return addon.ref.global[class].Specializations[spec]
+end
+
+local function _GetSpecializationInfo(class, specialization)
+	local spec = _GetSpecializationReference(class, specialization)
+	if spec and spec.id then 
+		return GetSpecializationInfoByID(spec.id)
+	end
+end
+
+local function _GetStatPriority(class, specialization)
+	if statPriority[class] then
+		return statPriority[class][specialization]
+	end
 end
 
 local function _IsClassKnown(class)
 	class = class or ""	-- if by any chance nil is passed, trap it to make sure the function does not fail, but returns nil anyway
 	
 	local ref = _GetClassReference(class)
-	if ref.Order then		-- if the Order field is not nil, we have data for this class
+	if ref.Locale then		-- if the Locale field is not nil, we have data for this class
 		return true
 	end
 end
@@ -243,253 +266,55 @@ local function _ImportClassReference(class, data)
 	addon.ref.global[class] = data
 end
 
-local function _GetClassTrees(class)
-	assert(type(class) == "string")
+local function _GetTalentInfo(class, specialization, row, column)
+	local spec = _GetSpecializationReference(class, specialization)
+	if not spec then return end
 	
-	local ref = _GetClassReference(class)
-	local order = ref.Order
-	if order then
-		return order:gmatch("([^,]+)")
-	end
-	-- to do, add a return value that does not require validity testing by the caller
-end
-
-local function _GetTreeInfo(class, tree)
-	local t = _GetTreeReference(class, tree)
+	local index = ((row - 1) * 3) + column		-- ex: row 2, column 1 = index 4
+	local talentID = spec.talents[index]
 	
-	if t then
-		return UI_ICONS_PATH..t.icon, BACKGROUND_PATH .. t.background
+	if talentID then
+		-- id, name, texture, ...
+		return GetTalentInfoByID(talentID)
 	end
 end
 
-local function _GetTreeNameByID(class, id)
-	-- returns the name of tree "id" for a given class
-	assert(type(class) == "string")
+local function _GetSpecializationTierChoice(character, specialization, row)
+	local attrib = character.Specializations[specialization]
 	
-	local index = 1
-	for name in _GetClassTrees(class) do
-		if index == id then
-			return name
-		end
-		index = index + 1
+	if attrib then
+		return bAnd(RightShift(attrib, (row-1)*2), 3)
 	end
-end
-
-local function _GetTalentLink(id, rank, name)
-	return format("|cff4e96f7|Htalent:%s:%s|h[%s]|h|r", id, (rank-1), name)
-end
-
-local function _GetNumTalents(class, tree)
-	-- returns the number of talents in a given tree
-	local t = _GetTreeReference(class, tree)
-
-	if t then
-		return #t.talents
-	end
-end
-
-local function _GetTalentInfo(class, tree, index)
-	local t = _GetTreeReference(class, tree)
-	local talentInfo = t.talents[index]
-	
-	if not talentInfo then return end
-	
-	local id, name, icon, tier, column = strsplit("|", talentInfo)
-	local maximumRank = 1
-	
-	return tonumber(id), name, UI_ICONS_PATH..icon, tonumber(tier), tonumber(column), tonumber(maximumRank)
-end
-
-local function _GetTalentRank(character, tree, specNum, index)
-	local attrib = character.TalentTrees[format("%s|%s", tree, specNum)] 	-- ex: "Arcane|1"
-	if not attrib then return 0 end	-- not in the DB ? 0 points spent
-
-	index = (index - 1) * 2		-- ex: 3rd talent = bits 4-5
-	return bAnd(RightShift(attrib, index), 3)
-end
-
-local function _GetActiveTalents(character)
-	return character.ActiveTalents
-end
-	
-local function _GetTalentPrereqs(class, tree, index)
-	local t = _GetTreeReference(class, tree)
-	local prereq = t.prereqs[index]
-		
-	if prereq then
-		local prereqTier, prereqColumn = strsplit("|", prereq)
-		return tonumber(prereqTier), tonumber(prereqColumn)
-	end
-end
-
-local sentRequests		-- recently sent requests
-
-local function _RequestGuildMemberTalents(member)
-	-- requests the equipment of a given character (alt or main)
-	local player = UnitName("player")
-	local main = DataStore:GetNameOfMain(member)
-	if not main then 		-- player is offline, check if his talents are in the DB
-		local thisGuild = GetThisGuild()
-		if thisGuild and thisGuild.Members[member] then		-- player found
-		
-			-- todo : trigger event and pass data along
-			if thisGuild.Members[member].TalentTrees then		-- equipment found
-				addon:SendMessage("DATASTORE_PLAYER_TALENTS_RECEIVED", player, member)
-				return
-			end
-		end
-	end
-	
-	-- todo
-	-- if main == player then	-- if player requests the equipment of one of own alts, process the request locally, using the network works fine, but let's save the traffic.
-		-- trigger the same event, _GetGuildMemberInventoryItem will take care of picking the data in the right place
-		-- addon:SendMessage("DATASTORE_PLAYER_TALENTS_RECEIVED", player, member)
-		-- return
-	-- end
-	
-	-- prevent spamming remote players with too many requests
-	sentRequests = sentRequests or {}
-	
-	if sentRequests[main] and ((time() - sentRequests[main]) < 5) then		-- if there's a known timestamp , and it was sent less than 5 seconds ago .. exit
-		return
-	end
-	
-	sentRequests[main] = time()		-- timestamp of the last request sent to this player
-	GuildWhisper(main, MSG_TALENTS_REQUEST, member)
-end
-
-local function _GetGuildMemberTalentRank(guild, member, tree, specNum, index)
-	local character = GetMemberKey(guild, member)
-	if not character then return end
-
-	local attrib = character.TalentTrees[format("%s|%s", tree, specNum)] 	-- ex: "Arcane|1"
-	if not attrib then return 0 end	-- not in the DB ? 0 points spent
-
-	index = (index - 1) * 2		-- ex: 3rd talent = bits 4-5
-	return bAnd(RightShift(attrib, index), 3)
-end
-
-local function _GetGuildMemberNumPointsSpent(guild, member, tree, specNum)
-	local character = GetMemberKey(guild, member)
-	if not character then return end
-	
-	local attrib = character.TalentTrees[format("%s|%s", tree, specNum)] 	-- ex: "Arcane|1"
-	if not attrib then return 0 end	-- not in the DB ? 0 points spent
-	
-	local points = 0
-	while attrib ~= 0 do
-		points = points + bAnd(attrib, 3)	-- add the lowest 2 bits ..
-		attrib = RightShift(attrib, 2)		-- shift 2 bits to the right
-	end
-	return points
-end
-
-local function _GetGuildTalentsByClass(guild, class)
-	-- note: I'm not inspired, this might not be the best function name :/
-	local out = {}
-
-	for name, member in pairs(guild.Members) do
-		if member.Class == class then
-			table.insert(out, name)
-		end
-	end
-	
-	return out
 end
 
 local PublicMethods = {
 	GetReferenceTable = _GetReferenceTable,
 	GetClassReference = _GetClassReference,
-	GetTreeReference = _GetTreeReference,
+	GetSpecializationInfo = _GetSpecializationInfo,
+	GetStatPriority = _GetStatPriority,
 	IsClassKnown = _IsClassKnown,
 	ImportClassReference = _ImportClassReference,
-	GetClassTrees = _GetClassTrees,
-	GetTreeInfo = _GetTreeInfo,
-	GetTreeNameByID = _GetTreeNameByID,
-	GetTalentLink = _GetTalentLink,
 	GetTalentInfo = _GetTalentInfo,
-	GetTalentRank = _GetTalentRank,
-	GetActiveTalents = _GetActiveTalents,
-	GetNumPointsSpent = _GetNumPointsSpent,
-	GetTalentPrereqs = _GetTalentPrereqs,
-	RequestGuildMemberTalents = _RequestGuildMemberTalents,
-	GetGuildMemberTalentRank = _GetGuildMemberTalentRank,
-	GetGuildMemberNumPointsSpent = _GetGuildMemberNumPointsSpent,
-	GetGuildTalentsByClass = _GetGuildTalentsByClass,
+	GetSpecializationTierChoice = _GetSpecializationTierChoice,
 }
-
-
--- *** Guild Comm ***
-
-local GuildCommCallbacks = {
-	[MSG_TALENTS_REQUEST] = function(sender, alt)
-			local character = DataStore:GetCharacterTable(addonName, alt)
-			if character and character.Class then
-				
-				-- Note: DO NOT send the tree order, only send the actual data, this is important to keep the whole thing working across multiple languages.
-				
-				-- Data will be sent in the following format : 
-				-- [1] = tree 1 spec 1 ; [2] = tree 1 spec 2
-				-- [3] = tree 2 spec 1 ; [4] = tree 2 spec 2
-				-- [5] = tree 3 spec 1 ; [6] = tree 3 spec 2
-				
-				local out = {}	
-				local index = 1
-				for tree in _GetClassTrees(character.Class) do		-- keep the order of talent trees, this one is consistant across languages.
-					out[index] = character.TalentTrees[format("%s|%s", tree, 1)]
-					index = index + 1
-					out[index] = character.TalentTrees[format("%s|%s", tree, 2)]
-					index = index + 1
-				end
-				
-				GuildWhisper(sender, MSG_TALENTS_TRANSFER, alt, character.Class, out)
-			end
-		end,
-	[MSG_TALENTS_TRANSFER] = function(sender, character, class, talents)
-			local thisGuild = GetThisGuild()
-			if thisGuild then
-				local member = thisGuild.Members[character]
-				local trees = member.TalentTrees
-				
-				local index = 1
-				for tree in _GetClassTrees(class) do			-- keep the order of talent trees, this one is consistant across languages.
-					trees[format("%s|%s", tree, 1)] = talents[index]
-					index = index + 1
-					trees[format("%s|%s", tree, 2)] = talents[index]
-					index = index + 1
-				end
-				
-				member.Class = class
-				member.lastUpdate = time()
-				addon:SendMessage("DATASTORE_PLAYER_TALENTS_RECEIVED", sender, character)
-			end
-		end,
-}
-
 
 function addon:OnInitialize()
 	addon.db = LibStub("AceDB-3.0"):New(addonName .. "DB", AddonDB_Defaults)
 	addon.ref = LibStub("AceDB-3.0"):New(addonName .. "RefDB", ReferenceDB_Defaults)
 
 	DataStore:RegisterModule(addonName, addon, PublicMethods)
-	DataStore:SetGuildCommCallbacks(commPrefix, GuildCommCallbacks)
-	
-	DataStore:SetCharacterBasedMethod("GetTalentRank")
-	DataStore:SetCharacterBasedMethod("GetActiveTalents")
-	
-	DataStore:SetGuildBasedMethod("GetGuildMemberTalentRank")
-	DataStore:SetGuildBasedMethod("GetGuildMemberNumPointsSpent")
-	DataStore:SetGuildBasedMethod("GetGuildTalentsByClass")
-	
-	addon:RegisterComm(commPrefix, DataStore:GetGuildCommHandler())
+
+	DataStore:SetCharacterBasedMethod("GetSpecializationTierChoice")
 end
 
 function addon:OnEnable()
 	addon:RegisterEvent("PLAYER_ALIVE", OnPlayerAlive)
 	addon:RegisterEvent("PLAYER_TALENT_UPDATE", ScanTalents)
+	addon:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED", OnPlayerSpecializationChanged)
 end
 
 function addon:OnDisable()
 	addon:UnregisterEvent("PLAYER_ALIVE")
 	addon:UnregisterEvent("PLAYER_TALENT_UPDATE")
+	addon:UnregisterEvent("PLAYER_SPECIALIZATION_CHANGED")
 end

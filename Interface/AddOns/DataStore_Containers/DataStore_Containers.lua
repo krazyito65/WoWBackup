@@ -18,7 +18,6 @@ local addon = _G[addonName]
 
 local THIS_ACCOUNT = "Default"
 local commPrefix = "DS_Cont"		-- let's keep it a bit shorter than the addon name, this goes on a comm channel, a byte is a byte ffs :p
-local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
 local MAIN_BANK_SLOTS = 100		-- bag id of the 28 main bank slots
 
 local guildMembers = {} 	-- hash table containing guild member info (tab timestamps)
@@ -548,16 +547,17 @@ local function _GetContainers(character)
 end
 
 local BagTypeStrings = {
-	[1] = BI["Quiver"],
-	[2] = BI["Ammo Pouch"],
-	[4] = BI["Soul Bag"],
-	[8] = BI["Leatherworking Bag"],
-	[16] = BI["Inscription Bag"],
-	[32] = BI["Herb Bag"],
-	[64] = BI["Enchanting Bag"],
-	[128] = BI["Engineering Bag"],
-	[512] = BI["Gem Bag"],
-	[1024] = BI["Mining Bag"],
+	-- [1] = "Quiver",
+	-- [2] = "Ammo Pouch",
+	[4] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 1), -- "Soul Bag",
+	[8] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 7), -- "Leatherworking Bag",
+	[16] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 8), -- "Inscription Bag",
+	[32] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 2), -- "Herb Bag"
+	[64] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 3), -- "Enchanting Bag",
+	[128] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 4), -- "Engineering Bag",
+	[512] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 5), -- "Gem Bag",
+	[1024] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 6), -- "Mining Bag",
+	
 }
 
 local function _GetContainerInfo(character, containerID)

@@ -69,13 +69,13 @@ VUHDO_CONFIG = {
 	["DETECT_DEBUFFS_REMOVABLE_ONLY"] = false,
 	["IS_READY_CHECK_DISABLED"] = false,
 	["CLUSTER"] = {
-		["BELOW_HEALTH_PERC"] = 85,
-		["CHAIN_MAX_JUMP"] = 3,
-		["RANGE_JUMP"] = 11,
-		["DISPLAY_DESTINATION"] = 2,
 		["REFRESH"] = 180,
-		["IS_NUMBER"] = false,
+		["RANGE_JUMP"] = 11,
+		["BELOW_HEALTH_PERC"] = 85,
+		["DISPLAY_DESTINATION"] = 2,
 		["RANGE"] = 15,
+		["CONE_DEGREES"] = 360,
+		["IS_NUMBER"] = false,
 		["MODE"] = 1,
 		["DISPLAY_SOURCE"] = 2,
 		["TEXT"] = {
@@ -103,7 +103,7 @@ VUHDO_CONFIG = {
 		},
 		["THRESH_GOOD"] = 5,
 		["COOLDOWN_SPELL"] = "",
-		["CONE_DEGREES"] = 360,
+		["CHAIN_MAX_JUMP"] = 3,
 		["THRESH_FAIR"] = 3,
 	},
 	["OMIT_MAIN_ASSIST"] = false,
@@ -121,15 +121,6 @@ VUHDO_CONFIG = {
 	["BLIZZ_UI_HIDE_FOCUS"] = 2,
 	["DETECT_DEBUFFS_IGNORE_NO_HARM"] = false,
 	["DETECT_DEBUFFS_IGNORE_BY_CLASS"] = true,
-	["SHOW_OVERHEAL"] = true,
-	["OMIT_PLAYER_TARGETS"] = false,
-	["IS_DC_SHIELD_DISABLED"] = false,
-	["RES_IS_SHOW_TEXT"] = true,
-	["IS_USE_BUTTON_FACADE"] = false,
-	["SHOW_PLAYER_TAGS"] = true,
-	["IS_ALWAYS_OVERWRITE_PROFILE"] = false,
-	["UPDATE_HOTS_MS"] = 150,
-	["OMIT_MAIN_TANKS"] = false,
 	["CUSTOM_DEBUFF"] = {
 		["point"] = "TOPRIGHT",
 		["scale"] = 0.65,
@@ -2719,6 +2710,7 @@ VUHDO_CONFIG = {
 			["Fel Bomb"] = {
 				["isStacks"] = true,
 				["animate"] = false,
+				["timer"] = true,
 				["color"] = {
 					["TG"] = 0.5,
 					["B"] = 0,
@@ -2732,9 +2724,8 @@ VUHDO_CONFIG = {
 					["O"] = 1,
 					["useOpacity"] = true,
 				},
-				["isIcon"] = true,
 				["isColor"] = true,
-				["timer"] = true,
+				["isIcon"] = true,
 			},
 			["Fracture"] = {
 				["isStacks"] = true,
@@ -3212,7 +3203,7 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Keen Eyesight"] = {
+			["Mark of Lethon"] = {
 				["isStacks"] = true,
 				["animate"] = false,
 				["isIcon"] = true,
@@ -3233,16 +3224,16 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Mark of Lethon"] = {
-				["isStacks"] = true,
-				["animate"] = false,
+			["Devastating Arc"] = {
+				["isStacks"] = false,
+				["animate"] = true,
 				["isIcon"] = true,
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Devastating Arc"] = {
-				["isStacks"] = false,
-				["animate"] = true,
+			["Keen Eyesight"] = {
+				["isStacks"] = true,
+				["animate"] = false,
 				["isIcon"] = true,
 				["isColor"] = false,
 				["timer"] = true,
@@ -3485,14 +3476,14 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Gall's Blast"] = {
+			["Pillage"] = {
 				["isStacks"] = true,
 				["animate"] = false,
-				["timer"] = true,
-				["isColor"] = false,
 				["isIcon"] = true,
+				["isColor"] = false,
+				["timer"] = true,
 			},
-			["108220"] = {
+			["Force of Will Precast"] = {
 				["isStacks"] = true,
 				["animate"] = false,
 				["timer"] = true,
@@ -3513,7 +3504,7 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Pillage"] = {
+			["Arcing Energy"] = {
 				["isStacks"] = true,
 				["animate"] = false,
 				["isIcon"] = true,
@@ -3527,12 +3518,12 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Arcing Energy"] = {
+			["Wings of Flame"] = {
 				["isStacks"] = true,
 				["animate"] = false,
-				["isIcon"] = true,
-				["isColor"] = false,
 				["timer"] = true,
+				["isColor"] = false,
+				["isIcon"] = true,
 			},
 			["Wind Burn"] = {
 				["isStacks"] = true,
@@ -3555,12 +3546,12 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Weak Points"] = {
-				["isStacks"] = false,
-				["animate"] = true,
-				["isIcon"] = true,
-				["isColor"] = false,
+			["108220"] = {
+				["isStacks"] = true,
+				["animate"] = false,
 				["timer"] = true,
+				["isColor"] = false,
+				["isIcon"] = true,
 			},
 			["Explosive Slam"] = {
 				["isStacks"] = true,
@@ -3926,7 +3917,7 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Scary Fog"] = {
+			["Gift of the Man'ari"] = {
 				["isStacks"] = true,
 				["animate"] = false,
 				["isIcon"] = true,
@@ -3940,12 +3931,12 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Gift of the Man'ari"] = {
+			["Toxic Spores"] = {
 				["isStacks"] = true,
 				["animate"] = false,
-				["isIcon"] = true,
-				["isColor"] = false,
 				["timer"] = true,
+				["isColor"] = false,
+				["isIcon"] = true,
 			},
 			["Ancient Barrier"] = {
 				["isStacks"] = true,
@@ -4430,12 +4421,12 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Toxic Spores"] = {
+			["Scary Fog"] = {
 				["isStacks"] = true,
 				["animate"] = false,
-				["timer"] = true,
-				["isColor"] = false,
 				["isIcon"] = true,
+				["isColor"] = false,
+				["timer"] = true,
 			},
 			["Seed of Destruction"] = {
 				["isStacks"] = true,
@@ -4619,12 +4610,12 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Wings of Flame"] = {
-				["isStacks"] = true,
-				["animate"] = false,
-				["timer"] = true,
-				["isColor"] = false,
+			["Weak Points"] = {
+				["isStacks"] = false,
+				["animate"] = true,
 				["isIcon"] = true,
+				["isColor"] = false,
+				["timer"] = true,
 			},
 			["Lesson of Icarus"] = {
 				["isStacks"] = true,
@@ -4661,7 +4652,7 @@ VUHDO_CONFIG = {
 				["isColor"] = false,
 				["timer"] = true,
 			},
-			["Force of Will Precast"] = {
+			["Gall's Blast"] = {
 				["isStacks"] = true,
 				["animate"] = false,
 				["timer"] = true,
@@ -4958,14 +4949,23 @@ VUHDO_CONFIG = {
 		["xAdjust"] = -46,
 		["isStacks"] = true,
 	},
+	["SHOW_OVERHEAL"] = true,
+	["OMIT_PLAYER_TARGETS"] = false,
+	["IS_DC_SHIELD_DISABLED"] = false,
+	["IS_USE_BUTTON_FACADE"] = false,
+	["SHOW_PLAYER_TAGS"] = true,
+	["RES_IS_SHOW_TEXT"] = true,
+	["UPDATE_HOTS_MS"] = 150,
+	["IS_ALWAYS_OVERWRITE_PROFILE"] = false,
+	["OMIT_MAIN_TANKS"] = false,
 	["HIDE_PANELS_SOLO"] = false,
 	["CURRENT_PROFILE"] = "WOD HEALS",
-	["EMERGENCY_TRIGGER"] = 100,
-	["SHOW_INCOMING"] = true,
 	["AUTO_PROFILES"] = {
 		["SPEC_1"] = "Boomkin",
 		["SPEC_4"] = "WOD HEALS",
 	},
+	["SHOW_INCOMING"] = true,
+	["EMERGENCY_TRIGGER"] = 100,
 	["OMIT_FOCUS"] = false,
 	["HIDE_EMPTY_BUTTONS"] = true,
 	["OMIT_SELF"] = false,
@@ -5002,14 +5002,14 @@ VUHDO_PANEL_SETUP = {
 			["xAdjust"] = 0,
 		},
 		["POSITION"] = {
-			["y"] = 442.308349609375,
-			["x"] = 675.703491210938,
-			["orientation"] = "BOTTOMRIGHT",
-			["relativePoint"] = "BOTTOMLEFT",
+			["y"] = 441.313720703125,
+			["x"] = 676.46923828125,
 			["scale"] = 1,
-			["height"] = 34.0000152587891,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMRIGHT",
+			["height"] = 174,
 			["growth"] = "BOTTOMRIGHT",
-			["width"] = 87.999984741211,
+			["width"] = 355.000030517578,
 		},
 		["RAID_ICON"] = {
 			["show"] = true,
@@ -5020,6 +5020,8 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
+			["ordering"] = 0,
+			["sort"] = 6,
 			["groups"] = {
 				6, -- [1]
 				5, -- [2]
@@ -5028,8 +5030,6 @@ VUHDO_PANEL_SETUP = {
 				2, -- [5]
 				1, -- [6]
 			},
-			["ordering"] = 0,
-			["sort"] = 6,
 			["isReverse"] = true,
 		},
 		["TOOLTIP"] = {
@@ -5150,7 +5150,7 @@ VUHDO_PANEL_SETUP = {
 			["position"] = "CENTER+CENTER",
 			["yAdjust"] = 0,
 			["xAdjust"] = 0,
-			["_spacing"] = 25.0000247955322,
+			["_spacing"] = 24.9999580383301,
 			["showPetOwners"] = true,
 		},
 		["LIFE_TEXT"] = {
@@ -5173,9 +5173,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 442.906158447266,
 			["x"] = 677.820922851563,
-			["orientation"] = "BOTTOMLEFT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMLEFT",
 			["height"] = 68.999984741211,
 			["growth"] = "BOTTOMLEFT",
 			["width"] = 87.999984741211,
@@ -5189,11 +5189,11 @@ VUHDO_PANEL_SETUP = {
 		},
 		["frameStrata"] = "BACKGROUND",
 		["MODEL"] = {
-			["sort"] = 7,
 			["ordering"] = 1,
 			["groups"] = {
 				42, -- [1]
 			},
+			["sort"] = 7,
 			["isReverse"] = false,
 		},
 		["TOOLTIP"] = {
@@ -5337,9 +5337,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 754.7151,
 			["x"] = 459.1671,
-			["orientation"] = "BOTTOMRIGHT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMRIGHT",
 			["height"] = 110,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 88,
@@ -5498,9 +5498,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 591.5653,
 			["x"] = 242.9405,
-			["orientation"] = "BOTTOMRIGHT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMRIGHT",
 			["height"] = 110,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 88,
@@ -5659,9 +5659,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 442.9859,
 			["x"] = 841.0563,
-			["orientation"] = "BOTTOMRIGHT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMRIGHT",
 			["height"] = 110,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 88,
@@ -5820,9 +5820,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 396.466,
 			["x"] = 989.6162,
-			["orientation"] = "BOTTOMRIGHT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "BOTTOMRIGHT",
 			["height"] = 131,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 87.9999,
@@ -5980,9 +5980,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 668,
 			["x"] = 100,
-			["orientation"] = "TOPLEFT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "TOPLEFT",
 			["height"] = 200,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 200,
@@ -6140,9 +6140,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 668,
 			["x"] = 100,
-			["orientation"] = "TOPLEFT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "TOPLEFT",
 			["height"] = 200,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 200,
@@ -6300,9 +6300,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 668,
 			["x"] = 100,
-			["orientation"] = "TOPLEFT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "TOPLEFT",
 			["height"] = 200,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 200,
@@ -6460,9 +6460,9 @@ VUHDO_PANEL_SETUP = {
 		["POSITION"] = {
 			["y"] = 668,
 			["x"] = 100,
-			["orientation"] = "TOPLEFT",
-			["relativePoint"] = "BOTTOMLEFT",
 			["scale"] = 1,
+			["relativePoint"] = "BOTTOMLEFT",
+			["orientation"] = "TOPLEFT",
 			["height"] = 200,
 			["growth"] = "BOTTOMRIGHT",
 			["width"] = 200,
@@ -7885,9 +7885,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
@@ -7895,10 +7895,10 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w2", -- [2]
 			"Faerie Fire", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
-			"Soothe", -- [3]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
+			"", -- [3]
 		},
 		["shift2"] = {
 			"SHIFT-", -- [1]
@@ -7950,10 +7950,10 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w9", -- [2]
 			"", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
-			"", -- [3]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
+			"Soothe", -- [3]
 		},
 	},
 	["SPELL3"] = "",
@@ -7983,9 +7983,9 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w10", -- [2]
 			"", -- [3]
 		},
-		["ctrlshift2"] = {
-			"CTRL-SHIFT-", -- [1]
-			"-w14", -- [2]
+		["shift1"] = {
+			"SHIFT-", -- [1]
+			"-w7", -- [2]
 			"", -- [3]
 		},
 		["2"] = {
@@ -7993,10 +7993,10 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w2", -- [2]
 			"Displacer Beast", -- [3]
 		},
-		["ctrl2"] = {
-			"CTRL-", -- [1]
-			"-w6", -- [2]
-			"Goblin Glider Kit", -- [3]
+		["ctrlshift2"] = {
+			"CTRL-SHIFT-", -- [1]
+			"-w14", -- [2]
+			"", -- [3]
 		},
 		["shift2"] = {
 			"SHIFT-", -- [1]
@@ -8048,10 +8048,10 @@ VUHDO_SPELLS_KEYBOARD = {
 			"-w9", -- [2]
 			"", -- [3]
 		},
-		["shift1"] = {
-			"SHIFT-", -- [1]
-			"-w7", -- [2]
-			"", -- [3]
+		["ctrl2"] = {
+			"CTRL-", -- [1]
+			"-w6", -- [2]
+			"Goblin Glider Kit", -- [3]
 		},
 	},
 }
@@ -8081,8 +8081,75 @@ VUHDO_SPEC_LAYOUTS = {
 	["selected"] = "Resto Druid",
 	["2"] = "",
 }
-VUHDO_GROUP_SIZE = 1
+VUHDO_GROUP_SIZE = 4
 VUHDO_RAID = {
+	["raid4"] = {
+		["zone"] = "Offline",
+		["baseRange"] = false,
+		["class"] = "DEATHKNIGHT",
+		["role"] = 61,
+		["sortMaxHp"] = 2376840,
+		["map"] = "Dalaran70",
+		["threat"] = 0,
+		["powermax"] = 100,
+		["threatPerc"] = 0,
+		["isPet"] = false,
+		["name"] = "Shiftmode",
+		["number"] = 4,
+		["isVehicle"] = false,
+		["group"] = 8,
+		["classId"] = 29,
+		["range"] = false,
+		["unit"] = "raid4",
+		["powertype"] = 6,
+		["healthmax"] = 2376840,
+		["dead"] = false,
+		["charmed"] = false,
+		["fullName"] = "Shiftmode",
+		["power"] = 0,
+		["aggro"] = false,
+		["visible"] = false,
+		["targetUnit"] = "raid4target",
+		["health"] = 2376840,
+		["className"] = "Death Knight",
+		["afk"] = false,
+		["debuff"] = 0,
+		["connected"] = false,
+		["petUnit"] = "raidpet4",
+	},
+	["raid3"] = {
+		["zone"] = "Shaladrassil",
+		["baseRange"] = false,
+		["class"] = "MAGE",
+		["role"] = 62,
+		["sortMaxHp"] = 2320260,
+		["map"] = "Dalaran70",
+		["threat"] = 0,
+		["powermax"] = 51424,
+		["threatPerc"] = 0,
+		["isPet"] = false,
+		["name"] = "Freezìng",
+		["number"] = 3,
+		["isVehicle"] = false,
+		["group"] = 7,
+		["classId"] = 24,
+		["unit"] = "raid3",
+		["powertype"] = 0,
+		["healthmax"] = 2320260,
+		["dead"] = false,
+		["charmed"] = false,
+		["fullName"] = "Freezìng",
+		["power"] = 51424,
+		["aggro"] = false,
+		["visible"] = false,
+		["targetUnit"] = "raid3target",
+		["health"] = 2320260,
+		["className"] = "Mage",
+		["afk"] = false,
+		["debuff"] = 0,
+		["connected"] = false,
+		["petUnit"] = "raidpet3",
+	},
 	["player"] = {
 		["zone"] = "Dalaran",
 		["baseRange"] = true,
@@ -8097,7 +8164,7 @@ VUHDO_RAID = {
 		["name"] = "Krazyito",
 		["number"] = 1,
 		["isVehicle"] = false,
-		["group"] = 1,
+		["group"] = 4,
 		["classId"] = 27,
 		["range"] = true,
 		["unit"] = "player",
@@ -8106,16 +8173,51 @@ VUHDO_RAID = {
 		["dead"] = false,
 		["charmed"] = false,
 		["fullName"] = "Krazyito",
-		["power"] = 1098037,
+		["power"] = 1100000,
 		["aggro"] = false,
 		["visible"] = true,
 		["targetUnit"] = "target",
 		["health"] = 2221740,
 		["className"] = "Druid",
-		["afk"] = false,
+		["afk"] = true,
 		["debuff"] = 0,
 		["connected"] = true,
 		["petUnit"] = "pet",
+	},
+	["raid2"] = {
+		["zone"] = "Dalaran",
+		["baseRange"] = true,
+		["class"] = "MAGE",
+		["role"] = 62,
+		["sortMaxHp"] = 2373480,
+		["map"] = "Dalaran70",
+		["threat"] = 0,
+		["powermax"] = 1100000,
+		["threatPerc"] = 0,
+		["isPet"] = false,
+		["name"] = "Xitch",
+		["visible"] = true,
+		["targetUnit"] = "raid2target",
+		["group"] = 3,
+		["afk"] = true,
+		["range"] = true,
+		["unit"] = "raid2",
+		["debuff"] = 0,
+		["healthmax"] = 2373480,
+		["dead"] = false,
+		["connected"] = true,
+		["fullName"] = "Xitch",
+		["power"] = 1100000,
+		["petUnit"] = "raidpet2",
+		["number"] = 2,
+		["classId"] = 24,
+		["isVehicle"] = false,
+		["health"] = 2373480,
+		["className"] = "Mage",
+		["powertype"] = 0,
+		["raidIcon"] = 1,
+		["charmed"] = false,
+		["aggro"] = false,
 	},
 }
 VUHDO_INDICATOR_CONFIG = {
@@ -8124,8 +8226,8 @@ VUHDO_INDICATOR_CONFIG = {
 		["MOUSEOVER_HIGHLIGHT"] = "",
 		["AGGRO_BAR"] = "",
 		["BACKGROUND_BAR"] = "Background: Solid",
-		["SIDE_LEFT"] = "",
-		["CLUSTER_BORDER"] = "",
+		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
+		["DAMAGE_FLASH_BAR"] = "",
 		["HEALTH_BAR_PANEL"] = {
 			"", -- [1]
 			"", -- [2]
@@ -8138,13 +8240,13 @@ VUHDO_INDICATOR_CONFIG = {
 			"", -- [9]
 			"", -- [10]
 		},
-		["SWIFTMEND_INDICATOR"] = "Swiftmendable",
+		["SIDE_LEFT"] = "",
 		["THREAT_MARK"] = "",
-		["SIDE_RIGHT"] = "",
 		["MANA_BAR"] = "Manabars: All Powers",
 		["BAR_BORDER"] = "Border: Multi + Aggro",
+		["SIDE_RIGHT"] = "",
 		["HEALTH_BAR"] = "Health Bar: (generic, gradient)",
-		["DAMAGE_FLASH_BAR"] = "",
+		["CLUSTER_BORDER"] = "",
 		["INCOMING_BAR"] = "",
 	},
 	["CUSTOM"] = {

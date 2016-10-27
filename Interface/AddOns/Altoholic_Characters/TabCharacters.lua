@@ -3,7 +3,6 @@ local addon = _G[addonName]
 local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-local LCI = LibStub("LibCraftInfo-1.0")
 
 local parentName = "AltoholicTabCharacters"
 local parent
@@ -74,6 +73,7 @@ local function HideAll()
 	AltoholicFramePets:Hide()
 	AltoholicFrameAuctions:Hide()
 	AltoholicFrameRecipes:Hide()
+	-- AltoholicTabCharacters.Recipes:Hide()
 	AltoholicFrameSpellbook:Hide()
 	AltoholicFrameGarrisonMissions:Hide()
 end
@@ -137,8 +137,7 @@ function ns:ShowCharInfo(view)
 		addon.Quests:Update()
 		
 	elseif view == VIEW_TALENTS then
-		addon.Talents:Reset();
-		addon.Talents:Update();
+		AltoholicFrameTalents:Update()
 	
 	elseif view == VIEW_AUCTIONS then
 		addon.AuctionHouse:SetListType("Auctions")
@@ -156,7 +155,7 @@ function ns:ShowCharInfo(view)
 		addon.Mail:Update()
 		
 	elseif view == VIEW_SPELLS then
-		addon.Spellbook:Update()
+		AltoholicFrameSpellbook:Update()
 
 	elseif view == VIEW_COMPANIONS then
 		addon.Pets:SetSinglePetView("CRITTER")
@@ -166,6 +165,8 @@ function ns:ShowCharInfo(view)
 		AltoholicFrameRecipes:Show()
 		addon.TradeSkills.Recipes:InvalidateView()
 		addon.TradeSkills.Recipes:Update()
+		-- AltoholicTabCharacters.Recipes:Update()
+				
 	elseif view == VIEW_GARRISONS then
 		AltoholicFrameGarrisonMissions:Show()
 		addon.Garrisons:InvalidateView()
@@ -269,7 +270,7 @@ local function OnCharacterChange(self)
 
 	currentProfession = nil
 	
-	if currentView ~= VIEW_TALENTS and currentView ~= VIEW_SPELLS and	currentView ~= VIEW_PROFESSION then
+	if currentView ~= VIEW_SPELLS and currentView ~= VIEW_PROFESSION then
 		ns:ShowCharInfo(currentView)		-- this will show the same info from another alt (ex: containers/mail/ ..)
 	else
 		HideAll()
@@ -301,19 +302,14 @@ end
 local function OnTalentChange(self)
 	CloseDropDownMenus()
 	
-	local group = self.value
-	if group then
-		addon.Talents:SetCurrentGroup(group)
-		addon.Talents:SetCurrentTreeID(self.arg1)
-		ns:ViewCharInfo(VIEW_TALENTS)
-	end
+	ns:ViewCharInfo(VIEW_TALENTS)
 end
 
 local function OnSpellTabChange(self)
 	CloseDropDownMenus()
 	
 	if self.value then
-		addon.Spellbook:SetSchool(self.value)
+		AltoholicFrameSpellbook:SetSchool(self.value)
 		ns:ViewCharInfo(VIEW_SPELLS)
 	end
 end
@@ -470,8 +466,8 @@ local function TalentsIcon_Initialize(self, level)
 	
 	DDM_AddTitle(format("%s / %s", TALENTS, DataStore:GetColoredCharacterName(currentCharacterKey)))
 	DDM_AddTitle(" ")
-	DDM_Add(TALENT_SPEC_PRIMARY, 1, OnTalentChange, nil, nil)
-	DDM_Add(TALENT_SPEC_SECONDARY, 2, OnTalentChange, nil, nil)
+	DDM_Add(TALENTS, 1, OnTalentChange, nil, nil)
+	-- DDM_Add(TALENT_SPEC_SECONDARY, 2, OnTalentChange, nil, nil)
 	DDM_AddCloseMenu()
 end
 
@@ -668,10 +664,10 @@ local function ProfessionsIcon_Initialize(self, level)
 			local profession = DataStore:GetProfession(currentCharacterKey, currentProfession)
 				
 			for index = 1, DataStore:GetNumCraftLines(profession) do
-				local isHeader, _, spellID = DataStore:GetCraftLineInfo(profession, index)
+				local isHeader, _, recipeID = DataStore:GetCraftLineInfo(profession, index)
 				
 				if not isHeader then		-- NON header !!
-					local itemID = LCI:GetCraftResultItem(spellID)
+					local itemID = DataStore:GetCraftResultItem(recipeID)
 					
 					if itemID then
 						local _, _, _, _, _, itemType, _, _, itemEquipLoc = GetItemInfo(itemID)
@@ -738,6 +734,7 @@ local function GarrisonIcon_Initialize(self, level)
 	DDM_AddTitle(GARRISON_LOCATION_TOOLTIP)
 	DDM_Add(format(GARRISON_LANDING_AVAILABLE, numAvailable), 1, OnGarrisonMenuChange, nil, (currentMenu == 1))
 	DDM_Add(format(GARRISON_LANDING_IN_PROGRESS, numActive), 2, OnGarrisonMenuChange, nil, (currentMenu == 2))
+	DDM_AddCloseMenu()
 end
 
 local menuIconCallbacks = {
@@ -793,7 +790,7 @@ function ns:OnLoad()
 	local bagIcon = ICON_VIEW_BAGS
 
 	-- bag icon gets better with more chars at lv max
-	local LVMax = 100
+	local LVMax = 110
 	local numLvMax = 0
 	for _, character in pairs(DataStore:GetCharacters()) do
 		if DataStore:GetCharacterLevel(character) >= LVMax then

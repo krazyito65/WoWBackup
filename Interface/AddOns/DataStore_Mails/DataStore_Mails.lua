@@ -109,14 +109,14 @@ local function SendGuildMail(recipient, subject, body, index)
 	
 	-- send attachments
 	local isSentMail = (index == nil) and true or false
-	local item, icon, count, link
+	local item, icon, count, link, itemID
 	
 	for attachmentIndex = 1, ATTACHMENTS_MAX_SEND do		-- mandatory, loop through all 12 slots, since attachments could be anywhere (ex: slot 4,5,8)
 		if isSentMail then
-			item, icon, count = GetSendMailItem(attachmentIndex)
+			item, itemID, icon, count = GetSendMailItem(attachmentIndex)
 			link = GetSendMailItemLink(attachmentIndex)
 		else
-			item, icon, count = GetInboxItem(index, attachmentIndex)
+			item, itemID, icon, count = GetInboxItem(index, attachmentIndex)
 			link = GetInboxItemLink(index, attachmentIndex)
 		end
 		
@@ -141,7 +141,7 @@ local function SaveAttachments(character, index, sender, days, wasReturned)
 	-- index nil = sent mail => different methods
 	local isSentMail = (index == nil) and true or false
 	
-	local item, icon, count, link
+	local item, icon, count, link, itemID
 	
 	for attachmentIndex = 1, ATTACHMENTS_MAX_SEND do		-- mandatory, loop through all 12 slots, since attachments could be anywhere (ex: slot 4,5,8)
 		if isSentMail then

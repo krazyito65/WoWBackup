@@ -11,3 +11,5 @@ L["AUTO_UPDATE_LABEL"] = "Auto-update History"
 L["AUTO_UPDATE_TITLE"] = "Auto-Update Quest History"
 L["AUTO_UPDATE_ENABLED"] = "A character's quest history will be refreshed every time you login with that character."
 L["AUTO_UPDATE_DISABLED"] = "The quest history will remain in its current state, either empty or outdated."
+
+L["DAILY_QUESTS_RESET_LABEL"] = "Reset daily quests at"

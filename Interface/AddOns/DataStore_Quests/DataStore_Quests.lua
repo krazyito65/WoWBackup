@@ -10,6 +10,7 @@ local addonName = "DataStore_Quests"
 _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0", "AceTimer-3.0")
 
 local addon = _G[addonName]
+local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
 local THIS_ACCOUNT = "Default"
 
@@ -18,6 +19,7 @@ local AddonDB_Defaults = {
 		Options = {
 			TrackTurnIns = true,					-- by default, save the ids of completed quests in the history
 			AutoUpdateHistory = true,			-- if history has been queried at least once, auto update it at logon (fast operation - already in the game's cache)
+			DailyResetHour = 3,					-- Reset dailies at 3am (default value)
 		},
 		Characters = {
 			['*'] = {				-- ["Account.Realm.Name"]
@@ -68,7 +70,7 @@ local function ClearExpiredDailies()
 	timeTable.year = date("%Y")
 	timeTable.month = date("%m")
 	timeTable.day = date("%d")
-	timeTable.hour = 3
+	timeTable.hour = GetOption("DailyResetHour")
 	timeTable.min = 0
 
 	local now = time()
@@ -93,6 +95,29 @@ local function ClearExpiredDailies()
 				table.remove(character.Dailies, i)
 			end
 		end
+	end
+end
+
+local function DailyResetDropDown_OnClick(self)
+	-- set the new reset hour
+	local newHour = self.value
+	
+	addon.db.global.Options.DailyResetHour = newHour
+	UIDropDownMenu_SetSelectedValue(DataStore_Quests_DailyResetDropDown, newHour)
+end
+
+local function DailyResetDropDown_Initialize(self)
+	local info = UIDropDownMenu_CreateInfo()
+	
+	local selectedHour = GetOption("DailyResetHour")
+	
+	for hour = 0, 23 do
+		info.value = hour
+		info.text = format(TIMEMANAGER_TICKER_24HOUR, hour, 0)
+		info.func = DailyResetDropDown_OnClick
+		info.checked = (hour == selectedHour)
+	
+		UIDropDownMenu_AddButton(info)
 	end
 end
 
@@ -150,7 +175,10 @@ local function ScanQuests()
 	local numEntries, numQuests = GetNumQuestLogEntries()
 	
 	for i = 1, GetNumQuestLogEntries() do
-		local title, _, groupSize, isHeader, _, isComplete, isDaily = GetQuestLogTitle(i);
+		-- 7.1
+		-- local title, level, suggestedGroup, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, 
+		--		isOnMap, hasLocalPOI, isTask, isBounty, isStory, isHidden = GetQuestLogTitle(questLogIndex)
+		local title, _, groupSize, isHeader, _, isComplete, isDaily, questID = GetQuestLogTitle(i)
 
 		if isHeader then
 			quests[i] = "0|" .. (title or "")
@@ -158,7 +186,7 @@ local function ScanQuests()
 			SelectQuestLogEntry(i)
 			local money = GetQuestLogRewardMoney()
 			quests[i] = format("1|%d|%d|%d", groupSize, money, isComplete or 0)
-			links[i] = GetQuestLink(i)
+			links[i] = GetQuestLink(questID)
 
 			wipe(RewardsCache)
 			local num = GetNumQuestLogChoices()		-- these are the actual item choices proposed to the player
@@ -320,7 +348,7 @@ local function _GetQuestLogRewardInfo(character, index, rewardIndex)
 end
 
 local function _GetQuestInfo(link)
-	assert(type(link) == "string")
+	if type(link) ~= "string" then return end
 
 	local questID, questLevel = link:match("quest:(%d+):(-?%d+)")
 	local questName = link:match("%[(.+)%]")
@@ -405,6 +433,15 @@ function addon:OnEnable()
 		addon:ScheduleTimer(RefreshQuestHistory, 5)	-- refresh quest history 5 seconds later, to decrease the load at startup
 	end
 
+	-- Daily Reset Drop Down & label
+	local frame = DataStore.Frames.QuestsOptions.DailyResetDropDownLabel
+	frame:SetText(format("|cFFFFFFFF%s:", L["DAILY_QUESTS_RESET_LABEL"]))
+
+	frame = DataStore_Quests_DailyResetDropDown
+	UIDropDownMenu_SetWidth(frame, 60) 
+	UIDropDownMenu_Initialize(frame, DailyResetDropDown_Initialize)
+	UIDropDownMenu_SetSelectedValue(frame, GetOption("DailyResetHour"))
+	
 	ClearExpiredDailies()
 end
 

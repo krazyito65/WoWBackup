@@ -5,7 +5,7 @@
 		<Size x="156" y="20" />
 		<Scripts>
 			<OnClick>
-				Altoholic.Tabs.Agenda:MenuItem_OnClick(self:GetID())
+				self:GetParent():MenuItem_OnClick(self:GetID(), self.panel)
 			</OnClick>
 		</Scripts>
 	</Button>
@@ -31,6 +31,9 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" x="23" y="-105" />
 				</Anchors>
+				<KeyValues>
+					<KeyValue key="panel" value="Calendar" />
+				</KeyValues>
 			</Button>
 			<Button parentKey="MenuItem2" inherits="AltoAgendaMenuItemTemplate" id="2" hidden="true">
 				<Anchors>
@@ -55,9 +58,9 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				Altoholic.Tabs.Agenda:OnLoad()
+				Altoholic:SetClassExtensions(self, "AltoTabAgenda")
+				self:Init()
 			</OnLoad>
 		</Scripts>
 	</Frame>
-
 </Ui>

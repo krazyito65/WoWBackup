@@ -5,9 +5,6 @@ local colors = addon.Colors
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
 -- *** Reputations ***
-local CAT_GUILD = 7
-local CAT_ALLINONE = CAT_GUILD + 1
-
 local ICON_NOTREADY = "\124TInterface\\RaidFrame\\ReadyCheck-NotReady:14\124t"
 local ICON_READY = "\124TInterface\\RaidFrame\\ReadyCheck-Ready:14\124t"
 
@@ -223,12 +220,27 @@ local Factions = {
 		},		
 	},	
 	{	-- [7]
+		name = EXPANSION_NAME6,	-- "Legion"
+		{	-- [1]
+			name = OTHER,
+			{ name = DataStore:GetFactionName(1900), icon = "achievements_zone_azsuna" },		-- Court of Farondis
+			{ name = DataStore:GetFactionName(1883), icon = "achievements_zone_valsharah" },		-- Dreamweavers
+			{ name = DataStore:GetFactionName(1828), icon = "achievements_zone_highmountain" },		-- Highmountain Tribe
+			{ name = DataStore:GetFactionName(1948), icon = "achievements_zone_stormheim" },		-- Valarjar
+			{ name = DataStore:GetFactionName(1859), icon = "achievements_zone_suramar" },			-- The Nightfallen
+			{ name = DataStore:GetFactionName(1894), icon = "achievements_zone_brokenshore" },			-- The Wardens
+		},		
+	},	
+	{	-- [8]
 		name = GUILD,
 		{	-- [1]
 			name = GUILD,
 		}
 	},
 }
+
+local CAT_GUILD = #Factions
+local CAT_ALLINONE = CAT_GUILD + 1
 
 local VertexColors = {
 	[FACTION_STANDING_LABEL1] = { r = 0.4, g = 0.13, b = 0.13 },	-- hated

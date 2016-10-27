@@ -3,9 +3,6 @@ local addon = _G[addonName]
 local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
-local BI = LibStub("LibBabble-Inventory-3.0"):GetLookupTable()
-local LCI = LibStub("LibCraftInfo-1.0")
-local LCR = LibStub("LibCraftReagents-1.0")
 
 local ICON_PLUS = "Interface\\Buttons\\UI-PlusButton-Up"
 local ICON_MINUS = "Interface\\Buttons\\UI-MinusButton-Up"
@@ -47,9 +44,9 @@ end
 
 local function GetLinkByLine(index)
 	local profession = GetCurrentProfessionTable()
-	local _, _, spellID = DataStore:GetCraftLineInfo(profession, index)
+	local _, _, recipeID = DataStore:GetCraftLineInfo(profession, index)
 	
-	return addon:GetRecipeLink(spellID, currentProfession)
+	return addon:GetRecipeLink(recipeID, currentProfession)
 end
 
 function ns:GetRecipeColor(index)
@@ -72,11 +69,11 @@ local function BuildView()
 	local hideLine			-- hide or show the current line ?
 		
 	for index = 1, DataStore:GetNumCraftLines(profession) do
-		local isHeader, color, info, indent = DataStore:GetCraftLineInfo(profession, index)
+		local isHeader, color, recipeID, indent = DataStore:GetCraftLineInfo(profession, index)
 
 		if isHeader then
 			hideCategory = false
-			if currentSubClass ~= ALL and currentSubClass ~= info then
+			if currentSubClass ~= ALL and currentSubClass ~= recipeID then
 				hideCategory = true	-- hide if a specific subclass is selected AND we're not on it
 			end
 
@@ -89,12 +86,12 @@ local function BuildView()
 				if currentColor ~= SKILL_ANY and currentColor ~= color then
 					hideLine = true
 				elseif currentSlots ~= ALL_INVENTORY_SLOTS then
-					if info then	-- on a data line, info contains the itemID and is numeric
-						local itemID = LCI:GetCraftResultItem(info)
+					if recipeID then	-- on a data line, recipeID is numeric
+						local itemID = DataStore:GetCraftResultItem(recipeID)
 						if itemID then
 							local _, _, _, _, _, itemType, _, _, itemEquipLoc = GetItemInfo(itemID)
-
-							if itemType == BI["Armor"] or itemType == BI["Weapon"] then
+							
+							if itemType == GetItemClassInfo(LE_ITEM_CLASS_ARMOR) or itemType == GetItemClassInfo(LE_ITEM_CLASS_WEAPON) then
 								if itemEquipLoc and strlen(itemEquipLoc) > 0 then
 									if currentSlots ~= itemEquipLoc then
 										hideLine = true
@@ -105,7 +102,7 @@ local function BuildView()
 									hideLine = true
 								end
 							end
-						else		-- enchants, like socket bracker, might not have an item id, so hide the line
+						else		-- enchants, like socket bracer, might not have an item id, so hide the line
 							hideLine = true
 						end
 					else
@@ -216,9 +213,11 @@ function ns:Update()
 			elseif DrawGroup then
 				_G[entry..i.."Collapse"]:Hide()
 
-				local _, color, spellID = DataStore:GetCraftLineInfo(profession, s)
-				local itemID = LCI:GetCraftResultItem(spellID)
-				local reagents = LCR:GetCraftReagents(spellID)
+				-- row:Update(currentProfession, recipeID, RecipeColors[color])
+				
+				local _, color, recipeID = DataStore:GetCraftLineInfo(profession, s)
+				local itemID = DataStore:GetCraftResultItem(recipeID)
+				local reagents = DataStore:GetCraftReagents(recipeID)
 				
 				if itemID then
 					Altoholic:SetItemButtonTexture(entry..i.."Craft", GetItemIcon(itemID), 18, 18);
@@ -228,8 +227,8 @@ function ns:Update()
 					_G[entry..i.."Craft"]:Hide()
 				end
 				
-				if spellID then
-					_G[entry..i.."RecipeLinkNormalText"]:SetText(addon:GetRecipeLink(spellID, currentProfession, RecipeColors[color]))
+				if recipeID then
+					_G[entry..i.."RecipeLinkNormalText"]:SetText(addon:GetRecipeLink(recipeID, currentProfession, RecipeColors[color]))
 				else
 					-- this should NEVER happen, like NEVER-EVER-ER !!
 					_G[entry..i.."RecipeLinkNormalText"]:SetText(L["N/A"])

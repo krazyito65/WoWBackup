@@ -141,6 +141,13 @@ end
 local tX1, tY1, tX2, tY2;
 local tIsValid;
 local function VUHDO_determineDistanceBetween(aUnit, anotherUnit)
+	
+	--Quick return since we can't get any PlayerMapPositions in dungeons and BGs as of patch 7.1
+	local inInstance, instanceType = IsInInstance()
+	if inInstance then
+		return nil, nil
+	end
+
 	tIsValid = true;
 
 	tX1, tY1 = GetPlayerMapPosition(aUnit);

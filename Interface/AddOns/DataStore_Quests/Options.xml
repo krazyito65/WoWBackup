@@ -6,6 +6,16 @@
 		<KeyValues>
 			<KeyValue key="module" value="DataStore_Quests" />
 		</KeyValues>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString parentKey="DailyResetDropDownLabel" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="300" y="18" />
+					<Anchors>
+						<Anchor point="TOPLEFT" x="63" y="-100" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
 		<Frames>
 			<CheckButton parentKey="TrackTurnIns" inherits="DataStoreToggleableOptionTemplate">
 				<Anchors> 
@@ -31,6 +41,12 @@
 					<KeyValue key="locDisabled" value="AUTO_UPDATE_DISABLED" />
 				</KeyValues>
 			</CheckButton>
+			
+			<Frame parentKey="DailyResetDropDown" name="DataStore_Quests_DailyResetDropDown" inherits="UIDropDownMenuTemplate">
+				<Anchors> 
+					<Anchor point="TOPLEFT" relativeKey="$parent.DailyResetDropDownLabel" relativePoint="BOTTOMLEFT" x="-20" y="-8" />
+				</Anchors>
+			</Frame>
 		</Frames>
 	</Frame>
 </Ui>

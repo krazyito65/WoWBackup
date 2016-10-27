@@ -10,7 +10,27 @@ There WILL be bugs if you use your old files without cleaning them first.
 Some fixes to work around API changes are too time consuming, so cleaning is required. A meagre price to pay once per expansion.
 
 
-7.0.006 (03/08/2016)
+7.1.001 (26/10/2016)
+
+- DataStore_Quests: added an option to select the hour at which daily quests are reset.
+- Updated the lists of achievements with the new ones added in Legion.
+- The talent panel is finally back. You can now also see the stat priority when mousing over the specialization name. 
+Note: The priorities come from Icy Veins, although I have not respected them 100%, based on my own experience, view, and discussions with guild mates.
+They are meant to be an indication for classes you do not play too often, and I do not wish to enter religious discussions about who is right or wrong, or about which stat is actually better :)
+ex: in some cases, Icy Veins indicated that the primary stat (STR, INT, ..) has a lesser priority than mastery or crit .. 
+well, I still kept the primary stat as #1 in the list, because in most cases, you WILL have this stat on each item.
+And if you reach the point where this difference matters, then you probably don't need the information any more, because you supposedly already know your class well enough.
+
+- DataStore_Talents: major overhaul to support the new panel. Old functions have obviously been deprecated.
+- LibCraftReagents is now deprecated, its functionality is now handled by DataStore_Crafts, which now has access to all recipes (even unlearned).
+It's now 100% accurate and maintains itself (yeah, less code to maintain \o/).
+Note: you should open each profession once to populate this internal reference table.
+- DataStore_Mails: Fixed the invalid attachment counts in the tooltip for mails sent by guild mates.
+- Removed LibBabble-Inventory, replaced the translations it provided by values returned by the game's API.
+- DataStore_Quests: Fixed scanning quest links, which caused a Lua error when clicking on a tooltip.
+Make sure to log in your alts once to fix their quest logs in the DB, this is what causes the tooltip issue.
+
+7.0.006 (09/08/2016)
 
 - DataStore: Fixed guild identification when the character is on a different realm than the guild.
 - Grids: Updated Archeology races and items for Legion.

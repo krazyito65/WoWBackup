@@ -425,6 +425,7 @@ end
 local tOwner;
 local tIsPet;
 function VUHDO_updateHealth(aUnit, aMode)
+	if not aUnit then return end --fix unit==nil on HEALTH-Events in patch 7.1
 	tIsPet = VUHDO_RAID[aUnit] and VUHDO_RAID[aUnit]["isPet"];
 
 	if not tIsPet or VUHDO_INTERNAL_TOGGLES[26] then -- VUHDO_UPDATE_PETS  -- Enth„lt nur Pets als eigene Balken, vehicles werden ?ber owner dargestellt s.unten

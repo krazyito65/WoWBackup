@@ -13,6 +13,7 @@ local OPTION_CLASSES = "UI.Tabs.Summary.CurrentClasses"
 local OPTION_TRADESKILL = "UI.Tabs.Summary.CurrentTradeSkill"
 
 -- ** Icon events **
+
 local function OnRealmFilterChange(frame)
 	addon:SetOption(OPTION_REALMS, frame.value)
 	addon.Characters:InvalidateView()
@@ -72,6 +73,7 @@ local function ResetAllData()
 end
 
 -- ** Menu Icons **
+
 local locationLabels = {
 	format("%s %s(%s)", L["This realm"], colors.green, L["This account"]),
 	format("%s %s(%s)", L["This realm"], colors.green, L["All accounts"]),

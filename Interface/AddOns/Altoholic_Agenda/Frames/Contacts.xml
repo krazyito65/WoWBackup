@@ -21,11 +21,7 @@
 		</Layers>
 	</Button>
 	
-	<Frame name="AltoholicFrameContacts" parent="AltoholicTabAgenda" hidden="true">
-		<Size x="615" y="306" />
-		<Anchors>
-			<Anchor point="TOPRIGHT" x="39" y="-105" />
-		</Anchors>
+	<Frame parentKey="Contacts" parent="AltoholicTabAgenda" inherits="AltoDataPanelTemplate">
 		<Frames>
 			<ScrollFrame name="$parentScrollFrame" inherits="AltoBaseScrollFrameTemplate">
 				<Scripts>

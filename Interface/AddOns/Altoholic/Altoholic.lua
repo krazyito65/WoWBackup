@@ -8,7 +8,6 @@ local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local LCI = LibStub("LibCraftInfo-1.0")
-local DS
 
 local THIS_ACCOUNT = "Default"
 
@@ -159,12 +158,12 @@ function AuctionFrameBrowse_UpdateHook()
 	
 	if addon:GetOption("UI.AHColorCoding") == false then return end
 	
-	if IsAddOnLoaded("Auctioneer") and Auctioneer.ScanManager.IsScanning() then return end;
+	if IsAddOnLoaded("Auctioneer") and Auctioneer.ScanManager.IsScanning() then return end
 
 	if IsAddOnLoaded("Auc-Advanced") then
 		if AucAdvanced.Scan.IsScanning() then return end;
 		if AucAdvanced.Settings.GetSetting("util.compactui.activated") then
-			AuctioneerCompactUI = true;
+			AuctioneerCompactUI = true
 		end
 	end
 
@@ -319,8 +318,6 @@ end
 
 
 function addon:OnEnable()
-	DS = DataStore
-
 	InitLocalization()
 	addon:SetupOptions()
 	-- Only needed in debug
@@ -420,32 +417,33 @@ function addon:Item_OnEnter(frame)
 	frame.link = frame.link or select(2, GetItemInfo(frame.id) )
 	
 	if frame.link then
-		GameTooltip:SetHyperlink(frame.link);
+		GameTooltip:SetHyperlink(frame.link)
 	else
-		-- GameTooltip:AddLine(L["Unknown link, please relog this character"],1,1,1);
 		GameTooltip:SetHyperlink("item:"..frame.id..":0:0:0:0:0:0:0")	-- this line queries the server for an unknown id
-		GameTooltip:ClearLines(); -- don't leave residual info in the tooltip after the server query
+		GameTooltip:ClearLines()	-- don't leave residual info in the tooltip after the server query
 	end
-	GameTooltip:Show();
+	GameTooltip:Show()
 end
 
 function addon:Item_OnClick(frame, button)
-	if not frame.id then return end
+	if button ~= "LeftButton" or not frame.id then return end
 	
-	if not frame.link then
-		frame.link = select(2, GetItemInfo(frame.id) )
+	local link = frame.link
+	
+	if not link then
+		link = select(2, GetItemInfo(frame.id) )
 	end
-	if not frame.link then return end		-- still not valid ? exit
+	if not link then return end		-- still not valid ? exit
 	
-	if ( button == "LeftButton" ) and ( IsControlKeyDown() ) then
-		DressUpItemLink(frame.link);
-	elseif ( button == "LeftButton" ) and ( IsShiftKeyDown() ) then
+	if IsControlKeyDown() then
+		DressUpItemLink(link)
+	elseif IsShiftKeyDown() then
 		local chat = ChatEdit_GetLastActiveWindow()
 	
 		if chat:IsShown() then
-			chat:Insert(frame.link);
+			chat:Insert(link)
 		else
-			AltoholicFrame_SearchEditBox:SetText(GetItemInfo(frame.link))
+			AltoholicFrame_SearchEditBox:SetText(GetItemInfo(link))
 		end
 	end
 end
@@ -567,14 +565,14 @@ function addon:GetDelayInDays(delay)
 	return floor((time() - delay) / 86400)
 end
 
-function Altoholic:FormatDelay(timeStamp)
+function addon:FormatDelay(timeStamp)
 	-- timeStamp = value when time() was last called for a given variable (ex: last time the mailbox was checked)
 	if not timeStamp then
-		return colors.yellow .. NEVER
+		return format("%s%s", colors.yellow, NEVER)
 	end
 	
 	if timeStamp == 0 then
-		return colors.yellow .. "N/A"
+		return format("%sN/A", colors.yellow)
 	end
 	
 	local seconds = (time() - timeStamp)
@@ -584,16 +582,16 @@ function Altoholic:FormatDelay(timeStamp)
 	-- assuming 365 days / year = 31.536.000 seconds
 	-- in the absence of possibility to track real dates, these approximations will have to do the trick, as it's not possible at this point to determine the number of days in a month, or in a year.
 
-	local year = floor(seconds / 31536000);
+	local year = floor(seconds / 31536000)
 	seconds = mod(seconds, 31536000)
 
-	local month = floor(seconds / 2592000);
+	local month = floor(seconds / 2592000)
 	seconds = mod(seconds, 2592000)
 
-	local day = floor(seconds / 86400);
+	local day = floor(seconds / 86400)
 	seconds = mod(seconds, 86400)
 
-	local hour = floor(seconds / 3600);
+	local hour = floor(seconds / 3600)
 	seconds = mod(seconds, 3600)
 
 	-- note: RecentTimeDate is not a direct API function, it's in UIParent.lua

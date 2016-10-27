@@ -46,7 +46,7 @@ function ns:Update()
 end
 
 function ns:OnLoad()
-	addon.Tabs.Agenda:RegisterChildPane(ns)
+	-- addon.Tabs.Agenda:RegisterChildPane(ns)
 end
 
 function ns:InvalidateView()

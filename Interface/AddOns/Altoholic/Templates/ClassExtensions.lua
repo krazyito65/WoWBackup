@@ -1,5 +1,5 @@
 ﻿--[[ ** Class Extensions **
-The purpose of class extensions to add methods to any XML template.
+The purpose of class extensions is to add methods to any XML template.
 
 This can technically be done in the XML file, as part of the XML template's OnLoad.
 Like this:
@@ -9,16 +9,16 @@ self.Draw = function(self, arg1, arg2, arg3)
 	end
 
 The problem is that if the object is instantiated multiple times, and it will since we're using a template, 
-then the function is actually created multiple times in memory too. A simple print proves it.
+then the function will actually be created multiple times in memory too. A simple print proves it.
 
 print(self.Draw)
 
-.. this will show that the same function in each instance of the object actually has a different address in memory.
+.. this will show that the same function in each instance of the object actually has a different memory address.
 
 Thus to stay proper, instantiate each function once here as a local function, then expose it so that widgets can reference it. 
 A print with this technique proves we're using the single copy in memory of each function.
 
-Naturally, it would also work if my local functions were all global.. but let's avoid polluting the global namespace.
+Naturally, it would also work if my local functions were all global.. but let's avoid polluting the global name space.
 
 Usage for one method:
 	self.<my method> = Altoholic:GetClassExtension(<class name>, <method name>)

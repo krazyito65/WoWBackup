@@ -8,6 +8,11 @@ L["FILTER_LEVELS"] = "Level filter"
 L["FILTER_PROFESSIONS"] = "Profession filter"
 L["FILTER_CLASSES"] = "Class filter"
 
+L["TALENT_SPECIALIZATION_UNKOWN"] = "This talent specialization in unknown.\nActivate it to let the add-on learn about it."
+L["TALENT_SPECIALIZATION_STAT_PRIORITY"] = "Stat priority"
+
+
+
 -- Colors
 L["COLOR_RED"] = "Red"
 L["COLOR_GREY"] = "Grey"
