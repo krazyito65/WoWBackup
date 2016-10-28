@@ -149,15 +149,15 @@ AskMrRobotDb3 = {
 					},
 				}, -- [1]
 				{
-					[5430] = {
-						["spellId"] = 191016,
-						["id"] = 5430,
-						["text"] = "200 Vers",
+					[5439] = {
+						["spellId"] = 190894,
+						["id"] = 5439,
+						["text"] = "Mark of the Hidden Satyr",
 						["materials"] = {
-							[124442] = 4,
-							[124440] = 35,
+							[124442] = 15,
+							[124441] = 12,
 						},
-						["itemId"] = 128544,
+						["itemId"] = 128553,
 					},
 					[5429] = {
 						["spellId"] = 191015,
@@ -169,29 +169,6 @@ AskMrRobotDb3 = {
 						},
 						["itemId"] = 128543,
 					},
-					[5436] = {
-						["spellId"] = 190879,
-						["id"] = 5436,
-						["text"] = "200 Int",
-						["materials"] = {
-							[124440] = 30,
-							[124442] = 10,
-							[124124] = 3,
-						},
-						["itemId"] = 128550,
-					},
-					[5439] = {
-						["spellId"] = 190894,
-						["id"] = 5439,
-						["text"] = "Mark of the Hidden Satyr",
-						["materials"] = {
-							[124442] = 15,
-							[124441] = 12,
-						},
-						["itemId"] = 128553,
-					},
-				}, -- [2]
-				{
 					[5430] = {
 						["spellId"] = 191016,
 						["id"] = 5430,
@@ -213,6 +190,8 @@ AskMrRobotDb3 = {
 						},
 						["itemId"] = 128550,
 					},
+				}, -- [2]
+				{
 					[5889] = {
 						["spellId"] = 228402,
 						["id"] = 5889,
@@ -222,6 +201,27 @@ AskMrRobotDb3 = {
 							[124441] = 12,
 						},
 						["itemId"] = 141908,
+					},
+					[5430] = {
+						["spellId"] = 191016,
+						["id"] = 5430,
+						["text"] = "200 Vers",
+						["materials"] = {
+							[124442] = 4,
+							[124440] = 35,
+						},
+						["itemId"] = 128544,
+					},
+					[5436] = {
+						["spellId"] = 190879,
+						["id"] = 5436,
+						["text"] = "200 Int",
+						["materials"] = {
+							[124440] = 30,
+							[124442] = 10,
+							[124124] = 3,
+						},
+						["itemId"] = 128550,
 					},
 				}, -- [3]
 				{
@@ -519,6 +519,14 @@ AskMrRobotDb3 = {
 							[130221] = true,
 						},
 					},
+					[130247] = {
+						["id"] = 130247,
+						["text"] = "200 Agi",
+						["enchantId"] = 130247,
+						["identicalItemGroup"] = {
+							[130247] = true,
+						},
+					},
 					[137327] = {
 						["id"] = 137327,
 						["text"] = "",
@@ -533,14 +541,6 @@ AskMrRobotDb3 = {
 						["enchantId"] = 130220,
 						["identicalItemGroup"] = {
 							[130220] = true,
-						},
-					},
-					[130247] = {
-						["id"] = 130247,
-						["text"] = "200 Agi",
-						["enchantId"] = 130247,
-						["identicalItemGroup"] = {
-							[130247] = true,
 						},
 					},
 				}, -- [2]
@@ -672,7 +672,7 @@ AskMrRobotDb3 = {
 				}, -- [3]
 				{
 					"|cffa335ee|Hitem:139070::130220::::::110:105::33:4:3411:1808:1532:3337:::|h[Tranquil Bough Hood]|h|r", -- [1]
-					"|cffa335ee|Hitem:139239::::::::110:105::6:2:1806:1502:::|h[Cursed Beartooth Necklace]|h|r", -- [2]
+					"|cffa335ee|Hitem:139332::::::::110:105::6:2:1806:1502:::|h[Blackened Portalstone Necklace]|h|r", -- [2]
 					"|cffa335ee|Hitem:134374::::::::110:105::35:3:3416:1532:3336:::|h[Felbat Leather Pauldrons]|h|r", -- [3]
 					nil, -- [4]
 					"|cffa335ee|Hitem:139207::::::::110:105::5:2:1805:1487:::|h[Grove Keeper's Robe]|h|r", -- [5]
@@ -976,13 +976,13 @@ AskMrRobotDb3 = {
 					},
 					["Powers"] = {
 						[1044] = 1,
-						[1035] = 3,
+						[1049] = 1,
 						[1040] = 3,
-						[1294] = 1,
+						[1035] = 3,
 						[1042] = 1,
 						[1036] = 3,
 						[1047] = 1,
-						[1049] = 1,
+						[1294] = 1,
 					},
 				}, -- [1]
 				{
@@ -2514,14 +2514,14 @@ AskMrRobotDb3 = {
 					[128884] = {
 						["id"] = 128884,
 					},
+					[128886] = {
+						["id"] = 128886,
+					},
 					[137530] = {
 						["id"] = 137530,
 						["socketColors"] = {
 							1, -- [1]
 						},
-					},
-					[139105] = {
-						["id"] = 139105,
 					},
 					[137532] = {
 						["id"] = 137532,
@@ -2538,8 +2538,8 @@ AskMrRobotDb3 = {
 					[139201] = {
 						["id"] = 139201,
 					},
-					[128886] = {
-						["id"] = 128886,
+					[139105] = {
+						["id"] = 139105,
 					},
 					[139070] = {
 						["id"] = 139070,
@@ -2667,10 +2667,10 @@ AskMrRobotDb3 = {
 				[104304] = 1,
 				[127780] = 3,
 				[124437] = 21,
-				[118935] = 1,
-				[93403] = 1,
 				[117405] = 1,
+				[93403] = 1,
 				[60233] = 1,
+				[118935] = 1,
 				[118354] = 1,
 				[9172] = 1,
 				[127884] = 1,
@@ -2805,14 +2805,14 @@ AskMrRobotDb3 = {
 					"|cff00ccff|Hitem:122245::::::::20:66:::1:582:::|h[Polished Helm of Valor]|h|r", -- [1]
 					"|cff00ccff|Hitem:122662:5318:::::::20:66:::1:582:::|h[Eternal Talisman of Evasion]|h|r", -- [2]
 					"|cff00ccff|Hitem:122372::::::::20:66:::1:582:::|h[Strengthened Stockade Pauldrons]|h|r", -- [3]
+					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
 					[7] = "|cff00ccff|Hitem:122251:4872:::::::20:66:::1:582:::|h[Polished Legplates of Valor]|h|r",
-					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
 					[8] = "|cffffffff|Hitem:24146::::::::20:66::::::|h[Initiate's Boots]|h|r",
 					[5] = "|cff00ccff|Hitem:122387:4419:::::::20:66:::1:582:::|h[Burnished Breastplate of Might]|h|r",
 					[15] = "|cff00ccff|Hitem:122266:5311:::::::20:66:::1:582:::|h[Ripped Sandstorm Cloak]|h|r",
 					[14] = "|cff00ccff|Hitem:122530::::::::20:66::::::|h[Inherited Mark of Tyranny]|h|r",
 					[16] = "|cff00ccff|Hitem:122389::::::::20:66:::1:582:::|h[Bloodsoaked Skullforge Reaver]|h|r",
-					[17] = "|cff00ccff|Hitem:122391::::::::20:66:::1:582:::|h[Flamescarred Draconian Deflector]|h|r",
+					[13] = "|cff00ccff|Hitem:122370::::::::20:66::::::|h[Inherited Insignia of the Horde]|h|r",
 				},
 			},
 		},

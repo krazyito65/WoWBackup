@@ -1,3 +1,12 @@
+### Changes in 70100.25-Release:
+
+- Changed: No longer attempts to automate delivery of "Supplies Needed" world quests
+
+### Changes in 70100.24-Release:
+
+- Changed: Update Interface version
+- Changed: No longer attempts to automate delivery of work order world quests
+
 ### Changes in 70000.23-Release:
 
 - Added: Option to disable during Withered Scenario (need localization help!)

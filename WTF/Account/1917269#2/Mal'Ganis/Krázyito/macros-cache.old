@@ -57,8 +57,8 @@ VER 3 010000000000000F "ele flame" "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl] Frost Shock; Flame Shock
 END
 VER 3 0100000000000001 "VuhDoDCShieldData" "Ability_Repair"
-R2OM1WT1DT1RM1EM1SR2NM2NM2NM2NM3HR3HR3HR3DR3HR4IH4IH4IH[x]4OH5MR5MR5MR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4SH[x][x][x][x]0__[x][x][x][x][x][x]0__[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1SH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000002 "VuhDoDCShieldNames" "Ability_Repair"
-NPalRakRanLoaModFrsBroZhaLosNinHofMarDurXigTosTyrBigMii[x]BerSurKylDra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Krá[x][x][x][x]Rot[x][x][x][x][x][x]Cor[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Krá[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

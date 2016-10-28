@@ -151,13 +151,13 @@ local function VUHDO_determineDistanceBetween(aUnit, anotherUnit)
 	tIsValid = true;
 
 	tX1, tY1 = GetPlayerMapPosition(aUnit);
-	if tX1 + tY1 <= 0 then
+	if not tX1 or (tX1 + tY1 <= 0) then
 		VUHDO_CLUSTER_BLACKLIST[aUnit] = true;
 		tIsValid = false;
 	end
 
 	tX2, tY2 = GetPlayerMapPosition(anotherUnit);
-	if tX2 + tY2 <= 0 then
+	if not tX2 or (tX2 + tY2 <= 0) then
 		VUHDO_CLUSTER_BLACKLIST[anotherUnit] = true;
 		tIsValid = false;
 	end

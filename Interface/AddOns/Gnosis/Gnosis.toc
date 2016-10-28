@@ -1,16 +1,16 @@
-## Interface: 70000
-## Title: Gnosis (|cffaaff44Castbars and Timers|r) v4.62
+## Interface: 70100
+## Title: Gnosis (|cffaaff44Castbars and Timers|r) v4.63
 ## Notes: Highly configurable castbar and single timer addon.
 ## Author: elchefe
-## Version: v4.62
+## Version: v4.63
 ## SavedVariables: GnosisDB, GnosisConfigs
 ## SavedVariablesPerCharacter: GnosisChar, GnosisCharConfig
 ## OptionalDeps: Ace3, AceGUI-3.0-SharedMediaWidgets, LibCompress, LibDialog-1.0, LibRangeCheck-2.0, LibSharedMedia-3.0
 ## LoadOnDemand: 0
 ## DefaultState: enabled
-## X-Revision: 174
-## X-Date: 2016-09-03T22:49:01Z
-## X-Curse-Packaged-Version: v4.62
+## X-Revision: 177
+## X-Date: 2016-10-27T21:46:45Z
+## X-Curse-Packaged-Version: v4.63
 ## X-Curse-Project-Name: Gnosis (Castbars and Timers)
 ## X-Curse-Project-ID: gnosis
 ## X-Curse-Repository-ID: wow/gnosis/mainline

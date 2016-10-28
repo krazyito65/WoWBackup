@@ -3,444 +3,402 @@ EncounterDetailsDB = {
 	["emotes"] = {
 		{
 			{
-				0.203000000008615, -- [1]
-				"The impurity must be cleansed!", -- [2]
-				"Cenarius", -- [3]
+				0.220000000001164, -- [1]
+				"The Nightmare has corrupted dragons, gods, and legends. Your downfall will be simple and swift!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [1]
 			{
-				0.203000000008615, -- [1]
-				"Your Nightmare ends here!", -- [2]
-				"Cenarius", -- [3]
+				6.887000000017, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
 				7, -- [4]
 			}, -- [2]
 			{
-				8.47900000000664, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				15.0929999999935, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [3]
 			{
-				8.47900000000664, -- [1]
-				"The battle is joined!", -- [2]
-				"Cenarius", -- [3]
+				23.7209999999905, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [4]
 			{
-				19.5160000000033, -- [1]
-				"I have purified one of them! They fight for us now!", -- [2]
-				"Malfurion Stormrage", -- [3]
-				7, -- [4]
+				35.7339999999967, -- [1]
+				"|TInterface\\Icons\\Ability_Xavius_NightmareBlades.blp:20|tXavius' |cFFFF0000|Hspell:206656|h[Nightmare Blades]|h|r have targetted you.", -- [2]
+				"Xavius", -- [3]
+				2, -- [4]
 			}, -- [5]
 			{
-				24.6080000000075, -- [1]
-				"Deceiver! You corrupt the servants of the Dream!", -- [2]
-				"Cenarius", -- [3]
+				39.7330000000075, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [6]
 			{
-				25.448000000004, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				55.4860000000044, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [7]
 			{
-				55.7970000000059, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
+				59.7330000000075, -- [1]
+				"|TInterface\\Icons\\Sha_Ability_Rogue_EnvelopingShadows_nightmare:20|t%s is casting |cFFFF0000|Hspell:210264|h[Manifest Corruption]|h|r!", -- [2]
+				"Xavius", -- [3]
+				1, -- [4]
 			}, -- [8]
 			{
-				59.2510000000038, -- [1]
-				"Is that you, Thero'shan?", -- [2]
-				"Cenarius", -- [3]
+				71.0750000000116, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [9]
 			{
-				64.169000000009, -- [1]
-				"Yes, Cenarius! We are here to save you!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				87.0890000000072, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [10]
 			{
-				86.0160000000033, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				102.921000000002, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [11]
 			{
-				89.7830000000104, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				118.808000000019, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [12]
 			{
-				89.7830000000104, -- [1]
-				"We must strike back at the Nightmare!", -- [2]
-				"Cenarius", -- [3]
+				141.714999999997, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
 				7, -- [4]
 			}, -- [13]
 			{
-				100.682000000001, -- [1]
-				"Let the Nightmare be cleansed!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				147.194000000018, -- [1]
+				"Feel the devastation of the Nightmare!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [14]
 			{
-				104.300000000003, -- [1]
-				"Filth! Defiler!", -- [2]
-				"Cenarius", -- [3]
+				149.929000000004, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [15]
 			{
-				116.539000000004, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				176.330000000016, -- [1]
+				"Time to crush your dreams!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [16]
 			{
-				132.290000000008, -- [1]
-				"|TInterface\\Icons\\sha_spell_fire_blueimmolation_nightmare:20|tYou are afflicted with |cFFFF0000|Hspell:211471|h[Scorned Touch]|h|r!", -- [2]
-				"Twisted Sister", -- [3]
-				2, -- [4]
+				205.527999999991, -- [1]
+				"Feel the devastation of the Nightmare!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [17]
 			{
-				146.900999999998, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				234.676000000007, -- [1]
+				"Time to crush your dreams!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [18]
 			{
-				167.720000000001, -- [1]
-				"You fight with noble hearts! Could it be true? Could the darkness be inside of... me?", -- [2]
-				"Cenarius", -- [3]
+				263.81700000001, -- [1]
+				"I'll level you one by one!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [19]
 			{
-				177.575000000012, -- [1]
-				"Hold your weapons! He begins to see the truth!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				291.629000000015, -- [1]
+				"I'll level you one by one!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [20]
 			{
-				178.446000000011, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				320.96100000001, -- [1]
+				"Time to crush your dreams!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [21]
 			{
-				183.31700000001, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:214876|h[Beasts of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				333.744999999995, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [22]
 			{
-				185.343000000008, -- [1]
-				"Father? Father, is that you?", -- [2]
-				"Cenarius", -- [3]
+				356.235000000015, -- [1]
+				"Feel the devastation of the Nightmare!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [23]
 			{
-				194.076000000001, -- [1]
-				"|TInterface\\Icons\\spell_nature_protectionformnature:20|t%s begins to cast |cFF00FFFF|Hspell:212681|h[Cleansed Ground]|h|r!", -- [2]
-				"Malfurion Stormrage", -- [3]
-				1, -- [4]
+				364.010000000009, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [24]
 			{
-				199.051000000007, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				393.963000000018, -- [1]
+				"I'll level you one by one!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [25]
 			{
-				202.715000000011, -- [1]
-				"|TInterface\\Icons\\sha_spell_warlock_demonsoul_nightmare:20|t%s casts |cFFFF0000|Hspell:214505|h[Entangling Nightmares]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				394.371000000014, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [26]
 			{
-				202.715000000011, -- [1]
-				"Die, corrupter!", -- [2]
-				"Cenarius", -- [3]
+				410.795000000013, -- [1]
+				"My work... left... unfinished...", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [27]
-			{
-				203.678, -- [1]
-				"Yes, father! I will not fail you!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
-			}, -- [28]
-			{
-				209.970000000001, -- [1]
-				"Cenarius! Do not listen to him!", -- [2]
-				"Malfurion Stormrage", -- [3]
-				7, -- [4]
-			}, -- [29]
-			{
-				213.624000000011, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:214876|h[Beasts of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
-			}, -- [30]
-			{
-				213.868000000002, -- [1]
-				"The Dream must endure!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
-			}, -- [31]
-			["boss"] = "Cenarius",
+			["boss"] = "Xavius",
 		}, -- [1]
 		{
 			{
-				0.1990000000078, -- [1]
-				"The impurity must be cleansed!", -- [2]
-				"Cenarius", -- [3]
+				0.204999999987194, -- [1]
+				"The Nightmare has corrupted dragons, gods, and legends. Your downfall will be simple and swift!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [1]
 			{
-				8.99400000000605, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				6.51800000001094, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
+				7, -- [4]
 			}, -- [2]
 			{
-				8.99400000000605, -- [1]
-				"Attack the corruptors!", -- [2]
-				"Cenarius", -- [3]
+				14.7239999999874, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [3]
 			{
-				19.8029999999999, -- [1]
-				"What wickedness is this, Malfurion?", -- [2]
-				"Cenarius", -- [3]
+				23.3459999999905, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [4]
 			{
-				24.6800000000076, -- [1]
-				"I will not lose you, shan'do!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				39.3640000000014, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [5]
 			{
-				25.9990000000107, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				55.1510000000126, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [6]
 			{
-				47.6460000000079, -- [1]
-				"Is that you, Thero'shan?", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
+				58.8679999999877, -- [1]
+				"|TInterface\\Icons\\Sha_Ability_Rogue_EnvelopingShadows_nightmare:20|t%s is casting |cFFFF0000|Hspell:210264|h[Manifest Corruption]|h|r!", -- [2]
+				"Xavius", -- [3]
+				1, -- [4]
 			}, -- [7]
 			{
-				52.5720000000001, -- [1]
-				"Yes, Cenarius! We are here to save you!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				70.9700000000012, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [8]
 			{
-				56.3530000000028, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				86.573000000004, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [9]
 			{
-				58.8400000000111, -- [1]
-				"The Dream must endure!", -- [2]
-				"Cenarius", -- [3]
+				102.540999999997, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [10]
 			{
-				86.7790000000096, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				118.321999999986, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [11]
 			{
-				90.3899999999994, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				143.772999999987, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
+				7, -- [4]
 			}, -- [12]
 			{
-				90.3899999999994, -- [1]
-				"Come forth and fight for the Dream!", -- [2]
-				"Cenarius", -- [3]
+				149.182000000001, -- [1]
+				"Time to crush your dreams!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [13]
 			{
-				101.285000000003, -- [1]
-				"Let the Nightmare be cleansed!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				151.975000000006, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [14]
 			{
-				104.886000000013, -- [1]
-				"Filth! Defiler!", -- [2]
-				"Cenarius", -- [3]
+				159.051000000007, -- [1]
+				"You will never stir again!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [15]
 			{
-				106.946000000011, -- [1]
-				"The Dream must endure!", -- [2]
-				"Cenarius", -- [3]
+				177.597999999998, -- [1]
+				"You will never stir again!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [16]
 			{
-				110.271000000008, -- [1]
-				"|TInterface\\Icons\\sha_spell_fire_blueimmolation_nightmare:20|tYou are afflicted with |cFFFF0000|Hspell:211471|h[Scorned Touch]|h|r!", -- [2]
-				"Twisted Sister", -- [3]
-				2, -- [4]
+				178.328000000009, -- [1]
+				"I'll level you one by one!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [17]
 			{
-				117.130000000005, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				182.481, -- [1]
+				"This fate awaits you all!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [18]
-			["boss"] = "Cenarius",
+			["boss"] = "Xavius",
 		}, -- [2]
 		{
 			{
-				0.1990000000078, -- [1]
-				"The impurity must be cleansed!", -- [2]
-				"Cenarius", -- [3]
+				0.1, -- [1]
+				"The Nightmare has corrupted dragons, gods, and legends. Your downfall will be simple and swift!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [1]
 			{
-				7.71900000001187, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				8.01600000000326, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
+				7, -- [4]
 			}, -- [2]
 			{
-				7.71900000001187, -- [1]
-				"Attack the corruptors!", -- [2]
-				"Cenarius", -- [3]
+				16.2240000000165, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [3]
 			{
-				18.5170000000071, -- [1]
-				"Let the Nightmare be cleansed!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				23.8500000000058, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [4]
 			{
-				22.1280000000115, -- [1]
-				"Filth! Defiler!", -- [2]
-				"Cenarius", -- [3]
+				39.5780000000086, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [5]
 			{
-				25.945000000007, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				55.3920000000217, -- [1]
+				"I'll slice into the heart of you!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [6]
 			{
-				56.3060000000114, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
+				59.6020000000135, -- [1]
+				"|TInterface\\Icons\\Sha_Ability_Rogue_EnvelopingShadows_nightmare:20|t%s is casting |cFFFF0000|Hspell:210264|h[Manifest Corruption]|h|r!", -- [2]
+				"Xavius", -- [3]
+				1, -- [4]
 			}, -- [7]
 			{
-				59.7540000000008, -- [1]
-				"Is that you, Thero'shan?", -- [2]
-				"Cenarius", -- [3]
+				71.1860000000161, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [8]
 			{
-				64.6820000000007, -- [1]
-				"Yes, Cenarius! We are here to save you!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				86.9890000000014, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [9]
 			{
-				86.6910000000062, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				102.838000000018, -- [1]
+				"Time to cut the last tether to your mortal life!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [10]
 			{
-				86.6910000000062, -- [1]
-				"Come forth and fight for the Dream!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
+				114.684000000008, -- [1]
+				"|TInterface\\Icons\\Ability_Xavius_NightmareBlades.blp:20|tXavius' |cFFFF0000|Hspell:206656|h[Nightmare Blades]|h|r have targetted you.", -- [2]
+				"Xavius", -- [3]
+				2, -- [4]
 			}, -- [11]
 			{
-				90.3630000000121, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				118.660000000004, -- [1]
+				"I will sever you from the waking world!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [12]
 			{
-				97.6490000000049, -- [1]
-				"Villains! You poison the children of the Dream!", -- [2]
-				"Cenarius", -- [3]
+				134.73000000001, -- [1]
+				"Another dreamer for my Nightmare!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [13]
 			{
-				104.005000000005, -- [1]
-				"Master, we fight to save them! To save you!", -- [2]
-				"Malfurion Stormrage", -- [3]
+				145.083000000013, -- [1]
+				"My victory draws near!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [14]
 			{
-				107.388000000006, -- [1]
-				"|TInterface\\Icons\\sha_spell_fire_blueimmolation_nightmare:20|tYou are afflicted with |cFFFF0000|Hspell:211471|h[Scorned Touch]|h|r!", -- [2]
-				"Twisted Sister", -- [3]
-				2, -- [4]
+				148.377000000008, -- [1]
+				"Time to crush your dreams!", -- [2]
+				"Xavius", -- [3]
+				7, -- [4]
 			}, -- [15]
 			{
-				120.720000000001, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				148.670000000013, -- [1]
+				"Another dreamer for my Nightmare!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [16]
 			{
-				151.052000000011, -- [1]
-				"Sacred vines, entangle the corrupted!", -- [2]
-				"Cenarius", -- [3]
+				153.200000000012, -- [1]
+				"Eternal slumber! Eternal madness!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [17]
 			{
-				164.465000000011, -- [1]
-				"|TInterface\\Icons\\sha_spell_shadow_shadesofdarkness_nightmare:20|t%s begins to cast |cFFFF0000|Hspell:212726|h[Forces of Nightmare]|h|r!", -- [2]
-				"Cenarius", -- [3]
-				1, -- [4]
+				153.828000000009, -- [1]
+				"Embrace the Dreaming, champions! It can save you!", -- [2]
+				"Dream of Ysera", -- [3]
+				7, -- [4]
 			}, -- [18]
 			{
-				164.465000000011, -- [1]
-				"Beloved daughter, restore my strength!", -- [2]
-				"Cenarius", -- [3]
+				154.940000000002, -- [1]
+				"Another dreamer for my Nightmare!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [19]
 			{
-				174.035000000004, -- [1]
-				"You fight with noble hearts! Could it be true? Could the darkness be inside of... me?", -- [2]
-				"Cenarius", -- [3]
+				162.046000000002, -- [1]
+				"NO! I will not permit it!", -- [2]
+				"Xavius", -- [3]
 				7, -- [4]
 			}, -- [20]
-			{
-				175.317999999999, -- [1]
-				"I have purified one of them! They fight for us now!", -- [2]
-				"Malfurion Stormrage", -- [3]
-				7, -- [4]
-			}, -- [21]
-			{
-				180.396000000008, -- [1]
-				"Deceiver! You corrupt the servants of the Dream!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
-			}, -- [22]
-			{
-				180.678, -- [1]
-				"Die, corrupter!", -- [2]
-				"Cenarius", -- [3]
-				7, -- [4]
-			}, -- [23]
-			["boss"] = "Cenarius",
+			["boss"] = "Xavius",
 		}, -- [3]
 	},
 	["encounter_spells"] = {
@@ -10505,6 +10463,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Mannoroth",
 		},
+		[211634] = {
+			["school"] = 32,
+			["type"] = "DEBUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+		},
 		[184065] = {
 			["school"] = 32,
 			["token"] = {
@@ -15860,15 +15825,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Archimonde",
 		},
-		[202062] = {
-			["school"] = 16,
+		[189777] = {
+			["school"] = 4,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Shivermaw",
+			["source"] = "Xhul'horac",
 		},
 		[157644] = {
 			["school"] = 1,
@@ -15886,14 +15850,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Shiftmode",
 		},
-		[197967] = {
-			["school"] = 2,
+		[202062] = {
+			["school"] = 16,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_PERIODIC_DAMAGE"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Odyn",
+			["source"] = "Shivermaw",
 		},
 		[194384] = {
 			["school"] = 2,
@@ -17734,14 +17699,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Tosk",
 		},
-		[173425] = {
-			["school"] = 1,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-			},
-			["source"] = "Pol",
-		},
 		[26297] = {
 			["school"] = 1,
 			["type"] = "BUFF",
@@ -17758,6 +17715,14 @@ EncounterDetailsDB = {
 				["SPELL_CAST_START"] = true,
 			},
 			["source"] = "Berrymelon",
+		},
+		[173425] = {
+			["school"] = 1,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+			},
+			["source"] = "Pol",
 		},
 		[181094] = {
 			["school"] = 4,
@@ -18197,6 +18162,14 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 		},
+		[162171] = {
+			["school"] = 1,
+			["token"] = {
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
+			},
+			["source"] = "Railmaster Rocketspark",
+		},
 		[203121] = {
 			["school"] = 32,
 			["type"] = "DEBUFF",
@@ -18205,14 +18178,6 @@ EncounterDetailsDB = {
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
 			["source"] = "Taerar",
-		},
-		[190836] = {
-			["school"] = 4,
-			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_DAMAGE"] = true,
-			},
-			["source"] = "Tirathon Saltheril",
 		},
 		[212335] = {
 			["school"] = 1,
@@ -18702,15 +18667,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Archimonde",
 		},
-		[220533] = {
+		[142728] = {
 			["school"] = 1,
-			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_DAMAGE"] = true,
 				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Dread Felbat",
+			["source"] = "Xaril the Poisoned Mind",
 		},
 		[157060] = {
 			["school"] = 8,
@@ -18745,14 +18708,15 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Fel Lord Betrug",
 		},
-		[179583] = {
-			["school"] = 4,
+		[220533] = {
+			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Fel Lord Zakuun",
+			["source"] = "Dread Felbat",
 		},
 		[143240] = {
 			["school"] = 1,
@@ -19589,13 +19553,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Ahri'ok Dugru",
 		},
-		[181132] = {
-			["school"] = 4,
+		[172942] = {
+			["school"] = 1,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Fel Imp",
+			["source"] = "Sor the Eradicator",
 		},
 		[145812] = {
 			["school"] = 1,
@@ -19623,12 +19586,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Klavidia",
 		},
-		[172942] = {
-			["school"] = 1,
+		[217987] = {
+			["school"] = 32,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Sor the Eradicator",
+			["source"] = "Lurking Terror",
 		},
 		[164240] = {
 			["school"] = 64,
@@ -19638,12 +19601,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Imperator Mar'gok",
 		},
-		[217987] = {
-			["school"] = 32,
+		[181132] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_CAST_START"] = true,
 			},
-			["source"] = "Lurking Terror",
+			["source"] = "Fel Imp",
 		},
 		[184370] = {
 			["school"] = 1,
@@ -19810,16 +19774,6 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Frost King Malakk",
 		},
-		[209288] = {
-			["school"] = 32,
-			["type"] = "BUFF",
-			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_START"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
-			},
-			["source"] = "Inconceivable Horror",
-		},
 		[64623] = {
 			["school"] = 1,
 			["token"] = {
@@ -19837,6 +19791,16 @@ EncounterDetailsDB = {
 				["SPELL_CAST_SUCCESS"] = true,
 			},
 			["source"] = "Kaz'tik the Manipulator",
+		},
+		[209288] = {
+			["school"] = 32,
+			["type"] = "BUFF",
+			["token"] = {
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+			},
+			["source"] = "Inconceivable Horror",
 		},
 		[217990] = {
 			["school"] = 1,
@@ -20098,12 +20062,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Berrymelon",
 		},
-		[196496] = {
+		[57330] = {
 			["school"] = 1,
+			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_DAMAGE"] = true,
+				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Fenryr",
+			["source"] = "Shiftmode",
 		},
 		[169878] = {
 			["school"] = 4,
@@ -20137,13 +20103,12 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Corruption Horror",
 		},
-		[180116] = {
+		[196496] = {
 			["school"] = 1,
-			["type"] = "BUFF",
 			["token"] = {
-				["SPELL_AURA_APPLIED"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Kormrok",
+			["source"] = "Fenryr",
 		},
 		[145715] = {
 			["school"] = 4,
@@ -21397,14 +21362,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Poondamunk",
 		},
-		[57330] = {
+		[180116] = {
 			["school"] = 1,
 			["type"] = "BUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
-				["SPELL_CAST_SUCCESS"] = true,
 			},
-			["source"] = "Shiftmode",
+			["source"] = "Kormrok",
 		},
 		[144816] = {
 			["school"] = 32,
@@ -22079,13 +22043,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Cenarius",
 		},
-		[142728] = {
-			["school"] = 1,
+		[179583] = {
+			["school"] = 4,
 			["token"] = {
-				["SPELL_CAST_SUCCESS"] = true,
 				["SPELL_CAST_START"] = true,
+				["SPELL_CAST_SUCCESS"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Xaril the Poisoned Mind",
+			["source"] = "Fel Lord Zakuun",
 		},
 		[212834] = {
 			["school"] = 32,
@@ -22348,13 +22313,13 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Xhul'horac",
 		},
-		[162171] = {
-			["school"] = 1,
+		[190836] = {
+			["school"] = 4,
 			["token"] = {
 				["SPELL_CAST_SUCCESS"] = true,
-				["SPELL_CAST_START"] = true,
+				["SPELL_DAMAGE"] = true,
 			},
-			["source"] = "Railmaster Rocketspark",
+			["source"] = "Tirathon Saltheril",
 		},
 		[107079] = {
 			["school"] = 1,
@@ -23436,14 +23401,14 @@ EncounterDetailsDB = {
 			},
 			["source"] = "Dread Infernal",
 		},
-		[189777] = {
-			["school"] = 4,
+		[197967] = {
+			["school"] = 2,
 			["type"] = "DEBUFF",
 			["token"] = {
 				["SPELL_AURA_APPLIED"] = true,
 				["SPELL_PERIODIC_DAMAGE"] = true,
 			},
-			["source"] = "Xhul'horac",
+			["source"] = "Odyn",
 		},
 		[210879] = {
 			["school"] = 32,

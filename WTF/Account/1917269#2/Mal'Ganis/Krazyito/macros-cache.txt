@@ -43,7 +43,8 @@ VER 3 010000000000005D " Inc/ DPS ring" "INV_MISC_QUESTIONMARK"
 /use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
 END
 VER 3 0100000000000063 " Stellar Flare" "INV_MISC_QUESTIONMARK"
-/use [@mouseover,harm][] stellar flare
+#showtooltip
+/use [@player] Revitalize
 END
 VER 3 0100000000000062 " sunfire mouseov" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -68,8 +69,8 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-R[x]3MR7MR8EM[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+R1SH1WT1DT1WM1WM2MR2DR2MR2RM2OM3HR3HR3LR3LR3HR4IR[x]4OH4SH4PH7SH7RM8DT8EM8NM8DM8MR[x][x][x][x][x][x][x][x][x][x][x][x][x]4DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
-N[x]XitFreShi[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+NGenRanCenRágJinTosTauXitCalIrtLogMalKylKroDraMar[x]ZhaBerMiiKlaLosBigShiBurStrFre[x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END

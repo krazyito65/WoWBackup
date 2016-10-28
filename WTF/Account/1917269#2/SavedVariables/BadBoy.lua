@@ -1,5 +1,5 @@
 
 BADBOY_BLACKLIST = {
-	["Player-3684-0907210A"] = true,
-	["dayFromCal"] = 26,
+	["dayFromCal"] = 27,
 }
+BADBOY_TOOLTIP = nil

@@ -710,13 +710,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[930] = {
+		[466] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[962] = {
+		[482] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -728,13 +728,13 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[1091] = {
+		[930] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[121] = {
+		[962] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -852,13 +852,13 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 945,
 		},
-		[482] = {
+		[121] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
 		},
-		[466] = {
+		[1091] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
