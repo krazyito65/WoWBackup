@@ -1,5 +1,6 @@
 
 BADBOY_BLACKLIST = {
-	["dayFromCal"] = 27,
+	["dayFromCal"] = 28,
 }
 BADBOY_TOOLTIP = nil
+BADBOY_OPTIONS = nil

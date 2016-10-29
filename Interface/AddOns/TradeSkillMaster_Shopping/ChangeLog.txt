@@ -1,3 +1,6 @@
+v3.4.3
+*Fixed lag issue during crafting search mode item buyout.
+
 v3.4.2
 *Updated TOC version for patch 7.1.
 

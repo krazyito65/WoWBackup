@@ -13,7 +13,7 @@
 ## Notes-itIT: Un approccio modulare, leggero e non intrusivo per gli avvisi ai combattimenti con i boss.
 ## Notes-ptBR: Modular, lightweight, non-intrusive approach to boss encounter warnings.
 ## Author: Funkydude, Nebula, Elvador
-## Version: v21.2-2-gde8214b
+## Version: v21.2-3-g1781b76
 
 ## X-Category: Raid
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
