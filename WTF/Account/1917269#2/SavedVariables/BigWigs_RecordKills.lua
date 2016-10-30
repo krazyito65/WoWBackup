@@ -22,7 +22,7 @@ RKDatabase = {
 	["profiles"] = {
 		["Default"] = {
 			["firstLoad"] = false,
-			["prevDiffShown"] = 15,
+			["diffShown"] = 15,
 			["recordTimes"] = {
 				["Highmaul"] = {
 					["Brackenspore"] = {
@@ -31,17 +31,17 @@ RKDatabase = {
 						[7] = 87,
 						[15] = 309,
 					},
+					["Tectus"] = {
+						[14] = 177,
+						[16] = 219,
+						[15] = 350,
+						[7] = 171,
+					},
 					["The Butcher"] = {
 						[14] = 163,
 						[16] = 242,
 						[15] = 216,
 						[7] = 54,
-					},
-					["Ko'ragh"] = {
-						[14] = 198,
-						[16] = 82,
-						[15] = 329,
-						[7] = 139,
 					},
 					["Kargath Bladefist"] = {
 						[14] = 135,
@@ -55,11 +55,11 @@ RKDatabase = {
 						[15] = 639,
 						[7] = 469,
 					},
-					["Tectus"] = {
-						[14] = 177,
-						[16] = 219,
-						[15] = 350,
-						[7] = 171,
+					["Ko'ragh"] = {
+						[14] = 198,
+						[16] = 82,
+						[15] = 329,
+						[7] = 139,
 					},
 					["Twin Ogron"] = {
 						[14] = 250,
@@ -212,7 +212,7 @@ RKDatabase = {
 			},
 			["prevTierShown"] = 15,
 			["tierShown"] = 15,
-			["diffShown"] = 15,
+			["prevDiffShown"] = 15,
 		},
 	},
 }

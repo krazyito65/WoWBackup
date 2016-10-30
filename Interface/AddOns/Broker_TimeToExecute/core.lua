@@ -89,7 +89,12 @@ function addon:UpdateTarget()
 end
 
 function addon:UpdateHealth(event, targetType)
-	local target = UnitGUID(targetType)
+  local target
+	
+	if targetType ~= nil then
+		target = UnitGUID(targetType)
+	end
+
 	if not target or target ~= self.target or targetType ~= self.targetType then
 		return
 	end

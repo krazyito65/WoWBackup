@@ -1,29 +1,11 @@
 
--- GLOBALS: BADBOY_BLACKLIST, BadBoyLog, ChatFrame1, GetTime, print, ReportPlayer, CalendarGetDate, SetCVar
+-- GLOBALS: BADBOY_BLACKLIST, BADBOY_OPTIONS, BadBoyLog, ChatFrame1, GetTime, print, ReportPlayer, CalendarGetDate, SetCVar
+-- GLOBALS: CalendarFrame, GameTooltip, UIErrorsFrame, C_Timer, IsEncounterInProgress, GameTooltip_Hide
 local myDebug = false
-
-local reportMsg = "Spam blocked, click to report!"
+local L
 do
-	local L = GetLocale()
-	if L == "frFR" then
-		reportMsg = "Spam bloqué, cliquez pour signaler !"
-	elseif L == "deDE" then
-		reportMsg = "Spam geblockt, zum Melden klicken"
-	elseif L == "zhTW" then
-		reportMsg = "垃圾訊息已被阻擋, 點擊以舉報 !"
-	elseif L == "zhCN" then
-		reportMsg = "垃圾信息已被拦截，点击举报！"
-	elseif L == "esES" or L == "esMX" then
-		reportMsg = "Spam bloqueado, haz clic para reportarlo."
-	elseif L == "ruRU" then
-		reportMsg = "Спам заблокирован. Нажмите, чтобы сообщить!"
-	elseif L == "koKR" then
-		--reportMsg = "Spam blocked, click to report!"
-	elseif L == "ptBR" then
-		reportMsg = "Spam bloqueado, clique para denunciar!"
-	elseif L == "itIT" then
-		reportMsg = "Spam bloccata, clic qui per riportare!"
-	end
+	local _
+	_, L = ...
 end
 
 --These entries add +1 point
@@ -40,6 +22,7 @@ local commonList = {
 	"express",
 	"g[0o]ld",
 	"lowest",
+	"mount",
 	"order",
 	"powerle?ve?l",
 	"price",
@@ -296,6 +279,7 @@ local instantReportList = {
 	"^wt[bst]csgocdkee?y", --WTB CS GO CD KEEY PAY GOLD AND GOOD WISP ME YOUR OFFER WTB CS GO KNIFE SKINS
 	"^tradingcsgo.*gold", --Trading Cs:GO Knife for Gold /w me for more information!!!
 	"^wt[bst]csgocheap", --WTB CS GO CHEAPS BELOW 5 EURO WITH WOW GOLD!
+	"^wt[bst]goldforcsgo", --WTS gold for cs:go knife, i will pay good if its  a good one, add me and /w if you are intrested
 	"^wt[bst]mywowgold.*csgoskin", --WTT: My WOW Gold for your CSGO Skins. Offer 3k per 1€ skin value. No selling, Just trading! /w me for a chat.
 	"^sellinggolds?forcsgo", --Selling golds for CS:GO skins !!
 
@@ -411,13 +395,6 @@ local instantReportList = {
 	"^wts%d+days?gamecard", --wts 60 days game card /w me
 
 	--[[  Misc  ]]--
-	"gold.*skype.*brbwow", --WTS [Challenge Warlord: Gold] . Skype: brbwow
-	"gold.*skype.*cmwow222", --WTS [Challenge Warlord: Gold] . Skype: CMWOW222
-	"gold.*skype.*cmgwows", --WTS [Challenge Warlord: Gold] . Skype: СMGWOWS
-	"gold.*skype.*ozyboost", --WTS [Challenge Warlord: Gold]. SKYPE - OZYBOOST
-	"gold.*skype.*coldgold88", --WTS [Challenge Warlord: Gold] for more info skype: coldgold88
-	"gold.*skype.*challengego", --WTS [Challenge Warlord: Gold]. Availible right now. We are experienced group!!! Add me on skype: "ChallengeGO"
-	"keystone.*skype.*landroshop", --WTS [Keystone Conqueror] (2-10 lvl), fast, smooth and fair. Details in skype: Landroshop
 	"wts.*coaching.*boost.*skype", --WTS COĄCHING Ąrena Bøøst frøm r1 EU Glâdiâtors in 2s/3s ▬► ŠELFPLĄY (Yøu plây wiTh Prø) ◄▬ ŠKYPĒ: FindGuys
 	"boost.*levell?ing.*mythic.*skype", --Easy Boost: Character Leveling, Mythic Dungeons Boost, Artifact Weapons and any more. Details in Skype: EasyPVE
 	"wts.*mythic.*boost.*pvp.*prestige.*price", --WTS Dungeons Mythic/ Mythic+ Chest Boost, EN normal/heroic, PvP PRESTIGE RANKS (we have the lowest prices on the euro-servers)!
@@ -556,6 +533,7 @@ local instantReportList = {
 	--=>>[www.bank4dh.com]<<=19E=100K. 5-15 mins Trade. More L895   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! /2 =>>[www.bank4dh.com]<<=
 	"bank4dh.*skype", --=>>[www.bank4dh.com]<<=32U=100K. 5-15 mins Trade. More More cheapest   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! Buy more than 200k will get 10%  or [Obliterum]*7 or  [Vial of the Sands]as bounes   [www.bank4dh.com]
 	"bank4dh.*%d+k", --=>>[www.bank4dh.com]<<=19E=100K. 5-15 m
+	"trusted.*bank4dh", --WTS BOE class set, 860 Six-Feather Fan, Best BOE gears for rading and alt [lvling.Trusted] seller,K+ feedback from OC. Plz vistor www bank4dh com Cheaper than AH.
 	"wts.*mythic.*powerle?ve?l.*glory.*info", --▲ WTS RUN in Emerald Nightmare (Normal or heroic) TODAY ▲ Mythic+ ▲ Power leveling 100-110 ▲ All Glory ▲ we have a lot runs every day ▲ and more other ▲ /W for more information ▲
 	"perfectway[%.,]one.*prestige", --(Perfectway.one) Dungeons Mythic/ Mythic+, EN normal/heroic, PvP PRESTIGE RANKS (Perfectway.one)
 	"rbg.*mount.*prestige.*accshare", --███WTS RBG40&75wins/Vicious Saddle/all 6 vicious mounts/honor rank/prestige[Vicious War Trike]and[Vicious Warstrider]no acc share,carry right now/w me
@@ -568,7 +546,34 @@ local instantReportList = {
 	"help.*le?ve?ling.*demonboost[%.,]com", --Helping with lvling 100-110. Emerald Nightmare, Return to Karazhan, Mythic+ dungeons. [Demon-Boost.com]
 	"fast.*leveling.*honor.*в[o0][o0]sт", -- ►►►Fastest leveling 100-110 (6-12 hours), 850+ gear, Honor Ranks and MUCH MORE on [RРD-В00SТ,С0М]◄◄◄
 	"^wtsmythickarazhandungeons[,.]*whispme", --WTS Mythić+ & Kârazhan Dungeøns. Whísp me.
+	"^wtsboostkarazhan[,.]mythic[,.]mythicdungeon", --WTS boost karazhan. mythic. mythic+ dungeon
+	"^wtskarazhan[,.]mythic[,.]%d+/%d+mythicdungeonboost", --WTS Karazhan,Mythic+,10/10Mythic dungeon boost
 	"rbg.*boost.*2200.*yourself.*account.*sharing.*info", --{RBG PUSH} Wts RBG Boost /1800/2000/2200/HOTA . You play yourself/NO account SHARING /w for more info  :)
+	"rbg.*honor.*priestige.*mount.*selfplay", --WTS RBG 1-75wins(honor rank/Priestige),6RBG mounts[Vicious Saddle]and BOP mount[Reins of the Long-Forgotten Hippogryph]},self play .PST
+	"topboost[,.]pro.*euro", --[TOPBOOST.PRO] - , HEROIC EN - 180 EURO (ML). HEROIC PL - 90 EURO.  MYTHIC +10 180 EURO
+	"powerle?ve?l.*yourspuregame[,.]com", --EN Myth/HC lootRuns,Karazhan,Powerlevling,Mounts,Myth+Boosting and more in >>> www.yourspuregame.com <<<
+	"xperiencedparty.*runs.*walkthrough.*mythic.*glory.*karazhan", --xperienced party 880+ (more than 45 runs) will help you to walkthrough mythic, mythic+, Glory of the Legion Hero, Karazhan.
+	"wh?isp.*skype.*igor.*price", --Wisp in Skype [] for Detal/Prices.
+	"elitistgaming[,.]com.*mount", --Elitist-gaming,com Selling Emerald Nightmare on ALL difficulties, [Ahead of the Curve: Xavius]MYTHIC + dungeons and NIGHTBANE MOUNT, all self play  & more whisper for schedules
+	"promotion.*order.*gold.*coupon.*code", --Halloween Promotion!! Order gold from our site, and u will get  [Obliterum] or 10% gold for free!!! w me get coupon code!Happy Halloween^^!!!
+
+	--[[ Chinese ]]--
+	"ok4gold.*skype", --纯手工100-110升级█翡翠英雄团█5M代刷 大秘境2-10层（橙装代刷）█代刷神器点数 解锁神器第三槽█金币20刀=10w█微信ok4gold█QQ或微信549965838█skype；gold4oks█微信ok4gold█v
+	"qq.*1505381907", --特价[Reins of the Swift Spectral Tiger]，金币28刀十万，量大优惠。等级代练，大秘境(刷橙装），荣誉等级(送坐骑），翡翠团本代练;,QQ:1505381907或者微信：babey1123
+	"qq.*593837031", --纯手工100-110 低价，大秘境1-10层热销中，翡翠梦境英雄普通包团毕业。橙装，神器三插槽，金币大量，感兴趣的联系QQ:593837031 skype:wspamela 微信 593837031
+	"100110.*q228102174", --100-110纯手工升级低价热卖，无敌飞机头 ，星光龙热卖1-2周保证拿到，，翡翠梦魇普通包团毕业火热销售中,职业大厅，神器点数，神器解锁三插槽 [，金币大量QQ228102174,微信894580231。skype.raulten1234]
+	"style.*[235]v[235].*%d+usd.*神器点数", --style公会团强力销售荣誉等级50解锁，3v3奖励马鞍，金币26USD包拍卖行手续费=秒发=库存200W 手工任务100-110练级8910层大秘境拿低保2-3层无限刷橙子和神器点数需要的MMMMM
+	"style.*强力销售.*%d+lvl.*100110", --style公会团强力销售825等级英雄5人本毕业840LVL史诗5人本毕业英雄史诗翡翠865 880+装备，手工100-110等级加神器任务和大秘境代打欢迎预定
+	"苏拉玛声望.*欢迎咨询购买", --苏拉玛声望尊敬要塞科技第六层，解锁橙色物品（可以多带一个橙色装备），包含解锁神器第三插槽世界任务大秘境2-3层3箱子无限刷包橙业务，欢迎咨询购买
+	"毕业定制神器.*t3.*就龙坐骑.*低价坐骑", --H，M翡翠梦魇包团加支持自己上号毕业定制 神器维护加绝版坐骑T3黑市代秒各种版本成就龙坐骑，大秘境高层2-3层3箱子无限刷，卡牌坐骑 ，各种最低价坐骑控MM
+	"100110.*苏拉玛任务.*星空龙", --纯手工90-100-110任务升级（任务全做，开启声望）。苏拉玛任务11/8。神器三插槽。荣誉50等级~（送邪气鞍座）。军团6大声望 [~手工金币30刀十万，现货秒发。200MB=10万.星空龙~无敌] 飞机头 1-2CD必出
+	"小母牛热卖金币.*包毕业.*稀有坐骑", --小母牛热卖金币29刀 =10w，人民币169.幽灵虎现货。纯手工等级，各类任务代*练。2-10层大秘境代刷。翡翠梦境H，M包团，包毕业。另有黑市坐骑，星光龙，祖格虎，稀有坐骑，水母，失落角鹰兽等
+	--小号代练--翡翠英雄本特价大秘镜3箱(橙装代刷),苏拉玛任务，堕落精灵声望，神器点代刷，解锁神器第三插槽,金币169=10万需要微信17788955341
+	"金币.*17788955341", --出售[Reins of the Swift Spectral Tiger].,.金币179RMB=10W,899RMB=500K.QQ微信17788955341
+	"qq.*1433535628", --N/H翡翠梦境包团毕业， 大秘境（刷箱子刷橙装 ）， 地下城， 荣誉解锁送神器点数 ，装绑装备和材料以及各种坐骑， 金币和飞行解锁。欢迎咨询QQ:1433535628  skype：forgotmylove
+	"qq.*1292706134", --大酋长团队 接大秘境维护1-10层，低层三箱刷橙，团本毕业，等级100-110，需要的加QQQ1292706134
+	"金币.*sesegold", --特价大小老虎,鸡蛋军马各TCG长期供货,金币169RMB=10万,98-110等级代练,大秘境保底,翡翠梦境H/M包团,5M代刷套餐特价-需要微信sesegold
+	"%d+.*万金.*支付宝", --100人民币=10万金，有30，个人出售，支付宝微信，骗子移步
 
 	--[[  Spanish  ]]--
 	"oro.*tutiendawow.*barato", --¿Todavía sin tu prepago actualizada? ¡CÓMPRALA POR ORO EN WWW.TUTIENDAWOW.COM! ¡PRECIOS ANTICRISIS! ¡65KS 60 DÍAS! Visita nuestra web y accede a nuestro CHAT EN VIVO. ENTREGAS INMEDIATAS. MAS BARATO QUE FICHA WOW.
@@ -595,11 +600,13 @@ local instantReportList = {
 	"^saljerguldviaswish", --Säljer guld via swish 135kr för 100k /w för mer info eller adda Skype Dobzen2
 	"^saljergviaswish", --Säljer g via swish 1.7kr per 1k /w mig =D [minsta köp 50k]
 	"^saljerguldsnabbtviaswish", --Säljer guld snabbt via Swish 100k=170SEK 1.7kr/1000g Billigare vid bulk  /Whispra mig och chilla på svar
-	"^koperguldviaswish", --Köper guld via swish
+	--köper wow guld via swish
+	"^koperw?o?w?guldviaswish", --Köper guld via swish
 	"guld.*salu.*swish.*info", --Guld finns till salu via SWISH, /w för mer info
 	"^saljerwowguld.*viaswish", --Säljer wow guld för 140kr per 100k, via Swish! /W
 	"^saljer%d+kguldfor.*viaswish", --Säljer 600k guld för 800kr, via swish! Nu eller aldrig
 	"^saljerguld,swish", --Säljer guld, swish
+	"guldkvar.*viaswish", --100k guld kvar! 1,8kr/1000g betalning sker via swish! /w mig vid intresse! 50k är minsta köp!
 
 	--[[ German ]]--
 	"besten.*skype.*sarmael.*coaching", --[Melk Trupp]Der Marktführer kanns einfach am Besten, nun sogar als aktueller Blizzconsieger! Melde Dich bei mir im Skype:Sarmael123456 und überzeuge Dich selbst! Ob Arena, Dungeons, Coachings oder Raids-Bei uns bekommst du jede Hilfe, die Du benötigst!
@@ -607,7 +614,8 @@ local instantReportList = {
 	"mmoprof.*loot.*gold", --{rt2} [mmo-prof.com] {rt2} BRF Heroic / Highmaul Heroic , Mystisch Lootruns !! Arena 2,2k - Gladiator .. Jegliche TCG Mounts , Play in a Pro Guild (Helfen euch einer absoluten Top Gilde beizutreten, alles für Gold !! Schau vorbei {rt2} [mmo-prof.com] {rt2}
 	"mythic.*coaching.*mmoprof", --Bieten Smaragdgrüner Alptraum Mythic/Heroic/Normal Lootruns. Mythic + Instanzen 2-10! Item-Level Push. Coaching für dich! Play with a Pro! Oder komm ich deine Traumgilde und erspiele dir mit Profis deine Erfolge! [mmo-prof.de]
 	"wts.*lootrun.*selfplay.*masterloot.*sofort.*gunstig", --WTS: ▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ SOFORT! ▓▓ SEHR GÜNSTIG ▓▓ Ermäßigung für Stoff, Kette und Leder ▓▓ /w ▓▓
-	"wts.*lootrun.*selfplay.*masterloot.*heute.*gunstig", --WTS: ▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ HEUTE 21:00 CET▓▓ SEHR GÜNSTIG ▓▓ /w ▓▓
+	--▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ HEUTE 21:00 CET▓▓ SEHR GÜNSTIG ▓▓ DER BESTE PREIS IN EUROPA ▓▓ /w ▓▓
+	"alptraum.*lootrun.*selfplay.*masterloot.*heute.*gunstig", --WTS: ▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ HEUTE 21:00 CET▓▓ SEHR GÜNSTIG ▓▓ /w ▓▓
 	"rocketgaming.*mount.*skype", --RocketGaming die 1.Slots verfügbaren IDs von Emerald Nightmare HC/Myth, auch Nighthold sei der erste mit dem Guldan Mount! Hol dir die ClasshallTruhe der Mythic+ Inis für dein BiS Item, jede ID! Gladi/R1 Titel+Mount! Adde Skype: [christoph.rocket-gaming.]
 }
 
@@ -685,7 +693,7 @@ local Ambiguate, BNGetGameAccountInfoByGUID, gsub, next, type, tremove = Ambigua
 local IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat = IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat
 local blockedLineId, chatLines, chatPlayers = 0, {}, {}
 local spamCollector, spamLogger, prevShow = {}, {}, 0
-local btn
+local btn, reportFrame
 local function BadBoyIsFriendly(name, flag, lineId, guid)
 	if not guid then return true end -- LocalDefense automated prints
 	local _, characterName = BNGetGameAccountInfoByGUID(guid)
@@ -712,12 +720,12 @@ local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, chan
 	--20 line text buffer, this checks the current line, and blocks it if it's the same as one of the previous 20
 	if event == "CHAT_MSG_CHANNEL" then
 		for i=1, #chatLines do
-			if chatLines[i] == msg and chatPlayers[i] == trimmedPlayer then --If message same as one in previous 20 and from the same person...
+			if chatLines[i] == msg and chatPlayers[i] == guid then --If message same as one in previous 20 and from the same person...
 				blockedLineId = lineId
 				--
 				if spamCollector[guid] and IsSpam(msg) then -- Reduce the chances of a spam report expiring (line id is too old) by refreshing it
 					spamCollector[guid] = lineId
-					if BADBOY_TOOLTIP then
+					if BADBOY_OPTIONS.tipSpam then
 						spamLogger[guid] = debug
 					end
 				end
@@ -727,7 +735,7 @@ local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, chan
 			if i == 20 then tremove(chatLines, 1) tremove(chatPlayers, 1) end --Don't let the DB grow larger than 20
 		end
 		chatLines[#chatLines+1] = msg
-		chatPlayers[#chatPlayers+1] = trimmedPlayer
+		chatPlayers[#chatPlayers+1] = guid
 	end
 	--End text buffer
 
@@ -738,11 +746,16 @@ local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, chan
 		if myDebug then
 			print("|cFF33FF99BadBoy_REPORT|r: ", debug, "-", event, "-", trimmedPlayer)
 		else
-			if not BADBOY_BLACKLIST or not BADBOY_BLACKLIST[guid] then
+			if (not BADBOY_BLACKLIST or not BADBOY_BLACKLIST[guid]) and not IsEncounterInProgress() then
 				spamCollector[guid] = lineId
-				if BADBOY_TOOLTIP then
+				if BADBOY_OPTIONS.tipSpam then
 					spamLogger[guid] = debug
+					if btn:IsShown() and reportFrame:IsMouseOver() then
+						GameTooltip_Hide()
+						reportFrame:GetScript("OnEnter")(reportFrame) -- Add more spam to tooltip if shown
+					end
 				end
+
 				local t = GetTime()
 				if t-prevShow > 90 then
 					if prevShow == 0 then
@@ -803,9 +816,10 @@ do
 	animGroup:Play()
 	btn:Hide()
 
-	local reportFrame = CreateFrame("Button", nil, btn)
+	reportFrame = CreateFrame("Button", nil, btn)
 	reportFrame:SetAllPoints(ChatFrame1)
 	reportFrame:SetFrameStrata("DIALOG")
+	reportFrame:RegisterForClicks("LeftButtonUp", "RightButtonUp")
 	local ticker = nil
 	local tickerFunc = function()
 		local canReport = false
@@ -825,6 +839,20 @@ do
 		if ticker then ticker:Cancel() end
 		ticker = C_Timer.NewTicker(5, tickerFunc)
 		tickerFunc()
+		-- Don't animate if the feature is disabled
+		if animGroup:IsPlaying() and BADBOY_OPTIONS.noAnim then
+			btn:SetWidth(12)
+			btn:SetHeight(12)
+			animGroup:Stop()
+			btn:ClearAllPoints()
+			btn:SetPoint("BOTTOMRIGHT", 0, -5)
+		elseif not animGroup:IsPlaying() and not BADBOY_OPTIONS.noAnim then
+			btn:SetWidth(46)
+			btn:SetHeight(46)
+			animGroup:Play()
+			btn:ClearAllPoints()
+			btn:SetPoint("BOTTOMRIGHT", 18, -20)
+		end
 	end)
 	btn:SetScript("OnHide", function()
 		if ticker then
@@ -834,6 +862,22 @@ do
 	end)
 	reportFrame:SetScript("OnClick", function(self, btn)
 		if btn == "LeftButton" then
+			prevShow = GetTime() -- Refresh throttle so we don't risk showing again straight after reporting
+			self:GetParent():Hide()
+
+			local chat = ChatFrame1:IsEventRegistered("CHAT_MSG_SYSTEM")
+			if chat then
+				ChatFrame1:UnregisterEvent("CHAT_MSG_SYSTEM")
+			end
+			local err = UIErrorsFrame:IsEventRegistered("UI_INFO_MESSAGE")
+			if err then
+				UIErrorsFrame:UnregisterEvent("UI_INFO_MESSAGE")
+			end
+			local cal = CalendarFrame and CalendarFrame:IsEventRegistered("CALENDAR_UPDATE_ERROR")
+			if cal then
+				CalendarFrame:UnregisterEvent("CALENDAR_UPDATE_ERROR") -- Remove calendar error popup
+			end
+
 			for k, v in next, spamCollector do
 				if CanComplainChat(v) then
 					BADBOY_BLACKLIST[k] = true
@@ -842,20 +886,29 @@ do
 				spamCollector[k] = nil
 				spamLogger[k] = nil
 			end
+
+			if chat then
+				ChatFrame1:RegisterEvent("CHAT_MSG_SYSTEM")
+			end
+			if err then
+				UIErrorsFrame:RegisterEvent("UI_INFO_MESSAGE")
+			end
+			if cal then
+				-- There's a delay before the event fires
+				C_Timer.After(5, function() CalendarFrame:RegisterEvent("CALENDAR_UPDATE_ERROR") end)
+			end
+		elseif btn == "RightButton" then
 			prevShow = GetTime() -- Refresh throttle so we don't risk showing again straight after reporting
 			self:GetParent():Hide()
-		elseif btn == "RightButton" then
 			for k, v in next, spamCollector do
 				spamCollector[k] = nil
 				spamLogger[k] = nil
 			end
-			prevShow = GetTime() -- Refresh throttle so we don't risk showing again straight after reporting
-			self:GetParent():Hide()
 		end
 	end)
 	reportFrame:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
-		GameTooltip:AddDoubleLine("BadBoy:", reportMsg, 1, 1, 1, 1, 1, 1)
+		GameTooltip:AddDoubleLine("BadBoy:", L.spamBlocked, 1, 1, 1, 1, 1, 1)
 		if next(spamLogger) then
 			GameTooltip:AddLine(" ", 0.5, 0.5, 1)
 			for k, v in next, spamLogger do
@@ -896,16 +949,23 @@ end
 --[[ Blacklist ]]--
 do
 	local f = CreateFrame("Frame")
-	f:RegisterEvent("PLAYER_LOGIN") -- Can't use ADDON_LOADED as CalendarGetDate isn't always ready on very first login.
-	f:SetScript("OnEvent", function(frame, event)
-		-- Blacklist DB setup, needed since Blizz nerfed ReportPlayer so hard the block sometimes only lasts a few minutes.
-		local _, _, day = CalendarGetDate()
-		if type(BADBOY_BLACKLIST) ~= "table" or BADBOY_BLACKLIST.dayFromCal ~= day then
-			BADBOY_BLACKLIST = {dayFromCal = day}
+	f:RegisterEvent("ADDON_LOADED")
+	f:RegisterEvent("PLAYER_LOGIN")
+	f:SetScript("OnEvent", function(frame, event, addon)
+		if addon == "BadBoy" then
+			if type(BADBOY_OPTIONS) ~= "table" then BADBOY_OPTIONS = {} end
+			if type(BADBOY_BLACKLIST) ~= "table" then BADBOY_BLACKLIST = {} end
+			frame:UnregisterEvent(event)
+		elseif event == "PLAYER_LOGIN" then
+			-- Blacklist DB setup, needed since Blizz nerfed ReportPlayer so hard the block sometimes only lasts a few minutes.
+			local _, _, day = CalendarGetDate()
+			if BADBOY_BLACKLIST.dayFromCal ~= day then
+				BADBOY_BLACKLIST = {dayFromCal = day} -- Can't use ADDON_LOADED as CalendarGetDate isn't always ready on very first login.
+			end
+			SetCVar("spamFilter", 1)
+			frame:UnregisterEvent(event)
+			frame:SetScript("OnEvent", nil)
 		end
-		SetCVar("spamFilter", 1)
-		frame:UnregisterEvent(event)
-		frame:SetScript("OnEvent", nil)
 	end)
 end
 

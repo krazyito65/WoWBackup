@@ -41,13 +41,6 @@ X: 131
 Y: -32
 W: 730
 H: 300
-Frame: VuhDoNewOptionsTabbedFrame
-FrameLevel: 1
-Anchor: CENTER
-X: 0
-Y: 0
-W: 648
-H: 420
 Frame: WowLuaFrame
 FrameLevel: 1
 Anchor: CENTER
@@ -55,3 +48,10 @@ X: -81
 Y: 28
 W: 1044
 H: 825
+Frame: VuhDoNewOptionsTabbedFrame
+FrameLevel: 1
+Anchor: CENTER
+X: 219
+Y: 95
+W: 648
+H: 420
