@@ -152,6 +152,10 @@ function Loremaster:eventHandler(this, event, arg1, ...)
 			blizzquestlogframebutton:SetPoint("BOTTOMLEFT", QuestScrollFrame.ViewAll, "TOPLEFT", 0, 12)
 		end
 		blizzquestlogframebutton:SetScript("OnClick", function() if Loremaster.MainFrame:IsVisible() then Loremaster.MainFrame:Hide(); else Loremaster.MainFrame:Show(); end end)
+
+		-- load all the localized quest names
+		Grail:LoadAddOn("Grail-Quests-" .. Grail.playerLocale)
+
 	elseif event == "PLAYER_LOGIN" then self.faction = UnitFactionGroup("player")
 		if self.faction == "Alliance" then self.factiontexture = "Interface\\GROUPFRAME\\UI-Group-PVP-Alliance"
 		else self.factiontexture = "Interface\\GROUPFRAME\\UI-Group-PVP-Horde" end

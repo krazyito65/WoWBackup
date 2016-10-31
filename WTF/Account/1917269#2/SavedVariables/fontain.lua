@@ -10,7 +10,7 @@ FontainDB = {
 		["Krazyíto - Mal'Ganis"] = "Krazyíto - Mal'Ganis",
 		["Krazyito - Burning Blade"] = "Krazyito - Burning Blade",
 		["Krazyito - Mal'Ganis"] = "Krazyito - Mal'Ganis",
-		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
+		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
 		["Krazyito - Area 52"] = "Krazyito - Area 52",
 		["Krazydruidiv - Bonechewer"] = "Krazydruidiv - Bonechewer",
 		["Krazybank - Mal'Ganis"] = "Krazybank - Mal'Ganis",
@@ -22,39 +22,39 @@ FontainDB = {
 		["Krazýito - Mal'Ganis"] = "Krazýito - Mal'Ganis",
 		["Krazymonk - Sargeras"] = "Krazymonk - Sargeras",
 		["Kråzyito - Mal'Ganis"] = "Kråzyito - Mal'Ganis",
-		["Krazyíto - Gnomeregan"] = "Krazyíto - Gnomeregan",
+		["Krazyitó - Gnomeregan"] = "Krazyitó - Gnomeregan",
 	},
 	["profiles"] = {
 		["Krazyito - Stormrage"] = {
 		},
 		["Krázýító - Gnomeregan"] = {
-			["override"] = true,
 			["font"] = "ElvUI Font",
+			["override"] = true,
 		},
 		["Krâzyito - Mal'Ganis"] = {
-			["font"] = "PT Sans Narrow",
 			["override"] = true,
+			["font"] = "PT Sans Narrow",
 		},
 		["Krazyitò - Gnomeregan"] = {
 			["font"] = "ElvUI Font",
 		},
 		["Krazyìto - Mal'Ganis"] = {
-			["font"] = "PT Sans Narrow",
 			["override"] = true,
+			["font"] = "PT Sans Narrow",
 		},
 		["Krazyito - Illidan"] = {
 		},
 		["Krazyíto - Mal'Ganis"] = {
 		},
 		["Krazyito - Burning Blade"] = {
-			["override"] = true,
 			["font"] = "ElvUI Font",
+			["override"] = true,
 		},
 		["Krazyito - Mal'Ganis"] = {
-			["override"] = true,
 			["font"] = "PT Sans Narrow",
+			["override"] = true,
 		},
-		["Krazyitó - Gnomeregan"] = {
+		["Krazyíto - Gnomeregan"] = {
 		},
 		["Krazyito - Area 52"] = {
 		},
@@ -65,14 +65,14 @@ FontainDB = {
 		["Krãzyito - Gnomeregan"] = {
 		},
 		["Krazyitó - Mal'Ganis"] = {
-			["override"] = true,
 			["font"] = "PT Sans Narrow",
+			["override"] = true,
 		},
 		["Krázyito - Gnomeregan"] = {
 		},
 		["Krázyito - Mal'Ganis"] = {
-			["override"] = true,
 			["font"] = "PT Sans Narrow",
+			["override"] = true,
 		},
 		["Meatrisolyn - Proudmoore"] = {
 		},
@@ -81,10 +81,10 @@ FontainDB = {
 		["Krazymonk - Sargeras"] = {
 		},
 		["Kråzyito - Mal'Ganis"] = {
-			["override"] = true,
 			["font"] = "ElvUI Font",
+			["override"] = true,
 		},
-		["Krazyíto - Gnomeregan"] = {
+		["Krazyitó - Gnomeregan"] = {
 		},
 	},
 }

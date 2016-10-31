@@ -1,4 +1,4 @@
-## Interface: 60200
+## Interface: 70100
 ## Title: Loremaster
 ## Notes: Identifies quests for the Loremaster achievements that haven't yet been completed and helps you find them
 ## Notes-deDE: Identifiziert quests für die Loremaster Erfolge die du noch nicht fertig hat, und hilft dir diese zu finden
@@ -8,7 +8,7 @@
 ## Notes-itIT: Identifica missioni per i risultati LoreMaster che non sono ancora stati completati e ti aiuta a trovare
 ## Notes-esES: Identifica misiones para los logros del Maestro Cultural que aún no hayas completado y te ayuda a encontrarlas
 ## Author: Deepac
-## Version: 006
+## Version: 007
 ## SavedVariablesPerCharacter: LoremasterDB
 ## SavedVariables: LoremasterVars
 ## Dependencies: Grail

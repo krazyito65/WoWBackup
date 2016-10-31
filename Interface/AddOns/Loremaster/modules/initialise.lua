@@ -15,6 +15,9 @@
 --		006	Replaces some Ace libraries with more modern versions.
 --			Changes the way achievements are recorded internally to make use of the fact that Grail controls the list of zones reported.
 --			Changes pin frame level so tooltips can appear properly.
+--		007	Changes the TOC to be 70100
+--			Forces loading the localized quest names from Grail at startup.
+--			Removes a call to Lightheaded that was causing an error when closing the window.
 --
 
 --	Check to ensure we have an acceptable version of Grail loaded and warn if not

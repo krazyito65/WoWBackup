@@ -2,6 +2,7 @@
 ACP_Data = {
 	["sorter"] = "Group By Name",
 	["NoRecurse"] = false,
+	["NoChildren"] = true,
 	["AddonSet"] = {
 		{
 			"ActionBarSaver", -- [1]
@@ -957,7 +958,6 @@ ACP_Data = {
 			"DBM-Core", -- [33]
 		},
 	},
-	["NoChildren"] = true,
 	["collapsed"] = {
 		["DoTimer"] = true,
 		["MikScrollingBattleText"] = true,
@@ -967,12 +967,12 @@ ACP_Data = {
 		["RSA"] = true,
 		["CombatReplay"] = true,
 		["Skada"] = true,
-		["AtlasLoot"] = true,
+		["BalancePowerTracker"] = true,
 		["TidyPlates"] = true,
 		["Libraries"] = true,
 		["DataStore"] = true,
-		["Details"] = true,
 		["DocsUI"] = true,
+		["Details"] = true,
 		["TradeSkillMaster"] = true,
 		["PhoenixStyleMod"] = true,
 		["GatherMate2"] = true,
@@ -981,7 +981,7 @@ ACP_Data = {
 		["LittleWigs"] = true,
 		["OmniCC"] = true,
 		["DiminishingReturns"] = true,
-		["BalancePowerTracker"] = true,
+		["AtlasLoot"] = true,
 		["LootCouncil"] = true,
 		["RaidAchievement"] = true,
 	},

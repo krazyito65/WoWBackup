@@ -178,7 +178,7 @@ function Loremaster:scanAchievements()
 			ach = ach - Grail.mapAreaBaseAchievement
 			_, name, _, complete = GetAchievementInfo(ach)
 			if name then
-				if continent == 6 or continent == 7 then qty, req = getPandariaCriteria(ach)
+				if continent > 5 then qty, req = getPandariaCriteria(ach)
 				else
 					reqCount = GetAchievementNumCriteria(ach)
 					if 0 ~= reqCount then	-- Only call GetAchievementCriteriaInfo when there are actually requirements to count

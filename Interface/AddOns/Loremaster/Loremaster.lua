@@ -127,7 +127,7 @@ function Loremaster:CreateQuestFrame()
 				if LightHeadedFrame then
 					LightHeadedFrame:SetParent(QuestLogFrame)
 					LightHeaded:LockUnlockFrame()
-					LightHeaded:AdjustGUIParent()
+--					LightHeaded:AdjustGUIParent()
 				end
 			end
 		end
