@@ -1,9 +1,6 @@
 # BigWigs
 
-## [v21.3](https://github.com/BigWigsMods/BigWigs/tree/v21.3) (2016-10-30) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v21.2...v21.3)
+## [v21.3-1-gaf24395](https://github.com/BigWigsMods/BigWigs/tree/af24395ca351c19450c7fd521b500d032b3b8314) (2016-10-31) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v21.3...af24395ca351c19450c7fd521b500d032b3b8314)
 
--   Plugins/BossBlock: Add Karazhan cinematics  
--   Nightmare/Cenarius: Some adjustments and cleanups  
--   Update deDE.lua (#85)  
--   Nightmare/EleretheRenferal: Fix WebOfPain bar text.  
+-   Nightmare/Xavius: Add percentage to stage warnings.  

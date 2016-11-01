@@ -15,12 +15,14 @@ RKDatabase = {
 		["Krázyito - Mal'Ganis"] = "Default",
 		["Fãlor - Gnomeregan"] = "Default",
 		["Krazýito - Mal'Ganis"] = "Default",
-		["Krazyito - Mal'Ganis"] = "Default",
-		["Kråzyito - Mal'Ganis"] = "Default",
 		["Meatrisolyn - Proudmoore"] = "Default",
+		["Kråzyito - Mal'Ganis"] = "Default",
+		["Krazyito - Mal'Ganis"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
+			["firstLoad"] = false,
+			["prevDiffShown"] = 15,
 			["recordTimes"] = {
 				["Highmaul"] = {
 					["Brackenspore"] = {
@@ -97,11 +99,11 @@ RKDatabase = {
 						[15] = 177,
 						[7] = 187,
 					},
-					["The Blast Furnace"] = {
-						[14] = 556,
-						[16] = 490,
-						[15] = 431,
-						[7] = 297,
+					["Kromog"] = {
+						[14] = 155,
+						[16] = 224,
+						[15] = 209,
+						[7] = 185,
 					},
 					["Beastlord Darmac"] = {
 						[14] = 231,
@@ -109,23 +111,23 @@ RKDatabase = {
 						[15] = 308,
 						[7] = 157,
 					},
-					["Blackhand"] = {
-						[14] = 339,
-						[16] = 76,
-						[15] = 229,
-						[7] = 171,
-					},
 					["The Iron Maidens"] = {
 						[14] = 424,
 						[16] = 277,
 						[15] = 482,
 						[7] = 209,
 					},
-					["Kromog"] = {
-						[14] = 155,
-						[16] = 224,
-						[15] = 209,
-						[7] = 185,
+					["Blackhand"] = {
+						[14] = 339,
+						[16] = 76,
+						[15] = 229,
+						[7] = 171,
+					},
+					["The Blast Furnace"] = {
+						[14] = 556,
+						[16] = 490,
+						[15] = 431,
+						[7] = 297,
 					},
 				},
 				["Hellfire Citadel"] = {
@@ -177,22 +179,11 @@ RKDatabase = {
 						[15] = 152,
 						[7] = 10172,
 					},
-					["Gorefiend"] = {
-						[14] = 273,
-						[16] = 147,
-						[15] = 169,
-						[7] = 156,
-					},
-					["Hellfire High Council"] = {
-						[14] = 206,
-						[16] = 87,
-						[15] = 119,
-						[7] = 156,
-					},
-					["Tyrant Velhari"] = {
-						[14] = 261,
-						[16] = 131,
-						[15] = 180,
+					["Archimonde"] = {
+						[14] = 262,
+						[16] = 183,
+						[15] = 110,
+						[7] = 362,
 					},
 					["Xhul'horac"] = {
 						[14] = 272,
@@ -200,19 +191,28 @@ RKDatabase = {
 						[15] = 149,
 						[7] = 236,
 					},
-					["Archimonde"] = {
-						[14] = 262,
-						[16] = 183,
-						[15] = 110,
-						[7] = 362,
+					["Tyrant Velhari"] = {
+						[14] = 261,
+						[16] = 131,
+						[15] = 180,
+					},
+					["Hellfire High Council"] = {
+						[14] = 206,
+						[16] = 87,
+						[15] = 119,
+						[7] = 156,
+					},
+					["Gorefiend"] = {
+						[14] = 273,
+						[16] = 147,
+						[15] = 169,
+						[7] = 156,
 					},
 				},
 			},
-			["firstLoad"] = false,
-			["diffShown"] = 15,
-			["prevDiffShown"] = 15,
 			["prevTierShown"] = 15,
 			["tierShown"] = 15,
+			["diffShown"] = 15,
 		},
 	},
 }
