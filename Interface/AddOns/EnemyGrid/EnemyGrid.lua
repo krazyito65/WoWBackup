@@ -1291,6 +1291,33 @@ function EnemyGrid.OnInit()
 		end
 	end
 	
+	
+	C_Timer.After (10, function()
+		if (not EnemyGrid.db.profile.path_7_11_warning) then
+			local f = CreateFrame ("frame", nil, UIParent)
+			f:SetSize (600, 300)
+			f:SetBackdrop ({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16, edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1})
+			f:SetBackdropColor (0, 0, 0)
+			f:SetBackdropBorderColor (1, 0, 0)
+			
+			local title = DF:CreateLabel (f, "R.I.P.? Enemy Grid", 16, "yellow")
+			local text = DF:CreateLabel (f, "We're still receiving many questions about Enemy Grid not working.\n\nEnemy Grid has been hit by several changes on the mod authoring API on Patch 7.1\n\nWith that, we can no longer use our frames on the 2D interface to target enemies on the 3D world.\n\nPlease take in mind that the company that creates this game always want to provide the best experience for us, and, we believe Enemy Grid was indeed an 'OP' mod.\n\nThank you!", 12, "orange")
+			text:SetSize (540, 200)
+			
+			title:SetPoint (12, -12)
+			text:SetPoint (12, -30)
+			
+			local close = DF:CreateButton (f, function() f:Hide(); EnemyGrid.db.profile.path_7_11_warning = true; end, 80, 20, "close")
+			close:SetPoint ("bottomright", f, "bottomright", -12, 12)
+			close:InstallCustomTexture()
+			f:SetPoint ("center")
+			f:Show()
+			--f:Hide()
+			
+		end
+	end)	
+	
+	
 	--cria o painel principal
 	EnemyGrid.ScreenPanel = CreateFrame ("frame", "EnemyGrid_ScreenPanel39", UIParent)
 	EnemyGrid.ScreenPanel:SetPoint ("center", UIParent, "center", -500, 200)
@@ -3932,6 +3959,12 @@ function EnemyGrid.OpenOptionsPanel()
 		--atualiza a scroll
 		EnemyGridOptionsPanelFrameKeybindScroill:UpdateScroll()
 	end
+	
+	--7.1_warning
+	local warning_7_1_patch = DF:CreateLabel (keybindFrame, "Keybinds won't work anymore since 7.1 patch")
+	warning_7_1_patch:SetPoint (450, -150)
+	warning_7_1_patch.textcolor = "red"
+	warning_7_1_patch.textsize = 16
 	
 	--botões para selecionar a spec
 	local spec1 = DF:CreateButton (keybindFrame, switch_spec, 160, 20, "Spec1 Placeholder Text", 1, _, _, "SpecButton1", _, 0, options_button_template, options_text_template)

@@ -15,8 +15,17 @@ local AddonDB_Defaults = {
 		Characters = {
 			['*'] = {				-- ["Account.Realm.Name"] 
 				lastUpdate = nil,
-				Class = nil,				-- englishClass
+				Class = nil,							-- englishClass
 				Specializations = {},
+				EquippedArtifact = nil,				-- name of the currently equipped artifact
+				ArtifactKnowledge = nil,
+				ArtifactKnowledgeMultiplier = nil,
+				Artifacts = {
+					['*'] = {
+						rank = 0,
+						pointsRemaining = 0,
+					}
+				},
 			}
 		}
 	}
@@ -60,7 +69,7 @@ local statPriority = {
 	-- Cloth
 	["MAGE"] = {
 		{ SPELL_STAT4_NAME, STAT_VERSATILITY, STAT_CRITICAL_STRIKE, SPELL_HASTE, STAT_MASTERY }, -- Arcane
-		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, SPELL_HASTE, STAT_MASTERY }, -- Fire
+		{ SPELL_STAT4_NAME, STAT_CRITICAL_STRIKE, STAT_MASTERY, STAT_VERSATILITY, SPELL_HASTE }, -- Fire
 		{ SPELL_STAT4_NAME, SPELL_HASTE, STAT_CRITICAL_STRIKE, STAT_VERSATILITY, STAT_MASTERY }, -- Frost
 	},
 	["PRIEST"] = {
@@ -207,6 +216,34 @@ local function ScanTalentReference()
 	end
 end
 
+local function ScanArtifact()
+	local char = addon.ThisCharacter
+
+	local artifactName = select(2, C_ArtifactUI.GetArtifactArtInfo())
+
+	-- only save the name if the item viewed is the one equipped (since you can right-click an artifact in the bags)
+	if C_ArtifactUI.IsViewedArtifactEquipped() then
+		char.EquippedArtifact = artifactName
+	end
+	
+	char.ArtifactKnowledge = C_ArtifactUI.GetArtifactKnowledgeLevel()
+	char.ArtifactKnowledgeMultiplier = C_ArtifactUI.GetArtifactKnowledgeMultiplier()
+	
+	local artifact = char.Artifacts[artifactName]
+	
+	artifact.rank = C_ArtifactUI.GetTotalPurchasedRanks()
+	artifact.pointsRemaining = C_ArtifactUI.GetPointsRemaining()
+end
+
+local function ScanArtifactXP()
+	local char = addon.ThisCharacter
+	
+	local _, _, artifactName, _, remaining = C_ArtifactUI.GetEquippedArtifactInfo()
+	local artifact = char.Artifacts[artifactName]
+	if artifact then
+		artifact.pointsRemaining = remaining
+	end
+end
 
 -- *** Event Handlers ***
 local function OnPlayerAlive()
@@ -217,6 +254,14 @@ end
 local function OnPlayerSpecializationChanged()
 	ScanTalents()
 	ScanTalentReference()
+end
+
+local function OnArtifactUpdate()
+	ScanArtifact()
+end
+
+local function OnArtifactXPUpdate()
+	ScanArtifactXP()
 end
 
 -- ** Mixins **
@@ -287,6 +332,75 @@ local function _GetSpecializationTierChoice(character, specialization, row)
 	end
 end
 
+-- ** Artifact **
+local function _GetArtifactKnowledgeLevel(character)
+	return character.ArtifactKnowledge or 0
+end
+
+local function _GetArtifactKnowledgeMultiplier(character)
+	return character.ArtifactKnowledgeMultiplier or 0
+end
+
+local function _GetEquippedArtifact(character)
+	return character.EquippedArtifact
+end
+
+local function _GetEquippedArtifactRank(character)
+	local rank = 0
+	
+	local equippedArtifact = character.EquippedArtifact
+	if equippedArtifact then
+		local info = character.Artifacts[equippedArtifact]
+		if info and info.rank then
+			rank = info.rank
+		end
+	end
+	
+	return rank
+end
+
+local function _GetEquippedArtifactPower(character)
+	local power = 0
+	
+	local equippedArtifact = character.EquippedArtifact
+	if equippedArtifact then
+		local info = character.Artifacts[equippedArtifact]
+		if info and info.pointsRemaining then
+			power = info.pointsRemaining
+		end
+	end
+	
+	return power
+end
+
+local function _GetKnownArtifacts(character)
+	return character.Artifacts
+end
+
+local function _GetNumArtifactTraitsPurchasableFromXP(currentRank, xpToSpend)
+	-- this function is exactly the same as 
+	-- MainMenuBar_GetNumArtifactTraitsPurchasableFromXP (from MainMenuBar.lua)
+	-- but just in case it's not loaded or changes later.. I'll keep it here
+	-- Usage: 
+	--		DataStore:GetNumArtifactTraitsPurchasableFromXP(1, 945)
+	--    artifact is currently at rank 1, and we have 945 points to spend
+	
+	local numPoints = 0
+	local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank)
+	while xpToSpend >= xpForNextPoint and xpForNextPoint > 0 do
+		xpToSpend = xpToSpend - xpForNextPoint
+
+		currentRank = currentRank + 1
+		numPoints = numPoints + 1
+
+		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank)
+	end
+	
+	-- ex: with rank 1 and 945 points, we have enough points for 2 traits, and 320 / 350 in the last rank
+	return numPoints, xpToSpend, xpForNextPoint
+end
+
+
 local PublicMethods = {
 	GetReferenceTable = _GetReferenceTable,
 	GetClassReference = _GetClassReference,
@@ -296,6 +410,13 @@ local PublicMethods = {
 	ImportClassReference = _ImportClassReference,
 	GetTalentInfo = _GetTalentInfo,
 	GetSpecializationTierChoice = _GetSpecializationTierChoice,
+	GetArtifactKnowledgeLevel = _GetArtifactKnowledgeLevel,
+	GetArtifactKnowledgeMultiplier = _GetArtifactKnowledgeMultiplier,
+	GetEquippedArtifact = _GetEquippedArtifact,
+	GetEquippedArtifactRank = _GetEquippedArtifactRank,
+	GetEquippedArtifactPower = _GetEquippedArtifactPower,
+	GetKnownArtifacts = _GetKnownArtifacts,
+	GetNumArtifactTraitsPurchasableFromXP = _GetNumArtifactTraitsPurchasableFromXP,
 }
 
 function addon:OnInitialize()
@@ -305,16 +426,25 @@ function addon:OnInitialize()
 	DataStore:RegisterModule(addonName, addon, PublicMethods)
 
 	DataStore:SetCharacterBasedMethod("GetSpecializationTierChoice")
+	DataStore:SetCharacterBasedMethod("GetArtifactKnowledgeLevel")
+	DataStore:SetCharacterBasedMethod("GetArtifactKnowledgeMultiplier")
+	DataStore:SetCharacterBasedMethod("GetEquippedArtifact")
+	DataStore:SetCharacterBasedMethod("GetEquippedArtifactRank")
+	DataStore:SetCharacterBasedMethod("GetEquippedArtifactPower")
+	DataStore:SetCharacterBasedMethod("GetKnownArtifacts")
 end
 
 function addon:OnEnable()
 	addon:RegisterEvent("PLAYER_ALIVE", OnPlayerAlive)
 	addon:RegisterEvent("PLAYER_TALENT_UPDATE", ScanTalents)
 	addon:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED", OnPlayerSpecializationChanged)
+	addon:RegisterEvent("ARTIFACT_UPDATE", OnArtifactUpdate)
+	addon:RegisterEvent("ARTIFACT_XP_UPDATE", OnArtifactXPUpdate)
 end
 
 function addon:OnDisable()
 	addon:UnregisterEvent("PLAYER_ALIVE")
 	addon:UnregisterEvent("PLAYER_TALENT_UPDATE")
 	addon:UnregisterEvent("PLAYER_SPECIALIZATION_CHANGED")
+	addon:UnregisterEvent("ARTIFACT_UPDATE")
 end

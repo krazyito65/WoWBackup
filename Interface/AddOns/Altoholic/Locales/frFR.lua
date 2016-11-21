@@ -3,7 +3,6 @@
 if not L then return end
 
 L["28 Slot"] = "28 emplacements"
-L["32 Keys Max"] = "32 clés max."
 L["Abyssal Council"] = "Conseil abyssal"
 L["Accessories"] = "Accessoires"
 L["Account"] = "Compte"
@@ -178,6 +177,8 @@ L["COLOR_GREY"] = "Gris"
 L["COLOR_ORANGE"] = "Orange"
 L["COLOR_RED"] = "Rouge"
 L["COLOR_YELLOW"] = "Jaune"
+L["COLUMN_PROFESSION_1_TITLE_SHORT"] = "Prof. 1"
+L["COLUMN_PROFESSION_2_TITLE_SHORT"] = "Prof. 2"
 L["Compare with"] = "Comparer avec"
 L["Conquest"] = "Conquête"
 L["Conspicuous Urn"] = "Urne ostentatoire"
@@ -491,8 +492,6 @@ L["Primal Intent"] = "Intention primordiale"
 L["Primal Mooncloth"] = "Etoffe lunaire primordiale"
 L["Private to friends: %s"] = "Limité aux amis : %s"
 L["Private to guild: %s"] = "Limité à la guilde : %s"
-L["Prof. 1"] = true
-L["Prof. 2"] = true
 L["Purple Lotus"] = "Lotus pourpre"
 L["PVP Cloth Set"] = "Set Tissu JcJ"
 L["PVP Leather Sets"] = "Set Cuir JcJ"

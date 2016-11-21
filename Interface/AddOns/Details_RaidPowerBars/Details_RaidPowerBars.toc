@@ -4,7 +4,7 @@
 ## SavedVariablesPerCharacter: _detalhes_databaseRaidPowerBar
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
-## X-Curse-Packaged-Version: r21
+## X-Curse-Packaged-Version: r22
 ## X-Curse-Project-Name: Details!: Raid Power Bars (plugin)
 ## X-Curse-Project-ID: details_raidpowerbars
 ## X-Curse-Repository-ID: wow/details_raidpowerbars/mainline

@@ -82,12 +82,13 @@ function mod:GetOptions()
 		226821, -- Desiccating Stomp
 
 		--[[ Rotten Drake ]]--
-		211192, -- Rotten Breath
+		{211192, "SAY"}, -- Rotten Breath
 		"custom_off_multiple_breath_bar",
 
 		--[[ Twisted Sister ]]--
 		211368, -- Twisted Touch of Life
 		{211471, "SAY", "FLASH", "PROXIMITY"}, -- Scorned Touch
+		{211989, "SAY"}, -- Unbound Touch
 
 		--[[ Mythic ]]--
 		214876, -- Beasts of Nightmare
@@ -137,6 +138,7 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "TwistedTouchOfLifeApplied", 211368)
 	self:Log("SPELL_AURA_APPLIED", "ScornedTouch", 211471)
 	self:Log("SPELL_AURA_REMOVED", "ScornedTouchRemoved", 211471)
+	self:Log("SPELL_AURA_APPLIED", "UnboundTouch", 211989)
 
 	--[[ Mythic ]]--
 	self:Log("SPELL_AURA_APPLIED", "CorruptAlliesOfNature", 214884)
@@ -199,6 +201,7 @@ function mod:MobDeath(args)
 		self:StopBar(CL.count:format(self:SpellName(211192), mobText)) -- Rotten Breath
 		self:StopBar(CL.cast:format(CL.count:format(self:SpellName(211192), mobText))) -- <Cast: Rotten Breath>
 		drakeDeaths = drakeDeaths + 1
+		self:UnregisterUnitEvent("UNIT_TARGET", mobCollector[args.destGUID])
 	elseif mobId == 105495 then -- Twisted Sister
 		self:StopBar(CL.count:format(self:SpellName(211471), mobText)) -- Scorned Touch
 		self:StopBar(CL.count:format(self:SpellName(211368), mobText)) -- Twisted Touch of Life
@@ -240,7 +243,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(_, spellName, _, _, spellId)
 	elseif spellId == 217368 then -- Phase 2
 		phase = 2
 		self:StopBar(213162) -- Nightmare Blast
-		self:StopBar(212726) -- Forces of Nightmare
+		self:StopBar(CL.count:format(self:SpellName(212726), forcesOfNightmareCount)) -- Forces of Nightmare
 		self:StopBar(210346) -- Dread Thorns
 		self:Bar(210290, 13) -- Nightmare Brambles
 		self:Bar(214529, 23) -- Spear Of Nightmares
@@ -316,7 +319,11 @@ do
 				if mobId == 105468 then -- Nightmare Ancient
 					self:Bar(226821, 20, CL.count:format(self:SpellName(226821), getMobNumber(mobId, guid))) -- Desiccating Stomp
 				elseif mobId == 105494 then -- Rotten Drake
-					self:Bar(211192, 20, CL.count:format(self:SpellName(211192), getMobNumber(mobId, guid))) -- Rotten Breath
+					mobCollector[guid] = unit
+					if self:GetOption("custom_off_multiple_breath_bar") or (mobCount[105494]-drakeDeaths == 1) or (drakeDeaths+1 == getMobNumber(105494, guid)) then
+						self:Bar(211192, 20, CL.count:format(self:SpellName(211192), getMobNumber(mobId, guid))) -- Rotten Breath
+					end
+					self:ScheduleTimer("RegisterUnitEvent", 15, "UNIT_TARGET", "BreathTarget", unit)
 				elseif mobId == 105495 then -- Twisted Sister
 					self:CDBar(211471, 5, CL.count:format(self:SpellName(211471), getMobNumber(mobId, guid))) -- Scorned Touch
 					self:CDBar(211368, 6, CL.count:format(self:SpellName(211368), getMobNumber(mobId, guid))) -- Twisted Touch of Life
@@ -389,9 +396,6 @@ do
 	end
 end
 
---[[ Corrupted Wisp ]]--
--- give fixate debuff pls blizzard
-
 --[[ Nightmare Treant ]]--
 do
 	local prev = 0
@@ -412,10 +416,20 @@ end
 function mod:RottenBreath(args)
 	if self:GetOption("custom_off_multiple_breath_bar") or (mobCount[105494]-drakeDeaths == 1) or (drakeDeaths+1 == getMobNumber(105494, args.sourceGUID)) then
 		local spellText = CL.count:format(args.spellName, getMobNumber(105494, args.sourceGUID))
-		self:Message(args.spellId, "Attention", "Alert", CL.casting:format(spellText))
 		self:Bar(args.spellId, 5.5, CL.cast:format(spellText))
 		self:CDBar(args.spellId, 25, spellText)
 	end
+end
+
+function mod:BreathTarget(unit) -- They love to drop their target after casting
+	local target = unit.."target"
+	local guid = UnitGUID(target)
+	if not guid or UnitDetailedThreatSituation(target, unit) ~= false or self:MobId(guid) ~= 1 then return end
+
+	if self:Me(guid) then
+		self:Say(211192)
+	end
+	self:TargetMessage(211192, self:UnitName(target), "Attention", "Alert", nil, nil, true)
 end
 
 --[[ Twisted Sister ]]--
@@ -481,5 +495,12 @@ do
 				self:OpenProximity(args.spellId, 8, proxList)
 			end
 		end
+	end
+end
+
+function mod:UnboundTouch(args)
+	if self:Me(args.destGUID) then
+		self:TargetMessage(args.spellId, args.destName, "Personal", "Alert")
+		self:Say(args.spellId)
 	end
 end

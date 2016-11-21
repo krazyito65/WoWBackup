@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("BigWigs: Common", "zhTW")
+local L = BigWigsAPI:NewLocale("BigWigs: Common", "zhTW")
 if not L then return end
 
 L.add = "增援"
@@ -30,7 +30,7 @@ L.mob_remaining = "%s已擊殺，%d剩餘"
 L.mythic = "傳奇難度"
 L.near = ">%s< 你附近！"
 L.next_add = "下一波小怪"
-L.no = "不要 >%s<！"
+L.no = "缺少 >%s<！"
 L.normal = "普通模式"
 L.on = "%2$s >%1$s<"
 L.onboss = "首領 >%s<！"

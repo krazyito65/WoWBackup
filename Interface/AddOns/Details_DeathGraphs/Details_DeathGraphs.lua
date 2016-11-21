@@ -8,7 +8,7 @@ local SharedMedia = LibStub:GetLibrary("LibSharedMedia-3.0")
 --> main frame (shortcut)
 	local DeathGraphsFrame = DeathGraphs.Frame
 
-DeathGraphs.version_string = "v3.2"
+DeathGraphs.version_string = "v3.3"
 
 local CONST_DBTYPE_DEATH = "deaths"
 local CONST_DBTYPE_ENDURANCE = "endurance"

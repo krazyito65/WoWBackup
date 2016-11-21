@@ -256,6 +256,7 @@ function RCLootCouncilML:Timer(type, ...)
 
 	elseif type == "GroupUpdate" then
 		addon:SendCommand("group", "candidates", self.candidates)
+		addon:SendCommand("group", "council", db.council)
 	end
 end
 
@@ -270,10 +271,11 @@ function RCLootCouncilML:OnCommReceived(prefix, serializedMsg, distri, sender)
 				self:AddCandidate(unpack(data))
 
 			elseif command == "MLdb_request" then
-				addon:SendCommand(sender, "MLdb", addon.mldb)
+				-- Just resend to the entire group instead of the sender
+				addon:SendCommand("group", "MLdb", addon.mldb)
 
 			elseif command == "council_request" then
-				addon:SendCommand(sender, "council", db.council)
+				addon:SendCommand("group", "council", db.council)
 
 			elseif command == "reconnect" and not addon:UnitIsUnit(sender, addon.playerName) then -- Don't receive our own reconnect
 				-- Someone asks for mldb, council and candidates
@@ -466,6 +468,7 @@ function RCLootCouncilML:Award(session, winner, response, reason)
 						addon:Debug("GiveMasterLoot", i)
 						GiveMasterLoot(self.lootTable[session].lootSlot, i)
 						awarded = true
+						break
 					end
 				end
 			end
@@ -474,7 +477,6 @@ function RCLootCouncilML:Award(session, winner, response, reason)
 			-- flag the item as awarded and update
 			addon:SendCommand("group", "awarded", session)
 			self.lootTable[session].awarded = true -- No need to let Comms handle this
-			-- IDEA Switch session ?
 
 			self:AnnounceAward(addon.Ambiguate(winner), self.lootTable[session].link, reason and reason.text or db.responses[response].text)
 			if self:HasAllItemsBeenAwarded() then self:EndSession() end
@@ -492,13 +494,13 @@ function RCLootCouncilML:Award(session, winner, response, reason)
 			for i = 1, MAX_RAID_MEMBERS do
 				if addon:UnitIsUnit(GetMasterLootCandidate(self.lootTable[session].lootSlot, i), "player") then
 					GiveMasterLoot(self.lootTable[session].lootSlot, i)
+					break
 				end
 			end
 		end
 		tinsert(self.lootInBags, self.lootTable[session].link) -- and store data
 		return false -- Item hasn't been awarded
 	end
-	return false
 end
 
 function RCLootCouncilML:AnnounceItems()
@@ -709,6 +711,9 @@ end
 --------ML Popups ------------------
 LibDialog:Register("RCLOOTCOUNCIL_CONFIRM_ABORT", {
 	text = L["Are you sure you want to abort?"],
+	on_show = function(self)
+		self:SetFrameStrata("FULLSCREEN")
+	end,
 	buttons = {
 		{	text = L["Yes"],
 			on_click = function(self)
@@ -728,6 +733,7 @@ LibDialog:Register("RCLOOTCOUNCIL_CONFIRM_AWARD", {
 	text = "something_went_wrong",
 	icon = "",
 	on_show = function(self, data)
+		self:SetFrameStrata("FULLSCREEN")
 		local session, player = unpack(data)
 		self.text:SetText(format(L["Are you sure you want to give #item to #player?"], RCLootCouncilML.lootTable[session].link, addon.Ambiguate(player)))
 		self.icon:SetTexture(RCLootCouncilML.lootTable[session].texture)

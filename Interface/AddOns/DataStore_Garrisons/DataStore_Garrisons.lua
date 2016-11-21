@@ -44,6 +44,11 @@ local AddonDB_Defaults = {
 				AvailableMissions = {},		-- List of available missions
 				ActiveMissions = {},			-- List of active/in-progress missions
 				ActiveMissionsInfo = {},	-- List of start times for active/in-progress missions
+				
+				artifactResearchCreationTime = 0,
+				artifactResearchDuration = 0,
+				artifactResearchNumReady = 0,
+				artifactResearchNumTotal = 0,
 			}
 		}
 	}
@@ -490,7 +495,29 @@ local function ScanActiveMissionInfo(missionID)
 	missionInfo[missionID] = info
 end
 
+local function ScanNextArtifactResearch()
+	-- scan the remaining time until the next artifact research notes are complete
+	
+	local shipments = C_Garrison.GetLooseShipments(LE_GARRISON_TYPE_7_0)
+	local char = addon.ThisCharacter
+
+	for i = 1, #shipments do
+		local name, _, _, numReady, numTotal, creationTime, duration = C_Garrison.GetLandingPageShipmentInfoByContainerID(shipments[i])
+		
+		if name == GetItemInfo(139390) then		-- the name must be "Artifact Research Notes"
+			char.artifactResearchCreationTime = creationTime
+			char.artifactResearchDuration = duration
+			char.artifactResearchNumReady = numReady
+			char.artifactResearchNumTotal = numTotal
+		end
+	end
+end
+
 -- *** Event Handlers ***
+local function OnShipmentsUpdated()
+	ScanNextArtifactResearch()
+end
+
 local function OnFollowerAdded()
 	ScanFollowers()
 end
@@ -729,6 +756,26 @@ local function _GetLastResourceCollectionTime(character)
 	return character.lastResourceCollection or 0
 end
 
+local function _GetArtifactResearchInfo(character)
+	local creationTime = character.artifactResearchCreationTime
+	local duration = character.artifactResearchDuration
+	local numReady = character.artifactResearchNumReady
+	local numTotal = character.artifactResearchNumTotal
+	
+	local remaining = (creationTime + duration) - time() 
+	
+	if (remaining < 0) then		-- if remaining is negative, the next shipment is ready ..
+		numReady = numReady + 1			-- .. so increase by 1
+		if numReady > numTotal then	-- .. and prevent overflow
+			numReady = numTotal
+		end
+
+		remaining = 0
+	end
+
+	return remaining, numReady, numTotal
+end
+
 local PublicMethods = {
 	GetFollowers = _GetFollowers,
 	GetFollowerInfo = _GetFollowerInfo,
@@ -757,6 +804,7 @@ local PublicMethods = {
 	GetNumCompletedMissions = _GetNumCompletedMissions,
 	GetMissionTableLastVisit = _GetMissionTableLastVisit,
 	GetLastResourceCollectionTime = _GetLastResourceCollectionTime,
+	GetArtifactResearchInfo = _GetArtifactResearchInfo,
 }
 
 function addon:OnInitialize()
@@ -789,9 +837,13 @@ function addon:OnInitialize()
 	DataStore:SetCharacterBasedMethod("GetNumCompletedMissions")
 	DataStore:SetCharacterBasedMethod("GetMissionTableLastVisit")
 	DataStore:SetCharacterBasedMethod("GetLastResourceCollectionTime")
+	DataStore:SetCharacterBasedMethod("GetArtifactResearchInfo")
 end
 
 function addon:OnEnable()
+	-- Shipments
+	addon:RegisterEvent("GARRISON_LANDINGPAGE_SHIPMENTS", OnShipmentsUpdated)
+	
 	-- Followers
 	addon:RegisterEvent("GARRISON_FOLLOWER_ADDED", OnFollowerAdded)
 	addon:RegisterEvent("GARRISON_FOLLOWER_LIST_UPDATE", OnFollowerListUpdate)

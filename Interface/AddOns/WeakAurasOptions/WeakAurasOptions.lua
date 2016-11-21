@@ -489,12 +489,13 @@ function WeakAuras.ConstructOptions(prototype, data, startorder, subPrefix, subS
       if(triggertype == "untrigger") then
         name = "untrigger_"..name;
       end
-      if (arg.type ~= "toggle" and arg.type ~= "tristate") then
+      if (arg.type == "multiselect") then
         -- Ensure new line for non-toggle options
         options["spacer_"..name] = {
           type = "description",
           name = "",
           order = order,
+          hidden = hidden,
         }
         order = order + 1;
       end
@@ -898,6 +899,9 @@ function WeakAuras.ConstructOptions(prototype, data, startorder, subPrefix, subS
         elseif(arg.required and triggertype == "untrigger") then
           options[name] = nil;
           order = order - 1;
+        end
+        if (arg.control) then
+          options[name].control = arg.control;
         end
         order = order + 1;
         if(arg.type == "unit" and not (arg.required and triggertype == "untrigger")) then
@@ -2305,7 +2309,8 @@ function WeakAuras.AddOption(id, data)
             name = L["Message Type"],
             order = 2,
             values = send_chat_message_types,
-            disabled = function() return not data.actions.start.do_message end
+            disabled = function() return not data.actions.start.do_message end,
+            control = "WeakAurasSortedDropdown"
           },
           start_message_space = {
             type = "execute",
@@ -2347,7 +2352,12 @@ function WeakAuras.AddOption(id, data)
             name = L["Message"],
             width = "double",
             order = 5,
-            disabled = function() return not data.actions.start.do_message end
+            disabled = function() return not data.actions.start.do_message end,
+            desc = function()
+                 local ret = L["Dynamic text tooltip"];
+                 ret = ret .. WeakAuras.GetAdditionalProperties(data);
+                 return ret
+            end,
           },
           start_do_sound = {
             type = "toggle",
@@ -2360,7 +2370,8 @@ function WeakAuras.AddOption(id, data)
             name = L["Sound"],
             order = 8,
             values = sound_types,
-            disabled = function() return not data.actions.start.do_sound end
+            disabled = function() return not data.actions.start.do_sound end,
+            control = "WeakAurasSortedDropdown"
           },
           start_sound_channel = {
             type = "select",
@@ -2480,7 +2491,8 @@ function WeakAuras.AddOption(id, data)
             name = L["Message Type"],
             order = 22,
             values = send_chat_message_types,
-            disabled = function() return not data.actions.finish.do_message end
+            disabled = function() return not data.actions.finish.do_message end,
+            control = "WeakAurasSortedDropdown"
           },
           finish_message_space = {
             type = "execute",
@@ -2522,7 +2534,12 @@ function WeakAuras.AddOption(id, data)
             name = L["Message"],
             width = "double",
             order = 25,
-            disabled = function() return not data.actions.finish.do_message end
+            disabled = function() return not data.actions.finish.do_message end,
+            desc = function()
+                 local ret = L["Dynamic text tooltip"];
+                 ret = ret .. WeakAuras.GetAdditionalProperties(data);
+                 return ret
+            end,
           },
           finish_do_sound = {
             type = "toggle",
@@ -2535,7 +2552,8 @@ function WeakAuras.AddOption(id, data)
             name = L["Sound"],
             order = 28,
             values = sound_types,
-            disabled = function() return not data.actions.finish.do_sound end
+            disabled = function() return not data.actions.finish.do_sound end,
+            control = "WeakAurasSortedDropdown"
           },
           finish_sound_channel = {
             type = "select",
@@ -5252,6 +5270,7 @@ function WeakAuras.ReloadTriggerOptions(data)
           return status_types;
         end
       end,
+      control = "WeakAurasSortedDropdown",
       hidden = function() return not (trigger.type == "event" or trigger.type == "status"); end
     },
     subeventPrefix = {
@@ -5267,6 +5286,12 @@ function WeakAuras.ReloadTriggerOptions(data)
       order = 9,
       values = subevent_suffix_types,
       hidden = function() return not (trigger.type == "event" and trigger.event == "Combat Log" and subevent_actual_prefix_types[trigger.subeventPrefix]); end
+    },
+    spacer_suffix = {
+      type = "description",
+      name = "",
+      order = 9.1,
+      hidden = function() return not (trigger.type == "event" and trigger.event == "Combat Log"); end
     },
     custom_type = {
       type = "select",
@@ -6862,6 +6887,7 @@ function WeakAuras.CreateFrame()
   texturePickCancel:SetHeight(20)
   texturePickCancel:SetWidth(100)
   texturePickCancel:SetText(L["Cancel"])
+  texturePickCancel:SetFrameLevel(100);
 
   local texturePickClose = CreateFrame("Button", nil, texturePick.frame, "UIPanelButtonTemplate")
   texturePickClose:SetScript("OnClick", texturePick.Close)
@@ -6869,6 +6895,7 @@ function WeakAuras.CreateFrame()
   texturePickClose:SetHeight(20)
   texturePickClose:SetWidth(100)
   texturePickClose:SetText(L["Okay"])
+  texturePickClose:SetFrameLevel(100);
 
   local iconPick = AceGUI:Create("InlineGroup");
   iconPick.frame:SetParent(frame);

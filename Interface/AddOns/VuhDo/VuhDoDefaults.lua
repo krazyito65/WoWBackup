@@ -378,6 +378,8 @@ function VUHDO_loadSpellArray()
 			["selected"] = "",
 			["1"] = "";
 			["2"] = "";
+			["3"] = "";
+			["4"] = "";
 		}
 	end
 
@@ -434,14 +436,6 @@ end
 
 
 
-local VUHDO_CUSTOM_DEBUFF_ADD_ONLY_BY_ID = {
-	[VUHDO_SPELL_ID.DEBUFF_MARK_OF_THE_NECROMANCER] = true,
-	[VUHDO_SPELL_ID.DEBUFF_MARK_OF_DOOM] = true, 
-	[VUHDO_SPELL_ID.DEBUFF_BEFOULED] = true,
-	[VUHDO_SPELL_ID.DEBUFF_TOUCH_OF_HARM] = true,
-	[VUHDO_SPELL_ID.DEBUFF_MOMENTUM] = true,
-};
-
 --
 local function VUHDO_addCustomSpellIds(aVersion, ...)
 	if ((VUHDO_CONFIG["CUSTOM_DEBUFF"].version or 0) < aVersion) then
@@ -453,15 +447,9 @@ local function VUHDO_addCustomSpellIds(aVersion, ...)
 			tArg = select(tCnt, ...);
 
 			if (type(tArg) == "number") then
-				local tName = select(1, GetSpellInfo(tArg));
-
-				if VUHDO_CUSTOM_DEBUFF_ADD_ONLY_BY_ID[tName] then
-					-- make sure the spell ID is still added as a string
-					-- otherwise getKeyFromValue look-ups w/ spell ID string fail later
-					tArg = tostring(tArg);
-				else
-					tArg = tName;
-				end
+				-- make sure the spell ID is still added as a string
+				-- otherwise getKeyFromValue look-ups w/ spell ID string fail later
+				tArg = tostring(tArg);
 			end
 
 			VUHDO_tableUniqueAdd(VUHDO_CONFIG["CUSTOM_DEBUFF"]["STORED"], tArg);
@@ -538,6 +526,7 @@ local VUHDO_DEFAULT_CONFIG = {
 	["AUTO_PROFILES"] = {	},
 
 	["RES_ANNOUNCE_TEXT"] = VUHDO_I18N_DEFAULT_RES_ANNOUNCE,
+	["RES_ANNOUNCE_MASS_TEXT"] = VUHDO_I18N_DEFAULT_RES_ANNOUNCE_MASS,
 	["RES_IS_SHOW_TEXT"] = false,
 
 	["CUSTOM_DEBUFF"] = {
@@ -1042,7 +1031,6 @@ function VUHDO_loadDefaultConfig()
 		135695,
 		136295,
 		135000,
-		394514,
 		136543,
 		134821,
 		136326,
@@ -1218,8 +1206,7 @@ function VUHDO_loadDefaultConfig()
 		-- Thogar
 		155921, -- Enkindle
 		155864, -- Pulse Grenade
-		159481, -- Delayed Siege Bomb
-		156494  -- Obliteration
+		159481  -- Delayed Siege Bomb
 	);
 
 	-- 6.0 - Warlords of Draenor - part 2
@@ -1335,68 +1322,76 @@ function VUHDO_loadDefaultConfig()
 	VUHDO_addCustomSpellIds(31, 
 		-- [[ Emerald Nightmare ]]
 		-- Nythendra
-		204504, -- Infested
-		203045, -- Infested Ground
+		--204504, -- Infested
+		--203045, -- Infested Ground
 		203096, -- Rot
-		204463, -- Volatile Rot
+		--204463, -- Volatile Rot
 		203646, -- Burst of Corruption
-		221028, -- Unstable Decay
+		--221028, -- Unstable Decay
 		-- Il'gynoth, Heart of Corruption
-		212886, -- Nightmare Corruption
-		215845, -- Dispersed Spores
-		210099, -- Fixate
+		--212886, -- Nightmare Corruption
+		--215845, -- Dispersed Spores
+		--210099, -- Fixate
 		209469, -- Touch of Corruption 
-		209471, -- Nightmare Explosion
+		--209471, -- Nightmare Explosion
 		208697, -- Mind Flay
 		208929, -- Spew Corruption
 		215128, -- Cursed Blood
 		-- Erethe Renferal
 		215307, -- Web of Pain
-		215460, -- Necrotic Venom
-		213124, -- Venomous Pool
-		210850, -- Twisting Shadows
+		--215460, -- Necrotic Venom
+		--213124, -- Venomous Pool
+		--210850, -- Twisting Shadows
 		218519, -- Wind Burn
 		210228, -- Dripping Fangs
 		-- Ursoc
 		204859, -- Rend Flesh
 		198006, -- Focused Gaze
-		198108, -- Momentum
-		197980, -- Nightmarish Cacophony
+		--198108, -- Momentum
+		--197980, -- Nightmarish Cacophony
 		205611, -- Miasma
 		-- Dragons of Nightmare
-		203102, -- Mark of Ysondre
 		207681, -- Nightmare Bloom
-		204731, -- Wasting Dread
-		203125, -- Mark of Emeriss
+		--204731, -- Wasting Dread
 		203787, -- Volatile Infection
-		203086, -- Mark of Lethon
 		204044, -- Shadow Burst
-		203121, -- Mark of Taerar
-		204078, -- Bellowing Roar
-		214543, -- Collapsing Nightmare
+		--204078, -- Bellowing Roar
+		--214543, -- Collapsing Nightmare
 		-- Cenarius
-		212681, -- Cleansed Ground
-		210279, -- Creeping Nightmares
+		--210279, -- Creeping Nightmares
 		210315, -- Nightmare Brambles
-		226821, -- Desiccating Stomp
 		211507, -- Nightmare Javelin
 		211471, -- Scorned Touch
 		216516, -- Ancient Dream
-		211989, -- Unbound Touch
-		211990, -- Unbound Essence
 		-- Xavius
 		206005, -- Dream Simulacrum
-		206109, -- Awakening to the Nightmare
+		--206109, -- Awakening to the Nightmare
 		208431, -- Descent into Madness
-		207409, -- Madness
+		--207409, -- Madness
 		206651, -- Darkening Soul
 		211802, -- Nightmare Blades
-		205771, -- Tormenting Fixation
+		--205771, -- Tormenting Fixation
 		209158, -- Blackening Soul
 		205612, -- Blackened
-		210451, -- Bonds of Terror
-		208385, -- Tainted Discharge
-		211634  -- The Infinite Dark
+		210451  -- Bonds of Terror
+		--208385, -- Tainted Discharge
+		--211634  -- The Infinite Dark
+	);
+
+	-- 7.1 - Legion - Trial of Valor
+	VUHDO_addCustomSpellIds(32,
+		-- [[ Trial of Valor ]]
+		-- Odyn
+		227959, -- Storm of Justice
+		228915, -- Stormforged Spear
+		228030, -- Expel Light
+		-- Guarm
+		228228, -- Flame Lick
+		228250, -- Shadow Lick
+		-- Helya
+		232450, -- Corrupted Axion
+		193367, -- Fetid Rot
+		228519 -- Anchor Slam
 	);
 
 	local debuffRemovalList = {};

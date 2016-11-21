@@ -439,7 +439,12 @@ function addon:OnEnable()
 
 	frame = DataStore_Quests_DailyResetDropDown
 	UIDropDownMenu_SetWidth(frame, 60) 
-	UIDropDownMenu_Initialize(frame, DailyResetDropDown_Initialize)
+
+	-- This line causes tainting, do not use as is
+	-- UIDropDownMenu_Initialize(frame, DailyResetDropDown_Initialize)
+	frame.displayMode = "MENU" 
+	frame.initialize = DailyResetDropDown_Initialize
+	
 	UIDropDownMenu_SetSelectedValue(frame, GetOption("DailyResetHour"))
 	
 	ClearExpiredDailies()

@@ -151,11 +151,19 @@ function addon:SetupOptions()
 end
 
 function addon:ToggleOption(frame, module, option)
-	if frame:GetChecked() then 
-		addon:SetOption(module, option, true)
+	local newValue
+	
+	if frame then							-- if a frame is provided ..
+		if frame:GetChecked() then 	-- .. then get its value (it is set before coming here)
+			newValue = true
+		else
+			newValue = false
+		end
 	else
-		addon:SetOption(module, option, false)
+		newValue = not addon:GetOption(module, option)		-- no frame provided ? then actually toggle the current value
 	end
+	
+	addon:SetOption(module, option, newValue)
 end
 
 function addon:UpdateMyMemoryUsage()

@@ -220,11 +220,13 @@
 
 	<!-- IconList, used by Pets & Achievements -->
 	<Button name="AltoIconListItemTemplate" hidden="true" virtual="true">
-		<Size x="34" y="34" />
+		<!-- <Size x="34" y="34" /> -->
+		<Size x="31" y="31" />
 		<Layers> 
 			<Layer level="BACKGROUND"> 
 				<Texture parentKey="Background">
-					<Size x="29" y="29" />
+					<!-- <Size x="29" y="29" /> -->
+					<Size x="26" y="26" />
 					<Anchors>
 						<Anchor point="LEFT" x="2" y="0" />
 					</Anchors>
@@ -262,7 +264,8 @@
 				<AbsValue val="8"/>
 			</EdgeSize>
 			<TileSize>
-				<AbsValue val="33"/>
+				<!-- <AbsValue val="33"/> -->
+				<AbsValue val="30"/>
 			</TileSize>
 			<BackgroundInsets>
 				<AbsInset left="5" right="5" top="5" bottom="5"/>
@@ -343,6 +346,12 @@
 			<Button parentKey="Item11" inherits="AltoIconListItemTemplate">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Item10" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+			</Button>
+			<!-- New -->
+			<Button parentKey="Item12" inherits="AltoIconListItemTemplate">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Item11" relativePoint="BOTTOMRIGHT" x="5" y="0" />
 				</Anchors>
 			</Button>
 		</Frames>

@@ -25,7 +25,7 @@ close:SetPoint("TOPRIGHT", badboy, "TOPRIGHT", -5, -5)
 
 local title = badboy:CreateFontString(nil, nil, "GameFontNormalLarge")
 title:SetPoint("TOPLEFT", 16, -16)
-title:SetText("BadBoy v7.1.11") -- packager magic, replaced with tag version
+title:SetText("BadBoy v7.1.19") -- packager magic, replaced with tag version
 
 --[[ Show spam checkbox ]]--
 local btnShowSpam = CreateFrame("CheckButton", nil, badboy, "OptionsBaseCheckButtonTemplate")
@@ -69,9 +69,14 @@ local guildedTitle = badboy:CreateFontString("BadBoyGuildedConfigTitle", nil, "G
 guildedTitle:SetPoint("TOPLEFT", btnNoAnim, "BOTTOMLEFT", 0, -48)
 guildedTitle:SetText("BadBoy_Guilded ["..ADDON_MISSING.."]")
 
+--[[ BadBoy_Ignore Title ]]--
+local guildedTitle = badboy:CreateFontString("BadBoyIgnoreConfigTitle", nil, "GameFontNormalLarge")
+guildedTitle:SetPoint("TOPLEFT", btnNoAnim, "BOTTOMLEFT", 0, -116)
+guildedTitle:SetText("BadBoy_Ignore ["..ADDON_MISSING.."]")
+
 --[[ BadBoy_CCleaner Title ]]--
 local ccleanerTitle = badboy:CreateFontString("BadBoyCCleanerConfigTitle", nil, "GameFontNormalLarge")
-ccleanerTitle:SetPoint("TOPLEFT", btnNoAnim, "BOTTOMLEFT", 0, -116)
+ccleanerTitle:SetPoint("TOPLEFT", btnNoAnim, "BOTTOMLEFT", 0, -166)
 ccleanerTitle:SetText("BadBoy_CCleaner ["..ADDON_MISSING.."]")
 
 --[[ Slash Handler ]]--

@@ -104,13 +104,17 @@ local function _SetClassIcon(frame, class, faction)
 		border:SetVertexColor(0, 1, 0, 0.5)
 	end
 	
-	icon:SetWidth(33)
-	icon:SetHeight(33)
+	-- icon:SetWidth(33)
+	-- icon:SetHeight(33)
+	icon:SetWidth(30)
+	icon:SetHeight(30)
 	icon:SetAllPoints(frame)
 	
 	border:Show()
-	frame:SetWidth(34)
-	frame:SetHeight(34)
+	-- frame:SetWidth(34)
+	-- frame:SetHeight(34)
+	frame:SetWidth(31)
+	frame:SetHeight(31)
 	frame:Show()
 end
 

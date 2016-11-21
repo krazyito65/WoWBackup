@@ -1,5 +1,7 @@
 --Version 1.9
-local Buttonsetup,lastname, AChange, Catmove,q, Expand, ToggleUnused,Listinfo, temp,Delayer,TabButton
+local Buttonsetup,lastname, AChange, Catmove,q, Expand, ToggleUnused,Listinfo, temp,Delayer,TabButton, Listan
+local Cs_Override, Cs_Override,MyTokenButton_OnClick,CleanCsorder,AddCsorder,Update_Cs_order
+local newrow,kaboom
 local function eventHandler(self, event, ...)
 	if event=="ADDON_LOADED" and ...=="CurrencySorter" then
 		if select(4, GetBuildInfo())>=60100 then
@@ -132,7 +134,7 @@ end
 		Update_Cs_order(numTokenTypes)
 	end
 
-	-------------------Gör listan-----------------
+	-------------------Gï¿½r listan-----------------
 	Listan={}
 	q=1
 	for i=1 ,#Cs_order do
@@ -141,7 +143,7 @@ end
 			q=q+1
 		end
 	end
-	--Så det inte blir nil
+	--Sï¿½ det inte blir nil
 	for i=#Listan+1, 40 do
 		table.insert(Listan,i,i)
 	end
@@ -229,7 +231,7 @@ temp={}
 	end
 		lastname=unpack(Listinfo[1])
 	for i=1, numTokenTypes do
-		name, isHeader= unpack(Listinfo[i]);
+		local name, isHeader= unpack(Listinfo[i]);
 		if isHeader then
 			if lastname ~=name then
 				Cs_order[temp[lastname]].stop=i-1
@@ -246,7 +248,7 @@ temp={}
 	end
 end
 
-debugd={}
+local debugd={}
 function Cs_Override()
 -----------------------------------------------------
 	TokenButton_OnClick=MyTokenButton_OnClick
@@ -300,7 +302,7 @@ Revbutt:Show()
 Revbutt:SetFrameStrata("HIGH")
 Revbutt:SetScript("OnEnter", function()
 	GameTooltip:SetOwner(Revbutt,"ANCHOR_RIGHT")
-	GameTooltip:SetText("Revert to default sorting")
+	GameTooltip:SetText("Reset to default sorting")
 	end)
 Revbutt:SetScript("OnLeave", function()
 	GameTooltip:Hide()
@@ -431,7 +433,7 @@ temp={}
 		temp[Cs_order[i].name]=i
 	end
 	for i=1, numTokenTypes do
-		name, isHeader= unpack(Listinfo[i]);
+		local name, isHeader= unpack(Listinfo[i]);
 		if isHeader then
 			if temp[name] then
 				temp[name]=nil
@@ -451,7 +453,7 @@ temp={}
 		temp[Cs_order[i].name]=i
 	end
 	for i=1, numTokenTypes do
-		name,isHeader=unpack(Listinfo[i])
+		local name,isHeader=unpack(Listinfo[i])
 		if isHeader then
 			if not(temp[name]) then
 				kaboom=1

@@ -118,11 +118,6 @@ local menuList = {
 --end
 tinsert(menuList, 	{text = HELP_BUTTON, func = function() ToggleHelpFrame() end})
 
---Support for other mods
-function GetMinimapShape()
-	return 'SQUARE'
-end
-
 function M:GetLocTextColor()
 	local pvpType = GetZonePVPInfo()
 	if pvpType == "arena" then
@@ -388,6 +383,11 @@ function M:Initialize()
 		return;
 	end
 
+	--Support for other mods
+	function GetMinimapShape()
+		return 'SQUARE'
+	end
+
 	local mmholder = CreateFrame('Frame', 'MMHolder', Minimap)
 	mmholder:Point("TOPRIGHT", E.UIParent, "TOPRIGHT", -3, -3)
 	mmholder:Width((Minimap:GetWidth() + 29))
@@ -439,6 +439,10 @@ function M:Initialize()
 
 	MiniMapMailBorder:Hide()
 	MiniMapMailIcon:SetTexture("Interface\\AddOns\\ElvUI\\media\\textures\\mail")
+
+	--Hide the BlopRing on Minimap
+	Minimap:SetArchBlobRingScalar(0)
+	Minimap:SetQuestBlobRingScalar(0)
 
 	if E.private.general.minimap.hideClassHallReport then
 		GarrisonLandingPageMinimapButton:Kill()

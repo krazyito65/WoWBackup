@@ -1,6 +1,6 @@
 ﻿--[[
 Name: SharedMedia-1.0
-Revision: $Revision: 69682 $
+Revision: $Revision: 72 $
 Author: Elkano (elkano@gmx.de)
 Inspired By: SurfaceLib by Haste/Otravi (troeks@gmail.com)
 Website: http://
@@ -11,7 +11,7 @@ Dependencies: AceLibrary, AceEvent-2.0
 License: LGPL v2.1
 ]]
 
-local vmajor, vminor = "SharedMedia-1.0", "$Revision: 69682 $"
+local vmajor, vminor = "SharedMedia-1.0", 90000 + tonumber(("$Revision: 72 $"):match("(%d+)"))
 
 if not AceLibrary then error(vmajor .. " requires AceLibrary.") end
 if not AceLibrary:IsNewVersion(vmajor, vminor) then return end
@@ -92,13 +92,12 @@ function lib:Fetch(m, n, noDefault)
 
 	local locale = GetLocale()
 	if locale == "zhTW" then
-		-- Because all the 4 default fonts and almost ALL custom fonts don't display traditional chinese, we just map them to bLEI00D.ttf.
 		if m == "font" and result and result ~= "Fonts\\bHEI00M.ttf" and result ~= "Fonts\\bHEI01B.ttf" and result ~= "Fonts\\bKAI00M.ttf" and result ~= "Fonts\\bLEI00D.ttf" then
 			result = "Fonts\\bLEI00D.ttf"
 		end
 	elseif locale == "zhCN" then
-		if m == "font" and result and result ~= "Fonts\\ZYKai_T.TTF" and result ~= "Fonts\\ZYKai_C.TTF" and result ~= "Fonts\\ZYHei.TTF" then
-			result = "Fonts\\ZYKai_T.TTF"
+		if m == "font" and result and result ~= "Fonts\\ARKai_T.TTF" and result ~= "Fonts\\ARKai_C.TTF" and result ~= "Fonts\\ARHei.TTF" then
+			result = "Fonts\\ARKai_T.TTF"
 		end
 	elseif locale == "koKR" then
 		if m == "font" and result and result ~= "Fonts\\2002B.TTF" and result ~= "Fonts\\2002.TTF" and result ~= "Fonts\\K_Damage.TTF" and result ~= "Fonts\\K_Pagetext.TTF" then

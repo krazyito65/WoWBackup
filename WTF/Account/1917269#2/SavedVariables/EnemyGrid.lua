@@ -1,11 +1,13 @@
 
 EnemyGridDB = {
 	["profileKeys"] = {
+		["Krazyito - Mal'Ganis"] = "Default",
 		["Krázyito - Mal'Ganis"] = "Default",
 		["Fãlor - Gnomeregan"] = "Default",
 		["Krázýító - Gnomeregan"] = "Default",
+		["Krazymonk - Sargeras"] = "Default",
 		["Kråzyito - Mal'Ganis"] = "Default",
-		["Krazyito - Mal'Ganis"] = "Default",
+		["Krazyíto - Gnomeregan"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -100,7 +102,7 @@ EnemyGridDB = {
 				0.310000002384186, -- [4]
 			},
 			["cast_statusbar_texture"] = "PlaterTexture",
-			["first_run"] = true,
+			["path_7_11_warning"] = true,
 			["percent_text_size"] = 16,
 			["name_text_stringsize"] = 102,
 			["dps"] = {
@@ -125,13 +127,14 @@ EnemyGridDB = {
 				0, -- [2]
 				1, -- [3]
 			},
+			["first_run"] = true,
 			["show_title_text"] = false,
 			["vertical_gap_size"] = 0,
-			["frame_range_alpha"] = 0.33254075050354,
 			["cast_statusbar_color"] = {
 				nil, -- [1]
 				0.701960784313726, -- [2]
 			},
+			["frame_range_alpha"] = 0.33254075050354,
 			["y"] = -14.4189453125,
 		},
 	},

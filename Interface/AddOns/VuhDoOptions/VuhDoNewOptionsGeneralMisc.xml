@@ -220,12 +220,12 @@
 
 			<Frame name="$parentAnnouncePanel" inherits="VuhDoPanelTemplate">
 				<Size>
-					<AbsDimension x="445" y="70" />
+					<AbsDimension x="445" y="105" />
 				</Size>
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-325" />
+							<AbsDimension x="20" y="-290" />
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -271,6 +271,45 @@
 							<OnLoad>
 								VUHDO_lnfSetModel(self, "VUHDO_CONFIG.RES_ANNOUNCE_TEXT");
 								VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT.K210);
+								VUHDO_lnfAddConstraint(self, VUHDO_LF_CONSTRAINT_DISABLE, "VUHDO_CONFIG.RES_IS_SHOW_TEXT", false);
+							</OnLoad>
+						</Scripts>
+					</EditBox>
+					
+					<Frame name="$parentAnnounceMassResLabel" inherits="VuhDoLabelFrameTemplate">
+						<Size>
+							<AbsDimension x="149" y="18" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="-70" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer>
+								<FontString name="$parentLabel" text="VUHDO_I18N_ANNOUNCE_MASS_RES" justifyH="LEFT" inherits="VuDoDefaultFontTemplate">
+								</FontString>
+							</Layer>
+						</Layers>
+					</Frame>
+
+					<EditBox name="$parentAnnounceMassResEditBox" inherits="VuhDoEditBoxTemplate">
+						<Size>
+							<AbsDimension x="300" y="32" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="130" y="-65" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								VUHDO_lnfSetModel(self, "VUHDO_CONFIG.RES_ANNOUNCE_MASS_TEXT");
+								VUHDO_lnfSetTooltip(self, VUHDO_I18N_TT.K567);
 								VUHDO_lnfAddConstraint(self, VUHDO_LF_CONSTRAINT_DISABLE, "VUHDO_CONFIG.RES_IS_SHOW_TEXT", false);
 							</OnLoad>
 						</Scripts>

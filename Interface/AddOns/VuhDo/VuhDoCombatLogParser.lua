@@ -49,13 +49,22 @@ local function VUHDO_getTargetHealthImpact(aMsg, aMsg1, aMsg2, aMsg4)
 	tPre, tSuf, tSpec = strsplit("_", aMsg);
 
 	if "SPELL" == tPre then
-		if ("HEAL" == tSuf or "HEAL" == tSpec) and "MISSED" ~= tSpec then	return aMsg4;
-		elseif "DAMAGE" == tSuf or "DAMAGE" == tSpec then return -aMsg4; end
+		if ("HEAL" == tSuf or "HEAL" == tSpec) and "MISSED" ~= tSpec then 
+			return aMsg4;
+		elseif "DAMAGE" == tSuf or "DAMAGE" == tSpec then 
+			return -aMsg4; 
+		end
 	elseif "DAMAGE" == tSuf then
-		if "SWING" == tPre then	return -aMsg1;
-		elseif "RANGE" == tPre then	return -aMsg4;
-		elseif "ENVIRONMENTAL" == tPre then return -aMsg2	end
-	elseif "DAMAGE" == tPre and "MISSED" ~= tSpec and "RESISTED" ~= tSpec then return -aMsg4; end
+		if "SWING" == tPre then	
+			return -aMsg1;
+		elseif "RANGE" == tPre then 
+			return -aMsg4;
+		elseif "ENVIRONMENTAL" == tPre then 
+			return -aMsg2;
+		end
+	elseif "DAMAGE" == tPre and "MISSED" ~= tSpec and "RESISTED" ~= tSpec then 
+		return -aMsg4; 
+	end
 
 	return 0;
 end
@@ -95,8 +104,10 @@ function VUHDO_parseCombatLogEvent(aMsg, aDstGUID, aMsg1, aMsg2, aMsg4)
 	tUnit = VUHDO_RAID_GUIDS[aDstGUID];
 	if not tUnit then return; end
 
-	tImpact = tonumber(VUHDO_getTargetHealthImpact(aMsg, aMsg1, aMsg2, aMsg4));
-	if tImpact and tImpact ~= 0 then	--check for nil return oO
+	-- as of patch 7.1 we are seeing empty values on health related events
+	tImpact = tonumber(VUHDO_getTargetHealthImpact(aMsg, aMsg1, aMsg2, aMsg4)) or 0;
+
+	if tImpact ~= 0 then
 		VUHDO_addUnitHealth(tUnit, tImpact);
 		if tUnit == sCurrentTarget then	VUHDO_addUnitHealth("target", tImpact);	end
 		if tUnit == sCurrentFocus then VUHDO_addUnitHealth("focus", tImpact); end

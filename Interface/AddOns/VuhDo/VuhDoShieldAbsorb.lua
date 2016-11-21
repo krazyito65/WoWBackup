@@ -48,6 +48,10 @@ local VUHDO_ABSORB_DEBUFFS = {
 	-- Patch 7.0 - Legion
 	[221772] = function(aUnit) return select(17, UnitDebuff(aUnit, VUHDO_SPELL_ID.DEBUFF_OVERFLOW)), 10 * 60; end, -- Mythic+ affix
 
+	-- Patch 7.1 - Legion - Trial of Valor
+	[228250] = function(aUnit) return select(17, UnitDebuff(aUnit, VUHDO_SPELL_ID.DEBUFF_SHADOW_LICK)), 10 * 60; end, -- Shadow Lick
+	[232450] = function(aUnit) return select(17, UnitDebuff(aUnit, VUHDO_SPELL_ID.DEBUFF_CORRUPTED_AXION)), 10 * 60; end, -- Corrupted Axion
+
 	--[79105] = function(aUnit) return 280000, 60 * 60; end, -- @TESTING PW:F
 };
 

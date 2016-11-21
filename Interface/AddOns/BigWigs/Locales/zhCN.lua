@@ -1,4 +1,4 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("BigWigs", "zhCN")
+local L = BigWigsAPI:NewLocale("BigWigs", "zhCN")
 if not L then return end
 
 L.getNewRelease = "你的 BigWigs 已过期（/bwv）但是可以使用 Curse 客户端简单升级。另外，也可以从 curse.com 或 wowinterface.com 手动升级。"
@@ -11,6 +11,11 @@ L.gitHubDesc = "BigWigs 是一个在 GitHub 上的开源软件。我们一直在
 L.options = "选项"
 L.raidBosses = "团队首领"
 L.dungeonBosses = "地下城首领"
+
+L.infobox = "信息盒"
+L.infobox_desc = "显示当前战斗相关的信息。"
+L.INFOBOX = L.infobox
+L.INFOBOX_desc = L.infobox_desc
 
 L.activeBossModules = "激活首领模块："
 L.advanced = "高级选项"
@@ -64,7 +69,7 @@ L.listAbilities = "列出技能到团队聊天"
 L.ME_ONLY = "只对自身"
 L.ME_ONLY_desc = "当启用此选项时只有对你有影响的技能信息才会被显示。比如，“炸弹：玩家”将只会在你是炸弹时显示。"
 L.MESSAGE = "信息"
-L.MESSAGE_desc = "大多数遇到技能出现一个或多个信息时 BigWigs 将在屏幕上显示。如果禁用此选项，没有信息附加选项，如果有，将会被显示。"
+L.MESSAGE_desc = "大多数首领技能带有若干个 BigWigs 可以显示的信息。如果禁用此选项，则此技能的任何信息都不会显示。"
 L.minimapIcon = "小地图图标"
 L.minimapToggle = "打开或关闭小地图图标。"
 L.missingAddOn = "请注意，这个区域需要 |cFF436EEE%s|r 插件计时器才可被显示。"

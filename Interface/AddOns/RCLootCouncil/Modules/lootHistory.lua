@@ -118,23 +118,24 @@ function LootHistory:BuildData()
 	for date, v in pairs(data) do
 		for name, x in pairs(v) do
 			for num, i in pairs(x) do
-				if num == "class" then break end
-				self.frame.rows[row] = {
-					date = date,
-					class = x.class,
-					name = name,
-					num = num,
-					response = i.responseID,
-					cols = {
-						{DoCellUpdate = addon.SetCellClassIcon, args = {x.class}},
-						{value = addon.Ambiguate(name), color = addon:GetClassColor(x.class)},
-						{value = date.. "-".. i.time or "", args = {time = i.time, date = date},},
-						{DoCellUpdate = self.SetCellGear, args={i.lootWon}},
-						{value = i.lootWon},
-						{DoCellUpdate = self.SetCellResponse, args = {color = i.color, response = i.response, responseID = i.responseID or 0, isAwardReason = i.isAwardReason}}
+				if num ~= "class" then
+					self.frame.rows[row] = {
+						date = date,
+						class = x.class,
+						name = name,
+						num = num,
+						response = i.responseID,
+						cols = {
+							{DoCellUpdate = addon.SetCellClassIcon, args = {x.class}},
+							{value = addon.Ambiguate(name), color = addon:GetClassColor(x.class)},
+							{value = date.. "-".. i.time or "", args = {time = i.time, date = date},},
+							{DoCellUpdate = self.SetCellGear, args={i.lootWon}},
+							{value = i.lootWon},
+							{DoCellUpdate = self.SetCellResponse, args = {color = i.color, response = i.response, responseID = i.responseID or 0, isAwardReason = i.isAwardReason}}
+						}
 					}
-				}
-				row = row + 1
+					row = row + 1
+				end
 			end
 			if not tContains(insertedNames, name) then -- we only want each name added once
 				tinsert(nameData,
@@ -328,6 +329,27 @@ function LootHistory:ImportHistory(import)
 	self:BuildData()
 end
 
+function LootHistory:GetWowheadLinkFromItemLink(link)
+    local color, itemType, itemID, enchantID, gemID1, gemID2, gemID3, gemID4, suffixID, uniqueID, linkLevel, specializationID,
+	 upgradeTypeID, upgradeID, instanceDifficultyID, numBonuses, bonusIDs = addon:DecodeItemLink(link)
+
+    local itemurl = "https://www.wowhead.com/item="..itemID
+
+	 -- It seems bonus id 1487 (and basically any other id that's -5 below Wowheads first ilvl upgrade doesn't work)
+	 -- Neither does Warforged items it seems
+    if numBonuses > 0 then
+        itemurl = itemurl.."&bonus="
+        for i, b in pairs(bonusIDs) do
+            itemurl = itemurl..b
+            if i < numBonuses then
+                itemurl = itemurl..":"
+            end
+        end
+    end
+
+    return itemurl
+end
+
 ---------------------------------------------------
 -- Visauls
 ---------------------------------------------------
@@ -429,6 +451,7 @@ function LootHistory:GetFrame()
 	b4:SetScript("OnClick", function(self) Lib_ToggleDropDownMenu(1, nil, filterMenu, self, 0, 0) end )
 	f.filter = b4
 	Lib_UIDropDownMenu_Initialize(b4, self.FilterMenu)
+	f.filter:SetSize(125,25) -- Needs extra convincing to stay at 25px height
 
 	-- Export selection (AceGUI-3.0)
 	local sel = AG:Create("Dropdown")
@@ -453,6 +476,18 @@ function LootHistory:GetFrame()
 	sel:SetParent(f)
 	sel.frame:Show()
 	f.moreInfoDropdown = sel
+
+	-- Clear selection
+	local b6 = addon:CreateButton(L["Clear Selection"], f.content)
+	b6:SetPoint("RIGHT", sel.frame, "LEFT", -10, 0)
+	b6:SetScript("OnClick", function()
+		selectedDate, selectedName = nil, nil
+		self.frame.date:ClearSelection()
+		self.frame.name:ClearSelection()
+		self:Update()
+	end)
+	b6:SetWidth(125)
+	f.clearSelectionBtn = b6
 
 	-- Export string
 	local s = f.content:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
@@ -539,6 +574,7 @@ function LootHistory:UpdateMoreInfo(rowFrame, cellFrame, dat, cols, row, realrow
 		tip:AddDoubleLine("Response:", data.response, 1,1,1, 1,1,1)
 		tip:AddDoubleLine("isAwardReason:", tostring(data.isAwardReason), 1,1,1, 1,1,1)
 		tip:AddDoubleLine("color:", data.color and data.color[1]..", "..data.color[2]..", "..data.color[3] or "none", 1,1,1, 1,1,1)
+		tip:AddDoubleLine("DataIndex:", row.num, 1,1,1, 1,1,1)
 	end
 	tip:SetScale(db.UI.history.scale)
 	if moreInfo then
@@ -692,7 +728,7 @@ function LootHistory:ExportBBCode()
 					else
 						export = export.."[*]"
 					end
-					export=export.."[url=http://www.wowhead.com/item="..addon:GetItemIDFromLink(d.lootWon).."]"..d.lootWon.."[/url]"
+					export=export.."[url="..self:GetWowheadLinkFromItemLink(d.lootWon).."]"..d.lootWon.."[/url]"
 					.." Response: "..tostring(d.response)..".\r\n"
 				end
 			end
@@ -712,7 +748,7 @@ function LootHistory:ExportBBCodeSMF()
 			for i, d in pairs(v) do
 				if selectedDate and selectedDate == d.date or not selectedDate then
 					export = export.."[*]"
-					export=export.."[url=http://www.wowhead.com/item="..addon:GetItemIDFromLink(d.lootWon).."]"..d.lootWon.."[/url]"
+					export=export.."[url="..self:GetWowheadLinkFromItemLink(d.lootWon).."]"..d.lootWon.."[/url]"
 					.." Response: "..tostring(d.response)..".\r\n"
 				end
 			end

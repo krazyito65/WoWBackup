@@ -10,11 +10,11 @@ MasterPlanAG = {
 					[367] = 1452639708,
 				},
 			},
-			["curOil"] = 195,
+			["faction"] = "Horde",
 			["class"] = "SHAMAN",
 			["lastCacheTime"] = 1470362011,
 			["curRes"] = 2453,
-			["faction"] = "Horde",
+			["curOil"] = 195,
 		},
 		["Krazyíto"] = {
 			["class"] = "PALADIN",
@@ -38,7 +38,7 @@ MasterPlanAG = {
 			["cacheSize"] = 1000,
 			["class"] = "DRUID",
 			["curRes"] = 10000,
-			["lastCacheTime"] = 1477283215,
+			["lastCacheTime"] = 1479435569,
 		},
 		["Krazýito"] = {
 			["faction"] = "Horde",

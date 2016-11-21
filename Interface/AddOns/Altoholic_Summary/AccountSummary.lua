@@ -10,15 +10,16 @@ local MODE_SKILLS = 3
 local MODE_ACTIVITY = 4
 local MODE_CURRENCIES = 5
 local MODE_FOLLOWERS = 6
+local MODE_ARTIFACT = 7
 
 local SKILL_CAP = 800
-local CURRENCY_ID_CONQUEST = 390
-local CURRENCY_ID_HONOR = 392
 local CURRENCY_ID_JUSTICE = 395
 local CURRENCY_ID_VALOR = 396
 local CURRENCY_ID_APEXIS = 823
 local CURRENCY_ID_GARRISON = 824
 local CURRENCY_ID_SOTF = 994		-- Seals of Tempered Fate (WoD)
+local CURRENCY_ID_ORDER_HALL = 1220
+local CURRENCY_ID_SOBF = 1273		-- Seals of the Broken Fate (Legion)
 
 local INFO_REALM_LINE = 0
 local INFO_CHARACTER_LINE = 1
@@ -38,18 +39,14 @@ local VIEW_GARRISONS = 10
 local ICON_FACTION_HORDE = "Interface\\Icons\\INV_BannerPVP_01"
 local ICON_FACTION_ALLIANCE = "Interface\\Icons\\INV_BannerPVP_02"
 
+-- http://www.wowhead.com/currency=1171/artifact-knowledge
+local artifactXPGain = { 25,50,90,140,200,275,375,500,650,850,1100,1400,1775,2250,2850,3600,4550,5700,7200,9000,11300,14200,17800,22300,24900 }
+
 addon.Summary = {}
 
 local ns = addon.Summary		-- ns = namespace
 
 -- *** Utility functions ***
-local function EmptyFunc()
-end
-
-local function EmptyString()
-	return ""
-end
-
 local function GetRestedXP(character)
 	local rate = DataStore:GetRestXPRate(character)
 
@@ -74,19 +71,35 @@ local function GetRestedXP(character)
 	return format("%s%d", color, rate).."%", rate
 end
 
-local function WriteLine(size, free, link, bagtype)
-	AltoTooltip:AddLine(	format("%s |r%s (%s|r %s) %s %s",
-		colors.gold..size, L["slots"], 
-		colors.green..free, L["free"],
-		link or "",
-		(bagtype and strlen(bagtype) > 0) and (colors.yellow .. "(" .. bagtype .. ")") or "") ,1,1,1);
+local function FormatBagType(link, bagType)
+	link = link or ""
+	if bagType and strlen(bagType) > 0 then
+		return format("%s %s(%s)", link, colors.yellow, bagType)
+	end
+	
+	-- not bag type ? just return the link
+	return link
+end
+
+local function FormatBagSlots(size, free)
+	return format(L["NUM_SLOTS_AND_FREE"], colors.cyan, size, colors.white, colors.green, free, colors.white)
 end
 
 local skillColors = { colors.recipeGrey, colors.red, colors.orange, colors.yellow, colors.green }
 
 local function GetSkillRankColor(rank, skillCap)
+	rank = rank or 0
 	skillCap = skillCap or SKILL_CAP
 	return skillColors[ floor(rank / (skillCap/4)) + 1 ]
+end
+
+local function TradeskillHeader_OnEnter(frame, tooltip)
+	tooltip:AddLine(" ")
+	tooltip:AddLine(format("%s%s|r %s %s", colors.recipeGrey, L["COLOR_GREY"], L["up to"], (floor(SKILL_CAP*0.25)-1)),1,1,1)
+	tooltip:AddLine(format("%s%s|r %s %s", colors.red, RED_GEM, L["up to"], (floor(SKILL_CAP*0.50)-1)),1,1,1)
+	tooltip:AddLine(format("%s%s|r %s %s", colors.orange, L["COLOR_ORANGE"], L["up to"], (floor(SKILL_CAP*0.75)-1)),1,1,1)
+	tooltip:AddLine(format("%s%s|r %s %s", colors.yellow, YELLOW_GEM, L["up to"], (SKILL_CAP-1)),1,1,1)
+	tooltip:AddLine(format("%s%s|r %s %s %s", colors.green, L["COLOR_GREEN"], L["at"], SKILL_CAP, L["and above"]),1,1,1)
 end
 
 local function Tradeskill_OnEnter(frame, skillName, showRecipeStats)
@@ -126,17 +139,10 @@ local function Tradeskill_OnEnter(frame, skillName, showRecipeStats)
 			end
 		end
 	end
-	
-	tt:AddLine(" ")
-	tt:AddLine(format("%s%s|r %s %s", colors.recipeGrey, L["COLOR_GREY"], L["up to"], (floor(SKILL_CAP*0.25)-1)),1,1,1)
-	tt:AddLine(format("%s%s|r %s %s", colors.red, RED_GEM, L["up to"], (floor(SKILL_CAP*0.50)-1)),1,1,1)
-	tt:AddLine(format("%s%s|r %s %s", colors.orange, L["COLOR_ORANGE"], L["up to"], (floor(SKILL_CAP*0.75)-1)),1,1,1)
-	tt:AddLine(format("%s%s|r %s %s", colors.yellow, YELLOW_GEM, L["up to"], (SKILL_CAP-1)),1,1,1)
-	tt:AddLine(format("%s%s|r %s %s %s", colors.green, L["COLOR_GREEN"], L["at"], SKILL_CAP, L["and above"]),1,1,1)
 
 	local suggestion = addon:GetSuggestion(skillName, curRank)
 	if suggestion then
-		tt:AddLine(" ",1,1,1)
+		tt:AddLine(" ")
 		tt:AddLine(format("%s: ", L["Suggestion"]),1,1,1)
 		tt:AddLine(format("%s%s", colors.teal, suggestion),1,1,1)
 	end
@@ -147,10 +153,10 @@ local function Tradeskill_OnEnter(frame, skillName, showRecipeStats)
 		local numCooldows = DataStore:GetNumActiveCooldowns(profession)
 		
 		if numCooldows == 0 then
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(L["All cooldowns are up"],1,1,1)
 		else
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			for i = 1, numCooldows do
 				local craftName, expiresIn = DataStore:GetCraftCooldownInfo(profession, i)
 				tt:AddDoubleLine(craftName, addon:GetTimeString(expiresIn))
@@ -186,6 +192,16 @@ local function Tradeskill_OnClick(frame, skillName)
 	addon.Tabs.Characters:SetAltKey(character)
 	addon.Tabs.Characters:MenuItem_OnClick(AltoholicTabCharacters.Characters, "LeftButton")
 	addon.Tabs.Characters:SetCurrentProfession(skillName)
+end
+
+local function CurrencyHeader_OnEnter(frame, currencyID)
+	local tt = AltoTooltip
+	
+	tt:ClearLines()
+	tt:SetOwner(frame, "ANCHOR_BOTTOM")
+	-- tt:AddLine(select(1, GetCurrencyInfo(currencyID)), NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+	tt:SetHyperlink(GetCurrencyLink(currencyID))
+	tt:Show()
 end
 
 local Characters = addon.Characters
@@ -391,20 +407,16 @@ local function GetFollowersItemLevel(self, character)
 	return avgWeapon + (avgArmor / 10000)
 end
 
-
 -- *** Column definitions ***
 local columns = {}
 
 -- ** Account Summary **
 columns["Name"] = {
 	-- Header
-	HeaderWidth = 100,
-	Header = NAME,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Name") end,
-	HeaderSort = DataStore.GetCharacterName,
+	headerWidth = 100,
+	headerLabel = NAME,
+	headerOnClick = function() SortView("Name") end,
+	headerSort = DataStore.GetCharacterName,
 	
 	-- Content
 	Width = 150,
@@ -439,7 +451,7 @@ columns["Name"] = {
 
 			local suggestion = addon:GetSuggestion("Leveling", DataStore:GetCharacterLevel(character))
 			if suggestion then
-				tt:AddLine(" ",1,1,1)
+				tt:AddLine(" ")
 				tt:AddLine(L["Suggested leveling zone: "],1,1,1)
 				tt:AddLine(colors.teal .. suggestion,1,1,1)
 			end
@@ -456,7 +468,7 @@ columns["Name"] = {
 						DataStore:DeleteSavedInstance(character, key)
 					else
 						if bLineBreak then
-							tt:AddLine(" ",1,1,1)		-- add a line break only once
+							tt:AddLine(" ")		-- add a line break only once
 							bLineBreak = nil
 						end
 						
@@ -466,7 +478,7 @@ columns["Name"] = {
 				end
 			end
 
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s%s", colors.green, L["Right-Click for options"]))
 			tt:Show()
 		end,
@@ -476,13 +488,12 @@ columns["Name"] = {
 
 columns["Level"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = LEVEL,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Level") end,
-	HeaderSort = GetCharacterLevel,
+	headerWidth = 60,
+	headerLabel = L["COLUMN_LEVEL_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_LEVEL_TITLE"],
+	tooltipSubTitle = L["COLUMN_LEVEL_SUBTITLE"],
+	headerOnClick = function() SortView("Level") end,
+	headerSort = GetCharacterLevel,
 	
 	-- Content
 	Width = 50,
@@ -505,11 +516,11 @@ columns["Level"] = {
 			local tt = AltoTooltip
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
-			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_LEVEL_TITLE"])
 			tt:AddLine(format("%s %s%s |r%s %s", L["Level"], 
 				colors.green, DataStore:GetCharacterLevel(character), DataStore:GetCharacterRace(character), DataStore:GetCharacterClass(character)),1,1,1)
 			
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s %s%s%s/%s%s%s (%s%s%%%s)", EXPERIENCE_COLON,
 				colors.green, DataStore:GetXP(character), colors.white,
 				colors.green, DataStore:GetXPMax(character), colors.white,
@@ -525,13 +536,21 @@ columns["Level"] = {
 
 columns["RestXP"] = {
 	-- Header
-	HeaderWidth = 65,
-	Header = TUTORIAL_TITLE26,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("RestXP") end,
-	HeaderSort = DataStore.GetRestXPRate,
+	headerWidth = 65,
+	headerLabel = L["COLUMN_RESTXP_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_RESTXP_TITLE"],
+	tooltipSubTitle = L["COLUMN_RESTXP_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip)
+			tooltip:AddLine(" ")
+			tooltip:AddLine(L["COLUMN_RESTXP_DETAIL_1"], 1,1,1)
+			tooltip:AddLine(L["COLUMN_RESTXP_DETAIL_2"], 1,1,1)
+			tooltip:AddLine(L["COLUMN_RESTXP_DETAIL_3"], 1,1,1)
+			tooltip:AddLine(" ")
+			tooltip:AddLine(format(L["COLUMN_RESTXP_DETAIL_4"], 100, 100))
+			tooltip:AddLine(format(L["COLUMN_RESTXP_DETAIL_4"], 150, 150))
+		end,
+	headerOnClick = function() SortView("RestXP") end,
+	headerSort = DataStore.GetRestXPRate,
 	
 	-- Content
 	Width = 65,
@@ -556,25 +575,26 @@ columns["RestXP"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s: %s%s", L["Rest XP"], colors.green, restXP),1,1,1)
 			tt:Show()
 		-- - Improve "rested xp"
 			-- - tooltip : Fully rested in 4 days 12 hours (18 days if not left in an inn) on 29.05.09 4:00 pm
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
+	OnClick = function(frame, button)
+			addon:ToggleOption(nil, "UI.Tabs.Summary.ShowRestXP150pc")
+			addon.Summary:Update()
+		end,	
 }
 
 columns["Money"] = {
 	-- Header
-	HeaderWidth = 115,
-	Header = MONEY,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Money") end,
-	HeaderSort = DataStore.GetMoney,
+	headerWidth = 115,
+	headerLabel = L["COLUMN_MONEY_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_MONEY_TITLE"],
+	tooltipSubTitle = L["COLUMN_MONEY_SUBTITLE_"..random(5)],
+	headerOnClick = function() SortView("Money") end,
+	headerSort = DataStore.GetMoney,
 	
 	-- Content
 	Width = 110,
@@ -582,20 +602,17 @@ columns["Money"] = {
 	GetText = function(character) 
 		return addon:GetMoneyString(DataStore:GetMoney(character))
 	end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
 	GetTotal = function(line) return addon:GetMoneyString(Characters:GetField(line, "money"), colors.white) end,
 }
 
 columns["Played"] = {
 	-- Header
-	HeaderWidth = 100,
-	Header = PLAYED,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Played") end,
-	HeaderSort = DataStore.GetPlayTime,
+	headerWidth = 100,
+	headerLabel = L["COLUMN_PLAYED_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_PLAYED_TITLE"],
+	tooltipSubTitle = L["COLUMN_PLAYED_SUBTITLE"],
+	headerOnClick = function() SortView("Played") end,
+	headerSort = DataStore.GetPlayTime,
 	
 	-- Content
 	Width = 100,
@@ -603,20 +620,21 @@ columns["Played"] = {
 	GetText = function(character) 
 		return addon:GetTimeString(DataStore:GetPlayTime(character))
 	end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
+	OnClick = function(frame, button)
+			DataStore:ToggleOption(nil, "DataStore_Characters", "HideRealPlayTime")
+			addon.Summary:Update()
+		end,
 	GetTotal = function(line) return Characters:GetField(line, "played") end,
 }
 
 columns["AiL"] = {
 	-- Header
-	HeaderWidth = 55,
-	Header = ITEM_LEVEL_ABBR,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("AiL") end,
-	HeaderSort = DataStore.GetAverageItemLevel,
+	headerWidth = 55,
+	headerLabel = L["COLUMN_ILEVEL_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_ILEVEL_TITLE"],
+	tooltipSubTitle = L["COLUMN_ILEVEL_SUBTITLE"],
+	headerOnClick = function() SortView("AiL") end,
+	headerSort = DataStore.GetAverageItemLevel,
 	
 	-- Content
 	Width = 60,
@@ -640,7 +658,7 @@ columns["AiL"] = {
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
 			tt:AddLine(format("%s%s: %s%.1f",
-				colors.white, L["Average Item Level"],
+				colors.white, L["COLUMN_ILEVEL_TITLE"],
 				colors.green, DataStore:GetAverageItemLevel(character)
 			),1,1,1)
 
@@ -656,13 +674,12 @@ columns["AiL"] = {
 
 columns["LastOnline"] = {
 	-- Header
-	HeaderWidth = 90,
-	Header = LASTONLINE,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("LastOnline") end,
-	HeaderSort = DataStore.GetLastLogout,
+	headerWidth = 90,
+	headerLabel = L["COLUMN_LASTONLINE_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_LASTONLINE_TITLE"],
+	tooltipSubTitle = L["COLUMN_LASTONLINE_SUBTITLE"],
+	headerOnClick = function() SortView("LastOnline") end,
+	headerSort = DataStore.GetLastLogout,
 	
 	-- Content
 	Width = 60,
@@ -697,26 +714,23 @@ columns["LastOnline"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			-- then - now = x seconds
 			tt:AddLine(text,1,1,1)
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 
 -- ** Bag Usage **
 columns["BagSlots"] = {
 	-- Header
-	HeaderWidth = 100,
-	Header = L["Bags"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("BagSlots") end,
-	HeaderSort = DataStore.GetNumBagSlots,
+	headerWidth = 100,
+	headerLabel = L["COLUMN_BAGS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_BAGS_TITLE"],
+	tooltipSubTitle = L["COLUMN_BAGS_SUBTITLE_"..random(2)],
+	headerOnClick = function() SortView("BagSlots") end,
+	headerSort = DataStore.GetNumBagSlots,
 	
 	-- Content
 	Width = 100,
@@ -743,32 +757,33 @@ columns["BagSlots"] = {
 			local tt = AltoTooltip
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
-			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_BAGS_TITLE"])
+			tt:AddLine(" ")
 			
-			local _, link, size, free, bagtype = DataStore:GetContainerInfo(character, 0)
-			WriteLine(size, free, "[" .. BACKPACK_TOOLTIP .. "]")
-
+			local _, link, size, free, bagType = DataStore:GetContainerInfo(character, 0)
+			tt:AddDoubleLine(format("%s[%s]", colors.white, BACKPACK_TOOLTIP), FormatBagSlots(size, free))
+			
 			for i = 1, 4 do
-				_, link, size, free, bagtype = DataStore:GetContainerInfo(character, i)
-				WriteLine(size, free, link, bagtype)
+				_, link, size, free, bagType = DataStore:GetContainerInfo(character, i)
+
+				if size ~= 0 then
+					tt:AddDoubleLine(FormatBagType(link, bagType), FormatBagSlots(size, free))
+				end
 			end
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
 	GetTotal = function(line) return format("%s%s |r%s", colors.white, Characters:GetField(line, "bagSlots"), L["slots"]) end,
 	TotalJustifyH = "CENTER",
 }
 
 columns["FreeBagSlots"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["free"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FreeBagSlots") end,
-	HeaderSort = DataStore.GetNumFreeBagSlots,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_FREEBAGSLOTS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_FREEBAGSLOTS_TITLE"],
+	tooltipSubTitle = L["COLUMN_FREEBAGSLOTS_SUBTITLE"],
+	headerOnClick = function() SortView("FreeBagSlots") end,
+	headerSort = DataStore.GetNumFreeBagSlots,
 	
 	-- Content
 	Width = 70,
@@ -793,27 +808,22 @@ columns["FreeBagSlots"] = {
 			local tt = AltoTooltip
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
-			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
-			tt:AddLine(format("%s: %s%s |r (%s%s|r %s) ", SLOT_ABBR, 
-				colors.cyan, DataStore:GetNumBagSlots(character), 
-				colors.green, DataStore:GetNumFreeBagSlots(character), L["free"])
-				,1,1,1)
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_FREEBAGSLOTS_TITLE"])
+			tt:AddLine(" ")
+			tt:AddLine(FormatBagSlots(DataStore:GetNumBagSlots(character), DataStore:GetNumFreeBagSlots(character)))
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
 	GetTotal = function(line) return format("%s%s", colors.white, Characters:GetField(line, "freeBagSlots")) end,
 }
 
 columns["BankSlots"] = {
 	-- Header
-	HeaderWidth = 160,
-	Header = L["Bank"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("BankSlots") end,
-	HeaderSort = DataStore.GetNumBankSlots,
+	headerWidth = 160,
+	headerLabel = L["COLUMN_BANK_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_BANK_TITLE"],
+	tooltipSubTitle = L["COLUMN_BANK_SUBTITLE_"..random(2)],
+	headerOnClick = function() SortView("BankSlots") end,
+	headerSort = DataStore.GetNumBankSlots,
 	
 	-- Content
 	Width = 160,
@@ -847,8 +857,8 @@ columns["BankSlots"] = {
 			local tt = AltoTooltip
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
-			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_BANK_TITLE"])
+			tt:AddLine(" ")
 			
 			if DataStore:GetNumBankSlots(character) == 0 then
 				tt:AddLine(L["Bank not visited yet"],1,1,1)
@@ -856,29 +866,30 @@ columns["BankSlots"] = {
 				return
 			end
 			
-			local _, link, size, free, bagtype = DataStore:GetContainerInfo(character, 100)
-			WriteLine(size, free, "[" .. L["Bank"] .. "]")
+			local _, link, size, free, bagType = DataStore:GetContainerInfo(character, 100)
+			tt:AddDoubleLine(format("%s[%s]", colors.white, L["Bank"]), FormatBagSlots(size, free))
 				
 			for i = 5, 11 do
-				_, link, size, free, bagtype = DataStore:GetContainerInfo(character, i)
-				WriteLine(size, free, link, bagtype)
+				_, link, size, free, bagType = DataStore:GetContainerInfo(character, i)
+				
+				if size ~= 0 then
+					tt:AddDoubleLine(FormatBagType(link, bagType), FormatBagSlots(size, free))
+				end
 			end
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
 	GetTotal = function(line) return format("%s%s |r%s", colors.white, Characters:GetField(line, "bankSlots"), L["slots"]) end,
 	TotalJustifyH = "CENTER",
 }
 
 columns["FreeBankSlots"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["free"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FreeBankSlots") end,
-	HeaderSort = DataStore.GetNumFreeBankSlots,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_FREEBANKLOTS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_FREEBANKLOTS_TITLE"],
+	tooltipSubTitle = L["COLUMN_FREEBANKLOTS_SUBTITLE"],
+	headerOnClick = function() SortView("FreeBankSlots") end,
+	headerSort = DataStore.GetNumFreeBankSlots,
 	
 	-- Content
 	Width = 70,
@@ -907,29 +918,22 @@ columns["FreeBankSlots"] = {
 			local tt = AltoTooltip
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
-			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
-			tt:AddLine(format("%s: %s%s |r (%s%s|r %s) ", SLOT_ABBR, 
-				colors.cyan, DataStore:GetNumBankSlots(character),
-				colors.green, DataStore:GetNumFreeBankSlots(character), L["free"])
-				,1,1,1)
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_FREEBANKLOTS_TITLE"])
+			tt:AddLine(" ")
+			tt:AddLine(FormatBagSlots(DataStore:GetNumBankSlots(character), DataStore:GetNumFreeBankSlots(character)))
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
 	GetTotal = function(line) return format("%s%s", colors.white, Characters:GetField(line, "freeBankSlots")) end,
 }
 
 columns["FreeReagentBankSlots"] = {	-- TO DO 
 	-- Header
-	HeaderWidth = 50,
-	Header = LASTONLINE,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function(frame) 
+	headerWidth = 50,
+	headerLabel = LASTONLINE,
+	-- headerOnClick = function(frame) 
 		-- SortView("FreeReagentBankSlots") 
-	end,
-	--HeaderSort = DataStore.xxx,
+	-- end,
+	--headerSort = DataStore.xxx,
 	
 	-- Content
 	Width = 50,
@@ -943,21 +947,18 @@ columns["FreeReagentBankSlots"] = {	-- TO DO
 			
 			return 0
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 -- ** Skills **
 columns["Prof1"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["Prof. 1"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Prof1") end,
-	HeaderSort = DataStore.GetProfession1,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_PROFESSION_1_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_PROFESSION_1_TITLE"],
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("Prof1") end,
+	headerSort = DataStore.GetProfession1,
 	
 	-- Content
 	Width = 70,
@@ -979,18 +980,17 @@ columns["Prof1"] = {
 			local _, _, _, skillName = DataStore:GetProfession1(character)
 			Tradeskill_OnClick(frame, skillName)
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["Prof2"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["Prof. 2"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Prof2") end,
-	HeaderSort = DataStore.GetProfession2,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_PROFESSION_2_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_PROFESSION_2_TITLE"],
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("Prof2") end,
+	headerSort = DataStore.GetProfession2,
 	
 	-- Content
 	Width = 70,
@@ -1012,18 +1012,17 @@ columns["Prof2"] = {
 			local _, _, _, skillName = DataStore:GetProfession2(character)
 			Tradeskill_OnClick(frame, skillName)
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["ProfCooking"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(2550), 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("ProfCooking") end,
-	HeaderSort = DataStore.GetCookingRank,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(2550), 18, 18),
+	tooltipTitle = GetSpellInfo(2550),
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("ProfCooking") end,
+	headerSort = DataStore.GetCookingRank,
 	
 	-- Content
 	Width = 60,
@@ -1038,18 +1037,17 @@ columns["ProfCooking"] = {
 	OnClick = function(frame, button)
 			Tradeskill_OnClick(frame, GetSpellInfo(2550))
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["ProfFirstAid"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(3273), 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("ProfFirstAid") end,
-	HeaderSort = DataStore.GetFirstAidRank,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(3273), 18, 18),
+	tooltipTitle = GetSpellInfo(3273),
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("ProfFirstAid") end,
+	headerSort = DataStore.GetFirstAidRank,
 	
 	-- Content
 	Width = 60,
@@ -1064,18 +1062,17 @@ columns["ProfFirstAid"] = {
 	OnClick = function(frame, button)
 			Tradeskill_OnClick(frame, GetSpellInfo(3273))
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["ProfFishing"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(131474), 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("ProfFishing") end,
-	HeaderSort = DataStore.GetFishingRank,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(131474), 18, 18),
+	tooltipTitle = GetSpellInfo(131474),
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("ProfFishing") end,
+	headerSort = DataStore.GetFishingRank,
 	
 	-- Content
 	Width = 60,
@@ -1087,19 +1084,17 @@ columns["ProfFishing"] = {
 	OnEnter = function(frame)
 			Tradeskill_OnEnter(frame, GetSpellInfo(131474))
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["ProfArchaeology"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(78670), 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("ProfArchaeology") end,
-	HeaderSort = DataStore.GetArchaeologyRank,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(78670), 18, 18),
+	tooltipTitle = GetSpellInfo(78670),
+	tooltipSubTitle = nil,
+	headerOnEnter = TradeskillHeader_OnEnter,
+	headerOnClick = function() SortView("ProfArchaeology") end,
+	headerSort = DataStore.GetArchaeologyRank,
 	
 	-- Content
 	Width = 60,
@@ -1111,20 +1106,22 @@ columns["ProfArchaeology"] = {
 	OnEnter = function(frame)
 			Tradeskill_OnEnter(frame, GetSpellInfo(78670))
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 -- ** Activity **
 columns["Mails"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = L["Mails"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Mails") end,
-	HeaderSort = DataStore.GetNumMails,
+	headerWidth = 60,
+	headerLabel = L["COLUMN_MAILS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_MAILS_TITLE"],
+	tooltipSubTitle = L["COLUMN_MAILS_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip)
+			tooltip:AddLine(" ")
+			tooltip:AddLine(L["COLUMN_MAILS_DETAIL_1"], 1,1,1)
+			tooltip:AddLine(L["COLUMN_MAILS_DETAIL_2"], 1,1,1)
+		end,
+	headerOnClick = function() SortView("Mails") end,
+	headerSort = DataStore.GetNumMails,
 	
 	-- Content
 	Width = 60,
@@ -1154,7 +1151,9 @@ columns["Mails"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			
-			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), format("%sMails found: %s%d", colors.white, colors.green, num))
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_MAILS_TITLE"])
+			tt:AddLine(" ")
+			tt:AddLine(format("%sMails found: %s%d", colors.white, colors.green, num))
 			
 			local numReturned, numDeleted, numExpired = 0, 0, 0
 			local closestReturn
@@ -1226,18 +1225,16 @@ columns["Mails"] = {
 			addon.Tabs.Characters:MenuItem_OnClick(AltoholicTabCharacters.Characters, "LeftButton")
 			addon.Tabs.Characters:ViewCharInfo(VIEW_MAILS)
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["LastMailCheck"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["Visited"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("LastMailCheck") end,
-	HeaderSort = DataStore.GetMailboxLastVisit,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_MAILBOX_VISITED_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_MAILBOX_VISITED_TITLE"],
+	tooltipSubTitle = L["COLUMN_MAILBOX_VISITED_SUBTITLE"],
+	headerOnClick = function() SortView("LastMailCheck") end,
+	headerSort = DataStore.GetMailboxLastVisit,
 	
 	-- Content
 	Width = 70,
@@ -1258,23 +1255,20 @@ columns["LastMailCheck"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), MINIMAP_TRACKING_MAILBOX)
-			tt:AddLine(" ",1,1,1)
-			tt:AddLine(format("%s: %s", L["Visited"], SecondsToTime(time() - lastVisit)),1,1,1)
+			tt:AddLine(" ")
+			tt:AddLine(format("%s: %s", L["COLUMN_MAILBOX_VISITED_TITLE_SHORT"], SecondsToTime(time() - lastVisit)),1,1,1)
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["Auctions"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = AUCTIONS,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Auctions") end,
-	HeaderSort = DataStore.GetNumAuctions,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_AUCTIONS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_AUCTIONS_TITLE"],
+	tooltipSubTitle = L["COLUMN_AUCTIONS_SUBTITLE"],
+	headerOnClick = function() SortView("Auctions") end,
+	headerSort = DataStore.GetNumAuctions,
 	
 	-- Content
 	Width = 70,
@@ -1283,7 +1277,6 @@ columns["Auctions"] = {
 			local num = DataStore:GetNumAuctions(character) or 0
 			return format("%s%s", ((num == 0) and colors.grey or colors.green), num)
 		end,
-	OnEnter = EmptyFunc,
 	OnClick = function(frame)
 			local character = frame:GetParent().character
 			if not character then return end
@@ -1296,18 +1289,16 @@ columns["Auctions"] = {
 			addon.Tabs.Characters:MenuItem_OnClick(AltoholicTabCharacters.Characters, "LeftButton")
 			addon.Tabs.Characters:ViewCharInfo(VIEW_AUCTIONS)
 		end,
-	GetTotal = EmptyFunc,
 }
 
 columns["Bids"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = BIDS,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("Bids") end,
-	HeaderSort = DataStore.GetNumBids,
+	headerWidth = 60,
+	headerLabel = L["COLUMN_BIDS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_BIDS_TITLE"],
+	tooltipSubTitle = L["COLUMN_BIDS_SUBTITLE"],
+	headerOnClick = function() SortView("Bids") end,
+	headerSort = DataStore.GetNumBids,
 	
 	-- Content
 	Width = 60,
@@ -1316,7 +1307,6 @@ columns["Bids"] = {
 			local num = DataStore:GetNumBids(character) or 0
 			return format("%s%s", ((num == 0) and colors.grey or colors.green), num)
 		end,
-	OnEnter = EmptyFunc,
 	OnClick = function(frame)
 			local character = frame:GetParent().character
 			if not character then return end
@@ -1329,19 +1319,16 @@ columns["Bids"] = {
 			addon.Tabs.Characters:MenuItem_OnClick(AltoholicTabCharacters.Characters, "LeftButton")
 			addon.Tabs.Characters:ViewCharInfo(VIEW_BIDS)
 		end,
-
-	GetTotal = EmptyFunc,
 }
 
 columns["AHLastVisit"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = L["Visited"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("AHLastVisit") end,
-	HeaderSort = DataStore.GetAuctionHouseLastVisit,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_AUCTIONHOUSE_VISITED_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_AUCTIONHOUSE_VISITED_TITLE"],
+	tooltipSubTitle = L["COLUMN_AUCTIONHOUSE_VISITED_SUBTITLE"],
+	headerOnClick = function() SortView("AHLastVisit") end,
+	headerSort = DataStore.GetAuctionHouseLastVisit,
 	
 	-- Content
 	Width = 70,
@@ -1362,23 +1349,26 @@ columns["AHLastVisit"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), BUTTON_LAG_AUCTIONHOUSE)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s: %s", L["Visited"], SecondsToTime(time() - lastVisit)),1,1,1)
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["MissionTableLastVisit"] = {
 	-- Header
-	HeaderWidth = 80,
-	Header = GARRISON_MISSIONS,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("MissionTableLastVisit") end,
-	HeaderSort = DataStore.GetMissionTableLastVisit,
+	headerWidth = 80,
+	headerLabel = L["COLUMN_GARRISON_MISSIONS_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_GARRISON_MISSIONS_TITLE"],
+	tooltipSubTitle = L["COLUMN_GARRISON_MISSIONS_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip)
+			tooltip:AddLine(" ")
+			tooltip:AddLine(format("%s* %s= %s", colors.green, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_1"]))
+			tooltip:AddLine(format("%s* %s= %s", colors.red, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_2"]))
+			tooltip:AddLine(format("%s! %s= %s", colors.red, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_3"]))
+		end,
+	headerOnClick = function() SortView("MissionTableLastVisit") end,
+	headerSort = DataStore.GetMissionTableLastVisit,
 	
 	-- Content
 	Width = 65,
@@ -1414,9 +1404,9 @@ columns["MissionTableLastVisit"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), GARRISON_MISSIONS_TITLE)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s: %s", L["Visited"], SecondsToTime(time() - lastVisit)),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			
 			local numAvail = DataStore:GetNumAvailableMissions(character) or 0
 			local numActive = DataStore:GetNumActiveMissions(character) or 0
@@ -1445,20 +1435,19 @@ columns["MissionTableLastVisit"] = {
 			addon.Tabs.Characters:MenuItem_OnClick(AltoholicTabCharacters.Characters, "LeftButton")
 			addon.Tabs.Characters:ViewCharInfo(VIEW_GARRISONS)
 		end,
-	GetTotal = EmptyFunc,
 }
 
 
 -- ** Currencies **
 columns["CurrencyGarrison"] = {
 	-- Header
-	HeaderWidth = 80,
-	Header = "   " .. addon:TextureToFontstring("Interface\\Icons\\inv_garrison_resource", 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("CurrencyGarrison") end,
-	HeaderSort = DataStore.GetGarrisonResources,
+	headerWidth = 80,
+	headerLabel = format("  %s  6.0", addon:TextureToFontstring("Interface\\Icons\\inv_garrison_resource", 18, 18)),
+	headerOnEnter = function(frame, tooltip)
+			CurrencyHeader_OnEnter(frame, CURRENCY_ID_GARRISON)
+		end,
+	headerOnClick = function() SortView("CurrencyGarrison") end,
+	headerSort = DataStore.GetGarrisonResources,
 	
 	-- Content
 	Width = 80,
@@ -1492,7 +1481,7 @@ columns["CurrencyGarrison"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["Garrison resources"])
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s: %s%s", L["Garrison resources"], colors.green, amount),1,1,1)
 			tt:AddLine(format("%s: %s%s", L["Uncollected resources"], colors.green, uncollected),1,1,1)
 			
@@ -1502,50 +1491,45 @@ columns["CurrencyGarrison"] = {
 			end
 			
 			if uncollected < 500 then
-				tt:AddLine(" ",1,1,1)
+				tt:AddLine(" ")
 				
 				-- (resources not yet obtained * 600 seconds)
 				tt:AddLine(format("%s: %s", L["Max. uncollected resources in"], SecondsToTime((500 - uncollected) * 600)),1,1,1)
 			end
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["CurrencyApexis"] = {
 	-- Header
-	HeaderWidth = 100,
-	Header = "        " .. addon:TextureToFontstring("Interface\\Icons\\inv_apexis_draenor", 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("CurrencyApexis") end,
-	HeaderSort = DataStore.GetApexisCrystals,
+	headerWidth = 100,
+	headerLabel = "        " .. addon:TextureToFontstring("Interface\\Icons\\inv_apexis_draenor", 18, 18),
+	headerOnEnter = function(frame, tooltip)
+			CurrencyHeader_OnEnter(frame, CURRENCY_ID_APEXIS)
+		end,
+	headerOnClick = function() SortView("CurrencyApexis") end,
+	headerSort = DataStore.GetApexisCrystals,
 	
 	-- Content
 	Width = 100,
 	JustifyH = "CENTER",
 	GetText = function(character)
-			local amount, _, _, totalMax = DataStore:GetCurrencyTotals(character, CURRENCY_ID_APEXIS)
+			local amount = DataStore:GetCurrencyTotals(character, CURRENCY_ID_APEXIS) or 0
 			local color = (amount == 0) and colors.grey or colors.white
 				
-			return format("%s%s%s/%s%s", color, amount, colors.white, colors.yellow, totalMax)
+			return format("%s%s", color, amount)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["CurrencySOTF"] = {
 	-- Header
-	HeaderWidth = 60,
-	Header = "   " .. addon:TextureToFontstring("Interface\\Icons\\ability_animusorbs", 18, 18),
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("CurrencySOTF") end,
-	HeaderSort = DataStore.GetSealsOfFate,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring("Interface\\Icons\\ability_animusorbs", 18, 18),
+	headerOnEnter = function(frame, tooltip)
+			CurrencyHeader_OnEnter(frame, CURRENCY_ID_SOTF)
+		end,
+	headerOnClick = function() SortView("CurrencySOTF") end,
+	headerSort = DataStore.GetSealsOfFate,
 	
 	-- Content
 	Width = 60,
@@ -1556,53 +1540,47 @@ columns["CurrencySOTF"] = {
 			
 			return format("%s%s%s/%s%s", color, amount, colors.white, colors.yellow, totalMax)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
-columns["CurrencyHonor"] = {
+columns["CurrencySOBF"] = {
 	-- Header
-	HeaderWidth = 80,
-	Header = L["Honor"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("CurrencyHonor") end,
-	HeaderSort = DataStore.GetHonorPoints,
+	headerWidth = 60,
+	headerLabel = "   " .. addon:TextureToFontstring("Interface\\Icons\\inv_misc_elvencoins", 18, 18),
+	headerOnEnter = function(frame, tooltip)
+			CurrencyHeader_OnEnter(frame, CURRENCY_ID_SOBF)
+		end,
+	headerOnClick = function() SortView("CurrencySOBF") end,
+	headerSort = DataStore.GetSealsOfBrokenFate,
 	
 	-- Content
-	Width = 80,
+	Width = 60,
 	JustifyH = "CENTER",
 	GetText = function(character)
-			local amount, _, _, totalMax = DataStore:GetCurrencyTotals(character, CURRENCY_ID_HONOR)
+			local amount, _, _, totalMax = DataStore:GetCurrencyTotals(character, CURRENCY_ID_SOBF)
 			local color = (amount == 0) and colors.grey or colors.white
 			
 			return format("%s%s%s/%s%s", color, amount, colors.white, colors.yellow, totalMax)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
-columns["CurrencyConquest"] = {
+columns["CurrencyOrderHall"] = {
 	-- Header
-	HeaderWidth = 90,
-	Header = L["Conquest"],
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("CurrencyConquest") end,
-	HeaderSort = DataStore.GetConquestPoints,
+	headerWidth = 80,
+	headerLabel = format("  %s  7.0", addon:TextureToFontstring("Interface\\Icons\\inv_garrison_resource", 18, 18)),
+	headerOnEnter = function(frame, tooltip)
+			CurrencyHeader_OnEnter(frame, CURRENCY_ID_ORDER_HALL)
+		end,
+	headerOnClick = function() SortView("CurrencyOrderHall") end,
+	headerSort = DataStore.GetOrderHallResources,
 	
 	-- Content
 	Width = 80,
 	JustifyH = "CENTER",
 	GetText = function(character)
-			local _, earnedThisWeek, weeklyMax = DataStore:GetCurrencyTotals(character, CURRENCY_ID_CONQUEST)
-			local color = (earnedThisWeek == 0) and colors.grey or colors.white
+			local amount = DataStore:GetCurrencyTotals(character, CURRENCY_ID_ORDER_HALL) or 0
+			local color = (amount == 0) and colors.grey or colors.white
 
-			return format("%s%s%s/%s%s", color, earnedThisWeek, colors.white, colors.yellow, weeklyMax)
+			return format("%s%s", color, amount)
 		end,
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
@@ -1636,7 +1614,7 @@ columns["CurrencyConquest"] = {
 				tt:AddLine(format("%s: %s%s", L["Rest XP"], colors.green, restXP),1,1,1)
 			end
 
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(colors.gold..CURRENCY..":",1,1,1)
 			
 			local num = DataStore:GetNumCurrencies(character) or 0
@@ -1657,21 +1635,18 @@ columns["CurrencyConquest"] = {
 			
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 
 -- ** Garrison Followers **
 columns["FollowersLV100"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = "Lv 100",
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersLV100") end,
-	HeaderSort = DataStore.GetNumFollowersAtLevel100,
+	headerWidth = 70,
+	headerLabel = L["COLUMN_FOLLOWERS_LV100_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_FOLLOWERS_LV100_TITLE"],
+	tooltipSubTitle = L["COLUMN_FOLLOWERS_LV100_SUBTITLE"],
+	headerOnClick = function() SortView("FollowersLV100") end,
+	headerSort = DataStore.GetNumFollowersAtLevel100,
 	
 	-- Content
 	Width = 70,
@@ -1683,21 +1658,16 @@ columns["FollowersLV100"] = {
 			
 			return format("%s%s/%s", color, amountLv100, amount)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["FollowersEpic"] = {
 	-- Header
-	HeaderWidth = 55,
-	-- Header = "Epic",
-	Header = RARITY,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersEpic") end,
-	HeaderSort = GetRarityLevel,
+	headerWidth = 55,
+	headerLabel = L["COLUMN_FOLLOWERS_RARITY_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_FOLLOWERS_RARITY_TITLE"],
+	tooltipSubTitle = L["COLUMN_FOLLOWERS_RARITY_SUBTITLE"],
+	headerOnClick = function() SortView("FollowersEpic") end,
+	headerSort = GetRarityLevel,
 	
 	-- Content
 	Width = 55,
@@ -1711,20 +1681,16 @@ columns["FollowersEpic"] = {
 			
 			return format("%s%s%s/%s%s", colorRare, numRare, colors.white, colorEpic, numEpic)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["FollowersLV630"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = "615/630",
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersLV630") end,
-	HeaderSort = GetFollowersLevel615To630,
+	headerWidth = 70,
+	headerLabel = "615/630",
+	tooltipTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_TITLE"], "615/630"),
+	tooltipSubTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_SUBTITLE"], "615 vs 630"),
+	headerOnClick = function() SortView("FollowersLV630") end,
+	headerSort = GetFollowersLevel615To630,
 	
 	-- Content
 	Width = 70,
@@ -1737,20 +1703,16 @@ columns["FollowersLV630"] = {
 			
 			return format("%s%s%s/%s%s", color615, num615, colors.white, color630, num630)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["FollowersLV660"] = {
 	-- Header
-	HeaderWidth = 70,
-	Header = "645/660",
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersLV660") end,
-	HeaderSort = GetFollowersLevel645To660,
+	headerWidth = 70,
+	headerLabel = "645/660",
+	tooltipTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_TITLE"], "645/660"),
+	tooltipSubTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_SUBTITLE"], "645 vs 660"),
+	headerOnClick = function() SortView("FollowersLV660") end,
+	headerSort = GetFollowersLevel645To660,
 	
 	-- Content
 	Width = 70,
@@ -1763,20 +1725,16 @@ columns["FollowersLV660"] = {
 			
 			return format("%s%s%s/%s%s", color645, num645, colors.white, color660, num660)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["FollowersLV675"] = {
 	-- Header
-	HeaderWidth = 50,
-	Header = "675",
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersLV675") end,
-	HeaderSort = DataStore.GetNumFollowersAtiLevel675,
+	headerWidth = 50,
+	headerLabel = "675",
+	tooltipTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_TITLE"], "675"),
+	tooltipSubTitle = format(L["COLUMN_FOLLOWERS_ILEVEL_SUBTITLE"], "675"),
+	headerOnClick = function() SortView("FollowersLV675") end,
+	headerSort = DataStore.GetNumFollowersAtiLevel675,
 	
 	-- Content
 	Width = 50,
@@ -1787,20 +1745,16 @@ columns["FollowersLV675"] = {
 			
 			return format("%s%s", color, amount)
 		end,
-	OnEnter = EmptyFunc,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
 
 columns["FollowersItems"] = {
 	-- Header
-	HeaderWidth = 75,
-	Header = ITEM_LEVEL_ABBR,
-	GetHeaderTooltip = EmptyFunc,
-	HeaderOnEnter = EmptyFunc,
-	HeaderOnLeave = EmptyFunc,
-	HeaderOnClick = function() SortView("FollowersItems") end,
-	HeaderSort = GetFollowersItemLevel,
+	headerWidth = 75,
+	headerLabel = L["COLUMN_FOLLOWERS_AIL_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_FOLLOWERS_AIL_TITLE"],
+	tooltipSubTitle = L["COLUMN_FOLLOWERS_AIL_SUBTITLE"],
+	headerOnClick = function() SortView("FollowersItems") end,
+	headerSort = GetFollowersItemLevel,
 	
 	-- Content
 	Width = 75,
@@ -1829,22 +1783,291 @@ columns["FollowersItems"] = {
 			tt:ClearLines()
 			tt:SetOwner(frame, "ANCHOR_RIGHT")
 			tt:AddLine(DataStore:GetColoredCharacterName(character),1,1,1)
-			tt:AddLine(" ",1,1,1)
+			tt:AddLine(" ")
 			tt:AddLine(format("%s: %s%.1f", WEAPON, colorW, avgWeapon),1,1,1)
 			tt:AddLine(format("%s: %s%.1f", ARMOR, colorA, avgArmor),1,1,1)
 			tt:Show()
 		end,
-	OnClick = EmptyFunc,
-	GetTotal = EmptyFunc,
 }
+
+
+-- ** Artifact **
+
+columns["ArtifactRank"] = {
+	-- Header
+	headerWidth = 60,
+	headerLabel = L["COLUMN_ARTIFACT_RANK_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_ARTIFACT_RANK_TITLE"],
+	tooltipSubTitle = L["COLUMN_ARTIFACT_RANK_SUBTITLE"],
+	headerOnClick = function() SortView("ArtifactRank") end,
+	headerSort = DataStore.GetEquippedArtifactRank,
+	
+	-- Content
+	Width = 60,
+	JustifyH = "CENTER",
+	GetText = function(character)
+			local level = DataStore:GetEquippedArtifactRank(character) or 0
+			local color = (level == 0) and colors.grey or colors.white
+
+			return format("%s%s", color, level)
+		end,
+	OnEnter = function(frame)
+			local character = frame:GetParent().character
+			if not character then return end
+			
+			local level = DataStore:GetEquippedArtifactRank(character) or 0
+			if level == 0 then return end
+			
+			local equippedArtifact = DataStore:GetEquippedArtifact(character)
+			
+			local tt = AltoTooltip
+			tt:ClearLines()
+			tt:SetOwner(frame, "ANCHOR_RIGHT")
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_ARTIFACT_RANK_TITLE"])
+			tt:AddLine(" ")
+			tt:AddLine(CURRENTLY_EQUIPPED, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+			tt:AddDoubleLine(format("%s%s", colors.white, equippedArtifact), format("%s%d", colors.green, level))
+			tt:AddLine(" ")
+			
+			for artifactName, artifactInfo in pairs(DataStore:GetKnownArtifacts(character)) do
+				if artifactName ~= equippedArtifact then
+					tt:AddDoubleLine(format("%s%s", colors.white, artifactName), format("%s%d", colors.green, artifactInfo.rank))
+				end
+			end
+			
+			tt:Show()
+		end,
+}
+
+columns["ArtifactPower"] = {
+	-- Header
+	headerWidth = 130,
+	headerLabel = L["COLUMN_ARTIFACT_POWER_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_ARTIFACT_POWER_TITLE"],
+	tooltipSubTitle = L["COLUMN_ARTIFACT_POWER_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip) 
+			tooltip:AddLine(" ")
+			
+			local numRows = 27	-- current maximum = 54 levels
+			
+			for i = 1, numRows do
+				tooltip:AddDoubleLine(
+					format("%s%s: %s%d", colors.white, i, colors.green, C_ArtifactUI.GetCostForPointAtRank(i)), 
+					format("%s%s: %s%d", colors.white, i+numRows, colors.green, C_ArtifactUI.GetCostForPointAtRank(i+numRows))
+				)
+			end
+		end,
+	headerOnClick = function() SortView("ArtifactPower") end,
+	headerSort = DataStore.GetEquippedArtifactPower,
+	
+	-- Content
+	Width = 130,
+	JustifyH = "CENTER",
+	GetText = function(character)
+			local level = DataStore:GetEquippedArtifactRank(character) or 0
+			local color = (level == 0) and colors.grey or colors.white
+			
+			local power = DataStore:GetEquippedArtifactPower(character) or 0
+			
+			return format("%s%s%s/%s%s", color, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+		end,
+	OnEnter = function(frame)
+			local character = frame:GetParent().character
+			if not character then return end
+			
+			local level = DataStore:GetEquippedArtifactRank(character) or 0
+			if level == 0 then return end
+			
+			local power = DataStore:GetEquippedArtifactPower(character) or 0
+			local equippedArtifact = DataStore:GetEquippedArtifact(character)
+			
+			local extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(level, power)
+			
+			local tt = AltoTooltip
+			tt:ClearLines()
+			tt:SetOwner(frame, "ANCHOR_RIGHT")
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_ARTIFACT_POWER_TITLE"])
+			tt:AddLine(" ")
+			tt:AddLine(CURRENTLY_EQUIPPED, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+			if extraTraits > 0 then
+				tt:AddDoubleLine(
+					format("%s%s", colors.white, equippedArtifact), 
+					format("%s%s %s(%s+%s%s)/%s%s", 
+						colors.green, power, 
+						colors.white, colors.cyan, extraTraits, 
+						colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+				)
+			
+			else 
+				tt:AddDoubleLine(
+					format("%s%s", colors.white, equippedArtifact), 
+					format("%s%s%s/%s%s", colors.green, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+				)
+			end
+			tt:AddLine(" ")
+			
+			for artifactName, artifactInfo in pairs(DataStore:GetKnownArtifacts(character)) do
+				if artifactName ~= equippedArtifact then
+					extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(artifactInfo.rank, artifactInfo.pointsRemaining)
+					
+					if extraTraits > 0 then
+						tt:AddDoubleLine(
+							format("%s%s", colors.white, artifactName), 
+							format("%s%s %s(%s+%s%s)/%s%s", 
+								colors.green, artifactInfo.pointsRemaining, 
+								colors.white, colors.cyan, extraTraits, 
+								colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank))
+						)
+					else
+						tt:AddDoubleLine(
+							format("%s%s", colors.white, artifactName), 
+							format("%s%s%s/%s%s", colors.green, artifactInfo.pointsRemaining, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank))
+						)
+					end
+				end
+			end
+			
+			tt:Show()
+		end,
+}
+
+columns["ArtifactKnowledge"] = {
+	-- Header
+	headerWidth = 90,
+	headerLabel = L["COLUMN_ARTIFACT_KNOWLEDGE_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_ARTIFACT_KNOWLEDGE_TITLE"],
+	tooltipSubTitle = L["COLUMN_ARTIFACT_KNOWLEDGE_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip) 
+			tooltip:AddLine(" ")
+			
+			local numRows = 12	-- current maximum = 25 levels, but begin at 2
+			
+			for i = 1, numRows do
+				tooltip:AddDoubleLine(
+					format("%s%s: %s+%d%%", colors.white, i+1, colors.green, artifactXPGain[i+1]), 
+					format("%s%s: %s+%d%%", colors.white, i+1+numRows, colors.green, artifactXPGain[i+1+numRows])
+				)
+			end
+		end,
+	headerOnClick = function() SortView("ArtifactKnowledge") end,
+	headerSort = DataStore.GetArtifactKnowledgeLevel,
+	
+	-- Content
+	Width = 90,
+	JustifyH = "CENTER",
+	GetText = function(character)
+			local level = DataStore:GetArtifactKnowledgeLevel(character) or 0
+			local color = (level == 0) and colors.grey or colors.white
+
+			return format("%s%s", color, level)
+		end,
+	OnEnter = function(frame)
+			local character = frame:GetParent().character
+			if not character then return end
+			
+			local level = DataStore:GetArtifactKnowledgeLevel(character) or 0
+			if level == 0 then return end
+			
+			local tt = AltoTooltip
+			tt:ClearLines()
+			tt:SetOwner(frame, "ANCHOR_RIGHT")
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_ARTIFACT_KNOWLEDGE_TITLE"])
+			tt:AddLine(" ")
+		
+			tt:AddLine(ARTIFACTS_KNOWLEDGE_TOOLTIP_LEVEL:format(level), HIGHLIGHT_FONT_COLOR:GetRGB())
+			tt:AddLine(ARTIFACTS_KNOWLEDGE_TOOLTIP_DESC:format(BreakUpLargeNumbers(artifactXPGain[level])), NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, true)
+			tt:Show()
+		end,
+}
+
+columns["ArtifactNextResearch"] = {
+	-- Header
+	headerWidth = 100,
+	headerLabel = L["COLUMN_ARTIFACT_RESEARCH_TITLE_SHORT"],
+	tooltipTitle = L["COLUMN_ARTIFACT_RESEARCH_TITLE"],
+	tooltipSubTitle = L["COLUMN_ARTIFACT_RESEARCH_SUBTITLE"],
+	headerOnEnter = function(frame, tooltip)
+			tooltip:AddLine(" ")
+			tooltip:AddLine(format("%s* %s= %s", colors.green, colors.white, L["COLUMN_ARTIFACT_RESEARCH_DETAIL_1"]))
+			tooltip:AddLine(format("%s* %s= %s", colors.red, colors.white, L["COLUMN_ARTIFACT_RESEARCH_DETAIL_2"]))
+		end,
+	headerOnClick = function() SortView("ArtifactNextResearch") end,
+	headerSort = DataStore.GetArtifactResearchInfo,
+	
+	-- Content
+	Width = 100,
+	JustifyH = "CENTER",
+	GetText = function(character)
+			local remaining, shipmentsReady, shipmentsTotal = DataStore:GetArtifactResearchInfo(character)
+			local color = (remaining == 0) and colors.grey or colors.white
+
+			local text = ""
+			if shipmentsReady > 0 then		-- add a '*' to show that there are some completed missions
+				if shipmentsReady == shipmentsTotal then
+					text = format(" %s*", colors.red)	-- red if ALL active missions are complete
+				else
+					text = format(" %s*", colors.green)
+				end
+			end
+			
+			return format("%s%s%s", color, SecondsToTime(remaining), text)
+		end,
+	OnEnter = function(frame)
+			local character = frame:GetParent().character
+			if not character then return end
+			
+			local level = DataStore:GetArtifactKnowledgeLevel(character) or 0
+			if level == 0 then return end
+			
+			local title = GetItemInfo(139390)
+			local remaining, shipmentsReady, shipmentsTotal = DataStore:GetArtifactResearchInfo(character)
+			
+			local tt = AltoTooltip
+			tt:ClearLines()
+			tt:SetOwner(frame, "ANCHOR_RIGHT")
+			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), title)
+			tt:AddLine(" ")
+			tt:AddLine(format(GARRISON_LANDING_COMPLETED, shipmentsReady, shipmentsTotal), 1,1,1)
+			tt:Show()
+		end,
+}
+
+
+local function ColumnHeader_OnEnter(frame)
+	local column = frame.column
+	if not frame.column then return end		-- invalid data ? exit
+	
+	local tooltip = AltoTooltip
+	
+	tooltip:ClearLines()
+	tooltip:SetOwner(frame, "ANCHOR_BOTTOM")
+	
+	-- Add the tooltip title
+	if column.tooltipTitle then
+		tooltip:AddLine(column.tooltipTitle)
+	end
+
+	-- Add the tooltip subtitle in cyan
+	if column.tooltipSubTitle then
+		tooltip:AddLine(column.tooltipSubTitle, 0, 1, 1)
+	end
+
+	-- Add the extra tooltip content, if any
+	if column.headerOnEnter then
+		column.headerOnEnter(frame, tooltip)
+	end
+	
+	tooltip:Show()
+end
 
 local modes = {
 	[MODE_SUMMARY] = { "Name", "Level", "RestXP", "Money", "Played", "AiL", "LastOnline" },
 	[MODE_BAGS] = { "Name", "Level", "BagSlots", "FreeBagSlots", "BankSlots", "FreeBankSlots" },
 	[MODE_SKILLS] = { "Name", "Level", "Prof1", "Prof2", "ProfCooking", "ProfFirstAid", "ProfFishing", "ProfArchaeology" },
 	[MODE_ACTIVITY] = { "Name", "Level", "Mails", "LastMailCheck", "Auctions", "Bids", "AHLastVisit", "MissionTableLastVisit" },
-	[MODE_CURRENCIES] = { "Name", "Level", "CurrencyGarrison", "CurrencyApexis", "CurrencySOTF", "CurrencyHonor", "CurrencyConquest" },
+	[MODE_CURRENCIES] = { "Name", "Level", "CurrencyGarrison", "CurrencyApexis", "CurrencySOTF", "CurrencySOBF", "CurrencyOrderHall" },
 	[MODE_FOLLOWERS] = { "Name", "Level", "FollowersLV100", "FollowersEpic", "FollowersLV630", "FollowersLV660", "FollowersLV675", "FollowersItems" },
+	[MODE_ARTIFACT] = { "Name", "Level", "ArtifactRank", "ArtifactPower", "ArtifactKnowledge", "ArtifactNextResearch" },
 }
 
 function ns:SetMode(mode)
@@ -1857,7 +2080,10 @@ function ns:SetMode(mode)
 		local columnName = modes[mode][i]
 		local column = columns[columnName]
 		
-		parent.SortButtons:SetButton(i, column.Header, column.HeaderWidth, column.HeaderOnClick)
+		parent.SortButtons:SetButton(i, column.headerLabel, column.headerWidth, column.headerOnClick)
+		parent.SortButtons["Sort"..i].column = column
+		parent.SortButtons["Sort"..i]:SetScript("OnEnter", ColumnHeader_OnEnter)
+		parent.SortButtons["Sort"..i]:SetScript("OnLeave", function() AltoTooltip:Hide() end)
 	end
 end
 
@@ -1880,7 +2106,7 @@ function ns:Update()
 	Characters:InvalidateView()
 	local view = Characters:GetView()
 	if columns[currentColumn] then	-- an old column name might still be in the DB.
-		Characters:Sort(sortOrder, columns[currentColumn].HeaderSort)
+		Characters:Sort(sortOrder, columns[currentColumn].headerSort)
 	end
 
 	-- attempt to restore the arrow to the right sort button
@@ -1951,55 +2177,34 @@ function ns:Update()
 	scrollFrame:Update(numVisibleRows)
 end
 
+local function FormatAiL(level)
+	return format("%s%s %s%s", colors.yellow, L["COLUMN_ILEVEL_TITLE_SHORT"], colors.green, level)
+end
+
 function addon:AiLTooltip()
 	local tt = AltoTooltip
 	
-	tt:AddLine(" ",1,1,1);
-	-- tt:AddLine(colors.teal .. L["Level"] .. " 60",1,1,1);
-	-- tt:AddDoubleLine(colors.yellow .. "58-63", colors.white .. "Tier 0")
-	-- tt:AddDoubleLine(colors.yellow .. "66", colors.white .. "Tier 1")
-	-- tt:AddDoubleLine(colors.yellow .. "76", colors.white .. "Tier 2")
-	-- tt:AddDoubleLine(colors.yellow .. "86-92", colors.white .. "Tier 3")
-	-- tt:AddLine(" ",1,1,1);
+	tt:AddLine(" ")
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME0), FormatAiL("60-92"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME1), FormatAiL("115-154"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME2), FormatAiL("200-284"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME3), FormatAiL("333-372"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME4), FormatAiL("358-530"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME5), FormatAiL("550-720+"))
+	tt:AddDoubleLine(format("%s%s", colors.teal, EXPANSION_NAME6), FormatAiL("805-900+"))
 	
-	-- tt:AddLine(colors.teal .. L["Level"] .. " 70",1,1,1);
-	-- tt:AddDoubleLine(colors.yellow .. "115", colors.white .. GetMapNameByID(799))	-- "Karazhan"
-	-- tt:AddDoubleLine(colors.yellow .. "120", colors.white .. "Tier 4")
-	-- tt:AddDoubleLine(colors.yellow .. "128", colors.white .. GetMapNameByID(781))	-- "Zul'Aman"
-	-- tt:AddDoubleLine(colors.yellow .. "133", colors.white .. "Tier 5")
-	-- tt:AddDoubleLine(colors.yellow .. "146-154", colors.white .. "Tier 6")
-	-- tt:AddLine(" ",1,1,1);
-
-	tt:AddLine(colors.teal .. L["Level"] .. " 80",1,1,1);
-	tt:AddDoubleLine(colors.yellow .. "200", colors.white .. GetMapNameByID(535) .. " (10)")	-- "Naxxramas"
-	tt:AddDoubleLine(colors.yellow .. "213", colors.white .. GetMapNameByID(535) .. " (25)")
-	tt:AddDoubleLine(colors.yellow .. "200-219", colors.white .. GetMapNameByID(542))		-- "Trial of the Champion"
-	tt:AddDoubleLine(colors.yellow .. "219", colors.white .. GetMapNameByID(529) .. " (10)")	-- "Ulduar"
-	tt:AddDoubleLine(colors.yellow .. "226-239", colors.white .. GetMapNameByID(529) .. " (25)")
-	tt:AddDoubleLine(colors.yellow .. "232-258", colors.white .. GetMapNameByID(543) .. " (10)")		-- "Trial of the Crusader"
-	tt:AddDoubleLine(colors.yellow .. "245-272", colors.white .. GetMapNameByID(543) .. " (25)")
-	tt:AddDoubleLine(colors.yellow .. "251-271", colors.white .. GetMapNameByID(604) .. " (10)")		-- "Icecrown Citadel"
-	tt:AddDoubleLine(colors.yellow .. "264-284", colors.white .. GetMapNameByID(604) .. " (25)")
-	tt:AddLine(" ",1,1,1);
-	
-	tt:AddLine(colors.teal .. L["Level"] .. " 85",1,1,1);
-	tt:AddDoubleLine(colors.yellow .. "333", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY1))
-	tt:AddDoubleLine(colors.yellow .. "346", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY2))
-	tt:AddDoubleLine(colors.yellow .. "359", format("%s%s: %s", colors.white, CALENDAR_TYPE_RAID, PLAYER_DIFFICULTY1))
-	tt:AddDoubleLine(colors.yellow .. "372", format("%s%s: %s", colors.white, CALENDAR_TYPE_RAID, PLAYER_DIFFICULTY2))
-	
-	tt:AddLine(colors.teal .. L["Level"] .. " 90",1,1,1);
-	tt:AddDoubleLine(colors.yellow .. "358", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY1))
-	tt:AddDoubleLine(colors.yellow .. "425", format("%s%s: %s", colors.white, GUILD_CHALLENGE_TYPE4, PLAYER_DIFFICULTY1))
-	tt:AddDoubleLine(colors.yellow .. "435", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY2))
-	tt:AddDoubleLine(colors.yellow .. "480", format("%s%s: %s", colors.white, GUILD_CHALLENGE_TYPE4, PLAYER_DIFFICULTY2))
-	tt:AddLine(" ",1,1,1);
-	tt:AddDoubleLine(colors.yellow .. "460", format("%s%s: %s", colors.white, GetMapNameByID(896), PLAYER_DIFFICULTY3))	-- "Mogu'shan Vaults"
-	tt:AddDoubleLine(colors.yellow .. "470", format("%s%s: %s", colors.white, GetMapNameByID(897), PLAYER_DIFFICULTY3))	-- "Heart of Fear"
-	tt:AddDoubleLine(colors.yellow .. "470", format("%s%s: %s", colors.white, GetMapNameByID(886), PLAYER_DIFFICULTY3))	-- "Terrace of Endless Spring"
-	tt:AddDoubleLine(colors.yellow .. "480", format("%s%s: %s", colors.white, GetMapNameByID(930), PLAYER_DIFFICULTY3))	-- "Throne of Thunder"
-	tt:AddDoubleLine(colors.yellow .. "496", format("%s%s: %s", colors.white, GetMapNameByID(953), PLAYER_DIFFICULTY3))	-- "Siege of Ogrimmar"
-	tt:AddDoubleLine(colors.yellow .. "510", format("%s%s: %s", colors.white, GetMapNameByID(953), "10"))
-	tt:AddDoubleLine(colors.yellow .. "520", format("%s%s: %s", colors.white, GetMapNameByID(953), PLAYER_DIFFICULTY4))
-	tt:AddDoubleLine(colors.yellow .. "530", format("%s%s: %s", colors.white, GetMapNameByID(953), "25"))
+	-- tt:AddLine(colors.teal .. L["Level"] .. " 90",1,1,1);
+	-- tt:AddDoubleLine(colors.yellow .. "358", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY1))
+	-- tt:AddDoubleLine(colors.yellow .. "425", format("%s%s: %s", colors.white, GUILD_CHALLENGE_TYPE4, PLAYER_DIFFICULTY1))
+	-- tt:AddDoubleLine(colors.yellow .. "435", format("%s%s: %s", colors.white, CALENDAR_TYPE_DUNGEON, PLAYER_DIFFICULTY2))
+	-- tt:AddDoubleLine(colors.yellow .. "480", format("%s%s: %s", colors.white, GUILD_CHALLENGE_TYPE4, PLAYER_DIFFICULTY2))
+	-- tt:AddLine(" ");
+	-- tt:AddDoubleLine(colors.yellow .. "460", format("%s%s: %s", colors.white, GetMapNameByID(896), PLAYER_DIFFICULTY3))	-- "Mogu'shan Vaults"
+	-- tt:AddDoubleLine(colors.yellow .. "470", format("%s%s: %s", colors.white, GetMapNameByID(897), PLAYER_DIFFICULTY3))	-- "Heart of Fear"
+	-- tt:AddDoubleLine(colors.yellow .. "470", format("%s%s: %s", colors.white, GetMapNameByID(886), PLAYER_DIFFICULTY3))	-- "Terrace of Endless Spring"
+	-- tt:AddDoubleLine(colors.yellow .. "480", format("%s%s: %s", colors.white, GetMapNameByID(930), PLAYER_DIFFICULTY3))	-- "Throne of Thunder"
+	-- tt:AddDoubleLine(colors.yellow .. "496", format("%s%s: %s", colors.white, GetMapNameByID(953), PLAYER_DIFFICULTY3))	-- "Siege of Ogrimmar"
+	-- tt:AddDoubleLine(colors.yellow .. "510", format("%s%s: %s", colors.white, GetMapNameByID(953), "10"))
+	-- tt:AddDoubleLine(colors.yellow .. "520", format("%s%s: %s", colors.white, GetMapNameByID(953), PLAYER_DIFFICULTY4))
+	-- tt:AddDoubleLine(colors.yellow .. "530", format("%s%s: %s", colors.white, GetMapNameByID(953), "25"))
 end

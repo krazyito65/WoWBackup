@@ -44,7 +44,7 @@
 		<Frames>
 			<Frame parentKey="SelectView" inherits="AltoDropDownMenuTemplate" hidden="true">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeKey="$parent.TextView" relativePoint="BOTTOMLEFT" x="-25" y="-2"/>
+					<Anchor point="TOPLEFT" relativeKey="$parent.TextView" relativePoint="BOTTOMLEFT" x="-30" y="-2"/>
 				</Anchors>
 			</Frame>
 			<Frame parentKey="SelectRealm" inherits="AltoRealmPickerTemplate">
@@ -59,7 +59,8 @@
 			<!-- Menu Icons -->
 			<Frame parentKey="ClassIcons" inherits="AltoClassIconsContainerTemplate">
 				<KeyValues>
-					<KeyValue key="numIcons" value="11" type="number" />
+					<!-- <KeyValue key="numIcons" value="11" type="number" /> -->
+					<KeyValue key="numIcons" value="12" type="number" />
 					<KeyValue key="iconTemplate" value="AltoTabGridsClassIconTemplate" />
 					<KeyValue key="tabName" value="Grids" />
 				</KeyValues>

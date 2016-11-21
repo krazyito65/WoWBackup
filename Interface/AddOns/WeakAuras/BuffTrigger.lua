@@ -332,7 +332,7 @@ function WeakAuras.SetAuraVisibility(id, triggernum, cloneId, inverse, active, u
     state.changed = true;
   end
 
-  local autoHide = not inverse and duration ~= 0;
+  local autoHide = false;
   if (state.autoHide ~= autoHide) then
     state.autoHide = autoHide;
     state.changed = true;
@@ -527,7 +527,7 @@ function WeakAuras.ScanAuras(unit)
                 -- Show display and handle clones
                 WeakAuras.SetDynamicIconCache(name, spellId, icon);
                 if(data.autoclone) then
-                  local cloneId = name.."-"..(casGUID or "unknown");
+                  local cloneId = name .. spellId .."-"..(casGUID or "unknown");
                   if (WeakAuras.SetAuraVisibility(id, triggernum, cloneId, data.inverse, true, unit, duration, expirationTime, name, icon, count, index, spellId, unitCaster)) then
                     updateTriggerState = true;
                   end

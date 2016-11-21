@@ -269,6 +269,7 @@ L["List of words to color in chat if found in a message. If you wish to add mult
 L["Lock Positions"] = "Закрепить"
 L["Log the main chat frames history. So when you reloadui or log in and out you see the history from your last session."] = "Записывать содержимое основных чатов. Таким образом, после перезагрузки интерфейса или входа/выхода из игры, Вы увидите сообщения из прошлой сессии."
 L["No Alert In Combat"] = "Без оповещений в бою"
+L["Number of messages you scroll for each step."] = true;
 L["Number of repeat characters while in combat before the chat editbox is automatically closed."] = "Кол-во одинаковых символов введенных в бою, после которого поле ввода автоматически закроется."
 L["Number of time in seconds to scroll down to the bottom of the chat window if you are not scrolled down completely."] = "Время в секундах, через которое чат автоматически покрутится вниз до конца, если Вы не сделаете это вручную."
 L["Panel Backdrop"] = "Фон панелей"
@@ -283,6 +284,7 @@ L["Right Only"] = "Только правый"
 L["Right Panel Height"] = "Высота правого чата"
 L["Right Panel Width"] = "Ширина правого чата"
 L["Scroll Interval"] = "Интервал прокрутки"
+L["Scroll Messages"] = true;
 L["Separate Panel Sizes"] = "Разные размеры панелей"
 L["Set the font outline."] = "Устанавливает границу шрифта."
 L["Short Channels"] = "Короткие каналы"
@@ -331,10 +333,11 @@ L["ELVUI_CREDITS"] = "Я бы хотел выделить следующих л�
 L["Testing:"] = "Тестирование:"
 
 --DataBars
-L["DATABAR_DESC"] = "Контролирует отображение информационных полос."
 L["Current - Remaining"] = "Текущий - Осталось"
 L["DataBars"] = "Инфо-полосы"
-L["Hide in Combat"] = "Скрывать в бою"
+L["Hide In Combat"] = "Скрывать в бою"
+L["Hide Outside PvP"] = true;
+L["Setup on-screen display of information bars."] = "Контролирует отображение информационных полос."
 
 --DataTexts
 L["24-Hour Time"] = "24х часовой формат"
@@ -582,6 +585,7 @@ L["Hide Spell Name"] = "Скрыть название заклинания"
 L["Hide Time"] = "Скрыть время"
 L["Hide"] = "Скрыть" --Also used in DataTexts
 L["Hide the nameplate unless you are in combat, you are not on full health or have a target you can attack."] = "Скрывать индикатор если вы не в бою, у вас полное здоровье или нет цели, которую можно атаковать."
+L["How many seconds the castbar should stay visible after the cast failed or was interrupted."] = "После прерывания или отмены, полоса заклинаний будет оставаться видимой указаное количество секунд."
 L["Icon Base Height"] = "Базовая высота иконки"
 L["Load Distance"] = "Дистанция показа"
 L["Low Health Threshold"] = "Пороговое значение здоровья"
@@ -608,6 +612,7 @@ L["Target Scale"] = "Масштаб цели";
 L["Target, Quest, Combat"] = "Цель, Задание, Бой"
 L["Targeted Nameplate"] = "Индиатор цели"
 L["Threat"] = "Угроза"
+L["Time To Hold"] = "Время задержки"
 L["Toggle Off While In Combat"] = "Включать в бою"
 L["Toggle On While In Combat"] = "Отключить в бою"
 L["Use Class Color"] = "Использовать цвет класса"
@@ -742,11 +747,13 @@ L["Add a spell to the filter. Use spell ID if you don't want to match all auras 
 L["Add a spell to the filter."] = "Добавить заклинание в фильтр"
 L["Add Spell ID or Name"] = "Добавить ID или имя заклинания"
 L["Add SpellID"] = "Добавить ID заклинания"
+L["Additional Filter Override"] = true;
 L["Additional Filter"] = "Дополнительный фильтр"
 L["Additional Power Text"] = "Текст дополнительного ресурса"
 L["Affliction"] = "Колдовство"
 L["Allow auras considered to be part of a boss encounter."] = "Разрешить считать ауры частью боя с боссом"
 L["Allow Boss Encounter Auras"] = "Разрешить ауры битв с боссами"
+L["Allow non-personal auras from additional filter when 'Block Non-Personal Auras' is enabled."] = true;
 L["Allow Whitelisted Auras"] = "Разрешиь ауры из белого списка"
 L["An X offset (in pixels) to be used when anchoring new frames."] = "Отступ по оси X (в пикселях) при фиксации новой рамки."
 L["An Y offset (in pixels) to be used when anchoring new frames."] = "Отступ по оси Y (в пикселях) при фиксации новой рамки."

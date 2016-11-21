@@ -240,7 +240,7 @@ local function ensureDisplay()
 	local bg = display:CreateTexture(nil, "PARENT")
 	bg:SetAllPoints(display)
 	bg:SetBlendMode("BLEND")
-	bg:SetTexture(0, 0, 0, 0.3)
+	bg:SetColorTexture(0, 0, 0, 0.3)
 
 	local close = CreateFrame("Button", nil, display)
 	close:SetPoint("BOTTOMRIGHT", display, "TOPRIGHT", -2, 2)
@@ -474,25 +474,19 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "UnstableVitaApplied", 138297, 138308)
 	self:Log("SPELL_AURA_REMOVED", "UnstableVitaRemoved", 138297, 138308)
 	self:Log("SPELL_CAST_START", "Balls", 138321)
-	self:AddSyncListener("roster", 0)
-	self:AddSyncListener("group1", 0)
-	self:AddSyncListener("group2", 0)
-	self:AddSyncListener("ballkillorder", 0)
-	self:AddSyncListener("group1icon", 0)
-	self:AddSyncListener("group2icon", 0)
-	self:AddSyncListener("rosterupdated", 0)
+	self:RegisterMessage("BigWigs_BossComm")
 	self:Yell("Disable", ML.kill_trigger)
 
 	if RadenAssist then return end
 	local ra = CreateFrame("Frame", "RadenAssist", InterfaceOptionsFramePanelContainer)
-	ra.name = "Big Wigs ".. L.modname
+	ra.name = "BigWigs ".. L.modname
 	InterfaceOptions_AddCategory(ra)
 	local raTitle = ra:CreateFontString(nil, "ARTWORK", "GameFontNormalHuge")
 	raTitle:SetPoint("CENTER", ra, "TOP", 0, -20)
-	raTitle:SetText(ra.name.." r44-release") --wowace magic, replaced with tag version
+	raTitle:SetText(ra.name.." r46") --packager magic, replaced with tag version
 
 	local raOptions = CreateFrame("Frame", "RadenAssistOptions", InterfaceOptionsFramePanelContainer)
-	raOptions.parent = "Big Wigs ".. L.modname
+	raOptions.parent = "BigWigs ".. L.modname
 	raOptions.name = "Options"
 	InterfaceOptions_AddCategory(raOptions)
 	local raOptionsTitle = raOptions:CreateFontString(nil, "ARTWORK", "GameFontNormalHuge")
@@ -1064,10 +1058,10 @@ do
 			end
 		end
 	end
-	function mod:OnSync(sync, rest, nick)
-		if sync and rest then
+	function mod:BigWigs_BossComm(_, msg, rest)
+		if msg and rest then
 			--print(sync, rest, "FROM: "..nick)
-			if sync == "roster" or sync == "group1" or sync == "group2" then
+			if msg == "roster" or msg == "group1" or msg == "group2" then
 				local t = GetTime()
 				if t-prev > 2 then
 					prev = t
@@ -1076,16 +1070,16 @@ do
 					if nick ~= UnitName("player") then wipe(roster) wipe(group1) wipe(group2) end
 				end
 				local refT
-				if sync == "roster" then refT = roster end
-				if sync == "group1" then refT = group1 end
-				if sync == "group2" then refT = group2 end
+				if msg == "roster" then refT = roster end
+				if msg == "group1" then refT = group1 end
+				if msg == "group2" then refT = group2 end
 				local i = 1
 				for w in rest:gmatch("%S+") do
 					refT[i] = w
 					i = i + 1
 				end
 				updateConfigTeamButtons()
-			elseif sync == "ballkillorder" then
+			elseif msg == "ballkillorder" then
 				local t, i = {}, 1
 				for w in rest:gmatch("%d") do
 					t[i] = tonumber(w)
@@ -1093,11 +1087,11 @@ do
 				end
 				mod.db.profile.redkillcount = t
 				print(chatPrefix.. L.updatereceived:format(nick))
-			elseif sync == "group1icon" then
+			elseif msg == "group1icon" then
 				mod.db.profile.group1icon = tonumber(rest)
-			elseif sync == "group2icon" then
+			elseif msg == "group2icon" then
 				mod.db.profile.group2icon = tonumber(rest)
-			elseif sync == "rosterupdated" then
+			elseif msg == "rosterupdated" then
 				if listenToSyncResponse then
 					rosterUpdated[nick] = "true"
 					if not scheduled then

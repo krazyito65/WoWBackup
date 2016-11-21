@@ -4,10 +4,10 @@ local L = AceLocale:NewLocale("ElvUI", "zhCN")
 if not L then return end
 
 --*_ADDON locales
-L["INCOMPATIBLE_ADDON"] = "插件 %s 不相容于 ElvUI 的 %s 模组。请停用不相容的插件，或停用模组。"
+L["INCOMPATIBLE_ADDON"] = "插件 %s 不相容于 ElvUI 的 %s 模组, 请停用不相容的插件, 或停用模组."
 
 --*_MSG locales
-L["LOGIN_MSG"] = "欢迎使用 %sElvUI|r %s%s|r 版，请输入 /ec 进入设定介面。如需技术支援，请至 http://www.tukui.org"
+L["LOGIN_MSG"] = "欢迎使用 %sElvUI|r %s%s|r 版, 请输入/ec进入设定介面. 如需技术支持,请至 http://www.tukui.org"
 
 --ActionBars
 L["Binding"] = "绑定"
@@ -26,14 +26,14 @@ L["KEY_PAGEUP"] = "PU"
 L["KEY_SHIFT"] = "S"
 L["KEY_SPACE"] = "SpB"
 L["No bindings set."] = "无绑定设定"
-L["Remove Bar %d Action Page"] = "移除第 %d 动作条"
+L["Remove Bar %d Action Page"] = "移除第%d动作条"
 L["Trigger"] = "触发器"
 
 --Bags
 L["Bank"] = "银行"
 L["Deposit Reagents"] = "导入材料"
-L["Hold Control + Right Click:"] = '按住 Ctrl 并按鼠标右键：'
-L["Hold Shift + Drag:"] = '按住 Shift 并拖动: '
+L["Hold Control + Right Click:"] = '按住 Ctrl 并按鼠标右键:'
+L["Hold Shift + Drag:"] = '按住 Shift 并拖动:'
 L["Purchase Bags"] = "购买背包"
 L["Purchase"] = "购买"
 L["Reagent Bank"] = "材料银行"
@@ -107,7 +107,7 @@ L["Offhand"] = "副手"
 L["Profit:"] = "利润:"
 L["Reset Data: Hold Shift + Right Click"] = "重置数据: 按住 Shift + 右键点击"
 L["Saved Raid(s)"] = "已有进度的副本"
-L["Saved Dungeon(s)"] = true;
+L["Saved Dungeon(s)"] = "已有进度的地下城"
 L["Server: "] = "服务器: "
 L["Session:"] = "本次登入:"
 L["Shoulder"] = "肩"
@@ -167,7 +167,7 @@ L["Icons Only"] = "图标"
 L["If you have an icon or aurabar that you don't want to display simply hold down shift and right click the icon for it to disapear."] = "如果你有不想显示的图标或光环条, 你可以简单的通过按住Shift右键点击使它隐藏."
 L["Importance: |cff07D400High|r"] = "重要度: |cff07D400高|r"
 L["Importance: |cffD3CF00Medium|r"] = "重要性: |cffD3CF00中|r"
-L["Importance: |cffFF0000Low|r"] = "重要性：|cffFF0000低|r"
+L["Importance: |cffFF0000Low|r"] = "重要性:|cffFF0000低|r"
 L["Installation Complete"] = "安装完成"
 L["Layout Set"] = "界面布局设置"
 L["Layout"] = "界面布局"
@@ -181,7 +181,7 @@ L["Please click the button below to setup your CVars."] = "请按下方按钮设
 L["Please press the continue button to go onto the next step."] = "请按继续按钮到下一步"
 L["Resolution Style Set"] = "分辨率样式设置"
 L["Resolution"] = "分辨率"
-L["Select the type of aura system you want to use with ElvUI's unitframes. Set to Aura Bar & Icons to use both aura bars and icons, set to icons only to only see icons."] = true;
+L["Select the type of aura system you want to use with ElvUI's unitframes. Set to Aura Bar & Icons to use both aura bars and icons, set to icons only to only see icons."] = "选择你想要在ElvUI的单位框体里使用何种光环系统. 选择光环条和图标将同时使用光环条和图标, 选择图标来仅仅显示图标."
 L["Setup Chat"] = "设定聊天框"
 L["Setup CVars"] = "设定参数"
 L["Skip Process"] = "略过"
@@ -200,7 +200,7 @@ L["This resolution requires that you change some settings to get everything to f
 L["This will change the layout of your unitframes and actionbars."] = "这将会改变你单位框架和动作条的构架。"
 L["Trade"] = "拾取/交易"
 L["Welcome to ElvUI version %s!"] = "欢迎使用 ElvUI 版本 %s!"
-L["You are now finished with the installation process. If you are in need of technical support please visit us at http://www.tukui.org."] = true;
+L["You are now finished with the installation process. If you are in need of technical support please visit us at http://www.tukui.org."] = "你已经完成安装过程. 如果你需要技术支持请访问http://www.tukui.org"
 L["You can always change fonts and colors of any element of elvui from the in-game configuration."] = "你可以在游戏内的设定选项内更改ElvUI的字体、颜色等设定."
 L["You can now choose what layout you wish to use based on your combat role."] = "你现在可以根据你的战斗角色选择合适的布局。"
 L["You may need to further alter these settings depending how low you resolution is."] = "根据你的分辨率你可能需要改动这些设置。"
@@ -209,7 +209,7 @@ L["Your current resolution is %s, this is considered a %s resolution."] = "你�
 --Misc
 L["ABOVE_THREAT_FORMAT"] = '%s: %.0f%% [%.0f%% 以上 |cff%02x%02x%02x%s|r]'
 L["Average Group iLvl:"] = "平均小队装等"
-L["Bars"] = "条"
+L["Bars"] = "状态条"
 L["Calendar"] = "日历"
 L["Can't Roll"] = "无法需求此装备"
 L["Disband Group"] = "解散队伍"
@@ -218,12 +218,12 @@ L["Experience"] = "经验/声望条"
 L["Fishy Loot"] = "贪婪"
 L["iLvl"] = "装等" --Column header in raidbrowser
 L["Important Group Members:"] = "重要小队成员"
-L["Left Click:"] = "鼠标左键："
+L["Left Click:"] = "鼠标左键:"
 L["Raid Browser"] = true; -- Minimap middle click menu
 L["Raid Menu"] = "团队菜单"
 L["Remaining:"] = "剩余:"
 L["Rested:"] = "休息:"
-L["Right Click:"] = "鼠标右键："
+L["Right Click:"] = "鼠标右键:"
 L["Show BG Texts"] = "显示战场资讯文字"
 L["Talent Spec"] = true; --Column header in raidbrowser
 L["Toggle Chat Frame"] = "开关聊天框架"
@@ -289,7 +289,7 @@ L["TargetTarget Frame"] = "目标的目标框架"
 L["TargetTargetTarget Frame"] = "目标的目标的目标框架"
 L["Tooltip"] = "鼠标提示"
 L["Vehicle Seat Frame"] = "载具座位框"
-L["Zone Ability"] = true
+L["Zone Ability"] = "区域技能"
 L["DESC_MOVERCONFIG"] = [=[解除框架移动锁定. 现在可以移动它们, 移好后请点击「锁定」.
 
 Options:

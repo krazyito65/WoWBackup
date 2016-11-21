@@ -1,13 +1,9 @@
-## Interface: 60100
-## Version: 1.0.7
-## X-Date: 2015-02-25T08:56:51Z
+## Interface: 70100
+## Version: @project-version@
+## X-Date: @project-date-iso@
 ## X-Website: http://www.wowace.com/addons/libpubsub-1-0/
 ## X-License: MIT License
 ## X-Category: Library
-## X-Curse-Packaged-Version: 1.0.7
-## X-Curse-Project-Name: LibPubSub-1.0
-## X-Curse-Project-ID: libpubsub-1-0
-## X-Curse-Repository-ID: wow/libpubsub-1-0/mainline
 
 ## Title: Lib: PubSub
 ## Notes: Simple embeddable publish-subscribe implementation.

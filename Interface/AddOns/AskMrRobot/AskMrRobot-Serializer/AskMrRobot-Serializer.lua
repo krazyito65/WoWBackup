@@ -1,7 +1,7 @@
 -- AskMrRobot-Serializer will serialize and communicate character data between users.
 -- This is used primarily to associate character information to logs uploaded to askmrrobot.com.
 
-local MAJOR, MINOR = "AskMrRobot-Serializer", 46
+local MAJOR, MINOR = "AskMrRobot-Serializer", 48
 local Amr, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not Amr then return end -- already loaded by something else
@@ -148,13 +148,15 @@ Amr.FactionIds = {
 
 Amr.InstanceIds = {
 	EmeraldNightmare = 1520,
-	Nighthold = 1530
+	Nighthold = 1530,
+	TrialOfValor = 1648
 }
 
 -- instances that AskMrRobot currently supports logging for
 Amr.SupportedInstanceIds = {
 	[1520] = true,
-	[1530] = true
+	[1530] = true,
+	[1648] = true
 }
 
 -- just to make life easier, maps ID of each artifact weapon to the spec number (1-4)

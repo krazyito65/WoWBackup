@@ -16,7 +16,7 @@ DBM_CORE_BAD_LOAD					= "DBM has detected your mod for this instance failed to f
 DBM_CORE_LOAD_MOD_VER_MISMATCH		= "%s could not be loaded because your DBM-Core does not meet requirements. An updated version is required"
 
 DBM_CORE_WHATS_NEW					= "New in this version: Fixed a bug that caused 'Major Patch' force update/disable to trigger wrongfully for non major patch updates. DBM will no longer filter Broken Shore cut scenes regardless of user settings. Added Demonic Invasions mod. Minor Text Fixes"
-DBM_CORE_WHATS_NEW_LINK				= "In upcoming version of DBM, many features that relied on unit positions will be pruned. You can read more about why by |HDBM:forumsnews|h|cff3588ffclicking here|r"
+DBM_CORE_WHATS_NEW_LINK				= "Reminder: Many features that relied on unit positions have been limited. You can read more about why by |HDBM:forumsnews|h|cff3588ffclicking here|r"
 
 --Pre Patch 7.1 Notice
 DBM_CORE_NO_RANGE_SOON				= "Note: range radar will no longer be available within instances in patch 7.1"
@@ -375,6 +375,7 @@ DBM_CORE_AUTO_SPEC_WARN_OPTIONS = {
 DBM_CORE_AUTO_TIMER_TEXTS = {
 	target		= "%s: %%s",
 	cast		= "%s",
+	castsource	= "%s: %%s",
 	active		= "%s ends",--Buff/Debuff/event on boss
 	fades		= "%s fades",--Buff/Debuff on players
 	ai			= "%s AI",
@@ -394,6 +395,7 @@ DBM_CORE_AUTO_TIMER_TEXTS = {
 DBM_CORE_AUTO_TIMER_OPTIONS = {
 	target		= "Show timer for $spell:%s debuff",
 	cast		= "Show timer for $spell:%s cast",
+	castsource	= "Show timer (with source) for $spell:%s cast",
 	active		= "Show timer for $spell:%s duration",
 	fades		= "Show timer for when $spell:%s fades from players",
 	ai			= "Show AI timer for $spell:%s cooldown",

@@ -4,7 +4,7 @@
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
 ## SavedVariablesPerCharacter: DetailsTimeLineDB
-## X-Curse-Packaged-Version: r50
+## X-Curse-Packaged-Version: r51
 ## X-Curse-Project-Name: Details!: Time Line (plugin)
 ## X-Curse-Project-ID: details_timeline
 ## X-Curse-Repository-ID: wow/details_timeline/mainline

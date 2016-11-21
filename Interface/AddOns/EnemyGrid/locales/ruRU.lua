@@ -17,7 +17,7 @@ L["S_AGGROCOLORS_TANK_NOAGGRO_DESC"] = "Когда вы танк и мобы н�
 L["S_AGGROCOLORS_TANK_NOCOMBAT"] = "[танк] Вне боя"
 L["S_AGGROCOLORS_TANK_NOCOMBAT_DESC"] = "Когда враг не в бою с вами или участником вашей группы."
 L["S_ALPHA"] = "Прозрачность"
--- L["S_ALWAYSSHOWDEBUFFS"] = ""
+L["S_ALWAYSSHOWDEBUFFS"] = "Всегда отображать дебаффы"
 -- L["S_ALWAYSSHOWDEBUFFS_DESC"] = ""
 L["S_ANCHOR"] = "Привязка"
 L["S_ANCHOR_TOOLTIP"] = [=[|cFFFFFF00Правый-клик|r или '|cFFFFFF00/enemygrid|r' для настройки.
@@ -64,7 +64,7 @@ L["S_MENU_DEBUFFCONFIG"] = "Настройки дебаффов"
 L["S_MENU_KEYBINDS"] = "Назначение клавиш"
 L["S_MENU_MAINPANEL"] = "Общие настройки"
 L["S_NAMEPLATE_DISTANCE"] = "Расстояние табличек с именем"
-L["S_NAMEPLATE_DISTANCE_DESC"] = "Как далеко вы можете видеть таблички." -- Needs review
+L["S_NAMEPLATE_DISTANCE_DESC"] = "Как далеко вы можете видеть таблички."
 L["S_NAMEPLATE_DISTANCE_NOCOMBAT"] = "Вы не можете изменить во время боя."
 L["S_NEUTRAL"] = "Нейтральный"
 L["S_NPCCOLOR"] = "Цвет НИП (NPC)"

@@ -4,7 +4,7 @@ local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
-local CHARS_PER_FRAME = 11
+local CHARS_PER_FRAME = 12
 
 local gridCallbacks = {}
 

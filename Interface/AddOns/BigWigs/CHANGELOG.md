@@ -1,6 +1,11 @@
 # BigWigs
 
-## [v21.3-1-gaf24395](https://github.com/BigWigsMods/BigWigs/tree/af24395ca351c19450c7fd521b500d032b3b8314) (2016-10-31) [](#top)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v21.3...af24395ca351c19450c7fd521b500d032b3b8314)
+## [v24.2](https://github.com/BigWigsMods/BigWigs/tree/v24.2) (2016-11-20) [](#top)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v24.1...v24.2)
 
--   Nightmare/Xavius: Add percentage to stage warnings.  
+- add breathCounter to breath timers  
+- Odyn: add timers for normal mode (#105)  
+- Update zhCN/zhTW locale  
+- Guarm: Mythic debuffs and timers  
+- Helya: Add counter to Orbs  
+- Odyn: Fix mythic Expel Light timers  

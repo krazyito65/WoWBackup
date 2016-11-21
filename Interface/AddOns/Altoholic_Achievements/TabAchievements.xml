@@ -38,7 +38,7 @@
 		<Frames>
 			<Frame parentKey="SelectRealm" inherits="AltoRealmPickerTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeKey="$parent.Label1" relativePoint="BOTTOMLEFT" x="-25" y="-2" />
+					<Anchor point="TOPLEFT" relativeKey="$parent.Label1" relativePoint="BOTTOMLEFT" x="-30" y="-2" />
 				</Anchors>
 				<KeyValues>
 					<KeyValue key="menuWidth" value="100" type="number" />
@@ -48,7 +48,8 @@
 			<!-- Menu Icons -->
 			<Frame parentKey="ClassIcons" inherits="AltoClassIconsContainerTemplate">
 				<KeyValues>
-					<KeyValue key="numIcons" value="11" type="number" />
+					<!-- <KeyValue key="numIcons" value="11" type="number" /> -->
+					<KeyValue key="numIcons" value="12" type="number" />
 					<KeyValue key="iconTemplate" value="AltoTabAchievementsClassIconTemplate" />
 					<KeyValue key="tabName" value="Achievements" />
 				</KeyValues>

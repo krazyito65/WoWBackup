@@ -2478,6 +2478,9 @@ do
 					local bossName = DeathGraphs:GetBossName (mapId, bossIndex)
 					local L, R, T, B, icon = DeathGraphs:GetBossIcon (mapId, bossIndex)
 					
+					if (not bossName) then
+						bossName = "Unknown Boss"
+					end
 					tinsert (list, {value = hash, label = bossName .. " (" .. diffName .. ")", onclick = OnSelectBossEncounter, icon = icon, texcoord = {L, R, T, B}})
 				end
 				

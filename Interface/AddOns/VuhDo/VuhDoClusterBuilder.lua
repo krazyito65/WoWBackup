@@ -140,22 +140,25 @@ end
 --
 local tX1, tY1, tX2, tY2;
 local tIsValid;
+local tIsInInstance;
 local function VUHDO_determineDistanceBetween(aUnit, anotherUnit)
-	
-	--Quick return since we can't get any PlayerMapPositions in dungeons and BGs as of patch 7.1
-	local inInstance, instanceType = IsInInstance()
-	if inInstance then
-		return nil, nil
-	end
+	-- as of patch 7.1 APIs related to unit position/distance do not function inside instances
+	tIsInInstance, _ = IsInInstance();
 
+	if tIsInInstance then
+		return nil, nil;
+	end
+	
 	tIsValid = true;
 
+	-- as of patch 7.1 GetPlayerMapPosition() returns zero/nil inside certain zones
 	tX1, tY1 = GetPlayerMapPosition(aUnit);
 	if not tX1 or (tX1 + tY1 <= 0) then
 		VUHDO_CLUSTER_BLACKLIST[aUnit] = true;
 		tIsValid = false;
 	end
 
+	-- as of patch 7.1 GetPlayerMapPosition() returns zero/nil inside certain zones
 	tX2, tY2 = GetPlayerMapPosition(anotherUnit);
 	if not tX2 or (tX2 + tY2 <= 0) then
 		VUHDO_CLUSTER_BLACKLIST[anotherUnit] = true;

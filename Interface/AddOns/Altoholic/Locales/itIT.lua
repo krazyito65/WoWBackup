@@ -3,7 +3,6 @@
 if not L then return end
 
 L["28 Slot"] = "28 Scomparti"
-L["32 Keys Max"] = "32 Tasti Max"
 L["Abyssal Council"] = "Concilio dell'Abisso"
 L["Accessories"] = "Accessori"
 L["Account"] = true
@@ -164,6 +163,8 @@ L["COLOR_GREY"] = "Grigio" -- Needs review
 L["COLOR_ORANGE"] = "Arancione" -- Needs review
 L["COLOR_RED"] = "Rosso" -- Needs review
 L["COLOR_YELLOW"] = "Giallo" -- Needs review
+L["COLUMN_PROFESSION_1_TITLE_SHORT"] = "Prof. 1"
+L["COLUMN_PROFESSION_2_TITLE_SHORT"] = "Prof. 2" -- Needs review
 L["Compare with"] = "Confronta con" -- Needs review
 L["Conspicuous Urn"] = "Urna Cospicua" -- Needs review
 L["Containers"] = "Contenitori" -- Needs review
@@ -417,8 +418,6 @@ L["Primal Intent"] = "Intento Primordiale" -- Needs review
 L["Primal Mooncloth"] = "Telaluna Primordiale" -- Needs review
 L["Private to friends: %s"] = "Privato per gli amici: %s" -- Needs review
 L["Private to guild: %s"] = "Privato per la gilda: %s" -- Needs review
-L["Prof. 1"] = true -- Needs review
-L["Prof. 2"] = true -- Needs review
 L["Purple Lotus"] = "Fiore di Loto Purpureo" -- Needs review
 L["PVP Cloth Set"] = "Set di stoffa da PVP" -- Needs review
 L["PVP Leather Sets"] = "Set di cuoio da PVP" -- Needs review

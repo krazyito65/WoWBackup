@@ -13,8 +13,8 @@ local function _SetColumnData(frame, character, column)
 	frame:Show()
 
 	-- Set Scripts
-	frame:SetScript("OnEnter", column.OnEnter)
-	frame:SetScript("OnClick", column.OnClick)
+	frame:SetScript("OnEnter", column.OnEnter or EmptyFunc)
+	frame:SetScript("OnClick", column.OnClick or EmptyFunc)
 end
 
 local function _SetColumnTotal(frame, line, column)
@@ -28,7 +28,8 @@ local function _SetColumnTotal(frame, line, column)
 		frame.Text:SetJustifyH(column.JustifyH)
 	end
 
-	if column.GetTotal ~= EmptyFunc then
+	-- if column.GetTotal ~= EmptyFunc then
+	if type(column.GetTotal) == "function" then
 		frame.Text:SetText(column.GetTotal(line))
 		frame:Show()
 	else

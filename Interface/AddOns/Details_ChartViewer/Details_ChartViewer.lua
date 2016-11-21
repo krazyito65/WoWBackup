@@ -16,7 +16,7 @@ local CVF = ChartViewer.Frame
 --> desc
 ChartViewer:SetPluginDescription ("View data collected by Details! on simple line charts.")
 
-local plugin_version = "v2.4a" 
+local plugin_version = "v2.5" 
 
 local function CreatePluginFrames (data)
 
@@ -332,9 +332,20 @@ end
 
 		end
 		
+		--if is a boss encounter,force close the window
+		local check_for_boss = function()
+			if (_detalhes and _detalhes.tabela_vigente and _detalhes.tabela_vigente.is_boss) then
+				if (CVF and CVF:IsShown()) then
+					CVF:Hide()
+				end
+			end
+		end
+		
 		function ChartViewer:OnCombatEnter()
 			ChartViewer.current_on_combat = true
 			ChartViewer.capturing_data = true
+			
+			C_Timer.After (1, check_for_boss)
 		end
 	
 ----------> Icon show functions

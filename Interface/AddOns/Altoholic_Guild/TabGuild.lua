@@ -4,9 +4,6 @@ local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
-
-addon.Guild = {}
-
 -- *** Event Handlers ***
 
 local function OnGuildAltsReceived(frame, event, sender, alts)

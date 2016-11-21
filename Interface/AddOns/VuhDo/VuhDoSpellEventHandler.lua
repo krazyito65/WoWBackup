@@ -7,6 +7,7 @@ local InCombatLockdown = InCombatLockdown;
 local VUHDO_updateAllHoTs;
 local VUHDO_updateAllCyclicBouquets;
 local VUHDO_initGcd;
+local VUHDO_strempty;
 
 local VUHDO_ACTIVE_HOTS;
 local VUHDO_RAID_NAMES;
@@ -14,7 +15,7 @@ local VUHDO_CONFIG = { };
 
 local sIsShowGcd;
 local sUniqueSpells = { };
-local sFirstRes, sSecondRes;
+local sFirstRes, sSecondRes, sThirdRes;
 local sEmpty = { };
 
 
@@ -22,6 +23,7 @@ function VUHDO_spellEventHandlerInitLocalOverrides()
 	VUHDO_updateAllHoTs = _G["VUHDO_updateAllHoTs"];
 	VUHDO_updateAllCyclicBouquets = _G["VUHDO_updateAllCyclicBouquets"];
 	VUHDO_initGcd = _G["VUHDO_initGcd"];
+	VUHDO_strempty = _G["VUHDO_strempty"];
 
 	VUHDO_ACTIVE_HOTS = _G["VUHDO_ACTIVE_HOTS"];
 	VUHDO_RAID_NAMES = _G["VUHDO_RAID_NAMES"];
@@ -35,7 +37,7 @@ function VUHDO_spellEventHandlerInitLocalOverrides()
 		sUniqueSpells[tSpellName] = tUniqueCategs[tSpellName];
 	end
 
-	sFirstRes, sSecondRes = VUHDO_getResurrectionSpells();
+	sFirstRes, sSecondRes, sThirdRes = VUHDO_getResurrectionSpells();
 end
 
 
@@ -99,30 +101,38 @@ end
 local tTargetUnit;
 local tCateg;
 function VUHDO_spellcastSent(aUnit, aSpellName, aSpellRank, aTargetName)
-	if "player" ~= aUnit or not aTargetName then return; end
+	if "player" ~= aUnit then return; end
 
 	if sIsShowGcd then VUHDO_initGcd(); end
+
+	-- Resurrection?
+	if aSpellName == sFirstRes or aSpellName == sSecondRes or aSpellName == sThirdRes then
+		if aTargetName and not VUHDO_strempty(aTargetName) then 
+			aTargetName = smatch(aTargetName, "^[^-]*");
+
+			if not VUHDO_RAID_NAMES[aTargetName] then
+				return;
+			end
+		end
+
+		if VUHDO_CONFIG["RES_IS_SHOW_TEXT"] then
+			local tChannel = (UnitInBattleground("player") or HasLFGRestrictions()) and "INSTANCE_CHAT"
+				or IsInRaid() and "RAID" or IsInGroup() and "PARTY" or nil;
+
+			if tChannel then
+				SendChatMessage((gsub(VUHDO_strempty(aTargetName) and VUHDO_CONFIG["RES_ANNOUNCE_MASS_TEXT"] or VUHDO_CONFIG["RES_ANNOUNCE_TEXT"], "[Vv][Uu][Hh][Dd][Oo]", aTargetName or "")), tChannel);
+			end
+		end
+
+		return;
+	end
+
+	if not aTargetName then return; end
 
 	aTargetName = smatch(aTargetName, "^[^-]*");
 	tTargetUnit = VUHDO_RAID_NAMES[aTargetName];
 
 	if not tTargetUnit then return; end
-
-	-- Resurrection?
-	if aSpellName == sFirstRes or aSpellName == sSecondRes then
-
-		if VUHDO_CONFIG["RES_IS_SHOW_TEXT"] then
-
-			local tChannel = (UnitInBattleground("player") or HasLFGRestrictions()) and "INSTANCE_CHAT"
-				or IsInRaid() and "RAID" or IsInGroup() and "PARTY" or nil;
-
-			if tChannel then
-				SendChatMessage((gsub(VUHDO_CONFIG["RES_ANNOUNCE_TEXT"], "[Vv][Uu][Hh][Dd][Oo]", aTargetName)), tChannel);
-			end
-
-		end
-		return;
-	end
 
 	tCateg = sUniqueSpells[aSpellName];
 	if tCateg and not InCombatLockdown()

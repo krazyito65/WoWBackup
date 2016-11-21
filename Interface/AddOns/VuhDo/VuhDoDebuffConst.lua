@@ -47,7 +47,10 @@ VUHDO_INIT_DEBUFF_ABILITIES = {
 
 
 
-VUHDO_SPEC_TO_DEBUFF_ABIL = { };
+VUHDO_SPEC_TO_DEBUFF_ABIL = { 
+	[115450] = GetSpellInfo(115450), -- MW Monk "Detox"
+	[218164] = GetSpellInfo(218164), -- WW/BM Monk "Detox"
+};
 
 
 

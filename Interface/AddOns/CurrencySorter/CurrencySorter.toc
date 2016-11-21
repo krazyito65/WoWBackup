@@ -1,6 +1,6 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Currency Sorter
-## Notes: Up your WoD
+## Notes: Move around the currency categories
 ## Author: Andols
 ## SavedVariablesPerCharacter: Cs_order
 Cs.xml

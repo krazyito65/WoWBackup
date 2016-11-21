@@ -1,14 +1,14 @@
 ﻿local addonName = "Altoholic"
 local addon = _G[addonName]
 
-local function _ShowChildFrames(self)
-	for _, child in ipairs( {self} ) do
+local function _ShowChildFrames(frame)
+	for _, child in ipairs( {frame} ) do
 		child:Show()
 	end
 end
 
-local function _HideChildFrames(self)
-	for _, child in ipairs( {self} ) do
+local function _HideChildFrames(frame)
+	for _, child in ipairs( {frame} ) do
 		child:Hide()
 	end
 end

@@ -11,7 +11,7 @@ mod:RegisterEnableMob(52409)
 --
 
 function mod:OnBossEnable()
-	self:Log("SPELL_CAST_START", "SulfurasSmash", 98710, 100890, 100892)
+	self:Log("SPELL_CAST_START", "SulfurasSmash", 98710)
 
 	self:RegisterEvent("INSTANCE_ENCOUNTER_ENGAGE_UNIT", "CheckBossStatus")
 

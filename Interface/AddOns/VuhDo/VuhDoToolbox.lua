@@ -524,9 +524,15 @@ end
 
 
 --
+local tResurrectionSpells;
 function VUHDO_getResurrectionSpells()
-	return (VUHDO_RESURRECTION_SPELLS[VUHDO_PLAYER_CLASS] or sEmpty)[1],
-		(VUHDO_RESURRECTION_SPELLS[VUHDO_PLAYER_CLASS] or sEmpty)[2];
+	tResurrectionSpells = (VUHDO_RESURRECTION_SPELLS[VUHDO_PLAYER_CLASS] or sEmpty)[GetSpecialization() or 0];
+
+	if tResurrectionSpells then
+		return unpack(tResurrectionSpells);
+	else
+		return nil;
+	end
 end
 
 
@@ -774,8 +780,12 @@ end
 local tPlayerX, tPlayerY;
 local tUnitX, tUnitY;
 local tFacing;
+local tIsInInstance;
 function VUHDO_getUnitDirection(aUnit)
-	if (WorldMapFrame ~= nil and WorldMapFrame:IsShown())
+	-- as of patch 7.1 GetPlayerFacing()/GetPlayerMapPosition() do not function inside instances
+	tIsInInstance, _ = IsInInstance();
+
+	if tIsInInstance or (WorldMapFrame ~= nil and WorldMapFrame:IsShown())
 		or (GetMouseFocus() ~= nil and GetMouseFocus():GetName() == nil) then
 		return nil;
 	end

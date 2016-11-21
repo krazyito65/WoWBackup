@@ -11,14 +11,16 @@ local artifactXP = _G.LibStub("LibDataBroker-1.1"):NewDataObject("Artifact", {
 local function artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, artifactXP)
   local numPoints = 0;
   local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent);
+	
   while artifactXP >= xpForNextPoint and xpForNextPoint > 0 do
-	artifactXP = artifactXP - xpForNextPoint;
-	
-	pointsSpent = pointsSpent + 1;
-	numPoints = numPoints + 1;
-	
-	xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent);
+		artifactXP = artifactXP - xpForNextPoint;
+		
+		pointsSpent = pointsSpent + 1;
+		numPoints = numPoints + 1;
+		
+		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent);
   end
+	
   return numPoints, artifactXP, xpForNextPoint;
 end
 

@@ -39,6 +39,9 @@ VER 3 0000000000000087 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [@cursor] efflorescence
 END
+VER 3 0000000000000088 " " "ABILITY_MONK_TOUCHOFKARMA"
+/script WeakAuras.ScanEvents("ENCOUNTER_START")
+END
 VER 3 0000000000000052 "  conformation" "SPELL_ARCANE_ARCANE01"
 /click StaticPopup1Button1
 END

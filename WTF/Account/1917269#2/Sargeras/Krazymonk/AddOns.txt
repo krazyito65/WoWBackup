@@ -390,7 +390,7 @@ epgp-lootmaster-fp: disabled
 ExRT: disabled
 ExtraCD: disabled
 Fatality: disabled
-fontain: disabled
+fontain: enabled
 GCD: disabled
 Gnosis: disabled
 GoGoMount: disabled

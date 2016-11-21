@@ -3,7 +3,6 @@
 if not L then return end
 
 L["28 Slot"] = "28格"
-L["32 Keys Max"] = "最大32格"
 L["Abyssal Council"] = "深渊议会"
 L["Accessories"] = "配件"
 L["Account"] = "账号"
@@ -177,6 +176,8 @@ L["COLOR_GREY"] = "灰色" -- Needs review
 L["COLOR_ORANGE"] = "橙色" -- Needs review
 L["COLOR_RED"] = "红色" -- Needs review
 L["COLOR_YELLOW"] = "黄色" -- Needs review
+L["COLUMN_PROFESSION_1_TITLE_SHORT"] = "商业技能"
+L["COLUMN_PROFESSION_2_TITLE_SHORT"] = "辅助技能" -- Needs review
 L["Compare with"] = "与...比较" -- Needs review
 L["Conquest"] = "征服点数" -- Needs review
 L["Conspicuous Urn"] = "明显的墓碑"
@@ -482,8 +483,6 @@ L["Primal Intent"] = "原始打击"
 L["Primal Mooncloth"] = "原始月布"
 L["Private to friends: %s"] = "对好友保密: %s"
 L["Private to guild: %s"] = "对公会保密: %s"
-L["Prof. 1"] = "商业技能"
-L["Prof. 2"] = "辅助技能"
 L["Purple Lotus"] = "紫莲花"
 L["PVP Cloth Set"] = "PVP布甲套装"
 L["PVP Leather Sets"] = "PVP皮甲套装"

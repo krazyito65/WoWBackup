@@ -5,7 +5,7 @@
 ## SavedVariables: ActionBarSaverDB
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Slash: /actionbarsaver, /abs
-## X-Curse-Packaged-Version: v2.3.3
+## X-Curse-Packaged-Version: v2.3.3-1-gb9901cb
 ## X-Curse-Project-Name: Action Bar Saver
 ## X-Curse-Project-ID: action-bar-saver
 ## X-Curse-Repository-ID: wow/action-bar-saver/mainline

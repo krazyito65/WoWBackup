@@ -8,7 +8,6 @@ local L = LibStub("AceLocale-3.0"):NewLocale( "Altoholic", "ruRU" )
 if not L then return end
 
 L["28 Slot"] = "28 ячеек"
-L["32 Keys Max"] = "32 ключа максимум"
 L["Abyssal Council"] = "Совет Бездны"
 L["Accessories"] = "Аксессуары"
 L["Account"] = "Уч.запись"
@@ -179,6 +178,9 @@ L["COLOR_GREY"] = "Серый" -- Needs review
 L["COLOR_ORANGE"] = "Оранжевый" -- Needs review
 L["COLOR_RED"] = "Красный" -- Needs review
 L["COLOR_YELLOW"] = "Желтый" -- Needs review
+L["COLUMN_LEVEL_TITLE"] = "Уровень персонажа"
+L["COLUMN_PROFESSION_1_TITLE_SHORT"] = "Проф. 1"
+L["COLUMN_PROFESSION_2_TITLE_SHORT"] = "Проф. 2" -- Needs review
 L["Compare with"] = "Сравнить с"
 L["Conspicuous Urn"] = "Подозрительная урна"
 L["Containers"] = "Сумки"
@@ -477,8 +479,6 @@ L["Primal Intent"] = "Изначальная цель"
 L["Primal Mooncloth"] = "Изначальная луноткань"
 L["Private to friends: %s"] = "Лично для друзей: %s"
 L["Private to guild: %s"] = "Лично для гильдии: %s"
-L["Prof. 1"] = "Проф. 1"
-L["Prof. 2"] = "Проф. 2"
 L["Purple Lotus"] = "Лиловый лотос"
 L["PVP Cloth Set"] = "Тряпичный ПвП комплект"
 L["PVP Leather Sets"] = "Кожаный ПвП комплект"

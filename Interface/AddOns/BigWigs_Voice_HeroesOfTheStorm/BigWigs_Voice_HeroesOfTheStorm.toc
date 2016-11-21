@@ -1,23 +1,23 @@
-## Interface: 70000
-## Title: Big Wigs |cffff7f3f+|r|cffffffffVoice: Heroes of the Storm|r
-## Title-deDE: Big Wigs |cffff7f3f+|r|cffffffffStimme: Heroes of the Storm|r
-## Title-esES: Big Wigs |cffff7f3f+|r|cffffffffVoz: Heroes of the Storm|r
-## Title-frFR: Big Wigs |cffff7f3f+|r|cffffffffVoix: Heroes of the Storm|r
-## Title-itIT: Big Wigs |cffff7f3f+|r|cffffffffVoce: Heroes of the Storm|r
-## Title-koKR: Big Wigs |cffff7f3f+|r|cffffffff음성 : 히어로즈 오브 더 스톰|r
-## Title-ptBR: Big Wigs |cffff7f3f+|r|cffffffffVoz: Heroes of the Storm|r
-## Title-ruRU: Big Wigs |cffff7f3f+|r|cffffffffГолос: Heroes of the Storm|r
-## Title-zhCN: Big Wigs |cffff7f3f+|r|cffffffff声音：风暴英雄|r
-## Title-zhTW: Big Wigs |cffff7f3f+|r|cffffffff聲音：暴雪英霸|r
+## Interface: 70100
+## Title: BigWigs |cffff7f3f+|r|cffffffffVoice: Heroes of the Storm|r
+## Title-deDE: BigWigs |cffff7f3f+|r|cffffffffStimme: Heroes of the Storm|r
+## Title-esES: BigWigs |cffff7f3f+|r|cffffffffVoz: Heroes of the Storm|r
+## Title-frFR: BigWigs |cffff7f3f+|r|cffffffffVoix: Heroes of the Storm|r
+## Title-itIT: BigWigs |cffff7f3f+|r|cffffffffVoce: Heroes of the Storm|r
+## Title-koKR: BigWigs |cffff7f3f+|r|cffffffff음성 : 히어로즈 오브 더 스톰|r
+## Title-ptBR: BigWigs |cffff7f3f+|r|cffffffffVoz: Heroes of the Storm|r
+## Title-ruRU: BigWigs |cffff7f3f+|r|cffffffffГолос: Heroes of the Storm|r
+## Title-zhCN: BigWigs |cffff7f3f+|r|cffffffff声音：风暴英雄|r
+## Title-zhTW: BigWigs |cffff7f3f+|r|cffffffff聲音：暴雪英霸|r
 ## Author: Neb
-## Version: 1.0
+## Version: r31-release
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
 ## X-BigWigs-LoadOn-CoreEnabled: 1
-## X-Curse-Packaged-Version: r21-release
+## X-Curse-Packaged-Version: r31-release
 ## X-Curse-Project-Name: BigWigs_Voice_HeroesOfTheStorm
 ## X-Curse-Project-ID: bigwigs_voice_heroesofthestorm
 ## X-Curse-Repository-ID: wow/bigwigs_voice_heroesofthestorm/mainline
 
-Locales.lua
 Core.lua
+Locales.lua

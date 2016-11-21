@@ -1,3 +1,72 @@
+Version 3.79
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Fixed an issue where Shaman 'Healing Stream Totem' would not cast
+-- Fixed resurrection spell cast announcement
+-- Fixed Paladin non-healer smart cast resurrection
+-- Blizzard fixed the font drop shadow offset on their end finally
+
+
+Improvements:
+-- Added default custom debuffs for Trial of Valor raid encounters
+-- Added debuff absorption tracking for ToV 'Shadow Lick'
+-- Added debuff absorption tracking for ToV 'Corrupted Axion'
+-- Added seperate cast announcement for 'mass' resurrection spells
+
+
+--------------------------------------------------------------
+Version 3.78
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Fixed handling of empty values in health related combat log events
+-- Disabled retrieval of unit facing and map position inside instances
+-- Fixed font dropshadow offset which Blizzard broke in 7.1
+--   Shadow offset is not scaling properly with resolution
+--   Hardcoded the offset to be optimal for 1920x1080 for now
+-- Fixed ability to bind Priest 'Shadow Mend' to a mouse/key directly
+-- Default custom debuffs will now always be added by spell ID
+--   This resolves numerous issues with ambiguous debuff names
+--   Please consider a complete reset of your custom debuff settings 
+--   This can be done under 'VuhDo Options > Tools > Reset > Buffs/HoTs' 
+-- Removed default custom debuff spell IDs that were no longer valid
+-- Fixed mapping of ambiguous Monk "Detox" debuff abilities by spec
+-- Removed some default custom debuffs for Emerald Nightmare encounters
+--   If there are too many debuffs for your taste then reset:
+--     'VuhDo Options > Tools > Reset > Buffs/HoTs > Custom Debuffs'
+--   Beware you will loose all previous custom debuff settings!
+
+
+Improvements:
+-- Out of combat smart cast resurrection now prefers 'mass' spells
+
+
+--------------------------------------------------------------
 Version 3.77
 
 

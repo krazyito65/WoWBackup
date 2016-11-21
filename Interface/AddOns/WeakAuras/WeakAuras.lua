@@ -2145,42 +2145,49 @@ function WeakAuras.PerformActions(data, type, region)
   end
 
   if(actions.do_message and actions.message_type and actions.message and not squelch_actions) then
+    local message = actions.message;
+    if (message:find('%%')) then
+      for k, v in pairs(region.values) do
+        print(k, v);
+      end
+      message = WeakAuras.ReplacePlaceHolders(message, region.values, region.state);
+    end
     if(actions.message_type == "PRINT") then
-      DEFAULT_CHAT_FRAME:AddMessage(actions.message, actions.r or 1, actions.g or 1, actions.b or 1);
+      DEFAULT_CHAT_FRAME:AddMessage(message, actions.r or 1, actions.g or 1, actions.b or 1);
     elseif(actions.message_type == "COMBAT") then
     if(CombatText_AddMessage) then
-      CombatText_AddMessage(actions.message, COMBAT_TEXT_SCROLL_FUNCTION, actions.r or 1, actions.g or 1, actions.b or 1);
+      CombatText_AddMessage(message, COMBAT_TEXT_SCROLL_FUNCTION, actions.r or 1, actions.g or 1, actions.b or 1);
     end
     elseif(actions.message_type == "WHISPER") then
     if(actions.message_dest) then
       if(actions.message_dest == "target" or actions.message_dest == "'target'" or actions.message_dest == "\"target\"" or actions.message_dest == "%t" or actions.message_dest == "'%t'" or actions.message_dest == "\"%t\"") then
-      WeakAuras.Announce(actions.message, "WHISPER", nil, UnitName("target"), data.id, type);
+      WeakAuras.Announce(message, "WHISPER", nil, UnitName("target"), data.id, type);
       else
-      WeakAuras.Announce(actions.message, "WHISPER", nil, actions.message_dest, data.id, type);
+      WeakAuras.Announce(message, "WHISPER", nil, actions.message_dest, data.id, type);
       end
     end
     elseif(actions.message_type == "CHANNEL") then
     local channel = actions.message_channel and tonumber(actions.message_channel);
     if(GetChannelName(channel)) then
-      WeakAuras.Announce(actions.message, "CHANNEL", nil, channel, data.id, type);
+      WeakAuras.Announce(message, "CHANNEL", nil, channel, data.id, type);
     end
     elseif(actions.message_type == "SMARTRAID") then
       local isInstanceGroup = IsInGroup(LE_PARTY_CATEGORY_INSTANCE)
       if UnitInBattleground("player") then
-        SendChatMessage(actions.message, "INSTANCE_CHAT")
+        SendChatMessage(message, "INSTANCE_CHAT")
       elseif UnitInRaid("player") then
-        SendChatMessage(actions.message, "RAID")
+        SendChatMessage(message, "RAID")
       elseif UnitInParty("player") then
         if isInstanceGroup then
-          SendChatMessage(actions.message, "INSTANCE_CHAT")
+          SendChatMessage(message, "INSTANCE_CHAT")
         else
-          SendChatMessage(actions.message, "PARTY")
+          SendChatMessage(message, "PARTY")
         end
       else
-        SendChatMessage(actions.message, "SAY")
+        SendChatMessage(message, "SAY")
       end
     else
-    WeakAuras.Announce(actions.message, actions.message_type, nil, nil, data.id, type);
+    WeakAuras.Announce(message, actions.message_type, nil, nil, data.id, type);
     end
   end
 
@@ -2347,10 +2354,10 @@ function WeakAuras.UpdateAnimations()
 
       if(anim.loop) then
         WeakAuras.Animate(anim.namespace, anim.data,
-                          anim.type, anim.anim,
-                          anim.region, anim.inverse,
-                          anim.onFinished, anim.loop,
-                          anim.cloneId);
+        anim.type, anim.anim,
+        anim.region, anim.inverse,
+        anim.onFinished, anim.loop,
+        anim.cloneId);
       elseif(anim.onFinished) then
         anim.onFinished();
       end
@@ -3159,16 +3166,7 @@ local function startStopTimers(id, cloneId, triggernum, state)
               WeakAuras.UpdatedTriggerState(id);
             end
           end,
-          -- We don't want to hide immediately on the expirationTime as that can create flicker.
-          -- That is: Consider two auras that track a cooldown or a buff with inverse Conditions
-          -- What we want to have, is that if one aura hides the other aura is shown
-          -- Now a aura is either hidden by receiving a COOLDOWN_CHANGED, or AURA_APPLIED/AURA_REMOVED event
-          -- or because the autoHide timer expired
-          -- Since there's not a 100% synchronization between when the autoHide timer expires and when
-          -- the event happens, we delay the autoHide timer for a bit, so that we usually get the event
-          -- first
-          -- Note: Maybe having the autoHide timer is actually unnecessary for most auras...
-          state.expirationTime - GetTime() + 0.03);
+          state.expirationTime - GetTime());
         record.expirationTime = state.expirationTime;
       end
     else -- no auto hide, delete timer

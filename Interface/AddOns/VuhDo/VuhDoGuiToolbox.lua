@@ -746,7 +746,9 @@ function VUHDO_customizeIconText(aParent, aHeight, aLabel, aSetup)
 	end
 
 	aLabel:SetFont(aSetup["FONT"], tFactor * aSetup["SCALE"], tOutline);
+	
 	aLabel:SetShadowOffset(1, -1);
+
 	aLabel:SetText("");
 end
 

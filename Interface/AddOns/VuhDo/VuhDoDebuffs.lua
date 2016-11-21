@@ -60,7 +60,7 @@ local _;
 local tostring = tostring;
 
 local sIsNotRemovableOnly;
-local sIsNotRemoveableOnlyIcons;
+local sIsNotRemovableOnlyIcons;
 local sIsUseDebuffIcon;
 local sIsUseDebuffIconBossOnly;
 local sIsMiBuColorsInFight;
@@ -78,7 +78,7 @@ function VUHDO_debuffsInitLocalOverrides()
 	VUHDO_shouldScanUnit = _G["VUHDO_shouldScanUnit"];
 
 	sIsNotRemovableOnly = not VUHDO_CONFIG["DETECT_DEBUFFS_REMOVABLE_ONLY"];
-	sIsNotRemoveableOnlyIcons = not VUHDO_CONFIG["DETECT_DEBUFFS_REMOVABLE_ONLY_ICONS"];
+	sIsNotRemovableOnlyIcons = not VUHDO_CONFIG["DETECT_DEBUFFS_REMOVABLE_ONLY_ICONS"];
 	sIsUseDebuffIcon = VUHDO_PANEL_SETUP["BAR_COLORS"]["useDebuffIcon"];
 	sIsUseDebuffIconBossOnly = VUHDO_PANEL_SETUP["BAR_COLORS"]["useDebuffIconBossOnly"];
 	sIsMiBuColorsInFight = VUHDO_BUFF_SETTINGS["CONFIG"]["BAR_COLORS_IN_FIGHT"];
@@ -334,7 +334,7 @@ function VUHDO_determineDebuff(aUnit)
 				and tIsRelevant then
 
 				if sIsUseDebuffIcon and (tIsBossDebuff or not sIsUseDebuffIconBossOnly)
-					and (sIsNotRemoveableOnlyIcons or tAbility ~= nil) then
+					and (sIsNotRemovableOnlyIcons or tAbility ~= nil) then
 
 					sCurIcons[tName] = VUHDO_getOrCreateIconArray(tIcon, tExpiry, tStacks, tDuration, false, tSpellId);
 					sCurIsStandard = true;

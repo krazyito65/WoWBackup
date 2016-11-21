@@ -14,7 +14,7 @@ local maxdiff = 23 -- max number of instance difficulties
 local maxcol = 4 -- max columns per player+instance
 
 addon.svnrev = {}
-addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 535 $"):match("%d+"))
+addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 538 $"):match("%d+"))
 
 -- local (optimal) references to provided functions
 local table, math, bit, string, pairs, ipairs, unpack, strsplit, time, type, wipe, tonumber, select, strsub = 
@@ -99,6 +99,7 @@ local currency = {
   1273,-- Seal of Broken Fate
   1149,-- Sightless Eye
   1275,-- Curious Coin
+  1314,-- Lingering Soul Fragment
 }
 addon.currency = currency
 
@@ -184,11 +185,11 @@ addon.WorldBosses = {
   [1756] = { quest=42269, expansion=6, level=110 }, -- The Soultakers
   [1763] = { quest=42779, expansion=6, level=110 }, -- Shar'thos
   [1769] = { quest=43192, expansion=6, level=110 }, -- Levantus
-  --[1770] = { quest=, expansion=6, level=110 }, -- Humongris
+  [1770] = { quest=42819, expansion=6, level=110 }, -- Humongris
   [1774] = { quest=43193, expansion=6, level=110 }, -- Calamir
-  --[1783] = { quest=, expansion=6, level=110 }, -- Na'zak the Fiend
+  [1783] = { quest=43513, expansion=6, level=110 }, -- Na'zak the Fiend
   [1789] = { quest=43448, expansion=6, level=110 }, -- Drugon the Frostblood
-  --[1790] = { quest=, expansion=6, level=110 }, -- Ana-Mouz
+  [1790] = { quest=43512, expansion=6, level=110 }, -- Ana-Mouz
   [1795] = { quest=43985, expansion=6, level=110 }, -- Flotsam
   [1796] = { quest=44287, expansion=6, level=110 }, -- Withered Jim
 

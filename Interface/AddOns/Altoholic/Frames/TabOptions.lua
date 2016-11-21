@@ -120,6 +120,22 @@ local support = {
 
 -- this content will be subject to frequent changes, do not bother translating it !!
 local whatsnew = {
+	{	name = "7.1.003 Changes",
+		bulletedList = {
+			"Added a row for the 12th character on both the achievements and grids tabs.",
+		},
+	},
+	{	name = "7.1.002 Changes",
+		bulletedList = {
+			"DataStore_Quests: Fixed a tainting issue that prevented players from queuing into battlegrounds.",
+			"DataStore_Talents: Added support for artifact data.",
+			"DataStore_Garrisons: Added support for tracking of next artifact research.",
+			"Summary tab: added an extra panel for artifact data.",
+			"Summary tab: added a tooltip for all column headers, and some OnClick actions behind a few buttons.",
+			"Summary tab: removed honor & conquest currencies, they were replaced by Order Hall resources & Seal of the Broken Fate.",
+			"Fixed a few other Lua errors.",
+		},
+	},
 	{	name = "7.1.001 Changes",
 		bulletedList = {
 			"DataStore_Quests: added an option to select the hour at which daily quests are reset.",
@@ -129,44 +145,6 @@ local whatsnew = {
 			"LibCraftReagents is now deprecated, its functionality is now handled by DataStore_Crafts, which now has access to all recipes (even unlearned).",
 			"DataStore_Mails: Fixed the invalid attachment counts in the tooltip for mails sent by guild mates.",
 			"Removed LibBabble-Inventory, replaced the translations it provided by values returned by the game's API.",
-		},
-	},
-	{	name = "7.0.006 Changes",
-		bulletedList = {
-			"DataStore: Fixed guild identification when the character is on a different realm than the guild.",
-			"Grids: Updated Archeology races and items for Legion.",
-		},
-	},
-	{	name = "7.0.005 Changes",
-		bulletedList = {
-			"DataStore: Fixed a lua error when getting AutoCompleteRealms.",
-		},
-	},
-	{	name = "7.0.004 Changes",
-		bulletedList = {
-			"Fixed issues related to connected realms (guild bank, tooltips, etc..)",
-		},
-	},
-	{	name = "7.0.003 Changes",
-		bulletedList = {
-			"Profession level cap raised to 800.",
-			"Fixed the counts not being shown in the item tooltip when mousing over a craft reagent in the tradeskill UI.",
-			"Fixed a Lua error when clicking on a recipe link in the chat log.",
-			"Fixed a Lua error when checking the guild bank tab.",
-			"DataStore_Talents: Rewrote scanning of talent information, UI will come back in a future release.",
-		},
-	},
-	{	name = "7.0.002 Changes",
-		bulletedList = {
-			"DataStore_Garrisons: Fixed a few Lua errors.",
-			"DataStore_Mails: Fixed the invalid attachment counts in the tooltip (note: you will have to visit the mailboxes that have a wrong count to correct it, it's not a display error, it's a database error)",
-		},
-	},
-	{	name = "7.0.001 Changes",
-		bulletedList = {
-			"Various fixes to support 7.0 API changes.",
-			"Glyph UI has been removed.",
-			"Tabard UI has been removed.",
 		},
 	},
 	{	name = "Earlier changes",

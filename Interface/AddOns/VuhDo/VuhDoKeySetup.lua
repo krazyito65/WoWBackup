@@ -54,11 +54,16 @@ end
 
 local VUHDO_REZ_SPELLS_NAMES = {
 	[VUHDO_SPELL_ID.REDEMPTION] = true,
+	[VUHDO_SPELL_ID.ABSOLUTION] = true,
 	[VUHDO_SPELL_ID.ANCESTRAL_SPIRIT] = true,
+	[VUHDO_SPELL_ID.ANCESTRAL_VISION] = true,
 	[VUHDO_SPELL_ID.REVIVE] = true,
 	[VUHDO_SPELL_ID.REBIRTH] = true,
+	[VUHDO_SPELL_ID.REVITALIZE] = true,
 	[VUHDO_SPELL_ID.RESURRECTION] = true,
+	[VUHDO_SPELL_ID.MASS_RESURRECTION] = true,
 	[VUHDO_SPELL_ID.RESUSCITATE] = true,
+	[VUHDO_SPELL_ID.REAWAKEN] = true,
 };
 
 
@@ -403,7 +408,7 @@ function VUHDO_setupSmartCast(aButton)
 
 	-- Resurrect?
 	if VUHDO_CONFIG["SMARTCAST_RESURRECT"] and tInfo["dead"] then
-		local tMainRes, _ = VUHDO_getResurrectionSpells();
+		local tMainRes = VUHDO_getResurrectionSpells();
 		if tMainRes then
 			VUHDO_setupAllButtonsTo(aButton, tMainRes);
 			return true;

@@ -27,7 +27,7 @@ local RaidPowerBarsFrame = RaidPowerBars.Frame
 
 RaidPowerBars:SetPluginDescription ("Alternative or Raid Power Bar are the special power bars present on specified encounters like The Stone Guard on Mogu'shan Vaults, Norushen on Siege or Orgrimmar and others.")
 
-RaidPowerBars.version_string = "v1.6b"
+RaidPowerBars.version_string = "v1.7"
 
 local function CreatePluginFrames (data)
 	
@@ -211,6 +211,14 @@ local function CreatePluginFrames (data)
 				if (power and mpower) then
 					power_bar_table [#power_bar_table+1] = {_UnitName ("party"..i), power, mpower, class}
 				end
+			end
+			
+			--need to add the player it self
+			local power = UnitPower ("player", ALTERNATE_POWER_INDEX)
+			local mpower = UnitPowerMax ("player", ALTERNATE_POWER_INDEX)
+			local _, class = UnitClass ("player")
+			if (power and mpower) then
+				power_bar_table [#power_bar_table+1] = {_UnitName ("player"), power, mpower, class}
 			end
 		end
 		

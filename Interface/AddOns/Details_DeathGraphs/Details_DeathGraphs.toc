@@ -4,7 +4,7 @@
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
 ## SavedVariablesPerCharacter: DeathGraphsDBDeaths, DeathGraphsDBEndurance, DeathGraphsDBCurrent, DeathGraphsDBGraph
-## X-Curse-Packaged-Version: r47
+## X-Curse-Packaged-Version: r48
 ## X-Curse-Project-Name: Details!: Advanced Death Logs (plugin)
 ## X-Curse-Project-ID: details-advanced-death-logs-plug
 ## X-Curse-Repository-ID: wow/details-advanced-death-logs-plug/mainline

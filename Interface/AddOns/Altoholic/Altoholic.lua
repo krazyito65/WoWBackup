@@ -129,14 +129,15 @@ local Orig_SendMailNameEditBox_OnChar = SendMailNameEditBox:GetScript("OnChar")
 
 SendMailNameEditBox:SetScript("OnChar", function(self, ...)
 	if addon:GetOption("UI.Mail.AutoCompleteRecipient") then
-		local text = self:GetText(); 
-		local textlen = strlen(text); 
+		local text = self:GetText()
+		local textlen = strlen(text)
+		local currentFaction = UnitFactionGroup("player")
 		
 		for characterName, character in pairs(DataStore:GetCharacters()) do
-			if DataStore:GetCharacterFaction(character) == UnitFactionGroup("player") then
+			if DataStore:GetCharacterFaction(character) == currentFaction then
 				if ( strfind(strupper(characterName), strupper(text), 1, 1) == 1 ) then
-					SendMailNameEditBox:SetText(characterName);
-					SendMailNameEditBox:HighlightText(textlen, -1);
+					SendMailNameEditBox:SetText(characterName)
+					SendMailNameEditBox:HighlightText(textlen, -1)
 					return;
 				end
 			end

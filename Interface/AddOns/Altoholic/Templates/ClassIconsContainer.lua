@@ -1,9 +1,9 @@
 ﻿local addonName = "Altoholic"
 local addon = _G[addonName]
 
-local function _UpdateClassIcons(self, account, realm)
-	local tabName = self.tabName
-	local numIcons = self.numIcons
+local function _UpdateClassIcons(frame, account, realm)
+	local tabName = frame.tabName
+	local numIcons = frame.numIcons
 	
 	local key = addon:GetOption(format("Tabs.%s.%s.%s.Column1", tabName, account, realm))
 	if not key then	-- first time this realm is displayed, or reset by player
@@ -38,7 +38,7 @@ local function _UpdateClassIcons(self, account, realm)
 			faction = DataStore:GetCharacterFaction(key)
 		end
 		
-		self[self.iconPrefix..i]:SetClass(class, faction)
+		frame[frame.iconPrefix..i]:SetClass(class, faction)
 	end
 end
 

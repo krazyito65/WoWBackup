@@ -1,3 +1,38 @@
+==== v2.1.8 ====
+*++Clear Selection++
+**Added a clear selection button in the loot history.
+
+*++Bonuses on Wowhead links++
+**All exports containing Wowhead links will now include item bonusses. Thanks to Iacha.
+
+*All popups are now forced to be on top of other RCLootCouncil frames.
+
+*Reannouncing items now changes the candidate's response to waiting.
+
+*Bugfixes:
+**//Not all awards would display properly in the loot history (#197, #201).//
+**//Finally convinced the loot history filter button to be the same height as other buttons.//
+
+==== v2.1.7 ====
+*++Updated toc for 7.1++
+
+*++Only use in raids++
+**Added an option to automatically disable in parties. Also moved usage options to Master Looter page.
+
+*No longer asks for usage in LFG instances (#196).
+
+*Clarified a few of the option descriptions.
+
+*Various stability fixes.
+
+*Bugfixes:
+**//The filter button needed to be clicked before newly added buttons/responses would show (#203).//
+**//Various council/voting issues (#199, #194, #189, #174).//
+**//Version Checker could show double entries in some locales (#198).//
+**//Changing buttons after a session started could cause errors.//
+**//It was possible to get an error when rolling on a relic without having an artifact equipped.//
+**//Other Award Reasons could get merged with normal awards in the voting frame more info tooltip.//
+
 ==== v2.1.6 ====
 *++Shared Loot History++
 **It's now possible to share and syncronize your loot history. For now it's a manual copy/paste job using

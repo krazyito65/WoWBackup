@@ -810,7 +810,7 @@ local function scanMasterLoot()
 	local npcGuid = UnitGUID("target")
 	if not npcGuid then
 		-- this could wack shit out... but no raid bosses drop loot from containers right now, so should be fine
-		npcGuid = "container"
+		npcGuid = "container" .. time()
 	end
 
 	-- if we already have loot data for this unit, then we can ignore

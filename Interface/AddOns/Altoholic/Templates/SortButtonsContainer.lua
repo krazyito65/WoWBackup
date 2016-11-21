@@ -1,8 +1,8 @@
 ﻿local addonName = "Altoholic"
 local addon = _G[addonName]
 
-local function _SetButton(self, id, title, width, func)
-	local button = self["Sort"..id]
+local function _SetButton(frame, id, title, width, func)
+	local button = frame["Sort"..id]
 
 	if not title then		-- no title ? hide the button
 		button:Hide()

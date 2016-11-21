@@ -1,12 +1,12 @@
 ## Interface: 70000
-## Version: 3.1.14
+## Version: 3,1,15
 ## Author: Xemnosyst
 ## Title: Skada for Tanks
 ## Notes: Adds information to Skada that is useful for evaluating a tank's performance.
 ## URL: http://www.curse.com/addons/wow/skada-for-tanks
 ## Dependencies: Skada
 ## OptionalDeps: BittensUtils
-## X-Curse-Packaged-Version: 3.1.14
+## X-Curse-Packaged-Version: 3,1,15
 ## X-Curse-Project-Name: Skada for Tanks
 ## X-Curse-Project-ID: skada-for-tanks
 ## X-Curse-Repository-ID: wow/skada-for-tanks/mainline

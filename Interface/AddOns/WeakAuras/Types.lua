@@ -1002,7 +1002,8 @@ WeakAuras.grow_types = {
   ["DOWN"] = L["Down"],
   ["HORIZONTAL"] = L["Centered Horizontal"],
   ["VERTICAL"] = L["Centered Vertical"],
-  ["CIRCLE"] = L["Circular"]
+  ["CIRCLE"] = L["Counter Clockwise"],
+  ["COUNTERCIRCLE"] =L["Clockwise"]
 };
 
 WeakAuras.text_rotate_types = {
@@ -1230,8 +1231,8 @@ WeakAuras.sound_types = {
   ["Interface\\AddOns\\WeakAuras\\Media\\Sounds\\Torch.ogg"] = "Torch",
   ["Interface\\AddOns\\WeakAuras\\Media\\Sounds\\WarningSiren.ogg"] = "Warning Siren",
   ["Sound\\Creature\\LichKing\\IC_Lich King_Special01.ogg"] = "Lich King Apocalypse",
-  [" custom"] = "Custom",
-  [" KitID"] = "Sound by Kit ID",
+  [" custom"] = " " .. L["Custom"],
+  [" KitID"] = " " .. L["Sound by Kit ID"],
 };
 
 if(WeakAuras.PowerAurasSoundPath ~= "") then
@@ -1331,4 +1332,10 @@ WeakAuras.item_slot_types = {
   [14] = L["Trinket 2"],
   [15] = L["Back"],
   [19] = L["Tabard"]
+}
+
+WeakAuras.charges_change_type = {
+  GAINED = L["Gained"],
+  LOST = L["Lost"],
+  CHANGED = L["Changed"]
 }

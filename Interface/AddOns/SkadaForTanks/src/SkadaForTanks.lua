@@ -469,7 +469,7 @@ local function maybeRecordHeal(
 			multiplier = v3
 		end
 		
-		if multiplier > 0 then
+		if multiplier ~= nil and multiplier > 0 then
 			local buffAmount = amount / (1 + 100 / multiplier)
 			bufferInfo.playerid = UnitGUID(caster)
 			bufferInfo.playername = UnitName(caster)

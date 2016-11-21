@@ -12,7 +12,6 @@ TODOs/Notes
 CHANGELOG
 	-- SEE CHANGELOG.TXT
 ]]
-
 RCLootCouncil = LibStub("AceAddon-3.0"):NewAddon("RCLootCouncil", "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0", "AceHook-3.0", "AceTimer-3.0");
 local LibDialog = LibStub("LibDialog-1.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("RCLootCouncil")
@@ -50,7 +49,7 @@ function RCLootCouncil:OnInitialize()
   	self.version = GetAddOnMetadata("RCLootCouncil", "Version")
 	self.nnp = false
 	self.debug = false
-	self.tVersion = nil -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion"
+	self.tVersion = nil -- String or nil. Indicates test version, which alters stuff like version check. Is appended to 'version', i.e. "version-tVersion" (max 10 letters for stupid security)
 
 	self.playerClass = select(2, UnitClass("player"))
 	self.guildRank = L["Unguilded"]
@@ -96,6 +95,7 @@ function RCLootCouncil:OnInitialize()
 			logMaxEntries = 1000,
 			log = {}, -- debug log
 			localizedSubTypes = {},
+			verTestCandidates = {}, -- Stores received verTests
 		},
 		profile = {
 			usage = { -- State of enabledness
@@ -106,6 +106,7 @@ function RCLootCouncil:OnInitialize()
 				never = false,			-- Never enable
 				state = "ask_ml", 	-- Current state
 			},
+			onlyUseInRaids = true,
 			ambiguate = false, -- Append realm names to players
 			autoStart = false, -- start a session with all eligible items
 			autoLoot = true, -- Auto loot equippable items
@@ -184,7 +185,11 @@ function RCLootCouncil:OnInitialize()
 			currentSkin = "legion",
 
 			modules = { -- For storing module specific data
-				['*'] = {},
+				['*'] = {
+					filters = { -- Default filtering is showed
+						['*'] = true,
+					}
+				},
 			},
 
 			announceAward = true,
@@ -342,6 +347,9 @@ function RCLootCouncil:OnEnable()
 	-------------------------------------
 	LibDialog:Register("RCLOOTCOUNCIL_CONFIRM_USAGE", {
 		text = L["confirm_usage_text"],
+		on_show = function(self)
+			self:SetFrameStrata("FULLSCREEN")
+		end,
 		buttons = {
 			{	text = L["Yes"],
 				on_click = function()
@@ -503,7 +511,8 @@ function RCLootCouncil:ChatCommand(msg)
 		self:Print("Debug Log cleared.")
 --[===[@debug@
 	elseif input == 't' then -- Tester cmd
-		printtable(historyDB)
+		self:Print("Not mldb.buttons:", not self.mldb.buttons)
+		self:Print("#council", #self.council)
 --@end-debug@]===]
 	else
 		-- Check if the input matches anything
@@ -524,10 +533,11 @@ function RCLootCouncil:SendCommand(target, command, ...)
 	local toSend = self:Serialize(command, {...})
 
 	if target == "group" then
-		if GetNumGroupMembers() > 0 then -- SendAddonMessage auto converts it to party is needed
+		local num = GetNumGroupMembers()
+		if num > 5 then -- Raid
 			self:SendCommMessage("RCLootCouncil", toSend, "RAID")
-		--[[elseif num > 0 then -- Party
-			self:SendCommMessage("RCLootCouncil", toSend, "PARTY")]]
+		elseif num > 0 then -- Party
+			self:SendCommMessage("RCLootCouncil", toSend, "PARTY")
 		else--if self.testMode then -- Alone (testing)
 			self:SendCommMessage("RCLootCouncil", toSend, "WHISPER", self.playerName)
 		end
@@ -572,7 +582,7 @@ end
 -- -- if RCLootCouncil:HandleXRealmComms(self, command, data, sender) then return end
 function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 	if prefix == "RCLootCouncil" then
-		self:DebugLog("Comm received:", serializedMsg, "from:", sender, "distri:", distri)
+		self:DebugLog("Comm received:" .. serializedMsg, "from:", sender, "distri:", distri)
 		-- data is always a table to be unpacked
 		local test, command, data = self:Deserialize(serializedMsg)
 		-- NOTE: Since I can't find a better way to do this, all xrealms comms is routed through here
@@ -646,11 +656,13 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 				end
 
 			elseif command == "MLdb" and not self.isMasterLooter then -- ML sets his own mldb
-				if self:UnitIsUnit(sender, self.masterLooter) then
+				--[[ NOTE: 2.1.7 - While a check for this does make sense, I'm just really tired of mldb problems, and
+					noone should really be able to send it without being ML in the first place. So just accept it as is. ]]
+				--if self:UnitIsUnit(sender, self.masterLooter) then
 					self.mldb = unpack(data)
-				else
-					self:Debug("Non-ML:", sender, "sent Mldb!")
-				end
+				--else
+				--	self:Debug("Non-ML:", sender, "sent Mldb!")
+				--end
 
 			elseif command == "verTest" and not self:UnitIsUnit(sender, "player") then -- Don't reply to our own verTests
 				local otherVersion, tVersion = unpack(data)
@@ -659,22 +671,27 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 					sender = "guild"
 				end
 				self:SendCommand(sender, "verTestReply", self.playerName, self.playerClass, self.guildRank, self.version, self.tVersion, self:GetInstalledModulesFormattedData())
+				if strfind(otherVersion, "%a+") then return self:Debug("Someone's tampering with version?", otherVersion) end
 				if self.version < otherVersion and not self.verCheckDisplayed and (not (tVersion or self.tVersion)) then
 					self:Print(format(L["version_outdated_msg"], self.version, otherVersion))
 					self.verCheckDisplayed = true
 
 				elseif tVersion and self.tVersion and not self.verCheckDisplayed and self.tVersion < tVersion then
+					if #tVersion >= 10 then return self:Debug("Someone's tampering with tVersion?", tVersion) end
 					self:Print(format(L["tVersion_outdated_msg"], tVersion))
 					self.verCheckDisplayed = true
 				end
 
 			elseif command == "verTestReply" then
-				local _,_,_, otherVersion, tVersion = unpack(data)
+				local name,_,_, otherVersion, tVersion = unpack(data)
+				self.db.global.verTestCandidates[name] = otherVersion.. "-" .. tostring(tVersion) .. ": - " .. self.playerName
+				if strfind(otherVersion, "%a+") then return self:Debug("Someone's tampering with version?", otherVersion) end
 				if self.version < otherVersion and not self.verCheckDisplayed and (not (tVersion or self.tVersion)) then
 					self:Print(format(L["version_outdated_msg"], self.version, otherVersion))
 					self.verCheckDisplayed = true
 
 				elseif tVersion and self.tVersion and not self.verCheckDisplayed and self.tVersion < tVersion then
+					if #tVersion >= 10 then return self:Debug("Someone's tampering with tVersion?", tVersion) end
 					self:Print(format(L["tVersion_outdated_msg"], tVersion))
 					self.verCheckDisplayed = true
 				end
@@ -694,9 +711,6 @@ function RCLootCouncil:OnCommReceived(prefix, serializedMsg, distri, sender)
 
 			elseif command == "playerInfoRequest" then
 				self:SendCommand(sender, "playerInfo", self:GetPlayerInfo())
-
-			elseif command == "message" then
-				self:Print(unpack(data))
 
 			elseif command == "session_end" and self.enabled then
 				if self:UnitIsUnit(sender, self.masterLooter) then
@@ -770,6 +784,8 @@ end
 local date_to_debug_log = true
 function RCLootCouncil:DebugLog(msg, ...)
 	if date_to_debug_log then tinsert(debugLog, date("%x")); date_to_debug_log = false; end
+	-- filter out verTestReply spam
+	if msg:find("verTestReply") then return end
 	local time = date("%X", time())
 	msg = time.." - ".. tostring(msg)
 	for i = 1, select("#", ...) do msg = msg.." ("..tostring(select(i,...))..")" end
@@ -898,6 +914,7 @@ end
 function RCLootCouncil:GetArtifactRelics(link)
 	local id = self:GetItemIDFromLink(link)
 	local g1,g2;
+	if not C_ArtifactUI.GetEquippedArtifactNumRelicSlots() then return end -- Check if we even have an artifact
 	for i = 1, C_ArtifactUI.GetEquippedArtifactNumRelicSlots() do
 		if C_ArtifactUI.CanApplyRelicItemIDToEquippedArtifactSlot(id,i) then -- We can equip it
 			if g1 then
@@ -918,11 +935,11 @@ function RCLootCouncil:Timer(type, ...)
 		-- If we have a ML
 		if self.masterLooter then
 			-- But haven't received the mldb, then request it
-			if not self.mldb then
+			if not self.mldb.buttons then
 				self:SendCommand(self.masterLooter, "MLdb_request")
 			end
 			-- and if we haven't received a council, request it
-			if not self.council then
+			if #self.council == 0 then
 				self:SendCommand(self.masterLooter, "council_request")
 			end
 		end
@@ -1138,6 +1155,7 @@ end
 function RCLootCouncil:NewMLCheck()
 	local old_ml = self.masterLooter
 	self.isMasterLooter, self.masterLooter = self:GetML()
+	if IsPartyLFG() then return end	-- We can't use in lfg/lfd so don't bother
 	if self.masterLooter and self.masterLooter ~= "" and strfind(self.masterLooter, "Unknown") then
 		-- ML might be unknown for some reason
 		self:Debug("Unknown ML")
@@ -1153,6 +1171,9 @@ function RCLootCouncil:NewMLCheck()
 	self:Debug("Resetting council as we have a new ML!")
 	self.council = {}
 	if not self.isMasterLooter and self.masterLooter then return end -- Someone else has become ML
+
+	-- Check if we can use in party
+	if not IsInRaid() and db.onlyUseInRaids then return end
 
 	-- We are ML and shouldn't ask the player for usage
 	if self.isMasterLooter and db.usage.ml then -- addon should auto start
@@ -1173,6 +1194,9 @@ end
 function RCLootCouncil:OnRaidEnter(arg)
 	-- NOTE: We shouldn't need to call GetML() as it's most likely called on "LOOT_METHOD_CHANGED"
 	-- There's no ML, and lootmethod ~= ML, but we are the group leader
+	if IsPartyLFG() then return end	-- We can't use in lfg/lfd so don't bother
+	-- Check if we can use in party
+	if not IsInRaid() and db.onlyUseInRaids then return end
 	if not self.masterLooter and UnitIsGroupLeader("player") then
 		-- We don't need to ask the player for usage, so change loot method to master, and make the player ML
 		if db.usage.leader then
@@ -1197,6 +1221,7 @@ end
 function RCLootCouncil:GetML()
 	self:DebugLog("GetML()")
 	if GetNumGroupMembers() == 0 and (self.testMode or self.nnp) then -- always the player when testing alone
+		self:ScheduleTimer("Timer", 5, "MLdb_check")
 		return true, self.playerName
 	end
 	local lootMethod, mlPartyID, mlRaidID = GetLootMethod()
@@ -1307,6 +1332,49 @@ function RCLootCouncil.round(num, decimals)
 	return tonumber(string.format("%." .. (decimals or 0) .. "f", num))
 end
 
+-- from LibUtilities-1.0, which adds bonus index after bonus ID
+-- therefore a patched version is reproduced here
+-- replace with LibUtilities when bug is fixed
+function RCLootCouncil:DecodeItemLink(itemLink)
+    local bonusIDs = bonusIDs or {}
+    wipe(bonusIDs)
+
+    local linkType, itemID, enchantID, gemID1, gemID2, gemID3, gemID4, suffixID, uniqueID, linkLevel, specializationID,
+	 upgradeTypeID, instanceDifficultyID, numBonuses, affixes = string.split(":", itemLink, 15)
+
+	 -- clean it up
+    local color = string.match(linkType, "^c?f?f?(%x*)")
+    linkType = string.gsub(linkType, "|?c?f?f?(%x*)|?H?", "")
+    itemID = tonumber(itemID) or 0
+    enchantID = tonumber(enchantID) or 0
+    gemID1 = tonumber(gemID1) or 0
+    gemID2 = tonumber(gemID2) or 0
+    gemID3 = tonumber(gemID3) or 0
+    gemID4 = tonumber(gemID4) or 0
+    suffixID = tonumber(suffixID) or 0
+    uniqueID = tonumber(uniqueID) or 0
+    linkLevel = tonumber(linkLevel) or 0
+    specializationID = tonumber(specializationID) or 0
+    upgradeTypeID = tonumber(upgradeTypeID) or 0
+    instanceDifficultyID = tonumber(instanceDifficultyID) or 0
+    numBonuses = tonumber(numBonuses) or 0
+
+    if numBonuses >= 1 then
+        for i = 1, numBonuses do
+            local bonusID = select(i, string.split(":", affixes))
+            table.insert(bonusIDs, tonumber(bonusID))
+        end
+    end
+
+    -- more clean up
+    local upgradeID = select(numBonuses + 1, string.split(":", affixes)) or 0
+    upgradeID = string.match(upgradeID, "%d*")
+    upgradeID = tonumber(upgradeID) or 0
+
+    return color, itemType, itemID, enchantID, gemID1, gemID2, gemID3, gemID4, suffixID, uniqueID, linkLevel,
+	 		specializationID, upgradeTypeID, upgradeID, instanceDifficultyID, numBonuses, bonusIDs
+end
+
 --- Custom, better UnitIsUnit() function
 -- Blizz UnitIsUnit() doesn't know how to compare unit-realm with unit
 -- Seems to be because unit-realm isn't a valid unitid
@@ -1345,9 +1413,10 @@ function RCLootCouncil:UnitName(unit)
 	-- Proceed with UnitName()
 	local name, realm = UnitName(unit)
 	if not realm or realm == "" then realm = self.realmName end -- Extract our own realm
+	if not name then return nil end -- Below won't work without name
 	-- We also want to make sure the returned name is always title cased (it might not always be! ty Blizzard)
 	name = name:lower():gsub("^%l", string.upper)
-	return name and name.."-"..realm or nil
+	return name and name.."-"..realm
 end
 
 ---------------------------------------------------------------------------

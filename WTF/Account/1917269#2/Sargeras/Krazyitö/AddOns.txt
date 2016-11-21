@@ -5,3 +5,4 @@ LittleWigs: disabled
 BugSack: enabled
 TradeSkillMaster_Mailing: disabled
 !BugGrabber: enabled
+fontain: enabled

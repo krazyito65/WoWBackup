@@ -256,12 +256,14 @@ local specialChatIcons = {
 CH.Keywords = {};
 CH.ClassNames = {}
 
+local numScrollMessages
 local function ChatFrame_OnMouseScroll(frame, delta)
+	numScrollMessages = CH.db.numScrollMessages or 3
 	if delta < 0 then
 		if IsShiftKeyDown() then
 			frame:ScrollToBottom()
 		else
-			for i = 1, 3 do
+			for i = 1, numScrollMessages do
 				frame:ScrollDown()
 			end
 		end
@@ -269,7 +271,7 @@ local function ChatFrame_OnMouseScroll(frame, delta)
 		if IsShiftKeyDown() then
 			frame:ScrollToTop()
 		else
-			for i = 1, 3 do
+			for i = 1, numScrollMessages do
 				frame:ScrollUp()
 			end
 		end
@@ -555,21 +557,41 @@ local function removeIconFromLine(text)
 	for i=1, 8 do
 		text = gsub(text, "|TInterface\\TargetingFrame\\UI%-RaidTargetingIcon_"..i..":0|t", "{"..strlower(_G["RAID_TARGET_"..i]).."}")
 	end
-	text = gsub(text, "(|TInterface(.*)|t)", "")
+	text = gsub(text, "|TInterface(.-)|t", "")
 
 	return text
 end
 
-function CH:GetLines(...)
+local function colorizeLine(text, r, g, b)
+	local hexCode = E:RGBToHex(r, g, b)
+	local hexReplacement = format("|r%s", hexCode)
+
+	text = gsub(text, "|r", hexReplacement) --If the message contains color strings then we need to add message color hex code after every "|r"
+	text = format("%s%s|r", hexCode, text) --Add message color
+
+	return text
+end
+
+function CH:GetLines(frame)
 	local index = 1
-	for i = select("#", ...), 1, -1 do
-		local region = select(i, ...)
-		if region:GetObjectType() == "FontString" then
-			local line = tostring(region:GetText())
-			lines[index] = removeIconFromLine(line)
-			index = index + 1
-		end
+	for i = 1, frame:GetNumMessages() do
+		local message, r, g, b = frame:GetMessageInfo(i)
+
+		--Set fallback color values
+		r = r or 1
+		g = g or 1
+		b = b or 1
+
+		--Remove icons
+		message = removeIconFromLine(message)
+
+		--Add text color
+		message = colorizeLine(message, r, g, b)
+
+		lines[index] = message
+		index = index + 1
 	end
+	
 	return index - 1
 end
 
@@ -579,12 +601,7 @@ function CH:CopyChat(frame)
 		if fontSize < 10 then fontSize = 12 end
 		FCF_SetChatWindowFontSize(frame, frame, 0.01)
 		CopyChatFrame:Show()
-		local lineCt
-		if E.wowbuild >= 22882 then
-			lineCt = self:GetLines(frame.FontStringContainer:GetRegions())
-		else
-			lineCt = self:GetLines(frame:GetRegions())
-		end
+		local lineCt = self:GetLines(frame)
 		local text = tconcat(lines, "\n", 1, lineCt)
 		FCF_SetChatWindowFontSize(frame, frame, fontSize)
 		CopyChatFrameEditBox:SetText(text)
@@ -1185,7 +1202,10 @@ function CH:ChatFrame_MessageEventHandler(event, ...)
 			if (C_SocialIsSocialEnabled()) then
 				local achieveID = GetAchievementInfoFromHyperlink(arg1);
 				if (achieveID) then
-					message = message .. " " .. Social_GetShareAchievementLink(achieveID, true);
+					local isGuildAchievement = select(12, GetAchievementInfo(achieveID));
+ 					if (isGuildAchievement) then
+ 						message = message .. " " .. Social_GetShareAchievementLink(achieveID, true);
+ 					end
 				end
 			end
 			self:AddMessage(message, info.r, info.g, info.b, info.id);
@@ -1229,7 +1249,7 @@ function CH:ChatFrame_MessageEventHandler(event, ...)
 			end
 			local accessID = ChatHistory_GetAccessID(Chat_GetChatCategory(type), arg8);
 			local typeID = ChatHistory_GetAccessID(infoType, arg8, arg12);
-			self:AddMessage(format(globalstring, arg8, arg4), info.r, info.g, info.b, info.id, false, accessID, typeID)
+			self:AddMessage(format(globalstring, arg8, arg4), info.r, info.g, info.b, info.id, accessID, accessID, typeID)
 		elseif ( type == "BN_INLINE_TOAST_ALERT" ) then
 			local globalstring = _G["BN_INLINE_TOAST_"..arg1];
 			local message;
@@ -1415,7 +1435,7 @@ function CH:ChatFrame_MessageEventHandler(event, ...)
 				body = body:gsub("%[BN_CONVERSATION:", '%[1'.."")
 				body = body:gsub("^%["..Var.RAID_WARNING.."%]", '['..L["RW"]..']')
 			end
-			self:AddMessage(body, info.r, info.g, info.b, info.id, false, accessID, typeID);
+			self:AddMessage(body, info.r, info.g, info.b, info.id, accessID, accessID, typeID);
 		end
 
 		if ( type == "WHISPER" or type == "BN_WHISPER" ) then
@@ -1931,12 +1951,7 @@ function CH:Initialize()
 	E.Chat = self
 	self:SecureHook('ChatEdit_OnEnterPressed')
 	ChatFrameMenuButton:Kill()
-
-	if E.wowbuild >= 22882 then
-		QuickJoinToastButton:Kill()
-	else
-		FriendsMicroButton:Kill()
-	end
+	QuickJoinToastButton:Kill()
 
 	if WIM then
 	  WIM.RegisterWidgetTrigger("chat_display", "whisper,chat,w2w,demo", "OnHyperlinkClick", function(self) CH.clickedframe = self end);
@@ -2091,6 +2106,9 @@ function CH:Initialize()
 	scrollArea:SetScript("OnSizeChanged", function(self)
 		CopyChatFrameEditBox:Width(self:GetWidth())
 		CopyChatFrameEditBox:Height(self:GetHeight())
+	end)
+	scrollArea:HookScript("OnVerticalScroll", function(self, offset)
+		CopyChatFrameEditBox:SetHitRectInsets(0, 0, offset, (CopyChatFrameEditBox:GetHeight() - offset - self:GetHeight()))
 	end)
 
 	local editBox = CreateFrame("EditBox", "CopyChatFrameEditBox", frame)

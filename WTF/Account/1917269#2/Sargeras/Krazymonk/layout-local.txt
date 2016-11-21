@@ -83,13 +83,6 @@ X: 0
 Y: 0
 W: 648
 H: 420
-Frame: SpellBookFrame
-FrameLevel: 98
-Anchor: TOPLEFT
-X: 386
-Y: -116
-W: 550
-H: 525
 Frame: FriendsFrame
 FrameLevel: 106
 Anchor: TOPLEFT
@@ -97,3 +90,10 @@ X: 16
 Y: -116
 W: 338
 H: 424
+Frame: SpellBookFrame
+FrameLevel: 98
+Anchor: TOPLEFT
+X: 16
+Y: -116
+W: 550
+H: 525

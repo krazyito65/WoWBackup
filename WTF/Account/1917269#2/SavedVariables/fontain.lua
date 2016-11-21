@@ -79,6 +79,8 @@ FontainDB = {
 		["Krazýito - Mal'Ganis"] = {
 		},
 		["Krazymonk - Sargeras"] = {
+			["font"] = "PT Sans Narrow",
+			["override"] = true,
 		},
 		["Kråzyito - Mal'Ganis"] = {
 			["font"] = "ElvUI Font",

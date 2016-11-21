@@ -369,7 +369,8 @@ local function CreatePluginFrames()
 	TimeLineFrame:SetBackdrop ({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
 	edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
 	insets = {left = 1, right = 1, top = 1, bottom = 1}})
-	TimeLineFrame:SetBackdropColor (0, 0, 0, .4)
+	TimeLineFrame:SetBackdropColor (0, 0, 0, .6)
+	TimeLineFrame:SetBackdropBorderColor (0, 0, 0, 1)
 
 	local title = DetailsFrameWork:NewLabel (TimeLineFrame, nil, "$parentTitle", nil, "Time Line", nil, 20, "yellow")
 	title:SetPoint (12, -13)

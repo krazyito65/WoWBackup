@@ -2,11 +2,11 @@
 ## Title: Big Wigs |cffff0000+|r|cffffffffAchievements|r
 ## Notes: Achievement reminders for boss encounters.
 ## Author: Stanzilla
-## Version: v0.4
+## Version: v0.4-1-ga8fcbf0
 ## X-BigWigs-LoadOn-CoreLoaded: 1
 ## Dependencies: BigWigs, LittleWigs
 ## LoadOnDemand: 1
-## X-Curse-Packaged-Version: v0.4
+## X-Curse-Packaged-Version: v0.4-1-ga8fcbf0
 ## X-Curse-Project-Name: BigWigs_Achievements
 ## X-Curse-Project-ID: bigwigs_achievements
 ## X-Curse-Repository-ID: wow/bigwigs_achievements/mainline

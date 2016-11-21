@@ -1,4 +1,8 @@
 ﻿## Interface: 20300
+## X-Curse-Packaged-Version: r72
+## X-Curse-Project-Name: SharedMediaLib
+## X-Curse-Project-ID: project-14641
+## X-Curse-Repository-ID: wow/project-14641/mainline
 
 ## Title: Lib: SharedMedia-1.0
 ## Notes: Shared handling of media data (fonts, sounds, textures, ...) between addons.

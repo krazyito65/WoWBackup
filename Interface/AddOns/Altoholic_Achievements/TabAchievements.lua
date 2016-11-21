@@ -48,7 +48,6 @@ end
 local function Item_OnClick(frame)
 	highlightIndex = frame.subCategoryIndex
 	local item = view[highlightIndex]
-	
 	local tab = frame:GetParent()
 	
 	tab:Update()

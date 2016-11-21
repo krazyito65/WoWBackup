@@ -3,7 +3,7 @@
 ## Notes: Plugin for Details
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
-## X-Curse-Packaged-Version: r30
+## X-Curse-Packaged-Version: r31
 ## X-Curse-Project-Name: Details!: Chart Viewer (plugin)
 ## X-Curse-Project-ID: details-chart-viewer-plugin
 ## X-Curse-Repository-ID: wow/details-chart-viewer-plugin/mainline

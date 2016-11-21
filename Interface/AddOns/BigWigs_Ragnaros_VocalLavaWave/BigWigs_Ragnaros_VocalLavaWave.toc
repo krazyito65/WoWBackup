@@ -1,10 +1,12 @@
 ## Title: Big Wigs |cffff0000+|r|cffffffff Ragnaros Vocal Lava Wave|r
-## X-Curse-Packaged-Version: 1.1.1
+## Title-itIT: Big Wigs |cffff0000+|r|cffffffff Ragnaros Avviso Vocale Ondate di Lava|r
+## X-Curse-Packaged-Version: r10
 ## X-Curse-Project-Name: BigWigs_Ragnaros_VocalLavaWave
 ## X-Curse-Project-ID: bigwigs_ragnaros_vocallavawave
 ## X-Curse-Repository-ID: wow/bigwigs_ragnaros_vocallavawave/mainline
 
 ## Notes: Vocal warning for Lava Wave for the Ragnaros encounter
+## Notes-itIT: Avviso Vocale per le Ondate di Lava nello scontro contro Ragnaros
 
 ## Author: Caleb
 

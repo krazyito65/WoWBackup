@@ -1,10 +1,10 @@
 --[[
 Name: AceLibrary
-Revision: $Rev: 82169 $
+Revision: $Rev: 1091 $
 Developed by: The Ace Development Team (http://www.wowace.com/index.php/The_Ace_Development_Team)
 Inspired By: Iriel (iriel@vigilance-committee.org)
              Tekkub (tekkub@gmail.com)
-             Revision: $Rev: 82169 $
+             Revision: $Rev: 1091 $
 Website: http://www.wowace.com/
 Documentation: http://www.wowace.com/index.php/AceLibrary
 SVN: http://svn.wowace.com/wowace/trunk/Ace2/AceLibrary
@@ -18,7 +18,7 @@ License: LGPL v2.1
 ]]
 
 local ACELIBRARY_MAJOR = "AceLibrary"
-local ACELIBRARY_MINOR = "$Revision: 82169 $"
+local ACELIBRARY_MINOR = 90000 + tonumber(("$Revision: 1091 $"):match("(%d+)"))
 
 local _G = getfenv(0)
 local previous = _G[ACELIBRARY_MAJOR]

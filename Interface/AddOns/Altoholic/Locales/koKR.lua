@@ -3,7 +3,6 @@
 if not L then return end
 
 L["28 Slot"] = "28 칸"
-L["32 Keys Max"] = "최대 32개 열쇠"
 L["Abyssal Council"] = "심연의 의회"
 L["Accessories"] = "장신구"
 L["Account"] = "계정"
@@ -171,6 +170,8 @@ L["COLOR_GREY"] = "회색"
 L["COLOR_ORANGE"] = "주황" -- Needs review
 L["COLOR_RED"] = "빨강" -- Needs review
 L["COLOR_YELLOW"] = "노랑" -- Needs review
+L["COLUMN_PROFESSION_1_TITLE_SHORT"] = "전문기술1"
+L["COLUMN_PROFESSION_2_TITLE_SHORT"] = "전문기술2" -- Needs review
 L["Compare with"] = "다음과 비교" -- Needs review
 L["Conquest"] = "정복" -- Needs review
 L["Conspicuous Urn"] = "눈에 확 들어오는 단지" -- Needs review
@@ -484,8 +485,6 @@ L["Primal Intent"] = "원소쐐기 갑옷"
 L["Primal Mooncloth"] = "태초의 달빛매듭 의복"
 L["Private to friends: %s"] = "친구에게 비공개: %s"
 L["Private to guild: %s"] = "길드에 비공개: %s"
-L["Prof. 1"] = "전문기술1"
-L["Prof. 2"] = "전문기술2"
 L["Purple Lotus"] = "보라연꽃"
 L["PVP Cloth Set"] = "PvP 천 세트"
 L["PVP Leather Sets"] = "PvP 가죽 세트"

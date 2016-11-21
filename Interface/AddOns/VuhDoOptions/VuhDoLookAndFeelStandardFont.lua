@@ -122,6 +122,7 @@ function VUHDO_lnfStandardFontUpdateDemoText()
 	else
 		tLabel:SetShadowColor(0, 0, 0, tShadowAlpha);
 	end
+
 	tLabel:SetShadowOffset(1, -1);
 
 	if (sTable["COLOR"] ~= nil) then

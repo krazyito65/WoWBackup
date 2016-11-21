@@ -134,6 +134,9 @@ function RCVotingFrame:OnCommReceived(prefix, serializedMsg, distri, sender)
 						if self:GetCandidateData(i, name, "response") == "ANNOUNCED" then
 							addon:DebugLog("No response from:", name)
 							self:SetCandidateData(i, name, "response", "NOTHING")
+							if addon.isMasterLooter then -- Give them one last try
+								addon:SendCommand(name, "lootTable", addon:GetActiveModule("masterlooter").lootTable)
+							end
 						end
 					end
 				end
@@ -375,13 +378,15 @@ function RCVotingFrame:UpdateMoreInfo(row, data)
 		tip:AddLine(L["Latest item(s) won"])
 		for i = #lootDB[name], 1, -1 do -- Start from the end
 			entry = lootDB[name][i]
-			count[entry.responseID] = count[entry.responseID] and count[entry.responseID] + 1 or 1
-			responseText[entry.responseID] = responseText[entry.responseID] and responseText[entry.responseID] or entry.response
-			if not color[entry.responseID] or unpack(color[entry.responseID],1,3) == unpack({1,1,1}) and #entry.color ~= 0  then -- If it's not already added
-				color[entry.responseID] = #entry.color ~= 0 and #entry.color == 4 and entry.color or {1,1,1}
+			local id = entry.responseID
+			if entry.isAwardReason then id = id + 100 end -- Bump to distingush from normal awards
+			count[id] = count[id] and count[id] + 1 or 1
+			responseText[id] = responseText[id] and responseText[id] or entry.response
+			if not color[id] or unpack(color[id],1,3) == unpack({1,1,1}) and #entry.color ~= 0  then -- If it's not already added
+				color[id] = #entry.color ~= 0 and #entry.color == 4 and entry.color or {1,1,1}
 			end
-			if type(entry.responseID) == "number" and entry.responseID <= db.numMoreInfoButtons and not entry.isAwardReason and lastestAwardFound < 5 then
-				tip:AddDoubleLine(entry.lootWon, entry.response .. ", ".. format(L["'n days' ago"], addon:ConvertDateToString(addon:GetNumberOfDaysFromNow(entry.date))), nil,nil,nil,unpack(color[entry.responseID],1,3))
+			if type(id) == "number" and id <= db.numMoreInfoButtons and not entry.isAwardReason and lastestAwardFound < 5 then
+				tip:AddDoubleLine(entry.lootWon, entry.response .. ", ".. format(L["'n days' ago"], addon:ConvertDateToString(addon:GetNumberOfDaysFromNow(entry.date))), nil,nil,nil,unpack(color[id],1,3))
 				lastestAwardFound = lastestAwardFound + 1
 			end
 		end -- end counting
@@ -998,6 +1003,19 @@ do
 					end
 					Lib_UIDropDownMenu_AddButton(info, level)
 				end
+				if addon.debug then -- Add all possible responses when debugging
+					for k,v in pairs(db.responses) do
+						if type(k) ~= "number" then
+							info.text = v.text
+							info.colorCode = "|cff"..addon:RGBToHex(unpack(v.color))
+							info.notCheckable = true
+							info.func = function()
+									addon:SendCommand("group", "change_response", session, candidateName, k)
+							end
+							Lib_UIDropDownMenu_AddButton(info, level)
+						end
+					end
+				end
 
 			elseif value == "REANNOUNCE" then
 				info.text = addon.Ambiguate(candidateName)
@@ -1020,6 +1038,7 @@ do
 						}
 					}
 					addon:SendCommand(candidateName, "reroll", t)
+					addon:SendCommand("group", "change_response", session, candidateName, "WAIT")
 				end
 				Lib_UIDropDownMenu_AddButton(info, level);
 				info = Lib_UIDropDownMenu_CreateInfo()
@@ -1038,6 +1057,7 @@ do
 								session = k,
 								equipLoc = v.equipLoc,
 							})
+							addon:SendCommand("group", "change_response", k, candidateName, "WAIT")
 						end
 					end
 					addon:SendCommand(candidateName, "reroll", t)

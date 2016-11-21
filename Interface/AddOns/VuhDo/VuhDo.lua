@@ -34,12 +34,12 @@ local VUHDO_PANEL_UNITS = { };
 setmetatable(VUHDO_PANEL_UNITS, VUHDO_META_NEW_ARRAY);
 
 -- TODO: make local
-VUHDO_BOSS_UNIT = { };
+VUHDO_BOSS_UNITS = { };
 
 for i = 1, MAX_BOSS_FRAMES do
 	local bossUnitId = format("boss%d", i);
 
-	VUHDO_BOSS_UNIT[bossUnitId] = true;
+	VUHDO_BOSS_UNITS[bossUnitId] = true;
 end
 
 VUHDO_PLAYER_CLASS = nil;
@@ -425,7 +425,11 @@ end
 local tOwner;
 local tIsPet;
 function VUHDO_updateHealth(aUnit, aMode)
-	if not aUnit then return end --fix unit==nil on HEALTH-Events in patch 7.1
+	-- as of patch 7.1 we are seeing empty units on health related events
+	if not aUnit then
+		return;
+	end
+
 	tIsPet = VUHDO_RAID[aUnit] and VUHDO_RAID[aUnit]["isPet"];
 
 	if not tIsPet or VUHDO_INTERNAL_TOGGLES[26] then -- VUHDO_UPDATE_PETS  -- Enth„lt nur Pets als eigene Balken, vehicles werden ?ber owner dargestellt s.unten
@@ -572,7 +576,7 @@ end
 
 --
 local function VUHDO_addUnitToBosses()
-	for bossUnitId, _ in pairs(VUHDO_BOSS_UNIT) do
+	for bossUnitId, _ in pairs(VUHDO_BOSS_UNITS) do
 		VUHDO_tableUniqueAdd(VUHDO_GROUPS[44], bossUnitId); -- VUHDO_ID_BOSSES
 	end
 end
@@ -785,7 +789,7 @@ function VUHDO_reloadRaidMembers()
 			VUHDO_setHealthSafe("target", 1); -- VUHDO_UPDATE_ALL
 		end
 
-		for bossUnitId, _ in pairs(VUHDO_BOSS_UNIT) do
+		for bossUnitId, _ in pairs(VUHDO_BOSS_UNITS) do
 			if UnitExists(bossUnitId) then
 				VUHDO_setHealth(bossUnitId, 1); -- VUHDO_UPDATE_ALL
 			else
@@ -877,7 +881,7 @@ function VUHDO_refreshRaidMembers()
 		VUHDO_setHealthSafe("target", 1); -- VUHDO_UPDATE_ALL
 	end
 
-	for bossUnitId, _ in pairs(VUHDO_BOSS_UNIT) do
+	for bossUnitId, _ in pairs(VUHDO_BOSS_UNITS) do
 		if UnitExists(bossUnitId) then -- and UnitIsFriend("player", bossUnitId) then
 			tInfo = VUHDO_RAID[bossUnitId];
 

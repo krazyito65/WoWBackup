@@ -1,16 +1,16 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: LoggerHead
 ## Notes: Automatically turns on the combat log for selected instances
 ## Notes-ruRU: Автоматически включает запись лога боя в выбранных подземельях
-## Author: dratr
+## Author: ThebirdBr
 ## X-eMail: rsmozang@gmail.com
 ## X-Category: Miscellaneous
-## Version: 186
+## Version: 188
 ## OptionalDeps: Ace3, LibSink-2.0, LibDBIcon-1.0, LibDialog-1.0
 ## SavedVariables: LoggerHeadDB
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Always: delayed
-## X-Curse-Packaged-Version: 7.0.0
+## X-Curse-Packaged-Version: r188
 ## X-Curse-Project-Name: LoggerHead
 ## X-Curse-Project-ID: loggerhead
 ## X-Curse-Repository-ID: wow/loggerhead/mainline

@@ -37,7 +37,7 @@ local function _OnClick(frame)
 		frame.checked = checked
 	end
 
-	-- saving this here because func might use a dropdown, changing this self's attributes
+	-- saving this here because func might use a dropdown, changing this frame's attributes
 	local playSound = true
 	if frame.noClickSound then
 		playSound = false

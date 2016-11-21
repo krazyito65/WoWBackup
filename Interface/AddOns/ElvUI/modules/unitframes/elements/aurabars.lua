@@ -62,6 +62,7 @@ end
 
 function UF:Construct_AuraBarHeader(frame)
 	local auraBar = CreateFrame('Frame', nil, frame)
+	auraBar:SetFrameLevel(frame.RaisedElementParent:GetFrameLevel() + 10) --Make them appear above any text element
 	auraBar.PostCreateBar = UF.Construct_AuraBars
 	auraBar.gap = (-frame.BORDER + frame.SPACING*3)
 	auraBar.spacing = (-frame.BORDER + frame.SPACING*3)
@@ -201,7 +202,10 @@ function UF:AuraBarFilter(unit, name, rank, icon, count, debuffType, duration, e
 			returnValue = false;
 		end
 
-		passPlayerOnlyCheck = returnValue
+		--Only allow passPlayerOnlyCheck to be set to false (potentially) if override is not enabled
+		if not db.additionalFilterAllowNonPersonal then
+			passPlayerOnlyCheck = returnValue
+		end
 		playerOnlyFilter = true
 	end
 

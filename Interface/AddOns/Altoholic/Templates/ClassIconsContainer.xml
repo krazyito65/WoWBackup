@@ -4,7 +4,7 @@
 	<Frame name="AltoClassIconsContainerTemplate" virtual="true">
 		<Size x="457" y="37" />
 		<Anchors>
-			<Anchor point="TOPLEFT" x="370" y="-55" />
+			<Anchor point="TOPLEFT" x="365" y="-55" />
 		</Anchors>
 		<KeyValues>
 			<KeyValue key="iconPrefix" value="Icon" />
