@@ -1,23 +1,15 @@
-## Interface: 70100
+## Interface: 70200
 ## Title: WeakAuras Templates
 ## Author: Infus
-## Version: 2.2.2.2-3-g957d372
+## Version: 2.3.8
 ## Notes: Templates for WeakAuras
 ## X-Category: Interface Enhancements
+## Globe-Main: WeakAuras
 ## DefaultState: Enabled
 ## LoadOnDemand: 1
 ## Dependencies: WeakAuras, WeakAurasOptions
 
-Localization-enUS.lua
-Localization-deDE.lua
-Localization-esES.lua
-Localization-esMX.lua
-Localization-frFR.lua
-Localization-koKR.lua
-Localization-ptBR.lua
-Localization-ruRU.lua
-Localization-zhCN.lua
-Localization-zhTW.lua
+locales.xml
 
 TriggerTemplates.lua
 TriggerTemplatesData.lua

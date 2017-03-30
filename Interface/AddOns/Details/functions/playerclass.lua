@@ -115,7 +115,7 @@ do
 			return false
 		end
 		
-		if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lá
+		if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lï¿½
 			for spellid, _ in _pairs (Actor.spells._ActorTable) do 
 				local class = _detalhes.ClassSpellList [spellid]
 				if (class) then
@@ -333,7 +333,7 @@ do
 					end
 				end
 			else
-				if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lá
+				if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lï¿½
 					for spellid, _ in _pairs (Actor.spells._ActorTable) do 
 						local spec = SpecSpellList [spellid]
 						if (spec) then
@@ -358,7 +358,7 @@ do
 			end
 		else
 			
-			if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lá
+			if (Actor.spells) then --> correcao pros containers misc, precisa pegar os diferentes tipos de containers de  lï¿½
 				for spellid, _ in _pairs (Actor.spells._ActorTable) do 
 					local spec = SpecSpellList [spellid]
 					if (spec) then

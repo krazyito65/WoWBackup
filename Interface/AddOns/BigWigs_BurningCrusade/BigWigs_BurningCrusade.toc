@@ -1,4 +1,4 @@
-## Interface: 70100
+## Interface: 70200
 
 ## Title: BigWigs [|cffeda55fBurning Crusade|r]
 ## Title-zhCN: BigWigs [|cffeda55f燃烧的远征|r]
@@ -25,7 +25,7 @@
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
-## Version: v7.1.0-1-g101b6e5
+## Version: v7.2.0
 
 ## X-Category: Raid
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.

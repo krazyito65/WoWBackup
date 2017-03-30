@@ -1,4 +1,4 @@
-﻿-- This file manages the events (calendar, cooldowns, etc..) supported by the addon
+-- This file manages the events (calendar, cooldowns, etc..) supported by the addon
 
 local addonName = ...
 local addon = _G[addonName]
@@ -293,9 +293,9 @@ local function ShowExpiryWarning(index, minutes)
 	
 	-- print instead of dialog box if player is in combat
 	if addon:GetOption("UI.Calendar.UseDialogBoxForWarnings") and not UnitAffectingCombat("player") then
-		addon:SetMsgBoxHandler(Warning_MsgBox_Handler)
-		AltoMsgBox_Text:SetText(format("%s\n%s", colors.white..warning, L["Do you want to open Altoholic's calendar for details ?"]))
-		AltoMsgBox:Show()
+		AltoMessageBox:SetHandler(Warning_MsgBox_Handler)
+		AltoMessageBox:SetText(format("%s%s\n%s", colors.white, warning, L["Do you want to open Altoholic's calendar for details ?"]))
+		AltoMessageBox:Show()
 	else
 		addon:Print(warning)
 	end
@@ -514,14 +514,6 @@ function ns:BuildList()
 				
 				-- TODO: do not add declined invitations
 				AddEvent(CALENDAR_LINE, eventDate, eventTime, characterName, realm, i)
-			end
-			
-			-- ConnectMMO events
-			local c = addon:GetCharacterTable(characterName, realm)
-			
-			for k, v in pairs(c.ConnectMMO) do
-				local eventDate, eventTime = strsplit("|", v)
-				AddEvent(CONNECTMMO_LINE, eventDate, eventTime, characterName, realm, k)
 			end
 			
 			-- Other timers (like mysterious egg, etc..)

@@ -20,6 +20,8 @@ mod.respawnTime = 30
 --
 
 local twistingShadowsCount = 1
+local phase = 1
+local webOfPainTargets = {}
 
 --------------------------------------------------------------------------------
 -- Localization
@@ -30,6 +32,11 @@ if L then
 	L.isLinkedWith = "%s is linked with %s"
 	L.yourLink = "You are linked with %s"
 	L.yourLinkShort = "Linked with %s"
+
+	L.custom_off_webofpain_marker = "Web of Pain marker"
+	L.custom_off_webofpain_marker_desc = "Mark Web of Pain targets with {rt1}{rt2}{rt3}{rt4}, requires promoted or leader. The tanks will be marked with {rt1} and {rt2}. The other targets with {rt3} and {rt4}."
+	L.custom_off_webofpain_marker_icon = 1
+
 end
 
 --------------------------------------------------------------------------------
@@ -40,6 +47,7 @@ function mod:GetOptions()
 	return {
 		--[[ Spider Form ]]--
 		215300, -- Web of Pain
+		"custom_off_webofpain_marker",
 		212364, -- Feeding Time
 		214348, -- Vile Ambush
 		{215443, "SAY", "FLASH"}, -- Necrotic Venom
@@ -68,6 +76,7 @@ function mod:OnBossEnable()
 
 	--[[ Spider Form ]]--
 	self:Log("SPELL_AURA_APPLIED", "WebOfPainApplied", 215300) -- 215307 is applied to the other player
+	self:Log("SPELL_AURA_REMOVED", "WebOfPainRemoved", 215300)
 	self:Log("SPELL_CAST_SUCCESS", "VileAmbush", 214348)
 	self:Log("SPELL_CAST_SUCCESS", "NecroticVenom", 215443)
 
@@ -77,7 +86,6 @@ function mod:OnBossEnable()
 	self:Log("SPELL_CAST_SUCCESS", "TwistingShadows", 210864)
 	self:Log("SPELL_CAST_START", "RazorWing", 210547)
 	self:Log("SPELL_CAST_START", "RakingTalons", 215582)
-	--self:Log("SPELL_AURA_APPLIED", "RakingTalonsApplied", 215582) -- XXX do we need this?
 	self:Log("SPELL_CAST_START", "ViolentWinds", 218124)
 
 	--[[ General ]]--
@@ -90,11 +98,20 @@ end
 
 function mod:OnEngage()
 	twistingShadowsCount = 1
+	phase = 1
 
 	self:Bar(215300, 6) -- Web of Pain
-	self:Bar(215443, 12) -- Necrotic Venom
 	self:Bar(212364, 16) -- Feeding Time
-	self:Bar("stages", 90, -13263, "inv_ravenlordmount") -- Roc Form
+	self:Bar("stages", 91, -13263, "inv_ravenlordmount") -- Roc Form
+
+	wipe(webOfPainTargets)
+end
+
+function mod:OnBossDisable()
+	for player,_ in pairs(webOfPainTargets) do
+		SetRaidTarget(player, 0)
+	end
+	wipe(webOfPainTargets)
 end
 
 --------------------------------------------------------------------------------
@@ -120,6 +137,7 @@ do
 				players[guid] = true
 				list[#list+1] = self:UnitName(unit)
 				if unit == "player" then
+					self:Message(key, "Personal", "Long", CL.you:format(spellName))
 					self:Flash(key)
 					self:Say(key)
 
@@ -176,22 +194,21 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, _, _, spellId)
 		end
 	elseif spellId == 226039 then -- Bird Transform => Roc Form
 		self:Message("stages", "Neutral", "Info", -13263, "inv_ravenlordmount") -- Roc Form
-		-- stop some timers
 		twistingShadowsCount = 1
-		self:CDBar(210864, 8)
-		self:Bar(210948, 27)
-		self:Bar(215582, self:Mythic() and 63 or 53)
-		self:Bar(210547, self:Mythic() and 70 or 60)
+		self:CDBar(210864, 8) -- Twisting Shadows
+		self:CDBar(212707, 15.7) -- Gathering Clouds
+		self:Bar(210948, 27) -- Dark Storm
+		self:Bar(215582, self:Mythic() and 63 or 53) -- Raking Talons
+		self:Bar(210547, self:Mythic() and 70 or 60) -- Razor Wing
 		if self:Mythic() then
-			self:Bar(218124, 53)
+			self:Bar(218124, 53) -- Violent Winds
 		end
 		self:Bar("stages", 134, -13259, "inv_spidermount") -- Spider Form
 	elseif spellId == 226055 then -- Spider Transform => Spider Form
 		self:Message("stages", "Neutral", "Info", -13259, "inv_spidermount") -- Spider Form
-		-- stop some timers
-		self:Bar(215300, 6)
-		self:Bar(212364, 16)
-		self:Bar("stages", 90, -13263, "inv_ravenlordmount") -- Roc Form
+		self:Bar(215300, 6) -- Web of Pain
+		self:Bar(212364, 16) -- Feeding Time
+		self:Bar("stages", 97, -13263, "inv_ravenlordmount") -- Roc Form
 	end
 end
 
@@ -209,6 +226,26 @@ function mod:WebOfPainApplied(args)
 	elseif not self:CheckOption(args.spellId, "ME_ONLY") then
 		self:Message(args.spellId, "Attention", nil, L.isLinkedWith:format(self:ColorName(args.sourceName), self:ColorName(args.destName)))
 	end
+	if self:GetOption("custom_off_webofpain_marker") then -- TODO
+		webOfPainTargets[args.sourceName] = true
+		webOfPainTargets[args.destName] = true
+		if self:Tank(args.sourceName) or self:Tank(args.destName) then -- Tank link
+			SetRaidTarget(args.sourceName, 1)
+			SetRaidTarget(args.destName, 2)
+		else -- Other link
+			SetRaidTarget(args.sourceName, 3)
+			SetRaidTarget(args.destName, 4)
+		end
+	end
+end
+
+function mod:WebOfPainRemoved(args)
+	if self:GetOption("custom_off_webofpain_marker") then -- TODO
+		SetRaidTarget(args.sourceName, 0)
+		webOfPainTargets[args.sourceName] = nil
+		SetRaidTarget(args.destName, 0)
+		webOfPainTargets[args.destName] = nil
+	end
 end
 
 function mod:VileAmbush(args)
@@ -217,7 +254,7 @@ end
 
 function mod:GatheringCloudsStart(args)
 	self:Message(args.spellId, "Attention", "Long", CL.casting:format(args.spellName))
-	self:Bar(args.spellId, 10.5, CL.cast:format(args.spellName)) -- 2.5s cast + 8s duration = 10.5s total
+	self:CastBar(args.spellId, 10.5) -- 2.5s cast + 8s duration = 10.5s total
 end
 
 --[[ Roc Form ]]--
@@ -229,7 +266,7 @@ end
 
 function mod:RazorWing(args)
 	self:Message(args.spellId, "Important", "Alarm")
-	self:Bar(args.spellId, 4.5, CL.cast:format(args.spellName))
+	self:CastBar(args.spellId, 4.5)
 	if timeToTransform(self) > 32.9 then
 		self:Bar(args.spellId, 32.9)
 	end
@@ -244,7 +281,7 @@ end
 
 function mod:ViolentWinds(args)
 	self:Message(args.spellId, "Urgent", "Info")
-	self:Bar(args.spellId, 6, CL.cast:format(args.spellName))
+	self:CastBar(args.spellId, 6)
 	if timeToTransform(self) > 39 then
 		self:Bar(args.spellId, 39)
 	end

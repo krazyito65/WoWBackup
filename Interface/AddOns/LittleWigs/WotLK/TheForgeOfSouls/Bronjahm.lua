@@ -1,4 +1,4 @@
-﻿-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 --  Module Declaration
 
 local mod = BigWigs:NewBoss("Bronjahm", 601)
@@ -21,7 +21,6 @@ local stormannounced = nil
 
 local L = mod:NewLocale("enUS", true)
 if L then
-
 
 end
 L = mod:GetLocale()

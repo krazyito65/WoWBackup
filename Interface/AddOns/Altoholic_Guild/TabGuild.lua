@@ -101,11 +101,16 @@ local function _SetMode(frame, mode)
 	end
 end
 
+local function _SetStatus(frame, text)
+	frame.Status:SetText(text)
+end
+
 addon:RegisterClassExtensions("AltoTabGuild", {
 	Init = _Init,
 	HideAll = _HideAll,
 	Refresh = _Refresh,
 	SetMode = _SetMode,
+	SetStatus = _SetStatus,
 	MenuItem_Highlight = _MenuItem_Highlight,
 	MenuItem_OnClick = _MenuItem_OnClick,
 })

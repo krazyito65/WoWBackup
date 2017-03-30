@@ -149,7 +149,7 @@ CheckButton	ExRTRadioButtonModernTemplate
 local GlobalAddonName, ExRT = ...
 local isExRT = GlobalAddonName == "ExRT"
 
-local libVersion = 23
+local libVersion = 28
 
 if type(ELib)=='table' and type(ELib.V)=='number' and ELib.V > libVersion then return end
 
@@ -194,6 +194,16 @@ do
 		self:SetScript("OnClick",func)
 		return self
 	end
+	local function Widget_OnShow(self,func,disableFirstRun)
+		if not func then
+			return self
+		end
+		self:SetScript("OnShow",func)
+		if not disableFirstRun then
+			func(self)
+		end
+		return self
+	end
 	local function Widget_Run(self,func,...)
 		func(self,...)
 		return self
@@ -204,6 +214,7 @@ do
 		self.NewPoint = Widget_SetNewPoint
 		self.Scale = Widget_SetScale
 		self.OnClick = Widget_OnClick
+		self.OnShow = Widget_OnShow
 		self.Run = Widget_Run
 		
 		self.SetNewPoint = Widget_SetNewPoint
@@ -266,7 +277,7 @@ do
 	local GlobalIndexNow = 0
 	function GetNextGlobalName()
 		GlobalIndexNow = GlobalIndexNow + 1
-		return "GExRTUIGlobal"..tostring(GlobalIndexNow)
+		return GlobalAddonName.."UIGlobal"..tostring(GlobalIndexNow)
 	end
 end
 
@@ -486,16 +497,16 @@ do
 			GameTooltip:AddLine(self.NormalText:GetText())
 			GameTooltip:Show()
 		end
-		GExRT.lib.ScrollDropDown.OnButtonEnter(self)
+		ELib.ScrollDropDown.OnButtonEnter(self)
 	end
 	local function OnLeave(self)
 		self.Highlight:Hide()
 		UIDropDownMenu_StartCounting(self:GetParent())
 		GameTooltip:Hide()
-		GExRT.lib.ScrollDropDown.OnButtonLeave(self)
+		ELib.ScrollDropDown.OnButtonLeave(self)
 	end
 	local function OnClick(self)
-		GExRT.lib.ScrollDropDown.OnClick(self, button, down)
+		ELib.ScrollDropDown.OnClick(self, button, down)
 	end
 	local function OnLoad(self)
 		self:SetFrameLevel(self:GetParent():GetFrameLevel()+2)
@@ -564,7 +575,7 @@ do
 		UIDropDownMenu_StopCounting(self)
 	end
 	local function OnUpdate(self, elapsed)
-		GExRT.lib.ScrollDropDown.Update(self, elapsed)
+		ELib.ScrollDropDown.Update(self, elapsed)
 	end
 	function Templates:ExRTDropDownListTemplate(parent)
 		local self = CreateFrame("Button",nil,parent)
@@ -1971,7 +1982,7 @@ do
 	local additionalTooltipBackdrop = {bgFile="Interface/Buttons/WHITE8X8",edgeFile="Interface/Tooltips/UI-Tooltip-Border",tile=false,edgeSize=14,insets={left=2.5,right=2.5,top=2.5,bottom=2.5}}
 	local function CreateAdditionalTooltip()
 		local new = #additionalTooltips + 1
-		local tip = CreateFrame("GameTooltip", "ExRTlibAdditionalTooltip"..new, UIParent, "GameTooltipTemplate")
+		local tip = CreateFrame("GameTooltip", GlobalAddonName.."LibAdditionalTooltip"..new, UIParent, "GameTooltipTemplate")
 		additionalTooltips[new] = tip
 		
 		tip:SetScript("OnLoad",nil)
@@ -2510,6 +2521,13 @@ do
 		self:SetScript("OnTextChanged",func)
 		return self
 	end
+	local function Widget_AddSearchIcon(self,size)
+		self.searchTexture = self:CreateTexture(nil, "BACKGROUND",nil,2)
+		self.searchTexture:SetPoint("RIGHT",-2,0)
+		self.searchTexture:SetTexture([[Interface\Common\UI-Searchbox-Icon]])
+		self.searchTexture:SetSize(size or 14,size or 14)	
+		return self
+	end
 	
 	function ELib:Edit(parent,maxLetters,onlyNum,template)
 		if template == 0 then
@@ -2540,7 +2558,8 @@ do
 		Mod(self,
 			'Text',Widget_SetText,
 			'Tooltip',Widget_Tooltip,
-			'OnChange',Widget_OnChange
+			'OnChange',Widget_OnChange,
+			'AddSearchIcon',Widget_AddSearchIcon
 		)
 
 		return self
@@ -2824,6 +2843,10 @@ do
 		self.text:SetPoint("RIGHT",self,"LEFT",relativeX and relativeX*(-1) or -2,0)
 		return self
 	end
+	local function Widget_TextSize(self,size)
+		self.text:SetFont(self.text:GetFont(),size)
+		return self
+	end
 			
 	function ELib:Check(parent,text,state,template)
 		if template == 0 then
@@ -2836,10 +2859,12 @@ do
 		self:SetChecked(state and true or false)
 		self:SetScript("OnEnter",CheckBoxOnEnter)
 		self:SetScript("OnLeave",ELib.Tooltip.Hide)
+		self.defSetSize = self.SetSize
 		
 		Mod(self)
 		self.Tooltip = Widget_Tooltip
 		self.Left = Widget_Left
+		self.TextSize = Widget_TextSize
 		
 		return self
 	end
@@ -2851,6 +2876,24 @@ do
 end
 
 do
+	local function Click(self)
+		self:GetParent():Click()
+	end
+	local function ButtonOnEnter(self)
+		self.colorSave = {self:GetParent().text:GetTextColor()}
+		self:GetParent().text:SetTextColor(1,1,1)
+	end
+	local function ButtonOnLeave(self)
+		self:GetParent().text:SetTextColor(unpack(self.colorSave))
+	end
+	local function Widget_TextToButton(self)
+		self.Button = CreateFrame("Button",nil,self)
+		self.Button:SetAllPoints(self.text)
+		self.Button:SetScript("OnClick",Click)
+		self.Button:SetScript("OnEnter",ButtonOnEnter)
+		self.Button:SetScript("OnLeave",ButtonOnLeave)
+		return self
+	end
 	function ELib:Radio(parent,text,checked,template)
 		if template == 0 then
 			template = "UIRadioButtonTemplate"
@@ -2863,6 +2906,7 @@ do
 		self:SetChecked(checked and true or false)
 		
 		Mod(self)
+		self.AddButton = Widget_TextToButton
 		
 		return self
 	end
@@ -3012,6 +3056,25 @@ do
 			self.Frame.ScrollBar.buttonDown:Click("LeftButton")
 		end
 	end
+	local function ScrollListListMultitableEnter(self)
+		local mainFrame = self:GetParent().mainFrame
+		if mainFrame.HoverMultitableListValue then
+			mainFrame:HoverMultitableListValue(true,self.index,self)
+		end		
+	end
+	local function ScrollListListMultitableLeave(self)
+		local mainFrame = self:GetParent().mainFrame
+		if mainFrame.HoverMultitableListValue then
+			mainFrame:HoverMultitableListValue(false,self.index,self)
+		end
+	end
+	local function ScrollListListMultitableClick(self)
+		local mainFrame = self:GetParent().mainFrame
+		if mainFrame.ClickMultitableListValue then
+			mainFrame:ClickMultitableListValue(self.index,self)
+		end		
+	end	
+	
 	local ScrollListBackdrop = {bgFile = "", edgeFile = "Interface/Tooltips/UI-Tooltip-Border",tile = true, tileSize = 16, edgeSize = 16, insets = { left = 5, right = 5, top = 5, bottom = 5 }}
 	local ScrollListBackdropModern = {edgeFile = "Interface/AddOns/"..GlobalAddonName.."/media/border", edgeSize = 16}
 	
@@ -3065,9 +3128,21 @@ do
 			local zeroWidth = nil
 			for j=1,#self.T do
 				local width = self.T[j]
-				line['text'..j] = ELib:Text(line,"List",self.fontSize or 12):Size(width,16):Color():Shadow():Left()
+				local textObj = ELib:Text(line,"List",self.fontSize or 12):Size(width,16):Color():Shadow():Left()
+				line['text'..j] = textObj
 				if width == 0 then
 					zeroWidth = j
+				end
+				
+				if self.additionalLineFunctions then
+					local hoverFrame = CreateFrame('Button',nil,line)
+					hoverFrame:SetScript("OnEnter",ScrollListListMultitableEnter)
+					hoverFrame:SetScript("OnLeave",ScrollListListMultitableLeave)
+					hoverFrame:SetScript("OnClick",ScrollListListMultitableClick)
+					hoverFrame:SetAllPoints(textObj)
+					hoverFrame.index = j
+					hoverFrame.parent = textObj
+					--hoverFrame:EnableMouse(false)
 				end
 			end
 			for j=1,#self.T do
@@ -3174,6 +3249,7 @@ do
 			end
 			line:Show()
 			line.index = i
+			line.table = self.L[i]
 			if (j >= #self.L) or (j >= self.linesPerPage) then
 				break
 			end
@@ -3545,7 +3621,7 @@ local ScrollDropDown_Blizzard,ScrollDropDown_Modern = {},{}
 
 for i=1,2 do
 	ScrollDropDown_Modern[i] = ELib:Template("ExRTDropDownListModernTemplate",UIParent)
-	_G["ExRTDropDownListModern"..i] = ScrollDropDown_Modern[i]
+	_G[GlobalAddonName.."DropDownListModern"..i] = ScrollDropDown_Modern[i]
 	ScrollDropDown_Modern[i]:SetClampedToScreen(true)
 	ScrollDropDown_Modern[i].border = ELib:Shadow(ScrollDropDown_Modern[i],20)
 	ScrollDropDown_Modern[i].Buttons = {}
@@ -3597,7 +3673,7 @@ end
 
 for i=1,2 do
 	ScrollDropDown_Blizzard[i] = ELib:Template("ExRTDropDownListTemplate",UIParent)
-	_G["ExRTDropDownList"..i] = ScrollDropDown_Blizzard[i]
+	_G[GlobalAddonName.."DropDownList"..i] = ScrollDropDown_Blizzard[i]
 	ScrollDropDown_Blizzard[i].Buttons = {}
 	ScrollDropDown_Blizzard[i].MaxLines = 0
 	
@@ -3679,6 +3755,10 @@ do
 	end
 end
 
+local function ScrollDropDown_DefaultCheckFunc(self)
+	self:Click()
+end
+
 function ELib.ScrollDropDown.ClickButton(self)
 	if ELib.ScrollDropDown.DropDownList[1]:IsShown() then
 		ELib:DropDownClose()
@@ -3719,9 +3799,9 @@ function ELib.ScrollDropDown:Reload(level)
 					end
 					
 					if data.font then
-						local font = _G["ExRTDropDownListFont"..now]
+						local font = _G[GlobalAddonName.."DropDownListFont"..now]
 						if not font then
-							font = CreateFont("ExRTDropDownListFont"..now)
+							font = CreateFont(GlobalAddonName.."DropDownListFont"..now)
 						end
 						font:SetFont(data.font,12)
 						font:SetShadowOffset(1,-1)
@@ -3792,6 +3872,10 @@ function ELib.ScrollDropDown:Reload(level)
 					button.hoverArg = data.hoverArg
 					button.checkFunc = data.checkFunc
 					
+					if not data.checkFunc then
+						button.checkFunc = ScrollDropDown_DefaultCheckFunc
+					end
+					
 					button.subMenu = data.subMenu
 					button.Lines = data.Lines --Max lines for second level
 					
@@ -3806,6 +3890,21 @@ function ELib.ScrollDropDown:Reload(level)
 			end
 			for i=(now+1),ELib.ScrollDropDown.DropDownList[j].MaxLines do
 				ELib.ScrollDropDown.DropDownList[j].Buttons[i]:Hide()
+			end
+		end
+	end
+end
+
+function ELib.ScrollDropDown.UpdateChecks()
+	local parent = ELib.ScrollDropDown.DropDownList[1].parent
+	if parent.additionalToggle then
+		parent.additionalToggle(parent)
+	end
+	for j=1,#ELib.ScrollDropDown.DropDownList do
+		for i=1,#ELib.ScrollDropDown.DropDownList[j].Buttons do
+			local button = ELib.ScrollDropDown.DropDownList[j].Buttons[i]
+			if button:IsShown() and button.data then
+				button.checkButton:SetChecked(button.data.checkState)
 			end
 		end
 	end
@@ -4418,7 +4517,7 @@ do
 		local x,y = GetCursorPos(self)
 		if IsInFocus(self,x,y) then
 			if #self.tooltipsData == 1 then
-				local Y,X,_posY,xText,yText,comment = nil
+				local Y,X,_posY,xText,yText,comment,main = nil
 				for k=1,#self.tooltipsData do
 					for i=#self.tooltipsData[k],1,-1 do
 						if (self.tooltipsData[k][i][1] - (self.tooltipsData[k][i-1] and (self.tooltipsData[k][i][1]-self.tooltipsData[k][i-1][1])/2 or 0)) < x or
@@ -4429,6 +4528,7 @@ do
 							xText = self.data.tooltipX and self.data.tooltipX[X] or self.tooltipsData[k][i][5]
 							yText = self.tooltipsData[k][i][6]
 							comment = self.tooltipsData[k][i][7]
+							main = self.tooltipsData[k].main
 							break
 						end
 					end
@@ -4440,7 +4540,7 @@ do
 					end
 					GameTooltip:SetOwner(self, "ANCHOR_LEFT",x,_posY)
 					GameTooltip:SetText(xText or Round(X))
-					GameTooltip:AddLine((self.data[1].name and self.data[1].name..": " or "")..(yText or Round(Y)))
+					GameTooltip:AddLine((main.name and main.name..": " or "")..(yText or Round(Y)))--,main.r or Graph_DefColors[main.color_count] and Graph_DefColors[main.color_count].r,main.g or Graph_DefColors[main.color_count] and Graph_DefColors[main.color_count].g,main.b or Graph_DefColors[main.color_count] and Graph_DefColors[main.color_count].b)
 					if comment then
 						GameTooltip:AddLine(comment)
 					end
@@ -4533,7 +4633,7 @@ do
 	local function GraphOnMouseUp(self,isLeave)
 		if isLeave == "LEAVE" then
 			if self.selectingTexture then
-				return
+				return "SELECTING"
 				--self.selectingTexture:Hide()
 			end
 			self.mouseDowned = nil
@@ -4571,6 +4671,9 @@ do
 		if parent.OnResetZoom then
 			parent:OnResetZoom()
 		end
+		if parent.DisableReloadOnResetZoom then
+			return
+		end
 		parent:Reload()
 	end
 	local function GraphZoom(self,start,ending)
@@ -4600,7 +4703,9 @@ do
 	end
 	local function GraphOnLeave(self)
 		GameTooltip_Hide()
-		GraphOnMouseUp(self,"LEAVE")
+		if GraphOnMouseUp(self,"LEAVE") == "SELECTING" then
+			return
+		end
 		self:SetScript("OnUpdate",nil)
 	end
 	local function GraphOnEnter(self)

@@ -120,6 +120,12 @@ local support = {
 
 -- this content will be subject to frequent changes, do not bother translating it !!
 local whatsnew = {
+	{	name = "7.2.001 Changes",
+		bulletedList = {
+			"DataStore_Talents : Fixed a few issues when scanning artifact data",
+			"DataStore_Talents : Fixed an issue when artifact XP was updated.",
+		},
+	},
 	{	name = "7.1.003 Changes",
 		bulletedList = {
 			"Added a row for the 12th character on both the achievements and grids tabs.",
@@ -208,7 +214,6 @@ function addon:SetupOptions()
 	
 	-- ** General **
 	f.Title:SetText(colors.teal..format("%s %s", addonName, addon.Version))
-	f.ShowRestXP150pc.Text:SetText(L["Max rest XP displayed as 150%"])
 	f.BankAutoUpdate.Text:SetText(L["Automatically authorize guild bank updates"])
 	f.BankAutoUpdate.tooltip = format("%s%s%s",
 		L["|cFFFFFFFFWhen |cFF00FF00enabled|cFFFFFFFF, this option will allow other Altoholic users\nto update their guild bank information with yours automatically.\n\n"],
@@ -379,7 +384,6 @@ function addon:RestoreOptionsToUI()
 	
 	local f = AltoholicGeneralOptions
 	
-	f.ShowRestXP150pc:SetChecked(O["UI.Tabs.Summary.ShowRestXP150pc"])
 	f.BankAutoUpdate:SetChecked(O["UI.Tabs.Guild.BankAutoUpdate"])
 	f.ClampWindowToScreen:SetChecked(O["UI.ClampWindowToScreen"])
 
@@ -439,30 +443,6 @@ function addon:RestoreOptionsToUI()
 	f.WeekStartsOnMonday:SetChecked(O["UI.Calendar.WeekStartsOnMonday"])
 	f.UseDialogBoxForWarnings:SetChecked(O["UI.Calendar.UseDialogBoxForWarnings"])
 	f.WarningsEnabled:SetChecked(O["UI.Calendar.WarningsEnabled"])
-end
-
-function addon:UpdateMinimapIconCoords()
-	-- Thanks to Atlas for this code, modified to fit this addon's requirements though
-	local xPos, yPos = GetCursorPosition() 
-	local left, bottom = Minimap:GetLeft(), Minimap:GetBottom() 
-
-	xPos = left - xPos/UIParent:GetScale() + 70 
-	yPos = yPos/UIParent:GetScale() - bottom - 70 
-
-	local iconAngle = math.deg(math.atan2(yPos, xPos))
-	if(iconAngle < 0) then
-		iconAngle = iconAngle + 360
-	end
-	
-	addon:SetOption("UI.Minimap.IconAngle", iconAngle)
-	AltoholicGeneralOptions_SliderAngle:SetValue(iconAngle)
-end
-
-function addon:MoveMinimapIcon()
-	local radius = addon:GetOption("UI.Minimap.IconRadius")
-	local angle = addon:GetOption("UI.Minimap.IconAngle")
-	
-	AltoholicMinimapButton:SetPoint( "TOPLEFT", "Minimap", "TOPLEFT", 54 - (radius * cos(angle)), (radius * sin(angle)) - 55 );
 end
 
 function addon:UpdateMyMemoryUsage()

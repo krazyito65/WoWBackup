@@ -10,7 +10,14 @@ GoGo_Prefs = {
 	["AutoExcludeFlyingMounts"] = false,
 	["DruidFormNotRandomize"] = false,
 	["Zones"] = {
-		[800] = {
+		["Tanaan Jungle"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 970,
+		},
+		[1115] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
@@ -28,12 +35,11 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Tanaan Jungle"] = {
+		[301] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {
 			},
-			["ZoneID"] = 970,
 		},
 		[-1] = {
 			["Preferred"] = {
@@ -41,7 +47,7 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		[301] = {
+		[800] = {
 			["Preferred"] = {
 			},
 			["Excluded"] = {

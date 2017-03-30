@@ -70,25 +70,6 @@ GoGo_Prefs = {
 			["Excluded"] = {
 			},
 		},
-		["Tanaan Jungle"] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-			["ZoneID"] = 945,
-		},
-		[321] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
-		[1011] = {
-			["Preferred"] = {
-			},
-			["Excluded"] = {
-			},
-		},
 		["Bloodmaul Slag Mines"] = {
 			["Preferred"] = {
 			},
@@ -96,20 +77,46 @@ GoGo_Prefs = {
 			},
 			["ZoneID"] = 964,
 		},
+		[321] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		["Tanaan Jungle"] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+			["ZoneID"] = 945,
+		},
+		[1011] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
+		[1115] = {
+			["Preferred"] = {
+			},
+			["Excluded"] = {
+			},
+		},
 	},
-	["DisableMountNotice"] = false,
 	["autodismount"] = true,
+	["DisableMountNotice"] = false,
+	["DisableWaterFlight"] = true,
 	["DruidDisableInCombat"] = false,
 	["DisableUpdateNotice"] = false,
 	["RemoveBuffs"] = true,
-	["version"] = "7.0.7",
+	["version"] = "7.1.1",
 	["DruidClickForm"] = true,
 	["GlobalPrefMounts"] = {
 	},
 	["ShamanClickForm"] = false,
 	["ExtraPassengerMounts"] = {
 	},
-	["DisableWaterFlight"] = true,
+	["PrefVer"] = 1,
 }
 GoGo_DebugLog = {
 }

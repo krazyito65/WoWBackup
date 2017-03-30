@@ -1,4 +1,4 @@
-﻿
+
 -- @EXACT = true: Translation has to be the exact(!) match in the clients language,
 --                beacause it carries technical semantics
 -- @EXACT = false: Translation can be done freely, because text is only descriptive
@@ -445,4 +445,17 @@ VUHDO_I18N_DEF_COUNTER_OVERFLOW_ABSORB = "Counter: Mythic+ Overflow Absorb #k";
 
 -- 3.79
 VUHDO_I18N_DEFAULT_RES_ANNOUNCE_MASS = "Casting mass resurrection!";
+
+-- 3.81
+VUHDO_I18N_BOUQUET_OVERFLOW_COUNTER = "Overflow Mythic+ Affix";
+
+-- 3.82
+VUHDO_I18N_SPELL_TRACE = "Icon: Spell Trace";
+VUHDO_I18N_DEF_SPELL_TRACE = "Spell Trace";
+VUHDO_I18N_TRAIL_OF_LIGHT = "Icon: Trail of Light";
+VUHDO_I18N_DEF_TRAIL_OF_LIGHT = "Trail of Light";
+
+-- 3.83
+VUHDO_I18N_BOUQUET_STATUS_MANA_HEALER_ONLY = "Statusbar: Mana % (Healer Only)";
+VUHDO_I18N_DEF_BOUQUET_BAR_MANA_HEALER_ONLY = "Manabars: Mana (Healer Only)";
 

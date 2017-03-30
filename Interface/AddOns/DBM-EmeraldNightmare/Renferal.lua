@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1744, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15452 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16092 $"):sub(12, -3))
 mod:SetCreatureID(106087)
 mod:SetEncounterID(1876)
 mod:SetZone()
@@ -46,7 +46,7 @@ local yellNecroticVenom				= mod:NewFadesYell(218831)
 local specWarnWebofPain				= mod:NewSpecialWarning("specWarnWebofPain")--No voice. Tech doesn't really exist yet to filter special warning sounds on generics. Plus how you handle this may differ between groups
 --Roc Form
 local specWarnGatheringClouds		= mod:NewSpecialWarningSpell(212707, nil, nil, nil, 1, 2)
-local specWarnDarkStorm				= mod:NewSpecialWarningMoveTo(210948, nil, DBM_CORE_AUTO_SPEC_WARN_OPTIONS.spell:format(210948), nil, 1, 2)
+local specWarnDarkStorm				= mod:NewSpecialWarningMoveTo(210948, nil, nil, nil, 1, 2)
 local specWarnTwistingShadows		= mod:NewSpecialWarningMoveAway(210864, nil, nil, nil, 1, 2)
 local specWarnTwistingShadowsMove	= mod:NewSpecialWarningMove(210864, nil, nil, nil, 1, 2)--For expires. visual is WAY off from debuff, if you wait for visual you'll die to this
 local yellTwistingShadows			= mod:NewFadesYell(210864)
@@ -62,6 +62,7 @@ mod:AddTimerLine(GetSpellInfo(210326))
 local timerSpiderFormCD				= mod:NewNextTimer(132, 210326, nil, nil, nil, 6)
 local timerFeedingTimeCD			= mod:NewNextCountTimer(50, 212364, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 local timerNecroticVenomCD			= mod:NewNextCountTimer(21.8, 215443, nil, nil, nil, 3)--This only targets ranged, but melee/tanks need to be sure to also move away from them
+mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerNightmareSpawnCD			= mod:NewNextTimer(10, 218630, nil, nil, nil, 1, nil, DBM_CORE_HEROIC_ICON)
 --Roc Form
 mod:AddTimerLine(GetSpellInfo(210308))
@@ -69,8 +70,9 @@ local timerRocFormCD				= mod:NewNextTimer(47, 210308, nil, nil, nil, 6)
 local timerGatheringCloudsCD		= mod:NewNextTimer(15.8, 212707, nil, nil, nil, 2)
 local timerDarkStormCD				= mod:NewNextTimer(26, 210948, nil, nil, nil, 2)
 local timerTwistingShadowsCD		= mod:NewNextCountTimer(21.5, 210864, nil, nil, nil, 3)
-local timerRazorWingCD				= mod:NewNextTimer(32.5, 210547, nil, nil, nil, 3)--Needs more timer data when fight done properly
+local timerRazorWingCD				= mod:NewNextTimer(32.5, 210547, nil, nil, nil, 3)
 local timerRakingTalonsCD			= mod:NewCDCountTimer(32, 215582, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
+mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerViolentWindsCD			= mod:NewNextTimer(40.5, 218124, nil, nil, nil, 5, nil, DBM_CORE_HEROIC_ICON..DBM_CORE_TANK_ICON)
 
 local berserkTimer					= mod:NewBerserkTimer(540)
@@ -87,7 +89,7 @@ local voiceVenomousPool				= mod:NewVoice(213124)--runaway
 --Roc Form
 local voiceTwistingShadows			= mod:NewVoice(210864)--runout/runaway
 local voiceGatheringClouds			= mod:NewVoice(212707)--aesoon
-local voiceDarkStorm				= mod:NewVoice(212707)--findshelter
+local voiceDarkStorm				= mod:NewVoice(210948)--findshelter
 local voiceRazorWing				= mod:NewVoice(210547)--carefly
 local voiceViolentWinds				= mod:NewVoice(218124)--justrun/keepmove/tauntboss
 local voiceRakingTalon				= mod:NewVoice(215582)--defensive/tauntboss
@@ -95,7 +97,6 @@ local voiceRakingTalon				= mod:NewVoice(215582)--defensive/tauntboss
 --mod:AddRangeFrameOption("5")--Add range frame to Necrotic Debuff if detecting it actually works with FindDebuff()
 mod:AddSetIconOption("SetIconOnWeb", 215307)
 mod:AddSetIconOption("SetIconOnWinds", 218124)
-mod:AddDropdownOption("WebConfiguration", {"Disabled", "Arrow", "HudSelf", "HudAll"}, "HudSelf", "misc")
 
 mod.vb.feedingTimeCast = 0
 mod.vb.venomCast = 0
@@ -162,16 +163,6 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)--540 heroic, other difficulties not confirmed
 	self.vb.platformCount = 1
 	self.vb.ViolentWindsPlat = false
-	DBM:AddMsg(L.MapMessage)
-end
-
-function mod:OnCombatEnd()
-	if self.Options.WebConfiguration == "HudAll" or self.Options.WebConfiguration == "HudSelf" then
-		DBMHudMap:Disable()
-	end
-	if self.Options.WebConfiguration == "Arrow" then
-		DBM.Arrow:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -216,7 +207,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			timerTwistingShadowsCD:Start(40, 2)
 		elseif self.vb.twistedCast == 2 then
 			if self.vb.ViolentWindsPlat then
-				timerTwistingShadowsCD:Start(35, 3)
+				timerTwistingShadowsCD:Start(34, 3)
 			else
 				timerTwistingShadowsCD:Start(21.5, 3)
 			end
@@ -273,29 +264,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 215300 then--215307 can also be used and technically is actually faster since it's first event in combat log, However 215300 is what BW uses and I want to make sure DMM repots it in same Order. Especially if they add icon options
 		if args.sourceGUID == playerGUID then
 			specWarnWebofPain:Show(args.destName)
-			if self.Options.WebConfiguration == "HudAll" or self.Options.WebConfiguration == "HudSelf" then
-				local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.1, 6, nil, nil, nil, 0.5):Appear()
-				local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.35, 6, nil, nil, nil, 0.5):Appear():SetLabel(args.destName, nil, nil, nil, nil, nil, 0.8, nil, -9, 9, nil)
-				marker1:EdgeTo(marker2, nil, 10, 1, 1, 0, 0.5)--Yellow Line
-			elseif self.Options.WebConfiguration == "Arrow" then
-				DBM.Arrow:ShowRunTo(args.destName, 0, 0)
-			end
 		elseif args.destGUID == playerGUID then
 			specWarnWebofPain:Show(args.sourceName)
-			if self.Options.WebConfiguration == "HudAll" or self.Options.WebConfiguration == "HudSelf" then
-				local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.1, 6, nil, nil, nil, 0.5):Appear()
-				local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.35, 6, nil, nil, nil, 0.5):Appear():SetLabel(args.sourceName, nil, nil, nil, nil, nil, 0.8, nil, -9, 9, nil)
-				marker1:EdgeTo(marker2, nil, 10, 1, 1, 0, 0.5)--Yellow Line
-			elseif self.Options.WebConfiguration == "Arrow" then
-				DBM.Arrow:ShowRunTo(args.sourceName, 0, 0)
-			end
 		else
 			warnWebOfPain:Show(args.sourceName, args.destName)
-			if self.Options.WebConfiguration == "HudAll" then
-				local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.sourceName, 0.35, 6, nil, nil, nil, 0.5):Appear():SetLabel(args.sourceName, nil, nil, nil, nil, nil, 0.8, nil, -9, 9, nil)
-				local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "party", args.destName, 0.35, 6, nil, nil, nil, 0.5):Appear():SetLabel(args.destName, nil, nil, nil, nil, nil, 0.8, nil, -9, 9, nil)
-				marker1:EdgeTo(marker2, nil, 10, 1, 0, 0, 0.5)--Red Line
-			end
 		end
 		if self.Options.SetIconOnWeb and self:IsInCombat() then
 			local uId = DBM:GetRaidUnitId(args.destName)
@@ -332,10 +304,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnWeb then
 			self:SetIcon(args.destName, 0)
 		end
-		if args:IsPlayer() and self.Options.WebConfiguration == "Arrow" then
-			DBM.Arrow:Hide()
-		end
-		DBMHudMap:FreeEncounterMarkerByTarget(215300, args.destName)
 	end
 end
 
@@ -365,7 +333,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 		self.vb.razorWingCast = 0
 		self.vb.windsCast = 0
 		warnRocForm:Show()
-		timerTwistingShadowsCD:Start(7, 1)
+		timerTwistingShadowsCD:Start(6.6, 1)
 		timerGatheringCloudsCD:Start()--15.8-16
 		timerDarkStormCD:Start()--26
 		timerSpiderFormCD:Start()

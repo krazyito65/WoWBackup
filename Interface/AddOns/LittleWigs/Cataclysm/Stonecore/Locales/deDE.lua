@@ -6,5 +6,4 @@ L["burrow_message"] = "Corborus taucht ab!"
 L["burrow_warning"] = "Abtauchen in 5 sek!"
 L["emerge_message"] = "Corborus taucht auf!"
 L["emerge_warning"] = "Auftauchen in 5 sek!"
-
 end

@@ -1,10 +1,10 @@
-## Interface: 70100
+## Interface: 70200
 ## Title: LDB Artifact
 ## Notes: A simple data broker display for current Artifact Power
 ## Author: Znuff
-## X-Date: 2016-11-18T5:23:50Z
+## X-Date: 2017-03-28T23:26:23Z
 ## X-Email: znuffy@gmail.com
-## Version: v1.5.3-1-gf8237ad
+## Version: v1.6
 ## OptionalDeps: LibDataBroker-1.1
 
 #@no-lib-strip@

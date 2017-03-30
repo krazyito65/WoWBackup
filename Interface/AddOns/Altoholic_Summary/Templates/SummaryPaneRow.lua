@@ -1,4 +1,4 @@
-﻿local addonName = "Altoholic"
+local addonName = "Altoholic"
 local addon = _G[addonName]
 local colors = addon.Colors
 
@@ -8,6 +8,8 @@ local THIS_ACCOUNT = "Default"
 
 local ICON_FACTION_HORDE = "Interface\\Icons\\INV_BannerPVP_01"
 local ICON_FACTION_ALLIANCE = "Interface\\Icons\\INV_BannerPVP_02"
+local TEXTURE_HORDE = format("|T%s:%s:%s|t", ICON_FACTION_HORDE, 18, 18)
+local TEXTURE_ALLIANCE = format("|T%s:%s:%s|t", ICON_FACTION_ALLIANCE, 18, 18)
 
 local function EmptyFunc()
 end
@@ -44,24 +46,20 @@ local function ShowTotals(frame)
 	tt:AddLine(" ",1,1,1)
 	tt:AddDoubleLine(colors.white..L["Levels"] , format("%s|r (%s %s|r, %s %s|r)", 
 		addon.Characters:GetField(line, "level"),
-		addon:TextureToFontstring(ICON_FACTION_ALLIANCE, 18, 18), colors.white..aLevels,
-		addon:TextureToFontstring(ICON_FACTION_HORDE, 18, 18), colors.white..hLevels))
+		TEXTURE_ALLIANCE, colors.white..aLevels,
+		TEXTURE_HORDE, colors.white..hLevels))
 	
 	tt:AddLine(" ",1,1,1)
 	tt:AddDoubleLine(colors.white..MONEY, format("%s|r (%s %s|r, %s %s|r)", 
 		addon:GetMoneyString(addon.Characters:GetField(line, "money"), colors.white, true),
-		addon:TextureToFontstring(ICON_FACTION_ALLIANCE, 18, 18), 
-		addon:GetMoneyString(aMoney, colors.white, true),
-		addon:TextureToFontstring(ICON_FACTION_HORDE, 18, 18), 
-		addon:GetMoneyString(hMoney, colors.white, true)))
+		TEXTURE_ALLIANCE, addon:GetMoneyString(aMoney, colors.white, true),
+		TEXTURE_HORDE, addon:GetMoneyString(hMoney, colors.white, true)))
 	
 	tt:AddLine(" ",1,1,1)
 	tt:AddDoubleLine(colors.white..PLAYED , format("%s|r (%s %s|r, %s %s|r)",
 		addon.Characters:GetField(line, "played"),
-		addon:TextureToFontstring(ICON_FACTION_ALLIANCE, 18, 18),
-		addon:GetTimeString(aPlayed),
-		addon:TextureToFontstring(ICON_FACTION_HORDE, 18, 18), 
-		addon:GetTimeString(hPlayed)))
+		TEXTURE_ALLIANCE, addon:GetTimeString(aPlayed),
+		TEXTURE_HORDE, addon:GetTimeString(hPlayed)))
 	
 	tt:Show()
 end

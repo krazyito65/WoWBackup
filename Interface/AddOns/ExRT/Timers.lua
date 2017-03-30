@@ -63,6 +63,8 @@ local function ToRaid(msg)
 	end
 	if IsInRaid() then
 		SendChatMessage(msg, "raid_warning")
+	elseif (GetNumGroupMembers() or 0) > 1 then
+		SendChatMessage(msg, IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY")
 	else
 		RaidWarningFrame_OnEvent(RaidWarningFrame,"CHAT_MSG_RAID_WARNING",msg)
 		print(msg)
@@ -73,11 +75,11 @@ local function CreateTimers(ctime,cname)
 	local chat_type,playerName = ExRT.F.chatType()
 
 	if cname == L.timerattack then
-		SendAddonMessage("BigWigs", "T:BWPull "..ctime, chat_type,playerName)
+		SendAddonMessage("BigWigs", "P^Pull^"..ctime, chat_type,playerName)
 		local _,_,_,_,_,_,_,mapID = GetInstanceInfo()
 		SendAddonMessage("D4", ("PT\t%d\t%d"):format(ctime,mapID or -1), chat_type,playerName)
 	else
-		SendAddonMessage("BigWigs", "T:BWCustomBar "..ctime.." "..cname, chat_type,playerName)
+		SendAddonMessage("BigWigs", "P^CBar^"..ctime.." "..cname, chat_type,playerName)
 		if ctime == 0 then
 			ctime = 1
 		end
@@ -288,6 +290,13 @@ function module.options:Load()
 		end
 	end)
 	
+	self.sliderTimeToKill = ELib:Slider(self.TabTimerFrame,L.TimerTimeToKillTime):Size(100):Point("LEFT",self.chkTimeToKill,"LEFT",180,5):Range(5,40):SetTo(VExRT.Timers.timeToKillAnalyze):OnChange(function(self,event) 
+		event = event - event%1
+		VExRT.Timers.timeToKillAnalyze = event
+		self.tooltipText = event
+		self:tooltipReload(self)
+	end)
+	
 	self.ButtonToCenter = ELib:Button(self.TabTimerFrame,L.TimerResetPos):Size(255,20):Point(10,-60):Tooltip(L.TimerResetPosTooltip):OnClick(function()
 		VExRT.Timers.Left = nil
 		VExRT.Timers.Top = nil
@@ -418,6 +427,8 @@ function module.main:ADDON_LOADED()
 	
 	VExRT.Timers.Strata = VExRT.Timers.Strata or "HIGH"
 	
+	VExRT.Timers.timeToKillAnalyze = tonumber(VExRT.Timers.timeToKillAnalyze or "?") or 15
+	
 	module.frame:SetFrameStrata(VExRT.Timers.Strata)
 	
 	module:RegisterTimer()
@@ -471,31 +482,19 @@ module:RegisterHideOnPetBattle(module.frame)
 module.db.TTK = {}
 
 do
-	local function UpdateKillText(time)
-		if not time or time < 0 or time > 600 then
-			module.frame.killTime:SetText("")
-		elseif time >= 60 then
-			module.frame.killTime:SetFormattedText("%d:%02d",floor(time/60),time % 60)
-		else
-			module.frame.killTime:SetFormattedText("%d",time)
-		end
-	end
-	
 	local hpSnapshots,timeSnapshots,iSnapshot,guidSnapshot = {},{},0
 	local tmr = 0
+	local tmr2 = 0
+	local MAX_SEGMENTS = 90
 	
 	function module.frame.OnUpdateFunc(self,elapsed)
-		self.tmr = self.tmr + elapsed
-		if self.tmr > 0.05 and (self.inCombat or self.encounter or self.total < 0) then
-			self.total = self.total + self.tmr
-			local txt = format("%2.2d:%2.2d\.%1.1d",abs(self.total)/60,abs(self.total)%60,(abs(self.total)*10)%10)
-			if txt ~= self.ExTimerTxt then
-				module.frame.txt:SetText(txt)
-				self.ExTimerTxt = txt
-			end
-			self.tmr = 0
-		elseif self.tmr > 0.05 then
-			self.tmr = 0
+		tmr2 = tmr2 + elapsed
+		if tmr2 > 0.05 and (self.inCombat or self.encounter or self.total < 0) then
+			self.total = self.total + tmr2
+			module.frame.txt:SetFormattedText("%2.2d:%2.2d\.%1.1d",abs(self.total)/60,abs(self.total)%60,(abs(self.total)*10)%10)
+			tmr2 = 0
+		elseif tmr2 > 0.05 then
+			tmr2 = 0
 		end
 		
 		if timeToKillEnabled then
@@ -503,33 +502,51 @@ do
 			if tmr > 0.5 then
 				tmr = 0
 				iSnapshot = iSnapshot + 1
-				if iSnapshot > 16 then
+				if iSnapshot > MAX_SEGMENTS then
 					iSnapshot = 1
 				end
 				local currHp,maxHP = UnitHealth('target'),UnitHealthMax('target')
 				local targetGUID = UnitGUID('target')
 				if guidSnapshot ~= targetGUID then
-					wipe(hpSnapshots)
+					--wipe(hpSnapshots)
+					for i=1,MAX_SEGMENTS do
+						if not hpSnapshots[i] then
+							break
+						end
+						hpSnapshots[i] = nil
+					end
 					iSnapshot = 1
 					guidSnapshot = targetGUID
 				end
 				hpSnapshots[ iSnapshot ] = maxHP > 0 and currHp/maxHP or 0
 				timeSnapshots[ iSnapshot ] = GetTime()
 				if iSnapshot % 2 == 0 then
-					local prevSnapshot = iSnapshot + 2
-					if prevSnapshot > 16 then
-						prevSnapshot = 1
+					local prevSnapshot = iSnapshot - (VExRT.Timers.timeToKillAnalyze * 2)
+					if prevSnapshot < 1 then
+						prevSnapshot = prevSnapshot + MAX_SEGMENTS
 					end
-					local nowHP,prevHP = hpSnapshots[ iSnapshot ],hpSnapshots[ prevSnapshot ]
+					local prevHP = hpSnapshots[ prevSnapshot ]
+					if not prevHP and iSnapshot > 1 then
+						prevSnapshot = 1
+						prevHP = hpSnapshots[1]
+					end
+
+					local nowHP = hpSnapshots[ iSnapshot ]
 					if nowHP and nowHP > 0 and prevHP and prevHP > 0 then
 						local diff = prevHP - nowHP
 						local time = timeSnapshots[ iSnapshot ] - timeSnapshots[ prevSnapshot ]
 						local dps = diff / time
 						
-						local timeToKill = nowHP / dps
-						UpdateKillText(timeToKill)
+						local t = nowHP / dps
+						if t < 0 or t > 600 then
+							module.frame.killTime:SetText("")
+						elseif t >= 60 then
+							module.frame.killTime:SetFormattedText("%d:%02d",floor(t/60),t % 60)
+						else
+							module.frame.killTime:SetFormattedText("%d",t)
+						end
 					else
-						UpdateKillText()
+						module.frame.killTime:SetText("")
 					end
 				end
 			end

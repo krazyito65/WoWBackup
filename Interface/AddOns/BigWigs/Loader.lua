@@ -7,7 +7,7 @@ local bwFrame = CreateFrame("Frame")
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 24
+local BIGWIGS_VERSION = 50
 local BIGWIGS_RELEASE_STRING = ""
 local versionQueryString, versionResponseString = "Q^%d^%s", "V^%d^%s"
 
@@ -18,7 +18,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "55aa1a7" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "1e39f8a" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[===[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -80,6 +80,7 @@ local loadOnZone = {} -- BigWigs modulepack that should load on a specific zone
 local loadOnSlash = {} -- BigWigs modulepacks that can load from a chat command
 local menus = {} -- contains the menus for BigWigs, once the core is loaded they will get injected
 local enableZones = {} -- contains the zones in which BigWigs will enable
+local disabledZones -- contains the zones in which BigWigs will enable, but the user has disabled the addon
 local worldBosses = {} -- contains the list of world bosses per zone that should enable the core
 local fakeWorldZones = { -- Fake world zones used for world boss translations and loading
 	[466]=true, -- Outland
@@ -111,7 +112,7 @@ do
 		[752]=cata, [758]=cata, [754]=cata, [824]=cata, [800]=cata, [773]=cata,
 		[896]=mop, [897]=mop, [886]=mop, [930]=mop, [953]=mop, [862]=mop,
 		[994]=wod, [988]=wod, [1026]=wod, [962]=wod,
-		[1094]=l, [1088]=l, [1007]=l, [1114]=l,
+		[1094]=l, [1088]=l, [1007]=l, [1114]=l, [1147]=l,
 
 		[756]=lw_c, -- Classic
 		[710]=lw_bc, [722]=lw_bc, [723]=lw_bc, [724]=lw_bc, [725]=lw_bc, [726]=lw_bc, [727]=lw_bc, [728]=lw_bc, [729]=lw_bc, [730]=lw_bc, [731]=lw_bc, [732]=lw_bc, [733]=lw_bc, [734]=lw_bc, [797]=lw_bc, [798]=lw_bc, -- TBC
@@ -119,14 +120,14 @@ do
 		[747]=lw_cata, [757]=lw_cata, [767]=lw_cata, [768]=lw_cata, [769]=lw_cata, [820]=lw_cata, -- Cataclysm
 		[877]=lw_mop, [871]=lw_mop, [874]=lw_mop, [885]=lw_mop, [867]=lw_mop, [919]=lw_mop, -- MoP
 		[964]=lw_wod, [969]=lw_wod, [984]=lw_wod, [987]=lw_wod, [989]=lw_wod, [993]=lw_wod, [995]=lw_wod, [1008]=lw_wod, -- WoD
-		[1041]=lw_l, [1042]=lw_l, [1045]=lw_l, [1046]=lw_l, [1065]=lw_l, [1066]=lw_l, [1067]=lw_l, [1079]=lw_l, [1081]=lw_l, [1087]=lw_l, [1115]=lw_l, -- Legion
+		[1041]=lw_l, [1042]=lw_l, [1045]=lw_l, [1046]=lw_l, [1065]=lw_l, [1066]=lw_l, [1067]=lw_l, [1079]=lw_l, [1081]=lw_l, [1087]=lw_l, [1115]=lw_l, [1146]=lw_l, -- Legion
 	}
 
 	public.zoneTblWorld = {
 		[-473] = 466, [-465] = 466, -- Outland
 		[-807] = 862, [-809] = 862, [-928] = 862, [-929] = 862, [-951] = 862, -- Pandaria
 		[-948] = 962, [-949] = 962, [-949] = 962, [-945] = 962, -- Draenor
-		[-1015] = 1007, [-1017] = 1007, [-1018] = 1007, [-1024] = 1007, -- Broken Isles
+		[-1015] = 1007, [-1017] = 1007, [-1018] = 1007, [-1024] = 1007, [-1033] = 1007, -- Broken Isles
 	}
 	public.fakeWorldZones = fakeWorldZones
 	public.zoneTbl = {}
@@ -206,7 +207,7 @@ local function loadAndEnableCore()
 end
 
 local function loadCoreAndOpenOptions()
-	if not BigWigsOptions and (InCombatLockdown() or UnitAffectingCombat("player")) then
+	if not BigWigsOptions and not IsAltKeyDown() and (InCombatLockdown() or UnitAffectingCombat("player")) then -- Allow combat loading using ALT key.
 		sysprint(L.blizzRestrictionsConfig)
 		return
 	end
@@ -298,6 +299,21 @@ do
 			end
 		elseif reqFuncAddons[name] then
 			sysprint(L.coreAddonDisabled:format(name))
+		else
+			local meta = GetAddOnMetadata(i, "X-BigWigs-LoadOn-ZoneId")
+			if meta then -- Disabled content
+				for j = 1, select("#", strsplit(",", meta)) do
+					local rawId = select(j, strsplit(",", meta))
+					local id = tonumber(rawId:trim())
+					if id and id > 0 then
+						local instanceId = GetAreaMapInfo(id) -- convert map id to instance id
+						if not fakeWorldZones[id] and public.zoneTbl[instanceId] then
+							if not disabledZones then disabledZones = {} end
+							disabledZones[instanceId] = name
+						end
+					end
+				end
+			end
 		end
 
 		if next(loadOnSlash) then
@@ -433,7 +449,7 @@ function mod:ADDON_LOADED(addon)
 			end
 		end
 	end
-	self:UpdateDBMFaking(nil, "fakeDBMVersion", self.isFakingDBM)
+	self:BigWigs_CoreOptionToggled(nil, "fakeDBMVersion", self.isFakingDBM)
 
 	if self.isSoundOn ~= false then -- Only if sounds are enabled
 		local num = tonumber(GetCVar("Sound_NumChannels")) or 0
@@ -527,6 +543,7 @@ do
 		BigWigs_LeiShi_Marker = "BigWigs",
 		BigWigs_NoPluginWarnings = "BigWigs",
 		LFG_ProposalTime = "BigWigs",
+		BigWigs_DispelResist = "",
 	}
 	local delayedMessages = {}
 
@@ -556,11 +573,11 @@ do
 
 	local L = GetLocale()
 	if L == "ptBR" then
-		--delayedMessages[#delayedMessages+1] = "Can you translate BigWigs into Brazilian Portugese (ptBR)? Check out our GitHub page!"
+		delayedMessages[#delayedMessages+1] = "BigWigs needs translations. Can you translate BigWigs into Brazilian Portugese (ptBR)? Check out our GitHub page!"
 	elseif L == "itIT" then
-		delayedMessages[#delayedMessages+1] = "Can you translate BigWigs into Italian (itIT)? Check out our GitHub page!"
-	elseif L == "koKR" then
-		delayedMessages[#delayedMessages+1] = "Can you translate BigWigs into Korean (koKR)? Check out our GitHub page!"
+		delayedMessages[#delayedMessages+1] = "BigWigs needs translations. Can you translate BigWigs into Italian (itIT)? Check out our GitHub page!"
+	elseif L == "esES" then
+		delayedMessages[#delayedMessages+1] = "BigWigs needs translations. Can you translate BigWigs into Spanish (esES)? Check out our GitHub page!"
 	end
 
 	CTimerAfter(11, function()
@@ -576,61 +593,23 @@ do
 end
 
 -----------------------------------------------------------------------
--- DBM version collection & faking
---
-
-do
-	-- This is a crapfest mainly because DBM's actual handling of versions is a crapfest, I'll try explain how this works...
-	local DBMdotRevision = "15454" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
-	local DBMdotDisplayVersion = "7.1.2" -- Same as above but is changed between alpha and release cycles e.g. "N.N.N" for a release and "N.N.N alpha" for the alpha duration
-	local DBMdotReleaseRevision = DBMdotRevision -- This is manually changed by them every release, they use it to track the highest release version, a new DBM release is the only time it will change.
-
-	local timer, prevUpgradedUser = nil, nil
-	local function sendMsg()
-		if IsInGroup() then
-			SendAddonMessage("D4", "V\t"..DBMdotRevision.."\t"..DBMdotReleaseRevision.."\t"..DBMdotDisplayVersion.."\t"..GetLocale().."\t".."true", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- LE_PARTY_CATEGORY_INSTANCE = 2
-		end
-		timer, prevUpgradedUser = nil, nil
-	end
-	function mod:DBM_VersionCheck(prefix, sender, revision, releaseRevision, displayVersion)
-		if prefix == "H" and (BigWigs and BigWigs.db.profile.fakeDBMVersion or self.isFakingDBM) then
-			if timer then timer:Cancel() end
-			timer = CTimerNewTicker(3.3, sendMsg, 1)
-		elseif prefix == "V" then
-			usersDBM[sender] = displayVersion
-			if BigWigs and BigWigs.db.profile.fakeDBMVersion or self.isFakingDBM then
-				-- If there are people with newer versions than us, suddenly we've upgraded!
-				local rev, dotRev = tonumber(revision), tonumber(DBMdotRevision)
-				if rev and displayVersion and rev ~= 99999 and rev > dotRev and not displayVersion:find("alpha", nil, true) then -- Failsafes
-					if not prevUpgradedUser then
-						prevUpgradedUser = sender
-					elseif prevUpgradedUser ~= sender then
-						DBMdotRevision = revision -- Update our local rev with the highest possible rev found.
-						DBMdotReleaseRevision = releaseRevision -- Update our release rev with the highest found, this should be the same for alpha users and latest release users.
-						DBMdotDisplayVersion = displayVersion -- Update to the latest display version.
-						-- Re-send the addon message.
-						if timer then timer:Cancel() end
-						timer = CTimerNewTicker(1, sendMsg, 1)
-					end
-				end
-			end
-		end
-	end
-	function mod:UpdateDBMFaking(_, key, value)
-		if key == "fakeDBMVersion" and value and IsInGroup() then
-			self:DBM_VersionCheck("H") -- Send addon message if feature is being turned on inside a raid/group.
-		end
-	end
-end
-
------------------------------------------------------------------------
 -- Callback handler
 --
 
 do
 	local callbackMap = {}
 	function public:RegisterMessage(msg, func)
+		-- XXX temp friendly error via geterrorhandler
+		if self == public then geterrorhandler()(".RegisterMessage(addon, message, function) attempted to register a function to BigWigsLoader, you might be using : instead of . to register the callback.") end
 		if type(msg) ~= "string" then error(":RegisterMessage(message, function) attempted to register invalid message, must be a string!") end
+		local funcType = type(func)
+		if funcType == "string" then
+			if not self[func] then error((":RegisterMessage(message, function) attempted to register the function '%s' but it doesn't exist!"):format(func)) end
+		elseif funcType == "nil" then
+			if not self[msg] then error((":RegisterMessage(message, function) attempted to register the function '%s' but it doesn't exist!"):format(msg)) end
+		elseif funcType ~= "function" then
+			error(":RegisterMessage(message, function) attempted to register an invalid function!")
+		end
 		if not callbackMap[msg] then callbackMap[msg] = {} end
 		callbackMap[msg][self] = func or msg
 	end
@@ -667,10 +646,55 @@ do
 	public.RegisterMessage(mod, "BigWigs_OnBossDisable", UnregisterAllMessages)
 	public.RegisterMessage(mod, "BigWigs_OnBossReboot", UnregisterAllMessages)
 	public.RegisterMessage(mod, "BigWigs_OnPluginDisable", UnregisterAllMessages)
-	public.RegisterMessage(mod, "BigWigs_BossModuleRegistered")
-	public.RegisterMessage(mod, "BigWigs_CoreOptionToggled", "UpdateDBMFaking")
-	public.RegisterMessage(mod, "BigWigs_CoreEnabled")
-	public.RegisterMessage(mod, "BigWigs_CoreDisabled")
+end
+
+-----------------------------------------------------------------------
+-- DBM version collection & faking
+--
+
+do
+	-- This is a crapfest mainly because DBM's actual handling of versions is a crapfest, I'll try explain how this works...
+	local DBMdotRevision = "16096" -- The changing version of the local client, changes with every alpha revision using an SVN keyword.
+	local DBMdotDisplayVersion = "7.2.0" -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration. Unless they fuck up their release and leave the alpha text in it.
+	local DBMdotReleaseRevision = DBMdotRevision -- This is manually changed by them every release, they use it to track the highest release version, a new DBM release is the only time it will change.
+
+	local timer, prevUpgradedUser = nil, nil
+	local function sendMsg()
+		if IsInGroup() then
+			SendAddonMessage("D4", "V\t"..DBMdotRevision.."\t"..DBMdotReleaseRevision.."\t"..DBMdotDisplayVersion.."\t"..GetLocale().."\t".."true", IsInGroup(2) and "INSTANCE_CHAT" or "RAID") -- LE_PARTY_CATEGORY_INSTANCE = 2
+		end
+		timer, prevUpgradedUser = nil, nil
+	end
+	function mod:DBM_VersionCheck(prefix, sender, revision, releaseRevision, displayVersion)
+		if prefix == "H" and (BigWigs and BigWigs.db.profile.fakeDBMVersion or self.isFakingDBM) then
+			if timer then timer:Cancel() end
+			timer = CTimerNewTicker(3.3, sendMsg, 1)
+		elseif prefix == "V" then
+			usersDBM[sender] = displayVersion
+			if BigWigs and BigWigs.db.profile.fakeDBMVersion or self.isFakingDBM then
+				-- If there are people with newer versions than us, suddenly we've upgraded!
+				local rev, dotRev = tonumber(revision), tonumber(DBMdotRevision)
+				if rev and displayVersion and rev ~= 99999 and rev > dotRev and not displayVersion:find("alpha", nil, true) then -- Failsafes
+					if not prevUpgradedUser then
+						prevUpgradedUser = sender
+					elseif prevUpgradedUser ~= sender then
+						DBMdotRevision = revision -- Update our local rev with the highest possible rev found.
+						DBMdotReleaseRevision = releaseRevision -- Update our release rev with the highest found, this should be the same for alpha users and latest release users.
+						DBMdotDisplayVersion = displayVersion -- Update to the latest display version.
+						-- Re-send the addon message.
+						if timer then timer:Cancel() end
+						timer = CTimerNewTicker(1, sendMsg, 1)
+					end
+				end
+			end
+		end
+	end
+	function mod:BigWigs_CoreOptionToggled(_, key, value)
+		if key == "fakeDBMVersion" and value and IsInGroup() then
+			self:DBM_VersionCheck("H") -- Send addon message if feature is being turned on inside a raid/group.
+		end
+	end
+	public.RegisterMessage(mod, "BigWigs_CoreOptionToggled")
 end
 
 -----------------------------------------------------------------------
@@ -817,6 +841,7 @@ function mod:CHAT_MSG_ADDON(prefix, msg, channel, sender)
 	end
 end
 
+local resetVersionWarnings
 do
 	local timer = nil
 	local function sendMsg()
@@ -827,6 +852,10 @@ do
 	end
 
 	local hasWarned, hasReallyWarned, hasExtremelyWarned = nil, nil, nil
+	function resetVersionWarnings()
+		hasWarned, hasReallyWarned, hasExtremelyWarned = nil, nil, nil
+	end
+
 	local function printOutOfDate(tbl)
 		if hasExtremelyWarned then return end
 		local warnedOutOfDate, warnedReallyOutOfDate, warnedExtremelyOutOfDate = 0, 0, 0
@@ -971,6 +1000,14 @@ do
 			if BigWigs and BigWigs:IsEnabled() and not UnitIsDeadOrGhost("player") and (not BigWigsOptions or not BigWigsOptions:InConfigureMode()) and (not BigWigs3DB or not BigWigs3DB.breakTime) then
 				BigWigs:Disable() -- Alive in a non-enable zone, disable
 			end
+			if disabledZones and disabledZones[id] then -- We have content for the zone but it is disabled in the addons menu
+				local msg = L.disabledAddOn:format(disabledZones[id])
+				sysprint(msg)
+				RaidNotice_AddMessage(RaidWarningFrame, msg, {r=1,g=1,b=1})
+				-- Only print once
+				warnedThisZone[id] = true
+				disabledZones[id] = nil
+			end
 		end
 
 		-- Lacking zone modules
@@ -1001,6 +1038,7 @@ do
 			self:ACTIVE_TALENT_GROUP_CHANGED() -- Force role check
 		elseif grouped and not groupType then
 			grouped = nil
+			resetVersionWarnings()
 			wipe(usersVersion)
 			wipe(usersHash)
 			self:ZONE_CHANGED_NEW_AREA()
@@ -1020,6 +1058,7 @@ function mod:BigWigs_BossModuleRegistered(_, _, module)
 	if type(menus[id]) ~= "table" then menus[id] = {} end
 	menus[id][#menus[id]+1] = module
 end
+public.RegisterMessage(mod, "BigWigs_BossModuleRegistered")
 
 function mod:BigWigs_CoreEnabled()
 	if ldb then
@@ -1038,12 +1077,14 @@ function mod:BigWigs_CoreEnabled()
 	self.isShowingZoneMessages = nil
 	self.isSoundOn = nil
 end
+public.RegisterMessage(mod, "BigWigs_CoreEnabled")
 
 function mod:BigWigs_CoreDisabled()
 	if ldb then
 		ldb.icon = "Interface\\AddOns\\BigWigs\\Textures\\icons\\core-disabled"
 	end
 end
+public.RegisterMessage(mod, "BigWigs_CoreDisabled")
 
 -----------------------------------------------------------------------
 -- API

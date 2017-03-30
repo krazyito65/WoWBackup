@@ -9,19 +9,19 @@ local ELib,L = ExRT.lib,ExRT.L
 
 module.db.isEncounter = nil
 module.db.tableFood = {
---Haste		Mastery		Crit		Versa		Fire dmg	Other
+--Haste		Mastery		Crit		Versa		Fire dmg	Other		Int		Str 		Agi		Stam
 [201330]=225,	[201332]=225,	[201223]=225,	[201334]=225,	[201336]=225,
-[225598]=300,	[225599]=300,	[225597]=300,	[225600]=300,	[225601]=300,	[177931]=300,
-[225603]=375,	[225604]=375,	[225602]=375,	[225605]=375,	[225606]=375,
+[225598]=300,	[225599]=300,	[225597]=300,	[225600]=300,	[225601]=300,	[177931]=300,	[201636]=300,	[201634]=300,	[201635]=300,	[201637]=300,
+[225603]=375,	[225604]=375,	[225602]=375,	[225605]=375,	[225606]=375,			[201640]=375,	[201638]=375,	[201639]=375,	[201641]=375,	
 }
-module.db.StaminaFood = {}
+module.db.StaminaFood = {[201638]=true,}
 
 module.db.tableFood_headers = {0,225,300,375}
 module.db.tableFlask = {
 	--Stamina,	Int,		Agi,		Str 
 	[188035]=1300,	[188031]=1300,	[188033]=1300,	[188034]=1300,
 }
-module.db.tableFlask_headers = ExRT.isLegionContent and {0,1300} or {0,200,250}
+module.db.tableFlask_headers = {0,1300}
 module.db.tablePotion = {
 	[229206]=true,	--All Stats
 	[188017]=true,	--Mana 3k, 17k
@@ -219,6 +219,12 @@ local function GetFood(checkType)
 						elseif spellId == 225606 then stats = 375
 						elseif spellId == 225601 then stats = 300
 						elseif spellId == 177931 then stats = 300 end
+						
+						if spellId == 201641 or spellId == 201640 or spellId == 201639 or spellId == 201638 then 
+							stats = 375
+						elseif spellId == 201636 or spellId == 201634 or spellId == 201635 or spellId == 201637 then 
+							stats = 300
+						end
 					
 						f[stats] = f[stats] or {}
 						f[stats][ #f[stats]+1 ] = name
@@ -458,14 +464,14 @@ function module.options:Load()
 	end)
 
 	
-	self.minFoodLevel100 = ELib:Radio(self,ExRT.isLegionContent and "300" or "100",VExRT.RaidCheck.FoodMinLevel == 100):Point("LEFT",self.minFoodLevelAny,"RIGHT", 75, 0):OnClick(function(self) 
+	self.minFoodLevel100 = ELib:Radio(self,"300",VExRT.RaidCheck.FoodMinLevel == 100):Point("LEFT",self.minFoodLevelAny,"RIGHT", 75, 0):OnClick(function(self) 
 		self:SetChecked(true)
 		module.options.minFoodLevelAny:SetChecked(false)
 		module.options.minFoodLevel125:SetChecked(false)
 		VExRT.RaidCheck.FoodMinLevel = 100
 	end)
 	
-	self.minFoodLevel125 = ELib:Radio(self,ExRT.isLegionContent and "375" or "125",VExRT.RaidCheck.FoodMinLevel == 125):Point("LEFT",self.minFoodLevel100,"RIGHT", 75, 0):OnClick(function(self) 
+	self.minFoodLevel125 = ELib:Radio(self,"375",VExRT.RaidCheck.FoodMinLevel == 125):Point("LEFT",self.minFoodLevel100,"RIGHT", 75, 0):OnClick(function(self) 
 		self:SetChecked(true)
 		module.options.minFoodLevelAny:SetChecked(false)
 		module.options.minFoodLevel100:SetChecked(false)

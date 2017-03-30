@@ -8,7 +8,9 @@ do
 	local _math_floor = math.floor
 	local _cstr = string.format
 	local _GetSpellInfo = _detalhes.getspellinfo
-
+	local _
+	
+	
 	local PhaseButtonTemplate = {
 		backdrop = {edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\Tooltips\UI-Tooltip-Background]], tileSize = 64, tile = true},
 		backdropcolor = {.3, .3, .3, .5},
@@ -196,7 +198,7 @@ _detalhes.EncounterDetailsTempWindow = function (EncounterDetails)
 		width_mod = width_mod or 0
 		
 		barra:SetWidth (200+width_mod) --> tamanho da barra de acordo com o tamanho da janela
-		barra:SetHeight (16) --> altura determinada pela instância
+		barra:SetHeight (16) --> altura determinada pela instï¿½ncia
 
 		local y = (index-1)*17
 		y_mod = y_mod or 0
@@ -1078,7 +1080,7 @@ _detalhes.EncounterDetailsTempWindow = function (EncounterDetails)
 		BossFrame.raidbackground:SetDrawLayer ("BORDER", 2)
 		BossFrame.raidbackground:SetAlpha (0.1)
 	
-	--> botão fechar
+	--> botï¿½o fechar
 		titlebar.CloseButton = CreateFrame ("Button", nil, titlebar, "UIPanelCloseButton")
 		titlebar.CloseButton:SetWidth (20)
 		titlebar.CloseButton:SetHeight (20)
@@ -1692,7 +1694,7 @@ _detalhes.EncounterDetailsTempWindow = function (EncounterDetails)
 
 	BossFrame.EnemySpellsWidgets = {}
 
-	--> spells and auras ~auras ~spell ~weakaura ãura
+	--> spells and auras ~auras ~spell ~weakaura ï¿½ura
 
 	-- actor dropdown
 	
@@ -2361,8 +2363,8 @@ for i = 1, 10 do
 	tinsert (PhaseFrame.PhasesBars, line)
 end
 
---cria a linha do segmento para a compara ção, é o que fica na parte direita da tela
---ele é acessado para mostrar quando passar o mouse sobre uma das barras de phase
+--cria a linha do segmento para a compara ï¿½ï¿½o, ï¿½ o que fica na parte direita da tela
+--ele ï¿½ acessado para mostrar quando passar o mouse sobre uma das barras de phase
 for i = 1, 20 do
 	local line = CreateFrame ("button", "$parentSegmentCompareBar" .. i, PhaseFrame)
 	line:SetPoint ("topleft", PhaseTimersLabel.widget, "bottomleft", ScrollWidth+10, -((i-1)*(ScrollLineHeight+1)) - 4)
@@ -2650,7 +2652,7 @@ end
 		
 		
 	--> Caixa dos Adds
-	-- ~adds ãdds
+	-- ~adds ï¿½dds
 		local BOX_WIDTH = 270
 		local BOX_HEIGHT = 173
 	

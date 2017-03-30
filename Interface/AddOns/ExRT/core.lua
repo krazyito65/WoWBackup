@@ -1,45 +1,42 @@
---	21:51 21.10.2016
+--	1:08 24.03.2017
 
 --[[
-3790
-* 7.1 Update
+3850
+* 7.2 Update
+* Note: Added ToS bosses
+* Fight Log: added death report for cheath death procs
+* Added scale-bar for options window
 
-3780
-* New bossmods: Dragons, Il'gynoth, Xavius
-* Fixed bug with inspecting artifact traits for people from other realms
-* Raid Inspect: added ilvl text on items (except artifact weapon)
-* Fixed food checks
-* Another roundup for fixing conflicting with other addons
+
+3845
+* Raid Inspect: Added Trial of Valor and Nighthold achievements
+* Fixed memory leak caused by inspecting
+* Localization updates
 * Minor fixes
 
-3765
-* Temp fix errors with artifact scaning
-
-3760
-* Raid cooldowns: updates due to last legendary tuning
-* Raid cooldowns: added new options tab "Visibility"
-* Added version checker
-
-3750
-* Raid Inspect: added tab to view aftifact relics
-* Raid cooldowns: updates due to last class balance changes
-* Raid cooldowns: added legion trinkets
-* Raid cooldowns: added option: show only in combat
+3842
+* Note: added Nighthold icons
+* Timers: fixed sync with BW
+* Bonus Loot: removed AP rewards from notifications
 * Minor fixes
 
-3740
-* New module: WeakAuras checks
-http://i.imgur.com/59cZVTY.png
-* Raid cooldowns: updates due to last class balance changes
-* Timers: new option: Disable countdown in chat
-* Minor & major fixes
+3841
+* Major fixes
+
+3840
+* Fixed pull timer for party group
+* Auto Logging: added 5ppl mythic diff (must be correct logs if you run mythic+)
+* Raid cooldowns: 7.1.5 class balance & legendary updates
+* Who Pulled: added option for message in chat
+* Timers: Time to kill: new option
+* 7.1.5 Update
+* Minor fixes
 
 ]]
 local GlobalAddonName, ExRT = ...
 
-ExRT.V = 3790
+ExRT.V = 3850
 ExRT.T = "R"
-ExRT.is7 = false		--> Legion (7.x) Client
 
 ExRT.OnUpdate = {}		--> таймеры, OnUpdate функции
 ExRT.Slash = {}			--> функции вызова из коммандной строки
@@ -80,9 +77,6 @@ do
 	ExRT.SDB.charKey = charName .. "-" .. realmKey
 	ExRT.SDB.charName = charName
 	ExRT.SDB.charLevel = UnitLevel'player'
-	if ExRT.SDB.charLevel > 100 then
-		ExRT.isLegionContent = true
-	end
 end
 -------------> global DB <------------
 ExRT.GDB = {}
@@ -139,9 +133,7 @@ do
 				self.options.enableLoadInCombat = true
 			end
 			
-			if not ExRT.BannedModules[moduleName] then
-				ExRT.ModulesOptions[#ExRT.ModulesOptions + 1] = self.options
-			end
+			ExRT.ModulesOptions[#ExRT.ModulesOptions + 1] = self.options
 			
 		end
 		
@@ -352,8 +344,6 @@ do
 	ExRT.F.NewTimer = ExRT.F.ScheduleTimer
 	ExRT.F.Timer = ExRT.F.ScheduleTimer
 end
-
-ExRT.BannedModules = {}
 
 ---------------> Data <---------------
 
@@ -607,7 +597,7 @@ do
 	end
 end
 
--- Заметка: сообщение в приват на другой сервер почему-то игнорируется
+-- Заметка: сообщение в приват на другой сервер игнорируется
 
 function ExRT.F.SendExMsg(prefix, msg, tochat, touser, addonPrefix)
 	addonPrefix = addonPrefix or "EXRTADD"

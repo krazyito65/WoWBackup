@@ -39,8 +39,21 @@ local VIEW_GARRISONS = 10
 local ICON_FACTION_HORDE = "Interface\\Icons\\INV_BannerPVP_01"
 local ICON_FACTION_ALLIANCE = "Interface\\Icons\\INV_BannerPVP_02"
 
+local TEXTURE_FONT = "|T%s:%s:%s|t"
+
 -- http://www.wowhead.com/currency=1171/artifact-knowledge
-local artifactXPGain = { 25,50,90,140,200,275,375,500,650,850,1100,1400,1775,2250,2850,3600,4550,5700,7200,9000,11300,14200,17800,22300,24900 }
+local artifactXPGain = { 
+	25,50,90,140,200,
+	275,375,500,650,850,
+	1100,1400,1775,2250,2850,
+	3600,4550,5700,7200,9000,
+	11300,14200,17800,22300,24900, 
+	100000,130000,170000,220000,290000,
+	380000,490000,640000,830000,1800000,
+	1400000,1820000,2370000,3080000,4000000,
+	5200000,6760000,8790000,11430000,14860000,
+	19320000,25120000,32660000,42460000,55200000 
+}
 
 addon.Summary = {}
 
@@ -83,6 +96,22 @@ end
 
 local function FormatBagSlots(size, free)
 	return format(L["NUM_SLOTS_AND_FREE"], colors.cyan, size, colors.white, colors.green, free, colors.white)
+end
+
+local function FormatRankPoints(rank, tier)
+	local points = C_ArtifactUI.GetCostForPointAtRank(rank, tier)
+	if rank == 1 then
+		return format("%s%s: %s%d", colors.white, rank, colors.green, points)
+	end
+	
+	local pointsPreviousLevel = C_ArtifactUI.GetCostForPointAtRank(rank-1, tier)
+	local percentage = ((points / pointsPreviousLevel) - 1) * 100
+	
+	return format("%s%s: %s%d %s+%2.1f%%", colors.white, rank, colors.green, points, colors.yellow, percentage)
+end
+
+local function FormatAiL(level)
+	return format("%s%s %s%s", colors.yellow, L["COLUMN_ILEVEL_TITLE_SHORT"], colors.green, level)
 end
 
 local skillColors = { colors.recipeGrey, colors.red, colors.orange, colors.yellow, colors.green }
@@ -247,11 +276,10 @@ local function DeleteAlt(self, characterInfoLine)
 		addon:Print(L["Cannot delete current character"])
 		return
 	end
-
-	addon:SetMsgBoxHandler(DeleteAlt_MsgBox_Handler, characterInfoLine)
 	
-	AltoMsgBox_Text:SetText(L["Delete this Alt"] .. "?\n" .. name)
-	AltoMsgBox:Show()
+	AltoMessageBox:SetHandler(DeleteAlt_MsgBox_Handler, characterInfoLine)
+	AltoMessageBox:SetText(format("%s?\n%s", L["Delete this Alt"], name))
+	AltoMessageBox:Show()
 end
 
 local function UpdateRealm(self, characterInfoLine)
@@ -300,9 +328,9 @@ local function DeleteRealm(self, characterInfoLine)
 		return
 	end
 
-	addon:SetMsgBoxHandler(DeleteRealm_MsgBox_Handler, characterInfoLine)
-	AltoMsgBox_Text:SetText(L["Delete this Realm"] .. "?\n" .. realm)
-	AltoMsgBox:Show()
+	AltoMessageBox:SetHandler(DeleteRealm_MsgBox_Handler, characterInfoLine)
+	AltoMessageBox:SetText(format("%s?\n%s", L["Delete this Realm"], realm))
+	AltoMessageBox:Show()
 end
 
 local function NameRightClickMenu_Initialize(frame)
@@ -426,7 +454,7 @@ columns["Name"] = {
 			local class = DataStore:GetCharacterClass(character)
 			local icon = (DataStore:GetCharacterFaction(character) == "Alliance") and ICON_FACTION_ALLIANCE or ICON_FACTION_HORDE
 			
-			return format("%s %s (%s)", addon:TextureToFontstring(icon, 18, 18), name, class)
+			return format("%s %s (%s)", format(TEXTURE_FONT, icon, 18, 18), name, class)
 		end,
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
@@ -966,7 +994,7 @@ columns["Prof1"] = {
 	GetText = function(character)
 			local rank, _, _, name = DataStore:GetProfession1(character)
 			local spellID = DataStore:GetProfessionSpellID(name)
-			local icon = spellID and addon:TextureToFontstring(addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
+			local icon = spellID and format(TEXTURE_FONT, addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
 			
 			return format("%s%s%s", icon, GetSkillRankColor(rank), rank)
 		end,
@@ -998,7 +1026,7 @@ columns["Prof2"] = {
 	GetText = function(character)
 			local rank, _, _, name = DataStore:GetProfession2(character)
 			local spellID = DataStore:GetProfessionSpellID(name)
-			local icon = spellID and addon:TextureToFontstring(addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
+			local icon = spellID and format(TEXTURE_FONT, addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
 			
 			return format("%s%s%s", icon, GetSkillRankColor(rank), rank)
 		end,
@@ -1017,7 +1045,7 @@ columns["Prof2"] = {
 columns["ProfCooking"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(2550), 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(2550), 18, 18),
 	tooltipTitle = GetSpellInfo(2550),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
@@ -1042,7 +1070,7 @@ columns["ProfCooking"] = {
 columns["ProfFirstAid"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(3273), 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(3273), 18, 18),
 	tooltipTitle = GetSpellInfo(3273),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
@@ -1067,7 +1095,7 @@ columns["ProfFirstAid"] = {
 columns["ProfFishing"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(131474), 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(131474), 18, 18),
 	tooltipTitle = GetSpellInfo(131474),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
@@ -1089,7 +1117,7 @@ columns["ProfFishing"] = {
 columns["ProfArchaeology"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring(addon:GetSpellIcon(78670), 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(78670), 18, 18),
 	tooltipTitle = GetSpellInfo(78670),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
@@ -1365,7 +1393,7 @@ columns["MissionTableLastVisit"] = {
 			tooltip:AddLine(" ")
 			tooltip:AddLine(format("%s* %s= %s", colors.green, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_1"]))
 			tooltip:AddLine(format("%s* %s= %s", colors.red, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_2"]))
-			tooltip:AddLine(format("%s! %s= %s", colors.red, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_3"]))
+			tooltip:AddLine(format("%s! %s= %s", colors.gold, colors.white, L["COLUMN_GARRISON_MISSIONS_DETAIL_3"]))
 		end,
 	headerOnClick = function() SortView("MissionTableLastVisit") end,
 	headerSort = DataStore.GetMissionTableLastVisit,
@@ -1374,9 +1402,12 @@ columns["MissionTableLastVisit"] = {
 	Width = 65,
 	JustifyH = "RIGHT",
 	GetText = function(character)
-		local numAvail = DataStore:GetNumAvailableMissions(character) or 0
-			local numActive = DataStore:GetNumActiveMissions(character) or 0
-			local numCompleted = DataStore:GetNumCompletedMissions(character) or 0
+			local numAvail = 	(DataStore:GetNumAvailableMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0) + 
+									(DataStore:GetNumAvailableMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0)
+			local numActive = (DataStore:GetNumActiveMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0) + 
+									(DataStore:GetNumActiveMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0)
+			local numCompleted = (DataStore:GetNumCompletedMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0) + 
+										(DataStore:GetNumCompletedMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0)
 			local text = ""
 			
 			if numCompleted > 0 then		-- add a '*' to show that there are some completed missions
@@ -1386,7 +1417,7 @@ columns["MissionTableLastVisit"] = {
 					text = format(" %s*", colors.green)
 				end
 			elseif numActive == 0 and numAvail ~= 0 then
-				text = format(" %s!", colors.red)	-- red '!' no mission is active !
+				text = format(" %s!", colors.gold)	-- red '!' no mission is active !
 			end
 	
 			return format("%s%s%s", colors.white, addon:FormatDelay(DataStore:GetMissionTableLastVisit(character)), text)
@@ -1408,11 +1439,14 @@ columns["MissionTableLastVisit"] = {
 			tt:AddLine(format("%s: %s", L["Visited"], SecondsToTime(time() - lastVisit)),1,1,1)
 			tt:AddLine(" ")
 			
-			local numAvail = DataStore:GetNumAvailableMissions(character) or 0
-			local numActive = DataStore:GetNumActiveMissions(character) or 0
-			local numCompleted = DataStore:GetNumCompletedMissions(character) or 0
+			-- ** Garrison Missions **
+			
+			local numAvail = DataStore:GetNumAvailableMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0
+			local numActive = DataStore:GetNumActiveMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0
+			local numCompleted = DataStore:GetNumCompletedMissions(character, LE_FOLLOWER_TYPE_GARRISON_6_0) or 0
 			local color = colors.green
 			
+			tt:AddLine(GARRISON_MISSIONS_TITLE)
 			tt:AddLine(format("Available Missions: %s%d", color, numAvail),1,1,1)
 			
 			if numActive == 0 and numAvail ~= 0 then
@@ -1420,9 +1454,27 @@ columns["MissionTableLastVisit"] = {
 			end
 			tt:AddLine(format("In Progress: %s%d", color, numActive),1,1,1)
 			
-			color = (numCompleted > 0) and colors.gold or colors.white
+			color = (numCompleted > 0) and colors.cyan or colors.white
 			tt:AddLine(format("%sCompleted Missions: %s%d", color, colors.green, numCompleted),1,1,1)
+			tt:AddLine(" ")
 			
+			-- ** Order Hall Missions **
+			
+			numAvail = DataStore:GetNumAvailableMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0
+			numActive = DataStore:GetNumActiveMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0
+			numCompleted = DataStore:GetNumCompletedMissions(character, LE_FOLLOWER_TYPE_GARRISON_7_0) or 0			
+			color = colors.green
+			
+			tt:AddLine(ORDER_HALL_MISSIONS)
+			tt:AddLine(format("Available Missions: %s%d", color, numAvail),1,1,1)
+			
+			if numActive == 0 and numAvail ~= 0 then
+				color = colors.red
+			end
+			tt:AddLine(format("In Progress: %s%d", color, numActive),1,1,1)
+			
+			color = (numCompleted > 0) and colors.cyan or colors.white
+			tt:AddLine(format("%sCompleted Missions: %s%d", color, colors.green, numCompleted),1,1,1)
 			tt:Show()
 		end,
 		
@@ -1442,7 +1494,7 @@ columns["MissionTableLastVisit"] = {
 columns["CurrencyGarrison"] = {
 	-- Header
 	headerWidth = 80,
-	headerLabel = format("  %s  6.0", addon:TextureToFontstring("Interface\\Icons\\inv_garrison_resource", 18, 18)),
+	headerLabel = format("  %s  6.0", format(TEXTURE_FONT, "Interface\\Icons\\inv_garrison_resource", 18, 18)),
 	headerOnEnter = function(frame, tooltip)
 			CurrencyHeader_OnEnter(frame, CURRENCY_ID_GARRISON)
 		end,
@@ -1503,7 +1555,7 @@ columns["CurrencyGarrison"] = {
 columns["CurrencyApexis"] = {
 	-- Header
 	headerWidth = 100,
-	headerLabel = "        " .. addon:TextureToFontstring("Interface\\Icons\\inv_apexis_draenor", 18, 18),
+	headerLabel = "        " .. format(TEXTURE_FONT, "Interface\\Icons\\inv_apexis_draenor", 18, 18),
 	headerOnEnter = function(frame, tooltip)
 			CurrencyHeader_OnEnter(frame, CURRENCY_ID_APEXIS)
 		end,
@@ -1524,7 +1576,7 @@ columns["CurrencyApexis"] = {
 columns["CurrencySOTF"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring("Interface\\Icons\\ability_animusorbs", 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, "Interface\\Icons\\ability_animusorbs", 18, 18),
 	headerOnEnter = function(frame, tooltip)
 			CurrencyHeader_OnEnter(frame, CURRENCY_ID_SOTF)
 		end,
@@ -1545,7 +1597,7 @@ columns["CurrencySOTF"] = {
 columns["CurrencySOBF"] = {
 	-- Header
 	headerWidth = 60,
-	headerLabel = "   " .. addon:TextureToFontstring("Interface\\Icons\\inv_misc_elvencoins", 18, 18),
+	headerLabel = "   " .. format(TEXTURE_FONT, "Interface\\Icons\\inv_misc_elvencoins", 18, 18),
 	headerOnEnter = function(frame, tooltip)
 			CurrencyHeader_OnEnter(frame, CURRENCY_ID_SOBF)
 		end,
@@ -1566,7 +1618,7 @@ columns["CurrencySOBF"] = {
 columns["CurrencyOrderHall"] = {
 	-- Header
 	headerWidth = 80,
-	headerLabel = format("  %s  7.0", addon:TextureToFontstring("Interface\\Icons\\inv_garrison_resource", 18, 18)),
+	headerLabel = format("  %s  7.0", format(TEXTURE_FONT, "Interface\\Icons\\inv_garrison_resource", 18, 18)),
 	headerOnEnter = function(frame, tooltip)
 			CurrencyHeader_OnEnter(frame, CURRENCY_ID_ORDER_HALL)
 		end,
@@ -1851,10 +1903,11 @@ columns["ArtifactPower"] = {
 			local numRows = 27	-- current maximum = 54 levels
 			
 			for i = 1, numRows do
-				tooltip:AddDoubleLine(
-					format("%s%s: %s%d", colors.white, i, colors.green, C_ArtifactUI.GetCostForPointAtRank(i)), 
-					format("%s%s: %s%d", colors.white, i+numRows, colors.green, C_ArtifactUI.GetCostForPointAtRank(i+numRows))
-				)
+				-- tooltip:AddDoubleLine(
+					-- format("%s%s: %s%d", colors.white, i, colors.green, C_ArtifactUI.GetCostForPointAtRank(i)), 
+					-- format("%s%s: %s%d", colors.white, i+numRows, colors.green, C_ArtifactUI.GetCostForPointAtRank(i+numRows))
+				-- )
+				tooltip:AddDoubleLine(FormatRankPoints(i, 2), FormatRankPoints(i+numRows, 2))
 			end
 		end,
 	headerOnClick = function() SortView("ArtifactPower") end,
@@ -1865,11 +1918,12 @@ columns["ArtifactPower"] = {
 	JustifyH = "CENTER",
 	GetText = function(character)
 			local level = DataStore:GetEquippedArtifactRank(character) or 0
+			local tier = DataStore:GetEquippedArtifactTier(character) or 2
 			local color = (level == 0) and colors.grey or colors.white
 			
 			local power = DataStore:GetEquippedArtifactPower(character) or 0
-			
-			return format("%s%s%s/%s%s", color, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+
+			return format("%s%s%s/%s%s", color, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level, tier))
 		end,
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
@@ -1879,9 +1933,10 @@ columns["ArtifactPower"] = {
 			if level == 0 then return end
 			
 			local power = DataStore:GetEquippedArtifactPower(character) or 0
+			local tier = DataStore:GetEquippedArtifactTier(character) or 2
 			local equippedArtifact = DataStore:GetEquippedArtifact(character)
 			
-			local extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(level, power)
+			local extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(level, power, tier)
 			
 			local tt = AltoTooltip
 			tt:ClearLines()
@@ -1895,20 +1950,21 @@ columns["ArtifactPower"] = {
 					format("%s%s %s(%s+%s%s)/%s%s", 
 						colors.green, power, 
 						colors.white, colors.cyan, extraTraits, 
-						colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+						colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level, tier))
 				)
 			
 			else 
 				tt:AddDoubleLine(
 					format("%s%s", colors.white, equippedArtifact), 
-					format("%s%s%s/%s%s", colors.green, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level))
+					format("%s%s%s/%s%s", colors.green, power, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(level, tier))
 				)
 			end
 			tt:AddLine(" ")
 			
 			for artifactName, artifactInfo in pairs(DataStore:GetKnownArtifacts(character)) do
 				if artifactName ~= equippedArtifact then
-					extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(artifactInfo.rank, artifactInfo.pointsRemaining)
+					tier = artifactInfo.tier or 2
+					extraTraits = DataStore:GetNumArtifactTraitsPurchasableFromXP(artifactInfo.rank, artifactInfo.pointsRemaining, tier)
 					
 					if extraTraits > 0 then
 						tt:AddDoubleLine(
@@ -1916,12 +1972,12 @@ columns["ArtifactPower"] = {
 							format("%s%s %s(%s+%s%s)/%s%s", 
 								colors.green, artifactInfo.pointsRemaining, 
 								colors.white, colors.cyan, extraTraits, 
-								colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank))
+								colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank, tier))
 						)
 					else
 						tt:AddDoubleLine(
 							format("%s%s", colors.white, artifactName), 
-							format("%s%s%s/%s%s", colors.green, artifactInfo.pointsRemaining, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank))
+							format("%s%s%s/%s%s", colors.green, artifactInfo.pointsRemaining, colors.white, colors.yellow, C_ArtifactUI.GetCostForPointAtRank(artifactInfo.rank, tier))
 						)
 					end
 				end
@@ -1940,12 +1996,17 @@ columns["ArtifactKnowledge"] = {
 	headerOnEnter = function(frame, tooltip) 
 			tooltip:AddLine(" ")
 			
-			local numRows = 12	-- current maximum = 25 levels, but begin at 2
+
+			tooltip:AddDoubleLine(
+				format("%s%s: %s-", colors.white, 1, colors.green), 
+				format("%s%s: %s+%d%%", colors.white, 26, colors.green, artifactXPGain[26])
+			)
 			
+			local numRows = 24
 			for i = 1, numRows do
 				tooltip:AddDoubleLine(
 					format("%s%s: %s+%d%%", colors.white, i+1, colors.green, artifactXPGain[i+1]), 
-					format("%s%s: %s+%d%%", colors.white, i+1+numRows, colors.green, artifactXPGain[i+1+numRows])
+					format("%s%s: %s+%d%%", colors.white, i+2+numRows, colors.green, artifactXPGain[i+2+numRows])
 				)
 			end
 		end,
@@ -2017,7 +2078,7 @@ columns["ArtifactNextResearch"] = {
 			if not character then return end
 			
 			local level = DataStore:GetArtifactKnowledgeLevel(character) or 0
-			if level == 0 then return end
+			-- if level == 0 then return end		-- the level can actually be zero.. when you haven't learned the first point yet !
 			
 			local title = GetItemInfo(139390)
 			local remaining, shipmentsReady, shipmentsTotal = DataStore:GetArtifactResearchInfo(character)
@@ -2175,10 +2236,6 @@ function ns:Update()
 	end
 
 	scrollFrame:Update(numVisibleRows)
-end
-
-local function FormatAiL(level)
-	return format("%s%s %s%s", colors.yellow, L["COLUMN_ILEVEL_TITLE_SHORT"], colors.green, level)
 end
 
 function addon:AiLTooltip()

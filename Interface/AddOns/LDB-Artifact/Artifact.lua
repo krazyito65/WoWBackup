@@ -8,9 +8,9 @@ local artifactXP = _G.LibStub("LibDataBroker-1.1"):NewDataObject("Artifact", {
 	title = "Artifact"
 })
 
-local function artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, artifactXP)
+local function artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, artifactXP, artifactTier)
   local numPoints = 0;
-  local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent);
+  local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent, artifactTier);
 	
   while artifactXP >= xpForNextPoint and xpForNextPoint > 0 do
 		artifactXP = artifactXP - xpForNextPoint;
@@ -18,16 +18,16 @@ local function artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, art
 		pointsSpent = pointsSpent + 1;
 		numPoints = numPoints + 1;
 		
-		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent);
+		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(pointsSpent, artifactTier);
   end
 	
   return numPoints, artifactXP, xpForNextPoint;
 end
 
 local function artifactXP_PopulateValues()
-  local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop = C_ArtifactUI.GetEquippedArtifactInfo();
+  local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop, artifactTier = C_ArtifactUI.GetEquippedArtifactInfo();
   
-  local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP)
+  local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP, artifactTier)
   
   artifactXP.icon = icon
   
@@ -59,12 +59,12 @@ end
 
 artifactXP.OnTooltipShow = function(tooltip)
   if ( HasArtifactEquipped() ) then
-	  local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop = C_ArtifactUI.GetEquippedArtifactInfo();
-	  local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP)
+	  local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop, artifactTier = C_ArtifactUI.GetEquippedArtifactInfo();
+	  local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP, artifactTier)
 	  local spentXP = totalXP;
 	  local i = 0;
 	  while i < pointsSpent do
-	    spentXP = spentXP + C_ArtifactUI.GetCostForPointAtRank(i);
+	    spentXP = spentXP + C_ArtifactUI.GetCostForPointAtRank(i, artifactTier);
 		i = i + 1;
 	  end
 	  spentXP = spentXP - 100;
@@ -94,8 +94,8 @@ artifactXP.OnClick = function(frame, button)
 	if button == "LeftButton" then
 		if IsShiftKeyDown() then
 			-- do stuff to send ArtifactXP to chat
-			local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop = C_ArtifactUI.GetEquippedArtifactInfo();
-			local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP)
+			local itemID, altItemID, name, icon, totalXP, pointsSpent, quality, artifactAppearanceID, appearanceModID, itemAppearanceID, altItemAppearanceID, altOnTop, artifactTier = C_ArtifactUI.GetEquippedArtifactInfo();
+			local numPointsAvailableToSpend, xp, xpForNextPoint = artifactXP_GetNumArtifactTraitsPurchasableFromXP(pointsSpent, totalXP, artifactTier)
 			local artifactLink = GetInventoryItemLink("player", 16)
 			if ( numPointsAvailableToSpend > 0 ) then
 				DEFAULT_CHAT_FRAME.editBox:SetText(string.format("%s: %d/%d (Rank %d+%d)", artifactLink, xp, xpForNextPoint, pointsSpent, numPointsAvailableToSpend))

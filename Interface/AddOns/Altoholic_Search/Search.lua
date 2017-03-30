@@ -85,20 +85,11 @@ local function Realm_UpdateEx(self, offset, desc)
 			rowFrame.Name:SetText(hex .. name)
 			rowFrame.Source.Text:SetText(source)
 			rowFrame.Source:SetID(sourceID)
-			itemButton.Icon:SetTexture(LineDesc:GetItemTexture(result))			
+						
+			itemButton:SetInfo(LineDesc:GetItemID(result))
+			itemButton:SetIcon(LineDesc:GetItemTexture(result))			
+			itemButton:SetCount(result.count)
 			
-			-- draw count
-			if result.count and result.count > 1 then
-				itemButton.Count:SetText(result.count)
-				itemButton.Count:Show()
-			else
-				itemButton.Count:Hide()
-			end
-			
-			local id = LineDesc:GetItemID(result)
-			-- itemButton:SetID(id or 0)
-			itemButton.id = id or 0
-			itemButton.link = nil
 			rowFrame:SetID(line)
 			rowFrame:Show()
 		end
@@ -325,16 +316,9 @@ function ns:Loots_Update()
 			rowFrame.Source:SetID(0)
 			
 			rowFrame.Stat1:SetText(colors.green .. result.bossName)
-			
-			if (result.count ~= nil) and (result.count > 1) then
-				itemButton.Count:SetText(result.count)
-				itemButton.Count:Show()
-			else
-				itemButton.Count:Hide()
-			end
 
-			-- itemButton:SetID(itemID)
-			itemButton.id = itemID
+			itemButton:SetInfo(itemID)
+			itemButton:SetCount(result.count)
 			rowFrame:Show()
 		else
 			rowFrame:Hide()
@@ -438,15 +422,8 @@ function ns:Upgrade_Update()
 			rowFrame.ILvl:SetText(colors.yellow .. itemLevel)
 			rowFrame.ILvl:Show()
 			
-			if (result.count ~= nil) and (result.count > 1) then
-				itemButton.Count:SetText(result.count)
-				itemButton.Count:Show()
-			else
-				itemButton.Count:Hide()
-			end
-
-			-- itemButton:SetID(itemID)
-			itemButton.id = itemID
+			itemButton:SetInfo(itemID)
+			itemButton:SetCount(result.count)
 			rowFrame:SetID(line)
 			rowFrame:Show()
 		else

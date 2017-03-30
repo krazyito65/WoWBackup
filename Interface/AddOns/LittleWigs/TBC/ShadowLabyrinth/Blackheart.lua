@@ -19,7 +19,7 @@ local handle_NextChaos = nil
 local L = LibStub("AceLocale-3.0"):NewLocale("Little Wigs: Blackheart the Inciter", "enUS", true)
 if L then
 	
-	
+	--@localization(locale="enUS", namespace="Auchindoun/Blackheart", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 
 L = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Blackheart the Inciter")

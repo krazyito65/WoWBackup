@@ -92,7 +92,7 @@ local function VUHDO_shouldBeInspected(aUnit)
 	if tInfo["isPet"] or not tInfo["connected"] then return false; end
 
 	-- Determined by role or can't tell by talent trees (dk)?
-	if VUHDO_CLASS_ROLES[tInfo["classId"]] then -- VUHDO_ID_DEATH_KNIGHT, hat zwar keine feste Rolle, Talentbäume bringen aber auch nichts
+	if VUHDO_CLASS_ROLES[tInfo["classId"]] then -- VUHDO_ID_DEATH_KNIGHT, hat zwar keine feste Rolle, Talentbï¿½ume bringen aber auch nichts
 		return false;
 	end
 

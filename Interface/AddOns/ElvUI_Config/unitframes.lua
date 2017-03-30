@@ -1112,7 +1112,7 @@ local function GetOptionsTable_CustomText(updateFunc, groupName, numUnits, order
 				['yOffset'] = 0,
 				['justifyH'] = 'CENTER',
 				['fontOutline'] = E.db.unitframe.fontOutline,
-				['attachTextTo'] = 'HEALTH'
+				['attachTextTo'] = 'Health'
 			};
 
 			UF:CreateCustomTextGroup(groupName, textName)
@@ -1516,7 +1516,7 @@ local function GetOptionsTable_RaidDebuff(updateFunc, groupName)
 				order = 3,
 				type = 'range',
 				name = L["Size"],
-				min = 8, max = 35, step = 1,
+				min = 8, max = 100, step = 1,
 			},
 			font = {
 				order = 4,
@@ -2390,13 +2390,30 @@ E.Options.args.unitframe = {
 									order = 2,
 									name = L["Others"],
 									type = 'color',
-									hasAlpha = true,								},
+									hasAlpha = true,
+								},
 								absorbs = {
 									order = 2,
 									name = L["Absorbs"],
 									type = 'color',
 									hasAlpha = true,
-								}
+								},
+								healAbsorbs = {
+									order = 3,
+									name = L["Heal Absorbs"],
+									type = 'color',
+									hasAlpha = true,
+								},
+								maxOverflow = {
+									order = 4,
+									type = "range",
+									name = L["Max Overflow"],
+									desc = L["Max amount of overflow allowed to extend past the end of the health bar."],
+									isPercent = true,
+									min = 0, max = 1, step = 0.01,
+									get = function(info) return E.db.unitframe.colors.healPrediction.maxOverflow end,
+									set = function(info, value) E.db.unitframe.colors.healPrediction.maxOverflow = value; UF:Update_AllFrames() end,
+								},
 							},
 						},
 					},

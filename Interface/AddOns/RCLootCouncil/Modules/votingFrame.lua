@@ -5,7 +5,7 @@
 --		Will only show certain aspects depending on addon.isMasterLooter, addon.isCouncil and addon.mldb.observe
 
 local addon = LibStub("AceAddon-3.0"):GetAddon("RCLootCouncil")
-local RCVotingFrame = addon:NewModule("RCVotingFrame", "AceComm-3.0")
+RCVotingFrame = addon:NewModule("RCVotingFrame", "AceComm-3.0", "AceTimer-3.0")
 local LibDialog = LibStub("LibDialog-1.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("RCLootCouncil")
 
@@ -13,35 +13,41 @@ local ROW_HEIGHT = 20;
 local NUM_ROWS = 15;
 local db
 local session = 1 -- The session we're viewing
-local lootTable = {} -- lib-st compatible, extracted from addon's lootTable
+local lootTable = {} -- Table containing all data, lib-st cells pulls data from this
 local sessionButtons = {}
 local moreInfo = false -- Show more info frame?
 local active = false -- Are we currently in session?
 local candidates = {} -- Candidates for the loot, initial data from the ML
 local councilInGroup = {}
-local keys = {} -- Lookup table for cols TODO implement this
 local menuFrame -- Right click menu frame
 local filterMenu -- Filter drop down menu
 local enchanters -- Enchanters drop down menu frame
 local guildRanks = {} -- returned from addon:GetGuildRanks()
 local GuildRankSort, ResponseSort -- Initialize now to avoid errors
+local defaultScrollTableData = {} -- See below
 
 function RCVotingFrame:OnInitialize()
-	self.scrollCols = {
-		{ name = "",															sortnext = 2,		width = 20, },	-- 1 Class
-		{ name = L["Name"],																			width = 120,},	-- 2 Candidate Name
-		{ name = L["Rank"],		comparesort = GuildRankSort,		sortnext = 5,		width = 95,},	-- 3 Guild rank
-		{ name = L["Role"],													sortnext = 5,		width = 55, },	-- 4 Role
-		{ name = L["Response"],	comparesort = ResponseSort,		sortnext = 13,		width = 240,},	-- 5 Response
-		{ name = L["ilvl"],													sortnext = 7,		width = 45, },	-- 6 Total ilvl
-		{ name = L["Diff"],																			width = 40, },	-- 7 ilvl difference
-		{ name = L["g1"],			align = "CENTER",						sortnext = 5,		width = 20, },	-- 8 Current gear 1
-		{ name = L["g2"],			align = "CENTER",						sortnext = 5,		width = 20, },	-- 9 Current gear 2
-		{ name = L["Votes"], 	align = "CENTER",						sortnext = 7,		width = 40, },	-- 10 Number of votes
-		{ name = L["Vote"],		align = "CENTER",						sortnext = 10,		width = 60, },	-- 11 Vote button
-		{ name = L["Notes"],		align = "CENTER",												width = 40, },	-- 12 Note icon
-		{ name = L["Roll"],		align = "CENTER", 					sortnext = 10,		width = 30, },	-- 13 Roll
+	-- Contains all the default data needed for the scroll table
+	-- The default values are in sorted order
+	defaultScrollTableData = {
+		{ name = "",				DoCellUpdate = RCVotingFrame.SetCellClass,		colName = "class",	sortnext = 2,		width = 20, },										-- 1 Class
+		{ name = L["Name"],		DoCellUpdate = RCVotingFrame.SetCellName,			colName = "name",								width = 120,},										-- 2 Candidate Name
+		{ name = L["Rank"],		DoCellUpdate = RCVotingFrame.SetCellRank,			colName = "rank",		sortnext = 5,		width = 95, comparesort = GuildRankSort,},-- 3 Guild rank
+		{ name = L["Role"],		DoCellUpdate = RCVotingFrame.SetCellRole,			colName = "role",		sortnext = 5,		width = 55, },										-- 4 Role
+		{ name = L["Response"],	DoCellUpdate = RCVotingFrame.SetCellResponse,	colName = "response",sortnext = 13,		width = 240, comparesort = ResponseSort,},-- 5 Response
+		{ name = L["ilvl"],		DoCellUpdate = RCVotingFrame.SetCellIlvl,			colName = "ilvl",		sortnext = 7,		width = 45, },										-- 6 Total ilvl
+		{ name = L["Diff"],		DoCellUpdate = RCVotingFrame.SetCellDiff,			colName = "diff",								width = 40, },										-- 7 ilvl difference
+		{ name = L["g1"],			DoCellUpdate = RCVotingFrame.SetCellGear,			colName = "gear1",	sortnext = 5,		width = 20, align = "CENTER", },				-- 8 Current gear 1
+		{ name = L["g2"],			DoCellUpdate = RCVotingFrame.SetCellGear,			colName = "gear2",	sortnext = 5,		width = 20, align = "CENTER", },				-- 9 Current gear 2
+		{ name = L["Votes"], 	DoCellUpdate = RCVotingFrame.SetCellVotes,		colName = "votes",	sortnext = 7,		width = 40, align = "CENTER", },				-- 10 Number of votes
+		{ name = L["Vote"],		DoCellUpdate = RCVotingFrame.SetCellVote,			colName = "vote",		sortnext = 10,		width = 60, align = "CENTER", },				-- 11 Vote button
+		{ name = L["Notes"],		DoCellUpdate = RCVotingFrame.SetCellNote,			colName = "note",								width = 40, align = "CENTER", },				-- 12 Note icon
+		{ name = L["Roll"],		DoCellUpdate = RCVotingFrame.SetCellRoll, 		colName = "roll",		sortnext = 10,		width = 30, align = "CENTER", },				-- 13 Roll
 	}
+	-- The actual table being worked on, new entries should be added to this table "tinsert(RCVotingFrame.scrollCols, data)"
+	-- If you want to add or remove columns, you should do so on your OnInitialize. See RCVotingFrame:RemoveColumn() for removal.
+	self.scrollCols = {unpack(defaultScrollTableData)}
+
 	menuFrame = CreateFrame("Frame", "RCLootCouncil_VotingFrame_RightclickMenu", UIParent, "Lib_UIDropDownMenuTemplate")
 	filterMenu = CreateFrame("Frame", "RCLootCouncil_VotingFrame_FilterMenu", UIParent, "Lib_UIDropDownMenuTemplate")
 	enchanters = CreateFrame("Frame", "RCLootCouncil_VotingFrame_EnchantersMenu", UIParent, "Lib_UIDropDownMenuTemplate")
@@ -56,6 +62,9 @@ function RCVotingFrame:OnEnable()
 	active = true
 	moreInfo = db.modules["RCVotingFrame"].moreInfo
 	self.frame = self:GetFrame()
+	self:ScheduleTimer("CandidateCheck", 20)
+	guildRanks = addon:GetGuildRanks()
+	addon:Debug("RCVotingFrame", "enabled")
 end
 
 function RCVotingFrame:OnDisable() -- We never really call this
@@ -88,6 +97,30 @@ function RCVotingFrame:EndSession(hide)
 	active = false -- The session has ended, so deactivate
 	self:Update()
 	if hide then self:Hide() end -- Hide if need be
+end
+
+function RCVotingFrame:CandidateCheck()
+	if not candidates[addon.playerName] and addon.masterLooter then -- If our own name isn't there, we assume it's not received
+		addon:DebugLog("CandidateCheck", "failed")
+		addon:SendCommand(addon.masterLooter, "candidates_request")
+		self:ScheduleTimer("CandidateCheck", 20) -- check again in 20
+	end
+end
+
+-- Removes a specific entry from the voting frame's columns
+-- Takes either index or colName as the identifier, and returns the removed rows
+-- if succesful, or nil if not. Should be called before any session begins.
+function RCVotingFrame:RemoveColumn(id)
+	addon:Debug("Removing Column", id)
+	if type(id) == "number" then
+		return tremove(self.scrollCols, id)
+	else
+		for i, col in ipairs(self.scrollCols) do
+			if col.colName == id then
+				return tremove(self.scrollCols, i)
+			end
+		end
+	end
 end
 
 function RCVotingFrame:OnCommReceived(prefix, serializedMsg, distri, sender)
@@ -134,9 +167,6 @@ function RCVotingFrame:OnCommReceived(prefix, serializedMsg, distri, sender)
 						if self:GetCandidateData(i, name, "response") == "ANNOUNCED" then
 							addon:DebugLog("No response from:", name)
 							self:SetCandidateData(i, name, "response", "NOTHING")
-							if addon.isMasterLooter then -- Give them one last try
-								addon:SendCommand(name, "lootTable", addon:GetActiveModule("masterlooter").lootTable)
-							end
 						end
 					end
 				end
@@ -151,7 +181,6 @@ function RCVotingFrame:OnCommReceived(prefix, serializedMsg, distri, sender)
 				else
 					addon:Print(L["A new session has begun, type '/rc open' to open the voting frame."])
 				end
-				guildRanks = addon:GetGuildRanks() -- Just update it on every session
 
 			elseif command == "response" then
 				local session, name, t = unpack(data)
@@ -170,6 +199,23 @@ function RCVotingFrame:OnCommReceived(prefix, serializedMsg, distri, sender)
 				else
 					addon:Debug("Non-ML", sender, "sent rolls!")
 				end
+
+			elseif command == "reconnectData" and addon:UnitIsUnit(sender, addon.masterLooter) then
+				-- We assume we always receive a regular lootTable command first
+				-- All we need to do is updating the loot table and figure out if we've voted previously
+				lootTable = unpack(data)
+				for _, data in ipairs(lootTable) do
+					for _, cand in pairs(data.candidates) do
+						for _, voter in ipairs(cand.voters) do
+							if addon:UnitIsUnit(voter, "player") then -- WE've voted
+								data.haveVoted = true
+								cand.haveVoted = true
+							end
+						end
+					end
+				end
+				self:Update()
+				self:UpdatePeopleToVote()
 			end
 		end
 	end
@@ -192,6 +238,10 @@ function RCVotingFrame:GetCandidateData(session, candidate, data)
 	local ok, arg = pcall(Get, session, candidate, data)
 	if not ok then addon:Debug("Error in 'GetCandidateData':", arg, session, candidate, data)
 	else return arg end
+end
+
+function RCVotingFrame:GetLootTable()
+	return lootTable
 end
 
 function RCVotingFrame:Setup(table)
@@ -260,6 +310,7 @@ end
 --	Visuals														--
 ------------------------------------------------------------------
 function RCVotingFrame:Update()
+	if not self.frame then return end -- No updates when it doesn't exist
 	self.frame.st:SortData()
 	-- update awardString
 	if lootTable[session] and lootTable[session].awarded then
@@ -296,9 +347,18 @@ function RCVotingFrame:SwitchSession(s)
 	if t.subType and t.subType ~= "Miscellaneous" and t.subType ~= "Junk" and t.equipLoc ~= "" then
 		self.frame.itemType:SetText(getglobal(t.equipLoc)..", "..t.subType); -- getGlobal to translate from global constant to localized name
 	elseif t.subType ~= "Miscellaneous" and t.subType ~= "Junk" then
-		self.frame.itemType:SetText(t.subType)
+		if t.subType == addon.db.global.localizedSubTypes["Artifact Relic"] then
+			local id = addon:GetItemIDFromLink(t.link)
+         self.frame.itemType:SetText(select(3, C_ArtifactUI.GetRelicInfoByItemID(id)) or "".." "..t.subType or "")
+		else
+			self.frame.itemType:SetText(tostring(t.subType))
+		end
 	else
-		self.frame.itemType:SetText(getglobal(t.equipLoc));
+		if RCTokenTable[addon:GetItemIDFromLink(t.link)] then -- It's a token
+			self.frame.itemType:SetText(L["Armor Token"])
+		else
+			self.frame.itemType:SetText(getglobal(t.equipLoc));
+		end
 	end
 
 	-- Update the session buttons
@@ -306,10 +366,12 @@ function RCVotingFrame:SwitchSession(s)
 	sessionButtons[old] = self:UpdateSessionButton(old, lootTable[old].texture, lootTable[old].link, lootTable[old].awarded)
 
 	-- Since we switched sessions, we want to sort by response
+	local j = 1
 	for i in ipairs(self.frame.st.cols) do
 		self.frame.st.cols[i].sort = nil
+		if self.frame.st.cols[i].colName == "response" then j = i end
 	end
-	self.frame.st.cols[5].sort = "asc"
+	self.frame.st.cols[j].sort = "asc"
 	FauxScrollFrame_OnVerticalScroll(self.frame.st.scrollframe, 0, self.frame.st.rowHeight, function() self.frame.st:Refresh() end) -- Reset scrolling to 0
 	self:Update()
 	self:UpdatePeopleToVote()
@@ -318,24 +380,16 @@ end
 function RCVotingFrame:BuildST()
 	local rows = {}
 	local i = 1
+	-- We need to build the columns from the data in self.scrollCols
+	-- We only really need the colName and value to get added
 	for name in pairs(candidates) do
+		local data = {}
+		for num, col in ipairs(self.scrollCols) do
+			data[num] = {value = "", colName = col.colName}
+		end
 		rows[i] = {
 			name = name,
-			cols = {
-				{ value = "",	DoCellUpdate = self.SetCellClass,		name = "class",},
-				{ value = "",	DoCellUpdate = self.SetCellName,			name = "name",},
-				{ value = "",	DoCellUpdate = self.SetCellRank,			name = "rank",},
-				{ value = "",	DoCellUpdate = self.SetCellRole,			name = "role",},
-				{ value = "",	DoCellUpdate = self.SetCellResponse,	name = "response",},
-				{ value = "",	DoCellUpdate = self.SetCellIlvl,			name = "ilvl",},
-				{ value = "",	DoCellUpdate = self.SetCellDiff,			name = "diff",},
-				{ value = "",	DoCellUpdate = self.SetCellGear, 		name = "gear1",},
-				{ value = "",	DoCellUpdate = self.SetCellGear, 		name = "gear2",},
-				{ value = 0,	DoCellUpdate = self.SetCellVotes, 		name = "votes",},
-				{ value = 0,	DoCellUpdate = self.SetCellVote,			name = "vote",},
-				{ value = 0,	DoCellUpdate = self.SetCellNote, 		name = "note",},
-				{ value = "",	DoCellUpdate = self.SetCellRoll,			name = "roll"},
-			},
+			cols = data,
 		}
 		i = i + 1
 	end
@@ -415,42 +469,51 @@ function RCVotingFrame:GetFrame()
 	-- Container and title
 	local f = addon:CreateFrame("DefaultRCLootCouncilFrame", "votingframe", L["RCLootCouncil Voting Frame"], 250, 420)
 	-- Scrolling table
-	local st = LibStub("ScrollingTable"):CreateST(self.scrollCols, NUM_ROWS, ROW_HEIGHT, { ["r"] = 1.0, ["g"] = 0.9, ["b"] = 0.0, ["a"] = 0.5 }, f.content)
-	st.frame:SetPoint("BOTTOMLEFT", f, "BOTTOMLEFT", 10, 10)
-	st:RegisterEvents({
-		["OnClick"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
-			if button == "RightButton" and row then
-				if active then
-					menuFrame.name = data[realrow].name
-					Lib_ToggleDropDownMenu(1, nil, menuFrame, cellFrame, 0, 0);
-				else
-					addon:Print(L["You cannot use the menu when the session has ended."])
+	function f.UpdateSt()
+		if f.st then -- It might already be created, so just update the cols
+			f.st:Hide()
+			f.st = nil
+		end
+		local st = LibStub("ScrollingTable"):CreateST(self.scrollCols, NUM_ROWS, ROW_HEIGHT, { ["r"] = 1.0, ["g"] = 0.9, ["b"] = 0.0, ["a"] = 0.5 }, f.content)
+		st.frame:SetPoint("BOTTOMLEFT", f, "BOTTOMLEFT", 10, 10)
+		st:RegisterEvents({
+			["OnClick"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
+				if button == "RightButton" and row then
+					if active then
+						menuFrame.name = data[realrow].name
+						Lib_ToggleDropDownMenu(1, nil, menuFrame, cellFrame, 0, 0);
+					else
+						addon:Print(L["You cannot use the menu when the session has ended."])
+					end
+				elseif button == "LeftButton" and row then -- Update more info
+					self:UpdateMoreInfo(realrow, data)
 				end
-			elseif button == "LeftButton" and row then -- Update more info
-				self:UpdateMoreInfo(realrow, data)
+				-- Return false to have the default OnClick handler take care of left clicks
+				return false
+			end,
+		})
+		-- We also want to show moreInfo on mouseover
+		st:RegisterEvents({
+			["OnEnter"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
+				if row then self:UpdateMoreInfo(realrow, data) end
+				-- Return false to have the default OnEnter handler take care mouseover
+				return false
 			end
-			-- Return false to have the default OnClick handler take care of left clicks
-			return false
-		end,
-	})
-	-- We also want to show moreInfo on mouseover
-	st:RegisterEvents({
-		["OnEnter"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
-			if row then self:UpdateMoreInfo(realrow, data) end
-			-- Return false to have the default OnEnter handler take care mouseover
-			return false
-		end
-	})
-	-- We also like to return to the actual selected player when we remove the mouse
-	st:RegisterEvents({
-		["OnLeave"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
-			self:UpdateMoreInfo()
-			return false
-		end
-	})
-	st:SetFilter(RCVotingFrame.filterFunc)
-	st:EnableSelection(true)
-	f.st = st
+		})
+		-- We also like to return to the actual selected player when we remove the mouse
+		st:RegisterEvents({
+			["OnLeave"] = function(rowFrame, cellFrame, data, cols, row, realrow, column, table, button, ...)
+				self:UpdateMoreInfo()
+				return false
+			end
+		})
+		st:SetFilter(RCVotingFrame.filterFunc)
+		st:EnableSelection(true)
+		f.st = st
+		f:SetWidth(f.st.frame:GetWidth() + 20)
+	end
+	f.UpdateSt()
+
 	--[[------------------------------
 		Session item icon and strings
 	    ------------------------------]]
@@ -461,7 +524,7 @@ function RCVotingFrame:GetFrame()
 		if not lootTable then return; end
 		addon:CreateHypertip(lootTable[session].link)
 	end)
-	item:SetScript("OnLeave", addon.HideTooltip)
+	item:SetScript("OnLeave", function() addon:HideTooltip() end)
 	item:SetScript("OnClick", function()
 		if not lootTable then return; end
 	    if ( IsModifiedClick() ) then
@@ -530,7 +593,7 @@ function RCVotingFrame:GetFrame()
 		self:UpdateMoreInfo()
 	end)
 	b2:SetScript("OnEnter", function() addon:CreateTooltip(L["Click to expand/collapse more info"]) end)
-	b2:SetScript("OnLeave", addon.HideTooltip)
+	b2:SetScript("OnLeave", function() addon:HideTooltip() end)
 	f.moreInfoBtn = b2
 
 	f.moreInfo = CreateFrame( "GameTooltip", "RCVotingFrameMoreInfo", nil, "GameTooltipTemplate" )
@@ -540,7 +603,7 @@ function RCVotingFrame:GetFrame()
 	b3:SetPoint("RIGHT", b1, "LEFT", -10, 0)
 	b3:SetScript("OnClick", function(self) Lib_ToggleDropDownMenu(1, nil, filterMenu, self, 0, 0) end )
 	b3:SetScript("OnEnter", function() addon:CreateTooltip(L["Deselect responses to filter them"]) end)
-	b3:SetScript("OnLeave", addon.HideTooltip)
+	b3:SetScript("OnLeave", function() addon:HideTooltip() end)
 	f.filter = b3
 
 	-- Disenchant button
@@ -581,9 +644,10 @@ function RCVotingFrame:GetFrame()
 	stgl:SetHeight(f:GetHeight())
 	stgl:SetPoint("TOPRIGHT", f, "TOPLEFT", -2, 0)
 	f.sessionToggleFrame = stgl
+	sessionButtons = {}
 
 	-- Set a proper width
-	f:SetWidth(st.frame:GetWidth() + 20)
+	f:SetWidth(f.st.frame:GetWidth() + 20)
 	return f;
 end
 
@@ -723,7 +787,7 @@ function RCVotingFrame.SetCellDiff(rowFrame, frame, data, cols, row, realrow, co
 end
 
 function RCVotingFrame.SetCellGear(rowFrame, frame, data, cols, row, realrow, column, fShow, table, ...)
-	local gear = data[realrow].cols[column].name -- gear1 or gear2
+	local gear = data[realrow].cols[column].colName -- gear1 or gear2
 	local name = data[realrow].name
 	gear = lootTable[session].candidates[name][gear] -- Get the actual gear
 	if gear then
@@ -731,6 +795,11 @@ function RCVotingFrame.SetCellGear(rowFrame, frame, data, cols, row, realrow, co
 		frame:SetNormalTexture(texture)
 		frame:SetScript("OnEnter", function() addon:CreateHypertip(gear) end)
 		frame:SetScript("OnLeave", function() addon:HideTooltip() end)
+		frame:SetScript("OnClick", function()
+			if IsModifiedClick() then
+			   HandleModifiedItemClick(gear);
+	      end
+		end)
 		frame:Show()
 	else
 		frame:Hide()
@@ -851,7 +920,7 @@ function ResponseSort(table, rowa, rowb, sortbycol)
 	if a == b then
 		if column.sortnext then
 			local nextcol = table.cols[column.sortnext];
-			if not(nextcol.sort) then
+			if nextcol and not(nextcol.sort) then
 				if nextcol.comparesort then
 					return nextcol.comparesort(table, rowa, rowb, column.sortnext);
 				else
@@ -879,7 +948,7 @@ function GuildRankSort(table, rowa, rowb, sortbycol)
 	if a == b then
 		if column.sortnext then
 			local nextcol = table.cols[column.sortnext];
-			if not(nextcol.sort) then
+			if nextcol and not(nextcol.sort) then
 				if nextcol.comparesort then
 					return nextcol.comparesort(table, rowa, rowb, column.sortnext);
 				else

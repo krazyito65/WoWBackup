@@ -294,7 +294,7 @@
 --> internal functions
 -- _detalhes.statistics = {container_calls = 0, container_pet_calls = 0, container_unknow_pet = 0, damage_calls = 0, heal_calls = 0, absorbs_calls = 0, energy_calls = 0, pets_summons = 0}
 
-		-- ~start ~inicio ~novo ñovo
+		-- ~start ~inicio ~novo ï¿½ovo
 		function _detalhes:EntrarEmCombate (...)
 			if (_detalhes.debug) then
 				_detalhes:Msg ("(debug) |cFFFFFF00started a new combat|r|cFFFF7700", _detalhes.encounter_table and _detalhes.encounter_table.name or "")
@@ -305,7 +305,7 @@
 			if (not _detalhes.tabela_historico.tabelas[1]) then 
 				_detalhes.tabela_overall = _detalhes.combate:NovaTabela()
 				
-				_detalhes:InstanciaCallFunction (_detalhes.ResetaGump, nil, -1) --> reseta scrollbar, iterators, rodapé, etc
+				_detalhes:InstanciaCallFunction (_detalhes.ResetaGump, nil, -1) --> reseta scrollbar, iterators, rodapï¿½, etc
 				_detalhes:InstanciaCallFunction (_detalhes.InstanciaFadeBarras, -1) --> esconde todas as barras
 				_detalhes:InstanciaCallFunction (_detalhes.AtualizaSegmentos) --> atualiza o showing
 			end
@@ -325,13 +325,13 @@
 			_detalhes.tabela_vigente.previous_combat = ultimo_combate
 			
 			_detalhes.tabela_vigente:seta_data (_detalhes._detalhes_props.DATA_TYPE_START) --seta na tabela do combate a data do inicio do combate -- setup time data
-			_detalhes.in_combat = true --sinaliza ao addon que há um combate em andamento -- in combat flag up
-			_detalhes.tabela_vigente.combat_id = n_combate --> grava o número deste combate na tabela atual -- setup combat id on new table
+			_detalhes.in_combat = true --sinaliza ao addon que hï¿½ um combate em andamento -- in combat flag up
+			_detalhes.tabela_vigente.combat_id = n_combate --> grava o nï¿½mero deste combate na tabela atual -- setup combat id on new table
 			_detalhes.last_combat_pre_pot_used = nil
 			
 			_detalhes:FlagCurrentCombat()
 			
-			--> é o timer que ve se o jogador ta em combate ou não -- check if any party or raid members are in combat
+			--> ï¿½ o timer que ve se o jogador ta em combate ou nï¿½o -- check if any party or raid members are in combat
 			_detalhes.tabela_vigente.verifica_combate = _detalhes:ScheduleRepeatingTimer ("EstaEmCombate", 1) 
 
 			_detalhes:ClearCCPetsBlackList()
@@ -460,7 +460,7 @@
 			_detalhes:CatchRaidDebuffUptime ("DEBUFF_UPTIME_OUT")
 			_detalhes:CloseEnemyDebuffsUptime()
 			
-			--> pega a zona do jogador e vê se foi uma luta contra um Boss -- identifica se a luta foi com um boss
+			--> pega a zona do jogador e vï¿½ se foi uma luta contra um Boss -- identifica se a luta foi com um boss
 			if (not _detalhes.tabela_vigente.is_boss) then 
 		
 				--> function which runs after a boss encounter to try recognize a encounter
@@ -483,7 +483,7 @@
 				_detalhes.tabela_vigente.bossFunction = nil
 			end
 
-			--> finaliza a checagem se esta ou não no combate -- finish combat check
+			--> finaliza a checagem se esta ou nï¿½o no combate -- finish combat check
 			if (_detalhes.tabela_vigente.verifica_combate) then 
 				_detalhes:CancelTimer (_detalhes.tabela_vigente.verifica_combate)
 				_detalhes.tabela_vigente.verifica_combate = nil
@@ -690,7 +690,7 @@
 			local invalid_combat
 			
 			if ((tempo_do_combate >= _detalhes.minimum_combat_time or not _detalhes.tabela_historico.tabelas[1]) and not _detalhes.tabela_vigente.discard_segment) then
-				_detalhes.tabela_historico:adicionar (_detalhes.tabela_vigente) --move a tabela atual para dentro do histórico
+				_detalhes.tabela_historico:adicionar (_detalhes.tabela_vigente) --move a tabela atual para dentro do histï¿½rico
 				
 				_detalhes:CanSendMissData()
 			else
@@ -717,7 +717,7 @@
 				
 				if (_detalhes.solo) then
 					local esta_instancia = _detalhes.tabela_instancias[_detalhes.solo]
-					if (_detalhes.SoloTables.CombatID == _detalhes:NumeroCombate()) then --> significa que o solo mode validou o combate, como matar um bixo muito low level com uma só porrada
+					if (_detalhes.SoloTables.CombatID == _detalhes:NumeroCombate()) then --> significa que o solo mode validou o combate, como matar um bixo muito low level com uma sï¿½ porrada
 						if (_detalhes.SoloTables.CombatIDLast and _detalhes.SoloTables.CombatIDLast ~= 0) then --> volta os dados da luta anterior
 						
 							_detalhes.SoloTables.CombatID = _detalhes.SoloTables.CombatIDLast
@@ -862,7 +862,7 @@
 				_detalhes:SairDoCombate()
 			end
 		
-			--> registra os gráficos
+			--> registra os grï¿½ficos
 			_detalhes:TimeDataRegister ("Your Team Damage", string_arena_myteam_damage, nil, "Details!", "v1.0", [[Interface\ICONS\Ability_DualWield]], true, true)
 			_detalhes:TimeDataRegister ("Enemy Team Damage", string_arena_enemyteam_damage, nil, "Details!", "v1.0", [[Interface\ICONS\Ability_DualWield]], true, true)
 		
@@ -872,7 +872,7 @@
 			--> inicia um novo combate
 			_detalhes:EntrarEmCombate()
 		
-			--> sinaliza que esse combate é arena
+			--> sinaliza que esse combate ï¿½ arena
 			_detalhes.tabela_vigente.arena = true
 			_detalhes.tabela_vigente.is_arena = {name = _detalhes.zone_name, zone = _detalhes.zone_name, mapid = _detalhes.zone_id}
 		
@@ -1480,15 +1480,15 @@
 			
 			local GameCooltip = GameCooltip
 		
-			local esta_barra = self.barras [qual_barra] --> barra que o mouse passou em cima e irá mostrar o tooltip
+			local esta_barra = self.barras [qual_barra] --> barra que o mouse passou em cima e irï¿½ mostrar o tooltip
 			local objeto = esta_barra.minha_tabela --> pega a referencia da tabela --> retorna a classe_damage ou classe_heal
-			if (not objeto) then --> a barra não possui um objeto
+			if (not objeto) then --> a barra nï¿½o possui um objeto
 				return false
 			end
 
 			--verifica por tooltips especiais:
-			if (objeto.dead) then --> é uma barra de dead
-				return _detalhes:ToolTipDead (self, objeto, esta_barra, keydown) --> instância, [morte], barra
+			if (objeto.dead) then --> ï¿½ uma barra de dead
+				return _detalhes:ToolTipDead (self, objeto, esta_barra, keydown) --> instï¿½ncia, [morte], barra
 			elseif (objeto.byspell) then
 				return _detalhes:ToolTipBySpell (self, objeto, esta_barra, keydown)
 			elseif (objeto.frags) then
@@ -1497,7 +1497,7 @@
 				return _detalhes:ToolTipVoidZones (self, objeto, esta_barra, keydown)
 			end
 			
-			local t = objeto:ToolTip (self, qual_barra, esta_barra, keydown) --> instância, nº barra, objeto barra, keydown
+			local t = objeto:ToolTip (self, qual_barra, esta_barra, keydown) --> instï¿½ncia, nï¿½ barra, objeto barra, keydown
 			
 			if (t) then
 			
@@ -1533,13 +1533,13 @@
 				return instancia:MontaTooltip (esta_barra, qual_barra)
 			end
 		end
-
+		
 		function _detalhes:EndRefresh (instancia, total, tabela_do_combate, showing)
 			_detalhes:EsconderBarrasNaoUsadas (instancia, showing)
 		end
 		
 		function _detalhes:EsconderBarrasNaoUsadas (instancia, showing)
-			--> primeira atualização após uma mudança de segmento -->  verifica se há mais barras sendo mostradas do que o necessário	
+			--> primeira atualizaï¿½ï¿½o apï¿½s uma mudanï¿½a de segmento -->  verifica se hï¿½ mais barras sendo mostradas do que o necessï¿½rio	
 			--------------------
 				if (instancia.v_barras) then
 					--print ("mostrando", instancia.rows_showing, instancia.rows_created)
@@ -1547,6 +1547,20 @@
 						_detalhes.gump:Fade (instancia.barras[barra_numero], "in")
 					end
 					instancia.v_barras = false
+					
+					if (instancia.rows_showing == 0 and instancia:GetSegment() == -1) then -- -1 overall data
+						if (not instancia:IsShowingOverallDataWarning()) then
+							local tutorial = _detalhes:GetTutorialCVar ("OVERALLDATA_WARNING1") or 0
+							if (tutorial < 10) then
+								_detalhes:SetTutorialCVar ("OVERALLDATA_WARNING1", tutorial + 1)
+								instancia:ShowOverallDataWarning (true)
+							end
+						end
+					else
+						if (instancia:IsShowingOverallDataWarning()) then
+							instancia:ShowOverallDataWarning (false)
+						end
+					end
 				end
 
 			return showing
@@ -1557,7 +1571,7 @@
 
 			local tabela_do_combate = self.showing
 
-			--> confere se a instância possui uma tabela válida
+			--> confere se a instï¿½ncia possui uma tabela vï¿½lida
 			if (not tabela_do_combate) then
 				if (not self.freezed) then
 					return self:Freeze()
@@ -1567,7 +1581,7 @@
 
 			local need_refresh = tabela_do_combate[self.atributo].need_refresh
 			if (not need_refresh and not forcar) then
-				return --> não precisa de refresh
+				return --> nï¿½o precisa de refresh
 			--else
 				--tabela_do_combate[self.atributo].need_refresh = false
 			end
@@ -1586,9 +1600,13 @@
 
 		end
 
+		function _detalhes:ForceRefresh()
+			self:AtualizaGumpPrincipal (true)
+		end
+		
 		function _detalhes:AtualizaGumpPrincipal (instancia, forcar)
 			
-			if (not instancia or type (instancia) == "boolean") then --> o primeiro parâmetro não foi uma instância ou ALL
+			if (not instancia or type (instancia) == "boolean") then --> o primeiro parï¿½metro nï¿½o foi uma instï¿½ncia ou ALL
 				forcar = instancia
 				instancia = self
 			end
@@ -1604,7 +1622,7 @@
 					end
 				end
 				
-				--> marcar que não precisa ser atualizada
+				--> marcar que nï¿½o precisa ser atualizada
 				for index, esta_instancia in _ipairs (_detalhes.tabela_instancias) do
 					if (esta_instancia.ativa and esta_instancia.showing) then
 						if (esta_instancia.modo == modo_GROUP or esta_instancia.modo == modo_ALL) then
@@ -1615,7 +1633,7 @@
 					end
 				end
 
-				if (not forcar) then --atualizar o gump de detalhes também se ele estiver aberto
+				if (not forcar) then --atualizar o gump de detalhes tambï¿½m se ele estiver aberto
 					if (info.ativo) then
 						return info.jogador:MontaInfo()
 					end

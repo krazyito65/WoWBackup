@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1726, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15427 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16089 $"):sub(12, -3))
 mod:SetCreatureID(103769)
 mod:SetEncounterID(1864)
 mod:SetZone()
@@ -46,11 +46,12 @@ local warnNightmareTentacles			= mod:NewSpellAnnounce("ej12977", 3, 93708)
 
 local specWarnDescentIntoMadness		= mod:NewSpecialWarningYou(208431)
 local yellDescentIntoMadness			= mod:NewFadesYell(208431)
+local specWarnDreaming					= mod:NewSpecialWarningCount(205843, nil, nil, nil, 1, 2)--Mythic
 --Stage One: The Decent Into Madness
 local specWarnNightmareBlades			= mod:NewSpecialWarningMoveAway(206656, nil, nil, nil, 1, 2)
 local specWarnCorruptionHorror			= mod:NewSpecialWarningSwitchCount("ej12973", "-Healer", nil, nil, 1, 2)
 local specWarnCorruptingNova			= mod:NewSpecialWarningSpell(207830, nil, nil, nil, 2, 2)
-local specWarnDarkeningSoulYou			= mod:NewSpecialWarningStack(206651, nil, 3, nil, 1, 6)
+local specWarnDarkeningSoulYou			= mod:NewSpecialWarningStack(206651, nil, 3, nil, 2, 1, 6)
 local specWarnDarkeningSoulOther		= mod:NewSpecialWarningTaunt(206651, nil, nil, nil, 1, 2)
 local specWarnTormentingFixation		= mod:NewSpecialWarningMoveAway(205771, nil, nil, nil, 1, 2)
 local specWarnNightmareInfusionOther	= mod:NewSpecialWarningTaunt(209443, nil, nil, nil, 1, 2)
@@ -60,25 +61,25 @@ local specWarnCorruptionMeteorYou		= mod:NewSpecialWarningYou(206308, nil, nil, 
 local yellMeteor						= mod:NewFadesYell(206308)
 local specWarnCorruptionMeteorAway		= mod:NewSpecialWarningDodge(206308, "-Tank", nil, nil, 2, 2)--No dream, high corruption, dodge it. Subjective and defaults may be altered to off.
 local specWarnCorruptionMeteorTo		= mod:NewSpecialWarningMoveTo(206308, "-Tank", nil, nil, 1, 2)--Has dream, definitely should help
-local specWarnBlackeningSoulYou			= mod:NewSpecialWarningStack(209158, nil, 3, nil, 1, 6)
+local specWarnBlackeningSoulYou			= mod:NewSpecialWarningStack(209158, nil, 3, nil, 2, 1, 6)
 local specWarnBlackeningSoulOther		= mod:NewSpecialWarningTaunt(209158, nil, nil, nil, 1, 2)
 local specWarnInconHorror				= mod:NewSpecialWarningSwitch("ej13162", "-Healer", nil, nil, 1, 2)
 
 --Stage One: The Decent Into Madness
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local timerDarkeningSoulCD				= mod:NewCDTimer(7.2, 206651, nil, "Healer|Tank", nil, 5, nil, DBM_CORE_MAGIC_ICON..DBM_CORE_TANK_ICON)
-local timerNightmareBladesCD			= mod:NewNextTimer(15.7, 206656, nil, nil, nil, 3)
-local timerLurkingEruptionCD			= mod:NewCDCountTimer(20.5, 208322, nil, nil, nil, 3)
-local timerCorruptionHorrorCD			= mod:NewNextCountTimer(82.5, 210264, nil, nil, nil, 1)
+local timerDarkeningSoulCD				= mod:NewCDTimer(7, 206651, nil, "Healer|Tank", nil, 5, nil, DBM_CORE_MAGIC_ICON..DBM_CORE_TANK_ICON)
+local timerNightmareBladesCD			= mod:NewNextTimer(15.7, 206656, nil, "-Tank", 2, 3)
+local timerLurkingEruptionCD			= mod:NewCDCountTimer(20.5, 208322, nil, "-Tank", 2, 3)
+local timerCorruptionHorrorCD			= mod:NewNextCountTimer(82.5, 210264, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 local timerCorruptingNovaCD				= mod:NewNextTimer(20, 207830, nil, nil, nil, 2)
-local timerTormentingSwipeCD			= mod:NewCDTimer(10, 224649, nil, "Tank", nil, 5)
+local timerTormentingSwipeCD			= mod:NewCDTimer(10, 224649, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
 --Stage Two: From the Shadows
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local timerBondsOfTerrorCD				= mod:NewCDTimer(14.1, 209034, nil, nil, nil, 3)
+local timerBondsOfTerrorCD				= mod:NewCDTimer(14.1, 209034, nil, "-Tank", 2, 3)
 local timerCorruptionMeteorCD			= mod:NewCDCountTimer(28, 206308, 57467, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)--Short text "meteor"
 local timerBlackeningSoulCD				= mod:NewCDTimer(7.2, 209158, nil, "Healer|Tank", nil, 5, nil, DBM_CORE_MAGIC_ICON..DBM_CORE_TANK_ICON)
 local timerNightmareInfusionCD			= mod:NewCDTimer(61.5, 209443, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)--61.5-62.5
-local timerCallOfNightmaresCD			= mod:NewCDTimer(40, 205588, nil, nil, nil, 1)
+local timerCallOfNightmaresCD			= mod:NewCDTimer(40, 205588, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 --Stage Three: Darkness and stuff
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local timerNightmareTentacleCD			= mod:NewCDTimer(20, "ej12977", nil, nil, nil, 1, 93708)--226194 is an icon consideration now
@@ -93,6 +94,7 @@ local countdownMeteor					= mod:NewCountdown("AltTwo28", 206308, "-Tank")
 local voicePhaseChange					= mod:NewVoice(nil, nil, DBM_CORE_AUTO_VOICE2_OPTION_TEXT)
 --Nightmare Corruption
 --local voiceDescentIntoMadness			= mod:NewVoice(208431)
+local voiceDreaming						= mod:NewVoice(205843)--stepring
 --Stage One: The Decent Into Madness
 local voiceNightmareBlades				= mod:NewVoice(206656)--runout
 local voiceCorruptionHorror				= mod:NewVoice("ej12973", "-Healer")--bigmob
@@ -111,8 +113,6 @@ mod:AddBoolOption("InfoFrameFilterDream", true)
 mod:AddRangeFrameOption(6, 208322)
 mod:AddSetIconOption("SetIconOnBlades", 206656)
 mod:AddSetIconOption("SetIconOnMeteor", 206308)
-mod:AddHudMapOption("HudMapOnBlades", 211802)
-mod:AddHudMapOption("HudMapOnBonds", 209034)
 
 local lurkingTimers = {17, 20.5, 41, 20.5, 20.5}--{13.6, 26.3, 47.4, 20.7, 25.9} old. TODO, get more data, if all but one are 20.5, just code smarter without table
 local corruptionName = EJ_GetSectionInfo(12970)
@@ -129,6 +129,7 @@ mod.vb.corruptionHorror = 0
 mod.vb.inconHorror = 0
 mod.vb.meteorCount = 0
 mod.vb.lastBonds = nil
+mod.vb.dreamCount = 0
 
 local function updateRangeFrame(self)
 	if not self.Options.RangeFrame then return end
@@ -147,40 +148,15 @@ local function updateRangeFrame(self)
 	end
 end
 
-local function bladesHUD(self)
-	local previousTarget = nil
-	for i = 1, #bladesTarget do
-		local name = bladesTarget[i]
-		if previousTarget then
-			local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(211802, "party", previousTarget, 0.4, 6, nil, nil, nil, 0.5):Appear():SetLabel(previousTarget, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-			local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(211802, "party", name, 0.4, 6, nil, nil, nil, 0.5):Appear():SetLabel(name, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-			--Combat log targets correct now. they were backwards on heroic, keep an eye on things.
-			if playerName == previousTarget or playerName == name then--Player yellow lines
-				marker1:EdgeTo(marker2, nil, 10, 1, 1, 0, 0.5)
-			else--red lines
-				marker1:EdgeTo(marker2, nil, 10, 1, 0, 0, 0.5)
-			end
-		end
-		previousTarget = name
-	end
-	table.wipe(bladesTarget)--TODO, if this doesn't work well, move it to a new event
-end
-
-local function bondsHUD(self)
+local function bondsWarning(self)
 	local previousTarget = nil
 	for i = 1, #gatherTarget do
 		local name = gatherTarget[i]
 		if previousTarget then
 			if playerName == previousTarget then
-				local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(209034, "party", previousTarget, 0.4, 25, nil, nil, nil, 0.5):Appear():SetLabel(previousTarget, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-				local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(209034, "party", name, 0.4, 25, nil, nil, nil, 0.5):Appear():SetLabel(name, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-				marker2:EdgeTo(marker1, nil, 10, 0, 1, 0, 0.5)
 				specWarnBondsOfTerror:Show(name)
 				voiceBondsOfTerror:Play("linegather")
 			elseif playerName == name then
-				local marker1 = DBMHudMap:RegisterRangeMarkerOnPartyMember(209034, "party", previousTarget, 0.4, 25, nil, nil, nil, 0.5):Appear():SetLabel(previousTarget, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-				local marker2 = DBMHudMap:RegisterRangeMarkerOnPartyMember(209034, "party", name, 0.4, 25, nil, nil, nil, 0.5):Appear():SetLabel(name, nil, nil, nil, nil, nil, 0.8, nil, -16, 9, nil)
-				marker1:EdgeTo(marker2, nil, 10, 0, 1, 0, 0.5)
 				specWarnBondsOfTerror:Show(previousTarget)
 				voiceBondsOfTerror:Play("linegather")
 			end
@@ -196,6 +172,7 @@ function mod:OnCombatStart(delay)
 	self.vb.corruptionHorror = 0
 	self.vb.inconHorror = 0
 	self.vb.meteorCount = 0
+	self.vb.dreamCount = 0
 	self.vb.lastBonds = nil
 	table.wipe(bladesTarget)
 	table.wipe(gatherTarget)
@@ -222,9 +199,6 @@ function mod:OnCombatEnd()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
-	if self.Options.HudMapOnBlades or self.Options.HudMapOnBonds then
-		DBMHudMap:Disable()
-	end
 	self:UnregisterShortTermEvents()
 end
 
@@ -232,8 +206,10 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 207830 then
 		timerCorruptingNovaCD:Start(nil, args.sourceGUID)
-		specWarnCorruptingNova:Show(args.sourceName)
-		voiceCorruptingNova:Play("aesoon")
+		if self:AntiSpam(2, 1) then
+			specWarnCorruptingNova:Show(args.sourceName)
+			voiceCorruptingNova:Play("aesoon")
+		end
 	elseif spellId == 209443 then
 		if self.vb.phase == 3 then
 			timerNightmareInfusionCD:Start(31.5)
@@ -311,7 +287,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 			updateRangeFrame(self)
 		else
-			if amount >= 3 then
+			if amount >= 4 then
 				local filterWarning = false
 				if self:GetNumAliveTanks() >= 3 then
 					--Three (or more) Tank Strat AND at least 3 alive
@@ -340,7 +316,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 			updateRangeFrame(self)
 		else
-			if amount >= 3 then
+			if amount >= 4 then
 				local filterWarning = false
 				if self:GetNumAliveTanks() >= 3 then
 					--Three (or more) Tank Strat AND at least 3 alive
@@ -367,16 +343,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 211802 then
 		warnNightmareBlades:CombinedShow(0.5, args.destName)
-		if self.Options.HudMapOnBlades then
-			self:Unschedule(bladesHUD)
-			if not tContains(bladesTarget, args.destName) then
-				bladesTarget[#bladesTarget+1] = args.destName
-			end
-			if #bladesTarget == 2 then--Know it's 2 on heroic, mythic is unknown to fallback scheduling below
-				bladesHUD(self)
-			else
-				self:Schedule(1, bladesHUD, self)
-			end
+		if not tContains(bladesTarget, args.destName) then
+			bladesTarget[#bladesTarget+1] = args.destName
 		end
 		if args:IsPlayer() then
 			specWarnNightmareBlades:Show()
@@ -387,16 +355,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 209034 or spellId == 210451 then
 		warnBondsOfTerror:CombinedShow(0.5, args.destName)
-		if self.Options.HudMapOnBonds then
-			self:Unschedule(bondsHUD)
-			if not tContains(gatherTarget, args.destName) then
-				gatherTarget[#gatherTarget+1] = args.destName
-			end
-			if #gatherTarget == 2 then--Know it's 2 on heroic and normal, mythic unknown LFR assumed can't be more than normal/heroic.
-				bondsHUD(self)
-			else
-				self:Schedule(1, bondsHUD, self)
-			end
+		self:Unschedule(bondsWarning)
+		if not tContains(gatherTarget, args.destName) then
+			gatherTarget[#gatherTarget+1] = args.destName
+		end
+		if #gatherTarget == 2 then--Know it's 2 on heroic and normal, mythic unknown LFR assumed can't be more than normal/heroic.
+			bondsWarning(self)
+		else
+			self:Schedule(1, bondsWarning, self)
 		end
 	elseif spellId == 224508 then
 		if args:IsPlayer() then
@@ -451,9 +417,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 208431 and args:IsPlayer() then
 		yellDescentIntoMadness:Cancel()
 	elseif spellId == 211802 then
-		if self.Options.HudMapOnBlades then
-			DBMHudMap:FreeEncounterMarkerByTarget(spellId, args.destName)
-		end
 		if self.Options.SetIconOnBlades then
 			self:SetIcon(args.destName, 0)
 		end
@@ -466,9 +429,6 @@ function mod:SPELL_AURA_REMOVED(args)
 			updateRangeFrame(self)
 		end
 	elseif spellId == 209034 or spellId == 210451 then
-		if self.Options.HudMapOnBonds then
-			DBMHudMap:FreeEncounterMarkerByTarget(209034, args.destName)
-		end
 	elseif spellId == 224508 then
 		if args:IsPlayer() then
 			yellMeteor:Cancel()
@@ -548,6 +508,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 		self.vb.phase = 3
 		warnPhase3:Show()
 		voicePhaseChange:Play("pthree")
+		timerBlackeningSoulCD:Stop()
 		timerBondsOfTerrorCD:Stop()
 		timerCallOfNightmaresCD:Stop()
 		countdownCallOfNightmares:Cancel()
@@ -555,7 +516,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 		countdownMeteor:Cancel()
 		timerNightmareInfusionCD:Stop()
 		countdownNightmareInfusion:Cancel()
-		timerBlackeningSoulCD:Stop()
 		timerNightmareInfusionCD:Start(11)
 		countdownNightmareInfusion:Start(11)
 		timerBlackeningSoulCD:Start(15)
@@ -566,5 +526,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, spellGUID)
 	elseif spellId == 226194 then--Writhing Deep
 		warnNightmareTentacles:Show()
 		timerNightmareTentacleCD:Start()
+	elseif spellId == 205843 then
+		self.vb.dreamCount = self.vb.dreamCount + 1
+		local count = self.vb.dreamCount
+		specWarnDreaming:Show(count)
+		voiceDreaming:Play(nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\count\\"..count..".ogg")
+		voiceDreaming:Schedule(1, "stepring")
 	end
 end

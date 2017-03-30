@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Auctions ***
+--[[	*** DataStore_Auctions ***
 Written by : Thaoky, EU-Marécages de Zangar
 July 15th, 2009
 --]]

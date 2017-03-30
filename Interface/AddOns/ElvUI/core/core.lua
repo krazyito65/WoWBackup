@@ -170,7 +170,7 @@ E.ClassRole = {
 E.noop = function() end;
 
 function E:Print(...)
-	print(self["media"].hexvaluecolor..self.UIName..':|r', ...)
+	print(self["media"].hexvaluecolor..'ElvUI:|r', ...)
 end
 
 --Workaround for people wanting to use white and it reverting to their class color.
@@ -872,7 +872,7 @@ local function SendRecieve(_, event, prefix, message, _, sender)
 
 		if prefix == "ELVUI_VERSIONCHK" and not E.recievedOutOfDateMessage then
 			if(tonumber(message) ~= nil and tonumber(message) > tonumber(E.version)) then
-				E:Print(L["ElvUI is out of date. You can download the newest version from www.tukui.org. Get premium membership and have ElvUI automatically updated with the Tukui Client!"]:gsub("ElvUI", E.UIName))
+				E:Print(L["ElvUI is out of date. You can download the newest version from www.tukui.org. Get premium membership and have ElvUI automatically updated with the Tukui Client!"])
 
 				if((tonumber(message) - tonumber(E.version)) >= 0.05) then
 					E:StaticPopup_Show("ELVUI_UPDATE_AVAILABLE")
@@ -925,6 +925,7 @@ function E:UpdateAll(ignoreInstall)
 	CH.db = self.db.chat
 	CH:PositionChat(true);
 	CH:SetupChat()
+	CH:UpdateAnchors()
 
 	local AB = self:GetModule('ActionBars')
 	AB.db = self.db.actionbar
@@ -988,6 +989,7 @@ function E:UpdateAll(ignoreInstall)
 	end
 
 	self:GetModule('Minimap'):UpdateSettings()
+	self:GetModule("AFK"):Toggle()
 
 	self:UpdateBorderColors()
 	self:UpdateBackdropColors()
@@ -1319,6 +1321,40 @@ function E:GetTopCPUFunc(msg)
 	self:Print("Calculating CPU Usage differences (module: "..(module or "?")..", showall: "..tostring(showall)..", minCalls: "..tostring(minCalls)..", delay: "..tostring(delay)..")")
 end
 
+local function SetOriginalHeight()
+	if InCombatLockdown() then
+		E:RegisterEvent("PLAYER_REGEN_ENABLED", SetOriginalHeight)
+		return
+	end
+	E:UnregisterEvent("PLAYER_REGEN_ENABLED")
+	E.UIParent:SetHeight(E.UIParent.origHeight)
+end
+
+local function SetModifiedHeight()
+	if InCombatLockdown() then
+		E:RegisterEvent("PLAYER_REGEN_ENABLED", SetModifiedHeight)
+		return
+	end
+	E:UnregisterEvent("PLAYER_REGEN_ENABLED")
+	local height = E.UIParent.origHeight - OrderHallCommandBar:GetHeight()
+	E.UIParent:SetHeight(height)
+end
+
+--This function handles disabling of OrderHall Bar or resizing of ElvUIParent if needed
+local function HandleCommandBar()
+	if E.global.general.commandBarSetting == "DISABLED" then
+		local bar = OrderHallCommandBar
+		bar:UnregisterAllEvents()
+		bar:SetScript("OnShow", bar.Hide)
+		bar:Hide()
+		UIParent:UnregisterEvent("UNIT_AURA")--Only used for OrderHall Bar
+	elseif E.global.general.commandBarSetting == "ENABLED_RESIZEPARENT" then
+		E.UIParent:SetPoint("BOTTOM", UIParent, "BOTTOM");
+		OrderHallCommandBar:HookScript("OnShow", SetModifiedHeight)
+		OrderHallCommandBar:HookScript("OnHide", SetOriginalHeight)
+	end
+end
+
 function E:Initialize()
 	twipe(self.db)
 	twipe(self.global)
@@ -1386,28 +1422,9 @@ function E:Initialize()
 	collectgarbage("collect");
 
 	if self.db.general.loginmessage then
-		print(select(2, E:GetModule('Chat'):FindURL("CHAT_MSG_DUMMY", format(L["LOGIN_MSG"]:gsub("ElvUI", E.UIName), self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version)))..'.')
+		print(select(2, E:GetModule('Chat'):FindURL("CHAT_MSG_DUMMY", format(L["LOGIN_MSG"], self["media"].hexvaluecolor, self["media"].hexvaluecolor, self.version)))..'.')
 	end
 
-	--Disable OrderHall Bar or resize ElvUIParent if needed
-	local function HandleCommandBar()
-		if E.global.general.commandBarSetting == "DISABLED" then
-			local bar = OrderHallCommandBar
-			bar:UnregisterAllEvents()
-			bar:SetScript("OnShow", bar.Hide)
-			bar:Hide()
-			UIParent:UnregisterEvent("UNIT_AURA")--Only used for OrderHall Bar
-		elseif E.global.general.commandBarSetting == "ENABLED_RESIZEPARENT" then
-			E.UIParent:SetPoint("BOTTOM", UIParent, "BOTTOM");
-			OrderHallCommandBar:HookScript("OnShow", function()
-				local height = E.UIParent.origHeight - OrderHallCommandBar:GetHeight()
-				E.UIParent:SetHeight(height)
-			end)
-			OrderHallCommandBar:HookScript("OnHide", function()
-				E.UIParent:SetHeight(E.UIParent.origHeight)
-			end)
-		end
-	end
 	if OrderHallCommandBar then
 		HandleCommandBar()
 	else

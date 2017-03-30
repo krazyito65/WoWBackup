@@ -105,4 +105,3 @@ L["S_UNIT_FRIENDLY"] = "友方單位"
 L["S_WIDTH"] = "寬度"
 L["S_XOFFSET"] = "X 偏移"
 L["S_YOFFSET"] = "Y 偏移"
-

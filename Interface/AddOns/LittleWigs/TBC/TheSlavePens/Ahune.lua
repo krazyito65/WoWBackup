@@ -22,7 +22,7 @@ local standing = nil
 local L = LibStub("AceLocale-3.0"):NewLocale("Little Wigs: Lord Ahune", "enUS", true)
 if L then
 	
-	
+	--@localization(locale="enUS", namespace="Coilfang/Ahune", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 L = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Lord Ahune")
 mod.locale = L

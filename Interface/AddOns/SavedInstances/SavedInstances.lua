@@ -14,7 +14,7 @@ local maxdiff = 23 -- max number of instance difficulties
 local maxcol = 4 -- max columns per player+instance
 
 addon.svnrev = {}
-addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 538 $"):match("%d+"))
+addon.svnrev["SavedInstances.lua"] = tonumber(("$Revision: 550 $"):match("%d+"))
 
 -- local (optimal) references to provided functions
 local table, math, bit, string, pairs, ipairs, unpack, strsplit, time, type, wipe, tonumber, select, strsub = 
@@ -143,6 +143,8 @@ addon.LFRInstances = {
   [1288] ={ total=3, base=4,  parent=1350,altid=nil, remap={ 1, 2, 3 } }, -- EN2: Tormented Guardians
   [1289] ={ total=1, base=7,  parent=1350,altid=nil, remap={ 1 } },       -- EN3: Rift of Aln
 
+  [1411] ={ total=3, base=1,  parent=1439,altid=nil }, -- ToV
+
   [1290] ={ total=3, base=1,  parent=1353,altid=nil }, -- NH1: Arcing Aqueducts
   [1291] ={ total=3, base=4,  parent=1353,altid=nil }, -- NH2: Royal Athenaeum 
   [1292] ={ total=3, base=7,  parent=1353,altid=nil }, -- NH3: Nightspire
@@ -182,7 +184,7 @@ addon.WorldBosses = {
   [1452] = { quest=94015, expansion=5, level=100 }, -- Kazzak
 
   [1749] = { quest=42270, expansion=6, level=110 }, -- Nithogg
-  [1756] = { quest=42269, expansion=6, level=110 }, -- The Soultakers
+  [1756] = { quest=42269, expansion=6, level=110, name=EJ_GetEncounterInfo(1756) }, -- The Soultakers
   [1763] = { quest=42779, expansion=6, level=110 }, -- Shar'thos
   [1769] = { quest=43192, expansion=6, level=110 }, -- Levantus
   [1770] = { quest=42819, expansion=6, level=110 }, -- Humongris
@@ -222,6 +224,9 @@ local _specialQuests = {
   [39288] = { zid=945, daily=true }, -- Terrorfist
   [39289] = { zid=945, daily=true }, -- Doomroller
   [39290] = { zid=945, daily=true }, -- Vengeance
+  -- Order Hall
+  [42517] = { zid=1050, daily=true }, -- Warlock: Ritual of Doom
+  [44707] = { zid=1052, daily=true, sid=228651 }, -- Demon Hunter: Twisting Nether
 }
 function addon:specialQuests()
   for qid, qinfo in pairs(_specialQuests) do
@@ -250,7 +255,10 @@ function addon:specialQuests()
       if l then
         qinfo.name = l:gsub("%p$","")
       end
-    elseif not qinfo.name then
+    elseif not qinfo.name and qinfo.sid then
+      qinfo.name = GetSpellInfo(qinfo.sid)
+    end
+    if not qinfo.name or #qinfo.name == 0 then
       local title, link = addon:QuestInfo(qid)
       if title then
         title = title:gsub("%p?%s*[Tt]racking%s*[Qq]uest","")
@@ -311,16 +319,7 @@ local LegionSealQuests = {
   [43892] = "Weekly",
   [43893] = "Weekly",
   [43894] = "Weekly",
-  [44226] = "Weekly", -- order hall: DH
-  [44235] = "Weekly", -- order hall: Druid
-  [44236] = "Weekly", -- order hall: Druid?
-  [44212] = "Weekly", -- order hall: Hunter
-  [44208] = "Weekly", -- order hall: Mage
-  [44238] = "Weekly", -- order hall: Monk
-  [44219] = "Weekly", -- order hall: Paladin
-  [44230] = "Weekly", -- order hall: Priest
-  [44204] = "Weekly", -- order hall: Rogue
-  [44205] = "Weekly", -- order hall: Shaman
+  [43510] = "Weekly", -- order hall
 }
 for k,v in pairs(LegionSealQuests) do
   QuestExceptions[k] = v
@@ -383,6 +382,63 @@ function addon:timedebug()
  chatMsg("Next skill reset: %s local, %s server",date("%a %c",t), date("%a %c",t+3600*SavedInstances:GetServerOffset()))
  local t = SavedInstances:GetNextDarkmoonResetTime()
  chatMsg("Next darkmoon reset: %s local, %s server",date("%a %c",t), date("%a %c",t+3600*SavedInstances:GetServerOffset()))
+end
+
+local function questTableToString(t)
+  local ret = ""
+  local lvl = UnitLevel("player")
+  for k,v in pairs(t) do
+    ret = string.format("%s%s\124cffffff00\124Hquest:%s:%s\124h[%s]\124h\124r", ret, (#ret == 0 and "" or ", "),k,lvl,k)
+  end
+  return ret
+end
+
+function addon:questdebug(info)
+  local t = vars.db.Toons[thisToon]
+  local ql = GetQuestsCompleted()
+
+  local cmd = info.input
+  cmd = cmd and strtrim(cmd:gsub("^%s*(%w+)%s*","")):lower()
+  if t.completedquests and (cmd == "load" or not addon.completedquests) then
+    chatMsg("Loaded quest list")
+    addon.completedquests = t.completedquests
+  elseif cmd == "load" then
+    chatMsg("No saved quest list")
+  elseif cmd == "save" then
+    chatMsg("Saved quest list")
+    t.completedquests = ql 
+  elseif cmd == "clear" then
+    chatMsg("Cleared quest list")
+    addon.completedquests = nil
+    t.completedquests = nil
+    return
+  elseif cmd and #cmd > 0 then
+    chatMsg("Quest command not understood: '"..cmd.."'")
+    chatMsg("/si quest ([save|load|clear])")
+    return
+  end
+  local cnt = 0
+  local add = {}
+  local remove = {}
+  for id,_ in pairs(ql) do
+    cnt = cnt + 1
+  end
+  chatMsg("Completed quests: "..cnt)
+  if addon.completedquests then
+    for id,_ in pairs(ql) do
+      if not addon.completedquests[id] then
+        add[id] = true
+      end
+    end
+    for id,_ in pairs(addon.completedquests) do
+      if not ql[id] then
+        remove[id] = true
+      end
+    end
+    if next(add) then chatMsg("Added IDs:   "..questTableToString(add)) end
+    if next(remove) then chatMsg("Removed IDs: "..questTableToString(remove)) end
+  end
+  addon.completedquests = ql
 end
 
 -- abbreviate expansion names (which apparently are not localized in any western character set)

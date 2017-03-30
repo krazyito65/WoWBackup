@@ -478,7 +478,7 @@ function addon:SummonPet()
     end
 
     if self.db.profile.verbose then
-        self:Printf("Summoning %s", self:GetPetName(petid))
+        self:Printf(L["SUMMONING_MSG"], self:GetPetName(petid))
     end
 
     C_PetJournal.SummonPetByGUID(petid)

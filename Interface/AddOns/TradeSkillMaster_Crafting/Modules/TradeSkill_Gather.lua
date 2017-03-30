@@ -484,7 +484,7 @@ function Gather:CreateMainFrame()
 						stCols = { { name = L["Selection"], width = 1 } },
 						stDisableSelection = true,
 						points = { { "TOPLEFT", BFC.PARENT, "TOPLEFT" }, { "BOTTOMLEFT", BFC.PARENT, "BOTTOMLEFT", -3, 33 }, { "RIGHT", BFC.PARENT, "CENTER", -3, 33 } },
-						--scripts = { "OnClick" },
+						scripts = { "OnClick" },
 					},
 					{
 						type = "VLine",
@@ -511,7 +511,16 @@ function Gather:CreateMainFrame()
 						key = "interBtnFrame",
 						points = { { "TOPLEFT", BFC.PREV, "BOTTOMLEFT", 5, -10 }, { "BOTTOMRIGHT", BFC.PARENT, "BOTTOMRIGHT", -5, 5 } },
 						children = {
-
+							{
+								type = "Button",
+								key = "craftNextBtn",
+								text = L["Craft Next"],
+								disabled = true,
+								textHeight = 18,
+								size = { 105, 30 },
+								points = { { "LEFT", 2, 0 }, { "RIGHT", BFC.PARENT, "CENTER", -2, 0 } },
+								scripts = { "OnClick" },
+							},
 						},
 					},
 				},
@@ -583,6 +592,22 @@ function Gather:CreateMainFrame()
 					OnMouseUp = function()
 						private.gatheringFrame:StopMovingOrSizing()
 					end,
+				},
+			},
+			interFrame = {
+				interSelST = {
+					OnClick = function(self, data)
+						if data.isTitle then return end
+						TSM.db.factionrealm.gathering.selectedSourceStatus[data.spellID] = not TSM.db.factionrealm.gathering.selectedSourceStatus[data.spellID]
+						Gather:Update()
+					end,
+				},
+				interBtnFrame = {
+					craftNextBtn = {
+						OnClick = function(self)
+							TSM.Gather:gatherItems(private.currentSource, private.currentTask, TSM.db.factionrealm.gathering.sessionOptions.disableCheckBox, TSM.db.factionrealm.gathering.sessionOptionsignoreDECheckBox, TSM.db.factionrealm.gathering.sessionOptions.evenStacks)
+						end,
+					},
 				},
 			},
 		},
@@ -714,6 +739,7 @@ end
 -- ============================================================================
 
 function Gather:StartGathering(player, professions)
+	TSM:AnalyticsEvent("GATHERING_STARTED")
 	private.gatheringFrame:Hide()
 	TSM.db.factionrealm.gathering.gatheredMats = false
 	local queuedMats = TSM.Queue:GetMatsByProfession(professions)
@@ -786,7 +812,6 @@ function Gather:Update(firstRun)
 
 	local crafter = TSM.db.factionrealm.gathering.crafter
 	local sources = TSM.Gather:GetItemSources(crafter, neededMats) or {}
-	local stData = {}
 
 	-- double check if crafter already has all the items needed
 	local shortItems = {}
@@ -816,6 +841,7 @@ function Gather:Update(firstRun)
 		TSM.db.factionrealm.gathering.shortItems = shortItems
 	end
 
+	local stData = {}
 	for itemString, quantity in pairs(neededMats) do
 		local need = max(quantity - TSMAPI.Inventory:GetTotalQuantity(itemString), 0)
 		local color
@@ -852,12 +878,6 @@ function Gather:Update(firstRun)
 								rowText = format("%s|r", leader .. L["Intermediate Craft"])
 								tinsert(stData, { cols = { { value = rowText } }, isSubTitle = true, itemString = itemString, name = itemName, sourceName = sourceName, quantity = quantity })
 								rowInserted = true
---								for spellID, taskQuantity in pairs(data) do
---									local spellData = TSM.db.factionrealm.crafts[spellID]
---									local spellQuantity = ceil(quantity / spellData.numResult)
---									subRowText = format("%s|r", leader .. "     " .. GetSpellInfo(spellID) .. " (" .. spellQuantity .. ")")
---									tinsert(stData, { cols = { { value = subRowText } }, isTitle = false, spellID = spellID, spellQty = spellQuantity, itemString = itemString, name = itemName, sourceName = sourceName, quantity = quantity })
---								end
 							else
 								if sourceName == "auction" then
 									rowText = format("%s|r", leader .. L["Buy From AH"])
@@ -889,7 +909,7 @@ function Gather:Update(firstRun)
 	private.gatheringFrame.mainFrame.matST:SetData(stData)
 
 	-- populate the selected sources
-	stData = {}
+	local stData2 = {}
 	local tempData = {}
 	if next(sources) then
 		local auctions, vendorBuy, vendorTrade, crafting, convert = {}, {}, {}, {}, {}
@@ -979,7 +999,7 @@ function Gather:Update(firstRun)
 						if rowQty > 0 then
 							if not headerAdded then
 								headerText = format(" %s|r", color .. L["Mail From "] .. charName)
-								tinsert(stData, { cols = { { value = headerText } }, isTitle = true, name = charName })
+								tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, name = charName })
 								headerAdded = true
 							end
 							if not rowAdded then
@@ -991,13 +1011,13 @@ function Gather:Update(firstRun)
 									color = ""
 								end
 								rowText = format(" %s|r", color .. leader .. locationText)
-								tinsert(stData, { cols = { { value = rowText } }, location = location, sourceName = data.source })
+								tinsert(stData2, { cols = { { value = rowText } }, location = location, sourceName = data.source })
 								rowAdded = true
 							end
 							availableMats[charName][location][item] = rowQty
 							local itemName = TSM.db.factionrealm.mats[item] and TSM.db.factionrealm.mats[item].name or TSMAPI.Item:GetName(item)
 							subRowText = format("%s x %s|r", color .. leader2 .. itemName, color .. rowQty)
-							tinsert(stData, { cols = { { value = subRowText } }, itemString = item, quantity = rowQty, sourceName = data.source })
+							tinsert(stData2, { cols = { { value = subRowText } }, itemString = item, quantity = rowQty, sourceName = data.source })
 						end
 					end
 				end
@@ -1006,7 +1026,7 @@ function Gather:Update(firstRun)
 			color = ""
 			availableMats[crafter] = availableMats[crafter] or {}
 			headerText = format(" %s|r", L["From "] .. crafter)
-			tinsert(stData, { cols = { { value = headerText } }, isTitle = true, name = crafter })
+			tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, name = crafter })
 			for location, items in pairs(data.tasks) do
 				availableMats[crafter][location] = availableMats[crafter][location] or {}
 				local locationText
@@ -1023,12 +1043,12 @@ function Gather:Update(firstRun)
 					color = ""
 				end
 				rowText = format(" %s|r", color .. leader .. locationText)
-				tinsert(stData, { cols = { { value = rowText } }, location = location, sourceName = data.source })
+				tinsert(stData2, { cols = { { value = rowText } }, location = location, sourceName = data.source })
 				for item, quantity in pairs(items) do
 					availableMats[crafter][location][item] = quantity
 					local itemName = TSM.db.factionrealm.mats[item] and TSM.db.factionrealm.mats[item].name or TSMAPI.Item:GetName(item)
 					subRowText = format("%s x %s|r", color .. leader2 .. itemName, color .. quantity)
-					tinsert(stData, { cols = { { value = subRowText } }, itemString = item, quantity = quantity, sourceName = data.source })
+					tinsert(stData2, { cols = { { value = subRowText } }, itemString = item, quantity = quantity, sourceName = data.source })
 				end
 			end
 		elseif data.source == "vendor" or data.source == "vendorT" then
@@ -1040,16 +1060,16 @@ function Gather:Update(firstRun)
 			else
 				headerText = format(" %s|r", color .. L["Vendor Trade"])
 			end
-			tinsert(stData, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
+			tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
 			for item, quantity in pairs(data.tasks) do
 				availableMats["vendor"]["buy"][item] = quantity
 				local itemName = TSM.db.factionrealm.mats[item] and TSM.db.factionrealm.mats[item].name or TSMAPI.Item:GetName(item)
 				rowText = format("%s x %s|r", color .. leader .. itemName, color .. quantity)
-				tinsert(stData, { cols = { { value = rowText } }, itemString = item, quantity = quantity, sourceName = data.source })
+				tinsert(stData2, { cols = { { value = rowText } }, itemString = item, quantity = quantity, sourceName = data.source })
 			end
 		elseif data.source == "crafting" then
 			headerText = format(" %s|r", color .. L["Intermediate Craft"])
-			tinsert(stData, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
+			tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
 			availableMats["crafting"] = availableMats["crafting"] or {}
 			for spellID, items in pairs(data.tasks) do
 				color = ""
@@ -1060,14 +1080,14 @@ function Gather:Update(firstRun)
 					local spellQuantity = ceil(quantity / spellData.numResult)
 					availableMats["crafting"][spellData.profession][spellID] = spellQuantity
 					rowText = format("%s x %s|r", color .. leader .. spellName, color .. spellQuantity)
-					tinsert(stData, { cols = { { value = rowText } }, spellID = spellID, profession = spellData.profession, itemString = item, quantity = spellQuantity, sourceName = data.source })
+					tinsert(stData2, { cols = { { value = rowText } }, spellID = spellID, profession = spellData.profession, itemString = item, quantity = spellQuantity, sourceName = data.source })
 				end
 			end
 		elseif data.source == "convert" then
 			color = ""
 			availableMats[data.source] = availableMats[data.source] or {}
 			headerText = format(" %s|r", color .. L["Conversions"])
-			tinsert(stData, { cols = { { value = headerText } }, isTitle = true, name = data.source })
+			tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, name = data.source })
 			for method, items in pairs(data.tasks) do
 				availableMats[data.source][method] = availableMats[data.source][method] or {}
 				local methodText
@@ -1079,12 +1099,12 @@ function Gather:Update(firstRun)
 					methodText = L["Convert"]
 				end
 				rowText = format(" %s|r", color .. leader .. methodText)
-				tinsert(stData, { cols = { { value = rowText } }, location = method, sourceName = data.source })
+				tinsert(stData2, { cols = { { value = rowText } }, location = method, sourceName = data.source })
 				for item, quantity in pairs(items) do
 					availableMats[data.source][method][item] = quantity
 					local itemName = TSM.db.factionrealm.mats[item] and TSM.db.factionrealm.mats[item].name or TSMAPI.Item:GetName(item)
 					subRowText = format("%s x %s|r", color .. leader2 .. itemName, color .. quantity)
-					tinsert(stData, { cols = { { value = subRowText } }, itemString = item, quantity = quantity, sourceName = data.source })
+					tinsert(stData2, { cols = { { value = subRowText } }, itemString = item, quantity = quantity, sourceName = data.source })
 				end
 			end
 		else
@@ -1097,26 +1117,84 @@ function Gather:Update(firstRun)
 				if auctionQty > 0 then
 					if not headerAdded then
 						headerText = format("%s|r", color .. L["Auction House"])
-						tinsert(stData, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
+						tinsert(stData2, { cols = { { value = headerText } }, isTitle = true, sourceName = data.source })
 						headerAdded = true
 					end
 					availableMats[data.source]["buy"][item] = auctionQty
 					local itemName = TSM.db.factionrealm.mats[item] and TSM.db.factionrealm.mats[item].name or TSMAPI.Item:GetName(item)
 					rowText = format("%s x %s|r", color .. leader .. itemName, color .. auctionQty)
-					tinsert(stData, { cols = { { value = rowText } }, itemString = item, quantity = auctionQty, sourceName = data.source })
+					tinsert(stData2, { cols = { { value = rowText } }, itemString = item, quantity = auctionQty, sourceName = data.source })
 				end
 			end
 		end
 	end
 
-	private.gatheringFrame.mainFrame.sourceST:SetData(stData)
+	private.gatheringFrame.mainFrame.sourceST:SetData(stData2)
 
-	-- populate intermediate crafts
---	stData = {}
---	for item, source in pairs(sources) do
---		for sourceName, data in pairs(source) do
---			if sourceName == "crafting" then
---				for task, taskQuantity in pairs(data) do
+	-- populate intermediate crafts selection frame
+	local stData3 = {}
+	local headerText, rowText
+	local leader = "    "
+	for itemString, quantity in pairs(neededMats) do
+		local color = "|cffff0000"
+		local crafterQty = TSMAPI.Inventory:GetBagQuantity(itemString, crafter) + TSMAPI.Inventory:GetBankQuantity(itemString, crafter) + TSMAPI.Inventory:GetReagentBankQuantity(itemString, crafter) + TSMAPI.Inventory:GetMailQuantity(itemString, crafter)
+		local need = max(quantity - crafterQty, 0)
+
+		if crafterQty < quantity then
+			for item, source in pairs(sources) do
+				if item == itemString then
+					local itemName = TSM.db.factionrealm.mats[itemString] and TSM.db.factionrealm.mats[itemString].name or TSMAPI.Item:GetName(itemString)
+					for sourceName, data in pairs(source) do
+						if sourceName == "crafting" then
+							for spellID, taskQuantity in pairs(data) do
+								local spellData = TSM.db.factionrealm.crafts[spellID]
+								local spellQuantity = ceil(need / spellData.numResult)
+								headerText = format("%s|r", itemName .. " (" .. need .. ")")
+								if TSM.db.factionrealm.gathering.selectedSourceStatus[spellID] then color = "|cff00ff00" end
+								rowText = format("%s|r", color .. leader .. GetSpellInfo(spellID) .. " x " .. spellQuantity)
+								tinsert(stData3, { cols = { { value = headerText } }, isTitle = true, itemString = itemString, name = itemName, sourceName = sourceName, quantity = need })
+								tinsert(stData3, { cols = { { value = rowText } }, isTitle = false, spellID = spellID, spellQty = spellQuantity, itemString = itemString, name = itemName, sourceName = sourceName, quantity = need })
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	private.gatheringFrame.interFrame.interSelST:SetData(stData3)
+
+	-- populate intermediate crafts craftable frame
+	local stData4 = {}
+	local headerText, rowText
+	local leader = "    "
+	if availableMats and availableMats["crafting"] then
+		for profession, spells in pairs(availableMats["crafting"]) do
+			local headerAdded = false
+			for spellID, spellQuantity in pairs(spells) do
+				local bagTotals = TSM:GetInventoryTotals()
+				local craft = TSM.db.factionrealm.crafts[spellID]
+				local name = craft and craft.name
+				-- figure out how many we can craft with mats in our bags
+				local numCanCraft = math.huge
+				for itemString, quantity in pairs(craft.mats) do
+					numCanCraft = max(min(numCanCraft, floor((bagTotals[itemString] or 0) / quantity)), 0)
+				end
+				if numCanCraft > 0 and TSM.db.factionrealm.gathering.selectedSourceStatus[spellID] then
+					if not headerAdded then
+						headerText = format(" %s|r", profession)
+						tinsert(stData4, { cols = { { value = headerText } }, isTitle = true, name = profession, sourceName = profession })
+						headerAdded = true
+					end
+					rowText = format("%s x %s|r", leader .. name, numCanCraft)
+					tinsert(stData4, { cols = { { value = rowText } }, name = profession, itemName = name, quantity = numCanCraft, sourceName = profession })
+				end
+			end
+		end
+	end
+
+	sort(stData4, private.SortSources)
+	private.gatheringFrame.interFrame.interCraftST:SetData(stData4)
 
 	-- update available mats if at a valid source
 	if private.currentSource and private.currentTask then
@@ -1134,7 +1212,7 @@ function Gather:Update(firstRun)
 					for itemString, quantity in pairs(craft.mats) do
 						numCanCraft = max(min(numCanCraft, floor((bagTotals[itemString] or 0) / quantity)), 0)
 					end
-					if numCanCraft > 0 then
+					if numCanCraft > 0 and TSM.db.factionrealm.gathering.selectedSourceStatus[spellID] then
 						craftingMats[spellID] = availableMats[private.currentSource][TSM:GetCurrentProfessionName()][spellID]
 					end
 				end
@@ -1157,12 +1235,13 @@ function Gather:Update(firstRun)
 		elseif private.currentTask == "buy" then
 			private.gatheringFrame.mainFrame.buttonsFrame.gatherItemsBtn:SetText(L["Buy Items"])
 		elseif private.currentSource == "crafting" then
-			private.gatheringFrame.mainFrame.buttonsFrame.gatherItemsBtn:SetText(L["Craft Next"])
+			private.gatheringFrame.interFrame.interBtnFrame.craftNextBtn:Enable()
 		elseif private.currentSource == "bags" and private.currentTask == "transform" then
 			private.gatheringFrame.mainFrame.buttonsFrame.gatherItemsBtn:SetText(L["Transform Next"])
 		end
 	else
 		private.gatheringFrame.mainFrame.buttonsFrame.gatherItemsBtn:Disable()
+		private.gatheringFrame.interFrame.interBtnFrame.craftNextBtn:Disable()
 	end
 end
 

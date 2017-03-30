@@ -1,3 +1,125 @@
+Version 3.83
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Fixed spell trace tracking for periodic heals (eg. 'Healing Rain')
+-- Fixed debuff absorption tracking for Nighthold 'Time Release'
+
+
+Improvements:
+-- Added bouquet validator 'Statusbar: Mana % (Healer Only)'
+-- Added default bouquet 'Manabars: Mana (Healer Only)'
+-- Added more default custom debuffs for Nighthold raid encounters
+
+
+--------------------------------------------------------------
+Version 3.82
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Updated default bouquet 'Paladin Beacon'
+-- Fixed resurrection smart casting while inside PvP instances
+
+
+Improvements:
+-- Added ability to track different spell casts on units
+--   See settings under 'VuhDo Options > General > Spell Trace'
+--   Useful for tracking which units are hit by AOE healing spells
+-- Added bouquet validator 'Icon: Spell Trace' 
+-- Added default bouquet 'Spell Trace'
+-- Added ability to track Holy Priest "Trail of Light"
+--   Enable under 'VuhDo Options > General > Spell Trace'
+-- Added bouquet validator 'Icon: Trail of Light'
+-- Added default bouquet 'Trail of Light'
+-- Added panel sort method 'Tank => MDPS => RDPS => Healer'
+-- Added default custom debuffs for Nighthold raid encounters
+-- Added debuff absorption tracking for Nighthold 'Time Release'
+
+
+--------------------------------------------------------------
+Version 3.81
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Fixed Priest 'Clarity of Will' maximum shield absorption amount
+-- Updated spell ID for Shaman 'Earth Shield' (now an Honor Talent)
+-- Fixed smart casting of unknown resurrection spells
+-- Fixed command line loading of key layouts
+
+
+Improvements:
+-- Added new bindable command 'MouseLook' (move the camera with mouse)
+-- Added default bouquet 'Overflow Mythic+ Affix'
+--   Assign this bouquet to a HoT Icon slot to track the absorb
+-- Changed the default panel settings to hopefully be more palatable
+
+
+--------------------------------------------------------------
+Version 3.80
+
+
+Known issues:
+-- Limited support for Class Order Hall Bodyguards
+--   Bodyguards can be used in panels when set to target or focus
+--   Bodyguards have no unit ID so for now are only partially supported
+-- Incoming heal estimation reported is not even close to accurate
+--   Bug in Blizzard API UnitGetIncomingHeals() - returns bogus values
+-- Patch 7.1 disabled retrieval of unit facing and position in instances
+--   This was an intentional breaking change by Blizzard
+--   This breaks AOE Advice, Clusters and out-of-range direction arrow
+--   At this time there is no way to fix or renable these features
+
+
+Bugfixes:
+-- Workaround for Blizzard bug in secure button onenter/onleave
+--   Should improve sticking keybindings when off VuhDo frames
+--   See: https://wow.curseforge.com/projects/vuhdo/issues/442
+-- Fixed ToV Guarm 'Shadow Lick' debuff absorption tracking
+
+
+Improvements:
+-- Added additional default custom debuffs for ToV raid encounters
+-- Map Monk 'Ancient Mistweaver Arts' to 'Soothing Mist(Honor Talent)'
+-- Added spell 'Essence Font' to Mistweaver Monk default HoTs
+
+
+--------------------------------------------------------------
 Version 3.79
 
 

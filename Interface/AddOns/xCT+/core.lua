@@ -1498,9 +1498,9 @@ do
       local settings = x.db.profile.frames[location or "general"]
       if settings.iconsEnabled and icon then
         if settings.fontJustify == "LEFT" then
-          text = sformat("%s %s", sformat(" |T%s:%d:%d:0:0:64:64:5:59:5:59|t", icon, settings.iconSize, settings.iconSize), text)
+          text = string_format("%s %s", string_format(" |T%s:%d:%d:0:0:64:64:5:59:5:59|t", icon, settings.iconSize, settings.iconSize), text)
         else
-          text = sformat("%s%s", text, sformat(" |T%s:%d:%d:0:0:64:64:5:59:5:59|t", icon, settings.iconSize, settings.iconSize))
+          text = string_format("%s%s", text, string_format(" |T%s:%d:%d:0:0:64:64:5:59:5:59|t", icon, settings.iconSize, settings.iconSize))
         end
       end
       color[1] = r; color[2] = g; color[3] = b
@@ -1792,4 +1792,3 @@ function x:TrackxCTCommand(input)
   x:UpdatePlayer()
   print("|cffFF0000x|r|cffFFFF00CT+|r Tracking Unit:", name or "default")
 end
-

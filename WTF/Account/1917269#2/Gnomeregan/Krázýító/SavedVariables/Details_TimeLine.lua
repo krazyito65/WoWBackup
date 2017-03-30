@@ -1,13 +1,5 @@
 
 DetailsTimeLineDB = {
-	["backdrop_color"] = {
-		0, -- [1]
-		0, -- [2]
-		0, -- [3]
-		0.4, -- [4]
-	},
-	["max_segments"] = 4,
-	["window_scale"] = 1,
 	["deaths_data"] = {
 		{
 			["Krázýító"] = {
@@ -147,6 +139,39 @@ DetailsTimeLineDB = {
 			},
 		}, -- [4]
 	},
+	["max_segments"] = 4,
+	["combat_data"] = {
+		{
+			["date_end"] = "20:35:54",
+			["date_start"] = "20:35:12",
+			["name"] = "Alysrazor",
+			["total_time"] = 42.9010000000126,
+		}, -- [1]
+		{
+			["date_end"] = "20:32:43",
+			["date_start"] = "20:31:46",
+			["name"] = "Alysrazor",
+			["total_time"] = 56.9350000000268,
+		}, -- [2]
+		{
+			["date_end"] = "20:27:09",
+			["date_start"] = "20:26:25",
+			["name"] = "Alysrazor",
+			["total_time"] = 44.3070000000007,
+		}, -- [3]
+		{
+			["date_end"] = "20:17:13",
+			["date_start"] = "20:14:42",
+			["name"] = "Alysrazor",
+			["total_time"] = 151.764999999985,
+		}, -- [4]
+	},
+	["backdrop_color"] = {
+		0, -- [1]
+		0, -- [2]
+		0, -- [3]
+		0.4, -- [4]
+	},
 	["debuff_timeline"] = {
 		{
 			["Krázýító"] = {
@@ -252,30 +277,5 @@ DetailsTimeLineDB = {
 		{
 		}, -- [4]
 	},
-	["combat_data"] = {
-		{
-			["date_end"] = "20:35:54",
-			["date_start"] = "20:35:12",
-			["name"] = "Alysrazor",
-			["total_time"] = 42.9010000000126,
-		}, -- [1]
-		{
-			["date_end"] = "20:32:43",
-			["date_start"] = "20:31:46",
-			["name"] = "Alysrazor",
-			["total_time"] = 56.9350000000268,
-		}, -- [2]
-		{
-			["date_end"] = "20:27:09",
-			["date_start"] = "20:26:25",
-			["name"] = "Alysrazor",
-			["total_time"] = 44.3070000000007,
-		}, -- [3]
-		{
-			["date_end"] = "20:17:13",
-			["date_start"] = "20:14:42",
-			["name"] = "Alysrazor",
-			["total_time"] = 151.764999999985,
-		}, -- [4]
-	},
+	["window_scale"] = 1,
 }

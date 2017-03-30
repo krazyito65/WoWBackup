@@ -1,3 +1,16 @@
+### Changes in 70200.28-Release:
+
+- Changed: Update Interface version
+- Removed: Support for ignoring quests, removed by Blizzard
+
+### Changes in 70100.27-Release:
+
+- Fixed: Libraries path
+
+### Changes in 70100.26-Release:
+
+- Changed: Profession world quests ignoring now work on any locale
+
 ### Changes in 70100.25-Release:
 
 - Changed: No longer attempts to automate delivery of "Supplies Needed" world quests

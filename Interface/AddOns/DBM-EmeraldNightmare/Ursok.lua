@@ -1,13 +1,13 @@
 local mod	= DBM:NewMod(1667, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15440 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16089 $"):sub(12, -3))
 mod:SetCreatureID(100497)
 mod:SetEncounterID(1841)
 mod:SetZone()
 mod:SetUsedIcons(6, 4)
 mod:SetHotfixNoticeRev(15348)
-mod.respawnTime = 40
+mod.respawnTime = 39
 
 mod:RegisterCombat("combat")
 
@@ -41,7 +41,7 @@ local specWarnOverwhelmOther		= mod:NewSpecialWarningTaunt(197943, nil, nil, nil
 local timerFocusedGazeCD			= mod:NewNextCountTimer(40, 198006, nil, nil, nil, 3)
 local timerRendFleshCD				= mod:NewNextCountTimer(20, 197942, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
 local timerOverwhelmCD				= mod:NewNextTimer(10, 197943, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
-local timerRoaringCacophonyCD		= mod:NewNextCountTimer(30, 197969, nil, nil, nil, 2)
+local timerRoaringCacophonyCD		= mod:NewNextCountTimer(30, 197969, nil, nil, nil, 2, nil, DBM_CORE_HEALER_ICON)
 
 local berserkTimer					= mod:NewBerserkTimer(300)
 
@@ -58,7 +58,6 @@ local voiceBloodFrenzy				= mod:NewVoice(198388)
 local voiceRoaringCacophony			= mod:NewVoice(197969)--aesoon
 
 mod:AddSetIconOption("SetIconOnCharge", 198006, true)
-mod:AddHudMapOption("HudMapOnCharge", 198006)
 mod:AddInfoFrameOption(198108, false)
 mod:AddBoolOption("NoAutoSoaking2", true)
 
@@ -96,15 +95,7 @@ do
 					specWarnFocusedGazeOther:Show(targetName)
 					if count == 2 then
 						voiceFocusedGaze:Play("sharetwo")
-						if self.Options.HudMapOnCharge then
-							--Blue line
-							DBMHudMap:AddEdge(0, 0, 1, 0.5, 6, playerName, targetName, nil, nil, nil, nil, 135)
-						end
 					else
-						if self.Options.HudMapOnCharge then
-							--Green line
-							DBMHudMap:AddEdge(0, 1, 0, 0.5, 6, playerName, targetName, nil, nil, nil, nil, 135)
-						end
 						voiceFocusedGaze:Play("shareone")
 					end
 				end
@@ -142,9 +133,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.HudMapOnCharge then
-		DBMHudMap:Disable()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -233,13 +221,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnCharge then
 			self:SetIcon(args.destName, icon)
 		end
-		if self.Options.HudMapOnCharge then
-			if args:IsPlayer() then
-				DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 8, 8, nil, nil, nil, 0.5):Appear():SetLabel(args.destName)
-			else
-				DBMHudMap:RegisterRangeMarkerOnPartyMember(spellId, "highlight", args.destName, 8, 8, nil, nil, nil, 0.5):Appear():RegisterForAlerts(nil, args.destName)
-			end
-		end
 		if not self.Options.NoAutoSoaking2 then
 			GenerateSoakAssignment(self, secondCount, args.destName)
 		end
@@ -272,9 +253,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 198006 then
 		if self.Options.SetIconOnCharge then
 			self:SetIcon(args.destName, 0)
-		end
-		if self.Options.HudMapOnCharge then
-			DBMHudMap:FreeEncounterMarkerByTarget(spellId, args.destName)
 		end
 	end
 end

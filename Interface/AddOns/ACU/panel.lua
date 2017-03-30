@@ -708,7 +708,7 @@ local chart_panel_add_label = function (self, color, name, type, number)
 	thisbox.type = type
 	thisbox.index = number
 
-	thisbox.box:SetTexture (unpack (color))
+	thisbox.box:SetColorTexture (unpack (color))
 	thisbox.text:SetText (name)
 	
 	thisbox.check:Show()
@@ -750,7 +750,7 @@ local draw_overlay = function (self, this_overlay, overlayData, color)
 			this_block:SetWidth (pixel*5)
 		end
 		
-		this_block:SetTexture (r, g, b, 0.25)
+		this_block:SetColorTexture (r, g, b, 0.25)
 		this_block:Show()
 		
 		index = index + 1
@@ -1063,7 +1063,7 @@ function CreateACUChartPanel (parent, w, h, name)
 	--_detalhes:SetFontOutline (title, true)
 
 	local bottom_texture = gump:NewImage (f, nil, 702, 25, "background", nil, nil, "$parentBottomTexture")
-	bottom_texture:SetTexture (0, 0, 0, .6)
+	bottom_texture:SetColorTexture (0, 0, 0, .6)
 	bottom_texture:SetPoint ("bottomleft", f, "bottomleft", 8, 7)
 	bottom_texture:SetPoint ("bottomright", f, "bottomright", -8, 7)
 
@@ -1082,7 +1082,7 @@ function CreateACUChartPanel (parent, w, h, name)
 		
 		local line = f:CreateTexture (nil, "border")
 		line:SetSize (1, h-45)
-		line:SetTexture (1, 1, 1, .1)
+		line:SetColorTexture (1, 1, 1, .1)
 		line:SetPoint ("bottomleft", time, "topright", 0, -10)
 		line:Hide()
 		time.line = line
@@ -1114,7 +1114,7 @@ function CreateACUChartPanel (parent, w, h, name)
 	--div lines
 		for i = 1, 8, 1 do
 			local line = g:CreateTexture (nil, "overlay")
-			line:SetTexture (1, 1, 1, .2)
+			line:SetColorTexture (1, 1, 1, .2)
 			line:SetWidth (670)
 			line:SetHeight (1.1)
 		

@@ -304,7 +304,8 @@ end
 function module:SetupOptions()
     -- we delay setting up options until here so that plugins in seperate
     -- addons will load properly
-    if self.optionsFrame then return end
+    if self.didSetup then return end
+    self.didSetup = true
 
     self.optionsFrame = AceConfigDialog:AddToBlizOptions(addon.name, addon.name, nil, "main")
 
@@ -823,11 +824,14 @@ do
             local settings = frame:GetUserData("settings")
             local value = settings[frame:GetUserData("key")]
 
+            local valueMap = frame:GetUserData("valueMap")
+            local name = valueMap and valueMap[value]
+
             if value then
-                if frame.SetValue then
+                if name == nil and frame.SetValue then
                     frame:SetValue(value)
                 else
-                    frame:SetText(value)
+                    frame:SetText(name or value)
                 end
             end
         end
@@ -895,7 +899,9 @@ do
             if tmpOpt.name then
                 widget:SetLabel(tmpOpt.name)
             end
-            widget:SetList(tmpOpt.values)
+
+            widget:SetUserData("valueMap", tmpOpt.values)
+            widget:SetList(tmpOpt.values, tmpOpt.order)
         elseif widgetType == "multiselect" then
             error("not implemented")
         else

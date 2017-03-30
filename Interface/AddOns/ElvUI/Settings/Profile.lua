@@ -858,7 +858,9 @@ P['unitframe'] = {
 		['healPrediction'] = {
 			['personal'] = {r = 0, g = 1, b = 0.5, a = 0.25},
 			['others'] = {r = 0, g = 1, b = 0, a = 0.25},
-			['absorbs'] = {r = 1, g = 1, b = 0, a = 0.25}
+			['absorbs'] = {r = 1, g = 1, b = 0, a = 0.25},
+			['healAbsorbs'] = {r = 1, g = 0, b = 0, a = 0.25},
+			["maxOverflow"] = 0,
 		},
 
 		['classResources'] = {
@@ -2968,6 +2970,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {
 			["DRUID"] = "[bonusbar:1,nostealth] 7; [bonusbar:1,stealth] 8; [bonusbar:2] 8; [bonusbar:3] 9; [bonusbar:4] 10;",
 			["PRIEST"] = "[bonusbar:1] 7;",
@@ -2992,6 +2995,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide; [overridebar] hide; [petbattle] hide; show",
 	},
@@ -3010,6 +3014,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide; [overridebar] hide; [petbattle] hide; show",
 	},
@@ -3028,6 +3033,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide; [overridebar] hide; [petbattle] hide; show",
 	},
@@ -3046,6 +3052,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide; [overridebar] hide; [petbattle] hide; show",
 	},
@@ -3064,6 +3071,7 @@ P["actionbar"] = {
 		['alpha'] = 1,
 		['inheritGlobalFade'] = false,
 		['showGrid'] = true,
+		["flyoutDirection"] = "AUTOMATIC",
 		['paging'] = {},
 		['visibility'] = "[vehicleui] hide; [overridebar] hide; [petbattle] hide; show",
 	},

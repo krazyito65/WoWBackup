@@ -13,9 +13,5 @@
 ## X-Curse-Project-Name: Details!: Time Line (plugin)
 ## X-Curse-Project-ID: details_timeline
 ## X-Curse-Repository-ID: wow/details_timeline/mainline
-## X-Curse-Packaged-Version: r51
-## X-Curse-Project-Name: Details!: Time Line (plugin)
-## X-Curse-Project-ID: details_timeline
-## X-Curse-Repository-ID: wow/details_timeline/mainline
 
 LibStub.lua

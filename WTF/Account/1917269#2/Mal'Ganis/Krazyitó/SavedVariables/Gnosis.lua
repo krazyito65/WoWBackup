@@ -1,7 +1,7 @@
 
 GnosisChar = nil
 GnosisCharConfig = {
-	["optver"] = 3.25,
+	["optver"] = 4.62,
 	["bHideBlizz"] = true,
 	["cbconf"] = {
 		["Target"] = {
@@ -74,6 +74,12 @@ GnosisCharConfig = {
 			["bEnShadowCol"] = true,
 			["bInvDir"] = false,
 			["anchorframe"] = "",
+			["spectab"] = {
+				true, -- [1]
+				true, -- [2]
+				true, -- [3]
+				true, -- [4]
+			},
 			["bEnShadowOffset"] = false,
 			["colSpark"] = {
 				1, -- [1]
@@ -81,7 +87,7 @@ GnosisCharConfig = {
 				1, -- [3]
 				1, -- [4]
 			},
-			["spec"] = 0,
+			["anchorfrom"] = 5,
 			["coord"] = {
 				["casttime"] = {
 					["y"] = 0,
@@ -104,14 +110,13 @@ GnosisCharConfig = {
 					["x"] = 22,
 				},
 			},
-			["cboptver"] = 3.25,
+			["cboptver"] = 4.62,
 			["colText"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
-			["aligntime"] = "RIGHT",
 			["height"] = 35,
 			["fontsize_lat"] = 15,
 			["colBorder"] = {
@@ -120,21 +125,21 @@ GnosisCharConfig = {
 				0, -- [3]
 				0.85, -- [4]
 			},
+			["aligntime"] = "RIGHT",
 			["colShadow"] = {
 				0, -- [1]
 				0, -- [2]
 				0, -- [3]
 				0.7, -- [4]
 			},
+			["strata"] = "DIALOG",
+			["bEn"] = true,
 			["colInterrupted"] = {
 				1, -- [1]
 				0.8, -- [2]
 				0, -- [3]
 				0.7, -- [4]
 			},
-			["strata"] = "DIALOG",
-			["bEn"] = true,
-			["anchorfrom"] = 5,
 			["colTextTime"] = {
 				1, -- [1]
 				1, -- [2]
@@ -143,34 +148,34 @@ GnosisCharConfig = {
 			},
 			["bShowPlayerLatency"] = true,
 			["border"] = 2,
-			["rotateicon"] = 0,
-			["colLagBar"] = {
-				0.780392156862745, -- [1]
-				0.250980392156863, -- [2]
-				0.250980392156863, -- [3]
-				0.650000005960465, -- [4]
-			},
-			["forcefreealign"] = false,
-			["bartype"] = "cb",
-			["iconside"] = "RIGHT",
-			["strGap"] = 31,
-			["bExtChannels"] = true,
-			["bResizeLongName"] = false,
-			["fontoutline"] = "OUTLINE",
-			["bShowWNC"] = false,
-			["bUnlocked"] = false,
-			["relationsel"] = 1,
-			["ingroupsel"] = 1,
-			["alignlat"] = "ADAPT",
-			["anchor_x"] = 0,
-			["strTimeFormat"] = "col<1,0,0>p<2s>col<pre> r<1m> / t<2m>",
-			["width"] = 270,
-			["latbarfixed"] = 0.03,
 			["colSuccess"] = {
 				0.15, -- [1]
 				0.25, -- [2]
 				0.1, -- [3]
 				0.7, -- [4]
+			},
+			["rotateicon"] = 0,
+			["strTimeFormat"] = "col<1,0,0>p<2s>col<pre> r<1m> / t<2m>",
+			["bartype"] = "cb",
+			["iconside"] = "RIGHT",
+			["forcefreealign"] = false,
+			["bExtChannels"] = true,
+			["strGap"] = 31,
+			["alignlat"] = "ADAPT",
+			["fontoutline"] = "OUTLINE",
+			["bShowWNC"] = false,
+			["bUnlocked"] = false,
+			["relationsel"] = 1,
+			["ingroupsel"] = 1,
+			["anchor_x"] = 0,
+			["bResizeLongName"] = false,
+			["width"] = 270,
+			["latbarfixed"] = 0.03,
+			["colLagBar"] = {
+				0.780392156862745, -- [1]
+				0.250980392156863, -- [2]
+				0.250980392156863, -- [3]
+				0.650000005960465, -- [4]
 			},
 			["alignment"] = "NAMETIME",
 			["bFillup"] = true,
@@ -256,6 +261,12 @@ GnosisCharConfig = {
 			["bEnShadowCol"] = true,
 			["bInvDir"] = false,
 			["anchorframe"] = "",
+			["spectab"] = {
+				true, -- [1]
+				true, -- [2]
+				true, -- [3]
+				true, -- [4]
+			},
 			["bEnShadowOffset"] = false,
 			["colSpark"] = {
 				1, -- [1]
@@ -286,14 +297,13 @@ GnosisCharConfig = {
 					["x"] = 22,
 				},
 			},
-			["cboptver"] = 3.25,
+			["cboptver"] = 4.62,
 			["colText"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
-			["scaleicon"] = 1,
 			["height"] = 18,
 			["fontsize_lat"] = 15,
 			["colBorder"] = {
@@ -302,25 +312,20 @@ GnosisCharConfig = {
 				0, -- [3]
 				0.85, -- [4]
 			},
+			["scaleicon"] = 1,
 			["colInterrupted"] = {
 				1, -- [1]
 				0.8, -- [2]
 				0, -- [3]
 				0.7, -- [4]
 			},
+			["strata"] = "DIALOG",
+			["bEn"] = true,
 			["colSuccess"] = {
 				0.15, -- [1]
 				0.25, -- [2]
 				0.1, -- [3]
 				0.7, -- [4]
-			},
-			["strata"] = "DIALOG",
-			["bEn"] = true,
-			["colBarBg"] = {
-				0.101960784313725, -- [1]
-				0.101960784313725, -- [2]
-				0.101960784313725, -- [3]
-				1, -- [4]
 			},
 			["colTextTime"] = {
 				1, -- [1]
@@ -328,27 +333,32 @@ GnosisCharConfig = {
 				1, -- [3]
 				1, -- [4]
 			},
+			["colBarBg"] = {
+				0.101960784313725, -- [1]
+				0.101960784313725, -- [2]
+				0.101960784313725, -- [3]
+				1, -- [4]
+			},
+			["border"] = 2,
 			["colShadow"] = {
 				0, -- [1]
 				0, -- [2]
 				0, -- [3]
 				0.7, -- [4]
 			},
-			["border"] = 2,
-			["spec"] = 0,
 			["rotateicon"] = 0,
-			["forcefreealign"] = false,
+			["strGap"] = 31,
 			["bartype"] = "cb",
 			["iconside"] = "LEFT",
-			["strGap"] = 31,
+			["forcefreealign"] = false,
 			["bExtChannels"] = true,
 			["bResizeLongName"] = false,
+			["alignlat"] = "ADAPT",
 			["fontoutline"] = "OUTLINE",
-			["bShowWNC"] = false,
 			["bUnlocked"] = false,
 			["relationsel"] = 1,
 			["ingroupsel"] = 1,
-			["alignlat"] = "ADAPT",
+			["bShowWNC"] = false,
 			["anchor_x"] = 0,
 			["strTimeFormat"] = "col<1,0,0>p<2s>col<pre> r<1m> / t<2m>",
 			["width"] = 270,
@@ -442,6 +452,12 @@ GnosisCharConfig = {
 			["bEnShadowCol"] = true,
 			["bInvDir"] = true,
 			["orient"] = 1,
+			["spectab"] = {
+				true, -- [1]
+				true, -- [2]
+				true, -- [3]
+				true, -- [4]
+			},
 			["bEnShadowOffset"] = false,
 			["colSpark"] = {
 				1, -- [1]
@@ -449,7 +465,7 @@ GnosisCharConfig = {
 				1, -- [3]
 				1, -- [4]
 			},
-			["spec"] = 0,
+			["anchorfrom"] = 5,
 			["coord"] = {
 				["casticon"] = {
 					["y"] = 0,
@@ -472,9 +488,8 @@ GnosisCharConfig = {
 					["x"] = 9,
 				},
 			},
-			["cboptver"] = 3.25,
+			["cboptver"] = 4.62,
 			["bIconUnlocked"] = true,
-			["bColSuc"] = false,
 			["height"] = 18,
 			["fontsize_lat"] = 15,
 			["colBorder"] = {
@@ -483,45 +498,45 @@ GnosisCharConfig = {
 				0, -- [3]
 				0.85, -- [4]
 			},
+			["bColSuc"] = false,
 			["scaleicon"] = 1,
-			["anchorframe"] = "",
 			["strata"] = "BACKGROUND",
 			["bEn"] = true,
-			["bShowCBS"] = true,
+			["anchorframe"] = "",
 			["colTextTime"] = {
 				1, -- [1]
 				1, -- [2]
 				1, -- [3]
 				1, -- [4]
 			},
+			["bShowCBS"] = true,
+			["border"] = 2,
 			["colBarBg"] = {
 				0.101960784313725, -- [1]
 				0.101960784313725, -- [2]
 				0.101960784313725, -- [3]
 				1, -- [4]
 			},
-			["border"] = 2,
 			["colLagBar"] = {
 				0.780392156862745, -- [1]
 				0.250980392156863, -- [2]
 				0.250980392156863, -- [3]
 				0.650000005960465, -- [4]
 			},
-			["anchorfrom"] = 5,
-			["width"] = 270,
+			["strGap"] = 31,
 			["bartype"] = "cb",
 			["iconside"] = "LEFT",
-			["strTimeFormat"] = "col<1,0,0>p<2s>col<pre> r<1m> / t<2m>",
+			["width"] = 270,
 			["bExtChannels"] = true,
-			["bResizeLongName"] = false,
+			["strTimeFormat"] = "col<1,0,0>p<2s>col<pre> r<1m> / t<2m>",
 			["alignlat"] = "ADAPT",
-			["ingroupsel"] = 1,
+			["bShowWNC"] = false,
 			["fontoutline"] = "OUTLINE",
+			["ingroupsel"] = 1,
 			["relationsel"] = 1,
 			["bUnlocked"] = false,
-			["bShowWNC"] = false,
 			["anchor_x"] = 0,
-			["strGap"] = 31,
+			["bResizeLongName"] = false,
 			["forcefreealign"] = false,
 			["latbarfixed"] = 0.03,
 			["rotateicon"] = 0,

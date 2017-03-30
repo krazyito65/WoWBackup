@@ -1,12 +1,8 @@
-﻿## Interface: 40000
+## Interface: 40000
 ## X-Curse-Packaged-Version: r49
 ## X-Curse-Project-Name: LibCompress
 ## X-Curse-Project-ID: libcompress
 ## X-Curse-Repository-ID: wow/libcompress/mainline
-## X-Curse-Packaged-Version: r576
-## X-Curse-Project-Name: Details!
-## X-Curse-Project-ID: details
-## X-Curse-Repository-ID: wow/details/mainline
 
 ## Title: Lib: Compress
 ## Notes: Compression and Decompression library

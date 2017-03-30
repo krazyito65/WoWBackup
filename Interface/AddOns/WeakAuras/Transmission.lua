@@ -19,11 +19,10 @@ ImportString(str)
 ]]--
 
 -- Lua APIs
-local tinsert, tconcat, tremove = table.insert, table.concat, table.remove
-local fmt, tostring, string_char, strsplit = string.format, tostring, string.char, strsplit
-local select, pairs, next, type, unpack = select, pairs, next, type, unpack
-local loadstring, assert, error = loadstring, assert, error
-local setmetatable, getmetatable, rawset, rawget = setmetatable, getmetatable, rawset, rawget
+local tinsert = table.insert
+local tostring, string_char, strsplit = tostring, string.char, strsplit
+local pairs, type, unpack = pairs, type, unpack
+local error = error
 local bit_band, bit_lshift, bit_rshift = bit.band, bit.lshift, bit.rshift
 local coroutine = coroutine
 
@@ -38,12 +37,10 @@ local regionTypes = WeakAuras.regionTypes;
 local event_types = WeakAuras.event_types;
 local status_types = WeakAuras.status_types;
 
--- local functions
-local encodeB64, decodeB64, tableAdd, tableSubtract, DisplayStub, removeSpellNames
+-- Local functions
+local encodeB64, decodeB64, tableAdd, tableSubtract, DisplayStub
 local CompressDisplay, DecompressDisplay, ShowTooltip, TableToString, StringToTable
 local RequestDisplay, TransmitError, TransmitDisplay
-
--- GLOBALS: WeakAurasOptionsSaved WeakAurasSaved UIParent BNGetNumFriendGameAccounts BNGetFriendGameAccountInfo
 
 local bytetoB64 = {
   [0]="a","b","c","d","e","f","g","h",
@@ -286,7 +283,7 @@ local function filterFunc(_, event, msg, player, l, cs, t, flag, channelId, ...)
   until(done)
   if newMsg ~= "" then
     local trimmedPlayer = Ambiguate(player, "none")
-    if event == "CHAT_MSG_WHISPER" and not UnitInRaid(trimmedPlayer) and not UnitInParty(trimmedPlayer) then -- XXX Need a guild check
+    if event == "CHAT_MSG_WHISPER" and not UnitInRaid(trimmedPlayer) and not UnitInParty(trimmedPlayer) then -- XXX: Need a guild check
       local _, num = BNGetNumFriends()
       for i=1, num do
         local toon = BNGetNumFriendGameAccounts(i)
@@ -466,7 +463,7 @@ function WeakAuras.DisplayToString(id, forChat)
     if(data.trigger.type == "aura" and WeakAurasOptionsSaved and WeakAurasOptionsSaved.spellCache) then
       transmit.a = {};
       for i,v in pairs(data.trigger.names) do
-        transmit.a[v] = WeakAuras.GetIconFromSpellCache(v);
+        transmit.a[v] = WeakAuras.spellCache.GetIcon(v);
       end
     end
     if(children) then
@@ -656,7 +653,6 @@ local function checkTrigger(codes, id, trigger, untrigger)
   end
 
   local function scamCheck(codes, data)
-    local r
     checkTrigger(codes, L["%s - 1. Trigger"]:format(data.id), data.trigger, data.untrigger);
     if (data.additional_triggers) then
       for i, v in ipairs(data.additional_triggers) do
@@ -665,23 +661,23 @@ local function checkTrigger(codes, id, trigger, untrigger)
     end
 
     if (data.actions) then
-      r = checkCustom(codes, L["%s - Init Action"]:format(data.id), data.actions.init);
-      r = checkCustom(codes, L["%s - Start Action"]:format(data.id), data.actions.start);
-      r = checkCustom(codes, L["%s - Finish Action"]:format(data.id), data.actions.finish);
+      checkCustom(codes, L["%s - Init Action"]:format(data.id), data.actions.init);
+      checkCustom(codes, L["%s - Start Action"]:format(data.id), data.actions.start);
+      checkCustom(codes, L["%s - Finish Action"]:format(data.id), data.actions.finish);
     end
 
     if (data.animation) then
-      r = checkAnimation(codes, L["%s - Start"]:format(data.id), data.animation.start);
-      r = checkAnimation(codes, L["%s - Main"]:format(data.id), data.animation.main);
-      r = checkAnimation(codes, L["%s - Finish"]:format(data.id), data.animation.finish);
+      checkAnimation(codes, L["%s - Start"]:format(data.id), data.animation.start);
+      checkAnimation(codes, L["%s - Main"]:format(data.id), data.animation.main);
+      checkAnimation(codes, L["%s - Finish"]:format(data.id), data.animation.finish);
     end
 
     if(data.customTriggerLogic) then
-      r = checkTriggerLogic(codes,  L["%s - Trigger Logic"]:format(data.id), data.customTriggerLogic);
+      checkTriggerLogic(codes,  L["%s - Trigger Logic"]:format(data.id), data.customTriggerLogic);
     end
 
     if(data.customText) then
-      r = checkText(codes, L["%s - Custom Text"]:format(data.id), data.customText);
+      checkText(codes, L["%s - Custom Text"]:format(data.id), data.customText);
     end
   end
 
@@ -697,10 +693,6 @@ local function checkTrigger(codes, id, trigger, untrigger)
       local displayName = regionData and regionData.displayName or regionType or "";
 
       local tooltip = {
-        -- 1. parameter: 1 => AddLine, 2=> AddDoubleLine,
-        -- Rest of parameters identically to AddLine or AddDoubleLine:
-        -- AddLine: text [, red, green, blue [, wrapText]]
-        -- AddDoubleLine: textLeft, textRight, textLeft.r, textLeft.g, textLeft.b, textRight.r, textRight.g, textRight.b
         {2, data.id, "          ", 0.5333, 0, 1},
         {2, displayName, "          ", 1, 0.82, 0},
         {1, " ", 1, 1, 1}
@@ -752,7 +744,7 @@ local function checkTrigger(codes, id, trigger, untrigger)
                 if (icons) then
                   tinsert(tooltip, {2, left, name..(icons[name] and (" |T"..icons[name]..":12:12:0:0:64:64:4:60:4:60|t") or ""), 1, 1, 1, 1, 1, 1});
                 else
-                  local icon = WeakAuras.GetIconFromSpellCache(name) or "Interface\\Icons\\INV_Misc_QuestionMark";
+                  local icon = WeakAuras.spellCache.GetIcon(name) or "Interface\\Icons\\INV_Misc_QuestionMark";
                   tinsert(tooltip, {2, left, name.." |T"..icon..":12:12:0:0:64:64:4:60:4:60|t", 1, 1, 1, 1, 1, 1});
                 end
               end
@@ -783,9 +775,19 @@ local function checkTrigger(codes, id, trigger, untrigger)
         end
       end
 
-      if(data.desc and data.desc ~= "") then
+      local hasDescription = data.desc and data.desc ~= "";
+      local hasUrl = data.url and data.url ~= "";
+
+      if(hasDescription or hasUrl) then
         tinsert(tooltip, {1, " "});
-        tinsert(tooltip, {1, "\""..data.desc.."\"", 1, 0.82, 0, 1});
+      end
+
+      if(hasDescription) then
+          tinsert(tooltip, {1, "\""..data.desc.."\"", 1, 0.82, 0, 1});
+      end
+
+      if (hasUrl) then
+        tinsert(tooltip, {1, data.url, 1, 0.82, 0, 1});
       end
 
       local importbutton;
@@ -957,7 +959,11 @@ local function checkTrigger(codes, id, trigger, untrigger)
           });
         descboxframe:SetBackdropColor(0, 0, 0);
         descboxframe:SetBackdropBorderColor(0.4, 0.4, 0.4);
-        descboxframe:SetHeight(80);
+        if (alterdesc == "desc") then
+          descboxframe:SetHeight(80);
+        else
+          descboxframe:SetHeight(20);
+        end
         descboxframe:SetWidth(260);
         descboxframe:SetPoint("TOP", ItemRefTooltip, "BOTTOM");
         descboxframe:Show();
@@ -973,9 +979,30 @@ local function checkTrigger(codes, id, trigger, untrigger)
         descbox:EnableMouse(true);
         descbox:SetAutoFocus(false);
         descbox:SetCountInvisibleLetters(false);
-        descbox:SetMultiLine(true);
+        descbox:SetMultiLine(alterdesc == "desc");
+
+        if (alterdesc == "url") then
+          if (not descbox.label) then
+            local label = descbox:CreateFontString(nil, "BACKGROUND", "GameFontHighlightSmall");
+            label:SetPoint("TOPLEFT", descboxframe, "BOTTOMLEFT", 8, 0);
+            label:SetText(L["Press Ctrl+C to copy"]);
+            descbox.label = label;
+          end
+          descbox.label:Show();
+        else
+          if (descbox.label) then
+            descbox.label:Hide();
+          end
+        end
+
+        local text = data[alterdesc] and data[alterdesc] ~= "" and data[alterdesc] or "";
+        descbox:SetText(text);
+
         descbox:SetScript("OnEscapePressed", function()
             descbox:ClearFocus();
+            if (alterdesc == "url") then
+              return;
+            end
             if(data.desc and data.desc ~= "") then
               descbox:SetText(data.desc);
             else
@@ -983,13 +1010,16 @@ local function checkTrigger(codes, id, trigger, untrigger)
             end
           end);
         descbox:SetScript("OnEnterPressed", function()
+            descbox:ClearFocus();
+            if (alterdesc == "url") then
+              return;
+            end
             if(descbox:GetText() ~= "") then
               data.desc = descbox:GetText();
             else
               data.desc = nil;
             end
-            WeakAuras.ShowDisplayTooltip(data, children, nil, nil, import, nil, true);
-            descbox:ClearFocus();
+            WeakAuras.ShowDisplayTooltip(data, children, nil, nil, import, nil, "desc");
             if(WeakAuras.GetDisplayButton) then
               local button = WeakAuras.GetDisplayButton(data.id);
               if(button) then
@@ -997,12 +1027,18 @@ local function checkTrigger(codes, id, trigger, untrigger)
               end
             end
           end);
-        if(data.desc and data.desc ~= "") then
-          descbox:SetText(data.desc);
+        if (alterdesc == "url") then
+          descbox:SetScript("OnChar", function() descbox:SetText(text); descbox:HighlightText(); end);
+          descbox:SetScript("OnMouseUp", function() descbox:HighlightText(); end);
         else
-          descbox:SetText("");
+          descbox:SetScript("OnChar", nil);
+          descbox:SetScript("OnMouseUp", nil);
         end
+
         descbox:SetFocus();
+        if (alterdesc == "url") then
+          descbox:HighlightText();
+        end
         descbox:Show();
       end
 
@@ -1128,8 +1164,8 @@ local function checkTrigger(codes, id, trigger, untrigger)
   Comm:RegisterComm("WeakAurasProg", function(prefix, message, distribution, sender)
       if tooltipLoading and ItemRefTooltip:IsVisible() and safeSenders[sender] then
         local done, total, displayName = strsplit(" ", message, 3)
-        local done = tonumber(done)
-        local total = tonumber(total)
+        done = tonumber(done)
+        total = tonumber(total)
         if(done and total and total >= done) then
           local red = min(255, (1 - done / total) * 511)
           local green = min(255, (done / total) * 511)

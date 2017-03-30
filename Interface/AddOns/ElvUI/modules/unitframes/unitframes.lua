@@ -66,7 +66,7 @@ UF['classMaxResourceBar'] = {
 	['WARLOCK'] = 5,
 	['MONK'] = 6,
 	['MAGE'] = 4,
-	['ROGUE'] = 8,
+	['ROGUE'] = 10,
 	["DRUID"] = 5
 }
 
@@ -249,6 +249,7 @@ function UF:Construct_UF(frame, unit)
 	frame.BOTTOM_OFFSET = 0 --placeholder
 
 	frame.RaisedElementParent = CreateFrame('Frame', nil, frame)
+	frame.RaisedElementParent.TextureParent = CreateFrame('Frame', nil, frame.RaisedElementParent)
 	frame.RaisedElementParent:SetFrameLevel(frame:GetFrameLevel() + 100)
 
 	if not self['groupunits'][unit] then
@@ -636,6 +637,7 @@ function UF.groupPrototype:Configure_Groups(self)
 	if self.mover then
 		self.mover.positionOverride = DIRECTION_TO_GROUP_ANCHOR_POINT[direction]
 		E:UpdatePositionOverride(self.mover:GetName())
+		self:GetScript("OnSizeChanged")(self) --Mover size is not updated if frame is hidden, so call an update manually
 	end
 
 	self:SetSize(width - db.horizontalSpacing, height - db.verticalSpacing)

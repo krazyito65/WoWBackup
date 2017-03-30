@@ -653,7 +653,6 @@ local function SetupAuras(style)
 	E:CopyTable(E.db.unitframe.units.target.buffs, P.unitframe.units.target.buffs)
 	E:CopyTable(E.db.unitframe.units.target.debuffs, P.unitframe.units.target.debuffs)
 	E:CopyTable(E.db.unitframe.units.target.aurabar, P.unitframe.units.target.aurabar)
-	E.db.unitframe.units.target.smartAuraDisplay = P.unitframe.units.target.smartAuraDisplay
 	if frame then
 		UF:Configure_Auras(frame, "Buffs")
 		UF:Configure_Auras(frame, "Debuffs")
@@ -664,7 +663,6 @@ local function SetupAuras(style)
 	E:CopyTable(E.db.unitframe.units.focus.buffs, P.unitframe.units.focus.buffs)
 	E:CopyTable(E.db.unitframe.units.focus.debuffs, P.unitframe.units.focus.debuffs)
 	E:CopyTable(E.db.unitframe.units.focus.aurabar, P.unitframe.units.focus.aurabar)
-	E.db.unitframe.units.focus.smartAuraDisplay = P.unitframe.units.focus.smartAuraDisplay
 	if frame then
 		UF:Configure_Auras(frame, "Buffs")
 		UF:Configure_Auras(frame, "Debuffs")
@@ -681,7 +679,6 @@ local function SetupAuras(style)
 		E:GetModule('UnitFrames'):CreateAndUpdateUF("player")
 
 		--TARGET
-		E.db.unitframe.units.target.smartAuraDisplay = 'DISABLED';
 		E.db.unitframe.units.target.debuffs.enable = true;
 		E.db.unitframe.units.target.aurabar.enable = false;
 		E:GetModule('UnitFrames'):CreateAndUpdateUF("target")
@@ -745,8 +742,8 @@ local function SetPage(PageNum)
 	end
 
 	if PageNum == 1 then
-		f.SubTitle:SetFormattedText(L["Welcome to ElvUI version %s!"]:gsub("ElvUI", E.UIName), E.version)
-		f.Desc1:SetText(L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."]:gsub("ElvUI", E.UIName))
+		f.SubTitle:SetFormattedText(L["Welcome to ElvUI version %s!"], E.version)
+		f.Desc1:SetText(L["This install process will help you learn some of the features in ElvUI has to offer and also prepare your user interface for usage."])
 		f.Desc2:SetText(L["The in-game configuration menu can be accessed by typing the /ec command or by clicking the 'C' button on the minimap. Press the button below if you wish to skip the installation process."])
 		f.Desc3:SetText(L["Please press the continue button to go onto the next step."])
 
@@ -772,7 +769,7 @@ local function SetPage(PageNum)
 	elseif PageNum == 4 then
 		f.SubTitle:SetText(L["Theme Setup"])
 		f.Desc1:SetText(L["Choose a theme layout you wish to use for your initial setup."])
-		f.Desc2:SetText(L["You can always change fonts and colors of any element of ElvUI from the in-game configuration."]:gsub("ElvUI", E.UIName))
+		f.Desc2:SetText(L["You can always change fonts and colors of any element of ElvUI from the in-game configuration."])
 		f.Desc3:SetText(L["Importance: |cffFF0000Low|r"])
 
 		InstallOption1Button:Show()
@@ -820,7 +817,7 @@ local function SetPage(PageNum)
 		InstallOption4Button:SetText(L["Caster DPS"])
 	elseif PageNum == 7 then
 		f.SubTitle:SetText(L["Auras"])
-		f.Desc1:SetText(L["Select the type of aura system you want to use with ElvUI's unitframes. Set to Aura Bar & Icons to use both aura bars and icons, set to icons only to only see icons."]:gsub("ElvUI", E.UIName))
+		f.Desc1:SetText(L["Select the type of aura system you want to use with ElvUI's unitframes. Set to Aura Bar & Icons to use both aura bars and icons, set to icons only to only see icons."])
 		f.Desc2:SetText(L["If you have an icon or aurabar that you don't want to display simply hold down shift and right click the icon for it to disapear."])
 		f.Desc3:SetText(L["Importance: |cffD3CF00Medium|r"])
 		InstallOption1Button:Show()
@@ -914,7 +911,7 @@ function E:Install()
 		f.Title = f:CreateFontString(nil, 'OVERLAY')
 		f.Title:FontTemplate(nil, 17, nil)
 		f.Title:Point("TOP", 0, -5)
-		f.Title:SetText(L["ElvUI Installation"]:gsub("ElvUI", E.UIName))
+		f.Title:SetText(L["ElvUI Installation"])
 
 		f.Next = CreateFrame("Button", "InstallNextButton", f, "UIPanelButtonTemplate")
 		f.Next:StripTextures()

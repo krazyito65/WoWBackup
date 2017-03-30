@@ -131,6 +131,20 @@ local function LoadSkin()
 	S:HandleScrollBar(ScrollOfResurrectionSelectionFrameListScrollFrameScrollBar, 4)
 	S:HandleEditBox(ScrollOfResurrectionSelectionFrameTargetEditBox)
 
+	--Pending invites
+	S:HandleButton(FriendsFrameFriendsScrollFrame.PendingInvitesHeaderButton)
+	local function SkinFriendRequest(frame)
+		if frame.isSkinned then return; end
+		S:HandleButton(frame.DeclineButton)
+		S:HandleButton(frame.AcceptButton)
+		frame.isSkinned = true
+	end
+	hooksecurefunc(FriendsFrameFriendsScrollFrame.invitePool, "Acquire", function()
+		for object in pairs(FriendsFrameFriendsScrollFrame.invitePool.activeObjects) do
+			SkinFriendRequest(object)
+		end
+	end)
+
 	--Who Frame
 	local function UpdateWhoSkins()
 		WhoListScrollFrame:StripTextures()
@@ -252,7 +266,7 @@ local function LoadSkin()
 	S:HandleEditBox(RecruitAFriendNoteFrame)
 
 	--Quick join
-	S:HandleScrollBar(QuickJoinScrollFrameScrollBar)
+	S:HandleScrollBar(QuickJoinScrollFrameScrollBar, 5)
 	S:HandleButton(QuickJoinFrame.JoinQueueButton)
 	QuickJoinFrame.JoinQueueButton:SetSize(131, 21)  --Match button on other tab
 	QuickJoinFrame.JoinQueueButton:ClearAllPoints()
@@ -260,6 +274,14 @@ local function LoadSkin()
 	QuickJoinScrollFrameTop:SetTexture(nil)
 	QuickJoinScrollFrameBottom:SetTexture(nil)
 	QuickJoinScrollFrameMiddle:SetTexture(nil)
+	QuickJoinRoleSelectionFrame:StripTextures()
+	QuickJoinRoleSelectionFrame:SetTemplate("Transparent")
+	S:HandleButton(QuickJoinRoleSelectionFrame.AcceptButton)
+	S:HandleButton(QuickJoinRoleSelectionFrame.CancelButton)
+	S:HandleCloseButton(QuickJoinRoleSelectionFrame.CloseButton)
+	S:HandleCheckBox(QuickJoinRoleSelectionFrame.RoleButtonTank.CheckButton)
+	S:HandleCheckBox(QuickJoinRoleSelectionFrame.RoleButtonHealer.CheckButton)
+	S:HandleCheckBox(QuickJoinRoleSelectionFrame.RoleButtonDPS.CheckButton)
 end
 
 S:AddCallback("Friends", LoadSkin)

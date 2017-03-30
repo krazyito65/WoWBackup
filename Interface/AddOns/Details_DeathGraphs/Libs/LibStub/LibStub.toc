@@ -9,9 +9,5 @@
 ## X-Curse-Project-Name: LibStub
 ## X-Curse-Project-ID: libstub
 ## X-Curse-Repository-ID: wow/libstub/mainline
-## X-Curse-Packaged-Version: r48
-## X-Curse-Project-Name: Details!: Advanced Death Logs (plugin)
-## X-Curse-Project-ID: details-advanced-death-logs-plug
-## X-Curse-Repository-ID: wow/details-advanced-death-logs-plug/mainline
 
 LibStub.lua

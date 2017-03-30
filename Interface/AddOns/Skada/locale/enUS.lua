@@ -486,3 +486,15 @@ L["Focus gain sources"] = true
 L["Minimum"] = true
 L["Maximum"] = true
 L["Average"] = true
+
+L["Spell school colors"] = true
+L["Use spell school colors where applicable."] = true
+
+L["Sort modes by usage"] = true
+L["The mode list will be sorted to reflect usage instead of alphabetically."] = true
+
+L["Smooth bars"] = true
+L["Animate bar changes smoothly rather than immediately."] = true
+
+L["Update frequency"] = true
+L["How often windows are updated. Shorter for faster updates. Increases CPU usage."] = true

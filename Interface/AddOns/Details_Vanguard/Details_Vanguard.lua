@@ -146,7 +146,7 @@ local function CreatePluginFrames (data)
 		end
 	end
 
-	-- não vamos mais mostrar o jogador
+	-- nï¿½o vamos mais mostrar o jogador
 	-- somente barra de inc heal + absorbs
 	-- somente barra de vida
 	

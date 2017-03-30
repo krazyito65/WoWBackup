@@ -301,6 +301,13 @@ end
 
 
 
+--
+function VUHDO_buildMouseLookMacroText()
+	return "/run if IsMouselooking() then MouselookStop() else MouselookStart() end\n";
+end
+
+
+
 local VUHDO_PROHIBIT_HELP = {
 	[VUHDO_SPELL_ID.REBIRTH] = true,
 	[VUHDO_SPELL_ID.REDEMPTION] = true,

@@ -17,9 +17,9 @@ L.TabCategory_Options		= "일반 설정"
 L.TabCategory_OTHER			= "기타 보스 모드"
 
 L.BossModLoaded 			= "%s 통계"
-L.BossModLoad_now 			= [[보스 모드를 불러오지 않았습니다. 
-해당 인스턴스에 진입하면 불러옵니다.
-버튼을 직접 클릭해서 모드를 불러올 수도 있습니다.]]
+L.BossModLoad_now 			= [[보스 모드가 로딩되지 않았습니다. 
+해당 인스턴스에 진입하면 로딩됩니다.
+아래 버튼을 클릭해서 모드를 직접 로딩할 수도 있습니다.]]
 
 L.PosX						= '위치 X'
 L.PosY						= '위치 Y'
@@ -27,9 +27,9 @@ L.PosY						= '위치 Y'
 L.MoveMe 					= '위치 이동'
 L.Button_OK					= '확인'
 L.Button_Cancel				= '취소'
-L.Button_LoadMod			= '애드온 불러오기'
+L.Button_LoadMod			= '애드온 로드'
 L.Mod_Enabled				= "보스 모드 활성화"
-L.Mod_Reset					= "설정 기본값 불러오기"
+L.Mod_Reset					= "설정 기본값 로드"
 L.Reset						= "초기화"
 
 L.Enable					= "활성화"
@@ -37,7 +37,7 @@ L.Disable					= "비활성화"
 
 L.NoSound					= "효과음 없음"
 
-L.IconsInUse				= "사용되는 전술 목표 아이콘:"
+L.IconsInUse				= "사용되는 공격대 징표:"
 
 -- Tab: Boss Statistics
 L.BossStatistics			= "보스 통계"
@@ -108,7 +108,7 @@ L.WhisperMessages			= "귓속말 메시지 설정"
 L.AutoRespond 				= "전투중 귓속말 자동 응답"
 L.EnableStatus 				= "'status' 라는 귓속말을 받으면 자동 응답"
 L.WhisperStats 				= "귓속말 응답에 처치/전멸 통계 포함"
-L.DisableStatusWhisper 		= "전체 파티/공격대의 귓속말 응답을 끕니다. (승급 권한 필요) 일반/영웅/신화 공격대 및 도전/신화 5인 던전에만 적용됩니다."
+L.DisableStatusWhisper 		= "전체 파티/공격대의 귓속말 응답을 끕니다. (파티/공대장 권한 필요) 일반/영웅/신화 공격대 및 도전/신화 5인 던전에만 적용됩니다."
 
 -- Tab: Barsetup
 L.BarSetup  				= "타이머 바 설정"
@@ -173,7 +173,7 @@ L.Panel_SpecWarnFrame		= "특수 경고"
 L.Area_SpecWarn				= "특수 경고 설정"
 L.SpecWarn_ClassColor		= "특수 경고에 직업 색상 사용"
 L.ShowSWarningsInChat 		= "대화창에 특수 경고 보기"
-L.SWarnNameInNote			= "메모에 내 이름이 있으면 5번 경고 설정 사용"
+L.SWarnNameInNote			= "메모에 내 이름이 있으면 5번 경고(SW5) 설정 사용"
 L.SpecialWarningIcon		= "특수 경고에 아이콘 사용"
 L.SpecWarn_FlashFrame		= "특수 경고에 화면 점멸 효과 사용"
 L.SpecWarn_FlashFrameRepeat	= "%d회 반복 (설정 켰을때)"
@@ -200,7 +200,7 @@ L.Area_HUDOptions			= "HUD 설정"
 L.HUDColorOverride			= "모드에서 지정된 색상을 무시"
 L.HUDSizeOverride			= "모드에서 지정된 크기를 무시"
 L.HUDAlphaOverride			= "모드에서 지정된 투명도를 무시"
-L.HUDTextureOverride		= "모드에서 지정된 텍스쳐를 무시 (전술 목표 아이콘 텍스쳐 설정엔 적용 안됨)"
+L.HUDTextureOverride		= "모드에서 지정된 텍스쳐를 무시 (공격대 징표 텍스쳐 설정엔 적용 안됨)"
 L.HUDColorSelect			= "HUD 색상 %d"
 L.HUDTextureSelect1			= "1순위 HUD 텍스쳐"
 L.HUDTextureSelect2			= "2순위 HUD 텍스쳐"
@@ -223,7 +223,7 @@ L.SpecWarn_NoSoundsWVoice	= "음성 경보가 있는 특수 경고의 효과음 
 L.SWFNever					= "하지 않음"
 L.SWFDefaultOnly			= "특수 경고가 기본 효과음만 재생할 때 (사용자 지정 효과음은 계속 재생 허용)"
 L.SWFAll					= "특수 경고가 모든 효과음을 사용할 때"
-L.SpecWarn_AlwaysVoice		= "모든 음성 경보 재생 (보스마다 지정된 설정을 무시합니다. 공격대장에게 유용합니다.)"
+L.SpecWarn_AlwaysVoice		= "모든 음성 경보 재생 (보스마다 지정된 설정을 무시합니다. 공대장에게 유용합니다.)"
 --TODO, maybe add URLS right to GUI panel on where to acquire 3rd party voice packs?
 
 -- Tab: HealthFrame
@@ -241,10 +241,11 @@ L.SpamBlockNoShowAnnounce	= "알림 및 효과음 재생 안함"
 L.SpamBlockNoSpecWarn		= "특수 경고 및 효과음 재생 안함"
 L.SpamBlockNoShowTimers		= "모드 타이머 표시 안함 (보스 모드/도전모드/파티찾기/재생성)"
 L.SpamBlockNoShowUTimers	= "사용자 전송 타이머 표시 안함 (사용자 지정/풀링/휴식)"
-L.SpamBlockNoSetIcon		= "대상에 전술 목표 아이콘 설정 안함"
+L.SpamBlockNoSetIcon		= "대상에 공격대 징표를 설정하지 않음"
 L.SpamBlockNoRangeFrame		= "거리 창 표시 안함"
 L.SpamBlockNoInfoFrame		= "정보 창 표시 안함"
 L.SpamBlockNoHudMap			= "HUD 표시 안함"
+L.SpamBlockNoNameplate		= "이름표 오라 표시 안함"
 L.SpamBlockNoHealthFrame	= "보스 체력 창 표시 안함"
 L.SpamBlockNoCountdowns		= "초읽기 효과음 재생 안함"
 L.SpamBlockNoYells			= "대화 알림 사용 안함"
@@ -300,11 +301,11 @@ L.CheckGear					= "풀링 타이머가 나오면 착용 장비 알림 메시지 
 L.WorldBossAlert			= "현재 서버에서 친구나 길드원이 필드 보스 전투를 시작하면 메시지 표시 (전송자가 연합 서버라면 부정확합니다)"
 --
 L.Area_SoundAlerts			= "효과음/점멸 알림 설정"
-L.LFDEnhance				= "역할 확인 및 전장/공격대 찾기가 열릴 때 전투 준비 효과음 재생(주 오디오 또는 대화 채널) 및 와우 트레이 아이콘 점멸 (참고: 소리 채널이 꺼져있어도 작동하며, 다른 때보다 더 크게 들립니다)"
-L.WorldBossNearAlert		= "근처에서 필드 보스 전투가 시작된 경우 전투 준비 효과음 재생 및 와우 트레이 아이콘 점멸"
-L.RLReadyCheckSound			= "전투 준비 효과음을 주 오디오나 대화 채널을 통해 재생하고 와우 트레이 아이콘 점멸"
-L.AFKHealthWarning			= "자리 비움 상태 도중 체력이 줄면 경고음 재생 및 와우 트레이 아이콘 점멸"
-L.AutoReplySound			= "DBM 자동 응답 귓속말을 받을 때 경고음 재생 및 와우 트레이 아이콘 점멸"
+L.LFDEnhance				= "역할 확인 및 전장/공격대 찾기가 열릴 때 전투 준비 효과음 재생(주 오디오 또는 대화 채널) 및 작업 표시줄 아이콘 점멸 (참고: 소리 채널이 꺼져있어도 작동하며, 다른 때보다 더 크게 들립니다)"
+L.WorldBossNearAlert		= "근처에서 필드 보스 전투가 시작된 경우 전투 준비 효과음 재생 및 작업 표시줄 아이콘 점멸"
+L.RLReadyCheckSound			= "전투 준비 효과음을 주 오디오나 대화 채널을 통해 재생하고 작업 표시줄 아이콘 점멸"
+L.AFKHealthWarning			= "자리 비움 상태 도중 체력이 줄면 경고음 재생 및 작업 표시줄 아이콘 점멸"
+L.AutoReplySound			= "DBM 자동 응답 귓속말을 받을 때 경고음 재생 및 작업 표시줄 아이콘 점멸"
 --
 L.TimerGeneral 				= "타이머 설정"
 L.SKT_Enabled				= "가능할 경우 현재 전투의 최고 승리 기록 타이머 표시"
@@ -326,7 +327,7 @@ L.AutoAcceptGuildInvite		= "길드원의 파티/공격대 초대 자동 수락"
 L.Area_Advanced				= "고급 설정"
 L.FakeBW					= "DBM 대신 BigWigs 사용자로 위장하기 (BigWigs 사용을 강제하는 공격대에서 유용)"
 L.AITimer					= "DBM 내장 인공지능 타이머를 사용하여 처음 하는 전투의 타이머를 자동으로 생성합니다. (베타나 테스트 서버에서 보스 테스트시 유용) 알림: 동일한 주문을 사용하는 쫄이 여러 종류가 나오는 전투에서는 제대로 작동하지 않습니다."
-L.AutoCorrectTimer			= "지나치게 긴 대기시간 바를 자동으로 교정합니다. (보스 모드가 업데이트 되지 않은 최상위 콘텐츠를 공략하는 공격대에 유용) 알림: 보스 단계 전환시 타이머가 초기화될 경우 이 기능이 일부 타이머의 작동을 더 안좋게 만들 수 있습니다."
+L.AutoCorrectTimer			= "지나치게 긴 대기시간 바를 자동으로 교정합니다. (보스 모드가 업데이트되지 않은 최상위 콘텐츠를 공략하는 공격대에 유용) 알림: 보스 단계 전환시 타이머가 초기화될 경우 이 기능이 일부 타이머의 작동을 더 안좋게 만들 수 있습니다."
 
 L.PizzaTimer_Headline 		= '"피자 타이머" 생성'
 L.PizzaTimer_Title			= '이름 (예: "Pizza!")'
@@ -347,12 +348,12 @@ L.SelectProfileToCopy		= "복사할 프로필 선택"
 L.Area_DeleteProfile		= "DBM Core 설정 프로필 삭제"
 L.SelectProfileToDelete		= "삭제할 프로필 선택"
 L.Area_DualProfile			= "보스 모드 프로필 설정"
-L.DualProfile				= "전문화마다 다른 보스 모드 설정을 사용합니다. (보스 모드 프로필 관리는 불러낸 보스 모드의 통계 화면에서 이루어집니다)"
+L.DualProfile				= "전문화마다 다른 보스 모드 설정을 사용합니다. (보스 모드 프로필 관리는 로딩된 보스 모드의 통계 화면에서 이루어집니다)"
 
 L.Area_ModProfile			= "다른 캐릭터/전문화의 설정 복사/삭제"
 L.ModAllReset				= "이 모드의 모든 설정 초기화"
 L.ModAllStatReset			= "이 모드의 모든 통계 초기화"
 L.SelectModProfileCopy		= "전체 설정 복사"
-L.SelectModProfileCopySound	= "효과음 설정만 복사"
+L.SelectModProfileCopySound	= "음성 설정만 복사"
 L.SelectModProfileCopyNote	= "메모 설정만 복사"
 L.SelectModProfileDelete	= "모드 설정 삭제"

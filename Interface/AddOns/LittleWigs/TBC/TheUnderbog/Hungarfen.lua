@@ -19,7 +19,7 @@ local sporesannounced = nil
 local L = LibStub("AceLocale-3.0"):NewLocale("Little Wigs: Hungarfen", "enUS", true)
 if L then
 	
-	
+	--@localization(locale="enUS", namespace="Coilfang/Hungarfen", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 
 L = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Hungarfen")

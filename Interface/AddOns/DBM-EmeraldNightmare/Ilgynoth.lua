@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1738, "DBM-EmeraldNightmare", nil, 768)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15472 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16092 $"):sub(12, -3))
 mod:SetCreatureID(105393)
 mod:SetEncounterID(1873)
 mod:SetZone()
@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, figure out voice to use for specWarnHeartPhaseBegin
---TODO, more adds timers (especially corruptors/deathglarers)
+--TODO, fix more adds timers (especially corruptors/deathglarers)
 --TODO, improve spew corruption to work like thogar bombs (continous alerts/yells)
 --Stage One: The Ruined Ground
 --(ability.id = 208697 or ability.id = 208929 or ability.id = 218415) and type = "begincast" or ability.id = 209915
@@ -47,7 +47,7 @@ local warnCursedBlood				= mod:NewTargetAnnounce(215128, 3)
 
 --Stage One: The Ruined Ground
 local specWarnNightmareCorruption	= mod:NewSpecialWarningMove(212886, nil, nil, nil, 1, 2)
-local specWarnFixate				= mod:NewSpecialWarningMoveTo(210099, nil, DBM_CORE_AUTO_SPEC_WARN_OPTIONS.you:format(210099), nil, 1, 2)
+local specWarnFixate				= mod:NewSpecialWarningMoveTo(210099, nil, nil, nil, 1, 2)
 local specWarnNightmareHorror		= mod:NewSpecialWarningSwitch("ej13188", "-Healer", nil, nil, 1, 2)--spellId for summon 210289
 local specWarnEyeOfFate				= mod:NewSpecialWarningStack(210984, nil, 2)
 local specWarnEyeOfFateOther		= mod:NewSpecialWarningTaunt(210984, nil, nil, nil, 1, 2)
@@ -70,9 +70,10 @@ mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local timerDeathGlareCD				= mod:NewCDTimer(220, "ej13190", nil, nil, nil, 1, 208697)
 local timerCorruptorTentacleCD		= mod:NewCDTimer(220, "ej13191", nil, nil, nil, 1, 208929)
 local timerNightmareHorrorCD		= mod:NewCDTimer(280, "ej13188", nil, nil, nil, 1, 210289)
-local timerEyeOfFateCD				= mod:NewCDTimer(10, 210984, nil, "Tank", nil, 5)
-local timerNightmareishFuryCD		= mod:NewNextTimer(10.9, 215234, nil, "Tank", nil, 5)
+local timerEyeOfFateCD				= mod:NewCDTimer(10, 210984, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
+local timerNightmareishFuryCD		= mod:NewNextTimer(10.9, 215234, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
 local timerGroundSlamCD				= mod:NewNextTimer(20.5, 208689, nil, nil, nil, 3)
+mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerDeathBlossomCD			= mod:NewNextTimer(105, 218415, nil, nil, nil, 2, nil, DBM_CORE_HEROIC_ICON)
 local timerDeathBlossom				= mod:NewCastTimer(15, 218415, nil, nil, nil, 5, nil, DBM_CORE_DEADLY_ICON)
 --Stage Two: The Heart of Corruption
@@ -106,6 +107,7 @@ mod:AddInfoFrameOption(210099)
 mod:AddDropdownOption("InfoFrameBehavior", {"Fixates", "Adds"}, "Fixates", "misc")
 
 mod.vb.phase = 1
+mod.vb.insideActive = false
 mod.vb.DominatorCount = 0
 mod.vb.CorruptorCount = 0
 mod.vb.DeathglareCount = 0
@@ -129,59 +131,58 @@ local phase1DeathBlossom = {58.6, 100, 35}--VERIFIED Oct 27
 --Based on data, first one is either 21 or 26, if it's 26 then second one changes from 95 to 90
 --Might have to switch to scheduling to fix accuracy of timers 2 and 3 because of the 5 second variation on timer 1
 local phase2ComboDeathglares = {21.5, 90, 130}--Fuck it. i'm not scheduling to fix a 5 second variation, the two lowest times combined
+local phase2MythicDeathglares = {21.5, 90, 115, 20}
 --local phase2AllDeathglares = {21.5, 95, 130}--True timers
 --local phase2AltDeathglares = {26.5, 90, 130}--Fucked up timers when first one is late
 --Old shit, when i thought variations were cause of difficulty. They aren't. These tentacles same in all modes apparently
 --local phase2LFRDeathglares = {21.5, 95, 130}--VERIFIED Oct 16 (except for 130)
 --local phase2EasyDeathglares = {21.5, 95, 130}--VERIFIED Oct 16 (except for 130)
 --local phase2HeroicDeathglares = {26.5, 90, 130}--26, 90 verified Oct 16 (130 not verified)
---local phase2MythicDeathglares = {21.5, 95, 130}--26, 90 VERIFIED Oct 16 (130 not verified)
 --These also same in all modes except mythic
 local phase2Corruptors = {45, 95, 35, 85, 40}--verified Oct 16 45, 95, 30 on heroic/LFR/Normal
-local phase2MythicCorruptors = {45, 75, 115, 65}--VERIFIED Oct 27
+local phase2MythicCorruptors = {45, 75, 115, 65}--VERIFIED Oct 27 (fix missing set needed)
 local phase2DeathBlossom = {80, 75}--VERIFIED Oct 16
 local autoMarkScannerActive = false
 local autoMarkBlocked = false
 local autoMarkFilter = {}
 
-local updateInfoFrame, sortInfoFrame
+local updateInfoFrame
 do
 	local lines = {}
-	sortInfoFrame = function(a, b)
-		local a = lines[a]
-		local b = lines[b]
-		if not tonumber(a) then a = -1 end
-		if not tonumber(b) then b = -1 end
-		if a > b then return true else return false end
+	local sortedLines = {}
+	local function addLine(key, value)
+		-- sort by insertion order
+		lines[key] = value
+		sortedLines[#sortedLines + 1] = key
 	end
-
 	local DominatorTentacle, CorruptorTentacle, DeathglareTentacle, NightmareHorror, NightmareIchor = EJ_GetSectionInfo(13189), EJ_GetSectionInfo(13191), EJ_GetSectionInfo(13190), EJ_GetSectionInfo(13188), EJ_GetSectionInfo(13186)
 	updateInfoFrame = function()
 		table.wipe(lines)
+		table.wipe(sortedLines)
 		if mod.vb.NightmareCount > 0 then
 			if mod:IsTank() then--Add needs to be tanked
-				lines["|cff00ffff"..NightmareHorror.."|r"] = mod.vb.NightmareCount
+				addLine("|cff00ffff"..NightmareHorror.."|r", mod.vb.NightmareCount)
 			else
-				lines[NightmareHorror] = mod.vb.NightmareCount
+				addLine(NightmareHorror, mod.vb.NightmareCount)
 			end
 		end
 		if mod.vb.DominatorCount > 0 then
 			if mod:IsTank() then--Add needs to be tanked
-				lines["|cff00ffff"..DominatorTentacle.."|r"] = mod.vb.DominatorCount
+				addLine("|cff00ffff"..DominatorTentacle.."|r", mod.vb.DominatorCount)
 			else
-				lines[DominatorTentacle] = mod.vb.DominatorCount
+				addLine(DominatorTentacle, mod.vb.DominatorCount)
 			end
 		end
 		if mod.vb.CorruptorCount > 0 then
-			lines[CorruptorTentacle] = mod.vb.CorruptorCount
+			addLine(CorruptorTentacle, mod.vb.CorruptorCount)
 		end
 		if mod.vb.DeathglareCount > 0 then
-			lines[DeathglareTentacle] = mod.vb.DeathglareCount
+			addLine(DeathglareTentacle, mod.vb.DeathglareCount)
 		end
 		if mod.vb.IchorCount > 0 then
-			lines[NightmareIchor] = mod.vb.IchorCount
+			addLine(NightmareIchor, mod.vb.IchorCount)
 		end
-		return lines
+		return lines, sortedLines
 	end
 end
 
@@ -248,6 +249,7 @@ end
 function mod:OnCombatStart(delay)
 	table.wipe(addsTable)
 	self.vb.phase = 1
+	self.vb.insideActive = false
 	self.vb.DominatorCount = 0
 	self.vb.CorruptorCount = 0
 	self.vb.DeathglareCount = 0
@@ -279,9 +281,10 @@ function mod:OnCombatStart(delay)
 			DBM.InfoFrame:Show(10, "playerbaddebuff", 210099)
 		else
 			DBM.InfoFrame:SetHeader(UNIT_NAMEPLATES_SHOW_ENEMY_MINIONS)
-			DBM.InfoFrame:Show(5, "function", updateInfoFrame, sortInfoFrame)
+			DBM.InfoFrame:Show(5, "function", updateInfoFrame, false, false, true)
 		end
 	end
+	DBM:AddMsg(L.AddSpawnNotice)
 	if self:AntiSpam(15, 2) then
 		--Do nothing. Just to avoid spam on pull
 	end
@@ -316,7 +319,7 @@ function mod:SPELL_CAST_START(args)
 			specWarnMindFlay:Show(args.sourceName)
 			voiceMindFlay:Play("kickcast")
 		end
-		if not addsTable[args.sourceGUID] then
+		if not addsTable[args.sourceGUID] and not self.vb.insideActive then
 			addsTable[args.sourceGUID] = true
 			self.vb.DeathglareCount = self.vb.DeathglareCount + 1
 			if self:AntiSpam(10, 16) then
@@ -325,14 +328,16 @@ function mod:SPELL_CAST_START(args)
 				local nextCount = self.vb.DeathglareSpawn + 1
 				local timer
 				if self.vb.phase == 2 then
-					timer = phase2ComboDeathglares[nextCount]
-					--timer = self:IsMythic() and phase2MythicDeathglares[nextCount] or self:IsHeroic() and phase2HeroicDeathglares[nextCount] or phase2EasyDeathglares[nextCount]
+					timer = self:IsMythic() and phase2MythicDeathglares[nextCount] or phase2ComboDeathglares[nextCount]
 				else
 					timer = self:IsMythic() and phase1MythicDeathglares[nextCount] or self:IsHeroic() and phase1HeroicDeathglares[nextCount] or phase1EasyDeathglares[nextCount]
 				end
 				if timer then
 					timerDeathGlareCD:Start(timer)
 				end
+			end
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
 			end
 		end
 	elseif spellId == 208929 then
@@ -353,6 +358,9 @@ function mod:SPELL_CAST_START(args)
 				if timer then
 					timerCorruptorTentacleCD:Start(timer)
 				end
+			end
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
 			end
 		end
 	elseif spellId == 210781 then--Dark Reconstitution
@@ -419,9 +427,10 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 209915 then--Stuff of Nightmares
+		self.vb.insideActive = false
 		timerCursedBloodCD:Stop()
-		timerNightmareishFuryCD:Start(7)
-		timerGroundSlamCD:Start(13)
+		timerNightmareishFuryCD:Start(6.1)
+		timerGroundSlamCD:Start(12.1)
 		if self:IsMythic() then
 			self.vb.deathBlossomCount = 0
 			timerDeathBlossomCD:Start(80)
@@ -444,6 +453,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self.Options.SetIconOnOoze and self:IsMythic() and not autoMarkScannerActive and not autoMarkBlocked then
 				autoMarkScannerActive = true
 				self:Schedule(2.5, autoMarkOozes, self)
+			end
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
 			end
 		end
 	elseif spellId == 210984 then
@@ -503,6 +515,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 209915 then--Stuff of Nightmares
+		self.vb.insideActive = true
 		specWarnHeartPhaseBegin:Show()
 		timerDeathGlareCD:Stop()
 		timerCorruptorTentacleCD:Stop()
@@ -538,6 +551,9 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 				end
 				addsTable[UnitGUID(bossUnitID)] = true
 				self.vb.DominatorCount = self.vb.DominatorCount + 1
+				if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+					DBM.InfoFrame:Update()
+				end
 			end
 		end
 	end
@@ -568,18 +584,33 @@ function mod:OnSync(msg, guid)
 			self.vb.NightmareCount = self.vb.NightmareCount - 1
 			timerEyeOfFateCD:Stop(guid)
 			countdownEyeofFate:Cancel()
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		elseif cid == 105304 then--Dominator Tentacle
 			self.vb.DominatorCount = self.vb.DominatorCount - 1
 			if self.vb.DominatorCount == 0 then
 				timerNightmareishFuryCD:Stop()
 				timerGroundSlamCD:Stop()
 			end
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		elseif cid == 105383 then--Corruptor tentacle
 			self.vb.CorruptorCount = self.vb.CorruptorCount - 1
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		elseif cid == 105322 then--Deathglare Tentacle
 			self.vb.DeathglareCount = self.vb.DeathglareCount - 1
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		elseif cid == 105721 then--Nightmare Ichor
 			self.vb.IchorCount = self.vb.IchorCount - 1
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		end
 	end
 end
@@ -598,6 +629,9 @@ do
 			end
 			self.vb.NightmareCount = self.vb.NightmareCount + 1
 			--timerEyeOfFateCD:Start(18)--Started at seeping corruption for mob GUID
+			if self.Options.InfoFrame and self.Options.InfoFrameBehavior == "Adds" then
+				DBM.InfoFrame:Update()
+			end
 		end
 	end
 end

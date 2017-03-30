@@ -9,6 +9,7 @@ local _UnitAura = UnitAura --> wow api local
 
 local _math_floor = math.floor --> lua library local
 local _cstr = string.format --> lua library local
+local _ 
 
 --> Create the plugin Object
 local TimeAttack = _detalhes:NewPluginObject ("Details_TimeAttack")
@@ -68,6 +69,7 @@ local function CreatePluginFrames()
 	
 	--> some times the current spec isn't avaliable yet, so we try to catch 5 seconds after character logon
 		function _detalhes:TimeAttackStartupBackground()
+			--[[
 			local spec = GetSpecialization()
 			if (spec) then
 				local id, name, description, icon, _background, role = GetSpecializationInfo (spec)
@@ -75,6 +77,8 @@ local function CreatePluginFrames()
 					background:SetTexture ("Interface\\TALENTFRAME\\".._background)
 				end
 			end
+			--]]
+			background:SetTexture ("Interface\\AddOns\\Details\\images\\background")
 		end
 		TimeAttack:ScheduleTimer ("TimeAttackStartupBackground", 5)
 	
@@ -481,7 +485,7 @@ local function CreatePluginFrames()
 			
 			self.rownumber:SetText ("#" .. self.index)
 			
-		elseif (not AttemptTable.FinishSaved) then --> não foi salvo ainda
+		elseif (not AttemptTable.FinishSaved) then --> nï¿½o foi salvo ainda
 			self.remove:Show()
 			self.save:Show()
 			self.remove:SetPoint ("left", self.background.frame, "left", 16, 0)
@@ -803,7 +807,7 @@ local function CreatePluginFrames()
 				TimeAttack:Cancel()
 			end
 		else
-			--> aqui vem as funções que verificam se o jogador esta em grupo ou se tem algum buff proibido
+			--> aqui vem as funï¿½ï¿½es que verificam se o jogador esta em grupo ou se tem algum buff proibido
 			TimeAttack.Time.Tick = TimeAttack.Time.Tick + elapsed
 			if (TimeAttack.Time.Tick > 1) then
 				TimeAttack.Time.Tick = 0

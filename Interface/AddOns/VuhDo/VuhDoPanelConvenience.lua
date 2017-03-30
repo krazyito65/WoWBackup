@@ -360,6 +360,10 @@ function VUHDO_getOrCreateBuffSwatch(aName, aParent)
 		tButton:SetAttribute("_onleave", "self:ClearBindings();");
 		tButton:SetAttribute("_onshow", "self:ClearBindings();");
 		tButton:SetAttribute("_onhide", "self:ClearBindings();");
+		tButton:SetAttribute(
+			"_onmousedown", 
+			"if not self:IsUnderMouse(false) then self:ClearBindings(); end"
+		);
 	else
 		tButton = _G[aName .. "GlassButton"];
 	end

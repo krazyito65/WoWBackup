@@ -15,12 +15,12 @@ DBM_CORE_LOAD_GUI_ERROR				= "Konnte die grafische Benutzeroberfläche nicht lad
 DBM_CORE_LOAD_GUI_COMBAT			= "Die grafische Benutzeroberfläche kann nicht im Kampf geladen werden. Zur Vornahme von Einstellungen bitte diese zunächst außerhalb des Kampfes laden. Danach steht sie auch im Kampf zur Verfügung."
 DBM_CORE_BAD_LOAD					= "Dein Boss Mod für diese Instanz konnte nicht vollständig korrekt im Kampf geladen werden. Bitte führe baldmöglichst nach Kampfende /reload aus."
 DBM_CORE_LOAD_MOD_VER_MISMATCH		= "%s kann nicht geladen werden, da dein DBM-Core die Voraussetzungen nicht erfüllt. Es wird eine aktualisierte Version benötigt."
+DBM_CORE_LOAD_MOD_DISABLED			= "%s ist installiert, aber derzeit nicht aktiviert. Dieses Mod wird nicht geladen, falls du es nicht aktivierst."
+DBM_CORE_LOAD_MOD_DISABLED_PLURAL	= "%s sind installiert, aber derzeit nicht aktiviert. Diese Mods werden nicht geladen, falls du sie nicht aktivierst."
 
 --DBM_CORE_WHATS_NEW--translate
 --DBM_CORE_WHATS_NEW_LINK
 
---Pre Patch 7.1 Notice
-DBM_CORE_NO_RANGE_SOON				= "Hinweis: Das Abstandsradar wird in Instanzen in Patch 7.1 nicht mehr zur Verfügung stehen."
 --Post Patch 7.1
 DBM_CORE_NO_RANGE					= "Das Abstandsradar kann in Instanzen nicht genutzt werden. Es wird stattdessen die alte textbasierte Abstandsanzeige verwendet."
 DBM_CORE_NO_ARROW					= "Der Pfeil kann in Instanzen nicht genutzt werden."
@@ -60,6 +60,8 @@ DBM_CORE_TRANSCRIPTOR_LOG_START		= "\"Transcriptor\"-Aufzeichnung gestartet."
 DBM_CORE_TRANSCRIPTOR_LOG_END		= "\"Transcriptor\"-Aufzeichnung beendet."
 
 DBM_CORE_MOVIE_SKIPPED				= "Eine Videosequenz wurde automatisch übersprungen."
+
+DBM_CORE_AFK_WARNING				= "Du bist \"AFK\" und im Kampf (%d Prozent Gesundheit verbleibend), Alarmsound ausgelöst.  Entferne deine \"AFK\"-Markierung oder deaktiviere diese Alarmierung unter \"Sonstige Funktionen\", falls du nicht \"AFK\" bist."
 
 DBM_CORE_COMBAT_STARTED_AI_TIMER	= "Meine CPU ist ein neuronaler Prozessor, ein lernender Computer. (Dieser Kampf wird die neuen KI-Funktionen zur Erzeugung von Timernäherungen verwenden.)"
 
@@ -154,6 +156,7 @@ DBM_CORE_VERSIONCHECK_OUTDATED		= "Folgende %d Spieler haben veraltete DBM Versi
 DBM_CORE_YOUR_VERSION_OUTDATED      = "Deine Version von Deadly Boss Mods ist veraltet! Bitte besuche http://www.deadlybossmods.com um die neueste Version herunterzuladen."
 DBM_CORE_VOICE_PACK_OUTDATED		= "In deinem DBM Sprachpack fehlen möglicherweise Sounds, die von dieser Version von DBM unterstützt werden. Einige Spezialwarnungssounds werden nicht unterdrückt für gesprochene Alarme, die von deiner Sprachpackversion nicht unterstützt werden. Bitte lade dir eine neuere Version des Spachpacks herunter oder kontaktiere den Autor des Sprachpacks für ein Update, welches die fehlenden Sounddateien enthält."
 DBM_CORE_VOICE_MISSING				= "Du hast einen DBM Sprachpack ausgewählt, der nicht gefunden werden konnte. Deine Auswahl wurde auf 'Kein Sprachpack' zurückgesetzt. Bitte stelle sicher, dass der Sprachpack korrekt installiert und in der Addon-Liste aktiviert wurde, falls dies ein Fehler ist."
+DBM_CORE_VOICE_DISABLED				= "Du hast derzeit mindestens einen DBM Sprachpack installiert, aber keinen aktiviert. Falls du einen Sprachpack nutzen möchtest, dann wähle ihn unter \"Gesprochene Warnungen\" aus. Ansonsten kannst du die ungenutzten Sprachpacks deinstallieren, um diese Meldung zu unterdrücken."
 DBM_CORE_VOICE_COUNT_MISSING		= "Für die Countdown-Stimme %d ist ein Sprach-/Zählpack ausgewählt, der nicht gefunden werden konnte. Die Stimme wurde auf die Standardeinstellung zurückgesetzt."
 --DBM_BIG_WIGS
 
@@ -241,6 +244,9 @@ DBM_ERROR_NO_PERMISSION				= "Du hast nicht die benötigte Berechtigung für die
 
 DBM_CORE_BOSSHEALTH_HIDE_FRAME		= "Verstecken"
 
+--Common Locals
+DBM_NEXT							= "Nächste %s"
+DBM_COOLDOWN						= "%s CD"
 DBM_CORE_UNKNOWN					= "unbekannt"
 DBM_CORE_LEFT						= "Links"
 DBM_CORE_RIGHT						= "Rechts"
@@ -248,13 +254,19 @@ DBM_CORE_BACK						= "Hinten"
 DBM_CORE_MIDDLE						= "Mitte"
 DBM_CORE_FRONT						= "Vorne"
 DBM_CORE_INTERMISSION				= "Übergang"
+DBM_CORE_ORB						= "Kugel"
+DBM_CHEST							= "Kiste"
+DBM_NO_DEBUFF						= "Kein %s"
+DBM_ALLY							= "Verbündeten"
+DBM_ADDS							= "Adds"
+--Common Locals end
 
 DBM_CORE_BREAK_USAGE				= "Ein Pause-Timer kann nicht länger als 60 Minuten sein. Beachte bitte, dass für Pausen-Timer die Zeit in Minuten (und nicht in Sekunden) anzugeben ist."
 DBM_CORE_BREAK_START				= "Pause startet jetzt -- du hast %s! (gesendet von: %s)"
 DBM_CORE_BREAK_MIN					= "Pause endet in %s Minute(n)!"
 DBM_CORE_BREAK_SEC					= "Pause endet in %s Sekunden!"
 DBM_CORE_TIMER_BREAK				= "Pause!"
-DBM_CORE_ANNOUNCE_BREAK_OVER		= "Pause ist vorbei"
+DBM_CORE_ANNOUNCE_BREAK_OVER		= "Pause ist vorbei (seit %s Uhr)"
 
 DBM_CORE_TIMER_PULL					= "Pull in"
 DBM_CORE_ANNOUNCE_PULL				= "Pull in %d Sekunden. (gesendet von: %s)"
@@ -331,6 +343,7 @@ DBM_CORE_AUTO_SPEC_WARN_TEXTS.count				= "%s! (%%s)"
 DBM_CORE_AUTO_SPEC_WARN_TEXTS.stack				= "%%d Stapel von %s auf dir"
 DBM_CORE_AUTO_SPEC_WARN_TEXTS.switch			= "%s - Ziel wechseln"
 DBM_CORE_AUTO_SPEC_WARN_TEXTS.switchcount		= "%s - Ziel wechseln (%%s)"
+DBM_CORE_AUTO_SPEC_WARN_TEXTS.Adds				= "Adds kommen - Ziel wechseln"
 
 -- Auto-generated Special Warning Localizations
 DBM_CORE_AUTO_SPEC_WARN_OPTIONS.spell 			= "Spezialwarnung für $spell:%s"
@@ -362,10 +375,12 @@ DBM_CORE_AUTO_SPEC_WARN_OPTIONS.count 			= "Spezialwarnung für $spell:%s"
 DBM_CORE_AUTO_SPEC_WARN_OPTIONS.stack 			= "Spezialwarnung bei >=%d Stapel von $spell:%s auf dir"
 DBM_CORE_AUTO_SPEC_WARN_OPTIONS.switch			= "Spezialwarnung für Zielwechsel auf $spell:%s"
 DBM_CORE_AUTO_SPEC_WARN_OPTIONS.switchcount		= "Spezialwarnung (mit Zählung) für Zielwechsel auf $spell:%s"
+DBM_CORE_AUTO_SPEC_WARN_OPTIONS.Adds			= "Spezialwarnung für Zielwechsel auf ankommende Adds"
 
 -- Auto-generated Timer Localizations
 DBM_CORE_AUTO_TIMER_TEXTS.target		= "%s: %%s"
 DBM_CORE_AUTO_TIMER_TEXTS.cast		= "%s"
+DBM_CORE_AUTO_TIMER_TEXTS.castsource	= "%s: %%s"
 DBM_CORE_AUTO_TIMER_TEXTS.active		= "%s endet"--Buff/Debuff/event on boss
 DBM_CORE_AUTO_TIMER_TEXTS.fades		= "%s schwindet"--Buff/Debuff on players
 DBM_CORE_AUTO_TIMER_TEXTS.ai			= "%s KI"
@@ -379,23 +394,26 @@ DBM_CORE_AUTO_TIMER_TEXTS.nextsource	= "Nächster %s: %%s"
 DBM_CORE_AUTO_TIMER_TEXTS.nextspecial	= "Nächste Spezialfähigkeit"
 DBM_CORE_AUTO_TIMER_TEXTS.achievement	= "%s"
 DBM_CORE_AUTO_TIMER_TEXTS.phase		= "Nächste Phase"
+DBM_CORE_AUTO_TIMER_TEXTS.adds		= "Nächste Adds"
 --DBM_CORE_AUTO_TIMER_TEXTS.roleplay
 
 DBM_CORE_AUTO_TIMER_OPTIONS.target		= "Dauer des Debuffs $spell:%s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.cast		= "Wirkzeit von $spell:%s anzeigen"
+DBM_CORE_AUTO_TIMER_OPTIONS.castsource	= "Wirkzeit von $spell:%s anzeigen (mit Quelle)"
 DBM_CORE_AUTO_TIMER_OPTIONS.active		= "Dauer von $spell:%s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.fades		= "Zeit bis $spell:%s von Spielern schwindet anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.ai			= "KI-Timer für die Abklingzeit von $spell:%s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.cd			= "Abklingzeit von $spell:%s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.cdcount		= "Abklingzeit von $spell:%s anzeigen"
-DBM_CORE_AUTO_TIMER_OPTIONS.cdsource	= "Abklingzeit von $spell:%s anzeigen"
+DBM_CORE_AUTO_TIMER_OPTIONS.cdsource	= "Abklingzeit von $spell:%s anzeigen (mit Quelle)"
 DBM_CORE_AUTO_TIMER_OPTIONS.cdspecial	= "Abklingzeit für Spezialfähigkeit anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.next		= "Zeit bis nächstes $spell:%s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.nextcount	= "Zeit bis nächstes $spell:%s anzeigen"
-DBM_CORE_AUTO_TIMER_OPTIONS.nextsource	= "Zeit bis nächstes $spell:%s anzeigen"
+DBM_CORE_AUTO_TIMER_OPTIONS.nextsource	= "Zeit bis nächstes $spell:%s anzeigen (mit Quelle)"
 DBM_CORE_AUTO_TIMER_OPTIONS.nextspecial	= "Zeige Zeit bis nächste Spezialfähigkeit"
 DBM_CORE_AUTO_TIMER_OPTIONS.achievement	= "Zeit für %s anzeigen"
 DBM_CORE_AUTO_TIMER_OPTIONS.phase		= "Zeige Zeit bis nächste Phase"
+DBM_CORE_AUTO_TIMER_OPTIONS.adds		= "Zeige Zeit bis Adds erscheinen"
 DBM_CORE_AUTO_TIMER_OPTIONS.roleplay	= "Dauer des Rollenspiels anzeigen"
 
 
@@ -406,6 +424,7 @@ DBM_CORE_AUTO_ARROW_OPTION_TEXT2		= "Zeige DBM-Pfeil zum Weggehen vom von $spell
 DBM_CORE_AUTO_ARROW_OPTION_TEXT3		= "Zeige DBM-Pfeil zum Hingehen zum richtigen Ort für $spell:%s"
 DBM_CORE_AUTO_VOICE_OPTION_TEXT			= "Spiele gesprochene Warnungen für $spell:%s"
 DBM_CORE_AUTO_VOICE2_OPTION_TEXT		= "Spiele gesprochene Warnungen für Phasenwechsel"
+DBM_CORE_AUTO_VOICE3_OPTION_TEXT		= "Spiele gesprochene Warnungen für ankommende Adds"
 DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT		= "Spiele akustischen Countdown bis $spell:%s gewirkt wird"
 DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT2	= "Spiele akustischen Countdown bis $spell:%s schwindet"
 DBM_CORE_AUTO_COUNTOUT_OPTION_TEXT		= "Zähle akustisch die Dauer von $spell:%s"
@@ -421,8 +440,10 @@ DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.count	= "%s auf " .. UnitName("player") .. "! (
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.fade	= "%s endet in %%d"
 DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT.position = "%s %%s auf {rt%%d}"..UnitName("player").."{rt%%d}"
 
-DBM_CORE_AUTO_HUD_OPTION_TEXT			= "Zeige HudMap für $spell:%s"
-DBM_CORE_AUTO_HUD_OPTION_TEXT_MULTI		= "Zeige HudMap für diverse Mechaniken"
+--DBM_CORE_AUTO_YELL_CUSTOM_POSITION
+DBM_CORE_AUTO_HUD_OPTION_TEXT			= "Zeige HudMap für $spell:%s (außer Betrieb)"
+DBM_CORE_AUTO_HUD_OPTION_TEXT_MULTI		= "Zeige HudMap für diverse Mechaniken (außer Betrieb)"
+DBM_CORE_AUTO_NAMEPLATE_OPTION_TEXT		= "Zeige Namensplakettenaura für $spell:%s"
 DBM_CORE_AUTO_RANGE_OPTION_TEXT			= "Zeige Abstandsfenster (%sm) für $spell:%s"
 DBM_CORE_AUTO_RANGE_OPTION_TEXT_SHORT	= "Zeige Abstandsfenster (%sm)"
 DBM_CORE_AUTO_RRANGE_OPTION_TEXT		= "Zeige inverses Abstandsfenster (%sm) für $spell:%s"
@@ -467,7 +488,7 @@ DBM_ARROW_ERROR_USAGE	= {
 DBM_SPEED_KILL_TIMER_TEXT	= "Rekordzeit"
 DBM_SPEED_CLEAR_TIMER_TEXT	= "Abschlussbestzeit"
 DBM_COMBAT_RES_TIMER_TEXT	= "Kampfbelebung +"
-DBM_CORE_TIMER_RESPAWN		= "Wiedererscheinen"
+DBM_CORE_TIMER_RESPAWN		= "%s Wiedererscheinen"
 
 
 DBM_REQ_INSTANCE_ID_PERMISSION		= "%s möchte deine aktuellen Instanzsperren (IDs) einsehen.\n Möchtest Du diese Informationen an %s senden? Dieser Spieler wird in der Lage sein, diese Informationen während deiner aktuellen Sitzung abzufragen (also bis du dich neu einloggst)."

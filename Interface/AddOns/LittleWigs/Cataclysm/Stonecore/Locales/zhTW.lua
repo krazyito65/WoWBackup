@@ -6,5 +6,4 @@ L["burrow_message"] = "寇伯拉斯鑽地"
 L["burrow_warning"] = "5秒內鑽地！"
 L["emerge_message"] = "寇伯拉斯浮現！"
 L["emerge_warning"] = "5秒內浮現！"
-
 end

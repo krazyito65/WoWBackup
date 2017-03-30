@@ -1,3 +1,20 @@
+v3.6.25
+*Added missing bonusId.
+
+v3.6.24
+*Fixed issue related to bonusIds.
+
+v3.6.23
+*Fixed issue with missing bonusIds.
+
+v3.6.22
+*Fixed issue with missing bonusIds.
+*Fixed issue with old item information in patch 7.1.5.
+*Made some changes required by new Crafting code for Gathering.
+
+v3.6.21
+*Added missing bonus ids
+
 v3.6.20
 *Fixed bug with using chest inventory type Shopping search filters.
 

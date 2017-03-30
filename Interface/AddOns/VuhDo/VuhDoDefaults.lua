@@ -110,10 +110,8 @@ end
 
 
 local VUHDO_DEFAULT_MODELS = {
-	{ VUHDO_ID_GROUP_1, VUHDO_ID_GROUP_2, VUHDO_ID_GROUP_3, VUHDO_ID_GROUP_4, VUHDO_ID_GROUP_5, VUHDO_ID_GROUP_6, VUHDO_ID_GROUP_7, VUHDO_ID_GROUP_8 },
-	{ VUHDO_ID_PETS },
-	{ VUHDO_ID_PRIVATE_TANKS, VUHDO_ID_MAINTANKS }, 
-	{ VUHDO_ID_BOSSES },
+	{ VUHDO_ID_GROUP_1, VUHDO_ID_GROUP_2, VUHDO_ID_GROUP_3, VUHDO_ID_GROUP_4, VUHDO_ID_GROUP_5, VUHDO_ID_GROUP_6, VUHDO_ID_GROUP_7, VUHDO_ID_GROUP_8, VUHDO_ID_PETS },
+	{ VUHDO_ID_PRIVATE_TANKS, VUHDO_ID_BOSSES }, 
 };
 
 
@@ -460,6 +458,50 @@ end
 
 
 --
+local function VUHDO_spellTraceAddDefaultSettings(aSpellName)
+
+	if (VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"] == nil) then
+		VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"] = { };
+	end
+
+	if (VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"][aSpellName] == nil) then
+		VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"][aSpellName] = {
+			["isMine"] = VUHDO_CONFIG["SPELL_TRACE"]["isMine"],
+			["isOthers"] = VUHDO_CONFIG["SPELL_TRACE"]["isOthers"],
+			["duration"] = VUHDO_CONFIG["SPELL_TRACE"]["duration"],
+		}
+	end
+
+end
+
+
+
+--
+local function VUHDO_addSpellTraceSpellIds(aVersion, ...)
+
+	if ((VUHDO_CONFIG["SPELL_TRACE"].version or 0) < aVersion) then
+		VUHDO_CONFIG["SPELL_TRACE"].version = aVersion;
+
+		local tArg;
+
+		for tCnt = 1, select("#", ...) do
+			tArg = select(tCnt, ...);
+
+			if (type(tArg) == "number") then
+				-- make sure the spell ID is still added as a string
+				-- otherwise getKeyFromValue look-ups w/ spell ID string fail later
+				tArg = tostring(tArg);
+			end
+
+			VUHDO_tableUniqueAdd(VUHDO_CONFIG["SPELL_TRACE"]["STORED"], tArg);
+		end
+	end
+
+end
+
+
+
+--
 local VUHDO_DEFAULT_CONFIG = {
 	["VERSION"] = 4,
 
@@ -570,6 +612,15 @@ local VUHDO_DEFAULT_CONFIG = {
 		},
 	},
 
+	["SPELL_TRACE"] = {
+		["isMine"] = true,
+		["isOthers"] = false,
+		["duration"] = 2,
+		["showTrailOfLight"] = false,
+		["SELECTED"] = "",
+		["STORED"] = { },
+	},
+
 	["THREAT"] = {
 		["AGGRO_REFRESH_MS"] = 300,
 		["AGGRO_TEXT_LEFT"] = ">>",
@@ -675,6 +726,8 @@ local VUHDO_DEFAULT_CONFIG = {
 	["IS_USE_BUTTON_FACADE"] = false,
 	["IS_SHARE"] = true,
 	["IS_READY_CHECK_DISABLED"] = false,
+
+	["SHOW_SPELL_TRACE"] = false,
 };
 
 
@@ -702,6 +755,14 @@ local VUHDO_DEFAULT_CU_DE_STORED_SETTINGS = {
 --		["useBackground"] = true,
 --		["useOpacity"] = true,
 --	},
+};
+
+
+
+local VUHDO_DEFAULT_SPELL_TRACE_STORED_SETTINGS = {
+	["isMine"] = true,
+	["isOthers"] = false,
+	["duration"] = 2,
 };
 
 
@@ -1394,6 +1455,70 @@ function VUHDO_loadDefaultConfig()
 		228519 -- Anchor Slam
 	);
 
+	-- 7.1 - Legion - Trial of Valor (part 2)
+	VUHDO_addCustomSpellIds(33,
+		-- [[ Trial of Valor ]]
+		-- Odyn
+		228918, -- Stormforged Spear
+		228914, -- Stormforged Spear
+		228932, -- Stormforged Spear
+		227811, -- Raging Tempest
+		-- Guarm
+		228253, -- Shadow Lick
+		-- Helya
+		232488  -- Dark Hatred
+	);
+
+	-- 7.1.5 - Legion - Nighthold
+	VUHDO_addCustomSpellIds(34,
+		-- [[ Nighthold ]]
+		-- Skorpyron
+		204766, -- Energy Surge
+		211659, -- Arcane Tether
+		-- Chronomatic Anomaly
+		206607, -- Chronometric Particles
+		206609, -- Time Release
+		206615, -- Time Bomb
+		-- Trilliax
+		-- Spellblade Aluriel
+		212587, -- Mark of Frost
+		-- Tichondrius
+		206480, -- Carrion Plague
+		212795, -- Brand of Argus
+		208230, -- Feast of Blood
+		216024, -- Volatile Wound
+		216040, -- Burning Soul
+		-- Krosus
+		-- High Botanist Tel'arn
+		218502, -- Recursive Strikes
+		219049, -- Toxic Spores
+		218424, -- Parasitic Fetter
+		-- Star Augur Etraeus
+		206585, -- Absolute Zero
+		206388, -- Felburst
+		205649, -- Fel Ejection
+		206965, -- Voidburst
+		207143, -- Void Ejection
+		-- Grand Magistrix Elisande
+		-- Gul'dan
+		212568, -- Drain
+		206883, -- Soul Vortex
+		206222, -- Bonds of Fel
+		206221, -- Empowered Bonds of Fel
+		208802  -- Soul Corrosion
+	);
+
+	-- 7.1.5 - Legion - Nighthold (part 2)
+	VUHDO_addCustomSpellIds(35,
+		-- [[ Nighthold ]]
+		-- Chronomatic Anomaly
+		219964, -- Time Release Green
+		219965, -- Time Release Yellow
+		219966  -- Time Release Red
+		-- Trilliax
+		-- Grand Magistrix Elisande
+	);
+
 	local debuffRemovalList = {};
 
 	for tIndex, tName in pairs(VUHDO_CONFIG["CUSTOM_DEBUFF"]["STORED"]) do
@@ -1419,6 +1544,26 @@ function VUHDO_loadDefaultConfig()
 		VUHDO_CONFIG["CUSTOM_DEBUFF"]["STORED"][tIndex] = nil;
 	end
 
+	-- add default spells to track with spell trace
+	VUHDO_addSpellTraceSpellIds(1, 
+		-- Shaman
+		1064,   -- Chain Heal
+		-- Priest
+		34861,  -- Holy Word: Sanctify
+		596,    -- Prayer of Healing
+		194509  -- Power Word: Radiance
+	);
+
+	for tIndex, tName in pairs(VUHDO_CONFIG["SPELL_TRACE"]["STORED"]) do
+		VUHDO_spellTraceAddDefaultSettings(tName);
+
+		VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"][tName] = VUHDO_ensureSanity(
+			"SPELL_TRACE.STORED_SETTINGS",
+			VUHDO_CONFIG["SPELL_TRACE"]["STORED_SETTINGS"][tName],
+			VUHDO_DEFAULT_SPELL_TRACE_STORED_SETTINGS
+		);
+	end
+
 	if (VUHDO_POWER_TYPE_COLORS == nil) then
 		VUHDO_POWER_TYPE_COLORS = VUHDO_decompressOrCopy(VUHDO_DEFAULT_POWER_TYPE_COLORS);
 	end
@@ -1441,8 +1586,8 @@ local VUHDO_DEFAULT_PANEL_SETUP = {
 	},
 
 	["HOTS"] = {
-		["radioValue"] = 20,
-		["iconRadioValue"] = 2,
+		["radioValue"] = 13,
+		["iconRadioValue"] = 1,
 		["stacksRadioValue"] = 2,
 
 		["TIMER_TEXT"] = {
@@ -1457,7 +1602,7 @@ local VUHDO_DEFAULT_PANEL_SETUP = {
 		},
 
 		["COUNTER_TEXT"] = {
-			["ANCHOR"] = "TOPLEFT",
+			["ANCHOR"] = "TOP",
 			["X_ADJUST"] = -25,
 			["Y_ADJUST"] = 0,
 			["SCALE"] = 66,
@@ -1671,14 +1816,14 @@ local VUHDO_DEFAULT_PANEL_SETUP = {
 --
 local VUHDO_DEFAULT_PER_PANEL_SETUP = {
 	["HOTS"] = {
-		["size"] = 76,
+		["size"] = 40,
 	},
 	["MODEL"] = {
 		["ordering"] = VUHDO_ORDERING_STRICT,
 		["sort"] = VUHDO_SORT_RAID_UNITID,
 		["isReverse"] = false,
 	},
-
+--[[
 	["POSITION"] = {
 		["x"] = 100,
 		["y"] = 668,
@@ -1689,6 +1834,7 @@ local VUHDO_DEFAULT_PER_PANEL_SETUP = {
 		["height"] = 200,
 		["scale"] = 1,
 	};
+]]--
 
 	["SCALING"] = {
 		["columnSpacing"] = 5,
@@ -1697,8 +1843,8 @@ local VUHDO_DEFAULT_PER_PANEL_SETUP = {
 		["borderGapX"] = 5,
 		["borderGapY"] = 5,
 
-		["barWidth"] = 75,
-		["barHeight"] = 28,
+		["barWidth"] = 80,
+		["barHeight"] = 40,
 
 		["showHeaders"] = true,
 		["headerHeight"] = 12,
@@ -1709,8 +1855,8 @@ local VUHDO_DEFAULT_PER_PANEL_SETUP = {
 		["sideLeftWidth"] = 6,
 		["sideRightWidth"] = 6,
 
-		["maxColumnsWhenStructured"] = 8,
-		["maxRowsWhenLoose"] = 6,
+		["maxColumnsWhenStructured"] = 10,
+		["maxRowsWhenLoose"] = 5,
 		["ommitEmptyWhenStructured"] = true,
 		["isPlayerOnTop"] = true,
 
@@ -1749,7 +1895,7 @@ local VUHDO_DEFAULT_PER_PANEL_SETUP = {
 		["showClass"] = false,
 		["showTags"] = true,
 		["showPetOwners"] = true,
-		["position"] = "BOTTOMRIGHT+BOTTOMRIGHT",
+		["position"] = "CENTER+CENTER",
 		["xAdjust"] = 0.000001,
 		["yAdjust"] = 0.000001,
 	},
@@ -1848,7 +1994,6 @@ function VUHDO_loadDefaultPanelSetup()
 			tAktPanel["MODEL"]["groups"] = VUHDO_DEFAULT_MODELS[tPanelNum];
 
 			if VUHDO_DEFAULT_MODELS[tPanelNum] and VUHDO_ID_PRIVATE_TANKS == VUHDO_DEFAULT_MODELS[tPanelNum][1] then
-				tAktPanel["SCALING"]["showTarget"] = true;
 				tAktPanel["SCALING"]["ommitEmptyWhenStructured"] = false;
 			end
 
@@ -1867,10 +2012,32 @@ function VUHDO_loadDefaultPanelSetup()
 	end
 
 	for tPanelNum = 1, 10 do -- VUHDO_MAX_PANELS
-		if not VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] then
+		if not VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] and tPanelNum == 1 then
 			VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] = {
-				["x"] = 100 + 30 * tPanelNum,
-				["y"] = 668 - 30 * tPanelNum,
+				["x"] = 130,
+				["y"] = 650,
+				["relativePoint"] = "BOTTOMLEFT",
+				["orientation"] = "TOPLEFT",
+				["growth"] = "TOPLEFT",
+				["width"] = 200,
+				["height"] = 200,
+				["scale"] = 1,
+			};
+		elseif not VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] and tPanelNum == 2 then
+			VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] = {
+				["x"] = 130,
+				["y"] = 885,
+				["relativePoint"] = "BOTTOMLEFT",
+				["orientation"] = "TOPLEFT",
+				["growth"] = "TOPLEFT",
+				["width"] = 200,
+				["height"] = 200,
+				["scale"] = 1,
+			};
+		elseif not VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] then
+			VUHDO_PANEL_SETUP[tPanelNum]["POSITION"] = {
+				["x"] = 130 + 75 * tPanelNum,
+				["y"] = 650 - 75 * tPanelNum,
 				["relativePoint"] = "BOTTOMLEFT",
 				["orientation"] = "TOPLEFT",
 				["growth"] = "TOPLEFT",
@@ -1903,8 +2070,8 @@ local VUHDO_DEFAULT_BUFF_CONFIG = {
 	["HIDE_CHARGES"] = false,
 	["REFRESH_SECS"] = 1,
 	["POSITION"] = {
-		["x"] = 100,
-		["y"] = -100,
+		["x"] = 130,
+		["y"] = -130,
 		["point"] = "TOPLEFT",
 		["relativePoint"] = "TOPLEFT",
 	},

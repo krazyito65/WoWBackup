@@ -1,4 +1,4 @@
-﻿local addonName = ...
+local addonName = ...
 local addon = _G[addonName]
 
 local function _SetIcon(frame, icon)
@@ -8,14 +8,13 @@ local function _SetIcon(frame, icon)
 end
 
 local function _SetIconSize(frame, width, height)
-	local icon = frame.Icon
-
+	-- resize the frame, the icon will be resized along with it due to setAllPoints="true"
 	if width then
-		icon:SetWidth(width)
+		frame:SetWidth(width)
 	end
 	
 	if height then
-		icon:SetHeight(height)
+		frame:SetHeight(height)
 	end
 end
 

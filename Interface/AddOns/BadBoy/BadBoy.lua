@@ -1,750 +1,85 @@
 
--- GLOBALS: BADBOY_BLACKLIST, BADBOY_OPTIONS, BadBoyLog, ChatFrame1, GetTime, print, ReportPlayer, CalendarGetDate, SetCVar
--- GLOBALS: GameTooltip, C_Timer, IsEncounterInProgress, GameTooltip_Hide
-local L
-do
-	local _
-	_, L = ...
-end
+-- GLOBALS: BADBOY_BLACKLIST, BADBOY_OPTIONS, BadBoyLog, ChatFrame1, GetTime, print, ReportPlayer, CalendarGetDate
+-- GLOBALS: GameTooltip, C_Timer, IsEncounterInProgress, IsInInstance, GameTooltip_Hide
+local _, L = ...
 
---These entries add +1 point
-local commonList = {
-	--English
-	"bonus",
-	"buy",
-	"cheap",
-	"code",
-	"coupon",
-	"customer",
-	"deliver",
-	"discount",
-	"express",
-	"g[0o]ld",
-	"lowest",
-	"mount",
-	"order",
-	"powerle?ve?l",
-	"price",
-	"promoti[on][gn]",
-	"reduced",
-	"rocket",
-	"sa[fl]e",
-	"server",
-	"service",
-	"stock",
-	"store",
-	"trusted",
-	"well?come",
-	"%d+k[\\/=]%d+euro",
-	"%d+%$[\\/=]%d+g",
-
-	--French
-	"livraison", --delivery
-	"moinscher", --least expensive
-	"prix", --price
-	"commande", --order
-
-	--German
-	"billigster", --cheapest
-	"lieferung", --delivery
-	"preis", --price
-	"willkommen", --welcome
-
-	--Spanish
-	"barato", --cheap
-	"gratuito", --free
-	"rapid[oe]", --fast [[ esES:rapido / frFR:rapide ]]
-	"seguro", --safe/secure
-	"servicio", --service
-}
-
---These entries add +1 point to the phishing count
-local phishingList = {
-	--English
-	"account",
-	"blizz",
-	"claim",
-	"congratulations",
-	"free",
-	"gamemaster",
-	"gift",
-	"investigat", --investigate/investigation
-	"launch",
-	"log[io]n",
-	"luckyplayer",
-	"mount",
-	"pleasevisit",
-	"receive",
-	"service",
-	"surprise",
-	"suspe[cn][td]", --suspect/suspend
-	"system",
-	"validate",
-
-	--German
-	"berechtigt", --entitled
-	"erhalten", --get/receive
-	"deaktiviert", --deactivated
-	"konto", --acount
-	"kostenlos", --free
-	"qualifiziert", --qualified
-}
-
-local boostingList = {
-	"paypal",
-	"skype",
-	"b[o0][o0]st",
-	"arena",
-	"rbg",
-	"gladiator",
-	"service",
-	"cheap",
-	"fast",
-	"safe",
-	"price",
-	"account",
-	"rating",
-	"legal",
-	"guarantee",
-	"m[o0]unt",
-	"sale",
-	"season",
-	"professional",
-	"customer",
-	"discount",
-	"selfplay",
-	"coaching",
-	"mythic",
-	"leveling",
-	"accshar[ei]",
-	"secure",
-	"delivery",
-	"store",
-	"pri?est[ie]ge",
-	"quality",
-	"piloted",
-}
-local boostingWhiteList = {
-	"members",
-	"guild",
-	"social",
-	"|hspell",
-	"%d+k[/\\]dungeon",
-	"onlyacceptinggold",
-	"goldonly",
-	"goldprices",
-	"forgold",
-	"tonight",
-	"gametime",
-	"servertime",
-}
-
---These entries remove -2 points
-local whiteList = {
-	"%.battle%.net/",
-	"recrui?t",
-	"dkp",
-	"looking",
-	"lf[gm]",
-	"|cff",
-	"cardofomen",
-	"raid",
-	"scam",
-	"roleplay",
-	"physical",
-	"appl[iy]", --apply/application
-	"enjin%.com",
-	"guildlaunch%.com",
-	"gamerlaunch%.com",
-	"corplaunch%.com",
-	"wowlaunch%.com",
-	"wowstead%.com",
-	"guildwork.com",
-	"guildportal%.com",
-	"guildomatic%.com",
-	"guildhosting.org",
-	"%.wix%.com",
-	"shivtr%.com",
-	"own3d%.tv",
-	"ustream%.tv",
-	"twitch%.tv",
-	"social",
-	"fortunecard",
-	"house",
-	"join",
-	"community",
-	"guild",
-	"progres",
-	"transmor?g",
-	"arena",
-	"boost",
-	"players",
-	"portal",
-	"town",
-	"vialofthe",
-	"synonym",
-	"[235]v[235]",
-	"sucht", --de
-	"gilde", --de
-	"rekryt", --se
-	"soker", --se
-	"kilta", --fi
-	"etsii", --fi
-	"sosyal", --tr
-	"дкп", --ru, dkp
-	"peкpуt", --ru, recruit
-	"нoвoбpaн", --ru, recruits
-	"лфг", --ru, lfg
-	"peйд", --ru, raid
-}
-
---Any entry here will instantly report/block
-local instantReportList = {
-	--[[  Casino  ]]--
-	"%d+.*d[ou][ub]ble.*%d+.*trip", --10 minimum 400 max\roll\61-97 double, 98-100 triple, come roll,
-	"casino.*%d+x2.*%d+x3", --{star} CASINO {star} roll 64-99x2 your wager roll 100x3 your wager min bet 50g max 10k will show gold 100% legit (no inbetween rolls plz){diamond} good luck {diamond}
-	"casino.*%d+.*double.*%d+.*tripp?le", --The Golden Casino is offering 60+ Doubles, and 80+ Tripples!
-	"casino.*whisper.*info", --<RollReno's Casino> <Whisper for more information!>
-	"d[ou][ub]ble.*%d+.*tripp?le", --come too the Free Roller  gaming house!  and have ur luck of winning gold! :) pst me for invite:)  double is  62-96 97-100 tripple we also play blackjack---- u win double if you beat the host in blackjack
-	"casino.*bet.*%d+", --Casino time. You give me your bet, Than You roll from 1-11 unlimited times.Your rolls add up. If you go over 21 you lose.You can stop before 21.When you stop I do the same, and if your closer to 21 than me than you get back 2 times your bet
-	"roll.*%d+.*roll.*%d+.*bet", --Roll 63+ x2 , Roll 100 x3, Roll 1 x4 NO MAX BETS
-	"casino.*roll.*double", --CASINO IS BACK IN TOWN COME PAY ME ROLL +65 AND GET DOUBLE
-	"casino.*roll.*%d+.*roll.*%d+", --Casino is back in town !! Roll over 65 + and get your gold back 2X !!  Roll 100 and get your gold back 3X !!
-	"double.*tripp?le.*casino", --Hey there wanna double your money in casino? or triple or even quad it? give me a whisp if you want to join my casino :)
-	"casino.*legit.*safe.*casino", --LEGIT CASINO IN TRADE DESTRICT! /w * for a legit and safe casino!
-	"luck.*roll.*%d+k.*minutes.*pst", --test your luck. all you gotta do is roll. make 1-100k+ in minutes. pst for details.
-	"roll.*win.*double.*min.*max", --Game 2 Roll Wars. Trade wager then roll. We both rol. Highest Roll wins. If you win ill double your wager 500g Minimum 5k Maximum
-	"casino.*/w.*%d+.*roll", --CASINO /W ME 50/50 ROLL
-
-	--[[  Runescape Trading  ]]--
-	--WTB RS gold paying WoW GOLD
-	--WTT RS3 Gold to Wow Gold (i want wow gold) pm for info
-	"wt[bst]rs3?gold.*wowgold", --WTB rs gold trading wow gold PST
-	"wt[bs]wowgold.*rsgold", --WTS Wow gold for rs gold
-	"wt[bs]wowgold.*rscoint?s", --WTS Wow gold for rs coints
-	--WTS RUNESCAPE GOLD !~!~!~ PST
-	--WTB RUNESCAPE GOLD WITH WOW GOLD PST
-	"wt[bs]runescapegold", --WTB Runescape Gold, Trading WOW Gold, PST -- I will trade first.
-	"exchangingrsgold", --Exchanging RS gold for WoW gold. I have 400m PST
-	--WTS level 25 guild with 80k gold for runescape gold
-	"goldforrunescapegold", --Exchanging WoW gold for Runescape gold pst me better price for higher amount.
-	--Buying runescape account! :D Add me on skype "*"
-	"buying?runescape[ag]", --buyin runescape g
-	"wt[bs]runescapeaccount", --WTB runescape accounts ( pure only ) or money! i pay with wow gold. GOT 170k gold atm.
-	"wt[bs]runescapepure", --WTB runescape pure ( STR PURE IS A $$ PAYING EXTRA FOR STR PURE )!
-	--WTB big amount of runescape money. 2mil = 1k gold. ONLY LEGIT PEOPLE.
-	"wt[bs].*runescapemoney.*%d+k", --WTB runescape money. 3mil = 1k in wow! easy money making.
-	"^wt[bs]rsaccount", --wts rs acount 10k .... lvl 95 with items for over 15 mil with 6 year old holiday
-	"^wt[bs]%d+rsaccount", --WTS 137 RS ACCOUNT /W ME
-	--WTS awesome rs account with 99's /w me
-	--WTS an awesome rs account /w me details
-	"^wt[bs]a?n?awesomersaccount", --wts awesome rs account /w me
-	"runescapegoldforwowgold", --Selling my runescape gold for wow gold
-	"^buyingrs3stuff", --Buying RS3 stuff for gold
-
-	--[[ CS:GO ]]--
-	"^wt[bst]somecsgoskin", --WTB some CSGO skins and sell some /w for more info
-	--WTS CS:GO Skins
-	--WTB CS.GO SKINS/KEYS FOR GOLD!
-	"^wt[bst]cs%.?goskin", --WTB CS GO skins /w for more infomation
-	"^wt[bst]csgokey", --{rt1} WTB CS:GO KEYS & SKINS FOR GOLD {rt1}
-	"^wt[bst]csgoacc", --WTS CS GO ACC UNRANK
-	"^wt[bst]csgokni[fv]e", --WTSCS GO knife M9 Bayonet Stained in (minimal wear) /w and give me offer
-	"^wt[bst]csgoitem", --WTB CS:GO Items for Gold! /W me your items!!
-	"^wt[bst]csgocase", --WTB Cs Go Case keys or a Knife .
-	"^wt[bst]anycsgoskin", --{rt1} WTB ANY CS:GO SKINS FOR WOW GOLD {rt1}
-	--{rt1}{rt8} Buying cs.g0 skins {rt8} {rt1}
-	"^buyingcs%.?g[0o]skin", --{rt1}{rt3} Buying CS:GO Skins & Keys for WoW Gold | Paying good  {rt3}{rt1}
-	"^buyingcheapcsgoskin", --Buying cheap CS:GO skins (1-5 eu each) I can go first!
-	"^buyingcsgokey", --{rt3}Buying Cs:Go Key's for {rt4}4k{rt4} Per key! Buying high amount! Whisper for more information!{rt3}
-	"^buyingcsgokni[fv]e", --Buying CS:GO Knives and Skins! Trusted trader with feedback! /w me for more info. Serious people only please.
-	"^sellingcsgoskin", --Selling CS:GO skins for wow gold!
-	"^sellingsomecsgocase", --Selling some CS:GO cases! PM ME!
-	"^sellingcsgocase", --Selling CS:GO cases! PM ME!
-	"^sellingcsgoitem", --{rt1} SELLING CS GO ITEMS FOR GOLD {rt1}
-	"^wt[bst]keysincsgo", --WTB Keys in CS:GO for 3k each!
-	"wanttobuy[/\\]sellcsgoitem", --Want to buy/sell CS:GO items whisper me for more information :)
-	"wanttosell[/\\]buycsgoitem", --Want to sell/buy CS:GO items for wow gold, whisper me for more information :)
-	"wowgoldforcsgokey", --{rt6} Want to trade WoW Gold for CS:GO Keys  Whisper me for more info!! / Swish till svenskar {rt6}
-	"^wt[bst]csgocamo", --WTS CS:GO CAMOS
-	"^wt[bst]cheapcsgoskin", --WTB CHEAP CS:GO SKINS /W ME !
-	"^wt[bst]csgocdkee?y", --WTB CS GO CD KEEY PAY GOLD AND GOOD WISP ME YOUR OFFER WTB CS GO KNIFE SKINS
-	"^tradingcsgo.*gold", --Trading Cs:GO Knife for Gold /w me for more information!!!
-	"^wt[bst]csgocheap", --WTB CS GO CHEAPS BELOW 5 EURO WITH WOW GOLD!
-	"^wt[bst]goldforcsgo", --WTS gold for cs:go knife, i will pay good if its  a good one, add me and /w if you are intrested
-	"^wt[bst]mywowgold.*csgoskin", --WTT: My WOW Gold for your CSGO Skins. Offer 3k per 1€ skin value. No selling, Just trading! /w me for a chat.
-	"^sellinggolds?forcsgo", --Selling golds for CS:GO skins !!
-
-	--[[ SC 2 ]]--
-	"^wtsstarcraft.*cdkey.*gold", --WTS Starcraft Heart of Swarm cd key for wow golds.
-
-	--[[  Dota 2 ]]--
-	"^sellingdota2", --Selling 2 Dota2 for wow gold! /W me
-	--wtt dota 2 keys w
-	--wts dota 2beta key 10k
-	"^wt[bst]dota2", --WTB Dota 2 hero/store items,/W me what you have
-	"^buyingdotaitems", --buying dota items w/Me i got  [Ethereal Soul-Trader] [Jade Panther] :)
-	"^buyingdota2", --buying dota 2 skins w/me
-	"^wt[bst]alldota2", --WTB ALL DOTA 2 SKINS W/ME <3
-
-	--[[  Steam  ]]--
-	"^wtssteamaccount", --WTS Steam account with 31 games (full valve pack+more) /w me with offers
-	"^sellingborderlands2", --Selling Borderlands 2 cd-key cheap for gold (I bought it twice by mistake. Can send pictures of both confirmations emails without the cd-keys, if you dont trust me)
-	"^wtssteamwalletcode", --WTS Steam wallet codes/CS GO skins /W
-
-	--[[  League of Legends  ]]--
-	"^wt[bs]lolacc$", --WTB LoL acc
-	"^wt[bs]%d?x?leagueoflegends?account", --WTS 2x League of Legend accounts for 1 price !
-	--WTT My LoL Account for WoW gold, Its a platiunum almost diamond ranked account atm on EUW if u want more information /w me
-	"^wt[bst]m?y?lolaccount", --WTS LOL ACCOUNT LEVEL 30 with 27 SKINS and 14k IP
-	"^sellingloleuw?acc.*info", --Selling LOL EUW acc pm for more info
-	"^wt[bs].*leagueoflegends.*points.*pay", --WTB 100 DOLLARS OF LEAGUE OF LEGENDS RIOT POINTS PST. YOU PAY WITH YOUR PHONE. PST PAYING A LOT.
-	"wts.*leagueoflegends.*acc.*info", --{rt1}wts golden{rt1} League of Legends{rt1} acc /w me for more info{rt1}
-	"sellingm?y?leagueoflegends", --Selling my league of legends account, 100 champs 40 skins 2-3 legendary 4 runepage, gold. /EUW /W
-	"^wt[bs]lolacc.*cheap", --WTS LOL ACC PLAT 4 1600 NORMAL WINS, EUW 40 SKINS, 106 CHAMPS  CHEAP!!
-	"^wt[bs]lolacc.*skins", --WTS LoL acc level 30 EUW name ** got about 50 skins /w me for info include 3200 RP!
-	"^wt[bst]mygold%d*leagueoflegends", --WTT My Gold 3 League of Legends account for some sick CS:GO skins! 116 Champions, 158 Skins, 6 rune pages. /w me for more info/skype!
-	"^sellingwowgoldforleagueoflegends", --SELLING WOW GOLD FOR LEAGUE OF LEGENDS RP! /W ME
-
-	--[[  Account Buy/Sell  ]]--
-	"selling.*accounts?forgold", --Selling Spotify,Netflix Accounts for gold!!! /w me
-	"wtsnonemergeacc.*lvl?%d+char", --!WTS none-merge acc(can get a lv80 char)./W me for more info!
-	--! WTS lvl 80 char.{all class}.Diablo3 g0ld /W me for more info !
-	--^{diamond}lv80 char all class./w me for more info if you WTB^
-	"lvl?%d+char%.?allclass.*info", --^{Square} WTS lvl 80 char all class ! /w me for more info{square}^
-	"lvl?%d+char.*fast.*g[o0]ld", --# WTS lvl 80 char .TCG mount.cheap fast D3 g0ld/w me for more #
-	"%d+lvloldaccounts?tosell", --80lvl old account to sell
-	"wtswowaccount.*epic", --y WTS WOW ACCOUNT 401 ITEM LEVEL ROGUES WITH FIRST STAGE LEGENDARY FULL CATA!! WITH 1X VIAL OF SANDS/CRIMSON DEATHCHARGER FULL EPIC GEMED 1X ROGUE 1 X WARRIOR PVP AIMED ADD SKYPE * AND I ALSO HAVE FULL HIERLOOM FOR EVER SINGLE CHARACTER A
-	"^wanttotradeaccount", --Want to trade account full cata rogue on * with full epic 50 agil gems(vial of the sands and crimson dk and warrior with 1 cata and mechanohog it is on * wt t for a class with full cata on * /w me!!!!!
-	"^wttacc.*epic.*mount.*/w", --WTT ACC MINE HAS FULL CATA+FULL EPIC GEMS  ROGUE WITH NICE MOUNTS WTT FOR AND ACC WITH FULL CATA  RESTO SHAMAN!! /W ME!!
-	"^wttacc?ount.*gear.*char", --WTT Acount Resto/Enha shaman / Resto / Balance druid / Prot warr / Mage / Paladin for just one full cata geared pvp character /w me with info
-	--WTS wow account 85human Rogue with LEGENDARIES + JC BS.  u pay with gold./w me for more info
-	"^wt[st]wowaccount", --WTT Wow account /w me for more info
-	"^wt[bs]mopcode", --WTS MoP Code /w me for info
-	"^wttaccountfor.*youget.*tier", --WTT Account for a 90 tier 1 ROGUE, you get 90mage(tier1)90druid (tier1) 85 priest, 85 rogue, 85 warrior /wme
-	--WTS ACCOUNT with 90 rogue, and 90 priest for gold /wme
-	--WTS Account with free lvl 80 And GAME  TIME!! /w me
-	"^wt[st]accountwith", --WTT ACCOUNT with 90 mage(TIER1) 90 Feral (TIER1) 85 priest, 85 warrior, 85 rogue for 90 ROGUE with TIER 1/wme
-	"^wt[bst]legionkey", --WTS Legion key for gold
-	"^wt[bst]legioncdkey", --WTS Legion CD-Key for gold!
-
-	--[[  Brazzers, yes, really...  ]]--
-	"sell.*brazzersaccount.*info", --Hey there! I'm here to sell you Brazzers account /w me for more info!
-	"^wtsbrazzersaccount", --WTS BRAZZERS ACCOUNT UNLIMITED TIME /W OFFER
-
-	--[[  Diablo 3  ]]--
-	"^wttrade%d+kgold.*diablo", --WT trade 6k gol;d for 300k in diablo 3. /w me
-	"^wttwowgold.*diablo", --WTT wow gold for diablo gold. /w if interested.
-	"^wtbd3forgold", --WTB D3 for gold!
-	--SELLING DIABLO 3 / 60 DAYS PREPAIDGAMECARD - PRICES IN DND!! CHEAP
-	"^sellingdiablo3", --Selling Diablo 3 CD Key.Fast & Smooth Deal.
-	"^sellingd3account", --Selling D3 account cheap /w for more !
-	"^wtscheapfastd3g", --*WTS cheap fast D3 G,/W for skype*
-	"^wt[bs]d3key", --WTs D3 key Wisp me for info and price!
-	"^wts.*%d+day.*diablo.*account", --WTS [Winged Guardian] [Heart of the Aspects] [Celestial Steed]Each 22k gc90days=30Kdiablo III Account for=70k
-	"tradediablo3?goldforwowgold", --anyone want to trade diablo gold for wow gold?
-	--SELLING 60 DAYS GAMECARD - VERY CHEAP - ALSO SELL DIABLO ! -SAFE
-	"^selling.*gamecard.*diablo", --SELLING 60 DAY GAMECARDS & DIABLO 3!!!!
-	"^wt[bs]d3account", --WTS D3 account /w for more !
-	"^wtsd3.*transfer.*item", --WTS D3/faction/race change server transfer and other items!
-	--WTS Diablo 3 code 30 K !!
-	--WTS Diablo 3 CD KEY
-	--WTB Diablo 3 key cheap
-	--WTB Diablo3 Gold for WoW Gold! /w me D3Gold per WoWGold!
-	"^wt[bs]diablo3", --WTB Diablo 3 Gold!
-	--WTB WOW GOLDS WITH D3 GOLDS ASAP
-	"^wt[bst]wowgold.*d3gold", --WTT Wow Gold For D3 Gold! /w me with your price!
-	--{rt1}{rt1}{rt1}WTT my WoW gold for your D3 gold. EU softcore. MSG.
-	"wowgoldfory?o?u?r?d3gold", --T> My WoW gold for D3 gold
-	--T> My WoW gold for Diablo 3 gold
-	--Trading My WoW gold for Diablo 3 gold
-	"wowgold.*fordiablo3?gold", --T> My WoW gold (15,000g) for Diablo 3 gold
-	"tradediablo3?gold.*wowgold", --LF someone that wants to trade diablo 3 gold for my wow gold
-	"^wt[bs]diablogold", --wtb diablo gold for wow gold!
-	"trading.*fordiablo3?gold", --TRADING LVL 25 GUILD FOR DIABLO GOLD!!!!!!!!!!!!!
-	"diablogoldforwowgold", --WTT my diablo gold for wow gold
-	--WTT D3 gold to WoW gold! /w me!
-	--WTT 270mil D3 gold to WoW gold! /w me!
-	"^wt[bst].*d3gold.*wowgold", --WTB d3 golds for wow golds !
-	"^wtt.*mygold.*diablo3gold", --WTT all my gold, 8783g for about 30m Diablo 3 gold, any takers?
-	"wowgoldforyourdiablo3?gold", --{rt1}Looking to trade my 10k wow gold for your diablo 3 gold, we can do in trades as low as 0.5k wow gold at a time for safety reasons{rt1}
-	"wts.*diablo3goldfor%d+", --wts 150 mill Diablo 3 gold for 50k
-
-	--[[ Items ]]--
-	"^wtscheapgold", --WTS cheap gold /w me for more info
-	"^wtscheapandfastgold", --WTS cheap and fast gold ( no chineese website) /w me for more info
-	"^wtbgold.*gametime", --WTB GOLD, OR TRADE GOLD FOR GAMETIME!!
-	"^wtbgold.*mount", --WTB Gold paying decent(also TCG pets,mounts)/w me!
-	"^wt[bs]gametime", --WTS {rt1} GAMETIME {rt1} {rt8} MoP Upgrade{rt8}
-	"^wt[bs]prepaidcard", --WTS prepaid card (30,60,90 days), mounts
-	"^wt[bs]gamecard", --WTB GAME CARD
-	"^wt[bs]gamecode", --wtb game codes
-	"^wt[bs]prepaidgamecard", --WTS *Pre-Paid Game Card 60 Days* - Can prove I've got loads in stock /w me offers
-	"^wt[bs]%d+day.*gamecard", --WTS 60 DAYS PREPAID GAMECARD
-	"^wt[bs]%d+month.*gametime", --WTS 2 Month(60Days) Gametime-Cards w/ me ! {rt1}
-	"^wt[bs][36]0days?prepaidgametime", --WTS 60day Prepaid Gametime  Card and WOD
-	"^wts%d+days?gametime", --wts 60 days gametime cde. and more stuff from blizzstore
-	"^wts%d+days?gamecard", --wts 60 days game card /w me
-	"^wts%d+kfor%d+euro", --WTS 950K FOR 35EURO(PayPal) /w me !
-
-	--[[  Misc  ]]--
-	"mythic.*price.*perfectway[%.,]one", --WTS Dungeons Mythic, Dungeons Heroic in Legion everyday!!! New prices [(Perfectway.one)]
-	"mount.*achiev.*raidboost[%.,]com", --Farewell Draenor! Mounts/Glories/Achievements. Hurry up to all WoD bounties on [Raidboost.com]
-	"best.*market.*gamebion", --◄Need help in HFC? We have a best offers on the market from various guilds and teams! For more info visit GAMEBION com►
-	"gear.*selfplay.*euro", --8/10 Mythic Dungeon-PL-Selfplay -90 euro 10/10 -PL- Selfplay -110 euro---Full Mythic Gear 840+ items in all slots -Selfplay--160 euro-
-	"skype.*website.*paypal", --Skype [RUSTAM.GARIEV] find me and I can link you website adress  If you can Pay -PayPal- we don't take what advance payment  you can pay in raid passing process
-	"service.*cyberstarlife%.ru", --Best prices and service at http://cyber-starlife.ru/ .PvE,PvP, Achievments,mounts etc with polite and friendly support!
-	"cyberstarlife%.ru.*skype", --Dont miss chance to get your Challange mode's WEAPON! Everything and more at http://cyber-starlife.ru/ or skype assortibg
-	"boost.*mount.*gold.*prestigewow", --Offering Honor and Prestige boosts : Unlock all PvP talents, 840-870 PvP gear, mounts, artifact power & appearance, golds and a lot more ! With [www.prestige-wow.com1]
-	"prestigewow.*cheap.*market", --[CONQUEST CAP] 27.000 Conquest + Full 710 Ilvl gear boosting on [prestige-wow.com]. CHEAPEST on the market, Selfplay available !
-	--WTS Felsteel Annihilator/Ironhoof Destoyer/Lootruns Mythic or Heroic/Challenge Mode/Nemesis quest and more. visit: b o o s t h i v e . e u
-	"heroic.*more.*boosthive[%.,]eu", --WTS Hellfire Citadel Mythic & Heroic/ Challenges / PVE services and much more.  b o o s t h i v e . e u
-	"rbg.*mount.*wins.*gear.*selfplay", --███WTS:RBG 40/75wins mounts [Vicious War Kodo] and  [Horn of the Vicious War Wolf]1-75wins,full honor gear,self play,Pst
-	"easyboost[%.,]com.*skype", --EASY-BOOST.COM | WE HELP WITH ANY PVP OR PVE ACHIEVMENTS, MOUNTS AND EVERYTHING! VISIT [EASY-BOOST.COM] OR CONTACT VIA SKYPE: EASY-BOOSTSUPPORT
-	--Get Grove Warden Mount(moose), Mythic Dungeons, Hellfire Citadell and other on http://boostinglive.com
-	"mount.*boostinglive[%.,]com", --Cheapest Grove Warden Mount(moose), Mythic Dungeons Hellfire Citadell and other on http://boostinglive.com
-	"power.*boostinglive[%.,]com", --►►Artifact Power Farming. Heroic/Mythic Dungeons boost. Leveling [http://boostinglive.com] ►►
-	"gift.*boostinglive[%.,]com", --Get the best gear in game, and receive a gift. All news on http://boostinglive.com
-	"price.*boostinglive[%.,]com", --Hello! You can check prices on our website http://boostinglive.com If you have any questions feel free to ask our live chat support!
-	--Arena Ratings 2200/2400/2700, selfplay, Big Conquest Cap, Honor gear, HFC normal/Herioc, /w me !
-	"arena.*2200.*selfplay.*conquest.*normal", --Arena Ratings 2200/2400/2700, selfplay, Conquest Cap, Coaching with pro, Honor gear, HFC normal/Herioc, /w me !
-	"helping.*arena.*selfplay.*challenge.*con[gq]uest", --Helping with Arena Rating, Selfplay, Challenge Modes, 100 wins, BIG conguest CAP! /w
-	"helping.*2200.*selfplay.*challenge.*con[gq]uest", --Helping with 1800/2000/2200/2400/2600! Selfplay, Challenge Modes, 100 wins,BIG CONQUEST POINTS CAP! /w
-	"info.*cubeboost[%.,]c", --Wanna more info?  -> http://cubeboost.com
-	"company.*dantum[%.,]gg", --We are a new boosting company DANTUM! We will help you with Arena, RBGS, PVE. Come visit our website [DANTUM.GG] for more information
-	"boost.*today.*boomboost[%.,]com", --Boost Arena and HFC Heroic, have spots today, also conquest cap/honor/levelng boom-boost.com!
-	"client.*info.*boomboost[%.,]com", --525+ clients was happy, more info here -> boom-boost.com
-	"pro.*boomboost[%.,]com", --Arena 2000/2400/Glad, Honor Gear, Leveling 90-100. Big cap with glads, Want to play with Pro? boom-boost,сoм
-	"raid.*heroic.*loot.*exping.*fast.*power.*info", --Emerald Raids Heroic/Noraml Masterloot/Personal loot Today , Exping 100-110 (fast 10 hours) Artefacts power, pm me for more info!
-	"battlechest.*token.*add.*telegram", --BattleChest 40T , Legion 140T , WoW Token 30T ,Tala 400T Har 1000 Ta ADD https://telegram.me/<snip>
-	"wts.*mount.*share.*cheap.*gold", --WTS all rare mounts ,include[Reins of the Time-Lost Proto-Drake]/[Reins of the Grey Riding Camel]},no acc share .also sell Cheaper wow gold !!!!./Pst
-	"selling.*mount.*pet.*pvp.*purchase", --Selling all rare mounts, TGC pets, all PvP services, and much more! We offer great savings for combo purchases! Pst!
-	"wts.*power.*levell?ing.*loot.*info", --WTS Artifact power and leveling, Mythic/Heroic Dungeons with additional loot,Fast leveling to 110!Write me for info.
-	"wts.*gear.*loot.*levell?ing.*info", --WTS 840+ ilvl gear, Mythic/Heroic Dungeons with additional loot! Fast leveling 100-110 in 9-12 hour! Write me for more info!
-	"wts.*loot.*raid.*hurry.*best.*write", --♥WTS Emerald Nightmare Heroic/Normal with all loot for you! Raids run everyday!♥Hurry get best equipment!♥Write me for info!♥
-
-	--[[  2016  ]]--
-	"titaniumbay.*extra", ---= TitaniumBay =- Get 10 % extra {rt2}! Fast and safe delivery!
-	"titaniumbay.*livraison", ---= TitaniumBay =- Obtenez 10% supplémentaire! Livraison rapide et sûr!
-	"titaniumbay.*obtenez", --TitaniumBay - Obtenez 40% plus d'or en 15 min! le plus fameux et valeureux de la ville!
-	"titaniumbay.*minut[eo]", --TitaniumBay - Erhalten Sie 40% mehr Gold in 15 Minuten! Das beste Angebot in der Stadt!
-	"titaniumbay.*gold", -- -= TitaniumBay =- Get up to 30% more gold compared to WoW Token
-	"titaniumbay.*gratis", ---= TiвtaniumBay =- Oferta Limitada >> Obtenga el 50% extra oro Gratis!
-	"boost.*mythic.*also.*10lvl.*key", --Boost 8\8 10\10 mythic(mythic+),also we can do 10lvl(i have key) key at once
-	--WTS [Keystone Conqueror] (2-10lvl) ►ŠELFPLĄY◄ Teâm Is Reâdy To Gø Right Nøw! ŠKYPĒ: FindGuys
-	"skype.*findguys", --Hello. Im sorry but I cant write here all prices. For all info and prices please add me in Skype: FindGuys
-	"mythic.*loot.*bestboost[%.,]c", --WTS: EN 7/7| Mythic+2-10 |LVL 100-110| Loot Run | Selfplay/Piloted | Master loot | SSL | More info>>> Best-boost .c0m <<
-	"best.*gear.*achiev.*mythic.*visit", -->> Best Boost here! We will help u with full PVE and PVP gear, achievs, mythic, raids and more. Visit web: Best-boost .c0m <<
-	"keystone.*mythic.*boost.*skype", --WTS Mythic+ CHEST RUN, Mythic+ (up keystone), Mythic dungeons boost. SKYPE - fastchallenge
-	"helpyou.*heroic.*personal.*key.*info", -- ---Help you with  Emerald Nightmare Heroic\Normal (Master loot\ Personal loot)… Up your KEY 2+ 4+ 6+ 8+ 10+ for more info /W ---
-	"hero.*master.*mythic.*le?ve?ling", -->>>>>>>>>>>>>>>>>>> Emerald Nightmare (Normal,Hero)   Master loot Persona loot  Mythic Legion dungeons  8/10 & 10/10 , leveling 100-110 (12 hours) <<<<<<<<<<<<<<<<<<<
-	"wtsmythic.*runs.*gear.*anyilvl.*840", --WTS Mythic+, 10/10Mythic runs, gear you up from any ilvl to 840+/w
-	--WTS 10/10 Mythic and Heroic all info in skype: qReaper_bst
-	"skype.*qreaperbst", --Add skype: qReaper_bst foк price and info
-	--EN HC/M LOOTRUNS, KARAZHAN, POWERLEVELING, MYTH+ TRIAL OF VALOR  AND MUCH MORE >>> [JUSTBOOST.NET] <<<
-	"power.*justboost[%.,]net", --EN Myth/HC LootRuns, Karazhan, Powerleveling, Mounts,  Myth+ Boosting and more>>> [JUSTBOOST.NET] <<<
-	"mythic.*justboost[%.,]net", --WTS MYTHIC EN,  chests run, levelin 100-110 - [JUSTBOOST.NET]
-	-->>>[JUSTBOOST.NET]<<< EMERALD NIGHTMARE NORMAL/HC, MYTHIC+ RUNS, LEVELLING, ACHIEVEMENTS AND MORE<<<
-	"justboost[%.,]net.*mythic", --[JUSTBOOST.NET]  Legion services. Leveling 100-110, PVE equip 840+, 850+ Emerald Nightmare, Glory of the Legion Hero, Mythic Dungeons and MORE<<<<
-	--5% off just for today Emerald Nightmare Normal ML fast run. Start at 21:00 server time. [justboost.net]
-	"normal.*justboost[%.,]ne", --WTS Emerald Nightmare normal/heroic personal loot and other pvp/pve stuff more info [justboost.ne]
-	"wts.*help.*mythic.*dungeon.*gear.*info", --█ WTS █ Help with Heroic and Mythic dungeon runs and full gear - running today! /w me for info
-	"wts.*le?ve?ling.*power.*farming.*info", --█ WTS █ Level 100-110 Character Leveling and Artifact Power farming - get your character ready for raiding! /w for more info
-	"wts.*spot.*heroic.*raid.*loot.*spec.*invite", --█ WTS █ SPOTS in Emerald Nightmare Normal/Heroic raid next week, all loot for your spec is yours. /w to get invited!
-	"wts.*help.*honor.*prestige.*season.*info", --█ WTS █ Help with PvP Honor or Prestige levels and PvP Rewards today - season is starting soon! /w for info
-	"selling.*glory.*fast.*stress.*ilvl.*info", --█ Selling █ Glory of the Legion Hero - get your Leyfeather Hippogryph fast and with no stress! No ilvl requirements - /w for info
-	--WTS: ▓▓ XAVIUS (HEROIC) KILL ▓▓ PERSONAL LOOT ▓▓ SELFPLAY/PILOTED ▓▓ TODAY 00:00 CET ▓▓ SUPER PRICE! Whisper me! ▓▓
-	"loot.*piloted.*%d%d%d%d.*price.*whisper", --WTS: ▓▓▓▓HELLFIRE CITADEL: 13/13 (MYTHIC)! ▓▓MASTER LOOT, PILOTED!▓▓TOMORROW 20:00 CET▓▓ 100% SAFE! NEW SUPER PRICE! Whisper me! ▓▓▓▓▓▓▓▓
-	--[Boostila.com] BEST PRICE FOR RAID BOOSTS,Mythic Dungeons, Character lvling, Geek Accessories and more! See on [Boostila.com]
-	"mythic.*boostila[%.,]com", --[Boostila.com] BEST PRICE FOR BOOST on THE EMERALD NIGHTMARE (NM-HC),Artifact power quests farm, Mythic Dungeons, Character lvling and more!  SEE ON [Boostila.com]
-	"wts.*cheap.*fast.*loot.*mythic.*dungeon.*wisp.*everyday", --WTS cheap & fast Emerald Nightmare lootraids, Mythic15++ Dungeons. Wisp! Everyday!
-	"wts.*arena.*rbg.*rating.*loot.*info", --WTS Arena/Rbg ratings 1800-2400 , WTS 7/7HC emerald lootrun /w for info
-	"wts.*dungeon.*fast.*le?ve?ling.*emerald.*info", --[WTS] <<New Mythic/Heroic Dungeons>> | <<Artifact farm>> | <<Fast 100-110>> | <<Honor & Prestige Leveling>> | Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
-	"wts.*fast.*dungeon.*rbg.*emerald.*info", --[WTS] <<Fast 100-110>> | <<New Mythic/Mythic+ Dungeons>> | <<Honor/Prestige leveling>> | <<RBG Wins> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
-	"wts.*fast.*dungeon.*pvp.*emerald.*info", --[WTS] <<Fast 100-110>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
-	"wts.*character.*dungeon.*pvp.*emerald.*info", --[WTS] <<Character ↑↑ 100-110 ↑↑ lvl>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
-	"wts.*lift.*dungeon.*pvp.*emerald.*info", --<<Character lift 100-110 lvl>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Raids and more. /W for more info
-	"wts.*boost.*dungeon.*pvp.*emerald.*info", --[WTS] <<Character boost 100-110 lvl>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Emerald Nightmare Normal/Heroic/Mythic Runs and more. /W for more info
-	"wts.*le?ve?ll?i?n?g?.*dungeon.*pvp.*emerald.*info", --[WTS] <<Character leveling 100-110 lvl>> | <<New Mythic/Heroic Dungeons>> | <<Full Dungeon Gear>> | <<Full PVP Gear>> || Soon Emerald Nightmare Runs and more. /W for more info.
-	"selling.*rbg.*honor.*mount.*selfplay", --██Selling RBG 1-75wins(honor rank/Priestige),40/75wins mounts [Vicious War Trike] and  [Vicious Warstrider]self play,PST
-	"selling.*mount.*honor.*gear.*accshare.*", --selling 1-75winsEarn mount +honor rank+ priestige/legendary gears 6vicious mount  ;also selling[Vicious War Trike]and[Vicious Saddle]},no acc share .PST
-	"rbg.*artifact.*mount.*accshar", --▓▓WTS RBGs,1-75wins(get HR and artifact power and 6vicious mounts)[Vicious War Trike]and[Vicious Saddle]right now,no accshare▓PST
-	"heroic.*amazingprice.*strong.*group.*gua?rantee.*drop.*spot", --Wts Emerald nightmare Heroic 7/7 clear for amazing price with strong guide groupe we gurantee you Full heroic loot that drop for your class on tonight 19:00 st only 2 spots ! w me for more infos.
-	--WTS Mythic + KEY~/+2/+3/+6/+8/+9/+10 key,write me for info.
-	"wtsmythic.*key.*%d/%d/%d.*write.*info", --WTS Mythic + KEY~/+2/+3/+6/+8/+9/+10 /Write me for info.
-	"mythicstore[%.,]com.*skype", --For more details visit https://mythic-store.com , or write in skype: mythic-store
-	"wts.*tonight.*arena.*rbg.*mythic.*coaching", --WTS Emerald Nightmare 7/7 MYTHIC with ML tonight , 1 spot for now / Arena/RBG/Mythics/Coaching /w for info
-	--Legion 139Toman Game Time 30Toman Gold har 1k 450Toman Level Up ham Anjam midim |Web: www.iran-blizzard.com  Tel: 000000000000
-	"legion.*gametime.*iranblizzard[%.,]com", --Legion 140T - Game Time 30Day 35T - 60Day 70Toman - www.iran-blizzard.com
-	--=>>[www.bank4dh.com]<<=19E=100K. 5-15 mins Trade. More L895   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! /2 =>>[www.bank4dh.com]<<=
-	"bank4dh.*skype", --=>>[www.bank4dh.com]<<=32U=100K. 5-15 mins Trade. More More cheapest   Gears for sale!<<skype:bank4dh>> LVL835-870 Classpackage  Hot Sale! Buy more than 200k will get 10%  or [Obliterum]*7 or  [Vial of the Sands]as bounes   [www.bank4dh.com]
-	"bank4dh.*%d+k", --=>>[www.bank4dh.com]<<=19E=100K. 5-15 m
-	"trusted.*bank4dh", --WTS BOE class set, 860 Six-Feather Fan, Best BOE gears for rading and alt [lvling.Trusted] seller,K+ feedback from OC. Plz vistor www bank4dh com Cheaper than AH.
-	"wts.*mythic.*powerle?ve?l.*glory.*info", --▲ WTS RUN in Emerald Nightmare (Normal or heroic) TODAY ▲ Mythic+ ▲ Power leveling 100-110 ▲ All Glory ▲ we have a lot runs every day ▲ and more other ▲ /W for more information ▲
-	"perfectway[%.,]one.*prestige", --(Perfectway.one) Dungeons Mythic/ Mythic+, EN normal/heroic, PvP PRESTIGE RANKS (Perfectway.one)
-	"rbg.*mount.*prestige.*accshare", --███WTS RBG40&75wins/Vicious Saddle/all 6 vicious mounts/honor rank/prestige[Vicious War Trike]and[Vicious Warstrider]no acc share,carry right now/w me
-	"mythic.*boostinglive.*faster", --Mythic dungeons, Heroic raids, and more on [boostinglive.com] !Dress up your character faster than others!
-	"koroboost.*everyday.*mythic", --Top guild "Koroboost" inviting you everyday from 1:00 pm CET  to mythic/mythic + dungeons. Became [Brokenly Epic] within 4 hours. Msg me!
-	"doyouwant.*level110.*12h.*noproblem.*msgme.*info", --Do you want [Level 110] within 12h? No problem, Msg me for info ♥♥
-	"gamesales[%.,]pro.*service.*arena", --[Gamesales.pro] - an assistance in PvP and PvE services: starting from training and ending with achievement of the highest ranks in the arena. [Gamesales.pro-] an opportunity to get the best in a short time. Find out more at [http://www.gamesales.pro]
-	"rbg.*artifact.*honor.*mount.*carry", --█░█WTS RBG 1-75wins(Artifact Power+Honor Rank)6Vicious mount[Vicious Saddle]also[Reins of the Long-Forgotten Hippogryph]carry u right now ▲PST
-	"^wtspowerleveling.*fast", --WTS Powerleveling (Fastest available)
-	"help.*le?ve?ling.*demonboost[%.,]com", --Helping with lvling 100-110. Emerald Nightmare, Return to Karazhan, Mythic+ dungeons. [Demon-Boost.com]
-	"fast.*leveling.*honor.*в[o0][o0]st", -- ►►►Fastest leveling 100-110 (6-12 hours), 850+ gear, Honor Ranks and MUCH MORE on [RРD-В00SТ,С0М]◄◄◄
-	"^wtsmythickarazhandungeons[,.]*whispme", --WTS Mythić+ & Kârazhan Dungeøns. Whísp me.
-	"^wtskarazhan[,.]mythic.*mythic+dungeon$", --WTS karazhan. mythic and mythic+ dungeon
-	"^wtsboostkarazhan[,.]mythic[,.]mythicdungeon", --WTS boost karazhan. mythic. mythic+ dungeon
-	"^wtskarazhan[,.]mythic[,.]%d+/%d+mythicdungeonboost", --WTS Karazhan,Mythic+,10/10Mythic dungeon boost
-	"^wtsemeraldnightmaremythiclootrun.*mlselfplay.*price.*gold", --WTS EmeraldNightmare Mythic lootrun (ML+selfplay) , price in gold : 4000k
-	"^wtsemeraldnightmaremythiclootrun.*mlselfplay.*20.*realmtime", --WTS EmeraldNightmare Mythic lootrun (ML+selfplay) 20.00 realm time
-	"^wtsmythicemeraldnightmare.*20.*realmtimeml", --Wts Mythic Emerald NIghtmare tonigth 20.00 realm time (ML) /w
-	"rbg.*boost.*2200.*yourself.*account.*sharing.*info", --{RBG PUSH} Wts RBG Boost /1800/2000/2200/HOTA . You play yourself/NO account SHARING /w for more info  :)
-	"rbg.*honor.*priestige.*mount.*selfplay", --WTS RBG 1-75wins(honor rank/Priestige),6RBG mounts[Vicious Saddle]and BOP mount[Reins of the Long-Forgotten Hippogryph]},self play .PST
-	--[TOPBOOST.PRO] - WTS HEROIC EN (PL) at 18.00 Server time. MYTHIC +10. KATAZHAN RUN and MORE
-	-->>> [TOPBOOST.PRO] <<< EMERALD NIGHTMARE HEROIC, NORMAL, MYTHIC+ RUNS, ACHIEVEMENTS AND MORE! DISCOUNTS ON MYTHIC EMERALD NIGHTMARE!
-	"topboost[,.]pr.*mythic", --[TOPBOOST.PRO] - , HEROIC EN - 180 EURO (ML). HEROIC PL - 90 EURO.  MYTHIC +10 180 EURO
-	"powerle?ve?l.*yourspuregame[,.]com", --EN Myth/HC lootRuns,Karazhan,Powerlevling,Mounts,Myth+Boosting and more in >>> www.yourspuregame.com <<<
-	"xperiencedparty.*runs.*walkthrough.*mythic.*glory.*karazhan", --xperienced party 880+ (more than 45 runs) will help you to walkthrough mythic, mythic+, Glory of the Legion Hero, Karazhan.
-	"wh?isp.*skype.*igor.*price", --Wisp in Skype [] for Detal/Prices.
-	"elitistgaming[,.]com.*mount", --Elitist-gaming,com Selling Emerald Nightmare on ALL difficulties, [Ahead of the Curve: Xavius]MYTHIC + dungeons and NIGHTBANE MOUNT, all self play  & more whisper for schedules
-	"instant.*delivery.*purchase.*gold.*extra", --Instant delivery!!Purchase 100k gold get extra 10k or  [Obliterum]*4! 200k get  [Obliterum] *10!! w me
-	"promotion.*order.*gold.*coupon.*code", --Halloween Promotion!! Order gold from our site, and u will get  [Obliterum] or 10% gold for free!!! w me get coupon code!Happy Halloween^^!!!
-	"juststarted.*leveling.*twink.*gear.*dungeon.*more", --● Just Started The Legion or leveling a twink ? Need To Gear Up ? Try Our Karazhan, Emerald Nightmare N/HC/M, Dungeons+ Runs and More ●
-	"wts.*saddle.*carry.*hour.*start.*info", --█ [WTS] Vicious saddle. 100 3v3 wins carry just in 3 hours. We can start right now, whisper me for information █
-	"getgearup.*karazhan.*nightmare.*dungeons.*runs.*more", --● Get gear up  ►►► Karazhan, Emerald Nightmare N/HC/M, Dungeons+ Runs and More ●
-	"wts.*mythic.*master.*loot.*mythic.*details.*private", --EN WTS Mythic/HC Master - Loot, Karazhan, Mythic+ and more in >> details private messeng
-	"wts.*nightmare.*boosting.*loot.*mythic.*glory", --WTS Emerald Nightmare Mythic/Heroic/Normal boosting +loot, Karazhan boost, Mythic Keystone Boost 1-10+lvl, Mythic dungeons boost, Glory of the Legion Hero
-	"skype.*landroshop", --WTS [Keystone Conqueror] (2-10 lvl) and Karazhan, fast, smooth and fair. Details in skype: Landroshop
-	"pewpewshop.*loot", --[WTS] [►►►PewPewShop.Pro] — Emerald Nightmare Mythic with loot and selfplay! ►►► Mythic dungeons+, Karazhan time run with loot and mount!►►►
-	"wtskarazhan.*timerun.*mount.*mythic.*dungeonboost", --WTS Karazhan8/8,Timerun with 100% mount,Mythic+,10/10Mythic dungeon boost
-	--▄▀▄ WTS Artifact Leveling █ Emerald Nightmare Loot Runs █ Karazhan & Mythic+ Dungeons █ [Vicious Saddle] + Honor 1-50 + Prestige █ [Conquest-Capped.com] ▄▀▄
-	"saddle.*conquestcapped[%.,]com", -- ▄▀▄ WTS Full Conquest Cap █ [Vicious Saddle] + 27,000 Conquest Points █ [Conquest-Capped.com]█ /w to get 5% discount ▄▀▄
-	"^wts.*good.*fast.*powerle?ve?l", --WTS good and fast power leveling
-	"service.*mythic.*raid.*pay.*price", --▲▲▲/GUILD SERVICE/-/Emerald Nightmare/-/Mythic+/-/Trust raids-pay after b00st/-/RAID TODAY/-/Best prices/-/No resell. And many more   ▲▲▲
-	"wts.*karazhan.*mount.*nightmare.*hc.*dungeon.*run.*more", --● WTS  ►►► Karazhan(mount+), Emerald Nightmare N/HC/M, Dungeons+ Runs and More ●
-	"offer.*honor.*prestige.*boost.*pvp.*mount", --Offer Honor and Prestige boosts : Unlock all PvP talents, 840-870 PvP gear, mounts, artifact power & appearance and a lot more ! /w me for more détails !
-	"brb2game.*sale", --=>>www.brb2game.com<<=28$=100K 5-15 mins Trade.CODE:USWOW  More L895   Gears for sale! LVL835-870 Classpackage  Hot Sale! /2 =>>www.brb2game.com<<=
-	"^wtsemeraldnightmare.*heroic.*pl.*tonight.*8.*fastrun.*highquality", --WTS EMERALD NIGHTMARE 7/7 Heroic with PL. Raid tonight at 8 pm. Fast run. High quality.
-	"elitegamerboosting[%.,]de.*skype", --Return to Karazhan! Organisiere dir durch und mit uns einen unbeschwerten Ausflug in die neue Instanz - Erfolge, Loot und Mount inklusive! Alle Angebote auf [elite-gamer-boosting.de] | Skype: [real.elite.gamer] | Ab sofort 3% sparen mit dem Code: SIMON
-	"wts.*nightmare.*mythic.*loot.*dungeon.*pvp.*glory", --►►►[WTS] The Emerald Nightmare Mythic/Heroic/Normal with loot, Mythic+ dungeons,► PvP help◄, Glory of the Legion hero & more!◄◄◄
-	"juststarted.*legion.*gearup.*karazhan.*nightmare.*dungeon.*more", --Just Started The Legion ? Need To Gear Up ? Try Our KARAZHAN, EMERALD NIGHTMARE, +DUNGEONS AND MORE runs WTS!
-	"bestboost[%.,]club.*service", --►►► [[BESTBOOST.CLUB]] - 100-110 BOOST, MYTHIC AND MYTHIC+ DUNGEONS 10/10, THE EMERALD NIGHTMARE RAID NORMAL/HEROIC/MYTHIC, RETURN TO KARAZHAN AND OTHER SERVICES [[BESTBOOST.CLUB]] ◄◄◄
-	"%d+k.*giveaway.*guild.*selling.*karazhan.*mount.*mythic.*dungeon.*nightmare.*raid", --100K weekly giveaway from our guild! By the way we are selling Karazhan with mount, Mythic Dungeons+, Emerald Nightmare raids
-	"l[o0][o0]tcl[o0]ud.*b[o0][o0][s5]t", --▲▲▲■■■LFB?>-L00tcl0ud?c0m?-GUILD B005T/-/EN HC 69e/-/Mythic+/-/Trust raids/Karazhan/-/Best offers/ And many more here-?L00tcl0ud?com?   ▲▲▲■■■
-	"wtskara.*fasttimerun.*guarantee.*mount", --WTS KARAZHAN // fast time runs with guaranteed awesome MOUNT! /w me for more info.
-	"wtsarena.*boost.*2%.?200.*2%.?400.*gladiator.*info", --WTS ARENA BOOST // 2.200 // 2.400 // 2.600 // 2.800 // GLADIATOR / /w Me for more info!
-	--««WTS Emerald Nightmare Mythic/Heroic/Normal with Master Loot, Quick Raids everyday! Write me for info»
-	"wts.*nightmare.*mythic.*master.*loot.*quickraids.*everyday.*write", --««WTS Emerald Nightmare Heroic/Mythic with Master Loot or Personal, Quick Raids everyday! Write me for info»»
-	"2.*2%.4.*glad.*le?ve?ling.*100110.*info$", --B00st 2k/2.4+ 3s 2s, (glad/r1), Leveling 100-110, Want to get 2/2.2k+ playing yourself with r1? /w me for more info
-	"2.*2%.4.*glad.*coach.*100110.*info$", --B0ost! Help 2.2/2.2/2.4, (glad/r1), Coaching from glads, Leveling 100-110 /w me for more info
-	--B0ost arena 2.2/2.4/2.7+ (glad, r1), live streams, cant find teammates for push rating? /w me for info
-	"b[o0][o0]starena.*2.*2%.4.*glad.*livestream.*info$", --B0ost arena 2.2/2.4/2.7+ (glad, r1), live streams, Want get 2k or more selfplay? /w me for info
-	"wtsemeraldnightmarelootraids.*heroic.*mythic.*dungeons.*wisp$", --WTS Emerald Nightmare lootraids, Heroic/Mythic Dungeons. Wisp!
-	"wts.*mythic.*boosting.*loot.*keystone.*dungeon.*glory", --WTS EN and Trial of Valor Mythic/Heroic/Normal boosting +loot, Karazhan boost, Mythic Keystone Boost 1-10+lvl, Mythic+ dungeons chests runs,  Mythic dungeons boost, Glory of the Legion Hero
-	"selling.*professional.*team.*mount.*loot", --Selling <<Mythic+>>/<<Karazhan(mount)>>/<<EMERALD NIGHTMARE heroic>> by a professional team! Come get your mount and loot! Going Now pst for detail
-	"^wtslegiondungeons.*mythic,karazhan$", --WTS Legion dungeons(myhic,mythic +),karazhan
-	"wts.*valor.*lootrun.*mythic.*mount.*prestige", --[WТS] Trial of Valor normal & heroic lootrun; Emerald Nightmare Mythic/Heroic/Normal with loot; Karazhan lootrun+mount, Mythic+ dungeons,► Honor & Prestige lvl◄ & more! /w for info!◄◄◄
-	--Hello! Offer 2000/2200/2400, (glad/r1), Coaching from glads, Leveling 100-110 /w me for more info
-	"hello.*2200.*glad.*le?ve?ling.*info", --Hello! Offer 2000/2200/2400, (glad/r1), Leveling 100-110, Want to get 2k+ playing yourself? /w me for more info
-	"karazhanmount.*nightmareruns.*spotsleft.*contact.*details$", --Karazhan mount, Emerald Nightmare runs. Few spots left! Contact for more details
-	"trial.*karazhanmount.*nightmareruns.*spotsleft.*contact.*details$", --Trial of Valor, Karazhan mount, Emerald Nightmare runs. Few spots left! Contact for more details
-	"wts.*heroic.*raid.*fast.*quality.*discount.*selfplay", --WTS EMERALD NIGHTMARE 7/7 Heroic with PL. Raid right now. Fast run. High [quality.Discount] for selfplay tonight!!!
-	"^wts.*emeraldnightmare.*masterloottoday.*cheapandfast.*whisperme$", --WTS the Emerald Nightmare 7/7 HC Master Loot today,cheap and fast,whisper me
-	"wtsrbg.*wins.*mount.*carry.*reins", --█ █WTS RBG 1-75wins(AP+HR)6Vicious [mount.carry] u right [now.also][Reins of the Long-Forgotten Hippogryph]and[Voidtalon of the Dark Star]█PST
-	"^wts.*viciousmounts.*saddle.*star.*getrightnow", --Wts 6vicious mounts[Vicious Saddle]/[Voidtalon of the Dark Star]}get right Now! /Pst
-	"wts.*today.*nightmare.*lootrun.*masterloot.*bestprice", --WTS: |=Today EMERALD NIGHTMARE MYTHIC Lootrun (7/7)||Master Loot|| Best Price!!!
-	"wts.*valor.*lootrun.*mount.*mythic.*glory", --WTS: |=TRIALS OF VALOR N/HC=|=KARAZHAN Lootrun+Mount=|=Mythic+ Dungeons=|=Glory of the Legion Hero=|W/me!!!
-	"^wtsgamingservices.*pve/pvp.*write.*info", --WTS gaming services in PvE/PvP write me for info
-	"^wtsenandtov.*mythic.*heroic.*boosting.*loot.*karazhan.*dungeonsboost", --WTS EN and ToV Mythic/Heroic/Normal boosting +loot, Karazhan Boost, Mythic+ Dungeons Boost
-	"gold.*g4game[%.,]c[o0]m", --WTS 60000 Gold=$20----------------------------- WWW.G4GAME.C0M.-----------------------------Buy Now
-	"gold.*g[o0]ldce[o0][%.,]c[o0]m", --Sell Cheap Gold Welcome to WWW.G0LDCE0.C0M    WWW.G0LDCE0.C0M  WWW.G0LDCE0.C0M    WWW.G0LDCE0.C0M
-	"^onespotleft.*nightmare.*mythicboost.*clear.*loot.*amazingprice.*raidstarts", --"one spot Left"Wts Emerald nightmare Mythic boost 7/7 clear including 8-12 loot Minimum for amazing price , raid starts at 15:00 st ! w me
-	"trial.*valor.*nightmare.*myth.*karazhan.*powerleveling.*muchmor", --TRIAL OF VALOR, EMERALD NIGHTMARE HC/MYTH, KARAZHAN, POWERLEVELING, MYTH+ AND MUCH MOR >>>
-	"^wts.*nightmare.*mythicboost.*clear.*loot.*amazingprice.*raidstarts", --Wts Emerald nightmare Mythic boost 7/7 clear including 8-12 loot Minimum for amazing price , raid starts at 18:00 st! w me .
-
-	--[[ Chinese ]]--
-	"ok4gold.*skype", --纯手工100-110升级█翡翠英雄团█5M代刷 大秘境2-10层（橙装代刷）█代刷神器点数 解锁神器第三槽█金币20刀=10w█微信ok4gold█QQ或微信549965838█skype；gold4oks█微信ok4gold█v
-	"qq.*549965838", --金币最低价20刀10w 微信ok4gold   微信或者QQ549965838 微信ok4gold  百万库存20刀=10w 百万库存20刀=10w QQ或者微信549965838 微信ok4gold  微信或者QQ549965838 微信ok4gold
-	"qq.*1505381907", --特价[Reins of the Swift Spectral Tiger]，金币28刀十万，量大优惠。等级代练，大秘境(刷橙装），荣誉等级(送坐骑），翡翠团本代练;,QQ:1505381907或者微信：babey1123
-	"qq.*593837031", --纯手工100-110 低价，大秘境1-10层热销中，翡翠梦境英雄普通包团毕业。橙装，神器三插槽，金币大量，感兴趣的联系QQ:593837031 skype:wspamela 微信 593837031
-	"100110.*q228102174", --100-110纯手工升级低价热卖，无敌飞机头 ，星光龙热卖1-2周保证拿到，，翡翠梦魇普通包团毕业火热销售中,职业大厅，神器点数，神器解锁三插槽 [，金币大量QQ228102174,微信894580231。skype.raulten1234]
-	"style.*[235]v[235].*%d+usd.*神器点数", --style公会团强力销售荣誉等级50解锁，3v3奖励马鞍，金币26USD包拍卖行手续费=秒发=库存200W 手工任务100-110练级8910层大秘境拿低保2-3层无限刷橙子和神器点数需要的MMMMM
-	"style.*强力销售.*%d+lvl.*100110", --style公会团强力销售825等级英雄5人本毕业840LVL史诗5人本毕业英雄史诗翡翠865 880+装备，手工100-110等级加神器任务和大秘境代打欢迎预定
-	"100110.*苏拉玛任务.*星空龙", --纯手工90-100-110任务升级（任务全做，开启声望）。苏拉玛任务11/8。神器三插槽。荣誉50等级~（送邪气鞍座）。军团6大声望 [~手工金币30刀十万，现货秒发。200MB=10万.星空龙~无敌] 飞机头 1-2CD必出
-	"小母牛热卖金币.*包毕业.*稀有坐骑", --小母牛热卖金币29刀 =10w，人民币169.幽灵虎现货。纯手工等级，各类任务代*练。2-10层大秘境代刷。翡翠梦境H，M包团，包毕业。另有黑市坐骑，星光龙，祖格虎，稀有坐骑，水母，失落角鹰兽等
-	--小号代练--翡翠英雄本特价大秘镜3箱(橙装代刷),苏拉玛任务，堕落精灵声望，神器点代刷，解锁神器第三插槽,金币169=10万需要微信17788955341
-	--***大秘境12层保底885特价+++微信17788955341 ***超效率便宜翡翠H团***卡拉赞坐骑***金币159十万
-	--出售[Reins of the Swift Spectral Tiger].,.金币179RMB=10W,899RMB=500K.QQ微信17788955341
-	"微信.*17788955341", --特价Six-Feather Fan-,六禽羽扇855/860特价,179RMB=10万,99刀=40万--11层大秘境《刷橙》,翡翠英雄团,KLZ梦魇龙,成就声望另售幽灵虎微信/QQ: 17788955341
-	"qq.*1433535628", --N/H翡翠梦境包团毕业， 大秘境（刷箱子刷橙装 ）， 地下城， 荣誉解锁送神器点数 ，装绑装备和材料以及各种坐骑， 金币和飞行解锁。欢迎咨询QQ:1433535628  skype：forgotmylove
-	--低层三箱刷橙 10层低保，新开11层12层低保 KLZ梦魇坐骑和全通 需要的加Q 1292706134
-	"低层三.*q1292706134", --大酋长团队 接大秘境维护1-10层，低层三箱刷橙，团本毕业，等级100-110，需要的加QQQ1292706134
-	"金币.*sesegold", --特价大小老虎,鸡蛋军马各TCG长期供货,金币169RMB=10万,98-110等级代练,大秘境保底,翡翠梦境H/M包团,5M代刷套餐特价-需要微信sesegold
-	"%d+.*万金.*支付宝", --100人民币=10万金，有30，个人出售，支付宝微信，骗子移步
-	"qq.*2278048179", --特价[Six-Feather Fan]850等级 金币32刀 10万 现货秒发。。大小老虎卡牌坐骑。 十年信誉品牌 欢迎咨询 QQ: 2278048179
-	"金.*778587316", --亲，出售金币,10w29刀，-专业快速代练100-110 纯任务升级**苏拉吗9/11,解锁世界任务，神器三槽，，代练声望，翡翠梦境包团，重返卡拉赞+梦之魇坐骑，pvp邪气鞍座等微信：mia11125 Q778587316
-	"100110.*送坐骑.*tiger", --100-110级纯手工练级------G币28刀十万,现货秒发；荣誉等级(送坐骑），大秘境刷箱子（橙装掉率很高），翡翠梦境团本，大小tiger坐骑有需要的M我
-	"100110.*币.*幽灵虎", --纯手工100-110升级    G币20刀十万    翡翠英雄团 5M代刷 大秘境2-10层（橙装掉率很高） 卡拉赞前置任务代做 卡拉赞副本通关 代刷神器点数 解锁神器第三槽 苏拉码任务8/11  大小幽灵虎，有需要的M
-	"^marine.*在秒回", --Marine5人本类业务，卡拉赞，5Mx10 大秘境10层低保ilvl880 及大秘境15层幻化解锁-----人在秒回
-	"881.*安全便宜快速.*ip", --881装等双橙大号出售自营AH绿色G，安全便宜快速，非工作室黑G，北美IP交易，买G最重要就是安全！全场最低 要的速M 人在就10分钟！
-	"特价出售黄金.*稀有坐骑", --特价出售黄金，等级代练纯手工，荣誉等级(送坐骑），大秘境刷箱子（橙装掉率很高），翡翠梦境团本，稀有坐骑有需要的MMMMMMM
-	"200万手工金币.*paypal", --→→活动促销200万手工金币2.8刀1万 低价甩~ 买的多还送坐骑 安全 效率 要的老板密→支持淘宝、paypal 多种付款 薄利多销 另售卡牌坐骑 承接各种代练
-	"qq.*153874069", --华哥超低黄金27刀10万安全效率 大小幽灵虎坐骑请咨询 承接各种代练 支持淘宝、paypal 多种付款+微信QQ：153874069
-	"qq.*3450345", --PGP工作室 H翡翠包团200刀可单买，团长分配保证6+拾取，新客户可免费再带一周。100-110代  练纯手工快速 12小时，代清世界任务，卡拉赞坐骑，联系QQ或微信都是 3450345
-	"特价出售黄金.*tcg", --特价出售黄金，各种TCG坐骑，都是仓库现货，另售剑灵金币，保证全场最低，承接各种代练，欢迎咨询
-	"练级.*bearwow[,.]com", --承接WOW 100-110练级、大秘境、卡拉赞、世界任务、神器外观、神器第三槽解锁等,纯手工，市场最低价，请登陆网站：w w w.bearwow.c o m
-	"100110.*手工金币.*%d+mb=%d+", --绝对纯手工100-110任务升级（任务全做，开启声望）。苏拉玛任务11/8。神器三插槽。荣誉50等级~（送邪气鞍座）。军团6大声望 ~手工金币26刀十万，现货秒发。170MB=10万
-	"出售特价金.*双11金币大甩卖", --出售特价金  20 for 100K    11.11    11.11 出售特价金  20 for 100K    11.11    11.11    11.11出售特价金  20 for 100K    双11金币大甩卖，需要的M  11.11    11.11 出售特价金 11.11
-	"特价出售金.*稀有坐骑", --特价出售金25for100K，等级代练纯手工，神器点数，荣誉等级(送坐骑），大秘境刷箱子（橙装掉率很高），翡翠梦境团本，稀有坐骑等等业务，需要的mmmmmm
-	--特价[Reins of the Swift Spectral Tiger]，金币25for100K，等级代练纯手工，荣誉等级(送坐骑），大秘境刷箱子（橙装掉率很高），翡翠梦境团本，稀有坐骑,需要的mmmmmmm
-	--特价[Reins of the Swift Spectral Tiger]，金币25刀10万，等级代练纯手工，神器点数，荣誉等级，大秘境刷箱子，苏拉玛1-8章,翡翠梦境团本代练，稀有坐骑,需要的mmm
-	"特价.*tiger.*稀有坐骑", --特价[Reins of the Swift Spectral Tiger]，黄金,26for100K，等级代练纯手工，荣誉等级(送坐骑），大秘境刷箱子（橙装掉率很高），翡翠梦境团本，稀有坐骑,需要的mmmmmm
-	--出售特价金  20 for 100K    纯手工100-110升级 翡翠英雄团 5M代刷 大秘境2-10层（橙装掉率很高） 卡拉赞前置任务代做通关 代刷神器点数 解锁神器第三槽 苏拉码任务8/11  大小幽灵虎，需要M我
-	"出售特价金.*%d+for%d+k.*100110", --出售特价金  20 for 100K    纯手工100-110升级 翡翠英雄团 5M代刷 大秘境2-10层（橙装掉率很高） 卡拉赞前置任务代做通关 代刷神器点数 神器三槽 特价Reins of the Spectral Tiger，需要M我
-	"拿任意橙.*神器三槽.*110", --2层箱子热卖,脱非入櫛§，不在遥远.无限2箱,拿任意橙督。 8-10层大秘境,箱子+周奖励,快捷提升袛等.H梦魇包团,毕业,] 个人拾取热销中。神器三槽,110等级代练,苏拉玛任务声望代练接单.
-	"100110.*神器.*金币", --纯手工100-110，世界任务~神器三槽~苏拉玛11/8。荣誉等级（送坐骑），金币-26刀10W。星空龙~无敌 飞机头。
-
-	--[[  Spanish  ]]--
-	"oro.*tutiendawow.*barato", --¿Todavía sin tu prepago actualizada? ¡CÓMPRALA POR ORO EN WWW.TUTIENDAWOW.COM! ¡PRECIOS ANTICRISIS! ¡65KS 60 DÍAS! Visita nuestra web y accede a nuestro CHAT EN VIVO. ENTREGAS INMEDIATAS. MAS BARATO QUE FICHA WOW.
-
-	--[[  French  ]]--
-	"osboosting[%.,]com.*tarifs.*remise", --☼ www.os-boosting.com ☼ Le meilleur du boosting WoW à des tarifs imbattables. Donjons mythique 10/10 - Raids Cauchemar d'Emeraude 7/7 Normal & Héroïque - Métiers 700-800 - Pack 12 Pets TCG - Réputations Legion - Gold   | Code remise 5%: OS5%
-	"wallgaming.*loot.*keystone", --¤ www.WallGaming.com ¤ Raids Cauchemar d'Emeraude HM 7/7 6 loots/+ | Gloire au héros de Legion | Donjons Mythique 10/10 +5keystone | Arène 2c2 3c3 2000 & 2200 | Honneur PvP niveau 50 | Pets & Montures TCG |  N°1 FR
-	"profitez.*loot.*wallgaming", --☺♥ Profitez des dernières nouveautés de Legion maintenant  ♥☺ Cauchemar d'Emeraude HM Master Loot | Gloire au héros de Legion | Donjons Mythique+ / Karazhan 9/9 Mythique | Selle Vicieuse | Stuff PvE & PvP | www.wallgaming.com  Team FR
-	"gold.*web.*prestigewow[%.,]fr", --Propose PL Honneur et Prestige ; Débloque tous les talents pvp, équipement 840-870 ilvl, monture, puissance d'artefact & nouveau skin pour l'arme artefact, gold et bien plus encore ! Visitez notre site web : www.prestige-wow.fr pour plus d'infos !
-
-	--[[ Danish ]]--
-	"^sælgerguldfor%d+", --sælger guld for 170kr pr. 100k (w for andre servere)
-	"^sælgerg[ou]ld.*mobilepay", --Sælger guld, forgår over mobile pay, 100k - 150 kr
-	"tilbud.*sælger%d+k.*mobilepay", --Dagens tilbud: Sælger 200 K for blot 280 kr - whisper for mere info: Mobilepay & Swipp
-	"^sælgerguld.*skype", --Sælger guld 20k 33kr og 100k til 149kr, skype ...
-	"sælgerlidtguld.*mobilepay", --Hej, jeg sælger lidt guld via. mobilepay. Tilbud : 100k for 150kr , 250k for 350kr - Skriv for mere info. :)
-	"^sælgerg.*%d+kr?pr", --sælger g / w 1k pr. 1k
-
-	--[[ Swedish ]]--
-	"saljerguld.*detail.*stock", --Säljer guld 1.7kore details Stock: 3000k
-	-->>>>Säljer Guld Via Swish!<<<<
-	--Säljer guld via Swish! 130kr / 100k Leverans direkt!
-	--Säljer guld via Swish. 1,3kr per 1k alltså 130kr för 100k. Snabbt och smidigt. /w för mer info.
-	--Säljer guld via swish, /w vid intresse!!
-	--Säljer Guld Via Swish! /w mig!
-	"^saljerguldviaswish", --Säljer guld via swish 135kr för 100k /w för mer info eller adda Skype Dobzen2
-	"^saljergviaswish", --Säljer g via swish 1.7kr per 1k /w mig =D [minsta köp 50k]
-	"^saljerguldsnabbtviaswish", --Säljer guld snabbt via Swish 100k=170SEK 1.7kr/1000g Billigare vid bulk  /Whispra mig och chilla på svar
-	--köper wow guld via swish
-	"^koperw?o?w?guldviaswish", --Köper guld via swish
-	"guld.*salu.*swish.*info", --Guld finns till salu via SWISH, /w för mer info
-	"^saljerwowguld.*viaswish", --Säljer wow guld för 140kr per 100k, via Swish! /W
-	"^saljer%d+kguldfor.*viaswish", --Säljer 600k guld för 800kr, via swish! Nu eller aldrig
-	"^saljerguld,swish", --Säljer guld, swish
-	"guldkvar.*viaswish", --100k guld kvar! 1,8kr/1000g betalning sker via swish! /w mig vid intresse! 50k är minsta köp!
-	"^guldviaswish", --Guld via swish /w :)
-	"^guld%d+k.*kr.*skype", --Guld 20k til 30kr og 100k til 129kr, skype
-	"^saljerviaswish", --Säljer via swish /w vid Intresse
-	"^gfinnsswish$", --g finns swish
-	"^gfinnsbilligt$", --g finns billigt
-	"^gfinns@swish", --G finns @ swîsh /w
-	"^%d+kfinns@swish", --700k finns @ swish /w
-	"^nagonsomsaljerguldviaswish", --NÅGON SOM SÄLJER GULD VIA SWISH?
-
-	--[[ German ]]--
-	"besten.*skype.*sarmael.*coaching", --[Melk Trupp]Der Marktführer kanns einfach am Besten, nun sogar als aktueller Blizzconsieger! Melde Dich bei mir im Skype:Sarmael123456 und überzeuge Dich selbst! Ob Arena, Dungeons, Coachings oder Raids-Bei uns bekommst du jede Hilfe, die Du benötigst!
-	--[mmo-prof.com] raffle: Hellfire Citadel (Difficulty level: Mythic) 13/13 including loot. Eligibility requirements to be found on [mmo-prof.com]; Heroic raids, CM GOLD, mounts, PVP and more can be found , too. We're looking forward to your visit!
-	"mmoprof.*loot.*gold", --{rt2} [mmo-prof.com] {rt2} BRF Heroic / Highmaul Heroic , Mystisch Lootruns !! Arena 2,2k - Gladiator .. Jegliche TCG Mounts , Play in a Pro Guild (Helfen euch einer absoluten Top Gilde beizutreten, alles für Gold !! Schau vorbei {rt2} [mmo-prof.com] {rt2}
-	"mythic.*coaching.*mmoprof", --Bieten Smaragdgrüner Alptraum Mythic/Heroic/Normal Lootruns. Mythic + Instanzen 2-10! Item-Level Push. Coaching für dich! Play with a Pro! Oder komm ich deine Traumgilde und erspiele dir mit Profis deine Erfolge! [mmo-prof.de]
-	"wts.*lootrun.*selfplay.*masterloot.*sofort.*gunstig", --WTS: ▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ SOFORT! ▓▓ SEHR GÜNSTIG ▓▓ Ermäßigung für Stoff, Kette und Leder ▓▓ /w ▓▓
-	--▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ HEUTE 21:00 CET▓▓ SEHR GÜNSTIG ▓▓ DER BESTE PREIS IN EUROPA ▓▓ /w ▓▓
-	"alptraum.*lootrun.*selfplay.*masterloot.*heute.*gunstig", --WTS: ▓▓ Der smaragdgrüne Alptraum 7/7 (Heroisch) LOOTRUN▓▓SELFPLAY/PILOTED ▓▓ MASTER LOOT(Plündermeister )▓▓ HEUTE 21:00 CET▓▓ SEHR GÜNSTIG ▓▓ /w ▓▓
-	"rocketgaming.*mount.*skype", --RocketGaming die 1.Slots verfügbaren IDs von Emerald Nightmare HC/Myth, auch Nighthold sei der erste mit dem Guldan Mount! Hol dir die ClasshallTruhe der Mythic+ Inis für dein BiS Item, jede ID! Gladi/R1 Titel+Mount! Adde Skype: [christoph.rocket-gaming.]
-	"wts.*alptraum.*mythisch.*boost.*boost.*glory", --WTS Der Smaragdgrüne Alptraum Mythisch/Heroisch/Normal boosting,Karazhan boost, Mythischer Schlüsselstein boost 1-10+lvl, Mythisch dungeons boost, Glory of the Legion Hero
-}
+L.gen("95,117,115,98,101,106,111,104,120,112,120,104,112,109,101,103,112,115,112,64,116,64,115,116,104,112,109,101^95,104,112,117,116,112,110,102,115,116,49,56,104,112,109,101,109,98,122,106,111,104,98,115,112,118,111,101,47,43,110,102^95,120,117,92,99,116,117,94,110,64,122,64,109,112,109,98,100,100,112,118,111,117^100,98,116,106,111,112,47,43,38,101,44,47,43,101,112,118,99,109,102,47,43,38,101,44,47,43,117,115,106,113,113,64,109,102^95,117,115,98,101,106,111,104,100,116,104,112,47,43,104,112,109,101^120,117,92,99,116,94,47,43,115,118,111,102,116,100,98,113,102,110,112,111,102,122,47,43,38,101,44,108^95,116,102,109,109,106,111,104,109,112,109,102,118,120,64,98,100,100,47,43,106,111,103,112^95,120,117,99,112,116,115,116,104,113^120,117,92,99,116,94,120,112,120,104,112,109,101,47,43,115,116,100,112,106,111,117,64,116^100,98,116,106,111,112,47,43,115,112,109,109,47,43,38,101,44,47,43,115,112,109,109,47,43,38,101,44^95,116,102,109,109,106,111,104,104,112,109,101,116,64,103,112,115,100,116,104,112^95,120,117,92,99,116,117,94,100,116,104,112,100,105,102,98,113^101,112,118,99,109,102,47,43,117,115,106,113,113,64,109,102,47,43,100,98,116,106,111,112^120,98,111,117,117,112,116,102,109,109,92,48,93,94,99,118,122,100,116,104,112,106,117,102,110^95,116,102,109,109,106,111,104,116,112,110,102,100,116,104,112,100,98,116,102^95,99,118,122,106,111,104,115,116,52,116,117,118,103,103^117,115,98,101,106,111,104,110,122,120,112,115,109,101,112,103,120,98,115,100,115,98,103,117,104,112,109,101,103,112,115,47,43,115,118,111,102,116,100,98,113,102,104,112,109,101^120,98,111,117,117,112,99,118,122,92,48,93,94,116,102,109,109,100,116,104,112,106,117,102,110^95,120,117,92,99,116,117,94,108,102,122,116,106,111,100,116,104,112^95,99,118,122,106,111,104,101,112,117,98,51^95,120,117,92,99,116,94,104,98,110,102,117,106,110,102^95,120,117,92,99,116,117,94,101,112,117,98,51^95,120,117,99,115,116,104,113,37^95,120,117,92,99,116,117,94,100,116,104,112,108,102,122^95,120,117,92,99,116,94,99,98,109,98,111,100,102,113,98,122,113,98,109,99,122,104,112,109,101^95,120,117,92,116,117,94,120,112,120,98,100,100,112,118,111,117^109,118,100,108,47,43,115,112,109,109,47,43,38,101,44,108,47,43,110,106,111,118,117,102,116,47,43,113,116,117^95,120,117,92,99,116,117,94,104,112,109,101,103,112,115,100,116,104,112^95,120,117,92,99,116,117,94,115,116,49,56,104,112,109,101^95,104,112,117,98,111,122,115,118,111,102,116,100,98,113,102,104,112,109,101,48,120,110,102^100,98,116,106,111,112,47,43,48,120,47,43,38,101,44,47,43,115,112,109,109^95,120,117,92,99,116,94,47,43,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116,47,43,113,112,106,111,117,116,47,43,113,98,122^95,120,117,117,120,112,120,104,103,112,115,112,116,115,116,104^95,120,117,92,99,116,117,94,116,112,110,102,100,116,104,112,116,108,106,111^99,118,122,106,111,104,64,115,118,111,102,116,100,98,113,102,92,98,104,94^100,98,116,106,111,112,47,43,99,102,117,47,43,38,101,44^100,98,116,106,111,112,47,43,115,112,109,109,47,43,101,112,118,99,109,102^115,112,109,109,47,43,120,106,111,47,43,101,112,118,99,109,102,47,43,110,106,111,47,43,110,98,121^102,121,100,105,98,111,104,106,111,104,115,116,104,112,109,101^95,120,117,92,99,116,117,94,100,116,104,112,98,100,100^95,120,117,92,99,116,94,113,115,102,113,98,106,101,100,98,115,101^95,120,117,92,99,116,94,38,101,44,110,112,111,117,105,47,43,104,98,110,102,117,106,110,102^95,120,117,116,38,101,44,101,98,122,116,64,104,98,110,102,117,106,110,102^120,117,92,99,116,94,115,118,111,102,116,100,98,113,102,98,100,100,112,118,111,117^95,99,118,122,106,111,104,100,116,104,112,108,111,106,92,103,119,94,102^95,120,117,92,99,116,117,94,110,122,104,112,109,101,38,101,43,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116^120,117,116,38,101,44,108,104,112,109,101,103,112,115,38,101,44,102,118^100,98,116,106,111,112,47,43,120,105,106,116,113,102,115,47,43,106,111,103,112^120,117,92,99,116,94,120,112,120,104,112,109,101,47,43,115,116,104,112,109,101^95,120,117,99,104,112,109,101,47,43,104,98,110,102,117,106,110,102^115,112,118,109,102,117,117,102,47,43,115,112,109,109,47,43,51,121,47,43,52,121^95,120,117,92,99,116,117,94,110,122,104,112,109,101,103,112,115,100,116,104,112,116,108,106,111^95,116,102,109,109,106,111,104,100,116,104,112,116,108,106,111^95,120,117,99,38,101,44,110,49,56,104,113^95,116,102,109,109,106,111,104,100,116,104,112,106,117,102,110^95,120,117,116,100,105,102,98,113,104,112,109,101^104,112,109,101,103,112,115,115,118,111,102,116,100,98,113,102,104,112,109,101^101,92,112,118,94,92,118,99,94,99,109,102,47,43,38,101,44,47,43,117,115,106,113,113,64,109,102^95,116,102,109,109,106,111,104,120,112,120,104,112,109,101,103,112,115,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116^95,120,117,92,99,116,117,94,100,116,104,112,106,117,102,110^95,116,102,109,109,106,111,104,100,116,104,112,100,98,116,102^95,99,118,122,106,111,104,101,112,117,98,106,117,102,110,116^95,120,117,117,120,112,120,104,112,109,101,103,112,115,112,109,101,116,100,105,112,112,109,115,116,104,112,109,101^116,102,109,109,106,111,104,110,64,122,64,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116^95,120,117,92,99,116,94,38,101,44,101,98,122,47,43,104,98,110,102,100,98,115,101^95,120,117,92,99,116,117,94,100,116,104,112,108,111,106,92,103,119,94,102^95,120,117,92,116,99,117,94,120,112,120,104,112,109,101,103,112,115,100,116,104,112,116,108,106,111^95,120,117,92,99,116,117,94,100,116,116,108,106,111,116^95,120,117,92,99,116,117,94,100,116,38,47,64,104,112,116,108,106,111^95,120,117,99,104,112,109,101,47,43,110,112,118,111,117^95,120,117,92,99,116,94,38,101,44,115,116,98,100,100,112,118,111,117^95,120,117,92,99,116,117,94,98,109,109,101,112,117,98,51^95,120,117,92,99,116,117,94,100,116,104,112,100,98,110,112^120,117,116,120,112,120,98,100,100,112,118,111,117,47,43,102,113,106,100^95,120,117,92,99,116,117,94,98,111,122,100,116,104,112,116,108,106,111^95,120,117,92,99,116,94,113,115,102,113,98,106,101,104,98,110,102,100,98,115,101^95,120,117,116,38,101,44,108,103,112,115,38,101,44,102,118^95,99,118,122,106,111,104,100,105,102,98,113,100,116,104,112,116,108,106,111^120,117,92,99,116,117,94,115,116,52,64,104,112,109,101,47,43,120,112,120,104,112,109,101^95,120,117,92,99,116,94,109,112,109,98,100,100,47,43,116,108,106,111,116^104,112,109,101,47,43,117,115,106,113,113,64,109,102,47,43,100,98,116,106,111,112^95,120,117,92,99,116,117,94,109,102,104,106,112,111,100,64,101,64,108,102,122^95,120,117,117,110,122,120,112,120,104,112,109,101,103,112,115,116,117,102,98,110^95,120,117,92,99,116,117,94,100,105,102,98,113,100,116,104,112,116,108,106,111^100,98,116,106,111,112,47,43,38,101,44,121,51,47,43,38,101,44,121,52^100,98,116,106,111,112,47,43,101,106,100,102,47,43,38,101,44,47,43,117,115,106,113,109,102^120,117,92,99,116,94,115,118,111,102,116,100,98,113,102,104,112,109,101^99,102,117,47,43,115,112,109,109,47,43,121,51,47,43,121,52,47,43,110,106,111,47,43,110,98,121^95,120,117,92,99,116,117,94,100,116,104,112,116,117,102,98,110,104,106,103,117^95,120,117,117,120,112,120,104,112,109,101,103,112,115,112,116,115,116^95,120,117,116,116,117,102,98,110,98,100,100,112,118,111,117^95,120,117,92,99,116,94,109,112,109,98,100,100,37^95,120,117,92,99,116,117,94,116,117,102,98,110,120,98,109,109,102,117,104,106,103,117^120,117,116,47,43,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116,47,43,98,100,100,47,43,106,111,103,112^95,120,117,116,38,101,44,101,98,122,116,64,104,98,110,102,100,98,115,101^100,116,104,112,116,108,106,111,116,47,43,104,112,109,101,47,43,116,105,112,113,47,43,110,112,118,111,117,116^95,120,117,92,99,116,117,94,110,122,120,112,120,104,112,109,101,47,43,100,116,104,112,116,108,106,111^95,99,118,122,106,111,104,100,116,104,112,108,102,122^115,118,111,102,116,100,98,113,102,104,112,109,101,103,112,115,120,112,120,104,112,109,101^95,120,117,116,116,117,102,98,110,120,98,109,109,102,117,100,112,101,102^95,120,117,116,100,105,102,98,113,98,111,101,103,98,116,117,104,112,109,101^95,120,117,92,116,117,94,98,100,100,112,118,111,117,120,106,117,105^95,120,117,92,99,116,94,104,112,116,108,106,111,116^95,120,117,117,110,122,120,112,120,98,100,100,112,118,111,117,103,112,115,116,117,102,98,110,98,100,100,112,118,111,117^95,120,117,92,99,116,94,109,112,109,98,100,100,47,43,100,105,102,98,113^95,120,117,117,120,112,120,104,103,112,115,115,116,49,56,104^100,98,116,106,111,112,47,43,109,102,104,106,117,47,43,116,98,103,102,47,43,100,98,116,106,111,112^95,120,117,92,99,116,94,104,98,110,102,100,98,115,101^95,120,117,92,99,116,94,104,98,110,102,100,112,101,102^95,120,117,92,99,116,117,94,100,116,104,112,100,98,116,102^95,120,117,92,99,116,94,115,116,98,100,100,112,118,111,117^95,120,117,92,99,116,94,92,52,55,94,49,101,98,122,116,64,113,115,102,113,98,106,101,104,98,110,102,117,106,110,102^38,101,44,47,43,101,92,112,118,94,92,118,99,94,99,109,102,47,43,38,101,44,47,43,117,115,106,113^115,112,109,109,47,43,38,101,44,47,43,115,112,109,109,47,43,38,101,44,47,43,99,102,117^95,120,117,92,99,116,94,109,112,109,98,100,100,47,43,104,112,109,101^95,120,117,92,99,116,94,38,101,64,121,64,109,102,98,104,118,102,112,103,109,102,104,102,111,101,116,64,98,100,100,112,118,111,117^95,116,102,109,109,106,111,104,101,112,117,98,51^101,106,100,102,47,43,121,51,47,43,121,52,47,43,99,102,117,116^95,120,117,92,99,116,117,94,100,116,104,112,100,101,108,102,102,64,122^95,120,117,92,99,116,94,98,64,111,64,98,120,102,116,112,110,102,115,116,98,100,100,112,118,111,117^120,117,92,99,116,94,115,118,111,102,116,100,98,113,102,113,118,115,102^120,112,120,104,112,109,101,103,112,115,100,116,104,112,108,102,122^95,99,118,122,106,111,104,100,116,38,47,64,104,92,49,112,94,116,108,106,111","93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,121^96,106,232,156,153,231,166,158,231,142,135,231,157,164,111,110,48,44,39,102,93,113,50,95,230,186,137^115,115,48,44,58,54,57,54,56,55,52,58,56^105,93,107,39,102,95,93,113,39,102,95,45,93,232,235,95,93,158,175,95,93,185,157,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^230,193,163,113,109,54,105,113,110,102^230,191,144,230,189,185,235,137,147,231,186,131,48,44,230,186,130,231,166,171,230,188,150,233,155,192,230,186,137^96,117,113,109,103,116,105,120,107,99,117,121,107,117,106^117,109,123,114,103,48,44,112,107,105,106,118,106,113,110,102,39,48,100,113,113,117,118,66,105,111,99,107,110,39,48,101,113,111^93,232,233,95,93,133,146,95,93,143,189,95,100,231,166,169,233,150,171,231,143,152,48,44,231,166,169,233,169,154,48,44,232,171,155^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^232,150,177,232,142,131,232,139,130,232,158,139,232,152,187,231,190,145,230,189,154,232,174,192,231,142,135,232,141,174,232,185,154,231,176,159^232,171,155,48,44,233,170,130,232,158,139,231,159,146,235,172,147,48,44,121,113,121,103,116^102,120,107,112,105,48,44,114,113,121,103,116,110,103,65,120,103,65,110,48,44,102,120,107,112,105^117,109,123,114,103,48,44,113,124,123,100,113,113,117,118^96,117,197,168,110,105,103,116,105,119,110,102,104,113,116,39,102,45^96,117,103,110,110,48,44,100,113,114,111,113,119,112,118,48,44,106,107,114,114,113,48,44,117,103,110,104,114,110,99,123^96,121,118,117,48,44,112,107,105,106,118,106,93,113,50,95,110,102,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,93,113,50,95,118,103,102,48,44,114,103,116,117,93,113,50,95,112,99,110,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^235,154,161,230,190,143,231,137,188,231,150,176,48,44,101,99,116,116,123,48,44,231,159,146,235,172,147,231,137,188,231,150,176^96,117,99,110,108,103,116,105,119,110,102,120,107,99,117,121,107,117,106^96,105,119,110,102,104,107,112,112,117,100,107,110,110,107,105,118,66,117,121,107,117,106^96,230,186,149,230,186,156,232,145,146,230,192,157,235,189,147,231,186,132,48,44,232,153,162,235,158,130,234,191,174,232,158,143^96,121,118,117,48,44,117,99,102,102,110,103,48,44,106,107,114,114,113,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^121,118,117,48,44,116,100,105,48,44,117,99,102,102,110,103,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^109,113,100,113,110,102,48,44,117,114,116,124,103,102,99,108,109,113,112,118,113,93,39,48,46,95,114,110^118,101,105,48,44,234,155,144,48,44,232,150,177,230,189,154,231,176,159^96,121,118,117,99,116,118,107,104,99,101,118,114,113,121,103,116,48,44,102,116,99,109,103,48,44,117,118,99,116,48,44,99,110,117,113^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,235,231,95,93,147,150,95,173,48,65,48,65,48,65,231,143,93,131,95,230,93,186,188,95,93,139,142,150,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^100,103,117,118,103,112,48,44,117,109,123,114,103,48,44,117,99,116,111,99,103,110,48,44,101,113,99,101,106,107,112,105^117,109,123,114,103,48,44,99,114,114,113,110,99,122,53,50,58,55^99,116,103,112,99,48,44,52,93,39,48,46,95,93,52,54,57,95,48,44,105,110,99,102,48,44,110,103,65,120,103,65,110,48,44,117,103,110,104,114,110,99,123^115,115,48,44,55,59,53,58,53,57,50,53,51^96,117,103,110,110,107,112,105,48,44,106,103,116,113,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,114,103,116,117,113,112,99,110,110,113,113,118,48,44,118,113,111,113,116,116,113,121,48,44,112,107,105,106,118,100,99,112,103,48,44,107,112,104,113^231,150,173,100,231,166,169,234,158,158,231,164,133,48,44,232,171,155^96,111,99,116,107,112,99,48,44,235,155,146,232,153,184,233,139,187,231,143,152^102,120,107,112,105,93,39,48,46,95,116,119,48,44,123,101,210,189,123,116,210,186^96,232,156,153,231,166,158,231,166,169,233,179,181,230,191,144,230,193,159,93,39,48,46,95,44,38^231,192,176,230,193,163,48,44,53,55,55,53,53,58,59,57,51^96,121,118,117,39,102,45,109,39,102,45,39,38^39,102,45,118,103,99,111,106,103,110,114,123,113,119,48,44,111,123,118,106,107,101,48,44,109,99,116,99,124,106,99,112,48,44,111,113,119,112,118,48,44,104,99,117,118,48,44,115,119,99,110,107,118,123^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^235,137,147,48,44,233,167,160,231,155,170,234,133,191,235,137,145,48,44,232,156,153,231,166,158,231,142,135,231,157,164^105,119,110,102,109,120,99,116,48,44,120,107,99,117,121,107,117,106^231,182,93,177,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^117,197,168,110,105,103,116,105,119,110,102,48,44,117,109,123,114,103^105,93,107,39,102,95,93,113,39,102,95,45,231,93,138,179,95,93,159,184,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^117,103,110,110,107,112,105,48,44,120,107,101,107,113,119,117,48,44,111,113,119,112,118,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^96,100,93,113,50,95,93,113,50,95,117,118,48,44,52,93,39,48,46,95,93,52,54,57,95,48,44,105,110,99,102,48,44,110,107,120,103,117,118,116,103,99,111,48,44,117,103,110,104,114,110,99,123^232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,48,44,234,182,170,235,137,145,231,176,142,233,192,144,48,44,111,111^96,112,99,105,113,112,117,113,111,117,113,109,103,116,105,119,110,102,99,118,118,109,113,114,99^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,118,113,120,48,44,99,110,110,110,103,120,103,110,117,48,44,109,99,116,99,124,106,99,112,48,44,111,123,118,106,107,101,48,44,111,113,116,103,48,44,107,112,104,113^96,121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,100,113,113,117,118,107,112,105,48,44,110,113,113,118,48,44,109,99,116,99,48,44,111,123,118,106,107,101,48,44,102,119,112,105,103,113,112^235,137,147,231,186,131,48,44,233,192,144,48,44,231,186,131,230,189,154,232,174,192^96,99,116,103,112,99,48,44,52,93,39,48,46,95,93,52,54,57,95,48,44,105,110,99,102,48,44,118,103,99,111,111,99,118,103,117,48,44,114,119,117,106,116,99,118,107,112,105^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,231,235,95,93,182,148,95,93,177,135,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,121^96,121,118,117,99,116,118,107,104,99,101,118,114,113,121,103,116,39,48,65,49,65,114,117,118,38^96,232,156,153,231,166,158,234,168,131,231,163,160,233,133,175,235,150,130,93,39,48,46,95,44,38^121,118,117,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,51,50,49,51,50,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^96,100,103,106,113,120,103,116,102,119,105,66,117,121,107,117,106^235,137,93,147,148,95,231,186,131,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168,48,44,232,171,155^104,113,116,113,45,117,106,48,44,100,110,107,124,124,99,116,102,117,118,113,116,103,101,113,111^93,235,231,95,93,147,150,95,173,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^96,100,107,110,110,107,105,118,105,119,110,102,120,107,99,117,121,107,117,106^93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,51,50,49,51,50,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118^96,121,118,117,48,44,99,116,118,107,104,99,101,118,114,113,121,103,116,48,44,111,113,119,112,118,117,48,44,117,99,102,102,110,103^105,113,110,102,48,44,102,103,110,107,120,103,116,48,44,111,113,119,112,118,48,44,106,107,114,114,113^117,109,123,114,103,48,44,108,113,102,99,117,109,123,122,119^96,117,197,168,110,105,103,116,105,119,110,102,120,107,99,117,121,107,114,114^96,121,118,117,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,39,102,39,102,39,102,39,102,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^231,192,176,230,193,163,48,44,117,103,117,103,105,113,110,102^96,105,119,110,102,120,107,99,117,121,107,117,106^231,166,169,233,179,181,233,176,179,231,175,146,232,153,162,235,155,146,231,138,185,232,171,155,48,44,231,159,146,235,172,147^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,99,116,118,107,104,99,101,118,48,44,51,50,50,51,51,50,48,44,110,103,120,103,110,107,112,105^114,116,113,104,103,117,117,107,113,112,99,110,106,103,110,114,121,107,118,106,112,107,105,106,118,106,113,110,102,48,44,109,99,116,99,124,106,99,112,48,44,111,123,118,106,107,101,102,119,112,105,103,113,112,117,48,44,104,113,116,111,113,116,103,107,112,104,113^117,109,123,114,103,48,44,100,118,99,105,48,44,114,116,103,118,118,123,103,110,103,112,99^112,107,105,106,118,106,113,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,95,107,101,48,44,111,99,117,118,103,116,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,104,99,117,118,101,106,103,99,114^96,109,113,114,103,116,105,119,110,102,104,113,116,114,103,112,105,99,116^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^231,166,169,233,179,181,48,44,232,171,155,48,44,232,156,153,231,166,158,234,168,131,231,163,160^105,119,110,102,48,44,117,109,123,114,103,48,44,110,103,120,103,116,99,112,117^118,116,99,102,103,48,44,111,113,119,112,118,117,48,44,117,106,113,114,48,44,117,99,110,103^121,113,121,111,99,116,118,93,39,48,46,95,116,119,48,44,210,185,113,210,189,113,118,113^96,232,156,153,231,166,158,234,168,131,231,163,160,48,44,231,159,146,235,172,147,48,44,232,171,155^96,121,118,117,112,107,105,106,118,106,113,110,102,48,44,115,119,99,110,107,118,123,48,44,117,103,116,120,107,101,103,48,44,101,113,111,103,105,103,118,48,44,110,113,113,118,48,44,107,112,104,113^105,48,65,48,65,48,65,93,107,110,39,102,95,93,113,39,102,95,45,93,232,235,95,93,158,175,95,93,185,157,95,231,143,93,131,95,121^112,107,105,106,118,106,113,110,102,48,44,102,119,112,105,103,113,112,117,111,123,118,106,107,101,48,44,99,116,103,112,99,48,44,114,113,121,103,116,110,103,65,120,103,65,110^210,193,114,113,210,182,99,210,184,99,48,44,101,113,107,112,117,117,118,113,116,103,93,39,48,46,95,116,119^100,103,117,118,48,44,117,114,103,103,102,116,119,112,101,106,99,116,99,101,118,103,116,93,39,48,46,95,112,103,118^121,118,117,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^96,121,118,117,48,44,120,107,101,107,113,119,117,111,113,119,112,118,48,44,117,99,102,102,110,103,48,44,99,110,117,113,48,44,102,99,116,109,117,118,99,116,48,44,114,116,113,118,113,48,44,114,117,118^121,118,117,112,106,48,44,114,110,48,44,111,110,48,44,104,99,117,118,116,119,112,48,44,106,107,105,106,115,119,99,65,110,107,118,48,44,111,123,118,106,107,101^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,121^109,110,124,48,44,232,139,165,51,54,58,54,54,57,51,52,52,54^96,232,155,176,235,130,156,49,234,141,179,235,157,134,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,111,232,156,153,231,166,158,232,177,151,230,186,156^96,117,99,110,108,103,116,105,119,110,102,114,99,117,121,107,117,106^96,121,118,117,106,113,112,113,119,65,116,48,44,114,113,121,103,116,110,103,65,120,103,65,110,107,112,105,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,111,123,118,106,107,101,48,44,49,51,50,48,44,118,113,102,99,123,48,44,100,103,117,118,114,116,107,101,103,48,44,107,112,104,113^96,117,103,110,110,48,44,99,114,48,44,117,99,102,102,110,103,48,44,111,113,119,112,118,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^96,111,123,118,106,107,101,48,44,101,99,116,116,123,105,116,113,119,114,116,103,99,102,123,48,44,99,112,123,111,123,118,106,107,101,48,44,121,103,101,99,116,116,123,51,50,48,44,112,107,105,106,118,106,113,110,102,48,44,109,99,116,99,48,44,103,118,101^99,116,118,107,104,99,101,118,48,44,106,113,112,113,119,65,116,48,44,114,116,103,117,118,107,105,103,48,44,51,51,50,48,44,111,123,118,106,107,101^231,192,176,230,193,163,48,44,52,58,54,55,59,56,53,50,53^105,119,110,102,99,112,48,44,117,114,103,101,107,99,110,114,116,107,101,103,48,44,117,109,123,114,103^96,117,99,110,108,103,116,105,119,110,102,46,117,121,107,117,106^230,193,163,111,107,99,51,51,51,52,55^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,121^96,102,99,112,117,109,105,119,110,102,48,44,110,103,120,103,116,107,112,105,48,44,39,102,45,109^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,231,235,95,93,186,137,95,93,131,147,95,93,107,39,102,95,39,102,45,38,93,107,39,102,95,93,113,39,102,95,45,121^111,99,112,105,110,103,116,102,119,105,113,110,102,48,44,109,116,113,112,103,116,48,44,111,113,100,107,110,103,114,99,123^96,109,113,114,103,116,39,102,45,109,105,119,110,102,120,107,99,117,121,107,117,106^96,232,156,153,231,166,158,230,193,133,235,150,130,232,167,190,51,93,39,48,46,95,44,38^96,117,103,110,110,107,112,105,106,103,116,113,107,101,112,107,105,106,118,106,113,110,102,48,44,111,99,117,118,103,116,110,113,113,118,48,44,118,113,102,99,123,48,44,100,103,117,118,114,116,107,101,103,48,44,107,112,104,113^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^112,49,106,48,44,235,137,147,39,102,45,231,159,153,230,186,139,231,143,131^96,117,103,110,110,107,112,105,48,44,112,107,105,106,118,106,113,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,95,107,101,48,44,111,99,117,118,103,116,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,100,103,117,118,114,116,107,101,103^96,121,118,117,112,107,105,106,118,106,113,110,102,112,113,116,111,99,110,106,103,116,113,107,101,111,99,117,118,103,116,110,113,113,118,48,44,114,103,116,117,113,112,99,110,110,113,113,118,48,44,111,123,118,106,107,101,102,119,112,105,103,113,112,117,39,48,44,38^232,155,176,235,130,156,49,234,141,179,235,157,134,232,156,153,231,166,158,234,168,131,48,44,101,110,99,112,112,99,102,99,118,103^121,113,121,48,44,233,167,160,231,155,170,234,133,191,235,137,145,48,44,231,186,131^121,118,117,48,44,106,103,116,113,107,101,48,44,104,99,117,118,116,119,112,48,44,115,119,99,110,107,118,123,48,44,102,107,117,101,113,119,112,118^120,107,117,107,118,48,44,100,113,113,117,118,107,112,105,39,48,118,113,114^96,111,99,116,107,112,99,48,44,230,186,143,234,133,191,233,189,155,231,178,145,232,153,167,232,158,174,232,141,193^230,193,163,58,59,54,55,58,50,52,53,51^232,156,153,231,166,158,234,168,131,231,163,160,48,44,232,177,151,230,186,156,48,44,51,55,48,44,232,171,155,48,44,231,148,170^231,143,131,230,188,142,231,138,130,231,143,131,230,186,137,48,44,233,175,139,232,160,131,234,182,185,234,193,160^116,114,105,105,113,110,102,93,39,48,46,95,116,119,48,44,210,185,113,210,189,113,118,113^117,109,123,114,103,48,44,114,120,103,117,106,113,114^112,107,105,106,118,106,113,110,102,48,44,118,116,107,99,110,48,44,111,123,118,106,107,101,48,44,114,113,121,103,116,110,103,65,120,103,65,110,107,112,105,48,44,102,103,118,99,107,110,117^96,121,118,117,111,113,119,112,118,117,48,44,117,99,102,102,110,103,48,44,99,110,117,113,48,44,102,99,116,109,117,118,99,116,48,44,114,117,118^232,171,155,48,44,231,150,173,231,186,131,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168^96,232,155,176,235,130,156,234,141,179,235,157,134,232,156,153,231,166,158,231,142,135,231,157,164,232,177,151,230,186,156,231,145,180,234,177,153,232,156,153,231,166,158,232,177,151,230,186,156,93,39,48,46,95,44,38^117,109,123,114,103,48,44,108,119,117,118,107,112,39,48,114,110,99,101,113,117^232,138,154,233,142,144,233,181,189,231,138,153,48,44,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,231,135,173,232,140,154,48,44,231,166,169,231,177,136,48,44,231,138,185,231,138,185,230,191,144,230,193,159,232,171,155^230,193,163,48,44,57,57,58,55,58,57,53,51,56^96,117,99,110,108,103,116,105,46,48,44,117,109,116,107,120^105,113,110,102,48,44,105,93,113,50,95,110,102,101,103,93,113,50,95,93,39,48,46,95,101,93,113,50,95,111^234,141,179,235,157,134,231,142,135,231,157,164,232,177,151,230,186,156,48,44,231,138,185,233,176,179,231,175,146,48,44,232,174,164,234,193,144,231,148,170,234,177,164^93,231,235,95,93,186,137,95,93,131,147,148,95,48,65,48,65,48,65,231,143,93,131,95,230,93,186,188,95,93,139,142,150,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^114,103,112,105,99,116,104,107,112,112,117,120,107,99,117,121,107,117,106^101,113,112,118,99,101,118,48,44,117,109,123,114,103,48,44,112,103,111,100,113,113,117,118^121,118,117,48,44,99,110,114,118,116,99,119,111,48,44,111,123,118,106,107,117,101,106,48,44,100,113,113,117,118,48,44,100,113,113,117,118,48,44,105,110,113,116,123^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,121^121,113,121,48,44,231,186,131,48,44,233,167,160,231,155,170,234,133,191,235,137,145^117,103,110,110,107,112,105,104,119,110,110,48,44,111,123,118,106,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,105,113,107,112,105,112,113,121,48,44,104,119,110,110,117,103,118,48,44,105,103,99,116,112,113,121,48,44,117,114,113,118^96,117,103,110,110,107,112,105,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,111,99,117,118,103,116,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,105,103,118,48,44,114,107,103,101,103,117,48,44,105,103,99,116^235,137,93,147,148,95,100,234,65,184,65,135,65,230,191,144,230,189,185,48,44,231,166,169,233,169,154,48,44,232,171,155^112,107,105,106,118,106,113,110,102,111,123,118,106,107,101,48,44,51,50,49,51,50,48,44,105,119,99,65,116,99,112,118,103,103,48,44,99,111,99,124,107,112,105,114,116,107,101,103,48,44,113,104,104,48,44,117,118,99,116,118^115,115,48,44,51,55,53,58,57,54,50,56,59^96,105,104,107,112,112,117,117,121,107,117,106,38^51,50,50,51,51,50,48,44,231,159,146,235,172,147,48,44,39,102,39,102,101,102^96,117,103,110,110,107,112,105,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,121,65,107,65,118,65,106,65,111,110,48,44,93,118,112,95,113,93,102,121,112,95,48,44,100,103,117,118,114,116,107,101,103,48,44,111,113,116,103,107,112,104,113^234,141,179,235,157,134,232,156,153,231,166,158,231,142,135,231,157,164,48,44,232,171,155,48,44,233,146,189,231,193,135^93,235,233,95,93,147,146,95,93,173,189,95,93,107,39,102,95,39,102,45,38,93,107,39,102,95,93,113,39,102,95,45,121^113,117,100,113,113,117,118,107,112,105,93,39,48,46,95,101,113,111,48,44,118,99,116,107,104,117,48,44,116,103,111,107,117,103^106,232,156,153,231,166,158,231,142,135,231,157,164,235,133,191,233,189,155,48,44,232,152,166,231,193,135,39,102,45,48,44,121,99,112^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,231,179,93,184,95,231,143,93,131,95,121^117,106,99,118,118,103,116,106,99,112,102,48,44,114,120,103,48,44,114,120,114,48,44,99,112,118,107,99,110,110,107,99,112,101,103,48,44,231,176,156,233,189,145,235,172,142,231,148,142,234,165,135,231,166,137,233,156,134,235,153,180,232,151,165,233,144,171^96,105,119,65,110,65,102,65,104,107,112,112,117,66,117,121,107,117,106^96,105,119,110,102,107,112,112,103,48,44,100,103,118,99,110,112,107,112,105,120,107,99,117,121,107,117,106^96,105,104,107,112,112,117,120,107,99,117,121,107,117,106^96,121,118,117,114,113,121,103,116,110,103,65,120,103,65,110,107,112,105,48,44,99,116,118,107,104,99,101,118^112,107,105,106,118,106,113,110,102,48,44,101,110,103,99,116,48,44,100,107,117,105,103,99,116,48,44,101,113,116,103,48,44,104,116,103,103,48,44,117,114,113,118^231,142,135,231,157,164,48,44,55,52,57,53,53,58,59,53,54^121,118,117,48,44,99,116,118,107,104,99,101,118,114,113,121,103,116,48,44,114,113,121,103,116,110,103,65,120,103,65,110,48,44,51,50,50,51,51,50^96,121,118,117,99,114,48,44,106,113,112,113,116,48,44,114,116,93,103,107,95,117,118,107,105,103,48,44,99,101,101,117,106,99,116,103^124,113,110,113,118,113,121,113,121,93,39,48,46,95,116,119,48,44,210,185,113,210,189,113,118,113^96,117,99,110,108,103,116,100,107,110,110,107,105,118,65,105,119,110,102,93,111,120,95,93,103,107,95,93,102,99,95,117,121,107,117,106^96,101,113,105,231,135,174,230,190,156,230,186,188,230,190,154,48,44,51,50^106,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,48,44,101,99,116,116,123,48,44,230,186,172,230,188,188,233,139,187,230,189,185^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,111,123,118,106,107,101,48,44,109,99,116,99,124,106,99,112,48,44,99,101,106,107,103,120,48,44,107,112,104,113^107,112,104,113,48,44,121,103,100,117,107,118,103,48,44,108,119,117,118,100,113,113,117,118^112,49,106,48,44,232,156,153,231,166,158,231,142,135,231,157,164,48,44,117,107,111,107^93,235,231,95,93,147,150,95,173,100,234,65,184,65,135,65,230,191,144,230,189,185,48,44,231,166,169,233,169,154,48,44,232,171,155^231,182,93,177,95,93,48,65,48,65,48,65,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^105,48,65,48,65,48,65,93,107,110,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,121^121,118,117,48,44,112,107,105,106,118,111,99,116,103,48,44,57,49,57,48,44,111,99,117,118,103,116,110,113,113,118,48,44,104,99,117,118,101,106,103,99,114,48,44,107,112,104,113^96,121,118,117,116,100,105,48,44,99,114,48,44,120,107,101,107,113,119,117,48,44,101,99,116,116,123^111,123,118,106,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,51,50,50,51,51,50,48,44,114,116,103,117,118,107,105,103^39,102,45,116,111,100,48,44,99,114,48,44,231,166,169,231,178,145,234,130,131,234,155,144,235,164,134,231,176,156^96,121,118,117,48,44,120,107,101,107,113,119,117,117,99,102,102,110,103,48,44,99,110,117,113,48,44,114,116,113,118,113,102,116,99,109,103,48,44,114,117,118^117,197,168,110,105,103,116,105,48,44,39,102,45,109,116,65,114,116^93,235,231,95,93,147,150,95,173,231,186,131,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168,48,44,232,171,155^230,186,149,230,186,156,231,157,164,235,154,161,48,44,233,189,133,233,188,169,48,44,235,189,134,235,137,147,232,175,168,231,155,170^231,166,169,233,179,181,48,44,232,156,153,231,145,184,234,168,131,231,163,160,48,44,232,171,155^230,193,163,117,103,117,103,105,113,110,102^232,171,155,48,44,233,167,160,231,155,170,234,133,191,235,137,145,48,44,231,186,131^96,231,170,131,232,158,157,48,44,93,113,50,95,93,51,107,95,93,113,50,95,48,44,232,150,177,232,142,131,234,137,172,231,185,179,230,186,140,231,145,185,48,44,53,93,39,48,46,95,65,93,51,107,95,93,39,48,46,95,65,93,113,50,95,93,39,48,46,95,65,93,113,50,95^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,158,95,93,135,175,136,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^105,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,117,99,110,108,103,116,105,119,110,102,117,112,99,100,100,118,120,107,99,117,121,107,117,106^96,117,103,110,110,107,112,105,48,44,99,114,48,44,111,113,119,112,118,48,44,102,99,116,109,48,44,117,103,110,104,114,110,99,123^231,166,169,235,137,145,231,137,188,231,150,176,235,175,150,231,135,191,48,44,231,159,146,235,172,147,48,44,107,101,101^121,118,117,48,44,111,123,118,106,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,112,107,105,106,118,111,99,116,103,48,44,118,116,107,99,110,48,44,111,123,118,106,107,101,48,44,109,99,116,99,48,44,111,119,101,106,111,113,116,103,48,44,114,111^115,115,48,44,51,55,51,53,59,54,51,58,51,54^117,103,110,110,107,112,105,48,44,104,119,110,110,111,99,117,118,103,116,110,113,113,118,48,44,49,51,50,48,44,114,103,113,114,110,103,48,44,111,99,122,105,103,99,116,48,44,101,106,103,99,114,103,117,118,114,116,107,101,103^118,106,103,112,107,105,106,118,106,113,110,102,106,101,114,103,116,117,113,112,99,110,110,113,113,118,118,113,102,99,123,48,44,39,102,39,102,39,48,39,102,39,102,101,103,118,48,44,111,103,107,112,104,113,38^230,189,140,231,186,131,231,166,169,233,150,171,231,143,152,48,44,233,169,154,231,164,133,232,139,149,232,171,155,48,44,233,170,130,232,158,139,231,188,169,232,158,188,231,142,135,231,137,188^231,166,169,233,169,154,48,44,52,51,55,48,44,231,187,191,233,131,183,234,155,144^118,107,118,99,112,107,119,111,100,99,123,48,44,105,113,110,102^117,114,103,110,114,103,112,105,99,116,66,117,121,107,117,106^117,109,123,114,103,48,44,106,103,110,111,107,116,57,55,57,58^235,137,148,46,44,39,102,45,102,99,113,39,102,45,234,146,174^210,191,210,186,210,185,109,210,186,103,211,136,103,210,191,211,141,48,44,105,103,118,110,113,113,118,93,39,48,46,95,116,119^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,121^96,121,118,117,116,100,105,48,44,111,113,119,112,118,117,48,44,106,113,112,113,119,65,116,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,49,51,50,48,44,115,119,99,110,107,118,123,48,44,102,107,117,101,113,119,112,118^112,107,105,106,118,106,113,110,102,48,44,114,116,103,117,118,107,105,103,48,44,51,50,50,51,51,50^231,170,131,232,158,164,233,175,139,232,160,131,48,44,231,166,169,233,179,181,231,164,133,48,44,232,141,139,233,144,157,231,146,134,233,169,143^235,137,93,147,148,95,100,231,166,169,233,150,171,231,143,152,48,44,231,166,169,233,169,154,48,44,232,171,155^117,103,110,110,107,112,105,48,44,112,107,105,106,118,111,99,116,103,48,44,57,49,57,48,44,111,99,117,118,103,116,110,113,113,118,48,44,100,103,117,118,114,116,107,101,103,48,44,107,112,104,113^121,118,117,48,44,51,50,50,51,51,50,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103,48,44,114,116,107,101,103^96,112,99,112,117,113,111,99,116,117,119,105,103,112,114,99,105,119,110,102,48,44,114,116,107,117^118,107,118,99,112,107,119,111,100,99,123,48,44,113,100,118,103,112,103,124^232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,46,231,166,169,234,158,158^231,179,132,232,138,146,231,178,179,48,44,231,159,146,235,172,147,48,44,230,189,185,232,162,190,230,192,193,231,176,158^105,93,107,39,102,95,93,113,39,102,95,45,234,155,93,175,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^112,113,105,110,103,105,48,44,117,197,168,110,105,103,116,113,120,103,116,111,113,100,107,110,103,114,99,123^231,192,176,230,193,163,48,44,105,113,110,102,104,113,116,117^96,121,118,117,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,39,102,39,102,39,102,45^96,105,120,107,99,117,121,107,117,106,48,44,117,109,123,114,103^93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,51,50,49,51,50,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^232,156,153,231,166,158,235,164,134,231,150,176,48,44,52,51,52,101,99,116,116,123^105,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,234,155,93,175,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,232,233,95,93,133,146,95,93,143,189,95,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,235,137,93,152,95,93,107,39,102,95,93,113,39,102,95,45,121^231,166,169,233,179,181,48,44,232,171,155,48,44,232,156,153,231,145,184,234,168,131,231,163,160^118,107,118,99,112,107,119,111,100,99,123,48,44,110,107,120,116,99,107,117,113,112^231,178,145,233,182,164,233,182,164,230,191,162,231,145,177,230,189,167,231,144,189,232,139,192,108,123,231,186,168,230,191,162,231,147,130,233,159,163,230,186,130,234,169,139,234,183,185,232,159,167,230,189,130,230,187,138,235,133,191,232,158,139,231,151,168^111,99,122,110,120,110,93,39,48,46,95,112,103,118,48,44,210,193,114,113,210,182,99,210,184,99^117,109,123,114,103,48,44,120,113,110,118,116,113,104,107,122^121,118,117,110,113,113,118,116,119,112,48,44,111,123,118,106,107,101,48,44,119,114,123,113,119,116,109,103,123,48,44,112,107,105,106,118,100,99,112,103,48,44,105,110,113,116,123,48,44,107,112,104,113^96,105,119,110,102,104,107,112,112,117,99,118,118,109,113,114,99,100,107,110,110,107,105,118^112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,111,99,117,118,103,116,48,44,118,107,111,103,116,48,44,111,113,119,112,118,48,44,102,116,113,114^117,99,110,108,103,116,105,119,110,102,48,44,102,103,118,99,107,110,48,44,117,118,113,101,109^231,137,188,231,150,176,39,102,45,230,186,137,235,137,147,48,44,39,102,45,231,138,130,39,102,45,230,186,137^111,123,118,106,107,101,48,44,101,113,99,101,106,107,112,105,48,44,111,111,113,114,116,113,104^96,121,118,117,48,44,112,107,105,106,118,106,93,113,50,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,104,99,117,118,101,106,103,99,114^93,232,233,95,93,133,146,95,93,143,189,95,231,186,131,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168,48,44,232,171,155^232,171,155,48,44,52,51,55,101,48,44,233,146,189,231,186,131,234,184,135,230,191,144,230,189,185^96,232,156,153,231,166,158,48,44,231,142,135,231,157,164,48,44,232,156,153,48,44,121,103,107,121,103,107^96,117,99,110,108,103,116,117,114,103,110,120,99,110,119,118,99,120,107,99,117,121,107,117,106^117,197,168,110,105,103,116,105,119,110,102,120,107,99,111,114^121,118,117,105,113,110,102,48,44,111,113,119,112,118,117,48,44,99,101,101,117,106,99,116,103^234,143,174,51,55,99,116,101,121,99,123,109,103,123,48,44,115,121,115,121^96,111,99,116,107,112,99,231,159,185,231,160,133^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,235,137,93,152,95,93,107,39,102,95,93,113,39,102,95,45,121^117,103,110,110,107,112,105,48,44,49,51,50,48,44,118,113,102,99,123,48,44,105,119,99,116,99,112,118,103,103,48,44,105,113,113,102,114,116,107,101,103,48,44,107,112,104,113^115,115,48,44,51,54,53,53,55,53,55,56,52,58^93,235,231,95,93,147,150,95,173,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^105,93,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^232,171,155,48,44,93,235,231,95,93,147,150,95,173,48,44,231,166,169,233,150,171,231,143,152,48,44,235,158,130,234,168,131,233,156,134,111^39,102,45,48,44,231,166,169,233,179,181,230,191,144,48,44,232,159,167,232,159,167,231,178,179,231,190,130,232,159,167,231,178,179,231,190,130^233,146,189,231,186,131,230,192,193,231,176,158,231,166,169,233,150,171,231,143,152,48,44,52,51,55,101^51,55,101,48,44,235,137,148,231,186,131,230,192,193,231,176,158,231,166,169,233,150,171^121,118,117,48,44,51,50,49,51,50,48,44,105,103,99,116,48,44,111,123,118,106,107,101,48,44,104,99,117,118,116,119,112,48,44,106,107,105,106,115,119,99,110,107,118,123^121,118,117,48,44,112,106,106,103,116,113,107,101,48,44,103,112,111,123,118,106,107,101,48,44,109,99,116,99,124,106,99,112,48,44,111,113,119,112,118^231,166,169,233,179,181,48,44,232,171,155,48,44,232,150,177,232,142,131,48,44,100,99,113^105,113,110,102,54,113,109,93,39,48,46,95,101,113,111,48,44,117,113,118,101,109^96,112,99,105,113,112,117,113,111,117,99,110,108,103,116,105,119,65,110,65,102,65,120,107,99,117,121,107,117,106^120,107,117,107,118,48,44,121,113,121,118,113,114,110,113,113,118,93,39,48,46,95,112,103,118^231,150,173,234,184,135,233,188,169,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168,48,44,232,171,155^105,93,113,50,95,110,102,48,44,114,93,113,50,95,121,103,116,110,103,65,120,103,65,110,48,44,100,93,113,50,95,93,113,50,95,117,118,48,44,121,113,121,106,103,110,114,93,39,48,46,95,114,116,113^96,121,118,117,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,93,113,50,95,118,103,102,48,44,110,93,113,50,95,93,113,50,95,118^106,39,102,45,109,48,44,121,93,117,38,95,121,107,117,106,48,44,100,107,110,110,107,105,118^112,107,105,106,118,106,113,110,102,48,44,51,50,49,51,50,48,44,107,112,101,48,44,100,107,117,105,103,99,116,48,44,111,113,119,112,118,48,44,99,111,99,124,107,112,105,114,116,107,101,103,48,44,118,113,102,99,123^231,150,176,231,150,173,231,186,131,48,44,232,185,154,48,44,231,176,159^121,118,117,48,44,110,113,113,118,48,44,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,111,99,117,118,103,116,48,44,109,103,123,48,44,107,112,104,113^105,119,110,102,48,44,104,107,112,112,117,99,118,118,109,113,114,99,105,103,112,113,111,117,121,107,117,106^114,120,114,48,44,39,102,45,48,44,233,188,169,234,169,165,235,150,131,231,166,152,234,169,132,235,130,131,235,132,172,232,178,150,235,160,143,231,188,169,48,44,232,154,161,231,135,139^96,121,118,117,112,107,105,106,118,106,113,110,102,48,44,111,123,118,106,107,101,48,44,102,119,112,105,103,113,112,117,48,44,115,119,99,110,107,118,123,48,44,117,103,116,120,107,101,103^106,103,110,114,123,113,119,48,44,110,113,113,118,48,44,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,100,107,117,48,44,105,103,99,116,48,44,101,106,99,116,99,101,118,103,116^96,117,99,110,108,103,116,105,119,110,102,48,44,117,109,123,114,103^105,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^96,111,99,116,107,112,99,231,143,131,230,188,150,231,179,132,235,189,147,234,138,187,235,173,154,231,176,159^96,105,119,110,102,117,99,110,108,103,117,100,107,110,110,107,105,118,48,44,117,121,107,117,106^117,109,123,114,103,48,44,99,110,103,122,50,50,57,55,52,58^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,121^119,117,102,48,44,113,114,105,99,111,103,105,113,110,102,48,44,100,119,123^96,117,103,110,110,107,112,105,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,121,65,107,65,118,65,106,65,111,110,48,44,93,118,112,95,113,93,102,121,112,95,48,44,105,103,118,39,102,45,114,107,103,101,103,117,48,44,105,103,99,116,48,44,111,113,116,103,107,112,104,113^121,118,117,48,44,110,113,113,118,116,99,107,102,48,44,105,110,113,116,123,48,44,111,113,119,112,118,117,48,44,111,113,116,103,107,112,104,113^118,107,118,99,112,107,119,111,100,99,123,48,44,103,122,118,116,99^234,177,185,231,140,162,232,139,165,232,139,165,230,186,130,235,157,184,230,186,139,231,135,175,231,157,157,230,188,142^96,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,93,39,48,46,95,44,38^96,109,113,114,103,116,105,120,107,99,117,121,107,117,106^114,113,121,103,116,110,103,120,103,110,48,44,105,103,99,116,48,44,101,106,103,99,114,48,44,117,109,123,114,103^120,107,117,107,118,48,44,101,113,112,115,119,103,117,118,101,99,114,114,103,102,93,39,48,46,95,101,113,111^96,117,103,110,110,107,112,105,116,100,105,48,44,117,99,102,102,110,103,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^234,130,131,234,155,144,48,44,118,101,105,48,44,105,113,110,102,104,113,116,117^96,117,99,110,108,103,116,105,100,107,110,110,107,105,118,120,107,99,117,121,107,117,106^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,95,93,135,175,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,39,102,39,102,39,102,45^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,158,93,148,136,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^100,113,113,117,118,107,112,105,93,39,48,46,95,114,116,113,48,44,111,113,119,112,118^231,192,176,230,193,163,48,44,52,56,56,52,57,59,59,51,53,54^96,104,113,116,113,117,106,103,65,105,113,110,102,100,65,99,65,105,106,103,123,111,99,118,103,65,111,113,112,99,117,103,100^96,117,93,103,121,95,110,110,107,112,105,99,116,118,107,104,99,101,118,114,113,121,103,116,48,44,121,103,99,114,113,112,48,44,111,113,119,112,118,117^104,113,116,113,117,106,103,118,99,110,99,48,44,39,102,45,109,63,39,102,45,48,44,111,99,106,102,113,102^112,107,105,106,118,106,113,110,102,48,44,101,110,103,99,116,48,44,110,113,113,118,117,48,44,117,103,110,104,114,110,99,123,48,44,114,116,107,101,103^231,182,93,177,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,117,103,110,110,107,112,105,104,119,110,110,106,103,116,113,107,101,48,44,112,107,105,106,118,106,113,110,102,101,110,103,99,116,117,48,44,105,113,107,112,105,112,113,121,48,44,117,114,113,118,110,103,104,118,48,44,105,103,118,123,113,119,116,48,44,105,103,99,116,48,44,110,103,105,103,112,102,99,116,107,103,117^93,231,235,95,93,186,137,95,93,131,147,148,95,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^110,113,113,118,116,119,112,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,113,118,103,102,48,44,105,119,112,117,118,107,105^96,117,103,110,110,107,112,105,48,44,106,103,116,113,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,114,103,116,117,113,112,99,110,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,99,113,118,101,48,44,105,103,99,116^96,93,120,121,95,107,110,110,112,99,105,113,112,109,113,114,93,99,117,95,105,119,110,102,48,44,117,121,107,117,106^96,111,99,116,107,112,99,48,44,233,171,188,233,164,144,233,139,137^115,115,48,44,52,52,54,57,56,58,52,55,51,52^93,232,233,95,93,133,146,95,93,143,189,95,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,233,190,93,154,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^117,109,123,114,103,48,44,108,99,112,103,100,113,113,117,118^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,158,95,93,135,175,136,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^121,118,117,48,44,116,100,105,48,44,117,99,102,102,110,103,48,44,118,110,114,102^113,116,113,48,44,118,119,118,107,103,112,102,99,121,113,121,48,44,100,99,116,99,118,113^96,121,118,117,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,101,110,103,99,116,48,44,105,103,99,116,105,119,99,65,116,99,112,118,103,103,102,48,44,39,102,39,102,113,104,104,118,113,102,99,123,48,44,117,118,99,116,118,99,118,39,102,39,102^231,150,173,231,186,131,230,191,144,230,189,185,48,44,232,171,155,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168^96,117,197,168,110,105,103,116,105,121,106,107,117,114,103,116,38^117,99,110,103,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^96,117,197,168,110,105,103,116,105,119,110,102,48,44,39,102,45,109,104,113,116,39,102,45,109,116^96,121,118,117,99,114,49,65,114,117,118,38^93,231,235,95,93,186,137,95,93,131,147,148,95,48,65,48,65,48,65,231,143,93,131,95,231,157,93,157,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,105,113,110,102,117,106,99,116,124,106,111,99,106,107,99,112,103,120,99,117,103,104,113,116,113,113,117,106^121,118,117,48,44,102,119,112,105,103,113,112,48,44,110,113,113,118,48,44,117,103,110,104,114,110,99,123,48,44,100,113,113,117,118,48,44,111,113,119,112,118^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,121^105,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,232,235,95,93,158,175,95,93,185,157,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^230,193,163,100,99,100,103,123,51,51,52,53^121,118,117,48,44,117,99,102,102,110,103,48,44,118,110,114,102,48,44,99,103,113,112,99,122,48,44,114,117,118^230,193,163,102,99,107,121,113,121,58,58,58^96,231,137,188,231,150,176,235,175,150,231,135,191,234,169,148,234,139,180,231,136,135,232,158,139,234,169,148,232,152,153,231,165,173,235,192,155,232,158,139,232,158,172,48,44,51,51,50^232,133,143,234,184,135,233,188,169,230,191,144,48,44,232,171,155,48,44,232,156,153,231,166,158,234,168,131,231,163,160^96,117,103,107,105,103,116,105,119,107,107,120,107,99,120,107,114,114,117^105,119,110,102,99,112,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,93,113,50,95,118,103,102^121,118,117,48,44,117,99,102,102,110,103,48,44,118,110,114,102,48,44,99,103,113,112,99,122,122,48,44,102,99,116,109,117,118,99,116^115,115,48,44,52,58,55,51,57,53,51,58,58,57^96,117,103,110,110,107,112,105,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,121,65,107,65,118,65,106,65,111,110,48,44,93,118,112,95,113,93,102,121,112,95,48,44,104,99,117,118,101,106,103,99,114,48,44,111,113,116,103,107,112,104,113^232,156,153,231,166,158,231,142,135,231,157,164,232,177,151,230,186,156,48,44,235,137,147,39,102,45,48,65,48,65,48,65,230,188,142,231,143,131,230,186,137,48,44,111,111^115,115,48,44,52,52,57,58,50,54,58,51,57,59^231,178,145,233,145,143,233,145,143,233,182,164,233,182,164,230,186,188,230,189,130,230,187,138,230,191,162,234,165,135,233,175,139,234,193,155,230,187,138,235,173,154,48,44,230,191,162,232,154,177,230,186,143,232,154,177,231,131,185,231,131,185,231,144,189,231,149,172,233,144,171,230,188,136^121,118,117,116,100,105,48,44,101,99,116,116,123,48,44,112,113,121,48,44,99,110,117,113,48,44,117,99,102,102,110,103^96,121,118,117,109,103,123,117,118,113,112,103,48,44,99,112,113,118,106,103,116,109,103,123,48,44,109,99,116,99,124,106,99,112,48,44,111,113,119,112,118,48,44,121,123,116,111,48,44,117,103,110,104,114,110,99,123^232,171,155,48,44,231,150,173,231,186,131,232,150,177,232,142,131,232,185,154^230,186,172,230,188,188,231,149,131,232,186,165,231,175,146,48,44,114,116,113,104,113,119,112,102,117,103,99^232,171,155,48,44,93,232,233,95,93,133,146,95,93,143,189,95,48,44,231,166,169,233,150,171,231,143,152,48,44,235,158,130,234,168,131,233,156,134,111^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,121,93,107,39,102,95,93,113,39,102,95,45,231,138,93,130,95^100,113,113,117,118,107,112,105,93,39,48,46,95,114,116,113,48,44,110,113,113,118^232,156,153,231,166,158,234,168,131,231,163,160,233,175,139,232,130,167,48,44,230,191,144,230,189,185,235,137,147,231,186,131^232,150,177,232,142,131,234,137,172,231,185,179,230,186,140,231,145,185,48,44,53,51,50,50^96,117,103,110,110,107,112,105,99,114,48,44,121,103,99,114,113,112,48,44,111,113,119,112,118,117,48,44,117,99,102,102,110,103,48,44,99,101,101,117,106,99,116,103^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,95,93,135,175,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^96,117,197,168,110,105,103,116,105,119,110,102,118,107,110,102,99,112,117,109,103,116,103^93,232,233,95,93,133,146,95,93,143,189,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^210,185,113,210,189,113,118,113,48,44,111,111,113,99,106,93,39,48,46,95,116,119^96,231,152,158,234,193,144,53,39,48,52,58,232,152,178,233,139,138,232,158,174^96,121,118,117,48,44,117,99,102,102,110,103,48,44,116,107,105,106,118,112,113,121,48,44,99,101,101,117,106,99,116,103^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^52,51,52,101,99,116,116,123,48,44,231,187,191,233,131,183,234,155,144^120,103,112,102,117,110,103,101,99,119,101,106,103,111,99,116,48,44,111,123,118,106,107,115,119,103,48,44,100,113,113,117,118,48,44,109,99,116,99,124,106,99,112,48,44,102,113,112,108,113,112^104,99,117,118,54,105,113,110,102,93,39,48,46,95,101,113,111,48,44,117,113,118,101,109^116,103,99,110,111,118,116,99,112,117,104,103,116,48,44,101,106,99,112,105,103,117,103,116,120,107,101,103,48,44,111,107,112,102,100,110,113,121,107,112,105,48,44,116,103,104,119,117,103,48,44,107,112,104,113^231,187,191,233,131,183,234,155,144,48,44,231,159,146,235,172,147,48,44,51,50,50,51,51,50^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,231,179,93,184,95,231,143,93,131,95,121^96,231,178,145,232,177,143,233,139,157,231,137,188,231,150,176,230,191,144,230,189,185,231,186,131,48,44,231,187,191,233,131,183,234,155,144,233,144,178,234,182,169^39,102,45,231,185,167,230,190,156,234,191,168,235,154,161,231,186,168,39,102,45,230,191,144,230,193,159,231,143,163,232,141,139,234,183,160,39,102,45,232,138,146,231,178,179,48,44,232,158,139,235,153,176,235,164,154,232,174,164,234,193,144,235,153,176^115,115,48,44,51,50,50,58,54,55,59,59,55^96,111,99,116,107,112,99,48,44,235,168,152,232,144,170,232,162,186,231,193,133,232,171,155,232,142,137,231,176,156,230,186,156,231,140,163^121,118,117,116,100,105,48,44,101,99,116,116,123,48,44,112,113,121,48,44,99,110,117,113,48,44,106,107,114,114,113^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,121,93,107,39,102,95,93,113,39,102,95,45,231,138,93,130,95^232,171,155,48,44,231,150,173,234,184,135,233,188,169,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168^105,113,110,102,48,44,117,118,113,101,109,48,44,114,99,123,114,99,110^93,232,233,95,93,133,146,95,93,143,189,95,100,234,65,184,65,135,65,230,191,144,230,189,185,48,44,231,166,169,233,169,154,48,44,232,171,155^232,156,153,231,166,158,232,156,153,231,166,158,231,142,135,231,157,164,232,177,151,230,186,156,48,44,51,55,101^116,99,107,102,103,116,117,48,44,117,103,110,110,107,112,105,48,44,112,107,105,106,118,106,113,110,102,48,44,114,103,116,117,113,112,99,110,48,44,103,120,103,116,123,102,99,123,48,44,99,110,117,113,117,103,110,110,107,112,105,48,44,107,112,104,113^118,103,110,103,105,116,99,111,48,44,99,111,107,116,99,112,105,99,111,107,112,105^96,112,107,105,106,118,106,113,110,102,106,101,48,44,111,123,118,106,107,101,48,44,121,113,116,110,102,115,119,103,117,118,104,99,116,111,48,44,113,112,110,107,112,103,117,119,114,114,113,116,118^105,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,179,95,93,159,184,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^107,105,104,99,112,117,48,44,117,118,113,101,109,48,44,102,103,110,107,120,103,116^232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,46,231,166,169,233,179,181^116,114,105,105,113,110,102,93,39,48,46,95,116,119,48,44,116,113,210,189,210,182^232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,46,231,166,169,233,169,154,231,164,133^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,158,95,93,135,175,136,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^102,120,107,112,105,48,44,123,101,210,189,123,116,210,186,48,44,102,120,107,112,105^105,48,65,48,65,48,65,93,107,110,39,102,95,93,113,39,102,95,45,231,93,138,179,95,93,159,184,95,231,143,93,131,95,121^96,117,99,93,110,107,95,108,103,116,105,119,93,107,110,95,102,114,99,93,117,38,95,121,93,107,110,95,117,106^104,113,116,119,117,106,107,48,44,105,99,111,103,118,107,111,103,48,44,114,111,48,44,109,99,111,103,110,99,112,48,44,111,113,112,99,117,103,100^96,121,118,117,48,44,111,113,119,112,118,117,48,44,117,99,102,102,110,103,48,44,99,101,101,117,106,99,116,103^96,93,235,231,95,93,147,150,95,173,231,186,131,230,191,144,230,189,185,48,44,232,171,155^96,112,99,105,113,112,117,113,111,100,103,106,113,120,103,116,109,113,114,99,105,119,93,110,107,95,102^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,102,119,112,105,103,113,112,117,48,44,109,99,116,99,124,106,99,112,48,44,105,110,113,116,123,48,44,107,112,104,113^96,111,99,116,107,112,99,48,44,39,102,45,48,44,233,164,139,231,162,163,230,188,136^93,235,231,95,93,147,150,95,173,100,231,166,169,233,150,171,231,143,152,48,44,231,166,169,233,169,154,48,44,232,171,155^231,157,164,48,44,51,52,59,52,57,50,56,51,53,54^96,109,113,114,103,116,121,65,113,65,121,65,105,119,110,102,120,107,99,117,121,107,117,106^232,171,155,48,44,235,137,93,147,148,95,48,44,231,166,169,233,150,171,231,143,152,48,44,235,158,130,234,168,131,233,156,134,111^96,116,99,114,99,210,191,118,210,186,210,186,46,101,109,210,186,210,182,109,210,186,46,210,182,113,101,118,210,180,109,99,55,111,210,186,210,191,123,118,38^96,121,118,117,111,113,119,112,118,117,48,44,114,116,113,118,113,102,116,99,109,103,48,44,102,99,116,109,117,118,99,116,48,44,99,110,117,113^114,120,114,48,44,121,99,110,110,105,99,111,107,112,105,93,39,48,46,95,101,113,111^96,93,235,231,95,93,147,150,95,173,231,186,131,234,184,135,230,191,144,230,189,185,48,44,232,171,155^117,197,168,110,105,103,116,105,119,110,102,48,44,114,116,107,117,103,116^93,235,231,95,93,147,150,95,173,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,233,190,93,154,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^231,192,176,230,193,163,48,44,52,54,55,55,55,56,52,51,55^231,166,169,233,169,154,48,44,232,171,155,48,44,235,137,93,147,148,95,100,231,166,169,233,150,171,231,143,152^115,57,52,54,52,52,53,54,54,58^96,235,137,93,147,148,95,234,184,135,230,191,144,230,189,185,48,44,232,171,155,48,44,232,156,153,231,166,158,234,168,131,231,163,160^233,139,187,230,189,185,231,166,169,231,178,145,231,187,191,233,131,183,234,155,144,48,44,51,50,50,51,51,50^101,118,99,118,210,186,109,48,44,101,109,99,210,187,210,193,48,44,114,120,103,118,113,114^96,101,99,116,116,123,107,112,105,112,107,105,106,118,106,113,110,102,99,112,102,99,112,123,111,123,118,106,107,101,48,44,114,117,118,38^233,193,163,233,193,162,234,165,135,231,166,137,48,44,231,176,139,231,135,170,230,193,159,234,177,131,48,44,230,189,185,232,162,190,230,192,193,231,176,158,231,149,168^121,99,110,110,105,99,111,107,112,105,48,44,110,113,113,118,48,44,109,103,123,117,118,113,112,103^96,105,119,110,102,104,107,112,112,117,48,44,120,107,99,117,121,93,107,110,95,117,106^120,122,102,99,107,121,113,121,58,58,58^231,166,169,233,179,181,230,191,144,230,193,159,48,44,118,101,105,48,44,231,138,130,231,143,131,230,186,137^96,121,118,100,105,93,113,119,95,110,102,120,107,99,117,121,107,117,106^105,93,107,39,102,95,39,102,45,39,48,44,63,44,93,107,39,102,95,93,113,39,102,95,45,230,186,137,48,44,99,114^112,49,106,48,44,121,99,112,48,44,231,178,145,231,187,191,235,164,136,234,155,144,48,44,111,111^93,231,235,95,93,186,137,95,93,131,147,148,95,233,164,93,169,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,233,190,93,154,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^96,232,156,153,231,166,158,234,168,131,231,163,160,230,191,144,230,189,185,233,133,175,235,150,130,93,39,48,46,95,44,38^96,232,152,178,231,187,182,233,180,153,235,150,130,48,44,233,146,189,231,186,131,48,44,231,166,169,233,179,181^231,150,173,230,191,144,230,189,185,48,44,232,171,155,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168^96,117,99,110,108,103,116,121,113,121,105,119,110,102,48,44,117,121,107,117,106^96,117,103,110,110,107,112,105,106,113,112,113,116,48,44,99,114,48,44,111,113,119,112,118,48,44,117,103,110,104,114,110,99,123^121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,110,113,113,118,48,44,111,123,118,106,107,101,48,44,103,122,118,116,99,48,44,99,116,118,107,104,99,101,118,114,113,121,103,116^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,235,137,93,152,95,93,107,39,102,95,93,113,39,102,95,45,121^116,111,100,48,44,232,138,154,233,191,147,114,116,103,118,118,123,103,110,103,112,99^121,118,117,106,113,112,113,119,65,116,48,44,99,114,48,44,117,99,102,102,110,103,48,44,118,110,114,102^96,117,103,110,110,107,112,105,106,113,112,113,116,48,44,99,114,48,44,111,113,119,112,118,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^112,107,105,106,118,106,113,110,102,106,103,116,113,107,101,51,50,49,51,50,101,110,103,99,116,111,99,117,118,103,116,110,113,113,118,48,44,117,103,110,104,114,110,99,123,48,44,107,112,120,107,118,103,117,48,44,39,102,39,102,39,102,39,102^96,117,103,110,110,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,39,102,39,102,39,102,45,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^105,93,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,121^112,49,106,48,44,232,156,153,231,166,158,231,142,135,231,157,164,232,177,151,230,186,156,230,186,172,230,188,188,232,141,192,231,145,152^39,102,45,121,113,121,118,113,93,109,103,95,93,103,109,95,112,48,44,119,117,102,48,44,101,106,99,112,105,103,107,118,118,113,48,44,100,99,118,118,110,103,100,99,110,99,112,101,103,104,113,116,39,102,45,119,117,102^231,178,145,233,182,164,233,182,164,231,178,145,233,145,143,233,145,143,230,191,162,234,165,135,233,175,139,234,193,155,230,187,138,230,191,144,48,44,232,138,147,232,130,144,230,187,138,231,186,168,230,191,162,232,139,149,232,158,174,231,147,130^231,192,176,230,193,163,48,44,51,53,59,57,55,57,53,51,52,56,57^231,166,169,233,169,154,48,44,232,171,155,48,44,93,235,231,95,93,147,150,95,173,100,231,166,169,233,150,171,231,143,152^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,158,93,148,136,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^230,193,163,53,59,59,51,52,58,55,54,58^96,121,118,117,106,113,112,113,116,48,44,99,114,48,44,111,113,119,112,118,48,44,99,101,101,117,106,99,116,103^112,107,105,106,118,106,113,110,102,48,44,51,50,50,51,51,50,48,44,114,116,103,117,118,107,105,103^109,110,124,48,44,115,53,58,54,58,52,54,58,56,55^233,189,133,233,188,169,48,44,231,159,146,235,172,147,48,44,232,171,155^93,235,231,95,93,147,150,95,173,48,65,48,65,48,65,231,143,93,131,95,231,157,93,157,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^115,55,54,59,59,56,55,58,53,58^96,117,103,110,110,107,112,105,112,107,105,106,118,106,113,110,102,106,103,116,113,107,101,48,44,101,110,103,99,116,48,44,105,103,99,116,48,44,104,99,107,116,114,116,107,101,103,48,44,116,99,107,102,117,118,99,116,118,117^117,197,168,110,105,103,116,105,48,44,111,113,100,107,110,103,114,99,123^93,232,233,95,93,133,146,95,93,143,189,95,48,65,48,65,48,65,231,143,93,131,95,231,157,93,157,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,121,118,117,116,99,107,102,48,44,102,119,112,105,103,113,112,48,44,99,116,103,112,99,48,44,114,113,121,103,116,110,103,120,103,110,107,112,105,48,44,114,103,118,48,44,107,112,104,113^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,158,93,148,136,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^96,121,118,117,63,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,39,102,39,102,49,39,102,39,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,39,102,39,102,39,102,45^112,113,105,103,112,102,103,116,117,109,99,110,109,113,100,103,111,113,112,118,48,44,107,112,104,113^96,105,104,107,112,112,117,99,118,118,65,109,113,114,99^96,231,170,131,232,158,157,48,44,93,113,50,95,93,51,107,95,93,113,50,95,48,44,53,93,39,48,46,95,65,93,51,107,95,93,39,48,46,95,65,93,113,50,95,93,39,48,46,95,65,93,113,50,95,48,44,232,150,177,232,142,131,234,137,172,231,185,179,230,186,140,231,145,185^115,115,48,44,53,51,59,54,55,52,51,58,54,58^57,39,48,52,48,44,54,49,51,50,48,44,231,145,177,230,189,167,233,169,131,231,177,136,232,138,147^101,116,99,124,123,48,44,114,103,116,117,113,112,99,110,48,44,117,109,123,114,103^100,113,113,117,118,48,44,103,122,118,116,103,111,103,110,123,48,44,104,99,117,118,48,44,51,50,50,51,51,50^106,232,156,153,231,166,158,231,157,164,235,137,147,231,175,146,233,139,187,230,189,185,48,44,111,111,38^112,113,105,110,103,105,48,44,117,197,168,110,105,103,116,120,107,99,111,113,100,107,110,103,114,99,123^231,170,131,232,158,157,48,44,52,51,55,48,44,232,171,155,48,44,231,140,163^117,197,168,110,105,103,116,39,102,45,109,105,119,110,102,48,44,111,113,100,107,110,103^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^232,156,153,231,166,158,106,49,111,48,44,51,55,48,44,234,130,131,234,155,144,48,44,114,117,118^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,121^96,117,103,110,110,107,112,105,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,112,107,105,106,118,106,113,110,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,100,103,117,118,114,116,107,101,103^231,137,188,235,137,148,39,102,45,231,138,130,232,141,192,234,146,174^96,112,113,121,118,106,103,102,107,117,101,113,119,112,118,110,103,65,120,103,65,110,107,112,105,51,50,50,51,51,50^96,93,232,233,95,93,133,146,95,93,143,189,95,231,186,131,230,191,144,230,189,185,48,44,232,171,155^231,186,131,48,44,232,171,155,48,44,231,159,146,235,172,147^118,107,118,99,112,107,119,111,100,99,123,48,44,105,116,99,118,107,117^96,111,99,116,107,112,99,48,44,232,141,190,231,157,164,48,44,232,174,164,234,193,144,231,146,134,230,191,143^96,121,118,117,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,95,107,101,48,44,109,107,110,110,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,113,118,103,102,48,44,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95^120,107,117,107,118,48,44,121,113,121,118,113,114,110,113,113,118,102,113,118,112,103,118^96,111,99,116,107,112,99,48,44,233,144,137,48,44,51,51,50,51,52,50^96,121,118,117,121,65,107,65,112,65,99,114,48,44,121,103,99,114,48,44,120,107,101,107,113,119,117,111,113,119,112,118,48,44,117,99,102,102,110,103,48,44,99,101,101,117,106,99,116,103^112,107,105,106,118,106,93,113,50,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,50,113,106,95,107,101,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,93,113,50,95,118,103,102,48,44,110,93,113,50,95,93,113,50,95,118^118,106,103,112,107,105,106,118,106,113,110,102,112,113,116,111,99,110,114,103,116,117,113,112,99,110,110,113,113,118,118,113,102,99,123,48,44,39,102,39,102,39,48,39,102,39,102,101,103,118,48,44,111,103,107,112,104,113,38^112,107,105,106,118,106,93,113,50,95,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,93,113,50,95,118,103,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^231,182,93,177,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,118,112,95,93,113,50,95,93,102,121,112,95,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,51,50,49,51,50,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118^121,118,117,116,100,105,48,44,112,113,121,48,44,117,99,102,102,110,103,48,44,102,99,116,109,117,118,99,116^96,93,232,233,95,93,133,146,95,93,143,189,95,234,184,135,230,191,144,230,189,185,48,44,232,171,155,48,44,232,156,153,231,166,158,234,168,131,231,163,160^106,103,110,114,123,113,119,48,44,110,113,113,118,116,119,112,117,48,44,105,103,99,116,48,44,114,116,113,104,103,117,117,107,113,112,99,110,48,44,110,107,120,103,117,119,114,114,113,116,118,48,44,117,99,104,103^105,119,110,102,117,99,110,108,103,93,116,117,95,120,107,99,117,121,107,117,106^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,93,232,231,95,93,180,157,95,93,135,175,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^235,137,148,231,186,131,230,192,193,231,176,158,231,166,169,233,150,171,231,143,152,48,44,52,51,55,101^117,197,168,110,105,103,116,105,119,110,102,48,44,107,112,104,113^111,123,118,106,107,101,99,112,102,109,99,116,99,124,106,99,112,102,119,112,105,103,113,112,117,48,44,118,103,99,111,107,117,116,103,99,102,123,118,113,105,113,116,107,105,106,118,112,113,121^112,103,99,118,100,113,113,117,118,93,39,48,46,95,112,103,118,48,44,111,123,118,106,107,101^235,137,147,48,44,39,102,45,121,48,44,51,50,50,51,51,50^111,113,119,112,118,48,44,117,99,102,102,110,103,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^96,117,99,110,108,103,116,121,113,121,105,119,110,102,105,103,112,113,111,117,121,107,117,106^105,48,65,48,65,48,65,93,107,110,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,231,143,93,131,95,121^230,193,163,48,44,51,57,57,58,58,59,55,55,53,54,51^96,117,103,110,110,107,112,105,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,107,101,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,104,99,117,118,101,106,103,99,114^233,189,133,233,188,169,48,44,100,103,99,116,121,113,121,93,46,48,95,101,113,111^96,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,93,39,48,46,95,44,38^96,235,137,93,147,148,95,231,186,131,234,184,135,230,191,144,230,189,185,48,44,232,171,155^93,231,235,95,93,186,137,95,93,131,147,148,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^117,109,123,114,103,48,44,108,99,117,111,107,112,103,100,99,100,123,50,54,50,58^115,46,65,115,51,50,53,58,55,59^114,113,121,103,116,110,103,65,120,103,65,110,107,112,105,48,44,116,99,116,103,111,113,119,112,118,117,48,44,101,99,116,116,123^96,39,102,45,109,104,107,112,112,117,48,44,66,117,121,107,117,106^117,197,168,110,105,103,116,110,107,102,118,105,119,110,102,48,44,111,113,100,107,110,103,114,99,123^96,121,118,117,99,114,48,44,121,103,99,114,113,112,48,44,111,113,119,112,118,117,48,44,117,99,102,102,110,103,48,44,114,117,118^114,113,121,103,116,110,103,65,120,103,65,110,107,112,105,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103,48,44,116,99,112,109,48,44,120,107,101,107,113,119,117^96,105,119,110,102,39,102,45,109,48,44,109,116,48,44,117,109,123,114,103^52,51,55,48,44,234,141,179,235,157,134,232,156,153,231,166,158,231,142,135,231,157,164,231,145,140,232,177,151,230,186,156^115,115,48,44,53,54,55,50,53,54,55^114,116,113,104,103,117,117,107,113,112,99,110,48,44,110,113,113,118,101,110,113,119,102,102,113,118,101,113,111^96,121,118,117,48,44,110,113,113,118,116,119,112,48,44,117,103,110,104,114,110,99,123,48,44,114,107,110,113,118,103,102,48,44,114,103,116,117,113,112,99,110,48,44,114,116,107,101,103^118,107,110,100,119,102,48,44,117,197,168,110,105,103,116,39,102,45,109,48,44,111,113,100,107,110,103,114,99,123^96,232,156,153,231,166,158,231,142,135,231,157,164,232,177,151,230,186,156,93,39,48,46,95,44,38^96,121,118,93,100,117,95,105,119,110,102,117,121,107,117,106,38^117,103,110,110,107,112,105,48,44,114,120,114,48,44,120,107,101,107,113,119,117,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^111,123,118,106,107,101,48,44,109,103,123,48,44,119,114,105,116,99,102,103,48,44,111,99,117,118,103,116,48,44,99,101,106,107,103,120,48,44,117,109,107,112,48,44,121,103,103,109,110,123^117,103,110,110,107,112,105,48,44,112,107,105,106,118,111,99,116,103,48,44,111,123,118,106,107,101,48,44,120,99,110,113,116,48,44,111,123,118,106,107,101,48,44,116,119,112,117,105,113,107,112,105,118,113,102,99,123,48,44,111,113,116,103,107,112,104,113^96,93,235,231,95,93,147,150,95,173,234,184,135,230,191,144,230,189,185,48,44,232,171,155,48,44,232,156,153,231,166,158,234,168,131,231,163,160^232,171,155,48,44,231,150,173,230,191,144,230,189,185,48,44,232,150,177,232,142,131,232,185,154,231,176,159,231,149,168^121,118,117,48,44,51,50,50,51,51,50,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103,48,44,117,99,102,102,110,103^96,121,118,117,99,116,118,107,104,99,101,118,114,113,121,103,116,48,44,105,103,118,106,107,105,106,103,116,121,103,99,114,113,112,48,44,114,117,118^106,48,44,111,48,44,235,137,147,39,102,45,231,158,136,63,39,102,93,113,50,95,230,186,137^96,93,120,121,95,107,110,110,109,113,114,93,99,117,95,105,119,110,102,48,44,117,121,107,117,106^96,121,118,117,118,106,103,112,107,105,106,118,106,113,110,102,106,103,116,113,107,101,48,44,112,113,116,111,99,110,48,44,111,123,118,106,107,101,102,119,112,105,103,113,112,117,39,48,44,38^232,153,162,233,151,145,231,167,153,48,44,233,189,134,235,154,131,234,155,144,48,44,231,166,169,233,179,181^93,235,231,95,93,147,150,95,173,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^96,106,232,156,153,231,166,158,234,168,131,231,163,160,230,186,172,230,188,188,232,141,192,231,145,152,234,184,135,233,192,144,230,189,185,232,162,190,93,39,48,46,95,44,38^96,39,102,45,231,138,130,39,102,45,230,186,137,231,137,188,235,137,147^96,232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,232,177,151,230,186,156,231,166,169,233,179,181,93,39,48,46,95,44,38^96,121,118,117,114,116,107,65,103,117,118,107,105,103,48,44,117,99,102,102,110,103,48,44,99,101,101,117,106,99,116,103^111,123,118,106,107,101,48,44,58,57,55,59,50,50,48,44,112,107,105,106,118,106,113,110,102,48,44,118,103,99,111,107,117,116,103,99,102,123,118,113,105,113^101,99,210,187,118,48,44,109,107,112,105,105,113,110,102,93,39,48,46,95,116,119^96,106,232,156,153,231,166,158,231,142,135,48,44,231,166,169,231,178,145,234,130,131,234,155,144,48,44,111,111^231,137,188,231,150,176,232,139,141,231,185,167,235,137,147,48,44,51,50,50,51,51,50^231,166,169,231,178,145,231,187,191,233,131,183,234,155,144,48,44,235,186,163,234,157,141,48,44,233,150,171,231,143,152^96,93,232,233,95,93,133,146,95,93,143,189,95,231,186,131,234,184,135,230,191,144,230,189,185,48,44,232,171,155^106,49,111,231,142,135,231,157,164,231,142,135,232,177,151,230,186,156,235,133,191,231,145,177,230,189,167,48,44,232,150,177,232,142,131,234,137,172,231,185,179,230,186,140,231,145,185,234,188,188,231,178,186,230,191,149^96,235,137,93,147,148,95,231,186,131,230,191,144,230,189,185,48,44,232,171,155^116,100,105,48,44,106,113,112,113,119,65,116,48,44,114,116,93,107,103,95,117,118,107,105,103,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^231,143,163,232,141,139,234,183,160,231,135,170,235,130,156,231,142,135,235,192,155,48,44,231,137,188,232,171,155,234,165,135,48,44,232,159,167,232,159,167,232,159,167^231,187,191,233,131,183,234,155,144,48,44,231,192,176,230,193,163,232,150,177,230,189,154,231,176,159^96,117,99,110,108,103,116,39,102,45,109,48,44,117,121,107,117,106^93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,50,95,93,107,51,95,101,48,44,51,50,49,51,50,48,44,112,93,51,107,95,105,106,118,106,93,50,113,95,110,102,48,44,111,99,117,118,103,116,110,93,113,50,95,93,113,50,95,118,48,44,93,118,112,95,93,113,50,95,93,102,121,112,95^96,111,99,116,107,112,99,48,44,232,152,178,233,139,138,232,158,174,48,44,114,120,114^233,133,175,231,143,152,232,191,184,231,186,132,48,44,232,175,168,231,170,131,231,167,153,48,44,233,189,134,235,154,131,234,155,144,48,44,231,166,169,233,179,181^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^119,117,102,48,44,121,118,118,105,113,110,102,93,39,48,46,95,101,113,111^101,113,112,118,99,101,118,48,44,103,114,107,101,101,99,116,116,123,93,39,48,46,95,101,113,111^96,117,197,168,110,105,103,116,105,93,113,119,95,110,102,48,44,111,113,100,107,110,103,114,99,123^96,105,117,99,110,108,117,100,107,110,110,107,105,118,48,44,117,121,107,117,106^230,186,149,230,186,156,231,154,193,231,186,132,231,159,146,233,146,168,48,44,233,189,134,235,154,131,234,130,131,234,155,144,48,44,231,166,169,235,189,147,235,192,155,48,44,234,177,168,232,133,135,233,169,131,234,131,140^121,118,117,48,44,59,50,55,48,44,109,110,124,48,44,235,159,160,231,185,167,230,191,158,231,176,166^106,234,168,131,231,163,160,48,44,55,101,99,116,116,123,48,44,231,187,191,233,131,183,234,155,144^96,105,119,110,102,104,107,112,112,117,114,99,117,121,107,117,106^39,102,45,119,117,102,63,39,102,45,109,48,44,111,113,119,112,118,117,48,44,117,106,113,114,48,44,117,99,110,103^111,123,118,106,107,101,48,44,121,103,103,109,110,123,101,106,103,117,118,48,44,109,99,116,99,124,106,99,112,48,44,110,113,113,118,48,44,111,113,119,112,118,48,44,107,112,104,113^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,234,231,95,93,193,158,95,93,158,136,95^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^121,118,117,48,44,117,99,102,102,110,103,48,44,99,116,118,107,104,99,101,118,48,44,121,103,99,114,113,112,48,44,102,99,116,109,117,118,99,116^121,118,117,48,44,105,93,113,50,95,110,102,117,48,44,100,113,114,111,113,119,112,118,117,48,44,102,99,116,109,117,118,99,116^96,232,156,153,231,166,158,234,168,131,231,163,160,48,44,233,193,163,233,193,162,232,164,168,231,164,133,48,44,233,175,139,48,44,233,150,161^232,171,155,234,165,135,48,44,232,177,151,230,186,156,48,44,231,159,146,235,172,147,233,133,175,235,150,130^112,107,105,106,118,106,113,110,102,48,44,101,110,103,99,116,48,44,100,107,117,105,103,99,116,48,44,105,119,99,65,116,99,112,118,103,103,48,44,101,113,116,103,48,44,105,107,120,103,99,121,99,123^121,118,117,111,123,118,106,107,101,48,44,102,119,112,105,103,113,112,117,48,44,109,99,116,99,48,44,112,107,105,106,118,106,113,110,102,48,44,99,101,106,107,103,120,48,44,111,99,112,123,111,113,116,103,48,44,107,112,104,113,48,44,102,99,123^96,117,197,168,110,105,103,116,39,102,45,109,48,44,111,113,100,107,110,103,114,99,123^232,156,153,231,166,158,234,168,131,231,163,160,231,142,135,231,157,164,230,186,172,230,188,188,232,141,192,231,145,152,235,153,170,233,167,170,232,177,151,230,186,156,46,231,166,169,233,169,154,231,164,133^118,107,118,99,112,107,119,111,100,99,123,48,44,111,107,112,119,118,93,103,113,95^93,235,231,95,93,147,150,95,173,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,117,99,110,108,103,116,120,107,99,117,121,107,117,106^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,233,192,93,144,95,231,93,135,149,95,93,133,163,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^231,150,173,230,189,185,234,184,135,233,188,169,230,191,144,48,44,235,137,145,231,166,156,230,190,154,232,133,162,48,44,232,171,155^96,231,142,135,231,157,164,232,177,151,230,186,156,230,193,133,235,150,130,93,39,48,46,95,44,38^105,48,65,48,65,48,65,93,107,110,39,102,95,93,113,39,102,95,45,234,155,93,175,95,231,143,93,131,95,121^93,231,235,95,93,182,148,95,93,177,135,95,93,107,39,102,95,93,113,39,102,95,45,231,179,93,184,95,231,143,93,131,95,121^233,167,160,231,155,170,234,133,191,235,137,145,48,44,231,186,131,48,44,121,113,121^117,103,110,110,107,112,105,48,44,103,110,107,118,107,117,118,105,99,111,107,112,105,93,39,48,46,95,101,113,111^231,192,176,230,193,163,48,44,51,55,50,55,53,58,51,59,50,57^96,105,45,231,186,131,230,191,144,230,189,185,48,44,232,171,155^210,193,113,111,113,210,184,103,111,48,44,112,107,105,106,118,111,113,112,103,123,93,39,48,46,95,116,119^231,137,188,231,150,176,233,173,160,232,140,130,231,158,188,233,180,192,235,150,146,231,187,189,231,142,152,233,175,139,233,188,169,235,155,172,233,189,133,48,44,114,120,114^96,100,107,110,110,107,105,118,105,119,65,110,65,102,65,104,107,112,112,117,48,44,117,121,107,117,106^112,113,105,103,112,48,44,117,109,99,110,109,113,100,103,105,48,44,107,112,104,113^51,50,50,51,51,50,48,44,231,159,146,235,172,147,48,44,233,167,160,231,155,170,233,132,187,232,151,178^93,232,233,95,93,133,146,95,93,143,189,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^231,158,178,231,133,187,235,137,147,48,44,235,159,138,106,119,112,233,143,186,48,44,124,106,119^105,39,102,45,230,186,137,39,102,45,231,159,153,48,44,231,166,169,231,178,145,234,130,131,234,155,144^231,138,185,233,176,179,231,175,146,48,44,232,171,155,48,44,51,50,50,51,51,50^102,107,117,101,113,116,102,48,44,111,99,110,114,113,113,117,52,52,58,54^96,105,119,110,102,104,107,112,112,117,48,44,109,113,114,99,48,44,117,121,107,117,106,38^96,117,197,168,110,105,103,116,105,119,110,102,48,44,121,106,107,117,114^116,113,210,189,210,182,99,93,39,48,46,95,114,211,134,48,44,120,107,117,99^96,117,99,110,108,103,116,105,120,107,99,117,121,107,117,106^211,136,103,210,191,93,99,103,95,48,44,110,113,113,118,109,103,103,114,103,116,93,39,48,46,95,101,113,111^96,232,156,153,231,166,158,231,166,169,233,179,181,230,193,133,235,150,130,232,167,190,93,39,48,46,95,44,38^117,109,123,114,103,48,44,101,99,110,120,107,112,39,48,104,116,103,103,124,103^232,133,93,143,95,93,107,39,102,95,93,113,39,102,95,45,121,93,107,39,102,95,93,113,39,102,95,45,231,138,93,130,95^96,117,197,168,110,105,103,116,105,119,110,102,48,44,117,109,116,107,120,118,107,110,111,107,105^117,197,168,110,105,103,116,105,119,110,102,120,107,99,111,113,100,107,110,103,65,114,99,123^96,111,99,116,107,112,99,48,44,231,178,145,231,145,185,233,190,188,230,186,130,235,153,170,230,186,156,231,140,163^117,114,103,110,114,103,112,105,99,116,104,107,112,112,117,118,107,110,110,105,99,112,105,110,107,105,118,120,107,99,117,121,107,117,106^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,231,179,93,184,95,231,143,93,131,95,121^121,118,117,48,44,100,113,114,111,113,119,112,118,48,44,102,116,99,109,103,48,44,101,99,111,103,110,48,44,106,107,114,114,113,48,44,116,103,107,112^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,121^105,113,113,105,110,103,48,44,103,114,107,101,101,99,116,116,123^117,197,168,110,105,103,116,105,113,110,102,113,120,103,116,111,114,48,44,39,102,45,109^112,107,105,106,118,106,113,110,102,48,44,101,110,103,99,116,48,44,100,107,117,105,103,99,116,48,44,104,116,103,103,48,44,101,113,116,103,48,44,110,99,117,118,117,114,113,118^93,232,233,95,93,133,146,95,93,143,189,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^96,121,118,117,100,113,114,116,99,116,103,111,113,119,112,118,117,48,44,106,107,114,114,113,105,116,123,114,106,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^96,121,118,117,118,101,105,111,113,119,112,118,48,44,101,106,103,99,114,105,48,44,117,118,113,101,109,48,44,117,99,120,103^235,148,93,135,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^110,93,113,50,95,93,113,50,95,118,101,110,93,113,50,95,119,102,48,44,113,116,102,103,116,48,44,110,107,120,103^235,148,93,135,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^96,121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,93,106,111,95,93,103,123,95,93,116,118,95,93,113,106,95,107,101,48,44,111,99,117,118,103,116,110,113,113,118,48,44,93,118,112,95,113,93,102,121,112,95,48,44,100,103,117,118,114,116,107,101,103^93,231,235,95,93,182,148,95,93,177,135,95,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,231,143,93,131,95,121^112,107,105,106,118,106,113,110,102,48,44,51,50,49,51,50,48,44,106,103,116,113,107,101,48,44,104,99,117,118,101,106,103,99,114,48,44,107,112,104,113^121,118,117,48,44,111,113,119,112,118,117,48,44,101,99,116,116,123,48,44,105,103,99,116,48,44,99,101,101,117,106^93,235,231,95,93,147,150,95,173,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,121^231,166,169,233,169,154,48,44,232,171,155,48,44,231,150,173,230,191,144,230,189,185,48,44,235,137,145,231,166,169,230,190,154,232,133,162^121,118,117,48,44,117,99,102,102,110,103,48,44,114,113,121,103,116,48,44,121,103,99,114,113,112,48,44,110,103,65,120,103,65,110^96,121,118,117,112,107,105,106,118,106,113,110,102,48,44,101,110,103,99,116,48,44,105,103,99,116,48,44,105,119,99,65,116,99,112,118,103,103,102,48,44,39,102,45,113,104,104,48,44,117,118,99,116,118^96,121,118,117,48,44,112,107,105,106,118,106,113,110,102,48,44,106,103,116,113,107,101,48,44,110,113,113,118,116,119,112,48,44,118,113,102,99,123,48,44,39,102,39,102,39,102,39,102,48,44,121,106,107,117,114,103,116,111,103,38^96,111,99,116,107,112,99,48,44,114,120,114,48,44,232,153,167,231,186,186^116,100,105,48,44,99,116,118,107,104,99,101,118,48,44,111,113,119,112,118,48,44,117,99,102,102,110,103,48,44,101,99,116,116,123^96,105,120,107,99,117,121,107,117,106,104,107,112,112,117^96,117,99,110,108,103,116,105,119,110,102,66,117,121,107,117,106^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,121^231,166,169,233,179,181,230,191,144,230,193,159,233,139,187,230,189,185,48,44,231,187,191,233,131,183,234,155,144^93,231,235,95,93,186,137,95,93,131,147,148,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^111,111,113,114,116,113,104,48,44,110,113,113,118,48,44,105,113,110,102^105,99,111,103,101,99,116,102,48,44,50,59,53,59,54,53,54,58,53,51,53^96,111,99,116,107,112,99,234,169,148,232,152,153,231,165,173,231,145,185,231,137,188^121,118,117,48,44,116,99,116,103,48,44,100,113,114,111,113,119,112,118,48,44,106,107,114,114,113,105,116,123,114,106,48,44,99,101,101,113,65,119,65,112,65,118,65,117,106,99,116,103^232,156,153,231,166,158,234,168,131,231,163,160,230,191,144,230,189,185,235,137,147,231,186,131,233,175,139,231,137,162^96,111,99,116,107,112,99,231,176,139,232,138,138,232,182,157^96,117,113,109,103,116,39,102,45,109,120,107,99,117,121,107,117,106^93,231,235,95,93,182,148,95,93,177,135,95,93,107,39,102,95,93,113,39,102,95,45,235,93,137,175,95,93,152,157,95,231,143,93,131,95,121^231,179,132,231,138,185,235,173,154,231,179,132,230,191,144,230,193,159,48,44,108,108,101^96,117,197,168,110,105,103,116,105,114,116,107,117,107,109,109,103,104,99,117,110,99,105,118^105,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^93,231,235,95,93,186,137,95,93,131,147,148,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,231,93,138,145,95,93,130,170,95,93,107,39,102,95,93,113,39,102,95,45,93,230,231,95,93,186,158,95,93,137,149,95^233,189,133,233,188,169,48,44,233,167,160,231,155,170,234,133,191,235,137,145,48,44,232,171,155^93,232,233,95,93,133,146,95,93,143,189,95,48,65,48,65,48,65,231,143,93,131,95,230,93,186,188,95,93,139,142,150,95,231,138,93,130,95,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^96,111,99,116,107,112,99,235,147,173,48,44,230,186,130,231,146,170,233,175,139,230,188,144,230,186,130,231,143,133,231,143,133,231,135,141^96,105,104,107,112,112,117,100,107,110,110,107,105,118,38^116,111,100,48,44,51,50,50,51,51,50,48,44,111,111,111^96,104,107,112,112,117,105,120,107,99,117,121,107,117,106^105,93,107,39,102,95,93,113,39,102,95,45,93,235,231,95,93,137,193,95,93,152,139,95,93,107,39,102,95,93,113,39,102,95,45,93,230,234,95,93,186,146,95,93,137,174,95^232,171,155,48,44,231,150,173,234,184,135,233,188,169,230,191,144,230,189,185,48,44,235,137,145,231,166,156,230,190,154,232,133,162^231,166,169,233,179,181,230,191,144,230,193,159,231,148,142,232,139,149,232,171,155,234,139,180,48,44,230,191,144,230,189,185,231,137,188,231,150,176^93,231,235,95,93,186,137,95,93,131,147,148,95,48,65,48,65,48,65,93,107,39,102,95,93,113,39,102,95,45,102,99,113,231,143,93,131,95,93,230,234,95,93,186,146,95,93,137,174,95^102,107,123,231,186,168,230,191,162,232,145,146,231,143,137,234,165,135,233,175,139,48,44,234,177,182,232,154,144,230,191,162,233,156,134,235,158,130,232,179,132,232,138,147,230,189,174,231,186,176,230,191,162,48,44,230,186,143,233,176,163,232,154,177,234,165,135,233,175,139,234,193,154,232,154,177,231,159,146,235,172,147^96,117,99,110,108,103,116,105,39,48,65,38^96,111,99,116,107,112,99,48,44,233,190,188,230,186,130,235,153,170^96,117,197,168,110,105,103,116,111,113,112,118,103,116,48,44,107,112,104,113,48,44,103,104,104,103,109,118,107,120^96,111,99,116,107,112,99,48,44,118,113,109,103,112,48,44,232,183,185,232,189,171^96,101,113,105,231,135,174,230,190,156,231,166,169,233,179,181,48,44,51,50,51,55^231,166,169,233,169,154,48,44,232,171,155,48,44,93,232,233,95,93,133,146,95,93,143,189,95,100,231,166,169,233,150,171,231,143,152^93,232,233,95,93,133,146,95,93,143,189,95,93,107,39,102,95,93,113,39,102,95,45,93,229,231,95,93,169,193,95,93,135,139,95,231,143,93,131,95,121^101,113,112,118,99,101,118,48,44,103,114,107,101,101,99,116,116,123,93,39,48,46,95,112,103,118^96,121,118,117,48,44,116,100,105,101,99,116,116,123,48,44,116,99,112,109,48,44,117,103,110,104,114,110,99,123,48,44,114,116,103,117,118,107,105,103","105,100,118,119^118,104,100,118,114,113^115,117,108,66,104,118,119,94,108,104,96,106,104^115,117,108,102,104^100,102,102,118,107,100,117,94,104,108,96^117,100,119,108,113,106^102,107,104,100,115^118,119,114,117,104^111,104,106,100,111^111,104,121,104,111,108,113,106^115,100,124,115,100,111^111,108,121,104,102,107,100,119^106,111,100,103,108,100,119,114,117^118,104,117,121,108,102,104^117,101,106^121,108,118,108,119,49,45,122,104,101,118,108,119,104^116,120,100,111,108,119,124^115,117,114,105,104,118,118,108,114,113,100,111^101,94,114,51,96,94,114,51,96,118,119^118,104,111,105,115,111,100,124^118,104,102,120,117,104^115,108,111,94,114,51,96,119,104,103^103,108,118,102,114,120,113,119^118,110,124,115,104^100,102,102,114,120,113,119^118,100,111,104^106,120,100,117,100,113,119,104,104^103,104,111,108,121,104,117,124^102,120,118,119,114,112,104,117^118,120,115,115,114,117,119^116,120,100,113,119,108,119,124^100,117,119,108,105,100,102,119,115,114,122,104,117^112,94,114,51,96,120,113,119^120,113,111,114,102,110^100,117,104,113,100^102,114,100,102,107,108,113,106^104,123,115,104,117,108,104,113,102,104^118,100,105,104","107,121,109,112,104,115,113,101,120,109,103,41,50,103,115,113^103,115,118,116,112,101,121,114,103,108,41,50,103,115,113^119,115,103,109,101,112^113,105,113,102,105,118,119^107,121,109,112,104,123,115,118,111,50,103,115,113^107,121,109,112,104,116,115,118,120,101,112,41,50,103,115,113^104,105,116,105,114,104^119,105,118,122,105,118,120,109,113,105^123,115,123,119,120,105,101,104,41,50,103,115,113^105,114,110,109,114,41,50,103,115,113^121,119,120,118,105,101,113,41,50,120,122^123,115,123,112,101,121,114,103,108,41,50,103,115,113^119,108,109,122,120,118,41,50,103,115,113^107,115,112,104,116,118,109,103,105,119^107,121,109,112,104,112,101,121,114,103,108,41,50,103,115,113^115,123,114,55,104,41,50,120,122^105,114,120,118,101,114,103,105^41,104,47,111,95,51,96,97,67,104,121,114,107,105,115,114^118,105,103,118,121,109,67,120^107,121,109,112,104^107,115,112,104,115,114,112,125^101,116,116,112,95,109,125,97^41,50,123,109,124,41,50,103,115,113^41,50,102,101,120,120,112,105,41,50,114,105,120,51^120,123,109,120,103,108,41,50,120,122^107,101,113,109,114,107^115,114,112,125,101,103,103,105,116,120,109,114,107,107,115,112,104^106,115,118,107,115,112,104^107,101,113,105,120,109,113,105^41,104,47,111,116,105,118,118,121,114^41,104,47,111,95,51,96,97,67,105,101,103,108^107,121,109,112,104,108,115,119,120,109,114,107,50,115,118,107^107,101,113,105,118,112,101,121,114,103,108,41,50,103,115,113","106,113,110,121,110,120,121,108,102,114,110,115,108,96,42,51,49,98,104,116,114^108,116,108,116,103,116,116,120,121,42,51,104,96,116,53,98,114^107,102,115,113,116,108,102,114,106,42,51,104,116,114^117,123,117,116,112,96,42,51,49,98,104,96,53,116,98,114^103,116,116,120,121,116,119,106,96,42,51,49,98,115,106,121^124,116,124,117,119,106,120,121,110,108,106,42,51,107,119^124,116,119,113,105,116,107,103,116,116,120,121,96,42,51,49,98,104,116,114^54,117,119,116,103,116,116,120,121,96,42,51,49,98,104,116,114^116,112,57,108,116,113,105,96,42,51,49,98,104,116,114^103,96,116,53,98,96,116,53,98,120,121,114,102,115,96,42,51,49,98,115,106,121^111,122,120,121,103,116,116,120,121,96,42,51,49,98,115,106,121^124,116,124,104,105,112,42,51,104,116,114^121,116,117,103,116,116,120,121,42,51,110,115,107,116^103,96,53,116,98,96,53,116,98,120,121,114,102,115,54,68,96,42,51,49,98,117,119,96,53,116,98^108,57,108,102,114,106,96,42,51,49,98,104,96,116,53,98,114^121,116,117,103,116,116,120,121,96,42,51,49,98,117,119,96,116,53,98^104,109,119,110,120,121,116,117,109,42,51,119,116,104,112,106,121,108,102,114,110,115,108^106,113,110,121,106,108,102,114,106,119,103,116,116,120,121,110,115,108,96,42,51,49,98,115,106,121^117,106,124,117,106,124,120,109,116,117,96,42,51,49,98,117,119,116^113,106,117,119,106,120,121,116,119,106,42,51,116,119,108^103,96,53,116,98,96,53,116,98,120,121,114,102,115,96,42,51,49,98,110,115,107,116^108,102,114,106,120,102,113,106,120,96,42,51,49,98,117,119,116^126,116,122,119,120,117,122,119,106,108,102,114,106,96,42,51,49,98,104,116,114^120,109,102,105,116,124,103,116,116,120,121,42,51,114,113^103,116,116,120,121,110,115,108,113,110,123,106,96,42,51,49,98,104,116,114^107,103,114,121,106,102,114,96,42,51,49,98,104,116,114^103,106,120,121,103,116,116,120,121,96,42,51,49,98,104,116,114^103,116,116,120,121,114,106,117,113,127,42,51,104,116,114^104,116,115,118,122,106,120,121,104,102,117,117,106,105,96,42,51,49,98,104,116,114^103,119,116,103,116,116,120,121,42,51,104,116,114^106,117,110,104,104,102,119,119,126,96,42,51,49,98,115,106,121^114,114,116,108,116,113,105,103,102,126,96,42,51,49,98,115,106,121^107,102,119,114,57,108,116,113,105,96,42,51,49,98,104,116,114^105,106,114,116,115,103,116,116,120,121,96,42,51,49,98,104,116,114^105,123,110,115,108,96,42,51,49,98,115,106,121^110,119,102,115,103,113,110,127,127,102,119,105,42,51,104,116,114^103,116,116,120,121,110,113,102,96,42,51,49,98,104,116,114^124,120,108,103,116,116,120,121,42,51,104,116,114^103,96,53,116,98,96,53,116,98,120,121,114,102,115,96,42,51,49,98,120,110,121,106^103,96,53,116,98,96,53,116,98,120,121,114,102,115,105,116,121,120,110,121,106^103,106,120,121,103,116,116,120,121,96,42,51,49,98,104,113,122,103^117,106,119,107,106,104,121,124,102,126,96,42,51,49,98,116,115,106^109,116,120,121,108,116,113,105,120,42,51,104,116,114^103,96,53,116,98,96,53,116,98,120,121,114,102,115,96,42,51,49,98,116,115,113,110,115,106^114,102,125,42,51,119,116,104,112,106,121,108,102,114,110,115,108,42,51,106,122^109,116,119,105,106,103,102,115,112,96,42,51,49,98,104,116,114^113,116,116,121,104,113,116,122,105,105,116,121,104,116,114^114,114,116,113,123,113,96,42,51,49,98,104,96,53,116,98,114^104,102,119,119,126,103,116,116,114,42,51,115,106,121^102,109,108,116,113,105,120,42,51,104,116,114^106,117,110,104,104,102,119,119,126,96,42,51,49,98,104,116,114^103,116,116,120,121,57,108,102,114,106,96,42,51,49,98,104,116,114^103,119,103,55,108,102,114,106,96,42,51,49,98,104,116,114^108,116,113,105,105,106,102,113,96,42,51,49,98,119,122^114,126,121,109,110,104,120,121,116,119,106,96,42,51,49,98,115,106,121^110,115,108,102,114,106,114,102,119,121,42,51,104,116,114^121,117,108,116,113,105,120,96,42,51,49,98,104,116,114^106,117,110,104,104,102,119,119,126,96,42,51,49,98,116,119,108^124,116,124,117,119,106,120,121,110,108,106,42,51,104,116,114^104,102,119,119,126,103,116,116,114,42,51,104,116,114^120,109,102,105,116,124,103,116,116,120,121,42,51,104,116,114^120,117,106,106,105,119,122,115,104,109,102,119,102,104,121,106,119,96,42,51,49,98,115,106,121^103,116,116,120,121,109,110,123,106,96,42,51,49,98,106,122^124,116,124,55,53,53,58,96,42,51,49,98,104,116,114^124,116,124,123,106,115,105,116,119,42,51,104,116,114^111,122,120,121,103,116,116,120,121,42,51,116,119,108^113,116,116,121,104,113,116,122,105,96,42,51,49,98,104,116,114^103,102,115,112,57,105,109,96,42,51,49,98,68,104,116,114^114,126,121,109,110,104,120,121,116,119,106,96,42,51,49,98,104,116,114^113,116,116,121,123,102,122,113,121,42,51,115,106,121","125,117,125,118,120,107,121,122,111,109,107,43,52,108,120^125,117,125,118,120,107,121,122,111,109,107,43,52,105,117,115^125,117,125,124,107,116,106,117,120,43,52,105,117,115^114,107,118,120,107,121,122,117,120,107,43,52,117,120,109","101,123,111,108,117,112,110,111,123,111,118,115,107,98,117,112,110,111,123,111,118,115,107,100,49,121,124,117,122,98,44,53,51,100,49,54,126,109,118,121,112,117,109,118^126,123,122,53,49,110,124,112,115,107,53,49,117,112,110,111,123,111,118,115,107,53,49,126,121,112,123,108^112,117,109,118,53,49,122,114,128,119,108,53,49,116,128,123,111,112,106,122,123,118,121,108^125,112,122,112,123,53,49,105,118,118,122,123,116,104,117,98,44,53,51,100,112,117,109,118^101,126,123,122,117,112,110,111,123,111,118,115,107,115,118,118,123,121,124,117,53,49,104,115,115,115,118,118,123,109,118,121,128,118,124,121,53,49,122,119,108,106,53,49,112,123,108,116,122,53,49,109,104,122,123,110,124,112,115,107,121,124,117,53,49,111,118,124,121^116,128,123,111,112,106,119,115,124,122,98,44,53,51,100,122,112,123,108^116,128,123,111,112,106,53,49,107,124,117,110,108,118,117,53,49,124,119,123,118,44,107,50,53,49,108,125,108,121,128,107,104,128,53,49,112,117,109,118^126,123,122,53,49,117,112,110,111,123,111,118,115,107,53,49,111,108,115,119,112,117,110,53,49,116,128,123,111,112,106,53,49,111,108,121,118,112,106,53,49,126,111,112,122,119^113,124,122,123,122,108,108,116,108,98,44,53,51,100,122,119,104,106,108^107,112,122,106,118,124,117,123,53,49,108,119,112,106,106,104,121,121,128^126,123,122,53,49,110,124,115,107,104,117,53,49,126,112,119,108,122,53,49,121,104,117,107,118,116,122,53,49,118,117,115,128,109,118,121,128,118,124,53,49,126,121,112,123,108^101,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,123,111,108,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,53,49,115,118,118,123,121,124,117,53,49,116,118,121,108,112,117,109,118^101,109,104,122,123,117,112,110,111,123,111,118,115,107,121,124,117,53,49,123,111,108,117,112,110,111,123,111,118,115,107,108,125,108,121,128,107,104,128,121,124,117,122,53,49,112,117,109,118^126,123,122,53,49,114,108,128,53,49,122,114,128,119,108,53,49,126,118,126,105,118,118,122,123,108,121,122,57^122,108,115,115,112,117,110,53,49,117,112,110,111,123,111,118,115,107,53,49,233,137,179,53,49,110,124,112,115,107,53,49,112,117,109,118^117,112,110,111,123,111,118,115,107,56,55,54,56,55,53,49,111,108,115,119,126,112,123,111,53,49,111,108,121,118,112,106,53,49,116,128,123,111,112,106,53,49,115,118,118,123,53,49,121,124,117,122,53,49,116,118,121,108,112,117,109,118^105,118,118,122,123,53,49,125,112,122,112,123,53,49,110,118,118,44,53,110,115^122,104,115,108,53,49,115,118,118,123,111,104,125,108,117,98,44,53,51,100,106,118,116^101,117,98,111,110,123,100,112,107,98,111,117,100,118,115,107,129,70,111,108,98,118,121,100,98,121,118,100,112,106,121,70,104,70,112,70,107,70,98,44,53,117,112,110,111,123,111,118,115,107,120,100,50,98,54,44,53,100,49,111,108,98,121,118,100,98,118,121,100,118,70,112,70,106,53,49,109,118,70,98,121,120,100,112,117,109,118^101,126,123,122,53,49,105,98,118,55,100,98,118,55,100,122,123,116,104,117,53,49,112,117,109,118^126,123,122,53,49,123,118,119,105,118,118,122,123,44,53,112,117,109,118^101,126,123,122,53,49,117,112,110,111,123,111,118,115,107,53,49,114,104,121,104,53,49,109,118,121,109,124,115,115,122,108,121,125,112,106,108,122^116,128,123,111,112,106,53,49,124,119,110,121,104,107,108,53,49,114,108,128,53,49,109,104,122,123,53,49,110,124,104,121,104,117,123,108,108,53,49,111,104,115,115^104,122,114,53,49,108,44,53,49,119,44,53,49,112,44,53,49,106,44,53,49,106,44,53,49,104,44,53,49,121,44,53,49,121,44,53,49,128,53,49,106,118,116^126,123,122,53,49,111,108,115,119,112,117,110,53,49,121,104,112,107,122,53,49,109,104,122,123,53,49,110,108,104,121,53,49,125,112,122,112,123^121,108,123,98,124,117,100,121,117,123,118,114,104,121,98,104,107,100,129,111,104,117,109,124,115,115,121,124,117,53,49,117,112,70,110,111,110,70,123,105,104,117,108,53,49,109,118,121,112,117,109,118^126,123,122,53,49,122,111,104,107,118,126,105,118,118,122,123,44,53,116,115^125,112,122,112,123,53,49,108,119,112,106,106,104,121,121,128^101,117,112,110,111,123,111,118,115,107,98,117,112,110,111,123,111,118,115,107,100,49,111,108,121,118,112,106,98,44,53,51,100,49,109,104,122,123,121,124,117,54,126,109,118,121,112,117,109,118^122,108,115,115,112,117,110,53,49,105,118,118,122,123,53,49,114,108,128,122,53,49,109,121,118,116,53,49,107,124,117,110,108,118,117,122,53,49,126,112,122,119,53,49,112,117,109,118^126,108,105,122,112,123,108,53,49,115,112,110,111,123,105,118,118,122,123,98,44,53,51,100,106,118,116^101,126,123,122,116,128,123,111,112,106,105,118,118,122,123,53,49,104,117,128,115,108,70,125,108,70,115,114,108,128,53,49,64,44,107,44,107,53,49,110,124,112,115,107,119,104,121,123,128^117,112,110,111,123,111,118,115,107,53,49,123,111,108,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,53,49,123,118,117,122,118,109,115,118,118,123,53,49,112,117,109,118^101,126,123,122,116,128,123,111,112,106,105,118,118,122,123,53,49,114,108,128,122,53,49,107,124,117,110,108,118,117,122,53,49,128,118,124,121,114,108,128,122,53,49,107,108,119,115,108,123,108,107,114,108,128,122,123,118,117,108,53,49,106,111,108,122,123,122,121,124,117^126,123,122,53,49,107,124,117,110,108,118,117,122,53,49,108,125,108,121,128,107,104,128,53,49,124,119,110,121,104,107,108,53,49,126,111,112,122,119^116,128,123,111,112,106,105,118,118,122,123,53,49,114,108,128,122,53,49,107,124,117,110,108,118,117,122,53,49,107,108,119,115,108,123,108,107,114,108,128,122,123,118,117,108,53,49,106,111,108,122,123,122^101,123,111,108,117,112,70,98,117,111,110,100,98,110,111,100,70,123,98,117,111,100,118,115,107,105,118,118,122,123,53,49,108,125,108,121,128,107,104,128,98,117,112,110,111,123,111,118,115,107,100,50,53,49,121,124,98,111,117,100,122,53,49,116,118,121,50,108,112,98,111,117,100,109,118^122,114,128,119,108,53,49,113,104,117,108,105,118,118,122,123^101,126,123,122,53,49,128,118,124,126,112,115,115,110,108,123,53,49,107,108,123,104,112,115,122^115,108,119,121,108,122,123,118,121,108,44,53,118,121,110^101,116,128,123,111,112,106,107,124,117,110,108,118,117,122,121,124,117,53,49,116,128,123,111,112,106,107,124,117,110,108,118,117,122,108,125,108,121,128,107,104,128,121,124,117,122,53,49,116,118,121,108,112,117,109,118^125,112,122,112,123,53,49,108,44,53,49,119,44,53,49,112,44,53,49,106,44,53,49,106,44,53,49,104,44,53,49,121,44,53,49,121,44,53,49,128,53,49,106,118,116^126,123,122,53,49,117,112,110,111,123,111,118,115,107,53,49,109,118,121,128,118,124,53,49,121,108,120,124,112,121,108,53,49,105,108,122,123,53,49,126,121,112,123,108^116,128,123,111,112,106,53,49,128,118,124,121,114,108,128,118,121,53,49,121,124,117,122,109,104,122,123,104,117,107,108,104,122,128,53,49,112,123,108,116,104,123,123,111,108,108,117,107,53,49,106,115,104,122,122,111,104,115,115^126,123,122,53,49,110,124,115,107,104,117,53,49,117,112,110,111,123,111,118,115,107,53,49,118,117,115,128,109,118,121,128,118,124,53,49,116,112,117,124,123,108,53,49,126,121,112,123,108^122,114,128,119,108,53,49,105,118,118,122,123,53,49,122,123,118,121,108^110,124,115,107,104,117,53,49,119,121,118,109,108,122,122,112,118,117,104,115,53,49,107,104,128,53,49,110,124,112,115,107,53,49,112,117,109,118^110,124,115,107,104,117,53,49,126,123,122,53,49,104,115,115,107,104,128,53,49,121,108,120,53,49,126,121,112,123,108^123,111,108,117,112,110,111,123,111,118,115,107,105,118,118,122,123,117,112,110,111,123,111,118,115,107,105,118,118,122,123,108,125,108,121,128,107,104,128,121,124,117,122,53,49,115,118,118,123,116,118,107,108,122,53,49,109,118,121,112,117,109,118^110,124,115,107,104,117,53,49,110,124,104,121,104,117,123,108,108,53,49,121,108,120,53,49,104,126,108,122,118,116,108^101,116,128,123,111,112,106,53,49,109,104,122,123,121,124,117,53,49,116,128,123,111,112,106,53,49,128,118,124,121,114,108,128,53,49,118,124,121,53,49,64,55,55,112,115,125,115,53,49,106,115,104,122,122,111,104,115,115,53,49,107,108,123,104,112,115,122^126,108,105,122,112,123,108,53,49,105,115,104,129,112,117,110,105,118,118,122,123,98,44,53,51,100,106,118,116^116,128,123,111,112,106,53,49,105,118,118,122,123,53,49,108,125,108,121,128,107,104,128,53,49,110,124,104,121,104,117,123,108,108,53,49,109,104,122,123,53,49,126,108,108,114,115,128^126,123,122,53,49,110,124,115,107,104,117,53,49,110,124,112,115,107,53,49,106,124,121,125,108,53,49,126,121,112,123,108^101,116,128,123,111,112,106,116,128,123,111,112,106,107,124,117,110,108,118,117,122,126,111,112,122,119,116,108,43^101,126,123,122,117,112,110,111,123,111,118,115,107,115,118,118,123,121,124,117,110,124,112,115,107,121,104,112,107,43^126,123,122,53,49,110,124,115,107,104,117,53,49,117,112,110,111,123,111,118,115,107,53,49,121,108,120,124,112,121,108,53,49,126,121,112,123,108,116,108^101,117,112,70,98,111,110,123,100,98,110,111,123,115,100,70,123,70,111,118,115,107,129,70,111,70,108,98,118,121,100,98,121,118,100,112,106,121,70,104,70,112,70,107,70,98,44,53,117,112,110,111,123,111,118,115,107,100,50,111,108,121,50,118,112,70,106,53,49,109,118,70,121,112,98,109,117,100,98,117,109,100,118^122,111,104,107,118,126,105,118,118,122,123,98,44,53,51,100,106,118,116^115,108,119,121,108,98,122,43,100,123,118,121,108,98,44,53,51,100,106,118,116^122,108,115,115,112,117,110,53,49,122,118,106,108,123,53,49,113,124,122,123,105,118,118,122^116,128,123,111,112,106,53,49,105,118,118,122,123,112,117,110,53,49,104,117,128,115,108,125,108,115,53,49,104,106,111,112,125,53,49,126,108,108,114,115,128,53,49,106,111,108,122,123,122,53,49,114,108,128,122,53,49,126,111,112,122,119^122,108,115,115,53,49,108,44,53,49,119,44,53,49,112,44,53,49,106,44,53,49,106,44,53,49,104,44,53,49,121,44,53,49,121,70,44,53,49,128,53,49,106,53,49,118,53,49,116^101,117,112,98,111,110,123,100,98,110,111,123,115,100,70,123,70,106,118,115,107,129,70,111,108,98,118,121,100,98,121,118,100,112,106,121,70,104,70,112,70,107,70,98,44,53,117,112,110,111,123,111,118,115,107,120,100,50,98,54,44,53,100,49,111,108,114,50,118,112,70,106,53,49,109,118,70,120,112,117,109,118^110,118,115,107,53,49,117,112,110,111,123,111,70,118,115,107,53,49,115,118,123,122,53,49,63,62,60,64,57,60,53,49,110,108,104,121,53,49,115,118,118,123,121,124,117^101,123,111,108,117,112,110,111,123,111,118,115,107,121,124,117,53,49,111,108,115,119,112,117,110,126,112,123,111,53,49,117,112,110,111,123,111,118,115,107,110,108,104,121,112,117,110,53,49,109,118,121,112,117,109,118^115,118,118,123,53,49,106,111,118,118,70,122,108,117,53,49,126,109,53,49,122,118,106,114,70,108,123,53,49,110,124,112,115,107^125,112,122,112,123,53,49,113,124,122,123,105,118,118,122,123^101,126,123,122,106,70,111,70,108,70,104,70,119,70,117,112,110,111,123,111,118,115,107,53,49,108,125,108,121,128,107,104,128,53,49,116,118,121,108,112,117,109,118^116,128,123,111,106,112,119,115,124,122,98,44,53,51,100,122,112,123,108^126,123,122,53,49,110,124,104,121,98,104,108,100,117,123,108,108,53,49,119,121,118,109,53,49,110,124,112,115,107,53,49,126,121,112,123,108^101,126,123,122,53,49,117,112,110,111,123,111,118,115,107,122,123,118,121,108,98,44,53,51,100,127,128,129^123,111,108,117,112,110,111,123,111,118,115,107,121,124,117,53,49,123,111,108,117,112,110,111,123,111,118,115,107,119,108,121,122,118,117,104,115,53,49,116,104,122,123,108,121,115,118,118,123,53,49,108,125,108,121,128,107,104,128,53,49,116,118,121,108,112,117,109,118^101,123,111,108,117,112,110,111,123,111,118,115,107,121,124,117,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,108,125,108,121,128,107,104,128,121,124,117,122,53,49,116,118,121,108,112,117,109,118^101,126,123,122,53,49,119,121,118,109,108,122,122,112,118,117,104,115,53,49,115,118,118,123,53,49,110,124,104,121,104,117,123,108,108,53,49,120,124,104,115,112,123,128^114,104,121,104,129,111,104,117,53,49,114,104,121,104,129,111,104,117,53,49,109,124,115,115,121,124,117,53,49,117,112,110,111,123,105,104,117,108,53,49,108,125,108,121,128,107,104,128,53,49,112,117,109,118^126,108,105,122,112,123,108,53,49,109,105,116,123,108,104,116,98,44,53,51,100,106,118,116^101,126,123,122,53,49,116,128,123,111,70,112,106,122,123,118,121,108,98,44,53,51,100,106,118,116^116,128,123,111,112,106,53,49,109,104,122,123,121,124,117,53,49,110,124,104,121,104,117,123,108,108,53,49,106,115,104,122,122,111,104,115,115,104,117,107,116,118,121,108,53,49,116,108^110,124,115,107,104,117,53,49,126,123,122,53,49,123,118,107,104,128,53,49,111,108,121,118,112,106,53,49,111,124,121,121,128,53,49,121,108,122,108,123,53,49,126,121,112,123,108^101,126,123,122,117,112,110,111,123,111,118,115,107,115,118,118,123,121,124,117,123,118,107,104,128,110,124,112,115,107,121,104,112,107,51,70,126,112,122,119,109,118,121,112,117,109,118,43^126,123,122,53,49,126,108,108,114,115,128,53,49,116,128,123,111,112,106,53,49,44,107,44,107,50,53,49,126,121,112,123,108^101,126,123,122,53,49,110,124,112,115,107,122,123,118,121,108,98,44,53,51,100,127,128,129^101,126,123,122,110,124,115,107,104,117,123,118,107,104,128,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,120,124,112,106,114,121,124,117,53,49,110,124,112,115,107,53,49,120,124,108,122,123,112,118,117,122^106,104,121,121,128,53,49,105,118,118,122,123,53,49,118,124,121,53,49,128,118,124,121,53,49,109,112,127,53,49,106,111,108,122,123,122^126,123,122,53,49,117,112,110,111,123,111,118,115,107,53,49,110,124,112,115,107,53,49,126,121,112,123,108^101,126,123,122,53,49,119,121,118,109,108,122,122,112,118,117,104,115,123,108,104,116,53,49,126,121,112,123,108,116,108^101,121,105,110,126,112,117,122,121,105,110,126,112,117,122,53,49,105,108,122,123,104,119,109,104,121,116^101,126,123,122,116,128,123,111,112,106,53,49,44,107,44,107,44,107,50,53,49,117,112,110,111,123,111,118,115,107,53,49,110,124,112,115,107,53,49,115,118,118,123,53,49,116,128,123,111,112,106,53,49,44,107,44,107,44,107,50^121,105,110,53,49,105,118,118,122,123,121,105,110,53,49,104,121,123,112,109,104,106,123,119,118,126,108,121,53,49,112,117,109,118^105,98,118,55,100,49,122,123,116,104,117,98,44,53,51,100,119,121,53,49,107,112,122,106,118,124,117,123^116,128,123,111,112,106,107,98,124,117,100,98,117,124,100,98,118,110,100,98,108,110,118,100,98,118,108,100,117,122,116,98,128,112,100,123,98,111,117,100,98,112,128,100,106,108,98,125,121,100,108,98,121,125,100,128,98,107,104,100,98,107,104,100,128,53,49,126,98,111,117,100,112,122,119,116,108^101,116,128,123,111,112,106,107,124,117,110,108,118,117,122,106,104,121,121,128,53,49,116,128,123,111,112,106,107,124,117,110,108,118,117,122,53,49,108,125,108,121,128,107,104,128,121,124,117,122,53,49,112,117,109,118^101,121,108,123,124,121,117,123,118,114,104,121,104,129,111,104,117,109,124,115,115,121,124,117,118,121,117,112,70,110,111,123,105,104,117,108,118,117,115,128,53,49,109,118,121,112,117,109,118^101,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,121,124,117,53,49,123,111,108,117,112,110,111,123,111,118,115,107^110,124,115,107,104,117,53,49,126,123,122,53,49,120,124,112,106,114,53,49,122,116,104,121,123,53,49,126,121,112,123,108^110,108,123,53,49,44,107,50,53,49,110,108,104,121,53,49,126,108,108,114,115,128,112,123,108,116,53,49,126,121,112,123,108^101,122,108,115,115,112,117,110,53,49,117,112,110,111,123,111,118,115,107,53,49,110,124,112,115,107,121,98,124,104,100,53,49,126,112,122,119,53,49,112,117,109,118^126,123,122,53,49,110,124,112,115,107,53,49,117,108,126,126,118,126,105,118,118,122,123^126,123,122,53,49,104,118,123,106,53,49,110,124,115,107,104,117,119,115,129,59,61,55,63^101,117,112,110,111,123,111,118,115,107,115,118,118,123,121,124,117,122,108,115,115,112,117,110,117,112,110,111,123,111,118,115,107,53,49,126,112,122,119,109,118,121,112,117,109,118^122,108,115,115,112,117,110,53,49,110,108,123,104,115,115,115,118,118,123,53,49,112,117,106,53,49,122,118,106,108,123^122,114,128,119,108,53,49,108,121,118,105,118,118,122,123^116,118,121,108,53,49,108,44,53,49,119,44,53,49,112,44,53,49,106,44,53,49,106,44,53,49,104,44,53,49,121,44,53,49,121,44,53,49,128,53,49,106,118,116^126,123,122,53,49,110,124,115,107,104,117,53,49,126,112,119,108,53,49,110,124,112,115,107,53,49,126,121,112,123,108^110,124,115,107,104,117,53,49,117,112,110,111,123,111,118,115,107,53,49,111,108,121,118,112,106,53,49,116,104,122,123,108,121,115,118,118,123,53,49,104,115,115,115,118,118,123,109,118,121,128,118,124,53,49,121,124,117,122,53,49,116,112,117,124,123,108^126,108,105,122,112,123,108,53,49,106,118,117,120,124,108,122,123,106,104,119,119,108,107,98,44,53,51,100,106,118,116^116,128,123,111,112,106,56,60,109,104,122,123,121,124,117,53,49,116,128,123,111,112,106,56,60,109,104,122,123,121,124,117,53,49,110,121,108,104,123,104,117,107,108,127,119,112,121,108,117,106,108,107,110,121,118,124,119,54,126^101,126,123,122,106,70,111,70,108,70,104,70,119,70,104,119,109,104,121,116,112,117,110,53,49,116,118,121,108,112,117,109,118^126,123,122,53,49,110,124,115,107,104,117,53,49,117,112,110,111,123,111,118,115,107,53,49,110,124,104,121,104,117,123,108,108,53,49,126,121,112,123,108,116,108^101,126,123,122,53,49,105,98,118,55,100,98,118,55,100,122,123,116,104,117,98,44,53,51,100,117,108,123^101,126,123,122,53,49,110,108,104,121,53,49,125,112,122,112,123,53,49,107,108,123,104,112,115,122^119,118,126,108,121,115,108,70,125,108,70,115,53,49,56,55,55,56,56,55,53,49,123,121,104,107,108,53,49,109,108,108,107,105,104,106,114,53,49,110,108,104,121^101,117,112,110,70,115,70,98,111,117,100,118,115,107,129,70,111,108,98,118,121,100,117,70,98,121,118,100,112,106,121,70,104,70,112,70,107,70,98,44,53,71,117,112,110,111,123,111,118,115,107,120,100,50,98,54,44,53,100,49,98,111,117,100,70,108,121,50,118,112,106,53,49,109,118,70,98,121,120,100,112,117,109,118^101,123,111,108,117,112,110,111,123,111,118,115,107,123,111,108,117,112,110,111,123,111,118,115,107,109,104,122,123,111,108,121,118,112,106,121,124,117,54,126,109,118,121,112,117,109,118^101,126,123,122,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,105,108,122,123,122,70,110,124,112,115,107,122,53,49,126,112,123,111,118,124,123,126,112,119,108,122,53,49,126,121,112,123,108,116,108^101,117,112,110,111,123,111,118,115,107,53,49,111,108,121,118,112,106,53,49,115,118,118,123,53,49,105,108,122,123,110,108,104,121,112,117,110,104,116,108,53,49,121,108,120^105,118,118,122,123,53,49,108,119,112,106,106,104,121,121,128^117,112,110,111,123,111,118,115,107,53,49,108,125,108,121,128,107,104,128,53,49,121,124,117,122,53,49,110,108,104,121,53,49,121,108,120,124,112,121,53,49,112,117,109,118^108,119,112,106,106,104,121,121,128,98,44,53,51,100,106,118,116^106,114,104,215,192,215,198,53,49,113,104,117,108,105,118,118,122,123^126,123,122,53,49,110,124,115,107,104,117,53,49,118,117,115,128,109,118,121,128,118,124,53,49,126,121,112,123,108^117,112,110,111,123,111,118,115,107,53,49,108,119,112,106,106,104,121,121,128,98,44,53,51,100,117,108,123^122,114,128,119,108,53,49,108,125,112,115,116,112,122,123,56^101,126,123,122,106,70,111,70,108,70,104,70,119,70,104,121,123,112,109,104,106,123,119,118,126,108,121,53,49,116,118,121,108,112,117,109,118^126,123,122,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,105,108,122,123,53,49,110,124,104,121,104,117,123,108,108,53,49,126,121,112,123,108,116,108^101,126,123,122,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,110,124,115,107,104,117,53,49,121,108,120,124,112,121,108,116,108,117,123,122,53,49,119,115,108,104,122,108,126,121,112,123,108,116,108^101,123,111,108,117,112,110,111,123,111,118,115,107,98,117,112,110,111,123,111,118,115,107,100,49,111,108,121,118,112,106,121,124,117,53,49,109,118,121,112,117,109,118^101,126,123,122,53,49,116,128,123,111,70,112,106,122,123,118,121,108,98,44,53,51,100,117,108,123^101,116,128,123,111,112,106,111,108,115,119,112,117,110,126,112,123,111,116,128,123,111,112,106,107,124,117,110,108,118,117,122,53,49,109,118,121,112,98,109,117,100,98,117,109,100,118^125,112,122,112,123,53,49,106,104,121,121,128,105,118,118,116^126,123,122,53,49,110,108,123,104,115,115,115,118,118,123,53,49,112,117,106,53,49,122,118,106,108,123^101,126,123,122,53,49,116,128,123,111,112,106,53,49,105,118,118,122,123,53,49,115,108,70,125,108,70,115,53,49,106,104,121,121,128,53,49,114,108,128,122,123,118,117,108,53,49,106,111,108,122,123^101,126,123,122,53,49,126,118,126,110,124,112,115,107,98,44,53,51,100,126,108,105,122,112,123,108^101,123,111,108,117,112,98,117,111,110,100,98,110,111,100,70,123,98,117,111,100,118,115,107,121,70,104,70,112,70,107,70,98,117,112,110,111,123,111,118,115,107,100,49,98,117,111,100,108,121,50,118,112,106,53,49,109,118,121,112,98,109,117,111,100,98,117,109,100,118^126,123,122,53,49,117,112,110,111,123,98,117,111,100,118,115,107,53,49,105,108,122,123,53,49,111,124,121,121,128,53,49,126,121,112,123,108^125,112,122,112,123,53,49,109,121,108,122,111,121,124,117,98,44,53,51,100,117,108,123^101,215,198,119,118,215,187,104,215,189,104,56,60,114,215,194,216,149,216,142,104,43^101,123,111,108,117,112,110,111,123,111,118,115,107,109,104,122,123,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,121,124,117,53,49,109,118,121,112,117,109,118^126,123,122,53,49,117,112,110,111,123,111,118,115,107,53,49,111,108,115,119,128,118,124,53,49,112,123,108,116,53,49,126,121,112,123,108^126,118,126,125,108,117,107,118,121,44,53,106,118,116^125,112,122,112,123,53,49,105,98,118,55,100,98,118,55,100,98,122,43,100,123,116,104,117,117,108,123^122,104,70,115,108,53,49,108,44,53,49,119,44,53,49,112,44,53,49,106,44,53,49,106,44,53,49,104,44,53,49,121,44,53,49,121,70,44,53,49,128,53,49,106,53,49,118,53,49,116^101,126,123,122,53,49,123,111,108,117,112,110,111,123,111,118,115,107,53,49,110,124,104,121,104,117,123,108,108,53,49,119,121,118,53,49,126,121,112,123,108,116,108^126,123,122,117,112,110,111,123,111,118,115,107,105,118,118,122,123,53,49,115,118,118,123,121,124,117,53,49,112,115,125,115,110,108,104,121,53,49,122,108,121,125,112,106,108^126,123,122,53,49,110,124,115,107,104,117,53,49,109,104,122,123,114,112,115,115,53,49,118,117,108,122,111,118,123,53,49,122,123,104,121,123,53,49,126,121,112,123,108^110,124,115,107,104,117,53,49,104,115,115,107,104,128,53,49,104,115,122,118,53,49,126,121,112,123,108^101,117,112,110,111,123,111,118,115,107,111,106,53,49,117,112,110,111,123,111,118,115,107,111,108,121,118,112,106,53,49,115,118,118,123,110,124,104,121,104,117,123,108,108,53,49,112,117,109,118")
 
 local repTbl = {
 	--Symbol & space removal
-	["[%*%-%(%)\"!%?`'_%+#%%%^&;:~{} ]"]="",
-	["¨"]="", ["”"]="", ["“"]="", ["▄"]="", ["▀"]="", ["█"]="", ["▓"]="", ["▲"]="", ["◄"]="", ["►"]="", ["▼"]="",
-	["░"]="", ["♥"]="", ["♫"]="", ["●"]="", ["■"]="", ["☼"]="", ["¤"]="", ["☺"]="", ["↑"]="", ["«"]="", ["»"]="",
+	["[%*%-<>%(%)\"!%?`'_%+#%%%^&;:~{}%[%] ]"]="",
+	["¨"]="", ["”"]="", ["“"]="", ["▄"]="", ["▀"]="", ["█"]="", ["▓"]="", ["▲"]="", ["◄"]="", ["►"]="", ["▼"]="", ["♣"]="",
+	["░"]="", ["♥"]="", ["♫"]="", ["●"]="", ["■"]="", ["☼"]="", ["¤"]="", ["☺"]="", ["↑"]="", ["«"]="", ["»"]="", ["♦"]="",
+	["▌"]="", ["▒"]="", ["□"]="", ["¬"]="", ["√"]="", ["²"]="", ["´"]="", ["☻"]="", ["★"]="", ["☆"]="", ["◙"]="", ["◘"]="",
+	["¦"]="", ["|"]="", [";"]="", ["΅"]="", ["™"]="", ["。"]="", ["◆"]="", ["♠"]="", ["¯"]="", [" "]="", ["　"]="",
+	["《"]="", ["》"]="", ["～"]="", ["—"]="", ["！"]="", ["："]="", ["·"]="", ["…"]="",
 
 	--This is the replacement table. It serves to deobfuscate words by replacing letters with their English "equivalents".
-	["а"]="a", ["à"]="a", ["á"]="a", ["ä"]="a", ["â"]="a", ["ã"]="a", ["å"]="a", ["Ą"]="a", ["ą"]="a", --First letter is Russian "\208\176". Convert > \97. Note: Ą fail with strlower, include both.
-	["с"]="c", ["ç"]="c", ["Ć"]="c", ["ć"]="c", --First letter is Russian "\209\129". Convert > \99. Note: Ć fail with strlower, include both.
-	["е"]="e", ["è"]="e", ["é"]="e", ["ë"]="e", ["ё"]="e", ["ę"]="e", ["ė"]="e", ["ê"]="e", ["Ě"]="e", ["ě"]="e", ["Ē"]="e", ["ē"]="e", ["Έ"]="e", ["έ"]="e", ["Ĕ"]="e", ["ĕ"]="e", --First letter is Russian "\208\181". Convert > \101. Note: Ě, Ē, Έ, Ĕ fail with strlower, include both.
-	["Ğ"]="g", ["ğ"]="g", ["Ĝ"]="g", ["ĝ"]="g", -- Convert > \103. Note: Ğ, Ĝ fail with strlower, include both.
-	["ì"]="i", ["í"]="i", ["ï"]="i", ["î"]="i", ["ĭ"]="i", ["İ"]="i", --Convert > \105
-	["к"]="k", ["ķ"]="k", -- First letter is Russian "\208\186". Convert > \107
+	["а"]="a", ["à"]="a", ["á"]="a", ["ä"]="a", ["â"]="a", ["ã"]="a", ["å"]="a", -- First letter is Russian "\208\176". Convert > \97.
+	["Ą"]="a", ["ą"]="a", ["Ā"]="a", ["ā"]="a", ["Ă"]="a", ["ă"]="a", -- Convert > \97. Note: Ą, Ā, Ă fail with strlower, include both.
+	["с"]="c", ["ç"]="c", ["Ć"]="c", ["ć"]="c", ["Č"]="c", ["č"]="c", ["Ĉ"]="c", ["ĉ"]="c", ["Ċ"]="c", ["ċ"]="c", --First letter is Russian "\209\129". Convert > \99. Note: Ć, Č, Ĉ, Ċ fail with strlower, include both.
+	["Ď"]="d", ["ď"]="d", ["Đ"]="d", ["đ"]="d", --Convert > \100. Note: Ď, Đ fail with strlower, include both.
+	["е"]="e", ["è"]="e", ["é"]="e", ["ë"]="e", ["ё"]="e", ["ê"]="e", --First letter is Russian "\208\181". Convert > \101. 
+	["Ę"]="e", ["ę"]="e", ["Ė"]="e", ["ė"]="e", ["Ě"]="e", ["ě"]="e", ["Ē"]="e", ["ē"]="e", ["Έ"]="e", ["έ"]="e", ["Ĕ"]="e", ["ĕ"]="e", ["Ε"]="e", ["ε"]="e", --Note: Ę, Ė, Ě, Ē, Έ, Ĕ, Ε fail with strlower, include both.
+	["Ğ"]="g", ["ğ"]="g", ["Ĝ"]="g", ["ĝ"]="g", ["Ģ"]="g", ["ģ"]="g", ["Ġ"]="g", ["ġ"]="g", -- Convert > \103. Note: Ğ, Ĝ, Ģ, Ġ fail with strlower, include both.
+	["Ĥ"]="h", ["ĥ"]="h", -- Convert > \104. Note: Ĥ fail with strlower, include both.
+	["ì"]="i", ["í"]="i", ["ï"]="i", ["î"]="i", ["İ"]="i", ["ı"]="i", -- Convert > \105.
+	["Ϊ"]="i", ["ϊ"]="i", ["Ι"]="i", ["ι"]="i", ["Ί"]="i", ["ί"]="i", ["Ĭ"]="i", ["ĭ"]="i", ["Ї"]="i", ["ї"]="i", --Convert > \105. -- Note: Ϊ, Ι, Ί, Ĭ, Ї fail with strlower, include both.
+	["Į"]="i", ["į"]="i", ["Ĩ"]="i", ["ĩ"]="i", ["Ī"]="i", ["ī"]="i", ["Ｉ"]="i", ["ｉ"]="i", --Convert > \105. -- Note: Į, Ĩ, Ī, Ｉ fail with strlower, include both.
+	["Ĵ"]="j", ["ĵ"]="j", -- Convert > \106. -- Note: Ĵ fail with strlower, include both.
+	["к"]="k", ["Ķ"]="k", ["ķ"]="k", -- First letter is Russian "\208\186". Convert > \107. -- Note: Ķ fail with strlower, include both.
+	["Ł"]="l", ["ł"]="l", ["Ĺ"]="l", ["ĺ"]="l", ["Ľ"]="l", ["ľ"]="l", -- Convert > \107. -- Note: Ł, Ĺ, Ľ fail with strlower, include both.
 	["Μ"]="m", ["м"]="m", -- First letter is capital Greek μ "\206\156". Convert > \109
-	["о"]="o", ["ò"]="o", ["ó"]="o", ["ö"]="o", ["ō"]="o", ["ô"]="o", ["õ"]="o", ["ő"]="o", ["ø"]="o", ["Ǿ"]="o", ["ǿ"]="o", ["Θ"]="o", ["θ"]="o", ["○"]="o", --First letter is Russian "\208\190". Convert > \111. Note: Ǿ, Θ fail with strlower, include both.
-	["р"]="p", --First letter is Russian "\209\128". Convert > \112
-	["Ř"]="r", ["ř"]="r", ["Ŕ"]="r", ["ŕ"]="r", ["Ŗ"]="r", ["ŗ"]="r", --Convert > \114. -- Note: Ř, Ŕ, Ŗ fail with strlower, include both.
-	["Ş"]="s", ["ş"]="s", ["Š"]="s", ["š"]="s", --Convert > \115. -- Note: Ş, Š fail with strlower, include both.
-	["т"]="t", --Convert > \116
-	["ù"]="u", ["ú"]="u", ["ü"]="u", ["û"]="u", --Convert > \117
-	["ý"]="y", ["ÿ"]="y", --Convert > \121
+	["η"]="n", ["ή"]="n", ["ñ"]="n", ["Ν"]="n", -- First letter is small Greek eta η "\206\183". Convert > \110. 
+	["Ń"]="n", ["ń"]="n", ["Ņ"]="n", ["ņ"]="n", ["Ň"]="n", ["ň"]="n", ["Ŋ"]="n", ["ŋ"]="n", --Convert > \110. Note: Ń, Ņ, Ň, Ŋ fail with strlower, include both.
+	["о"]="o", ["ò"]="o", ["ó"]="o", ["ö"]="o", ["ô"]="o", ["õ"]="o", ["ø"]="o", ["σ"]="o", --First letter is Russian "\208\190". Convert > \111.
+	["Ō"]="o", ["ō"]="o", ["Ǿ"]="o", ["ǿ"]="o", ["Ő"]="o", ["ő"]="o", ["Θ"]="o", ["θ"]="o", ["Ŏ"]="o", ["ŏ"]="o", ["Ｏ"]="o", ["ｏ"]="o", --Note: Ō, Ǿ, Ő, Θ, Ŏ, Ｏ fail with strlower, include both.
+	["р"]="p", ["þ"]="p", ["φ"]="p", ["Ρ"]="p", ["ρ"]="p", --First letter is Russian "\209\128". Convert > \112. --Note: Ρ fail with strlower, include both.
+	["г"]="r", ["я"]="r", ["Ř"]="r", ["ř"]="r", ["Ŕ"]="r", ["ŕ"]="r", ["Ŗ"]="r", ["ŗ"]="r", --Convert > \114. -- Note: Ř, Ŕ, Ŗ fail with strlower, include both.
+	["Ş"]="s", ["ş"]="s", ["Š"]="s", ["š"]="s", ["Ś"]="s", ["ś"]="s", ["Ŝ"]="s", ["ŝ"]="s", ["Ѕ"]="s", ["ѕ"]="s", --Convert > \115. -- Note: Ş, Š, Ś, Ŝ, Ѕ fail with strlower, include both.
+	["т"]="t", ["Ŧ"]="t", ["ŧ"]="t", ["Τ"]="t", ["τ"]="t", ["Ţ"]="t", ["ţ"]="t", ["Ť"]="t", ["ť"]="t", --Convert > \116. -- Note: Ŧ, Τ, Ţ, Ť fail with strlower, include both.
+	["ù"]="u", ["ú"]="u", ["ü"]="u", ["û"]="u", --Convert > \117.
+	["Ų"]="u", ["ų"]="u", ["Ŭ"]="u", ["ŭ"]="u", ["Ů"]="u", ["ů"]="u", ["Ű"]="u", ["ű"]="u", ["Ū"]="u", ["ū"]="u", --Convert > \117. -- Note: Ų, Ŭ, Ů, Ű, Ū fail with strlower, include both.
+	["ω"]="w", ["ώ"]="w", ["Ẃ"]="w", ["ẃ"]="w", ["Ẁ"]="w", ["ẁ"]="w", ["Ŵ"]="w", ["ŵ"]="w", ["Ẅ"]="w", ["ẅ"]="w", ["Ｗ"]="w", ["ｗ"]="w", -- First letter is small Greek omega Ώ "\207\142". Convert > \119. -- Note: Ẃ, Ẁ, Ŵ, Ẅ, Ｗ fail with strlower, include both.
+	["у"]="y", ["ý"]="y", ["Ÿ"]="y", ["ÿ"]="y", -- First letter is Russian "\209\131". Convert > \121. -- Note: Ÿ fail with strlower, include both.
+	["０"]="0", ["１"]="1", ["２"]="2", ["３"]="3", ["４"]="4", ["５"]="5", ["６"]="6", ["７"]="7", ["８"]="8", ["９"]="9",
+	["•"]=".", ["·"]=".", ["，"]=",", ["º"]="o", ["®"]="r", ["○"]="o", ["†"]="t",
 }
 
-local strfind = string.find
-local myDebug = false
-local IsSpam = function(msg)
-	for i=1, #instantReportList do
-		if strfind(msg, instantReportList[i]) then
-			if myDebug then print("Instant", instantReportList[i]) end
-			return true
+local strfind, m = string.find, 5
+local Spam = function(msg)
+	local a = 0
+	for i = 1, m do
+		for j=1, #L[i] do
+			if strfind(msg, L[i][j]) then
+				a = i>4 and a+3 or i>3 and a-1 or i>2 and a+1 or a+10
+			end
 		end
 	end
-
-	local points, phishPoints, boostingPoints = 0, 0, 0
-	for i=1, #whiteList do
-		if strfind(msg, whiteList[i]) then
-			points = points - 2
-			phishPoints = phishPoints - 2 --Remove points for safe words
-			if myDebug then print("whiteList", whiteList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-	for i=1, #commonList do
-		if strfind(msg, commonList[i]) then
-			points = points + 1
-			if myDebug then print("commonList", commonList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-	for i=1, #phishingList do
-		if strfind(msg, phishingList[i]) then
-			phishPoints = phishPoints + 1
-			if myDebug then print("phishingList", phishingList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-
-	for i=1, #boostingWhiteList do
-		if strfind(msg, boostingWhiteList[i]) then
-			boostingPoints = boostingPoints - 1
-			if myDebug then print("boostingWhiteList", boostingWhiteList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-	for i=1, #boostingList do
-		if strfind(msg, boostingList[i]) then
-			boostingPoints = boostingPoints + 1
-			if myDebug then print("boostingList", boostingList[i], points, phishPoints, boostingPoints) end
-		end
-	end
-
-	if points > 3 or phishPoints > 3 or boostingPoints > 3 then
-		return true
-	end
+	return a > 3
 end
 
 --[[ Chat Scanning ]]--
 local Ambiguate, BNGetGameAccountInfoByGUID, gsub, lower, next, type, tremove = Ambiguate, BNGetGameAccountInfoByGUID, gsub, string.lower, next, type, tremove
-local IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat = IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat
-local blockedLineId, chatLines, chatPlayers = 0, {}, {}
-local spamCollector, spamLogger, prevShow = {}, {}, 0
+local IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat, SetCVar = IsCharacterFriend, IsGuildMember, UnitInRaid, UnitInParty, CanComplainChat, SetCVar
+local spamCollector, backupCollector, spamLogger, prevShow, enableBubble = {}, {}, {}, 0, false
+local blockedLineId, et, chatLines, chatPlayers = 0, m+1, {}, {}
 local btn, reportFrame
-local function BadBoyIsFriendly(name, flag, lineId, guid)
+local function IsFriendly(name, flag, lineId, guid)
 	if not guid then return true end -- LocalDefense automated prints
+	if not guid:find("^Player") then -- Bad addons
+		local msg = "BadBoy: Unexpected GUID requested by an addon: ".. guid
+		print(msg)
+		geterrorhandler()(msg)
+		return true
+	end
 	local _, characterName = BNGetGameAccountInfoByGUID(guid)
 	if characterName or not CanComplainChat(lineId) or IsGuildMember(guid) or IsCharacterFriend(guid) or UnitInRaid(name) or UnitInParty(name) or flag == "GM" or flag == "DEV" then
 		return true
 	end
 end
-local function BadBoyCleanse(msg)
+local function Cleanse(msg)
+	msg = gsub(msg, "|c[^%[]+%[([^%]]+)%]|h|r", "%1") -- Speed up processing messages with links by removing them
 	msg = lower(msg) --Lower all text, remove capitals
 	for k,v in next, repTbl do
 		msg = gsub(msg, k, v)
@@ -752,69 +87,103 @@ local function BadBoyCleanse(msg)
 	return msg
 end
 local eventFunc = function(_, event, msg, player, _, _, _, flag, channelId, channelNum, _, _, lineId, guid)
+	-- Re-enable chat bubbles if they were disabled in the previous event.
+	if enableBubble then
+		enableBubble = false
+		SetCVar("chatBubbles", 1)
+	end
+
 	blockedLineId = 0
 	if event == "CHAT_MSG_CHANNEL" and (channelId == 0 or type(channelId) ~= "number") then return end --Only scan official custom channels (gen/trade)
 
 	local trimmedPlayer = Ambiguate(player, "none")
-	if BadBoyIsFriendly(trimmedPlayer, flag, lineId, guid) then return end
+	if IsFriendly(trimmedPlayer, flag, lineId, guid) then return end
 
 	local debug = msg --Save original message format
-	msg = BadBoyCleanse(msg)
+	msg = Cleanse(msg)
 
 	--20 line text buffer, this checks the current line, and blocks it if it's the same as one of the previous 20
 	if event == "CHAT_MSG_CHANNEL" then
+		local cleanestMsg = gsub(msg, "[@,./\\=]", "") -- Anything purposely not removed by Cleanse()
 		for i=1, #chatLines do
-			if chatLines[i] == msg and chatPlayers[i] == guid then --If message same as one in previous 20 and from the same person...
+			if chatLines[i] == cleanestMsg and chatPlayers[i] == guid then --If message same as one in previous 20 and from the same person...
 				blockedLineId = lineId
-				--
-				if spamCollector[guid] and IsSpam(msg) then -- Reduce the chances of a spam report expiring (line id is too old) by refreshing it
+				-- Reduce the chances of a spam report expiring (line id is too old) by refreshing it
+				if spamCollector[guid] and Spam(msg) then
 					spamCollector[guid] = lineId
 					if BADBOY_OPTIONS.tipSpam then
 						spamLogger[guid] = debug
 					end
+				elseif backupCollector[guid] and next(spamCollector) and Spam(msg) then
+					backupCollector[guid] = lineId
 				end
 				--
 				return
 			end
 			if i == 20 then tremove(chatLines, 1) tremove(chatPlayers, 1) end --Don't let the DB grow larger than 20
 		end
-		chatLines[#chatLines+1] = msg
+		chatLines[#chatLines+1] = cleanestMsg
 		chatPlayers[#chatPlayers+1] = guid
 	end
 	--End text buffer
 
-	if IsSpam(msg) then
-		if BadBoyLog and not myDebug then
-			BadBoyLog("BadBoy", event, trimmedPlayer, debug)
+	if Spam(msg) then
+		if event == "CHAT_MSG_SAY" or event == "CHAT_MSG_YELL" then
+			-- Awful way of disabling chat bubbles when spam is detected.
+			-- Chat bubbles are processed internally by the game client AFTER all the addon event handlers are fired.
+			if GetCVarBool("chatBubbles") then
+				enableBubble = true
+				SetCVar("chatBubbles", 0)
+			end
 		end
-		if myDebug then
-			print("|cFF33FF99BadBoy_REPORT|r: ", debug, "-", event, "-", trimmedPlayer)
-		else
-			if (not BADBOY_BLACKLIST or not BADBOY_BLACKLIST[guid]) and not IsEncounterInProgress() then
-				spamCollector[guid] = lineId
-				if BADBOY_OPTIONS.tipSpam then
-					spamLogger[guid] = debug
-					if btn:IsShown() and reportFrame:IsMouseOver() then
-						GameTooltip_Hide()
-						reportFrame:GetScript("OnEnter")(reportFrame) -- Add more spam to tooltip if shown
-					end
-				end
-
-				local t = GetTime()
-				if t-prevShow > 90 then
-					if prevShow == 0 then
-						prevShow = t+25
-						-- Delay the first one to grab more spam on really bad realms
-						C_Timer.After(25, function() btn:Show() end)
-					else
-						prevShow = t
-						btn:Show()
-					end
+		if not BADBOY_OPTIONS.freqButton then
+			for i = 1, #L[et] do
+				if strfind(msg, L[et][i]) then
+					blockedLineId = lineId
+					return
 				end
 			end
 		end
+		if BadBoyLog then
+			BadBoyLog("BadBoy", event, trimmedPlayer, debug)
+		end
+		if not BADBOY_BLACKLIST[guid] and not IsEncounterInProgress() then
+			spamCollector[guid] = lineId
+			if BADBOY_OPTIONS.tipSpam then
+				spamLogger[guid] = debug
+				if btn:IsShown() and reportFrame:IsMouseOver() then
+					GameTooltip_Hide()
+					reportFrame:GetScript("OnEnter")(reportFrame) -- Add more spam to tooltip if shown
+				end
+			end
+
+			local t = GetTime()
+			if t-prevShow > (BADBOY_OPTIONS.freqBtn and 30 or 90) then
+				if prevShow == 0 then
+					prevShow = t+25
+					-- Delay the first one to grab more spam on really bad realms
+					C_Timer.After(25, function() btn:Show() end)
+				else
+					prevShow = t
+					btn:Show()
+				end
+			end
+		end
+
+		if BADBOY_BLACKLIST[guid] then
+			-- We have already reported this person today. We won't show the button again, but add them to the backup table to report them
+			-- again only if we click the button for other spam, to completely eliminate processing their chat, improving performance.
+			backupCollector[guid] = lineId
+		end
+
 		blockedLineId = lineId
 		return
+	elseif next(spamCollector) then
+		local t = GetTime()
+		if t-prevShow > (BADBOY_OPTIONS.freqBtn and 30 or 90) then
+			prevShow = t
+			btn:Show()
+		end
 	end
 end
 local filterFunc = function(_, _, _, _, _, _, _, _, _, _, _, _, lineId)
@@ -863,6 +232,11 @@ do
 				spamLogger[k] = nil
 			end
 		end
+		for k, v in next, backupCollector do
+			if not CanComplainChat(v) then
+				backupCollector[k] = nil
+			end
+		end
 		if not canReport then
 			btn:Hide()
 		end
@@ -907,7 +281,6 @@ do
 			local systemMsg = {GetFramesRegisteredForEvent("CHAT_MSG_SYSTEM")} -- Don't show the "Complaint Registered" message
 			local infoMsg = {GetFramesRegisteredForEvent("UI_INFO_MESSAGE")} -- Don't show the "Thanks for the report" message
 			local calendarError = {GetFramesRegisteredForEvent("CALENDAR_UPDATE_ERROR")} -- Remove calendar error popup (Blizz bug)
-			local reportSubmit = {GetFramesRegisteredForEvent("PLAYER_REPORT_SUBMITTED")} -- Fix clearing chat that shouldn't be cleared (Blizz bug)
 			for i = 1, #systemMsg do
 				systemMsg[i]:UnregisterEvent("CHAT_MSG_SYSTEM")
 			end
@@ -917,9 +290,6 @@ do
 			for i = 1, #calendarError do
 				calendarError[i]:UnregisterEvent("CALENDAR_UPDATE_ERROR")
 			end
-			for i = 1, #reportSubmit do
-				reportSubmit[i]:UnregisterEvent("PLAYER_REPORT_SUBMITTED")
-			end
 
 			for k, v in next, spamCollector do
 				if CanComplainChat(v) then
@@ -928,6 +298,12 @@ do
 				end
 				spamCollector[k] = nil
 				spamLogger[k] = nil
+			end
+			for k, v in next, backupCollector do
+				if CanComplainChat(v) then
+					ReportPlayer("spam", v)
+				end
+				backupCollector[k] = nil
 			end
 
 			for i = 1, #systemMsg do
@@ -939,9 +315,6 @@ do
 			for i = 1, #calendarError do
 				-- There's a delay before the event fires
 				C_Timer.After(5, function() calendarError[i]:RegisterEvent("CALENDAR_UPDATE_ERROR") end)
-			end
-			for i = 1, #reportSubmit do
-				reportSubmit[i]:RegisterEvent("PLAYER_REPORT_SUBMITTED")
 			end
 		end
 	end)
@@ -986,14 +359,131 @@ do
 	end
 end
 
-if myDebug then
-	SlashCmdList.D = function(msg)
-		msg = BadBoyCleanse(msg)
-		if IsSpam(msg) then
-			print("Yes")
+--[[ LFG Filter ]]--
+local searchId = 0
+local evLog
+do
+	local GetSearchResults, GetSearchResultInfo = C_LFGList.GetSearchResults, C_LFGList.GetSearchResultInfo
+	local GetApplications, ReportSearchResult = C_LFGList.GetApplications, C_LFGList.ReportSearchResult
+	local f = CreateFrame("Frame", nil, PVEFrame)
+	f:SetPoint("BOTTOMLEFT", PVEFrame, "BOTTOMLEFT", 10, 10)
+	f:SetFrameStrata("DIALOG")
+	f:SetSize(200, 20)
+	f:Hide()
+	local t = f:CreateTexture()
+	t:SetAllPoints(f)
+	t:SetColorTexture(0, 0.3, 1)
+	local txt = f:CreateFontString(nil, nil, "GameFontNormal")
+	txt:SetPoint("LEFT", f, "LEFT", 5, 0)
+	txt:SetJustifyH("LEFT")
+	txt:SetText(L.clickToFilterLFG)
+	f:SetWidth(txt:GetStringWidth()+10)
+	local group = f:CreateAnimationGroup()
+	group:SetScript("OnFinished", function(anim) anim:GetParent():Hide() end)
+	f:SetScript("OnShow", function() group:Play() end)
+	local fade = group:CreateAnimation("Alpha")
+	fade:SetStartDelay(1)
+	fade:SetDuration(1.5)
+	fade:SetFromAlpha(1)
+	fade:SetToAlpha(0)
+	fade:SetOrder(1)
+	f:RegisterEvent("LFG_LIST_SEARCH_RESULTS_RECEIVED")
+	f:RegisterEvent("LFG_LIST_SEARCH_FAILED")
+	local filter = function(self, ev)
+		self:Hide() -- Always hide the notification, we only want it showing when spam is found.
+		local _, results = GetSearchResults()
+		local toRem, toRep, t = {}, {}, et+1
+		for i = #results, 1, -1 do
+			local id, _, name, comment, voiceChat = GetSearchResultInfo(results[i])
+			local msg = name .. comment .. voiceChat -- They like to split messages
+			msg = Cleanse(msg)
+			local s = ev ~= "LFG_LIST_SEARCH_RESULTS_RECEIVED"
+			if not s and not BADBOY_OPTIONS.freqButton then
+				for i = 1, #L[et] do
+					if strfind(msg, L[et][i]) then
+						s = true
+						break
+					end
+				end
+			end
+			if Spam(msg) then
+				toRem[#toRem+1] = i
+				if not s then
+					toRep[id] = true
+				end
+			else
+				for j=1, #L[t] do
+					if strfind(msg, L[t][j]) then
+						toRem[#toRem+1] = i
+						if not s then
+							toRep[id] = true
+						end
+						break
+					end
+				end
+			end
+		end
+		if toRem[1] then -- Spam entry found, customize the list.
+			for i = 1, #toRem do
+				table.remove(results, toRem[i])
+			end
+			LFGListUtil_SortSearchResults(results) -- Some LFG filter addons hook this function to do custom sorting, let's cooperate by using it so they customize our list.
+			LFGListFrame.SearchPanel.results = results -- Attach results table to frame
+			LFGListFrame.SearchPanel.totalResults = #results -- Attach result counter to frame
+			LFGListFrame.SearchPanel.applications = GetApplications() -- Attach applications to frame
+			LFGListSearchPanel_UpdateResults(LFGListFrame.SearchPanel) -- Finally, feed frame holding the results to the panel
+
+			local systemMsg = {GetFramesRegisteredForEvent("CHAT_MSG_SYSTEM")} -- Don't show the "Complaint Registered" message
+			local infoMsg = {GetFramesRegisteredForEvent("UI_INFO_MESSAGE")} -- Don't show the "Thanks for the report" message
+			for i = 1, #systemMsg do
+				systemMsg[i]:UnregisterEvent("CHAT_MSG_SYSTEM")
+			end
+			for i = 1, #infoMsg do
+				infoMsg[i]:UnregisterEvent("UI_INFO_MESSAGE")
+			end
+
+			for k in next, toRep do
+				ReportSearchResult(k, "lfglistcomment") -- Report spam groups
+			end
+
+			for i = 1, #systemMsg do
+				systemMsg[i]:RegisterEvent("CHAT_MSG_SYSTEM")
+			end
+			for i = 1, #infoMsg do
+				infoMsg[i]:RegisterEvent("UI_INFO_MESSAGE")
+			end
+
+			if PVEFrame:IsShown() then
+				self:Show()
+			end
+		end
+		if searchId > 0 and searchId < 7 and not IsInInstance() and not InCombatLockdown() and not PVEFrame:IsShown() then
+			C_Timer.After(3, function()
+				if not IsInInstance() and not InCombatLockdown() and not PVEFrame:IsShown() then
+					searchId = searchId + 1
+					if searchId == 4 then searchId = 6 end
+					local id = searchId > 6 and 3 or searchId
+					C_LFGList.Search(id, "", id == 3 and 1 or 0)
+				elseif evLog then
+					searchId = 0
+					for i = 1, #evLog do
+						evLog[i]:RegisterEvent("LFG_LIST_SEARCH_RESULT_UPDATED")
+					end
+					evLog = nil
+				end
+			end)
+		elseif evLog then
+			for i = 1, #evLog do
+				evLog[i]:RegisterEvent("LFG_LIST_SEARCH_RESULT_UPDATED")
+			end
+			searchId = 0
+			evLog = nil
 		end
 	end
-	SLASH_D1 = "/d"
+	LFGListFrame.SearchPanel:HookScript("OnShow", function()
+		filter(f)
+	end)
+	f:SetScript("OnEvent", filter)
 end
 
 --[[ Blacklist ]]--
@@ -1014,9 +504,40 @@ do
 			end
 			SetCVar("spamFilter", 1)
 			frame:UnregisterEvent(event)
-			frame:SetScript("OnEvent", nil)
+			BADBOY_OPTIONS.tmp = nil
+			BADBOY_OPTIONS.tmpm = nil
+			BADBOY_OPTIONS.tmpl = nil
+			BADBOY_OPTIONS.freqButton = nil
+			C_Timer.After(1, function()
+				if not IsInInstance() and not InCombatLockdown() and not PVEFrame:IsShown() then
+					searchId = 1
+					evLog = {GetFramesRegisteredForEvent("LFG_LIST_SEARCH_RESULT_UPDATED")} -- Avoid Blizz bug
+					for i = 1, #evLog do
+						evLog[i]:UnregisterEvent("LFG_LIST_SEARCH_RESULT_UPDATED")
+					end
+					C_LFGList.Search(searchId, "", 0)
+				end
+			end)
+			C_Timer.After(10, function()
+				if PremadeFilter_Frame then
+					print("|cFF33FF99BadBoy|r: You are using a badly coded addon (|cFF33FF99Premade Filter|r) that conflicts with BadBoy LFG filtering, we recommend you switch to using '|cFF33FF99Premade Groups Filter|r' instead.")
+				end
+			end)
+
+			-- Chat bubble restore
+			frame:SetScript("OnEvent", function()
+				if enableBubble then
+					enableBubble = false
+					SetCVar("chatBubbles", 1)
+				end
+			end)
+			-- Hopefully we never end up in a situation where we've permanently disabled chat bubbles for the user.
+			frame:RegisterEvent("PLAYER_LOGOUT")
+			frame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
+			frame:RegisterEvent("CHAT_MSG_MONSTER_YELL")
 		end
 	end)
 end
 
-_G.BadBoyIsFriendly = BadBoyIsFriendly
+_G.BadBoyIsFriendly = IsFriendly
+_G.BadBoyCleanse = Cleanse

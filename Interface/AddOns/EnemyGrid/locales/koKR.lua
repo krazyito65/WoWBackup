@@ -18,7 +18,7 @@ L["S_AGGROCOLORS_TANK_NOCOMBAT"] = "[방어 전담] 비 전투 중 색상"
 L["S_AGGROCOLORS_TANK_NOCOMBAT_DESC"] = "자신이 전투 중일 때 적이 자신이나 그룹원과 전투 중이지 않을 때."
 L["S_ALPHA"] = "투명도"
 L["S_ALWAYSSHOWDEBUFFS"] = "약화 효과 항상 표시"
-L["S_ALWAYSSHOWDEBUFFS_DESC"] = "수동 오라 추적을 사용할 때만 작동합니다."
+L["S_ALWAYSSHOWDEBUFFS_DESC"] = "수동 효과 추적을 사용할 때만 작동합니다."
 L["S_ANCHOR"] = "고정 위치"
 L["S_ANCHOR_TOOLTIP"] = [=[|cFFFFFF00오른쪽 클릭|r 또는 '|cFFFFFF00/enemygrid|r'로 설정합니다.
 설정에서 프레임을 잠글 수 있습니다.]=]

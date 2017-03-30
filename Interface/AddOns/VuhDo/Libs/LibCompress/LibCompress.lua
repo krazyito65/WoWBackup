@@ -6,7 +6,7 @@
 -- Email : sheets.jeff@gmail.com and galmok@gmail.com
 -- Licence: GPL version 2 (General Public License)
 -- Revision: $Revision: 75 $
--- Date: $Date: 2016-11-06 13:02:36 +0000 (Sun, 06 Nov 2016) $
+-- Date: $Date: 2016-11-06 07:02:36 -0600 (Sun, 06 Nov 2016) $
 ----------------------------------------------------------------------------------
 
 

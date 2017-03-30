@@ -168,9 +168,7 @@ function ns:ShowCharInfo(view)
 		-- AltoholicTabCharacters.Recipes:Update()
 				
 	elseif view == VIEW_GARRISONS then
-		AltoholicFrameGarrisonMissions:Show()
-		addon.Garrisons:InvalidateView()
-		addon.Garrisons:Update()
+		AltoholicFrameGarrisonMissions:Update()
 	end
 end
 
@@ -728,12 +726,19 @@ local function GarrisonIcon_Initialize(self, level)
 	if not currentCharacterKey then return end
 	
 	local currentMenu = addon:GetOption("UI.Tabs.Characters.GarrisonMissions")
-	local numAvailable = DataStore:GetNumAvailableMissions(currentCharacterKey)
-	local numActive = DataStore:GetNumActiveMissions(currentCharacterKey)
 	
-	DDM_AddTitle(GARRISON_LOCATION_TOOLTIP)
-	DDM_Add(format(GARRISON_LANDING_AVAILABLE, numAvailable), 1, OnGarrisonMenuChange, nil, (currentMenu == 1))
-	DDM_Add(format(GARRISON_LANDING_IN_PROGRESS, numActive), 2, OnGarrisonMenuChange, nil, (currentMenu == 2))
+	DDM_AddTitle(GARRISON_MISSIONS_TITLE)
+	DDM_Add(format(GARRISON_LANDING_AVAILABLE, DataStore:GetNumAvailableMissions(currentCharacterKey, LE_FOLLOWER_TYPE_GARRISON_6_0)), 
+				1, OnGarrisonMenuChange, nil, (currentMenu == 1))
+	DDM_Add(format(GARRISON_LANDING_IN_PROGRESS, DataStore:GetNumActiveMissions(currentCharacterKey, LE_FOLLOWER_TYPE_GARRISON_6_0)), 
+				2, OnGarrisonMenuChange, nil, (currentMenu == 2))
+	DDM_AddTitle(" ")
+	DDM_AddTitle(ORDER_HALL_MISSIONS)
+	DDM_Add(format(GARRISON_LANDING_AVAILABLE, DataStore:GetNumAvailableMissions(currentCharacterKey, LE_FOLLOWER_TYPE_GARRISON_7_0)), 
+				3, OnGarrisonMenuChange, nil, (currentMenu == 3))
+	DDM_Add(format(GARRISON_LANDING_IN_PROGRESS, DataStore:GetNumActiveMissions(currentCharacterKey, LE_FOLLOWER_TYPE_GARRISON_7_0)), 
+				4, OnGarrisonMenuChange, nil, (currentMenu == 4))
+	
 	DDM_AddCloseMenu()
 end
 

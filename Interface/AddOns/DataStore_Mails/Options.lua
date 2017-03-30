@@ -1,4 +1,4 @@
-﻿if not DataStore then return end
+if not DataStore then return end
 
 local addonName = "DataStore_Mails"
 local addon = _G[addonName]

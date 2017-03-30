@@ -901,7 +901,8 @@ G.unitframe.buffwatch = {
 		[188550] = ClassBuff(188550, "TOPLEFT", {0.4, 0.8, 0.2}), -- Lifebloom T18 4pc
 		[48438] = ClassBuff(48438, "BOTTOMRIGHT", {0.8, 0.4, 0}), -- Wild Growth
 		[207386] = ClassBuff(207386, "TOP", {0.4, 0.2, 0.8}),     -- Spring Blossoms
-		[102352] = ClassBuff(102352, "LEFT", {0.2, 0.8, 0.8}),    -- Cenarion Ward
+		[102351] = ClassBuff(102351, "LEFT", {0.2, 0.8, 0.8}),    -- Cenarion Ward (Initial Buff)
+		[102352] = ClassBuff(102352, "LEFT", {0.2, 0.8, 0.8}),    -- Cenarion Ward (HoT)
 		[200389] = ClassBuff(200389, "BOTTOM", {1, 1, 0.4}),      -- Cultivation
 	},
 	PALADIN = {
@@ -947,17 +948,15 @@ P['unitframe']['filters'] = {
 --List of spells to display ticks
 G.unitframe.ChannelTicks = {
 	--Warlock
-	[SpellName(689)] = 6, -- "Drain Life"
 	[SpellName(198590)] = 6, -- "Drain Soul"
 	[SpellName(755)] = 6, -- Health Funnel
 	--Priest
-	[SpellName(48045)] = 5, -- "Mind Sear"
-	[SpellName(179338)] = 5, -- "Searing insanity"
 	[SpellName(64843)] = 4, -- Divine Hymn
 	[SpellName(15407)] = 4, -- Mind Flay
 	--Mage
 	[SpellName(5143)] = 5, -- "Arcane Missiles"
 	[SpellName(12051)] = 3, -- "Evocation"
+	[SpellName(205021)] = 10, -- "Ray of Frost"
 }
 
 local priestTier17 = {115560,115561,115562,115563,115564}
@@ -983,13 +982,12 @@ end)
 
 G.unitframe.ChannelTicksSize = {
 	--Warlock
-	[SpellName(689)] = 1, -- "Drain Life"
 	[SpellName(198590)] = 1, -- "Drain Soul"
 }
 
 --Spells Effected By Haste
 G.unitframe.HastedChannelTicks = {
-
+	[SpellName(205021)] = true, -- "Ray of Frost"
 }
 
 --This should probably be the same as the whitelist filter + any personal class ones that may be important to watch

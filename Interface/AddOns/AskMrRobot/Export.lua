@@ -277,9 +277,9 @@ local function scanArtifact()
 	
 	local powerRanks = {}
 	for k,v in pairs(powers) do
-		local spellId, cost, rank, maxRank, relicRank = C_ArtifactUI.GetPowerInfo(v)
-		if rank - relicRank > 0 then
-			powerRanks[v] = rank - relicRank
+		local powerInfo = C_ArtifactUI.GetPowerInfo(v)
+		if powerInfo.currentRank - powerInfo.bonusRanks > 0 then
+			powerRanks[v] = powerInfo.currentRank - powerInfo.bonusRanks
 		end
 	end
 	

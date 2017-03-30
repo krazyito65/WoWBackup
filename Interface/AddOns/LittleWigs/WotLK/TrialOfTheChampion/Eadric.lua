@@ -1,4 +1,4 @@
-﻿-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 --  Module Declaration
 
 local mod = BigWigs:NewBoss("Eadric the Pure", 542)
@@ -16,7 +16,6 @@ local LCL = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Common")
 
 local L = mod:NewLocale("enUS", true)
 if L then
-
 
 end
 L = mod:GetLocale()

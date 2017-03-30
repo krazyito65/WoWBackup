@@ -10,6 +10,48 @@ There WILL be bugs if you use your old files without cleaning them first.
 Some fixes to work around API changes are too time consuming, so cleaning is required. A meagre price to pay once per expansion.
 
 
+7.2.001 (29/03/2017)
+
+- DataStore_Talents : Fixed a few issues when scanning artifact data (Thanks AlexSUCF !)
+- DataStore_Talents : Fixed an issue when artifact XP was updated.
+
+Note: I haven't had time to play much tonight, but I did not discover urgent issues. I'll keep testing tomorrow & Friday and will post a fix if anything break.
+At the very least, I'll have to test the new reputation paragons to see if anything is broken on that side.
+
+7.1.004 (12/01/2017)
+
+Nine Year Anniversary Edition.
+
+The addon turned 9 a few weeks ago. It's sometimes been a bumpy ride, but I'm happy it brought me the things I expected from this experience when it all started.
+Looking at the changelog of the last 3 years, I have been less active than I hoped to, especially at the end of WoD, but I don't regret it.
+9 Years is a long commitment, and sometimes you need to recharge the batteries.
+I have no idea how long I will keep working on the addon, or just playing the game, but I know I'll keep doing it as long as I find it fun. :)
+
+Anyway, on to changelog:
+
+- Refined size and positioning of icons in the Achievements tab after the addition of the 12th column.
+- Fixed an issue where an artifact is scanned with 2 different names (ex: "Aluneth" & "Aluneth, Greatstaff of the Magna"). 
+If you saw duplicated names in the artifact tooltips, you will have to delete your alt via the account summary (right-click its name when NOT logged in with him) if it is affected by this. 
+- Reworked tracking of garrison missions, along with order hall missions. Tracking is visible in the Summary->Activity Panel, and also in the Characters tab.
+
+Important notes about artifact data:
+
+- Artifact data can only be read while you are viewing the artifact (using shift-right click), so I cannot automate refreshes.
+If you switch spec, and do not shift-right click your artifact, the addon will still think the old one is equipped.
+If your artifact gains a level, and you do not shift-right click it, the addon will not know about it.
+
+- Same thing for artifact knowledge.
+When you learn an artifact research note, or the whole new research compendium, no in-game event tells the addon that this has happened, so it cannot be refreshed automatically.
+
+- Finally, the delay until next research is also "only" for the very next research.
+If you queue 2 researches, the addon will tell you that the next one is in 3 days, but the game does not provide information about how long it will take for the one after that.
+So if you let 10 days pass, you will still see only 1/2 is ready for pickup, and no delay, because it is unknown.
+To update the delay until the next research, you have to view the Class Hall Report.
+
+These facts are clear annoyances, but given the constraints imposed by Blizzard, there is nothing I can do.
+Don't shoot the messenger :(
+
+
 7.1.003 (10/11/2016)
 
 - Added a row for the 12th character on both the achievements and grids tabs.

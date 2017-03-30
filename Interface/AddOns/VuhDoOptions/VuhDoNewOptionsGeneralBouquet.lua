@@ -243,7 +243,7 @@ function VUHDO_rebuildBouquetContextEditors(anIndex)
 	tIsTempModel = false;
 	tBouquetName = VUHDO_getCurrentBouquetName();
 
-	if (tBouquetName == nil or anIndex == 0) then -- Kein Bouquet gew„hlt
+	if (tBouquetName == nil or anIndex == 0) then -- Kein Bouquet gewï¿½hlt
 		tIsTempModel = true;
 	else
 		tBouquet = VUHDO_getCurrentBouquet(); -- Bouquetname ungespeichert

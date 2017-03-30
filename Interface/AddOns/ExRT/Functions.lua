@@ -490,6 +490,21 @@ function ExRT.F.table_add2(arr,add)
 	end
 end
 
+do
+	local function swap(array, index1, index2)
+		array[index1], array[index2] = array[index2], array[index1]
+	end
+	local math_random = math.random
+	function ExRT.F.table_shuffle(array)
+		local counter = #array
+		while counter > 1 do
+			local index = math_random(counter)
+			swap(array, index, counter)
+			counter = counter - 1
+		end
+	end
+end
+
 function ExRT.F.tohex(num,size)
 	return format("%0"..(size or "1").."X",num)
 end
@@ -604,6 +619,32 @@ function ExRT.F.CreateAddonMsg(...)
 		result = result..(result ~= "" and "\t" or "")..tostring(a)
 	end
 	return result
+end
+
+function ExRT.F.GetPlayerRole()
+	local role = UnitGroupRolesAssigned('player')
+	if role == "HEALER" then
+		local _,class = UnitClass('player')
+		return role, (class == "PALADIN" or class == "MONK") and "MHEALER" or "RHEALER"
+	elseif role ~= "DAMAGER" then
+		--TANK, NONE
+		return role
+	else
+		local _,class = UnitClass('player')
+		local isMelee = (class == "WARRIOR" or class == "PALADIN" or class == "ROGUE" or class == "DEATHKNIGHT" or class == "MONK" or class == "DEMONHUNTER")
+		if class == "DRUID" then
+			isMelee = GetSpecialization() ~= 1
+		elseif class == "SHAMAN" then
+			isMelee = GetSpecialization() == 2
+		elseif class == "HUNTER" then
+			isMelee = GetSpecialization() == 3
+		end
+		if isMelee then
+			return role, "MDD"
+		else
+			return role, "RDD"
+		end
+	end
 end
 
 do

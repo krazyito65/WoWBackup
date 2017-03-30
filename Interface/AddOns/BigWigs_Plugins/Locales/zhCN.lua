@@ -247,4 +247,12 @@ L.wrongTime = "指定了无效的时间。 <时间>可以是一个以秒为单�
 -- InfoBox.lua
 --
 
---L.infoBox = "InfoBox"
+L.infoBox = "信息盒"
+
+-----------------------------------------------------------------------
+-- Statistics.lua
+--
+
+L.printHealthOption = "首领血量"
+L.healthPrint = "血量：%s。"
+L.healthFormat = "%s （%.1f%%）"

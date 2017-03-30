@@ -1,4 +1,8 @@
 
+local debugmode = false
+
+
+
 local Loc = LibStub ("AceLocale-3.0"):GetLocale ("Details_DeathGraphs")
 local SharedMedia = LibStub:GetLibrary("LibSharedMedia-3.0")
 
@@ -15,7 +19,6 @@ local CONST_DBTYPE_ENDURANCE = "endurance"
 
 DeathGraphs:SetPluginDescription ("During boss encounters, capture raid members deaths and build statistics from it.\n\n- |cFFFFFFFFCurrent Encounter|r: |cFFFF9900show deaths for the latest segments.\n\n- |cFFFFFFFFTimeline|r: |cFFFF9900show a graph telling when debuffs and spells from the boss are casted on raid members and draw lines representing where deaths are happening.\n\n- |cFFFFFFFFEndurance|r: |cFFFF9900show a list of players with a percentage indicating how much tries they were alive in the encounter.\n\n- |cFFFFFFFFOverall|r: |cFFFF9900Mantain a list of players with their death and also the damage taken by spell before the death.")
 
-local debugmode = false
 local combat_log_event_listener = CreateFrame ("frame")
 
 local function CreatePluginFunctions()
@@ -73,8 +76,10 @@ local function CreatePluginFunctions()
 			
 			if (found_something) then
 				DeathGraphs:ShowToolbarIcon (DeathGraphs.ToolbarButton, "star")
+				--print ("SHOW ICON")
 			else
 				DeathGraphs:HideToolbarIcon (DeathGraphs.ToolbarButton)
+				--print ("CANT SHOW ICON")
 			end
 		end
 	end
@@ -132,6 +137,7 @@ local function CreatePluginFunctions()
 			DeathGraphs.BossEncounterStartAt = GetTime()
 		
 		elseif (event == "COMBAT_PLAYER_LEAVE") then --> combat ended
+			--print ("1 - Player Leaved the Combat")
 			DeathGraphs:DebugMsg ("combat finished -> calling CombatFinished()")
 			DeathGraphs:CombatFinished (...)
 			combat_log_event_listener:UnregisterEvent ("COMBAT_LOG_EVENT_UNFILTERED")
@@ -149,6 +155,8 @@ local function CreatePluginFunctions()
 			
 		end
 	end
+	
+	DeathGraphsFrame:RegisterEvent ("PLAYER_REGEN_ENABLED")
 
 	function DeathGraphs:GetEncounterDiffString (diffInteger)
 		if (diffInteger == 17) then
@@ -247,6 +255,7 @@ local function CreatePluginFunctions()
 	function DeathGraphs:CombatFinished (combat)
 		
 		if (not DeathGraphs.EnemySkillTable) then
+			--print ("error 1")
 			return
 		end
 		
@@ -281,7 +290,7 @@ local function CreatePluginFunctions()
 				return
 			end
 		end
-		
+
 		--> read all deaths
 	
 		local boss = combat:GetBossInfo()
@@ -289,12 +298,16 @@ local function CreatePluginFunctions()
 		
 		DeathGraphs.db.last_combat_id = DeathGraphs.combat_id
 		
+		--print ("2 - check point", boss)
+		
 		if (boss) then
 		
 			DeathGraphs:DebugMsg ("boss found", boss.name)
 		
 			local EI = DeathGraphs:GetEncounterIdFromBossIndex (boss.mapid, boss.index)
 			if (EI) then
+			
+				--print ("3 - check point", EI)
 			
 				DeathGraphs:DebugMsg ("boss EI: " .. EI .. " diff: " .. combat:GetDifficulty())
 			
@@ -317,6 +330,8 @@ local function CreatePluginFunctions()
 				DeathGraphs:DebugMsg ("deaths: " .. #death_list)
 				
 				if (#death_list > 0) then
+					
+					--print ("4 - check point", #death_list)
 					
 					--> get raid size
 					--local size = select (5, GetInstanceInfo())
@@ -651,7 +666,12 @@ end)
 
 function DeathGraphs:OnEvent (_, event, ...)
 
-	if (event == "ADDON_LOADED") then
+	if (event == "PLAYER_REGEN_ENABLED") then
+	--	DeathGraphs:DebugMsg ("combat finished -> calling CombatFinished()")
+	--	DeathGraphs:CombatFinished (Details.tabela_vigente)
+	--	combat_log_event_listener:UnregisterEvent ("COMBAT_LOG_EVENT_UNFILTERED")
+		
+	elseif (event == "ADDON_LOADED") then
 		local AddonName = select (1, ...)
 		if (AddonName == "Details_DeathGraphs") then
 			
@@ -732,9 +752,14 @@ function DeathGraphs:OnEvent (_, event, ...)
 				_G._detalhes:RegisterEvent (DeathGraphs, "COMBAT_BOSS_FOUND")
 				_G._detalhes:RegisterEvent (DeathGraphs, "DETAILS_DATA_RESET")
 				_G._detalhes:RegisterEvent (DeathGraphs, "COMBAT_PLAYER_LEAVE")
+				_G._detalhes:RegisterEvent (DeathGraphs, "COMBAT_PLAYER_ENTER")
 				
 				--> store the install time for deactive tutorials by time
 				DeathGraphs.db.InstalledAt = DeathGraphs.db.InstalledAt or time()
+				if (not DeathGraphs.db.v1) then
+					DeathGraphs.db.v1 = true
+					wipe (DeathGraphsDBGraph)
+				end
 
 			end
 		end

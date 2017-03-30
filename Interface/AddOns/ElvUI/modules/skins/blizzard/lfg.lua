@@ -481,6 +481,7 @@ local function LoadSkin()
 	S:HandleCheckBox(LFGListFrame.EntryCreation.ItemLevel.CheckButton)
 	S:HandleCheckBox(LFGListFrame.EntryCreation.HonorLevel.CheckButton)
 	S:HandleCheckBox(LFGListFrame.EntryCreation.VoiceChat.CheckButton)
+	S:HandleCheckBox(LFGListFrame.EntryCreation.PrivateGroup.CheckButton)
 
 	LFGListFrame.EntryCreation.ActivityFinder.Dialog:StripTextures()
 	LFGListFrame.EntryCreation.ActivityFinder.Dialog:SetTemplate("Transparent")
@@ -606,6 +607,11 @@ local function LoadSecondarySkin()
 	ChallengesFrameInset:StripTextures()
 	ChallengesFrameInset:Hide()
 	ChallengesFrameInsetBg:Hide()
+
+	-- Mythic Dungeon Tab
+	ChallengesFrame.GuildBest:StripTextures()
+	ChallengesFrame.GuildBest:CreateBackdrop("Transparent")
+	ChallengesFrame.GuildBest.Line:Hide()
 
 	-- Mythic+ KeyStoneFrame
 	S:HandleCloseButton(ChallengesKeystoneFrame.CloseButton)

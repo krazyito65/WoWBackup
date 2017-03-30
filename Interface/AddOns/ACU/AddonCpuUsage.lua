@@ -35,6 +35,9 @@ local default_db = {
 		sample_size = 180,
 		data_pool = {},
 		first_run = false,
+		auto_run = false,
+		auto_run_delay = 1,
+		auto_run_time = 9999,
 	},
 }
 
@@ -50,7 +53,7 @@ local OptionsTable = {
 			get = function() return not ACU.db.profile.Minimap.hide end,
 			set = function (self, val) 
 				ACU.db.profile.Minimap.hide = not ACU.db.profile.Minimap.hide
-				LDBIcon:Refresh ("AddonCpuUsage", ACU.db.profile.Minimap)
+				LDBIcon:Refresh ("AddonCpuUsage", ACU.db.profile.Minimap.hide)
 				if (not ACU.db.profile.Minimap.hide) then
 					LDBIcon:Show ("AddonCpuUsage")
 				else
@@ -58,6 +61,39 @@ local OptionsTable = {
 				end
 			end,
 		},
+		AutoRun = {
+			type = "toggle",
+			name = "On Login Start Capture",
+			desc = "Starts if profiler is enabled.\n\n|cFFFFFF00Important|r: only for addon developers usage.",
+			order = 4,
+			get = function() return ACU.db.profile.auto_run end,
+			set = function (self, val) 
+				ACU.db.profile.auto_run = not ACU.db.profile.auto_run
+			end,
+		},
+		AutoRunDelay = {
+			type = "range",
+			name = "On Login Delay",
+			desc = "Delay to start the auto capture after ACU:OnInitialize() call.\n\n|cFFFFFF00Important|r: only for addon developers usage.",
+			min = 0,
+			max = 60,
+			step = 0.1,
+			get = function() return ACU.db.profile.auto_run_delay end,
+			set = function (self, val) ACU.db.profile.auto_run_delay = val end,
+			order = 5,
+		},
+		AutoRunTime = {
+			type = "range",
+			name = "On Login Capture Time",
+			desc = "Duration of the capture auto started on login.\n\n|cFFFFFF00Important|r: only for addon developers usage.",
+			min = 1,
+			max = 9999,
+			step = 1,
+			get = function() return ACU.db.profile.auto_run_time end,
+			set = function (self, val) ACU.db.profile.auto_run_time = val end,
+			order = 6,
+		},
+		
 		StartDelay = {
 			type = "range",
 			name = Loc ["STRING_OPTIONS_STARTDELAY"],
@@ -124,7 +160,9 @@ function ACU:OnInitialize()
 	ENABLED = ACU:IsProfileEnabled()
 
 	if (ACU:IsProfileEnabled() and not ACU.db.profile.auto_open) then
+		print ("-------------------------")
 		ACU:Msg ("CPU Profile is enabled. If isn't intended, type /cpu and disable it.")
+		print ("-------------------------")
 	end
 	
 	--debug
@@ -135,7 +173,7 @@ function ACU:OnInitialize()
 
 		ACU:CreateMainWindow()
 		ACUMainFrame:Show()	
-		ACU:ScheduleTimer ("ShowMe", 1)
+		--ACU:ScheduleTimer ("ShowMe", 1)
 
 		ACU.db.profile.auto_open = nil
 		
@@ -144,6 +182,18 @@ function ACU:OnInitialize()
 		end
 	end
 
+	if (ACU.db.profile.auto_run) then
+		if (ACU:IsProfileEnabled()) then
+			function ACU:AutoStart()
+				if (ACU.RealTimeTick) then
+					ACU.StopRealTime()
+				end
+				ACU:StartRealTime (ACU.db.profile.auto_run_time)
+			end
+			ACU:ScheduleTimer ("AutoStart", ACU.db.profile.auto_run_delay)
+		end
+	end
+	
 end
 
 function ACU.StopRealTime()
@@ -1072,7 +1122,7 @@ local tutorial_phrases = {
 		
 		local bg = statusbar:CreateTexture (nil, "background")
 		bg:SetAllPoints()
-		bg:SetTexture (0, 0, 0, 0.4)
+		bg:SetColorTexture (0, 0, 0, 0.4)
 		
 		local percent = statusbar:CreateFontString (nil, "overlay", "GameFontNormal")
 		percent:SetPoint ("right", statusbar, "right", -2, 0)

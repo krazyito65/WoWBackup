@@ -17,8 +17,6 @@ L["S_AGGROCOLORS_TANK_NOAGGRO_DESC"] = "Quando você é um tank e o mob não est
 L["S_AGGROCOLORS_TANK_NOCOMBAT"] = "[tank] Fora de Combate"
 L["S_AGGROCOLORS_TANK_NOCOMBAT_DESC"] = "Quando você esta em combate e o inimigo não esta fora de combate."
 L["S_ALPHA"] = "Transparência"
--- L["S_ALWAYSSHOWDEBUFFS"] = ""
--- L["S_ALWAYSSHOWDEBUFFS_DESC"] = ""
 L["S_ANCHOR"] = "Âncora"
 L["S_ANCHOR_TOOLTIP"] = [=[|cFFFFFF00Botão Direito|r or '|cFFFFFF00/enemygrid|r' para configurar.
 Você pode trancar o frame lá.]=]
@@ -66,7 +64,7 @@ L["S_MENU_MAINPANEL"] = "Configurações Gerais"
 L["S_NAMEPLATE_DISTANCE"] = "Distância da Nameplate"
 L["S_NAMEPLATE_DISTANCE_DESC"] = [=[Distância em que as nameplates podem ser vistas.
 
-|cFFFFFF00Importante:|r esta configuração é salva no cliente e qualquer addon pode modifica-la.]=] -- Needs review
+|cFFFFFF00Importante:|r esta configuração é salva no cliente e qualquer addon pode modifica-la.]=]
 L["S_NAMEPLATE_DISTANCE_NOCOMBAT"] = "Você não pode modificar isso em combate."
 L["S_NEUTRAL"] = "Neutro"
 L["S_NPCCOLOR"] = "Cor do Npc"
@@ -94,16 +92,12 @@ L["S_SHOWTAB_DESC"] = "Mostra a aba do frame."
 L["S_SHOWTIMER"] = "Mostrar Cronometro"
 L["S_SHOWTIMER_DESC"] = "Tempo restante que a aura possui."
 L["S_SHOWTITLE"] = "Mostrar Título"
--- L["S_SHOWTOOLTIP"] = ""
 L["S_SIZE"] = "Tamanho"
 L["S_SPECBAN"] = "Especialização"
 L["S_SPECBAN_TOOLTIP"] = "Mostrar o frame quando você estiver nesta especialização."
 L["S_TEXT"] = "Texto"
 L["S_TEXTURE"] = "Textura"
 L["S_TEXTUREBACKGROUND"] = "Textura de Fundo"
--- L["S_UNIT_ENEMY"] = ""
--- L["S_UNIT_FRIENDLY"] = ""
 L["S_WIDTH"] = "Largura"
 L["S_XOFFSET"] = "X Offset"
 L["S_YOFFSET"] = "Y Offset"
-

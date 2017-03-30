@@ -57,6 +57,7 @@ VUHDO_SPELLS = {
 	[VUHDO_SPELL_ID.ENVELOPING_MIST] = {["isHot"] = true },
 	[VUHDO_SPELL_ID.RENEWING_MIST] = { ["isHot"] = true },
 	[VUHDO_SPELL_ID.ZEN_SPHERE] = { ["isHot"] = true },
+	[VUHDO_SPELL_ID.ESSENCE_FONT] = { ["isHot"] = true },
 
 	-- Mage
 	[VUHDO_SPELL_ID.ICE_BARRIER] = { ["isHot"] = true },
@@ -120,4 +121,7 @@ function VUHDO_initFromSpellbook()
 		end
 	end
 	VUHDO_setKnowsSwiftmend(VUHDO_isSpellKnown(VUHDO_SPELL_ID.SWIFTMEND));
+
+	-- toggle whether we should track Holy Priest "Trail of Light"
+	VUHDO_setKnowsTrailOfLight(VUHDO_isTalentKnown(VUHDO_SPELL_ID.TRAIL_OF_LIGHT));
 end

@@ -139,6 +139,7 @@ Debug:EnableDebugging()
 local L = LibStub("AceLocale-3.0"):GetLocale("EPGP")
 local GS = LibStub("LibGuildStorage-1.2")
 local DLG = LibStub("LibDialog-1.0")
+local GPLib = LibStub("LibGearPoints-1.2")
 
 EPGP = LibStub("AceAddon-3.0"):NewAddon(
   "EPGP", "AceEvent-3.0", "AceConsole-3.0")
@@ -161,12 +162,23 @@ local modulePrototype = {
 }
 EPGP:SetDefaultModulePrototype(modulePrototype)
 
+function EPGP:CurrentTier()
+	local tier = math.floor(select(4, GetBuildInfo()) / 100)
+
+	-- Special handling to detect the release of Nighthold as it is not bound to new patch
+	if tier == 701 and GPLib:IsNightholdReleased() then
+		tier = tier .. "nh"
+	end
+
+	return tier
+end
+
 local version = GetAddOnMetadata('EPGP', 'Version')
 if not version or #version == 0 then
   version = "(development)"
 end
 EPGP.version = version
-EPGP.current_tier = math.floor(select(4, GetBuildInfo()) / 100)
+EPGP.current_tier = EPGP:CurrentTier()
 
 local CallbackHandler = LibStub("CallbackHandler-1.0")
 if not EPGP.callbacks then

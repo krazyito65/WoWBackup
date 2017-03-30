@@ -1,14 +1,14 @@
 local mod	= DBM:NewMod("CoSTrash", "DBM-Party-Legion", 7)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15399 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16094 $"):sub(12, -3))
 --mod:SetModelID(47785)
 mod:SetZone()
 
 mod.isTrashMod = true
 
 mod:RegisterEvents(
-	"SPELL_CAST_START 209027 212031 209485 209410 209413 211470 211464 209404 209495 225100 211299",
+	"SPELL_CAST_START 209027 212031 209485 209410 209413 211470 211464 209404 209495 225100 211299 209378",
 	"SPELL_AURA_APPLIED 209033 209512",
 	"GOSSIP_SHOW"
 )
@@ -25,8 +25,9 @@ local specWarnBewitch				= mod:NewSpecialWarningInterrupt(211470, "HasInterrupt"
 local specWarnChargingStation		= mod:NewSpecialWarningInterrupt(225100, "HasInterrupt", nil, nil, 1, 2)
 local specWarnSearingGlare			= mod:NewSpecialWarningInterrupt(211299, "HasInterrupt", nil, nil, 1, 2)
 local specWarnFelDetonation			= mod:NewSpecialWarningSpell(211464, false, nil, 2, 2, 2)
-local specWarnSealMagic				= mod:NewSpecialWarningRun(209404, "Melee", nil, nil, 4, 2)
+local specWarnSealMagic				= mod:NewSpecialWarningRun(209404, false, nil, 2, 4, 2)
 local specWarnDisruptingEnergy		= mod:NewSpecialWarningMove(209512, nil, nil, nil, 1, 2)
+local specWarnWhirlingBlades		= mod:NewSpecialWarningRun(209378, "Melee", nil, nil, 4, 2)
 
 local voiceFortification			= mod:NewVoice(209033, "MagicDispeller")--dispelnow
 local voiceQuellingStrike			= mod:NewVoice(209027, "Tank")--shockwave
@@ -39,8 +40,9 @@ local voiceBewitch					= mod:NewVoice(211470, "HasInterrupt")--kickcast
 local voiceChargingStation			= mod:NewVoice(225100, "HasInterrupt")--kickcast
 local voiceSearingGlare				= mod:NewVoice(211299, "HasInterrupt")--kickcast
 local voiceFelDetonation			= mod:NewVoice(211464, false, nil, 2)--aesoon
-local voiceSealMagic				= mod:NewVoice(209404, "Melee")--runout
+local voiceSealMagic				= mod:NewVoice(209404, false, nil, 2)--runout
 local voiceDisruptingEnergy			= mod:NewVoice(209512)--runaway
+local voiceWhirlingBlades			= mod:NewVoice(209378, "Melee")--runout
 
 mod:RemoveOption("HealthFrame")
 mod:AddBoolOption("SpyHelper", true)
@@ -48,10 +50,10 @@ mod:AddBoolOption("SpyHelper", true)
 function mod:SPELL_CAST_START(args)
 	if not self.Options.Enabled then return end
 	local spellId = args.spellId
-	if spellId == 209027 then
+	if spellId == 209027 and self:AntiSpam(2, 1) then
 		specWarnQuellingStrike:Show()
 		voiceQuellingStrike:Play("shockwave")
-	elseif spellId == 212031 then
+	elseif spellId == 212031 and self:AntiSpam(2, 2) then
 		specWarnChargedBlast:Show()
 		voiceChargedBlast:Play("shockwave")
 	elseif spellId == 209485 and self:CheckInterruptFilter(args.sourceGUID) then
@@ -82,6 +84,9 @@ function mod:SPELL_CAST_START(args)
 		--Don't want to move too early, just be moving already as cast is finishing
 		specWarnChargedSmash:Schedule(1.2)
 		voiceChargedSmash:Schedule(1.2, "chargemove")
+	elseif spellId == 209378 then
+		specWarnWhirlingBlades:Show()
+		voiceWhirlingBlades:Play("runout")
 	end
 end
 
@@ -98,68 +103,97 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 do
+	local hintTranslations = {
+		["gloves"] = L.Gloves,
+		["no gloves"] = L.NoGloves,
+		["cape"] = L.Cape,
+		["no cape"] = L.Nocape,
+		["light vest"] = L.LightVest,
+		["dark vest"] = L.DarkVest,
+		["female"] = L.Female,
+		["male"] = L.Male,
+		["short sleeves"] = L.ShortSleeve,
+		["long sleeves"] = L.LongSleeve,
+		["potions"] = L.Potions,
+		["no potion"] = L.NoPotions,
+		["book"] = L.Book,
+		["pouch"] = L.Pouch
+	}
 	local hints = {}
 	local clues = {
-		["There's a rumor that the spy always wears gloves."] = "gloves",
-		["I heard the spy carefully hides their hands."] = "gloves",
-		["I heard the spy always dons gloves."] = "gloves",
-		["Someone said the spy wears gloves to cover obvious scars."] = "gloves",
-		["There's a rumor that the spy never has gloves on."] = "no gloves",
-		["You know... I found an extra pair of gloves in the back room. The spy is likely to be bare handed somewhere around here."] = "no gloves",
-		["I heard the spy dislikes wearing gloves."] = "no gloves",
-		["I heard the spy avoids having gloves on, in case some quick actions are needed"] = "no gloves",
-		["Someone mentioned the spy came in earlier wearing a cape."] = "cape",
-		["I heard the spy enjoys wearing capes."] = "cape",
-		["I heard the spy dislikes capes and refuses to wear one."] = "no cape",
-		["I heard that the spy left their cape in the palace before coming here."] = "no cape",
-		["I heard the spy carries a magical pouch around at all times."] = "pouch",
-		["A friend said the spy loves gold and a belt pouch filled with it."] = "pouch",
-		["The spy definitely prefers the style of light colored vests."] = "light vest",
-		["I heard that the spy is wearing a lighter vest to tonight's party."] = "light vest",
-		["People are saying the spy is not wearing a darker vest tonight."] = "light vest",
-		["The spy definitely prefers darker clothing."] = "dark vest",
-		["I heard the spy's vest is a dark, rich shade this very night."] = "dark vest",
-		["The spy enjoys darker colored vests... like the night."] = "dark vest",
-		["Rumor has it the spy is avoiding light colored clothing to try and blend in more."] = "dark vest",
-		["They say that the spy is here and she's quite the sight to behold."] = "female",
-		["I hear some woman has been constantly asking about the district..."] = "female",
-		["Someone's been saying that our new guest isn't male."] = "female",
-		["They say that the spy is here and she's quite the sight to behold."] = "female",
-		["I heard somewhere that the spy isn't female."] = "male",
-		["I heard the spy is here and he's very good looking."] = "male",
-		["A guest said she saw him entering the manor alongside the Grand Magistrix."] = "male",
-		["One of the musicians said he would not stop asking questions about the district."] = "male",
-		["I heard the spy wears short sleeves to keep their arms unencumbered."] = "short sleeves",
-		["Someone told me the spy hates wearing long sleeves."] = "short sleeves",
-		["A friend of mine said she saw the outfit the spy was wearing. It did not have long sleeves."] = "short sleeves",
-		["I heard the spy's outfit has long sleeves tonight."] = "long sleeves",
-		["Someone said the spy is covering up their arms with long sleeves tonight."] = "long sleeves",
-		["I just barely caught a glimpse of the spy's long sleeves earlier in the evening."] = "long sleeves",
-		["A friend of mine mentioned the spy has long sleeves on."] = "long sleeves",
-		["I heard the spy enjoys the cool air and is not wearing long sleeves tonight."] = "short sleeves",
-		["I heard the spy brought along potions, I wonder why?"] = "potions",
-		["I didn't tell you this... but the spy is masquerading as an alchemist and carrying potions at the belt."] = "potions",
-		["I'm pretty sure the spy has potions at the belt."] = "potions",
-		["I heard the spy always has a book of written secrets at the belt."] = "book",
-		["Rumor has is the spy loves to read and always carries around at least one book."] = "book",
-		["I heard the spy's belt pouch is filled with gold to show off extravagance."] = "pouch",
-		["I heard the spy carries a magical pouch around at all times."] = "pouch",
-		["I heard the spy's belt pouch is lined with fancy threading."] = "pouch",
-		["A friend said the spy loves gold and a belt pouch filled with it."] = "pouch",
-		["I heared the spy is not carrying any potions around."] = "no potion",
-		["A musician told me she saw the spy throw away their last potion and no longer has any left."] = "no potion"
+		[L.Gloves1] = "gloves",
+		[L.Gloves2] = "gloves",
+		[L.Gloves3] = "gloves",
+		[L.Gloves4] = "gloves",
+		
+		[L.NoGloves1] = "no gloves",
+		[L.NoGloves2] = "no gloves",
+		[L.NoGloves3] = "no gloves",
+		[L.NoGloves4] = "no gloves",
+		
+		[L.Cape1] = "cape",
+		[L.Cape2] = "cape",
+		
+		[L.NoCape1] = "no cape",
+		[L.NoCape2] = "no cape",
+		
+		[L.LightVest1] = "light vest",
+		[L.LightVest2] = "light vest",
+		[L.LightVest3] = "light vest",
+		
+		[L.DarkVest1] = "dark vest",
+		[L.DarkVest2] = "dark vest",
+		[L.DarkVest3] = "dark vest",
+		[L.DarkVest4] = "dark vest",
+		
+		[L.Female1] = "female",
+		[L.Female2] = "female",
+		[L.Female3] = "female",
+		[L.Female4] = "female",
+		
+		[L.Male1] = "male",
+		[L.Male2] = "male",
+		[L.Male3] = "male",
+		[L.Male4] = "male",
+		
+		[L.ShortSleeve1] = "short sleeves",
+		[L.ShortSleeve2] = "short sleeves",
+		[L.ShortSleeve3] = "short sleeves",
+		[L.ShortSleeve4] = "short sleeves",
+		
+		[L.LongSleeve1] = "long sleeves",
+		[L.LongSleeve2] = "long sleeves",
+		[L.LongSleeve3] = "long sleeves",
+		[L.LongSleeve4] = "long sleeves",
+		
+		[L.Potions1] = "potions",
+		[L.Potions2] = "potions",
+		[L.Potions3] = "potions",
+		[L.Potions4] = "potions",
+		
+		[L.NoPotions1] = "no potion",
+		[L.NoPotions2] = "no potion",
+		
+		[L.Book1] = "book",
+		[L.Book2] = "book",
+		
+		[L.Pouch1] = "pouch",
+		[L.Pouch2] = "pouch",
+		[L.Pouch3] = "pouch",
+		[L.Pouch4] = "pouch"
 	}
 
 	local function updateInfoFrame()
 		local lines = {}
-
 		for hint, j in pairs(hints) do
-			lines[hint] = ""
+			local text = hintTranslations[hint] or hint
+			lines[text] = ""
 		end
 		
 		return lines
 	end
 	
+	--/run DBM:GetModByName("CoSTrash"):ResetGossipState()
 	function mod:ResetGossipState()
 		table.wipe(hints)
 		DBM.InfoFrame:Hide()
@@ -187,7 +221,7 @@ do
 				local clue = clues[GetGossipText()]
 				if clue and not hints[clue] then
 					CloseGossip()
-					SendChatMessage(clue, "PARTY")
+					SendChatMessage(hintTranslations[clue], "PARTY")
 					hints[clue] = true
 					self:SendSync("CoS", clue)
 					DBM.InfoFrame:Show(5, "function", updateInfoFrame)

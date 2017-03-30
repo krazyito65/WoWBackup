@@ -175,7 +175,7 @@
 			return
 		else	
 			if (flag) then
-				--> conferir se o jogador é um player
+				--> conferir se o jogador ï¿½ um player
 				if (_bit_band (flag, OBJECT_TYPE_PLAYER) ~= 0) then
 					novo_objeto.classe = "UNGROUPPLAYER"
 					return
@@ -194,7 +194,7 @@
 
 		if (flag) then
 
-			--> é um player
+			--> ï¿½ um player
 			if (_bit_band (flag, OBJECT_TYPE_PLAYER) ~= 0) then
 			
 				if (not _detalhes.ignore_nicktag) then
@@ -256,7 +256,7 @@
 							if (name == nome) then
 								local spec = GetArenaOpponentSpec (i)
 								if (spec) then
-									local id, name, description, icon, background, role, class = GetSpecializationInfoByID (spec)
+									local id, name, description, icon, role, class = GetSpecializationInfoByID (spec) --thanks pas06
 									novo_objeto.role = role
 									novo_objeto.classe = class
 									novo_objeto.enemy = true
@@ -284,7 +284,7 @@
 					novo_objeto.grupo = true
 				end
 			
-			--> é um pet
+			--> ï¿½ um pet
 			elseif (dono_do_pet) then 
 				novo_objeto.owner = dono_do_pet
 				novo_objeto.ownerName = dono_do_pet.nome
@@ -304,7 +304,7 @@
 				novo_objeto.displayName = nome
 			end
 			
-			--> é inimigo
+			--> ï¿½ inimigo
 			if (_bit_band (flag, REACTION_HOSTILE) ~= 0) then 
 				if (_bit_band (flag, OBJECT_TYPE_PLAYER) == 0 and _bit_band (flag, OBJECT_TYPE_PETGUARDIAN) == 0) then
 					novo_objeto.monster = true
@@ -333,7 +333,7 @@
 				nome = nome_dele
 				dono_do_pet = self:PegarCombatente (dono_serial, dono_nome, dono_flag, true, nome)
 			end
-
+			
 			return nome, dono_do_pet
 		end	
 	end
@@ -349,8 +349,10 @@
 		local text1 = line1:GetText()
 		if (text1 and text1 ~= "") then
 			for playerName, _ in _pairs (_detalhes.tabela_vigente.raid_roster) do
+				local pName = playerName
+				playerName = playerName:gsub ("%-.*", "") --remove realm name
 				if (text1:find (playerName)) then
-					return find_pet_found_owner (playerName, serial, nome, flag, self)
+					return find_pet_found_owner (pName, serial, nome, flag, self)
 				end
 			end
 		end
@@ -358,8 +360,10 @@
 		local text2 = line2:GetText()
 		if (text2 and text2 ~= "") then
 			for playerName, _ in _pairs (_detalhes.tabela_vigente.raid_roster) do
+				local pName = playerName
+				playerName = playerName:gsub ("%-.*", "") --remove realm name
 				if (text2:find (playerName)) then
-					return find_pet_found_owner (playerName, serial, nome, flag, self)
+					return find_pet_found_owner (pName, serial, nome, flag, self)
 				end
 			end
 		end
@@ -418,11 +422,11 @@
 			--print (nome, flag)
 		--end
 	
-		--> verifica se é um pet, se for confere se tem o nome do dono, se não tiver, precisa por
+		--> verifica se ï¿½ um pet, se for confere se tem o nome do dono, se nï¿½o tiver, precisa por
 		local dono_do_pet
 		serial = serial or "ns"
 		
-		if (container_pets [serial]) then --> é um pet reconhecido
+		if (container_pets [serial]) then --> ï¿½ um pet reconhecido
 			--[[statistics]]-- _detalhes.statistics.container_pet_calls = _detalhes.statistics.container_pet_calls + 1
 			
 			local nome_dele, dono_nome, dono_serial, dono_flag = _detalhes.tabela_pets:PegaDono (serial, nome, flag)
@@ -431,7 +435,7 @@
 				dono_do_pet = self:PegarCombatente (dono_serial, dono_nome, dono_flag, true)
 			end
 			
-		elseif (not pet_blacklist [serial]) then --> verifica se é um pet
+		elseif (not pet_blacklist [serial]) then --> verifica se ï¿½ um pet
 		
 			pet_blacklist [serial] = true
 		
@@ -452,7 +456,7 @@
 		if (index) then
 			return self._ActorTable [index], dono_do_pet, nome
 		
-		--> não achou, criar
+		--> nï¿½o achou, criar
 		elseif (criar) then
 	
 			local novo_objeto = self.funcao_de_criacao (_, serial, nome)
@@ -494,7 +498,7 @@
 					end
 					
 					--> try to guess his class
-					if (self.shadow) then --> não executar 2x
+					if (self.shadow) then --> nï¿½o executar 2x
 						_detalhes:ScheduleTimer ("GuessClass", 1, {novo_objeto, self, 1})
 					end
 				end
@@ -524,7 +528,7 @@
 					end
 					
 					--> try to guess his class
-					if (self.shadow) then --> não executar 2x
+					if (self.shadow) then --> nï¿½o executar 2x
 						_detalhes:ScheduleTimer ("GuessClass", 1, {novo_objeto, self, 1})
 					end
 				end
@@ -545,7 +549,7 @@
 					end
 					
 					--> try to guess his class
-					if (self.shadow) then --> não executar 2x
+					if (self.shadow) then --> nï¿½o executar 2x
 						_detalhes:ScheduleTimer ("GuessClass", 1, {novo_objeto, self, 1})
 					end
 				end
@@ -567,7 +571,7 @@
 					end
 					
 					--> try to guess his class
-					if (self.shadow) then --> não executar 2x
+					if (self.shadow) then --> nï¿½o executar 2x
 						_detalhes:ScheduleTimer ("GuessClass", 1, {novo_objeto, self, 1})
 					end
 				end
@@ -678,7 +682,7 @@
 		end
 	end
 
-	--> chama a função para ser executada em todos os atores
+	--> chama a funï¿½ï¿½o para ser executada em todos os atores
 	function container_combatentes:ActorCallFunction (funcao, ...)
 		for index, actor in _ipairs (self._ActorTable) do
 			funcao (nil, actor, ...)
@@ -710,7 +714,7 @@
 	end
 
 	function _detalhes.refresh:r_container_combatentes (container, shadow)
-		--> reconstrói meta e indexes
+		--> reconstrï¿½i meta e indexes
 			_setmetatable (container, _detalhes.container_combatentes)
 			container.__index = _detalhes.container_combatentes
 			container.funcao_de_criacao = container_combatentes:FuncaoDeCriacao (container.tipo)

@@ -40,6 +40,7 @@ end
 
 -- All Specs
 addon.merges[152150]    = CreateMergeSpellEntry("ROGUE", 0.5, 0)            -- Death from Above
+addon.merges[209043]    = CreateMergeSpellEntry("ROGUE", 0.5, 0)            -- Insignia of Ravenholdt (Legendary Ring - All Specs)
 
 -- Assassination (ID: 259)
 addon.merges[5374]      = CreateMergeSpellEntry("ROGUE", 0.5, 259)          -- Mutilate (MH)
@@ -111,7 +112,6 @@ addon.merges[6343]      = CreateMergeSpellEntry("WARRIOR", 0.5, 73)         -- T
 addon.merges[7922]      = CreateMergeSpellEntry("WARRIOR", 0.5, 73)         -- Talent: Warbringer
 addon.merges[222944]    = CreateMergeSpellEntry("WARRIOR", 3.0, 73)         -- Talent: Inspiring Presence
 addon.merges[203526]    = CreateMergeSpellEntry("WARRIOR", 3.5, 73)         -- Artifact: Neltharion's Fury
-
 
 
 -- ---------------------------
@@ -199,7 +199,6 @@ addon.merge2h[228288]   = 20271                                             -- [
 addon.merge2h[216527]   = 20271                                             -- [PvP Talent] Lawbringer
 
 
-
 -- ---------------------------
 -- Hunter                   --
 -- ---------------------------
@@ -229,7 +228,6 @@ addon.merges[198670]    = CreateMergeSpellEntry("HUNTER", 0.5, 254)         -- T
 addon.merges[191070]    = CreateMergeSpellEntry("HUNTER", 0.5, 254)         -- Artifact: Call of the Hunter
 addon.merge2h[191043]   = 19434                                             -- Windburst
 
-
 -- Survival (ID: 255)
 addon.merges[187708]    = CreateMergeSpellEntry("HUNTER", 0.5, 255)         -- Carve
 addon.merges[13812]     = CreateMergeSpellEntry("HUNTER", 2.5, 255)         -- Explosive Trap
@@ -239,7 +237,6 @@ addon.merges[203413]    = CreateMergeSpellEntry("HUNTER", 2.5, 255)         -- A
 addon.merges[194859]    = CreateMergeSpellEntry("HUNTER", 2.5, 255)         -- Artifact: Dragonsfire Conflagration
 addon.merges[194858]    = CreateMergeSpellEntry("HUNTER", 2.5, 255)         -- Artifact: Dragonsfire Grenade
 addon.merges[164857]    = CreateMergeSpellEntry("HUNTER", 5.0, 255)         -- Passive: Survivalist
-
 
 
 -- ---------------------------
@@ -298,7 +295,6 @@ addon.merges[208899]    = CreateMergeSpellEntry("SHAMAN", 3.0, 264)         -- A
 addon.merges[207778]    = CreateMergeSpellEntry("SHAMAN", 0.5, 264)         -- Artifact: Gift of the Queen
 
 
-
 -- ---------------------------
 -- Mage                     --
 -- ---------------------------
@@ -353,7 +349,6 @@ addon.merges[190357]    = CreateMergeSpellEntry("MAGE", 2.5, 64)            -- B
 addon.merges[153596]    = CreateMergeSpellEntry("MAGE", 2.5, 64)            -- Comet Storm
 
 
-
 -- ---------------------------
 -- Warlock                  --
 -- ---------------------------
@@ -364,7 +359,7 @@ addon.merges[689]       = CreateMergeSpellEntry("WARLOCK", 1.5, 0)          -- D
 -- Affliction (ID: 265)
 addon.merges[980]       = CreateMergeSpellEntry("WARLOCK", 2.5, 265)        -- Agony
 addon.merges[146739]    = CreateMergeSpellEntry("WARLOCK", 2.5, 265)        -- Corruption
-addon.merges[30108]     = CreateMergeSpellEntry("WARLOCK", 2.5, 265)        -- Unstable Affliction
+addon.merges[233490]    = CreateMergeSpellEntry("WARLOCK", 1.5, 265)        -- Unstable Affliction
 addon.merges[27285]     = CreateMergeSpellEntry("WARLOCK", 0.5, 265)        -- Seed of Corruption
 addon.merges[22703]     = CreateMergeSpellEntry("WARLOCK", 0.5, 265)        -- Infernal: Awakening
 addon.merges[20153]     = CreateMergeSpellEntry("WARLOCK", 1.5, 265)        -- Infernal: Immolation
@@ -373,6 +368,11 @@ addon.merges[205246]    = CreateMergeSpellEntry("WARLOCK", 1.5, 265)        -- T
 addon.merges[196100]    = CreateMergeSpellEntry("WARLOCK", 0.5, 265)        -- Talent: Grimoire of Sacrifice
 addon.merges[218615]    = CreateMergeSpellEntry("WARLOCK", 0.5, 265)        -- Artifact: Harvester of Souls
 addon.merges[199581]    = CreateMergeSpellEntry("WARLOCK", 0.5, 265)        -- Artifact: Soul Flame
+addon.merge2h[233496]   = 233490                                            -- Unstable Affliction (Multiple Applications)
+addon.merge2h[233499]   = 233490                                            -- Unstable Affliction (Multiple Applications)
+addon.merge2h[233497]   = 233490                                            -- Unstable Affliction (Multiple Applications)
+addon.merge2h[233498]   = 233490                                            -- Unstable Affliction (Multiple Applications)
+addon.merge2h[231489]   = 233490                                            -- Unstable Affliction (Artifact: Compounding Horror)
 
 -- Demonlogy (ID: 266)
 addon.merges[603]       = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Doom
@@ -383,7 +383,7 @@ addon.merges[86040]     = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- H
 addon.merges[196278]    = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Talent: Implosion
 addon.merges[205231]    = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Talent: Summon Darkglare
 addon.merges[211727]    = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Artifact: Thal'kiel's Discord
-addon.merges[211717]    = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Artifact: Thal'kiel's Consumption
+addon.merges[211714]    = CreateMergeSpellEntry("WARLOCK", 0.5, 266)        -- Artifact: Thal'kiel's Consumption (Demon Life Tap)
 
 -- Destruction (ID: 267)
 addon.merges[157736]    = CreateMergeSpellEntry("WARLOCK", 3.5, 267)        -- Immolate
@@ -395,7 +395,6 @@ addon.merges[152108]    = CreateMergeSpellEntry("WARLOCK", 0.5, 267)        -- T
 addon.merges[196448]    = CreateMergeSpellEntry("WARLOCK", 1.5, 267)        -- Talent: Channel Demonfire
 addon.merges[187394]    = CreateMergeSpellEntry("WARLOCK", 1.5, 267)        -- Artifact: Dimensional Rift
 addon.merge2h[348]      = 157736                                            -- [DD/DoT Merger] Immolate
-
 
 
 -- ---------------------------
@@ -456,7 +455,6 @@ addon.merge2h[198533]   = 115175                                            -- [
 addon.merge2h[228649]   = 100784                                            -- [Passive Merger] Teachings of the Monastery
 
 
-
 -- ---------------------------
 -- Druid                    --
 -- ---------------------------
@@ -512,7 +510,6 @@ addon.merge2h[155777]   = 774                                               -- [
 addon.merge2h[207386]   = 81269                                             -- [Heal/HoT Merger] Talent: Spring Blossom
 
 
-
 -- ---------------------------
 -- Demon Hunter             --
 -- ---------------------------
@@ -555,7 +552,6 @@ addon.merge2h[208038]   = 222030                                            -- [
 addon.merge2h[214743]   = 207407                                            -- [DD/DoT Merger] Soul Cleave
 addon.merge2h[212106]   = 227255                                            -- [MH/OH Merger] Fel Devastation
 addon.merge2h[212084]   = 227255                                            -- Reported From Curse: Should be Fel Devastation
-
 
 
 -- ---------------------------

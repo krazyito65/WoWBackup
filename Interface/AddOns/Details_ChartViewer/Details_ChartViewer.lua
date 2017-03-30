@@ -7,7 +7,6 @@ local _string_len = string.len
 local UnitGroupRolesAssigned = UnitGroupRolesAssigned
 local ipairs = ipairs
 
-
 --> Create the plugin Object
 local ChartViewer = _detalhes:NewPluginObject ("Details_ChartViewer", DETAILSPLUGIN_ALWAYSENABLED)
 --> Main Frame
@@ -19,6 +18,20 @@ ChartViewer:SetPluginDescription ("View data collected by Details! on simple lin
 local plugin_version = "v2.5" 
 
 local function CreatePluginFrames (data)
+
+	ChartViewerWindowFrame:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
+	edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
+	insets = {left = 1, right = 1, top = 1, bottom = 1}})
+	ChartViewerWindowFrame:SetBackdropColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropColor or {0, 0, 0, .6}))
+	ChartViewerWindowFrame:SetBackdropBorderColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropBorderColor or {0, 0, 0, 1}))
+
+	local c = CreateFrame ("Button", "ChartViewerWindowFrameCloseButton", ChartViewerWindowFrame, "UIPanelCloseButton")
+	c:SetWidth (20)
+	c:SetHeight (20)
+	c:SetPoint ("TOPRIGHT", ChartViewerWindowFrame, "TOPRIGHT", -2, -3)
+	c:SetFrameLevel (ChartViewerWindowFrame:GetFrameLevel()+1)
+	c:GetNormalTexture():SetDesaturated (true)
+	c:SetAlpha (1)
 
 	function ChartViewer:OnDetailsEvent (event)
 
@@ -148,9 +161,9 @@ function ChartViewer:CheckFor_CreateNewTabForCombat()
 
 	end
 end
-
+		
 ----------> Tabs
-	
+		
 	--new tab
 		ChartViewer.tab_prototype = {name = "New Tab", segment_type = 1, data = "", texture = "line", version = "v2.0"}
 		
@@ -481,6 +494,10 @@ end
 				edgeFile = "Interface\\DialogFrame\\UI-DialogBox-gold-Border", tile = true, tileSize = 16, edgeSize = 5,
 				insets = {left = 1, right = 1, top = 0, bottom = 1},})
 		
+		--
+
+		--
+		
 		local g = chart_panel
 		
 		g:Reset()
@@ -532,7 +549,7 @@ end
 			local boss_id = combat.is_boss and combat.is_boss.id
 			
 			if (capture_name:find ("MULTICHARTS~") and tab_type == 1 and elapsed_time > 12) then --current
-				-- várias charts setadas no valor
+				-- vï¿½rias charts setadas no valor
 				local charts = {}
 				for key in capture_name:gsub ("MULTICHARTS~", ""):gmatch ("[^%~]+") do 
 					charts [key] = true
@@ -558,7 +575,7 @@ end
 			
 			elseif (capture_name:find ("PRESET_") and tab_type == 1 and elapsed_time > 12) then --current
 			
-				-- é um preset e precisa pegar todos os presets registrados no combate desse tipo
+				-- ï¿½ um preset e precisa pegar todos os presets registrados no combate desse tipo
 				local i = 1
 				for name, t in pairs (combat.TimeData) do
 					if (name:find (capture_name) and t.max_value and t.max_value > 0) then
@@ -816,16 +833,16 @@ local create_delete_button = function (f, name)
 	end)
 	return frame
 end
-
+	
 local create_add_tab_button = function()
-
+	
 	local fw = ChartViewer:GetFramework()
 	
-	local button = fw:CreateButton (ChartViewerWindowFrame, ChartViewer.OpenAddTabPanel, 86, 16, "New Tab")
+	local button = fw:CreateButton (ChartViewerWindowFrame, ChartViewer.OpenAddTabPanel, 86, 16, "Add Chart")
 	button:SetTextColor (1, 0.93, 0.74)
 	--button:SetIcon ([[Interface\Buttons\UI-OptionsButton]], 14, 14, nil, {0, 1, 0, 1}, nil, 3)
 	button:SetIcon ([[Interface\PaperDollInfoFrame\Character-Plus]], 14, 14, nil, {0, 1, 0, 1}, nil, 3)
-	button:SetPoint ("topright", ChartViewerWindowFrame, "topright", -10, -45)
+	button:SetPoint ("topright", ChartViewerWindowFrame, "topright", -30, -45)
 	
 	ChartViewer.NewTabButton = button
 	
@@ -1078,7 +1095,7 @@ function ChartViewer:OnEvent (_, event, ...)
 					welcome:SetBackdrop ({edgeFile = "Interface\\Buttons\\UI-SliderBar-Border", edgeSize = 8,
 					bgFile = [[Interface\AddOns\Details\images\background]], tile = true, tileSize = 130, insets = {left = 1, right = 1, top = 5, bottom = 5}})
 					
-					local str = _detalhes.gump:CreateLabel (welcome, "- Each tab shows a graphic.\n\n- Double click a tab to edit it.\n\n- Click on 'New Tab' to create a new tab.\n\n- Press escape or right mouse button to close the panel.")
+					local str = _detalhes.gump:CreateLabel (welcome, "- Each tab shows a graphic.\n\n- Double click a tab to edit it.\n\n- Click on 'Add Chart' to create a new tab.\n\n- Press escape or right mouse button to close the panel.")
 					str:SetPoint (15, -15)
 					str:SetWidth (270)
 					
@@ -1099,7 +1116,7 @@ function ChartViewer:OnEvent (_, event, ...)
 				if (saveddata.options.auto_create == nil) then
 					saveddata.options.auto_create = true
 				end
-
+				
 				ChartViewer.tabs = saveddata.tabs
 				ChartViewer.options = saveddata.options
 				
@@ -1109,6 +1126,8 @@ function ChartViewer:OnEvent (_, event, ...)
 				
 				if (#ChartViewer.tabs == 0) then
 					ChartViewer.tabs [1] = {name = "Your Damage", segment_type = 2, data = "Player Damage Done", texture = "line", version = "v2.0"}
+					ChartViewer.tabs [2] = {name = "Class Damage", segment_type = 1, data = "PRESET_DAMAGE_SAME_CLASS", texture = "line", version = "v2.0", iType = "raid-DAMAGER"}
+					ChartViewer.tabs [3] = {name = "Raid Damage", segment_type = 2, data = "Raid Damage Done", texture = "line", version = "v2.0"}
 				end
 				
 				--> register wow events
@@ -1129,10 +1148,10 @@ function ChartViewer:OnEvent (_, event, ...)
 				
 				_G._detalhes:RegisterEvent (ChartViewer, "COMBAT_PLAYER_LEAVE")
 				_G._detalhes:RegisterEvent (ChartViewer, "COMBAT_PLAYER_ENTER")
-
+				
 				_G._detalhes:RegisterEvent (ChartViewer, "COMBAT_CHARTTABLES_CREATING")
 				_G._detalhes:RegisterEvent (ChartViewer, "COMBAT_CHARTTABLES_CREATED")
-
+				
 				create_add_tab_panel()
 				create_add_tab_button()
 				create_segment_dropdown()
@@ -1140,7 +1159,39 @@ function ChartViewer:OnEvent (_, event, ...)
 				ChartViewer.current_segment = 1
 				
 				ChartViewer.NewTabPanel:Hide()
+				
+				C_Timer.After (5, function()
+					ChartViewerWindowFrame:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+					ChartViewerWindowFrame:SetBackdropColor (0.2, 0.2, 0.2, .6)
+					ChartViewerWindowFrame:SetBackdropBorderColor (0, 0, 0, 1)
+					
+				--title bar
+					local titlebar = CreateFrame ("frame", nil, ChartViewerWindowFrame)
+					titlebar:SetPoint ("topleft", ChartViewerWindowFrame, "topleft", 2, -3)
+					titlebar:SetPoint ("topright", ChartViewerWindowFrame, "topright", -2, -3)
+					titlebar:SetHeight (20)
+					titlebar:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+					titlebar:SetBackdropColor (.5, .5, .5, 1)
+					titlebar:SetBackdropBorderColor (0, 0, 0, 1)
 
+					local name_bg_texture = ChartViewerWindowFrame:CreateTexture (nil, "background")
+					name_bg_texture:SetTexture ([[Interface\PetBattles\_PetBattleHorizTile]], true)
+					name_bg_texture:SetHorizTile (true)
+					name_bg_texture:SetTexCoord (0, 1, 126/256, 19/256)
+					name_bg_texture:SetPoint ("topleft", ChartViewerWindowFrame, "topleft", 2, -22)
+					name_bg_texture:SetPoint ("bottomright", ChartViewerWindowFrame, "bottomright")
+					name_bg_texture:SetHeight (54)
+					name_bg_texture:SetVertexColor (0, 0, 0, 0.2)
+				
+				--window title
+					local titleLabel = _detalhes.gump:NewLabel (titlebar, titlebar, nil, "titulo", "Chart Viewer", "GameFontHighlightLeft", 12, {227/255, 186/255, 4/255})
+					titleLabel:SetPoint ("center", ChartViewerWindowFrame, "center")
+					titleLabel:SetPoint ("top", ChartViewerWindowFrame, "top", 0, -7)
+				
+				--close button
+					
+					
+				end)
 			end
 		end
 

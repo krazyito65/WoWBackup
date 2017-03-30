@@ -204,7 +204,7 @@ end
 
 --
 function VUHDO_getHealButtonPos(aPlaceNum, aRowNo, aPanelNum)
-	-- Achtung: Positionen nicht cachen, da z.T. von dynamischen Models abh„ngig
+	-- Achtung: Positionen nicht cachen, da z.T. von dynamischen Models abhï¿½ngig
 	if VUHDO_isPanelHorizontal(aPanelNum) then
 		return VUHDO_getHealButtonPosHor(aPlaceNum, aRowNo, aPanelNum);
 	else

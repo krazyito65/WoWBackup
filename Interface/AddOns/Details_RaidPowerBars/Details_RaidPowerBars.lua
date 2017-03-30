@@ -20,6 +20,8 @@ local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 local UnitClass = UnitClass
 
+local SharedMedia = LibStub:GetLibrary ("LibSharedMedia-3.0")
+
 --> Create the plugin Object
 local RaidPowerBars = _detalhes:NewPluginObject ("Details_PowerBar")
 --> Main Frame
@@ -28,10 +30,14 @@ local RaidPowerBarsFrame = RaidPowerBars.Frame
 RaidPowerBars:SetPluginDescription ("Alternative or Raid Power Bar are the special power bars present on specified encounters like The Stone Guard on Mogu'shan Vaults, Norushen on Siege or Orgrimmar and others.")
 
 RaidPowerBars.version_string = "v1.7"
+local TrackingDebuff = false
 
 local function CreatePluginFrames (data)
 	
 	--> catch Details! main object
+	if (not _detalhes) then
+		return
+	end
 	local _detalhes = _G._detalhes
 	local DetailsFrameWork = _detalhes.gump
 	local _
@@ -105,6 +111,10 @@ local function CreatePluginFrames (data)
 			
 		elseif (event == "PLUGIN_ENABLED") then
 			
+			
+		elseif (event == "DETAILS_OPTIONS_MODIFIED") then
+			RaidPowerBars:UpdateRows()
+			
 		end
 	end
 	
@@ -120,6 +130,16 @@ local function CreatePluginFrames (data)
 	function RaidPowerBars:UpdateRows()
 		for _, row in _ipairs (RaidPowerBars.Rows) do
 			row.width = RaidPowerBars.RowWidth
+			
+			local instance = RaidPowerBars:GetPluginInstance()
+			
+			row.textsize = instance.row_info.font_size
+			
+			local font = SharedMedia:Fetch ("font", instance.row_info.font_face, true) or instance.row_info.font_face
+			
+			row.textfont = font
+			row.texture = instance.row_info.texture
+			row.shadow = instance.row_info.textL_outline			
 		end
 	end
 	
@@ -170,6 +190,75 @@ local function CreatePluginFrames (data)
 		newrow.fontface = "GameFontHighlightSmall"
 		RaidPowerBars.Rows [#RaidPowerBars.Rows+1] = newrow
 		newrow:Hide()
+		newrow:SetHook ("OnEnter", function()
+			GameCooltip2:Preset (2)
+			GameCooltip2:AddLine ("right click to set a debuff")
+			GameCooltip2:Show (newrow, "tooltip")
+			
+		end)
+		newrow:SetHook ("OnLeave", function()
+			GameCooltip2:Hide()
+		end)
+		newrow:SetHook ("OnMouseUp", function()
+			GameCooltip2:Hide()
+			if (not RaidPowerBars.OptionsPanel) then
+				RaidPowerBars.OptionsPanel = CreateFrame ("frame", nil, RaidPowerBarsFrame)
+				RaidPowerBars.OptionsPanel:SetFrameStrata ("tooltip")
+				RaidPowerBars.OptionsPanel:SetAllPoints()
+				RaidPowerBars.OptionsPanel:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
+				edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
+				insets = {left = 1, right = 1, top = 1, bottom = 1}})
+				RaidPowerBars.OptionsPanel:SetBackdropColor (0, 0, 0, 1)
+				RaidPowerBars.OptionsPanel:SetBackdropBorderColor (0, 0, 0, 0)
+				
+				local set_debuff = function (_, _, debuff)
+					if (not debuff or debuff == "") then
+						TrackingDebuff = false
+						RaidPowerBars.OptionsPanel:Hide()
+						print ("now tracking: |cFFFF8800 [Power Bars]|r.")
+						return
+					end
+					TrackingDebuff = debuff
+					RaidPowerBars.OptionsPanel:Hide()
+					print ("now tracking: |cFFFF8800" .. debuff .. "|r.")
+				end
+				local clear_debuff = function()
+					TrackingDebuff = false
+					RaidPowerBars.OptionsPanel:Hide()
+					print ("now tracking: |cFFFF8800 [Power Bars]|r.")
+				end
+				
+				DetailsFrameWork:InstallTemplate ("button", "BUTTON_WHITE_BORDER_TEMPLATE", {
+					backdrop = {edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\Tooltips\UI-Tooltip-Background]], tileSize = 64, tile = true},
+					backdropcolor = {.3, .3, .3, .5},
+					backdropbordercolor = {1, 1, 1, .8},
+					onentercolor = {.5, .5, .5, .6},
+					onenterbordercolor = {1, 1, 1, 1},
+				})
+
+				local UsePowerBars = DetailsFrameWork:CreateButton (RaidPowerBars.OptionsPanel, clear_debuff, 160, 16, "track alternative power", nil, nil, nil, nil, nil, nil, DetailsFrameWork:GetTemplate ("button", "BUTTON_WHITE_BORDER_TEMPLATE"), DetailsFrameWork:GetTemplate ("font", "OPTIONS_FONT_TEMPLATE"))
+				local DebuffNameLabel = DetailsFrameWork:CreateLabel (RaidPowerBars.OptionsPanel, "track this debuff:", DetailsFrameWork:GetTemplate ("font", "ORANGE_FONT_TEMPLATE"))--label
+				local DebuffName = DetailsFrameWork:CreateTextEntry (RaidPowerBars.OptionsPanel, set_debuff, 160, 16, "editbox_preset_name", _, _, DetailsFrameWork:GetTemplate ("dropdown", "OPTIONS_DROPDOWN_TEMPLATE"))--texentry
+				DebuffName.tooltip = "enter a debuff name and press enter"
+				
+				local RightClickToClose = DetailsFrameWork:CreateLabel (RaidPowerBars.OptionsPanel, "right click to close this panel", DetailsFrameWork:GetTemplate ("font", "ORANGE_FONT_TEMPLATE"))--label
+				
+				UsePowerBars:SetPoint ("center", 0, 30)
+				DebuffNameLabel:SetPoint ("center", 0, 0)
+				DebuffName:SetPoint ("center", 0, -16)
+				RightClickToClose:SetPoint ("center", 0, -45)
+
+				RaidPowerBars.OptionsPanel:SetScript ("OnMouseDown", function (self, button)
+					if (button == "RightButton") then
+						DebuffName:ClearFocus()
+						RaidPowerBars.OptionsPanel:Hide()
+					end
+				end)
+			end
+			
+			RaidPowerBars.OptionsPanel:Show()
+		end)
+		
 		return newrow
 	end
 	
@@ -181,48 +270,111 @@ local function CreatePluginFrames (data)
 		end
 	end
 
-
-	
 	local UpdatePowerBars = function()
 		
 		local power_bar_table = {}
 		
 		if (_IsInRaid()) then
 		
-			--print ("atualizando", _GetNumGroupMembers(), UnitPower ("Arcanedamage", ALTERNATE_POWER_INDEX))
-			for i = 1, _GetNumGroupMembers(), 1 do
-			
-				local power = UnitPower ("raid"..i, ALTERNATE_POWER_INDEX)
-				local mpower = UnitPowerMax ("raid"..i, ALTERNATE_POWER_INDEX)
-				local _, class = UnitClass ("raid"..i)
-				power_bar_table [#power_bar_table+1] = {_UnitName ("raid"..i), power, mpower, class}
-				
-				if (i > 25) then
-					break
+			if (TrackingDebuff) then
+				for i = 1, _GetNumGroupMembers(), 1 do
+					local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitDebuff ("raid"..i, TrackingDebuff, nil, "HARMFUL")
+					if (name) then
+						if (not count or count == 0) then
+							count = 1
+						end
+						local _, class = UnitClass ("raid"..i)
+						power_bar_table [#power_bar_table+1] = {_UnitName ("raid"..i), count, 100, class}
+						if (i > 25) then
+							break
+						end
+					else
+						local _, class = UnitClass ("raid"..i)
+						power_bar_table [#power_bar_table+1] = {_UnitName ("raid"..i), 0, 100, class}
+						if (i > 25) then
+							break
+						end
+					end
 				end
-				
+			else
+				for i = 1, _GetNumGroupMembers(), 1 do
+					local power = UnitPower ("raid"..i, ALTERNATE_POWER_INDEX)
+					local mpower = UnitPowerMax ("raid"..i, ALTERNATE_POWER_INDEX)
+					local _, class = UnitClass ("raid"..i)
+					power_bar_table [#power_bar_table+1] = {_UnitName ("raid"..i), power, mpower, class}
+					if (i > 25) then
+						break
+					end
+				end
 			end
 			
 		elseif (_IsInGroup()) then
-			for i = 1, _GetNumGroupMembers()-1, 1 do
-				local power = UnitPower ("party"..i, ALTERNATE_POWER_INDEX)
-				local mpower = UnitPowerMax ("party"..i, ALTERNATE_POWER_INDEX)
-				local _, class = UnitClass ("party"..i)
-				if (power and mpower) then
-					power_bar_table [#power_bar_table+1] = {_UnitName ("party"..i), power, mpower, class}
+		
+			if (TrackingDebuff) then
+				for i = 1, _GetNumGroupMembers(), 1 do
+					local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitDebuff ("party"..i, TrackingDebuff, nil, "HARMFUL")
+					if (name) then
+						if (not count or count == 0) then
+							count = 1
+						end
+						local _, class = UnitClass ("party"..i)
+						power_bar_table [#power_bar_table+1] = {_UnitName ("party"..i), count, 100, class}
+						if (i > 25) then
+							break
+						end
+					else
+						local _, class = UnitClass ("party"..i)
+						power_bar_table [#power_bar_table+1] = {_UnitName ("party"..i), 0, 100, class}
+						if (i > 25) then
+							break
+						end
+					end
 				end
-			end
-			
-			--need to add the player it self
-			local power = UnitPower ("player", ALTERNATE_POWER_INDEX)
-			local mpower = UnitPowerMax ("player", ALTERNATE_POWER_INDEX)
-			local _, class = UnitClass ("player")
-			if (power and mpower) then
-				power_bar_table [#power_bar_table+1] = {_UnitName ("player"), power, mpower, class}
+				
+				--need to add the player it self
+				local name, rank, texture, count, debuffType, duration, expirationTime, caster, canStealOrPurge, nameplateShowPersonal, spellId = UnitDebuff ("player", TrackingDebuff, nil, "HARMFUL")
+				local _, class = UnitClass ("player")
+				if (name) then
+					if (not count or count == 0) then
+						count = 1
+					end
+					power_bar_table [#power_bar_table+1] = {_UnitName ("player"), count, 100, class}
+				else
+					power_bar_table [#power_bar_table+1] = {_UnitName ("player"), 0, 100, class}
+				end
+			else
+				for i = 1, _GetNumGroupMembers()-1, 1 do
+					local power = UnitPower ("party"..i, ALTERNATE_POWER_INDEX)
+					local mpower = UnitPowerMax ("party"..i, ALTERNATE_POWER_INDEX)
+					local _, class = UnitClass ("party"..i)
+					if (power and mpower) then
+						power_bar_table [#power_bar_table+1] = {_UnitName ("party"..i), power, mpower, class}
+					end
+				end
+				
+				--need to add the player it self
+				local power = UnitPower ("player", ALTERNATE_POWER_INDEX)
+				local mpower = UnitPowerMax ("player", ALTERNATE_POWER_INDEX)
+				local _, class = UnitClass ("player")
+				if (power and mpower) then
+					power_bar_table [#power_bar_table+1] = {_UnitName ("player"), power, mpower, class}
+				end
 			end
 		end
 		
 		_table_sort (power_bar_table, sort)
+		
+		if (TrackingDebuff) then
+			local maximum = 0
+			for i = 1, #power_bar_table do
+				if (power_bar_table [i] [2] > maximum) then
+					maximum = power_bar_table [i] [2]
+				end
+			end
+			for i = 1, #power_bar_table do
+				power_bar_table [i] [3] = maximum
+			end
+		end
 		
 		for index = 1, #power_bar_table do
 		
@@ -317,6 +469,7 @@ function RaidPowerBars:OnEvent (_, event, ...)
 				_G._detalhes:RegisterEvent (RaidPowerBars, "DETAILS_INSTANCE_SIZECHANGED")
 				_G._detalhes:RegisterEvent (RaidPowerBars, "DETAILS_INSTANCE_STARTSTRETCH")
 				_G._detalhes:RegisterEvent (RaidPowerBars, "DETAILS_INSTANCE_ENDSTRETCH")
+				_G._detalhes:RegisterEvent (RaidPowerBars, "DETAILS_OPTIONS_MODIFIED")
 				
 			end
 		end

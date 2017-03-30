@@ -1,14 +1,10 @@
-## Interface: 70100
+## Interface: 70200
 ## Author: p3lim
-## Version: 70100.25-Release
+## Version: 70200.28-Release
 ## Title: QuickQuest
 ## Notes: Quest automation wizardry
 ## OptionalDeps: LibGossipQuestInfo, Wasabi
 ## SavedVariables: QuickQuestDB, QuickQuestBlacklistDB
-## X-Curse-Packaged-Version: 70100.25-Release
-## X-Curse-Project-Name: QuickQuest
-## X-Curse-Project-ID: quickquest
-## X-Curse-Repository-ID: wow/quickquest/mainline
 
 libs\LibGossipQuestInfo\LibGossipQuestInfo.lua
 libs\Wasabi\embed.xml

@@ -325,8 +325,10 @@ do
 end
 
 function mod:EyeDamageCast(args)
-	blobsMissed = blobsMissed + 1
-	self:SetInfo("infobox", 4, blobsMissed)
+	if blobsRemaining > 0 then -- Don't count blobs killed after the eye dies as missed
+		blobsMissed = blobsMissed + 1
+		self:SetInfo("infobox", 4, blobsMissed)
+	end
 end
 
 function mod:EyeDamage(args)
@@ -489,7 +491,7 @@ do
 	function mod:CursedBlood(args)
 		if self:Me(args.destGUID) then
 			isOnMe = true
-			self:TargetMessage(args.spellId, args.destName, "Personal", "Alert")
+			self:TargetMessage(args.spellId, args.destName, "Personal", "Warning")
 			self:Flash(args.spellId)
 			self:Say(args.spellId)
 			self:TargetBar(args.spellId, 8, args.destName)
@@ -532,7 +534,7 @@ end
 --[[ Mythic ]]--
 function mod:DeathBlossom(args)
 	self:Message(args.spellId, "Urgent", "Alarm")
-	self:Bar(args.spellId, 15, CL.cast:format(args.spellName))
+	self:CastBar(args.spellId, 15)
 	deathBlossomCount = deathBlossomCount + 1
 end
 

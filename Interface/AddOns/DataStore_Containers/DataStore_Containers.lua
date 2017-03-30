@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Containers ***
+--[[	*** DataStore_Containers ***
 Written by : Thaoky, EU-Marécages de Zangar
 June 21st, 2009
 

@@ -12,8 +12,8 @@ BINDING_NAME_AngryAssign_LOCK = "Toggle Lock"
 BINDING_NAME_AngryAssign_DISPLAY = "Toggle Display"
 BINDING_NAME_AngryAssign_OUTPUT = "Output Assignment to Chat"
 
-local AngryAssign_Version = 'v1.8.5'
-local AngryAssign_Timestamp = '20161031215138'
+local AngryAssign_Version = 'v1.8.9'
+local AngryAssign_Timestamp = '20170328201910'
 
 local protocolVersion = 1
 local comPrefix = "AnAss"..protocolVersion
@@ -266,11 +266,19 @@ function AngryAssign:ProcessMessage(sender, data)
 	elseif cmd == "VERSION" then
 		local localTimestamp, ver, timestamp
 		
-		if AngryAssign_Timestamp:sub(1,1) == "@" then localTimestamp = nil else localTimestamp = tonumber(AngryAssign_Timestamp) end
+		if AngryAssign_Timestamp:sub(1,1) == "@" then localTimestamp = "dev" else localTimestamp = tonumber(AngryAssign_Timestamp) end
 		ver = data[VERSION_Version]
 		timestamp = data[VERSION_Timestamp]
+
+		local localStr = tostring(localTimestamp)
+		local remoteStr = tostring(timestamp)
+
+		if (localStr ~= "dev" and localStr:len() ~= 14) or (remoteStr ~= "dev" and remoteStr:len() ~= 14) then
+			if localStr ~= "dev" then localTimestamp = tonumber(localStr:sub(1,8)) end
+			if remoteStr ~= "dev" then timestamp = tonumber(remoteStr:sub(1,8)) end
+		end
 			
-		if localTimestamp ~= nil and timestamp ~= "dev" and timestamp > localTimestamp and not warnedOOD then 
+		if localTimestamp ~= "dev" and timestamp ~= "dev" and timestamp > localTimestamp and not warnedOOD then
 			self:Print("Your version of Angry Assignments is out of date! Download the latest version from curse.com.")
 			warnedOOD = true
 		end
@@ -962,6 +970,7 @@ function AngryAssign:CreateWindow()
 	window.button_clear = button_clear
 
 	self:UpdateSelected(true)
+	self:UpdateMedia()
 	
 	--self:CreateIconPicker()
 end
@@ -1740,6 +1749,7 @@ function AngryAssign:UpdateBackdrop()
 	end
 end
 
+local editFontName, editFontHeight, editFontFlags
 function AngryAssign:UpdateMedia()
 	local fontName = LSM:Fetch("font", AngryAssign:GetConfig('fontName'))
 	local fontHeight = AngryAssign:GetConfig('fontHeight')
@@ -1748,6 +1758,18 @@ function AngryAssign:UpdateMedia()
 	self.display_text:SetTextColor( HexToRGB(self:GetConfig('color')) )
 	self.display_text:SetFont(fontName, fontHeight, fontFlags)
 	self.display_text:SetSpacing( AngryAssign:GetConfig('lineSpacing') )
+
+	if self.window then
+		if self:GetConfig('editBoxFont') then
+			if not editFontName then
+				editFontName, editFontHeight, editFontFlags = self.window.text.editBox:GetFont()
+			end
+			self.window.text.editBox:SetFont(fontName, fontHeight, fontFlags)
+		elseif editFontName then
+			self.window.text.editBox:SetFont(editFontName, editFontHeight, editFontFlags)
+		end
+	end
+
 	self:UpdateBackdrop()
 end
 
@@ -1989,6 +2011,7 @@ function AngryAssign:OutputDisplayed(id)
 			:gsub(ci_pattern('{skull}'), "{rt8}")
 			:gsub(ci_pattern('{healthstone}'), "{hs}")
 			:gsub(ci_pattern('{hs}'), 'Healthstone')
+			:gsub(ci_pattern('{bloodlust}'), "{bl}")
 			:gsub(ci_pattern('{bl}'), 'Bloodlust')
 			:gsub(ci_pattern('{icon%s+([%w_]+)}'), '')
 			:gsub(ci_pattern('{damage}'), 'Damage')
@@ -2037,7 +2060,8 @@ local configDefaults = {
 	allowplayers = "",
 	backdropShow = false,
 	backdropColor = "00000080",
-	glowColor = "FF0000"
+	glowColor = "FF0000",
+	editBoxFont = false,
 }
 
 function AngryAssign:GetConfig(key)
@@ -2245,7 +2269,6 @@ function AngryAssign:OnInitialize()
 						get = function(info) return self:GetConfig('hideoncombat') end,
 						set = function(info, val)
 							self:SetConfig('hideoncombat', val)
-
 						end
 					},
 					scale = {
@@ -2396,6 +2419,17 @@ function AngryAssign:OnInitialize()
 							self:SetConfig('lineSpacing', val)
 							self:UpdateMedia()
 							self:UpdateDisplayed()
+						end
+					},
+					editBoxFont =  {
+						type = "toggle",
+						order = 7,
+						name = "Change Edit Box Font",
+						desc = "Enable to set edit box font to display font",
+						get = function(info) return self:GetConfig('editBoxFont') end,
+						set = function(info, val)
+							self:SetConfig('editBoxFont', val)
+							self:UpdateMedia()
 						end
 					},
 				}

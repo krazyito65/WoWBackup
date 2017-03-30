@@ -16,7 +16,7 @@ mod.toggleOptions = {
 local L = LibStub("AceLocale-3.0"):NewLocale("Little Wigs: Mekgineer Steamrigger", "enUS", true)
 if L then
 	
-	
+	--@localization(locale="enUS", namespace="Coilfang/Steamrigger", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 L = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Mekgineer Steamrigger")
 mod.locale = L

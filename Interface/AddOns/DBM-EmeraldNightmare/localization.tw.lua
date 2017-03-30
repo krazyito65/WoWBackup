@@ -24,7 +24,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1738)
 
 L:SetOptionLocalization({
-	SetIconOnlyOnce		= "為每個軟泥設置團隊圖示直到有一個軟泥爆炸時停用(實驗中)",
+	SetIconOnlyOnce2	= "為每個軟泥設置團隊圖示直到有一個軟泥爆炸時停用(實驗中)",
 	InfoFrameBehavior	= "在戰鬥中顯示訊息框架",
 	Fixates				= "顯示中了鎖定的玩家",
 	Adds				= "顯示小怪數量和類型"
@@ -38,18 +38,6 @@ L= DBM:GetModLocalization(1744)
 L:SetWarningLocalization({
 	warnWebOfPain		= ">%s<與>%s<連接",--Only this needs localizing
 	specWarnWebofPain	= "你與>%s<連接了",--Only this needs localizing
-})
-
-L:SetOptionLocalization({
-	WebConfiguration	= "為痛苦蛛網設定HUD/箭頭選項",
-	Disabled			= "禁用",
-	Arrow				= "當你中招時只顯示傳統箭頭",
-	HudSelf				= "只有你中招時顯示HUD連線",
-	HudAll				= "為所有中招的目標顯示HUD連線"
-})
-
-L:SetMiscLocalization({
-	MapMessage			= "註：此模組的箭頭/HUD選項能夠在介面中設定。而這些選項在7.1失效。"
 })
 
 ---------------------------

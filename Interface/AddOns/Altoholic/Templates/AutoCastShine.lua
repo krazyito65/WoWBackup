@@ -1,4 +1,4 @@
-﻿local addonName = ...
+local addonName = ...
 local addon = _G[addonName]
 
 local SHINE_R = .95
@@ -42,6 +42,7 @@ local function _Shine_OnUpdate(frame, elapsed)
 
 	for button, _ in pairs(activeButtons) do
 		local distance = button:GetWidth()
+		local sparkles = button.Sparkles
 			
 		for i = 1, 4 do
 			local timer = shineTimers[i]
@@ -49,28 +50,28 @@ local function _Shine_OnUpdate(frame, elapsed)
 			
 			if ( timer <= speed ) then
 				local basePosition = timer/speed*distance
-				button.Sparkles[0+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
-				button.Sparkles[4+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
-				button.Sparkles[8+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
-				button.Sparkles[12+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
+				sparkles[0+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
+				sparkles[4+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
+				sparkles[8+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
+				sparkles[12+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
 			elseif ( timer <= speed*2 ) then
 				local basePosition = (timer-speed)/speed*distance
-				button.Sparkles[0+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
-				button.Sparkles[4+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
-				button.Sparkles[8+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
-				button.Sparkles[12+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)	
+				sparkles[0+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
+				sparkles[4+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
+				sparkles[8+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
+				sparkles[12+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)	
 			elseif ( timer <= speed*3 ) then
 				local basePosition = (timer-speed*2)/speed*distance
-				button.Sparkles[0+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
-				button.Sparkles[4+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
-				button.Sparkles[8+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
-				button.Sparkles[12+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)	
+				sparkles[0+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
+				sparkles[4+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
+				sparkles[8+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
+				sparkles[12+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)	
 			else
 				local basePosition = (timer-speed*3)/speed*distance
-				button.Sparkles[0+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
-				button.Sparkles[4+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
-				button.Sparkles[8+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
-				button.Sparkles[12+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
+				sparkles[0+i]:SetPoint("CENTER", button, "BOTTOMLEFT", 0, basePosition)
+				sparkles[4+i]:SetPoint("CENTER", button, "TOPRIGHT", 0, -basePosition)
+				sparkles[8+i]:SetPoint("CENTER", button, "TOPLEFT", basePosition, 0)
+				sparkles[12+i]:SetPoint("CENTER", button, "BOTTOMRIGHT", -basePosition, 0)
 			end
 		end	
 	end

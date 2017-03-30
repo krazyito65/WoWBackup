@@ -1,13 +1,9 @@
-## Interface: 70000
+## Interface: 70200
 ## Title: Simulationcraft
 ## Notes: Constructs SimC export strings
 ## Author: Theck, navv_
-## Version: 1.5.1
+## Version: 1.6.0
 ## OptionalDependencies: Ace3
-## X-Curse-Packaged-Version: v1.5.1
-## X-Curse-Project-Name: Simulationcraft
-## X-Curse-Project-ID: simulationcraft
-## X-Curse-Repository-ID: wow/simulationcraft/mainline
 
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua

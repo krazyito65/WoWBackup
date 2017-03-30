@@ -1,4 +1,4 @@
-﻿local L = LibStub("AceLocale-3.0"):NewLocale("Altoholic", "enUS", true, true)
+local L = LibStub("AceLocale-3.0"):NewLocale("Altoholic", "enUS", true, true)
 
 if not L then return end
 
@@ -171,6 +171,8 @@ L["TALENT_SPECIALIZATION_STAT_PRIORITY"] = "Stat priority"
 -- *** Tab Achievements 
 -- *************************
 
+L["ACCOUNT_WIDE"] = "Account Wide"
+
 -- *************************
 -- *** Tab Agenda 
 -- *************************
@@ -183,8 +185,6 @@ L["TALENT_SPECIALIZATION_STAT_PRIORITY"] = "Stat priority"
 
 -- everything below this point has not yet been reviewed
 -- last review : 2016/11/07
-
-
 
 
 
@@ -485,15 +485,9 @@ L["up to"] = true
 L["at"] = true
 L["and above"] = true
 L["Suggestion"] = true
-L["Prof. 1"] = true
-L["Prof. 2"] = true
 L["Grey"] = true
 L["All cooldowns are up"] = true
 
--- talents.lua
-L["Compare with"] = true
-L["Other guilds"] = true
-L["Other characters"] = true
 
 -- TabSummary.lua
 L["All accounts"] = true
@@ -932,9 +926,7 @@ L["Send account sharing request to:"] = true
 L["Memory used"] = true
 
 -- ** Frame 1 : General **
-L["Max rest XP displayed as 150%"] = true
-L["Show FuBar icon"] = true
-L["Show FuBar text"] = true
+
 L["Account Sharing Enabled"] = true
 L["Guild Communication Enabled"] = true
 

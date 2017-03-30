@@ -1,10 +1,6 @@
 ## Interface: 60200
 ## Title: Lib: LibDFramework-1.0
 ## Notes: Base Framework for many Addons
-## X-Curse-Packaged-Version: r24
-## X-Curse-Project-Name: Enemy Grid
-## X-Curse-Project-ID: enemy-grid
-## X-Curse-Repository-ID: wow/enemy-grid/mainline
 
 LibStub\LibStub.lua
 CallbackHandler-1.0\CallbackHandler-1.0.lua

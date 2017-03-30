@@ -22,6 +22,7 @@ function RCSessionFrame:OnInitialize()
 end
 
 function RCSessionFrame:OnEnable()
+	addon:Debug("RCSessionFrame", "enabled")
 	ml = addon:GetActiveModule("masterlooter")
 end
 
@@ -44,6 +45,10 @@ end
 
 function RCSessionFrame:Hide()
 	self.frame:Hide()
+end
+
+function RCSessionFrame:IsRunning()
+	return self.frame and self.frame:IsVisible()
 end
 
 -- Data should be unmodified lootTable from ml_core

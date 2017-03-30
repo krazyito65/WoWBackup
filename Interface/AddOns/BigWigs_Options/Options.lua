@@ -3,11 +3,6 @@ local BigWigs = BigWigs
 local options = BigWigs:NewModule("Options")
 options:SetEnabledState(true)
 
--- Embed callback handler
-options.RegisterMessage = BigWigs.RegisterMessage
-options.UnregisterMessage = BigWigs.UnregisterMessage
-options.SendMessage = BigWigs.SendMessage
-
 local colorize = nil
 do
 	local r, g, b
@@ -33,10 +28,12 @@ local loader = BigWigsLoader
 local API = BigWigsAPI
 local GetAreaMapInfo = loader.GetAreaMapInfo
 local fakeWorldZones = loader.fakeWorldZones
+options.SendMessage = loader.SendMessage
 
 local colorModule
 local soundModule
 local translateZoneID
+local isOpen
 
 local showToggleOptions, getAdvancedToggleOption = nil, nil
 
@@ -236,8 +233,8 @@ do
 end
 
 function options:OnEnable()
-	self:RegisterMessage("BigWigs_BossModuleRegistered", "Register")
-	self:RegisterMessage("BigWigs_PluginRegistered", "Register")
+	loader.RegisterMessage(self, "BigWigs_BossModuleRegistered", "Register")
+	loader.RegisterMessage(self, "BigWigs_PluginRegistered", "Register")
 
 	for name, module in BigWigs:IterateBossModules() do
 		self:Register("BigWigs_BossModuleRegistered", name, module)
@@ -246,14 +243,18 @@ function options:OnEnable()
 		self:Register("BigWigs_PluginRegistered", name, module)
 	end
 
-	self:RegisterMessage("BigWigs_StartConfigureMode")
-	self:RegisterMessage("BigWigs_StopConfigureMode")
+	loader.RegisterMessage(self, "BigWigs_StartConfigureMode")
+	loader.RegisterMessage(self, "BigWigs_StopConfigureMode")
 
 	self.OnEnable = nil
 end
 
 function options:Open()
-	options:OpenConfig()
+	if isOpen then
+		isOpen:Hide()
+	else
+		options:OpenConfig()
+	end
 end
 
 -------------------------------------------------------------------------------
@@ -1003,8 +1004,9 @@ do
 		playerName = UnitName("player")
 
 		local bw = AceGUI:Create("Frame")
+		isOpen = bw
 		bw:SetTitle("BigWigs")
-		bw:SetStatusText(" "..BigWigsLoader:GetReleaseString())
+		bw:SetStatusText(" "..loader:GetReleaseString())
 		bw:SetWidth(858)
 		bw:SetHeight(660)
 		bw:EnableResize(false)
@@ -1012,6 +1014,7 @@ do
 		bw:SetCallback("OnClose", function(widget)
 			AceGUI:Release(widget)
 			wipe(statusTable)
+			isOpen = nil
 		end)
 
 		local introduction = AceGUI:Create("Label")

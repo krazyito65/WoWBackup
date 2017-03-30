@@ -14,12 +14,12 @@ DBM_CORE_LOAD_GUI_ERROR				= "Could not load GUI: %s"
 DBM_CORE_LOAD_GUI_COMBAT			= "GUI cannot be initially loaded in combat. GUI will be loaded out of combat. After GUI loaded, you can open GUI in combat."
 DBM_CORE_BAD_LOAD					= "DBM has detected your mod for this instance failed to fully load correctly because of combat. As soon as you are out of combat, please do /console reloadui as soon as possible."
 DBM_CORE_LOAD_MOD_VER_MISMATCH		= "%s could not be loaded because your DBM-Core does not meet requirements. An updated version is required"
+DBM_CORE_LOAD_MOD_DISABLED			= "%s is installed but currently disabled. This mod will not be loaded unless you enable it."
+DBM_CORE_LOAD_MOD_DISABLED_PLURAL	= "%s are installed but currently disabled. These mods will not be loaded unless you enable them."
 
 DBM_CORE_WHATS_NEW					= "New in this version: Fixed a bug that caused 'Major Patch' force update/disable to trigger wrongfully for non major patch updates. DBM will no longer filter Broken Shore cut scenes regardless of user settings. Added Demonic Invasions mod. Minor Text Fixes"
 DBM_CORE_WHATS_NEW_LINK				= "Reminder: Many features that relied on unit positions have been limited. You can read more about why by |HDBM:forumsnews|h|cff3588ffclicking here|r"
 
---Pre Patch 7.1 Notice
-DBM_CORE_NO_RANGE_SOON				= "Note: range radar will no longer be available within instances in patch 7.1"
 --Post Patch 7.1
 DBM_CORE_NO_RANGE					= "Range Radar can not be used in instances. Legacy text range frame used instead"
 DBM_CORE_NO_ARROW					= "Arrow can not be used in instances"
@@ -60,6 +60,8 @@ DBM_CORE_TRANSCRIPTOR_LOG_END		= "Transcriptor logging ended."
 
 DBM_CORE_MOVIE_SKIPPED				= "A cut scene has automatically been skipped."
 
+DBM_CORE_AFK_WARNING				= "You are AFK and in combat (%d percent health remaining), firing sound alert. If you are not AFK, clear your AFK flag or disable this option in 'extra features'."
+
 DBM_CORE_COMBAT_STARTED_AI_TIMER	= "My CPU is a neural net processor; a learning computer. (This fight will use the new timer AI feature to generate timer approximations)"
 
 DBM_CORE_PROFILE_NOT_FOUND			= "<DBM> Your current profile is corrupted. DBM will load 'Default' profile."
@@ -91,7 +93,7 @@ DBM_CORE_NOTE_SHARE_FAIL			= "%s attempted to share note text with you for %s. H
 DBM_CORE_NOTEHEADER					= "Enter your note text here for %s. Enclosing a players name with >< class colors it. For alerts with multiple notes, separate notes with '/'"
 DBM_CORE_NOTEFOOTER					= "Press 'Okay' to accept changes or 'Cancel' to decline changes"
 DBM_CORE_NOTESHAREDHEADER			= "%s has shared below note text for %s. If you accept it, it will overwrite your existing note"
-DBM_CORE_NOTESHARED					= "You're note has been sent to the group"
+DBM_CORE_NOTESHARED					= "Your note has been sent to the group"
 DBM_CORE_NOTESHAREERRORSOLO			= "Lonely? Shouldn't be passing notes to yourself"
 DBM_CORE_NOTESHAREERRORBLANK		= "Cannot share blank notes"
 DBM_CORE_NOTESHAREERRORGROUPFINDER	= "Notes cannot be shared in BGs, LFR, or LFG"
@@ -153,6 +155,7 @@ DBM_CORE_VERSIONCHECK_OUTDATED		= "Following %d player(s) have outdated boss mod
 DBM_CORE_YOUR_VERSION_OUTDATED      = "Your version of Deadly Boss Mods is out-of-date. Please visit http://www.deadlybossmods.com to get the latest version."
 DBM_CORE_VOICE_PACK_OUTDATED		= "Your DBM voice pack may be missing sounds supported by this version of DBM. Some special warning sounds will not be supressed for alerts using voices not supported by your voice pack version. Please download a newer version of voice pack or contact author for an update that contains missing audio files"
 DBM_CORE_VOICE_MISSING				= "You had a DBM voice pack selected that could not be found. Your selection has been reset to 'None'. If this is an error, make sure your voice pack is properly installed and enabled in addons."
+DBM_CORE_VOICE_DISABLED				= "You currently have at least one DBM voice pack installed but none enabled. If you intend to use a voice pack, make sure it's chosen in 'Spoken Alerts', else uninstall unused voice packs to hide this message"
 DBM_CORE_VOICE_COUNT_MISSING		= "Countdown voice %d is set to a voice/count pack that could not be found. It has be reset to default settings."
 DBM_BIG_WIGS						= "BigWigs"
 
@@ -241,6 +244,9 @@ DBM_ERROR_NO_PERMISSION				= "You don't have the required permission to do this.
 
 DBM_CORE_BOSSHEALTH_HIDE_FRAME		= "Close health frame"
 
+--Common Locals
+DBM_NEXT							= "Next %s"
+DBM_COOLDOWN						= "%s CD"
 DBM_CORE_UNKNOWN					= "unknown"--UNKNOWN which is "Unknown" (does u vs U matter?)
 DBM_CORE_LEFT						= "Left"
 DBM_CORE_RIGHT						= "Right"
@@ -248,13 +254,19 @@ DBM_CORE_BACK						= "Back"--BACK
 DBM_CORE_MIDDLE						= "Middle"
 DBM_CORE_FRONT						= "Front"
 DBM_CORE_INTERMISSION				= "Intermission"--No blizz global for this, and will probably be used in most end tier fights with intermission phases
+DBM_CORE_ORB						= "Orb"
+DBM_CHEST							= "Chest"--As in Treasure 'Chest'. Not Chest as in body part.
+DBM_NO_DEBUFF						= "Not %s"--For use in places like info frame where you put "Not Spellname"
+DBM_ALLY							= "Ally"--Such as "Move to Ally"
+DBM_ADDS							= "Adds"--Such as "Move to Ally"
+--Common Locals end
 
 DBM_CORE_BREAK_USAGE				= "Break timer cannot be longer than 60 minutes. Make sure you're inputting time in minutes and not seconds."
 DBM_CORE_BREAK_START				= "Break starting now -- you have %s! (Sent by %s)"
 DBM_CORE_BREAK_MIN					= "Break ends in %s minute(s)!"
 DBM_CORE_BREAK_SEC					= "Break ends in %s seconds!"
 DBM_CORE_TIMER_BREAK				= "Break time!"
-DBM_CORE_ANNOUNCE_BREAK_OVER		= "Break has ended"
+DBM_CORE_ANNOUNCE_BREAK_OVER		= "Break has ended at %s"
 
 DBM_CORE_TIMER_PULL					= "Pull in"
 DBM_CORE_ANNOUNCE_PULL				= "Pull in %d sec. (Sent by %s)"
@@ -335,7 +347,8 @@ DBM_CORE_AUTO_SPEC_WARN_TEXTS = {
 	count			= "%s! (%%s)",
 	stack			= "%%d stacks of %s on you",
 	switch			= "%s - switch targets",
-	switchcount		= "%s - switch targets (%%s)"
+	switchcount		= "%s - switch targets (%%s)",
+	Adds			= "Incoming Adds - switch targets"
 }
 
 -- Auto-generated Special Warning Localizations
@@ -360,7 +373,7 @@ DBM_CORE_AUTO_SPEC_WARN_OPTIONS = {
 	move 			= "Show special warning to move out from $spell:%s",
 	dodge 			= "Show special warning to dodge $spell:%s",
 	moveaway		= "Show special warning to move away from others for $spell:%s",
-	moveto			= "Show special warning to move to someone affected by $spell:%s",
+	moveto			= "Show special warning to move to someone or some place for $spell:%s",
 	jump			= "Show special warning to move to jump for $spell:%s",
 	run 			= "Show special warning to run away from $spell:%s",
 	cast 			= "Show special warning to stop casting for $spell:%s",--Spell Interrupt
@@ -368,7 +381,8 @@ DBM_CORE_AUTO_SPEC_WARN_OPTIONS = {
 	count 			= "Show special warning (with count) for $spell:%s",
 	stack 			= "Show special warning when you are affected by >=%d stacks of $spell:%s",
 	switch			= "Show special warning to switch targets for $spell:%s",
-	switchcount		= "Show special warning (with count) to switch targets for $spell:%s"
+	switchcount		= "Show special warning (with count) to switch targets for $spell:%s",
+	Adds			= "Show special warning to switch targets for incoming adds"
 }
 
 -- Auto-generated Timer Localizations
@@ -389,7 +403,8 @@ DBM_CORE_AUTO_TIMER_TEXTS = {
 	nextspecial	= "Next Special Ability",
 	achievement	= "%s",
 	phase		= "Next Phase",
-	roleplay	= GUILD_INTEREST_RP--Does not require DBM_CORE_AUTO_TIMER_TEXTS.roleplay in other languages, skip this one unless you want to word better.
+	adds		= "Next Incoming Adds",
+	roleplay	= GUILD_INTEREST_RP
 }
 
 DBM_CORE_AUTO_TIMER_OPTIONS = {
@@ -409,6 +424,7 @@ DBM_CORE_AUTO_TIMER_OPTIONS = {
 	nextspecial	= "Show timer for next special ability",
 	achievement	= "Show timer for %s",
 	phase		= "Show timer for next phase",
+	adds		= "Show timer for incoming adds",
 	roleplay	= "Show timer for roleplay duration"--This does need localizing though.
 }
 
@@ -420,6 +436,7 @@ DBM_CORE_AUTO_ARROW_OPTION_TEXT2		= "Show DBM Arrow to move away from target aff
 DBM_CORE_AUTO_ARROW_OPTION_TEXT3		= "Show DBM Arrow to move toward specific location for $spell:%s"
 DBM_CORE_AUTO_VOICE_OPTION_TEXT			= "Play spoken alerts for $spell:%s"
 DBM_CORE_AUTO_VOICE2_OPTION_TEXT		= "Play spoken alerts for phase changes"
+DBM_CORE_AUTO_VOICE3_OPTION_TEXT		= "Play spoken alerts for incoming adds"
 DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT		= "Play countdown sound for $spell:%s cooldown"
 DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT2	= "Play countdown sound for when $spell:%s fades"
 DBM_CORE_AUTO_COUNTOUT_OPTION_TEXT		= "Play countout sound for $spell:%s duration"
@@ -435,8 +452,10 @@ DBM_CORE_AUTO_YELL_ANNOUNCE_TEXT = {
 	fade		= "%s fading in %%d",
 	position 	= "%s %%s on {rt%%d}"..UnitName("player").."{rt%%d}"
 }
-DBM_CORE_AUTO_HUD_OPTION_TEXT			= "Show HudMap for $spell:%s"
-DBM_CORE_AUTO_HUD_OPTION_TEXT_MULTI		= "Show HudMap for various mechanics"
+DBM_CORE_AUTO_YELL_CUSTOM_POSITION		= "{rt%d} %s {rt%d}"--Doesn't need translating. Has no strings
+DBM_CORE_AUTO_HUD_OPTION_TEXT			= "Show HudMap for $spell:%s (Retired)"
+DBM_CORE_AUTO_HUD_OPTION_TEXT_MULTI		= "Show HudMap for various mechanics (Retired)"
+DBM_CORE_AUTO_NAMEPLATE_OPTION_TEXT		= "Show Nameplate Auras for $spell:%s"
 DBM_CORE_AUTO_RANGE_OPTION_TEXT			= "Show range frame (%s) for $spell:%s"--string used for range so we can use things like "5/2" as a value for that field
 DBM_CORE_AUTO_RANGE_OPTION_TEXT_SHORT	= "Show range frame (%s)"--For when a range frame is just used for more than one thing
 DBM_CORE_AUTO_RRANGE_OPTION_TEXT		= "Show reverse range frame (%s) for $spell:%s"--Reverse range frame (green when players in range, red when not)
@@ -481,7 +500,7 @@ DBM_ARROW_ERROR_USAGE	= {
 DBM_SPEED_KILL_TIMER_TEXT	= "Record Victory"
 DBM_SPEED_CLEAR_TIMER_TEXT	= "Best Clear"
 DBM_COMBAT_RES_TIMER_TEXT	= "Next CR Charge"
-DBM_CORE_TIMER_RESPAWN		= "Respawn"
+DBM_CORE_TIMER_RESPAWN		= "%s Respawn"
 
 
 DBM_REQ_INSTANCE_ID_PERMISSION		= "%s requested to see your current instance IDs and progress.\nDo you want to send this information to %s? He or she will be able to request this information during your current session (i. e. until you relog)."

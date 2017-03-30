@@ -45,8 +45,9 @@ do
 		AddSpell(resSpells, 2008) -- Ancestral Spirit (40 yards) 
 	elseif class == "WARLOCK" then
 		AddSpell(enemySpells, 5782) -- Fear (30 yards)
-		AddSpell(longEnemySpells, 689) -- Drain Life (40 yards)
 		AddSpell(longEnemySpells, 234153) -- Drain Life (40 yards)
+		AddSpell(longEnemySpells, 198590) --Drain Soul (40 yards)
+		AddSpell(longEnemySpells, 232670) --Shadow Bolt (40 yards, lvl 1 spell)
 		AddSpell(petSpells, 755) -- Health Funnel (45 yards)
 		AddSpell(friendlySpells, 20707) -- Soulstone (40 yards)
 	elseif class == "MAGE" then

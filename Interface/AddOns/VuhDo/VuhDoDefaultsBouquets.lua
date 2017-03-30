@@ -497,13 +497,51 @@ VUHDO_DEFAULT_RAID_CDS_BOUQUET = {
 
 VUHDO_DEFAULT_PVP_FLAGS_BOUQUET = {
 	[VUHDO_I18N_DEF_PVP_FLAGS] = {
-	}
+	},
 };
 
 
 VUHDO_DEFAULT_PALADIN_BEACON_BOUQUET = {
 	[VUHDO_I18N_BOUQUET_PALADIN_BEACON] = {
-	}
+	},
+};
+
+
+VUHDO_DEFAULT_OVERFLOW_COUNTER_BOUQUET = {
+	[VUHDO_I18N_BOUQUET_OVERFLOW_COUNTER] = {
+		{
+			["name"] = "OVERFLOW_COUNTER",
+			["mine"] = true, 
+			["others"] = true,
+			["icon"] = 1,
+			["color"] = VUHDO_makeFullColorForBouquet(1, 1, 1, 1, 1, 1, 1, 1),
+			["custom"] = { [1] = 1, ["radio"] = 1, ["bright"] = 1 },
+		},
+	},
+};
+
+
+VUHDO_DEFAULT_SPELL_TRACE_BOUQUET = {
+	[VUHDO_I18N_DEF_SPELL_TRACE] = {
+		{
+			["name"] = "SPELL_TRACE",
+			["mine"] = true, ["icon"] = 1,
+			["color"] = VUHDO_makeFullColorForBouquet(1, 1, 1, 1,   1, 1, 1, 1),
+			["custom"] = { [1] = 3, ["radio"] = 2, ["bright"] = 1 },
+		},
+	},
+};
+
+
+VUHDO_DEFAULT_TRAIL_OF_LIGHT_BOUQUET = {
+	[VUHDO_I18N_DEF_TRAIL_OF_LIGHT] = {
+		{
+			["name"] = "TRAIL_OF_LIGHT",
+			["mine"] = true, ["icon"] = 1,
+			["color"] = VUHDO_makeFullColorForBouquet(1, 1, 1, 1,   1, 1, 1, 1),
+			["custom"] = { [1] = 3, ["radio"] = 2, ["bright"] = 1 },
+		},
+	},
 };
 
 
@@ -577,6 +615,31 @@ VUHDO_DEFAULT_ROLE_COLOR_BOUQUET = {
 
 
 --
+VUHDO_DEFAULT_BAR_MANA_HEALER_ONLY = {
+	[VUHDO_I18N_DEF_BOUQUET_BAR_MANA_HEALER_ONLY] = {
+		{
+			["name"] = "NO_RANGE",
+			["mine"] = true, ["icon"] = 2,
+			["color"] = {
+				["R"] = 0, ["G"] = 0, ["B"] = 0, ["O"] = 0.25,
+				["TR"] = 0, ["TG"] = 0, ["TB"] = 0, ["TO"] = 0.25,
+				["useText"] = false, ["useBackground"] = false, ["useOpacity"] = true,
+				["isManuallySet"] = true,
+			},
+			["custom"] = { [1] = 1, ["radio"] = 2, ["bright"] = 1.0 },
+		},
+		{
+			["name"] = "STATUS_MANA_HEALER_ONLY",
+			["mine"] = true, ["icon"] = 2,
+			["color"] = VUHDO_makeFullColorForBouquet(0, 0, 1, 1,   0, 0, 1, 1),
+			["custom"] = { [1] = 1, ["radio"] = 1, ["bright"] = 1.0	},
+		},
+	},
+}
+
+
+
+--
 VUHDO_DEFAULT_INDICATOR_CONFIG = {
 	["BOUQUETS"] = {
 		["AGGRO_BAR"] = "",
@@ -584,7 +647,7 @@ VUHDO_DEFAULT_INDICATOR_CONFIG = {
 		["BAR_BORDER"] = VUHDO_I18N_DEF_BOUQUET_BORDER_MULTI_AGGRO,
 		["CLUSTER_BORDER"] = "",
 		["DAMAGE_FLASH_BAR"] = "",
-		["HEALTH_BAR"] = VUHDO_I18N_DEF_BOUQUET_BAR_HEALTH,
+		["HEALTH_BAR"] = VUHDO_I18N_DEF_BOUQUET_BAR_HEALTH_CLASS_COLOR,
 		["HEALTH_BAR_PANEL"] = {
 			[1] = "",
 			[2] = "",
@@ -1214,6 +1277,8 @@ local tPvPFlags = {
 
 local tPaladinBeacons = {
 	156910, -- Beacon of Faith
+	197446, -- Beacon of the Lightbringer
+	200025, -- Beacon of Virtue
 	53563, -- Beacon of Light
 }
 
@@ -1301,6 +1366,30 @@ function VUHDO_loadDefaultBouquets()
 		VUHDO_AddSpellBouquetItem(VUHDO_I18N_BOUQUET_PALADIN_BEACON, unpack(tPaladinBeacons));
 	end
 	tPaladinBeacons = nil;
+
+	if VUHDO_BOUQUETS["VERSION"] < 15 then
+		VUHDO_BOUQUETS["VERSION"] = 15;
+		VUHDO_addDefaultBouquet(VUHDO_DEFAULT_OVERFLOW_COUNTER_BOUQUET);
+	end
+	VUHDO_DEFAULT_OVERFLOW_COUNTER_BOUQUET = nil;
+
+	if VUHDO_BOUQUETS["VERSION"] < 16 then
+		VUHDO_BOUQUETS["VERSION"] = 16;
+		VUHDO_addDefaultBouquet(VUHDO_DEFAULT_SPELL_TRACE_BOUQUET);
+	end
+	VUHDO_DEFAULT_SPELL_TRACE_BOUQUET = nil;
+
+	if VUHDO_BOUQUETS["VERSION"] < 17 then
+		VUHDO_BOUQUETS["VERSION"] = 17;
+		VUHDO_addDefaultBouquet(VUHDO_DEFAULT_TRAIL_OF_LIGHT_BOUQUET);
+	end
+	VUHDO_DEFAULT_TRAIL_OF_LIGHT_BOUQUET = nil;
+
+	if VUHDO_BOUQUETS["VERSION"] < 18 then
+		VUHDO_BOUQUETS["VERSION"] = 18;
+		VUHDO_addDefaultBouquet(VUHDO_DEFAULT_BAR_MANA_HEALER_ONLY);
+	end
+	VUHDO_DEFAULT_BAR_MANA_HEALER_ONLY = nil;
 
 	VUHDO_buildGenericHealthBarBouquet();
 	VUHDO_buildGenericTargetHealthBouquet();

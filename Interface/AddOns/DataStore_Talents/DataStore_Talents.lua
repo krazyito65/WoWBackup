@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Talents ***
+--[[	*** DataStore_Talents ***
 Written by : Thaoky, EU-Marécages de Zangar
 June 23rd, 2009
 --]]
@@ -153,6 +153,12 @@ local function RightShift(value, numBits)
 	return math.floor(value / 2^numBits)
 end
 
+local function GetArtifactName()
+	local info = C_ArtifactUI.GetEquippedArtifactArtInfo()
+	return info.titleName
+	-- return select(2, C_ArtifactUI.GetArtifactArtInfo())
+end
+
 
 -- *** Scanning functions ***
 local function ScanTalents()
@@ -219,7 +225,7 @@ end
 local function ScanArtifact()
 	local char = addon.ThisCharacter
 
-	local artifactName = select(2, C_ArtifactUI.GetArtifactArtInfo())
+	local artifactName = GetArtifactName()
 
 	-- only save the name if the item viewed is the one equipped (since you can right-click an artifact in the bags)
 	if C_ArtifactUI.IsViewedArtifactEquipped() then
@@ -233,13 +239,20 @@ local function ScanArtifact()
 	
 	artifact.rank = C_ArtifactUI.GetTotalPurchasedRanks()
 	artifact.pointsRemaining = C_ArtifactUI.GetPointsRemaining()
+	artifact.tier = select(13, C_ArtifactUI.GetEquippedArtifactInfo())
 end
 
 local function ScanArtifactXP()
 	local char = addon.ThisCharacter
 	
-	local _, _, artifactName, _, remaining = C_ArtifactUI.GetEquippedArtifactInfo()
-	local artifact = char.Artifacts[artifactName]
+	-- This method provides the right data, except the name because Blizzard is "AGAIN" not consistent in the names it returns.
+	-- Ex: Arcane mage: 
+	--   C_ArtifactUI.GetArtifactArtInfo() => returns Aluneth, Great staff of ...
+	--   C_ArtifactUI.GetEquippedArtifactInfo() => returns only "Aluneth"
+	-- local _, _, artifactName, _, remaining = C_ArtifactUI.GetEquippedArtifactInfo()
+	
+	local _, _, _, _, remaining = C_ArtifactUI.GetEquippedArtifactInfo()
+	local artifact = char.Artifacts[GetArtifactName()]
 	if artifact then
 		artifact.pointsRemaining = remaining
 	end
@@ -373,11 +386,25 @@ local function _GetEquippedArtifactPower(character)
 	return power
 end
 
+local function _GetEquippedArtifactTier(character)
+	local tier = 0
+	
+	local equippedArtifact = character.EquippedArtifact
+	if equippedArtifact then
+		local info = character.Artifacts[equippedArtifact]
+		if info and info.tier then
+			tier = info.tier
+		end
+	end
+	
+	return tier
+end
+
 local function _GetKnownArtifacts(character)
 	return character.Artifacts
 end
 
-local function _GetNumArtifactTraitsPurchasableFromXP(currentRank, xpToSpend)
+local function _GetNumArtifactTraitsPurchasableFromXP(currentRank, xpToSpend, currentTier)
 	-- this function is exactly the same as 
 	-- MainMenuBar_GetNumArtifactTraitsPurchasableFromXP (from MainMenuBar.lua)
 	-- but just in case it's not loaded or changes later.. I'll keep it here
@@ -386,14 +413,15 @@ local function _GetNumArtifactTraitsPurchasableFromXP(currentRank, xpToSpend)
 	--    artifact is currently at rank 1, and we have 945 points to spend
 	
 	local numPoints = 0
-	local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank)
+	local xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank, currentTier)
+
 	while xpToSpend >= xpForNextPoint and xpForNextPoint > 0 do
 		xpToSpend = xpToSpend - xpForNextPoint
 
 		currentRank = currentRank + 1
 		numPoints = numPoints + 1
 
-		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank)
+		xpForNextPoint = C_ArtifactUI.GetCostForPointAtRank(currentRank, currentTier)
 	end
 	
 	-- ex: with rank 1 and 945 points, we have enough points for 2 traits, and 320 / 350 in the last rank
@@ -415,6 +443,7 @@ local PublicMethods = {
 	GetEquippedArtifact = _GetEquippedArtifact,
 	GetEquippedArtifactRank = _GetEquippedArtifactRank,
 	GetEquippedArtifactPower = _GetEquippedArtifactPower,
+	GetEquippedArtifactTier = _GetEquippedArtifactTier,
 	GetKnownArtifacts = _GetKnownArtifacts,
 	GetNumArtifactTraitsPurchasableFromXP = _GetNumArtifactTraitsPurchasableFromXP,
 }
@@ -431,6 +460,7 @@ function addon:OnInitialize()
 	DataStore:SetCharacterBasedMethod("GetEquippedArtifact")
 	DataStore:SetCharacterBasedMethod("GetEquippedArtifactRank")
 	DataStore:SetCharacterBasedMethod("GetEquippedArtifactPower")
+	DataStore:SetCharacterBasedMethod("GetEquippedArtifactTier")
 	DataStore:SetCharacterBasedMethod("GetKnownArtifacts")
 end
 

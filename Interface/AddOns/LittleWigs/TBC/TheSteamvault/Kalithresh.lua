@@ -17,7 +17,7 @@ mod.toggleOptions = {
 local L = LibStub("AceLocale-3.0"):NewLocale("Little Wigs: Warlord Kalithresh", "enUS", true)
 if L then
 	
-	
+	--@localization(locale="enUS", namespace="Coilfang/Kalithresh", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 
 L = LibStub("AceLocale-3.0"):GetLocale("Little Wigs: Warlord Kalithresh")

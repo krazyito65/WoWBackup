@@ -1,3 +1,11 @@
+VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
+/use [mod:ctrl] Horn of Valor; [nomod, @mouseover] Cenarion Ward
+END
+VER 3 0100000000000068 " " "INV_MISC_QUESTIONMARK"
+#showtooltip Renewal
+/use Bear Form
+/use Renewal
+END
 VER 3 0100000000000066 " " "INV_MISC_QUESTIONMARK"
 #showtooltip
 /use [@mouseover, help][help][noharm, nohelp] Incarnation: Tree of Life(Talent, Shapeshift); [harm] Sunfire;
@@ -6,14 +14,6 @@ VER 3 010000000000006A " " "INV_MISC_QUESTIONMARK"
 #showtooltip tranquility
 /use Horn of Valor
 /use tranquility
-END
-VER 3 0100000000000067 " " "INV_MISC_QUESTIONMARK"
-/use [mod:ctrl] Horn of Valor; [nomod, @mouseover] Cenarion Ward
-END
-VER 3 0100000000000068 " " "INV_MISC_QUESTIONMARK"
-#showtooltip Renewal
-/use Bear Form
-/use Renewal
 END
 VER 3 0100000000000060 " balance t15" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -40,7 +40,7 @@ VER 3 010000000000005C " Druid t60" "INV_MISC_QUESTIONMARK"
 /use [talent:4/2] Mass Entanglement; [talent:4/1] Mighty Bash; [talent:4/3] Typhoon
 END
 VER 3 010000000000005D " Inc/ DPS ring" "INV_MISC_QUESTIONMARK"
-/use [mod:ctrl] Nithramus, the All-Seer; Incarnation: Chosen of Elune(Talent, Shapeshift)
+/use [talent:2/1] Renewal; [talent:2/2] Displacer Beast
 END
 VER 3 0100000000000063 " Stellar Flare" "INV_MISC_QUESTIONMARK"
 #showtooltip
@@ -69,7 +69,7 @@ VER 3 0100000000000023 "resto N1" "INV_MISC_QUESTIONMARK"
 /use [@mouseover,mod:ctrl]ironbark;[@mouseover,help]swiftmend;[harm]Solar Wrath; swiftmend
 END
 VER 3 0100000000000055 "VuhDoDCShieldData" "Ability_Repair"
-P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DH[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
+P[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]1DR[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]
 END
 VER 3 0100000000000056 "VuhDoDCShieldNames" "Ability_Repair"
 N[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]Kra[x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x]

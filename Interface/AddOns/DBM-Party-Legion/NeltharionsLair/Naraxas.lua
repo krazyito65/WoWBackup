@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1673, "DBM-Party-Legion", 5, 767)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 15186 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 16091 $"):sub(12, -3))
 mod:SetCreatureID(91005)
 mod:SetEncounterID(1792)
 mod:SetZone()
@@ -32,13 +32,11 @@ local timerToxicRetchCD				= mod:NewCDTimer(14.3, 210150, nil, false, nil, 3)--N
 local voiceAdds						= mod:NewVoice(199817, "Dps")--mobsoon
 local voiceSpikedTongue				= mod:NewVoice(199176)--runout/keepmove
 
---mod:AddRangeFrameOption(5, 153396)
-
 function mod:OnCombatStart(delay)
 	timerAddsCD:Start(5.5-delay)
 	timerRancidMawCD:Start(7.3-delay)
 	timerToxicRetchCD:Start(12.4-delay)
-	timerSpikedTongueCD:Start(54.7-delay)
+	timerSpikedTongueCD:Start(50.5-delay)
 end
 
 function mod:OnCombatEnd()

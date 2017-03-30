@@ -1,4 +1,4 @@
-﻿-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 --  Module Declaration
 
 local mod = BigWigs:NewBoss("Grand Champions", 542)
@@ -24,7 +24,6 @@ mod.toggleOptions = {
 
 local L = mod:NewLocale("enUS", true)
 if L then
-
 
 end
 L = mod:GetLocale()

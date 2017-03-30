@@ -1,4 +1,4 @@
-﻿local addonName = "DataStore_Crafts"
+local addonName = "DataStore_Crafts"
 local addon = _G[addonName]
 
 addon.artifactDB = {}

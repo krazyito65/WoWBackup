@@ -1,20 +1,24 @@
 
 MasterPlanAG = {
 	["Mal'Ganis"] = {
+		["Krazyitó"] = {
+			["class"] = "ROGUE",
+			["faction"] = "Horde",
+		},
 		["Krázyito"] = {
 			["summary"] = {
 				["inProgress"] = {
 					[272] = 1452625303,
 					[371] = 1452639705,
-					[337] = 1452661296,
 					[367] = 1452639708,
+					[337] = 1452661296,
 				},
 			},
-			["faction"] = "Horde",
-			["class"] = "SHAMAN",
-			["lastCacheTime"] = 1470362011,
-			["curRes"] = 2453,
 			["curOil"] = 195,
+			["lastCacheTime"] = 1470362011,
+			["class"] = "SHAMAN",
+			["curRes"] = 2453,
+			["faction"] = "Horde",
 		},
 		["Krazyíto"] = {
 			["class"] = "PALADIN",
@@ -36,9 +40,9 @@ MasterPlanAG = {
 			},
 			["faction"] = "Horde",
 			["cacheSize"] = 1000,
-			["class"] = "DRUID",
+			["lastCacheTime"] = 1480645885,
 			["curRes"] = 10000,
-			["lastCacheTime"] = 1479435569,
+			["class"] = "DRUID",
 		},
 		["Krazýito"] = {
 			["faction"] = "Horde",

@@ -16,7 +16,6 @@ mod.toggleOptions = {
 local L = mod:NewLocale("enUS", true)
 if L then
 
-
 end
 L = mod:GetLocale()
 

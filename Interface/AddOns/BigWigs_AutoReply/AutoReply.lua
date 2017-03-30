@@ -17,7 +17,7 @@ local inCombatMessage = "<BigWigs> %s is currently in combat with %s %s."
 local endCombatMessage = "<BigWigs> %s has %s %s %s."
 
 -- Saved Variables
-BigWigs_AutoReplyFilterWhispers = true
+BigWigs_AutoReplyFilterWhispers = false
 BigWigs_AutoReplyIgnoreList = {} --Add phrases here that will not trigger an auto-reply or be filtered
 
 local arDebug = false

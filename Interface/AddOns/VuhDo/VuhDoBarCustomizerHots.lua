@@ -511,7 +511,7 @@ local function VUHDO_updateHots(aUnit, anInfo)
 	if not VUHDO_OTHER_HOTS[aUnit] then VUHDO_OTHER_HOTS[aUnit] = { }; end
 	if not VUHDO_MY_AND_OTHERS_HOTS[aUnit] then VUHDO_MY_AND_OTHERS_HOTS[aUnit] = { }; end
 
-	for _, tHotInfo in pairs(VUHDO_MY_HOTS[aUnit]) do tHotInfo[1] = nil end -- Rest == nil => Icon löschen
+	for _, tHotInfo in pairs(VUHDO_MY_HOTS[aUnit]) do tHotInfo[1] = nil end -- Rest == nil => Icon lï¿½schen
 	for _, tHotInfo in pairs(VUHDO_OTHER_HOTS[aUnit]) do tHotInfo[1] = nil; end
 	for _, tHotInfo in pairs(VUHDO_MY_AND_OTHERS_HOTS[aUnit]) do tHotInfo[1] = nil; end
 

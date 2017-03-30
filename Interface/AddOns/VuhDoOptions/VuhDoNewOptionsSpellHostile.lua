@@ -57,7 +57,8 @@ local function VUHDO_isHostileActionValid(anActionName)
 	if (VUHDO_SPELL_KEY_ASSIST == tActionLowerName
 	 or VUHDO_SPELL_KEY_FOCUS == tActionLowerName
 	 or VUHDO_SPELL_KEY_TARGET == tActionLowerName 
-	 or VUHDO_SPELL_KEY_EXTRAACTIONBUTTON == tActionLowerName) then
+	 or VUHDO_SPELL_KEY_EXTRAACTIONBUTTON == tActionLowerName 
+	 or VUHDO_SPELL_KEY_MOUSELOOK == tActionLowerName) then
 		return "Command", 0.8, 1, 0.8;
 	end
 

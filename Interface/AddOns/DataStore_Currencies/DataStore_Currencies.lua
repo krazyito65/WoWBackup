@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Currencies ***
+--[[	*** DataStore_Currencies ***
 Written by : Thaoky, EU-Marécages de Zangar
 July 6th, 2009
 --]]

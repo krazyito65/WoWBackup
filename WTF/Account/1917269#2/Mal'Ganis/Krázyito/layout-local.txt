@@ -40,4 +40,11 @@ Anchor: CENTER
 X: 0
 Y: 0
 W: 648
-H: 420
+H: 455
+Frame: TSMDestroyingFrame
+FrameLevel: 0
+Anchor: CENTER
+X: -1
+Y: 120
+W: 300
+H: 300

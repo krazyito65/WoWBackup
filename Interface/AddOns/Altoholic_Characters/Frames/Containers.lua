@@ -117,61 +117,25 @@ local function UpdateSpread()
 			-- Column 2 : empty
 			itemButton = rowFrame.Item2
 			itemButton:Hide()
-			itemButton.id = nil
-			itemButton.link = nil
+			itemButton:SetInfo(nil, nil)
 			
 			-- Columns 3 to 14 : bag content
 			for j=3, 14 do
 				itemButton = rowFrame["Item"..j]
-				itemButton.IconBorder:Hide()
-				itemButton.Icon:SetDesaturated(false)
 				
 				local slotID = bagIndices[line].from - 3 + j
 				local itemID, itemLink, itemCount = DS:GetSlotInfo(container, slotID)
 				
 				if (slotID <= containerSize) then 
-					if itemID then
-						itemButton.Icon:SetTexture(GetItemIcon(itemID))
-						
-						if rarity ~= 0 then	
-							local _, _, itemRarity = GetItemInfo(itemID)
-							if itemRarity and itemRarity == rarity then
-								local r, g, b = GetItemQualityColor(itemRarity)
-								itemButton.IconBorder:SetVertexColor(r, g, b, 0.5)
-								itemButton.IconBorder:Show()
-							else
-								itemButton.Icon:SetDesaturated(true)
-							end
-						end
-					else
-						itemButton.Icon:SetTexture("Interface\\PaperDoll\\UI-Backpack-EmptySlot")
-					end
-				
-					itemButton.id = itemID
-					itemButton.link = itemLink
-					itemButton:SetScript("OnEnter", function(self) 
-							Altoholic:Item_OnEnter(self)
-						end)
-					
-					if not itemCount or (itemCount < 2) then
-						itemButton.Count:Hide();
-					else
-						itemButton.Count:SetText(itemCount);
-						itemButton.Count:Show();
-					end
+					itemButton:SetItem(itemID, itemLink, rarity)
+					itemButton:SetCount(itemCount)
 					
 					local startTime, duration, isEnabled = DS:GetContainerCooldownInfo(container, slotID)
-					
-					itemButton.startTime = startTime
-					itemButton.duration = duration
-					
-					-- CooldownFrame_SetTimer(itemButton.Cooldown, startTime or 0, duration or 0, isEnabled)
-				
+					itemButton:SetCooldown(startTime, duration, isEnabled)
 					itemButton:Show()
 				else
 					itemButton:Hide()
-					itemButton.id = nil
-					itemButton.link = nil
+					itemButton:SetInfo(nil, nil)
 					itemButton.startTime = nil
 					itemButton.duration = nil
 				end
@@ -243,41 +207,11 @@ local function UpdateAllInOne()
 					currentSlotIndex = currentSlotIndex + 1
 					if (currentSlotIndex > minSlotIndex) and (rowIndex <= numRows) then
 						itemButton = frame["Entry"..rowIndex]["Item"..colIndex]
-						itemButton.IconBorder:Hide()
-						itemButton.Icon:SetTexture(GetItemIcon(itemID))
-						itemButton.Icon:SetDesaturated(false)
-						
-						if rarity ~= 0 then
-							local _, _, itemRarity = GetItemInfo(itemID)
-							if itemRarity and itemRarity == rarity then
-								local r, g, b = GetItemQualityColor(itemRarity)
-								itemButton.IconBorder:SetVertexColor(r, g, b, 0.5)
-								itemButton.IconBorder:Show()
-							else
-								itemButton.Icon:SetDesaturated(true)
-							end
-						end
-						
-						itemButton.id = itemID
-						itemButton.link = itemLink
-						itemButton:SetScript("OnEnter", function(self) 
-								Altoholic:Item_OnEnter(self)
-							end)
-					
-						if not itemCount or (itemCount < 2) then
-							itemButton.Count:Hide();
-						else
-							itemButton.Count:SetText(itemCount);
-							itemButton.Count:Show();
-						end
+						itemButton:SetItem(itemID, itemLink, rarity)
+						itemButton:SetCount(itemCount)
 						
 						local startTime, duration, isEnabled = DS:GetContainerCooldownInfo(container, slotID)
-						
-						itemButton.startTime = startTime
-						itemButton.duration = duration
-						
-						-- CooldownFrame_SetTimer(itemButton.Cooldown, startTime or 0, duration or 0, isEnabled)
-				
+						itemButton:SetCooldown(startTime, duration, isEnabled)
 						itemButton:Show()
 						
 						colIndex = colIndex + 1
@@ -295,8 +229,9 @@ local function UpdateAllInOne()
 		while colIndex <= 14 do
 			itemButton = frame["Entry"..rowIndex]["Item"..colIndex]
 			itemButton:Hide()
-			itemButton.id = nil
-			itemButton.link = nil
+			itemButton:SetInfo(nil, nil)
+			-- itemButton.id = nil
+			-- itemButton.link = nil
 			itemButton.startTime = nil
 			itemButton.duration = nil
 			colIndex = colIndex + 1

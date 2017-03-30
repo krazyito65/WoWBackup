@@ -13,1268 +13,807 @@ _detalhes_database = {
 		["reverse"] = false,
 	},
 	["active_profile"] = "Krazyito-Mal'Ganis",
-	["last_realversion"] = 115,
-	["ignore_nicktag"] = false,
+	["last_realversion"] = 116,
 	["tabela_historico"] = {
 		["tabelas"] = {
 			{
 				{
-					["combatId"] = 122,
 					["tipo"] = 2,
+					["combatId"] = 136,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1297,
 							["damage_from"] = {
 							},
 							["targets"] = {
-								["Training Dummy"] = 166081,
+								["Training Dummy"] = 95193,
 							},
+							["delay"] = 1488690057,
 							["pets"] = {
 							},
-							["on_hold"] = true,
+							["custom"] = 0,
+							["tipo"] = 1,
 							["classe"] = "WARLOCK",
 							["raid_targets"] = {
 							},
-							["total_without_pet"] = 166081.008496,
-							["colocacao"] = 1,
-							["timeMachine"] = 1,
-							["dps_started"] = true,
-							["total"] = 166081.008496,
-							["friendlyfire"] = {
-							},
-							["friendlyfire_total"] = 0,
+							["total_without_pet"] = 95193.00881,
 							["nome"] = "Krázýító",
+							["dps_started"] = true,
+							["total"] = 95193.00881,
+							["damage_taken"] = 0.00881,
+							["spec"] = 265,
+							["timeMachine"] = 3,
 							["spells"] = {
-								["tipo"] = 2,
 								["_ActorTable"] = {
 									[980] = {
-										["c_amt"] = 5,
+										["c_amt"] = 6,
 										["b_amt"] = 0,
-										["c_dmg"] = 11005,
+										["c_dmg"] = 22970,
 										["g_amt"] = 0,
-										["n_max"] = 1334,
+										["n_max"] = 2485,
 										["targets"] = {
-											["Training Dummy"] = 45322,
+											["Training Dummy"] = 61093,
 										},
 										["m_dmg"] = 0,
-										["n_dmg"] = 34317,
-										["n_min"] = 225,
-										["g_dmg"] = 0,
-										["counter"] = 42,
-										["total"] = 45322,
-										["c_max"] = 2254,
-										["id"] = 980,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 37,
-										["r_amt"] = 0,
-										["c_min"] = 2187,
-									},
-									[233496] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 11999,
-										["g_amt"] = 0,
-										["n_max"] = 3203,
-										["targets"] = {
-											["Training Dummy"] = 28842,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 16843,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 8,
-										["total"] = 28842,
-										["c_max"] = 6765,
-										["id"] = 233496,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 6,
-										["r_amt"] = 0,
-										["c_min"] = 5234,
-									},
-									[233490] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 10774,
-										["g_amt"] = 0,
-										["n_max"] = 3277,
-										["targets"] = {
-											["Training Dummy"] = 38870,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 28096,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 12,
-										["total"] = 38870,
-										["c_max"] = 5540,
-										["id"] = 233490,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 10,
-										["r_amt"] = 0,
-										["c_min"] = 5234,
-									},
-									[233497] = {
-										["c_amt"] = 1,
-										["b_amt"] = 0,
-										["c_dmg"] = 6765,
-										["g_amt"] = 0,
-										["n_max"] = 3203,
-										["targets"] = {
-											["Training Dummy"] = 15706,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 8941,
-										["n_min"] = 2609,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 15706,
-										["c_max"] = 6765,
-										["id"] = 233497,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 3,
-										["r_amt"] = 0,
-										["c_min"] = 6765,
-									},
-									[146739] = {
-										["c_amt"] = 8,
-										["b_amt"] = 0,
-										["c_dmg"] = 16868,
-										["g_amt"] = 0,
-										["n_max"] = 1232,
-										["targets"] = {
-											["Training Dummy"] = 37341,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 20473,
-										["n_min"] = 261,
+										["n_dmg"] = 38123,
+										["n_min"] = 848,
 										["g_dmg"] = 0,
 										["counter"] = 28,
-										["total"] = 37341,
-										["c_max"] = 2369,
-										["id"] = 146739,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 20,
-										["r_amt"] = 0,
-										["c_min"] = 1778,
-									},
-								},
-							},
-							["grupo"] = true,
-							["spec"] = 265,
-							["serial"] = "Player-153-07468FD5",
-							["last_dps"] = 5856.99705515592,
-							["custom"] = 0,
-							["last_event"] = 1477523539,
-							["damage_taken"] = 0.008496,
-							["start_time"] = 1477523497,
-							["delay"] = 1477523539,
-							["tipo"] = 1,
-						}, -- [1]
-					},
-				}, -- [1]
-				{
-					["combatId"] = 122,
-					["tipo"] = 3,
-					["_ActorTable"] = {
-					},
-				}, -- [2]
-				{
-					["combatId"] = 122,
-					["tipo"] = 7,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["resource"] = 5.007177,
-							["targets"] = {
-							},
-							["pets"] = {
-							},
-							["powertype"] = 0,
-							["classe"] = "WARLOCK",
-							["total"] = 0.007177,
-							["nome"] = "Krázýító",
-							["spec"] = 265,
-							["grupo"] = true,
-							["resource_type"] = 7,
-							["tipo"] = 3,
-							["received"] = 0.007177,
-							["spells"] = {
-								["tipo"] = 7,
-								["_ActorTable"] = {
-								},
-							},
-							["serial"] = "Player-153-07468FD5",
-							["last_event"] = 1477523531,
-						}, -- [1]
-					},
-				}, -- [3]
-				{
-					["combatId"] = 122,
-					["tipo"] = 9,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1047,
-							["debuff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[980] = {
-										["uptime"] = 29,
-										["activedamt"] = 2,
-										["id"] = 980,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233496] = {
-										["uptime"] = 8,
-										["activedamt"] = 1,
-										["id"] = 233496,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233490] = {
-										["uptime"] = 19,
-										["activedamt"] = 0,
-										["id"] = 233490,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233497] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233497,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[146739] = {
-										["uptime"] = 28,
-										["activedamt"] = 1,
-										["id"] = 146739,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["buff_uptime"] = 85,
-							["classe"] = "WARLOCK",
-							["buff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[108366] = {
-										["uptime"] = 29,
-										["activedamt"] = 1,
-										["id"] = 108366,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[138786] = {
-										["uptime"] = 20,
-										["activedamt"] = 2,
-										["id"] = 138786,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[138788] = {
-										["uptime"] = 20,
-										["activedamt"] = 2,
-										["id"] = 138788,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[137590] = {
-										["uptime"] = 16,
-										["activedamt"] = 1,
-										["id"] = 137590,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["debuff_uptime"] = 90,
-							["debuff_uptime_targets"] = {
-							},
-							["spec"] = 265,
-							["grupo"] = true,
-							["spell_cast"] = {
-								[980] = 4,
-								[30108] = 6,
-								[172] = 2,
-							},
-							["buff_uptime_targets"] = {
-							},
-							["last_event"] = 1477523526,
-							["nome"] = "Krázýító",
-							["pets"] = {
-							},
-							["serial"] = "Player-153-07468FD5",
-							["tipo"] = 4,
-						}, -- [1]
-					},
-				}, -- [4]
-				{
-					["combatId"] = 122,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-					},
-				}, -- [5]
-				["raid_roster"] = {
-					["Krázýító"] = true,
-				},
-				["overall_added"] = true,
-				["last_events_tables"] = {
-				},
-				["enemy"] = "Training Dummy",
-				["combat_counter"] = 332,
-				["playing_solo"] = true,
-				["totals"] = {
-					166080.968938, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = -0.005241,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-					["frags_total"] = 0,
-					["voidzone_damage"] = 0,
-				},
-				["player_last_events"] = {
-				},
-				["frags_need_refresh"] = false,
-				["__call"] = {
-				},
-				["PhaseData"] = {
-					{
-						1, -- [1]
-						1, -- [2]
-					}, -- [1]
-					["heal_section"] = {
-					},
-					["heal"] = {
-						{
-						}, -- [1]
-					},
-					["damage_section"] = {
-					},
-					["damage"] = {
-						{
-							["Krázýító"] = 146094.009636,
-						}, -- [1]
-					},
-				},
-				["end_time"] = 99489.208,
-				["combat_id"] = 122,
-				["instance_type"] = "none",
-				["resincked"] = true,
-				["frags"] = {
-				},
-				["data_fim"] = "18:12:06",
-				["data_inicio"] = "18:11:38",
-				["CombatSkillCache"] = {
-				},
-				["totals_grupo"] = {
-					166081, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-				},
-				["start_time"] = 99460.852,
-				["TimeData"] = {
-				},
-				["pvp"] = true,
-			}, -- [1]
-			{
-				{
-					["combatId"] = 121,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["damage_from"] = {
-							},
-							["targets"] = {
-								["Training Dummy"] = 94436,
-							},
-							["pets"] = {
-							},
-							["total"] = 94436.005871,
-							["on_hold"] = false,
-							["classe"] = "WARLOCK",
-							["raid_targets"] = {
-							},
-							["total_without_pet"] = 94436.005871,
-							["colocacao"] = 1,
-							["friendlyfire"] = {
-							},
-							["dps_started"] = false,
-							["end_time"] = 1477523497,
-							["friendlyfire_total"] = 0,
-							["spec"] = 265,
-							["nome"] = "Krázýító",
-							["spells"] = {
-								["tipo"] = 2,
-								["_ActorTable"] = {
-									[980] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 6313,
-										["g_amt"] = 0,
-										["n_max"] = 1465,
-										["targets"] = {
-											["Training Dummy"] = 16733,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 10420,
-										["n_min"] = 211,
-										["g_dmg"] = 0,
-										["counter"] = 13,
-										["total"] = 16733,
-										["c_max"] = 3288,
+										["total"] = 61093,
+										["c_max"] = 4874,
 										["id"] = 980,
 										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 11,
+										["c_min"] = 2449,
 										["r_amt"] = 0,
-										["c_min"] = 3025,
-									},
-									[233496] = {
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 4264,
-										["targets"] = {
-											["Training Dummy"] = 15942,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 15942,
-										["n_min"] = 3522,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 15942,
-										["c_max"] = 0,
-										["id"] = 233496,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 4,
-										["r_amt"] = 0,
-										["c_min"] = 0,
-									},
-									[233490] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 16684,
-										["g_amt"] = 0,
-										["n_max"] = 4115,
-										["targets"] = {
-											["Training Dummy"] = 24766,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 8082,
-										["n_min"] = 3967,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 24766,
-										["c_max"] = 8648,
-										["id"] = 233490,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 2,
-										["r_amt"] = 0,
-										["c_min"] = 8036,
-									},
-									[233497] = {
-										["c_amt"] = 1,
-										["b_amt"] = 0,
-										["c_dmg"] = 8648,
-										["g_amt"] = 0,
-										["n_max"] = 4263,
-										["targets"] = {
-											["Training Dummy"] = 19954,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 11306,
-										["n_min"] = 3521,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 19954,
-										["c_max"] = 8648,
-										["id"] = 233497,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 3,
-										["r_amt"] = 0,
-										["c_min"] = 8648,
-									},
-									[146739] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 5676,
-										["g_amt"] = 0,
-										["n_max"] = 1546,
-										["targets"] = {
-											["Training Dummy"] = 17041,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 11365,
-										["n_min"] = 1323,
-										["g_dmg"] = 0,
-										["counter"] = 10,
-										["total"] = 17041,
-										["c_max"] = 3250,
-										["id"] = 146739,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 8,
-										["r_amt"] = 0,
-										["c_min"] = 2426,
-									},
-								},
-							},
-							["grupo"] = true,
-							["serial"] = "Player-153-07468FD5",
-							["last_dps"] = 6976.65528007169,
-							["custom"] = 0,
-							["last_event"] = 1477523471,
-							["damage_taken"] = 0.005871,
-							["start_time"] = 1477523480,
-							["delay"] = 1477523471,
-							["tipo"] = 1,
-						}, -- [1]
-					},
-				}, -- [1]
-				{
-					["combatId"] = 121,
-					["tipo"] = 3,
-					["_ActorTable"] = {
-					},
-				}, -- [2]
-				{
-					["combatId"] = 121,
-					["tipo"] = 7,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["resource"] = 2.007897,
-							["targets"] = {
-							},
-							["pets"] = {
-							},
-							["powertype"] = 0,
-							["classe"] = "WARLOCK",
-							["total"] = 0.007897,
-							["nome"] = "Krázýító",
-							["spec"] = 265,
-							["grupo"] = true,
-							["resource_type"] = 7,
-							["tipo"] = 3,
-							["received"] = 0.007897,
-							["spells"] = {
-								["tipo"] = 7,
-								["_ActorTable"] = {
-								},
-							},
-							["serial"] = "Player-153-07468FD5",
-							["last_event"] = 1477523469,
-						}, -- [1]
-					},
-				}, -- [3]
-				{
-					["combatId"] = 121,
-					["tipo"] = 9,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1047,
-							["debuff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[980] = {
-										["uptime"] = 14,
-										["activedamt"] = 1,
-										["id"] = 980,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233496] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233496,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233490] = {
-										["uptime"] = 4,
-										["activedamt"] = 0,
-										["id"] = 233490,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233497] = {
-										["uptime"] = 5,
-										["activedamt"] = 0,
-										["id"] = 233497,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[146739] = {
-										["uptime"] = 13,
-										["activedamt"] = 1,
-										["id"] = 146739,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["buff_uptime"] = 57,
-							["classe"] = "WARLOCK",
-							["buff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[138786] = {
-										["uptime"] = 10,
-										["activedamt"] = 1,
-										["id"] = 138786,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[137590] = {
-										["uptime"] = 10,
-										["activedamt"] = 1,
-										["id"] = 137590,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[138788] = {
-										["uptime"] = 10,
-										["activedamt"] = 1,
-										["id"] = 138788,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[108366] = {
-										["uptime"] = 14,
-										["activedamt"] = 1,
-										["id"] = 108366,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[146046] = {
-										["uptime"] = 13,
-										["activedamt"] = 1,
-										["id"] = 146046,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["debuff_uptime"] = 42,
-							["debuff_uptime_targets"] = {
-							},
-							["spec"] = 265,
-							["grupo"] = true,
-							["spell_cast"] = {
-								[172] = 1,
-								[30108] = 3,
-							},
-							["buff_uptime_targets"] = {
-							},
-							["last_event"] = 1477523469,
-							["nome"] = "Krázýító",
-							["pets"] = {
-							},
-							["serial"] = "Player-153-07468FD5",
-							["tipo"] = 4,
-						}, -- [1]
-					},
-				}, -- [4]
-				{
-					["combatId"] = 121,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-					},
-				}, -- [5]
-				["raid_roster"] = {
-					["Krázýító"] = true,
-				},
-				["overall_added"] = true,
-				["last_events_tables"] = {
-				},
-				["enemy"] = "Training Dummy",
-				["combat_counter"] = 331,
-				["playing_solo"] = true,
-				["totals"] = {
-					94435.997215, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-					["frags_total"] = 0,
-					["voidzone_damage"] = 0,
-				},
-				["player_last_events"] = {
-				},
-				["frags_need_refresh"] = false,
-				["__call"] = {
-				},
-				["PhaseData"] = {
-					{
-						1, -- [1]
-						1, -- [2]
-					}, -- [1]
-					["heal_section"] = {
-					},
-					["heal"] = {
-						{
-						}, -- [1]
-					},
-					["damage_section"] = {
-					},
-					["damage"] = {
-						{
-							["Krázýító"] = 87388.005871,
-						}, -- [1]
-					},
-				},
-				["end_time"] = 99432.322,
-				["combat_id"] = 121,
-				["instance_type"] = "none",
-				["frags"] = {
-				},
-				["data_fim"] = "18:11:09",
-				["data_inicio"] = "18:10:55",
-				["CombatSkillCache"] = {
-				},
-				["totals_grupo"] = {
-					94436, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-				},
-				["start_time"] = 99418.786,
-				["TimeData"] = {
-				},
-				["pvp"] = true,
-			}, -- [2]
-			{
-				{
-					["combatId"] = 120,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["damage_from"] = {
-							},
-							["targets"] = {
-								["Training Dummy"] = 91206,
-							},
-							["spec"] = 265,
-							["pets"] = {
-							},
-							["colocacao"] = 1,
-							["end_time"] = 1477523455,
-							["classe"] = "WARLOCK",
-							["raid_targets"] = {
-							},
-							["total_without_pet"] = 91206.005563,
-							["friendlyfire"] = {
-							},
-							["dps_started"] = false,
-							["total"] = 91206.005563,
-							["friendlyfire_total"] = 0,
-							["on_hold"] = false,
-							["nome"] = "Krázýító",
-							["spells"] = {
-								["tipo"] = 2,
-								["_ActorTable"] = {
-									[980] = {
-										["c_amt"] = 4,
-										["b_amt"] = 0,
-										["c_dmg"] = 6346,
-										["g_amt"] = 0,
-										["n_max"] = 1060,
-										["targets"] = {
-											["Training Dummy"] = 21611,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 15265,
-										["n_min"] = 211,
-										["g_dmg"] = 0,
-										["counter"] = 26,
-										["total"] = 21611,
-										["c_max"] = 2188,
-										["id"] = 980,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
 										["m_crit"] = 0,
 										["a_amt"] = 0,
 										["m_amt"] = 0,
 										["successful_casted"] = 0,
 										["b_dmg"] = 0,
 										["n_amt"] = 22,
-										["r_amt"] = 0,
-										["c_min"] = 438,
-									},
-									[233496] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 10467,
-										["g_amt"] = 0,
-										["n_max"] = 2536,
-										["targets"] = {
-											["Training Dummy"] = 15538,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 5071,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 15538,
-										["c_max"] = 5234,
-										["id"] = 233496,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
 										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 2,
-										["r_amt"] = 0,
-										["c_min"] = 5233,
-									},
-									[233497] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 10468,
-										["g_amt"] = 0,
-										["n_max"] = 2536,
-										["targets"] = {
-											["Training Dummy"] = 15539,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 5071,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 15539,
-										["c_max"] = 5234,
-										["id"] = 233497,
-										["r_dmg"] = 0,
 										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 2,
-										["r_amt"] = 0,
-										["c_min"] = 5234,
 									},
-									[233498] = {
+									[146739] = {
 										["c_amt"] = 1,
 										["b_amt"] = 0,
-										["c_dmg"] = 5234,
+										["c_dmg"] = 3164,
 										["g_amt"] = 0,
-										["n_max"] = 2536,
+										["n_max"] = 1532,
 										["targets"] = {
-											["Training Dummy"] = 12840,
+											["Training Dummy"] = 9056,
 										},
 										["m_dmg"] = 0,
-										["n_dmg"] = 7606,
-										["n_min"] = 2535,
+										["n_dmg"] = 5892,
+										["n_min"] = 1296,
 										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 12840,
-										["c_max"] = 5234,
-										["id"] = 233498,
+										["counter"] = 5,
+										["total"] = 9056,
+										["c_max"] = 3164,
+										["id"] = 146739,
 										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 3,
+										["c_min"] = 3164,
 										["r_amt"] = 0,
-										["c_min"] = 5234,
-									},
-									[233499] = {
-										["c_amt"] = 2,
-										["b_amt"] = 0,
-										["c_dmg"] = 10468,
-										["g_amt"] = 0,
-										["n_max"] = 2535,
-										["targets"] = {
-											["Training Dummy"] = 15538,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 5070,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 15538,
-										["c_max"] = 5234,
-										["id"] = 233499,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 2,
-										["r_amt"] = 0,
-										["c_min"] = 5234,
-									},
-									[233490] = {
-										["c_amt"] = 0,
-										["b_amt"] = 0,
-										["c_dmg"] = 0,
-										["g_amt"] = 0,
-										["n_max"] = 2535,
-										["targets"] = {
-											["Training Dummy"] = 10140,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 10140,
-										["n_min"] = 2535,
-										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 10140,
-										["c_max"] = 0,
-										["id"] = 233490,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
 										["m_crit"] = 0,
 										["a_amt"] = 0,
 										["m_amt"] = 0,
 										["successful_casted"] = 0,
 										["b_dmg"] = 0,
 										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233490] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 14505,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 25044,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 10539,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 5,
+										["total"] = 25044,
+										["c_max"] = 7253,
+										["id"] = 233490,
+										["r_dmg"] = 0,
+										["c_min"] = 7252,
 										["r_amt"] = 0,
-										["c_min"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 3,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
 									},
 								},
+								["tipo"] = 2,
 							},
 							["grupo"] = true,
+							["last_dps"] = 17437.8107364021,
+							["friendlyfire_total"] = 0,
+							["colocacao"] = 1,
+							["last_event"] = 1488690057,
+							["on_hold"] = true,
+							["start_time"] = 1488690003,
 							["serial"] = "Player-153-07468FD5",
-							["last_dps"] = 6144.71505511285,
-							["custom"] = 0,
-							["last_event"] = 1477522997,
-							["damage_taken"] = 0.005563,
-							["start_time"] = 1477523436,
-							["delay"] = 1477522997,
-							["tipo"] = 1,
+							["friendlyfire"] = {
+							},
 						}, -- [1]
 					},
 				}, -- [1]
 				{
-					["combatId"] = 120,
 					["tipo"] = 3,
+					["combatId"] = 136,
 					["_ActorTable"] = {
 					},
 				}, -- [2]
 				{
-					["combatId"] = 120,
 					["tipo"] = 7,
+					["combatId"] = 136,
 					["_ActorTable"] = {
 						{
-							["flag_original"] = 1297,
-							["resource"] = 3.00108,
+							["received"] = 0.003008,
+							["resource"] = 3.003008,
 							["targets"] = {
 							},
 							["pets"] = {
 							},
 							["powertype"] = 0,
 							["classe"] = "WARLOCK",
-							["total"] = 0.00108,
-							["nome"] = "Krázýító",
-							["spec"] = 265,
-							["grupo"] = true,
 							["resource_type"] = 7,
-							["tipo"] = 3,
-							["received"] = 0.00108,
+							["nome"] = "Krázýító",
 							["spells"] = {
-								["tipo"] = 7,
 								["_ActorTable"] = {
 								},
+								["tipo"] = 7,
 							},
+							["grupo"] = true,
+							["flag_original"] = 1297,
+							["tipo"] = 3,
+							["total"] = 0.003008,
+							["last_event"] = 1488689962,
 							["serial"] = "Player-153-07468FD5",
-							["last_event"] = 1477522994,
+							["spec"] = 265,
 						}, -- [1]
 					},
 				}, -- [3]
 				{
-					["combatId"] = 120,
 					["tipo"] = 9,
+					["combatId"] = 136,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1047,
 							["debuff_uptime_spells"] = {
-								["tipo"] = 9,
 								["_ActorTable"] = {
 									[980] = {
-										["uptime"] = 15,
+										["uptime"] = 5,
 										["activedamt"] = 1,
 										["id"] = 980,
-										["actived"] = false,
 										["targets"] = {
 										},
-										["counter"] = 0,
-									},
-									[233496] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233496,
 										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233497] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233497,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233498] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233498,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233499] = {
-										["uptime"] = 6,
-										["activedamt"] = 0,
-										["id"] = 233499,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233490] = {
-										["uptime"] = 5,
-										["activedamt"] = 0,
-										["id"] = 233490,
-										["actived"] = false,
-										["targets"] = {
-										},
 										["counter"] = 0,
 									},
 								},
+								["tipo"] = 9,
 							},
-							["buff_uptime"] = 25,
+							["buff_uptime"] = 10,
 							["classe"] = "WARLOCK",
 							["buff_uptime_spells"] = {
-								["tipo"] = 9,
 								["_ActorTable"] = {
 									[108366] = {
-										["uptime"] = 15,
+										["uptime"] = 5,
 										["activedamt"] = 1,
 										["id"] = 108366,
-										["actived"] = false,
 										["targets"] = {
 										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["debuff_uptime"] = 5,
+							["nome"] = "Krázýító",
+							["spec"] = 265,
+							["grupo"] = true,
+							["last_event"] = 1488689949,
+							["tipo"] = 4,
+							["buff_uptime_targets"] = {
+							},
+							["pets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["debuff_uptime_targets"] = {
+							},
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["tipo"] = 2,
+					["combatId"] = 136,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Training Dummy",
+				["combat_counter"] = 368,
+				["playing_solo"] = true,
+				["totals"] = {
+					95192.983159, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = false,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["damage"] = {
+						{
+							["Krázýító"] = 52903.026763,
+						}, -- [1]
+					},
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+				},
+				["end_time"] = 14499.686,
+				["combat_id"] = 136,
+				["instance_type"] = "none",
+				["resincked"] = true,
+				["hasSaved"] = true,
+				["frags"] = {
+				},
+				["data_fim"] = "22:59:09",
+				["data_inicio"] = "22:59:04",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					95193, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 14494.227,
+				["TimeData"] = {
+				},
+				["pvp"] = true,
+			}, -- [1]
+			{
+				{
+					["tipo"] = 2,
+					["combatId"] = 135,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+							},
+							["targets"] = {
+								["Training Dummy"] = 263139,
+							},
+							["delay"] = 1488689425,
+							["pets"] = {
+							},
+							["custom"] = 0,
+							["last_event"] = 1488689943,
+							["friendlyfire_total"] = 0,
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 263139.00596,
+							["on_hold"] = false,
+							["dps_started"] = false,
+							["end_time"] = 1488689944,
+							["damage_taken"] = 0.00596,
+							["spec"] = 265,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+									[233490] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 14907,
+										["g_amt"] = 0,
+										["n_max"] = 4488,
+										["targets"] = {
+											["Training Dummy"] = 62916,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 48009,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 15,
+										["total"] = 62916,
+										["c_max"] = 7654,
+										["id"] = 233490,
+										["r_dmg"] = 0,
+										["c_min"] = 7253,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 13,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[63106] = {
+										["c_amt"] = 4,
+										["b_amt"] = 0,
+										["c_dmg"] = 16696,
+										["g_amt"] = 0,
+										["n_max"] = 2102,
+										["targets"] = {
+											["Training Dummy"] = 27174,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 10478,
+										["n_min"] = 929,
+										["g_dmg"] = 0,
+										["counter"] = 10,
+										["total"] = 27174,
+										["c_max"] = 4340,
+										["id"] = 63106,
+										["r_dmg"] = 0,
+										["c_min"] = 3678,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 6,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233496] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 14506,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 21532,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 7026,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 21532,
+										["c_max"] = 7253,
+										["id"] = 233496,
+										["r_dmg"] = 0,
+										["c_min"] = 7253,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233497] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 14052,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 14052,
+										["c_max"] = 0,
+										["id"] = 233497,
+										["r_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233498] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 14052,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 14052,
+										["c_max"] = 0,
+										["id"] = 233498,
+										["r_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233499] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 14052,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 14052,
+										["c_max"] = 0,
+										["id"] = 233499,
+										["r_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[980] = {
+										["c_amt"] = 6,
+										["b_amt"] = 0,
+										["c_dmg"] = 13201,
+										["g_amt"] = 0,
+										["n_max"] = 2237,
+										["targets"] = {
+											["Training Dummy"] = 45512,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 32311,
+										["n_min"] = 248,
+										["g_dmg"] = 0,
+										["counter"] = 35,
+										["total"] = 45512,
+										["c_max"] = 4361,
+										["id"] = 980,
+										["r_dmg"] = 0,
+										["c_min"] = 770,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 29,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[146739] = {
+										["c_amt"] = 12,
+										["b_amt"] = 0,
+										["c_dmg"] = 31086,
+										["g_amt"] = 0,
+										["n_max"] = 1532,
+										["targets"] = {
+											["Training Dummy"] = 63849,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 32763,
+										["n_min"] = 2,
+										["g_dmg"] = 0,
+										["counter"] = 39,
+										["total"] = 63849,
+										["c_max"] = 3164,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["c_min"] = 2309,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 27,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["grupo"] = true,
+							["last_dps"] = 282.453455715265,
+							["classe"] = "WARLOCK",
+							["colocacao"] = 1,
+							["tipo"] = 1,
+							["friendlyfire"] = {
+							},
+							["start_time"] = 1488689861,
+							["serial"] = "Player-153-07468FD5",
+							["total"] = 263139.00596,
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["tipo"] = 3,
+					["combatId"] = 135,
+					["_ActorTable"] = {
+					},
+				}, -- [2]
+				{
+					["tipo"] = 7,
+					["combatId"] = 135,
+					["_ActorTable"] = {
+						{
+							["received"] = 0.008008,
+							["resource"] = 3.008008,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["resource_type"] = 7,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["grupo"] = true,
+							["flag_original"] = 1297,
+							["tipo"] = 3,
+							["total"] = 0.008008,
+							["last_event"] = 1488689013,
+							["serial"] = "Player-153-07468FD5",
+							["spec"] = 265,
+						}, -- [1]
+					},
+				}, -- [3]
+				{
+					["tipo"] = 9,
+					["combatId"] = 135,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[233490] = {
+										["uptime"] = 10,
+										["activedamt"] = 0,
+										["id"] = 233490,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[63106] = {
+										["uptime"] = 21,
+										["activedamt"] = 0,
+										["id"] = 63106,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233496] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233496,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233497] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233497,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233498] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233498,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233499] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233499,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[980] = {
+										["uptime"] = 20,
+										["activedamt"] = 2,
+										["id"] = 980,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146739] = {
+										["uptime"] = 22,
+										["activedamt"] = 0,
+										["id"] = 146739,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["pets"] = {
+							},
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[138786] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 138786,
+										["targets"] = {
+										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 									[137590] = {
 										["uptime"] = 10,
 										["activedamt"] = 1,
 										["id"] = 137590,
-										["actived"] = false,
 										["targets"] = {
 										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[138788] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 138788,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[108366] = {
+										["uptime"] = 26,
+										["activedamt"] = 1,
+										["id"] = 108366,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["targets"] = {
+										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 								},
+								["tipo"] = 9,
 							},
-							["debuff_uptime"] = 44,
-							["debuff_uptime_targets"] = {
-							},
+							["debuff_uptime"] = 93,
+							["nome"] = "Krázýító",
 							["spec"] = 265,
 							["grupo"] = true,
 							["spell_cast"] = {
-								[30108] = 5,
+								[980] = 3,
+								[63106] = 2,
+								[172] = 2,
+								[30108] = 6,
 							},
+							["tipo"] = 4,
+							["last_event"] = 1488689919,
 							["buff_uptime_targets"] = {
 							},
-							["last_event"] = 1477522994,
-							["nome"] = "Krázýító",
-							["pets"] = {
+							["debuff_uptime_targets"] = {
 							},
 							["serial"] = "Player-153-07468FD5",
-							["tipo"] = 4,
+							["buff_uptime"] = 39,
 						}, -- [1]
 					},
 				}, -- [4]
 				{
-					["combatId"] = 120,
 					["tipo"] = 2,
+					["combatId"] = 135,
 					["_ActorTable"] = {
 					},
 				}, -- [5]
@@ -1285,29 +824,29 @@ _detalhes_database = {
 				["last_events_tables"] = {
 				},
 				["enemy"] = "Training Dummy",
-				["combat_counter"] = 330,
+				["combat_counter"] = 364,
 				["playing_solo"] = true,
 				["totals"] = {
-					91205.9544980003, -- [1]
-					-0.00447300000814721, -- [2]
+					263138.953112, -- [1]
+					0, -- [2]
 					{
-						-0.00174600000000069, -- [1]
-						[0] = 0,
-						[6] = 0,
+						-0.00688699999999898, -- [1]
+						[0] = -0.007103,
+						[6] = -0.00109899999999996,
 						[3] = 0,
 					}, -- [3]
 					{
 						["buff_uptime"] = 0,
 						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
 						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
 					}, -- [4]
-					["frags_total"] = 0,
 					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
 				},
 				["player_last_events"] = {
 				},
@@ -1319,6 +858,11 @@ _detalhes_database = {
 						1, -- [1]
 						1, -- [2]
 					}, -- [1]
+					["damage"] = {
+						{
+							["Krázýító"] = 228162.020462,
+						}, -- [1]
+					},
 					["heal_section"] = {
 					},
 					["heal"] = {
@@ -1327,307 +871,20 @@ _detalhes_database = {
 					},
 					["damage_section"] = {
 					},
-					["damage"] = {
-						{
-							["Krázýító"] = 85237.005563,
-						}, -- [1]
-					},
 				},
-				["end_time"] = 98957.916,
-				["combat_id"] = 120,
-				["instance_type"] = "none",
-				["frags"] = {
-				},
-				["data_fim"] = "18:03:15",
-				["data_inicio"] = "18:03:00",
-				["CombatSkillCache"] = {
-				},
-				["totals_grupo"] = {
-					91206, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-				},
-				["start_time"] = 98943.073,
-				["TimeData"] = {
-				},
-				["pvp"] = true,
-			}, -- [3]
-			{
-				{
-					["combatId"] = 119,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["damage_from"] = {
-							},
-							["targets"] = {
-								["Training Dummy"] = 24368,
-							},
-							["pets"] = {
-							},
-							["on_hold"] = false,
-							["classe"] = "WARLOCK",
-							["raid_targets"] = {
-							},
-							["total_without_pet"] = 24368.00632,
-							["colocacao"] = 1,
-							["friendlyfire"] = {
-							},
-							["dps_started"] = false,
-							["end_time"] = 1477522979,
-							["friendlyfire_total"] = 0,
-							["spec"] = 265,
-							["nome"] = "Krázýító",
-							["spells"] = {
-								["tipo"] = 2,
-								["_ActorTable"] = {
-									[980] = {
-										["c_amt"] = 6,
-										["b_amt"] = 0,
-										["c_dmg"] = 11156,
-										["g_amt"] = 0,
-										["n_max"] = 1092,
-										["targets"] = {
-											["Training Dummy"] = 24368,
-										},
-										["m_dmg"] = 0,
-										["n_dmg"] = 13212,
-										["n_min"] = 212,
-										["g_dmg"] = 0,
-										["counter"] = 24,
-										["total"] = 24368,
-										["c_max"] = 2536,
-										["id"] = 980,
-										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
-										["m_crit"] = 0,
-										["a_amt"] = 0,
-										["m_amt"] = 0,
-										["successful_casted"] = 0,
-										["b_dmg"] = 0,
-										["n_amt"] = 18,
-										["r_amt"] = 0,
-										["c_min"] = 463,
-									},
-								},
-							},
-							["grupo"] = true,
-							["total"] = 24368.00632,
-							["serial"] = "Player-153-07468FD5",
-							["last_dps"] = 4306.82331566243,
-							["custom"] = 0,
-							["last_event"] = 1477522961,
-							["damage_taken"] = 0.00632,
-							["start_time"] = 1477522961,
-							["delay"] = 1477522961,
-							["tipo"] = 1,
-						}, -- [1]
-					},
-				}, -- [1]
-				{
-					["combatId"] = 119,
-					["tipo"] = 3,
-					["_ActorTable"] = {
-					},
-				}, -- [2]
-				{
-					["combatId"] = 119,
-					["tipo"] = 7,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1297,
-							["resource"] = 3.006865,
-							["targets"] = {
-							},
-							["pets"] = {
-							},
-							["powertype"] = 0,
-							["classe"] = "WARLOCK",
-							["total"] = 0.006865,
-							["nome"] = "Krázýító",
-							["spec"] = 265,
-							["grupo"] = true,
-							["resource_type"] = 7,
-							["tipo"] = 3,
-							["received"] = 0.006865,
-							["spells"] = {
-								["tipo"] = 7,
-								["_ActorTable"] = {
-								},
-							},
-							["serial"] = "Player-153-07468FD5",
-							["last_event"] = 1477522958,
-						}, -- [1]
-					},
-				}, -- [3]
-				{
-					["combatId"] = 119,
-					["tipo"] = 9,
-					["_ActorTable"] = {
-						{
-							["flag_original"] = 1047,
-							["debuff_uptime"] = 5,
-							["debuff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[980] = {
-										["uptime"] = 5,
-										["activedamt"] = 1,
-										["id"] = 980,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["debuff_uptime_targets"] = {
-							},
-							["spec"] = 265,
-							["grupo"] = true,
-							["nome"] = "Krázýító",
-							["pets"] = {
-							},
-							["buff_uptime_targets"] = {
-							},
-							["buff_uptime"] = 20,
-							["classe"] = "WARLOCK",
-							["tipo"] = 4,
-							["buff_uptime_spells"] = {
-								["tipo"] = 9,
-								["_ActorTable"] = {
-									[137590] = {
-										["uptime"] = 5,
-										["activedamt"] = 1,
-										["id"] = 137590,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[138786] = {
-										["uptime"] = 5,
-										["activedamt"] = 1,
-										["id"] = 138786,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[138788] = {
-										["uptime"] = 5,
-										["activedamt"] = 1,
-										["id"] = 138788,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[108366] = {
-										["uptime"] = 5,
-										["activedamt"] = 1,
-										["id"] = 108366,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-								},
-							},
-							["serial"] = "Player-153-07468FD5",
-							["last_event"] = 1477522949,
-						}, -- [1]
-					},
-				}, -- [4]
-				{
-					["combatId"] = 119,
-					["tipo"] = 2,
-					["_ActorTable"] = {
-					},
-				}, -- [5]
-				["raid_roster"] = {
-					["Krázýító"] = true,
-				},
-				["last_events_tables"] = {
-				},
-				["enemy"] = "Training Dummy",
-				["combat_counter"] = 328,
-				["playing_solo"] = true,
-				["totals"] = {
-					24367.992513, -- [1]
-					0, -- [2]
-					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
-						[3] = 0,
-					}, -- [3]
-					{
-						["buff_uptime"] = 0,
-						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
-						["dead"] = 0,
-					}, -- [4]
-					["frags_total"] = 0,
-					["voidzone_damage"] = 0,
-				},
-				["player_last_events"] = {
-				},
-				["frags_need_refresh"] = false,
-				["__call"] = {
-				},
-				["PhaseData"] = {
-					{
-						1, -- [1]
-						1, -- [2]
-					}, -- [1]
-					["heal_section"] = {
-					},
-					["heal"] = {
-						{
-						}, -- [1]
-					},
-					["damage_section"] = {
-					},
-					["damage"] = {
-						{
-							["Krázýító"] = 5587.01353,
-						}, -- [1]
-					},
-				},
-				["end_time"] = 98913.132,
-				["combat_id"] = 119,
+				["end_time"] = 14469.29,
+				["combat_id"] = 135,
 				["instance_type"] = "none",
 				["resincked"] = true,
+				["hasSaved"] = true,
 				["frags"] = {
 				},
-				["data_fim"] = "18:02:30",
-				["data_inicio"] = "18:02:24",
+				["data_fim"] = "22:58:39",
+				["data_inicio"] = "22:43:07",
 				["CombatSkillCache"] = {
 				},
 				["totals_grupo"] = {
-					24368, -- [1]
+					263139, -- [1]
 					0, -- [2]
 					{
 						0, -- [1]
@@ -1638,298 +895,525 @@ _detalhes_database = {
 					{
 						["buff_uptime"] = 0,
 						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
 						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
 					}, -- [4]
 				},
-				["start_time"] = 98907.474,
+				["start_time"] = 13537.671,
 				["TimeData"] = {
 				},
 				["pvp"] = true,
-			}, -- [4]
+			}, -- [2]
 			{
 				{
-					["combatId"] = 118,
 					["tipo"] = 2,
+					["combatId"] = 135,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1297,
 							["damage_from"] = {
 							},
 							["targets"] = {
-								["Training Dummy"] = 40405,
+								["Training Dummy"] = 263139,
 							},
+							["delay"] = 1488689425,
 							["pets"] = {
 							},
-							["total"] = 40405.002806,
-							["on_hold"] = false,
-							["classe"] = "WARLOCK",
+							["custom"] = 0,
+							["last_event"] = 1488689943,
+							["friendlyfire_total"] = 0,
 							["raid_targets"] = {
 							},
-							["total_without_pet"] = 40405.002806,
-							["colocacao"] = 1,
-							["friendlyfire"] = {
-							},
+							["total_without_pet"] = 263139.00596,
+							["on_hold"] = false,
 							["dps_started"] = false,
-							["end_time"] = 1477522944,
-							["friendlyfire_total"] = 0,
+							["end_time"] = 1488689944,
+							["damage_taken"] = 0.00596,
 							["spec"] = 265,
 							["nome"] = "Krázýító",
 							["spells"] = {
-								["tipo"] = 2,
 								["_ActorTable"] = {
-									[233497] = {
-										["c_amt"] = 1,
+									[233490] = {
+										["c_amt"] = 2,
 										["b_amt"] = 0,
-										["c_dmg"] = 6306,
+										["c_dmg"] = 14907,
 										["g_amt"] = 0,
-										["n_max"] = 2906,
+										["n_max"] = 4488,
 										["targets"] = {
-											["Training Dummy"] = 14801,
+											["Training Dummy"] = 62916,
 										},
 										["m_dmg"] = 0,
-										["n_dmg"] = 8495,
-										["n_min"] = 2757,
+										["n_dmg"] = 48009,
+										["n_min"] = 3513,
 										["g_dmg"] = 0,
-										["counter"] = 4,
-										["total"] = 14801,
-										["c_max"] = 6306,
-										["id"] = 233497,
+										["counter"] = 15,
+										["total"] = 62916,
+										["c_max"] = 7654,
+										["id"] = 233490,
 										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
+										["c_min"] = 7253,
+										["r_amt"] = 0,
 										["m_crit"] = 0,
 										["a_amt"] = 0,
 										["m_amt"] = 0,
 										["successful_casted"] = 0,
 										["b_dmg"] = 0,
-										["n_amt"] = 3,
+										["n_amt"] = 13,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[63106] = {
+										["c_amt"] = 4,
+										["b_amt"] = 0,
+										["c_dmg"] = 16696,
+										["g_amt"] = 0,
+										["n_max"] = 2102,
+										["targets"] = {
+											["Training Dummy"] = 27174,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 10478,
+										["n_min"] = 929,
+										["g_dmg"] = 0,
+										["counter"] = 10,
+										["total"] = 27174,
+										["c_max"] = 4340,
+										["id"] = 63106,
+										["r_dmg"] = 0,
+										["c_min"] = 3678,
 										["r_amt"] = 0,
-										["c_min"] = 6306,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 6,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
 									},
 									[233496] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 14506,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 21532,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 7026,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 21532,
+										["c_max"] = 7253,
+										["id"] = 233496,
+										["r_dmg"] = 0,
+										["c_min"] = 7253,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 2,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233497] = {
 										["c_amt"] = 0,
 										["b_amt"] = 0,
 										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 3054,
+										["n_max"] = 3513,
 										["targets"] = {
-											["Training Dummy"] = 11401,
+											["Training Dummy"] = 14052,
 										},
 										["m_dmg"] = 0,
-										["n_dmg"] = 11401,
-										["n_min"] = 2684,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
 										["g_dmg"] = 0,
 										["counter"] = 4,
-										["total"] = 11401,
+										["total"] = 14052,
 										["c_max"] = 0,
-										["id"] = 233496,
+										["id"] = 233497,
 										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
 										["m_crit"] = 0,
 										["a_amt"] = 0,
 										["m_amt"] = 0,
 										["successful_casted"] = 0,
 										["b_dmg"] = 0,
 										["n_amt"] = 4,
-										["r_amt"] = 0,
-										["c_min"] = 0,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
 									},
-									[233490] = {
-										["c_amt"] = 1,
+									[233498] = {
+										["c_amt"] = 0,
 										["b_amt"] = 0,
-										["c_dmg"] = 6152,
+										["c_dmg"] = 0,
 										["g_amt"] = 0,
-										["n_max"] = 2832,
+										["n_max"] = 3513,
 										["targets"] = {
-											["Training Dummy"] = 14203,
+											["Training Dummy"] = 14052,
 										},
 										["m_dmg"] = 0,
-										["n_dmg"] = 8051,
-										["n_min"] = 2535,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
 										["g_dmg"] = 0,
 										["counter"] = 4,
-										["total"] = 14203,
-										["c_max"] = 6152,
-										["id"] = 233490,
+										["total"] = 14052,
+										["c_max"] = 0,
+										["id"] = 233498,
 										["r_dmg"] = 0,
-										["spellschool"] = 32,
-										["a_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
 										["m_crit"] = 0,
 										["a_amt"] = 0,
 										["m_amt"] = 0,
 										["successful_casted"] = 0,
 										["b_dmg"] = 0,
-										["n_amt"] = 3,
+										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[233499] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 3513,
+										["targets"] = {
+											["Training Dummy"] = 14052,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 14052,
+										["n_min"] = 3513,
+										["g_dmg"] = 0,
+										["counter"] = 4,
+										["total"] = 14052,
+										["c_max"] = 0,
+										["id"] = 233499,
+										["r_dmg"] = 0,
+										["c_min"] = 0,
 										["r_amt"] = 0,
-										["c_min"] = 6152,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 4,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[980] = {
+										["c_amt"] = 6,
+										["b_amt"] = 0,
+										["c_dmg"] = 13201,
+										["g_amt"] = 0,
+										["n_max"] = 2237,
+										["targets"] = {
+											["Training Dummy"] = 45512,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 32311,
+										["n_min"] = 248,
+										["g_dmg"] = 0,
+										["counter"] = 35,
+										["total"] = 45512,
+										["c_max"] = 4361,
+										["id"] = 980,
+										["r_dmg"] = 0,
+										["c_min"] = 770,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 29,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[146739] = {
+										["c_amt"] = 12,
+										["b_amt"] = 0,
+										["c_dmg"] = 31086,
+										["g_amt"] = 0,
+										["n_max"] = 1532,
+										["targets"] = {
+											["Training Dummy"] = 63849,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 32763,
+										["n_min"] = 2,
+										["g_dmg"] = 0,
+										["counter"] = 39,
+										["total"] = 63849,
+										["c_max"] = 3164,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["c_min"] = 2309,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 27,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
 									},
 								},
+								["tipo"] = 2,
 							},
 							["grupo"] = true,
-							["serial"] = "Player-153-07468FD5",
-							["last_dps"] = 6382.08858095992,
-							["custom"] = 0,
-							["last_event"] = 1477522923,
-							["damage_taken"] = 0.002806,
-							["start_time"] = 1477522937,
-							["delay"] = 1477522923,
+							["last_dps"] = 282.453455715265,
+							["classe"] = "WARLOCK",
+							["colocacao"] = 1,
 							["tipo"] = 1,
+							["friendlyfire"] = {
+							},
+							["start_time"] = 1488689861,
+							["serial"] = "Player-153-07468FD5",
+							["total"] = 263139.00596,
 						}, -- [1]
 					},
 				}, -- [1]
 				{
-					["combatId"] = 118,
 					["tipo"] = 3,
+					["combatId"] = 135,
 					["_ActorTable"] = {
 					},
 				}, -- [2]
 				{
-					["combatId"] = 118,
 					["tipo"] = 7,
+					["combatId"] = 135,
 					["_ActorTable"] = {
+						{
+							["received"] = 0.008008,
+							["resource"] = 3.008008,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["resource_type"] = 7,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["grupo"] = true,
+							["flag_original"] = 1297,
+							["tipo"] = 3,
+							["total"] = 0.008008,
+							["last_event"] = 1488689013,
+							["serial"] = "Player-153-07468FD5",
+							["spec"] = 265,
+						}, -- [1]
 					},
 				}, -- [3]
 				{
-					["combatId"] = 118,
 					["tipo"] = 9,
+					["combatId"] = 135,
 					["_ActorTable"] = {
 						{
 							["flag_original"] = 1047,
 							["debuff_uptime_spells"] = {
-								["tipo"] = 9,
 								["_ActorTable"] = {
-									[233497] = {
-										["uptime"] = 6,
+									[233490] = {
+										["uptime"] = 10,
 										["activedamt"] = 0,
-										["id"] = 233497,
-										["actived"] = false,
+										["id"] = 233490,
 										["targets"] = {
 										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[63106] = {
+										["uptime"] = 21,
+										["activedamt"] = 0,
+										["id"] = 63106,
+										["targets"] = {
+										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 									[233496] = {
-										["uptime"] = 6,
-										["activedamt"] = 1,
-										["id"] = 233496,
-										["actived"] = false,
-										["targets"] = {
-										},
-										["counter"] = 0,
-									},
-									[233490] = {
 										["uptime"] = 5,
 										["activedamt"] = 0,
-										["id"] = 233490,
-										["actived"] = false,
+										["id"] = 233496,
 										["targets"] = {
 										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233497] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233497,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233498] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233498,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[233499] = {
+										["uptime"] = 5,
+										["activedamt"] = 0,
+										["id"] = 233499,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[980] = {
+										["uptime"] = 20,
+										["activedamt"] = 2,
+										["id"] = 980,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146739] = {
+										["uptime"] = 22,
+										["activedamt"] = 0,
+										["id"] = 146739,
+										["targets"] = {
+										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 								},
+								["tipo"] = 9,
 							},
-							["buff_uptime"] = 24,
+							["pets"] = {
+							},
 							["classe"] = "WARLOCK",
 							["buff_uptime_spells"] = {
-								["tipo"] = 9,
 								["_ActorTable"] = {
-									[137590] = {
-										["uptime"] = 6,
-										["activedamt"] = 1,
-										["id"] = 137590,
-										["actived"] = false,
+									[138786] = {
+										["uptime"] = 0,
+										["activedamt"] = 0,
+										["id"] = 138786,
 										["targets"] = {
 										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
-									[138786] = {
-										["uptime"] = 6,
+									[137590] = {
+										["uptime"] = 10,
 										["activedamt"] = 1,
-										["id"] = 138786,
-										["actived"] = false,
+										["id"] = 137590,
 										["targets"] = {
 										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 									[138788] = {
-										["uptime"] = 6,
-										["activedamt"] = 1,
+										["uptime"] = 0,
+										["activedamt"] = 0,
 										["id"] = 138788,
-										["actived"] = false,
 										["targets"] = {
 										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 									[108366] = {
-										["uptime"] = 6,
+										["uptime"] = 26,
 										["activedamt"] = 1,
 										["id"] = 108366,
-										["actived"] = false,
 										["targets"] = {
 										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 3,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["targets"] = {
+										},
+										["actived"] = false,
 										["counter"] = 0,
 									},
 								},
+								["tipo"] = 9,
 							},
-							["debuff_uptime"] = 17,
-							["debuff_uptime_targets"] = {
-							},
+							["debuff_uptime"] = 93,
+							["nome"] = "Krázýító",
 							["spec"] = 265,
 							["grupo"] = true,
 							["spell_cast"] = {
-								[30108] = 1,
+								[980] = 3,
+								[63106] = 2,
+								[172] = 2,
+								[30108] = 6,
 							},
+							["tipo"] = 4,
+							["last_event"] = 1488689919,
 							["buff_uptime_targets"] = {
 							},
-							["last_event"] = 1477522923,
-							["nome"] = "Krázýító",
-							["pets"] = {
+							["debuff_uptime_targets"] = {
 							},
 							["serial"] = "Player-153-07468FD5",
-							["tipo"] = 4,
+							["buff_uptime"] = 39,
 						}, -- [1]
 					},
 				}, -- [4]
 				{
-					["combatId"] = 118,
 					["tipo"] = 2,
+					["combatId"] = 135,
 					["_ActorTable"] = {
 					},
 				}, -- [5]
 				["raid_roster"] = {
 					["Krázýító"] = true,
 				},
+				["overall_added"] = true,
 				["last_events_tables"] = {
 				},
 				["enemy"] = "Training Dummy",
-				["combat_counter"] = 327,
+				["combat_counter"] = 364,
 				["playing_solo"] = true,
 				["totals"] = {
-					40404.994149, -- [1]
+					263138.953112, -- [1]
 					0, -- [2]
 					{
-						0, -- [1]
-						[0] = 0,
-						[6] = 0,
+						-0.00688699999999898, -- [1]
+						[0] = -0.007103,
+						[6] = -0.00109899999999996,
 						[3] = 0,
 					}, -- [3]
 					{
 						["buff_uptime"] = 0,
 						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
 						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
 					}, -- [4]
-					["frags_total"] = 0,
 					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
 				},
 				["player_last_events"] = {
 				},
@@ -1941,6 +1425,11 @@ _detalhes_database = {
 						1, -- [1]
 						1, -- [2]
 					}, -- [1]
+					["damage"] = {
+						{
+							["Krázýító"] = 228162.020462,
+						}, -- [1]
+					},
 					["heal_section"] = {
 					},
 					["heal"] = {
@@ -1949,23 +1438,20 @@ _detalhes_database = {
 					},
 					["damage_section"] = {
 					},
-					["damage"] = {
-						{
-							["Krázýító"] = 37351.002806,
-						}, -- [1]
-					},
 				},
-				["end_time"] = 98886.515,
-				["combat_id"] = 118,
+				["end_time"] = 14469.29,
+				["combat_id"] = 135,
 				["instance_type"] = "none",
+				["resincked"] = true,
+				["hasSaved"] = true,
 				["frags"] = {
 				},
-				["data_fim"] = "18:02:03",
-				["data_inicio"] = "18:01:57",
+				["data_fim"] = "22:58:39",
+				["data_inicio"] = "22:43:07",
 				["CombatSkillCache"] = {
 				},
 				["totals_grupo"] = {
-					40405, -- [1]
+					263139, -- [1]
 					0, -- [2]
 					{
 						0, -- [1]
@@ -1976,23 +1462,737 @@ _detalhes_database = {
 					{
 						["buff_uptime"] = 0,
 						["ress"] = 0,
-						["debuff_uptime"] = 0,
-						["cooldowns_defensive"] = 0,
-						["interrupt"] = 0,
-						["dispell"] = 0,
-						["cc_break"] = 0,
 						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
 					}, -- [4]
 				},
-				["start_time"] = 98880.184,
+				["start_time"] = 13537.671,
+				["TimeData"] = {
+				},
+				["pvp"] = true,
+			}, -- [3]
+			{
+				{
+					["tipo"] = 2,
+					["combatId"] = 134,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+							},
+							["targets"] = {
+								["Training Dummy"] = 73616,
+							},
+							["delay"] = 0,
+							["pets"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 1,
+							["classe"] = "WARLOCK",
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 73616.007575,
+							["spells"] = {
+								["_ActorTable"] = {
+									[980] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 5682,
+										["g_amt"] = 0,
+										["n_max"] = 2203,
+										["targets"] = {
+											["Training Dummy"] = 18678,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 12996,
+										["n_min"] = 262,
+										["g_dmg"] = 0,
+										["counter"] = 13,
+										["total"] = 18678,
+										["c_max"] = 3848,
+										["id"] = 980,
+										["r_dmg"] = 0,
+										["c_min"] = 1834,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 11,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[146739] = {
+										["c_amt"] = 8,
+										["b_amt"] = 0,
+										["c_dmg"] = 23495,
+										["g_amt"] = 0,
+										["n_max"] = 1843,
+										["targets"] = {
+											["Training Dummy"] = 54938,
+											["Raider's Training Dummy"] = 0,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 31443,
+										["n_min"] = 1119,
+										["g_dmg"] = 0,
+										["counter"] = 30,
+										["total"] = 54938,
+										["c_max"] = 3164,
+										["c_min"] = 2438,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["b_dmg"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 21,
+										["spellschool"] = 32,
+										["MISS"] = 1,
+									},
+									[172] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 0,
+										["targets"] = {
+											["Raider's Training Dummy"] = 0,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 0,
+										["n_min"] = 0,
+										["g_dmg"] = 0,
+										["counter"] = 3,
+										["total"] = 0,
+										["c_max"] = 0,
+										["c_min"] = 0,
+										["id"] = 172,
+										["r_dmg"] = 0,
+										["r_amt"] = 0,
+										["a_dmg"] = 0,
+										["m_crit"] = 0,
+										["b_dmg"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["a_amt"] = 0,
+										["n_amt"] = 0,
+										["spellschool"] = 32,
+										["MISS"] = 3,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["dps_started"] = false,
+							["end_time"] = 1488688987,
+							["damage_taken"] = 0.007575,
+							["total"] = 73616.007575,
+							["nome"] = "Krázýító",
+							["spec"] = 265,
+							["grupo"] = true,
+							["last_dps"] = 5129.67790223657,
+							["friendlyfire_total"] = 0,
+							["colocacao"] = 1,
+							["last_event"] = 1488688986,
+							["on_hold"] = false,
+							["start_time"] = 1488688962,
+							["serial"] = "Player-153-07468FD5",
+							["friendlyfire"] = {
+							},
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["tipo"] = 3,
+					["combatId"] = 134,
+					["_ActorTable"] = {
+					},
+				}, -- [2]
+				{
+					["tipo"] = 7,
+					["combatId"] = 134,
+					["_ActorTable"] = {
+						{
+							["received"] = 0.004364,
+							["resource"] = 1.004364,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["resource_type"] = 7,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["grupo"] = true,
+							["flag_original"] = 1297,
+							["tipo"] = 3,
+							["total"] = 0.004364,
+							["last_event"] = 1488688969,
+							["serial"] = "Player-153-07468FD5",
+							["spec"] = 265,
+						}, -- [1]
+					},
+				}, -- [3]
+				{
+					["tipo"] = 9,
+					["combatId"] = 134,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[146739] = {
+										["uptime"] = 14,
+										["activedamt"] = 2,
+										["id"] = 146739,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[980] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 980,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["pets"] = {
+							},
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[138786] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 138786,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[137590] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 137590,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[138788] = {
+										["uptime"] = 10,
+										["activedamt"] = 1,
+										["id"] = 138788,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[108366] = {
+										["uptime"] = 14,
+										["activedamt"] = 1,
+										["id"] = 108366,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146046] = {
+										["uptime"] = 6,
+										["activedamt"] = 1,
+										["id"] = 146046,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["debuff_uptime"] = 28,
+							["nome"] = "Krázýító",
+							["spec"] = 265,
+							["grupo"] = true,
+							["spell_cast"] = {
+								[172] = 4,
+							},
+							["tipo"] = 4,
+							["last_event"] = 1488688976,
+							["debuff_uptime_targets"] = {
+							},
+							["buff_uptime_targets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["buff_uptime"] = 50,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["tipo"] = 2,
+					["combatId"] = 134,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["overall_added"] = true,
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Training Dummy",
+				["combat_counter"] = 363,
+				["playing_solo"] = true,
+				["totals"] = {
+					73615.9826960001, -- [1]
+					-0.005172, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = true,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["damage"] = {
+						{
+							["Krázýító"] = 46791.007575,
+						}, -- [1]
+					},
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+				},
+				["end_time"] = 13526.349,
+				["combat_id"] = 134,
+				["instance_type"] = "none",
+				["hasSaved"] = true,
+				["frags"] = {
+					["Yéézus-Area52"] = 1,
+				},
+				["data_fim"] = "22:42:56",
+				["data_inicio"] = "22:42:42",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					73616, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 13511.998,
+				["TimeData"] = {
+				},
+				["pvp"] = true,
+			}, -- [4]
+			{
+				{
+					["tipo"] = 2,
+					["combatId"] = 133,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1297,
+							["damage_from"] = {
+							},
+							["targets"] = {
+								["Training Dummy"] = 31832,
+							},
+							["delay"] = 0,
+							["pets"] = {
+							},
+							["custom"] = 0,
+							["tipo"] = 1,
+							["classe"] = "WARLOCK",
+							["raid_targets"] = {
+							},
+							["total_without_pet"] = 31832.007799,
+							["spells"] = {
+								["_ActorTable"] = {
+									[980] = {
+										["c_amt"] = 1,
+										["b_amt"] = 0,
+										["c_dmg"] = 2566,
+										["g_amt"] = 0,
+										["n_max"] = 1367,
+										["targets"] = {
+											["Training Dummy"] = 9400,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 6834,
+										["n_min"] = 248,
+										["g_dmg"] = 0,
+										["counter"] = 10,
+										["total"] = 9400,
+										["c_max"] = 2566,
+										["id"] = 980,
+										["r_dmg"] = 0,
+										["c_min"] = 2566,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 9,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[63106] = {
+										["c_amt"] = 0,
+										["b_amt"] = 0,
+										["c_dmg"] = 0,
+										["g_amt"] = 0,
+										["n_max"] = 1781,
+										["targets"] = {
+											["Training Dummy"] = 10669,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 10669,
+										["n_min"] = 1764,
+										["g_dmg"] = 0,
+										["counter"] = 6,
+										["total"] = 10669,
+										["c_max"] = 0,
+										["id"] = 63106,
+										["r_dmg"] = 0,
+										["c_min"] = 0,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 6,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+									[146739] = {
+										["c_amt"] = 2,
+										["b_amt"] = 0,
+										["c_dmg"] = 4620,
+										["g_amt"] = 0,
+										["n_max"] = 1119,
+										["targets"] = {
+											["Training Dummy"] = 11763,
+										},
+										["m_dmg"] = 0,
+										["n_dmg"] = 7143,
+										["n_min"] = 429,
+										["g_dmg"] = 0,
+										["counter"] = 9,
+										["total"] = 11763,
+										["c_max"] = 2310,
+										["id"] = 146739,
+										["r_dmg"] = 0,
+										["c_min"] = 2310,
+										["r_amt"] = 0,
+										["m_crit"] = 0,
+										["a_amt"] = 0,
+										["m_amt"] = 0,
+										["successful_casted"] = 0,
+										["b_dmg"] = 0,
+										["n_amt"] = 7,
+										["a_dmg"] = 0,
+										["spellschool"] = 32,
+									},
+								},
+								["tipo"] = 2,
+							},
+							["dps_started"] = false,
+							["end_time"] = 1488688430,
+							["damage_taken"] = 0.007799,
+							["total"] = 31832.007799,
+							["nome"] = "Krázýító",
+							["spec"] = 265,
+							["grupo"] = true,
+							["last_dps"] = 5777.13390181465,
+							["friendlyfire_total"] = 0,
+							["colocacao"] = 1,
+							["last_event"] = 1488688429,
+							["on_hold"] = false,
+							["start_time"] = 1488688414,
+							["serial"] = "Player-153-07468FD5",
+							["friendlyfire"] = {
+							},
+						}, -- [1]
+					},
+				}, -- [1]
+				{
+					["tipo"] = 3,
+					["combatId"] = 133,
+					["_ActorTable"] = {
+					},
+				}, -- [2]
+				{
+					["tipo"] = 7,
+					["combatId"] = 133,
+					["_ActorTable"] = {
+						{
+							["received"] = 0.004857,
+							["resource"] = 2.004857,
+							["targets"] = {
+							},
+							["pets"] = {
+							},
+							["powertype"] = 0,
+							["classe"] = "WARLOCK",
+							["resource_type"] = 7,
+							["nome"] = "Krázýító",
+							["spells"] = {
+								["_ActorTable"] = {
+								},
+								["tipo"] = 7,
+							},
+							["grupo"] = true,
+							["flag_original"] = 1297,
+							["tipo"] = 3,
+							["total"] = 0.004857,
+							["last_event"] = 1488688429,
+							["serial"] = "Player-153-07468FD5",
+							["spec"] = 265,
+						}, -- [1]
+					},
+				}, -- [3]
+				{
+					["tipo"] = 9,
+					["combatId"] = 133,
+					["_ActorTable"] = {
+						{
+							["flag_original"] = 1047,
+							["debuff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[980] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 980,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[63106] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 63106,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+									[146739] = {
+										["uptime"] = 5,
+										["activedamt"] = 2,
+										["id"] = 146739,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["pets"] = {
+							},
+							["classe"] = "WARLOCK",
+							["buff_uptime_spells"] = {
+								["_ActorTable"] = {
+									[108366] = {
+										["uptime"] = 5,
+										["activedamt"] = 1,
+										["id"] = 108366,
+										["targets"] = {
+										},
+										["actived"] = false,
+										["counter"] = 0,
+									},
+								},
+								["tipo"] = 9,
+							},
+							["debuff_uptime"] = 15,
+							["nome"] = "Krázýító",
+							["spec"] = 265,
+							["grupo"] = true,
+							["spell_cast"] = {
+								[172] = 1,
+							},
+							["tipo"] = 4,
+							["last_event"] = 1488688419,
+							["buff_uptime_targets"] = {
+							},
+							["debuff_uptime_targets"] = {
+							},
+							["serial"] = "Player-153-07468FD5",
+							["buff_uptime"] = 5,
+						}, -- [1]
+					},
+				}, -- [4]
+				{
+					["tipo"] = 2,
+					["combatId"] = 133,
+					["_ActorTable"] = {
+					},
+				}, -- [5]
+				["raid_roster"] = {
+					["Krázýító"] = true,
+				},
+				["last_events_tables"] = {
+				},
+				["enemy"] = "Training Dummy",
+				["combat_counter"] = 361,
+				["playing_solo"] = true,
+				["totals"] = {
+					31831.9236740006, -- [1]
+					-0.00377, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = -0.00188699999999997,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = -0.00512200000000007,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+					["voidzone_damage"] = 0,
+					["frags_total"] = 0,
+				},
+				["player_last_events"] = {
+				},
+				["frags_need_refresh"] = false,
+				["__call"] = {
+				},
+				["PhaseData"] = {
+					{
+						1, -- [1]
+						1, -- [2]
+					}, -- [1]
+					["damage"] = {
+						{
+							["Krázýító"] = 14026.015179,
+						}, -- [1]
+					},
+					["heal_section"] = {
+					},
+					["heal"] = {
+						{
+						}, -- [1]
+					},
+					["damage_section"] = {
+					},
+				},
+				["end_time"] = 12969.634,
+				["instance_type"] = "none",
+				["combat_id"] = 133,
+				["resincked"] = true,
+				["hasSaved"] = true,
+				["frags"] = {
+				},
+				["data_fim"] = "22:33:39",
+				["data_inicio"] = "22:33:34",
+				["CombatSkillCache"] = {
+				},
+				["totals_grupo"] = {
+					31832, -- [1]
+					0, -- [2]
+					{
+						0, -- [1]
+						[0] = 0,
+						[6] = 0,
+						[3] = 0,
+					}, -- [3]
+					{
+						["buff_uptime"] = 0,
+						["ress"] = 0,
+						["dead"] = 0,
+						["cc_break"] = 0,
+						["interrupt"] = 0,
+						["debuff_uptime"] = 0,
+						["dispell"] = 0,
+						["cooldowns_defensive"] = 0,
+					}, -- [4]
+				},
+				["start_time"] = 12964.124,
 				["TimeData"] = {
 				},
 				["pvp"] = true,
 			}, -- [5]
 		},
 	},
-	["last_encounter"] = "Alysrazor",
-	["combat_counter"] = 333,
+	["ignore_nicktag"] = false,
+	["cached_talents"] = {
+		["Player-153-07468FD5"] = {
+			22044, -- [1]
+			22090, -- [2]
+			19279, -- [3]
+		},
+	},
+	["combat_counter"] = 373,
+	["savedbuffs"] = {
+	},
 	["plugin_database"] = {
 		["DETAILS_PLUGIN_DAMAGE_RANK"] = {
 			["lasttry"] = {
@@ -2007,6 +2207,7 @@ _detalhes_database = {
 		},
 		["DETAILS_PLUGIN_DEATH_GRAPHICS"] = {
 			["last_boss"] = false,
+			["v1"] = true,
 			["captures"] = {
 				false, -- [1]
 				false, -- [2]
@@ -2044,74 +2245,6 @@ _detalhes_database = {
 			["max_emote_segments"] = 3,
 			["author"] = "Details! Team",
 		},
-		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
-			["font_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				1, -- [4]
-			},
-			["is_first_run"] = false,
-			["arrow_color"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-				0.5, -- [4]
-			},
-			["main_frame_size"] = {
-				250, -- [1]
-				230, -- [2]
-			},
-			["minimap"] = {
-				["minimapPos"] = 259.838116019835,
-				["radius"] = 160,
-				["hide"] = false,
-			},
-			["arrow_anchor_x"] = 0,
-			["row_texture"] = "Details Serenity",
-			["scale"] = 1,
-			["row_height"] = 20,
-			["enabled"] = false,
-			["arrow_size"] = 10,
-			["point"] = "LEFT",
-			["row_spacement"] = 21,
-			["main_frame_color"] = {
-				0, -- [1]
-				0, -- [2]
-				0, -- [3]
-				0.2, -- [4]
-			},
-			["author"] = "Details! Team",
-			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
-			["font_size"] = 10,
-			["y"] = -57.9828643798828,
-			["x"] = 8.75213241577149,
-			["font_face"] = "Friz Quadrata TT",
-			["per_second"] = {
-				["enabled"] = false,
-				["point"] = "CENTER",
-				["scale"] = 1.5,
-				["font_shadow"] = true,
-				["y"] = 0,
-				["x"] = 0,
-				["size"] = 32,
-				["update_speed"] = 0.05,
-				["attribute_type"] = 1,
-			},
-			["row_color"] = {
-				0.1, -- [1]
-				0.1, -- [2]
-				0.1, -- [3]
-				0.4, -- [4]
-			},
-			["main_frame_strata"] = "LOW",
-			["main_frame_locked"] = false,
-			["arrow_anchor_y"] = 0,
-		},
-		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-		},
 		["DETAILS_PLUGIN_CHART_VIEWER"] = {
 			["enabled"] = true,
 			["author"] = "Details! Team",
@@ -2143,6 +2276,75 @@ _detalhes_database = {
 				["window_scale"] = 1,
 			},
 		},
+		["DETAILS_PLUGIN_STREAM_OVERLAY"] = {
+			["font_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				1, -- [4]
+			},
+			["is_first_run"] = false,
+			["arrow_color"] = {
+				1, -- [1]
+				1, -- [2]
+				1, -- [3]
+				0.5, -- [4]
+			},
+			["main_frame_size"] = {
+				250, -- [1]
+				230, -- [2]
+			},
+			["minimap"] = {
+				["minimapPos"] = 259.838116019835,
+				["radius"] = 160,
+				["hide"] = false,
+			},
+			["arrow_anchor_x"] = 0,
+			["row_texture"] = "Details Serenity",
+			["scale"] = 1,
+			["row_height"] = 20,
+			["point"] = "LEFT",
+			["enabled"] = false,
+			["arrow_size"] = 10,
+			["font_size"] = 10,
+			["row_spacement"] = 21,
+			["main_frame_color"] = {
+				0, -- [1]
+				0, -- [2]
+				0, -- [3]
+				0.2, -- [4]
+			},
+			["author"] = "Details! Team",
+			["arrow_texture"] = "Interface\\CHATFRAME\\ChatFrameExpandArrow",
+			["per_second"] = {
+				["enabled"] = false,
+				["point"] = "CENTER",
+				["scale"] = 1.5,
+				["font_shadow"] = true,
+				["y"] = 0,
+				["x"] = 0,
+				["size"] = 32,
+				["update_speed"] = 0.05,
+				["attribute_type"] = 1,
+			},
+			["use_spark"] = true,
+			["x"] = 8.75213241577149,
+			["font_face"] = "Friz Quadrata TT",
+			["y"] = -57.9828643798828,
+			["row_color"] = {
+				0.1, -- [1]
+				0.1, -- [2]
+				0.1, -- [3]
+				0.4, -- [4]
+			},
+			["main_frame_strata"] = "LOW",
+			["main_frame_locked"] = false,
+			["arrow_anchor_y"] = 0,
+		},
+		["DETAILS_PLUGIN_LEECH_TRINKET"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+		},
 		["DETAILS_PLUGIN_TINY_THREAT"] = {
 			["updatespeed"] = 1,
 			["showamount"] = false,
@@ -2168,16 +2370,9 @@ _detalhes_database = {
 			},
 			["shown_time"] = 30,
 		},
-		["DETAILS_PLUGIN_RAIDCHECK"] = {
+		["DETAILS_PLUGIN_TIME_LINE"] = {
 			["enabled"] = true,
-			["food_tier1"] = true,
-			["mythic_1_4"] = true,
-			["food_tier2"] = true,
 			["author"] = "Details! Team",
-			["use_report_panel"] = true,
-			["pre_pot_healers"] = false,
-			["pre_pot_tanks"] = false,
-			["food_tier3"] = true,
 		},
 		["DETAILS_PLUGIN_VANGUARD"] = {
 			["enabled"] = true,
@@ -2197,15 +2392,6 @@ _detalhes_database = {
 			["enabled"] = true,
 			["author"] = "Details! Team",
 		},
-		["DETAILS_PLUGIN_DPS_TUNING"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-			["SpellBarsShowType"] = 1,
-		},
-		["DETAILS_PLUGIN_TIME_LINE"] = {
-			["enabled"] = true,
-			["author"] = "Details! Team",
-		},
 		["DETAILS_PLUGIN_TIME_ATTACK"] = {
 			["enabled"] = true,
 			["realm_last_shown"] = 40,
@@ -2222,30 +2408,39 @@ _detalhes_database = {
 			},
 			["author"] = "Details! Team",
 		},
-	},
-	["last_day"] = "26",
-	["character_data"] = {
-		["logons"] = 31,
-	},
-	["cached_talents"] = {
-		["Player-153-07468FD5"] = {
+		["DETAILS_PLUGIN_RAIDCHECK"] = {
+			["enabled"] = true,
+			["food_tier1"] = true,
+			["mythic_1_4"] = true,
+			["food_tier2"] = true,
+			["author"] = "Details! Team",
+			["use_report_panel"] = true,
+			["pre_pot_healers"] = false,
+			["pre_pot_tanks"] = false,
+			["food_tier3"] = true,
+		},
+		["DETAILS_PLUGIN_DPS_TUNING"] = {
+			["enabled"] = true,
+			["author"] = "Details! Team",
+			["SpellBarsShowType"] = 1,
 		},
 	},
-	["savedbuffs"] = {
+	["last_encounter"] = "Alysrazor",
+	["force_font_outline"] = "",
+	["character_data"] = {
+		["logons"] = 35,
 	},
+	["last_instance_time"] = 1465432665,
 	["tabela_instancias"] = {
 	},
-	["combat_id"] = 122,
+	["combat_id"] = 136,
 	["savedStyles"] = {
 	},
-	["SoloTablesSaved"] = {
-		["LastSelected"] = "DETAILS_PLUGIN_DAMAGE_RANK",
-		["Mode"] = 1,
-	},
 	["nick_tag_cache"] = {
-		["nextreset"] = 1477949236,
+		["nextreset"] = 1489983352,
 		["last_version"] = 8,
 	},
+	["last_version"] = "v7.1.5.3418",
 	["announce_deaths"] = {
 		["enabled"] = false,
 		["last_hits"] = 1,
@@ -2261,263 +2456,292 @@ _detalhes_database = {
 					["damage_from"] = {
 					},
 					["targets"] = {
-						["Training Dummy"] = 1602176,
+						["Training Dummy"] = 566570,
 					},
 					["pets"] = {
 					},
-					["friendlyfire"] = {
-					},
-					["classe"] = "WARLOCK",
+					["damage_taken"] = 0.029503,
+					["tipo"] = 1,
+					["friendlyfire_total"] = 0,
 					["raid_targets"] = {
 					},
-					["total_without_pet"] = 1602176.112634,
-					["friendlyfire_total"] = 0,
-					["last_event"] = 0,
+					["total_without_pet"] = 566570.029503,
+					["delay"] = 0,
 					["dps_started"] = false,
-					["total"] = 1602176.112634,
-					["spec"] = 265,
-					["end_time"] = 1477518707,
+					["total"] = 566570.029503,
+					["end_time"] = 1488688387,
+					["last_dps"] = 0,
 					["nome"] = "Krázýító",
 					["spells"] = {
-						["tipo"] = 2,
 						["_ActorTable"] = {
-							[233499] = {
-								["c_amt"] = 7,
+							[233497] = {
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 38321,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 3522,
+								["n_max"] = 3513,
 								["targets"] = {
-									["Training Dummy"] = 82735,
+									["Training Dummy"] = 28104,
 								},
 								["m_dmg"] = 0,
-								["n_dmg"] = 44414,
+								["n_dmg"] = 28104,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 23,
-								["total"] = 82735,
-								["c_max"] = 5846,
-								["id"] = 233499,
+								["counter"] = 8,
+								["total"] = 28104,
+								["c_max"] = 0,
+								["id"] = 233497,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
 								["m_crit"] = 0,
-								["a_amt"] = 0,
+								["r_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
-								["n_amt"] = 16,
-								["r_amt"] = 0,
-								["c_min"] = 0,
+								["n_amt"] = 8,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
 							},
-							[980] = {
-								["c_amt"] = 78,
+							[146739] = {
+								["c_amt"] = 28,
 								["b_amt"] = 0,
-								["c_dmg"] = 153047,
+								["c_dmg"] = 74720,
 								["g_amt"] = 0,
-								["n_max"] = 1770,
+								["n_max"] = 1843,
 								["targets"] = {
-									["Training Dummy"] = 450626,
+									["Training Dummy"] = 150865,
 									["Raider's Training Dummy"] = 0,
 								},
 								["m_dmg"] = 0,
-								["n_dmg"] = 297579,
+								["n_dmg"] = 76145,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 398,
-								["total"] = 450626,
-								["c_max"] = 3403,
-								["id"] = 980,
-								["r_dmg"] = 0,
-								["MISS"] = 2,
-								["a_dmg"] = 0,
-								["m_crit"] = 0,
-								["a_amt"] = 0,
-								["m_amt"] = 0,
-								["successful_casted"] = 0,
-								["b_dmg"] = 0,
-								["n_amt"] = 318,
-								["r_amt"] = 0,
-								["c_min"] = 0,
-							},
-							[233496] = {
-								["c_amt"] = 12,
-								["b_amt"] = 0,
-								["c_dmg"] = 66831,
-								["g_amt"] = 0,
-								["n_max"] = 4264,
-								["targets"] = {
-									["Training Dummy"] = 229671,
-								},
-								["m_dmg"] = 0,
-								["n_dmg"] = 162840,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 67,
-								["total"] = 229671,
-								["c_max"] = 7423,
-								["id"] = 233496,
-								["r_dmg"] = 0,
-								["a_dmg"] = 0,
-								["m_crit"] = 0,
-								["a_amt"] = 0,
-								["m_amt"] = 0,
-								["successful_casted"] = 0,
-								["b_dmg"] = 0,
-								["n_amt"] = 55,
-								["r_amt"] = 0,
-								["c_min"] = 0,
-							},
-							[146739] = {
-								["c_amt"] = 8,
-								["b_amt"] = 0,
-								["c_dmg"] = 18151,
-								["g_amt"] = 0,
-								["n_max"] = 1546,
-								["targets"] = {
-									["Training Dummy"] = 47452,
-								},
-								["m_dmg"] = 0,
-								["n_dmg"] = 29301,
-								["n_min"] = 0,
-								["g_dmg"] = 0,
-								["counter"] = 33,
-								["total"] = 47452,
-								["c_max"] = 3250,
+								["counter"] = 88,
+								["total"] = 150865,
+								["c_max"] = 3164,
 								["id"] = 146739,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
+								["r_amt"] = 0,
 								["m_crit"] = 0,
 								["a_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
-								["n_amt"] = 25,
-								["r_amt"] = 0,
-								["c_min"] = 0,
+								["n_amt"] = 59,
+								["a_dmg"] = 0,
+								["MISS"] = 1,
 							},
-							[233498] = {
-								["c_amt"] = 10,
+							[233490] = {
+								["c_amt"] = 3,
 								["b_amt"] = 0,
-								["c_dmg"] = 53719,
+								["c_dmg"] = 22160,
 								["g_amt"] = 0,
-								["n_max"] = 4264,
+								["n_max"] = 4488,
 								["targets"] = {
-									["Training Dummy"] = 143832,
+									["Training Dummy"] = 112201,
 								},
 								["m_dmg"] = 0,
-								["n_dmg"] = 90113,
+								["n_dmg"] = 90041,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 42,
-								["total"] = 143832,
-								["c_max"] = 6000,
-								["id"] = 233498,
+								["counter"] = 27,
+								["total"] = 112201,
+								["c_max"] = 7654,
+								["id"] = 233490,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
 								["m_crit"] = 0,
-								["a_amt"] = 0,
+								["r_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
-								["n_amt"] = 32,
-								["r_amt"] = 0,
-								["c_min"] = 0,
+								["n_amt"] = 24,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
 							},
-							[148008] = {
+							[980] = {
+								["c_amt"] = 14,
+								["b_amt"] = 0,
+								["c_dmg"] = 29216,
+								["g_amt"] = 0,
+								["n_max"] = 2237,
+								["targets"] = {
+									["Training Dummy"] = 101129,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 71913,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 75,
+								["total"] = 101129,
+								["c_max"] = 4361,
+								["id"] = 980,
+								["r_dmg"] = 0,
+								["c_min"] = 0,
+								["m_crit"] = 0,
+								["r_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 61,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
+							},
+							[233496] = {
+								["c_amt"] = 5,
+								["b_amt"] = 0,
+								["c_dmg"] = 37430,
+								["g_amt"] = 0,
+								["n_max"] = 4078,
+								["targets"] = {
+									["Training Dummy"] = 63715,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 26285,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 12,
+								["total"] = 63715,
+								["c_max"] = 8418,
+								["id"] = 233496,
+								["r_dmg"] = 0,
+								["c_min"] = 0,
+								["m_crit"] = 0,
+								["r_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 7,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
+							},
+							[172] = {
 								["c_amt"] = 0,
 								["b_amt"] = 0,
 								["c_dmg"] = 0,
 								["g_amt"] = 0,
 								["n_max"] = 0,
 								["targets"] = {
-									["Training Dummy"] = 0,
+									["Raider's Training Dummy"] = 0,
 								},
 								["m_dmg"] = 0,
 								["n_dmg"] = 0,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 0,
+								["counter"] = 1,
 								["total"] = 0,
 								["c_max"] = 0,
-								["id"] = 148008,
+								["id"] = 172,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
+								["r_amt"] = 0,
 								["m_crit"] = 0,
 								["a_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
 								["n_amt"] = 0,
-								["r_amt"] = 0,
-								["c_min"] = 0,
+								["a_dmg"] = 0,
+								["MISS"] = 1,
 							},
-							[233497] = {
-								["c_amt"] = 14,
+							[233498] = {
+								["c_amt"] = 0,
 								["b_amt"] = 0,
-								["c_dmg"] = 88771,
+								["c_dmg"] = 0,
 								["g_amt"] = 0,
-								["n_max"] = 4263,
+								["n_max"] = 3513,
 								["targets"] = {
-									["Training Dummy"] = 222272,
+									["Training Dummy"] = 28104,
 								},
 								["m_dmg"] = 0,
-								["n_dmg"] = 133501,
+								["n_dmg"] = 28104,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 60,
-								["total"] = 222272,
-								["c_max"] = 8649,
-								["id"] = 233497,
+								["counter"] = 8,
+								["total"] = 28104,
+								["c_max"] = 0,
+								["id"] = 233498,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
 								["m_crit"] = 0,
-								["a_amt"] = 0,
+								["r_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
-								["n_amt"] = 46,
-								["r_amt"] = 0,
-								["c_min"] = 0,
+								["n_amt"] = 8,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
 							},
-							[233490] = {
-								["c_amt"] = 31,
+							[63106] = {
+								["c_amt"] = 8,
 								["b_amt"] = 0,
-								["c_dmg"] = 178975,
+								["c_dmg"] = 33392,
 								["g_amt"] = 0,
-								["n_max"] = 4115,
+								["n_max"] = 2102,
 								["targets"] = {
-									["Training Dummy"] = 425588,
+									["Training Dummy"] = 54348,
 								},
 								["m_dmg"] = 0,
-								["n_dmg"] = 246613,
+								["n_dmg"] = 20956,
 								["n_min"] = 0,
 								["g_dmg"] = 0,
-								["counter"] = 117,
-								["total"] = 425588,
-								["c_max"] = 8648,
-								["id"] = 233490,
+								["counter"] = 20,
+								["total"] = 54348,
+								["c_max"] = 4340,
+								["id"] = 63106,
 								["r_dmg"] = 0,
-								["a_dmg"] = 0,
+								["c_min"] = 0,
 								["m_crit"] = 0,
-								["a_amt"] = 0,
+								["r_amt"] = 0,
 								["m_amt"] = 0,
 								["successful_casted"] = 0,
 								["b_dmg"] = 0,
-								["n_amt"] = 86,
-								["r_amt"] = 0,
+								["n_amt"] = 12,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
+							},
+							[233499] = {
+								["c_amt"] = 0,
+								["b_amt"] = 0,
+								["c_dmg"] = 0,
+								["g_amt"] = 0,
+								["n_max"] = 3513,
+								["targets"] = {
+									["Training Dummy"] = 28104,
+								},
+								["m_dmg"] = 0,
+								["n_dmg"] = 28104,
+								["n_min"] = 0,
+								["g_dmg"] = 0,
+								["counter"] = 8,
+								["total"] = 28104,
+								["c_max"] = 0,
+								["id"] = 233499,
+								["r_dmg"] = 0,
 								["c_min"] = 0,
+								["m_crit"] = 0,
+								["r_amt"] = 0,
+								["m_amt"] = 0,
+								["successful_casted"] = 0,
+								["b_dmg"] = 0,
+								["n_amt"] = 8,
+								["a_amt"] = 0,
+								["a_dmg"] = 0,
 							},
 						},
+						["tipo"] = 2,
 					},
 					["grupo"] = true,
-					["on_hold"] = false,
-					["serial"] = "Player-153-07468FD5",
+					["spec"] = 265,
+					["classe"] = "WARLOCK",
 					["custom"] = 0,
-					["tipo"] = 1,
-					["last_dps"] = 0,
-					["start_time"] = 1477518197,
-					["delay"] = 0,
-					["damage_taken"] = 0.112634,
+					["last_event"] = 0,
+					["on_hold"] = false,
+					["start_time"] = 1488688267,
+					["serial"] = "Player-153-07468FD5",
+					["friendlyfire"] = {
+					},
 				}, -- [1]
 			},
 		}, -- [1]
@@ -2530,28 +2754,28 @@ _detalhes_database = {
 			["tipo"] = 7,
 			["_ActorTable"] = {
 				{
-					["received"] = 0.104871,
-					["resource"] = 58.107934,
+					["flag_original"] = 1297,
+					["resource"] = 19.062886,
 					["targets"] = {
 					},
 					["pets"] = {
 					},
 					["powertype"] = 0,
 					["classe"] = "WARLOCK",
-					["total"] = 0.104871,
+					["resource_type"] = 7,
 					["nome"] = "Krázýító",
+					["spec"] = 265,
+					["grupo"] = true,
+					["received"] = 0.034641,
+					["tipo"] = 3,
+					["total"] = 0.034641,
+					["last_event"] = 0,
+					["serial"] = "Player-153-07468FD5",
 					["spells"] = {
-						["tipo"] = 7,
 						["_ActorTable"] = {
 						},
+						["tipo"] = 7,
 					},
-					["grupo"] = true,
-					["resource_type"] = 7,
-					["tipo"] = 3,
-					["flag_original"] = 1297,
-					["spec"] = 265,
-					["serial"] = "Player-153-07468FD5",
-					["last_event"] = 0,
 				}, -- [1]
 			},
 		}, -- [3]
@@ -2561,137 +2785,140 @@ _detalhes_database = {
 				{
 					["flag_original"] = 1047,
 					["debuff_uptime_spells"] = {
-						["tipo"] = 9,
 						["_ActorTable"] = {
-							[980] = {
-								["uptime"] = 313,
-								["id"] = 980,
-								["activedamt"] = 22,
+							[233490] = {
+								["uptime"] = 27,
+								["id"] = 233490,
+								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
-							[146198] = {
-								["id"] = 146198,
+							[63106] = {
+								["uptime"] = 42,
+								["id"] = 63106,
+								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[233496] = {
-								["uptime"] = 108,
+								["uptime"] = 15,
 								["id"] = 233496,
-								["activedamt"] = 3,
+								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[146739] = {
-								["uptime"] = 41,
+								["uptime"] = 77,
 								["id"] = 146739,
-								["activedamt"] = 2,
+								["activedamt"] = 3,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[233498] = {
-								["uptime"] = 68,
+								["uptime"] = 10,
 								["id"] = 233498,
-								["activedamt"] = 2,
+								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[233499] = {
-								["uptime"] = 46,
+								["uptime"] = 10,
 								["id"] = 233499,
-								["activedamt"] = 5,
-								["targets"] = {
-								},
-								["counter"] = 0,
-							},
-							[233490] = {
-								["uptime"] = 165,
-								["id"] = 233490,
-								["activedamt"] = 7,
+								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[233497] = {
-								["uptime"] = 98,
+								["uptime"] = 10,
 								["id"] = 233497,
 								["activedamt"] = 0,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
-						},
-					},
-					["buff_uptime"] = 818,
-					["classe"] = "WARLOCK",
-					["buff_uptime_spells"] = {
-						["tipo"] = 9,
-						["_ActorTable"] = {
-							[138786] = {
-								["uptime"] = 146,
-								["id"] = 138786,
-								["activedamt"] = 17,
-								["targets"] = {
-								},
-								["counter"] = 0,
-							},
-							[146046] = {
-								["uptime"] = 65,
-								["id"] = 146046,
+							[980] = {
+								["uptime"] = 71,
+								["id"] = 980,
 								["activedamt"] = 6,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
-							[138788] = {
-								["uptime"] = 146,
-								["id"] = 138788,
-								["activedamt"] = 17,
-								["targets"] = {
-								},
-								["counter"] = 0,
-							},
-							[108366] = {
-								["uptime"] = 342,
-								["id"] = 108366,
-								["activedamt"] = 20,
+						},
+						["tipo"] = 9,
+					},
+					["pets"] = {
+					},
+					["classe"] = "WARLOCK",
+					["buff_uptime_spells"] = {
+						["_ActorTable"] = {
+							[138786] = {
+								["uptime"] = 10,
+								["id"] = 138786,
+								["activedamt"] = 1,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 							[137590] = {
-								["uptime"] = 119,
+								["uptime"] = 40,
 								["id"] = 137590,
-								["activedamt"] = 13,
+								["activedamt"] = 4,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[138788] = {
+								["uptime"] = 10,
+								["id"] = 138788,
+								["activedamt"] = 1,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[108366] = {
+								["uptime"] = 85,
+								["id"] = 108366,
+								["activedamt"] = 4,
+								["targets"] = {
+								},
+								["counter"] = 0,
+							},
+							[146046] = {
+								["uptime"] = 27,
+								["id"] = 146046,
+								["activedamt"] = 4,
 								["targets"] = {
 								},
 								["counter"] = 0,
 							},
 						},
+						["tipo"] = 9,
 					},
-					["debuff_uptime"] = 839,
-					["buff_uptime_targets"] = {
-					},
+					["debuff_uptime"] = 262,
+					["nome"] = "Krázýító",
 					["spec"] = 265,
 					["grupo"] = true,
 					["spell_cast"] = {
-						[980] = 49,
-						[30108] = 74,
-						[172] = 3,
+						[980] = 9,
+						[30108] = 13,
+						[172] = 12,
+						[63106] = 4,
+					},
+					["last_event"] = 0,
+					["tipo"] = 4,
+					["buff_uptime_targets"] = {
 					},
 					["debuff_uptime_targets"] = {
 					},
-					["last_event"] = 0,
-					["nome"] = "Krázýító",
-					["pets"] = {
-					},
 					["serial"] = "Player-153-07468FD5",
-					["tipo"] = 4,
+					["buff_uptime"] = 172,
 				}, -- [1]
 			},
 		}, -- [4]
@@ -2704,36 +2931,14 @@ _detalhes_database = {
 		},
 		["last_events_tables"] = {
 		},
-		["combat_counter"] = 275,
+		["combat_counter"] = 344,
 		["totals"] = {
-			1602176.162698, -- [1]
-			-0.0151119999936782, -- [2]
+			29555562.073668, -- [1]
+			-0.007316, -- [2]
 			{
-				0, -- [1]
-				[0] = 0.097576,
-				[6] = -0.0125599999999757,
-				[3] = -0.005873,
-			}, -- [3]
-			{
-				["buff_uptime"] = 0,
-				["ress"] = 0,
-				["dead"] = 0,
-				["cc_break"] = 0,
-				["interrupt"] = 0,
-				["debuff_uptime"] = 0,
-				["dispell"] = 0,
-				["cooldowns_defensive"] = -0.00191500000000011,
-			}, -- [4]
-			["voidzone_damage"] = 0,
-			["frags_total"] = 0,
-		},
-		["totals_grupo"] = {
-			1602176.109106, -- [1]
-			0, -- [2]
-			{
-				0, -- [1]
-				[0] = 0.101178,
-				[6] = 0,
+				20.006887, -- [1]
+				[0] = 0.034289,
+				[6] = 10.001099,
 				[3] = 0,
 			}, -- [3]
 			{
@@ -2746,113 +2951,13 @@ _detalhes_database = {
 				["dispell"] = 0,
 				["cooldowns_defensive"] = 0,
 			}, -- [4]
+			["voidzone_damage"] = 0,
+			["frags_total"] = 0,
+		},
+		["player_last_events"] = {
 		},
 		["frags_need_refresh"] = false,
 		["__call"] = {
-		},
-		["data_inicio"] = "17:01:08",
-		["end_time"] = 99489.208,
-		["segments_added"] = {
-			{
-				["elapsed"] = 28.3559999999998,
-				["name"] = "Training Dummy",
-				["clock"] = "18:11:38",
-			}, -- [1]
-			{
-				["elapsed"] = 13.5359999999928,
-				["name"] = "Training Dummy",
-				["clock"] = "18:10:55",
-			}, -- [2]
-			{
-				["elapsed"] = 14.8429999999935,
-				["name"] = "Training Dummy",
-				["clock"] = "18:03:00",
-			}, -- [3]
-			{
-				["elapsed"] = 10.976999999999,
-				["name"] = "Training Dummy",
-				["clock"] = "17:51:45",
-			}, -- [4]
-			{
-				["elapsed"] = 12.4400000000023,
-				["name"] = "Training Dummy",
-				["clock"] = "17:51:09",
-			}, -- [5]
-			{
-				["elapsed"] = 12.8820000000123,
-				["name"] = "Training Dummy",
-				["clock"] = "17:49:23",
-			}, -- [6]
-			{
-				["elapsed"] = 11.7589999999909,
-				["name"] = "Training Dummy",
-				["clock"] = "17:19:45",
-			}, -- [7]
-			{
-				["elapsed"] = 10.0979999999981,
-				["name"] = "Training Dummy",
-				["clock"] = "17:19:24",
-			}, -- [8]
-			{
-				["elapsed"] = 10.6640000000043,
-				["name"] = "Training Dummy",
-				["clock"] = "17:18:29",
-			}, -- [9]
-			{
-				["elapsed"] = 18.9919999999984,
-				["name"] = "Training Dummy",
-				["clock"] = "17:17:40",
-			}, -- [10]
-			{
-				["elapsed"] = 13.8479999999981,
-				["name"] = "Training Dummy",
-				["clock"] = "17:17:02",
-			}, -- [11]
-			{
-				["elapsed"] = 30.7839999999997,
-				["name"] = "Training Dummy",
-				["clock"] = "17:13:34",
-			}, -- [12]
-			{
-				["elapsed"] = 29.4389999999985,
-				["name"] = "Training Dummy",
-				["clock"] = "17:12:34",
-			}, -- [13]
-			{
-				["elapsed"] = 42.6739999999991,
-				["name"] = "Training Dummy",
-				["clock"] = "17:07:03",
-			}, -- [14]
-			{
-				["elapsed"] = 20.122000000003,
-				["name"] = "Training Dummy",
-				["clock"] = "17:07:03",
-			}, -- [15]
-			{
-				["elapsed"] = 139.229999999996,
-				["name"] = "Training Dummy",
-				["clock"] = "17:04:19",
-			}, -- [16]
-			{
-				["elapsed"] = 98.531999999992,
-				["name"] = "Training Dummy",
-				["clock"] = "17:04:19",
-			}, -- [17]
-			{
-				["elapsed"] = 17.2109999999957,
-				["name"] = "Training Dummy",
-				["clock"] = "17:04:19",
-			}, -- [18]
-			{
-				["elapsed"] = 19.3680000000022,
-				["name"] = "Training Dummy",
-				["clock"] = "17:02:27",
-			}, -- [19]
-			{
-				["elapsed"] = 13.5130000000063,
-				["name"] = "Training Dummy",
-				["clock"] = "17:01:08",
-			}, -- [20]
 		},
 		["PhaseData"] = {
 			{
@@ -2868,25 +2973,70 @@ _detalhes_database = {
 			["damage_section"] = {
 			},
 		},
+		["end_time"] = 14469.29,
+		["totals_grupo"] = {
+			566570.023898, -- [1]
+			0, -- [2]
+			{
+				0, -- [1]
+				[0] = 0.027186,
+				[6] = 0,
+				[3] = 0,
+			}, -- [3]
+			{
+				["buff_uptime"] = 0,
+				["ress"] = 0,
+				["dead"] = 0,
+				["cc_break"] = 0,
+				["interrupt"] = 0,
+				["debuff_uptime"] = 0,
+				["dispell"] = 0,
+				["cooldowns_defensive"] = 0,
+			}, -- [4]
+		},
+		["overall_refreshed"] = true,
 		["hasSaved"] = true,
 		["frags"] = {
 		},
-		["data_fim"] = "18:12:06",
+		["data_fim"] = "22:58:39",
 		["overall_enemy_name"] = "Training Dummy",
 		["CombatSkillCache"] = {
 		},
-		["overall_refreshed"] = true,
-		["start_time"] = 98919.94,
+		["segments_added"] = {
+			{
+				["elapsed"] = 931.619000000001,
+				["name"] = "Training Dummy",
+				["clock"] = "22:43:07",
+			}, -- [1]
+			{
+				["elapsed"] = 25.3400000000002,
+				["name"] = "Training Dummy",
+				["clock"] = "22:43:07",
+			}, -- [2]
+			{
+				["elapsed"] = 14.3510000000006,
+				["name"] = "Training Dummy",
+				["clock"] = "22:42:42",
+			}, -- [3]
+			{
+				["elapsed"] = 18.5869999999995,
+				["name"] = "Training Dummy",
+				["clock"] = "22:32:48",
+			}, -- [4]
+		},
+		["start_time"] = 13479.393,
 		["TimeData"] = {
 			["Player Damage Done"] = {
 			},
 			["Raid Damage Done"] = {
 			},
 		},
-		["player_last_events"] = {
-		},
+		["data_inicio"] = "22:32:48",
 	},
-	["last_version"] = "v7.1.0.3114",
+	["SoloTablesSaved"] = {
+		["LastSelected"] = "DETAILS_PLUGIN_DAMAGE_RANK",
+		["Mode"] = 1,
+	},
 	["local_instances_config"] = {
 		{
 			["segment"] = 0,
@@ -3056,7 +3206,7 @@ _detalhes_database = {
 			},
 		}, -- [5]
 	},
-	["last_instance_time"] = 1465432665,
+	["last_day"] = "04",
 	["announce_cooldowns"] = {
 		["enabled"] = false,
 		["ignored_cooldowns"] = {
@@ -3070,6 +3220,8 @@ _detalhes_database = {
 	},
 	["last_instance_id"] = 720,
 	["cached_specs"] = {
+		["Player-55-08C9F206"] = 269,
+		["Player-55-06CE3314"] = 254,
 		["Player-153-07468FD5"] = 265,
 	},
 }

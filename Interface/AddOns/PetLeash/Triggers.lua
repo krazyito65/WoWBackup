@@ -3,12 +3,12 @@ local addon_name, addon = ...
 
 local L = LibStub("AceLocale-3.0"):GetLocale("PetLeash")
 
-local error, format, GetSubZoneText, GetZoneText, ipairs, IsInGroup, IsResting,
-    loadstring, pairs, pcall, print, SecureCmdOptionParse, setmetatable,
-    tinsert, tonumber, tostring, type, wipe
-    = error, format, GetSubZoneText, GetZoneText, ipairs, IsInGroup, IsResting,
-    loadstring, pairs, pcall, print, SecureCmdOptionParse, setmetatable,
-    tinsert, tonumber, tostring, type, wipe
+local error, format, FillLocalizedClassList, GetSubZoneText, GetZoneText, ipairs,
+    IsInGroup, IsResting, loadstring, pairs, pcall, print, SecureCmdOptionParse,
+    setmetatable, tinsert, tonumber, tostring, type, UnitClass, wipe
+    = error, format, FillLocalizedClassList, GetSubZoneText, GetZoneText, ipairs,
+    IsInGroup, IsResting, loadstring, pairs, pcall, print, SecureCmdOptionParse,
+    setmetatable, tinsert, tonumber, tostring, type, UnitClass, wipe
 
 local AceEvent = LibStub("AceEvent-3.0")
 local AceGUI = LibStub("AceGUI-3.0")
@@ -368,10 +368,29 @@ addon:RegisterTrigger("specialization", {
         return L["Class Specialization"]
     end,
     OnNew = function(self, new)
-        new.spec = 1
+        local _, className = UnitClass("player")
+        new.class = className
+        new.spec = -1
     end,
     FillOptions = function(self, parent, settings)
         local values = {}
+        local order = {}
+
+        FillLocalizedClassList(values)
+        for k, v in pairs(values) do
+            tinsert(order, k)
+        end
+        table.sort(order, function(a,b)
+            return values[a] < values[b]
+        end)
+
+        values[""] = L["Any"]
+        tinsert(order, 1, "")
+
+        parent:AddChild(self:MakeOption("class", "select", settings,
+                                        "name", CLASS, "values", values, "order", order))
+
+        values = {}
         for i = 1,4 do
             local namefmt = ""
             local _, name = GetSpecializationInfo(i)
@@ -381,12 +400,22 @@ addon:RegisterTrigger("specialization", {
 
             values[i] = format("#%d%s", i, namefmt)
         end
+        values[-1] = L["Any"]
 
         parent:AddChild(self:MakeOption("spec", "select", settings,
                                         "name", SPECIALIZATION, "values", values))
     end,
     Check = function(self)
-        return GetSpecialization() == self.settings.spec
+        if self.settings.class ~= nil then
+            local _, playerClass = UnitClass("player")
+            if self.settings.class ~= playerClass then
+                return false
+            end
+        end
+        if self.settings.spec ~= -1 then
+            return GetSpecialization() == self.settings.spec
+        end
+        return true
     end,
     OnInitialize = function(self)
         self:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")

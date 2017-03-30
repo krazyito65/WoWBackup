@@ -4,7 +4,7 @@ if ExRT.locale ~= "zhTW" then
 	return
 end	
 
--- 20:48 08.08.2016
+-- 16:01 17.01.2017
 
 local L = ExRT.L	
 local PH = ExRT.L
@@ -35,7 +35,7 @@ L.Skada = "Skada 模組"
 L.Profiles = "設定檔"			
 L.LegendaryRing = "傳說戒指"			
 L.Attendance = "出勤陣容記錄"			
-L.WhoPulled = "開怪監測"	
+L.WhoPulled = "開戰監測"
 L.WAChecker = "WeakAuras 檢查"		
 			
 L.messagebutsend = "傳送"			
@@ -182,6 +182,7 @@ L.TimerSpecTimerDefault = "重置專精倒數計時"
 L.TimerSpecTimerHeader = "各專精開怪倒數（秒）:"			
 L.TimerUseDptInstead = "使用專精動態倒數 (須使用 \"/rt pull\" 或標記助手倒數開怪)"	
 L.TimerDisableRWmessage = "聊天框不顯示倒數"		
+L.TimerTimeToKillTime = "以（秒）內的數據推算"
 			
 L.raidchecknofood = "缺少食物"			
 L.raidchecknoflask = "缺少藥劑"			
@@ -675,7 +676,7 @@ L.BossWatcherStopRecord2 = "或 /rt fl end"
 L.BossWatcherRecordStart = "開始記錄"			
 L.BossWatcherRecordStop = "停止記錄"			
 L.BossWatcherGoToBossWatcher = "前往戰鬥分析"			
-L.BossWatcherOptionsHelp = "聊天指令:\n|cff00ff00/rt fl|r - 開啟戰鬥分析視窗\n|cff00ff00/rt seg|r - 以新分段記錄 (只限戰鬥中)\n|cff00ff00/rt fl s|r - 開啟全域記錄\n|cff00ff00/rt fl e|r - 結束全域記錄\n*預設中只記錄首領戰鬥(副本中)或所有戰鬥(副本外). 全域記錄代表忽略戰鬥狀態，一律從開啟記錄至結束。"			
+L.BossWatcherOptionsHelp = "聊天指令:\n|cff00ff00/rt fl|r - 開啟戰鬥分析視窗\n|cff00ff00/rt fl s|r - 開啟全域記錄\n|cff00ff00/rt fl e|r - 結束全域記錄\n*預設中只記錄首領戰鬥(副本中)或所有戰鬥(副本外). 全域記錄代表忽略戰鬥狀態，一律從開啟記錄至結束。"			
 L.BossWatcherTabSettings = "設定"			
 L.BossWatcherSpellsFilterTooltip = "輸入法術ID或名稱作過濾，以\";\"區間作複數條件。"			
 L.BossWatcherShowDamageToTarget = "顯示對目標的傷害"			
@@ -748,7 +749,21 @@ L.BossWatcherHealingTabTyrantVelhari = "女暴君維哈里\n計算方式改變�
 L.BossWatcherBrokeTooltip = "破除某些狀態，例如:控場"			
 L.BossWatcherAddToGraph = "新增至圖表"			
 L.BossWatcherPhase = "階段"			
-L.BossWatcherDistanceEarned = "跑位計算"			
+L.BossWatcherDistanceEarned = "跑位計算"	
+L.BossWatcherBuff = "增益"
+L.BossWatcherDebuff = "減益"
+L.BossWatcherDoT = "DoT"
+L.BossWatcherHoT = "HoT"
+L.BossWatcherAllPhases = "所有階段"		
+L.BossWatcherDamageTooltipCount = "傷害次數"
+L.BossWatcherDamageTooltipMaxHit = "最大造成傷害"
+L.BossWatcherDamageTooltipMidHit = "平均造成傷害"
+L.BossWatcherHealTooltipCount = "治療次數"
+L.BossWatcherHealTooltipHitMax = "最大造成治療"
+L.BossWatcherHealTooltipHitMid = "平均造成治療"
+L.BossWatcherPerCast = "平均施放效益"
+L.BossWatcherOnlySegmentsWithAura = "聚焦此光環作用的時段"
+L.BossWatcherOnlySegmentsWithEnemy = "聚焦此目標存活的時段"
 			
 L.InspectViewerTalents = "天賦及雕紋"			
 L.InspectViewerInfo = "其他資訊"			
@@ -835,7 +850,7 @@ L.MarksClear = "清空"
 L.MarksTooltip = "為對應名單鎖定標記。\n只作用於隊伍或團隊成員。"			
 			
 L.LoggingEnable = "在以下區域中啟用內建戰鬥記錄:"			
-L.LoggingHelp1 = "戰鬥記錄保存於Logs\WoWCombatLog.txt中。你可以上傳記錄至專門的分析網站(如 www.warcraftlogs.com). 別忘了在每次出團後上傳和刪除這檔案，避免檔案容量過大。"			
+L.LoggingHelp1 = "戰鬥記錄保存於Logs\\WoWCombatLog.txt中。你可以上傳記錄至專門的分析網站(如 www.warcraftlogs.com)。別忘記在每次出團後上傳和刪除此檔案，避免檔案過大。"
 L.LoggingStart = "ExRT: 開始內建戰鬥記錄"			
 L.LoggingEnd = "ExRT: 停止內建戰鬥記錄"			
 			
@@ -879,7 +894,8 @@ L.AttendanceHelpTop = "可於聊天框輸入指令保存出勤陣容 \"|cff00ff0
 L.AttendanceHelpNames = "第二及三列為全團隊出勤, 第四及五列為副本內隊伍出勤（傳奇為前4隊，其他難度前6隊）"			
 L.AttendanceSaveCurrent = "保存當前陣容"			
 			
-L.WhoPulledlastPull = "上次開怪玩家"	
+L.WhoPulledlastPull = "上次開​戰​玩家"
+L.WhoPulledChatOption = "於聊天視窗顯示開戰訊息​"
 
 L.WACheckerWANotFound = "尚未安裝 WeakAuras"
 L.WACheckerMissingAura = "缺少該光環設定"

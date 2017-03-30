@@ -86,7 +86,7 @@ local tIconIdx;
 local tIconName;
 local tButton;
 function VUHDO_initCustomDebuffs()
-	-- Wir brauchen mind. 1 für LastCustomDebuffBouquet
+	-- Wir brauchen mind. 1 fï¿½r LastCustomDebuffBouquet
 	if sMaxNum == 0 then VUHDO_getOrCreateCuDeButton(sButton, 40);
 	else
 		for tCnt = 0, sMaxNum - 1 do

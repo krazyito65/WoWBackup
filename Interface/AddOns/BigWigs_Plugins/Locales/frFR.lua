@@ -246,4 +246,12 @@ L.wrongTime = "Durée spécifiée incorrecte. <durée> peut être exprimée soit
 -- InfoBox.lua
 --
 
---L.infoBox = "InfoBox"
+L.infoBox = "Boîte d'infos"
+
+-----------------------------------------------------------------------
+-- Statistics.lua
+--
+
+L.printHealthOption = "Vie du boss"
+L.healthPrint = "Vie : %s."
+L.healthFormat = "%s (%.1f%%)"

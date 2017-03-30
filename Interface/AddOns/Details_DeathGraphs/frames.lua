@@ -78,26 +78,59 @@ do
 		
 		--f:SetBackdrop ({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
 		
-		f:SetBackdrop ({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
+		f:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
 		edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
 		insets = {left = 1, right = 1, top = 1, bottom = 1}})
-		f:SetBackdropColor (0, 0, 0, .4)
+		
+		f:SetBackdropColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropColor or {0, 0, 0, .6}))
+		
+		f:SetBackdropBorderColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropBorderColor or {0, 0, 0, 1}))		
+		
 
-		local title = framework:NewLabel (f, nil, "$parentTitle", nil, "Advanced Death Logs", nil, 20, "yellow")
-		title:SetPoint (12, -13)
-		DeathGraphs:SetFontOutline (title, true)
+		--local title = framework:NewLabel (f, nil, "$parentTitle", nil, "Advanced Death Logs", nil, 20, "yellow")
+		--title:SetPoint (12, -13)
+		--DeathGraphs:SetFontOutline (title, true)
 
 		local bottom_texture = framework:NewImage (f, nil, 922, 25, "background", nil, nil, "$parentBottomTexture")
-		bottom_texture:SetTexture (0, 0, 0, .6)
+		bottom_texture:SetColorTexture (0, 0, 0, .6)
 		bottom_texture:SetPoint ("bottomleft", f, "bottomleft", 2, 7)
 		
 		local c = CreateFrame ("Button", nil, f, "UIPanelCloseButton")
-		c:SetWidth (32)
-		c:SetHeight (32)
-		c:SetPoint ("TOPRIGHT",  f, "TOPRIGHT", -3, -8)
+		c:SetWidth (20)
+		c:SetHeight (20)
+		c:SetPoint ("TOPRIGHT",  f, "TOPRIGHT", -2, -3)
 		c:SetFrameLevel (f:GetFrameLevel()+1)
 		c:GetNormalTexture():SetDesaturated (true)
-		c:SetAlpha (0.5)
+		c:SetAlpha (1)
+		
+		C_Timer.After (0.05, function()
+			f:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+			f:SetBackdropColor (0.2, 0.2, 0.2, .6)
+			f:SetBackdropBorderColor (0, 0, 0, 1)
+			
+		--title bar
+			local titlebar = CreateFrame ("frame", nil, f)
+			titlebar:SetPoint ("topleft", f, "topleft", 2, -3)
+			titlebar:SetPoint ("topright", f, "topright", -2, -3)
+			titlebar:SetHeight (20)
+			titlebar:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+			titlebar:SetBackdropColor (.5, .5, .5, 1)
+			titlebar:SetBackdropBorderColor (0, 0, 0, 1)
+
+			local name_bg_texture = f:CreateTexture (nil, "background")
+			name_bg_texture:SetTexture ([[Interface\PetBattles\_PetBattleHorizTile]], true)
+			name_bg_texture:SetHorizTile (true)
+			name_bg_texture:SetTexCoord (0, 1, 126/256, 19/256)
+			name_bg_texture:SetPoint ("topleft", f, "topleft", 2, -22)
+			name_bg_texture:SetPoint ("bottomright", f, "bottomright")
+			name_bg_texture:SetHeight (54)
+			name_bg_texture:SetVertexColor (0, 0, 0, 0.2)
+		
+		--window title
+			local titleLabel = _detalhes.gump:NewLabel (titlebar, titlebar, nil, "titulo", "Advanced Death Logs", "GameFontHighlightLeft", 12, {227/255, 186/255, 4/255})
+			titleLabel:SetPoint ("center", f, "center")
+			titleLabel:SetPoint ("top", f, "top", 0, -7)
+		end)
 		
 		DeathGraphs.selected_texture_boss = framework:NewImage (f, "Interface\\SPELLBOOK\\Spellbook-Parts", 190, 50, "border", {0.31250000, 0.96484375, 0.37109375, 0.52343750})
 		DeathGraphs.selected_texture_boss:SetBlendMode ("ADD")
@@ -609,7 +642,7 @@ do
 		segments_scroll.buttons = {}
 		
 		local segment_button_on_click = function (self, button, param1, param2)
-			--> mostra o gráfico para este segmento
+			--> mostra o grï¿½fico para este segmento
 			if (debugmode) then
 				print ("on click segment:", self.MyObject.death_table, self.MyObject.index, DeathGraphs.db.last_boss)
 			end
@@ -660,7 +693,7 @@ do
 			segment_refresh (segments_scroll)
 		end
 		
-	--> endurance box
+	--> ~endurance box
 		local endurance_frame = CreateFrame ("frame", "DeathGraphsEnduranceFrame", f)
 		endurance_frame:SetFrameLevel (f:GetFrameLevel()+5)
 		endurance_frame:SetPoint ("topleft", enduranceFrameMenuAnchor, "topleft", 170, -45)
@@ -853,7 +886,7 @@ do
 			
 			if (not label) then
 			
-				local panel = framework:CreatePanel (endurance_frame, 150, 16)
+				local panel = framework:CreatePanel (endurance_frame, 200, 16)
 				panel:SetBackdrop (backdrop)
 				panel:SetBackdropColor (unpack (BUTTON_BACKGROUND_COLOR))
 				panel:SetPoint (self.x, self.y)
@@ -863,21 +896,25 @@ do
 			
 				local str1 = framework:NewLabel (panel, nil, "$parentLabel1" .. index, "label1", "", "GameFontHighlightSmall", 11)
 				local str2 = framework:NewLabel (panel, nil, "$parentLabel2" .. index, "label2", "", "GameFontHighlightSmall", 11)
+				local str3 = framework:NewLabel (panel, nil, "$parentLabel3" .. index, "label3", "", "GameFontHighlightSmall", 11)
 				str2:SetWidth (120)
 				str2:SetHeight (16)
+				str3:SetHeight (16)
+				str3:SetWidth (40)
 				
 				local icon1 = framework:NewImage (panel, nil, 14, 14, nil, nil, "icon")
 				
 				str1:SetPoint ("left", panel, "left")
-				icon1:SetPoint ("left", str1, "right", 2, 0)
-				str2:SetPoint ("left", icon1, "right", 2, 0)
+				str3:SetPoint ("left", str1, "right", 6, 0)
+				icon1:SetPoint ("left", str3, "right", 4, 0)
+				str2:SetPoint ("left", icon1, "right", 4, 0)
 				
 				endurance_frame.y = endurance_frame.y - 17
 				if (endurance_frame.y < -350) then
 					endurance_frame.y = endurance_frame.y_original
-					endurance_frame.x = endurance_frame.x + 160
+					endurance_frame.x = endurance_frame.x + 220
 				end
-				self.labels [index] = {points = str1, name = str2, panel = panel, icon = icon1}
+				self.labels [index] = {points = str1, name = str2, panel = panel, icon = icon1, recordsXdeaths = str3}
 				label = self.labels [index]
 			end
 
@@ -923,6 +960,8 @@ do
 				end
 				
 				label.points:SetTextColor (r/255, g/255, 0)
+				--label.recordsXdeaths:SetTextColor (r/255, g/255, 0)
+				
 				label.points.text = string.format ("%.1f", percent) .. "%"
 				
 				label.name.text = DeathGraphs:GetOnlyName (player_name)
@@ -937,9 +976,14 @@ do
 				label.points:Show()
 				label.name:Show()
 				label.panel:Show()
+				
 				label.panel.deaths = deaths
 				label.panel.encounters = encounters
 				label.panel.points = points
+				label.panel.recordsXdeaths = #deaths .. " / " .. encounters
+				
+				label.recordsXdeaths.text = label.panel.recordsXdeaths
+				label.recordsXdeaths:SetTextColor (.7, .7, .7)
 				
 				label.panel.ignored = nil
 			end
@@ -1588,7 +1632,7 @@ do
 			local t = gframe:CreateTexture (nil, "background")
 			t:SetSize (1, 160)
 			t:SetPoint ("left", gframe, "left", i*29, 0)
-			t:SetTexture (1, 1, 1, .1)
+			t:SetColorTexture (1, 1, 1, .1)
 			gradelinhas [i] = t
 			
 			local b = f:CreateTexture (nil, "overlay")
@@ -2021,7 +2065,7 @@ do
 			GameTooltip:Show()
 		end
 		local r, g, b = self:GetBackdropColor()
-		self:SetBackdropColor (r, g, b, 0.4)
+		self:SetBackdropColor (r, g, b, 1)
 	end
 	local column_onleave = function (self)
 		--hide the spell tooltip
@@ -2049,7 +2093,7 @@ do
 		
 		--hp bar
 		column_frame.healthBar = framework:CreateImage (column_frame, nil, 150, 12, "overlay")
-		column_frame.healthBar:SetTexture (0.6, 0, 0, 0.8)
+		column_frame.healthBar:SetColorTexture (0.6, 0, 0, 0.8)
 		
 		--> set points, height and script
 		column_frame:SetPoint ("topleft", deathPanel, "topleft", 0, (i-1)*16*-1)
@@ -2178,7 +2222,7 @@ do
 				for i = 1, NumOfEvents, 1 do
 					local ev = events [eventIndex]
 					local evtype = ev and ev [1] --event type
-				
+					
 					--> check if is really a damage or heal:
 					if (type (evtype) == "boolean") then
 						local spellid = ev [2] --spellid
@@ -2197,8 +2241,8 @@ do
 							column.hitStrength.text = "-" .. number_format_func (_, amount)
 							column.hitStrength.textcolor = "white"
 							column.hitStrength.textsize = 11
-							column:SetBackdropColor (.8, .2, .2, 0.25)
-							column.backdropAlpha = 0.25
+							column:SetBackdropColor (.8, .2, .2, .7)
+							column.backdropAlpha = 0.7
 							
 							--> add the damage to the summary temp table
 							temp_summary_table [spellid] = (temp_summary_table [spellid] or 0) + amount
@@ -2245,7 +2289,7 @@ do
 					tinsert (t, {spellid, amount})
 				end
 				table.sort (t, Details.Sort2)
-				for i = 1, #t do
+				for i = 1, min (#t, 5) do
 					--> get the data from the table
 					local spellid, amount = unpack (t[i])
 					--> get the summary widget
@@ -2470,12 +2514,14 @@ do
 				EI, diff = tonumber (EI), tonumber (diff)
 
 				local mapId = DeathGraphs:GetInstanceIdFromEncounterId (EI)
+				
 				if (mapId) then
 			
 					local diffName = DeathGraphs:GetEncounterDiffString (diff) or ""
 			
 					local bossDetails, bossIndex = DeathGraphs:GetBossEncounterDetailsFromEncounterId (mapId, EI)
 					local bossName = DeathGraphs:GetBossName (mapId, bossIndex)
+					
 					local L, R, T, B, icon = DeathGraphs:GetBossIcon (mapId, bossIndex)
 					
 					if (not bossName) then
@@ -2557,7 +2603,7 @@ do
 			
 			--create a new block
 			block = self:CreateTexture (nil, "overlay") --no framework
-			block:SetTexture (1, 0, 0, graphFrame.SpellBlockAlpha)
+			block:SetColorTexture (1, 0, 0, graphFrame.SpellBlockAlpha)
 			self.SpellBlocks [self.NextSpellBlock] = block
 			self.NextSpellBlock = self.NextSpellBlock + 1
 			return block
@@ -2734,7 +2780,6 @@ do
 		
 		--> update the bottom time elapsed line
 		function timeLine.UpdateTimers (length)
-
 			if (length <= 0) then
 				timeLine.ResetTimeline()
 				return
@@ -2742,6 +2787,10 @@ do
 		
 			local interval = length / 20
 			local startTime = graphFrame.currentStartTime - graphFrame.currentStartTimeDiff
+			startTime = max (0, startTime)
+			
+			--print ("interval", interval, "startTime", startTime)
+			
 			for i = 1, 20 do
 				local time = floor (interval * i) + startTime
 				local label = timeLine.Labels [i]
@@ -2767,7 +2816,7 @@ do
 			--> create the required lines
 			for i = #deathLines + 1, lengthFloor do
 				local newLine = deathLinesFrame:CreateTexture (nil, "overlay") --no framework here
-				newLine:SetTexture (.7, .7, .7)
+				newLine:SetColorTexture (.7, .7, .7)
 				deathLines [i] = newLine
 			end
 			

@@ -1,4 +1,4 @@
-﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="Search.lua"></Script>
 
 	<Button name="AltoSearchEntryTemplate" hidden="true" virtual="true">
@@ -57,7 +57,7 @@
 		</Layers>
 		<Frames>
 			<Cooldown parentKey="Cooldown" inherits="CooldownFrameTemplate"/>
-			<Button parentKey="Item" inherits="AltoItemButtonTemplate">
+			<Button parentKey="Item" inherits="AltoItemIconTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT" x="10" y="0" />
 				</Anchors>

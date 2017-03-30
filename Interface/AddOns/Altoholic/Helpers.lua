@@ -1,4 +1,4 @@
-﻿local addonName = "Altoholic"
+local addonName = "Altoholic"
 local addon = _G[addonName]
 
 addon.Helpers = {}

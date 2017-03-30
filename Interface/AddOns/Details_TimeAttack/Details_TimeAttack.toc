@@ -1,13 +1,9 @@
-## Interface: 70100
+## Interface: 70200
 ## Title: Details TimeAttack (plugin)
 ## Notes: Plugin for Details
 ## SavedVariablesPerCharacter: _detalhes_databaseTimeAttack
 ## RequiredDeps: Details
 ## OptionalDeps: Ace3
-## X-Curse-Packaged-Version: r576
-## X-Curse-Project-Name: Details!
-## X-Curse-Project-ID: details
-## X-Curse-Repository-ID: wow/details/mainline
 
 #@no-lib-strip@
 embeds.xml

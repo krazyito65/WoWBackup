@@ -145,6 +145,14 @@ do
 	frame.texture = frame:CreateTexture(nil, "BACKGROUND")
 	frame.texture:SetTexture(GetSpellTexture(20484))
 	frame.texture:SetAllPoints()
+	frame.texture:SetTexCoord(.1,.9,.1,.9)
+	
+	frame.backdrop = CreateFrame("Frame",nil,frame)
+	frame.backdrop:SetPoint("TOPLEFT",-3,3)
+	frame.backdrop:SetPoint("BOTTOMRIGHT",3,-3)
+	frame.backdrop:SetBackdrop({bgFile = "",edgeFile = "Interface\\AddOns\\ExRT\\media\\UI-Tooltip-Border_grey",tile = true,tileSize = 16,edgeSize = 16,insets = {left = 3,right = 3,top = 3,bottom = 3}})
+	frame.backdrop:SetBackdropBorderColor(.3,.3,.3)
+	
 	frame.cooldown = CreateFrame("Cooldown", nil, frame, "CooldownFrameTemplate")
 	frame.cooldown:SetHideCountdownNumbers(true)
 	frame.cooldown:SetAllPoints()

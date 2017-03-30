@@ -25,7 +25,7 @@ function module.options:Load()
 
 	self.shtml2 = ELib:Text(self,L.LoggingHelp1,12):Size(650,0):Point("TOP",self.shtml1,"BOTTOM",0,-15):Top()
 	
-	self.enable5ppLegion = ELib:Check(self,DUNGEONS..": "..EXPANSION_NAME6.." ("..PLAYER_DIFFICULTY6.."+)",VExRT.Logging.enable5ppLegion):Point("TOP",self.shtml2,"BOTTOM",0,-15):Point("LEFT",self,5,0):OnClick(function(self) 
+	self.enable5ppLegion = ELib:Check(self,DUNGEONS..": "..EXPANSION_NAME6.." ("..PLAYER_DIFFICULTY6..", "..PLAYER_DIFFICULTY6.."+)",VExRT.Logging.enable5ppLegion):Point("TOP",self.shtml2,"BOTTOM",0,-15):Point("LEFT",self,5,0):OnClick(function(self) 
 		if self:GetChecked() then
 			VExRT.Logging.enable5ppLegion = true
 		else
@@ -61,7 +61,7 @@ local function GetCurrentMapForLogging()
 			return false
 		elseif zoneType == 'raid' and (tonumber(mapID) and mapID >= module.db.minRaidMapID) then
 			return true
-		elseif VExRT.Logging.enable5ppLegion and difficulty == 8 and (tonumber(mapID) and mapID >= module.db.minPartyMapID) then
+		elseif VExRT.Logging.enable5ppLegion and (difficulty == 8 or difficulty == 23) and (tonumber(mapID) and mapID >= module.db.minPartyMapID) then
 			return true
 		end
 	end

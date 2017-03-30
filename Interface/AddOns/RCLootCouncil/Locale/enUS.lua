@@ -11,6 +11,8 @@ local L = LibStub("AceLocale-3.0"):NewLocale("RCLootCouncil", "enUS", true, debu
 if not L then return end
 
 L["A new session has begun, type '/rc open' to open the voting frame."] = true
+L["A format to copy/paste to another player."] = true
+L["A tab delimited output for Excel. Might work with outher spreadsheets."] = true
 L["Append realm names"] = true
 L[" is not active in this raid."] = true
 L["Now handles looting"] = true
@@ -48,6 +50,7 @@ L["anonymous_voting_desc"] = "Enables Anonymous Voting, i.e. people can't see wh
 L["Appearance"] = true
 L["Are you sure you want to abort?"] = true
 L["Are you sure you want to give #item to #player?"] = "Are you sure you want to give %s to %s?"
+L["Armor Token"] = true
 L["Ask me every time I become Master Looter"] = true
 L["Ask me when leader"] = true
 L["Auto Award to"] = true
@@ -153,6 +156,7 @@ L["Deselect responses to filter them"] = true
 L["Diff"] = true
 L["Disenchant"] = true
 L["disenchant_desc"] = "Select to use this reason when awarding an item via the 'Disenchant' button"
+L["Double click to delete this entry."] = true
 L["DPS"] = true
 L["Dropped by:"] = true
 L["Enable Loot History"] = true

@@ -13,7 +13,7 @@ local UnitGroupRolesAssigned = UnitGroupRolesAssigned
 local UnitIsConnected = UnitIsConnected
 
 function UF:Construct_RoleIcon(frame)
-	local tex = frame.RaisedElementParent:CreateTexture(nil, "ARTWORK")
+	local tex = frame.RaisedElementParent.TextureParent:CreateTexture(nil, "ARTWORK")
 	tex:Size(17)
 	tex:Point("BOTTOM", frame.Health, "BOTTOM", 0, 2)
 	tex.Override = UF.UpdateRoleIcon
@@ -34,7 +34,7 @@ for i = 1, GetNumClasses() do
 	local _, class, classID = GetClassInfo(i)
 	specNameToRole[class] = {}
 	for j = 1, GetNumSpecializationsForClassID(classID) do
-		local _, spec, _, _, _, role = GetSpecializationInfoForClassID(classID, j)
+		local _, spec, _, _, role = GetSpecializationInfoForClassID(classID, j)
 		specNameToRole[class][spec] = role
 	end
 end

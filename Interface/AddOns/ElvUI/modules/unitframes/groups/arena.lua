@@ -37,7 +37,7 @@ function UF:UpdatePrep(event, unit, status)
 	local _, spec, texture, class
 
 	if s and s > 0 then
-		_, spec, _, texture, _, _, class = GetSpecializationInfoByID(s)
+		_, spec, _, texture, _, class = GetSpecializationInfoByID(s)
 	end
 
 	if class and spec then
@@ -53,6 +53,7 @@ end
 
 function UF:Construct_ArenaFrames(frame)
 	frame.RaisedElementParent = CreateFrame('Frame', nil, frame)
+	frame.RaisedElementParent.TextureParent = CreateFrame('Frame', nil, frame.RaisedElementParent)
 	frame.RaisedElementParent:SetFrameLevel(frame:GetFrameLevel() + 100)
 
 	frame.Health = self:Construct_HealthBar(frame, true, true, 'RIGHT')

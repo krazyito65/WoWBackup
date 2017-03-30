@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("Details", "koKR") 
 if not L then return end 
 
-L["ABILITY_ID"] = "기술 id"
+L["ABILITY_ID"] = "능력 id"
 L["STRING_"] = ""
 L["STRING_ABSORBED"] = "흡수함"
 L["STRING_ACTORFRAME_NOTHING"] = "웁스, 보고할 데이터가 없네요 :("
@@ -28,8 +28,8 @@ L["STRING_ATACH_DESC"] = "창 #%d|1이;가; 창 #%d|1과;와; 그룹이 되었�
 L["STRING_ATTRIBUTE_CUSTOM"] = "사용자 설정"
 L["STRING_ATTRIBUTE_DAMAGE"] = "피해"
 L["STRING_ATTRIBUTE_DAMAGE_BYSPELL"] = "주문으로 받은 피해"
-L["STRING_ATTRIBUTE_DAMAGE_DEBUFFS"] = "오라 & 바닥"
-L["STRING_ATTRIBUTE_DAMAGE_DEBUFFS_REPORT"] = "약화 효과 피해와 유지시간"
+L["STRING_ATTRIBUTE_DAMAGE_DEBUFFS"] = "효과 & 바닥"
+L["STRING_ATTRIBUTE_DAMAGE_DEBUFFS_REPORT"] = "약화 효과 피해와 유지 시간"
 L["STRING_ATTRIBUTE_DAMAGE_DONE"] = "피해량"
 L["STRING_ATTRIBUTE_DAMAGE_DPS"] = "DPS"
 L["STRING_ATTRIBUTE_DAMAGE_ENEMIES"] = "적이 받은 피해"
@@ -51,13 +51,13 @@ L["STRING_ATTRIBUTE_HEAL_OVERHEAL"] = "초과 치유"
 L["STRING_ATTRIBUTE_HEAL_PREVENT"] = "막은 피해"
 L["STRING_ATTRIBUTE_HEAL_TAKEN"] = "받은 치유"
 L["STRING_ATTRIBUTE_MISC"] = "기타"
-L["STRING_ATTRIBUTE_MISC_BUFF_UPTIME"] = "강화 효과 유지시간"
+L["STRING_ATTRIBUTE_MISC_BUFF_UPTIME"] = "강화 효과 유지 시간"
 L["STRING_ATTRIBUTE_MISC_CCBREAK"] = "CC 해제"
 L["STRING_ATTRIBUTE_MISC_DEAD"] = "죽음"
-L["STRING_ATTRIBUTE_MISC_DEBUFF_UPTIME"] = "약화 효과 유지시간"
+L["STRING_ATTRIBUTE_MISC_DEBUFF_UPTIME"] = "약화 효과 유지 시간"
 L["STRING_ATTRIBUTE_MISC_DEFENSIVE_COOLDOWNS"] = "생존기"
 L["STRING_ATTRIBUTE_MISC_DISPELL"] = "해제"
-L["STRING_ATTRIBUTE_MISC_INTERRUPT"] = "차단"
+L["STRING_ATTRIBUTE_MISC_INTERRUPT"] = "시전 방해"
 L["STRING_ATTRIBUTE_MISC_RESS"] = "부활"
 L["STRING_AUTO"] = "자동"
 L["STRING_AUTOSHOT"] = "자동 사격"
@@ -77,13 +77,13 @@ L["STRING_CHANNEL_SAY"] = "일반 대화"
 L["STRING_CHANNEL_WHISPER"] = "귓속말"
 L["STRING_CHANNEL_WHISPER_TARGET_COOLDOWN"] = "생존기 대상에게 귓속말"
 L["STRING_CHANNEL_YELL"] = "외침"
-L["STRING_CLICK_REPORT_LINE1"] = "|cFFFFCC22클릭|r: |cFFFFEE00보고|r"
+L["STRING_CLICK_REPORT_LINE1"] = "|cFFFFCC22클릭|r: |cFFFFEE00보고하기|r"
 L["STRING_CLICK_REPORT_LINE2"] = "|cFFFFCC22Shift+클릭|r: |cFFFFEE00창 모드|r"
-L["STRING_CLOSEALL"] = "모든 Details 창이 닫혔습니다, 다시 열려면 '/details show'를 입력하세요."
+L["STRING_CLOSEALL"] = "모든 창이 닫혔습니다, 다시 열려면 '/details show'를 입력하세요."
 L["STRING_COLOR"] = "색상"
 L["STRING_COMMAND_LIST"] = "명령어 목록"
 L["STRING_COOLTIP_NOOPTIONS"] = "옵션 없음"
-L["STRING_CRITICAL_HITS"] = "치명타 및 극대화 타격"
+L["STRING_CRITICAL_HITS"] = "치명타 및 극대화 적중"
 L["STRING_CRITICAL_ONLY"] = "치명타"
 L["STRING_CURRENT"] = "현재"
 L["STRING_CURRENTFIGHT"] = "현재 세분화"
@@ -108,14 +108,14 @@ L["STRING_CUSTOM_DAMAGEONANYMARKEDTARGET_DESC"] = "기타 다른 징표가 지�
 L["STRING_CUSTOM_DAMAGEONSKULL"] = "해골 징표 대상에게 준 피해"
 L["STRING_CUSTOM_DAMAGEONSKULL_DESC"] = "해골 징표로 지정된 대상에게 준 피해량을 표시합니다."
 L["STRING_CUSTOM_DESCRIPTION"] = "설명:"
-L["STRING_CUSTOM_DESCRIPTION_DESC"] = "이 디스플레이의 역할에 대한 설명."
+L["STRING_CUSTOM_DESCRIPTION_DESC"] = "이 디스플레이의 역할에 대한 설명입니다."
 L["STRING_CUSTOM_DONE"] = "완료"
 L["STRING_CUSTOM_DTBS"] = "주문에 의해 받은 피해"
 L["STRING_CUSTOM_DTBS_DESC"] = "적 주문이 당신의 파티에 입힌 피해량을 표시합니다."
 L["STRING_CUSTOM_EDIT"] = "편집"
-L["STRING_CUSTOM_EDITCODE_DESC"] = "사용자가 직접 디스플레이 코드를 만들 수 있는 고급 기능입니다."
 L["STRING_CUSTOM_EDIT_SEARCH_CODE"] = "검색 코드 편집"
 L["STRING_CUSTOM_EDIT_TOOLTIP_CODE"] = "툴팁 코드 편집"
+L["STRING_CUSTOM_EDITCODE_DESC"] = "사용자가 직접 디스플레이 코드를 만들 수 있는 고급 기능입니다."
 L["STRING_CUSTOM_EDITTOOLTIP_DESC"] = "툴팁 코드입니다, 사용자가 바에 마우스를 올리면 실행됩니다."
 L["STRING_CUSTOM_ENEMY_DT"] = " 받은 피해"
 L["STRING_CUSTOM_EXPORT"] = "내보내기"
@@ -126,8 +126,8 @@ L["STRING_CUSTOM_ICON"] = "아이콘:"
 L["STRING_CUSTOM_IMPORT"] = "가져오기"
 L["STRING_CUSTOM_IMPORT_ALERT"] = "디스플레이를 불러왔습니다, 가져오기를 클릭하여 승인하세요."
 L["STRING_CUSTOM_IMPORT_BUTTON"] = "가져오기"
-L["STRING_CUSTOM_IMPORTED"] = "디스플레이를 성공적으로 가져왔습니다."
 L["STRING_CUSTOM_IMPORT_ERROR"] = "가져오기 실패, 유효하지 않은 구문입니다."
+L["STRING_CUSTOM_IMPORTED"] = "디스플레이를 성공적으로 가져왔습니다."
 L["STRING_CUSTOM_LONGNAME"] = "이름이 너무 깁니다, 최대 32자까지 가능합니다."
 L["STRING_CUSTOM_MYSPELLS"] = "내 주문"
 L["STRING_CUSTOM_MYSPELLS_DESC"] = "창에 주문을 표시합니다."
@@ -149,7 +149,7 @@ L["STRING_CUSTOM_SKIN_TEXTURE_DESC"] = [=[.tga 파일의 이름입니다.
 
 |cFFFFFF00WoW/Interface/|r
 
-|cFFFFFF00중요:|r 파일을 만들기 전에 게임 클라이언트를 닫으세요. 그 후에, /reload로 무늬 파일에 저장된 변경 내용을 적용할 수 있습니다.]=]
+|cFFFFFF00중요:|r 파일을 만들기 전에 게임 클라이언트를 닫으세요. 이후부터는 /reload로 텍스쳐 파일에 저장된 변경 내용을 적용할 수 있습니다.]=]
 L["STRING_CUSTOM_SOURCE"] = "출처:"
 L["STRING_CUSTOM_SOURCE_DESC"] = [=[효과를 일으킨 대상입니다.
 
@@ -164,16 +164,16 @@ L["STRING_CUSTOM_TARGET_DESC"] = [=[출처의 대상입니다.
 우측 버튼은 공격대 전투 중 npc들의 목록을 보여줍니다.]=]
 L["STRING_CUSTOM_TEMPORARILY"] = " (|cFFFFC000임시|r)"
 L["STRING_DAMAGE"] = "피해"
-L["STRING_DAMAGE_DPS_IN"] = "받은 DPS from"
+L["STRING_DAMAGE_DPS_IN"] = "받은 DPS:"
 L["STRING_DAMAGE_FROM"] = "피해 출처"
-L["STRING_DAMAGE_TAKEN_FROM"] = "받은 피해 출처"
-L["STRING_DAMAGE_TAKEN_FROM2"] = "적용된 피해 출처"
+L["STRING_DAMAGE_TAKEN_FROM"] = "받은 피해 출처:"
+L["STRING_DAMAGE_TAKEN_FROM2"] = "적용된 피해 출처:"
 L["STRING_DEFENSES"] = "방어"
 L["STRING_DESCENDING"] = "내림차순"
 L["STRING_DETACH_DESC"] = "창 그룹 해제"
-L["STRING_DISPELLED"] = "버프/디버프 제거됨"
+L["STRING_DISPELLED"] = "제거된 강화 효과/약화 효과"
 L["STRING_DODGE"] = "회피"
-L["STRING_DOT"] = " (도트)"
+L["STRING_DOT"] = " (지속 피해)"
 L["STRING_DPS"] = "Dps"
 L["STRING_EMPTY_SEGMENT"] = "빈 세분화"
 L["STRING_ENABLED"] = "사용"
@@ -198,14 +198,14 @@ L["STRING_FEEDBACK_SEND_FEEDBACK"] = "피드백 보내기"
 L["STRING_FEEDBACK_WOWI_DESC"] = "Details! 프로젝트 페이지에 의견을 남깁니다."
 L["STRING_FIGHTNUMBER"] = "전투 #"
 L["STRING_FREEZE"] = "이 세분화는 지금 사용할 수 없음"
-L["STRING_FROM"] = "출처"
+L["STRING_FROM"] = "출처:"
 L["STRING_GERAL"] = "일반"
 L["STRING_GLANCING"] = "빗맞음"
 L["STRING_HEAL"] = "치유"
 L["STRING_HEAL_ABSORBED"] = "흡수된 치유"
 L["STRING_HEAL_CRIT"] = "극대화 치유"
-L["STRING_HEALING_FROM"] = "받은 치유 출처"
-L["STRING_HEALING_HPS_FROM"] = "받은 HPS 출처"
+L["STRING_HEALING_FROM"] = "받은 치유 출처:"
+L["STRING_HEALING_HPS_FROM"] = "받은 HPS 출처:"
 L["STRING_HITS"] = "횟수"
 L["STRING_HPS"] = "Hps"
 L["STRING_IMAGEEDIT_ALPHA"] = "투명도"
@@ -228,18 +228,18 @@ L["STRING_KEYBIND_BOOKMARK"] = "북마크"
 L["STRING_KEYBIND_BOOKMARK_NUMBER"] = "북마크 #%s"
 L["STRING_KEYBIND_RESET_SEGMENTS"] = "세분화 초기화"
 L["STRING_KEYBIND_SCROLL_DOWN"] = "모든 창 스크롤 내리기"
-L["STRING_KEYBIND_SCROLLING"] = "스크롤"
 L["STRING_KEYBIND_SCROLL_UP"] = "모든 창 스크롤 올리기"
+L["STRING_KEYBIND_SCROLLING"] = "스크롤"
 L["STRING_KEYBIND_SEGMENTCONTROL"] = "세분화"
 L["STRING_KEYBIND_TOGGLE_WINDOW"] = "창 #%s 표시 전환"
 L["STRING_KEYBIND_TOGGLE_WINDOWS"] = "모든 창 표시 전환"
 L["STRING_KEYBIND_WINDOW_CONTROL"] = "창"
-L["STRING_KEYBIND_WINDOW_REPORT"] = "창 #%s에 표시된 데이터 보고"
-L["STRING_KEYBIND_WINDOW_REPORT_HEADER"] = "데이터 보고"
+L["STRING_KEYBIND_WINDOW_REPORT"] = "창 #%s에 표시된 데이터를 보고합니다."
+L["STRING_KEYBIND_WINDOW_REPORT_HEADER"] = "데이터 보고하기"
 L["STRING_KILLED"] = "죽임"
 L["STRING_LAST_COOLDOWN"] = "마지막으로 사용한 생존기"
 L["STRING_LEFT"] = "좌측"
-L["STRING_LEFT_CLICK_SHARE"] = "버튼을 클릭해서 보고합니다."
+L["STRING_LEFT_CLICK_SHARE"] = "보고하려면 클릭하세요."
 L["STRING_LEFT_TO_RIGHT"] = "왼쪽에서 오른쪽으로"
 L["STRING_LOCK_DESC"] = "창 잠금 또는 잠금해제"
 L["STRING_LOCK_WINDOW"] = "잠금"
@@ -247,7 +247,7 @@ L["STRING_MASTERY"] = "특화"
 L["STRING_MAXIMUM"] = "최대"
 L["STRING_MAXIMUM_SHORT"] = "최대"
 L["STRING_MEDIA"] = "미디어"
-L["STRING_MELEE"] = "근접"
+L["STRING_MELEE"] = "근접 공격"
 L["STRING_MEMORY_ALERT_BUTTON"] = "이해했습니다"
 L["STRING_MEMORY_ALERT_TEXT1"] = "Details!는 많은 메모리를 사용합니다, 하지만 |cFFFF8800많은 사람들이 생각하는 것과 달리|r, 애드온에 의한 메모리 사용량은 게임 성능이나 FPS에 |cFFFF8800영향을 주지 않습니다|r."
 L["STRING_MEMORY_ALERT_TEXT2"] = "따라서 Details!가 많은 양의 메모리를 사용하는 걸 알게 되었더라도, 혼란스러워 하지마세요 :D |cFFFF8800모두 정상입니다!|r, 그리고 이 메모리는 애드온을 더 빠르게 만들어주는 |cFFFF8800캐시를 저장하는데 사용됩니다|r."
@@ -257,16 +257,16 @@ L["STRING_MENU_CLOSE_INSTANCE"] = "이 창 닫기"
 L["STRING_MENU_CLOSE_INSTANCE_DESC"] = "닫혀진 창은 비활성화되며 창 제어 메뉴에서 언제든지 다시 열 수 있습니다."
 L["STRING_MENU_CLOSE_INSTANCE_DESC2"] = "옵션 창의 기타 설정 란에서 창을 완전히 없앨 수 있습니다."
 L["STRING_MENU_INSTANCE_CONTROL"] = "창 제어"
+L["STRING_MINIMAP_TOOLTIP1"] = "|cFFCFCFCF클릭|r: 옵션 창 열기"
+L["STRING_MINIMAP_TOOLTIP11"] = "|cFFCFCFCF클릭|r: 모든 세분화 초기화"
+L["STRING_MINIMAP_TOOLTIP12"] = "|cFFCFCFCF클릭|r: 창 표시/숨기기"
+L["STRING_MINIMAP_TOOLTIP2"] = "|cFFCFCFCF오른쪽 클릭|r: 빠른 메뉴"
 L["STRING_MINIMAPMENU_CLOSEALL"] = "모두 닫기"
 L["STRING_MINIMAPMENU_HIDEICON"] = "미니맵 아이콘 숨기기"
 L["STRING_MINIMAPMENU_LOCK"] = "잠금"
 L["STRING_MINIMAPMENU_NEWWINDOW"] = "새 창 만들기"
 L["STRING_MINIMAPMENU_REOPENALL"] = "모두 다시 열기"
 L["STRING_MINIMAPMENU_UNLOCK"] = "잠금해제"
-L["STRING_MINIMAP_TOOLTIP1"] = "|cFFCFCFCF클릭|r: 옵션 창 열기"
-L["STRING_MINIMAP_TOOLTIP11"] = "|cFFCFCFCF클릭|r: 모든 세분화 초기화"
-L["STRING_MINIMAP_TOOLTIP12"] = "|cFFCFCFCF클릭|r: 창 표시/숨기기"
-L["STRING_MINIMAP_TOOLTIP2"] = "|cFFCFCFCF오른쪽 클릭|r: 빠른 메뉴"
 L["STRING_MINIMUM"] = "최소"
 L["STRING_MINIMUM_SHORT"] = "최소"
 L["STRING_MINITUTORIAL_BOOKMARK1"] = "창의 어느 곳이든 오른쪽 클릭하면 북마크를 엽니다!"
@@ -283,7 +283,7 @@ L["STRING_MINITUTORIAL_OPTIONS_PANEL3"] = [=[그룹을 만들려면 창 #2를 �
 L["STRING_MINITUTORIAL_OPTIONS_PANEL4"] = "테스트 바를 만들어 설정을 테스트합니다."
 L["STRING_MINITUTORIAL_OPTIONS_PANEL5"] = "그룹 편집이 활성화되어 있으면 그룹의 모든 창이 변경됩니다."
 L["STRING_MINITUTORIAL_OPTIONS_PANEL6"] = "여기서 창을 선택하고 외형을 변경하세요."
-L["STRING_MINITUTORIAL_WINDOWS1"] = [=[창의 그룹을 만듭니다.
+L["STRING_MINITUTORIAL_WINDOWS1"] = [=[창의 그룹을 생성했습니다.
 
 해제하려면 자물쇠 아이콘을 클릭하세요.]=]
 L["STRING_MINITUTORIAL_WINDOWS2"] = [=[창이 고정되어 있습니다.
@@ -291,14 +291,14 @@ L["STRING_MINITUTORIAL_WINDOWS2"] = [=[창이 고정되어 있습니다.
 제목 바를 클릭하고 위로 드래그하면 늘어납니다.]=]
 L["STRING_MIRROR_IMAGE"] = "미러 이미지"
 L["STRING_MISS"] = "빗나감"
-L["STRING_MODE_ALL"] = "모두"
+L["STRING_MODE_ALL"] = "전체"
 L["STRING_MODE_GROUP"] = "표준"
 L["STRING_MODE_PLUGINS"] = "플러그인"
 L["STRING_MODE_RAID"] = "플러그인: 공격대"
 L["STRING_MODE_SELF"] = "플러그인: 솔로 플레이"
 L["STRING_MORE_INFO"] = "자세한 정보는 오른쪽에 있습니다."
 L["STRING_MULTISTRIKE"] = "연속타격"
-L["STRING_MULTISTRIKE_HITS"] = "연속타격"
+L["STRING_MULTISTRIKE_HITS"] = "연속타격 적중"
 L["STRING_MUSIC_DETAILS_ROBERTOCARLOS"] = [=[잊으려는 노력을 하지 않으면
 난 오랜 시간 당신의 삶에 머물거에요
 우리의 아주 작은 것까지도]=]
@@ -306,16 +306,16 @@ L["STRING_NEWROW"] = "새로고침 중..."
 L["STRING_NEWS_REINSTALL"] = "업데이트 후에 문제가 생겼나요? '/details reinstall' 명령어를 입력해보세요."
 L["STRING_NEWS_TITLE"] = "버전 변경 사항"
 L["STRING_NO"] = "아니오"
-L["STRING_NOCLOSED_INSTANCES"] = [=[닫혀있는 창이 없습니다,
-클릭하면 새 창을 엽니다.]=]
 L["STRING_NO_DATA"] = "데이터가 이미 지워졌습니다"
-L["STRING_NOLAST_COOLDOWN"] = "사용한 생존기 없음"
-L["STRING_NOMORE_INSTANCES"] = [=[창 최대 갯수에 도달했습니다.
-옵션 창에서 제한 갯수를 변경하세요.]=]
-L["STRING_NORMAL_HITS"] = "일반 타격"
 L["STRING_NO_SPELL"] = "사용한 주문 없음"
 L["STRING_NO_TARGET"] = "대상이 없습니다."
 L["STRING_NO_TARGET_BOX"] = "표시할 대상 없음"
+L["STRING_NOCLOSED_INSTANCES"] = [=[닫혀있는 창이 없습니다,
+클릭하면 새 창을 엽니다.]=]
+L["STRING_NOLAST_COOLDOWN"] = "사용한 생존기 없음"
+L["STRING_NOMORE_INSTANCES"] = [=[창 최대 갯수에 도달했습니다.
+옵션 창에서 제한 갯수를 변경하세요.]=]
+L["STRING_NORMAL_HITS"] = "일반 적중"
 L["STRING_NUMERALSYSTEM"] = "명수법"
 L["STRING_NUMERALSYSTEM_ARABIC_MYRIAD_EASTASIA"] = "동아시아 국가들이 사용합니다, 천 단위와 만 단위로 구분합니다."
 L["STRING_NUMERALSYSTEM_ARABIC_WESTERN"] = "서양"
@@ -365,14 +365,14 @@ L["STRING_OPTIONS_BAR_BACKDROP_ANCHOR"] = "테두리:"
 L["STRING_OPTIONS_BAR_BACKDROP_COLOR_DESC"] = "테두리 색상을 변경합니다."
 L["STRING_OPTIONS_BAR_BACKDROP_ENABLED_DESC"] = "바 테두리를 켜거나 끕니다."
 L["STRING_OPTIONS_BAR_BACKDROP_SIZE_DESC"] = "테두리 크기를 조절합니다."
-L["STRING_OPTIONS_BAR_BACKDROP_TEXTURE_DESC"] = "테두리 외형을 변경합니다."
+L["STRING_OPTIONS_BAR_BACKDROP_TEXTURE_DESC"] = "테두리 모양을 변경합니다."
 L["STRING_OPTIONS_BAR_BCOLOR"] = "배경 색상"
-L["STRING_OPTIONS_BAR_BTEXTURE_DESC"] = "이 무늬를 상위 무늬 아래에 놓고 크기를 항상 창의 너비와 맞춥니다."
-L["STRING_OPTIONS_BAR_COLORBYCLASS"] = "직업 색상 사용"
-L["STRING_OPTIONS_BAR_COLORBYCLASS_DESC"] = "활성화하면 이 무늬는 항상 플레이어 직업의 색상을 사용합니다."
+L["STRING_OPTIONS_BAR_BTEXTURE_DESC"] = "이 텍스쳐를 상위 텍스쳐 밑에 놓고 크기를 항상 창의 너비와 맞춥니다."
 L["STRING_OPTIONS_BAR_COLOR_DESC"] = [=[이 무늬의 색상과 투명도입니다.
 
 |cFFFFFF00중요|r: 직업 색상을 사용하면 선택한 색상은 무시됩니다.]=]
+L["STRING_OPTIONS_BAR_COLORBYCLASS"] = "직업 색상 사용"
+L["STRING_OPTIONS_BAR_COLORBYCLASS_DESC"] = "활성화하면 이 무늬는 항상 플레이어 직업의 색상을 사용합니다."
 L["STRING_OPTIONS_BAR_FOLLOWING"] = "항상 나를 표시"
 L["STRING_OPTIONS_BAR_FOLLOWING_ANCHOR"] = "플레이어 바:"
 L["STRING_OPTIONS_BAR_FOLLOWING_DESC"] = "활성화하면 당신이 상위권에 없어도 항상 자신의 바가 표시됩니다."
@@ -381,17 +381,21 @@ L["STRING_OPTIONS_BAR_GROW_DESC"] = "창의 상단이나 하단부터 바가 생
 L["STRING_OPTIONS_BAR_HEIGHT"] = "높이"
 L["STRING_OPTIONS_BAR_HEIGHT_DESC"] = "바의 높이를 늘리거나 줄입니다."
 L["STRING_OPTIONS_BAR_ICONFILE"] = "아이콘 파일"
+L["STRING_OPTIONS_BAR_ICONFILE_DESC"] = [=[사용자 설정 아이콘 파일의 경로입니다.
+
+이미지 파일은 .tga, 256x256 픽셀의 알파 채널이어야 합니다.]=]
+L["STRING_OPTIONS_BAR_ICONFILE_DESC2"] = "사용할 아이콘 묶음을 선택하세요."
 L["STRING_OPTIONS_BAR_ICONFILE1"] = "아이콘 없음"
 L["STRING_OPTIONS_BAR_ICONFILE2"] = "기본"
 L["STRING_OPTIONS_BAR_ICONFILE3"] = "기본 (흑백)"
 L["STRING_OPTIONS_BAR_ICONFILE4"] = "기본 (투명)"
 L["STRING_OPTIONS_BAR_ICONFILE5"] = "둥근 아이콘"
 L["STRING_OPTIONS_BAR_ICONFILE6"] = "기본 (투명한 흑백)"
-L["STRING_OPTIONS_BAR_ICONFILE_DESC"] = [=[사용자 설정 아이콘 파일의 경로입니다.
-
-이미지 파일은 .tga, 256x256 픽셀의 알파 채널이어야 합니다.]=]
-L["STRING_OPTIONS_BAR_ICONFILE_DESC2"] = "사용할 아이콘 묶음을 선택하세요."
+L["STRING_OPTIONS_BAR_SPACING"] = "간격"
+L["STRING_OPTIONS_BAR_SPACING_DESC"] = "바 사이의 간격 크기입니다."
+L["STRING_OPTIONS_BAR_TEXTURE_DESC"] = "바의 상단에 쓰이는 텍스쳐입니다."
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM"] = "사용자 설정 문자 활성화"
+L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "활성화하면 아래 입력 창에 쓰이는 규칙에 따라 좌측 문자가 표시됩니다."
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2"] = ""
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: 일반적으로 플레이어의 순위를 나타냅니다.
 
@@ -405,10 +409,10 @@ L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: 일반적�
 {func return '안녕 아제로스'}
 
 |cFFFFFF00Scape Sequences|r: 색상을 변경하거나 무늬를 추가하는데 쓰입니다. 자세한 정보는 'UI escape sequences' 검색하세요.]=]
-L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "활성화하면 아래 입력 창에 쓰이는 규칙에 따라 좌측 문자가 표시됩니다."
 L["STRING_OPTIONS_BARORIENTATION"] = "바 방향"
 L["STRING_OPTIONS_BARORIENTATION_DESC"] = "바가 채워질 방향입니다."
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM"] = "사용자 설정 문자 활성화"
+L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM_DESC"] = "활성화하면 입력 창에 입력된 형식으로 우측 문자가 표시됩니다."
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2"] = ""
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: 첫번째로 보여집니다, 일반적으로 이 숫자는 전체 양을 나타냅니다.
 
@@ -421,22 +425,18 @@ L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: 첫번째
 {func return '안녕 아제로스'}
 
 |cFFFFFF00Scape Sequences|r: 색상이나 텍스쳐를 추가합니다. 자세한 정보는 'UI escape sequences' 검색하세요.]=]
-L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM_DESC"] = "활성화하면 입력 창에 입력된 형식으로 우측 문자가 표시됩니다."
 L["STRING_OPTIONS_BARS"] = "바 일반 설정"
-L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE"] = "사용자 설정 무늬 파일"
+L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE"] = "사용자 설정 텍스쳐 파일"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE_DESC"] = [=[
 
 |cFFFFFF00중요|r: 이미지는 256x32 픽셀이어야 합니다.]=]
-L["STRING_OPTIONS_BARS_DESC"] = "바 외형을 설정하는 옵션들입니다."
+L["STRING_OPTIONS_BARS_DESC"] = "바 모양을 설정하는 옵션들입니다."
 L["STRING_OPTIONS_BARSORT"] = "바 순위 정렬 순서"
 L["STRING_OPTIONS_BARSORT_DESC"] = "오름차순 또는 내림차순으로 바를 정렬합니다."
-L["STRING_OPTIONS_BAR_SPACING"] = "간격"
-L["STRING_OPTIONS_BAR_SPACING_DESC"] = "바 사이의 간격 크기입니다."
 L["STRING_OPTIONS_BARSTART"] = "아이콘 뒤에 바 시작"
 L["STRING_OPTIONS_BARSTART_DESC"] = [=[비활성하면 상위 무늬를 아이콘 오른쪽 대신 왼쪽면부터 시작합니다.
 
 투명 영역이 있는 아이콘 묶음을 사용할 때 유용합니다.]=]
-L["STRING_OPTIONS_BAR_TEXTURE_DESC"] = "바 상단에 쓰이는 무늬입니다."
 L["STRING_OPTIONS_BARUR_ANCHOR"] = "빠른 갱신:"
 L["STRING_OPTIONS_BARUR_DESC"] = "사용하면, DPS와 HPS 값이 보통보다 조금 더 빠르게 갱신 됩니다."
 L["STRING_OPTIONS_BG_ALL_ALLY"] = "모두 표시"
@@ -449,9 +449,9 @@ L["STRING_OPTIONS_BG_REMOTE_PARSER_DESC"] = "활성화하면 피해와 치유를
 L["STRING_OPTIONS_CAURAS"] = "오라 수집"
 L["STRING_OPTIONS_CAURAS_DESC"] = [=[수집 허용:
 
-- |cFFFFFF00버프 지속시간|r
-- |cFFFFFF00디버프 지속시간|r
-- |cFFFFFF00데미지 바닥|r
+- |cFFFFFF00강화 효과 유지 시간|r
+- |cFFFFFF00약화 효과 유지 시간|r
+- |cFFFFFF00피해 바닥|r
 -|cFFFFFF00 생존기|r]=]
 L["STRING_OPTIONS_CDAMAGE"] = "피해 수집"
 L["STRING_OPTIONS_CDAMAGE_DESC"] = [=[수집 허용:
@@ -501,7 +501,7 @@ L["STRING_OPTIONS_CHEAL_DESC"] = [=[수집 허용:
 - |cFFFFFF00치유량|r
 - |cFFFFFF00흡수|r
 - |cFFFFFF00초당 치유|r
-- |cFFFFFF00초과치유|r
+- |cFFFFFF00초과 치유|r
 - |cFFFFFF00받은 치유|r
 - |cFFFFFF00적이 받은 치유|r
 - |cFFFFFF00막은 피해|r]=]
@@ -552,6 +552,15 @@ L["STRING_OPTIONS_CUSTOMSPELLTITLE"] = "주문 설정 편집"
 L["STRING_OPTIONS_CUSTOMSPELLTITLE_DESC"] = "주문의 이름과 아이콘을 수정할 수 있는 창입니다."
 L["STRING_OPTIONS_DATABROKER"] = "Data Broker:"
 L["STRING_OPTIONS_DATABROKER_TEXT"] = "문자"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD1"] = "자신의 피해량"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD2"] = "자신의 실질 Dps"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD3"] = "피해량 순위"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD4"] = "피해량 차이"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD5"] = "자신의 치유량"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD6"] = "자신의 실질 Hps"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD7"] = "치유량 순위"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD8"] = "치유량 차이"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD9"] = "전투 경과 시간"
 L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: 자신의 피해량입니다.
 
 |cFFFFFF00{dps}|r: 자신의 초당 피해량 입니다.
@@ -569,15 +578,6 @@ L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: 자신의 피�
 |cFFFFFF00{hdiff}|r: 1등과 자신의 치유량 차이입니다.
 
 |cFFFFFF00{time}|r: 전투 경과 시간입니다.]=]
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD1"] = "자신의 피해량"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD2"] = "자신의 실질 Dps"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD3"] = "피해량 순위"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD4"] = "피해량 차이"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD5"] = "자신의 치유량"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD6"] = "자신의 실질 Hps"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD7"] = "치유량 순위"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD8"] = "치유량 차이"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD9"] = "전투 경과 시간"
 L["STRING_OPTIONS_DATACHARTTITLE"] = "차트에 쓰일 정기적인 데이터 생성"
 L["STRING_OPTIONS_DATACHARTTITLE_DESC"] = "이 창에서 차트 구성에 쓰일 사용자 설정 데이터를 생성할 수 있습니다."
 L["STRING_OPTIONS_DATACOLLECT_ANCHOR"] = "데이터 속성:"
@@ -591,7 +591,6 @@ L["STRING_OPTIONS_DISABLE_ALLDISPLAYSWINDOW"] = "'모든 디스플레이' 메뉴
 L["STRING_OPTIONS_DISABLE_ALLDISPLAYSWINDOW_DESC"] = "활성화하면 제목바를 오른쪽 클릭했을 때 북마크가 대신 표시됩니다."
 L["STRING_OPTIONS_DISABLE_BARHIGHLIGHT"] = "바 강조 비활성"
 L["STRING_OPTIONS_DISABLE_BARHIGHLIGHT_DESC"] = "이 옵션을 사용하면 바에 마우스를 올렸을 때 바를 강조하지 않습니다."
-L["STRING_OPTIONS_DISABLED_RESET"] = "이 버튼을 통한 초기화 기능은 현재 사용할 수 없습니다, 툴팁 메뉴에서 선택하세요."
 L["STRING_OPTIONS_DISABLE_GROUPS"] = "창 그룹 사용 안함"
 L["STRING_OPTIONS_DISABLE_GROUPS_DESC"] = "활성화하면 창끼리 가까이 위치해도 그룹을 만들지 않습니다."
 L["STRING_OPTIONS_DISABLE_LOCK_RESIZE"] = "크기 조절 버튼 비활성"
@@ -600,17 +599,18 @@ L["STRING_OPTIONS_DISABLE_RESET"] = "초기화 버튼 클릭 사용 안함"
 L["STRING_OPTIONS_DISABLE_RESET_DESC"] = "활성화하면 초기화를 버튼 클릭 대신 툴팁 메뉴를 통해 해야 합니다."
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON"] = "늘리기 버튼 비활성"
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON_DESC"] = "이 옵션을 사용하면 늘리기 버튼이 표시되지 않습니다."
+L["STRING_OPTIONS_DISABLED_RESET"] = "이 버튼을 통한 초기화 기능은 현재 사용할 수 없습니다, 툴팁 메뉴에서 선택하세요."
 L["STRING_OPTIONS_DTAKEN_EVERYTHING"] = "고급 받은 피해"
-L["STRING_OPTIONS_DTAKEN_EVERYTHING_DESC"] = "받은 피해가 항상 '|cFFFFFF00모두|r' 모드로 표시됩니다."
+L["STRING_OPTIONS_DTAKEN_EVERYTHING_DESC"] = "받은 피해가 항상 '|cFFFFFF00전체|r' 모드로 표시됩니다."
 L["STRING_OPTIONS_ED"] = "데이터 삭제"
-L["STRING_OPTIONS_ED1"] = "수동"
-L["STRING_OPTIONS_ED2"] = "묻기"
-L["STRING_OPTIONS_ED3"] = "자동"
 L["STRING_OPTIONS_ED_DESC"] = [=[|cFFFFFF00수동|r: 사용자가 초기화 버튼을 클릭해야 합니다.
 
 |cFFFFFF00묻기|r: 새로운 인스턴스에 진입하면 초기화할지 묻습니다.
 
 |cFFFFFF00자동|r: 새로운 인스턴스에 진입하면 자동으로 초기화합니다.]=]
+L["STRING_OPTIONS_ED1"] = "수동"
+L["STRING_OPTIONS_ED2"] = "묻기"
+L["STRING_OPTIONS_ED3"] = "자동"
 L["STRING_OPTIONS_EDITIMAGE"] = "이미지 편집"
 L["STRING_OPTIONS_EDITINSTANCE"] = "창 편집:"
 L["STRING_OPTIONS_ERASECHARTDATA"] = "차트 삭제"
@@ -619,14 +619,14 @@ L["STRING_OPTIONS_EXTERNALS_TITLE"] = "외부 위젯"
 L["STRING_OPTIONS_EXTERNALS_TITLE2"] = "여러 외부 위젯의 작동 방법을 조절하는 옵션입니다."
 L["STRING_OPTIONS_GENERAL"] = "일반 설정"
 L["STRING_OPTIONS_GENERAL_ANCHOR"] = "일반:"
-L["STRING_OPTIONS_HIDECOMBATALPHA_DESC"] = [=[캐릭터가 선택한 상황과 일치하면 이 값으로 투명도를 변경합니다.
-
-|cFFFFFF000|r: 완벽히 숨김, 창과 상호작용 할 수 없습니다.
-|cFFFFFF001 - 100|r: 숨기지 않음, 투명도만 변경되며 창과 상호작용 할 수 있습니다.]=]
 L["STRING_OPTIONS_HIDE_ICON"] = "아이콘 숨기기"
 L["STRING_OPTIONS_HIDE_ICON_DESC"] = [=[활성화하면 선택한 디스플레이를 나타내는 아이콘을 표시하지 않습니다.
 
 |cFFFFFF00중요|r: 아이콘을 활성화한 후 제목 글자 위치를 조정하는 것이 좋습니다.]=]
+L["STRING_OPTIONS_HIDECOMBATALPHA_DESC"] = [=[캐릭터가 선택한 상황과 일치하면 이 값으로 투명도를 변경합니다.
+
+|cFFFFFF000|r: 완벽히 숨김, 창과 상호작용 할 수 없습니다.
+|cFFFFFF001 - 100|r: 숨기지 않음, 투명도만 변경되며 창과 상호작용 할 수 있습니다.]=]
 L["STRING_OPTIONS_HOTCORNER"] = "버튼 표시"
 L["STRING_OPTIONS_HOTCORNER_ACTION"] = "클릭 시 행동"
 L["STRING_OPTIONS_HOTCORNER_ACTION_DESC"] = "Hotcorner 바에 있는 버튼을 클릭 했을 때 무엇을 할지 선택하세요."
@@ -662,7 +662,6 @@ L["STRING_OPTIONS_INSTANCE_CURRENT_DESC"] = "전투가 시작되면 자동으로
 L["STRING_OPTIONS_INSTANCE_DELETE"] = "삭제"
 L["STRING_OPTIONS_INSTANCE_DELETE_DESC"] = [=[창을 완전히 제거합니다.
 제거하는 동안 게임 화면을 다시 불러옵니다.]=]
-L["STRING_OPTIONS_INSTANCES"] = "창:"
 L["STRING_OPTIONS_INSTANCE_SKIN"] = "스킨"
 L["STRING_OPTIONS_INSTANCE_SKIN_DESC"] = "스킨 테마에 맞춰 창의 외형을 변경합니다."
 L["STRING_OPTIONS_INSTANCE_STATUSBAR_ANCHOR"] = "상태바:"
@@ -678,6 +677,7 @@ Low가 기본값으로 대부분의 인터페이스 뒤에 창이 위치합니�
 High를 사용하면 다른 주요 창들보다 앞에 놓이게 됩니다.
 
 우선 순위를 수정하면 다른 창과 충돌이나 겹치는 문제가 발생할 수 있습니다.]=]
+L["STRING_OPTIONS_INSTANCES"] = "창:"
 L["STRING_OPTIONS_INTERFACEDIT"] = "인터페이스 편집 모드"
 L["STRING_OPTIONS_LEFT_MENU_ANCHOR"] = "메뉴 설정:"
 L["STRING_OPTIONS_LOCKSEGMENTS"] = "세분화 잠금"
@@ -705,11 +705,10 @@ L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORX_DESC"] = "항목 문자의 X 좌표를 
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORY"] = "Y 위치"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ANCHORY_DESC"] = "항목 문자의 Y 좌표를 조절합니다."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ENABLED_DESC"] = "창에 현재 표시 중인 디스플레이의 이름을 표시합니다."
-L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER"] = "공격대 전투시간 타이머"
+L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER"] = "우두머리 전투 타이머"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER_DESC"] = "활성화하면 문자 왼쪽에 초시계가 표시됩니다."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_FONT"] = "문자 글꼴"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_FONT_DESC"] = "항목 문자의 글꼴을 선택합니다."
-L["STRING_OPTIONS_MENU_ATTRIBUTESETTINGS_ANCHOR"] = "설정:"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SHADOW_DESC"] = "문자에 그림자 효과를 켜거나 끕니다."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SIDE"] = "상단에 붙이기"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SIDE_DESC"] = "문자가 고정될 위치를 선택하세요."
@@ -717,69 +716,44 @@ L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTCOLOR"] = "글자 색상"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTCOLOR_DESC"] = "항목 문자의 색상을 변경하세요."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE"] = "문자 크기"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE_DESC"] = "항목 문자의 크기를 조절합니다."
+L["STRING_OPTIONS_MENU_ATTRIBUTESETTINGS_ANCHOR"] = "설정:"
 L["STRING_OPTIONS_MENU_AUTOHIDE_DESC"] = "마우스가 창 밖에 있을 때 버튼을 자동으로 숨기고 창과 다시 상호작용을 하면 표시합니다."
 L["STRING_OPTIONS_MENU_AUTOHIDE_LEFT"] = "버튼 자동 숨기기"
-L["STRING_OPTIONSMENU_AUTOMATIC"] = "창: 자동화"
-L["STRING_OPTIONSMENU_AUTOMATIC_TITLE"] = "창 자동화 설정"
-L["STRING_OPTIONSMENU_AUTOMATIC_TITLE_DESC"] = "자동 숨기기나 자동 전환 같은 창의 자동 동작을 제어합니다."
 L["STRING_OPTIONS_MENU_BUTTONSSIZE_DESC"] = "버튼 크기를 선택하세요. 플러그인에서 추가된 버튼도 변경됩니다."
-L["STRING_OPTIONSMENU_COMBAT"] = "PvE PvP"
-L["STRING_OPTIONSMENU_DATACHART"] = "차트 데이터"
-L["STRING_OPTIONSMENU_DATACOLLECT"] = "데이터 수집기"
-L["STRING_OPTIONSMENU_DATAFEED"] = "데이터 제공"
-L["STRING_OPTIONSMENU_DISPLAY"] = "디스플레이"
-L["STRING_OPTIONSMENU_DISPLAY_DESC"] = "전체적인 기본 설정과 창을 조절합니다."
 L["STRING_OPTIONS_MENU_FONT_FACE"] = "메뉴 문자 글꼴"
 L["STRING_OPTIONS_MENU_FONT_FACE_DESC"] = "모든 메뉴에 사용될 글꼴을 수정합니다."
 L["STRING_OPTIONS_MENU_FONT_SIZE"] = "메뉴 문자 크기"
 L["STRING_OPTIONS_MENU_FONT_SIZE_DESC"] = "모든 메뉴의 글꼴 크기를 변경합니다."
 L["STRING_OPTIONS_MENU_IGNOREBARS"] = "바 무시하기"
 L["STRING_OPTIONS_MENU_IGNOREBARS_DESC"] = "활성화하면 이 창의 모든 바는 상호작용 설정에 영향을 받지 않습니다."
-L["STRING_OPTIONSMENU_LEFTMENU"] = "제목 바: 일반"
-L["STRING_OPTIONSMENU_MISC"] = "기타"
-L["STRING_OPTIONSMENU_PERFORMANCE"] = "성능 개선"
-L["STRING_OPTIONSMENU_PLUGINS"] = "플러그인 관리"
-L["STRING_OPTIONSMENU_PROFILES"] = "프로필"
-L["STRING_OPTIONSMENU_RAIDTOOLS"] = "공격대 도구"
-L["STRING_OPTIONSMENU_RIGHTMENU"] = "-- x -- x --"
-L["STRING_OPTIONSMENU_ROWMODELS"] = "바: 고급"
-L["STRING_OPTIONSMENU_ROWSETTINGS"] = "바: 일반"
-L["STRING_OPTIONSMENU_ROWTEXTS"] = "바: 문자"
 L["STRING_OPTIONS_MENU_SHOWBUTTONS"] = "버튼 표시"
 L["STRING_OPTIONS_MENU_SHOWBUTTONS_DESC"] = "제목 바에 표시할 버튼을 고르세요."
-L["STRING_OPTIONSMENU_SKIN"] = "스킨 선택"
-L["STRING_OPTIONSMENU_SPELLS"] = "주문 사용자 설정"
-L["STRING_OPTIONSMENU_SPELLS_CONSOLIDATE"] = "같은 이름의 일반 주문 통합하기"
-L["STRING_OPTIONS_MENUS_SHADOW"] = "그림자 효과"
-L["STRING_OPTIONS_MENUS_SHADOW_DESC"] = "모든 버튼에 얇은 그림자 테두리를 추가합니다."
-L["STRING_OPTIONS_MENUS_SPACEMENT"] = "간격"
-L["STRING_OPTIONS_MENUS_SPACEMENT_DESC"] = "버튼끼리 얼마나 간격을 둘 지 조정합니다."
-L["STRING_OPTIONSMENU_TITLETEXT"] = "제목 바: 문자"
-L["STRING_OPTIONSMENU_TOOLTIP"] = "툴팁"
-L["STRING_OPTIONSMENU_WALLPAPER"] = "창: 배경화면"
-L["STRING_OPTIONSMENU_WINDOW"] = "창: 일반"
 L["STRING_OPTIONS_MENU_X"] = "X 위치"
 L["STRING_OPTIONS_MENU_X_DESC"] = "X축 위치를 변경합니다."
 L["STRING_OPTIONS_MENU_Y"] = "Y 위치"
 L["STRING_OPTIONS_MENU_Y_DESC"] = "Y축 위치를 변경합니다"
+L["STRING_OPTIONS_MENUS_SHADOW"] = "그림자 효과"
+L["STRING_OPTIONS_MENUS_SHADOW_DESC"] = "모든 버튼에 얇은 그림자 테두리를 추가합니다."
+L["STRING_OPTIONS_MENUS_SPACEMENT"] = "간격"
+L["STRING_OPTIONS_MENUS_SPACEMENT_DESC"] = "버튼끼리 얼마나 간격을 둘 지 조정합니다."
 L["STRING_OPTIONS_MICRODISPLAY_ANCHOR"] = "소형 표시기:"
 L["STRING_OPTIONS_MICRODISPLAY_LOCK"] = "소형 표시기 잠그기"
 L["STRING_OPTIONS_MICRODISPLAY_LOCK_DESC"] = "잠그면 마우스 오버와 클릭에 상호작용하지 않습니다."
 L["STRING_OPTIONS_MICRODISPLAYS_DROPDOWN_TOOLTIP"] = "소형 표시기를 표시할 가장자리를 선택하세요."
 L["STRING_OPTIONS_MICRODISPLAYS_OPTION_TOOLTIP"] = "이 소형 표시기를 설정합니다."
 L["STRING_OPTIONS_MICRODISPLAYS_SHOWHIDE_TOOLTIP"] = "이 소형 표시기 표시하거나 숨기기"
-L["STRING_OPTIONS_MICRODISPLAYSSIDE"] = "소형 표시기 상단에 표시"
-L["STRING_OPTIONS_MICRODISPLAYSSIDE_DESC"] = "창의 상단 또는 하단에 소형 표시기를 위치시킵니다."
 L["STRING_OPTIONS_MICRODISPLAYS_WARNING"] = [=[|cFFFFFF00참고|r: 소형 표시기를 표시하지 못했습니다
 하단에 고정됐지만
 상태바가 비활성되었습니다.]=]
+L["STRING_OPTIONS_MICRODISPLAYSSIDE"] = "소형 표시기 상단에 표시"
+L["STRING_OPTIONS_MICRODISPLAYSSIDE_DESC"] = "창의 상단 또는 하단에 소형 표시기를 위치시킵니다."
 L["STRING_OPTIONS_MICRODISPLAYWARNING"] = "상태바가 비활성 상태여서 소형 표시기가 표시되지 않습니다."
 L["STRING_OPTIONS_MINIMAP"] = "아이콘 표시"
 L["STRING_OPTIONS_MINIMAP_ACTION"] = "클릭 했을 때"
+L["STRING_OPTIONS_MINIMAP_ACTION_DESC"] = "미니맵 아이콘을 클릭했을 때 무엇을 할지 선택하세요."
 L["STRING_OPTIONS_MINIMAP_ACTION1"] = "옵션 창 열기"
 L["STRING_OPTIONS_MINIMAP_ACTION2"] = "세분화 초기화"
 L["STRING_OPTIONS_MINIMAP_ACTION3"] = "창 표시/숨기기"
-L["STRING_OPTIONS_MINIMAP_ACTION_DESC"] = "미니맵 아이콘을 클릭했을 때 무엇을 할지 선택하세요."
 L["STRING_OPTIONS_MINIMAP_ANCHOR"] = "미니맵:"
 L["STRING_OPTIONS_MINIMAP_DESC"] = "미니맵 아이콘을 표시하거나 숨깁니다."
 L["STRING_OPTIONS_MISCTITLE"] = "기타 설정"
@@ -793,7 +767,7 @@ L["STRING_OPTIONS_OPEN_TEXT_EDITOR"] = "문자 편집기 열기"
 L["STRING_OPTIONS_OVERALL_ALL"] = "모든 세분화"
 L["STRING_OPTIONS_OVERALL_ALL_DESC"] = "모든 세분화를 종합 데이터에 추가합니다."
 L["STRING_OPTIONS_OVERALL_ANCHOR"] = "종합 데이터:"
-L["STRING_OPTIONS_OVERALL_CHALLENGE"] = "도전 모드일 때 초기화"
+L["STRING_OPTIONS_OVERALL_CHALLENGE"] = "도전 모드 시 초기화"
 L["STRING_OPTIONS_OVERALL_CHALLENGE_DESC"] = "활성화하면 도전 모드를 시작할 때 자동으로 종합 데이터를 지웁니다."
 L["STRING_OPTIONS_OVERALL_DUNGEONBOSS"] = "던전 우두머리"
 L["STRING_OPTIONS_OVERALL_DUNGEONBOSS_DESC"] = "던전 우두머리 세분화를 종합 데이터에 추가합니다."
@@ -819,26 +793,26 @@ L["STRING_OPTIONS_PERCENT_TYPE_DESC"] = [=[백분율 산출법을 변경합니�
 
 |cFFFFFF001위 대비|r: 1위 플레이어의 점수를 기준으로 한 백분율입니다.]=]
 L["STRING_OPTIONS_PERFORMANCE"] = "성능"
-L["STRING_OPTIONS_PERFORMANCE1"] = "성능 개선"
-L["STRING_OPTIONS_PERFORMANCE1_DESC"] = "이 옵션은 cpu 사용량을 줄일 수 있게 해줍니다."
 L["STRING_OPTIONS_PERFORMANCE_ANCHOR"] = "일반:"
 L["STRING_OPTIONS_PERFORMANCE_ARENA"] = "투기장"
 L["STRING_OPTIONS_PERFORMANCE_BG15"] = "15인 전장"
 L["STRING_OPTIONS_PERFORMANCE_BG40"] = "40인 전장"
-L["STRING_OPTIONS_PERFORMANCECAPTURES"] = "데이터 수집기"
-L["STRING_OPTIONS_PERFORMANCECAPTURES_DESC"] = "전투 데이터 수집과 분석을 담당하는 옵션입니다."
 L["STRING_OPTIONS_PERFORMANCE_DUNGEON"] = "던전"
 L["STRING_OPTIONS_PERFORMANCE_ENABLE_DESC"] = "활성화하면 현재 공격대가 선택된 공격대 유형과 일치할 때 이 옵션이 적용됩니다."
 L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD"] = "야외 세분화 자동 삭제"
 L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD_DESC"] = "야외에서의 전투로 생성된 세분화를 자동으로 삭제합니다."
 L["STRING_OPTIONS_PERFORMANCE_MYTHIC"] = "신화"
 L["STRING_OPTIONS_PERFORMANCE_PROFILE_LOAD"] = "성능 프로필 변경:"
-L["STRING_OPTIONS_PERFORMANCEPROFILES_ANCHOR"] = "성능 프로필:"
 L["STRING_OPTIONS_PERFORMANCE_RAID15"] = "10-15인 공격대"
 L["STRING_OPTIONS_PERFORMANCE_RAID30"] = "16-30인 공격대"
 L["STRING_OPTIONS_PERFORMANCE_RF"] = "공격대 찾기"
 L["STRING_OPTIONS_PERFORMANCE_TYPES"] = "유형"
 L["STRING_OPTIONS_PERFORMANCE_TYPES_DESC"] = "다른 옵션으로 자동으로 변경될 공격대 유형입니다."
+L["STRING_OPTIONS_PERFORMANCE1"] = "성능 개선"
+L["STRING_OPTIONS_PERFORMANCE1_DESC"] = "이 옵션은 cpu 사용량을 줄일 수 있게 해줍니다."
+L["STRING_OPTIONS_PERFORMANCECAPTURES"] = "데이터 수집기"
+L["STRING_OPTIONS_PERFORMANCECAPTURES_DESC"] = "전투 데이터 수집과 분석을 담당하는 옵션입니다."
+L["STRING_OPTIONS_PERFORMANCEPROFILES_ANCHOR"] = "성능 프로필:"
 L["STRING_OPTIONS_PICONS_DIRECTION"] = "오른쪽에 플러그인 붙이기"
 L["STRING_OPTIONS_PICONS_DIRECTION_DESC"] = "체크하면 메뉴 버튼의 오른쪽에 플러그인 버튼이 표시됩니다."
 L["STRING_OPTIONS_PLUGINS"] = "플러그인"
@@ -860,15 +834,16 @@ L["STRING_OPTIONS_PROFILE_OVERWRITTEN"] = "이 캐릭터를 위한 특정 프로
 L["STRING_OPTIONS_PROFILE_POSSIZE"] = "크기와 위치 저장"
 L["STRING_OPTIONS_PROFILE_POSSIZE_DESC"] = "창의 위치와 크기를 프로필에 저장합니다. 비활성하면 각 캐릭터 별 개별 설정이 적용됩니다."
 L["STRING_OPTIONS_PROFILE_REMOVEOKEY"] = "프로필이 삭제되었습니다."
+L["STRING_OPTIONS_PROFILE_SELECT"] = "프로필을 선택하세요."
+L["STRING_OPTIONS_PROFILE_SELECTEXISTING"] = "저장된 프로필을 선택하거나 이 캐릭터를 위한 새 프로필을 계속 사용하세요:"
+L["STRING_OPTIONS_PROFILE_USENEW"] = "새 프로필 사용"
 L["STRING_OPTIONS_PROFILES_ANCHOR"] = "설정:"
-L["STRING_OPTIONS_PROFILES_COPY"] = "프로필 복사"
+L["STRING_OPTIONS_PROFILES_COPY"] = "프로필 복사해오기"
 L["STRING_OPTIONS_PROFILES_COPY_DESC"] = "선택한 프로필의 모든 설정으로 현재 프로필의 모든 값을 덮어씁니다."
 L["STRING_OPTIONS_PROFILES_CREATE"] = "프로필 생성"
 L["STRING_OPTIONS_PROFILES_CREATE_DESC"] = "새 프로필을 만듭니다."
 L["STRING_OPTIONS_PROFILES_CURRENT"] = "현재 프로필:"
 L["STRING_OPTIONS_PROFILES_CURRENT_DESC"] = "현재 활성화된 프로필의 이름입니다."
-L["STRING_OPTIONS_PROFILE_SELECT"] = "프로필을 선택하세요."
-L["STRING_OPTIONS_PROFILE_SELECTEXISTING"] = "저장된 프로필을 선택하거나 이 캐릭터를 위한 새 프로필을 계속 사용하세요:"
 L["STRING_OPTIONS_PROFILES_ERASE"] = "프로필 삭제"
 L["STRING_OPTIONS_PROFILES_ERASE_DESC"] = "선택한 프로필을 삭제합니다."
 L["STRING_OPTIONS_PROFILES_RESET"] = "현재 프로필 초기화"
@@ -877,7 +852,6 @@ L["STRING_OPTIONS_PROFILES_SELECT"] = "프로필 선택"
 L["STRING_OPTIONS_PROFILES_SELECT_DESC"] = "저장 중인 프로필을 불러옵니다. 모든 캐릭터에 같은 프로필을 사용 중이면(모든 캐릭터에 사용 옵션) 이 캐릭터를 위한 예외 설정이 생성됩니다."
 L["STRING_OPTIONS_PROFILES_TITLE"] = "프로필"
 L["STRING_OPTIONS_PROFILES_TITLE_DESC"] = "캐릭터가 달라도 같은 설정을 공유할 수 있는 옵션입니다."
-L["STRING_OPTIONS_PROFILE_USENEW"] = "새 프로필 사용"
 L["STRING_OPTIONS_PS_ABBREVIATE"] = "숫자 형식"
 L["STRING_OPTIONS_PS_ABBREVIATE_COMMA"] = "콤마"
 L["STRING_OPTIONS_PS_ABBREVIATE_DESC"] = [=[축약 방법을 선택하세요.
@@ -912,20 +886,20 @@ L["STRING_OPTIONS_REALMNAME_DESC"] = [=[활성화하면 캐릭터의 서버 이�
 
 |cFFFFFF00비활성|r: Charles-데스윙
 |cFFFFFF00활성|r: Charles]=]
-L["STRING_OPTIONS_REPORT_ANCHOR"] = "보고:"
+L["STRING_OPTIONS_REPORT_ANCHOR"] = "보고서:"
 L["STRING_OPTIONS_REPORT_HEALLINKS"] = "이로운 주문 링크"
-L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[이 옵션이 활성화 된 상태에서 보고서를 전송하면 |cFF55FF55이로운|r 주문이 이름 대신 주문 링크로 보고됩니다.
+L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[이 옵션이 활성화된 상태에서 보고서를 전송하면 |cFF55FF55이로운|r 주문이 이름 대신 주문 링크로 보고됩니다.
 
 |cFFFF5555해로운|r 주문은 기본적으로 링크로 보고됩니다.]=]
 L["STRING_OPTIONS_REPORT_SCHEMA"] = "형식"
+L["STRING_OPTIONS_REPORT_SCHEMA_DESC"] = "대화 채널에 링크할 문자 형식을 선택합니다."
 L["STRING_OPTIONS_REPORT_SCHEMA1"] = "총량 / 초당 / 백분율"
 L["STRING_OPTIONS_REPORT_SCHEMA2"] = "백분율 / 초당 / 총량"
 L["STRING_OPTIONS_REPORT_SCHEMA3"] = "백분율 / 총량 / 초당"
-L["STRING_OPTIONS_REPORT_SCHEMA_DESC"] = "대화 채널에 링크할 문자 형식을 선택합니다."
 L["STRING_OPTIONS_RESET_TO_DEFAULT"] = "기본값으로 초기화"
+L["STRING_OPTIONS_ROW_SETTING_ANCHOR"] = "배치:"
 L["STRING_OPTIONS_ROWADV_TITLE"] = "바 고급 설정"
 L["STRING_OPTIONS_ROWADV_TITLE_DESC"] = "바를 좀 더 세부적으로 조정할 수 있는 옵션입니다."
-L["STRING_OPTIONS_ROW_SETTING_ANCHOR"] = "배치:"
 L["STRING_OPTIONS_RT_COOLDOWN1"] = "%s ▶ %s 사용!"
 L["STRING_OPTIONS_RT_COOLDOWN2"] = "%s 사용!"
 L["STRING_OPTIONS_RT_COOLDOWNS_ANCHOR"] = "생존기 알리기:"
@@ -946,42 +920,42 @@ L["STRING_OPTIONS_RT_DEATH_MSG"] = "Details! %s 죽음"
 L["STRING_OPTIONS_RT_DEATHS_ANCHOR"] = "죽음 알리기:"
 L["STRING_OPTIONS_RT_DEATHS_FIRST"] = "최대"
 L["STRING_OPTIONS_RT_DEATHS_FIRST_DESC"] = "전투 중 처음 X 번째 죽음까지만 알리도록 합니다."
-L["STRING_OPTIONS_RT_DEATHS_HITS"] = "타격 횟수"
-L["STRING_OPTIONS_RT_DEATHS_HITS_DESC"] = "죽음을 알릴 때 타격 횟수를 표시합니다."
+L["STRING_OPTIONS_RT_DEATHS_HITS"] = "적중 횟수"
+L["STRING_OPTIONS_RT_DEATHS_HITS_DESC"] = "죽음을 알릴 때 적중 횟수를 표시합니다."
 L["STRING_OPTIONS_RT_DEATHS_ONOFF_DESC"] = "공격대원이 죽으면 죽은 플레이어를 공격대 채널에 알립니다."
 L["STRING_OPTIONS_RT_DEATHS_WHERE"] = "인스턴스"
-L["STRING_OPTIONS_RT_DEATHS_WHERE1"] = "공격대 & 던전"
-L["STRING_OPTIONS_RT_DEATHS_WHERE2"] = "공격대만"
-L["STRING_OPTIONS_RT_DEATHS_WHERE3"] = "던전만"
 L["STRING_OPTIONS_RT_DEATHS_WHERE_DESC"] = [=[죽음을 보고할 곳을 선택합니다.
 
 |cFFFFFF00중요|r 공격대에선 /공 채널을 사용하고 던전에선 /p를 사용합니다.
 
 |cFFFFFF00혼자보기|r를 선택하면 자신의 대화창에만 표시됩니다.]=]
+L["STRING_OPTIONS_RT_DEATHS_WHERE1"] = "공격대 & 던전"
+L["STRING_OPTIONS_RT_DEATHS_WHERE2"] = "공격대만"
+L["STRING_OPTIONS_RT_DEATHS_WHERE3"] = "던전만"
 L["STRING_OPTIONS_RT_FIRST_HIT"] = "첫 타격"
-L["STRING_OPTIONS_RT_FIRST_HIT_DESC"] = "대화창에 (|cFFFFFF00자신에게만|r) 누가 첫 타격을 줬는지 표시합니다, 대체로 전투를 시작한 사람입니다."
+L["STRING_OPTIONS_RT_FIRST_HIT_DESC"] = "대화창에 (|cFFFFFF00자신에게만|r) 첫번째로 적중시킨 사람을 표시합니다, 대체로 전투를 시작한 사람입니다."
 L["STRING_OPTIONS_RT_IGNORE_TITLE"] = "알림을 사용할 생존기"
 L["STRING_OPTIONS_RT_INFOS"] = "추가 정보:"
 L["STRING_OPTIONS_RT_INFOS_PREPOTION"] = "시작물약 사용"
 L["STRING_OPTIONS_RT_INFOS_PREPOTION_DESC"] = "활성화 한 후 공격대 전투가 끝나면, 대화창에 (|cFFFFFF00자신에게만|r) 전투 시작 전 물약을 사용한 사람을 출력합니다."
-L["STRING_OPTIONS_RT_INTERRUPT"] = "%s 차단함!"
-L["STRING_OPTIONS_RT_INTERRUPT_ANCHOR"] = "차단 알리기:"
+L["STRING_OPTIONS_RT_INTERRUPT"] = "%s 차단!"
+L["STRING_OPTIONS_RT_INTERRUPT_ANCHOR"] = "시전 방해 알리기:"
 L["STRING_OPTIONS_RT_INTERRUPT_NEXT"] = "다음: %s"
 L["STRING_OPTIONS_RT_INTERRUPTS_CHANNEL"] = "채널"
 L["STRING_OPTIONS_RT_INTERRUPTS_CHANNEL_DESC"] = [=[경보 메시지를 보내는 데 사용할 대화 채널입니다.
 
-|cFFFFFF00혼자 보기|r를 선택하면 모든 차단이 당신의 대화창에만 표시됩니다.
+|cFFFFFF00혼자 보기|r를 선택하면 모든 시전 방해가 자신의 대화창에만 표시됩니다.
 ]=]
 L["STRING_OPTIONS_RT_INTERRUPTS_CUSTOM"] = "사용자 설정 구문"
 L["STRING_OPTIONS_RT_INTERRUPTS_CUSTOM_DESC"] = [=[출력할 구문을 입력하세요.
 
-|cFFFFFF00{spell}|r 차단된 주문 이름을 추가합니다.
+|cFFFFFF00{spell}|r 시전 방해된 주문 이름을 추가합니다.
 
 |cFFFFFF00{next}|r '다음 플레이어'에 적은 이름을 추가합니다.
 ]=]
 L["STRING_OPTIONS_RT_INTERRUPTS_NEXT"] = "다음 플레이어"
 L["STRING_OPTIONS_RT_INTERRUPTS_NEXT_DESC"] = "차단 순서가 있을 때 다음 차단 순서인 플레이어의 이름을 입력하세요."
-L["STRING_OPTIONS_RT_INTERRUPTS_ONOFF_DESC"] = "당신이 성공적으로 주문을 차단하면 메시지가 출력됩니다."
+L["STRING_OPTIONS_RT_INTERRUPTS_ONOFF_DESC"] = "당신이 성공적으로 주문 시전을 방해하면 메시지가 출력됩니다."
 L["STRING_OPTIONS_RT_INTERRUPTS_WHISPER"] = "귓속말 대상"
 L["STRING_OPTIONS_RT_OTHER_ANCHOR"] = "일반:"
 L["STRING_OPTIONS_RT_TITLE"] = "공격대용 도구"
@@ -1095,30 +1069,6 @@ L["STRING_OPTIONS_TABEMB_TABNAME_DESC"] = "창이 불여질 탭의 이름"
 L["STRING_OPTIONS_TESTBARS"] = "테스트 바 만들기"
 L["STRING_OPTIONS_TEXT"] = "바 문자 설정"
 L["STRING_OPTIONS_TEXT_DESC"] = "창의 바 문자의 외형을 조정하는 옵션입니다."
-L["STRING_OPTIONS_TEXTEDITOR_CANCEL"] = "취소"
-L["STRING_OPTIONS_TEXTEDITOR_CANCEL_TOOLTIP"] = "편집을 끝내고 코드 내 어떤 변경도 무시합니다."
-L["STRING_OPTIONS_TEXTEDITOR_COLOR_TOOLTIP"] = "글자를 선택하고 색상 버튼을 클릭해 선택한 글자의 색상을 변경합니다."
-L["STRING_OPTIONS_TEXTEDITOR_COMMA"] = "콤마"
-L["STRING_OPTIONS_TEXTEDITOR_COMMA_TOOLTIP"] = [=[숫자를 콤마로 구분하는 숫자 형식을 추가합니다.
-예제: 1000000 을 1.000.000로.]=]
-L["STRING_OPTIONS_TEXTEDITOR_DATA"] = "[Data %s]"
-L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[데이터 입력 추가:
-
-|cFFFFFF00Data 1|r: 일반적으로 행위자나 순위의 총합량을 나타냅니다.
-
-|cFFFFFF00Data 2|r: 대부분 DPS, HPS 또는 플레이어의 이름을 나타냅니다.
-
-|cFFFFFF00Data 3|r: 행위자의 백분율, 특성 또는 진영 아이콘을 나타냅니다.]=]
-L["STRING_OPTIONS_TEXTEDITOR_DONE"] = "완료"
-L["STRING_OPTIONS_TEXTEDITOR_DONE_TOOLTIP"] = "편집을 끝내고 코드를 저장합니다."
-L["STRING_OPTIONS_TEXTEDITOR_FUNC"] = "함수"
-L["STRING_OPTIONS_TEXTEDITOR_FUNC_TOOLTIP"] = [=[빈 함수를 추가합니다.
-함수는 항상 숫자 값을 리턴합니다.]=]
-L["STRING_OPTIONS_TEXTEDITOR_RESET"] = "초기화"
-L["STRING_OPTIONS_TEXTEDITOR_RESET_TOOLTIP"] = "모든 코드를 지우고 기본 코드를 추가합니다."
-L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "ToK"
-L["STRING_OPTIONS_TEXTEDITOR_TOK_TOOLTIP"] = [=[숫자 값을 축약하는 형식의 함수를 추가합니다.
-예제: 1500000 을 1.5kk로.]=]
 L["STRING_OPTIONS_TEXT_FIXEDCOLOR"] = "문자 색상"
 L["STRING_OPTIONS_TEXT_FIXEDCOLOR_DESC"] = [=[좌우 문자의 색상을 변경합니다.
 
@@ -1150,6 +1100,30 @@ L["STRING_OPTIONS_TEXT_SIZE"] = "문자 크기"
 L["STRING_OPTIONS_TEXT_SIZE_DESC"] = "좌측과 우측 문자의 크기를 변경합니다."
 L["STRING_OPTIONS_TEXT_TEXTUREL_ANCHOR"] = "배경:"
 L["STRING_OPTIONS_TEXT_TEXTUREU_ANCHOR"] = "모양:"
+L["STRING_OPTIONS_TEXTEDITOR_CANCEL"] = "취소"
+L["STRING_OPTIONS_TEXTEDITOR_CANCEL_TOOLTIP"] = "편집을 끝내고 코드 내 어떤 변경도 무시합니다."
+L["STRING_OPTIONS_TEXTEDITOR_COLOR_TOOLTIP"] = "글자를 선택하고 색상 버튼을 클릭해 선택한 글자의 색상을 변경합니다."
+L["STRING_OPTIONS_TEXTEDITOR_COMMA"] = "콤마"
+L["STRING_OPTIONS_TEXTEDITOR_COMMA_TOOLTIP"] = [=[숫자를 콤마로 구분하는 숫자 형식을 추가합니다.
+예제: 1000000 을 1.000.000로.]=]
+L["STRING_OPTIONS_TEXTEDITOR_DATA"] = "[Data %s]"
+L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[데이터 입력 추가:
+
+|cFFFFFF00Data 1|r: 일반적으로 행위자나 순위의 총합량을 나타냅니다.
+
+|cFFFFFF00Data 2|r: 대부분 DPS, HPS 또는 플레이어의 이름을 나타냅니다.
+
+|cFFFFFF00Data 3|r: 행위자의 백분율, 특성 또는 진영 아이콘을 나타냅니다.]=]
+L["STRING_OPTIONS_TEXTEDITOR_DONE"] = "완료"
+L["STRING_OPTIONS_TEXTEDITOR_DONE_TOOLTIP"] = "편집을 끝내고 코드를 저장합니다."
+L["STRING_OPTIONS_TEXTEDITOR_FUNC"] = "함수"
+L["STRING_OPTIONS_TEXTEDITOR_FUNC_TOOLTIP"] = [=[빈 함수를 추가합니다.
+함수는 항상 숫자 값을 리턴합니다.]=]
+L["STRING_OPTIONS_TEXTEDITOR_RESET"] = "초기화"
+L["STRING_OPTIONS_TEXTEDITOR_RESET_TOOLTIP"] = "모든 코드를 지우고 기본 코드를 추가합니다."
+L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "ToK"
+L["STRING_OPTIONS_TEXTEDITOR_TOK_TOOLTIP"] = [=[숫자 값을 축약하는 형식의 함수를 추가합니다.
+예제: 1500000 을 1.5kk로.]=]
 L["STRING_OPTIONS_TIMEMEASURE"] = "시간 측정"
 L["STRING_OPTIONS_TIMEMEASURE_DESC"] = [=[|cFFFFFF00활동 시간|r: 각 공격대원의 타이머가 해당 공대원의 활동이 중단되면 초읽기를 중지했다가 활동 재개시 다시 초읽기에 들어갑니다. Dps와 Hps 산출의 일반적인 방법입니다.
 
@@ -1168,23 +1142,23 @@ L["STRING_OPTIONS_TOOLTIPS_ABBREVIATION_DESC"] = "툴팁에 표시될 숫자 형
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH"] = "툴팁 방향"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH_DESC"] = "툴팁의 어느 방향을 기준점에 붙일 지 설정합니다."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_BORDER"] = "테두리:"
-L["STRING_OPTIONS_TOOLTIPS_ANCHORCOLOR"] = "제목"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_POINT"] = "기준점:"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE"] = "기준점 방향"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE_DESC"] = "기준점의 어느 방향에 툴팁이 위치할 지 선택합니다."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT"] = "툴팁 기준점"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT_DESC"] = "오른쪽 클릭으로 잠급니다."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO"] = "기준점"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO1"] = "창의 바"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "화면에 위치"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE"] = "기준점 위치 이동"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE_DESC"] = "기준점이 |cFFFFFF00화면에 위치|r로 설정되었을 때 기준점의 위치를 이동합니다."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_DESC"] = "툴팁을 바 위에 붙이거나 게임 화면 상의 지정한 지점에 붙입니다."
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO1"] = "창의 바"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "화면에 위치"
+L["STRING_OPTIONS_TOOLTIPS_ANCHORCOLOR"] = "제목"
 L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR"] = "배경 색상"
 L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR_DESC"] = "배경에 사용할 색상을 선택합니다."
-L["STRING_OPTIONS_TOOLTIPS_BORDER_COLOR_DESC"] = "테두리 색을 변경합니다."
+L["STRING_OPTIONS_TOOLTIPS_BORDER_COLOR_DESC"] = "테두리 색상을 변경합니다."
 L["STRING_OPTIONS_TOOLTIPS_BORDER_SIZE_DESC"] = "테두리 크기를 변경합니다."
-L["STRING_OPTIONS_TOOLTIPS_BORDER_TEXTURE_DESC"] = "테두리 무늬 파일을 수정합니다."
+L["STRING_OPTIONS_TOOLTIPS_BORDER_TEXTURE_DESC"] = "테두리 텍스쳐 파일을 수정합니다."
 L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR"] = "문자 색상"
 L["STRING_OPTIONS_TOOLTIPS_FONTCOLOR_DESC"] = "툴팁 문자에 사용할 색상을 변경합니다."
 L["STRING_OPTIONS_TOOLTIPS_FONTFACE"] = "문자 글꼴"
@@ -1195,11 +1169,6 @@ L["STRING_OPTIONS_TOOLTIPS_FONTSIZE_DESC"] = "툴팁 문자 크기를 키우거�
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER"] = "하위 메뉴 배경화면"
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER_DESC"] = "활성화하면 몇몇 메뉴는 하위 메뉴에 원래의 배경화면을 사용합니다."
 L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE"] = "최대화 방법"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "Shift Ctrl Alt 누르기"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "항상 최대화"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "Shift 영역만"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "Ctrl 영역만"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "Alt 영역만"
 L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[툴팁에 표시되는 정보를 확장하는 방법을 선택하세요.
 
 |cFFFFFF00 제어키 누름|r: Shift, Ctrl 또는 Alt 키를 눌렀을때 툴팁 박스를 확장합니다.
@@ -1211,6 +1180,11 @@ L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[툴팁에 표시되는 정보를
 |cFFFFFF00 Ctrl 영역만|r: 기본적으로 두번째 영역이 항상 확장됩니다.
 
 |cFFFFFF00 Alt 영역만|r: 기본적으로 세번째 블록이 항상 확장됩니다..]=]
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "Shift Ctrl Alt 누르기"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "항상 최대화"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "Shift 영역만"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "Ctrl 영역만"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "Alt 영역만"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP"] = "메뉴 배경화면 편집"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP_DESC"] = "제목 바 메뉴의 배경화면 요소를 변경합니다."
 L["STRING_OPTIONS_TOOLTIPS_OFFSETX"] = "X 거리"
@@ -1220,7 +1194,7 @@ L["STRING_OPTIONS_TOOLTIPS_OFFSETY_DESC"] = "툴팁이 기준점으로부터 수
 L["STRING_OPTIONS_TOOLTIPS_SHOWAMT"] = "수량 표시"
 L["STRING_OPTIONS_TOOLTIPS_SHOWAMT_DESC"] = "툴팁에 몇개의 주문과 대상, 소환수가 있는지 숫자로 표시합니다."
 L["STRING_OPTIONS_TOOLTIPS_TITLE"] = "툴팁"
-L["STRING_OPTIONS_TOOLTIPS_TITLE_DESC"] = "툴팁의 외형을 설정하는 옵션입니다."
+L["STRING_OPTIONS_TOOLTIPS_TITLE_DESC"] = "툴팁의 모양을 설정하는 옵션입니다."
 L["STRING_OPTIONS_TOTALBAR_ANCHOR"] = "총량 바:"
 L["STRING_OPTIONS_TRASH_SUPPRESSION"] = "일반몹 세분화 전환 방지"
 L["STRING_OPTIONS_TRASH_SUPPRESSION_DESC"] = "|cFFFFFF00우두머리를 처치한 후|r |cFFFFFF00X|r초 동안 일반몹 세분화로 자동 변경되지 않게 합니다."
@@ -1284,6 +1258,8 @@ L["STRING_OPTIONS_WINDOW_SCALE_DESC"] = [=[창의 크기 비율을 조절합니�
 |cFFFFFF00팁|r: 값을 입력하려면 오른쪽 클릭하세요.
 
 |cFFFFFF00현재|r: %s]=]
+L["STRING_OPTIONS_WINDOW_TITLE"] = "창 일반 설정"
+L["STRING_OPTIONS_WINDOW_TITLE_DESC"] = "선택한 창의 모양을 설정하는 옵션입니다."
 L["STRING_OPTIONS_WINDOWSPEED"] = "갱신 주기"
 L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[갱신 주기입니다.
 
@@ -1292,8 +1268,6 @@ L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[갱신 주기입니다.
 |cFFFFFF000.3|r: 초당 3번 갱신합니다.
 
 |cFFFFFF003.0|r: 3초마다 갱신합니다.]=]
-L["STRING_OPTIONS_WINDOW_TITLE"] = "창 일반 설정"
-L["STRING_OPTIONS_WINDOW_TITLE_DESC"] = "선택한 창의 외형을 설정하는 옵션입니다."
 L["STRING_OPTIONS_WP"] = "배경화면 설정"
 L["STRING_OPTIONS_WP_ALIGN"] = "위치 조정"
 L["STRING_OPTIONS_WP_ALIGN_DESC"] = [=[창에 배경화면의 위치를 조절하는 방법을 설정합니다.
@@ -1310,12 +1284,38 @@ L["STRING_OPTIONS_WP_EDIT"] = "이미지 편집"
 L["STRING_OPTIONS_WP_EDIT_DESC"] = "이미지 편집기를 열어 선택한 이미지의 일부 사항을 변경합니다."
 L["STRING_OPTIONS_WP_ENABLE_DESC"] = "배경화면을 표시합니다."
 L["STRING_OPTIONS_WP_GROUP"] = "이미지 종류"
+L["STRING_OPTIONS_WP_GROUP_DESC"] = "이미지 그룹을 선택합니다."
 L["STRING_OPTIONS_WP_GROUP2"] = "배경화면"
 L["STRING_OPTIONS_WP_GROUP2_DESC"] = "배경화면으로 사용 될 이미지입니다."
-L["STRING_OPTIONS_WP_GROUP_DESC"] = "이미지 그룹을 선택합니다."
+L["STRING_OPTIONSMENU_AUTOMATIC"] = "창: 자동화"
+L["STRING_OPTIONSMENU_AUTOMATIC_TITLE"] = "창 자동화 설정"
+L["STRING_OPTIONSMENU_AUTOMATIC_TITLE_DESC"] = "자동 숨기기나 자동 전환 같은 창의 자동 동작을 제어합니다."
+L["STRING_OPTIONSMENU_COMBAT"] = "PvE PvP"
+L["STRING_OPTIONSMENU_DATACHART"] = "차트 데이터"
+L["STRING_OPTIONSMENU_DATACOLLECT"] = "데이터 수집기"
+L["STRING_OPTIONSMENU_DATAFEED"] = "데이터 제공"
+L["STRING_OPTIONSMENU_DISPLAY"] = "디스플레이"
+L["STRING_OPTIONSMENU_DISPLAY_DESC"] = "전체적인 기본 설정과 창을 조절합니다."
+L["STRING_OPTIONSMENU_LEFTMENU"] = "제목 바: 일반"
+L["STRING_OPTIONSMENU_MISC"] = "기타"
+L["STRING_OPTIONSMENU_PERFORMANCE"] = "성능 개선"
+L["STRING_OPTIONSMENU_PLUGINS"] = "플러그인 관리"
+L["STRING_OPTIONSMENU_PROFILES"] = "프로필"
+L["STRING_OPTIONSMENU_RAIDTOOLS"] = "공격대 도구"
+L["STRING_OPTIONSMENU_RIGHTMENU"] = "-- x -- x --"
+L["STRING_OPTIONSMENU_ROWMODELS"] = "바: 고급"
+L["STRING_OPTIONSMENU_ROWSETTINGS"] = "바: 일반"
+L["STRING_OPTIONSMENU_ROWTEXTS"] = "바: 문자"
+L["STRING_OPTIONSMENU_SKIN"] = "스킨 선택"
+L["STRING_OPTIONSMENU_SPELLS"] = "주문 사용자 설정"
+L["STRING_OPTIONSMENU_SPELLS_CONSOLIDATE"] = "같은 이름의 주문을 공통 주문으로 통합하기"
+L["STRING_OPTIONSMENU_TITLETEXT"] = "제목 바: 문자"
+L["STRING_OPTIONSMENU_TOOLTIP"] = "툴팁"
+L["STRING_OPTIONSMENU_WALLPAPER"] = "창: 배경화면"
+L["STRING_OPTIONSMENU_WINDOW"] = "창: 일반"
 L["STRING_OVERALL"] = "종합"
 L["STRING_OVERHEAL"] = "초과 치유"
-L["STRING_OVERHEALED"] = "초과 치유함"
+L["STRING_OVERHEALED"] = "초과 치유됨"
 L["STRING_PARRY"] = "무기 막기"
 L["STRING_PERCENTAGE"] = "백분율"
 L["STRING_PET"] = "소환수"
@@ -1324,7 +1324,7 @@ L["STRING_PLAYER_DETAILS"] = "플레이어 Details!"
 L["STRING_PLAYERS"] = "플레이어"
 L["STRING_PLEASE_WAIT"] = "기다려 주세요"
 L["STRING_PLUGIN_CLEAN"] = "없음"
-L["STRING_PLUGIN_CLOCKNAME"] = "전투 시간"
+L["STRING_PLUGIN_CLOCKNAME"] = "우두머리 전투 시간"
 L["STRING_PLUGIN_CLOCKTYPE"] = "시계 형식"
 L["STRING_PLUGIN_DURABILITY"] = "내구도"
 L["STRING_PLUGIN_FPS"] = "프레임율"
@@ -1332,6 +1332,19 @@ L["STRING_PLUGIN_GOLD"] = "골드"
 L["STRING_PLUGIN_LATENCY"] = "지연시간"
 L["STRING_PLUGIN_MINSEC"] = "분 & 초"
 L["STRING_PLUGIN_NAMEALREADYTAKEN"] = "이미 사용 중인 이름이 있어서 Details!가 플러그인을 설치할 수 없습니다"
+L["STRING_PLUGIN_PATTRIBUTENAME"] = "항목"
+L["STRING_PLUGIN_PDPSNAME"] = "공격대 Dps"
+L["STRING_PLUGIN_PSEGMENTNAME"] = "세분화"
+L["STRING_PLUGIN_SECONLY"] = "초만"
+L["STRING_PLUGIN_SEGMENTTYPE"] = "세분화 유형"
+L["STRING_PLUGIN_SEGMENTTYPE_1"] = "전투 #X"
+L["STRING_PLUGIN_SEGMENTTYPE_2"] = "우두머리 전투 이름"
+L["STRING_PLUGIN_SEGMENTTYPE_3"] = "세분화에 우두머리 전투 이름 추가"
+L["STRING_PLUGIN_THREATNAME"] = "나의 위협 수준"
+L["STRING_PLUGIN_TIME"] = "시계"
+L["STRING_PLUGIN_TIMEDIFF"] = "마지막 전투 비교"
+L["STRING_PLUGIN_TOOLTIP_LEFTBUTTON"] = "현재 플러그인 설정"
+L["STRING_PLUGIN_TOOLTIP_RIGHTBUTTON"] = "다른 플러그인 선택"
 L["STRING_PLUGINOPTIONS_ABBREVIATE"] = "축약"
 L["STRING_PLUGINOPTIONS_COMMA"] = "콤마"
 L["STRING_PLUGINOPTIONS_FONTFACE"] = "글꼴 선택"
@@ -1342,29 +1355,26 @@ L["STRING_PLUGINOPTIONS_TEXTALIGN_Y"] = "문자 Y 정렬"
 L["STRING_PLUGINOPTIONS_TEXTCOLOR"] = "문자 색상"
 L["STRING_PLUGINOPTIONS_TEXTSIZE"] = "글꼴 크기"
 L["STRING_PLUGINOPTIONS_TEXTSTYLE"] = "문자 스타일"
-L["STRING_PLUGIN_PATTRIBUTENAME"] = "항목"
-L["STRING_PLUGIN_PDPSNAME"] = "공격대 Dps"
-L["STRING_PLUGIN_PSEGMENTNAME"] = "세분화"
-L["STRING_PLUGIN_SECONLY"] = "초만"
-L["STRING_PLUGIN_SEGMENTTYPE"] = "세분화 유형"
-L["STRING_PLUGIN_SEGMENTTYPE_1"] = "전투 #X"
-L["STRING_PLUGIN_SEGMENTTYPE_2"] = "공격대 전투 이름"
-L["STRING_PLUGIN_SEGMENTTYPE_3"] = "세분화에 공격대 전투 이름 추가"
-L["STRING_PLUGIN_THREATNAME"] = "나의 위협 수준"
-L["STRING_PLUGIN_TIME"] = "시계"
-L["STRING_PLUGIN_TIMEDIFF"] = "마지막 전투 비교"
-L["STRING_PLUGIN_TOOLTIP_LEFTBUTTON"] = "현재 플러그인 설정"
-L["STRING_PLUGIN_TOOLTIP_RIGHTBUTTON"] = "다른 플러그인 선택"
 L["STRING_QUERY_INSPECT"] = "특성과 아이템 레벨을 요청합니다."
 L["STRING_QUERY_INSPECT_FAIL1"] = "전투 중에는 요청할 수 없습니다."
 L["STRING_QUERY_INSPECT_TALENTS"] = "클릭하여 검색하기"
+L["STRING_RAID_WIDE"] = "[*] 공격대 단위 쿨다운"
 L["STRING_RAIDCHECK_PLUGIN_DESC"] = "공격대 던전에 있을 때, Details! 제목 바 위에 영약, 음식, 시작물약 사용을 보여주는 아이콘을 표시합니다."
 L["STRING_RAIDCHECK_PLUGIN_NAME"] = "공격대 확인"
-L["STRING_RAID_WIDE"] = "[*] 공격대 단위 쿨다운"
-L["STRING_REPORT"] = "for"
+L["STRING_REPORT"] = ":"
 L["STRING_REPORT_BUTTON_TOOLTIP"] = "보고서 창을 열려면 클릭하세요"
 L["STRING_REPORT_FIGHT"] = "전투"
 L["STRING_REPORT_FIGHTS"] = "전투"
+L["STRING_REPORT_INVALIDTARGET"] = "귓속말 대상 없음"
+L["STRING_REPORT_LAST"] = "마지막"
+L["STRING_REPORT_LASTFIGHT"] = "마지막 전투"
+L["STRING_REPORT_LEFTCLICK"] = "보고서 창을 열려면 클릭하세요"
+L["STRING_REPORT_PREVIOUSFIGHTS"] = "이전 전투"
+L["STRING_REPORT_SINGLE_BUFFUPTIME"] = "강화 효과 유지 시간:"
+L["STRING_REPORT_SINGLE_COOLDOWN"] = "생존기 사용 :"
+L["STRING_REPORT_SINGLE_DEATH"] = "죽음:"
+L["STRING_REPORT_SINGLE_DEBUFFUPTIME"] = "약화 효과 유지 시간:"
+L["STRING_REPORT_TOOLTIP"] = "결과 보고"
 L["STRING_REPORTFRAME_COPY"] = "복사 & 붙여넣기"
 L["STRING_REPORTFRAME_CURRENT"] = "현재"
 L["STRING_REPORTFRAME_CURRENTINFO"] = "현재 보여지는 데이터만 표시합니다. (지원할때만)"
@@ -1381,18 +1391,8 @@ L["STRING_REPORTFRAME_SAY"] = "일반 대화"
 L["STRING_REPORTFRAME_SEND"] = "전송"
 L["STRING_REPORTFRAME_WHISPER"] = "귓속말"
 L["STRING_REPORTFRAME_WHISPERTARGET"] = "대상에게 귓속말"
-L["STRING_REPORTFRAME_WINDOW_TITLE"] = "Details! 링크"
+L["STRING_REPORTFRAME_WINDOW_TITLE"] = "Details! 링크하기"
 L["STRING_REPORTHISTORY"] = "최근 보고 기록"
-L["STRING_REPORT_INVALIDTARGET"] = "귓속말 대상 없음"
-L["STRING_REPORT_LAST"] = "마지막"
-L["STRING_REPORT_LASTFIGHT"] = "마지막 전투"
-L["STRING_REPORT_LEFTCLICK"] = "보고서 창을 열려면 클릭하세요"
-L["STRING_REPORT_PREVIOUSFIGHTS"] = "이전 전투"
-L["STRING_REPORT_SINGLE_BUFFUPTIME"] = "강화 효과 지속시간:"
-L["STRING_REPORT_SINGLE_COOLDOWN"] = "생존기 사용 :"
-L["STRING_REPORT_SINGLE_DEATH"] = "죽음:"
-L["STRING_REPORT_SINGLE_DEBUFFUPTIME"] = "약화 효과 지속시간:"
-L["STRING_REPORT_TOOLTIP"] = "결과 보고"
 L["STRING_RESISTED"] = "저항함"
 L["STRING_RESIZE_ALL"] = "모든 창 자유로운 크기 조절"
 L["STRING_RESIZE_COMMON"] = "크기 조절"
@@ -1401,11 +1401,11 @@ L["STRING_RESIZE_HORIZONTAL"] = [=[그룹에 있는 모든 창의
 L["STRING_RESIZE_VERTICAL"] = [=[그룹에 있는 모든 창의
  높이를 조절합니다]=]
 L["STRING_RIGHT"] = "우측"
+L["STRING_RIGHT_TO_LEFT"] = "오른쪽에서 왼쪽으로"
 L["STRING_RIGHTCLICK_CLOSE_LARGE"] = "마우스 오른쪽 클릭으로 이 창을 닫습니다."
 L["STRING_RIGHTCLICK_CLOSE_MEDIUM"] = "오른쪽 클릭해서 이 창을 닫으세요."
 L["STRING_RIGHTCLICK_CLOSE_SHORT"] = "오른쪽 클릭으로 닫습니다."
 L["STRING_RIGHTCLICK_TYPEVALUE"] = "오른쪽 클릭으로 값 입력"
-L["STRING_RIGHT_TO_LEFT"] = "오른쪽에서 왼쪽으로"
 L["STRING_SCORE_BEST"] = "|cFFFFFF00%s|r|1을;를; 기록했습니다, 이것은 최고 점수입니다, 축하합니다!"
 L["STRING_SCORE_NOTBEST"] = "|cFFFFFF00%1$s|r|1을;를; 기록했으며, 최고 점수는 %4$d 아이템 레벨로 %3$s에서 |cFFFFFF00%2$s|r입니다."
 L["STRING_SEE_BELOW"] = "아래 참고"
@@ -1415,10 +1415,10 @@ L["STRING_SEGMENT_END"] = "종료"
 L["STRING_SEGMENT_ENEMY"] = "적"
 L["STRING_SEGMENT_LOWER"] = "세분화"
 L["STRING_SEGMENT_OVERALL"] = "종합 데이터"
-L["STRING_SEGMENTS"] = "세분화"
 L["STRING_SEGMENT_START"] = "시작"
 L["STRING_SEGMENT_TIME"] = "시간"
 L["STRING_SEGMENT_TRASH"] = "일반몹 정리"
+L["STRING_SEGMENTS"] = "세분화"
 L["STRING_SHIELD_HEAL"] = "막음"
 L["STRING_SHIELD_OVERHEAL"] = "낭비됨"
 L["STRING_SHORTCUT_RIGHTCLICK"] = "오른쪽 클릭으로 닫기"
@@ -1452,7 +1452,7 @@ L["STRING_SLASH_WIPECONFIG_CONFIRM"] = "클릭하면 재설치를 진행합니�
 L["STRING_SLASH_WIPECONFIG_DESC"] = "모든 설정을 기본값으로 돌립니다, Details!가 제대로 작동하지 않을 때 사용하세요."
 L["STRING_SLASH_WORLDBOSS"] = "worldboss"
 L["STRING_SLASH_WORLDBOSS_DESC"] = "이번 주에 처치한 우두머리를 보여주는 매크로를 실행합니다."
-L["STRING_SPELL_INTERRUPTED"] = "차단된 주문"
+L["STRING_SPELL_INTERRUPTED"] = "시전 방해된 주문"
 L["STRING_SPELLS"] = "주문"
 L["STRING_SPIRIT_LINK_TOTEM"] = "생명력 교환"
 L["STRING_SPIRIT_LINK_TOTEM_DESC"] = [=[토템 범위 안의 플레이어들 간에
@@ -1468,7 +1468,7 @@ L["STRING_SWITCH_WARNING"] = "역할 바뀜. 변경: |cFFFFAA00%s|r"
 L["STRING_TARGET"] = "대상"
 L["STRING_TARGETS"] = "대상"
 L["STRING_TARGETS_OTHER1"] = "소환수와 다른 대상들"
-L["STRING_TEXTURE"] = "무늬"
+L["STRING_TEXTURE"] = "텍스쳐"
 L["STRING_TIME_OF_DEATH"] = "죽음"
 L["STRING_TOOOLD"] = "Details! 버전이 너무 오래되어 설치할 수 없습니다."
 L["STRING_TOP"] = "상단"
@@ -1477,10 +1477,11 @@ L["STRING_TOTAL"] = "총량"
 L["STRING_TRANSLATE_LANGUAGE"] = "Details의 번역을 도와주세요!"
 L["STRING_TUTORIAL_FULLY_DELETE_WINDOW"] = [=[창을 닫았지만 언제든 다시 열수 있습니다.
 창을 완전히 삭제하려면 옵션 -> 창: 일반 -> 삭제 항목을 찾아보세요.]=]
+L["STRING_TUTORIAL_OVERALL1"] = "옵션 창 > PvE/PvP에서 종합 데이터 설정"
 L["STRING_UNKNOW"] = "알 수 없음"
 L["STRING_UNKNOWSPELL"] = "알 수 없는 주문"
 L["STRING_UNLOCK"] = [=[이 버튼으로
- 창 그룹 해제]=]
+창 그룹 해제]=]
 L["STRING_UNLOCK_WINDOW"] = "잠금해제"
 L["STRING_UPTADING"] = "갱신 중"
 L["STRING_VERSION_UPDATE"] = "새 버전: 변경 내용을 보려면 클릭하세요"
@@ -1508,7 +1509,7 @@ L["STRING_WELCOME_26"] = "인터페이스 사용하기: 늘리기"
 L["STRING_WELCOME_27"] = [=[강조된 버튼이 늘리기 버튼입니다. |cFFFFFF00클릭|r 하고 |cFFFFFF00위로 끄세요!|r.
 
 
-창이 잠겨 있으면 제목바 전체가 늘리기 버튼이 됩니다.]=]
+창이 잠겨 있으면 제목 바 전체가 늘리기 버튼이 됩니다.]=]
 L["STRING_WELCOME_28"] = "인터페이스 사용하기: 창 제어"
 L["STRING_WELCOME_29"] = [=[창 제어는 기본적으로 2가지 기능을 합니다:
 
@@ -1544,7 +1545,7 @@ L["STRING_WELCOME_5"] = "실질 시간:"
 L["STRING_WELCOME_57"] = [=[애드온에서 이미 설치된 기본 설정들을 가져옵니다.
 
 각 스킨은 가져온 설정과 다르게 반응합니다.]=]
-L["STRING_WELCOME_58"] = [=[미리 준비된 외형 설정 셋트입니다.
+L["STRING_WELCOME_58"] = [=[모양 구성의 미리 설정된 셋트입니다.
 
 |cFFFFFF00중요|r: 모든 설정들은 나중에 옵션 창에서 수정할 수 있습니다.]=]
 L["STRING_WELCOME_59"] = "배경화면을 사용합니다."
@@ -1577,11 +1578,11 @@ L["STRING_WELCOME_7"] = "순위를 매길때 쓰입니다, 이 방법은 모든 
 L["STRING_WELCOME_70"] = "제목 바 설정"
 L["STRING_WELCOME_71"] = "바 설정"
 L["STRING_WELCOME_72"] = "창 설정"
-L["STRING_WINDOW1ATACH_DESC"] = "창 그룹을 만들려면 창 #2를 창 #1 가까이 드래그하세요."
 L["STRING_WINDOW_NOTFOUND"] = "창을 찾을 수 없습니다."
 L["STRING_WINDOW_NUMBER"] = "창 번호"
+L["STRING_WINDOW1ATACH_DESC"] = "창 그룹을 만들려면 창 #2를 창 #1 가까이 드래그하세요."
 L["STRING_WIPE_ALERT"] = "공격대장 요청: 전멸하세요!"
 L["STRING_WIPE_ERROR1"] = "이미 전멸 신호를 보냈습니다."
-L["STRING_WIPE_ERROR2"] = "공격대 전투 중이 아닙니다."
-L["STRING_WIPE_ERROR3"] = "공격대 전투를 끝낼 수 없습니다."
+L["STRING_WIPE_ERROR2"] = "공격대 우두머리 전투 중이 아닙니다."
+L["STRING_WIPE_ERROR3"] = "우두머리 전투를 끝낼 수 없습니다."
 L["STRING_YES"] = "네"

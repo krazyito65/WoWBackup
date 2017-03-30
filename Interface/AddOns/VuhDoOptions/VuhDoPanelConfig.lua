@@ -33,7 +33,7 @@ function VUHDO_positionAllGroupConfigPanels(aPanelNum)
 		tModel = VUHDO_PANEL_MODELS[aPanelNum][tCnt];
 		tIsShowOrder = true;
 
-		tOrderPanel:ClearAllPoints(); -- parent könnte gewechselt haben
+		tOrderPanel:ClearAllPoints(); -- parent kï¿½nnte gewechselt haben
 		tOrderPanel:SetPoint("TOPLEFT", tParentPanel:GetName(), "TOPLEFT", tXPos / tScale, -tYPos / tScale);
 		tOrderPanel:SetShown(tIsShowOrder);
 

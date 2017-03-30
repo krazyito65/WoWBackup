@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Inventory ***
+--[[	*** DataStore_Inventory ***
 Written by : Thaoky, EU-Marécages de Zangar
 July 13th, 2009
 --]]

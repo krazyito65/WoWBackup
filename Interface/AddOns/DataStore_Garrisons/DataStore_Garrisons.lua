@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Garrisons ***
+--[[	*** DataStore_Garrisons ***
 Written by : Thaoky, EU-Marécages de Zangar
 November 30th, 2014
 --]]
@@ -11,6 +11,10 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 local addon = _G[addonName]
 
 local THIS_ACCOUNT = "Default"
+local GARRISON_MISSIONS_STORAGE = "AvailableMissions"
+local GARRISON_ACTIVE_MISSIONS_STORAGE = "ActiveMissions"
+local ORDERHALL_MISSIONS_STORAGE = "AvailableOrderHallMissions"
+local ORDERHALL_ACTIVE_MISSIONS_STORAGE = "ActiveOrderHallMissions"
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
@@ -18,6 +22,7 @@ local AddonDB_Defaults = {
 	global = {
 		Reference = {
 			FollowerNamesToID = {},			-- ex: ["Nat Pagle"] = 202 ... necessary because the id's do not remain constant in game, and the full list varies per character.
+			MissionInfos = {},
 		},
 		Options = {
 			ReportUncollected = true,			-- Report uncollected resources
@@ -41,9 +46,12 @@ local AddonDB_Defaults = {
 				
 				Buildings = {},				-- List of buildings
 				Followers = {},				-- List of followers
-				AvailableMissions = {},		-- List of available missions
-				ActiveMissions = {},			-- List of active/in-progress missions
-				ActiveMissionsInfo = {},	-- List of start times for active/in-progress missions
+				[GARRISON_MISSIONS_STORAGE] = {},					-- List of available missions
+				[GARRISON_ACTIVE_MISSIONS_STORAGE] = {},			-- List of active/in-progress missions
+				[ORDERHALL_MISSIONS_STORAGE] = {},					-- List of available order hall missions
+				[ORDERHALL_ACTIVE_MISSIONS_STORAGE] = {},			-- List of active/in-progress order hall missions
+				MissionsStartTimes = {},		-- List of start times for active/in-progress missions
+				MissionsInfo = {},				-- Extra information about active/in-progress missions (ex: success rate, active followers..)
 				
 				artifactResearchCreationTime = 0,
 				artifactResearchDuration = 0,
@@ -161,6 +169,16 @@ local buildingTypes = {
 	[145] = BUILDING_TRADING_POST,
 }
 
+local availableMissionsStorage = {
+	[LE_FOLLOWER_TYPE_GARRISON_6_0] = GARRISON_MISSIONS_STORAGE,
+	[LE_FOLLOWER_TYPE_GARRISON_7_0] = ORDERHALL_MISSIONS_STORAGE,
+}
+
+local activeMissionsStorage = {
+	[LE_FOLLOWER_TYPE_GARRISON_6_0] = GARRISON_ACTIVE_MISSIONS_STORAGE,
+	[LE_FOLLOWER_TYPE_GARRISON_7_0] = ORDERHALL_ACTIVE_MISSIONS_STORAGE,
+}
+
 -- *** Utility functions ***
 local function GetOption(option)
 	return addon.db.global.Options[option]
@@ -194,19 +212,83 @@ local function CheckUncollectedResources()
 	end
 end
 
-local function ClearActiveMissionsInfo()
+local function ClearInactiveMissionsData()
 	-- active missions info is saved separately, and not cleaned automatically during the scan.
 	-- so clean it at login ..
 	
-	for key, character in pairs(addon.db.global.Characters) do			-- loop through all characters
-		for missionID, _ in pairs(character.ActiveMissionsInfo) do		-- loop through all mission info
-			
-			if not character.ActiveMissions[missionID] then					-- if the mission is no longer active ..
-				character.ActiveMissionsInfo[missionID] = nil				-- .. then delete its info
+	local availableMissions = {}
+	local activeMissions = {}
+	
+	-- loop through all characters
+	for key, character in pairs(addon.db.global.Characters) do			
+		-- get all garrison missions
+		for _, missionID in pairs(character[availableMissionsStorage[LE_FOLLOWER_TYPE_GARRISON_6_0]]) do
+			availableMissions[missionID] = true
+		end
+
+		for _, missionID in pairs(character[activeMissionsStorage[LE_FOLLOWER_TYPE_GARRISON_6_0]]) do
+			activeMissions[missionID] = true
+		end		
+		
+		-- get all order hall missions
+		for _, missionID in pairs(character[availableMissionsStorage[LE_FOLLOWER_TYPE_GARRISON_7_0]]) do
+			availableMissions[missionID] = true
+		end
+
+		for _, missionID in pairs(character[activeMissionsStorage[LE_FOLLOWER_TYPE_GARRISON_7_0]]) do
+			activeMissions[missionID] = true
+		end		
+	
+		-- loop through all mission info & start times
+		for missionID, _ in pairs(character.MissionsInfo) do		
+			-- .. then delete its info if it's no longer active
+			if not activeMissions[missionID] then
+				character.MissionsInfo[missionID] = nil
+			end
+		end
+		
+		for missionID, _ in pairs(character.MissionsStartTimes) do
+			if not activeMissions[missionID] then
+				character.MissionsStartTimes[missionID] = nil				
 			end
 		end
 	end
+	
+	-- now check the reference, and remove all data that is not linked to missions known by characters (otherwise info keeps stacking up)
+	local ref = addon.db.global.Reference.MissionInfos
+	
+	for missionID, missionData in pairs(ref) do
+		if not availableMissions[missionID] and not activeMissions[missionID] then
+			ref[missionID] = nil
+		end
+	end
 end
+
+local function SetMissionInfo(mission)
+	-- save a mission related information into the reference table, since it would be duplicated too often across multiple alts
+	local ref = addon.db.global.Reference
+	local missionID = mission.missionID
+	
+	ref.MissionInfos[missionID] = {
+		["cost"] = mission.cost,
+		["durationSeconds"] = mission.durationSeconds,
+		["level"] = mission.level,
+		["iLevel"] = mission.iLevel,
+		["type"] = mission.type,
+		["typeAtlas"] = mission.typeAtlas,
+		
+		-- rewards no longer valid for alts in 7.x
+		["rewards"] = C_Garrison.GetMissionRewardInfo(missionID)
+	}
+
+	-- other infos, always available
+	-- name : C_Garrison.GetMissionName
+	-- link : C_Garrison.GetMissionLink
+	-- num followers :  C_Garrison.GetMissionMaxFollowers
+	
+	-- expiration ??
+end
+
 
 -- *** Scanning functions ***
 local function ScanBuildings()
@@ -249,6 +331,7 @@ local function ScanFollowers()
 
 	local followers = addon.ThisCharacter.Followers
 	--wipe(followers) no need to wipe, followers don't get 'uncollected', and they are in a hash table, not an array
+	-- also used for order hall followers
 	
 	-- = C_Garrison.GetFollowerNameByID(id)
 	
@@ -405,59 +488,90 @@ local function ScanFollowers()
 	addon:SendMessage("DATASTORE_GARRISON_FOLLOWERS_UPDATED")
 end
 
+local function ScanOrderHallFollowers()
+	local followersList = C_Garrison.GetFollowers(LE_FOLLOWER_TYPE_GARRISON_7_0)
+	if not followersList then return end
+
+	local followers = addon.ThisCharacter.Followers
+	--wipe(followers) no need to wipe, followers don't get 'uncollected', and they are in a hash table, not an array
+	-- also used for garrison followers
+	
+	-- = C_Garrison.GetFollowerNameByID(id)
+	
+	local ref = addon.db.global.Reference
+
+	local link		-- follower link
+	local id			-- follower id
+	local isInactive		-- is a follower inactive or not ?
+	
+	for k, follower in pairs(followersList) do
+		id = follower.followerID		-- by default, the id should be this one (numeric)
+		
+		isInactive = nil
+		if type(follower.followerID) == "string" then	-- if the type is string, it's a GUID
+			local status = C_Garrison.GetFollowerStatus(follower.followerID)
+			if status and status == GARRISON_FOLLOWER_INACTIVE then
+				isInactive = true
+			end
+		end
+		
+		-- if follower.isCollected and not follower.isTroop then
+		if follower.isCollected then
+			-- if the follower is collected, the id will be a GUID (string)
+			-- therefore, it has to be extracted from the link
+			-- also, the link is only valid for collected followers, otherwise it is nil
+			link = C_Garrison.GetFollowerLink(follower.followerID)
+			id = link:match("garrfollower:(%d+)")
+			id = tonumber(id)
+			
+			local info = {}
+			
+			info.xp = follower.xp
+			info.levelXP = follower.levelXP
+			info.link = link
+			info.isInactive = isInactive
+			followers[id] = info
+		end
+		
+		ref.FollowerNamesToID[follower.name] = id	-- ["Nat Pagle"] = 202
+	end
+end
+
 local function ScanResourceCollectionTime()
 	addon.ThisCharacter.lastResourceCollection = time()
 end
 
-local function ScanAvailableMissions()
+local function ScanAvailableMissions(followerType, storage)
 	local missionsList = {}
-	C_Garrison.GetAvailableMissions(missionsList, LE_FOLLOWER_TYPE_GARRISON_6_0)
+	C_Garrison.GetAvailableMissions(missionsList, followerType)
 	
-	local missions = addon.ThisCharacter.AvailableMissions
+	local missions = addon.ThisCharacter[storage]		-- ex: addon.ThisCharacter.AvailableMissions
 	wipe(missions)
 
 	for k, mission in pairs(missionsList) do
-		local info = {}
-		local id = mission.missionID
-		
-		info.cost = mission.cost
-		info.durationSeconds = mission.durationSeconds
-		info.level = mission.level
-		info.iLevel = mission.iLevel
-		info.type = mission.type
-		info.typeAtlas = mission.typeAtlas
-		
-		-- name : C_Garrison.GetMissionName
-		-- link : C_Garrison.GetMissionLink
-		-- num followers :  C_Garrison.GetMissionMaxFollowers
-		-- rewards + type : C_Garrison.GetMissionRewardInfo
-		
-		-- expiration ??
-
-		missions[id] = info
+		SetMissionInfo(mission)
+		table.insert(missions, mission.missionID)
 	end
 	
 	addon.ThisCharacter.lastUpdate = time()
 end
-
-local function ScanActiveMissions()
+ 
+local function ScanActiveMissions(followerType)
 	local missionsList = {}
-	C_Garrison.GetInProgressMissions(missionsList, LE_FOLLOWER_TYPE_GARRISON_6_0)
+	C_Garrison.GetInProgressMissions(missionsList, followerType)
 	
-	local missions = addon.ThisCharacter.ActiveMissions
+	local missions = addon.ThisCharacter[activeMissionsStorage[followerType]]		-- ex: addon.ThisCharacter.ActiveMissions
 	wipe(missions)
+
+	local missionsInfo = addon.ThisCharacter.MissionsInfo
 	
 	for k, mission in pairs(missionsList) do
-		local info = {}
-		local id = mission.missionID
+		table.insert(missions, mission.missionID)		-- add mission id to the list of active missions ..
 		
-		info.cost = mission.cost
-		info.durationSeconds = mission.durationSeconds
-		info.level = mission.level
-		info.iLevel = mission.iLevel
-		info.type = mission.type
-		info.typeAtlas = mission.typeAtlas
-				
+		-- .. then proceed with mission info.
+		local info = {}
+		SetMissionInfo(mission)
+
 		if mission.followers then
 			info.followers = {}
 			for _, followerGUID in pairs(mission.followers) do
@@ -466,15 +580,16 @@ local function ScanActiveMissions()
 				table.insert(info.followers, tonumber(id))
 			end
 		end
-
-		-- rewards + type : C_Garrison.GetMissionRewardInfo
-		missions[id] = info
+		
+		info.successChance = C_Garrison.GetMissionSuccessChance(mission.missionID)
+		
+		missionsInfo[mission.missionID] = info
 	end
-
+	
 	addon.ThisCharacter.lastUpdate = time()
 end
 
-local function ScanActiveMissionInfo(missionID)
+local function ScanMissionStartTime(missionID)
 	if type(missionID) ~= "number" then return end
 	
 	-- Save the mission start time separately.
@@ -485,14 +600,8 @@ local function ScanActiveMissionInfo(missionID)
 	--  this ensures that if the events GARRISON_MISSION_STARTED & GARRISON_MISSION_LIST_UPDATE 
 	--  are triggered in a different order, the system will not fail.
 	
-	local missionInfo = addon.ThisCharacter.ActiveMissionsInfo
-	local info = {}
-	
-	info.startTime = time()
-	local _, _, _, successChance = C_Garrison.GetPartyMissionInfo(missionID)
-	info.successChance = successChance
-	
-	missionInfo[missionID] = info
+	local startTimes = addon.ThisCharacter.MissionsStartTimes
+	startTimes[missionID] = time()
 end
 
 local function ScanNextArtifactResearch()
@@ -501,14 +610,22 @@ local function ScanNextArtifactResearch()
 	local shipments = C_Garrison.GetLooseShipments(LE_GARRISON_TYPE_7_0)
 	local char = addon.ThisCharacter
 
+	-- reset values 
+	char.artifactResearchCreationTime = 0
+	char.artifactResearchDuration = 0
+	char.artifactResearchNumReady = 0
+	char.artifactResearchNumTotal = 0
+		
 	for i = 1, #shipments do
 		local name, _, _, numReady, numTotal, creationTime, duration = C_Garrison.GetLandingPageShipmentInfoByContainerID(shipments[i])
 		
-		if name == GetItemInfo(139390) then		-- the name must be "Artifact Research Notes"
+		if name == GetItemInfo(139390) and creationTime then		-- the name must be "Artifact Research Notes"
 			char.artifactResearchCreationTime = creationTime
 			char.artifactResearchDuration = duration
 			char.artifactResearchNumReady = numReady
 			char.artifactResearchNumTotal = numTotal
+			
+			return	-- once found, we don't care about the rest
 		end
 	end
 end
@@ -520,14 +637,17 @@ end
 
 local function OnFollowerAdded()
 	ScanFollowers()
+	ScanOrderHallFollowers()
 end
 
 local function OnFollowerListUpdate()
 	ScanFollowers()
+	ScanOrderHallFollowers()
 end
 
 local function OnFollowerRemoved()
 	ScanFollowers()
+	ScanOrderHallFollowers()
 end
 
 local function OnGarrisonBuildingActivated()
@@ -554,29 +674,50 @@ local function OnShowLootToast(event, lootType, link, quantity, specID, sex, isP
 	end
 end
 
-local function OnGarrisonMissionListUpdate()
-	ScanAvailableMissions()
-	ScanActiveMissions()
+local function OnGarrisonMissionListUpdate(event, followerType)
+	ScanAvailableMissions(followerType, availableMissionsStorage[followerType])
+	ScanActiveMissions(followerType)
 end
 
-local function OnGarrisonMissionNPCOpened()
-	ScanAvailableMissions()
-	ScanActiveMissions()
+local missionNPCType
+
+local function OnGarrisonMissionNPCOpened(event, followerType)
+	-- the 'close' event does not know the follower type, so let's track it here ..
+	missionNPCType = followerType		
+	
+	ScanAvailableMissions(missionNPCType, availableMissionsStorage[missionNPCType])
+	ScanActiveMissions(missionNPCType)
+	ScanOrderHallFollowers()
+	
+	addon:RegisterEvent("GARRISON_MISSION_LIST_UPDATE", OnGarrisonMissionListUpdate)
 end
 
-local function OnGarrisonMissionNPCClosed()
-	ScanAvailableMissions()
-	ScanActiveMissions()
+local function OnGarrisonMissionNPCClosed(event)
+	-- use the mission follower type we got from the 'open' event
+	if missionNPCType then
+		ScanAvailableMissions(missionNPCType, availableMissionsStorage[missionNPCType])
+		ScanActiveMissions(missionNPCType)
+		
+		-- also, this event is triggered twice due to some bug, so by setting our type to nil, we avoid unnecessary double processing
+		missionNPCType = nil
+		
+		addon:UnregisterEvent("GARRISON_MISSION_LIST_UPDATE")
+	end
 end
 
-local function OnGarrisonMissionStarted(event, missionID)
-	-- ScanAvailableMissions() not needed, done by the list update
+local function OnGarrisonUpdate(event)
+	ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_6_0, GARRISON_MISSIONS_STORAGE)
+	ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_7_0, ORDERHALL_MISSIONS_STORAGE)
+end
+
+local function OnGarrisonMissionStarted(event, followerType, missionID)
+	-- ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_6_0, GARRISON_MISSIONS_STORAGE) not needed, done by the list update
 	-- only re-scan in progress
-	ScanActiveMissionInfo(missionID)
+	ScanMissionStartTime(missionID)
 end
 
 local function OnGarrisonMissionFinished()
-	ScanAvailableMissions()
+	ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_6_0, GARRISON_MISSIONS_STORAGE)
 end
 
 local function OnAddonLoaded(event, addonName)
@@ -684,68 +825,55 @@ local function _GetUncollectedResources(character)
 	return GetNumUncollectedResources(character.lastResourceCollection)
 end
 
-local function _GetAvailableMissions(character)
-	return character.AvailableMissions
+local function _GetAvailableMissions(character, followerType)
+	return character[availableMissionsStorage[followerType]]
 end
 
-local function _GetAvailableMissionInfo(character, id)
-	local mission = character.AvailableMissions[id]
-	if not mission then return end
-
-	return mission.type, mission.typeAtlas, mission.level, mission.iLevel, mission.cost, mission.durationSeconds
+local function _GetNumAvailableMissions(character, followerType)
+	return #character[availableMissionsStorage[followerType]]
 end
 
-local function _GetNumAvailableMissions(character)
-	local count = 0
-	
-	for k, v in pairs(character.AvailableMissions) do
-		count = count + 1
-	end
-	
-	return count
-end
-
-local function _GetActiveMissions(character)
-	return character.ActiveMissions
+local function _GetActiveMissions(character, followerType)
+	return character[activeMissionsStorage[followerType]]
 end
 
 local function _GetActiveMissionInfo(character, id)
-	local mission = character.ActiveMissions[id]
+	local mission = character.MissionsInfo[id]
 	if not mission then return end
-
-	local remainingTime, successChance
 	
-	if character.ActiveMissionsInfo[id] then
-		local info = character.ActiveMissionsInfo[id]
-		successChance = info.successChance
-		remainingTime = mission.durationSeconds - (time() - info.startTime)
+	local startTime = character.MissionsStartTimes[id]
+	local remainingTime
+	
+	if startTime then
+		local missionRef = addon.db.global.Reference.MissionInfos[id]
+		remainingTime = missionRef.durationSeconds - (time() - startTime)
 		remainingTime = (remainingTime > 0) and remainingTime or 0
 	end
 	
-	return mission.type, mission.typeAtlas, mission.level, mission.iLevel, mission.cost, mission.durationSeconds, mission.followers, remainingTime, successChance
+	return mission.followers, remainingTime, mission.successChance
 end
 
-local function _GetNumActiveMissions(character)
-	local count = 0
-	
-	for k, v in pairs(character.ActiveMissions) do
-		count = count + 1
-	end
-	
-	return count
+local function _GetNumActiveMissions(character, followerType)
+	return #character[activeMissionsStorage[followerType]]
 end
 
-local function _GetNumCompletedMissions(character)
+local function _GetNumCompletedMissions(character, followerType)
 	local count = 0
 	
-	for id, v in pairs(character.ActiveMissions) do
-		local _, _, _, _, _, _, _, remainingTime = _GetActiveMissionInfo(character, id)
+	local missions = character[activeMissionsStorage[followerType]]
+	
+	for _, id in pairs(missions) do
+		local _, remainingTime = _GetActiveMissionInfo(character, id)
 		if remainingTime and remainingTime == 0 then
 			count = count + 1
 		end
 	end
 	
 	return count
+end
+
+local function _GetMissionInfo(missionID)
+	return addon.db.global.Reference.MissionInfos[missionID]
 end
 
 local function _GetMissionTableLastVisit(character)
@@ -796,12 +924,12 @@ local PublicMethods = {
 	GetBuildingInfo = _GetBuildingInfo,
 	GetUncollectedResources = _GetUncollectedResources,
 	GetAvailableMissions = _GetAvailableMissions,
-	GetAvailableMissionInfo = _GetAvailableMissionInfo,
 	GetNumAvailableMissions = _GetNumAvailableMissions,
 	GetActiveMissions = _GetActiveMissions,
 	GetActiveMissionInfo = _GetActiveMissionInfo,
 	GetNumActiveMissions = _GetNumActiveMissions,
 	GetNumCompletedMissions = _GetNumCompletedMissions,
+	GetMissionInfo = _GetMissionInfo,
 	GetMissionTableLastVisit = _GetMissionTableLastVisit,
 	GetLastResourceCollectionTime = _GetLastResourceCollectionTime,
 	GetArtifactResearchInfo = _GetArtifactResearchInfo,
@@ -829,7 +957,6 @@ function addon:OnInitialize()
 	DataStore:SetCharacterBasedMethod("GetBuildingInfo")
 	DataStore:SetCharacterBasedMethod("GetUncollectedResources")
 	DataStore:SetCharacterBasedMethod("GetAvailableMissions")
-	DataStore:SetCharacterBasedMethod("GetAvailableMissionInfo")
 	DataStore:SetCharacterBasedMethod("GetNumAvailableMissions")
 	DataStore:SetCharacterBasedMethod("GetActiveMissions")
 	DataStore:SetCharacterBasedMethod("GetActiveMissionInfo")
@@ -859,23 +986,29 @@ function addon:OnEnable()
 	-- Missions
 	addon:ScheduleTimer(function()
 			-- To avoid the long list of GARRISON_MISSION_LIST_UPDATE at startup, make the initial scan 3 seconds later ..
-			ScanAvailableMissions()
+			ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_6_0, GARRISON_MISSIONS_STORAGE)
+			ScanAvailableMissions(LE_FOLLOWER_TYPE_GARRISON_7_0, ORDERHALL_MISSIONS_STORAGE)
+			ScanActiveMissions(LE_FOLLOWER_TYPE_GARRISON_6_0)
+			ScanActiveMissions(LE_FOLLOWER_TYPE_GARRISON_7_0)
 
 			-- .. then register the event
-			addon:RegisterEvent("GARRISON_MISSION_LIST_UPDATE", OnGarrisonMissionListUpdate)
+			-- note, at logon, GARRISON_UPDATE is fired before MISSION_LIST_UPDATE
+			-- addon:RegisterEvent("GARRISON_MISSION_LIST_UPDATE", OnGarrisonMissionListUpdate)
+			-- addon:RegisterEvent("GARRISON_UPDATE", OnGarrisonUpdate)
 		end, 3)	
 	
 	addon:RegisterEvent("GARRISON_MISSION_NPC_OPENED", OnGarrisonMissionNPCOpened)
 	addon:RegisterEvent("GARRISON_MISSION_NPC_CLOSED", OnGarrisonMissionNPCClosed)
 	addon:RegisterEvent("GARRISON_MISSION_STARTED", OnGarrisonMissionStarted)
 	addon:RegisterEvent("GARRISON_MISSION_FINISHED", OnGarrisonMissionFinished)
-	
+	addon:RegisterEvent("GARRISON_UPDATE", OnGarrisonUpdate)
+
 	addon:SetupOptions()
 	if GetOption("ReportUncollected") then
 		CheckUncollectedResources()
 	end
 	
-	ClearActiveMissionsInfo()
+	ClearInactiveMissionsData()
 end
 
 function addon:OnDisable()
@@ -890,5 +1023,7 @@ function addon:OnDisable()
 	addon:UnregisterEvent("GARRISON_MISSION_LIST_UPDATE")
 	addon:UnregisterEvent("GARRISON_MISSION_STARTED")
 	addon:UnregisterEvent("GARRISON_MISSION_FINISHED")
+	addon:UnregisterEvent("LOADING_SCREEN_ENABLED")
+	addon:UnregisterEvent("GARRISON_UPDATE")
 	addon:UnregisterEvent("ADDON_LOADED")
 end

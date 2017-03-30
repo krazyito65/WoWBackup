@@ -1,7 +1,11 @@
 local GlobalAddonName, ExRT = ...
 
+local VExRT = nil
+
 local module = ExRT.mod:New("WhoPulled",ExRT.L.WhoPulled,nil,true)
 local ELib,L = ExRT.lib,ExRT.L
+
+local UnitAffectingCombat, string_find = UnitAffectingCombat, string.find
 
 module.db.lastPull = nil
 module.db.lastBossName = nil
@@ -27,6 +31,10 @@ function module.options:Load()
 	self.lastPull = ELib:Text(self,"",12):Point("TOP",0,-50):Top():Color()
 	self.name = ELib:Text(self,"",18):Point("TOP",0,-65):Top():Color()
 	
+	self.chatCheck = ELib:Check(self,L.WhoPulledChatOption,not VExRT.WhoPulled.DisableChat):Point("BOTTOMLEFT",10,40):OnClick(function(self)
+		VExRT.WhoPulled.DisableChat = not self:GetChecked()
+	end)
+	
 	self.OnShow_disableNil = true
 	self:SetScript("OnShow",UpdatePage)
 	
@@ -35,13 +43,30 @@ end
 
 
 function module.main:ADDON_LOADED()
+	VExRT = _G.VExRT
+	VExRT.WhoPulled = VExRT.WhoPulled or {}
+
 	module:RegisterEvents('ENCOUNTER_START')
+	module:RegisterEvents('ZONE_CHANGED_NEW_AREA')
+	module.main:ZONE_CHANGED_NEW_AREA()
 end
 
-local bossUnits = {["boss1"]=true,["boss2"]=true,["boss3"]=true,["boss4"]=true,["boss5"]=true,}
+local affectedCombat,affectedCombatPetOwner = nil
 
-local function Unregister()
-	module:UnregisterEvents('UNIT_TARGET')
+local function WhoPulledFetch()
+	if affectedCombat then
+		module.db.whoPulled = affectedCombat
+		if affectedCombatPetOwner then
+			module.db.isPet = affectedCombatPetOwner
+		end
+		if not VExRT.WhoPulled.DisableChat then
+			local _,class = UnitClass(affectedCombatPetOwner or affectedCombat)
+			local color = ExRT.F.classColor(class)
+		
+			print("|cffffff00ExRT|r "..L.WhoPulled..": |c"..color..affectedCombat..(affectedCombatPetOwner and " ["..affectedCombatPetOwner.."]" or ""))
+		end
+		return true
+	end
 end
 
 function module.main:ENCOUNTER_START(encounterID, encounterName, difficultyID, groupSize)
@@ -49,36 +74,46 @@ function module.main:ENCOUNTER_START(encounterID, encounterName, difficultyID, g
 	module.db.isPet = nil
 	module.db.lastPull = time()
 	module.db.lastBossName = encounterName
-	for boss,_ in pairs(bossUnits) do
-		local tGUID = UnitGUID(boss.."target")
-		if tGUID and ExRT.F.Pets:getOwnerNameByGUID(tGUID) then
-			module.db.isPet = UnitName(boss.."target")
-			module.db.whoPulled = ExRT.F.Pets:getOwnerNameByGUID(tGUID)
-			return
-		end
-		local tname = UnitName(boss.."target")
-		if tname then
-			module.db.whoPulled = tname
-			return
-		end
+	if not WhoPulledFetch() then
+		C_Timer.After(1,WhoPulledFetch)
 	end
-	module:RegisterEvents('UNIT_TARGET')
-	C_Timer.NewTimer(10,Unregister)
 end
 
-function module.main:UNIT_TARGET(unit)
-	if unit and bossUnits[unit] then
-		local tGUID = UnitGUID(unit.."target")
-		if tGUID and ExRT.F.Pets:getOwnerNameByGUID(tGUID) then
-			module.db.isPet = UnitName(unit.."target")
-			module.db.whoPulled = ExRT.F.Pets:getOwnerNameByGUID(tGUID)
-			module:UnregisterEvents('UNIT_TARGET')
-			return
-		end
-		local tname = UnitName(unit.."target")
-		if tname then
-			module.db.whoPulled = tname
-			module:UnregisterEvents('UNIT_TARGET')
-		end
+local function ZoneNewFunction()
+	local _, zoneType, difficulty, _, _, _, _, mapID = GetInstanceInfo()
+	if zoneType == "raid" or zoneType == "party" then
+		module:RegisterEvents('UNIT_FLAGS','PLAYER_REGEN_DISABLED','PLAYER_REGEN_ENABLED')
+	else
+		module:UnregisterEvents('UNIT_FLAGS','PLAYER_REGEN_DISABLED','PLAYER_REGEN_ENABLED')
 	end
+end
+
+function module.main:ZONE_CHANGED_NEW_AREA()
+	ExRT.F.ScheduleTimer(ZoneNewFunction, 2)
+end
+
+local function ClearAffectedCombat()
+	affectedCombat = nil
+	affectedCombatPetOwner = nil
+end
+
+function module.main:UNIT_FLAGS(unit)
+	if not affectedCombat and UnitAffectingCombat(unit) and (string_find(unit,"^raid") or unit == "player" or string_find(unit,"^party")) then
+		affectedCombat = UnitName(unit)
+		if string_find(unit,"pet") then
+			local ownerUnitID = unit:gsub("pet","")
+			affectedCombatPetOwner = UnitName(ownerUnitID)
+		end
+		
+		--print('Combat',affectedCombat)
+		C_Timer.After(3,ClearAffectedCombat)
+	end
+end
+
+function module.main:PLAYER_REGEN_DISABLED(unit)
+	module:UnregisterEvents('UNIT_FLAGS')
+end
+
+function module.main:PLAYER_REGEN_ENABLED(unit)
+	ZoneNewFunction()
 end

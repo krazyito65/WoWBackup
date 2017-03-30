@@ -102,39 +102,32 @@ function module.options:Load()
 	self:CreateTilte()
 
 	module.db.otherIconsAdditionalList = {
-		31821,62618,97462,76577,51052,98008,115310,64843,740,108280,106898,0,
-		47788,33206,6940,102342,114030,1022,116849,0,
+		31821,62618,97462,98008,115310,64843,740,108280,204150,31842,196718,15286,0,
+		47788,33206,6940,102342,114030,1022,116849,633,204018,207399,0,
 		2825,32182,80353,0,
-		"Interface\\Icons\\inv_60legendary_ring1c","Interface\\Icons\\inv_60legendary_ring1b","Interface\\Icons\\inv_60legendary_ring1a",0,
+		106898,192077,46968,119381,179057,192058,0,
+		--"Interface\\Icons\\inv_60legendary_ring1c","Interface\\Icons\\inv_60legendary_ring1b","Interface\\Icons\\inv_60legendary_ring1a",0,
 		0,
-		183449,180080,181968,186737,185806,186016,0,
-		182280,182001,185978,182003,182094,185282,179889,182055,182022,0,
-		180246,181356,181297,181292,181092,181093,181300,181306,0,
-		184355,184450,185065,185066,184674,184366,184652,183226,184360,184476,183885,184357,0,
-		184067,184396,180718,180389,180199,180224,182428,0,
-		182049,180148,180093,182170,181085,181973,179867,179864,0,
-		182200,179219,181753,181956,181912,181827,181824,185345,185239,182325,179202,181873,0,
-		182769,184239,182392,183329,180221,180418,188693,183331,190161,184124,184053,189540,0,
-		180533,180600,180260,180300,180526,180608,181718,179986,179991,180040,185241,180000,185237,180604,0,
-		188900,188998,189032,189031,189030,179407,179582,179709,181508,189009,179681,181498,0,
-		190223,190224,186407,186333,189775,186453,186546,186532,186134,186135,185656,189781,0,
-		181841,183377,183376,181134,181557,181597,181738,181099,181275,190482,186362,182031,181255,0,
-		183864,190397,183828,183254,183598,188514,184931,184265,185590,190821,190686,189897,186662,190313,187244,186562,183963,190400,185014,190807,0,
+		204284,204766,204372,204471,204448,204316,0,
+		206617,205707,219823,206607,207011,207012,207013,219808,0,
+		214573,206641,206488,206798,207631,208499,208910,207141,206792,206557,206560,206559,207513,0,
+		215458,212647,212587,213166,213564,213864,213867,213869,0,
+		206921,206388,214486,205649,206936,207720,221875,207439,206517,206949,206433,206589,0,
+		212997,208230,212794,213531,206365,212795,215988,0,
+		205348,206677,206376,206352,205863,205368,0,
+		218806,219049,219009,218148,218424,218438,218774,218807,218508,0,
+		209166,209165,208659,208944,209244,209973,232974,209568,210022,0,
+		210339,210296,206985,206515,209011,206384,206555,206581,227550,209518,206840,206516,0,
 		0,
-		155078,155080,165298,155330,173192,0,
-		173471,156297,156203,155900,0,
-		155196,158246,155242,155240,155225,155192,176121,156934,0,
-		157139,157853,156892,161570,0,
-		154932,155074,155277,155314,0,
-		156766,157059,156704,158217,173917,156852,0,
-		162283,154960,154975,159045,155208,0,
-		164380,155864,155921,159481,0,
-		170395,170405,156631,158601,158315,164271,158010,156214,0,
-		156772,156047,156096,175020,162498,157000,159142,177438,177487,156479,
+		228053,227992,227903,228056,227967,228565,228032,228730,193367,232450,0,
+		228758,228768,228769,228744,228810,228818,228253,228228,228248,227514,227894,227642,0,
+		229582,229583,227498,229579,229580,228012,228162,231350,227807,228914,228007,0,
 	}
 	
 	module.db.encountersList = {
+		{1147,2032,2048,2036,2037,2050,2054,2052,2038,2051},
 		{1088,1849,1865,1867,1871,1862,1886,1842,1863,1872,1866},
+		{1114,1958,1962,2008},
 		{1094,1853,1841,1873,1854,1876,1877,1864},
 		{1026,1778,1785,1787,1798,1786,1783,1788,1794,1777,1800,1784,1795,1799},
 		{988,1696,1691,1693,1694,1689,1692,1690,1713,1695,1704},
@@ -146,7 +139,7 @@ function module.options:Load()
 	self.IsMainNoteNow = true
 	
 	self.decorationLine = CreateFrame("Frame",nil,self)
-	self.decorationLine.texture = self.decorationLine:CreateTexture(nil, "BACKGROUND")
+	self.decorationLine.texture = self.decorationLine:CreateTexture(nil, "BACKGROUND", nil, -5)
 	self.decorationLine:SetPoint("TOPLEFT",self,-8,-25)
 	self.decorationLine:SetPoint("BOTTOMRIGHT",self,"TOPRIGHT",8,-45)
 	self.decorationLine.texture:SetAllPoints()
@@ -159,7 +152,7 @@ function module.options:Load()
 	
 	self.tab.tabs[1]:SetPoint("TOPLEFT",0,20)
 
-	self.NotesList = ELib:ScrollList(self.tab.tabs[1]):Size(175,410):Point(5,-155)
+	self.NotesList = ELib:ScrollList(self.tab.tabs[1]):Size(175,435):Point(5,-130)
 	self.NotesList.selected = 1
 	
 	local function NotesListUpdateNames()
@@ -189,7 +182,7 @@ function module.options:Load()
 	
 	function self.NotesList:SetListValue(index)
 		ExRT.lib.ShowOrHide(module.options.buttonsend,index == 1)
-		ExRT.lib.ShowOrHide(module.options.buttonclear,index == 1)
+		ExRT.lib.ShowOrHide(module.options.textCancel,index == 1)
 		ExRT.lib.ShowOrHide(module.options.buttoncopy,index > 2)
 		
 		BlackNoteNow = nil
@@ -332,18 +325,58 @@ function module.options:Load()
 		end
 	end
 	
-	self.NoteEditBox = ELib:MultiEdit(self.tab.tabs[1]):Point("TOPLEFT",self.NotesList,"TOPRIGHT",9,-50):Size(469,294+91-25)
+	self.NoteEditBox = ELib:MultiEdit(self.tab.tabs[1]):Point("TOPLEFT",self.NotesList,"TOPRIGHT",9,-75):Size(469,294+91-25)
 	
+	self.textClear = ELib:Text(self.NoteEditBox,"["..L.messagebutclear.."]"):Point("RIGHT",self.NoteEditBox,"BOTTOMRIGHT",-22,-6):Color()
+	self.textClear:SetShadowColor(1,1,1,0)
+	self.textClear:SetShadowOffset(1,-1)
+	self.buttonClear = CreateFrame("Button",nil,self.NoteEditBox)
+	self.buttonClear:SetAllPoints(self.textClear)
+	self.buttonClear:SetScript("OnClick",function()
+		module.frame:Clear() 
+		module.options.NoteEditBox.EditBox:SetText("")
+	end)
+	self.buttonClear:SetScript("OnEnter",function()
+		self.textClear:SetShadowColor(1,1,1,1)
+	end)
+	self.buttonClear:SetScript("OnLeave",function()
+		self.textClear:SetShadowColor(1,1,1,0)
+	end)
+	
+	self.textCancel = ELib:Text(self.NoteEditBox,"["..CANCEL.."]"):Point("RIGHT",self.textClear,"LEFT",-5,0):Color()
+	self.textCancel:SetShadowColor(1,1,1,0)
+	self.textCancel:SetShadowOffset(1,-1)
+	self.buttonCuncel = CreateFrame("Button",nil,self.NoteEditBox)
+	self.buttonCuncel:SetAllPoints(self.textCancel)
+	self.buttonCuncel:SetScript("OnClick",function()
+		if not module.options.textCancel:IsShown() then
+			return
+		end
+		module.options.NoteEditBox.EditBox:SetText(VExRT.Note.Text1)
+	end)
+	self.buttonCuncel:SetScript("OnEnter",function()
+		self.textCancel:SetShadowColor(1,1,1,1)
+	end)
+	self.buttonCuncel:SetScript("OnLeave",function()
+		self.textCancel:SetShadowColor(1,1,1,0)
+	end)
+		
 	function self.NoteEditBox.EditBox:OnTextChanged()
 		if NoteIsSelfNow then
 			VExRT.Note.SelfText = self:GetText()
 			module.frame:UpdateText()
 		elseif BlackNoteNow then
 			VExRT.Note.Black[ BlackNoteNow ] = self:GetText()
+		else
+			if self:GetText() ~= VExRT.Note.Text1 then
+				module.options.buttonsend:Anim(true)
+			else
+				module.options.buttonsend:Anim(false)
+			end
 		end
 	end
 	
-	self.buttonsend = ELib:Button(self.tab.tabs[1],L.messagebutsend):Size(325,20):Point(5,-30):Tooltip(L.messagebutsendtooltip):OnClick(function (self)
+	self.buttonsend = ELib:Button(self.tab.tabs[1],L.messagebutsend):Size(469,20):Point("TOPLEFT",self.NotesList,"TOPRIGHT",9,-50):Tooltip(L.messagebutsendtooltip):OnClick(function (self)
 		module.frame:Save() 
 		
 		if IsShiftKeyDown() then
@@ -359,14 +392,27 @@ function module.options:Load()
 				end
 			end
 		end
+		
+		module.options.buttonsend:Anim(false)
 	end) 
-
-	self.buttonclear = ELib:Button(self.tab.tabs[1],L.messagebutclear):Size(325,20):Point("TOPRIGHT",0,-30):OnClick(function (self)
-		module.frame:Clear() 
-		module.options.NoteEditBox.EditBox:SetText("")
-	end) 
-
-	self.buttoncopy = ELib:Button(self.tab.tabs[1],L.messageButCopy):Size(655,20):Point("TOP",2,-30):OnClick(function (self)
+	
+	function self.buttonsend:Anim(on)
+		if on then
+			self.t = self.t or 0
+			self:SetScript("OnUpdate",function(self,elapsed)
+				self.t = (self.t + elapsed) % 4
+				
+				local c = 0.05 * (self.t > 2 and (4-self.t) or self.t)
+				
+				self.Texture:SetGradientAlpha("VERTICAL",0.0+c,0.06+c,0.0+c,1, 0.05+c,0.21+c,0.05+c,1)
+			end)
+		else
+			self:SetScript("OnUpdate",nil)
+			self.Texture:SetGradientAlpha("VERTICAL",0.05,0.06,0.09,1, 0.20,0.21,0.25,1)
+		end
+	end
+	
+	self.buttoncopy = ELib:Button(self.tab.tabs[1],L.messageButCopy):Size(469,20):Point("TOPLEFT",self.NotesList,"TOPRIGHT",9,-50):OnClick(function (self)
 		if not BlackNoteNow then
 			return
 		end
@@ -406,7 +452,7 @@ function module.options:Load()
 	for i=1,8 do
 		self.buttonicons[i] = CreateFrame("Button", nil,self.tab.tabs[1])
 		self.buttonicons[i]:SetSize(18,18)
-		self.buttonicons[i]:SetPoint("TOPLEFT", 5+(i-1)*20,-55)
+		self.buttonicons[i]:SetPoint("TOPLEFT", 5+(i-1)*20,-30)
 		self.buttonicons[i].back = self.buttonicons[i]:CreateTexture(nil, "BACKGROUND")
 		self.buttonicons[i].back:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_"..i)
 		self.buttonicons[i].back:SetAllPoints()
@@ -417,7 +463,7 @@ function module.options:Load()
 	for i=1,11 do
 		self.buttonicons[i] = CreateFrame("Button", nil,self.tab.tabs[1])
 		self.buttonicons[i]:SetSize(18,18)
-		self.buttonicons[i]:SetPoint("TOPLEFT", 165+(i-1)*20,-55)
+		self.buttonicons[i]:SetPoint("TOPLEFT", 165+(i-1)*20,-30)
 		self.buttonicons[i].back = self.buttonicons[i]:CreateTexture(nil, "BACKGROUND")
 		self.buttonicons[i].back:SetTexture(module.db.otherIconsList[i][3])
 		if module.db.otherIconsList[i][4] then
@@ -456,6 +502,7 @@ function module.options:Load()
 		end
 	end
 	do
+		local GetSpellInfo = GetSpellInfo
 		local line = 2
 		local inLine = 0
 		for i=1,#module.db.otherIconsAdditionalList do
@@ -488,7 +535,7 @@ function module.options:Load()
 		self.OtherIconsFrame:Hide()
 	end)
 	
-	self.dropDownColor = ELib:DropDown(self.tab.tabs[1],170,10):Point(558,-55):Size(100):SetText(L.NoteColor)
+	self.dropDownColor = ELib:DropDown(self.tab.tabs[1],170,10):Point(558,-30):Size(100):SetText(L.NoteColor)
 	self.dropDownColor.list = {
 		{L.NoteColorRed,"|cffff0000"},
 		{L.NoteColorGreen,"|cff00ff00"},
@@ -548,7 +595,7 @@ function module.options:Load()
 	for i=1,30 do
 		self.raidnames[i] = CreateFrame("Button", nil,self.tab.tabs[1])
 		self.raidnames[i]:SetSize(105,14)
-		self.raidnames[i]:SetPoint("TOPLEFT", 5+math.floor((i-1)/5)*108,-80-14*((i-1)%5))
+		self.raidnames[i]:SetPoint("TOPLEFT", 5+math.floor((i-1)/5)*108,-55-14*((i-1)%5))
 
 		self.raidnames[i].html = ELib:Text(self.raidnames[i],"",11):Color()
 		self.raidnames[i].html:SetAllPoints()
@@ -1166,6 +1213,10 @@ end
 do
 	local encountersUsed = {}
 	function module.main:ENCOUNTER_START(encounterID,encounterName)
+		local _, zoneType, difficulty, _, _, _, _, mapID = GetInstanceInfo()
+		if difficulty == 7 or difficulty == 17 then	--Disable if LFR
+			return false
+		end
 		if encountersUsed[encounterID] then
 			return
 		end
@@ -1181,7 +1232,7 @@ do
 		end
 		for i=0,limit do
 			if VExRT.Note.AutoLoad[i] == encounterID then
-				ExRT.F.Timer(SendNoteByEncounter, 1, i)
+				ExRT.F.Timer(SendNoteByEncounter, 1.8, i)
 				break
 			end
 			if i == limit then

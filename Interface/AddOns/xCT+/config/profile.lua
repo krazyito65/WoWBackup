@@ -51,12 +51,12 @@ addon.defaults = {
     bypassCVars = false,
 
     blizzardFCT = {
-      blizzardHeadNumbers = false,
-      enabled = false,
+      blizzardHeadNumbers = false, -- enable the head numbers
+      enabled = false,             -- enable custom font for head numbers
       font = "Condensed Bold (xCT+)",
       fontName = [[Interface\AddOns\]] .. ADDON_NAME .. [[\media\OpenSans-CondBold.ttf]],
-      fontSize = 32,
-      fontOutline = "2OUTLINE",
+      fontSize = 32, -- unused
+      fontOutline = "2OUTLINE", -- unused
 
       -- CVars
       enableFloatingCombatText = false,
@@ -64,8 +64,6 @@ addon.defaults = {
       floatingCombatTextAuras = false,
       floatingCombatTextCombatDamage = false,
       floatingCombatTextCombatDamageAllAutos = false,
-      floatingCombatTextCombatDamageDirectionalOffset = false,
-      floatingCombatTextCombatDamageDirectionalScale = false,
       floatingCombatTextCombatHealing = false,
       floatingCombatTextCombatHealingAbsorbSelf = false,
       floatingCombatTextCombatHealingAbsorbTarget = false,
@@ -86,6 +84,9 @@ addon.defaults = {
       floatingCombatTextRepChanges = false,
       floatingCombatTextSpellMechanics = false,
       floatingCombatTextSpellMechanicsOther = false,
+
+      floatingCombatTextCombatDamageDirectionalOffset = 1,
+      floatingCombatTextCombatDamageDirectionalScale = 1,
     },
 
     SpellColors = {
@@ -480,6 +481,8 @@ addon.defaults = {
         -- special tweaks
         ["showSwing"] = true,
         ["prefixSwing"] = true,
+        ["petCrits"] = false,
+
       },
 
       damage = {
@@ -838,7 +841,7 @@ addon.defaults = {
         ["disableResource_RAGE"]             = false,
         ["disableResource_FOCUS"]            = false,
         ["disableResource_ENERGY"]           = false,
-        
+
         ["disableResource_RUNES"]            = true,
         ["disableResource_RUNIC_POWER"]      = false,
         ["disableResource_SOUL_SHARDS"]      = false,

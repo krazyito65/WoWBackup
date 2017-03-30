@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Mails ***
+--[[	*** DataStore_Mails ***
 Written by : Thaoky, EU-Marécages de Zangar
 July 16th, 2009
 --]]

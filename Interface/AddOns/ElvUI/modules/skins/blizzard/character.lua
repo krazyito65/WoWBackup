@@ -11,6 +11,7 @@ local SquareButton_SetIcon = SquareButton_SetIcon
 
 local function LoadSkin()
 	if E.private.skins.blizzard.enable ~= true or E.private.skins.blizzard.character ~= true then return end
+
 	S:HandleCloseButton(CharacterFrameCloseButton)
 	S:HandleScrollBar(ReputationListScrollFrameScrollBar)
 	S:HandleScrollBar(TokenFrameContainerScrollBar)
@@ -88,18 +89,20 @@ local function LoadSkin()
 		local categoryYOffset = -5;
 		local statYOffset = 0;
 
-		if ( level >= MIN_PLAYER_LEVEL_FOR_ITEM_LEVEL_DISPLAY ) then
-			PaperDollFrame_SetItemLevel(CharacterStatsPane.ItemLevelFrame, "player");
-			CharacterStatsPane.ItemLevelFrame.Value:SetTextColor(GetItemLevelColor());
-			CharacterStatsPane.ItemLevelCategory:Show();
-			CharacterStatsPane.ItemLevelFrame:Show();
-			CharacterStatsPane.AttributesCategory:SetPoint("TOP", 0, -76);
-		else
-			CharacterStatsPane.ItemLevelCategory:Hide();
-			CharacterStatsPane.ItemLevelFrame:Hide();
-			CharacterStatsPane.AttributesCategory:SetPoint("TOP", 0, -20);
-			categoryYOffset = -12;
-			statYOffset = -6;
+		if (not IsAddOnLoaded("DejaCharacterStats")) then 
+			if ( level >= MIN_PLAYER_LEVEL_FOR_ITEM_LEVEL_DISPLAY ) then
+				PaperDollFrame_SetItemLevel(CharacterStatsPane.ItemLevelFrame, "player");
+				CharacterStatsPane.ItemLevelFrame.Value:SetTextColor(GetItemLevelColor());
+				CharacterStatsPane.ItemLevelCategory:Show();
+				CharacterStatsPane.ItemLevelFrame:Show();
+				CharacterStatsPane.AttributesCategory:SetPoint("TOP", 0, -76);
+			else
+				CharacterStatsPane.ItemLevelCategory:Hide();
+				CharacterStatsPane.ItemLevelFrame:Hide();
+				CharacterStatsPane.AttributesCategory:SetPoint("TOP", 0, -20);
+				categoryYOffset = -12;
+				statYOffset = -6;
+			end
 		end
 
 		local spec = GetSpecialization();
@@ -119,7 +122,7 @@ local function LoadSkin()
 				local stat = PAPERDOLL_STATCATEGORIES[catIndex].stats[statIndex];
 				local showStat = true;
 				if ( showStat and stat.primary ) then
-					local primaryStat = select(7, GetSpecializationInfo(spec, nil, nil, nil, UnitSex("player")));
+					local primaryStat = select(6, GetSpecializationInfo(spec, nil, nil, nil, UnitSex("player")));
 					if ( stat.primary ~= primaryStat ) then
 						showStat = false;
 					end
@@ -255,6 +258,9 @@ local function LoadSkin()
 	for _, object in pairs(charframe) do
 		_G[object]:StripTextures()
 	end
+	--Re-add the overlay texture which was removed right above
+	CharacterModelFrameBackgroundOverlay:SetColorTexture(0,0,0)
+
 	local function StatsPane(type)
 		CharacterStatsPane[type]:StripTextures()
 		CharacterStatsPane[type]:CreateBackdrop("Transparent")

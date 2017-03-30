@@ -24,6 +24,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1738)
 
 L:SetOptionLocalization({
+	SetIconOnlyOnce2	= "Setze Zeichen nur einmal pro Alptraumsekretscan, deaktiviere danach den Scanner bis mindestens ein Sekret explodiert (experimentell)",
 	InfoFrameBehavior	= "Auswahl der Information im Infofenster während des Kampfes",
 	Fixates				= "Zeige Spieler, die von Fixieren betroffen sind",
 	Adds				= "Zeige Zähler für alle Add-Arten"
@@ -37,18 +38,6 @@ L= DBM:GetModLocalization(1744)
 L:SetWarningLocalization({
 	warnWebOfPain		= ">%s< ist verbunden mit >%s<",
 	specWarnWebofPain	= "Du bist verbunden mit >%s<"
-})
-
-L:SetOptionLocalization({
-	WebConfiguration	= "HudMap-/Pfeileinstellungen für Schmerzensnetz",
-	Disabled			= "Deaktiviert",
-	Arrow				= "Zeige nur herkömmlichen Pfeil, wenn du betroffen bist",
-	HudSelf				= "Zeige Linie in HudMap nur wenn du betroffen bist",
-	HudAll				= "Zeige Linie in HudMap für alle betroffenen Ziele"
-})
-
-L:SetMiscLocalization({
-	MapMessage			= "Hinweis: Dieses Mod nutzt HudMap-/Pfeileinstellungen, die in der grafischen Benutzeroberfläche konfiguriert werden können. Diese Einstellungen werden ab Patch 7.1 nicht mehr funktionieren."
 })
 
 ---------------------------

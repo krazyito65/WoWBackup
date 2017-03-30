@@ -1,6 +1,6 @@
 ## Interface: 70100
 ## Title: BigWigs |cffff0000+|r|cffffffffVoice|r
-## Version: v7.1-1-ge6c3c00
+## Version: v7.1.5.1
 ## Notes: A plugin for BigWigs that will play Text-To-Speech sounds for boss abilities.
 ## Notes-zhCN: A plugin for BigWigs that will play Text-To-Speech sounds for boss abilities.
 ## Notes-zhTW: A plugin for BigWigs that will play Text-To-Speech sounds for boss abilities.

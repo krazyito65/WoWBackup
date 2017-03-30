@@ -1,4 +1,4 @@
-﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file="GuildBank.lua"></Script>
 	
 	<Frame parentKey="Bank" parent="AltoholicTabGuild" inherits="AltoDataPanelTemplate">
@@ -69,78 +69,78 @@
 			
 			<Frame parentKey="ContextualMenu" inherits="AltoContextualMenuTemplate" />
 			
-			<Button parentKey="Entry1" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry1" inherits="AltoContainerTemplate" id="1">
 				<Anchors>
 					<Anchor point="TOPLEFT" x="0" y="0" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry2" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry2" inherits="AltoContainerTemplate" id="2">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry1" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry3" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry3" inherits="AltoContainerTemplate" id="3">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry2" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry4" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry4" inherits="AltoContainerTemplate" id="4">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry3" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry5" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry5" inherits="AltoContainerTemplate" id="5">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry4" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry6" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry6" inherits="AltoContainerTemplate" id="6">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry5" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
-			<Button parentKey="Entry7" inherits="AltoContainerTemplate">
+			<Button parentArray="ItemRows" parentKey="Entry7" inherits="AltoContainerTemplate" id="7">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.Entry6" relativePoint="BOTTOMLEFT" />
 				</Anchors>
 			</Button>
 
-			<Button parentKey="TabButton1" inherits="AltoGuildBankTabIconTemplate" id="1">
+			<Button parentArray="TabButtons" parentKey="TabButton1" inherits="AltoGuildBankTabIconTemplate" id="1">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="AltoholicFrame" relativePoint="TOPRIGHT" x="0" y="-80" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton2" inherits="AltoGuildBankTabIconTemplate" id="2">
+			<Button parentArray="TabButtons" parentKey="TabButton2" inherits="AltoGuildBankTabIconTemplate" id="2">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton1" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton3" inherits="AltoGuildBankTabIconTemplate" id="3">
+			<Button parentArray="TabButtons" parentKey="TabButton3" inherits="AltoGuildBankTabIconTemplate" id="3">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton2" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton4" inherits="AltoGuildBankTabIconTemplate" id="4">
+			<Button parentArray="TabButtons" parentKey="TabButton4" inherits="AltoGuildBankTabIconTemplate" id="4">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton3" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton5" inherits="AltoGuildBankTabIconTemplate" id="5">
+			<Button parentArray="TabButtons" parentKey="TabButton5" inherits="AltoGuildBankTabIconTemplate" id="5">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton4" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton6" inherits="AltoGuildBankTabIconTemplate" id="6">
+			<Button parentArray="TabButtons" parentKey="TabButton6" inherits="AltoGuildBankTabIconTemplate" id="6">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton5" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton7" inherits="AltoGuildBankTabIconTemplate" id="7">
+			<Button parentArray="TabButtons" parentKey="TabButton7" inherits="AltoGuildBankTabIconTemplate" id="7">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton6" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>
 			</Button>
-			<Button parentKey="TabButton8" inherits="AltoGuildBankTabIconTemplate" id="8">
+			<Button parentArray="TabButtons" parentKey="TabButton8" inherits="AltoGuildBankTabIconTemplate" id="8">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeKey="$parent.TabButton7" relativePoint="BOTTOMLEFT" x="0" y="-5" />
 				</Anchors>

@@ -6,7 +6,7 @@ if GetLocale()=="deDE" or GetLocale()=="ruRU" or GetLocale()=="zhTW" or GetLocal
 end
 
 
-	raversion=7.014
+	raversion=7.200
 	local raverstiptext="alpha"
 	if string.len(raversion)==6 then
 		raverstiptext="beta"
@@ -20,7 +20,7 @@ end
 	if wherereportraidach==nil then wherereportraidach="raid" end
 	if wherereportpartyach==nil then wherereportpartyach="party" end
 	if raminibutshowt==nil then raminibutshowt=true end
-	if raannouncerun==nil then raannouncerun=0 end
+	if raannouncerun3==nil then raannouncerun3=0 end
 	if RA_Settings==nil then RA_Settings = {RAMinimapPos = -176} end
 	rabigmenuchatlisten={"raid", "raid_warning", "officer", "party", "guild", "say", "yell", "sebe"}
 	ralowmenuchatlisten={"party", "officer", "guild", "say", "yell", "sebe"}
@@ -2341,13 +2341,13 @@ end
 
 --инфо о ДР
 local _, month, day, year = CalendarGetDate()
-if (year==2016 and month==2 and (day==12 or day==13) and raannouncerun==0) then
+if (year==2017 and month==2 and (day==12 or day==13) and raannouncerun3==0 and (psDoNotShowOtherAnnounces==nil or (psDoNotShowOtherAnnounces and psDoNotShowOtherAnnounces==0)) and math.random(1,100)>70) then
 	local text=""
-	text="|cff00ff00RaidAchievement|r > Hello. |cff00ff00It's my birthday today! :)|r If you like this addon and would like to see it in the |cff00ff00Legion|r - please help to maintain it. In 2015 I got just 70 euro of donations and I don't play anymore.. More info: http://www.phoenixstyle.com/ (or on curse.com)"
+	text="|cff00ff00RaidAchievement|r > I got WoW for my 20 years birthday, |cff00ff00today I celebrate 30|r. I created PS and RA addons 8 years ago, hope you use and like them :) They got more than |cff00ff0010 mln downloads|r and I raised just 1200 euro in 8 years with the bigger one of 300$. Now, addon is dying as I don't play for last 5 years, if you want to help: http://www.phoenixstyle.com/ also you can find more info about me and Italy where I live :)"
 	
 	out (text)
 	
-	raannouncerun=1
+	raannouncerun3=1
 	psDoNotShowOtherAnnounces=1
 end
 

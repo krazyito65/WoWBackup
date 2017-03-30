@@ -136,7 +136,7 @@ end
 ---------------------------------------------------------------------------------
 
 function VUHDO_initTextProviderConfig()
-  -- Falls man mal was löscht oder umbenennt
+  -- Falls man mal was lï¿½scht oder umbenennt
 	for tIndicatorName, anIndicatorConfig in pairs(VUHDO_INDICATOR_CONFIG["TEXT_INDICATORS"]) do
 		for tIndex, tProviderName in pairs(anIndicatorConfig["TEXT_PROVIDER"]) do
 			if not VUHDO_TEXT_PROVIDERS[tProviderName] then

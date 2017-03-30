@@ -464,7 +464,7 @@ local function VUHDO_initBarTexts(aButton, aHealthBar, aWidth)
 	end
 
 	local tAnchorObject;
-	if strfind(sTextAnchors[1], "BOTTOM", 1, true) and strfind(sTextAnchors[2], "TOP", 1, true) -- über Button
+	if strfind(sTextAnchors[1], "BOTTOM", 1, true) and strfind(sTextAnchors[2], "TOP", 1, true) -- ï¿½ber Button
 		and VUHDO_INDICATOR_CONFIG["BOUQUETS"]["THREAT_BAR"] ~= "" then
 		tAnchorObject = VUHDO_getHealthBar(aButton, 7) or aButton; -- Target und Tot hat keinen Threat bar
 	elseif strfind(sTextAnchors[2], "BOTTOM", 1, true) and strfind(sTextAnchors[1], "TOP", 1, true) then
@@ -1074,7 +1074,7 @@ function VUHDO_reloadUI(anIsFixAllFrameLevels)
 
 	VUHDO_IS_RELOADING = true;
 
-	VUHDO_initAllBurstCaches(); -- Wichtig für INTERNAL_TOGGLES=>Clusters
+	VUHDO_initAllBurstCaches(); -- Wichtig fï¿½r INTERNAL_TOGGLES=>Clusters
 	VUHDO_reloadRaidMembers();
 	VUHDO_resetNameTextCache();
 	VUHDO_redrawAllPanels(anIsFixAllFrameLevels);
@@ -1085,7 +1085,7 @@ function VUHDO_reloadUI(anIsFixAllFrameLevels)
 	VUHDO_IS_RELOADING = false;
 
 	VUHDO_reloadBuffPanel();
-	VUHDO_initDebuffs(); -- Talente scheinen recht spät zur Verfügung zu stehen...
+	VUHDO_initDebuffs(); -- Talente scheinen recht spï¿½t zur Verfï¿½gung zu stehen...
 end
 
 

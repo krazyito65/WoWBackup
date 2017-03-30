@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Reputations ***
+--[[	*** DataStore_Reputations ***
 Written by : Thaoky, EU-Marécages de Zangar
 June 22st, 2009
 --]]

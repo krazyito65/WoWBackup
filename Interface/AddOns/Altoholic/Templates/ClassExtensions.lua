@@ -1,4 +1,4 @@
-﻿--[[ ** Class Extensions **
+--[[ ** Class Extensions **
 The purpose of class extensions is to add methods to any XML template.
 
 This can technically be done in the XML file, as part of the XML template's OnLoad.

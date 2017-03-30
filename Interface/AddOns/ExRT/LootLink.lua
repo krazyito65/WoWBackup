@@ -93,6 +93,10 @@ function module.main:ADDON_LOADED()
 	module:RegisterSlash()
 end
 
+local bannedItems = {
+	["124442"] = true,	--Chaos Crystal
+}
+
 local function LootLink(linkAnyway)
 	local lootMethod = GetLootMethod()
 	local _,zoneType,difficulty,_,_,_,_,mapID = GetInstanceInfo()
@@ -115,10 +119,13 @@ local function LootLink(linkAnyway)
 				local itemLink =  GetLootSlotLink(i)
 				local _,_,_,quality = GetLootSlotInfo(i)
 				if itemLink and (not isFutureRaid or (quality and quality >= 4)) then
-					numLink = numLink + 1
-					local _, _, _, iLevel = GetItemInfo(itemLink)
-					iLevel = VExRT.LootLink.ilvl and iLevel or nil 
-					SendChatMessage(numLink..": "..itemLink..(iLevel and (" ("..iLevel..")") or ""),chat_type,nil,playerName)
+					local itemID = itemLink:match("item:(%d+)")
+					if not itemID or not bannedItems[itemID] then
+						numLink = numLink + 1
+						local _, _, _, iLevel = GetItemInfo(itemLink)
+						iLevel = VExRT.LootLink.ilvl and iLevel or nil 
+						SendChatMessage(numLink..": "..itemLink..(iLevel and (" ("..iLevel..")") or ""),chat_type,nil,playerName)
+					end
 				end
 			end
  			cache[sourceGUID] = true

@@ -7,5 +7,4 @@ L["phase_warning"] = "¡Fase 2 pronto!"
 L["servant"] = "Invocar Sirviente"
 L["servant_desc"] = "Avisar cuando invoque un Sirviente de Siamat."
 L["servant_message"] = "¡Aparece un Sirviente de Siamat!"
-
 end

@@ -69,3 +69,15 @@ end
 function ExRT.F.Pets:getPetsDB()
 	return module.db.petsDB
 end
+
+
+function ExRT.F.Pets:getPets(ownerGUID,thirdDB)
+	local db = thirdDB or module.db.petsDB
+	local result = {}
+	for petGUID,petData in pairs(db) do
+		if petData[1] == ownerGUID then
+			result[#result + 1] = petGUID
+		end
+	end
+	return result
+end

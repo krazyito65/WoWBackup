@@ -40,6 +40,10 @@ local function CreatePluginFrames()
 
 	--> catch Details! main object
 	local _detalhes = _G._detalhes
+	if (not _detalhes) then
+		return
+	end
+	
 	local DetailsFrameWork = _detalhes.gump
 	
 	local framework = _G._detalhes:GetFramework()
@@ -72,12 +76,37 @@ local function CreatePluginFrames()
 	local BUTTON_BACKGROUND_COLORHIGHLIGHT2 = {.4, .4, .4, .8}
 	
 	local c = CreateFrame ("Button", nil, TimeLineFrame, "UIPanelCloseButton")
-	c:SetWidth (32)
-	c:SetHeight (32)
-	c:SetPoint ("TOPRIGHT",  TimeLineFrame, "TOPRIGHT", -3, -8)
+	c:SetWidth (20)
+	c:SetHeight (20)
+	c:SetPoint ("TOPRIGHT", TimeLineFrame, "TOPRIGHT", -2, -3)
 	c:SetFrameLevel (TimeLineFrame:GetFrameLevel()+1)
-	c:SetAlpha (0.45)
 	c:GetNormalTexture():SetDesaturated (true)
+	c:SetAlpha (1)
+	
+	
+--title bar
+	local titlebar = CreateFrame ("frame", nil, TimeLineFrame)
+	titlebar:SetPoint ("topleft", TimeLineFrame, "topleft", 2, -3)
+	titlebar:SetPoint ("topright", TimeLineFrame, "topright", -2, -3)
+	titlebar:SetHeight (20)
+	titlebar:SetBackdrop ({edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1, bgFile = [[Interface\AddOns\Details\images\background]], tileSize = 64, tile = true})
+	titlebar:SetBackdropColor (.5, .5, .5, 1)
+	titlebar:SetBackdropBorderColor (0, 0, 0, 1)
+
+	local name_bg_texture = TimeLineFrame:CreateTexture (nil, "background")
+	name_bg_texture:SetTexture ([[Interface\PetBattles\_PetBattleHorizTile]], true)
+	name_bg_texture:SetHorizTile (true)
+	name_bg_texture:SetTexCoord (0, 1, 126/256, 19/256)
+	name_bg_texture:SetPoint ("topleft", TimeLineFrame, "topleft", 2, -22)
+	name_bg_texture:SetPoint ("bottomright", TimeLineFrame, "bottomright")
+	name_bg_texture:SetHeight (54)
+	name_bg_texture:SetVertexColor (0, 0, 0, 0.2)
+
+--window title
+	local titleLabel = _detalhes.gump:NewLabel (titlebar, titlebar, nil, "titulo", "Details! Time Line", "GameFontHighlightLeft", 12, {227/255, 186/255, 4/255})
+	titleLabel:SetPoint ("center", TimeLineFrame, "center")
+	titleLabel:SetPoint ("top", TimeLineFrame, "top", 0, -7)	
+	
 	
 	local search
 	
@@ -332,7 +361,7 @@ local function CreatePluginFrames()
 	TimeLineFrame.Height = 498
 	
 	local mode_buttons_y_pos = 10
-	local mode_buttons_width = 140
+	local mode_buttons_width = 100
 	local mode_buttons_height = 20
 	
 	local CONST_TOTAL_TIMELINES = 20
@@ -366,16 +395,16 @@ local function CreatePluginFrames()
 						end
 					end)
 	
-	TimeLineFrame:SetBackdrop ({bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
+	--
+	TimeLineFrame:SetBackdrop (_detalhes.PluginDefaults and _detalhes.PluginDefaults.Backdrop or {bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tile = true, tileSize = 16,
 	edgeFile = [[Interface\Buttons\WHITE8X8]], edgeSize = 1,
 	insets = {left = 1, right = 1, top = 1, bottom = 1}})
-	TimeLineFrame:SetBackdropColor (0, 0, 0, .6)
-	TimeLineFrame:SetBackdropBorderColor (0, 0, 0, 1)
-
-	local title = DetailsFrameWork:NewLabel (TimeLineFrame, nil, "$parentTitle", nil, "Time Line", nil, 20, "yellow")
-	title:SetPoint (12, -13)
-	TimeLine:SetFontOutline (title, true)
-
+	
+	TimeLineFrame:SetBackdropColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropColor or {0, 0, 0, .6}))
+	
+	TimeLineFrame:SetBackdropBorderColor (unpack (_detalhes.PluginDefaults and _detalhes.PluginDefaults.BackdropBorderColor or {0, 0, 0, 1}))
+	--
+	
 	local bottom_texture = DetailsFrameWork:NewImage (TimeLineFrame, nil, TimeLineFrame.Width-4, 25, "background", nil, nil, "$parentBottomTexture")
 	bottom_texture:SetColorTexture (0, 0, 0, .6)
 	bottom_texture:SetPoint ("bottomleft", TimeLineFrame, "bottomleft", 2, 7)
@@ -383,7 +412,7 @@ local function CreatePluginFrames()
 	TimeLine.Times = {}
 	for i = 1, CONST_TOTAL_TIMELINES do 
 		local time = DetailsFrameWork:NewLabel (TimeLineFrame, nil, "$parentTime"..i, nil, "00:00")
-		time:SetPoint ("topleft", TimeLineFrame, "topleft", 78 + (i*39), -20)
+		time:SetPoint ("topleft", TimeLineFrame, "topleft", 78 + (i*39), -28)
 		TimeLine.Times [i] = time
 		local line = DetailsFrameWork:NewImage (TimeLineFrame, nil, 1, 361, "border", nil, nil, "$parentTime"..i.."Bar")
 		line:SetColorTexture (1, 1, 1, .1)
@@ -453,6 +482,7 @@ local function CreatePluginFrames()
 		
 	--> dropdown select combat (label)
 		local select_segment_label = DetailsFrameWork:NewLabel (TimeLineFrame, nil, "$parentSegmentLabel", nil, Loc ["STRING_SELECT_SEGMENT"], "GameFontNormal", nil, "orange")
+		select_segment_label.textsize = 9
 		
 	--> dropdown select combat (dropdown)
 		local selectCombatOption = function (_, _, segment)
@@ -484,11 +514,13 @@ local function CreatePluginFrames()
 		show_cooldowns_button:SetPoint ("bottomleft", TimeLineFrame, "bottomleft", 10, mode_buttons_y_pos)
 		show_cooldowns_button:SetIcon ([[Interface\ICONS\Spell_Holy_GuardianSpirit]], nil, nil, nil, {5/64, 59/64, 5/64, 59/64}, nil, nil, 2)
 		show_cooldowns_button:SetTextColor ("orange")
+		show_cooldowns_button.textsize = 9
 
 		local show_debuffs_button = framework:NewButton (TimeLineFrame, _, "$parentModeDebuffsButton", "ModeDebuffsButton", mode_buttons_width, mode_buttons_height, change_mode, type_debuff, nil, nil, "Debuffs", 1, options_button_template)
 		show_debuffs_button:SetPoint ("bottomleft", show_cooldowns_button, "bottomright", 5, 0)
 		show_debuffs_button:SetIcon ([[Interface\ICONS\Spell_Shadow_ShadowWordPain]], nil, nil, nil, {5/64, 59/64, 5/64, 59/64}, nil, nil, 2)
 		show_debuffs_button:SetTextColor ("orange")
+		show_debuffs_button.textsize = 9
 
 		local all_buttons = {show_cooldowns_button, show_debuffs_button}
 	
@@ -551,16 +583,39 @@ local function CreatePluginFrames()
 			end
 		end
 
-		local delete_button = framework:NewButton (TimeLineFrame, _, "$parentDeleteButton", "DeleteButton", 120, 20, delete_button_func, nil, nil, nil, "Reset Data", 1, options_button_template)
+		local delete_button = framework:NewButton (TimeLineFrame, _, "$parentDeleteButton", "DeleteButton", 100, 20, delete_button_func, nil, nil, nil, "Reset Data", 1, options_button_template)
 		delete_button:SetPoint ("bottomright", TimeLineFrame, "bottomright", -10, 10)
 		delete_button:SetIcon ([[Interface\Buttons\UI-StopButton]], nil, nil, nil, {0, 1, 0, 1}, nil, nil, 2)
 		delete_button:SetTextColor ("orange")
+		delete_button.textsize = 9
 		
-		local options_button = framework:NewButton (TimeLineFrame, _, "$parentOptionsPanelButton", "OptionsPanelButton", 120, 20, TimeLine.OpenOptionsPanel, nil, nil, nil, "Options", 1, options_button_template)
+		local options_button = framework:NewButton (TimeLineFrame, _, "$parentOptionsPanelButton", "OptionsPanelButton", 100, 20, TimeLine.OpenOptionsPanel, nil, nil, nil, "Options", 1, options_button_template)
 		options_button:SetPoint ("right", delete_button, "left", 2, 0)
 		options_button:SetIcon ([[Interface\Buttons\UI-OptionsButton]], nil, nil, nil, {0, 1, 0, 1}, nil, nil, 2)
 		options_button:SetTextColor ("orange")
+		options_button.textsize = 9
+		
+		--
+			local useIconsFunc = function()
+				TimeLine.db.useicons = not TimeLine.db.useicons
+				TimeLine:Refresh()
+			end
+			
+			local useIconsText = framework:CreateLabel (TimeLineFrame, "Spell Icons", 10, "orange", nil, "UseIconsLabel", nil, "overlay")
+			useIconsText:SetPoint ("right", options_button, "left", -2, 0)
 
+			local useIconsCheckbox = framework:CreateSwitch (TimeLineFrame, useIconsFunc, false)
+			useIconsCheckbox:SetTemplate (framework:GetTemplate ("switch", "OPTIONS_CHECKBOX_TEMPLATE"))
+			useIconsCheckbox:SetAsCheckBox()
+			useIconsCheckbox:SetSize (16, 16)
+			useIconsCheckbox:SetPoint ("right", useIconsText, "left", -2, 0)
+			
+			function TimeLine:UpdateShowSpellIconState()
+				useIconsCheckbox:SetValue (TimeLine.db.useicons)
+			end
+			
+		--
+		
 	--> search field
 		local onPressEnter = function (_, _, text)
 			if (text) then
@@ -570,6 +625,7 @@ local function CreatePluginFrames()
 		end
 		
 		local search_label = DetailsFrameWork:NewLabel (TimeLineFrame, nil, "$parentSearchLabel", nil, Loc ["STRING_SEARCH"], "GameFontNormal", nil, "orange")
+		search_label.textsize = 9
 		search_label:SetPoint ("left", show_debuffs_button, "right", 5, 0)
 		local searchbox = DetailsFrameWork:NewTextEntry (TimeLineFrame, _, "$parentSearch", "searchbox", 100, 20, onPressEnter, nil, nil, nil, nil, options_button_template)
 		searchbox:SetPoint ("left", search_label, "right", 2, 0)
@@ -604,7 +660,6 @@ local function CreatePluginFrames()
 	--> set the point on the segment box
 	select_segment_label:SetPoint ("left", clearsearch, "right", 2, 0)
 	select_segment_dropdown:SetPoint ("left", select_segment_label, "right", 2, 0)
-	
 
 	local backdrop_row = {bgFile = [[Interface\Tooltips\UI-Tooltip-Background]], tile = true, tileSize = 16, insets = {left = 0, right = 0, top = 0, bottom = 0}}
 	
@@ -659,20 +714,20 @@ local function CreatePluginFrames()
 
 		-- pegar o jogador
 		-- dar foreach nos cooldowns
-		-- ver se algum começa antes e termina depois de começar este
+		-- ver se algum comeï¿½a antes e termina depois de comeï¿½ar este
 		local player_name = spell [4]
 		local playertable = TimeLine [current_type] [current_segment] [player_name]
 		
 		local time = spell [2]
 		local duration = spell [5]
-		--playertable é uma array com os cooldowns usados
+		--playertable ï¿½ uma array com os cooldowns usados
 		
 		if (current_type == type_cooldown) then
 			for index, spellused in ipairs (playertable) do
 				if (spellused [3] ~= spell[1]) then --spellids diferentes
 				
 					--tempo de luta que o cooldown foi usado
-					-- se ele foi usado antes		          e se foi usado a 8 seg de diferença
+					-- se ele foi usado antes		          e se foi usado a 8 seg de diferenï¿½a
 					if ( (spellused [1] <= time and spellused [1] + 8 >= time) or (spellused [1] >= time and spellused [1] - 8 <= time) ) then
 					
 						local spellname, _, spellicon = GetSpellInfo (spellused [3])
@@ -783,7 +838,7 @@ local function CreatePluginFrames()
 		block.spell [5] = effect_time
 		block.spell [6] = player_table
 		
-		-- largura onde começa a primeira linha: 114
+		-- largura onde comeï¿½a a primeira linha: 114
 		-- largura onde termina a ultima linha: 654
 		-- largura onde termina a ultima linha: 861
 		-- largura total: 540
@@ -802,6 +857,11 @@ local function CreatePluginFrames()
 		block:SetWidth (effect_time * pixel_per_sec)
 		
 		block.texture:SetColorTexture (unpack (color))
+		
+		if (TimeLine.db.useicons) then
+			local _, _, icon = GetSpellInfo (spellid)
+			block.texture:SetTexture (icon)
+		end
 		
 		if (search) then
 			local spellname = GetSpellInfo (spellid)
@@ -967,7 +1027,7 @@ local function CreatePluginFrames()
 							block = row.blocks [o]
 						end
 						
-						local debuff_elapsed = end_time - start_time
+						local debuff_elapsed = (end_time or 0) - (start_time or 0)
 						
 						block.debuff_start = start_time
 						block.debuff_end = end_time
@@ -1152,7 +1212,7 @@ function TimeLine:OnCooldown (token, time, who_serial, who_name, who_flags, targ
 	end
 	
 	local data = {_combat_object:GetCombatTime(), target_name, spellid}
-
+	
 	local player_table = TimeLine.current_battle_cooldowns_timeline [who_name]
 	
 	if (not player_table) then
@@ -1249,7 +1309,7 @@ local build_options_panel = function()
 	local menu = {
 	
 		--o icone pode ser mostrado sempre que tiver algum segmento nele.
-		--ao resetar ele esconde o icone, ao resetar o details ele apaga os dados tbm e esconde o ícone.
+		--ao resetar ele esconde o icone, ao resetar o details ele apaga os dados tbm e esconde o ï¿½cone.
 		
 		{
 			type = "range",
@@ -1351,6 +1411,7 @@ function TimeLine:OnEvent (_, event, ...)
 					DetailsTimeLineDB = db
 					
 					db.hide_on_combat = false
+					db.useicons = false
 					db.max_segments = 4
 					db.backdrop_color = {0, 0, 0, .4}
 					db.window_scale = 1
@@ -1397,6 +1458,7 @@ function TimeLine:OnEvent (_, event, ...)
 				end
 				
 				TimeLine:RefreshBackgroundColor()
+				TimeLine:UpdateShowSpellIconState()
 				
 			end
 		end

@@ -1,4 +1,4 @@
-## Interface: 70100
+## Interface: 70200
 
 ## Title: BigWigs
 ## Notes: Modular, lightweight, non-intrusive approach to boss encounter warnings.
@@ -11,9 +11,9 @@
 ## Notes-esES: Avisos y barras para encuentros con jefes. Modular, ligero y no intrusivo.
 ## Notes-esMX: Avisos y barras para encuentros con jefes. Modular, ligero y no intrusivo.
 ## Notes-itIT: Un approccio modulare, leggero e non intrusivo per gli avvisi ai combattimenti con i boss.
-## Notes-ptBR: Modular, lightweight, non-intrusive approach to boss encounter warnings.
+## Notes-ptBR: Abordagem modular, leve e não intrusiva para avisos em encontros com chefes.
 ## Author: Funkydude, Nebula, Elvador
-## Version: v24.2
+## Version: v50
 
 ## X-Category: Raid
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.

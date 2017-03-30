@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 
 ----
 ---- PLEASE READ BEFORE DOING ANYTHING ----

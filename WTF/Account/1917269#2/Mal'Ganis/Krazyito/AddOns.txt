@@ -861,3 +861,4 @@ DBM-VPDemo: disabled
 DBM-VPDraik: disabled
 DBM-VPElarinti: disabled
 DBM-VPKiwi: disabled
+ArekosGratz: disabled

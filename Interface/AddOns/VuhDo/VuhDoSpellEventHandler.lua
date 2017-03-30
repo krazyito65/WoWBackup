@@ -77,7 +77,7 @@ local VUHDO_TALENT_CHANGE_SPELLS = {
 function VUHDO_spellcastSucceeded(aUnit, aSpellName)
 	if VUHDO_TALENT_CHANGE_SPELLS[aSpellName] then
 		VUHDO_resetTalentScan(aUnit);
-		VUHDO_initDebuffs(); -- Talentabhängige Debuff-Fähigkeiten neu initialisieren.
+		VUHDO_initDebuffs(); -- Talentabhï¿½ngige Debuff-Fï¿½higkeiten neu initialisieren.
 		VUHDO_timeReloadUI(1);
 	end
 

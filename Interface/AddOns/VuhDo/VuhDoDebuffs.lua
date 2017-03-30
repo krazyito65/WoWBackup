@@ -340,7 +340,7 @@ function VUHDO_determineDebuff(aUnit)
 					sCurIsStandard = true;
 				end
 
-				-- Entweder Fähigkeit vorhanden ODER noch keiner gewählt UND auch nicht entfernbare
+				-- Entweder Fï¿½higkeit vorhanden ODER noch keiner gewï¿½hlt UND auch nicht entfernbare
 				if tType and (tAbility or (sCurChosenType == 0 and sIsNotRemovableOnly)) then -- VUHDO_DEBUFF_TYPE_NONE
 					sCurChosenType = tType;
 					tUnitDebuffInfo["CHOSEN"][1], tUnitDebuffInfo["CHOSEN"][2] = tIcon, tStacks;

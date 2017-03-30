@@ -73,10 +73,12 @@
 	<Script file="InvenMount.lua"/>
 	<Script file="KarniCrap.lua"/>
 	<Script file="KeepingTabs.lua"/>
+	<Script file="Keyed.lua"/>
 	<Script file="Lightheaded.lua"/>
 	<Script file="LinkWrangler.lua"/>
 	<Script file="LootCouncilLite.lua"/>
 	<Script file="LootLog.lua"/>
+	<Script file="LuckyCharms2.lua"/>
 	<Script file="Ludwig.lua"/>
 	<Script file="MageNuggets.lua"/>
 	<Script file="MinimalArchaeology.lua"/>
@@ -101,12 +103,14 @@
 	<Script file="Outfitter.lua"/>
 	<Script file="Ovale.lua"/>
 	<Script file="Overachiever.lua"/>
+	<Script file="Pawn.lua"/>
 	<Script file="PetBattleTeams.lua"/>
 	<Script file="PetJournalEnhanced.lua"/>
 	<Script file="PetTracker.lua"/>
 	<Script file="Poisoner.lua"/>
 	<Script file="PoMTracker.lua"/>
 	<Script file="Postal.lua"/>
+	<Script file="PremadeGroupsFilter.lua"/>
 	<Script file="ProfessionTabs.lua"/>
 	<Script file="Quartz.lua"/>
 	<Script file="QuestCompletist.lua"/>
@@ -120,6 +124,7 @@
 	<Script file="RCLootCouncil.lua"/>
 	<Script file="ReagentMaker.lua"/>
 	<Script file="Recount.lua"/>
+	<Script file="REFlex.lua"/>
 	<Script file="REPorter.lua"/>
 	<Script file="ServerHop.lua"/>
 	<Script file="Scrap.lua"/>
@@ -127,6 +132,7 @@
 	<Script file="ShieldBars.lua"/>
 	<Script file="ShieldMonitor.lua"/>
 	<Script file="SilverDragon.lua"/>
+	<Script file="Simulationcraft.lua"/>
 	<Script file="Skada.lua"/>
 	<Script file="Skillet.lua"/>
 	<Script file="SocialTabs.lua"/>
@@ -149,6 +155,7 @@
 	<Script file="WeakAuras.lua"/>
 	<Script file="Wholly.lua"/>
 	<Script file="WorldBossStatus.lua"/>
+	<Script file="WorldQuestTab.lua"/>
 	<Script file="WowLua.lua"/>
 	<Script file="WoWPro.lua"/>
 	<Script file="xMerchant.lua"/>

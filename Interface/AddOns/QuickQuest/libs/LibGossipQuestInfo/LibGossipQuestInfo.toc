@@ -1,11 +1,7 @@
 ## Interface: 70000
 ## Author: p3lim
-## Version: 2
+## Version: @project-version@
 ## Title: Lib: GossipQuestInfo
 ## Notes: Library that adds "missing" quest-related API for the gossip window
-## X-Curse-Packaged-Version: 2
-## X-Curse-Project-Name: LibGossipQuestInfo
-## X-Curse-Project-ID: libgossipquestinfo
-## X-Curse-Repository-ID: wow/libgossipquestinfo/mainline
 
 LibGossipQuestInfo.lua

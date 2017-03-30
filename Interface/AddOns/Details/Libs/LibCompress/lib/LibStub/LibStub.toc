@@ -9,9 +9,5 @@
 ## X-Curse-Project-Name: LibStub
 ## X-Curse-Project-ID: libstub
 ## X-Curse-Repository-ID: wow/libstub/mainline
-## X-Curse-Packaged-Version: r576
-## X-Curse-Project-Name: Details!
-## X-Curse-Project-ID: details
-## X-Curse-Repository-ID: wow/details/mainline
 
 LibStub.lua

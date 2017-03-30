@@ -7,5 +7,4 @@ L["phase_warning"] = "即将 第二阶段！"
 L["servant"] = "召唤仆从"
 L["servant_desc"] = "当希亚玛特的仆从被召唤时发出警报。"
 L["servant_message"] = ">希亚玛特的仆从< 已被召唤！"
-
 end

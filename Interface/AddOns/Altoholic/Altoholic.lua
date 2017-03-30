@@ -1,4 +1,4 @@
-﻿--[[	*** Altoholic ***
+--[[	*** Altoholic ***
 Written by : Thaoky, EU-Marécages de Zangar
 --]]
 
@@ -15,8 +15,6 @@ local function InitLocalization()
 	-- this function's purpose is to initialize the text attribute of widgets created in XML.
 	-- in versions prior to 3.1.003, they were initialized through global constants named XML_ALTO_???
 	-- the strings stayed in memory for no reason, and could not be included in the automated localization offered by curse, hence the change of approach.
-	
-	AltoholicMinimapButton.tooltip = format("%s\n%s\n%s",	addonName, colors.white..L["Left-click to |cFF00FF00open"], colors.white..L["Right-click to |cFF00FF00drag"] )
 	
 	AltoAccountSharing_InfoButton.tooltip = format("%s|r\n%s\n%s\n\n%s",
 		colors.white..L["Account Name"], 
@@ -317,7 +315,6 @@ local function OnChatMsgLoot(event, arg)
 	addon:RefreshTooltip()		-- any loot message should cause a refresh
 end
 
-
 function addon:OnEnable()
 	InitLocalization()
 	addon:SetupOptions()
@@ -333,7 +330,7 @@ function addon:OnEnable()
 	Orig_MerchantFrame_UpdateMerchantInfo = MerchantFrame_UpdateMerchantInfo
 	MerchantFrame_UpdateMerchantInfo = MerchantFrame_UpdateMerchantInfoHook
 	
-	AltoholicFrameName:SetText(format("Altoholic %s%s by |c%sThaoky", colors.white, addon.Version, RAID_CLASS_COLORS["MAGE"].colorStr))
+	AltoholicFrameName:SetText(format("Altoholic %s%s by %sThaoky", colors.white, addon.Version, colors.classMage))
 
 	local realm = GetRealmName()
 	local player = UnitName("player")
@@ -342,12 +339,7 @@ function addon:OnEnable()
 
 	addon:RestoreOptionsToUI()
 
-	if addon:GetOption("UI.Minimap.ShowIcon") then
-		addon:MoveMinimapIcon()
-		AltoholicMinimapButton:Show();
-	else
-		AltoholicMinimapButton:Hide();
-	end
+	Minimap.AltoholicButton:Init()
 	
 	addon:RegisterEvent("CHAT_MSG_LOOT", OnChatMsgLoot)
 	
@@ -380,7 +372,6 @@ function addon:OnShow()
 	
 	if not addon.Tabs.current then
 		addon.Tabs:OnClick("Summary")
-		-- addon.Tabs.Summary:MenuItem_OnClick(addon:GetOption("UI.Tabs.Summary.CurrentMode"))
 		local mode = addon:GetOption("UI.Tabs.Summary.CurrentMode")
 		AltoholicTabSummary["MenuItem"..mode]:Item_OnClick()
 	end
@@ -463,10 +454,6 @@ function addon:SetItemButtonTexture(button, texture, width, height)
 	SetItemButtonTexture(_G[button], texture)
 end
 
-function addon:TextureToFontstring(name, width, height)
-	return format("|T%s:%s:%s|t", name, width, height)
-end
-
 local equipmentSlotIcons = {
 	"Head",
 	"Neck",
@@ -509,7 +496,7 @@ function addon:GetIDFromLink(link)
 	if link then
 		local linktype, id = string.match(link, "|H([^:]+):(%d+)")
 		if id then
-			return tonumber(id);
+			return tonumber(id)
 		end
 	end
 end
@@ -522,7 +509,7 @@ end
 
 function addon:GetMoneyString(copper, color, noTexture)
 	copper = copper or 0
-	color = color or "|cFFFFD700"
+	color = color or colors.gold
 
 	local gold = floor( copper / 10000 );
 	copper = mod(copper, 10000)
@@ -532,7 +519,7 @@ function addon:GetMoneyString(copper, color, noTexture)
 	if noTexture then				-- use noTexture for places where the texture does not fit too well,  ex: tooltips
 		copper = format("%s%s%s%s", color, copper, "|cFFEDA55F", COPPER_AMOUNT_SYMBOL)
 		silver = format("%s%s%s%s", color, silver, "|cFFC7C7CF", SILVER_AMOUNT_SYMBOL)
-		gold = format("%s%s%s%s", color, gold, "|cFFFFD700", GOLD_AMOUNT_SYMBOL)
+		gold = format("%s%s%s%s", color, gold, colors.gold, GOLD_AMOUNT_SYMBOL)
 	else
 		copper = color..format(COPPER_AMOUNT_TEXTURE, copper, 13, 13)
 		silver = color..format(SILVER_AMOUNT_TEXTURE, silver, 13, 13)
@@ -551,7 +538,7 @@ function addon:GetTimeString(seconds)
 	local minutes = floor(seconds / 60);
 	seconds = mod(seconds, 60)
 
-	return format("%s|rd %s|rh %s|rm", colors.white..days, colors.white..hours, colors.white..minutes)
+	return format("%s%s|rd %s%s|rh %s%s|rm", colors.white, days, colors.white, hours, colors.white, minutes)
 end
 
 function addon:GetFactionColour(faction)
@@ -560,10 +547,6 @@ function addon:GetFactionColour(faction)
 	else
 		return colors.red
 	end
-end
-
-function addon:GetDelayInDays(delay)
-	return floor((time() - delay) / 86400)
 end
 
 function addon:FormatDelay(timeStamp)
@@ -670,7 +653,7 @@ function addon:UpdateSlider(frame, text, field)
 	_G[name .. "Text"]:SetText(format("%s (%d)", text, value))
 	if addon.db and addon.db.global then 
 		addon:SetOption(field, value)
-		addon:MoveMinimapIcon()
+		Minimap.AltoholicButton:Move()
 	end
 end
 
@@ -698,32 +681,6 @@ function addon:DrawFollowerTooltip(frame)
 	FloatingGarrisonFollower_Toggle(tonumber(garrisonFollowerID), tonumber(quality), tonumber(level), tonumber(itemLevel), tonumber(ability1), tonumber(ability2), tonumber(ability3), tonumber(ability4), tonumber(trait1), tonumber(trait2), tonumber(trait3), tonumber(trait4))
 end
 
-function addon:SetMsgBoxHandler(func, arg1, arg2)
-	local msg = AltoMsgBox
-	
-	msg.ButtonHandler = func
-	msg.arg1 = arg1
-	msg.arg2 = arg2
-end
-
-function addon:MsgBox_OnClick(button)
-	-- until I have time to check all the places where msgbox is used, keep "button" as 1 for yes, and nil for no
-	-- also, change the handler to work with ...
-	local msg = AltoMsgBox
-
-	if msg.ButtonHandler then
-		msg:ButtonHandler(button, msg.arg1, msg.arg2)
-		msg.ButtonHandler = nil		-- prevent subsequent calls from coming back here
-		msg.arg1 = nil
-		msg.arg2 = nil
-	else
-		addon:Print("MessageBox Handler not defined")
-	end
-	msg:Hide();
-	msg:SetHeight(100)
-	AltoMsgBox_Text:SetHeight(28)
-end
-
 function addon:OnTimeToNextWarningChanged(frame)
 	local name = frame:GetName()
 	local timeToNext = frame:GetValue()
@@ -740,7 +697,7 @@ end
 
 local ICON_CHARACTERS_ALLIANCE = "Interface\\Icons\\Achievement_Character_Gnome_Female"
 local ICON_CHARACTERS_HORDE = "Interface\\Icons\\Achievement_Character_Orc_Male"
--- mini easter egg icons, if you read the code using these, please don't spoil it :)
+-- mini Easter egg icons, if you read the code using these, please don't spoil it :)
 local ICON_CHARACTERS_MIDSUMMER = "Interface\\Icons\\INV_Misc_Toy_07"
 local ICON_CHARACTERS_HALLOWSEND_ALLIANCE = "Interface\\Icons\\INV_Mask_06"
 local ICON_CHARACTERS_HALLOWSEND_HORDE = "Interface\\Icons\\INV_Mask_03"
@@ -751,17 +708,18 @@ local ICON_CHARACTERS_WINTERVEIL_HORDE = "Interface\\Icons\\Achievement_WorldEve
 
 function addon:GetCharacterIcon()
 	local faction = UnitFactionGroup("player")
+	local isAlliance = (faction == "Alliance")
+	local icon = isAlliance and ICON_CHARACTERS_ALLIANCE or ICON_CHARACTERS_HORDE
 	local day = (tonumber(date("%m")) * 100) + tonumber(date("%d"))	-- ex: dec 15 = 1215, for easy tests below
-	local icon = (faction == "Alliance") and ICON_CHARACTERS_ALLIANCE or ICON_CHARACTERS_HORDE
 	
 	if (day >= 1215) or (day <= 102) then				-- winter veil
-		icon = (faction == "Alliance") and ICON_CHARACTERS_WINTERVEIL_ALLIANCE or ICON_CHARACTERS_WINTERVEIL_HORDE
+		icon = isAlliance and ICON_CHARACTERS_WINTERVEIL_ALLIANCE or ICON_CHARACTERS_WINTERVEIL_HORDE
 	elseif (day >= 621) and (day <= 704) then			-- midsummer
 		icon = ICON_CHARACTERS_MIDSUMMER
 	elseif (day >= 1018) and (day <= 1031) then		-- hallow's end
-		icon = (faction == "Alliance") and ICON_CHARACTERS_HALLOWSEND_ALLIANCE or ICON_CHARACTERS_HALLOWSEND_HORDE
+		icon = isAlliance and ICON_CHARACTERS_HALLOWSEND_ALLIANCE or ICON_CHARACTERS_HALLOWSEND_HORDE
 	elseif (day >= 1101) and (day <= 1102) then		-- day of the dead
-		icon = (faction == "Alliance") and ICON_CHARACTERS_DOTD_ALLIANCE or ICON_CHARACTERS_DOTD_HORDE
+		icon = isAlliance and ICON_CHARACTERS_DOTD_ALLIANCE or ICON_CHARACTERS_DOTD_HORDE
 	end
 	
 	return icon

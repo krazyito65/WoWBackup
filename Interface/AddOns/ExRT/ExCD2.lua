@@ -15,7 +15,7 @@ local ELib,L = ExRT.lib,ExRT.L
 module._C = {}
 module.db.spellDB = {
 {31821,	"PALADIN",	nil,			{31821,	180,	6},	nil,			nil,			},	--Владение аурами
-{204150,"PALADIN",	nil,			nil,			{204150,300,	6},	nil,			},	--Эгида Света
+{204150,"PALADIN",	nil,			nil,			{204150,180,	6},	nil,			},	--Эгида Света
 {62618,	"PRIEST",	nil,			{62618,	180,	10},	nil,			nil,			},	--Слово силы: Барьер
 {98008,	"SHAMAN",	nil,			nil,			nil,			{98008,	180,	6},	},	--Тотем духовной связи
 {97462,	"WARRIOR",	nil,			{97462,	180,	10},	{97462,	180,	10},	nil,			},	--Ободряющий клич
@@ -34,7 +34,6 @@ module.db.spellDB = {
 {6940,	"PALADIN",	nil,			{6940,	150,	0},	{6940,	150,	0},	nil,			},	--Жертвенное благословление
 {633,	"PALADIN",	{633,	600,	0},	nil,			nil,			nil,			},	--Возложение рук
 {116849,"MONK",		nil,			nil,			nil,			{116849,180,	12},	},	--Исцеляющий кокон
-{207810,"DEMONHUNTER",	nil,			nil,			{207810,120,	15},				},	--Узы Пустоты
 {1022,	"PALADIN",	{1022,	300,	10},	nil,			nil,			nil,			},	--Благословение защиты
 {204018,"PALADIN",	nil,			nil,			{204018,180,	10},	nil,			},	--Благословение защиты от заклинаний
 {1044,	"PALADIN",	{1044,	25,	8},	nil,			nil,			nil,			},	--Благословенная свобода
@@ -42,10 +41,6 @@ module.db.spellDB = {
 
 {106898,"DRUID",	nil,			nil,			{77764,	120,	8},	{77761,	120,	8},nil,	},	--Тревожный рев
 {192077,"SHAMAN",	{192077,120,	15},	nil,			nil,			nil,			},	--Тотем ветряного порыва
-
-{187614,"NO",		{187614,120,	15},	nil,			nil,			nil,			},	--Legendary DD
-{187612,"NO",		{187612,120,	15},	nil,			nil,			nil,			},	--Legendary Heal
-{187613,"NO",		{187613,120,	15},	nil,			nil,			nil,			},	--Legendary Tank
 
 {161642,"NO",		{161642,0,	0},	nil,			nil,			nil,			},	--Resurrecting [Raid Combat Res]
 {20484,	"DRUID",	{20484,	600,	0},	nil,			nil,			nil,nil,		},	--Возрождение
@@ -62,7 +57,7 @@ module.db.spellDB = {
 {64901,	"PRIEST",	nil,			nil,			{64901,	360,	10},	nil,			},	--Символ надежды
 {29166,	"DRUID",	nil,			{29166,	180,	10},	nil,			nil,{29166,180,	10},	},	--Озарение
 
-{108199,"DEATHKNIGHT",	nil,			{108199,180,	0},	nil,			nil,			},	--Хватка Кровожада
+{108199,"DEATHKNIGHT",	nil,			{108199,120,	0},	nil,			nil,			},	--Хватка Кровожада
 {49576,	"DEATHKNIGHT",	nil,			{49576,	15,	0},	{49576,	25,	0},	{49576,	25,	0},	},	--Хватка смерти
 {2825,	"SHAMAN",	{2825,	300,	40},	nil,			nil,			nil,			},	--Жажда крови
 {80353,	"MAGE",		{80353,	300,	40},	nil,			nil,			nil,			},	--Искажение времени
@@ -85,9 +80,9 @@ module.db.findspecspells = {
 	[205546] = 72, [23881] = 72, [184367] = 72,
 	[203524] = 73, [20243] = 73, [23922] = 73,
 	
-	[202767] = 102, [78674] = 102, [190984] = 102,
+	[202767] = 102, --[190984] = 102, [78674] = 102, 
 	[210722] = 103, [52610] = 103, --[1822] = 103, 
-	[200851] = 104, [33917] = 104, [22842] = 104,
+	[200851] = 104, [33917] = 104, --[22842] = 104,
 	[208253] = 105, [188550] = 105, [48438] = 105, 
 
 	[205223] = 250, [206930] = 250, [50842] = 250,
@@ -302,14 +297,14 @@ module.db.spell_isTalent = {
 	[102351]=1,	[108238]=1,	[102280]=1,	[102401]=1,	[5211]=1,	[102359]=1,	[132469]=1,	[33891]=1,	[197721]=1,	
 
 	[213241]=1,	[196555]=1,	[211881]=1,	[206491]=1,	[211048]=1,	[211053]=1,	
-	[213241]=1,	[211881]=1,	[212084]=1,	[207810]=1,	[227225]=1,	[202138]=1,
+	[213241]=1,	[211881]=1,	[212084]=1,	[236189]=1,	[227225]=1,	[202138]=1,
 
 	--Other & items
 	[67826]=1,
 }
 
 module.db.spell_talentsList = {
---2:08 16.07.2016 Build 22231 [Pre-patch Beta]
+--22:47 23.12.2016 Build 23244 [7.1.5 PTR Release]
 	["WARRIOR"] = {
 		[71] = {
 			202297,7384,202161,
@@ -332,9 +327,9 @@ module.db.spell_talentsList = {
 		[73] = {
 			46968,107570,103828,
 			202168,205484,223657,
-			202288,122509,107574,
+			202288,202560,107574,
 			223662,202163,203201,
-			202560,202561,202095,
+			236279,202561,202095,
 			202572,202603,202743,
 			152278,203177,228920,
 		},
@@ -355,17 +350,17 @@ module.db.spell_talentsList = {
 			198054,20066,115750,
 			204018,230332,203797,
 			213652,204139,204077,
-			204150,183778,204054,
+			204150,204054,183778,
 			204074,152262,203791,
 		},
 		[70] = {
 			198038,213757,205228,
 			203316,217020,218178,
-			198054,20066,115750,
-			202271,202270,198034,
+			234299,20066,115750,
+			202271,231832,198034,
 			215661,205191,210191,
-			213313,230332,202273,
-			223817,224668,210220,
+			213313,230332,183778,
+			223817,231895,210220,
 		},
 	},
 	["HUNTER"] = {
@@ -382,7 +377,7 @@ module.db.spell_talentsList = {
 			155228,193533,53238,
 			194595,194599,199527,
 			109215,199523,199921,
-			212431,206817,213423,
+			212431,206817,234588,
 			109248,19386,199483,
 			131894,120360,194386,
 			214579,198670,199522,
@@ -390,8 +385,8 @@ module.db.spell_talentsList = {
 		[255] = {
 			204315,200163,201082,
 			206505,201075,201078,
-			109215,199523,199921,
-			194277,199518,162488,
+			109215,781,199921,
+			194277,236698,162488,
 			191241,200108,199483,
 			212436,194855,87935,
 			194407,199543,191384,
@@ -438,7 +433,7 @@ module.db.spell_talentsList = {
 		},
 		[257] = {
 			200128,200153,193155,
-			121536,214121,19236,
+			121536,214121,235189,
 			204263,200199,196707,
 			196985,200209,64901,
 			109186,32546,197034,
@@ -451,8 +446,8 @@ module.db.spell_talentsList = {
 			205369,196704,205367,
 			199849,199853,205371,
 			199855,155271,162452,
-			10060,205385,200174,
-			193225,73510,193223,
+			10060,238558,200174,
+			193225,205385,193223,
 		},
 	},
 	["DEATHKNIGHT"] = {
@@ -489,10 +484,10 @@ module.db.spell_talentsList = {
 			201909,170374,210643,
 			192063,108281,192077,
 			192058,51485,196932,
-			117014,192087,108283,
-			192235,117013,210714,
-			16166,192249,210707,
-			114050,210689,192222,
+			210707,192087,16166,
+			192235,117013,117014,
+			192222,192249,108283,
+			114050,210689,210714,
 		},
 		[263] = {
 			201898,201900,201897,
@@ -515,58 +510,58 @@ module.db.spell_talentsList = {
 	},
 	["MAGE"] = {
 		[62] = {
-			205022,205025,205035,
-			212653,86949,11958,
+			205022,236628,205035,
+			212653,236457,235463,
 			55342,116011,1463,
 			157980,205032,205028,
-			108839,113724,205036,
+			235711,113724,205036,
 			114923,157976,205039,
-			155147,198923,153626,
+			155147,234302,153626,
 		},
 		[63] = {
 			205020,205023,205026,
-			212653,86949,11958,
+			212653,157981,235365,
 			55342,116011,1463,
-			157981,205029,205033,
-			108839,113724,205036,
+			235870,205029,205033,
+			236058,113724,205036,
 			44457,157976,205037,
 			155148,198929,153561,
 		},
 		[64] = {
 			205021,205024,205027,
-			212653,86949,11958,
+			212653,108839,235297,
 			55342,116011,1463,
 			157997,205030,56377,
-			108839,113724,205036,
+			235224,113724,205036,
 			112948,157976,205038,
 			155149,199786,153595,
 		},
 	},
 	["WARLOCK"] = {
 		[265] = {
-			48181,196102,198590,
-			196105,196103,196104,
-			219272,6789,5484,
+			48181,196102,235155,
+			196105,196103,235157,
+			48018,6789,5484,
 			63106,196226,196098,
-			48018,111400,108416,
+			219272,111400,108416,
 			152107,108501,108503,
 			205178,205179,215941,
 		},
 		[266] = {
 			196269,205181,205145,
 			196270,196272,196277,
-			219272,6789,30283,
+			48018,6789,30283,
 			196283,196605,196098,
-			48018,111400,108416,
+			219272,111400,108416,
 			152107,108501,171975,
 			205180,157695,215941,
 		},
 		[267] = {
 			196406,205184,17877,
-			205148,152108,196104,
-			219272,6789,30283,
-			196412,196408,196098,
-			48018,111400,108416,
+			205148,196412,235157,
+			48018,6789,30283,
+			152108,196408,196098,
+			219272,111400,108416,
 			152107,108501,108503,
 			196410,196447,215941,
 		},
@@ -577,7 +572,7 @@ module.db.spell_talentsList = {
 			115008,116841,115173,
 			196721,115399,196719,
 			116844,115315,119381,
-			122281,122783,122278,
+			122281,237076,122278,
 			116847,132578,196730,
 			196738,196736,196737,
 		},
@@ -585,7 +580,7 @@ module.db.spell_talentsList = {
 			123986,196607,115098,
 			115008,116841,115173,
 			115288,115396,121817,
-			116844,196722,119381,
+			116844,115315,119381,
 			122281,122783,122278,
 			116847,123904,196740,
 			196743,152175,152173,
@@ -617,11 +612,11 @@ module.db.spell_talentsList = {
 			5211,102359,132469,
 			158476,102543,52610,
 			202031,202032,202060,
-			202028,155672,155577,
+			236068,155672,202028,
 		},
 		[104] = {
 			203953,155835,203962,
-			204012,102280,102401,
+			204012,236748,102401,
 			197488,202155,197492,
 			5211,102359,132469,
 			158477,102558,203964,
@@ -640,9 +635,9 @@ module.db.spell_talentsList = {
 	},
 	["DEMONHUNTER"] = {
 		[577] = {
-			192939,206475,203550,
+			192939,232893,203550,
 			203551,203555,206478,
-			213241,206416,206473,
+			206475,206416,206473,
 			196555,205411,204909,
 			206476,211881,206491,
 			203556,206477,193897,
@@ -651,11 +646,11 @@ module.db.spell_talentsList = {
 		[581] = {
 			207550,207548,209400,
 			207697,227174,207739,
-			213241,227322,211881,
+			232893,227322,211881,
 			218612,209795,217996,
 			207666,202138,209281,
 			212084,203753,218679,
-			209258,207810,227225,
+			209258,236189,227225,
 		},
 	},
 }
@@ -702,16 +697,18 @@ module.db.spell_charge_fix = {		--Спелы с зарядами
 	[189110]=1,
 	[190784]=230332,
 	[215206]=1,
+	[6544]=208091,
+	[12051]=235273,
 }
 
 module.db.spell_durationByTalent_fix = {	--Изменение длительности талантом\глифом   вид: [спелл] = {spellid глифа\таланта, изменение времени (-10;10;*0.5;*1.5)}
 	[52174] = {202163,3},
 	[167105] = {202612,16},
-	[31842] = {53376,"*1.5"},
+	[31842] = {53376,"*1.25"},
 	[781] = {109215,8},
 	[186257] = {199921,3},
 	[190925] = {109215,8},
-	[212552] = {219779,"*1.5"},
+	[212552] = {219779,"*2"},
 	[48707] = {210852,"*2",207321,5},
 	[80240] = {196410,12},
 	[202137] = {209281,-1,207666,2},
@@ -728,30 +725,38 @@ module.db.spell_durationByTalent_fix = {	--Изменение длительно
 	[204018] = {206338,"*1.5"},
 	[26573] = {209218,{1,2,3,4,5,6}},
 	[205273] = {179546,6},
-	[31884] = {186945,{2.5,5,7.5,10,12.5,15}},
-	[224668] = {186945,{2.5,5,7.5,10,12.5,15}},
-	[193530] = {197038,{1,2,3,4,5,6}},
-	[121471] = {197386,{3,6,10,13,16,20}},
-	[47536] = {197727,{1,2,3,4,5,6}},
-	[49028] = {192514,{2,4,6,8,10,12}},
-	[63560] = {208598,{2,4,6,8,10,12}},
+	[31884] = {186945,{2.5,5,7.5,10,12.5,15,17.5,20}},
+	[224668] = {186945,{2.5,5,7.5,10,12.5,15,17.5,20}},
+	[193530] = {197038,{1,2,3,4,5,6,7,8}},
+	[121471] = {197386,{3,6,10,13,16,20,23,26}},
+	[47536] = {197727,{1,2,3,4,5,6,7,8}},
+	[49028] = {192514,{2,4,6,8,10,12,15,18}},
+	[63560] = {208598,{2,4,6,8,10,12,14,16}},
 	[5394] = {210604,"*1.2"},
 	[108280] = {210604,"*1.2"},
 	[98008] = {210604,"*1.2"},
-	[12042] = {187264,{1,2,3,4,5,6}},
-	[61336] = {210557,{1,2,3,4,5,6}},
-	[22812] = {200399,{0.5,1,1.5,2,2.5,3}},
-	[192081] = {200399,{0.5,1,1.5,2,2.5,3}},
-	[192083] = {200399,{0.5,1,1.5,2,2.5,3}},
+	[12042] = {187264,{1,2,3,4,5,6,7,8}},
+	[61336] = {210557,{1,2,3,4,5,6,7,8}},
+	[22812] = {200399,{0.5,1,1.5,2,2.5,3,3.5,4}},
+	[192081] = {200399,{0.5,1,1.5,2,2.5,3,3.5,4}},
+	[192083] = {200399,{0.5,1,1.5,2,2.5,3,3.5,4}},
 	[204021] = {212894,2},
+	[1719] = {212149,2},
+	[5217] = {202021,4},
+	[187827] = {238046,{0.5,1,1.5,2,2.5,3,3.5,4}},
+	[208253] = {238050,{1,2,3,4,5,6,7,8}},
+	[190319] = {238055,{1,2,3,4,5,6,7,8}}, 
+	[200174] = {238065,{1,2,3,4,5,6,7,8}},
+	[34433] = {238065,{4.5,9,13.5,18,22.5,27,31.5,36}},
+	[79206] = {238071,{2,4,6,8,10,12,14,16}},
 }
 
 module.db.spell_cdByTalent_fix = {		--Изменение кд талантом\глифом   вид: [спелл] = {spellid глифа\таланта, изменение времени (-60;60);spellid2,time2;spellid3,time3;...}
 	[100] = {103827,-3},
 	[52174] = {202163,-15},
-	[642] = {114154,"*0.7",213313,"*0.5"},
+	[642] = {114154,"*0.7",213313,"*0.8"},
 	[498] = {114154,"*0.7"},
-	[633] = {200326,{-54.5,-100,-138.5,-171.5,-200,-225},114154,"*0.7",206380,"*0.4"},
+	[633] = {200326,{-50,-85,-112.5,-133.25,-150,-163.63,-175,-184.75},114154,"*0.7",206380,"*0.3"},
 	[20473] = {53376,"*0.5"},
 	[190784] = {204139,"*0.5"},
 	[35395] = {203316,-1},
@@ -759,7 +764,7 @@ module.db.spell_cdByTalent_fix = {		--Изменение кд талантом\�
 	[191433] = {199518,"*0.5",203752,"*0.8"},
 	[187650] = {199518,"*0.85",203752,"*0.8"},
 	[8122] = {196704,-30},
-	[108199] = {206970,-60},
+	[108199] = {206970,-30},
 	[212552] = {212763,-15},
 	[79206] = {192088,-60},
 	[80240] = {196410,-20},
@@ -767,69 +772,86 @@ module.db.spell_cdByTalent_fix = {		--Изменение кд талантом\�
 	[115308] = {196721,-3},
 	[119582] = {196721,-3},
 	[77761] = {204012,"*0.5"},
-	[22812] = {200402,{-3,-6,-9,-12,-15,-18},203965,"*0.67"},
+	[22812] = {200402,{-3,-6,-9,-12,-15,-18,-21,-24},203965,"*0.67"},
 	[61336] = {203965,"*0.67"},
 	[18562] = {200383,-5},
 	[740] = {197073,-60},
-	[102342] = {197061,-30},
+	[102342] = {197061,-30,235039,"*0.8"},
 	[198793] = {203551,-10},
 	[179057] = {206477,"*0.67"},
-	[189110] = {207550,-5},
+	[189110] = {207550,-8},
 	[202137] = {209281,"*0.8"},
 	[204596] = {209281,"*0.8"},
 	[207684] = {209281,"*0.8"},
 	[202138] = {209281,"*0.8"},
 	[1719] = {200870,-10},
-	[6544] = {203230,{-2,-4,-6,-8,-10,-12}},
-	[1022] = {200298,{-15,-30,-45,-60,-75,-90},186994,{-30,-60,-90,-120,-150,-180}},
-	[1044] = {200298,{-1.25,-2.5,-3.75,-5,-6.25,-7.5}},
-	[6940] = {200298,{-7.5,-15,-22.5,-30,-37.5,-45},209285,-60},
-	[31850] = {209220,{-10,-20,-30,-40,-50,-60}},
-	[184662] = {184778,{-10,-20,-30,-40,-50,-60}},
-	[186257] = {197343,-60,225092,-20,206332,"*0.5"},
-	[186387] = {190567,{-1.5,-3,-4.5,-6,-7.5,-9}},
-	[193526] = {190462,{-10,-20,-30,-40,-50,-60}},
-	[186289] = {225092,-20,206332,"*0.5"},
-	[186265] = {225092,-20,206332,"*0.5"},
+	[6544] = {203230,{-2,-4,-6,-8,-10,-12,-14,-16}},
+	[1022] = {200298,{-15,-30,-45,-60,-75,-90,-105,-120},186994,{-30,-60,-90,-120,-150,-180,-210,-240}},
+	[1044] = {200298,{-1.25,-2.5,-3.75,-5,-6.25,-7.5,-8.75,-10}},
+	[6940] = {200298,{-7.5,-15,-22.5,-30,-37.5,-45,-52.5,-60},209285,-60},
+	[31850] = {209220,{-10,-20,-30,-40,-50,-60,-70,-80}},
+	[184662] = {184778,{-10,-20,-30,-40,-50,-60,-70,-80}},
+	[186257] = {197343,-60,225092,-20,206332,"*0.65"},
+	[186387] = {190567,{-1.5,-3,-4.5,-6,-7.5,-9,-10.5,-12}},
+	[193526] = {190462,{-10,-20,-30,-38,-45,-52,-58,-63}},
+	[186289] = {225092,-20,206332,"*0.65"},
+	[186265] = {225092,-20,206332,"*0.65"},
 	[162488] = {203752,"*0.8"},
 	[194277] = {203752,"*0.8"},
-	[193530] = {206332,"*0.5"},
-	[31224] = {192323,{-3,-6,-10,-13,-16,-20}},
-	[79140] = {192349,{-10,-20,-30,-40,-50,-60}},
-	[2983] = {192345,{-3,-6,-10,-13,-16,-20}},
-	[13750] = {202907,{-10,-18,-25,-33,-40,-48}},
-	[33206] = {197713,{-10,-20,-30,-40,-50,-60}},
-	[34861] = {196429,{-3,-6,-10,-13,-16,-20}},
-	[47585] = {193642,{-10,-20,-30,-40,-50,-60}},
+	[193530] = {206332,"*0.65"},
+	[31224] = {192323,{-3,-6,-10,-13,-16,-20,-23,-26}},
+	[79140] = {192349,{-10,-20,-30,-38,-44,-48,-52,-56}},
+	[2983] = {192345,{-3,-6,-10,-13,-16,-20,-23,-26}},
+	[13750] = {202907,{-10,-18,-25,-33,-40,-48,-52,-56}},
+	[33206] = {197713,{-10,-20,-30,-40,-50,-60,-70,-80}},
+	[34861] = {196429,{-3,-6,-10,-13,-16,-20,-23,-26}},
+	[47585] = {193642,{-10,-20,-30,-40,-50,-60,-70,-80}},
 	[20608] = {207357,-600},
 	[21169] = {207357,-600},
-	[195676] = {187301,{-2,-4,-6,-8,-10,-12}},
-	[104773] = {211131,{-10,-20,-30,-40,-50,60},215223,-30},
-	[191427] = {201460,{-20,-40,-60,-80,-100,-120}},
+	[195676] = {187301,{-1,-2,-3,-4,-5,-6,-7,-8}},
+	[104773] = {211131,{-10,-20,-30,-40,-50,-60,-70,-80},215223,-30},
+	[191427] = {201460,{-20,-40,-60,-75,-90,-100.-110,-120}},
+	[115310] = {238058,{-10,-20,-30,-40,-50,-60,-70,-80}},
+	[152173] = {238059,{-3,-6,-9,-12,-15,-18,-21,-24}},
+	[137639] = {238059,{-3,-6,-9,-12,-15,-18,-21,-24}},
 
 	[34433] = {186980,-160},
 	[200174] = {186980,-40},
 	[12975] = {185796,"*0.5"},
+	
+	[190778] = {235605,"*0.5"},
 }
 
 module.db.tierSetsSpells = {	--[specID.tierID.tierMark] = {2P Bonus Spell ID, 4P Bonus Spell ID}
-	[5181] = {186980,nil},		--> Priest T18
-	[2181] = {185581,nil},		--> Paladin T18
-	[1181] = {185796,185799},	--> Warrior T18
-	[4181] = {nil,186279},		--> Rouge T18
+	[5181] = {186980,nil},			--> Priest T18
+	[2181] = {185581,nil},			--> Paladin T18
+	[1181] = {185796,185799},		--> Warrior T18
+	[4181] = {nil,186279},			--> Rouge T18
+	[1191] = {nil,{212149,nil,nil}},	--> Warrior T19
+	[7191] = {nil,{nil,nil,211993}},	--> Shaman T19
+	[3191] = {nil,{211172,nil,nil}},	--> Hunter T19
+	[10191] = {nil,{211417,nil,nil}},	--> Monk T19
+	[12191] = {nil,{nil,211077}},		--> DH T19
+	[8191] = {nil,{211386,nil,nil}},	--> Mage T19
 }
 module.db.tierSetsList = {	-- [itemID] = specID.tierID.tierMark
 	[124155] = 5181, [124161] = 5181, [124166] = 5181, [124172] = 5181, [124178] = 5181,
 	[124319] = 1181, [124329] = 1181, [124334] = 1181, [124340] = 1181, [124346] = 1181,
 	[124318] = 2181, [124328] = 2181, [124333] = 2181, [124339] = 2181, [124345] = 2181,
 	[124248] = 4181, [124257] = 4181, [124263] = 4181, [124269] = 4181, [124274] = 4181,
+	[138357] = 1191, [138351] = 1191, [138354] = 1191, [138360] = 1191, [138363] = 1191, [138374] = 1191,
+	[138343] = 7191, [138341] = 7191, [138345] = 7191, [138346] = 7191, [138348] = 7191, [138372] = 7191, 
+	[138342] = 3191, [138339] = 3191, [138340] = 3191, [138344] = 3191, [138347] = 3191, [138368] = 3191, 
+	[138331] = 10191, [138325] = 10191, [138328] = 10191, [138334] = 10191, [138337] = 10191, [138367] = 10191, 
+	[138378] = 12191, [138375] = 12191, [138376] = 12191, [138377] = 12191, [138379] = 12191, [138380] = 12191, 
+	[138312] = 8191, [138309] = 8191, [138315] = 8191, [138318] = 8191, [138321] = 8191, [138365] = 8191, 
 }
 
 module.db.spell_talentReplaceOther = {		--Спелы, показ которых нужно убрать при наличии таланта (талант заменяет эти спелы) [spellID] = [talent Spell ID]
 	[227847]=152277,
 	[34428]=202168,
 	[53695]=204035,
-	[86659]=204018,
+	--[86659]=204018,
 	[184092]=213652,
 	[35395]=217020,
 	[184575]={202270,198034},
@@ -881,6 +903,7 @@ module.db.spell_aura_list = {		--Спелы, время действия кот�
 	[214366]=214366,
 	[214423]=214423,
 	[215670]=215670,
+	[235169]=235169,
 }
 module.db.spell_speed_list = {		--Спелы, которым менять время действия на основании спелхасты
 	[740]=true,
@@ -997,13 +1020,14 @@ do
 	local sameSpellsData = {
 		{121093,59545,59543,59548,59542,59544,59547,28880},		--DraeneiRacial
 		{69041,69070},							--Goblin Racial
-		{28730,69179,129597,80483,155145,25046,50613,202719},		--Belf Racial
+		{28730,69179,129597,80483,155145,25046,50613,202719,232633},	--Belf Racial
 		{106898,77764,77761},						--Stampeding Roar
 		{187611,187614,187615},						--Legendary Ring
 		{51514,211015,210873,211010,211004},				--Hex
 		{202767,202771,202768},						--New moon [Balance Druid artifact]
 		{115308,119582},						--Brewmaster brew
 		{90633,90628},{90632,90626},{90631,89479},			--Guild Battle Standard
+		{86659,212641},							--Guardian of Ancient Kings [std,glyhed]
 	}
 	for i=1,#sameSpellsData do
 		local list = sameSpellsData[i]
@@ -1030,14 +1054,10 @@ module.db.spell_reduceCdCast = {	--Заклинания, применение к
 	[202168]={{1719,152278},-6,{12975,152278},-6,{871,152278},-6},
 	
 	[35395]={{20473,196926},-1.5,{85222,196926},-1.5},
-	[20271]={{853,198054,-70},-10},
+	[20271]={{853,198054},-10},
 	[53600]={{184092,204074},-3,{213652,204074},-3,{31884,204074},-3},
-	[85256]={{853,198054,70},-8},
-	[53385]={{853,198054,70},-8},
-	[213757]={{853,198054,70},-8},
-	[215661]={{853,198054,70},-8},
-	[210191]={{853,198054,70},-8},
-	[202273]={{853,198054,70},-8},
+	[53385]={{853,234299},-7.5},
+	[85256]={{853,234299},-7.5},
 
 	[2061]={2050,-6,{2050,196985},-2,{2050,200183,nil,200183},-12,{2050,196985,nil,200183},-4},
 	[2060]={2050,-6,{2050,196985},-2,{2050,200183,nil,200183},-12,{2050,196985,nil,200183},-4},
@@ -1049,20 +1069,20 @@ module.db.spell_reduceCdCast = {	--Заклинания, применение к
 	[196819]={{1856,186279},-5},
 	[195452]={{1856,186279},-5},	
 	
-	[49998]={{55233,205723},-7.5},
+	[49998]={{55233,205723},-7.5,{152280,235556},-2,{43265,235556},-2},
 	
-	[47541]={{63560,198943},-5},
+	[47541]={{63560,198943},-5,{152280,235556},-2,{43265,235556},-2},
 	
 	[195676]={1953,-15},
 	
-	[107428]={{116680,210804},-30,{137639,209256},-2.2},
+	[107428]={{116680,210804},-30},
 	
 	[23922]={{871,215057},-4},
-	[185358]={{193526,206889},-1.1},
-	[198670]={{193526,206889},-1.1},
-	[19434]={{193526,206889},-1.1},
-	[186387]={{193526,206889},-1.1},
-	[120679]={{34026,212278},-3.1},
+	[185358]={{193526,206889},-0.8},
+	[198670]={{193526,206889},-0.8},
+	[19434]={{193526,206889},-0.8},
+	[186387]={{193526,206889},-0.8},
+	[120679]={{34026,212278},-3.1,{19574,211172},-8},
 	[185311]={{79140,208895},-0.6},
 	[51723]={{79140,208895},-0.7},
 	[703]={{79140,208895},-0.9},
@@ -1081,11 +1101,25 @@ module.db.spell_reduceCdCast = {	--Заклинания, применение к
 	[17]={{33206,214576},-4},
 	[206930]={{55233,208706},-2},
 	[51505]={{198067,191512},-2},
-	[113656]={{137639,209256},-3.3},
-	[100784]={{137639,209256},-1.1},
 	[115151]={{115310,206902},-2.1},
 	[78674]={{102560,208199},-5,{194223,208199},-5},
 	[191034]={{102560,208199},-7.5,{194223,208199},-7.5},
+	
+	[61295]={{5394,211993},-3},
+	[1064]={{5394,211993},-3},
+	[100780]={{115399,211417},-1,{119582,211417},-1,{115203,211417},-1,{115308,211417},-1,},
+	[228477]={{203720,211077},-2},
+	
+	[211881]={{191427,209354},-0.33},
+	[188499]={{191427,209354},-1.166},
+	[179057]={{191427,209354},-1},
+	[162794]={{191427,209354},-1.33},
+	[201427]={{191427,209354},-1.33},
+	[198013]={{191427,209354},-1.66},
+	[185123]={{191427,209354},-1},
+	[210152]={{191427,209354},-1.166},
+	
+	[194466]={{190319,235940},-9},
 }
 module.db.spell_increaseDurationCast = {	--Заклинания, продляющие время действия
 	[23922]={{2565,203177},1.5},
@@ -1103,6 +1137,10 @@ module.db.spell_increaseDurationCast = {	--Заклинания, продляю�
 	[195452]={{121471,208892},1.5},
 	[196819]={{121471,208892},1.5},
 	[408]={{121471,208892},1.5},
+	
+	[107428]={{137639,209256},0.8,{152173,209256},0.6},
+	[113656]={{137639,209256},1.2,{152173,209256},0.9},
+	[100784]={{137639,209256},0.4,{152173,209256},0.3},
 }
 module.db.spell_dispellsFix = {}
 module.db.spell_dispellsList = {	--Заклинания-диспелы (мгновенно откатываются, если ничего не диспелят)
@@ -1124,6 +1162,7 @@ module.db.spell_startCDbyAuraFade = {	--Заклинания, кд которы�
 }
 module.db.spell_startCDbyAuraApplied = {	--Заклинания, кд которых запускается только при наложении ауры (вида [aura_spellID] = CD_spellID)
 	[117679]=33891,
+	[59628]=57934,
 }
 module.db.spell_startCDbyAuraApplied_fix = {}
 for _,spellID in pairs(module.db.spell_startCDbyAuraApplied) do module.db.spell_startCDbyAuraApplied_fix[spellID] = true end
@@ -1227,7 +1266,6 @@ module.db.def_col = {			--Стандартные положения в коло�
 	["106898;4"]=1,
 	["179057;1"]=1,
 	["196718;1"]=1,
-	["207810;3"]=2,
 }
 
 module.db.petsAbilities = {	--> PetTypes = HUNTERS[ Tenacity [1], Cunning = [2], Ferocity[3] ]
@@ -1354,6 +1392,7 @@ module.db.itemsToSpells = {	-- Тринкеты вида [item ID] = spellID
 	[137061] = 215149,
 	[137071] = 210867,
 	[138949] = 210970,
+	[144279] = 209354,
 	
 	[64402] = 90633,
 	[64401] = 90632,
@@ -1379,6 +1418,15 @@ module.db.itemsToSpells = {	-- Тринкеты вида [item ID] = spellID
 	[139327] = 221695,
 	[139326] = 222046,
 	[139320] = 221803,
+	[144249] = 235169,
+	[144258] = 235966,
+	[144259] = 235991,
+	[144280] = 235556,
+	[143728] = 208091,
+	[144274] = 235273,
+	[144293] = 235605,
+	[144355] = 235940,
+	[144242] = 235039,
 }
 module.db.itemsArtifacts = {	-- Artifacts & First trait
 	[127857] = 224968,
@@ -1474,10 +1522,6 @@ module.db.artifactAllSpells = {
 	201460, 212894,
 }
 
-
-local isLegendaryRingInRaid_DD = nil
-local isLegendaryRingInRaid_Tank = nil
-local isLegendaryRingInRaid_Heal = nil
 
 module.db.playerName = nil
 
@@ -2725,8 +2769,7 @@ do
 	local reviewID = 0
 	
 	function SortAllData()
-		local SortByAvailability = VExRT.ExCD2.SortByAvailability
-		if SortByAvailability then
+		if VExRT.ExCD2.SortByAvailability then
 			local currTime = GetTime()
 			local SortByAvailabilityActiveToTop = VExRT.ExCD2.SortByAvailabilityActiveToTop
 		  	for i=1,#_C do
@@ -2768,12 +2811,10 @@ do
 		  	else
 		  		sort(_C,sort_br)
 		  	end
+		elseif not VExRT.ExCD2.ReverseSorting then
+		  	sort(_C,sort_a)
 		else
-		  	if not VExRT.ExCD2.ReverseSorting then
-		  		sort(_C,sort_a)
-		  	else
-		  		sort(_C,sort_ar)
-		  	end
+		  	sort(_C,sort_ar)
 		end
 	end
 	
@@ -3164,28 +3205,6 @@ local function GetRaidRosterInfoFix(j)
 	end
 end
 
-local function UpdateLegendaryRingState()
-	isLegendaryRingInRaid_DD = nil
-	isLegendaryRingInRaid_Tank = nil
-	isLegendaryRingInRaid_Heal = nil
-	
-	local session_gGUIDs = module.db.session_gGUIDs
-	
-	local roster = {}
-	for i=1,#_C do
-		roster[ _C[i].name ] = true
-	end
-	for name,_ in pairs(roster) do
-		if session_gGUIDs[name][187614] or session_gGUIDs[name][187615] or session_gGUIDs[name][187611] then
-			isLegendaryRingInRaid_DD = true
-		elseif session_gGUIDs[name][187613] then
-			isLegendaryRingInRaid_Tank = true
-		elseif session_gGUIDs[name][187612] then
-			isLegendaryRingInRaid_Heal = true
-		end		
-	end
-end
-
 function RaidResurrectSpecialCheck()
 	local _,_,difficulty = GetInstanceInfo()
 	if difficulty == 14 or difficulty == 15 or difficulty == 16 or difficulty == 7 or difficulty == 17 then
@@ -3208,12 +3227,6 @@ function RaidResurrectSpecialStatus()
 		end
 	end
 end
-
-local LegendaryRingSpecialCheck_DD,LegendaryRingSpecialCheck_Tank,LegendaryRingSpecialCheck_Heal
-
-function LegendaryRingSpecialCheck_DD() return isLegendaryRingInRaid_DD end
-function LegendaryRingSpecialCheck_Tank() return isLegendaryRingInRaid_Tank end
-function LegendaryRingSpecialCheck_Heal() return isLegendaryRingInRaid_Heal end
 
 local function UpdateRoster()
 	wipe(status_UnitsToCheck)
@@ -3430,168 +3443,6 @@ local function UpdateRoster()
 				module.db.session_gGUIDs["*"] = 1
 			end
 		end
-		--WOD Legendary Ring
-		do
-			local RingSpellID = 187614
-			local findRingSpell = ExRT.F.table_find(module.db.spellDB,RingSpellID,1)
-			if findRingSpell then
-				local spellData = module.db.spellDB[findRingSpell]
-				local h = module.db.cdsNav["*"][RingSpellID]
-				local prior = 0
-				priorCounter = priorCounter + 1
-				local spellColumn = VExRT.ExCD2.CDECol[RingSpellID..";1"] or _db.def_col[RingSpellID..";1"] or 1
-				local getSpellColumn = _mainFrame.colFrame[spellColumn]
-				if not getSpellColumn or getSpellColumn.methodsSortingRules == 1 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 2 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 3 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 4 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 5 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 10000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 6 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				end
-				local secondPrior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000 + (RingSpellID or 0)
-				
-				if not h then
-					local spellName,_,spellTexture = GetSpellInfo(RingSpellID)
-					if module.db.differentIcons[RingSpellID] then
-						spellTexture = module.db.differentIcons[RingSpellID]
-					end
-					_C [#_C + 1] = {
-						name = "Legendary DD",
-						fullName = "*",
-						loweredName = "*",
-						icon = spellTexture,
-						spellName = spellName or "unk",
-						db = spellData,
-						lastUse = 0,
-						cd = 0,
-						duration = 0,
-						classColor = module.db.notAClass,
-						sort = prior,
-						sort2 = secondPrior,
-						column = spellColumn,
-						specialCheck = LegendaryRingSpecialCheck_DD,
-					}
-				else
-					h.sort = prior
-					h.sort2 = secondPrior
-					h.column = spellColumn
-				end
-				module.db.session_gGUIDs["*"] = 1
-			end
-			
-			local RingSpellID = 187613
-			local findRingSpell = ExRT.F.table_find(module.db.spellDB,RingSpellID,1)
-			if findRingSpell then
-				local spellData = module.db.spellDB[findRingSpell]
-				local h = module.db.cdsNav["*"][RingSpellID]
-				local prior = 0
-				priorCounter = priorCounter + 1
-				local spellColumn = VExRT.ExCD2.CDECol[RingSpellID..";1"] or _db.def_col[RingSpellID..";1"] or 1
-				local getSpellColumn = _mainFrame.colFrame[spellColumn]
-				if not getSpellColumn or getSpellColumn.methodsSortingRules == 1 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 2 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 3 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 4 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 5 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 10000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 6 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				end
-				local secondPrior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000 + (RingSpellID or 0)
-				
-				if not h then
-					local spellName,_,spellTexture = GetSpellInfo(RingSpellID)
-					if module.db.differentIcons[RingSpellID] then
-						spellTexture = module.db.differentIcons[RingSpellID]
-					end
-					_C [#_C + 1] = {
-						name = "Legendary Tank",
-						fullName = "*",
-						loweredName = "*",
-						icon = spellTexture,
-						spellName = spellName or "unk",
-						db = spellData,
-						lastUse = 0,
-						cd = 0,
-						duration = 0,
-						classColor = module.db.notAClass,
-						sort = prior,
-						sort2 = secondPrior,
-						column = spellColumn,
-						specialCheck = LegendaryRingSpecialCheck_Tank,
-					}
-				else
-					h.sort = prior
-					h.sort2 = secondPrior
-					h.column = spellColumn
-				end
-				module.db.session_gGUIDs["*"] = 1
-			end
-			
-			local RingSpellID = 187612
-			local findRingSpell = ExRT.F.table_find(module.db.spellDB,RingSpellID,1)
-			if findRingSpell then
-				local spellData = module.db.spellDB[findRingSpell]
-				local h = module.db.cdsNav["*"][RingSpellID]
-				local prior = 0
-				priorCounter = priorCounter + 1
-				local spellColumn = VExRT.ExCD2.CDECol[RingSpellID..";1"] or _db.def_col[RingSpellID..";1"] or 1
-				local getSpellColumn = _mainFrame.colFrame[spellColumn]
-				if not getSpellColumn or getSpellColumn.methodsSortingRules == 1 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 2 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 3 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 1000000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 4 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 100000000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 5 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 10000000000 + RingSpellID * 10000 + priorCounter
-				elseif getSpellColumn.methodsSortingRules == 6 then
-					prior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000000000 + RingSpellID * 10000 + priorCounter
-				end
-				local secondPrior = (VExRT.ExCD2.Priority[RingSpellID] or 15) * 1000000 + (RingSpellID or 0)
-				
-				if not h then
-					local spellName,_,spellTexture = GetSpellInfo(RingSpellID)
-					if module.db.differentIcons[RingSpellID] then
-						spellTexture = module.db.differentIcons[RingSpellID]
-					end
-					_C [#_C + 1] = {
-						name = "Legendary Heal",
-						fullName = "*",
-						loweredName = "*",
-						icon = spellTexture,
-						spellName = spellName or "unk",
-						db = spellData,
-						lastUse = 0,
-						cd = 0,
-						duration = 0,
-						classColor = module.db.notAClass,
-						sort = prior,
-						sort2 = secondPrior,
-						column = spellColumn,
-						specialCheck = LegendaryRingSpecialCheck_Heal,
-					}
-				else
-					h.sort = prior
-					h.sort2 = secondPrior
-					h.column = spellColumn
-				end
-				module.db.session_gGUIDs["*"] = 1
-			end
-		end
-		
 		
 		cdsNav_wipe()
 
@@ -3636,7 +3487,6 @@ local function UpdateRoster()
 			end
 		end
 	end
-	UpdateLegendaryRingState()
 	UpdateAllData()
 	SortAllData()
 end
@@ -3646,6 +3496,12 @@ do
 	local function DispellSchedule(data)
 		if not module.db.spell_dispellsFix[ data.fullName ] then
 			data.cd = 0
+			local bar = data.bar
+			if bar and bar.data == data then
+				data.bar:UpdateStatus()
+			end
+			UpdateAllData()
+			SortAllData()
 		end
 		module.db.spell_dispellsFix[ data.fullName ] = nil
 	end
@@ -4126,9 +3982,9 @@ do
 		if spellID == 195181 then
 			local line = CDList[sourceName][221699]
 			if line then
-				line.lastUse = line.lastUse - 1
+				line.lastUse = line.lastUse - 2
 				if line.charge then
-					line.charge = line.charge - 1
+					line.charge = line.charge - 2
 				end
 				if line.bar and line.bar.data == line then
 					line.bar:UpdateStatus()
@@ -4145,9 +4001,11 @@ do
 					
 					if unitSpellData.bar and unitSpellData.bar.data == unitSpellData then
 						unitSpellData.bar:UpdateStatus()
+						forceSortAllData = true
 					end
 				end
 			end
+			UpdateAllData()
 		end
 		
 		if forceSortAllData then
@@ -4183,17 +4041,6 @@ do
 			sourceName = session_PetOwner[sourceGUID] or sourceName
 		end
 		
-		if spellID == 187614 or spellID == 187615 or spellID == 187611 or spellID == 187613 or spellID == 187612 then
-			if not UnitName(sourceName) then	--Not in Raid or Party
-				return
-			end
-			if not session_gGUIDs[sourceName][spellID] then
-				session_gGUIDs[sourceName] = spellID
-				UpdateLegendaryRingState()
-			end
-			sourceName = "*"
-		end
-	 
 		local findSpecSpell = findspecspells[spellID]
 		if findSpecSpell and (GetUnitInfoByUnitFlag(sourceFlags,4) % 8) > 0 then
 			if globalGUIDs[sourceName] ~= findSpecSpell then
@@ -4375,6 +4222,8 @@ do
 		[115181] = true,
 		[198013] = true,
 		[178740] = true,
+		[205164] = true,
+		[205165] = true,
 	}
 	local spellDamage_trackedSpells_Register = {
 		[46968] = true,
@@ -4387,6 +4236,7 @@ do
 		[115203] = true,
 		[198013] = true,
 		[204021] = true,
+		[190778] = true,
 	}	
 	local spell46968_var = {}
 	local spell115181_var = {0,0}
@@ -4474,7 +4324,7 @@ do
 		elseif spellID == 6343 and session_gGUIDs[sourceName][215176] then
 			local line = CDList[sourceName][1160]
 			if line then
-				line.cd = line.cd - 1
+				line.cd = line.cd - 3
 				if line.cd < 0 then 
 					line.cd = 0 
 				end
@@ -4548,7 +4398,20 @@ do
 				end
 				UpdateAllData()
 				SortAllData()
-			end			
+			end	
+		elseif (spellID == 205164 or spellID == 205165) and session_gGUIDs[sourceName][238079] then
+			local line = CDList[sourceName][190778]
+			if line then
+				line.cd = line.cd - 3
+				if line.cd < 0 then 
+					line.cd = 0 
+				end
+				if line.bar and line.bar.data == line then
+					line.bar:UpdateStatus()
+				end
+				UpdateAllData()
+				SortAllData()
+			end				
 		end
 	end
 	
@@ -4666,7 +4529,7 @@ function module.options:Load()
 	local function fastSetupFrameListClick2(self)
 		local list = {
 			{L.cd2fastSetupTitle1,{31821,204150,62618,98008,97462,31842,64843,108280,740,115310,196718,207399}},					--Raid Save
-			{L.cd2fastSetupTitle2,{102342,47788,33206,6940,633,116849,207810,1022,204018}},								--Direct Save
+			{L.cd2fastSetupTitle2,{102342,47788,33206,6940,633,116849,1022,204018}},								--Direct Save
 			{L.cd2fastSetupTitle3,{20484,20707,61999,20608,161642}},										--Battle Res
 			{L.cd2fastSetupTitle4,{6552,96231,147362,1766,15487,47528,47476,57994,2139,116705,106839,19647,91802,115781,78675,183752,}},	--Kicks
 			{L.cd2fastSetupTitle5,{114192,355,62124,56222,49576,115546,6795,185245,}},								--Taunts
@@ -4748,9 +4611,6 @@ function module.options:Load()
 			if module.db.differentIcons[ SpellID ] then
 				SpellTexture = module.db.differentIcons[SpellID]
 			end
-			if SpellID == 187614 then SpellName = "Legendary DD" end
-			if SpellID == 187612 then SpellName = "Legendary Heal" end
-			if SpellID == 187613 then SpellName = "Legendary Tank" end
 			
 			line.sid = SpellID
 			line.tid = i
@@ -8300,10 +8160,10 @@ module.db.allClassSpells = {
 	{96231,	5,	nil,			nil,			{96231,	15,	0},	{96231,	15,	0},	},	--Укор
 	{200025,3,	nil,			{200025,15,	8},	nil,			nil,			},	--Частица добродетели
 	{184662,4,	nil,			nil,			nil,			{184662,120,	15},	},	--Щит мстителя
-	{204150,1,	nil,			nil,			{204150,300,	6},	nil,			},	--Эгида Света
+	{204150,1,	nil,			nil,			{204150,180,	6},	nil,			},	--Эгида Света
 },
 ["HUNTER"] = {
-	{191241,3,	nil,			nil,			nil,			{191241,30,	3},	},	--Бомба-липучка
+	{191241,3,	nil,			nil,			nil,			{191241,25,	3},	},	--Бомба-липучка
 	{191433,3,	nil,			nil,			nil,			{191433,30,	0},	},	--Взрывная ловушка
 	{186387,3,	nil,			nil,			{186387,30,	0},	nil,			},	--Взрывной выстрел
 	{147362,5,	nil,			{147362,24,	0},	{147362,24,	0},	{187707,15,	0},	},	--Встречный выстрел
@@ -8316,7 +8176,7 @@ module.db.allClassSpells = {
 	{186265,4,	{186265,180,	8},	nil,			nil,			nil,			},	--Дух черепахи
 	{194291,4,	nil,			nil,			{194291,120,	0},	nil,			},	--Живость
 	{109304,4,	nil,			{109304,120,	0},	nil,			{109304,120,	0},	},	--Живость
-	{187650,3,	nil,			nil,			nil,			{187650,30,	0},	},	--Замораживающая ловушка
+	{187650,3,	{187650,30,	0},	nil,			nil,			nil			},	--Замораживающая ловушка
 	{19574,	3,	nil,			{19574,	90,	15},	nil,			nil,			},	--Звериный гнев
 	{201430,3,	nil,			{201430,180,	12},	nil,			nil,			},	--Звериный натиск
 	{199483,4,	nil,			nil,			{199483,60,	60},	{199483,60,	60},	},	--Камуфляж
@@ -8327,7 +8187,7 @@ module.db.allClassSpells = {
 	{193526,3,	nil,			nil,			{193526,180,	15},	nil,			},	--Меткий выстрел
 	{1543,	3,	{1543,	20,	0},	nil,			nil,			nil,			},	--Осветительная ракета
 	{781,	4,	{781,	20,	0},	nil,			nil,			nil,			},	--Отрыв
-	{201078,3,	nil,			nil,			nil,			{201078,90,	0},	},	--Охотник на змей
+	{201078,3,	nil,			nil,			nil,			{201078,120,	0},	},	--Охотник на змей
 	{34477,	3,	nil,			{34477,	30,	8},	{34477,	30,	8},	nil,			},	--Перенаправление
 	{194407,3,	nil,			nil,			nil,			{194407,60,	0},	},	--Плюющаяся кобра
 	{5384,	4,	{5384,	30,	0},	nil,			nil,			nil,			},	--Притвориться мертвым
@@ -8336,10 +8196,10 @@ module.db.allClassSpells = {
 	{212431,3,	nil,			nil,			{212431,30,	0},	nil,			},	--Разрывной выстрел
 	{185855,3,	nil,			nil,			nil,			{185855,10,	0},	},	--Режущий удар
 	{109248,3,	nil,			{109248,45,	0},	{109248,45,	0},	nil,			},	--Связующий выстрел
-	{187698,3,	nil,			nil,			nil,			{187698,30,	0},	},	--Смоляная ловушка
+	{187698,3,	{187698,30,	0},	nil,			nil,			nil			},	--Смоляная ловушка
 	{206505,3,	nil,			nil,			nil,			{206505,60,	0},	},	--Стая воронов
 	{131894,3,	nil,			{131894,60,	15},	{131894,60,	15},	nil,			},	--Стая воронов
-	{217200,3,	nil,			{217200,15,	0},	nil,			nil,			},	--Ужасное бешенство
+	{217200,3,	nil,			{217200,12,	0},	nil,			nil,			},	--Ужасное бешенство
 	{19386,	3,	nil,			{19386,	45,	0},	{19386,	45,	0},	nil,			},	--Укус виверны
 	{19577,	3,	nil,			{19577,	60,	0},	nil,			nil,			},	--Устрашение
 	{194277,3,	nil,			nil,			nil,			{194277,15,	0},	},	--Шипы
@@ -8356,7 +8216,7 @@ module.db.allClassSpells = {
 	{57934,	3,	{57934,	30,	6},	nil,			nil,			nil,			},	--Маленькие хитрости
 	{137619,3,	{137619,60,	0},	nil,			nil,			nil,			},	--Метка смерти
 	{185767,3,	nil,			nil,			{185767,60,	0},	nil,			},	--Обстрел ядрами
-	{2094,	3,	nil,			nil,			{2094,	120,	0},	{2094,	120,	0},	},	--Ослепление
+	{2094,	3,	{2094,	120,	0},	nil,			nil,			nil,			},	--Ослепление
 	{1725,	3,	{1725,	30,	10},	nil,			nil,			nil,			},	--Отвлечение
 	{199754,3,	nil,			nil,			{199754,120,	10},	nil,			},	--Отражение ударов
 	{199743,3,	nil,			nil,			{199743,20,	0},	nil,			},	--Парламентер
@@ -8384,7 +8244,6 @@ module.db.allClassSpells = {
 	{64843,	1,	nil,			nil,			{64843,	180,	8},	nil,			},	--Божественный гимн
 	{47536,	3,	nil,			{47536,	120,	8},	nil,			nil,			},	--Вознесение
 	{73325,	2,	nil,			{73325,	90,	0},	{73325,	90,	0},	nil,			},	--Духовное рвение
-	{228260,3,	nil,			nil,			nil,			{228260,3,	0},	},	--Извержение Бездны
 	{34433,	3,	nil,			{34433,	180,	12},	nil,			{34433,	180,	12},	},	--Исчадие Тьмы
 	{204883,3,	nil,			nil,			{204883,15,	0},	nil,			},	--Круг исцеления
 	{32375,	1,	{32375,	15,	0},	nil,			nil,			nil,			},	--Массовое рассеивание
@@ -8403,7 +8262,7 @@ module.db.allClassSpells = {
 	{200183,3,	nil,			nil,			{200183,180,	30},	nil,			},	--Прославление
 	{64901,	1,	nil,			nil,			{64901,	360,	10},	nil,			},	--Символ надежды
 	{120517,3,	nil,			{120517,40,	0},	{120517,40,	0},	nil,			},	--Сияние
-	{204263,3,	nil,			{204263,60,	3},	{204263,60,	3},	nil,			},	--Сияющая мощь
+	{204263,3,	nil,			{204263,45,	3},	{204263,45,	3},	nil,			},	--Сияющая мощь
 	{47585,	4,	nil,			nil,			nil,			{47585,	120,	6},	},	--Слияние с Тьмой
 	{2050,	3,	nil,			nil,			{2050,	60,	0},	nil,			},	--Слово Света: Безмятежность
 	{88625,	3,	nil,			nil,			{88625,	60,	0},	nil,			},	--Слово Света: Наказание
@@ -8496,8 +8355,8 @@ module.db.allClassSpells = {
 	{108280,1,	nil,			nil,			nil,			{108280,180,	10},	},	--Тотем целительного прилива
 	{205495,3,	nil,			{205495,60,	0},	nil,			nil,			},	--Хранитель бурь
 	{73920,	3,	nil,			nil,			nil,			{73920,	10,	0},	},	--Целительный ливень
-	{192249,3,	nil,			{192249,300,	60},	nil,			nil,			},	--Элементаль бури
-	{198103,3,	nil,			{198103,120,	15},	nil,			nil,			},	--Элементаль земли
+	{192249,3,	nil,			{192249,150,	30},	nil,			nil,			},	--Элементаль бури
+	{198103,3,	nil,			{198103,300,	60},	nil,			nil,			},	--Элементаль земли
 	{198067,3,	nil,			{198067,300,	60},	nil,			nil,			},	--Элементаль огня
 },
 ["MAGE"] = {
@@ -8518,7 +8377,7 @@ module.db.allClassSpells = {
 	{157997,3,	nil,			nil,			nil,			{157997,25,	0},	},	--Кольцо обледенения
 	{120,	3,	nil,			nil,			nil,			{120,	12,	0},	},	--Конус холода
 	{45438,	4,	{45438,	300,	10},	nil,			nil,			nil,			},	--Ледяная глыба
-	{11426,	4,	{11426,	25,	60},	nil,			nil,			nil,			},	--Ледяная преграда
+	{11426,	4,	{11426,	25,	60},	{235450,25,	60},	{235313,25,	60},	{11426,25,	60},	},	--Ледяная преграда
 	{84714,	3,	nil,			nil,			nil,			{84714,	60,	0},	},	--Ледяной шар
 	{212653,4,	nil,			{212653,15,	0},	nil,			nil,			},	--Мерцание
 	{153561,3,	nil,			nil,			{153561,45,	3},	nil,			},	--Метеор
@@ -8585,13 +8444,13 @@ module.db.allClassSpells = {
 	{115399,3,	nil,			{115399,90,	0},	nil,			nil,			},	--Отвар Черного Быка
 	{119582,3,	nil,			{119582,21,	0},	nil,			nil,			},	--Очищающий отвар
 	{115078,3,	{115078,15,	0},	nil,			nil,			nil,			},	--Паралич
-	{198898,3,	nil,			nil,			nil,			{198898,30,	0},	},	--Песнь Чи-Цзи
+	{198898,3,	nil,			nil,			nil,			{198898,15,	0},	},	--Песнь Чи-Цзи
 	{132578,3,	nil,			{132578,180,	45},	nil,			nil,			},	--Призыв Нюцзао, Черного Быка
 	{123904,3,	nil,			nil,			{123904,180,	45},	nil,			},	--Призыв Сюэня, Белого Тигра
 	{198664,3,	nil,			nil,			nil,			{198664,180,	45},	},	--Призыв Чи-Цзи, Красного Журавля
 	{115313,3,	nil,			nil,			nil,			{115313,10,	0},	},	--Призыв статуи Нефритовой Змеи
 	{115315,3,	nil,			{115315,10,	0},	nil,			nil,			},	--Призыв статуи Черного Быка
-	{122783,4,	{122783,120,	6},	nil,			nil,			nil,			},	--Распыление магии
+	{122783,4,	nil,			nil,			{122783,90,	6},	{122783,90,	6},	},	--Распыление магии
 	{116705,5,	nil,			{116705,15,	0},	{116705,15,	0},	nil,			},	--Рука-копье
 	{115080,3,	nil,			nil,			{115080,120,	8},	nil,			},	--Смертельное касание
 	{122278,4,	{122278,120,	45},	nil,			nil,			nil,			},	--Смягчение удара
@@ -8607,7 +8466,7 @@ module.db.allClassSpells = {
 },
 ["DRUID"] = {
 	{202359,3,	nil,			{202359,80,	0},	nil,			nil,			nil,			},	--Астральное единение
-	{102280,4,	{102280,30,	4},	nil,			nil,			nil,			nil,			},	--Астральный скачок
+	{102280,4,	nil,			{102280,30,	2},	{102280,30,	2},	nil,			{102280,30,	2},	},	--Астральный скачок
 	{106951,3,	nil,			nil,			{106951,180,	15},	nil,			nil,			},	--Берсерк
 	{210722,3,	nil,			nil,			{210722,75,	0},	nil,			nil,			},	--Бешенство Пеплошкурой
 	{202360,3,	nil,			{202360,15,	0},	nil,			nil,			nil,			},	--Благословение Древних
@@ -8625,12 +8484,12 @@ module.db.allClassSpells = {
 	{155835,3,	nil,			nil,			nil,			{155835,40,	8},	nil,			},	--Колючий мех
 	{5215,	3,	{5215,	10,	0},	nil,			nil,			nil,			nil,			},	--Крадущийся зверь
 	{106839,5,	nil,			nil,			{106839,15,	0},	{106839,15,	0},	nil,			},	--Лобовая атака
-	{204066,3,	nil,			nil,			nil,			{204066,90,	8},	nil,			},	--Лунный луч
-	{102359,1,	{102359,30,	20},	nil,			nil,			nil,			nil,			},	--Массовое оплетение
+	{204066,3,	nil,			nil,			nil,			{204066,75,	8},	nil,			},	--Лунный луч
+	{102359,1,	{102359,30,	30},	nil,			nil,			nil,			nil,			},	--Массовое оплетение
 	{5211,	3,	{5211,	50,	5},	nil,			nil,			nil,			nil,			},	--Мощное оглушение
 	{202060,3,	nil,			nil,			{202060,45,	0},	nil,			nil,			},	--Наставление Элуны
 	{22842,	4,	nil,			nil,			nil,			{22842,	24,	3},	nil,			},	--Неистовствое восстановление
-	{108238,4,	{108238,120,	0},	nil,			nil,			nil,			nil,			},	--Обновление
+	{108238,4,	{108238,90,	0},	nil,			nil,			nil,			nil,			},	--Обновление
 	{29166,	2,	nil,			{29166,	180,	10},	nil,			nil,			{29166,	180,	10},	},	--Озарение
 	{194223,3,	nil,			{194223,180,	15},	nil,			nil,			nil,			},	--Парад планет
 	{99,	3,	nil,			nil,			nil,			{99,	30,	0},	nil,			},	--Парализующий рык
@@ -8643,7 +8502,7 @@ module.db.allClassSpells = {
 	{78675,	5,	nil,			{78675,	60,	8},	nil,			nil,			nil,			},	--Столп солнечного света
 	{102401,3,	{102401,15,	0},	nil,			nil,			nil,			nil,			},	--Стремительный рывок
 	{208253,3,	nil,			nil,			nil,			nil,			{208253,90,	10},	},	--Сущность Г'ханира
-	{132469,3,	{132469,30,	6},	nil,			nil,			nil,			nil,			},	--Тайфун
+	{132469,3,	{61391,	30,	6},	nil,			nil,			nil,			nil,			},	--Тайфун
 	{5217,	3,	nil,			nil,			{5217,	30,	8},	nil,			nil,			},	--Тигриное неистовство
 	{106898,1,	nil,			nil,			{77764,	120,	8},	{77761,	120,	8},	nil,			},	--Тревожный рев
 	{102351,3,	nil,			nil,			nil,			nil,			{102351,30,	0},	},	--Щит Кенария
@@ -8655,7 +8514,7 @@ module.db.allClassSpells = {
 	{178740,3,	nil,			nil,			{178740,15,	6},	},	--Жар преисподней
 	{206491,3,	nil,			{206491,120,	60},	nil,			},	--Заклятый враг
 	{198589,3,	nil,			{198589,60,	10},	nil,			},	--Затуманивание
-	{211881,3,	{211881,35,	0},	nil,			nil,			},	--Извержение Скверны
+	{211881,3,	{211881,30,	0},	nil,			nil,			},	--Извержение Скверны
 	{189110,4,	nil,			nil,			{189110,20,	0},	},	--Инфернальный удар
 	{198793,4,	nil,			{198793,25,	3},	nil,			},	--Коварное отступление
 	{179057,1,	{179057,60,	5},	nil,			nil,			},	--Кольцо Хаоса
@@ -8668,16 +8527,16 @@ module.db.allClassSpells = {
 	{202137,3,	nil,			nil,			{202137,60,	8},	},	--Печать немоты
 	{204596,3,	nil,			nil,			{204596,30,	8},	},	--Печать огня
 	{207684,3,	nil,			nil,			{207684,60,	2},	},	--Печать страдания
-	{202138,3,	nil,			nil,			{202138,60,	2},	},	--Печать цепей
+	{202138,3,	nil,			nil,			{202138,90,	2},	},	--Печать цепей
 	{217832,3,	{217832,10,	0},	nil,			nil,			},	--Пленение
 	{183752,5,	{183752,15,	0},	nil,			nil,			},	--Поглощение магии
 	{188501,3,	{188501,30,	10},	nil,			nil,			},	--Призрачное зрение
-	{227225,4,	nil,			nil,			{227225,20,	8},	},	--Призрачный барьер
+	{227225,4,	nil,			nil,			{227225,30,	8},	},	--Призрачный барьер
 	{198013,3,	nil,			{198013,45,	0},	nil,			},	--Пронзающий взгляд
-	{196555,4,	nil,			{196555,90,	5},	nil,			},	--Путь Пустоты
+	{196555,4,	nil,			{196555,120,	5},	nil,			},	--Путь Пустоты
 	{207407,3,	nil,			nil,			{207407,40,	0},	},	--Разрубатель душ
 	{195072,4,	nil,			{195072,10,	0},	nil,			},	--Рывок Скверны
-	{207810,2,	nil,			nil,			{207810,120,	15},	},	--Узы Пустоты
+	{236189,3,	nil,			nil,			{236189,120,	0},	},	--Demonic Infusion
 	{218256,4,	nil,			nil,			{218256,20,	6},	},	--Усиление оберегов
 	{201467,3,	nil,			{201467,60,	0},	nil,			},	--Ярость иллидари
 },
@@ -8738,7 +8597,9 @@ module.db.allClassSpells = {
 	{221695,3,	{221695,120,	25},	},	--Unbridled Fury
 	{222046,3,	{222046,120,	0},	},	--Wriggling Sinew
 	{221803,3,	{221803,60,	10},	},	--Ravaged Seed Pod
-	
+	{235169,3,	{235169,75,	10},	},	--Archimonde's Hatred Reborn
+	{235966,3,	{235966,75,	10},	},	--Velen's Future Sight
+	{235991,3,	{235991,75,	0},	},	--Kil'jaeden's Burning Wish	
 },
 }
 ]]
@@ -8858,8 +8719,10 @@ local function ExCD2_ClearTierSetsInfoFromUnit(name)
 			if type(tierData[1]) ~= "table" then
 				module.db.session_gGUIDs[name] = -tierData[1]
 			else
-				for i=1,#tierData[1] do
-					module.db.session_gGUIDs[name] = -tierData[1][i]
+				for _,sID in pairs(tierData[1]) do
+					if type(sID)=='number' then
+						module.db.session_gGUIDs[name] = -sID
+					end
 				end
 			end
 		end
@@ -8867,8 +8730,10 @@ local function ExCD2_ClearTierSetsInfoFromUnit(name)
 			if type(tierData[2]) ~= "table" then
 				module.db.session_gGUIDs[name] = -tierData[2]
 			else
-				for i=1,#tierData[2] do
-					module.db.session_gGUIDs[name] = -tierData[2][i]
+				for _,sID in pairs(tierData[2]) do
+					if type(sID)=='number' then
+						module.db.session_gGUIDs[name] = -sID
+					end
 				end
 			end
 		end
@@ -8881,6 +8746,7 @@ end
 local InspectItems = nil
 do
 	local ITEM_LEVEL = (ITEM_LEVEL or "NO DATA FOR ITEM_LEVEL"):gsub("%%d","(%%d+)")
+	local dataNames = {'tiersets','items','items_ilvl'}
 	function InspectItems(name,inspectedName,inspectSavedID)
 		if moduleInspect.db.inspectCleared or moduleInspect.db.inspectID ~= inspectSavedID then
 			return
@@ -8888,9 +8754,13 @@ do
 		moduleInspect.db.inspectDB[name] = moduleInspect.db.inspectDB[name] or {}
 		local inspectData = moduleInspect.db.inspectDB[name]
 		inspectData['ilvl'] = 0
-		inspectData['tiersets'] = {}
-		inspectData['items'] = {}
-		inspectData['items_ilvl'] = {}
+		for _,dataName in pairs(dataNames) do	--Prevent overuse memory
+			if inspectData[dataName] then
+				for q,w in pairs(inspectData[dataName]) do inspectData[dataName][q] = nil end
+			else
+				inspectData[dataName] = {}
+			end		
+		end
 		for stateName,stateData in pairs(moduleInspect.db.statsNames) do
 			inspectData[stateName] = 0
 		end
@@ -8970,10 +8840,6 @@ do
 				if isTrinket then
 					module.db.session_gGUIDs[name] = isTrinket
 				end
-				
-				if itemID == 124634 or itemID == 124636 or itemID == 124635 or itemID == 124637 or itemID == 124638 then
-					UpdateLegendaryRingState()
-				end
 			end
 			
 			inspectScantip:ClearLines()
@@ -8991,8 +8857,9 @@ do
 				if type(p2) ~= "table" then
 					module.db.session_gGUIDs[name] = p2
 				else
-					for i=1,#p2 do
-						module.db.session_gGUIDs[name] = p2[i]
+					local sID = p2[ inspectData.specIndex or 0 ]
+					if sID then
+						module.db.session_gGUIDs[name] = sID
 					end
 				end
 			end
@@ -9000,8 +8867,9 @@ do
 				if type(p4) ~= "table" then
 					module.db.session_gGUIDs[name] = p4
 				else
-					for i=1,#p4 do
-						module.db.session_gGUIDs[name] = p4[i]
+					local sID = p4[ inspectData.specIndex or 0 ]
+					if sID then
+						module.db.session_gGUIDs[name] = sID
 					end
 				end
 			end
@@ -9171,6 +9039,9 @@ do
 					local link = GetInventoryItemLink(inspectedName, slotID)
 				end
 				ScheduleTimer(InspectItems, inspectForce and 0.8 or 1.5, name, inspectedName, moduleInspect.db.inspectID)
+				if not inspectForce then
+					--ScheduleTimer(InspectItems, 2.3, name, inspectedName, moduleInspect.db.inspectID)
+				end
 	
 				if moduleInspect.db.inspectDB[name] and moduleInspect.db.inspectItemsOnly[name] then
 					moduleInspect.db.inspectItemsOnly[name] = nil
@@ -9202,7 +9073,7 @@ do
 						break
 					end
 				end
-				
+				data.specIndex = specIndex
 				
 				for i=1,6 do
 					data[i] = 0
@@ -9328,123 +9199,6 @@ function moduleInspect.main:PLAYER_EQUIPMENT_CHANGED(arg)
 	Inspect_Artifact_PLAYER_EQUIPMENT_CHANGED(arg)
 end
 
--------------------------------------------
--------------                --------------
-------------- Legendary ring --------------
--------------                --------------
--------------------------------------------
-
-if not ExRT.isLegionContent then
-
-local module_legendary = ExRT.mod:New("LegendaryRing",ExRT.L.LegendaryRing,nil,true)
-
-local module_legendary_ring = nil
-
-function module_legendary.options:Load()
-	self:CreateTilte()
-
-	self.enableChk = ELib:Check(self,L.LegendaryRingEnable,VExRT.LegendaryRing.enabled):Point(5,-30):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.LegendaryRing.enabled = true
-			module_legendary:RegisterEvents("COMBAT_LOG_EVENT_UNFILTERED")
-			module_legendary:RegisterAddonMessage()
-		else
-			VExRT.LegendaryRing.enabled = nil
-			module_legendary:UnregisterEvents("COMBAT_LOG_EVENT_UNFILTERED")
-			module_legendary:UnregisterAddonMessage()
-		end
-	end)
-	
-	self.typeChk = ELib:Check(self,L.LegendaryRingType,VExRT.LegendaryRing.ShowType):Point(5,-55):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.LegendaryRing.ShowType = true
-		else
-			VExRT.LegendaryRing.ShowType = nil
-		end
-	end)
-	
-	self.raidWarningChk = ELib:Check(self,RAID_WARNING,VExRT.LegendaryRing.raidWarning):Point(5,-80):OnClick(function(self) 
-		if self:GetChecked() then
-			VExRT.LegendaryRing.raidWarning = true
-		else
-			VExRT.LegendaryRing.raidWarning = nil
-		end
-	end)	
-	
-
-end
-
-function module_legendary.main:ADDON_LOADED()
-	if not VExRT then
-		return
-	end
-	VExRT.LegendaryRing = VExRT.LegendaryRing or {}
-	
-	if VExRT.LegendaryRing.enabled then
-		module_legendary:RegisterAddonMessage()
-		module_legendary:RegisterEvents("COMBAT_LOG_EVENT_UNFILTERED")
-	end
-end
-
-do
-	local isSendByMe = true
-	local function SendToChat(name,ringtype)
-		if isSendByMe then
-			local chat_type,chat_tar = ExRT.F.chatType()
-			ringtype = VExRT.LegendaryRing.ShowType and ringtype
-			if chat_type == "RAID" and VExRT.LegendaryRing.raidWarning then
-				chat_type = "raid_warning"
-			elseif chat_type == "WHISPER" then
-				return
-			end
-			SendChatMessage(format("%s: %s",L.LegendaryRingFrodo,name)..(ringtype and " ["..ringtype.."]" or ""),chat_type,nil,chat_tar)
-		end
-	end
-	function module_legendary.Ring(name,ringtype)
-		if not VExRT.LegendaryRing or not VExRT.LegendaryRing.enabled then
-			return
-		end
-		isSendByMe = true
-		ExRT.F.ScheduleTimer(ExRT.F.SendExMsg, 0.15, "legendary","RING")
-		local dealy = ExRT.F.IsPlayerRLorOfficer(ExRT.SDB.charName) == 2 and 0.01 or 1.3
-		ExRT.F.ScheduleTimer(SendToChat, dealy, name, ringtype)
-	end
-	
-	function module_legendary:addonMessage(sender, prefix, sub_type)
-		if prefix == "legendary" then
-			if sender then
-				if ExRT.F.IsPlayerRLorOfficer(ExRT.SDB.charName) == 2 then
-					return
-				end
-				if sender < ExRT.SDB.charName or ExRT.F.IsPlayerRLorOfficer(sender) == 2 then
-					if sub_type == "RING" then
-						isSendByMe = nil
-					end
-				end
-			end
-		end
-	end
-end
-module_legendary_ring = module_legendary.Ring
-
-module_legendary.db.types = {
-	[187614] = DAMAGER,
-	[187615] = DAMAGER,
-	[187611] = DAMAGER,
-	[187613] = TANK,
-	[187612] = HEALER,
-} 
-function module_legendary.main:COMBAT_LOG_EVENT_UNFILTERED(_,_,event,_,sourceGUID,sourceName,_,_,_,_,_,_,spellID)
-	if event == "SPELL_CAST_SUCCESS" and (spellID == 187614 or spellID == 187615 or spellID == 187611 or spellID == 187613 or spellID == 187612) then
-		if not sourceName or not UnitName(sourceName) then
-			return
-		end
-		module_legendary_ring(sourceName,module_legendary.db.types[spellID])
-	end
-end
-
-end
-
 
 -------------------------------------------
 -------------                --------------
@@ -9484,13 +9238,25 @@ local function ScanArtifactData()
 	ArtifactCache.traits = traits
 	for i = 1, #powers do
 		local traitID = powers[i]
-		local spellID, _, currentRank, maxRank, bonusRanks, _, _, _, isStart, isGold, isFinal = C_ArtifactUI.GetPowerInfo(traitID)
-		traits[#traits + 1] = {
-			traitID = traitID,
-			currentRank = currentRank,
-			maxRank = maxRank,
-			sort = (isStart and 100) or (isFinal and -100) or (isGold and 50) or 0,
-		}
+		if ExRT.clientVersion >= 70200 then
+			local traitData = C_ArtifactUI.GetPowerInfo(traitID)
+			if traitData then
+				traits[#traits + 1] = {
+					traitID = traitID,
+					currentRank = traitData.currentRank,
+					maxRank = traitData.maxRank,
+					sort = (traitData.isStart and 100) or (traitData.isFinal and -100) or (traitData.isGold and 50) or 0,
+				}
+			end
+		else
+			local spellID, _, currentRank, maxRank, bonusRanks, _, _, _, isStart, isGold, isFinal = C_ArtifactUI.GetPowerInfo(traitID)
+			traits[#traits + 1] = {
+				traitID = traitID,
+				currentRank = currentRank,
+				maxRank = maxRank,
+				sort = (isStart and 100) or (isFinal and -100) or (isGold and 50) or 0,
+			}
+		end
 	end
 	
 	sort(traits,function(a,b) 
@@ -9526,6 +9292,7 @@ local function UpdateArtifactData()
 	if not C_ArtifactUI.GetEquippedArtifactInfo() then
 		return
 	end
+	UIParent:UnregisterEvent("ARTIFACT_UPDATE")
 	local isArtifactFrameShown = ArtifactFrame and ArtifactFrame:IsShown()
 	if not isArtifactFrameShown then
 		SocketInventoryItem(16)
@@ -9534,6 +9301,7 @@ local function UpdateArtifactData()
 	if not isArtifactFrameShown then
 		C_ArtifactUI.Clear()
 	end
+	UIParent:RegisterEvent("ARTIFACT_UPDATE")
 end
 
 do
@@ -9542,6 +9310,7 @@ do
 	C_ArtifactUI.GetTotalPurchasedRanks = function(...)
 		local arg1,arg2,arg3 = def(...)
 		if not arg1 then
+			C_ArtifactUI.Clear()
 			return 0
 		end
 		return arg1,arg2,arg3
@@ -9550,20 +9319,18 @@ end
 
 local artifactUIfixTimer
 local function artifactUI_CheckMajorFrames(self)
-	if (not WorldMapFrame or not WorldMapFrame:IsVisible()) and (not PlayerTalentFrame or not PlayerTalentFrame:IsVisible()) and (not OrderHallMissionFrame or not OrderHallMissionFrame:IsVisible()) then
+	if (not WorldMapFrame or not WorldMapFrame:IsVisible()) and (not PlayerTalentFrame or not PlayerTalentFrame:IsVisible()) and (not OrderHallMissionFrame or not OrderHallMissionFrame:IsVisible()) and (not MailFrame or not MailFrame:IsVisible()) then
 		if artifactUIfixTimer then
 			artifactUIfixTimer:Cancel()
 		end
 		if self then
 			self:Cancel()
 		end
-		
-		UIParent:UnregisterEvent("ARTIFACT_UPDATE")
-		C_Timer.After(.1,function()
-			UIParent:RegisterEvent("ARTIFACT_UPDATE")
-		end)
-		
+
+		ExRT.F.dprint('Check aftifact traits')
+			
 		UpdateArtifactData()
+		
 		return true
 	end
 end
@@ -9573,6 +9340,7 @@ artifactUIfix:RegisterEvent('LOADING_SCREEN_DISABLED')
 artifactUIfix:SetScript("OnEvent",function(self)
 	C_Timer.NewTimer(9,function()
 		artifactUIfixTimer = C_Timer.NewTicker(1,artifactUI_CheckMajorFrames)
+		artifactUIfixTimer.firstLoad = true
 		moduleInspect:RegisterEvents('ARTIFACT_XP_UPDATE')
 	end)
 	self:UnregisterAllEvents()
@@ -9624,11 +9392,18 @@ function moduleInspect.main:ENCOUNTER_START()
 	end)
 end
 
-function moduleInspect.main:ARTIFACT_XP_UPDATE()	
-	artifactUIfixTimer = nil
+local function Artifact_ScanTimer()
+	if artifactUIfixTimer then
+		artifactUIfixTimer:Cancel()
+	end
+	artifactUIfixTimer = nil	
 	if not artifactUI_CheckMajorFrames() then
 		artifactUIfixTimer = C_Timer.NewTicker(1,artifactUI_CheckMajorFrames)
 	end
+end
+
+function moduleInspect.main:ARTIFACT_XP_UPDATE()
+	Artifact_ScanTimer()
 end
 
 local function Inspect_ParseArtifactString(db,string)
@@ -9692,12 +9467,6 @@ function Inspect_Artifact_ADDON_LOADED()
 		Inspect_ParseArtifactString(db, data[1])
 		UpdateArtifactToTalentsData(player)
 	end
-	--LoadAddOn("Blizzard_ArtifactUI")
-	
-	--Rewrite default function, cuz GetTotalPurchasedRanks return nil after log on char
-	--function ArtifactUI_CanViewArtifact()
-	--	return C_ArtifactUI.IsAtForge() or (C_ArtifactUI.GetTotalPurchasedRanks() or 0) > 0 or C_ArtifactUI.GetNumObtainedArtifacts() > 1;
-	--end
 end
 
 local UpdateArtifactInfoTimer
@@ -9705,33 +9474,45 @@ function Inspect_Artifact_PLAYER_EQUIPMENT_CHANGED(slot)
 	if not (slot == 16 or slot == 17) then
 		return
 	end
+	if not moduleInspect.main:IsEventRegistered("ARTIFACT_XP_UPDATE") then	--OnLoad fix
+		return
+	end
 	if UpdateArtifactInfoTimer then
 		UpdateArtifactInfoTimer:Cancel()
 	end
 	UpdateArtifactInfoTimer = C_Timer.NewTimer(2,function()
 		UpdateArtifactInfoTimer = nil
-		UpdateArtifactData()
+		Artifact_ScanTimer()
 	end)
 end
 
 
 do
 	local powerToSpellID = {}
+	local C_ArtifactUI_GetPowerInfo = C_ArtifactUI.GetPowerInfo
 	
 	function UpdateArtifactToTalentsData(player)
 		local name = ExRT.F.delUnitNameServer(player)
 		for i=1,#module.db.artifactAllSpells do
 			module.db.session_gGUIDs[ name ] = -module.db.artifactAllSpells[i]
 		end
-		if not moduleInspect.db.artifactDB[ player ] then
+		local artifactDB = moduleInspect.db.artifactDB[ player ]
+		if not artifactDB then
 			return
 		end
-		for i=1,#moduleInspect.db.artifactDB[ player ] do
-			if moduleInspect.db.artifactDB[ player ][i][2] > 0 then
-				local powerID = moduleInspect.db.artifactDB[ player ][i][1]
+		for i=1,#artifactDB do
+			if artifactDB[i][2] > 0 then
+				local powerID = artifactDB[i][1]
 				local spellID = powerToSpellID[powerID]
 				if not spellID then
-					spellID = C_ArtifactUI.GetPowerInfo(powerID)
+					if ExRT.clientVersion >= 70200 then
+						local traitData = C_ArtifactUI_GetPowerInfo(powerID)
+						if traitData then
+							spellID = traitData.spellID
+						end
+					else
+						spellID = C_ArtifactUI_GetPowerInfo(powerID)
+					end
 					powerToSpellID[powerID] = spellID
 				end	
 				if spellID then
@@ -9759,7 +9540,10 @@ do
 			local powerID = data[i][1]
 			local powerSpellID = powerToSpellID[powerID]
 			if not powerSpellID then
-				powerSpellID = C_ArtifactUI.GetPowerInfo(powerID)
+				powerSpellID = C_ArtifactUI_GetPowerInfo(powerID)
+				if ExRT.clientVersion >= 70200 and powerSpellID then
+					powerSpellID = powerSpellID.spellID
+				end
 				powerToSpellID[powerID] = powerSpellID
 			end
 			if powerSpellID == spellID then
@@ -9808,3 +9592,5 @@ function moduleInspect:addonMessage(sender, prefix, prefix2, ...)
 		end
 	end
 end
+
+

@@ -17,7 +17,7 @@ mod.toggleOptions = {
 local L = mod:NewLocale("enUS", true)
 if L then
 
-
+--@localization(locale="enUS", namespace="Coldarra/Ley_Guardian_Eregos", format="lua_additive_table", handle-unlocalized="ignore")@
 end
 L = mod:GetLocale()
 

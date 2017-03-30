@@ -1,3 +1,14 @@
+v3.2.2
+*Fixed gathering error when items don't have a mat cost.
+*Fixed issue with duplicate headers in gathering UI.
+
+v3.2.1
+*Fixed bug with gathering tables going blank and producing an error.
+
+v3.2
+*Re-implemented intermediate crafting within gathering.
+*Added new enchants in 7.1.5
+
 v3.1.18
 *Fixed bug with buying vendor items with random suffixes via gathering.
 

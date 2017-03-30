@@ -618,7 +618,7 @@ do
             self.defaultCheck.frame:Show()
 
             self.clearButton = AceGUI:Create("Button")
-            self.clearButton:SetText(L["Clear"])
+            self.clearButton:SetText(L["Reset"])
             self.clearButton:SetCallback("OnClick", clearButton_OnClick)
             self.clearButton:SetUserData("list", self)
             self.clearButton.frame:SetParent(self.frame)

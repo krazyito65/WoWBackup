@@ -1,4 +1,4 @@
-﻿--[[	*** DataStore_Crafts ***
+--[[	*** DataStore_Crafts ***
 Written by : Thaoky, EU-Marécages de Zangar
 June 23rd, 2009
 --]]

@@ -1,18 +1,17 @@
 -- Lua APIs
 local tinsert, tconcat, tremove, tContains, wipe = table.insert, table.concat, table.remove, tContains, wipe
-local fmt, tostring, select, pairs, next, type, unpack = string.format, tostring, select, pairs, next, type, unpack
+local fmt, tostring, select, pairs, next, type = string.format, tostring, select, pairs, next, type
 local loadstring, assert, error = loadstring, assert, error
 local setmetatable, getmetatable = setmetatable, getmetatable
 local coroutine =  coroutine
 local _G = _G
 
 -- WoW APIs
-local GetTalentInfo, GetPvpTalentInfo, IsAddOnLoaded, InCombatLockdown
-    = GetTalentInfo, GetPvpTalentInfo, IsAddOnLoaded, InCombatLockdown
-local LoadAddOn, setfenv, UnitName, GetRealmName, GetRealZoneText, GetCurrentMapAreaID, UnitGroupRolesAssigned, UnitRace, UnitFactionGroup, IsInRaid
-    = LoadAddOn, setfenv, UnitName, GetRealmName, GetRealZoneText, GetCurrentMapAreaID, UnitGroupRolesAssigned, UnitRace, UnitFactionGroup, IsInRaid
-local UnitClass, UnitExists, UnitGUID, UnitAffectingCombat, GetSpecialization, GetActiveSpecGroup, GetInstanceInfo, IsInInstance
-    = UnitClass, UnitExists, UnitGUID, UnitAffectingCombat, GetSpecialization, GetActiveSpecGroup, GetInstanceInfo, IsInInstance
+local GetTalentInfo, GetPvpTalentInfo, IsAddOnLoaded, InCombatLockdown = GetTalentInfo, GetPvpTalentInfo, IsAddOnLoaded, InCombatLockdown
+local LoadAddOn, setfenv, UnitName, GetRealmName, UnitGroupRolesAssigned, UnitRace, UnitFactionGroup, IsInRaid
+    = LoadAddOn, setfenv, UnitName, GetRealmName, UnitGroupRolesAssigned, UnitRace, UnitFactionGroup, IsInRaid
+local UnitClass, UnitExists, UnitGUID, UnitAffectingCombat, GetInstanceInfo, IsInInstance
+    = UnitClass, UnitExists, UnitGUID, UnitAffectingCombat, GetInstanceInfo, IsInInstance
 local GetNumGroupMembers, UnitIsUnit, GetRaidRosterInfo, GetSpecialization, GetSpecializationRole, UnitInVehicle, UnitHasVehicleUI, GetSpellInfo
     = GetNumGroupMembers, UnitIsUnit, GetRaidRosterInfo, GetSpecialization, GetSpecializationRole, UnitInVehicle, UnitHasVehicleUI, GetSpellInfo
 local SendChatMessage, GetChannelName, UnitInBattleground, UnitInRaid, UnitInParty, PlaySoundFile, PlaySoundKitID, GetTime, GetSpellLink, GetItemInfo
@@ -26,6 +25,7 @@ local versionString = WeakAuras.versionString
 WeakAurasTimers = setmetatable({}, {__tostring=function() return "WeakAuras" end})
 LibStub("AceTimer-3.0"):Embed(WeakAurasTimers)
 local LDB = LibStub:GetLibrary("LibDataBroker-1.1")
+local HBD = LibStub("HereBeDragons-1.0")
 
 local timer = WeakAurasTimers
 WeakAuras.timer = timer
@@ -33,11 +33,8 @@ WeakAuras.timer = timer
 local WeakAuras = WeakAuras
 local L = WeakAuras.L
 
--- GLOBALS: WeakAurasTimers WeakAurasAceEvents WeakAurasSaved
--- GLOBALS: FONT_COLOR_CODE_CLOSE RED_FONT_COLOR_CODE
--- GLOBALS: GameTooltip GameTooltip_Hide StaticPopup_Show StaticPopupDialogs STATICPOPUP_NUMDIALOGS DEFAULT_CHAT_FRAME
--- GLOBALS: CombatText_AddMessage COMBAT_TEXT_SCROLL_FUNCTION WorldFrame MAX_TALENT_TIERS MAX_PVP_TALENT_TIERS NUM_TALENT_COLUMNS MAX_PVP_TALENT_COLUMNS
--- GLOBALS: SLASH_WEAKAURAS1 SLASH_WEAKAURAS2 SlashCmdList GTFO UNKNOWNOBJECT C_PetBattles LE_PARTY_CATEGORY_INSTANCE
+-- luacheck: globals NamePlateDriverFrame CombatText_AddMessage COMBAT_TEXT_SCROLL_FUNCTION
+-- luacheck: globals Lerp Saturate KuiNameplatesPlayerAnchor KuiNameplatesCore ElvUIPlayerNamePlateAnchor GTFO
 
 local queueshowooc;
 
@@ -206,11 +203,9 @@ local playerLevel = UnitLevel("player");
 
 WeakAuras.currentInstanceType = "none"
 
-local function_strings = WeakAuras.function_strings;
 local anim_function_strings = WeakAuras.anim_function_strings;
 local anim_presets = WeakAuras.anim_presets;
 local load_prototype = WeakAuras.load_prototype;
-local event_prototypes = WeakAuras.event_prototypes;
 
 local levelColors = {
   [0] = "|cFFFFFFFF",
@@ -318,7 +313,7 @@ local function WeakAuras_HideOverlayGlow(frame)
 end
 
 local function forbidden()
-  print("|cffffff00A WeakAura you are using just tried to use a forbidden function but has been blocked from doing so. Please check your auras!|r")
+  print("|cffffff00A WeakAura just tried to use a forbidden function but has been blocked from doing so. Please check your auras!|r")
 end
 
 local blockedFunctions = {
@@ -603,13 +598,10 @@ function WeakAuras.CreateTalentCache()
   WeakAuras.talent_types_specific[player_class][spec] = WeakAuras.talent_types_specific[player_class][spec] or {};
   WeakAuras.pvp_talent_types_specific[player_class][spec] = WeakAuras.pvp_talent_types_specific[player_class][spec] or {};
 
-
-  -- print ("Creating talent cache for", player_class, spec);
-
   for tier = 1, MAX_TALENT_TIERS do
     for column = 1, NUM_TALENT_COLUMNS do
       -- Get name and icon info for the current talent of the current class and save it
-      local _, talentName, talentIcon = GetTalentInfo(tier, column, GetActiveSpecGroup())
+      local _, talentName, talentIcon = GetTalentInfo(tier, column, 1)
       local talentId = (tier-1)*3+column
       -- Get the icon and name from the talent cache and record it in the table that will be used by WeakAurasOptions
       if (talentName and talentIcon) then
@@ -618,10 +610,9 @@ function WeakAuras.CreateTalentCache()
     end
   end
 
-
   for tier = 1, MAX_PVP_TALENT_TIERS do
     for column = 1, MAX_PVP_TALENT_COLUMNS do
-      local _, talentName, talentIcon = GetPvpTalentInfo(tier, column, GetActiveSpecGroup());
+      local _, talentName, talentIcon = GetPvpTalentInfo(tier, column, 1);
       local talentId = (tier-1)*3+column
       if (talentName and talentIcon) then
         WeakAuras.pvp_talent_types_specific[player_class][spec][talentId] = "|T"..talentIcon..":0|t "..talentName
@@ -883,9 +874,10 @@ function WeakAuras.ScanForLoads(self, event, arg1)
   -- first firing, and FALSE during the second. I am not sure if this check is necessary, but the
   -- following IF statement limits the impact of the PET_BATTLE_CLOSE event to the second one.
   if (event == "PET_BATTLE_CLOSE" and C_PetBattles.IsInBattle()) then return end
-    if(event == "PLAYER_LEVEL_UP") then
-      playerLevel = arg1;
-    end
+
+  if(event == "PLAYER_LEVEL_UP") then
+    playerLevel = arg1;
+  end
 
   -- encounter id stuff, we are holding the current combat id to further load checks.
   -- there is three ways to unload: encounter_end / zone changed (hearthstone used) / reload or disconnect
@@ -900,13 +892,11 @@ function WeakAuras.ScanForLoads(self, event, arg1)
     WeakAuras.DestroyEncounterTable()
   end
 
-  local player, realm, zone, zoneId, spec, role = UnitName("player"), GetRealmName(),GetRealZoneText(), GetCurrentMapAreaID(), GetSpecialization(), UnitGroupRolesAssigned("player");
+  local player, realm, spec, role, zone = UnitName("player"), GetRealmName(), GetSpecialization(), UnitGroupRolesAssigned("player"), GetRealZoneText();
+  local zoneId = HBD:GetPlayerZone();
   local _, race = UnitRace("player")
-  local faction, localized_faction = UnitFactionGroup("player")
-  -- Hack because there is no second arg for Neutral
-  if faction == "Neutral" then
-    localized_faction = "Neutral"
-  end
+  local faction = UnitFactionGroup("player")
+
   if role == "NONE" then
     if IsInRaid() then
       for i=1,GetNumGroupMembers() do
@@ -930,7 +920,7 @@ function WeakAuras.ScanForLoads(self, event, arg1)
   local _, class = UnitClass("player");
   -- 0:none 1:5N 2:5H 3:10N 4:25N 5:10H 6:25H 7:LFR 8:5CH 9:40N
   local inInstance, Type = IsInInstance()
-  local _, size, difficulty, instanceType, difficultyIndex;
+  local size, difficulty
   local incombat = UnitAffectingCombat("player") -- or UnitAffectingCombat("pet");
   local inpetbattle = C_PetBattles.IsInBattle()
   local vehicle = UnitInVehicle('player');
@@ -1014,8 +1004,8 @@ function WeakAuras.ScanForLoads(self, event, arg1)
   for id, data in pairs(db.displays) do
     if (data and not data.controlledChildren) then
       local loadFunc = loadFuncs[id];
-      shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", incombat, inpetbattle, vehicle, vehicleUi, player, realm, class, spec, race, faction, playerLevel, zone, zoneId, encounter_id, size, difficulty, role);
-      couldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", true, true, vehicle, vehicleUi, player, realm, class, spec, race, faction, playerLevel, zone, zoneId, encounter_id, size, difficulty, role);
+      shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", incombat, IsInGroup(), inpetbattle, vehicle, vehicleUi, player, realm, class, spec, race, faction, playerLevel, zone, zoneId, encounter_id, size, difficulty, role);
+      couldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", true, true, true, vehicle, vehicleUi, player, realm, class, spec, race, faction, playerLevel, zone, zoneId, encounter_id, size, difficulty, role);
 
       if(shouldBeLoaded and not loaded[id]) then
         WeakAuras.LoadDisplay(id);
@@ -1088,6 +1078,8 @@ loadFrame:RegisterEvent("PET_BATTLE_CLOSE");
 loadFrame:RegisterEvent("UNIT_ENTERED_VEHICLE");
 loadFrame:RegisterEvent("UNIT_EXITED_VEHICLE");
 loadFrame:RegisterEvent("SPELLS_CHANGED");
+loadFrame:RegisterEvent("GROUP_JOINED");
+loadFrame:RegisterEvent("GROUP_LEFT");
 
 function WeakAuras.RegisterLoadEvents()
   loadFrame:SetScript("OnEvent", WeakAuras.ScanForLoads);
@@ -1180,6 +1172,7 @@ function WeakAuras.Delete(data)
         local childData = db.displays[childId];
         if(childData) then
           childData.parent = nil;
+          WeakAuras.Add(childData);
         end
       end
   end
@@ -1216,6 +1209,14 @@ function WeakAuras.Delete(data)
 
   aura_environments[id] = nil;
   triggerState[id] = nil;
+
+  if (WeakAuras.personalRessourceDisplayFrame) then
+    WeakAuras.personalRessourceDisplayFrame:delete(id);
+  end
+
+  if (WeakAuras.mouseFrame) then
+    WeakAuras.mouseFrame:delete(id);
+  end
 end
 
 function WeakAuras.Rename(data, newid)
@@ -1282,6 +1283,14 @@ function WeakAuras.Rename(data, newid)
   aura_environments[newid] = aura_environments[oldid] or {};
   aura_environments[newid].id = newid;
   aura_environments[oldid] = nil;
+
+  if (WeakAuras.personalRessourceDisplayFrame) then
+    WeakAuras.personalRessourceDisplayFrame:rename(oldid, newid);
+  end
+
+  if (WeakAuras.mouseFrame) then
+    WeakAuras.mouseFrame:rename(oldid, newid);
+  end
 end
 
 function WeakAuras.Convert(data, newType)
@@ -1406,7 +1415,6 @@ function WeakAuras.ResolveCollisions(onFinished)
     end
   end
 
-  local resolved = {};
   local numResolved = 0;
   local currentId = next(collisions);
 
@@ -1418,21 +1426,20 @@ function WeakAuras.ResolveCollisions(onFinished)
     text = baseText,
     button1 = buttonText,
     OnAccept = function(self)
-    -- Do the collision resolution
-    local newId = self.editBox:GetText();
-    if(WeakAuras.OptionsFrame and WeakAuras.OptionsFrame() and WeakAuras.displayButtons and WeakAuras.displayButtons[currentId]) then
-      WeakAuras.displayButtons[currentId].callbacks.OnRenameAction(newId)
-    else
-      local data = WeakAuras.GetData(currentId);
-      if(data) then
-        WeakAuras.Rename(data, newId);
+      -- Do the collision resolution
+      local newId = self.editBox:GetText();
+      if(WeakAuras.OptionsFrame and WeakAuras.OptionsFrame() and WeakAuras.displayButtons and WeakAuras.displayButtons[currentId]) then
+        WeakAuras.displayButtons[currentId].callbacks.OnRenameAction(newId)
       else
-        print("Data not found");
-      end
+        local data = WeakAuras.GetData(currentId);
+        if(data) then
+          WeakAuras.Rename(data, newId);
+        else
+          print("Data not found");
+        end
     end
 
     WeakAuras.CollisionResolved(collisions[currentId][1], collisions[currentId][2], true);
-    resolved[currentId] = newId;
     numResolved = numResolved + 1;
 
     -- Get the next id to resolve
@@ -1554,33 +1561,6 @@ function WeakAuras.Modernize(data)
         load.class.multi[i] = nil;
       end
     end
-  end
-
-  -- Delete conditions fields and convert them to additional triggers
-  if(data.conditions) then
-    data.additional_triggers = data.additional_triggers or {};
-    local condition_trigger = {
-      trigger = {
-        type = "status",
-        unevent = "auto",
-        event = "Conditions"
-      },
-      untrigger = {
-      }
-    }
-    local num = 0;
-    for i,v in pairs(data.conditions) do
-      if(i == "combat") then
-        data.load.use_combat = v;
-      else
-        condition_trigger.trigger["use_"..i] = v;
-        num = num + 1;
-      end
-    end
-    if(num > 0) then
-      tinsert(data.additional_triggers, condition_trigger);
-    end
-    data.conditions = nil;
   end
 
   -- Add dynamic text info to Progress Bars
@@ -1987,7 +1967,6 @@ function WeakAuras.SetRegion(data, cloneId)
             return;
           end
           region.toShow = true;
-
           if(region.PreShow) then
             region:PreShow();
           end
@@ -2021,6 +2000,10 @@ function WeakAuras.SetRegion(data, cloneId)
             return;
           end
           region.toShow = true;
+
+          if (data.anchorFrameType == "SELECTFRAME") then
+            WeakAuras.AnchorFrame(data, region, parent);
+          end
 
           region.justCreated = nil;
           if(region.PreShow) then
@@ -2080,7 +2063,7 @@ function WeakAuras.GetRegion(id, cloneId)
   if(cloneId and cloneId ~= "") then
     return WeakAuras.EnsureClone(id, cloneId);
    end
-  return WeakAuras.regions[id].region;
+  return WeakAuras.regions[id] and WeakAuras.regions[id].region;
 end
 
 function WeakAuras.CollapseAllClones(id, triggernum)
@@ -2147,9 +2130,6 @@ function WeakAuras.PerformActions(data, type, region)
   if(actions.do_message and actions.message_type and actions.message and not squelch_actions) then
     local message = actions.message;
     if (message:find('%%')) then
-      for k, v in pairs(region.values) do
-        print(k, v);
-      end
       message = WeakAuras.ReplacePlaceHolders(message, region.values, region.state);
     end
     if(actions.message_type == "PRINT") then
@@ -2161,9 +2141,9 @@ function WeakAuras.PerformActions(data, type, region)
     elseif(actions.message_type == "WHISPER") then
     if(actions.message_dest) then
       if(actions.message_dest == "target" or actions.message_dest == "'target'" or actions.message_dest == "\"target\"" or actions.message_dest == "%t" or actions.message_dest == "'%t'" or actions.message_dest == "\"%t\"") then
-      WeakAuras.Announce(message, "WHISPER", nil, UnitName("target"), data.id, type);
+        WeakAuras.Announce(message, "WHISPER", nil, UnitName("target"), data.id, type);
       else
-      WeakAuras.Announce(message, "WHISPER", nil, actions.message_dest, data.id, type);
+        WeakAuras.Announce(message, "WHISPER", nil, actions.message_dest, data.id, type);
       end
     end
     elseif(actions.message_type == "CHANNEL") then
@@ -2217,7 +2197,8 @@ function WeakAuras.PerformActions(data, type, region)
   -- Apply start glow actions even if squelch_actions is true, but don't apply finish glow actions
   local squelch_glow = squelch_actions and (type == "finish");
   if(actions.do_glow and actions.glow_action and actions.glow_frame and not squelch_glow) then
-    local glow_frame;
+    local glow_frame
+    local original_glow_frame
     if(actions.glow_frame:sub(1, 10) == "WeakAuras:") then
       local frame_name = actions.glow_frame:sub(11);
       if(regions[frame_name]) then
@@ -2225,13 +2206,16 @@ function WeakAuras.PerformActions(data, type, region)
       end
     else
       glow_frame = _G[actions.glow_frame];
-      if (glow_frame) then
-        if (not glow_frame.__WAGlowFrame) then
-          glow_frame.__WAGlowFrame = CreateFrame("Frame", nil, glow_frame);
-          glow_frame.__WAGlowFrame:SetAllPoints();
-        end
-        glow_frame = glow_frame.__WAGlowFrame;
+      original_glow_frame = glow_frame
+    end
+
+    if (glow_frame) then
+      if (not glow_frame.__WAGlowFrame) then
+        glow_frame.__WAGlowFrame = CreateFrame("Frame", nil, glow_frame);
+        glow_frame.__WAGlowFrame:SetAllPoints(glow_frame);
+        glow_frame.__WAGlowFrame:SetSize(glow_frame:GetSize());
       end
+      glow_frame = glow_frame.__WAGlowFrame;
     end
 
     if(glow_frame) then
@@ -2239,6 +2223,9 @@ function WeakAuras.PerformActions(data, type, region)
         WeakAuras_ShowOverlayGlow(glow_frame);
       elseif(actions.glow_action == "hide") then
         WeakAuras_HideOverlayGlow(glow_frame);
+        if original_glow_frame then
+          WeakAuras_HideOverlayGlow(original_glow_frame);
+        end
       end
     end
   end
@@ -2353,17 +2340,13 @@ function WeakAuras.UpdateAnimations()
       end
 
       if(anim.loop) then
-        WeakAuras.Animate(anim.namespace, anim.data,
-        anim.type, anim.anim,
-        anim.region, anim.inverse,
-        anim.onFinished, anim.loop,
-        anim.cloneId);
+        WeakAuras.Animate(anim.namespace, anim.data, anim.type, anim.anim, anim.region, anim.inverse, anim.onFinished, anim.loop, anim.cloneId);
       elseif(anim.onFinished) then
         anim.onFinished();
       end
     end
   end
-  -- XXX I tried to have animations only update if there are actually animation data to animate upon.
+  -- XXX: I tried to have animations only update if there are actually animation data to animate upon.
   -- This caused all start animations to break, and I couldn't figure out why.
   -- May revisit at a later time.
   --[[
@@ -2380,7 +2363,7 @@ function WeakAuras.Animate(namespace, data, type, anim, region, inverse, onFinis
   local id = data.id;
   local key = tostring(region);
   local valid;
-  if(anim and anim.type == "custom" and anim.duration and (anim.use_translate or anim.use_alpha or (anim.use_scale and region.Scale) or (anim.use_rotate and region.Rotate) or (anim.use_color and region.Color))) then
+  if(anim and anim.type == "custom" and (anim.use_translate or anim.use_alpha or (anim.use_scale and region.Scale) or (anim.use_rotate and region.Rotate) or (anim.use_color and region.Color))) then
   valid = true;
   elseif(anim and anim.type == "preset" and anim.preset and anim_presets[anim.preset]) then
   anim = anim_presets[anim.preset];
@@ -2658,7 +2641,6 @@ local function wrapTriggerSystemFunction(functionName, mode)
       end
       return triggerSystem[functionName](data, triggernum);
     end
-    return false;
   end
   return func;
 end
@@ -2689,7 +2671,6 @@ function WeakAuras.CreateFallbackState(id, triggernum, state)
     state.id = id;
   end
 end
-
 
 function WeakAuras.CanShowNameInfo(data)
   if(data.regionType == "aurabar" or data.regionType == "icon" or data.regionType == "text") then
@@ -2834,7 +2815,6 @@ function WeakAuras.GetAuraTooltipInfo(unit, index, filter)
   end
   return tooltipText, debuffType, tonumber(tooltipSize) or 0;
 end
-
 
 local function tooltip_draw()
   GameTooltip:ClearLines();
@@ -3123,8 +3103,8 @@ function WeakAuras.GetDynamicIconCache(name)
     end
   end
 
-  if (WeakAuras.GetIconFromSpellCache) then
-    return WeakAuras.GetIconFromSpellCache(name);
+  if WeakAuras.spellCache then
+    return WeakAuras.spellCache.GetIcon(name);
   end
   return nil;
 end
@@ -3148,7 +3128,6 @@ local function startStopTimers(id, cloneId, triggernum, state)
       timers[id][triggernum] = timers[id][triggernum] or {};
       timers[id][triggernum][cloneId] = timers[id][triggernum][cloneId] or {};
       local record = timers[id][triggernum][cloneId];
-      local createTimer = false;
       if (state.expirationTime == nil) then
         state.expirationTime = GetTime() + state.duration;
         state.resort = true;
@@ -3203,10 +3182,7 @@ local function ApplyStateToRegion(id, region, state)
       local total = state.duration or 0
       local func = nil;
 
-      region:SetDurationInfo(total,
-                             now + value,
-                             func,
-                             state.inverseDirection);
+      region:SetDurationInfo(total, now + value, func, state.inverseDirection);
     elseif (state.progressType == "static") then
       local value = state.value or 0;
       local total = state.total or 0;
@@ -3342,7 +3318,7 @@ function WeakAuras.UpdatedTriggerState(id)
     end
   end
 
--- Figure out whether we should be shown or not
+  -- Figure out whether we should be shown or not
   local show = triggerState[id].show;
   if (changed or show == nil) then
     show = evaluateTriggerStateTriggers(id);
@@ -3423,13 +3399,503 @@ function WeakAuras.ReplacePlaceHolders(textStr, regionValues, regionState)
       end
     end
   end
-  for symbol, v in pairs(WeakAuras.dynamic_texts) do
-    textStr = textStr:gsub(symbol, regionValues[v.value] or "");
+  if (regionValues) then
+    for symbol, v in pairs(WeakAuras.dynamic_texts) do
+      textStr = textStr:gsub(symbol, regionValues[v.value] or "");
+    end
   end
+  textStr = textStr:gsub("\\n", "\n");
   return textStr;
 end
 
 function WeakAuras.IsTriggerActive(id)
   local active = triggerState[id];
   return active and active.show;
+end
+
+-- Attach to Cursor/Frames code
+-- Very simple function to convert a hsv angle to a color with
+-- value hardcoded to 1 and saturation hardcoded to 0.75
+local function colorWheel(angle)
+  local hh = angle / 60;
+  local i = floor(hh);
+  local ff = hh - i;
+  local p = 0;
+  local q = 0.75 * (1.0 - ff);
+  local t = 0.75 * ff;
+  if (i == 0) then
+    return 0.75, t, p;
+  elseif (i == 1) then
+    return q, 0.75, p;
+  elseif (i == 2) then
+    return p, 0.75, t;
+  elseif (i == 3) then
+    return p, q, 0.75;
+  elseif (i == 4) then
+    return t, p, 0.75;
+  else
+    return 0.75, p, q;
+  end
+end
+
+local function xPositionNextToOptions()
+  local xOffset;
+  local optionsFrame = WeakAuras.OptionsFrame();
+  local centerX = (optionsFrame:GetLeft() + optionsFrame:GetRight()) / 2;
+  if (centerX > GetScreenWidth() / 2) then
+    if (optionsFrame:GetLeft() > 400) then
+      xOffset = optionsFrame:GetLeft() - 200;
+    else
+      xOffset = optionsFrame:GetLeft() / 2;
+    end
+  else
+    if (GetScreenWidth() - optionsFrame:GetRight() > 400 ) then
+      xOffset = optionsFrame:GetRight() + 200;
+    else
+      xOffset = (GetScreenWidth() + optionsFrame:GetRight()) / 2;
+    end
+  end
+  return xOffset;
+end
+
+local mouseFrame;
+local function ensureMouseFrame()
+  if (mouseFrame) then
+    return;
+  end
+  mouseFrame = CreateFrame("FRAME", "WeakAurasAttachToMouseFrame", UIParent);
+  mouseFrame.attachedVisibleFrames = {};
+  mouseFrame:SetWidth(1);
+  mouseFrame:SetHeight(1);
+
+  local moverFrame = CreateFrame("FRAME", "WeakAurasMousePointerFrame", mouseFrame);
+  mouseFrame.moverFrame = moverFrame;
+  moverFrame:SetPoint("TOPLEFT", mouseFrame, "CENTER");
+  moverFrame:SetWidth(32);
+  moverFrame:SetHeight(32);
+  moverFrame:SetFrameStrata("FULLSCREEN"); -- above settings dialog
+
+  moverFrame:EnableMouse(true)
+  moverFrame:SetScript("OnMouseDown", function()
+    mouseFrame:SetMovable(true);
+    mouseFrame:StartMoving()
+  end);
+  moverFrame:SetScript("OnMouseUp", function()
+    mouseFrame:StopMovingOrSizing();
+    mouseFrame:SetMovable(false);
+    local xOffset = mouseFrame:GetRight() - GetScreenWidth();
+    local yOffset = mouseFrame:GetTop() - GetScreenHeight();
+    db.mousePointerFrame = db.mousePointerFrame or {};
+    db.mousePointerFrame.xOffset = xOffset;
+    db.mousePointerFrame.yOffset = yOffset;
+  end);
+  moverFrame.colorWheelAnimation = function()
+    local angle = ((GetTime() - moverFrame.startTime) % 5) / 5 * 360;
+    moverFrame.texture:SetVertexColor(colorWheel(angle));
+  end;
+  local texture = moverFrame:CreateTexture(nil, "BACKGROUND");
+  moverFrame.texture = texture;
+  texture:SetAllPoints(moverFrame);
+  texture:SetTexture("Interface\\Cursor\\Point");
+
+  local label = moverFrame:CreateFontString(nil, "BACKGROUND", "GameFontHighlightSmall")
+  label:SetJustifyH("LEFT")
+  label:SetJustifyV("TOP")
+  label:SetPoint("TOPLEFT", moverFrame, "BOTTOMLEFT");
+  label:SetText("WeakAuras Anchor");
+
+  moverFrame:Hide();
+
+  mouseFrame.OptionsOpened = function()
+    if (db.mousePointerFrame) then
+      -- Restore from settings
+      mouseFrame:ClearAllPoints();
+      mouseFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", db.mousePointerFrame.xOffset, db.mousePointerFrame.yOffset);
+    else
+      -- Fnd a suitable position
+      local optionsFrame = WeakAuras.OptionsFrame();
+      local yOffset = (optionsFrame:GetTop() + optionsFrame:GetBottom()) / 2;
+      local xOffset = xPositionNextToOptions();
+      -- We use the top right, because the main frame usees the top right as the reference too
+      mouseFrame:ClearAllPoints();
+      mouseFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", xOffset - GetScreenWidth(), yOffset - GetScreenHeight());
+    end
+    -- Change the color of the mouse cursor
+    moverFrame.startTime = GetTime();
+    moverFrame:SetScript("OnUpdate", moverFrame.colorWheelAnimation);
+    mouseFrame:SetScript("OnUpdate", nil);
+  end
+
+  mouseFrame.moveWithMouse = function()
+    local scale = 1 / UIParent:GetEffectiveScale();
+    local x, y =  GetCursorPosition();
+    mouseFrame:SetPoint("CENTER", UIParent, "BOTTOMLEFT", x * scale, y * scale);
+  end
+
+  mouseFrame.OptionsClosed = function()
+    moverFrame:Hide();
+    mouseFrame:ClearAllPoints();
+    mouseFrame:SetScript("OnUpdate", mouseFrame.moveWithMouse);
+    moverFrame:SetScript("OnUpdate", nil);
+    wipe(mouseFrame.attachedVisibleFrames);
+  end
+
+  mouseFrame.expand = function(self, id)
+    local data = WeakAuras.GetData(id);
+    if (data.anchorFrameType == "MOUSE") then
+      self.attachedVisibleFrames[id] = true;
+      self:updateVisible();
+    end
+  end
+
+  mouseFrame.collapse = function(self, id)
+    self.attachedVisibleFrames[id] = nil;
+    self:updateVisible();
+  end
+
+  mouseFrame.rename = function(self, oldid, newid)
+    self.attachedVisibleFrames[newid] = self.attachedVisibleFrames[oldid];
+    self.attachedVisibleFrames[oldid] = nil;
+    self:updateVisible();
+  end
+
+  mouseFrame.delete = function(self, id)
+    self.attachedVisibleFrames[id] = nil;
+    self:updateVisible();
+  end
+
+  mouseFrame.anchorFrame = function(self, id, anchorFrameType)
+    if (anchorFrameType == "MOUSE") then
+      self.attachedVisibleFrames[id] = true;
+    else
+      self.attachedVisibleFrames[id] = nil;
+    end
+    self:updateVisible();
+  end
+
+  mouseFrame.updateVisible = function(self)
+    if (not WeakAuras.IsOptionsOpen()) then
+      return;
+    end
+
+    if (next(self.attachedVisibleFrames)) then
+      mouseFrame.moverFrame:Show();
+    else
+      mouseFrame.moverFrame:Hide();
+    end
+  end
+
+  if (WeakAuras.IsOptionsOpen()) then
+    mouseFrame:OptionsOpened();
+  else
+    mouseFrame:OptionsClosed();
+  end
+
+  WeakAuras.mouseFrame = mouseFrame;
+end
+
+local personalRessourceDisplayFrame;
+local function ensurePRDFrame()
+  if (personalRessourceDisplayFrame) then
+    return;
+  end
+  personalRessourceDisplayFrame = CreateFrame("FRAME", "WeakAurasAttachToPRD", UIParent);
+  personalRessourceDisplayFrame:Hide();
+  personalRessourceDisplayFrame.attachedVisibleFrames = {};
+  WeakAuras.personalRessourceDisplayFrame = personalRessourceDisplayFrame;
+
+  local moverFrame = CreateFrame("FRAME", "WeakAurasPRDMoverFrame", personalRessourceDisplayFrame);
+  personalRessourceDisplayFrame.moverFrame = moverFrame;
+  moverFrame:SetPoint("TOPLEFT", personalRessourceDisplayFrame, "TOPLEFT", -2, 2);
+  moverFrame:SetPoint("BOTTOMRIGHT", personalRessourceDisplayFrame, "BOTTOMRIGHT", 2, -2);
+  moverFrame:SetFrameStrata("FULLSCREEN"); -- above settings dialog
+
+  moverFrame:EnableMouse(true)
+  moverFrame:SetScript("OnMouseDown", function()
+    personalRessourceDisplayFrame:SetMovable(true);
+    personalRessourceDisplayFrame:StartMoving()
+  end);
+  moverFrame:SetScript("OnMouseUp", function()
+    personalRessourceDisplayFrame:StopMovingOrSizing();
+    personalRessourceDisplayFrame:SetMovable(false);
+    local xOffset = personalRessourceDisplayFrame:GetRight();
+    local yOffset = personalRessourceDisplayFrame:GetTop();
+
+    db.personalRessourceDisplayFrame = db.personalRessourceDisplayFrame or {};
+    local scale = UIParent:GetEffectiveScale() / personalRessourceDisplayFrame:GetEffectiveScale();
+    db.personalRessourceDisplayFrame.xOffset = xOffset / scale - GetScreenWidth();
+    db.personalRessourceDisplayFrame.yOffset = yOffset / scale - GetScreenHeight();
+  end);
+  moverFrame:Hide();
+
+  local texture = moverFrame:CreateTexture(nil, "BACKGROUND");
+  personalRessourceDisplayFrame.texture = texture;
+  texture:SetAllPoints(moverFrame);
+  texture:SetTexture("Interface\\AddOns\\WeakAuras\\Media\\Textures\\PRDFrame");
+
+  local label = moverFrame:CreateFontString(nil, "BACKGROUND", "GameFontHighlight")
+  label:SetPoint("CENTER", moverFrame, "CENTER");
+  label:SetText("WeakAuras Anchor");
+
+  personalRessourceDisplayFrame:RegisterEvent('NAME_PLATE_UNIT_ADDED');
+  personalRessourceDisplayFrame:RegisterEvent('NAME_PLATE_UNIT_REMOVED');
+
+  personalRessourceDisplayFrame.Attach = function(self, frame, frameTL, frameBR)
+    self:SetParent(frame);
+    self:ClearAllPoints();
+    self:SetPoint("TOPLEFT", frameTL, "TOPLEFT");
+    self:SetPoint("BOTTOMRIGHT", frameBR, "BOTTOMRIGHT");
+  end
+
+  personalRessourceDisplayFrame.Detach = function(self, frame)
+    self:ClearAllPoints();
+    self:SetParent(UIParent);
+  end
+
+  personalRessourceDisplayFrame.OptionsOpened = function()
+    personalRessourceDisplayFrame:Detach();
+    personalRessourceDisplayFrame:SetScript("OnEvent", nil);
+    personalRessourceDisplayFrame:ClearAllPoints();
+    local xOffset, yOffset;
+    if (db.personalRessourceDisplayFrame) then
+      xOffset = db.personalRessourceDisplayFrame.xOffset;
+      yOffset = db.personalRessourceDisplayFrame.yOffset;
+    end
+
+    -- Calculate size of self nameplate
+    local prdWidth;
+    local prdHeight;
+
+    if (KuiNameplatesCore and KuiNameplatesCore.profile) then
+      prdWidth = KuiNameplatesCore.profile.frame_width_personal;
+      prdHeight = KuiNameplatesCore.profile.frame_height_personal;
+      if (KuiNameplatesCore.profile.ignore_uiscale) then
+        local _, screenWidth = GetPhysicalScreenSize();
+        local uiScale = 1;
+        if (screenWidth) then
+            uiScale = 768 / screenWidth;
+        end
+        personalRessourceDisplayFrame:SetScale(uiScale / UIParent:GetEffectiveScale());
+      else
+        personalRessourceDisplayFrame:SetScale(1);
+      end
+      personalRessourceDisplayFrame.texture:SetTexture("Interface\\AddOns\\WeakAuras\\Media\\Textures\\PRDFrameKui");
+    else
+      local namePlateVerticalScale = tonumber(GetCVar("NamePlateVerticalScale"));
+      local zeroBasedScale = namePlateVerticalScale - 1.0;
+      local clampedZeroBasedScale = Saturate(zeroBasedScale);
+      local horizontalScale = tonumber(GetCVar("NamePlateHorizontalScale"));
+      local baseNamePlateWidth = NamePlateDriverFrame.baseNamePlateWidth;
+      prdWidth = baseNamePlateWidth * horizontalScale * Lerp(1.1, 1.0, clampedZeroBasedScale) - 24;
+      prdHeight = 4 * namePlateVerticalScale * Lerp(1.2, 1.0, clampedZeroBasedScale) * 2  + 1;
+      personalRessourceDisplayFrame:SetScale(1 / UIParent:GetEffectiveScale());
+      personalRessourceDisplayFrame.texture:SetTexture("Interface\\AddOns\\WeakAuras\\Media\\Textures\\PRDFrame");
+    end
+
+    local scale = UIParent:GetEffectiveScale() / personalRessourceDisplayFrame:GetEffectiveScale();
+    if (not xOffset or not yOffset) then
+      local optionsFrame = WeakAuras.OptionsFrame();
+      yOffset = optionsFrame:GetBottom() + prdHeight / scale - GetScreenHeight();
+      xOffset = xPositionNextToOptions() + prdWidth / 2 / scale - GetScreenWidth();
+    end
+
+    xOffset = xOffset * scale;
+    yOffset = yOffset * scale;
+
+    personalRessourceDisplayFrame:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", xOffset, yOffset);
+    personalRessourceDisplayFrame:SetPoint("BOTTOMLEFT", UIParent, "TOPRIGHT", xOffset - prdWidth, yOffset - prdHeight);
+  end
+
+  personalRessourceDisplayFrame.OptionsClosed = function()
+    personalRessourceDisplayFrame:SetScale(1);
+    local frame = C_NamePlate.GetNamePlateForUnit("player");
+    if (frame) then
+      if (frame.kui and frame.kui.bg) then
+        personalRessourceDisplayFrame:Attach(frame.kui, frame.kui.bg, frame.kui.bg);
+      elseif (ElvUIPlayerNamePlateAnchor) then
+        personalRessourceDisplayFrame:Attach(ElvUIPlayerNamePlateAnchor, ElvUIPlayerNamePlateAnchor, ElvUIPlayerNamePlateAnchor);
+      else
+        personalRessourceDisplayFrame:Attach(frame, frame.UnitFrame.healthBar, NamePlateDriverFrame.nameplateManaBar);
+      end
+    else
+      personalRessourceDisplayFrame:Detach();
+      personalRessourceDisplayFrame:Hide();
+    end
+
+    personalRessourceDisplayFrame:SetScript("OnEvent", personalRessourceDisplayFrame.eventHandler);
+    personalRessourceDisplayFrame.texture:Hide();
+    personalRessourceDisplayFrame.moverFrame:Hide();
+    wipe(personalRessourceDisplayFrame.attachedVisibleFrames);
+  end
+
+  personalRessourceDisplayFrame.eventHandler = function(self, event, nameplate)
+    if (event == "NAME_PLATE_UNIT_ADDED") then
+      if (UnitIsUnit(nameplate, "player")) then
+        local frame = C_NamePlate.GetNamePlateForUnit("player");
+        if (frame) then
+          if (frame.kui and frame.kui.bg) then
+            personalRessourceDisplayFrame:Attach(frame.kui, frame.kui.bg, frame.kui.bg);
+          elseif (ElvUIPlayerNamePlateAnchor) then
+            personalRessourceDisplayFrame:Attach(ElvUIPlayerNamePlateAnchor, ElvUIPlayerNamePlateAnchor, ElvUIPlayerNamePlateAnchor);
+          else
+            personalRessourceDisplayFrame:Attach(frame, frame.UnitFrame.healthBar, NamePlateDriverFrame.nameplateManaBar);
+          end
+          personalRessourceDisplayFrame:Show();
+          db.personalRessourceDisplayFrame = db.personalRessourceDisplayFrame or {};
+        else
+          personalRessourceDisplayFrame:Detach();
+          personalRessourceDisplayFrame:Hide();
+        end
+      end
+    elseif (event == "NAME_PLATE_UNIT_REMOVED") then
+      if (UnitIsUnit(nameplate, "player")) then
+        personalRessourceDisplayFrame:Detach();
+        personalRessourceDisplayFrame:Hide();
+      end
+    end
+  end
+
+  personalRessourceDisplayFrame.expand = function(self, id)
+    local data = WeakAuras.GetData(id);
+    if (data.anchorFrameType == "PRD") then
+      self.attachedVisibleFrames[id] = true;
+      self:updateVisible();
+    end
+  end
+
+  personalRessourceDisplayFrame.collapse = function(self, id)
+    self.attachedVisibleFrames[id] = nil;
+    self:updateVisible();
+  end
+
+  personalRessourceDisplayFrame.rename = function(self, oldid, newid)
+    self.attachedVisibleFrames[newid] = self.attachedVisibleFrames[oldid];
+    self.attachedVisibleFrames[oldid] = nil;
+    self:updateVisible();
+  end
+
+  personalRessourceDisplayFrame.delete = function(self, id)
+    self.attachedVisibleFrames[id] = nil;
+    self:updateVisible();
+  end
+
+  personalRessourceDisplayFrame.anchorFrame = function(self, id, anchorFrameType)
+    if (anchorFrameType == "PRD") then
+      self.attachedVisibleFrames[id] = true;
+    else
+      self.attachedVisibleFrames[id] = nil;
+    end
+    self:updateVisible();
+  end
+
+  personalRessourceDisplayFrame.updateVisible = function(self)
+    if (not WeakAuras.IsOptionsOpen()) then
+      return;
+    end
+
+    if (next(self.attachedVisibleFrames)) then
+      personalRessourceDisplayFrame.texture:Show();
+      personalRessourceDisplayFrame.moverFrame:Show();
+      personalRessourceDisplayFrame:Show();
+    else
+      personalRessourceDisplayFrame.texture:Hide();
+      personalRessourceDisplayFrame.moverFrame:Hide();
+      personalRessourceDisplayFrame:Hide();
+    end
+  end
+
+  if (WeakAuras.IsOptionsOpen()) then
+    personalRessourceDisplayFrame.OptionsOpened();
+  else
+    personalRessourceDisplayFrame.OptionsClosed();
+  end
+end
+
+local postPonedAnchors = {};
+local anchorTimer
+
+local function tryAnchorAgain()
+  local delayed = postPonedAnchors;
+  postPonedAnchors = {};
+  anchorTimer = nil;
+
+  for id, _ in pairs(delayed) do
+    local data = WeakAuras.GetData(id);
+    local region = WeakAuras.GetRegion(id);
+    if (data and region) then
+      local parent = frame;
+      if (data.parent and regions[data.parent]) then
+        parent = regions[data.parent].region;
+      end
+      WeakAuras.AnchorFrame(data, region, parent);
+    end
+  end
+end
+
+local function postponeAnchor(id)
+  postPonedAnchors[id] = true;
+  if (not anchorTimer) then
+    anchorTimer = timer:ScheduleTimer(tryAnchorAgain, 5);
+  end
+end
+
+function WeakAuras.GetAnchorFrame(id, anchorFrameType, parent, anchorFrameFrame)
+  if (personalRessourceDisplayFrame) then
+    personalRessourceDisplayFrame:anchorFrame(id, anchorFrameType);
+  end
+
+  if (mouseFrame) then
+    mouseFrame:anchorFrame(id, anchorFrameType);
+  end
+
+  if (anchorFrameType == "SCREEN") then
+    return parent;
+  end
+
+  if (anchorFrameType == "PRD") then
+    ensurePRDFrame();
+    personalRessourceDisplayFrame:anchorFrame(id, anchorFrameType);
+    return personalRessourceDisplayFrame;
+  end
+
+  if (anchorFrameType == "MOUSE") then
+    ensureMouseFrame();
+    mouseFrame:anchorFrame(id, anchorFrameType);
+    return mouseFrame;
+  end
+
+  if (anchorFrameType == "SELECTFRAME" and anchorFrameFrame) then
+    if(anchorFrameFrame:sub(1, 10) == "WeakAuras:") then
+      local frame_name = anchorFrameFrame:sub(11);
+      if (frame == id) then
+        return parent;
+      end
+      if(regions[frame_name]) then
+        return regions[frame_name].region;
+      end
+    else
+      if (_G[anchorFrameFrame]) then
+        return _G[anchorFrameFrame];
+      end
+      postponeAnchor(id);
+      return  parent;
+    end
+  end
+  -- Fallback
+  return parent;
+end
+
+function WeakAuras.AnchorFrame(data, region, parent)
+  local anchorParent = WeakAuras.GetAnchorFrame(data.id, data.anchorFrameType, parent,  data.anchorFrameFrame);
+  if (data.anchorFrameParent or data.anchorFrameParent == nil) then
+    region:SetParent(anchorParent);
+  else
+    region:SetParent(frame);
+  end
+  region:SetPoint(data.selfPoint, anchorParent, data.anchorPoint, data.xOffset, data.yOffset);
+  if(data.frameStrata == 1) then
+      region:SetFrameStrata(region:GetParent():GetFrameStrata());
+  else
+      region:SetFrameStrata(WeakAuras.frame_strata_types[data.frameStrata]);
+  end
 end

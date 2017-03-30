@@ -113,9 +113,9 @@ L["STRING_CUSTOM_DONE"] = "Fertig"
 L["STRING_CUSTOM_DTBS"] = "Erlittener Schaden von Zauber"
 L["STRING_CUSTOM_DTBS_DESC"] = "Zeigt den Schaden von feindlichen Zaubern gegen deine Gruppe. "
 L["STRING_CUSTOM_EDIT"] = "Bearbeiten"
-L["STRING_CUSTOM_EDITCODE_DESC"] = "Das ist eine erweiterte Funktion, womit der Benutzer eigenen Code für die Anzeige erstellen kann."
 L["STRING_CUSTOM_EDIT_SEARCH_CODE"] = "Suchcode bearbeiten"
 L["STRING_CUSTOM_EDIT_TOOLTIP_CODE"] = "Tooltip-Code bearbeiten"
+L["STRING_CUSTOM_EDITCODE_DESC"] = "Das ist eine erweiterte Funktion, womit der Benutzer eigenen Code für die Anzeige erstellen kann."
 L["STRING_CUSTOM_EDITTOOLTIP_DESC"] = "Dies ist der Tooltip-Code, der ausgeführt wird, wenn der Benutzer mit der Maus über die Leiste fährt."
 L["STRING_CUSTOM_ENEMY_DT"] = "Erlittener Schaden"
 L["STRING_CUSTOM_EXPORT"] = "Exportieren"
@@ -126,8 +126,8 @@ L["STRING_CUSTOM_ICON"] = "Symbol:"
 L["STRING_CUSTOM_IMPORT"] = "Importieren"
 L["STRING_CUSTOM_IMPORT_ALERT"] = "Anzeige wurde geladen, klicke auf 'Importieren', um zu bestätigen."
 L["STRING_CUSTOM_IMPORT_BUTTON"] = "Importieren"
-L["STRING_CUSTOM_IMPORTED"] = "Die Anzeige wurde erfolgreich importiert."
 L["STRING_CUSTOM_IMPORT_ERROR"] = "Import fehlgeschlagen, fehlerhafte Zeichenfolge."
+L["STRING_CUSTOM_IMPORTED"] = "Die Anzeige wurde erfolgreich importiert."
 L["STRING_CUSTOM_LONGNAME"] = "Name zu lang, maximal 32 Zeichen erlaubt."
 L["STRING_CUSTOM_MYSPELLS"] = "Meine Zauber"
 L["STRING_CUSTOM_MYSPELLS_DESC"] = "Zeigt deine Zauber im Fenster."
@@ -228,8 +228,8 @@ L["STRING_KEYBIND_BOOKMARK"] = "Lesezeichen"
 L["STRING_KEYBIND_BOOKMARK_NUMBER"] = "Lesezeichen #%s"
 L["STRING_KEYBIND_RESET_SEGMENTS"] = "Segmente zurücksetzen"
 L["STRING_KEYBIND_SCROLL_DOWN"] = "Alle Fenster runterscrollen"
-L["STRING_KEYBIND_SCROLLING"] = "Scrollen"
 L["STRING_KEYBIND_SCROLL_UP"] = "Alle Fenster raufscrollen"
+L["STRING_KEYBIND_SCROLLING"] = "Scrollen"
 L["STRING_KEYBIND_SEGMENTCONTROL"] = "Segmente"
 L["STRING_KEYBIND_TOGGLE_WINDOW"] = "Fenster #%s umschalten"
 L["STRING_KEYBIND_TOGGLE_WINDOWS"] = "Alle umschalten"
@@ -257,16 +257,16 @@ L["STRING_MENU_CLOSE_INSTANCE"] = "Dieses Fenster schließen"
 L["STRING_MENU_CLOSE_INSTANCE_DESC"] = "Ein geschlossenes Fenster wird als inaktiv betrachtet und kann jederzeit über das Fensterkontrollmenü wieder geöffnet werden."
 L["STRING_MENU_CLOSE_INSTANCE_DESC2"] = "Um ein Fenster vollständig zu löschen, gehe in die sonstigen Einstellungen des Optionsmenüs."
 L["STRING_MENU_INSTANCE_CONTROL"] = "Fensterkontrolle"
+L["STRING_MINIMAP_TOOLTIP1"] = "|cFFCFCFCFLinksklick|r: Optionsmenü öffnen"
+L["STRING_MINIMAP_TOOLTIP11"] = "|cFFCFCFCFLinksklick|r: Alle Segmente löschen"
+L["STRING_MINIMAP_TOOLTIP12"] = "|cFFCFCFCFLinksklick|r: Zeige/Verstecke Fenster"
+L["STRING_MINIMAP_TOOLTIP2"] = "|cFFCFCFCFRechtsklick|r: Schnellmenü"
 L["STRING_MINIMAPMENU_CLOSEALL"] = "Alle Fenster schließen"
 L["STRING_MINIMAPMENU_HIDEICON"] = "Minikartensymbol verstecken"
 L["STRING_MINIMAPMENU_LOCK"] = "Fixieren"
 L["STRING_MINIMAPMENU_NEWWINDOW"] = "Neues Fenster erstellen"
 L["STRING_MINIMAPMENU_REOPENALL"] = "Alle Fenster wieder öffnen"
 L["STRING_MINIMAPMENU_UNLOCK"] = "Freigeben"
-L["STRING_MINIMAP_TOOLTIP1"] = "|cFFCFCFCFLinksklick|r: Optionsmenü öffnen"
-L["STRING_MINIMAP_TOOLTIP11"] = "|cFFCFCFCFLinksklick|r: Alle Segmente löschen"
-L["STRING_MINIMAP_TOOLTIP12"] = "|cFFCFCFCFLinksklick|r: Zeige/Verstecke Fenster"
-L["STRING_MINIMAP_TOOLTIP2"] = "|cFFCFCFCFRechtsklick|r: Schnellmenü"
 L["STRING_MINIMUM"] = "Minimum"
 L["STRING_MINIMUM_SHORT"] = "Min."
 L["STRING_MINITUTORIAL_BOOKMARK1"] = "Rechtsklick an beliebiger Stelle über dem Fenster, um die Lesezeichen zu öffnen!"
@@ -306,16 +306,16 @@ L["STRING_NEWROW"] = "warte Aktualisierung ab ..."
 L["STRING_NEWS_REINSTALL"] = "Treten nach einem Update Fehler auf? Probier '/details reinstall'."
 L["STRING_NEWS_TITLE"] = "Was ist neu in dieser Version?"
 L["STRING_NO"] = "Nein"
+L["STRING_NO_DATA"] = "Daten wurden bereits bereinigt."
+L["STRING_NO_SPELL"] = "Kein Zauber wurde benutzt."
+L["STRING_NO_TARGET"] = "Kein Ziel gefunden."
+L["STRING_NO_TARGET_BOX"] = "Keine Ziele verfügbar"
 L["STRING_NOCLOSED_INSTANCES"] = [=[Es gibt keine geschlossenen Fenster,
 klicke, um ein neues zu erstellen.]=]
-L["STRING_NO_DATA"] = "Daten wurden bereits bereinigt."
 L["STRING_NOLAST_COOLDOWN"] = "Kein Cooldown benutzt."
 L["STRING_NOMORE_INSTANCES"] = [=[Max Fensteranzahl wurde erreicht.
 Ändere die Anzahl im Optionsmenü.]=]
 L["STRING_NORMAL_HITS"] = "Normale Treffer"
-L["STRING_NO_SPELL"] = "Kein Zauber wurde benutzt."
-L["STRING_NO_TARGET"] = "Kein Ziel gefunden."
-L["STRING_NO_TARGET_BOX"] = "Keine Ziele verfügbar"
 L["STRING_NUMERALSYSTEM"] = "Zahlensystem"
 L["STRING_NUMERALSYSTEM_ARABIC_MYRIAD_EASTASIA"] = "In ost-asiatischen Ländern benutzt, unterteilt in Tausendern und einer Unzahl."
 L["STRING_NUMERALSYSTEM_ARABIC_WESTERN"] = "Westlich"
@@ -328,14 +328,14 @@ L["STRING_OPTIONS_3D_LALPHA_DESC"] = [=[Wähle einen Wert für die Transparenz.
 |cFFFFFF00Achtung|r: Einige Modelle ignorieren den Transparenzwert.]=]
 L["STRING_OPTIONS_3D_LANCHOR"] = "Unteres 3D-Modell:"
 L["STRING_OPTIONS_3D_LENABLED_DESC"] = "Aktiviert oder deaktiviert die Nutzung eines 3D-Modells unter den Balken."
-L["STRING_OPTIONS_3D_LSELECT_DESC"] = "Wähle das zu benutzende 3D-Modell für Balken." -- Needs review
+L["STRING_OPTIONS_3D_LSELECT_DESC"] = "Wähle das zu benutzende 3D-Modell für Balken."
 L["STRING_OPTIONS_3D_SELECT"] = "Modell wählen"
 L["STRING_OPTIONS_3D_UALPHA_DESC"] = [=[Wähle einen Wert für die Transparenz des oberen Modells.
 
 |cFFFFFF00Achtung|r: Einige Modelle ignorieren den Transparenzwert.]=]
 L["STRING_OPTIONS_3D_UANCHOR"] = "Oberes 3D-Modell:"
 L["STRING_OPTIONS_3D_UENABLED_DESC"] = "Aktiviert oder deaktiviert die Nutzung eines 3D-Modells über den Balken."
-L["STRING_OPTIONS_3D_USELECT_DESC"] = "Wähle das zu benutzende 3D-Modell für Balken." -- Needs review
+L["STRING_OPTIONS_3D_USELECT_DESC"] = "Wähle das zu benutzende 3D-Modell für Balken."
 L["STRING_OPTIONS_ADVANCED"] = "Erweitert"
 L["STRING_OPTIONS_ALPHAMOD_ANCHOR"] = "Automatisch Verbergen:"
 L["STRING_OPTIONS_ALWAYS_USE"] = "Bei allen Charakteren benutzen"
@@ -368,11 +368,11 @@ L["STRING_OPTIONS_BAR_BACKDROP_SIZE_DESC"] = "Ändert die Rahmengröße."
 L["STRING_OPTIONS_BAR_BACKDROP_TEXTURE_DESC"] = "Ändert das Aussehen des Rahmens."
 L["STRING_OPTIONS_BAR_BCOLOR"] = "Hintergrundfarbe"
 L["STRING_OPTIONS_BAR_BTEXTURE_DESC"] = "Diese Textur liegt unterhalb der obersten Textur und hat dieselbe Größe wie das Fenster."
-L["STRING_OPTIONS_BAR_COLORBYCLASS"] = "Spieler-Klassenfarben"
-L["STRING_OPTIONS_BAR_COLORBYCLASS_DESC"] = "Aktiviert: Die Textur verwendet immer Klassenfarben"
 L["STRING_OPTIONS_BAR_COLOR_DESC"] = [=[Farbe und Transparenz dieser Textur.
 
 |cFFFFFF00Achtung|r: Die gewählte Farbe wird ignoriert, wenn Klassenfarben benutzt werden!]=]
+L["STRING_OPTIONS_BAR_COLORBYCLASS"] = "Spieler-Klassenfarben"
+L["STRING_OPTIONS_BAR_COLORBYCLASS_DESC"] = "Aktiviert: Die Textur verwendet immer Klassenfarben"
 L["STRING_OPTIONS_BAR_FOLLOWING"] = "Immer mich anzeigen"
 L["STRING_OPTIONS_BAR_FOLLOWING_ANCHOR"] = "Spielerbalken:"
 L["STRING_OPTIONS_BAR_FOLLOWING_DESC"] = "Aktiviert: Der Balken wird immer angezeigt, auch wenn Du nicht an der Spitze stehst."
@@ -381,17 +381,21 @@ L["STRING_OPTIONS_BAR_GROW_DESC"] = "Die Balken werden von oben oder unten ergä
 L["STRING_OPTIONS_BAR_HEIGHT"] = "Höhe"
 L["STRING_OPTIONS_BAR_HEIGHT_DESC"] = "Vergrößert oder verkleinert die Balkenhöhe."
 L["STRING_OPTIONS_BAR_ICONFILE"] = "Symboldatei"
+L["STRING_OPTIONS_BAR_ICONFILE_DESC"] = [=[Pfad zur eigenen Symboldatei.
+
+Das Bild muss als *.tga, 256x256 Pixel mit Alphakanal vorliegen.]=]
+L["STRING_OPTIONS_BAR_ICONFILE_DESC2"] = "Wähle das zu verwendende Symbolpaket."
 L["STRING_OPTIONS_BAR_ICONFILE1"] = "Kein Symbol"
 L["STRING_OPTIONS_BAR_ICONFILE2"] = "Standard"
 L["STRING_OPTIONS_BAR_ICONFILE3"] = "Standard (schwarz/weiß)"
 L["STRING_OPTIONS_BAR_ICONFILE4"] = "Standard (transparent)"
 L["STRING_OPTIONS_BAR_ICONFILE5"] = "Runde Symbole"
 L["STRING_OPTIONS_BAR_ICONFILE6"] = "Standard (transparent-schwarz/weiß)"
-L["STRING_OPTIONS_BAR_ICONFILE_DESC"] = [=[Pfad zur eigenen Symboldatei.
-
-Das Bild muss als *.tga, 256x256 Pixel mit Alphakanal vorliegen.]=]
-L["STRING_OPTIONS_BAR_ICONFILE_DESC2"] = "Wähle das zu verwendende Symbolpaket."
+L["STRING_OPTIONS_BAR_SPACING"] = "Abstand"
+L["STRING_OPTIONS_BAR_SPACING_DESC"] = "Abstand zwischen den Balken."
+L["STRING_OPTIONS_BAR_TEXTURE_DESC"] = "Textur, die für die Balkenoberseite verwendet wird."
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM"] = "Benutzerdefinierter Text aktiviert"
+L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "Aktiviert: Der linke Text wird nach den Regeln in der Box formatiert."
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2"] = ""
 L["STRING_OPTIONS_BARLEFTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: representiert generell die Spielerposition.
 
@@ -404,10 +408,10 @@ Beispiel:
 {func gibt 'Hallo Azeroth' aus}
 
 |cFFFFFF00Escape Sequences|r: benutzt zur Farbänderung oder für Texturen. Suche nach 'UI escape sequences' für mehr Information.]=]
-L["STRING_OPTIONS_BARLEFTTEXTCUSTOM_DESC"] = "Aktiviert: Der linke Text wird nach den Regeln in der Box formatiert."
 L["STRING_OPTIONS_BARORIENTATION"] = "Balkenausrichtung"
 L["STRING_OPTIONS_BARORIENTATION_DESC"] = "Richtung, in der Balken aufgefüllt werden."
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM"] = "Benutzerdefinierter Text aktiviert"
+L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM_DESC"] = "Aktiviert: Der rechte Text wird nach den Regeln in der Box formatiert."
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2"] = ""
 L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM2_DESC"] = [=[|cFFFFFF00{data1}|r: ist das erste bearbeitete Argument - generell die Gesamtsumme.
 
@@ -420,20 +424,16 @@ Beispiel:
 {func gibt 'Hallo Azeroth' aus}
 
 |cFFFFFF00Escape Sequences|r: benutzt zur Farbänderung oder für Texturen. Suche nach 'UI escape sequences' für mehr Information.]=]
-L["STRING_OPTIONS_BARRIGHTTEXTCUSTOM_DESC"] = "Aktiviert: Der rechte Text wird nach den Regeln in der Box formatiert."
 L["STRING_OPTIONS_BARS"] = "Allgemeine Balkeneinstellungen"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE"] = "Benutzerdefinierte Texturdatei"
 L["STRING_OPTIONS_BARS_CUSTOM_TEXTURE_DESC"] = "|cFFFFFF00Wichtig|r: Das Foto muss aus 256x32 Pixeln bestehen."
 L["STRING_OPTIONS_BARS_DESC"] = "Diese Option kontrolliert das Aussehen der Balken."
 L["STRING_OPTIONS_BARSORT"] = "Rangordnung"
 L["STRING_OPTIONS_BARSORT_DESC"] = "Ordnet Balken absteigend oder aufsteigend."
-L["STRING_OPTIONS_BAR_SPACING"] = "Abstand"
-L["STRING_OPTIONS_BAR_SPACING_DESC"] = "Abstand zwischen den Balken."
 L["STRING_OPTIONS_BARSTART"] = "Balkenanfang nach dem Symbol"
 L["STRING_OPTIONS_BARSTART_DESC"] = [=[Deaktiviert: Die oberste Textur beginnt am linken Rand des Symbols anstatt am rechten.
 
 Sinnvoll bei Symbolen mit transparenten Rändern.]=]
-L["STRING_OPTIONS_BAR_TEXTURE_DESC"] = "Textur, die für die Balkenoberseite verwendet wird."
 L["STRING_OPTIONS_BARUR_ANCHOR"] = "Schnelle Aktualisierung"
 L["STRING_OPTIONS_BARUR_DESC"] = "Aktiviert: DPS/HPS-Werte werden etwas häufiger aktualisiert als üblich."
 L["STRING_OPTIONS_BG_ALL_ALLY"] = "Alle zeigen"
@@ -529,7 +529,7 @@ L["STRING_OPTIONS_COMBAT_ALPHA_3"] = "Außerhalb eines Kampfes"
 L["STRING_OPTIONS_COMBAT_ALPHA_4"] = "Außerhalb einer Gruppe"
 L["STRING_OPTIONS_COMBAT_ALPHA_5"] = "Außerhalb einer Instanz"
 L["STRING_OPTIONS_COMBAT_ALPHA_6"] = "Innerhalb einer Instanz"
-L["STRING_OPTIONS_COMBAT_ALPHA_7"] = "Schlachtzug nachbereiten" -- Needs review
+L["STRING_OPTIONS_COMBAT_ALPHA_7"] = "Schlachtzug nachbereiten"
 L["STRING_OPTIONS_COMBAT_ALPHA_DESC"] = [=[Wähle, wie ein Kampf die Fenstertransparenz beeinflussen soll.
 
 |cFFFFFF00Keine Änderung|r: Transparenz unverändert.
@@ -549,6 +549,15 @@ L["STRING_OPTIONS_CUSTOMSPELLTITLE"] = "Zaubereinstellungen editieren"
 L["STRING_OPTIONS_CUSTOMSPELLTITLE_DESC"] = "Dieses Menü erlaubt es Dir, den Namen und das Symbol von Zaubern zu ändern."
 L["STRING_OPTIONS_DATABROKER"] = "Data-Broker:"
 L["STRING_OPTIONS_DATABROKER_TEXT"] = "Text"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD1"] = "Verursachter Schaden"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD2"] = "Effektive DPS"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD3"] = "Schadensposition"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD4"] = "Schadensdifferenz"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD5"] = "Gewirkte Heilung"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD6"] = "Effektive HPS"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD7"] = "Heilungsposition"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD8"] = "Heilungsdifferenz"
+L["STRING_OPTIONS_DATABROKER_TEXT_ADD9"] = "Kampflaufzeit"
 L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: Schaden durch Spieler.
 
 |cFFFFFF00{dps}|r: Effektivschaden pro Sekunde durch Spieler.
@@ -566,15 +575,6 @@ L["STRING_OPTIONS_DATABROKER_TEXT1_DESC"] = [=[|cFFFFFF00{dmg}|r: Schaden durch 
 |cFFFFFF00{hdiff}|r: Heilungsdifferenz zwischen dir und dem ersten Platz.
 
 |cFFFFFF00{time}|r: Kampfdauer.]=]
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD1"] = "Verursachter Schaden"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD2"] = "Effektive DPS"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD3"] = "Schadensposition"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD4"] = "Schadensdifferenz"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD5"] = "Gewirkte Heilung"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD6"] = "Effektive HPS"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD7"] = "Heilungsposition"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD8"] = "Heilungsdifferenz"
-L["STRING_OPTIONS_DATABROKER_TEXT_ADD9"] = "Kampflaufzeit"
 L["STRING_OPTIONS_DATACHARTTITLE"] = "Erstellt gezeitete Daten für Ranglisten"
 L["STRING_OPTIONS_DATACHARTTITLE_DESC"] = "Dieses Menü erlaubt Dir, benutzerdefinierte Datenerfassung zur Ranglistenerstellung zu erstellen."
 L["STRING_OPTIONS_DATACOLLECT_ANCHOR"] = "Datentypen:"
@@ -588,7 +588,6 @@ L["STRING_OPTIONS_DISABLE_ALLDISPLAYSWINDOW"] = "Das Menü 'Alle Anzeigen' deakt
 L["STRING_OPTIONS_DISABLE_ALLDISPLAYSWINDOW_DESC"] = "Aktiviert: Ein Rechtsklick auf die Titelleiste zeigt stattdessen deine Lesezeichen."
 L["STRING_OPTIONS_DISABLE_BARHIGHLIGHT"] = "Balkenhervorhebung deaktivieren"
 L["STRING_OPTIONS_DISABLE_BARHIGHLIGHT_DESC"] = "Aktiviert: Der Balken wird nicht heller, wenn der Mauszeiger darüberfährt."
-L["STRING_OPTIONS_DISABLED_RESET"] = "Zurücksetzen durch diese Schaltfläche momentan nicht möglich. Gehe dazu ins Tooltipmenü."
 L["STRING_OPTIONS_DISABLE_GROUPS"] = "Gruppierung deaktivieren"
 L["STRING_OPTIONS_DISABLE_GROUPS_DESC"] = "Aktiviert: Ein Fenster wird bei Annäherung an ein anderes nicht gruppiert."
 L["STRING_OPTIONS_DISABLE_LOCK_RESIZE"] = "Größenänderungsschaltflächen deaktivieren"
@@ -597,17 +596,18 @@ L["STRING_OPTIONS_DISABLE_RESET"] = "Zurücksetz-Schaltfläche deaktivieren"
 L["STRING_OPTIONS_DISABLE_RESET_DESC"] = "Aktiviert: Es muss das Tooltipmenü der Zurücksetz-Schaltfläche benutzt werden, anstatt darauf zu klicken."
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON"] = "Ausweitungsschaltfläche deaktivieren"
 L["STRING_OPTIONS_DISABLE_STRETCH_BUTTON_DESC"] = "Aktiviert: Die Ausweitungsschaltfläche oberhalb der Fenster wird nicht angezeigt."
+L["STRING_OPTIONS_DISABLED_RESET"] = "Zurücksetzen durch diese Schaltfläche momentan nicht möglich. Gehe dazu ins Tooltipmenü."
 L["STRING_OPTIONS_DTAKEN_EVERYTHING"] = "Erweiterter Erlittener Schaden"
 L["STRING_OPTIONS_DTAKEN_EVERYTHING_DESC"] = "Aktiviert: Der erlittene Schaden wird immer im Modus |cFFFFFF00Alles|r angezeigt"
 L["STRING_OPTIONS_ED"] = "Daten löschen"
-L["STRING_OPTIONS_ED1"] = "Manuell"
-L["STRING_OPTIONS_ED2"] = "Eingabeaufforderung"
-L["STRING_OPTIONS_ED3"] = "Automatisch"
 L["STRING_OPTIONS_ED_DESC"] = [=[|cFFFFFF00Manuell|r: Der Benutzer muss auf den Zurücksetzen-Button klicken.
 
 |cFFFFFF00Eingabeaufforderung|r: Bei Instanzeintritt nachfragen, ob zurückgesetzt werden soll.
 
 |cFFFFFF00Automatisch|r: Daten bei Instanzeintritt automatisch löschen.]=]
+L["STRING_OPTIONS_ED1"] = "Manuell"
+L["STRING_OPTIONS_ED2"] = "Eingabeaufforderung"
+L["STRING_OPTIONS_ED3"] = "Automatisch"
 L["STRING_OPTIONS_EDITIMAGE"] = "Bild bearbeiten"
 L["STRING_OPTIONS_EDITINSTANCE"] = "Bearbeitungsfenster:"
 L["STRING_OPTIONS_ERASECHARTDATA"] = "Ranglisten löschen"
@@ -616,15 +616,15 @@ L["STRING_OPTIONS_EXTERNALS_TITLE"] = "Externe Widgets"
 L["STRING_OPTIONS_EXTERNALS_TITLE2"] = "Diese Optionen bestimmen das Verhalten vieler fremder Widgets."
 L["STRING_OPTIONS_GENERAL"] = "Allgemeine Einstellungen"
 L["STRING_OPTIONS_GENERAL_ANCHOR"] = "Allgemein:"
+L["STRING_OPTIONS_HIDE_ICON"] = "Symbol verstecken"
+L["STRING_OPTIONS_HIDE_ICON_DESC"] = [=[Aktiviert: Das Symbol des entsprechenden Fensters wird nicht gezeigt.
+
+|cFFFFFF00Wichtig|r: Nach der Aktivierung des Symbols muss der Titeltext ausgerichtet werden.]=]
 L["STRING_OPTIONS_HIDECOMBATALPHA_DESC"] = [=[Ändert die Transparenz auf diesen Wert, wenn dein Charakter mit der gewählten Rolle spielt.
 
 |cFFFFFF00Null|r: Versteckt. Keine Interaktion mit dem Fenster möglich.
 
 |cFFFFFF001 - 100|r: Sichtbar. Nur bei diesen Werten ist eine Interaktion mit dem Fenster möglich.]=]
-L["STRING_OPTIONS_HIDE_ICON"] = "Symbol verstecken"
-L["STRING_OPTIONS_HIDE_ICON_DESC"] = [=[Aktiviert: Das Symbol des entsprechenden Fensters wird nicht gezeigt.
-
-|cFFFFFF00Wichtig|r: Nach der Aktivierung des Symbols muss der Titeltext ausgerichtet werden.]=]
 L["STRING_OPTIONS_HOTCORNER"] = "Schaltfläche anzeigen"
 L["STRING_OPTIONS_HOTCORNER_ACTION"] = "Bei Klick"
 L["STRING_OPTIONS_HOTCORNER_ACTION_DESC"] = "Wähle, was geschehen soll, wenn die Schaltfläche auf der Hotcorner-Leiste mit der linken Maustaste angeklickt wird."
@@ -660,7 +660,6 @@ L["STRING_OPTIONS_INSTANCE_CURRENT_DESC"] = "Wenn ein Kampf beginnt, schaltet da
 L["STRING_OPTIONS_INSTANCE_DELETE"] = "Löschen"
 L["STRING_OPTIONS_INSTANCE_DELETE_DESC"] = [=[Entfernt dauerhaft ein Fenster.
 Das Interface kann während des Löschvorganges neustarten.]=]
-L["STRING_OPTIONS_INSTANCES"] = "Fenster:"
 L["STRING_OPTIONS_INSTANCE_SKIN"] = "Skin"
 L["STRING_OPTIONS_INSTANCE_SKIN_DESC"] = "Ändert das Fensteraussehen abhängig vom Skin."
 L["STRING_OPTIONS_INSTANCE_STATUSBAR_ANCHOR"] = "Statusbalken:"
@@ -676,6 +675,7 @@ Standard ist eine niedere Ebene, damit die Fenster unter den meisten Interface-A
 Auf einer höheren Ebene könnten die Fenster über anderen wichtigen Anzeigen liegen.
 
 Beim Ändern der Fensterebene könnte es Konflikte durch Überlappung mit anderen Fenstern geben.]=]
+L["STRING_OPTIONS_INSTANCES"] = "Fenster:"
 L["STRING_OPTIONS_INTERFACEDIT"] = "Interface-Änderungsmodus"
 L["STRING_OPTIONS_LEFT_MENU_ANCHOR"] = "Menüeinstellungen:"
 L["STRING_OPTIONS_LOCKSEGMENTS"] = "Segmente gesperrt"
@@ -707,7 +707,6 @@ L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER"] = "Begegnungszeit"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_ENCOUNTERTIMER_DESC"] = "Aktiviert: Eine Stoppuhr wird links vom Text angezeigt."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_FONT"] = "Schriftart"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_FONT_DESC"] = "Wähle die Schriftart für den Attributtext."
-L["STRING_OPTIONS_MENU_ATTRIBUTESETTINGS_ANCHOR"] = "Einstellungen:"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SHADOW_DESC"] = "Aktiviert oder deaktiviert den Schatten um den Text."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SIDE"] = "Oben anheften"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_SIDE_DESC"] = "Wähle, wo der Text verankert werden soll."
@@ -715,69 +714,44 @@ L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTCOLOR"] = "Textfarbe"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTCOLOR_DESC"] = "Ändert die Attributtextfarbe."
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE"] = "Textgröße"
 L["STRING_OPTIONS_MENU_ATTRIBUTE_TEXTSIZE_DESC"] = "Stelle die Attributtextgröße ein."
+L["STRING_OPTIONS_MENU_ATTRIBUTESETTINGS_ANCHOR"] = "Einstellungen:"
 L["STRING_OPTIONS_MENU_AUTOHIDE_DESC"] = "Aktiviert: Die Schaltflächen verschwinden automatisch, wenn der Cursor das Fenster verlässt und erscheinen bei Interaktionen wieder."
 L["STRING_OPTIONS_MENU_AUTOHIDE_LEFT"] = "Schaltflächen automatisch verstecken"
-L["STRING_OPTIONSMENU_AUTOMATIC"] = "Fenster: Automatisierung"
-L["STRING_OPTIONSMENU_AUTOMATIC_TITLE"] = "Fensterautomatisierungseinstellungen"
-L["STRING_OPTIONSMENU_AUTOMATIC_TITLE_DESC"] = "Diese Einstellungen steuern das automatische Verhalten des Fensters, wie z.B. automatisches Verstecken und Umschalten."
 L["STRING_OPTIONS_MENU_BUTTONSSIZE_DESC"] = "Wähle die Schaltflächengröße. Dies verändert auch die Schaltflächen von Zusatzmodulen."
-L["STRING_OPTIONSMENU_COMBAT"] = "PvE/PvP"
-L["STRING_OPTIONSMENU_DATACHART"] = "Daten für Ranglisten"
-L["STRING_OPTIONSMENU_DATACOLLECT"] = "Datensammler"
-L["STRING_OPTIONSMENU_DATAFEED"] = "Datenzufuhr"
-L["STRING_OPTIONSMENU_DISPLAY"] = "Anzeige"
-L["STRING_OPTIONSMENU_DISPLAY_DESC"] = "Gesamte Grundeinstellungen und schnelle Fensterkontrolle"
 L["STRING_OPTIONS_MENU_FONT_FACE"] = "Menüschriftart"
 L["STRING_OPTIONS_MENU_FONT_FACE_DESC"] = "Ändert die Schriftart aller Menüs."
 L["STRING_OPTIONS_MENU_FONT_SIZE"] = "Menüschriftgröße"
 L["STRING_OPTIONS_MENU_FONT_SIZE_DESC"] = "Ändert die Schriftgröße aller Menüs."
 L["STRING_OPTIONS_MENU_IGNOREBARS"] = "Balken ignorieren"
 L["STRING_OPTIONS_MENU_IGNOREBARS_DESC"] = "Aktiviert: Kein Balken dieses Fensters wird beeinflusst."
-L["STRING_OPTIONSMENU_LEFTMENU"] = "Titelleiste: Allgemein"
-L["STRING_OPTIONSMENU_MISC"] = "Sonstiges"
-L["STRING_OPTIONSMENU_PERFORMANCE"] = "Leistungsverbesserungen"
-L["STRING_OPTIONSMENU_PLUGINS"] = "Zusatzmodulverwaltung"
-L["STRING_OPTIONSMENU_PROFILES"] = "Profile"
-L["STRING_OPTIONSMENU_RAIDTOOLS"] = "Schlachtzugswerkzeuge"
-L["STRING_OPTIONSMENU_RIGHTMENU"] = "-- x -- x --"
-L["STRING_OPTIONSMENU_ROWMODELS"] = "Balken: Erweitert"
-L["STRING_OPTIONSMENU_ROWSETTINGS"] = "Balken: Allgemein"
-L["STRING_OPTIONSMENU_ROWTEXTS"] = "Balken: Texte"
 L["STRING_OPTIONS_MENU_SHOWBUTTONS"] = "Schaltflächen anzeigen"
 L["STRING_OPTIONS_MENU_SHOWBUTTONS_DESC"] = "Wähle, welche Schaltflächen auf der Titelleiste angezeigt werden sollen."
-L["STRING_OPTIONSMENU_SKIN"] = "Skinauswahl"
-L["STRING_OPTIONSMENU_SPELLS"] = "Benutzerdefinierte Zauber"
-L["STRING_OPTIONSMENU_SPELLS_CONSOLIDATE"] = "Gleichnamige Zauber zusammenfassen"
-L["STRING_OPTIONS_MENUS_SHADOW"] = "Schatten"
-L["STRING_OPTIONS_MENUS_SHADOW_DESC"] = "Fügt allen Schaltflächen einen dünnen Schattenrand hinzu."
-L["STRING_OPTIONS_MENUS_SPACEMENT"] = "Abstand"
-L["STRING_OPTIONS_MENUS_SPACEMENT_DESC"] = "Kontrolliert, wie viel Abstand die Schaltflächen zwischen einander haben."
-L["STRING_OPTIONSMENU_TITLETEXT"] = "Titelleiste: Text"
-L["STRING_OPTIONSMENU_TOOLTIP"] = "Tooltips"
-L["STRING_OPTIONSMENU_WALLPAPER"] = "Fenster: Hintergrund"
-L["STRING_OPTIONSMENU_WINDOW"] = "Fenster: Allgemein"
 L["STRING_OPTIONS_MENU_X"] = "Position X"
 L["STRING_OPTIONS_MENU_X_DESC"] = "Ändert die Position in X-Richtung."
 L["STRING_OPTIONS_MENU_Y"] = "Position Y"
 L["STRING_OPTIONS_MENU_Y_DESC"] = "Ändert die Position in Y-Richtung."
+L["STRING_OPTIONS_MENUS_SHADOW"] = "Schatten"
+L["STRING_OPTIONS_MENUS_SHADOW_DESC"] = "Fügt allen Schaltflächen einen dünnen Schattenrand hinzu."
+L["STRING_OPTIONS_MENUS_SPACEMENT"] = "Abstand"
+L["STRING_OPTIONS_MENUS_SPACEMENT_DESC"] = "Kontrolliert, wie viel Abstand die Schaltflächen zwischen einander haben."
 L["STRING_OPTIONS_MICRODISPLAY_ANCHOR"] = "Microanzeigen:"
 L["STRING_OPTIONS_MICRODISPLAY_LOCK"] = "Microanzeigen sperren"
 L["STRING_OPTIONS_MICRODISPLAY_LOCK_DESC"] = "Gesperrt: Keine Interaktion mit Maus und Klicks."
 L["STRING_OPTIONS_MICRODISPLAYS_DROPDOWN_TOOLTIP"] = "Wähle, welche Microanzeige an dieser Seite gezeigt werden soll."
 L["STRING_OPTIONS_MICRODISPLAYS_OPTION_TOOLTIP"] = "Diese Microanzeige konfigurieren."
 L["STRING_OPTIONS_MICRODISPLAYS_SHOWHIDE_TOOLTIP"] = "Diese Microanzeige zeigen oder verstecken"
-L["STRING_OPTIONS_MICRODISPLAYSSIDE"] = "Microanzeigen auf der Oberseite"
-L["STRING_OPTIONS_MICRODISPLAYSSIDE_DESC"] = "Platziert die Microanzeige über dem Fenster oder an der oberen Seite."
 L["STRING_OPTIONS_MICRODISPLAYS_WARNING"] = [=[|cFFFFFF00Beachte|r: Microanzeigen können nicht gezeigt werden, wenn
 - sie an der unteren Seite verankert sind
 - die Seite und Statusanzeige deaktiviert sind.]=]
+L["STRING_OPTIONS_MICRODISPLAYSSIDE"] = "Microanzeigen auf der Oberseite"
+L["STRING_OPTIONS_MICRODISPLAYSSIDE_DESC"] = "Platziert die Microanzeige über dem Fenster oder an der oberen Seite."
 L["STRING_OPTIONS_MICRODISPLAYWARNING"] = "Microanzeigen werden nicht gezeigt, weil der Statusbalken deaktiviert ist."
 L["STRING_OPTIONS_MINIMAP"] = "Symbol anzeigen"
 L["STRING_OPTIONS_MINIMAP_ACTION"] = "Bei Klick"
+L["STRING_OPTIONS_MINIMAP_ACTION_DESC"] = "Wähle, was bei Linksklick auf das Minikartensymbol geschehen soll."
 L["STRING_OPTIONS_MINIMAP_ACTION1"] = "Optionsmenü öffnen"
 L["STRING_OPTIONS_MINIMAP_ACTION2"] = "Segmente zurücksetzen"
 L["STRING_OPTIONS_MINIMAP_ACTION3"] = "Fenster zeigen/verstecken"
-L["STRING_OPTIONS_MINIMAP_ACTION_DESC"] = "Wähle, was bei Linksklick auf das Minikartensymbol geschehen soll."
 L["STRING_OPTIONS_MINIMAP_ANCHOR"] = "Minikarte:"
 L["STRING_OPTIONS_MINIMAP_DESC"] = "Minikartensymbol anzeigen/verstecken"
 L["STRING_OPTIONS_MISCTITLE"] = "Sonstige Einstellungen"
@@ -817,26 +791,26 @@ L["STRING_OPTIONS_PERCENT_TYPE_DESC"] = [=[Ändert die Berechnungsmethode der Pr
 
 |cFFFFFF00Relativ zum Topspieler|r: die Prozentangabe gibt den Anteil in Bezug auf den Topspieler an.]=]
 L["STRING_OPTIONS_PERFORMANCE"] = "Leistung"
-L["STRING_OPTIONS_PERFORMANCE1"] = "Leistungsverbesserungen"
-L["STRING_OPTIONS_PERFORMANCE1_DESC"] = "Diese Option kann die CPU-Auslastung reduzieren."
 L["STRING_OPTIONS_PERFORMANCE_ANCHOR"] = "Allgemein:"
 L["STRING_OPTIONS_PERFORMANCE_ARENA"] = "Arena"
 L["STRING_OPTIONS_PERFORMANCE_BG15"] = "Schlachtfeld 15"
 L["STRING_OPTIONS_PERFORMANCE_BG40"] = "Schlachtfeld 40"
-L["STRING_OPTIONS_PERFORMANCECAPTURES"] = "Datensammler"
-L["STRING_OPTIONS_PERFORMANCECAPTURES_DESC"] = "Diese Optionen sind verantwortlich für Analysen und Sammlung von Kampfdaten."
 L["STRING_OPTIONS_PERFORMANCE_DUNGEON"] = "Dungeon"
 L["STRING_OPTIONS_PERFORMANCE_ENABLE_DESC"] = "Aktiviert: Diese Einstellung wird angewendet, wenn dein Schlachtzug mit dem gewählten Typ übereinstimmt."
 L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD"] = "Weltsegmente automatisch löschen"
 L["STRING_OPTIONS_PERFORMANCE_ERASEWORLD_DESC"] = "Löscht automatisch Segmente von Kämpfen außerhalb von Instanzen."
 L["STRING_OPTIONS_PERFORMANCE_MYTHIC"] = "Mythisch"
 L["STRING_OPTIONS_PERFORMANCE_PROFILE_LOAD"] = "Leistungsprofil geändert:"
-L["STRING_OPTIONS_PERFORMANCEPROFILES_ANCHOR"] = "Leistungsprofile:"
 L["STRING_OPTIONS_PERFORMANCE_RAID15"] = "Schlachtzug 10-15"
 L["STRING_OPTIONS_PERFORMANCE_RAID30"] = "Schlachtzug 16-30"
 L["STRING_OPTIONS_PERFORMANCE_RF"] = "Schlachtzugsbrowser"
 L["STRING_OPTIONS_PERFORMANCE_TYPES"] = "Typ"
 L["STRING_OPTIONS_PERFORMANCE_TYPES_DESC"] = "Dies sind die Schlachtzugstypen, bei denen sich unterschiedliche Optionen automatisch ändern."
+L["STRING_OPTIONS_PERFORMANCE1"] = "Leistungsverbesserungen"
+L["STRING_OPTIONS_PERFORMANCE1_DESC"] = "Diese Option kann die CPU-Auslastung reduzieren."
+L["STRING_OPTIONS_PERFORMANCECAPTURES"] = "Datensammler"
+L["STRING_OPTIONS_PERFORMANCECAPTURES_DESC"] = "Diese Optionen sind verantwortlich für Analysen und Sammlung von Kampfdaten."
+L["STRING_OPTIONS_PERFORMANCEPROFILES_ANCHOR"] = "Leistungsprofile:"
 L["STRING_OPTIONS_PICONS_DIRECTION"] = "Zusatzmodule rechts anordnen"
 L["STRING_OPTIONS_PICONS_DIRECTION_DESC"] = "Aktiviert: Zusatzmodulschaltflächen werden rechts von den Menüschaltflächen angezeigt."
 L["STRING_OPTIONS_PLUGINS"] = "Zusatzmodule"
@@ -858,6 +832,9 @@ L["STRING_OPTIONS_PROFILE_OVERWRITTEN"] = "Du hast ein spezifisches Profil für 
 L["STRING_OPTIONS_PROFILE_POSSIZE"] = "Größe und Position speichern"
 L["STRING_OPTIONS_PROFILE_POSSIZE_DESC"] = "Aktiviert: Das Profil speichert die Position und Größe von Fenstern. Wenn diese Option deaktiviert ist, hat jeder Charakter seine eigenen Werte."
 L["STRING_OPTIONS_PROFILE_REMOVEOKEY"] = "Profil erfolgreich entfernt."
+L["STRING_OPTIONS_PROFILE_SELECT"] = "Wähle ein Profil."
+L["STRING_OPTIONS_PROFILE_SELECTEXISTING"] = "Wähle ein bestehendes Profil oder benutze dieses Profil weiter für deinen Charakter:"
+L["STRING_OPTIONS_PROFILE_USENEW"] = "Neues Profil verwenden"
 L["STRING_OPTIONS_PROFILES_ANCHOR"] = "Einstellungen:"
 L["STRING_OPTIONS_PROFILES_COPY"] = "Kopiere Profil von"
 L["STRING_OPTIONS_PROFILES_COPY_DESC"] = "Kopiert alle Einstellungen des gewählten Profils in das momentane und überschreibt alle Werte."
@@ -865,8 +842,6 @@ L["STRING_OPTIONS_PROFILES_CREATE"] = "Profil erstellen"
 L["STRING_OPTIONS_PROFILES_CREATE_DESC"] = "Erstelle ein neues Profil."
 L["STRING_OPTIONS_PROFILES_CURRENT"] = "Momentanes Profil:"
 L["STRING_OPTIONS_PROFILES_CURRENT_DESC"] = "Dies ist der Name des gerade aktiven Profils."
-L["STRING_OPTIONS_PROFILE_SELECT"] = "Wähle ein Profil."
-L["STRING_OPTIONS_PROFILE_SELECTEXISTING"] = "Wähle ein bestehendes Profil oder benutze dieses Profil weiter für deinen Charakter:"
 L["STRING_OPTIONS_PROFILES_ERASE"] = "Profil entfernen"
 L["STRING_OPTIONS_PROFILES_ERASE_DESC"] = "Entfernt das gewählte Profil."
 L["STRING_OPTIONS_PROFILES_RESET"] = "Aktuelles Profil zurücksetzen"
@@ -875,7 +850,6 @@ L["STRING_OPTIONS_PROFILES_SELECT"] = "Wähle Profil"
 L["STRING_OPTIONS_PROFILES_SELECT_DESC"] = "Lädt ein existierendes Profil. Wenn du dasselbe Profil für alle Charaktere (Option 'Bei allen Charakteren benutzen') verwendest, wird eine Ausnahme für diesen Charakter erstellt."
 L["STRING_OPTIONS_PROFILES_TITLE"] = "Profile"
 L["STRING_OPTIONS_PROFILES_TITLE_DESC"] = "Diese Option erlaubt es Dir, die gleichen Einstellungen zwischen verschiedenen Charakteren zu teilen."
-L["STRING_OPTIONS_PROFILE_USENEW"] = "Neues Profil verwenden"
 L["STRING_OPTIONS_PS_ABBREVIATE"] = "Zahlenformat"
 L["STRING_OPTIONS_PS_ABBREVIATE_COMMA"] = "Komma"
 L["STRING_OPTIONS_PS_ABBREVIATE_DESC"] = [=[Wähle ein Zahlenformat.
@@ -916,14 +890,14 @@ L["STRING_OPTIONS_REPORT_HEALLINKS_DESC"] = [=[Beim Senden mit aktivierter Optio
 
 |cFFFF5555Schaden verursachende|r Zauber werden generell mit der Verlinkung berichtet.]=]
 L["STRING_OPTIONS_REPORT_SCHEMA"] = "Format"
+L["STRING_OPTIONS_REPORT_SCHEMA_DESC"] = "Wähle das Format mit dem der Text zum Chatkanal verlinkt wird."
 L["STRING_OPTIONS_REPORT_SCHEMA1"] = "Gesamt / Pro Sekunde / Prozent"
 L["STRING_OPTIONS_REPORT_SCHEMA2"] = "Prozent / Pro Sekunde / Gesamt"
 L["STRING_OPTIONS_REPORT_SCHEMA3"] = "Prozent / Gesamt / Pro Sekunde"
-L["STRING_OPTIONS_REPORT_SCHEMA_DESC"] = "Wähle das Format mit dem der Text zum Chatkanal verlinkt wird."
 L["STRING_OPTIONS_RESET_TO_DEFAULT"] = "Auf Standard zurücksetzen"
+L["STRING_OPTIONS_ROW_SETTING_ANCHOR"] = "Ausrichtung:"
 L["STRING_OPTIONS_ROWADV_TITLE"] = "Erweiterte Balkeneinstellungen"
 L["STRING_OPTIONS_ROWADV_TITLE_DESC"] = "Diese Optionen erlauben Dir, die Balken ausführlicher zu modifizieren."
-L["STRING_OPTIONS_ROW_SETTING_ANCHOR"] = "Ausrichtung:"
 L["STRING_OPTIONS_RT_COOLDOWN1"] = "%s gewirkt auf %s!"
 L["STRING_OPTIONS_RT_COOLDOWN2"] = "%s gewirkt!"
 L["STRING_OPTIONS_RT_COOLDOWNS_ANCHOR"] = "Abklingzeiten bekanntgeben:"
@@ -948,14 +922,14 @@ L["STRING_OPTIONS_RT_DEATHS_HITS"] = "Trefferanzahl"
 L["STRING_OPTIONS_RT_DEATHS_HITS_DESC"] = "Zeigt bei Bekanntgabe des Todes die Trefferanzahl."
 L["STRING_OPTIONS_RT_DEATHS_ONOFF_DESC"] = "Wenn ein Schlachtzugsmitglied stirbt, wird die Todesursache im Schlachtzugskanal ausgegeben."
 L["STRING_OPTIONS_RT_DEATHS_WHERE"] = "Instanzen"
-L["STRING_OPTIONS_RT_DEATHS_WHERE1"] = "Schlachtzug & Dungeon"
-L["STRING_OPTIONS_RT_DEATHS_WHERE2"] = "Nur Schlachtzug"
-L["STRING_OPTIONS_RT_DEATHS_WHERE3"] = "Nur Dungeon"
 L["STRING_OPTIONS_RT_DEATHS_WHERE_DESC"] = [=[Wähle, wo Tode bekanntgegeben werden können.
 
 |cFFFFFF00Wichtig|r in Schalachtzügen |cFFFFFF00/raid|r und |cFFFFFF00/p|r in Dungeons.
 
 Wenn |cFFFFFF00Beobachter|r gewählt ist, werden Tode NUR in deinem Chat gezeigt.]=]
+L["STRING_OPTIONS_RT_DEATHS_WHERE1"] = "Schlachtzug & Dungeon"
+L["STRING_OPTIONS_RT_DEATHS_WHERE2"] = "Nur Schlachtzug"
+L["STRING_OPTIONS_RT_DEATHS_WHERE3"] = "Nur Dungeon"
 L["STRING_OPTIONS_RT_FIRST_HIT"] = "Erster Treffer"
 L["STRING_OPTIONS_RT_FIRST_HIT_DESC"] = "Schreibt per Chatfenster (|cFFFFFF00nur für dich|r), wer den ersten Treffer ausführte - in der Regel der Kampfbeginner."
 L["STRING_OPTIONS_RT_IGNORE_TITLE"] = "Abklingzeiten ignorieren"
@@ -1091,30 +1065,6 @@ L["STRING_OPTIONS_TABEMB_TABNAME_DESC"] = "Der Name des Tabs, an dem die Fenster
 L["STRING_OPTIONS_TESTBARS"] = "Testbalken erzeugen"
 L["STRING_OPTIONS_TEXT"] = "Balkentext-Einstellungen"
 L["STRING_OPTIONS_TEXT_DESC"] = "Diese Optionen verändern das Aussehen der Balkentexte."
-L["STRING_OPTIONS_TEXTEDITOR_CANCEL"] = "Abbrechen"
-L["STRING_OPTIONS_TEXTEDITOR_CANCEL_TOOLTIP"] = "Beendet die Editierung und ignoriert jegliche Änderungen im Code."
-L["STRING_OPTIONS_TEXTEDITOR_COLOR_TOOLTIP"] = "Markiere den Text und klicke auf die Farbschaltfläche, um ihn mit der ausgewählten Farbe zu färben. "
-L["STRING_OPTIONS_TEXTEDITOR_COMMA"] = "Komma"
-L["STRING_OPTIONS_TEXTEDITOR_COMMA_TOOLTIP"] = [=[Fügt eine Funktion zur Formatierung von Zahlen hinzu.
-Beispiel: 1000000 nach 1.000.000.]=]
-L["STRING_OPTIONS_TEXTEDITOR_DATA"] = "[Daten %s]"
-L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[Fügt Daten hinzu:
-
-|cFFFFFF00Data 1|r: normalerweise das Gesamtergebnis eines Spielers oder Positionsnummer.
-
-|cFFFFFF00Data 2|r: in den meisten Fällen DpS, HpS oder der Spielername.
-
-|cFFFFFF00Data 3|r: Prozentangabe, Spezialisierung oder Fraktionssymbol.]=]
-L["STRING_OPTIONS_TEXTEDITOR_DONE"] = "Fertig"
-L["STRING_OPTIONS_TEXTEDITOR_DONE_TOOLTIP"] = "Beendet die Editierung und speichert den Code."
-L["STRING_OPTIONS_TEXTEDITOR_FUNC"] = "Funktion"
-L["STRING_OPTIONS_TEXTEDITOR_FUNC_TOOLTIP"] = [=[Fügt eine leere Funktion hinzu.
-Funktionen müssen immer eine Zahl zurückgeben.]=]
-L["STRING_OPTIONS_TEXTEDITOR_RESET"] = "Zurücksetzen"
-L["STRING_OPTIONS_TEXTEDITOR_RESET_TOOLTIP"] = "Entfernt sämtlichen Code und fügt den Standardcode ein."
-L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "ToK"
-L["STRING_OPTIONS_TEXTEDITOR_TOK_TOOLTIP"] = [=[Fügt eine Funktion zum Kürzen von Zahlen und deren Formatierung ein.
-Beispiel: 1500000 nach 1.5kk ]=]
 L["STRING_OPTIONS_TEXT_FIXEDCOLOR"] = "Schriftfarbe"
 L["STRING_OPTIONS_TEXT_FIXEDCOLOR_DESC"] = [=[Ändert die Schriftfarbe linker und rechter Texte.
 
@@ -1146,6 +1096,30 @@ L["STRING_OPTIONS_TEXT_SIZE"] = "Schriftgröße"
 L["STRING_OPTIONS_TEXT_SIZE_DESC"] = "Ändert die Schriftgröße linker und rechter Texte."
 L["STRING_OPTIONS_TEXT_TEXTUREL_ANCHOR"] = "Hintergrund:"
 L["STRING_OPTIONS_TEXT_TEXTUREU_ANCHOR"] = "Aussehen:"
+L["STRING_OPTIONS_TEXTEDITOR_CANCEL"] = "Abbrechen"
+L["STRING_OPTIONS_TEXTEDITOR_CANCEL_TOOLTIP"] = "Beendet die Editierung und ignoriert jegliche Änderungen im Code."
+L["STRING_OPTIONS_TEXTEDITOR_COLOR_TOOLTIP"] = "Markiere den Text und klicke auf die Farbschaltfläche, um ihn mit der ausgewählten Farbe zu färben. "
+L["STRING_OPTIONS_TEXTEDITOR_COMMA"] = "Komma"
+L["STRING_OPTIONS_TEXTEDITOR_COMMA_TOOLTIP"] = [=[Fügt eine Funktion zur Formatierung von Zahlen hinzu.
+Beispiel: 1000000 nach 1.000.000.]=]
+L["STRING_OPTIONS_TEXTEDITOR_DATA"] = "[Daten %s]"
+L["STRING_OPTIONS_TEXTEDITOR_DATA_TOOLTIP"] = [=[Fügt Daten hinzu:
+
+|cFFFFFF00Data 1|r: normalerweise das Gesamtergebnis eines Spielers oder Positionsnummer.
+
+|cFFFFFF00Data 2|r: in den meisten Fällen DpS, HpS oder der Spielername.
+
+|cFFFFFF00Data 3|r: Prozentangabe, Spezialisierung oder Fraktionssymbol.]=]
+L["STRING_OPTIONS_TEXTEDITOR_DONE"] = "Fertig"
+L["STRING_OPTIONS_TEXTEDITOR_DONE_TOOLTIP"] = "Beendet die Editierung und speichert den Code."
+L["STRING_OPTIONS_TEXTEDITOR_FUNC"] = "Funktion"
+L["STRING_OPTIONS_TEXTEDITOR_FUNC_TOOLTIP"] = [=[Fügt eine leere Funktion hinzu.
+Funktionen müssen immer eine Zahl zurückgeben.]=]
+L["STRING_OPTIONS_TEXTEDITOR_RESET"] = "Zurücksetzen"
+L["STRING_OPTIONS_TEXTEDITOR_RESET_TOOLTIP"] = "Entfernt sämtlichen Code und fügt den Standardcode ein."
+L["STRING_OPTIONS_TEXTEDITOR_TOK"] = "ToK"
+L["STRING_OPTIONS_TEXTEDITOR_TOK_TOOLTIP"] = [=[Fügt eine Funktion zum Kürzen von Zahlen und deren Formatierung ein.
+Beispiel: 1500000 nach 1.5kk ]=]
 L["STRING_OPTIONS_TIMEMEASURE"] = "Zeitmessung"
 L["STRING_OPTIONS_TIMEMEASURE_DESC"] = [=[|cFFFFFF00Aktivität|r: Die Teilnehmer-Uhr stoppt, wenn er inaktiv ist, und läuft bei Aktivitäten weiter. Gewöhnliche Art zur Messung von DpS und HpS.
 
@@ -1164,18 +1138,18 @@ L["STRING_OPTIONS_TOOLTIPS_ABBREVIATION_DESC"] = "Wähle das Zahlenformat in den
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH"] = "Tooltipseite"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_ATTACH_DESC"] = "Wähle die Tooltipseite, auf der die Tooltips gezeigt werden."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_BORDER"] = "Rahmen:"
-L["STRING_OPTIONS_TOOLTIPS_ANCHORCOLOR"] = "Überschrift"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_POINT"] = "Ankerpunkt:"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE"] = "Ankerpunktseite"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_RELATIVE_DESC"] = "Auf welcher Seite des Ankerpunkts der Tooltip platziert wird."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT"] = "Tooltip-Ankerpunkt"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TEXT_DESC"] = "Rechtsklick, um zu fixieren."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO"] = "Ankerpunkt"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO1"] = "Fensterreihe"
-L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "Bildschirmpunkt"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE"] = "Ankerpunkt bewegen"
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_CHOOSE_DESC"] = "Bewege den Ankerpunkt, wenn der Ankerpunkt auf |cFFFFFF00Bildschirmpunkt|r gesetzt ist."
 L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO_DESC"] = "Die Tooltips docken an der gewählten Reihe oder am Bildschirmpunkt an."
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO1"] = "Fensterreihe"
+L["STRING_OPTIONS_TOOLTIPS_ANCHOR_TO2"] = "Bildschirmpunkt"
+L["STRING_OPTIONS_TOOLTIPS_ANCHORCOLOR"] = "Überschrift"
 L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR"] = "Hintergrundfarbe"
 L["STRING_OPTIONS_TOOLTIPS_BACKGROUNDCOLOR_DESC"] = "Wähle die Farbe für den Hintergrund."
 L["STRING_OPTIONS_TOOLTIPS_BORDER_COLOR_DESC"] = "Ändert die Rahmenfarbe."
@@ -1191,11 +1165,6 @@ L["STRING_OPTIONS_TOOLTIPS_FONTSIZE_DESC"] = "Ändert die Schriftgröße der Too
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER"] = "Untermenühintergrund"
 L["STRING_OPTIONS_TOOLTIPS_IGNORESUBWALLPAPER_DESC"] = "Wenn aktiviert, zeigen einige Menüs ihren eigenen Hintergrund."
 L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE"] = "Maximierungsmethode"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "mit Shift/Strg/Alt"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "Immer maximiert"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "Nur den Shift-Block"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "Nur den Strg-Block"
-L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "Nur den Alt-Block"
 L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[Wähle die Expandierungsmethode in den Tooltips.
 
 |cFFFFFF00 mit Sondertasten|r: die Tooltipbox wird maximiert mithilfe der Shift-, Strg- oder Alt-Taste.
@@ -1207,6 +1176,11 @@ L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE_DESC"] = [=[Wähle die Expandierungsmethode 
 |cFFFFFF00 Nur Strg-Block|r: Der zweite Block ist immer maximiert.
 
 |cFFFFFF00 Nur Alt-Block|r: Der dritte Block ist immer maximiert.]=]
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE1"] = "mit Shift/Strg/Alt"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE2"] = "Immer maximiert"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE3"] = "Nur den Shift-Block"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE4"] = "Nur den Strg-Block"
+L["STRING_OPTIONS_TOOLTIPS_MAXIMIZE5"] = "Nur den Alt-Block"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP"] = "Hintergrund ändern"
 L["STRING_OPTIONS_TOOLTIPS_MENU_WALLP_DESC"] = "Ändert den Hintergrund für das Titelleisten-Menü."
 L["STRING_OPTIONS_TOOLTIPS_OFFSETX"] = "Abstand X"
@@ -1279,6 +1253,8 @@ L["STRING_OPTIONS_WINDOW_SCALE_DESC"] = [=[Bestimmt die Skalierung des Fensters.
 |cFFFFFF00Tipp|r: Rechtsklick, um einen Wert einzugeben
 
 |cFFFFFF00Aktuell|r: %s]=]
+L["STRING_OPTIONS_WINDOW_TITLE"] = "Allgemeine Fenstereinstellungen"
+L["STRING_OPTIONS_WINDOW_TITLE_DESC"] = "Diese Optionen kontrollieren das Aussehen des gewählten Fensters."
 L["STRING_OPTIONS_WINDOWSPEED"] = "Aktual.-Intervall"
 L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[Zeit zwischen den Aktualisierungen.
 
@@ -1287,8 +1263,6 @@ L["STRING_OPTIONS_WINDOWSPEED_DESC"] = [=[Zeit zwischen den Aktualisierungen.
 |cFFFFFF000.3|r: 3,33x pro Sekunde
 
 |cFFFFFF003.0|r: 1x alle 3 Sekunden]=]
-L["STRING_OPTIONS_WINDOW_TITLE"] = "Allgemeine Fenstereinstellungen"
-L["STRING_OPTIONS_WINDOW_TITLE_DESC"] = "Diese Optionen kontrollieren das Aussehen des gewählten Fensters."
 L["STRING_OPTIONS_WP"] = "Hintergrundeinstellungen"
 L["STRING_OPTIONS_WP_ALIGN"] = "Ausrichtung"
 L["STRING_OPTIONS_WP_ALIGN_DESC"] = [=[Wie der Hintergrund zum Fenster ausgerichtet ist.
@@ -1305,9 +1279,35 @@ L["STRING_OPTIONS_WP_EDIT"] = "Bild bearbeiten"
 L["STRING_OPTIONS_WP_EDIT_DESC"] = "Öffnet den Bildeditor, um das gewählte Bild anzupassen."
 L["STRING_OPTIONS_WP_ENABLE_DESC"] = "Zeigt den Hintergrund."
 L["STRING_OPTIONS_WP_GROUP"] = "Kategorie"
+L["STRING_OPTIONS_WP_GROUP_DESC"] = "Wähle die Bildgruppe."
 L["STRING_OPTIONS_WP_GROUP2"] = "Hintergrund"
 L["STRING_OPTIONS_WP_GROUP2_DESC"] = "Das Bild, welches als Hintergrund genommen werden soll."
-L["STRING_OPTIONS_WP_GROUP_DESC"] = "Wähle die Bildgruppe."
+L["STRING_OPTIONSMENU_AUTOMATIC"] = "Fenster: Automatisierung"
+L["STRING_OPTIONSMENU_AUTOMATIC_TITLE"] = "Fensterautomatisierungseinstellungen"
+L["STRING_OPTIONSMENU_AUTOMATIC_TITLE_DESC"] = "Diese Einstellungen steuern das automatische Verhalten des Fensters, wie z.B. automatisches Verstecken und Umschalten."
+L["STRING_OPTIONSMENU_COMBAT"] = "PvE/PvP"
+L["STRING_OPTIONSMENU_DATACHART"] = "Daten für Ranglisten"
+L["STRING_OPTIONSMENU_DATACOLLECT"] = "Datensammler"
+L["STRING_OPTIONSMENU_DATAFEED"] = "Datenzufuhr"
+L["STRING_OPTIONSMENU_DISPLAY"] = "Anzeige"
+L["STRING_OPTIONSMENU_DISPLAY_DESC"] = "Gesamte Grundeinstellungen und schnelle Fensterkontrolle"
+L["STRING_OPTIONSMENU_LEFTMENU"] = "Titelleiste: Allgemein"
+L["STRING_OPTIONSMENU_MISC"] = "Sonstiges"
+L["STRING_OPTIONSMENU_PERFORMANCE"] = "Leistungsverbesserungen"
+L["STRING_OPTIONSMENU_PLUGINS"] = "Zusatzmodulverwaltung"
+L["STRING_OPTIONSMENU_PROFILES"] = "Profile"
+L["STRING_OPTIONSMENU_RAIDTOOLS"] = "Schlachtzugswerkzeuge"
+L["STRING_OPTIONSMENU_RIGHTMENU"] = "-- x -- x --"
+L["STRING_OPTIONSMENU_ROWMODELS"] = "Balken: Erweitert"
+L["STRING_OPTIONSMENU_ROWSETTINGS"] = "Balken: Allgemein"
+L["STRING_OPTIONSMENU_ROWTEXTS"] = "Balken: Texte"
+L["STRING_OPTIONSMENU_SKIN"] = "Skinauswahl"
+L["STRING_OPTIONSMENU_SPELLS"] = "Benutzerdefinierte Zauber"
+L["STRING_OPTIONSMENU_SPELLS_CONSOLIDATE"] = "Gleichnamige Zauber zusammenfassen"
+L["STRING_OPTIONSMENU_TITLETEXT"] = "Titelleiste: Text"
+L["STRING_OPTIONSMENU_TOOLTIP"] = "Tooltips"
+L["STRING_OPTIONSMENU_WALLPAPER"] = "Fenster: Hintergrund"
+L["STRING_OPTIONSMENU_WINDOW"] = "Fenster: Allgemein"
 L["STRING_OVERALL"] = "Gesamt"
 L["STRING_OVERHEAL"] = "Überheilung"
 L["STRING_OVERHEALED"] = "überheilt"
@@ -1327,16 +1327,6 @@ L["STRING_PLUGIN_GOLD"] = "Gold"
 L["STRING_PLUGIN_LATENCY"] = "Latenz"
 L["STRING_PLUGIN_MINSEC"] = "Minuten & Sekunden"
 L["STRING_PLUGIN_NAMEALREADYTAKEN"] = "Details! kann das Zusatzmodul nicht installieren. Name bereits vergeben."
-L["STRING_PLUGINOPTIONS_ABBREVIATE"] = "Kürzung"
-L["STRING_PLUGINOPTIONS_COMMA"] = "Komma"
-L["STRING_PLUGINOPTIONS_FONTFACE"] = "Schriftart wählen"
-L["STRING_PLUGINOPTIONS_NOFORMAT"] = "kein"
-L["STRING_PLUGINOPTIONS_TEXTALIGN"] = "Textausrichtung"
-L["STRING_PLUGINOPTIONS_TEXTALIGN_X"] = "Text X-Achse"
-L["STRING_PLUGINOPTIONS_TEXTALIGN_Y"] = "Text Y-Achse"
-L["STRING_PLUGINOPTIONS_TEXTCOLOR"] = "Schriftfarbe"
-L["STRING_PLUGINOPTIONS_TEXTSIZE"] = "Schriftgröße"
-L["STRING_PLUGINOPTIONS_TEXTSTYLE"] = "Schriftart"
 L["STRING_PLUGIN_PATTRIBUTENAME"] = "Attribut"
 L["STRING_PLUGIN_PDPSNAME"] = "Schlachtzug-DPS"
 L["STRING_PLUGIN_PSEGMENTNAME"] = "Segment"
@@ -1350,16 +1340,36 @@ L["STRING_PLUGIN_TIME"] = "Uhr"
 L["STRING_PLUGIN_TIMEDIFF"] = "Differenz zum letzten Kampf"
 L["STRING_PLUGIN_TOOLTIP_LEFTBUTTON"] = "Bestehendes Zusatzmodul konfigurieren"
 L["STRING_PLUGIN_TOOLTIP_RIGHTBUTTON"] = "Ein anderes Zusatzmodul wählen"
+L["STRING_PLUGINOPTIONS_ABBREVIATE"] = "Kürzung"
+L["STRING_PLUGINOPTIONS_COMMA"] = "Komma"
+L["STRING_PLUGINOPTIONS_FONTFACE"] = "Schriftart wählen"
+L["STRING_PLUGINOPTIONS_NOFORMAT"] = "kein"
+L["STRING_PLUGINOPTIONS_TEXTALIGN"] = "Textausrichtung"
+L["STRING_PLUGINOPTIONS_TEXTALIGN_X"] = "Text X-Achse"
+L["STRING_PLUGINOPTIONS_TEXTALIGN_Y"] = "Text Y-Achse"
+L["STRING_PLUGINOPTIONS_TEXTCOLOR"] = "Schriftfarbe"
+L["STRING_PLUGINOPTIONS_TEXTSIZE"] = "Schriftgröße"
+L["STRING_PLUGINOPTIONS_TEXTSTYLE"] = "Schriftart"
 L["STRING_QUERY_INSPECT"] = "Talente und Gegenstandsstufe abfragen."
 L["STRING_QUERY_INSPECT_FAIL1"] = "keine Abfrage im Kampf möglich."
 L["STRING_QUERY_INSPECT_TALENTS"] = "klicke für Abfrage"
+L["STRING_RAID_WIDE"] = "[*] Schlachtzugsweite Abklingzeiten"
 L["STRING_RAIDCHECK_PLUGIN_DESC"] = "Zeigt innerhalb von Schlachtzugsinstanzen ein Symbol auf der Details!-Titelleiste, das Fläschchen-, Essen- und Voraustrank-Nutzung anzeigt."
 L["STRING_RAIDCHECK_PLUGIN_NAME"] = "Raid-Nachprüfung"
-L["STRING_RAID_WIDE"] = "[*] Schlachtzugsweite Abklingzeiten"
 L["STRING_REPORT"] = "für"
 L["STRING_REPORT_BUTTON_TOOLTIP"] = "Klicke, um den Berichtsdialog zu öffnen"
 L["STRING_REPORT_FIGHT"] = "Kampf"
 L["STRING_REPORT_FIGHTS"] = "Kämpfe"
+L["STRING_REPORT_INVALIDTARGET"] = "Flüsterziel nicht gefunden"
+L["STRING_REPORT_LAST"] = "zuletzt"
+L["STRING_REPORT_LASTFIGHT"] = "letzter Kampf"
+L["STRING_REPORT_LEFTCLICK"] = "Klicke zum Bericht"
+L["STRING_REPORT_PREVIOUSFIGHTS"] = "vorherige Kämpfe"
+L["STRING_REPORT_SINGLE_BUFFUPTIME"] = "Stärkungszauberlaufzeit für"
+L["STRING_REPORT_SINGLE_COOLDOWN"] = "Cooldown benutzt von"
+L["STRING_REPORT_SINGLE_DEATH"] = "Tod von"
+L["STRING_REPORT_SINGLE_DEBUFFUPTIME"] = "Schwächungszauberlaufzeit für"
+L["STRING_REPORT_TOOLTIP"] = "Ergebnisbericht"
 L["STRING_REPORTFRAME_COPY"] = "Kopieren & Einfügen"
 L["STRING_REPORTFRAME_CURRENT"] = "Momentan"
 L["STRING_REPORTFRAME_CURRENTINFO"] = "Nur momentane Daten anzeigen (wenn unterstützt)."
@@ -1377,17 +1387,7 @@ L["STRING_REPORTFRAME_SEND"] = "senden"
 L["STRING_REPORTFRAME_WHISPER"] = "Flüstern"
 L["STRING_REPORTFRAME_WHISPERTARGET"] = "Ziel anflüstern"
 L["STRING_REPORTFRAME_WINDOW_TITLE"] = "verlinkt Details!"
-L["STRING_REPORTHISTORY"] = "Berichtsverlauf" -- Needs review
-L["STRING_REPORT_INVALIDTARGET"] = "Flüsterziel nicht gefunden"
-L["STRING_REPORT_LAST"] = "zuletzt"
-L["STRING_REPORT_LASTFIGHT"] = "letzter Kampf"
-L["STRING_REPORT_LEFTCLICK"] = "Klicke zum Bericht"
-L["STRING_REPORT_PREVIOUSFIGHTS"] = "vorherige Kämpfe"
-L["STRING_REPORT_SINGLE_BUFFUPTIME"] = "Stärkungszauberlaufzeit für"
-L["STRING_REPORT_SINGLE_COOLDOWN"] = "Cooldown benutzt von"
-L["STRING_REPORT_SINGLE_DEATH"] = "Tod von"
-L["STRING_REPORT_SINGLE_DEBUFFUPTIME"] = "Schwächungszauberlaufzeit für"
-L["STRING_REPORT_TOOLTIP"] = "Ergebnisbericht"
+L["STRING_REPORTHISTORY"] = "Berichtsverlauf"
 L["STRING_RESISTED"] = "Widerstanden"
 L["STRING_RESIZE_ALL"] = "Freie Größenänderung aller Fenster"
 L["STRING_RESIZE_COMMON"] = [=[verändert die Größe
@@ -1397,11 +1397,11 @@ L["STRING_RESIZE_HORIZONTAL"] = [=[Verändert die Breite
 L["STRING_RESIZE_VERTICAL"] = [=[Verändert die Höhe
  aller Gruppenfenster]=]
 L["STRING_RIGHT"] = "rechts"
+L["STRING_RIGHT_TO_LEFT"] = "Rechts nach Links"
 L["STRING_RIGHTCLICK_CLOSE_LARGE"] = "Klicke mit der rechten Maustaste, um das Fenster zu schließen."
 L["STRING_RIGHTCLICK_CLOSE_MEDIUM"] = "Rechte Maustaste, um das Fenster zu schließen"
 L["STRING_RIGHTCLICK_CLOSE_SHORT"] = "Rechtsklick zum Schließen"
 L["STRING_RIGHTCLICK_TYPEVALUE"] = "Rechtsklick, um den Wert einzugeben"
-L["STRING_RIGHT_TO_LEFT"] = "Rechts nach Links"
 L["STRING_SCORE_BEST"] = "Du erzieltest |cFF00FF00%s|r - dein bestes Ergebnis !Gratulation!"
 L["STRING_SCORE_NOTBEST"] = "Du erzieltest |cFFFFFF00%s|r, bester Wert ist |cFFFFFF00%s|r von %s mit %d Itemlevel."
 L["STRING_SEE_BELOW"] = "siehe unten"
@@ -1411,10 +1411,10 @@ L["STRING_SEGMENT_END"] = "Ende"
 L["STRING_SEGMENT_ENEMY"] = "Gegner"
 L["STRING_SEGMENT_LOWER"] = "Segment"
 L["STRING_SEGMENT_OVERALL"] = "Gesamtdaten"
-L["STRING_SEGMENTS"] = "Segmente"
 L["STRING_SEGMENT_START"] = "Start"
 L["STRING_SEGMENT_TIME"] = "Dauer"
 L["STRING_SEGMENT_TRASH"] = "Trash abgräumt"
+L["STRING_SEGMENTS"] = "Segmente"
 L["STRING_SHIELD_HEAL"] = "verhindert"
 L["STRING_SHIELD_OVERHEAL"] = "Vergeudet"
 L["STRING_SHORTCUT_RIGHTCLICK"] = "Rechtsklick, um zu schließen"
@@ -1473,6 +1473,7 @@ L["STRING_TOTAL"] = "Gesamt"
 L["STRING_TRANSLATE_LANGUAGE"] = "Hilf mit bei der Details!-Übersetzung"
 L["STRING_TUTORIAL_FULLY_DELETE_WINDOW"] = [=[Du hast ein Fenster geschlossen, du kannst es jederzeit erneut öffnen.
 Um ein Fenster komplett zu löschen, gehe zu den Optionen  -> Fenster: Allgemein -> Löschen.]=]
+L["STRING_TUTORIAL_OVERALL1"] = "Anpassen der Gesamteinstellungen auf dem Options Feld. > PvE/PvP"
 L["STRING_UNKNOW"] = "Unbekannt"
 L["STRING_UNKNOWSPELL"] = "Unbekannter Zauber"
 L["STRING_UNLOCK"] = [=[Fenstergruppe auflösen
@@ -1574,9 +1575,9 @@ L["STRING_WELCOME_7"] = "Für Ranglisten verwendet diese Methode die Kampflaufze
 L["STRING_WELCOME_70"] = "Titelleisteneinstellungen"
 L["STRING_WELCOME_71"] = "Leisteneinstellungen"
 L["STRING_WELCOME_72"] = "Fenstereinstellungen"
-L["STRING_WINDOW1ATACH_DESC"] = "Zur Bildung einer Fenstergruppe, ziehe Fenster #2 in die Nähe von Fenster #1."
 L["STRING_WINDOW_NOTFOUND"] = "Kein Fenster gefunden."
 L["STRING_WINDOW_NUMBER"] = "Fensternummer"
+L["STRING_WINDOW1ATACH_DESC"] = "Zur Bildung einer Fenstergruppe, ziehe Fenster #2 in die Nähe von Fenster #1."
 L["STRING_WIPE_ALERT"] = "Schlachtzugsleiter ruft: Wipe!"
 L["STRING_WIPE_ERROR1"] = "ein Wipe wurde bereits ausgerufen."
 L["STRING_WIPE_ERROR2"] = "wir sind in keiner Schlachtzugsbegegnung."

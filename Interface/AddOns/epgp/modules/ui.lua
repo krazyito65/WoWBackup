@@ -110,6 +110,7 @@ local function CreateEPGPExportImportFrame()
   f:Hide()
   f:SetPoint("CENTER")
   f:SetFrameStrata("TOOLTIP")
+  f:SetToplevel(true)
   f:SetHeight(350)
   f:SetWidth(500)
   f:SetBackdrop({

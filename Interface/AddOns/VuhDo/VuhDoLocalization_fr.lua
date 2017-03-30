@@ -1,18 +1,18 @@
 if (GetLocale() ~= "frFR") then
 	return;
 end
--- à = \195\160
--- â = \195\162
--- æ = \195\166
--- ç = \195\167
--- è = \195\168
--- é = \195\169
--- ê = \195\170
--- ï = \195\175
--- ô = \195\180
--- ù = \195\185
--- Œ = \197\146
--- œ = \197\147
+-- ï¿½ = \195\160
+-- ï¿½ = \195\162
+-- ï¿½ = \195\166
+-- ï¿½ = \195\167
+-- ï¿½ = \195\168
+-- ï¿½ = \195\169
+-- ï¿½ = \195\170
+-- ï¿½ = \195\175
+-- ï¿½ = \195\180
+-- ï¿½ = \195\185
+-- ï¿½ = \197\146
+-- ï¿½ = \197\147
 -- @EXACT = true: Translation has to be the exact(!) match in the clients language,
 --                beacause it carries technical semantics
 -- @EXACT = false: Translation can be done freely, because text is only descriptive
@@ -70,15 +70,15 @@ VUHDO_I18N_SHOW_BUFF_WATCH = "Montrer le suivi des buffs";
 -- Chat messages
 -- @EXACT = false
 VUHDO_I18N_COMMAND_LIST = "\n|cffffe566 - [ Commandes VuhDo] -|r";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566opt|r[ions] - Opions de VuhDo";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566res|r[et] - R\195\169initialiser la position des panneaux";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566lock|r - V\195\169rouiller/D\195\169v\195\169rouiller les panneaux";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566mm, map, minimap|r - Afficher/Cacher l'ic\195\180ne sur la minimap";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566show, hide, toggle|r - Afficher/Cacher les panneaux";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566load|r - [Profile],[Key Layout]";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§[broad]|cffffe566cast, mt|r[s] - Diffuser les tanks principaux";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566role|r - R\195\169initialiser le r\195\180le des joueurs";
-VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "§|cffffe566help,?|r - Cette liste de commandes\n";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566opt|r[ions] - Opions de VuhDo";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566res|r[et] - R\195\169initialiser la position des panneaux";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566lock|r - V\195\169rouiller/D\195\169v\195\169rouiller les panneaux";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566mm, map, minimap|r - Afficher/Cacher l'ic\195\180ne sur la minimap";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566show, hide, toggle|r - Afficher/Cacher les panneaux";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566load|r - [Profile],[Key Layout]";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½[broad]|cffffe566cast, mt|r[s] - Diffuser les tanks principaux";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566role|r - R\195\169initialiser le r\195\180le des joueurs";
+VUHDO_I18N_COMMAND_LIST = VUHDO_I18N_COMMAND_LIST .. "ï¿½|cffffe566help,?|r - Cette liste de commandes\n";
 VUHDO_I18N_BAD_COMMAND = "Commande inconnue! Taper '/vuhdo help' or '/vd ?' pour la liste des commandes.";
 VUHDO_I18N_CHAT_SHOWN = "|cffffe566visible|r.";
 VUHDO_I18N_CHAT_HIDDEN = "|cffffe566cach\195\169|r.";
@@ -126,7 +126,7 @@ VUHDO_I18N_BUFFC_SKIN = "Peau";
 -- Mage
 VUHDO_I18N_BUFFC_ARMOR_MAGE = "Armure";
 -- Death Knight
-VUHDO_BUFFC_PRESENCE    = "Présence";
+VUHDO_BUFFC_PRESENCE    = "Prï¿½sence";
 -- Warrior
 VUHDO_I18N_BUFFC_SHOUT = "Cri";
 -- Hunter
@@ -444,4 +444,17 @@ VUHDO_I18N_DEF_COUNTER_OVERFLOW_ABSORB = "Counter: Mythic+ Overflow Absorb #k";
 
 -- 3.79
 VUHDO_I18N_DEFAULT_RES_ANNOUNCE_MASS = "Casting mass resurrection!";
+
+-- 3.81
+VUHDO_I18N_BOUQUET_OVERFLOW_COUNTER = "Overflow Mythic+ Affix";
+
+-- 3.82
+VUHDO_I18N_SPELL_TRACE = "Icon: Spell Trace";
+VUHDO_I18N_DEF_SPELL_TRACE = "Spell Trace";
+VUHDO_I18N_TRAIL_OF_LIGHT = "Icon: Trail of Light";
+VUHDO_I18N_DEF_TRAIL_OF_LIGHT = "Trail of Light";
+
+-- 3.83
+VUHDO_I18N_BOUQUET_STATUS_MANA_HEALER_ONLY = "Statusbar: Mana % (Healer Only)";
+VUHDO_I18N_DEF_BOUQUET_BAR_MANA_HEALER_ONLY = "Manabars: Mana (Healer Only)";
 

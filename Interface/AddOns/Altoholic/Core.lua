@@ -1,11 +1,11 @@
-﻿local addonName = ...
+local addonName = ...
 
 _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0", "AceTimer-3.0")
 
 local addon = _G[addonName]
 
-addon.Version = "v7.1.003"
-addon.VersionNum = 701003
+addon.Version = "v7.2.001"
+addon.VersionNum = 702001
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local commPrefix = addonName
@@ -54,7 +54,6 @@ local AddonDB_Defaults = {
 		},
 		Characters = {
 			['*'] = {					-- ["Account.Realm.Name"] 
-				ConnectMMO = {},		-- Imported events come here
 			},
 		},
 		Sharing = {
@@ -412,8 +411,8 @@ function addon.Tabs:OnClick(index)
 end
 
 -- Allow ESC to close the main frame
-tinsert(UISpecialFrames, "AltoholicFrame");
-tinsert(UISpecialFrames, "AltoMsgBox");
+tinsert(UISpecialFrames, "AltoholicFrame")
+tinsert(UISpecialFrames, "AltoMessageBox")
 
 function addon:CmdSearchBags(arg1, arg2)
 	-- arg 1 is a table, no idea of what it does, investigate later, only  arg2 matters at this point

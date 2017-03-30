@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
 
-	<Frame name="ChartViewerWindowFrame" frameStrata="HIGH" movable="true" hidden="true" parent="UIParent" inherits="ButtonFrameTemplate">
+	<Frame name="ChartViewerWindowFrame" frameStrata="HIGH" movable="true" hidden="true" parent="UIParent">
 		<Size>
 			<AbsDimension x="838" y="414"/>
 		</Size>
@@ -11,9 +11,9 @@
 		
 		<Scripts>
 			<OnLoad>
-				self.TitleText:SetText ("Chart Viewer")
-				self.portrait:SetTexture ([[Interface\SPELLBOOK\Spellbook-Icon]])
-				self.portrait:SetVertexColor (1, 1, 1, 1)
+				--self.TitleText:SetText ("Chart Viewer")
+				--self.portrait:SetTexture ([[Interface\SPELLBOOK\Spellbook-Icon]])
+				--self.portrait:SetVertexColor (1, 1, 1, 1)
 				tinsert (UISpecialFrames, "ChartViewerWindowFrame")
 			</OnLoad>
 			<OnMouseDown>
